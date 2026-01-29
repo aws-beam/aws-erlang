@@ -136,6 +136,13 @@
 
 
 %% Example:
+%% image_block_start() :: #{
+%%   <<"format">> => list(any())
+%% }
+-type image_block_start() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_block_stop_event() :: #{
 %%   <<"contentBlockIndex">> => integer()
 %% }
@@ -148,8 +155,10 @@
 
 %% Example:
 %% converse_tokens_request() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"messages">> => list(message()),
-%%   <<"system">> => list(list())
+%%   <<"system">> => list(list()),
+%%   <<"toolConfig">> => tool_configuration()
 %% }
 -type converse_tokens_request() :: #{binary() => any()}.
 
@@ -191,10 +200,20 @@
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
+%%   <<"serviceTier">> => service_tier(),
 %%   <<"system">> => list(list()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
 -type converse_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result_location() :: #{
+%%   <<"end">> => [integer()],
+%%   <<"searchResultIndex">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type search_result_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -206,6 +225,13 @@
 %%   <<"untranslatedPremises">> => list(guardrail_automated_reasoning_input_text_reference())
 %% }
 -type guardrail_automated_reasoning_translation() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_tier() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type service_tier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -221,6 +247,7 @@
 %% Example:
 %% citation() :: #{
 %%   <<"location">> => list(),
+%%   <<"source">> => [string()],
 %%   <<"sourceContent">> => list(list()),
 %%   <<"title">> => [string()]
 %% }
@@ -268,10 +295,19 @@
 
 
 %% Example:
+%% image_block_delta() :: #{
+%%   <<"error">> => error_block(),
+%%   <<"source">> => list()
+%% }
+-type image_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_model_with_response_stream_response() :: #{
 %%   <<"body">> => list(),
 %%   <<"contentType">> => string(),
-%%   <<"performanceConfigLatency">> => list(any())
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any())
 %% }
 -type invoke_model_with_response_stream_response() :: #{binary() => any()}.
 
@@ -286,6 +322,7 @@
 
 %% Example:
 %% image_block() :: #{
+%%   <<"error">> => error_block(),
 %%   <<"format">> => list(any()),
 %%   <<"source">> => list()
 %% }
@@ -389,10 +426,31 @@
 
 
 %% Example:
+%% applied_guardrail_details() :: #{
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailOrigin">> => list(list(any())()),
+%%   <<"guardrailOwnership">> => list(any()),
+%%   <<"guardrailVersion">> => string()
+%% }
+-type applied_guardrail_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_model_with_bidirectional_stream_request() :: #{
 %%   <<"body">> := list()
 %% }
 -type invoke_model_with_bidirectional_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result_block() :: #{
+%%   <<"citations">> => citations_config(),
+%%   <<"content">> => list(search_result_content_block()),
+%%   <<"source">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type search_result_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,6 +518,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
 -type invoke_model_request() :: #{binary() => any()}.
@@ -495,6 +554,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
 -type invoke_model_with_response_stream_request() :: #{binary() => any()}.
@@ -536,7 +596,8 @@
 %% invoke_model_response() :: #{
 %%   <<"body">> => binary(),
 %%   <<"contentType">> => string(),
-%%   <<"performanceConfigLatency">> => list(any())
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any())
 %% }
 -type invoke_model_response() :: #{binary() => any()}.
 
@@ -604,6 +665,20 @@
 
 
 %% Example:
+%% error_block() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type error_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result_content_block() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type search_result_content_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_automated_reasoning_translation_option() :: #{
 %%   <<"translations">> => list(guardrail_automated_reasoning_translation())
 %% }
@@ -619,6 +694,7 @@
 
 %% Example:
 %% cache_point_block() :: #{
+%%   <<"ttl">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type cache_point_block() :: #{binary() => any()}.
@@ -674,6 +750,14 @@
 
 
 %% Example:
+%% cache_detail() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"ttl">> => list(any())
+%% }
+-type cache_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_contextual_grounding_policy_assessment() :: #{
 %%   <<"filters">> => list(guardrail_contextual_grounding_filter())
 %% }
@@ -692,10 +776,20 @@
 %% converse_stream_metadata_event() :: #{
 %%   <<"metrics">> => converse_stream_metrics(),
 %%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"serviceTier">> => service_tier(),
 %%   <<"trace">> => converse_stream_trace(),
 %%   <<"usage">> => token_usage()
 %% }
 -type converse_stream_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_block() :: #{
+%%   <<"error">> => error_block(),
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type audio_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -727,6 +821,7 @@
 
 %% Example:
 %% guardrail_assessment() :: #{
+%%   <<"appliedGuardrailDetails">> => applied_guardrail_details(),
 %%   <<"automatedReasoningPolicy">> => guardrail_automated_reasoning_policy_assessment(),
 %%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
 %%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy_assessment(),
@@ -788,6 +883,7 @@
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
+%%   <<"serviceTier">> => service_tier(),
 %%   <<"system">> => list(list()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
@@ -823,6 +919,7 @@
 
 %% Example:
 %% token_usage() :: #{
+%%   <<"cacheDetails">> => list(cache_detail()),
 %%   <<"cacheReadInputTokens">> => [integer()],
 %%   <<"cacheWriteInputTokens">> => [integer()],
 %%   <<"inputTokens">> => [integer()],
@@ -1050,6 +1147,7 @@
 %% Example:
 %% citations_delta() :: #{
 %%   <<"location">> => list(),
+%%   <<"source">> => [string()],
 %%   <<"sourceContent">> => list(citation_source_content_delta()),
 %%   <<"title">> => [string()]
 %% }
@@ -1070,6 +1168,7 @@
 %%   <<"metrics">> => converse_metrics(),
 %%   <<"output">> => list(),
 %%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"serviceTier">> => service_tier(),
 %%   <<"stopReason">> => list(any()),
 %%   <<"trace">> => converse_trace(),
 %%   <<"usage">> => token_usage()
@@ -1553,6 +1652,7 @@ invoke_model(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -1568,7 +1668,8 @@ invoke_model(Client, ModelId, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"Content-Type">>, <<"contentType">>},
-            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>}
+            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+            {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -1688,6 +1789,7 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -1703,7 +1805,8 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"X-Amzn-Bedrock-Content-Type">>, <<"contentType">>},
-            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>}
+            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+            {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of

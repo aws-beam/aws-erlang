@@ -89,6 +89,7 @@
 %%   <<"Location">> => string(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
 %%   <<"UserId">> => string()
 %% }
 -type stream_session_summary() :: #{binary() => any()}.
@@ -114,6 +115,13 @@
 %%   <<"ApplicationIdentifiers">> := list(string())
 %% }
 -type disassociate_applications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_stats_configuration() :: #{
+%%   <<"SharedWithClient">> => [boolean()]
+%% }
+-type performance_stats_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -159,6 +167,7 @@
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"Location">> => string(),
 %%   <<"LogFileLocationUri">> => string(),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SessionLengthSeconds">> => integer(),
 %%   <<"SignalRequest">> => string(),
@@ -237,7 +246,9 @@
 %% location_configuration() :: #{
 %%   <<"AlwaysOnCapacity">> => integer(),
 %%   <<"LocationName">> => string(),
-%%   <<"OnDemandCapacity">> => integer()
+%%   <<"MaximumCapacity">> => integer(),
+%%   <<"OnDemandCapacity">> => integer(),
+%%   <<"TargetIdleCapacity">> => integer()
 %% }
 -type location_configuration() :: #{binary() => any()}.
 
@@ -248,9 +259,11 @@
 %%   <<"AlwaysOnCapacity">> => integer(),
 %%   <<"IdleCapacity">> => integer(),
 %%   <<"LocationName">> => string(),
+%%   <<"MaximumCapacity">> => integer(),
 %%   <<"OnDemandCapacity">> => integer(),
 %%   <<"RequestedCapacity">> => integer(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"TargetIdleCapacity">> => integer()
 %% }
 -type location_state() :: #{binary() => any()}.
 
@@ -377,6 +390,7 @@
 %%   <<"ConnectionTimeoutSeconds">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"Locations">> => list(string()),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
 %%   <<"Protocol">> := list(any()),
 %%   <<"SessionLengthSeconds">> => integer(),
 %%   <<"SignalRequest">> := string(),
@@ -619,6 +633,7 @@
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"Location">> => string(),
 %%   <<"LogFileLocationUri">> => string(),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SessionLengthSeconds">> => integer(),
 %%   <<"SignalRequest">> => string(),
@@ -985,19 +1000,22 @@ create_application(Client, Input0, Options0) ->
 %%
 %% Stream capacity represents the number of concurrent streams that can be
 %% active at a time. You set stream capacity per location, per stream group.
-%% There are two types of capacity, always-on and on-demand:
+%% The following capacity settings are available:
 %%
-%% Always-on: The streaming capacity that is allocated and ready to handle
-%% stream requests without delay. You pay for this capacity whether it's
-%% in use or not. Best for quickest time from streaming request to streaming
-%% session. Default is 1 (2 for high stream classes) when creating a stream
-%% group or adding a location.
+%% Always-on capacity: This setting, if non-zero, indicates minimum streaming
+%% capacity which is allocated to you and is never released back to the
+%% service. You pay for this base level of capacity at all times, whether
+%% used or idle.
 %%
-%% On-demand: The streaming capacity that Amazon GameLift Streams can
-%% allocate in response to stream requests, and then de-allocate when the
-%% session has terminated. This offers a cost control measure at the expense
-%% of a greater startup time (typically under 5 minutes). Default is 0 when
-%% creating a stream group or adding a location.
+%% Maximum capacity: This indicates the maximum capacity that the service can
+%% allocate for you. Newly created streams may take a few minutes to start.
+%% Capacity is released back to the service when idle. You pay for capacity
+%% that is allocated to you until it is released.
+%%
+%% Target-idle capacity: This indicates idle capacity which the service
+%% pre-allocates and holds for you in anticipation of future activity. This
+%% helps to insulate your users from capacity-allocation delays. You pay for
+%% capacity which is held in this intentional idle state.
 %%
 %% Values for capacity must be whole number multiples of the tenancy value of
 %% the stream group's stream class.
@@ -2083,19 +2101,22 @@ update_application(Client, Identifier, Input0, Options0) ->
 %%
 %% Stream capacity represents the number of concurrent streams that can be
 %% active at a time. You set stream capacity per location, per stream group.
-%% There are two types of capacity, always-on and on-demand:
+%% The following capacity settings are available:
 %%
-%% Always-on: The streaming capacity that is allocated and ready to handle
-%% stream requests without delay. You pay for this capacity whether it's
-%% in use or not. Best for quickest time from streaming request to streaming
-%% session. Default is 1 (2 for high stream classes) when creating a stream
-%% group or adding a location.
+%% Always-on capacity: This setting, if non-zero, indicates minimum streaming
+%% capacity which is allocated to you and is never released back to the
+%% service. You pay for this base level of capacity at all times, whether
+%% used or idle.
 %%
-%% On-demand: The streaming capacity that Amazon GameLift Streams can
-%% allocate in response to stream requests, and then de-allocate when the
-%% session has terminated. This offers a cost control measure at the expense
-%% of a greater startup time (typically under 5 minutes). Default is 0 when
-%% creating a stream group or adding a location.
+%% Maximum capacity: This indicates the maximum capacity that the service can
+%% allocate for you. Newly created streams may take a few minutes to start.
+%% Capacity is released back to the service when idle. You pay for capacity
+%% that is allocated to you until it is released.
+%%
+%% Target-idle capacity: This indicates idle capacity which the service
+%% pre-allocates and holds for you in anticipation of future activity. This
+%% helps to insulate your users from capacity-allocation delays. You pay for
+%% capacity which is held in this intentional idle state.
 %%
 %% Values for capacity must be whole number multiples of the tenancy value of
 %% the stream group's stream class.

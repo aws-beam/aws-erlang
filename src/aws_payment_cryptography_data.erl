@@ -22,6 +22,8 @@
          decrypt_data/4,
          encrypt_data/3,
          encrypt_data/4,
+         generate_as2805_kek_validation/2,
+         generate_as2805_kek_validation/3,
          generate_card_validation_data/2,
          generate_card_validation_data/3,
          generate_mac/2,
@@ -47,6 +49,14 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% as2805_pek_derivation_attributes() :: #{
+%%   <<"SystemTraceAuditNumber">> => string(),
+%%   <<"TransactionAmount">> => string()
+%% }
+-type as2805_pek_derivation_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -89,11 +99,27 @@
 
 
 %% Example:
+%% translation_pin_data_as2805_format0() :: #{
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type translation_pin_data_as2805_format0() :: #{binary() => any()}.
+
+
+%% Example:
 %% visa_pin_verification_value() :: #{
 %%   <<"EncryptedPinBlock">> => string(),
 %%   <<"PinVerificationKeyIndex">> => integer()
 %% }
 -type visa_pin_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_as2805_kek_validation_input() :: #{
+%%   <<"KekValidationType">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"RandomKeySendVariantMask">> := list(any())
+%% }
+-type generate_as2805_kek_validation_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -116,6 +142,7 @@
 %% Example:
 %% translate_pin_data_input() :: #{
 %%   <<"EncryptedPinBlock">> := string(),
+%%   <<"IncomingAs2805Attributes">> => as2805_pek_derivation_attributes(),
 %%   <<"IncomingDukptAttributes">> => dukpt_derivation_attributes(),
 %%   <<"IncomingKeyIdentifier">> := string(),
 %%   <<"IncomingTranslationAttributes">> := list(),
@@ -271,6 +298,16 @@
 %%   <<"WrappedKey">> => wrapped_key()
 %% }
 -type encrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_as2805_kek_validation_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"RandomKeyReceive">> => string(),
+%%   <<"RandomKeySend">> => string()
+%% }
+-type generate_as2805_kek_validation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -598,6 +635,13 @@
 
 
 %% Example:
+%% kek_validation_request() :: #{
+%%   <<"DeriveKeyAlgorithm">> => list(any())
+%% }
+-type kek_validation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% re_encrypt_data_output() :: #{
 %%   <<"CipherText">> => string(),
 %%   <<"KeyArn">> => string(),
@@ -667,6 +711,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kek_validation_response() :: #{
+%%   <<"RandomKeySend">> => string()
+%% }
+-type kek_validation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -789,6 +840,13 @@
     resource_not_found_exception().
 
 -type encrypt_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type generate_as2805_kek_validation_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1076,6 +1134,72 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Establishes node-to-node initialization between payment processing
+%% nodes such as an acquirer, issuer or payment network using Australian
+%% Standard 2805 (AS2805).
+%%
+%% During node-to-node initialization, both communicating nodes must validate
+%% that they possess the correct Key Encrypting Keys (KEKs) before proceeding
+%% with session key exchange. In AS2805, the sending KEK (KEKs) of one node
+%% corresponds to the receiving KEK (KEKr) of its partner node. Each node
+%% uses its KEK to encrypt and decrypt session keys exchanged between the
+%% nodes. A KEK can be created or imported into Amazon Web Services Payment
+%% Cryptography using either the CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% or ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+%% operations.
+%%
+%% The node initiating communication can use
+%% `GenerateAS2805KekValidation' to generate a combined KEK validation
+%% request and KEK validation response to send to the partnering node for
+%% validation. When invoked, the API internally generates a random sending
+%% key encrypted under KEKs and provides a receiving key encrypted under KEKr
+%% as response. The initiating node sends the response returned by this API
+%% to its partner for validation.
+%%
+%% For information about valid keys for this operation, see Understanding key
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+-spec generate_as2805_kek_validation(aws_client:aws_client(), generate_as2805_kek_validation_input()) ->
+    {ok, generate_as2805_kek_validation_output(), tuple()} |
+    {error, any()} |
+    {error, generate_as2805_kek_validation_errors(), tuple()}.
+generate_as2805_kek_validation(Client, Input) ->
+    generate_as2805_kek_validation(Client, Input, []).
+
+-spec generate_as2805_kek_validation(aws_client:aws_client(), generate_as2805_kek_validation_input(), proplists:proplist()) ->
+    {ok, generate_as2805_kek_validation_output(), tuple()} |
+    {error, any()} |
+    {error, generate_as2805_kek_validation_errors(), tuple()}.
+generate_as2805_kek_validation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/as2805kekvalidation/generate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Generates card-related validation data using algorithms such as Card
 %% Verification Values (CVV/CVV2), Dynamic Card Verification Values
 %% (dCVV/dCVV2), or Card Security Codes (CSC).
@@ -1160,7 +1284,7 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% setting generation attributes and algorithm to the associated values. The
 %% MAC generation encryption key must have valid values for `KeyUsage'
 %% such as `TR31_M7_HMAC_KEY' for HMAC generation, and the key must have
-%% `KeyModesOfUse' set to `Generate' and `Verify'.
+%% `KeyModesOfUse' set to `Generate'.
 %%
 %% For information about valid keys for this operation, see Understanding key
 %% attributes:
@@ -1434,15 +1558,18 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Translates an encryption key between different wrapping keys without
-%% importing the key into Amazon Web Services Payment Cryptography.
+%% @doc Translates an cryptographic key between different wrapping keys
+%% without importing the key into Amazon Web Services Payment Cryptography.
 %%
 %% This operation can be used when key material is frequently rotated, such
 %% as during every card transaction, and there is a need to avoid importing
 %% short-lived keys into Amazon Web Services Payment Cryptography. It
-%% translates short-lived transaction keys such as Pin Encryption Key (PEK)
-%% generated for each transaction and wrapped with an ECDH (Elliptic Curve
-%% Diffie-Hellman) derived wrapping key to another KEK (Key Encryption Key)
+%% translates short-lived transaction keys such as PEK:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.pek
+%% generated for each transaction and wrapped with an ECDH:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.ecdh
+%% derived wrapping key to another KEK:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.kek
 %% wrapping key.
 %%
 %% Before using this operation, you must first request the public key
@@ -1452,10 +1579,7 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% certificate of receiving ECC key pair, and the key derivation parameters
 %% to generate a derived key. The service uses this derived key to unwrap the
 %% incoming transaction key received as a TR31WrappedKeyBlock and re-wrap
-%% using a user provided KEK to generate an outgoing Tr31WrappedKeyBlock. For
-%% more information on establishing ECDH derived keys, see the Creating keys:
-%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html
-%% in the Amazon Web Services Payment Cryptography User Guide.
+%% using a user provided KEK to generate an outgoing Tr31WrappedKeyBlock.
 %%
 %% For information about valid keys for this operation, see Understanding key
 %% attributes:

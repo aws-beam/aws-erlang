@@ -1877,7 +1877,8 @@ describe_recommendation_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommendationExportJobs">>, Input, Options).
 
-%% @doc Exports optimization recommendations for Auto Scaling groups.
+%% @doc Exports optimization recommendations for Amazon EC2 Auto Scaling
+%% groups.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
 %% its metadata
@@ -1889,8 +1890,8 @@ describe_recommendation_export_jobs(Client, Input, Options)
 %% in the Compute Optimizer User
 %% Guide.
 %%
-%% You can have only one Auto Scaling group export job in progress per Amazon
-%% Web Services Region.
+%% You can have only one Amazon EC2 Auto Scaling group export job in progress
+%% per Amazon Web Services Region.
 -spec export_auto_scaling_group_recommendations(aws_client:aws_client(), export_auto_scaling_group_recommendations_request()) ->
     {ok, export_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
@@ -2120,7 +2121,7 @@ export_rds_database_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportRDSDatabaseRecommendations">>, Input, Options).
 
-%% @doc Returns Auto Scaling group recommendations.
+%% @doc Returns Amazon EC2 Auto Scaling group recommendations.
 %%
 %% Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
 %% groups that
@@ -2470,7 +2471,7 @@ get_rds_database_recommendations(Client, Input, Options)
 %% can
 %% specify to return preferences for an organization, a specific account ID,
 %% or a specific
-%% EC2 instance or Auto Scaling group Amazon Resource Name (ARN).
+%% EC2 instance or Amazon EC2 Auto Scaling group Amazon Resource Name (ARN).
 %%
 %% For more information, see Activating
 %% enhanced infrastructure metrics:
@@ -2501,7 +2502,8 @@ get_recommendation_preferences(Client, Input, Options)
 %% `Underprovisioned', `Overprovisioned', or
 %% `Optimized'.
 %%
-%% EC2Auto Scaling groups in an account that are `NotOptimized', or
+%% EC2Amazon EC2 Auto Scaling groups in an account that are
+%% `NotOptimized', or
 %% `Optimized'.
 %%
 %% Amazon EBS volumes in an account that are `NotOptimized',

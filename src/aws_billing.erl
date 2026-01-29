@@ -52,6 +52,7 @@
 %%   <<"arns">> => list(string()),
 %%   <<"billingViewTypes">> => list(list(any())()),
 %%   <<"maxResults">> => integer(),
+%%   <<"names">> => list(string_search()),
 %%   <<"nextToken">> => string(),
 %%   <<"ownerAccountId">> => string(),
 %%   <<"sourceAccountId">> => string()
@@ -262,6 +263,13 @@
 -type resource_tag() :: #{binary() => any()}.
 
 %% Example:
+%% cost_category_values() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type cost_category_values() :: #{binary() => any()}.
+
+%% Example:
 %% time_range() :: #{
 %%   <<"beginDateInclusive">> => [non_neg_integer()],
 %%   <<"endDateInclusive">> => [non_neg_integer()]
@@ -321,6 +329,7 @@
 
 %% Example:
 %% expression() :: #{
+%%   <<"costCategories">> => cost_category_values(),
 %%   <<"dimensions">> => dimension_values(),
 %%   <<"tags">> => tag_values(),
 %%   <<"timeRange">> => time_range()
@@ -346,6 +355,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_billing_views_response() :: #{binary() => any()}.
+
+%% Example:
+%% string_search() :: #{
+%%   <<"searchOption">> => list(any()),
+%%   <<"searchValue">> => string()
+%% }
+-type string_search() :: #{binary() => any()}.
 
 %% Example:
 %% create_billing_view_response() :: #{

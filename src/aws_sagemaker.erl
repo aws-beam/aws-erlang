@@ -26,6 +26,10 @@
          batch_delete_cluster_nodes/3,
          batch_describe_model_package/2,
          batch_describe_model_package/3,
+         batch_reboot_cluster_nodes/2,
+         batch_reboot_cluster_nodes/3,
+         batch_replace_cluster_nodes/2,
+         batch_replace_cluster_nodes/3,
          create_action/2,
          create_action/3,
          create_algorithm/2,
@@ -96,6 +100,8 @@
          create_inference_recommendations_job/3,
          create_labeling_job/2,
          create_labeling_job/3,
+         create_mlflow_app/2,
+         create_mlflow_app/3,
          create_mlflow_tracking_server/2,
          create_mlflow_tracking_server/3,
          create_model/2,
@@ -130,6 +136,8 @@
          create_pipeline/3,
          create_presigned_domain_url/2,
          create_presigned_domain_url/3,
+         create_presigned_mlflow_app_url/2,
+         create_presigned_mlflow_app_url/3,
          create_presigned_mlflow_tracking_server_url/2,
          create_presigned_mlflow_tracking_server_url/3,
          create_presigned_notebook_instance_url/2,
@@ -220,6 +228,8 @@
          delete_inference_component/3,
          delete_inference_experiment/2,
          delete_inference_experiment/3,
+         delete_mlflow_app/2,
+         delete_mlflow_app/3,
          delete_mlflow_tracking_server/2,
          delete_mlflow_tracking_server/3,
          delete_model/2,
@@ -350,6 +360,8 @@
          describe_labeling_job/3,
          describe_lineage_group/2,
          describe_lineage_group/3,
+         describe_mlflow_app/2,
+         describe_mlflow_app/3,
          describe_mlflow_tracking_server/2,
          describe_mlflow_tracking_server/3,
          describe_model/2,
@@ -518,6 +530,8 @@
          list_labeling_jobs_for_workteam/3,
          list_lineage_groups/2,
          list_lineage_groups/3,
+         list_mlflow_apps/2,
+         list_mlflow_apps/3,
          list_mlflow_tracking_servers/2,
          list_mlflow_tracking_servers/3,
          list_model_bias_job_definitions/2,
@@ -716,6 +730,8 @@
          update_inference_component_runtime_config/3,
          update_inference_experiment/2,
          update_inference_experiment/3,
+         update_mlflow_app/2,
+         update_mlflow_app/3,
          update_mlflow_tracking_server/2,
          update_mlflow_tracking_server/3,
          update_model_card/2,
@@ -1056,6 +1072,13 @@
 -type update_inference_experiment_request() :: #{binary() => any()}.
 
 %% Example:
+%% model_speculative_decoding_config() :: #{
+%%   <<"Technique">> => list(any()),
+%%   <<"TrainingDataSource">> => model_speculative_decoding_training_data_source()
+%% }
+-type model_speculative_decoding_config() :: #{binary() => any()}.
+
+%% Example:
 %% update_hub_content_request() :: #{
 %%   <<"HubContentDescription">> => string(),
 %%   <<"HubContentDisplayName">> => string(),
@@ -1219,6 +1242,7 @@
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"ExplainerConfig">> => explainer_config(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"MetricsConfig">> => metrics_config(),
 %%   <<"ProductionVariants">> => list(production_variant()),
 %%   <<"ShadowProductionVariants">> => list(production_variant()),
 %%   <<"VpcConfig">> => vpc_config()
@@ -1238,6 +1262,26 @@
 %%   <<"VpcId">> => string()
 %% }
 -type update_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mlflow_app_response() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaintenanceStatus">> => list(any()),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type describe_mlflow_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% resolved_attributes() :: #{
@@ -1427,6 +1471,12 @@
 %%   <<"TrackingServerName">> := string()
 %% }
 -type create_presigned_mlflow_tracking_server_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_mlflow_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% model_data_quality() :: #{
@@ -1687,6 +1737,10 @@
 %% Example:
 %% pipeline_execution_step_metadata() :: #{
 %%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
+%%   <<"BedrockCustomModel">> => bedrock_custom_model_metadata(),
+%%   <<"BedrockCustomModelDeployment">> => bedrock_custom_model_deployment_metadata(),
+%%   <<"BedrockModelImport">> => bedrock_model_import_metadata(),
+%%   <<"BedrockProvisionedModelThroughput">> => bedrock_provisioned_model_throughput_metadata(),
 %%   <<"Callback">> => callback_step_metadata(),
 %%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
 %%   <<"Condition">> => condition_step_metadata(),
@@ -1694,7 +1748,9 @@
 %%   <<"Endpoint">> => endpoint_step_metadata(),
 %%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
 %%   <<"Fail">> => fail_step_metadata(),
+%%   <<"InferenceComponent">> => inference_component_metadata(),
 %%   <<"Lambda">> => lambda_step_metadata(),
+%%   <<"Lineage">> => lineage_metadata(),
 %%   <<"Model">> => model_step_metadata(),
 %%   <<"ProcessingJob">> => processing_job_step_metadata(),
 %%   <<"QualityCheck">> => quality_check_step_metadata(),
@@ -1822,12 +1878,12 @@
 
 %% Example:
 %% search_training_plan_offerings_request() :: #{
-%%   <<"DurationHours">> := float(),
+%%   <<"DurationHours">> => float(),
 %%   <<"EndTimeBefore">> => non_neg_integer(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"StartTimeAfter">> => non_neg_integer(),
-%%   <<"TargetResources">> := list(list(any())()),
+%%   <<"TargetResources">> => list(list(any())()),
 %%   <<"UltraServerCount">> => integer(),
 %%   <<"UltraServerType">> => string()
 %% }
@@ -1858,6 +1914,12 @@
 %%   <<"StudioLifecycleConfigName">> => string()
 %% }
 -type studio_lifecycle_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_source() :: #{
+%%   <<"DatasetArn">> => string()
+%% }
+-type dataset_source() :: #{binary() => any()}.
 
 %% Example:
 %% search_request() :: #{
@@ -2047,7 +2109,8 @@
 
 %% Example:
 %% optimization_job_model_source() :: #{
-%%   <<"S3">> => optimization_job_model_source_s3()
+%%   <<"S3">> => optimization_job_model_source_s3(),
+%%   <<"SageMakerModel">> => optimization_sage_maker_model()
 %% }
 -type optimization_job_model_source() :: #{binary() => any()}.
 
@@ -2506,6 +2569,21 @@
 -type role_group_assignment() :: #{binary() => any()}.
 
 %% Example:
+%% model_speculative_decoding_training_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type model_speculative_decoding_training_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_mlflow_app_url_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
+%% }
+-type create_presigned_mlflow_app_url_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_stage_devices_request() :: #{
 %%   <<"EdgeDeploymentPlanName">> := string(),
 %%   <<"ExcludeDevicesDeployedInOtherStage">> => boolean(),
@@ -2691,12 +2769,28 @@
 -type algorithm_validation_specification() :: #{binary() => any()}.
 
 %% Example:
+%% list_mlflow_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(mlflow_app_summary())
+%% }
+-type list_mlflow_apps_response() :: #{binary() => any()}.
+
+%% Example:
 %% auto_ml_container_definition() :: #{
 %%   <<"Environment">> => map(),
 %%   <<"Image">> => string(),
 %%   <<"ModelDataUrl">> => string()
 %% }
 -type auto_ml_container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% lineage_metadata() :: #{
+%%   <<"ActionArns">> => map(),
+%%   <<"ArtifactArns">> => map(),
+%%   <<"Associations">> => list(association_info()),
+%%   <<"ContextArns">> => map()
+%% }
+-type lineage_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% target_tracking_scaling_policy_configuration() :: #{
@@ -2909,6 +3003,20 @@
 -type delete_edge_deployment_stage_request() :: #{binary() => any()}.
 
 %% Example:
+%% bedrock_custom_model_deployment_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_custom_model_deployment_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% batch_replace_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
+%% }
+-type batch_replace_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_execution() :: #{
 %%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -3052,6 +3160,14 @@
 -type human_task_config() :: #{binary() => any()}.
 
 %% Example:
+%% batch_reboot_cluster_node_logical_ids_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_reboot_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
 %% delete_data_quality_job_definition_request() :: #{
 %%   <<"JobDefinitionName">> := string()
 %% }
@@ -3078,7 +3194,8 @@
 %% Example:
 %% optimization_job_output_config() :: #{
 %%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputLocation">> => string()
+%%   <<"S3OutputLocation">> => string(),
+%%   <<"SageMakerModel">> => optimization_sage_maker_model()
 %% }
 -type optimization_job_output_config() :: #{binary() => any()}.
 
@@ -3400,6 +3517,13 @@
 -type list_trial_components_response() :: #{binary() => any()}.
 
 %% Example:
+%% model_package_config() :: #{
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"SourceModelPackageArn">> => string()
+%% }
+-type model_package_config() :: #{binary() => any()}.
+
+%% Example:
 %% get_sagemaker_servicecatalog_portfolio_status_output() :: #{
 %%   <<"Status">> => list(any())
 %% }
@@ -3445,6 +3569,7 @@
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"ExplainerConfig">> => explainer_config(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"MetricsConfig">> => metrics_config(),
 %%   <<"ProductionVariants">> := list(production_variant()),
 %%   <<"ShadowProductionVariants">> => list(production_variant()),
 %%   <<"Tags">> => list(tag()),
@@ -3781,6 +3906,19 @@
 -type integer_parameter_range_specification() :: #{binary() => any()}.
 
 %% Example:
+%% create_mlflow_app_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"ArtifactStoreUri">> := string(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type create_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% auto_ml_data_source() :: #{
 %%   <<"S3DataSource">> => auto_ml_s3_data_source()
 %% }
@@ -4011,6 +4149,14 @@
 -type data_capture_config() :: #{binary() => any()}.
 
 %% Example:
+%% batch_reboot_cluster_nodes_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type batch_reboot_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
 %% import_hub_content_request() :: #{
 %%   <<"DocumentSchemaVersion">> := string(),
 %%   <<"HubContentDescription">> => string(),
@@ -4157,6 +4303,7 @@
 %%   <<"FailureReason">> => string(),
 %%   <<"LastDeploymentConfig">> => deployment_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetricsConfig">> => metrics_config(),
 %%   <<"PendingDeploymentSummary">> => pending_deployment_summary(),
 %%   <<"ProductionVariants">> => list(production_variant_summary()),
 %%   <<"ShadowProductionVariants">> => list(production_variant_summary())
@@ -4740,6 +4887,14 @@
 -type auto_ml_job_summary() :: #{binary() => any()}.
 
 %% Example:
+%% batch_replace_cluster_node_logical_ids_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_replace_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
 %% member_definition() :: #{
 %%   <<"CognitoMemberDefinition">> => cognito_member_definition(),
 %%   <<"OidcMemberDefinition">> => oidc_member_definition()
@@ -4811,6 +4966,7 @@
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
 %%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"ModelPackageStatus">> => list(any()),
 %%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
 %%   <<"ModelPackageVersion">> => integer(),
@@ -4877,6 +5033,12 @@
 %%   <<"ModelVersion">> => string()
 %% }
 -type edge_packaging_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type inference_component_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% create_transform_job_request() :: #{
@@ -5537,6 +5699,12 @@
 -type direct_deploy_settings() :: #{binary() => any()}.
 
 %% Example:
+%% bedrock_model_import_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_model_import_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% model_card_version_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -5556,6 +5724,7 @@
 %% Example:
 %% create_optimization_job_request() :: #{
 %%   <<"DeploymentInstanceType">> := list(any()),
+%%   <<"MaxInstanceCount">> => integer(),
 %%   <<"ModelSource">> := optimization_job_model_source(),
 %%   <<"OptimizationConfigs">> := list(list()),
 %%   <<"OptimizationEnvironment">> => map(),
@@ -5871,6 +6040,13 @@
 %%   <<"PipelineExecutionArn">> => string()
 %% }
 -type update_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_config() :: #{
+%%   <<"Labels">> => map(),
+%%   <<"Taints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_image_version_request() :: #{
@@ -6280,6 +6456,14 @@
 -type describe_device_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_kubernetes_taint() :: #{
+%%   <<"Effect">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cluster_kubernetes_taint() :: #{binary() => any()}.
+
+%% Example:
 %% list_projects_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ProjectSummaryList">> => list(project_summary())
@@ -6404,6 +6588,13 @@
 -type describe_human_task_ui_response() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_capacity_requirements() :: #{
+%%   <<"OnDemand">> => cluster_on_demand_options(),
+%%   <<"Spot">> => cluster_spot_options()
+%% }
+-type cluster_capacity_requirements() :: #{binary() => any()}.
+
+%% Example:
 %% model_package_status_item() :: #{
 %%   <<"FailureReason">> => string(),
 %%   <<"Name">> => string(),
@@ -6502,6 +6693,15 @@
 %%   <<"PipelineName">> := string()
 %% }
 -type delete_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_config_node_details() :: #{
+%%   <<"CurrentLabels">> => map(),
+%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
+%%   <<"DesiredLabels">> => map(),
+%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config_node_details() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint_summary() :: #{
@@ -6713,7 +6913,8 @@
 
 %% Example:
 %% ultra_server_info() :: #{
-%%   <<"Id">> => [string()]
+%%   <<"Id">> => [string()],
+%%   <<"Type">> => [string()]
 %% }
 -type ultra_server_info() :: #{binary() => any()}.
 
@@ -6808,6 +7009,14 @@
 %%   <<"RepositoryUrl">> => string()
 %% }
 -type code_repository() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
+%% }
+-type batch_reboot_cluster_nodes_request() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_s3_data_source() :: #{
@@ -6925,6 +7134,15 @@
 -type labeling_job_output_config() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_kubernetes_config_details() :: #{
+%%   <<"CurrentLabels">> => map(),
+%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
+%%   <<"DesiredLabels">> => map(),
+%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config_details() :: #{binary() => any()}.
+
+%% Example:
 %% stop_notebook_instance_input() :: #{
 %%   <<"NotebookInstanceName">> := string()
 %% }
@@ -6936,6 +7154,7 @@
 %%   <<"DeploymentInstanceType">> => list(any()),
 %%   <<"FailureReason">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxInstanceCount">> => integer(),
 %%   <<"ModelSource">> => optimization_job_model_source(),
 %%   <<"OptimizationConfigs">> => list(list()),
 %%   <<"OptimizationEndTime">> => non_neg_integer(),
@@ -7068,6 +7287,13 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type pipeline_summary() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_details() :: #{
+%%   <<"MlflowExperimentId">> => string(),
+%%   <<"MlflowRunId">> => string()
+%% }
+-type mlflow_details() :: #{binary() => any()}.
 
 %% Example:
 %% clarify_explainer_config() :: #{
@@ -7499,6 +7725,8 @@
 %%   <<"HyperParameters">> => map(),
 %%   <<"InfraCheckConfig">> => infra_check_config(),
 %%   <<"InputDataConfig">> => list(channel()),
+%%   <<"MlflowConfig">> => mlflow_config(),
+%%   <<"ModelPackageConfig">> => model_package_config(),
 %%   <<"OutputDataConfig">> := output_data_config(),
 %%   <<"ProfilerConfig">> => profiler_config(),
 %%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
@@ -7506,6 +7734,7 @@
 %%   <<"ResourceConfig">> => resource_config(),
 %%   <<"RetryStrategy">> => retry_strategy(),
 %%   <<"RoleArn">> := string(),
+%%   <<"ServerlessJobConfig">> => serverless_job_config(),
 %%   <<"SessionChainingConfig">> => session_chaining_config(),
 %%   <<"StoppingCondition">> => stopping_condition(),
 %%   <<"Tags">> => list(tag()),
@@ -7592,6 +7821,7 @@
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"NodeLogicalId">> => [string()],
+%%   <<"PrivateDnsHostname">> => string(),
 %%   <<"UltraServerInfo">> => ultra_server_info()
 %% }
 -type cluster_node_summary() :: #{binary() => any()}.
@@ -7630,6 +7860,12 @@
 %%   <<"ClusterSchedulerConfigId">> => string()
 %% }
 -type create_cluster_scheduler_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_spot_options() :: #{
+
+%% }
+-type cluster_spot_options() :: #{binary() => any()}.
 
 %% Example:
 %% partner_app_config() :: #{
@@ -7749,6 +7985,7 @@
 %%   <<"ModelCard">> => model_package_model_card(),
 %%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelPackageArn">> := string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"SourceUri">> => string()
 %% }
 -type update_model_package_input() :: #{binary() => any()}.
@@ -7869,6 +8106,13 @@
 %%   <<"CfnTemplateProvider">> => cfn_create_template_provider()
 %% }
 -type create_template_provider() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_partition_config() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type accelerator_partition_config() :: #{binary() => any()}.
 
 %% Example:
 %% experiment_config() :: #{
@@ -8111,6 +8355,7 @@
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
 %%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"SamplePayloadUrl">> => string(),
 %%   <<"SecurityConfig">> => model_package_security_config(),
 %%   <<"SkipModelValidation">> => list(any()),
@@ -8121,6 +8366,13 @@
 %%   <<"ValidationSpecification">> => model_package_validation_specification()
 %% }
 -type create_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% association_info() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type association_info() :: #{binary() => any()}.
 
 %% Example:
 %% recommendation_job_container_config() :: #{
@@ -8138,6 +8390,12 @@
 -type recommendation_job_container_config() :: #{binary() => any()}.
 
 %% Example:
+%% create_presigned_mlflow_app_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
+%% }
+-type create_presigned_mlflow_app_url_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TrainingJobSummaries">> => list(hyper_parameter_training_job_summary())
@@ -8148,6 +8406,7 @@
 %% instance_group_scaling_metadata() :: #{
 %%   <<"FailureMessage">> => [string()],
 %%   <<"InstanceCount">> => integer(),
+%%   <<"MinCount">> => integer(),
 %%   <<"TargetCount">> => integer()
 %% }
 -type instance_group_scaling_metadata() :: #{binary() => any()}.
@@ -8436,6 +8695,17 @@
 -type labeling_job_algorithms_config() :: #{binary() => any()}.
 
 %% Example:
+%% mlflow_app_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type mlflow_app_summary() :: #{binary() => any()}.
+
+%% Example:
 %% update_image_response() :: #{
 %%   <<"ImageArn">> => string()
 %% }
@@ -8528,6 +8798,7 @@
 %%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
 %%   <<"AutoMLJobArn">> => string(),
 %%   <<"FinalMetricDataList">> => list(metric_data()),
+%%   <<"MlflowDetails">> => mlflow_details(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CheckpointConfig">> => checkpoint_config(),
 %%   <<"TrainingJobArn">> => string(),
@@ -8539,6 +8810,7 @@
 %%   <<"ResourceConfig">> => resource_config(),
 %%   <<"RoleArn">> => string(),
 %%   <<"VpcConfig">> => vpc_config(),
+%%   <<"ProgressInfo">> => training_progress_info(),
 %%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
 %%   <<"WarmPoolStatus">> => warm_pool_status(),
 %%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
@@ -8549,12 +8821,17 @@
 %%   <<"InfraCheckConfig">> => infra_check_config(),
 %%   <<"BillableTimeInSeconds">> => integer(),
 %%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()),
+%%   <<"MlflowConfig">> => mlflow_config(),
 %%   <<"ProfilingStatus">> => list(any()),
 %%   <<"SecondaryStatus">> => list(any()),
 %%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ServerlessJobConfig">> => serverless_job_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputModelPackageArn">> => string(),
+%%   <<"BillableTokenCount">> => float(),
 %%   <<"TrainingJobName">> => string(),
 %%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ModelPackageConfig">> => model_package_config(),
 %%   <<"ProfilerRuleEvaluationStatuses">> => list(profiler_rule_evaluation_status()),
 %%   <<"EnableManagedSpotTraining">> => boolean(),
 %%   <<"RemoteDebugConfig">> => remote_debug_config(),
@@ -8640,10 +8917,33 @@
 -type create_model_bias_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_mlflow_apps_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"DefaultForDomainId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_mlflow_apps_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_hub_response() :: #{
 %%   <<"HubArn">> => string()
 %% }
 -type update_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_config() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string(),
+%%   <<"MlflowRunName">> => string()
+%% }
+-type mlflow_config() :: #{binary() => any()}.
 
 %% Example:
 %% context_source() :: #{
@@ -8652,6 +8952,15 @@
 %%   <<"SourceUri">> => string()
 %% }
 -type context_source() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_reboot_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(batch_reboot_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type batch_reboot_cluster_nodes_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_inference_component_output() :: #{
@@ -8754,6 +9063,7 @@
 
 %% Example:
 %% resource_sharing_config() :: #{
+%%   <<"AbsoluteBorrowLimits">> => list(compute_quota_resource_config()),
 %%   <<"BorrowLimit">> => integer(),
 %%   <<"Strategy">> => list(any())
 %% }
@@ -8841,10 +9151,28 @@
 -type hyper_parameter_training_job_summary() :: #{binary() => any()}.
 
 %% Example:
+%% describe_mlflow_app_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type describe_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% image_classification_job_config() :: #{
 %%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
 %% }
 -type image_classification_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_app_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"Arn">> := string(),
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type update_mlflow_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workteam_request() :: #{
@@ -9037,6 +9365,14 @@
 -type describe_partner_app_request() :: #{binary() => any()}.
 
 %% Example:
+%% base_model() :: #{
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"RecipeName">> => string()
+%% }
+-type base_model() :: #{binary() => any()}.
+
+%% Example:
 %% describe_auto_ml_job_v2_response() :: #{
 %%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
 %%   <<"AutoMLJobArn">> => string(),
@@ -9128,6 +9464,7 @@
 
 %% Example:
 %% compute_quota_resource_config() :: #{
+%%   <<"AcceleratorPartition">> => accelerator_partition_config(),
 %%   <<"Accelerators">> => integer(),
 %%   <<"Count">> => integer(),
 %%   <<"InstanceType">> => list(any()),
@@ -9261,6 +9598,12 @@
 %%   <<"InstanceType">> => list(any())
 %% }
 -type real_time_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_sage_maker_model() :: #{
+%%   <<"ModelName">> => string()
+%% }
+-type optimization_sage_maker_model() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transform_job_response() :: #{
@@ -9703,6 +10046,12 @@
 -type update_monitoring_alert_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% tensor_board_output_config() :: #{
 %%   <<"LocalPath">> => string(),
 %%   <<"S3OutputPath">> => string()
@@ -10014,6 +10363,12 @@
 -type disable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type update_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_device_fleet_report_request() :: #{
 %%   <<"DeviceFleetName">> := string()
 %% }
@@ -10168,8 +10523,10 @@
 %%   <<"EnableNetworkIsolation">> => boolean(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputModelPackageArn">> => string(),
 %%   <<"TrainingJobName">> => string(),
 %%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ModelPackageConfig">> => model_package_config(),
 %%   <<"EnableManagedSpotTraining">> => boolean(),
 %%   <<"InputDataConfig">> => list(channel()),
 %%   <<"TrainingStartTime">> => non_neg_integer(),
@@ -10242,6 +10599,7 @@
 %% Example:
 %% start_pipeline_execution_request() :: #{
 %%   <<"ClientRequestToken">> := string(),
+%%   <<"MlflowExperimentName">> => string(),
 %%   <<"ParallelismConfiguration">> => parallelism_configuration(),
 %%   <<"PipelineExecutionDescription">> => string(),
 %%   <<"PipelineExecutionDisplayName">> => string(),
@@ -10266,6 +10624,7 @@
 %%   <<"FailureReason">> => string(),
 %%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MLflowConfig">> => mlflow_configuration(),
 %%   <<"ParallelismConfiguration">> => parallelism_configuration(),
 %%   <<"PipelineArn">> => string(),
 %%   <<"PipelineExecutionArn">> => string(),
@@ -10408,6 +10767,12 @@
 %%   <<"StoppingCondition">> => monitoring_stopping_condition()
 %% }
 -type describe_model_bias_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_app_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_mlflow_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% r_session_app_settings() :: #{
@@ -10902,6 +11267,13 @@
 -type create_transform_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% metrics_config() :: #{
+%%   <<"EnableEnhancedMetrics">> => boolean(),
+%%   <<"MetricPublishFrequencyInSeconds">> => list(integer())
+%% }
+-type metrics_config() :: #{binary() => any()}.
+
+%% Example:
 %% create_processing_job_response() :: #{
 %%   <<"ProcessingJobArn">> => string()
 %% }
@@ -11078,13 +11450,16 @@
 
 %% Example:
 %% cluster_instance_group_specification() :: #{
+%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"MinInstanceCount">> => integer(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
@@ -11379,10 +11754,22 @@
 -type delete_model_quality_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
+%% bedrock_provisioned_model_throughput_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_provisioned_model_throughput_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% stop_labeling_job_request() :: #{
 %%   <<"LabelingJobName">> := string()
 %% }
 -type stop_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_on_demand_options() :: #{
+
+%% }
+-type cluster_on_demand_options() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_package_groups_output() :: #{
@@ -11451,6 +11838,15 @@
 -type stop_compilation_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_replace_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_replace_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(batch_replace_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type batch_replace_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
 %% tracking_server_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"IsActive">> => list(any()),
@@ -11474,6 +11870,15 @@
 %%   <<"ReportGenerated">> => non_neg_integer()
 %% }
 -type get_device_fleet_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% training_progress_info() :: #{
+%%   <<"CurrentEpoch">> => float(),
+%%   <<"CurrentStep">> => float(),
+%%   <<"MaxEpoch">> => float(),
+%%   <<"TotalStepCountPerEpoch">> => float()
+%% }
+-type training_progress_info() :: #{binary() => any()}.
 
 %% Example:
 %% transform_job_summary() :: #{
@@ -11615,8 +12020,17 @@
 -type trial_component_summary() :: #{binary() => any()}.
 
 %% Example:
+%% batch_replace_cluster_nodes_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type batch_replace_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
 %% scheduler_config() :: #{
 %%   <<"FairShare">> => list(any()),
+%%   <<"IdleResourceSharing">> => list(any()),
 %%   <<"PriorityClasses">> => list(priority_class())
 %% }
 -type scheduler_config() :: #{binary() => any()}.
@@ -11879,7 +12293,8 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"SchedulerConfig">> => scheduler_config(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => map()
 %% }
 -type describe_cluster_scheduler_config_response() :: #{binary() => any()}.
 
@@ -11892,6 +12307,7 @@
 
 %% Example:
 %% data_source() :: #{
+%%   <<"DatasetSource">> => dataset_source(),
 %%   <<"FileSystemDataSource">> => file_system_data_source(),
 %%   <<"S3DataSource">> => s3_data_source()
 %% }
@@ -11997,12 +12413,14 @@
 %% Example:
 %% model_package_container_definition() :: #{
 %%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
+%%   <<"BaseModel">> => base_model(),
 %%   <<"ContainerHostname">> => string(),
 %%   <<"Environment">> => map(),
 %%   <<"Framework">> => string(),
 %%   <<"FrameworkVersion">> => string(),
 %%   <<"Image">> => string(),
 %%   <<"ImageDigest">> => string(),
+%%   <<"IsCheckpoint">> => boolean(),
 %%   <<"ModelDataETag">> => string(),
 %%   <<"ModelDataSource">> => model_data_source(),
 %%   <<"ModelDataUrl">> => string(),
@@ -12419,6 +12837,18 @@
 -type update_experiment_response() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_job_config() :: #{
+%%   <<"AcceptEula">> => boolean(),
+%%   <<"BaseModelArn">> => string(),
+%%   <<"CustomizationTechnique">> => list(any()),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"EvaluatorArn">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"Peft">> => list(any())
+%% }
+-type serverless_job_config() :: #{binary() => any()}.
+
+%% Example:
 %% list_pipeline_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PipelineVersionSummaries">> => list(pipeline_version_summary())
@@ -12522,6 +12952,7 @@
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
 %%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"ModelPackageStatus">> => list(any()),
 %%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
 %%   <<"ModelPackageVersion">> => integer(),
@@ -12534,6 +12965,13 @@
 %%   <<"ValidationSpecification">> => model_package_validation_specification()
 %% }
 -type describe_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_configuration() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string()
+%% }
+-type mlflow_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_output() :: #{
@@ -12584,6 +13022,7 @@
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"ModelPackageStatus">> => list(any()),
 %%   <<"ModelPackageVersion">> => integer()
 %% }
@@ -12728,7 +13167,9 @@
 
 %% Example:
 %% cluster_instance_group_details() :: #{
+%%   <<"ActiveOperations">> => map(),
 %%   <<"ActiveSoftwareUpdateConfig">> => deployment_configuration(),
+%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
 %%   <<"CurrentCount">> => integer(),
 %%   <<"CurrentImageId">> => string(),
 %%   <<"DesiredImageId">> => string(),
@@ -12736,7 +13177,9 @@
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config_details(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"MinCount">> => integer(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
@@ -12911,6 +13354,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DeploymentInstanceType">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxInstanceCount">> => integer(),
 %%   <<"OptimizationEndTime">> => non_neg_integer(),
 %%   <<"OptimizationJobArn">> => string(),
 %%   <<"OptimizationJobName">> => string(),
@@ -13022,6 +13466,7 @@
 
 %% Example:
 %% cluster_node_details() :: #{
+%%   <<"CapacityType">> => list(any()),
 %%   <<"CurrentImageId">> => string(),
 %%   <<"DesiredImageId">> => string(),
 %%   <<"InstanceGroupName">> => string(),
@@ -13029,6 +13474,7 @@
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config_node_details(),
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
@@ -13080,6 +13526,7 @@
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
 %%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
 %%   <<"ModelPackageStatus">> => list(any()),
 %%   <<"ModelPackageVersion">> => integer()
 %% }
@@ -13245,6 +13692,12 @@
 -type list_device_fleets_response() :: #{binary() => any()}.
 
 %% Example:
+%% bedrock_custom_model_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_custom_model_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% describe_device_response() :: #{
 %%   <<"AgentVersion">> => string(),
 %%   <<"Description">> => string(),
@@ -13322,6 +13775,12 @@
     resource_not_found().
 
 -type batch_delete_cluster_nodes_errors() ::
+    resource_not_found().
+
+-type batch_reboot_cluster_nodes_errors() ::
+    resource_not_found().
+
+-type batch_replace_cluster_nodes_errors() ::
     resource_not_found().
 
 -type create_action_errors() ::
@@ -13443,6 +13902,9 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_mlflow_app_errors() ::
+    resource_limit_exceeded().
+
 -type create_mlflow_tracking_server_errors() ::
     resource_limit_exceeded().
 
@@ -13504,6 +13966,9 @@
     resource_not_found().
 
 -type create_presigned_domain_url_errors() ::
+    resource_not_found().
+
+-type create_presigned_mlflow_app_url_errors() ::
     resource_not_found().
 
 -type create_presigned_mlflow_tracking_server_url_errors() ::
@@ -13639,6 +14104,9 @@
 
 -type delete_inference_experiment_errors() ::
     conflict_exception() | 
+    resource_not_found().
+
+-type delete_mlflow_app_errors() ::
     resource_not_found().
 
 -type delete_mlflow_tracking_server_errors() ::
@@ -13806,6 +14274,9 @@
     resource_not_found().
 
 -type describe_lineage_group_errors() ::
+    resource_not_found().
+
+-type describe_mlflow_app_errors() ::
     resource_not_found().
 
 -type describe_mlflow_tracking_server_errors() ::
@@ -14153,6 +14624,10 @@
     conflict_exception() | 
     resource_not_found().
 
+-type update_mlflow_app_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
 -type update_mlflow_tracking_server_errors() ::
     resource_limit_exceeded() | 
     conflict_exception() | 
@@ -14420,6 +14895,87 @@ batch_describe_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDescribeModelPackage">>, Input, Options).
 
+%% @doc Reboots specific nodes within a SageMaker HyperPod cluster using a
+%% soft recovery mechanism.
+%%
+%% `BatchRebootClusterNodes' performs a graceful reboot of the specified
+%% nodes by calling the Amazon Elastic Compute Cloud `RebootInstances'
+%% API, which attempts to cleanly shut down the operating system before
+%% restarting the instance.
+%%
+%% This operation is useful for recovering from transient issues or applying
+%% certain configuration changes that require a restart.
+%%
+%% Rebooting a node may cause temporary service interruption for workloads
+%% running on that node. Ensure your workloads can handle node restarts or
+%% use appropriate scheduling to minimize impact.
+%%
+%% You can reboot up to 25 nodes in a single request.
+%%
+%% For SageMaker HyperPod clusters using the Slurm workload manager, ensure
+%% rebooting nodes will not disrupt critical cluster operations.
+-spec batch_reboot_cluster_nodes(aws_client:aws_client(), batch_reboot_cluster_nodes_request()) ->
+    {ok, batch_reboot_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_reboot_cluster_nodes_errors(), tuple()}.
+batch_reboot_cluster_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_reboot_cluster_nodes(Client, Input, []).
+
+-spec batch_reboot_cluster_nodes(aws_client:aws_client(), batch_reboot_cluster_nodes_request(), proplists:proplist()) ->
+    {ok, batch_reboot_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_reboot_cluster_nodes_errors(), tuple()}.
+batch_reboot_cluster_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchRebootClusterNodes">>, Input, Options).
+
+%% @doc Replaces specific nodes within a SageMaker HyperPod cluster with new
+%% hardware.
+%%
+%% `BatchReplaceClusterNodes' terminates the specified instances and
+%% provisions new replacement instances with the same configuration but fresh
+%% hardware. The Amazon Machine Image (AMI) and instance configuration remain
+%% the same.
+%%
+%% This operation is useful for recovering from hardware failures or
+%% persistent issues that cannot be resolved through a reboot.
+%%
+%% Data Loss Warning: Replacing nodes destroys all instance volumes,
+%% including both root and secondary volumes. All data stored on these
+%% volumes will be permanently lost and cannot be recovered.
+%%
+%% To safeguard your work, back up your data to Amazon S3 or an FSx for
+%% Lustre file system before invoking the API on a worker node group. This
+%% will help prevent any potential data loss from the instance root volume.
+%% For more information about backup, see Use the backup script provided by
+%% SageMaker HyperPod:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-cli-command.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software-backup.
+%%
+%% If you want to invoke this API on an existing cluster, you'll first
+%% need to patch the cluster by running the UpdateClusterSoftware API:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateClusterSoftware.html.
+%% For more information about patching a cluster, see Update the SageMaker
+%% HyperPod platform software of a cluster:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-cli-command.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software.
+%%
+%% You can replace up to 25 nodes in a single request.
+-spec batch_replace_cluster_nodes(aws_client:aws_client(), batch_replace_cluster_nodes_request()) ->
+    {ok, batch_replace_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_replace_cluster_nodes_errors(), tuple()}.
+batch_replace_cluster_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_replace_cluster_nodes(Client, Input, []).
+
+-spec batch_replace_cluster_nodes(aws_client:aws_client(), batch_replace_cluster_nodes_request(), proplists:proplist()) ->
+    {ok, batch_replace_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_replace_cluster_nodes_errors(), tuple()}.
+batch_replace_cluster_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchReplaceClusterNodes">>, Input, Options).
+
 %% @doc Creates an action.
 %%
 %% An action is a lineage tracking entity that represents an action or
@@ -14649,7 +15205,7 @@ create_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJobV2">>, Input, Options).
 
-%% @doc Creates a SageMaker HyperPod cluster.
+%% @doc Creates an Amazon SageMaker HyperPod cluster.
 %%
 %% SageMaker HyperPod is a capability of SageMaker for creating and managing
 %% persistent clusters for developing large machine learning models, such as
@@ -15533,6 +16089,24 @@ create_labeling_job(Client, Input, Options)
 
 %% @doc Creates an MLflow Tracking Server using a general purpose Amazon S3
 %% bucket as the artifact store.
+-spec create_mlflow_app(aws_client:aws_client(), create_mlflow_app_request()) ->
+    {ok, create_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_mlflow_app_errors(), tuple()}.
+create_mlflow_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_mlflow_app(Client, Input, []).
+
+-spec create_mlflow_app(aws_client:aws_client(), create_mlflow_app_request(), proplists:proplist()) ->
+    {ok, create_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_mlflow_app_errors(), tuple()}.
+create_mlflow_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMlflowApp">>, Input, Options).
+
+%% @doc Creates an MLflow Tracking Server using a general purpose Amazon S3
+%% bucket as the artifact store.
 %%
 %% For more information, see Create an MLflow Tracking Server:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server.html.
@@ -15839,6 +16413,13 @@ create_notebook_instance(Client, Input, Options)
 %% For information about notebook instance lifestyle configurations, see Step
 %% 2.1: (Optional) Customize a Notebook Instance:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
+%%
+%% Lifecycle configuration scripts execute with root access and the notebook
+%% instance's IAM execution role privileges. Grant this permission only
+%% to trusted principals. See Customize a Notebook Instance Using a Lifecycle
+%% Configuration Script:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html
+%% for security best practices.
 -spec create_notebook_instance_lifecycle_config(aws_client:aws_client(), create_notebook_instance_lifecycle_config_input()) ->
     {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
@@ -15975,6 +16556,27 @@ create_presigned_domain_url(Client, Input)
 create_presigned_domain_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedDomainUrl">>, Input, Options).
+
+%% @doc Returns a presigned URL that you can use to connect to the MLflow UI
+%% attached to your MLflow App.
+%%
+%% For more information, see Launch the MLflow UI using a presigned URL:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-launch-ui.html.
+-spec create_presigned_mlflow_app_url(aws_client:aws_client(), create_presigned_mlflow_app_url_request()) ->
+    {ok, create_presigned_mlflow_app_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_mlflow_app_url_errors(), tuple()}.
+create_presigned_mlflow_app_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_presigned_mlflow_app_url(Client, Input, []).
+
+-spec create_presigned_mlflow_app_url(aws_client:aws_client(), create_presigned_mlflow_app_url_request(), proplists:proplist()) ->
+    {ok, create_presigned_mlflow_app_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_mlflow_app_url_errors(), tuple()}.
+create_presigned_mlflow_app_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePresignedMlflowAppUrl">>, Input, Options).
 
 %% @doc Returns a presigned URL that you can use to connect to the MLflow UI
 %% attached to your tracking server.
@@ -17061,6 +17663,23 @@ delete_inference_experiment(Client, Input)
 delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
+
+%% @doc Deletes an MLflow App.
+-spec delete_mlflow_app(aws_client:aws_client(), delete_mlflow_app_request()) ->
+    {ok, delete_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_mlflow_app_errors(), tuple()}.
+delete_mlflow_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_mlflow_app(Client, Input, []).
+
+-spec delete_mlflow_app(aws_client:aws_client(), delete_mlflow_app_request(), proplists:proplist()) ->
+    {ok, delete_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_mlflow_app_errors(), tuple()}.
+delete_mlflow_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMlflowApp">>, Input, Options).
 
 %% @doc Deletes an MLflow Tracking Server.
 %%
@@ -18270,6 +18889,23 @@ describe_lineage_group(Client, Input)
 describe_lineage_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLineageGroup">>, Input, Options).
+
+%% @doc Returns information about an MLflow App.
+-spec describe_mlflow_app(aws_client:aws_client(), describe_mlflow_app_request()) ->
+    {ok, describe_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_mlflow_app_errors(), tuple()}.
+describe_mlflow_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_mlflow_app(Client, Input, []).
+
+-spec describe_mlflow_app(aws_client:aws_client(), describe_mlflow_app_request(), proplists:proplist()) ->
+    {ok, describe_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_mlflow_app_errors(), tuple()}.
+describe_mlflow_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMlflowApp">>, Input, Options).
 
 %% @doc Returns information about an MLflow Tracking Server.
 -spec describe_mlflow_tracking_server(aws_client:aws_client(), describe_mlflow_tracking_server_request()) ->
@@ -19722,6 +20358,21 @@ list_lineage_groups(Client, Input)
 list_lineage_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLineageGroups">>, Input, Options).
+
+%% @doc Lists all MLflow Apps
+-spec list_mlflow_apps(aws_client:aws_client(), list_mlflow_apps_request()) ->
+    {ok, list_mlflow_apps_response(), tuple()} |
+    {error, any()}.
+list_mlflow_apps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mlflow_apps(Client, Input, []).
+
+-spec list_mlflow_apps(aws_client:aws_client(), list_mlflow_apps_request(), proplists:proplist()) ->
+    {ok, list_mlflow_apps_response(), tuple()} |
+    {error, any()}.
+list_mlflow_apps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMlflowApps">>, Input, Options).
 
 %% @doc Lists all MLflow Tracking Servers.
 -spec list_mlflow_tracking_servers(aws_client:aws_client(), list_mlflow_tracking_servers_request()) ->
@@ -21636,6 +22287,23 @@ update_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
 
+%% @doc Updates an MLflow App.
+-spec update_mlflow_app(aws_client:aws_client(), update_mlflow_app_request()) ->
+    {ok, update_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_mlflow_app_errors(), tuple()}.
+update_mlflow_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_mlflow_app(Client, Input, []).
+
+-spec update_mlflow_app(aws_client:aws_client(), update_mlflow_app_request(), proplists:proplist()) ->
+    {ok, update_mlflow_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_mlflow_app_errors(), tuple()}.
+update_mlflow_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMlflowApp">>, Input, Options).
+
 %% @doc Updates properties of an existing MLflow Tracking Server.
 -spec update_mlflow_tracking_server(aws_client:aws_client(), update_mlflow_tracking_server_request()) ->
     {ok, update_mlflow_tracking_server_response(), tuple()} |
@@ -21729,6 +22397,15 @@ update_monitoring_schedule(Client, Input, Options)
 %% NotebookInstance updates include upgrading or downgrading the ML compute
 %% instance used for your notebook instance to accommodate changes in your
 %% workload requirements.
+%%
+%% This API can attach lifecycle configurations to notebook instances.
+%% Lifecycle configuration scripts execute with root access and the notebook
+%% instance's IAM execution role privileges. Principals with this
+%% permission and access to lifecycle configurations can execute code with
+%% the execution role's credentials. See Customize a Notebook Instance
+%% Using a Lifecycle Configuration Script:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html
+%% for security best practices.
 -spec update_notebook_instance(aws_client:aws_client(), update_notebook_instance_input()) ->
     {ok, update_notebook_instance_output(), tuple()} |
     {error, any()} |
@@ -21749,6 +22426,14 @@ update_notebook_instance(Client, Input, Options)
 %% CreateNotebookInstanceLifecycleConfig:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
 %% API.
+%%
+%% Updates to lifecycle configurations affect all notebook instances using
+%% that configuration upon their next start. Lifecycle configuration scripts
+%% execute with root access and the notebook instance's IAM execution
+%% role privileges. Grant this permission only to trusted principals. See
+%% Customize a Notebook Instance Using a Lifecycle Configuration Script:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html
+%% for security best practices.
 -spec update_notebook_instance_lifecycle_config(aws_client:aws_client(), update_notebook_instance_lifecycle_config_input()) ->
     {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |

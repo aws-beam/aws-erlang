@@ -5148,7 +5148,12 @@ get_sbom_export(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the permissions an account has to configure Amazon Inspector.
+%% @doc
+%% Lists the permissions an account has to configure Amazon Inspector.
+%%
+%% If the account is a member account or standalone account with resources
+%% managed by an Organizations policy, the operation returns fewer
+%% permissions.
 -spec list_account_permissions(aws_client:aws_client(), list_account_permissions_request()) ->
     {ok, list_account_permissions_response(), tuple()} |
     {error, any()} |

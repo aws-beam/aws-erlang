@@ -193,6 +193,13 @@
 -type put_auto_termination_policy_output() :: #{binary() => any()}.
 
 %% Example:
+%% s3_monitoring_configuration() :: #{
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogUri">> => string()
+%% }
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% auto_termination_policy() :: #{
 %%   <<"IdleTimeout">> => float()
 %% }
@@ -477,6 +484,12 @@
 %%   <<"Properties">> => map()
 %% }
 -type hadoop_step_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"CloudWatchLogConfiguration">> => cloud_watch_log_configuration()
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_supported_instance_types_input() :: #{
@@ -826,6 +839,7 @@
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"EbsRootVolumeIops">> => integer(),
 %%   <<"AutoScalingRole">> => string(),
 %%   <<"RequestedAmiVersion">> => string(),
@@ -1055,7 +1069,8 @@
 %% step_config() :: #{
 %%   <<"ActionOnFailure">> => list(any()),
 %%   <<"HadoopJarStep">> => hadoop_jar_step_config(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"StepMonitoringConfiguration">> => step_monitoring_configuration()
 %% }
 -type step_config() :: #{binary() => any()}.
 
@@ -1399,6 +1414,12 @@
 %%   <<"Status">> => instance_status()
 %% }
 -type instance() :: #{binary() => any()}.
+
+%% Example:
+%% step_monitoring_configuration() :: #{
+%%   <<"S3MonitoringConfiguration">> => s3_monitoring_configuration()
+%% }
+-type step_monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_persistent_app_ui_input() :: #{
@@ -1789,6 +1810,16 @@
 -type get_persistent_app_ui_presigned_url_output() :: #{binary() => any()}.
 
 %% Example:
+%% cloud_watch_log_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type cloud_watch_log_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% set_termination_protection_input() :: #{
 %%   <<"JobFlowIds">> := list(string()),
 %%   <<"TerminationProtected">> := boolean()
@@ -1826,8 +1857,10 @@
 %% step() :: #{
 %%   <<"ActionOnFailure">> => list(any()),
 %%   <<"Config">> => hadoop_step_config(),
+%%   <<"EncryptionKeyArn">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"LogUri">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => step_status()
 %% }
@@ -1858,7 +1891,9 @@
 %% step_summary() :: #{
 %%   <<"ActionOnFailure">> => list(any()),
 %%   <<"Config">> => hadoop_step_config(),
+%%   <<"EncryptionKeyArn">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"LogUri">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => step_status()
 %% }
@@ -1952,37 +1987,38 @@
 
 %% Example:
 %% run_job_flow_input() :: #{
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"AmiVersion">> => string(),
-%%   <<"Applications">> => list(application()),
-%%   <<"AutoScalingRole">> => string(),
-%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
-%%   <<"BootstrapActions">> => list(bootstrap_action_config()),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"EbsRootVolumeIops">> => integer(),
-%%   <<"EbsRootVolumeSize">> => integer(),
-%%   <<"EbsRootVolumeThroughput">> => integer(),
-%%   <<"ExtendedSupport">> => boolean(),
-%%   <<"Instances">> := job_flow_instances_config(),
-%%   <<"JobFlowRole">> => string(),
-%%   <<"KerberosAttributes">> => kerberos_attributes(),
 %%   <<"LogEncryptionKmsKeyId">> => string(),
-%%   <<"LogUri">> => string(),
-%%   <<"ManagedScalingPolicy">> => managed_scaling_policy(),
-%%   <<"Name">> := string(),
-%%   <<"NewSupportedProducts">> => list(supported_product_config()),
-%%   <<"OSReleaseLabel">> => string(),
-%%   <<"PlacementGroupConfigs">> => list(placement_group_config()),
-%%   <<"ReleaseLabel">> => string(),
-%%   <<"RepoUpgradeOnBoot">> => list(any()),
-%%   <<"ScaleDownBehavior">> => list(any()),
 %%   <<"SecurityConfiguration">> => string(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"StepConcurrencyLevel">> => integer(),
-%%   <<"Steps">> => list(step_config()),
 %%   <<"SupportedProducts">> => list(string()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
+%%   <<"EbsRootVolumeIops">> => integer(),
+%%   <<"AutoScalingRole">> => string(),
+%%   <<"KerberosAttributes">> => kerberos_attributes(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"Instances">> := job_flow_instances_config(),
+%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"AmiVersion">> => string(),
+%%   <<"JobFlowRole">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"PlacementGroupConfigs">> => list(placement_group_config()),
+%%   <<"ManagedScalingPolicy">> => managed_scaling_policy(),
+%%   <<"ReleaseLabel">> => string(),
+%%   <<"LogUri">> => string(),
+%%   <<"Applications">> => list(application()),
+%%   <<"EbsRootVolumeThroughput">> => integer(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"ScaleDownBehavior">> => list(any()),
+%%   <<"EbsRootVolumeSize">> => integer(),
+%%   <<"ExtendedSupport">> => boolean(),
+%%   <<"OSReleaseLabel">> => string(),
+%%   <<"NewSupportedProducts">> => list(supported_product_config()),
+%%   <<"RepoUpgradeOnBoot">> => list(any()),
+%%   <<"Steps">> => list(step_config()),
+%%   <<"StepConcurrencyLevel">> => integer(),
+%%   <<"BootstrapActions">> => list(bootstrap_action_config()),
 %%   <<"VisibleToAllUsers">> => boolean()
 %% }
 -type run_job_flow_input() :: #{binary() => any()}.

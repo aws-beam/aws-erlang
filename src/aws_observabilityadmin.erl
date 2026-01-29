@@ -23,24 +23,36 @@
 
 -export([create_centralization_rule_for_organization/2,
          create_centralization_rule_for_organization/3,
+         create_s3_table_integration/2,
+         create_s3_table_integration/3,
+         create_telemetry_pipeline/2,
+         create_telemetry_pipeline/3,
          create_telemetry_rule/2,
          create_telemetry_rule/3,
          create_telemetry_rule_for_organization/2,
          create_telemetry_rule_for_organization/3,
          delete_centralization_rule_for_organization/2,
          delete_centralization_rule_for_organization/3,
+         delete_s3_table_integration/2,
+         delete_s3_table_integration/3,
+         delete_telemetry_pipeline/2,
+         delete_telemetry_pipeline/3,
          delete_telemetry_rule/2,
          delete_telemetry_rule/3,
          delete_telemetry_rule_for_organization/2,
          delete_telemetry_rule_for_organization/3,
          get_centralization_rule_for_organization/2,
          get_centralization_rule_for_organization/3,
+         get_s3_table_integration/2,
+         get_s3_table_integration/3,
          get_telemetry_enrichment_status/2,
          get_telemetry_enrichment_status/3,
          get_telemetry_evaluation_status/2,
          get_telemetry_evaluation_status/3,
          get_telemetry_evaluation_status_for_organization/2,
          get_telemetry_evaluation_status_for_organization/3,
+         get_telemetry_pipeline/2,
+         get_telemetry_pipeline/3,
          get_telemetry_rule/2,
          get_telemetry_rule/3,
          get_telemetry_rule_for_organization/2,
@@ -51,8 +63,12 @@
          list_resource_telemetry/3,
          list_resource_telemetry_for_organization/2,
          list_resource_telemetry_for_organization/3,
+         list_s3_table_integrations/2,
+         list_s3_table_integrations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_telemetry_pipelines/2,
+         list_telemetry_pipelines/3,
          list_telemetry_rules/2,
          list_telemetry_rules/3,
          list_telemetry_rules_for_organization/2,
@@ -71,14 +87,20 @@
          stop_telemetry_evaluation_for_organization/3,
          tag_resource/2,
          tag_resource/3,
+         test_telemetry_pipeline/2,
+         test_telemetry_pipeline/3,
          untag_resource/2,
          untag_resource/3,
          update_centralization_rule_for_organization/2,
          update_centralization_rule_for_organization/3,
+         update_telemetry_pipeline/2,
+         update_telemetry_pipeline/3,
          update_telemetry_rule/2,
          update_telemetry_rule/3,
          update_telemetry_rule_for_organization/2,
-         update_telemetry_rule_for_organization/3]).
+         update_telemetry_rule_for_organization/3,
+         validate_telemetry_pipeline_configuration/2,
+         validate_telemetry_pipeline_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -97,12 +119,35 @@
 
 
 %% Example:
+%% record() :: #{
+%%   <<"Data">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type record() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_telemetry_rule_input() :: #{
 %%   <<"Rule">> := telemetry_rule(),
 %%   <<"RuleName">> := string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_telemetry_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_output() :: #{
+%%   <<"Error">> => pipeline_output_error(),
+%%   <<"Record">> => record()
+%% }
+-type pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_configuration() :: #{
+%%   <<"Body">> => string()
+%% }
+-type telemetry_pipeline_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -114,6 +159,33 @@
 %%   <<"TelemetryRule">> => telemetry_rule()
 %% }
 -type get_telemetry_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConfigurationSummary">> => configuration_summary(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type telemetry_pipeline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_telemetry_pipeline_output() :: #{
+%%   <<"Results">> => list(pipeline_output())
+%% }
+-type test_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_s3_table_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_s3_table_integration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -132,6 +204,16 @@
 
 
 %% Example:
+%% field_to_match() :: #{
+%%   <<"Method">> => [string()],
+%%   <<"QueryString">> => [string()],
+%%   <<"SingleHeader">> => single_header(),
+%%   <<"UriPath">> => [string()]
+%% }
+-type field_to_match() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_centralization_rule_for_organization_output() :: #{
 %%   <<"RuleArn">> => string()
 %% }
@@ -145,6 +227,10 @@
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type logs_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_telemetry_pipeline_output() :: #{}
+-type update_telemetry_pipeline_output() :: #{}.
 
 
 %% Example:
@@ -171,10 +257,14 @@
 
 %% Example:
 %% telemetry_destination_configuration() :: #{
+%%   <<"CloudtrailParameters">> => cloudtrail_parameters(),
 %%   <<"DestinationPattern">> => [string()],
 %%   <<"DestinationType">> => list(any()),
+%%   <<"ELBLoadBalancerLoggingParameters">> => e_lb_load_balancer_logging_parameters(),
+%%   <<"LogDeliveryParameters">> => log_delivery_parameters(),
 %%   <<"RetentionInDays">> => integer(),
-%%   <<"VPCFlowLogParameters">> => vpc_flow_log_parameters()
+%%   <<"VPCFlowLogParameters">> => vpc_flow_log_parameters(),
+%%   <<"WAFLoggingParameters">> => w_a_f_logging_parameters()
 %% }
 -type telemetry_destination_configuration() :: #{binary() => any()}.
 
@@ -195,11 +285,37 @@
 
 
 %% Example:
+%% integration_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% source_logs_configuration() :: #{
 %%   <<"EncryptedLogGroupStrategy">> => list(any()),
 %%   <<"LogGroupSelectionCriteria">> => string()
 %% }
 -type source_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_summary() :: #{
+%%   <<"DataSources">> => list(data_source()),
+%%   <<"ProcessorCount">> => [integer()],
+%%   <<"Processors">> => list([string()]()),
+%%   <<"Sinks">> => list([string()]()),
+%%   <<"Sources">> => list(source())
+%% }
+-type configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -224,10 +340,34 @@
 
 
 %% Example:
+%% create_telemetry_pipeline_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_telemetry_pipeline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_telemetry_pipeline_input() :: #{
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type delete_telemetry_pipeline_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_centralization_rule_for_organization_input() :: #{
 %%   <<"RuleIdentifier">> := string()
 %% }
 -type delete_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_event_selector() :: #{
+%%   <<"FieldSelectors">> => list(advanced_field_selector()),
+%%   <<"Name">> => [string()]
+%% }
+-type advanced_event_selector() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,14 +420,30 @@
 
 %% Example:
 %% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
+%% get_s3_table_integration_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"DestinationTableBucketArn">> => string(),
+%%   <<"Encryption">> => encryption(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_s3_table_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
@@ -297,6 +453,13 @@
 %%   <<"RuleArn">> => string()
 %% }
 -type update_telemetry_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_delivery_parameters() :: #{
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type log_delivery_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -310,6 +473,10 @@
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"ServiceCode">> => [string()],
 %%   <<"amznErrorType">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
@@ -321,6 +488,14 @@
 %%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
 %% }
 -type destination_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_table_integrations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_table_integrations_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -337,6 +512,14 @@
 %%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
 %% }
 -type list_resource_telemetry_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SseAlgorithm">> => list(any())
+%% }
+-type encryption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -368,11 +551,41 @@
 
 
 %% Example:
+%% validation_error() :: #{
+%%   <<"FieldMap">> => map(),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => [string()]
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% logs_backup_configuration() :: #{
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"Region">> => string()
 %% }
 -type logs_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Configuration">> => telemetry_pipeline_configuration(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => telemetry_pipeline_status_reason(),
+%%   <<"Tags">> => map()
+%% }
+-type telemetry_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudtrail_parameters() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector())
+%% }
+-type cloudtrail_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -386,6 +599,22 @@
 %%   <<"TelemetryConfigurationState">> => map()
 %% }
 -type list_resource_telemetry_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_lb_load_balancer_logging_parameters() :: #{
+%%   <<"FieldDelimiter">> => [string()],
+%%   <<"OutputFormat">> => list(any())
+%% }
+-type e_lb_load_balancer_logging_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"ActionCondition">> => action_condition(),
+%%   <<"LabelNameCondition">> => label_name_condition()
+%% }
+-type condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -405,6 +634,15 @@
 
 
 %% Example:
+%% filter() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"Conditions">> => list(condition()),
+%%   <<"Requirement">> => list(any())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% centralization_rule_summary() :: #{
 %%   <<"CreatedRegion">> => string(),
 %%   <<"CreatedTimeStamp">> => [float()],
@@ -418,6 +656,22 @@
 %%   <<"RuleName">> => string()
 %% }
 -type centralization_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_telemetry_pipeline_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration(),
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type update_telemetry_pipeline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_table_integrations_output() :: #{
+%%   <<"IntegrationSummaries">> => list(integration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_table_integrations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -435,11 +689,26 @@
 
 
 %% Example:
+%% source() :: #{
+%%   <<"Type">> => [string()]
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
+%%   <<"amznErrorType">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_telemetry_pipeline_configuration_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration()
+%% }
+-type validate_telemetry_pipeline_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,6 +726,13 @@
 %%   <<"TrafficType">> => [string()]
 %% }
 -type vpc_flow_log_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_telemetry_pipeline_configuration_output() :: #{
+%%   <<"Errors">> => list(validation_error())
+%% }
+-type validate_telemetry_pipeline_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -483,12 +759,29 @@
 
 
 %% Example:
+%% create_s3_table_integration_input() :: #{
+%%   <<"Encryption">> := encryption(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_s3_table_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_telemetry_rules_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RuleNamePrefix">> => [string()]
 %% }
 -type list_telemetry_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_filter() :: #{
+%%   <<"DefaultBehavior">> => list(any()),
+%%   <<"Filters">> => list(filter())
+%% }
+-type logging_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -506,13 +799,22 @@
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleName">> => string(),
+%%   <<"TelemetrySourceTypes">> => list(list(any())()),
 %%   <<"TelemetryType">> => list(any())
 %% }
 -type telemetry_rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
+%% create_s3_table_integration_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_s3_table_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
+%%   <<"Errors">> => list(validation_error()),
 %%   <<"Message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -526,12 +828,39 @@
 
 
 %% Example:
+%% label_name_condition() :: #{
+%%   <<"LabelName">> => [string()]
+%% }
+-type label_name_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_header() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type single_header() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_telemetry_rule_for_organization_input() :: #{
 %%   <<"Rule">> := telemetry_rule(),
 %%   <<"RuleName">> := string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_telemetry_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_field_selector() :: #{
+%%   <<"EndsWith">> => list([string()]()),
+%%   <<"Equals">> => list([string()]()),
+%%   <<"Field">> => [string()],
+%%   <<"NotEndsWith">> => list([string()]()),
+%%   <<"NotEquals">> => list([string()]()),
+%%   <<"NotStartsWith">> => list([string()]()),
+%%   <<"StartsWith">> => list([string()]())
+%% }
+-type advanced_field_selector() :: #{binary() => any()}.
 
 
 %% Example:
@@ -549,9 +878,31 @@
 %%   <<"ResourceType">> => list(any()),
 %%   <<"Scope">> => [string()],
 %%   <<"SelectionCriteria">> => [string()],
+%%   <<"TelemetrySourceTypes">> => list(list(any())()),
 %%   <<"TelemetryType">> => list(any())
 %% }
 -type telemetry_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_s3_table_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_s3_table_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_status_reason() :: #{
+%%   <<"Description">> => [string()]
+%% }
+-type telemetry_pipeline_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_condition() :: #{
+%%   <<"Action">> => list(any())
+%% }
+-type action_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -562,6 +913,14 @@
 
 
 %% Example:
+%% data_source() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_telemetry_rule_for_organization_input() :: #{
 %%   <<"RuleIdentifier">> := string()
 %% }
@@ -569,10 +928,53 @@
 
 
 %% Example:
+%% list_telemetry_pipelines_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_telemetry_pipelines_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_pipeline_output() :: #{
+%%   <<"Pipeline">> => telemetry_pipeline()
+%% }
+-type get_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_telemetry_rule_output() :: #{
 %%   <<"RuleArn">> => string()
 %% }
 -type create_telemetry_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_telemetry_pipeline_output() :: #{}
+-type delete_telemetry_pipeline_output() :: #{}.
+
+
+%% Example:
+%% w_a_f_logging_parameters() :: #{
+%%   <<"LogType">> => list(any()),
+%%   <<"LoggingFilter">> => logging_filter(),
+%%   <<"RedactedFields">> => list(field_to_match())
+%% }
+-type w_a_f_logging_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_telemetry_pipeline_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_pipelines_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineSummaries">> => list(telemetry_pipeline_summary())
+%% }
+-type list_telemetry_pipelines_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -592,6 +994,20 @@
 
 
 %% Example:
+%% pipeline_output_error() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type pipeline_output_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_pipeline_input() :: #{
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type get_telemetry_pipeline_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_centralization_rules_for_organization_input() :: #{
 %%   <<"AllRegions">> => [boolean()],
 %%   <<"MaxResults">> => integer(),
@@ -600,7 +1016,31 @@
 %% }
 -type list_centralization_rules_for_organization_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% test_telemetry_pipeline_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration(),
+%%   <<"Records">> := list(record())
+%% }
+-type test_telemetry_pipeline_input() :: #{binary() => any()}.
+
 -type create_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type create_s3_table_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type create_telemetry_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -631,6 +1071,22 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type delete_s3_table_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    too_many_requests_exception() | 
+    invalid_state_exception().
+
+-type delete_telemetry_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
 -type delete_telemetry_rule_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -652,6 +1108,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type get_s3_table_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_telemetry_enrichment_status_errors() ::
     access_denied_exception() | 
     internal_server_exception() | 
@@ -667,6 +1130,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    too_many_requests_exception().
+
+-type get_telemetry_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type get_telemetry_rule_errors() ::
@@ -701,11 +1171,23 @@
     internal_server_exception() | 
     too_many_requests_exception().
 
+-type list_s3_table_integrations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_telemetry_pipelines_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     too_many_requests_exception().
 
 -type list_telemetry_rules_errors() ::
@@ -764,6 +1246,12 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type test_telemetry_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
 -type untag_resource_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -779,12 +1267,20 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type update_telemetry_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type update_telemetry_rule_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     too_many_requests_exception().
 
 -type update_telemetry_rule_for_organization_errors() ::
@@ -793,6 +1289,12 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type validate_telemetry_pipeline_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     too_many_requests_exception().
 
 %%====================================================================
@@ -818,6 +1320,82 @@ create_centralization_rule_for_organization(Client, Input) ->
 create_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an integration between CloudWatch and S3 Tables for
+%% analytics.
+%%
+%% This integration enables querying CloudWatch telemetry data using
+%% analytics engines like Amazon Athena, Amazon Redshift, and Apache Spark.
+-spec create_s3_table_integration(aws_client:aws_client(), create_s3_table_integration_input()) ->
+    {ok, create_s3_table_integration_output(), tuple()} |
+    {error, any()} |
+    {error, create_s3_table_integration_errors(), tuple()}.
+create_s3_table_integration(Client, Input) ->
+    create_s3_table_integration(Client, Input, []).
+
+-spec create_s3_table_integration(aws_client:aws_client(), create_s3_table_integration_input(), proplists:proplist()) ->
+    {ok, create_s3_table_integration_output(), tuple()} |
+    {error, any()} |
+    {error, create_s3_table_integration_errors(), tuple()}.
+create_s3_table_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateS3TableIntegration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a telemetry pipeline for processing and transforming
+%% telemetry data.
+%%
+%% The pipeline defines how data flows from sources through processors to
+%% destinations, enabling data transformation and delivering capabilities.
+-spec create_telemetry_pipeline(aws_client:aws_client(), create_telemetry_pipeline_input()) ->
+    {ok, create_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_telemetry_pipeline_errors(), tuple()}.
+create_telemetry_pipeline(Client, Input) ->
+    create_telemetry_pipeline(Client, Input, []).
+
+-spec create_telemetry_pipeline(aws_client:aws_client(), create_telemetry_pipeline_input(), proplists:proplist()) ->
+    {ok, create_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_telemetry_pipeline_errors(), tuple()}.
+create_telemetry_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateTelemetryPipeline"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -951,6 +1529,80 @@ delete_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an S3 Table integration and its associated data.
+%%
+%% This operation removes the connection between CloudWatch Observability
+%% Admin and S3 Tables.
+-spec delete_s3_table_integration(aws_client:aws_client(), delete_s3_table_integration_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_s3_table_integration_errors(), tuple()}.
+delete_s3_table_integration(Client, Input) ->
+    delete_s3_table_integration(Client, Input, []).
+
+-spec delete_s3_table_integration(aws_client:aws_client(), delete_s3_table_integration_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_s3_table_integration_errors(), tuple()}.
+delete_s3_table_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteS3TableIntegration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a telemetry pipeline and its associated resources.
+%%
+%% This operation stops data processing and removes the pipeline
+%% configuration.
+-spec delete_telemetry_pipeline(aws_client:aws_client(), delete_telemetry_pipeline_input()) ->
+    {ok, delete_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, delete_telemetry_pipeline_errors(), tuple()}.
+delete_telemetry_pipeline(Client, Input) ->
+    delete_telemetry_pipeline(Client, Input, []).
+
+-spec delete_telemetry_pipeline(aws_client:aws_client(), delete_telemetry_pipeline_input(), proplists:proplist()) ->
+    {ok, delete_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, delete_telemetry_pipeline_errors(), tuple()}.
+delete_telemetry_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteTelemetryPipeline"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a telemetry rule from your account.
 %%
 %% Any telemetry configurations previously created by the rule will remain
@@ -1062,9 +1714,44 @@ get_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a specific S3 Table integration,
+%% including its configuration, status, and metadata.
+-spec get_s3_table_integration(aws_client:aws_client(), get_s3_table_integration_input()) ->
+    {ok, get_s3_table_integration_output(), tuple()} |
+    {error, any()} |
+    {error, get_s3_table_integration_errors(), tuple()}.
+get_s3_table_integration(Client, Input) ->
+    get_s3_table_integration(Client, Input, []).
+
+-spec get_s3_table_integration(aws_client:aws_client(), get_s3_table_integration_input(), proplists:proplist()) ->
+    {ok, get_s3_table_integration_output(), tuple()} |
+    {error, any()} |
+    {error, get_s3_table_integration_errors(), tuple()}.
+get_s3_table_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetS3TableIntegration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the current status of the resource tags for telemetry
 %% feature, which enhances telemetry data with additional resource metadata
-%% from Amazon Web Services Resource Explorer.
+%% from Resource Explorer.
 -spec get_telemetry_enrichment_status(aws_client:aws_client(), #{}) ->
     {ok, get_telemetry_enrichment_status_output(), tuple()} |
     {error, any()} |
@@ -1154,6 +1841,41 @@ get_telemetry_evaluation_status_for_organization(Client, Input) ->
 get_telemetry_evaluation_status_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTelemetryEvaluationStatusForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific telemetry pipeline, including
+%% its configuration, status, and metadata.
+-spec get_telemetry_pipeline(aws_client:aws_client(), get_telemetry_pipeline_input()) ->
+    {ok, get_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, get_telemetry_pipeline_errors(), tuple()}.
+get_telemetry_pipeline(Client, Input) ->
+    get_telemetry_pipeline(Client, Input, []).
+
+-spec get_telemetry_pipeline(aws_client:aws_client(), get_telemetry_pipeline_input(), proplists:proplist()) ->
+    {ok, get_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, get_telemetry_pipeline_errors(), tuple()}.
+get_telemetry_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTelemetryPipeline"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1354,7 +2076,46 @@ list_resource_telemetry_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all tags attached to the specified telemetry rule resource.
+%% @doc Lists all S3 Table integrations in your account.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec list_s3_table_integrations(aws_client:aws_client(), list_s3_table_integrations_input()) ->
+    {ok, list_s3_table_integrations_output(), tuple()} |
+    {error, any()} |
+    {error, list_s3_table_integrations_errors(), tuple()}.
+list_s3_table_integrations(Client, Input) ->
+    list_s3_table_integrations(Client, Input, []).
+
+-spec list_s3_table_integrations(aws_client:aws_client(), list_s3_table_integrations_input(), proplists:proplist()) ->
+    {ok, list_s3_table_integrations_output(), tuple()} |
+    {error, any()} |
+    {error, list_s3_table_integrations_errors(), tuple()}.
+list_s3_table_integrations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListS3TableIntegrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all tags attached to the specified resource.
+%%
+%% Supports telemetry rule resources and telemetry pipeline resources.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -1369,6 +2130,44 @@ list_tags_for_resource(Client, Input) ->
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of telemetry pipelines in your account.
+%%
+%% Returns up to 100 results. If more than 100 telemetry pipelines exist,
+%% include the `NextToken' value from the response to retrieve the next
+%% set of results.
+-spec list_telemetry_pipelines(aws_client:aws_client(), list_telemetry_pipelines_input()) ->
+    {ok, list_telemetry_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_telemetry_pipelines_errors(), tuple()}.
+list_telemetry_pipelines(Client, Input) ->
+    list_telemetry_pipelines(Client, Input, []).
+
+-spec list_telemetry_pipelines(aws_client:aws_client(), list_telemetry_pipelines_input(), proplists:proplist()) ->
+    {ok, list_telemetry_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_telemetry_pipelines_errors(), tuple()}.
+list_telemetry_pipelines(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListTelemetryPipelines"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1463,8 +2262,8 @@ list_telemetry_rules_for_organization(Client, Input0, Options0) ->
 
 %% @doc Enables the resource tags for telemetry feature for your account,
 %% which enhances telemetry data with additional resource metadata from
-%% Amazon Web Services Resource Explorer to provide richer context for
-%% monitoring and observability.
+%% Resource Explorer to provide richer context for monitoring and
+%% observability.
 -spec start_telemetry_enrichment(aws_client:aws_client(), #{}) ->
     {ok, start_telemetry_enrichment_output(), tuple()} |
     {error, any()} |
@@ -1674,7 +2473,9 @@ stop_telemetry_evaluation_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds or updates tags for a telemetry rule resource.
+%% @doc Adds or updates tags for a resource.
+%%
+%% Supports telemetry rule resources and telemetry pipeline resources.
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1708,7 +2509,46 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from a telemetry rule resource.
+%% @doc Tests a pipeline configuration with sample records to validate data
+%% processing before deployment.
+%%
+%% This operation helps ensure your pipeline configuration works as expected.
+-spec test_telemetry_pipeline(aws_client:aws_client(), test_telemetry_pipeline_input()) ->
+    {ok, test_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, test_telemetry_pipeline_errors(), tuple()}.
+test_telemetry_pipeline(Client, Input) ->
+    test_telemetry_pipeline(Client, Input, []).
+
+-spec test_telemetry_pipeline(aws_client:aws_client(), test_telemetry_pipeline_input(), proplists:proplist()) ->
+    {ok, test_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, test_telemetry_pipeline_errors(), tuple()}.
+test_telemetry_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/TestTelemetryPipeline"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from a resource.
+%%
+%% Supports telemetry rule resources and telemetry pipeline resources.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1780,7 +2620,97 @@ update_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the configuration of an existing telemetry pipeline.
+%%
+%% The following attributes cannot be updated after pipeline creation:
+%%
+%% Pipeline name - The pipeline name is immutable
+%%
+%% Pipeline ARN - The ARN is automatically generated and cannot be changed
+%%
+%% Source type - Once a pipeline is created with a specific source type (such
+%% as S3, CloudWatch Logs, GitHub, or third-party sources), it cannot be
+%% changed to a different source type
+%%
+%% Processors can be added, removed, or modified. However, some processors
+%% are not supported for third-party pipelines and cannot be added through
+%% updates.
+%%
+%% Source-Specific Update Rules
+%%
+%% CloudWatch Logs Sources (Vended and Custom) Updatable: `sts_role_arn'
+%%
+%% Fixed: `data_source_name', `data_source_type', sink (must remain
+%% `@original')
+%%
+%% S3 Sources (Crowdstrike, Zscaler, SentinelOne, Custom) Updatable: All SQS
+%% configuration parameters, `sts_role_arn', codec settings, compression
+%% type, bucket ownership settings, sink log group
+%%
+%% Fixed: `notification_type', `aws.region'
+%%
+%% GitHub Audit Logs Updatable: All Amazon Web Services Secrets Manager
+%% attributes, `scope' (can switch between ORGANIZATION/ENTERPRISE),
+%% `organization' or `enterprise' name, `range', authentication
+%% credentials (PAT or GitHub App)
+%%
+%% Microsoft Sources (Entra ID, Office365, Windows) Updatable: All Amazon Web
+%% Services Secrets Manager attributes, `tenant_id', `workspace_id'
+%% (Windows only), OAuth2 credentials (`client_id', `client_secret')
+%%
+%% Okta Sources (SSO, Auth0) Updatable: All Amazon Web Services Secrets
+%% Manager attributes, `domain', `range' (SSO only), OAuth2
+%% credentials (`client_id', `client_secret')
+%%
+%% Palo Alto Networks Updatable: All Amazon Web Services Secrets Manager
+%% attributes, `hostname', basic authentication credentials
+%% (`username', `password')
+%%
+%% ServiceNow CMDB Updatable: All Amazon Web Services Secrets Manager
+%% attributes, `instance_url', `range', OAuth2 credentials
+%% (`client_id', `client_secret')
+%%
+%% Wiz CNAPP Updatable: All Amazon Web Services Secrets Manager attributes,
+%% `region', `range', OAuth2 credentials (`client_id',
+%% `client_secret')
+-spec update_telemetry_pipeline(aws_client:aws_client(), update_telemetry_pipeline_input()) ->
+    {ok, update_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, update_telemetry_pipeline_errors(), tuple()}.
+update_telemetry_pipeline(Client, Input) ->
+    update_telemetry_pipeline(Client, Input, []).
+
+-spec update_telemetry_pipeline(aws_client:aws_client(), update_telemetry_pipeline_input(), proplists:proplist()) ->
+    {ok, update_telemetry_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, update_telemetry_pipeline_errors(), tuple()}.
+update_telemetry_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateTelemetryPipeline"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing telemetry rule in your account.
+%%
+%% If multiple users attempt to modify the same telemetry rule
+%% simultaneously, a ConflictException is returned to provide specific error
+%% information for concurrent modification scenarios.
 -spec update_telemetry_rule(aws_client:aws_client(), update_telemetry_rule_input()) ->
     {ok, update_telemetry_rule_output(), tuple()} |
     {error, any()} |
@@ -1833,6 +2763,43 @@ update_telemetry_rule_for_organization(Client, Input) ->
 update_telemetry_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateTelemetryRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Validates a pipeline configuration without creating the pipeline.
+%%
+%% This operation checks the configuration for syntax errors and
+%% compatibility issues.
+-spec validate_telemetry_pipeline_configuration(aws_client:aws_client(), validate_telemetry_pipeline_configuration_input()) ->
+    {ok, validate_telemetry_pipeline_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, validate_telemetry_pipeline_configuration_errors(), tuple()}.
+validate_telemetry_pipeline_configuration(Client, Input) ->
+    validate_telemetry_pipeline_configuration(Client, Input, []).
+
+-spec validate_telemetry_pipeline_configuration(aws_client:aws_client(), validate_telemetry_pipeline_configuration_input(), proplists:proplist()) ->
+    {ok, validate_telemetry_pipeline_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, validate_telemetry_pipeline_configuration_errors(), tuple()}.
+validate_telemetry_pipeline_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ValidateTelemetryPipelineConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

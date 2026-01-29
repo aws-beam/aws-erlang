@@ -177,6 +177,14 @@
 
 
 %% Example:
+%% telemetry_sink_config() :: #{
+%%   <<"telemetrySinkData">> => list(),
+%%   <<"telemetrySinkType">> => list(any())
+%% }
+-type telemetry_sink_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -842,6 +850,14 @@
 
 
 %% Example:
+%% kinesis_data_stream_data() :: #{
+%%   <<"kinesisDataStreamArn">> => string(),
+%%   <<"kinesisRoleArn">> => string()
+%% }
+-type kinesis_data_stream_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_contacts_request() :: #{
 %%   <<"endTime">> := [non_neg_integer()],
 %%   <<"ephemeris">> => list(),
@@ -1107,6 +1123,7 @@
 %%   <<"streamsKmsKey">> => list(),
 %%   <<"streamsKmsRole">> => string(),
 %%   <<"tags">> => map(),
+%%   <<"telemetrySinkConfigArn">> => string(),
 %%   <<"trackingConfigArn">> => string()
 %% }
 -type get_mission_profile_response() :: #{binary() => any()}.
@@ -1215,6 +1232,7 @@
 %%   <<"streamsKmsKey">> => list(),
 %%   <<"streamsKmsRole">> => string(),
 %%   <<"tags">> => map(),
+%%   <<"telemetrySinkConfigArn">> => string(),
 %%   <<"trackingConfigArn">> := string()
 %% }
 -type create_mission_profile_request() :: #{binary() => any()}.
@@ -1229,6 +1247,7 @@
 %%   <<"name">> => string(),
 %%   <<"streamsKmsKey">> => list(),
 %%   <<"streamsKmsRole">> => string(),
+%%   <<"telemetrySinkConfigArn">> => string(),
 %%   <<"trackingConfigArn">> => string()
 %% }
 -type update_mission_profile_request() :: #{binary() => any()}.
@@ -1416,7 +1435,15 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels a contact with a specified contact ID.
+%% @doc Cancels or stops a contact with a specified contact ID based on its
+%% position in the contact lifecycle:
+%% https://docs.aws.amazon.com/ground-station/latest/ug/contacts.lifecycle.html.
+%%
+%% For contacts that:
+%%
+%% Have yet to start, the contact will be cancelled.
+%%
+%% Have started but have yet to finish, the contact will be stopped.
 -spec cancel_contact(aws_client:aws_client(), binary() | list(), cancel_contact_request()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
@@ -1488,14 +1515,14 @@ create_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `DataflowEndpoint' group containing the specified list
-%% of `DataflowEndpoint' objects.
+%% of ` DataflowEndpoint' objects.
 %%
-%% The `name' field in each endpoint is used in your mission profile
-%% `DataflowEndpointConfig' to specify which endpoints to use during a
+%% The `name' field in each endpoint is used in your mission profile `
+%% DataflowEndpointConfig' to specify which endpoints to use during a
 %% contact.
 %%
-%% When a contact uses multiple `DataflowEndpointConfig' objects, each
-%% `Config' must match a `DataflowEndpoint' in the same group.
+%% When a contact uses multiple `DataflowEndpointConfig' objects, each `
+%% Config' must match a `DataflowEndpoint' in the same group.
 -spec create_dataflow_endpoint_group(aws_client:aws_client(), create_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
@@ -1529,15 +1556,15 @@ create_dataflow_endpoint_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `DataflowEndpointGroupV2' containing the specified list
-%% of `DataflowEndpoint' objects.
+%% @doc Creates a `DataflowEndpoint' group containing the specified list
+%% of Ground Station Agent based endpoints.
 %%
-%% The `name' field in each endpoint is used in your mission profile
-%% `DataflowEndpointConfig' to specify which endpoints to use during a
+%% The `name' field in each endpoint is used in your mission profile `
+%% DataflowEndpointConfig' to specify which endpoints to use during a
 %% contact.
 %%
-%% When a contact uses multiple `DataflowEndpointConfig' objects, each
-%% `Config' must match a `DataflowEndpoint' in the same group.
+%% When a contact uses multiple `DataflowEndpointConfig' objects, each `
+%% Config' must match a `DataflowEndpoint' in the same group.
 -spec create_dataflow_endpoint_group_v2(aws_client:aws_client(), create_dataflow_endpoint_group_v2_request()) ->
     {ok, create_dataflow_endpoint_group_v2_response(), tuple()} |
     {error, any()} |
@@ -2160,8 +2187,8 @@ list_configs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of contacts.
 %%
-%% If `statusList' contains AVAILABLE, the request must include
-%% `groundStation', `missionprofileArn', and `satelliteArn'.
+%% If `statusList' contains AVAILABLE, the request must include `
+%% groundStation', `missionprofileArn', and `satelliteArn'.
 -spec list_contacts(aws_client:aws_client(), list_contacts_request()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |

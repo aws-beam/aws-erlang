@@ -32,7 +32,9 @@
          get_federation_token/2,
          get_federation_token/3,
          get_session_token/2,
-         get_session_token/3]).
+         get_session_token/3,
+         get_web_identity_token/2,
+         get_web_identity_token/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -81,6 +83,12 @@
 -type assumed_role_user() :: #{binary() => any()}.
 
 %% Example:
+%% j_w_t_payload_size_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type j_w_t_payload_size_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% packed_policy_too_large_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -94,6 +102,12 @@
 %%   <<"SessionToken">> => string()
 %% }
 -type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% outbound_web_identity_federation_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type outbound_web_identity_federation_disabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% assume_role_with_saml_request() :: #{
@@ -147,6 +161,13 @@
 -type get_federation_token_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_web_identity_token_response() :: #{
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"WebIdentityToken">> => string()
+%% }
+-type get_web_identity_token_response() :: #{binary() => any()}.
+
+%% Example:
 %% decode_authorization_message_response() :: #{
 %%   <<"DecodedMessage">> => string()
 %% }
@@ -178,6 +199,12 @@
 %%   <<"ProviderArn">> => string()
 %% }
 -type provided_context() :: #{binary() => any()}.
+
+%% Example:
+%% session_duration_escalation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type session_duration_escalation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_identity_token_exception() :: #{
@@ -295,6 +322,15 @@
 -type assume_root_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_web_identity_token_request() :: #{
+%%   <<"Audience">> := list(string()),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"SigningAlgorithm">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type get_web_identity_token_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_caller_identity_response() :: #{
 %%   <<"Account">> => string(),
 %%   <<"Arn">> => string(),
@@ -340,6 +376,7 @@
 
 -type get_delegated_access_token_errors() ::
     expired_trade_in_token_exception() | 
+    packed_policy_too_large_exception() | 
     region_disabled_exception().
 
 -type get_federation_token_errors() ::
@@ -349,6 +386,11 @@
 
 -type get_session_token_errors() ::
     region_disabled_exception().
+
+-type get_web_identity_token_errors() ::
+    session_duration_escalation_exception() | 
+    outbound_web_identity_federation_disabled_exception() | 
+    j_w_t_payload_size_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -1158,7 +1200,14 @@ get_caller_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallerIdentity">>, Input, Options).
 
-%% @doc This API is currently unavailable for general use.
+%% @doc Exchanges a trade-in token for temporary Amazon Web Services
+%% credentials with the permissions
+%% associated with the assumed principal.
+%%
+%% This operation allows you to obtain credentials for
+%% a specific principal based on a trade-in token, enabling delegation of
+%% access to Amazon Web Services
+%% resources.
 -spec get_delegated_access_token(aws_client:aws_client(), get_delegated_access_token_request()) ->
     {ok, get_delegated_access_token_response(), tuple()} |
     {error, any()} |
@@ -1446,6 +1495,30 @@ get_session_token(Client, Input)
 get_session_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSessionToken">>, Input, Options).
+
+%% @doc Returns a signed JSON Web Token (JWT) that represents the calling
+%% Amazon Web Services identity.
+%%
+%% The returned JWT can be used to authenticate with external services that
+%% support OIDC discovery.
+%% The token is signed by Amazon Web Services STS and can be publicly
+%% verified using the verification keys published at the issuer's JWKS
+%% endpoint.
+-spec get_web_identity_token(aws_client:aws_client(), get_web_identity_token_request()) ->
+    {ok, get_web_identity_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_identity_token_errors(), tuple()}.
+get_web_identity_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_web_identity_token(Client, Input, []).
+
+-spec get_web_identity_token(aws_client:aws_client(), get_web_identity_token_request(), proplists:proplist()) ->
+    {ok, get_web_identity_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_identity_token_errors(), tuple()}.
+get_web_identity_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetWebIdentityToken">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

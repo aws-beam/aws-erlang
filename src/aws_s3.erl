@@ -59,6 +59,9 @@
          delete_objects/4,
          delete_public_access_block/3,
          delete_public_access_block/4,
+         get_bucket_abac/2,
+         get_bucket_abac/4,
+         get_bucket_abac/5,
          get_bucket_accelerate_configuration/2,
          get_bucket_accelerate_configuration/4,
          get_bucket_accelerate_configuration/5,
@@ -189,6 +192,8 @@
          list_parts/4,
          list_parts/6,
          list_parts/7,
+         put_bucket_abac/3,
+         put_bucket_abac/4,
          put_bucket_accelerate_configuration/3,
          put_bucket_accelerate_configuration/4,
          put_bucket_acl/3,
@@ -249,6 +254,8 @@
          update_bucket_metadata_inventory_table_configuration/4,
          update_bucket_metadata_journal_table_configuration/3,
          update_bucket_metadata_journal_table_configuration/4,
+         update_object_encryption/4,
+         update_object_encryption/5,
          upload_part/4,
          upload_part/5,
          upload_part_copy/4,
@@ -595,6 +602,18 @@
 
 
 %% Example:
+%% update_object_encryption_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectEncryption">> := list(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type update_object_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_public_access_block_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
@@ -701,6 +720,13 @@
 %%   <<"QueueArn">> => string()
 %% }
 -type queue_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_abac_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_abac_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1070,12 +1096,24 @@
 %% too_many_parts() :: #{}
 -type too_many_parts() :: #{}.
 
+%% Example:
+%% access_denied() :: #{}
+-type access_denied() :: #{}.
+
 
 %% Example:
 %% get_bucket_inventory_configuration_output() :: #{
 %%   <<"InventoryConfiguration">> => inventory_configuration()
 %% }
 -type get_bucket_inventory_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encryption() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"KMSKeyArn">> => string()
+%% }
+-type sse_kms_encryption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1210,6 +1248,13 @@
 %%   <<"DefaultRetention">> => default_retention()
 %% }
 -type object_lock_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% blocked_encryption_types() :: #{
+%%   <<"EncryptionType">> => list(list(any())())
+%% }
+-type blocked_encryption_types() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1881,6 +1926,7 @@
 %% Example:
 %% server_side_encryption_rule() :: #{
 %%   <<"ApplyServerSideEncryptionByDefault">> => server_side_encryption_by_default(),
+%%   <<"BlockedEncryptionTypes">> => blocked_encryption_types(),
 %%   <<"BucketKeyEnabled">> => boolean()
 %% }
 -type server_side_encryption_rule() :: #{binary() => any()}.
@@ -2282,6 +2328,13 @@
 
 
 %% Example:
+%% abac_status() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type abac_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% default_retention() :: #{
 %%   <<"Days">> => integer(),
 %%   <<"Mode">> => list(any()),
@@ -2313,6 +2366,16 @@
 %%   <<"Rule">> => object_lock_rule()
 %% }
 -type object_lock_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_abac_request() :: #{
+%%   <<"AbacStatus">> := abac_status(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_abac_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2870,6 +2933,13 @@
 
 
 %% Example:
+%% get_bucket_abac_output() :: #{
+%%   <<"AbacStatus">> => abac_status()
+%% }
+-type get_bucket_abac_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% head_bucket_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
@@ -3094,6 +3164,13 @@
 %%   <<"VersionId">> => string()
 %% }
 -type get_object_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_object_encryption_response() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type update_object_encryption_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3587,6 +3664,11 @@
 -type restore_object_errors() ::
     object_already_in_active_tier_error().
 
+-type update_object_encryption_errors() ::
+    invalid_request() | 
+    access_denied() | 
+    no_such_key().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -4000,14 +4082,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
 %% (Ireland), and South America (São Paulo).
 %%
-%% You can store individual objects of up to 5 TB in Amazon S3. You create a
-%% copy of your object up to 5
-%% GB in size in a single atomic action using this API. However, to copy an
-%% object greater than 5 GB, you
-%% must use the multipart upload Upload Part - Copy (UploadPartCopy) API. For
-%% more information, see
-%% Copy Object
-%% Using the REST Multipart Upload API:
+%% You can store individual objects of up to 50 TB in Amazon S3. You create a
+%% copy of your
+%% object up to 5 GB in size in a single atomic action using this API.
+%% However, to copy an
+%% object greater than 5 GB, you must use the multipart upload Upload Part -
+%% Copy
+%% (UploadPartCopy) API. For more information, see Copy Object Using the REST
+%% Multipart Upload API:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html.
 %%
 %% You can copy individual objects between general purpose buckets, between
@@ -4331,20 +4413,9 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
     end.
 
 %% @doc
-%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
-%% support for Email Grantee Access Control Lists (ACLs).
+%% This action creates an Amazon S3 bucket.
 %%
-%% If you attempt to use an Email Grantee ACL in a request after October 1,
-%% 2025,
-%% the request will receive an `HTTP 405' (Method Not Allowed) error.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
-%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
-%% (Ireland), and South America (São Paulo).
-%%
-%% This action creates an Amazon S3 bucket. To create an Amazon S3 on
-%% Outposts bucket, see
+%% To create an Amazon S3 on Outposts bucket, see
 %% `CreateBucket'
 %% :
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html.
@@ -6547,7 +6618,22 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %% @doc
 %% This operation is not supported for directory buckets.
 %%
-%% Deletes the tags from the bucket.
+%% Deletes tags from the general purpose bucket if attribute based access
+%% control (ABAC) is not enabled for the bucket. When you enable ABAC for a
+%% general purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
+%% you can no longer use this operation for that bucket and must use
+%% UntagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html
+%% instead.
+%%
+%% if ABAC is not enabled for the bucket. When you enable ABAC for a general
+%% purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
+%% you can no longer use this operation for that bucket and must use
+%% UntagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html
+%% instead.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:PutBucketTagging'
@@ -6766,13 +6852,18 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% includes specific headers.
 %%
 %% `s3:DeleteObject'
-%% - To delete an
-%% object from a bucket, you must always have the `s3:DeleteObject'
-%% permission.
+%% - To
+%% delete an object from a bucket, you must always have the
+%% `s3:DeleteObject' permission.
 %%
 %% `s3:DeleteObjectVersion'
 %% - To delete a specific version of an object from a versioning-enabled
 %% bucket, you must have the `s3:DeleteObjectVersion' permission.
+%%
+%% If the `s3:DeleteObject' or `s3:DeleteObjectVersion' permissions
+%% are explicitly
+%% denied in your bucket policy, attempts to delete any unversioned objects
+%% result in a `403 Access Denied' error.
 %%
 %% Directory bucket permissions - To grant access to this API operation on a
 %% directory bucket, we recommend that you use the
@@ -7026,6 +7117,11 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% - To delete a specific version of an object from a versioning-enabled
 %% bucket, you must specify the `s3:DeleteObjectVersion' permission.
 %%
+%% If the `s3:DeleteObject' or `s3:DeleteObjectVersion' permissions
+%% are explicitly
+%% denied in your bucket policy, attempts to delete any unversioned objects
+%% result in a `403 Access Denied' error.
+%%
 %% Directory bucket permissions - To grant access to this API operation on a
 %% directory bucket, we recommend that you use the
 %% `CreateSession'
@@ -7141,13 +7237,18 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %% This operation is not supported for directory buckets.
 %%
 %% Removes the `PublicAccessBlock' configuration for an Amazon S3 bucket.
-%% To use this operation,
-%% you must have the `s3:PutBucketPublicAccessBlock' permission. For more
-%% information about
-%% permissions, see Permissions Related to Bucket Subresource Operations:
+%% This
+%% operation removes the bucket-level configuration only. The effective
+%% public access behavior
+%% will still be governed by account-level settings (which may inherit from
+%% organization-level
+%% policies). To use this operation, you must have the
+%% `s3:PutBucketPublicAccessBlock'
+%% permission. For more information about permissions, see Permissions
+%% Related to Bucket Subresource Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
-%% and Managing Access Permissions to Your Amazon S3
-%% Resources:
+%% and Managing Access
+%% Permissions to Your Amazon S3 Resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% The following operations are related to `DeletePublicAccessBlock':
@@ -7201,6 +7302,51 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+
+%% @doc Returns the attribute-based access control (ABAC) property of the
+%% general purpose bucket.
+%%
+%% If ABAC is enabled on your bucket, you can use tags on the bucket for
+%% access control. For more information, see Enabling ABAC in general purpose
+%% buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html.
+-spec get_bucket_abac(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_abac_output(), tuple()} |
+    {error, any()}.
+get_bucket_abac(Client, Bucket)
+  when is_map(Client) ->
+    get_bucket_abac(Client, Bucket, #{}, #{}).
+
+-spec get_bucket_abac(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_abac_output(), tuple()} |
+    {error, any()}.
+get_bucket_abac(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_abac(Client, Bucket, QueryMap, HeadersMap, []).
+
+-spec get_bucket_abac(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_abac_output(), tuple()} |
+    {error, any()}.
+get_bucket_abac(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/", aws_util:encode_uri(Bucket), "?abac"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
 %% This operation is not supported for directory buckets.
@@ -7308,20 +7454,6 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
     end.
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% This implementation of the `GET' action uses the `acl' subresource
@@ -7563,12 +7695,17 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% By default, all buckets have a
 %% default encryption configuration that uses server-side encryption with
-%% Amazon S3 managed keys (SSE-S3).
+%% Amazon S3 managed keys (SSE-S3). This operation also returns the
+%% BucketKeyEnabled:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BucketKeyEnabled
+%% and BlockedEncryptionTypes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BlockedEncryptionTypes
+%% statuses.
 %%
 %% General purpose buckets - For information about the bucket
 %% default encryption feature, see Amazon S3 Bucket Default Encryption:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html in
-%% the
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html
+%% in the
 %% Amazon S3 User Guide.
 %%
 %% Directory buckets -
@@ -8072,20 +8209,6 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns the logging status of a bucket and the permissions users have to
@@ -8900,7 +9023,15 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% @doc
 %% This operation is not supported for directory buckets.
 %%
-%% Returns the tag set associated with the bucket.
+%% Returns the tag set associated with the general purpose bucket.
+%%
+%% if ABAC is not enabled for the bucket. When you enable ABAC for a general
+%% purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
+%% you can no longer use this operation for that bucket and must use
+%% ListTagsForResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListTagsForResource.html
+%% instead.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetBucketTagging'
@@ -9418,20 +9549,6 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns the access control list (ACL) of an object. To use this operation,
@@ -10180,22 +10297,31 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% This operation is not supported for directory buckets.
 %%
 %% Retrieves the `PublicAccessBlock' configuration for an Amazon S3
-%% bucket. To use this
-%% operation, you must have the `s3:GetBucketPublicAccessBlock'
-%% permission. For more information
-%% about Amazon S3 permissions, see Specifying Permissions in a
+%% bucket. This
+%% operation returns the bucket-level configuration only. To understand the
+%% effective public
+%% access behavior, you must also consider account-level settings (which may
+%% inherit from
+%% organization-level policies). To use this operation, you must have the
+%% `s3:GetBucketPublicAccessBlock' permission. For more information about
+%% Amazon S3
+%% permissions, see Specifying Permissions in a
 %% Policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
-%% bucket or an object, it
-%% checks the `PublicAccessBlock' configuration for both the bucket (or
-%% the bucket that
-%% contains the object) and the bucket owner's account. If the
-%% `PublicAccessBlock' settings
-%% are different between the bucket and the account, Amazon S3 uses the most
-%% restrictive combination of the
-%% bucket-level and account-level settings.
+%% bucket or an
+%% object, it checks the `PublicAccessBlock' configuration for both the
+%% bucket (or
+%% the bucket that contains the object) and the bucket owner's account.
+%% Account-level settings
+%% automatically inherit from organization-level policies when present. If
+%% the
+%% `PublicAccessBlock' settings are different between the bucket and the
+%% account,
+%% Amazon S3 uses the most restrictive combination of the bucket-level and
+%% account-level
+%% settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
 %% public, see The Meaning of &quot;Public&quot;:
@@ -11058,20 +11184,6 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns a list of all buckets owned by the authenticated sender of the
@@ -11227,23 +11339,9 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
+%% @doc This operation lists in-progress multipart uploads in a bucket.
 %%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
-%% This operation lists in-progress multipart uploads in a bucket. An
-%% in-progress multipart upload is a
+%% An in-progress multipart upload is a
 %% multipart upload that has been initiated by the
 %% `CreateMultipartUpload' request, but has not
 %% yet been completed or aborted.
@@ -11447,20 +11545,6 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns metadata about all versions of the objects in a bucket. You can
@@ -11562,20 +11646,6 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns some or all (up to 1,000) of the objects in a bucket. You can use
@@ -11681,23 +11751,10 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
+%% @doc Returns some or all (up to 1,000) of the objects in a bucket with
+%% each request.
 %%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
-%% Returns some or all (up to 1,000) of the objects in a bucket with each
-%% request. You can use the
+%% You can use the
 %% request parameters as selection criteria to return a subset of the objects
 %% in a bucket. A
 %% ```
@@ -11877,22 +11934,8 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc
-%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
-%% returning `DisplayName'.
-%%
-%% Update your applications to use canonical IDs (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
-%% Lists the parts that have been uploaded for a specific multipart upload.
+%% @doc Lists the parts that have been uploaded for a specific multipart
+%% upload.
 %%
 %% To use this operation, you must provide the `upload ID' in the
 %% request. You obtain this
@@ -12064,6 +12107,59 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
       Result ->
         Result
     end.
+
+%% @doc Sets the attribute-based access control (ABAC) property of the
+%% general purpose bucket.
+%%
+%% You must have `s3:PutBucketABAC' permission to perform this action.
+%% When you enable ABAC, you can use tags for access control on your buckets.
+%% Additionally, when ABAC is enabled, you must use the TagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html
+%% actions to manage tags on your buckets. You can nolonger use the
+%% PutBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
+%% and DeleteBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
+%% actions to tag your bucket. For more information, see Enabling ABAC in
+%% general purpose buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html.
+-spec put_bucket_abac(aws_client:aws_client(), binary() | list(), put_bucket_abac_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+put_bucket_abac(Client, Bucket, Input) ->
+    put_bucket_abac(Client, Bucket, Input, []).
+
+-spec put_bucket_abac(aws_client:aws_client(), binary() | list(), put_bucket_abac_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+put_bucket_abac(Client, Bucket, Input0, Options0) ->
+    Method = put,
+    Path = ["/", aws_util:encode_uri(Bucket), "?abac"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc
 %% This operation is not supported for directory buckets.
@@ -12615,6 +12711,10 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% @doc This operation configures default encryption and Amazon S3 Bucket
 %% Keys for an existing bucket.
 %%
+%% You can also block encryption types:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_BlockedEncryptionTypes.html
+%% using this operation.
+%%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Regional endpoint. These endpoints support path-style
 %% requests in the format
@@ -13077,8 +13177,6 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html.
 %%
 %% Rules
-%% Permissions
-%% HTTP Host header syntax
 %%
 %% You specify the lifecycle configuration in your request body. The
 %% lifecycle configuration is
@@ -13128,6 +13226,8 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% Lifecycle
 %% Configuration Elements:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html.
+%%
+%% Permissions
 %%
 %% General purpose bucket permissions - By default, all Amazon S3
 %% resources are private, including buckets, objects, and related
@@ -13187,6 +13287,8 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% HTTP Host header syntax
 %%
 %% Directory buckets - The HTTP Host header syntax is
 %% `s3express-control.region.amazonaws.com'.
@@ -13984,7 +14086,16 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %% @doc
 %% This operation is not supported for directory buckets.
 %%
-%% Sets the tags for a bucket.
+%% Sets the tags for a general purpose bucket if attribute based access
+%% control (ABAC) is not enabled for the bucket. When you enable ABAC for a
+%% general purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
+%% you can no longer use this operation for that bucket and must use the
+%% TagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_TagResource.html
+%% or UntagResource:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html
+%% operations instead.
 %%
 %% Use tags to organize your Amazon Web Services bill to reflect your own
 %% cost structure. To do this, sign up to get
@@ -14467,6 +14578,22 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket-name.s3express-zone-id.region-code.amazonaws.com'''.
+%%
+%% Errors
+%%
+%% You might receive an `InvalidRequest' error for several reasons.
+%% Depending on the reason for the error, you might receive one of the
+%% following messages:
+%%
+%% Cannot specify both a write offset value and user-defined object metadata
+%% for existing
+%% objects.
+%%
+%% Checksum Type mismatch occurred, expected checksum Type: sha1, actual
+%% checksum Type:
+%% crc32c.
+%%
+%% Request body cannot be empty when 'write offset' is specified.
 %%
 %% For more information about related Amazon S3 APIs, see the following:
 %%
@@ -15192,14 +15319,18 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
-%% bucket or an object, it
-%% checks the `PublicAccessBlock' configuration for both the bucket (or
-%% the bucket that
-%% contains the object) and the bucket owner's account. If the
-%% `PublicAccessBlock'
-%% configurations are different between the bucket and the account, Amazon S3
-%% uses the most restrictive
-%% combination of the bucket-level and account-level settings.
+%% bucket or an
+%% object, it checks the `PublicAccessBlock' configuration for both the
+%% bucket (or
+%% the bucket that contains the object) and the bucket owner's account.
+%% Account-level settings
+%% automatically inherit from organization-level policies when present. If
+%% the
+%% `PublicAccessBlock' configurations are different between the bucket
+%% and the
+%% account, Amazon S3 uses the most restrictive combination of the
+%% bucket-level and account-level
+%% settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
 %% public, see The Meaning of &quot;Public&quot;:
@@ -15980,6 +16111,228 @@ update_bucket_metadata_journal_table_configuration(Client, Bucket, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
+%% @doc
+%% This operation is not supported for directory buckets or Amazon S3 on
+%% Outposts buckets.
+%%
+%% Updates the server-side encryption type of an existing encrypted object in
+%% a general purpose bucket.
+%% You can use the `UpdateObjectEncryption' operation to change encrypted
+%% objects from
+%% server-side encryption with Amazon S3 managed keys (SSE-S3) to server-side
+%% encryption with Key Management Service (KMS)
+%% keys (SSE-KMS), or to apply S3 Bucket Keys. You can also use the
+%% `UpdateObjectEncryption' operation
+%% to change the customer-managed KMS key used to encrypt your data so that
+%% you can comply with custom
+%% key-rotation standards.
+%%
+%% Using the `UpdateObjectEncryption' operation, you can atomically
+%% update the server-side
+%% encryption type of an existing object in a general purpose bucket without
+%% any data movement. The
+%% `UpdateObjectEncryption' operation uses envelope encryption to
+%% re-encrypt the data key used to
+%% encrypt and decrypt your object with your newly specified server-side
+%% encryption type. In other words,
+%% when you use the `UpdateObjectEncryption' operation, your data
+%% isn't copied, archived
+%% objects in the S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive
+%% storage classes aren't
+%% restored, and objects in the S3 Intelligent-Tiering storage class
+%% aren't moved between tiers.
+%% Additionally, the `UpdateObjectEncryption' operation preserves all
+%% object metadata
+%% properties, including the storage class, creation date, last modified
+%% date, ETag, and checksum
+%% properties. For more information, see
+%%
+%% Updating server-side encryption for existing objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/update-sse-encryption.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% By default, all `UpdateObjectEncryption' requests that specify a
+%% customer-managed
+%% KMS key are restricted to KMS keys that are owned by the bucket
+%% owner's Amazon Web Services account. If you're
+%% using Organizations, you can request the ability to use KMS keys owned by
+%% other member
+%% accounts within your organization by contacting Amazon Web Services
+%% Support.
+%%
+%% Source objects that are unencrypted, or encrypted with either dual-layer
+%% server-side encryption
+%% with KMS keys (DSSE-KMS) or server-side encryption with customer-provided
+%% keys (SSE-C) aren't
+%% supported by this operation. Additionally, you cannot specify SSE-S3
+%% encryption as the requested
+%% new encryption type `UpdateObjectEncryption' request.
+%%
+%% Permissions
+%%
+%% To use the `UpdateObjectEncryption' operation, you must have the
+%% following
+%% permissions:
+%%
+%% `s3:PutObject'
+%%
+%% `s3:UpdateObjectEncryption'
+%%
+%% `kms:Encrypt'
+%%
+%% `kms:Decrypt'
+%%
+%% `kms:GenerateDataKey'
+%%
+%% `kms:ReEncrypt*'
+%%
+%% If you're using Organizations, to use this operation with
+%% customer-managed
+%% KMS keys from other Amazon Web Services accounts within your organization,
+%% you must have the
+%% `organizations:DescribeAccount' permission.
+%%
+%% Errors
+%%
+%% You might receive an `InvalidRequest' error for several reasons.
+%% Depending
+%% on the reason for the error, you might receive one of the following
+%% messages:
+%%
+%% The `UpdateObjectEncryption' operation doesn't supported
+%% unencrypted
+%% source objects. Only source objects encrypted with SSE-S3 or SSE-KMS are
+%% supported.
+%%
+%% The `UpdateObjectEncryption' operation doesn't support source
+%% objects
+%% with the encryption type DSSE-KMS or SSE-C. Only source objects encrypted
+%% with SSE-S3
+%% or SSE-KMS are supported.
+%%
+%% The `UpdateObjectEncryption' operation doesn't support updating
+%% the
+%% encryption type to DSSE-KMS or SSE-C. Modify the request to specify
+%% SSE-KMS
+%% for the updated encryption type, and then try again.
+%%
+%% Requests that modify an object encryption configuration require Amazon Web
+%% Services Signature
+%% Version 4. Modify the request to use Amazon Web Services Signature Version
+%% 4, and then try again.
+%%
+%% Requests that modify an object encryption configuration require a valid
+%% new
+%% encryption type. Valid values are `SSEKMS'. Modify the request to
+%% specify
+%% SSE-KMS for the updated encryption type, and then try again.
+%%
+%% Requests that modify an object's encryption type to SSE-KMS require an
+%% Amazon Web Services KMS key
+%% Amazon Resource Name (ARN). Modify the request to specify a KMS key ARN,
+%% and then
+%% try again.
+%%
+%% Requests that modify an object's encryption type to SSE-KMS require a
+%% valid
+%% Amazon Web Services KMS key Amazon Resource Name (ARN). Confirm that you
+%% have a correctly formatted
+%% KMS key ARN in your request, and then try again.
+%%
+%% The `BucketKeyEnabled' value isn't valid. Valid values are
+%% `true' or `false'. Modify the request to specify a valid value,
+%% and then try again.
+%%
+%% You might receive an `AccessDenied' error for several reasons.
+%% Depending on
+%% the reason for the error, you might receive one of the following messages:
+%%
+%% The Amazon Web Services KMS key in the request must be owned by the same
+%% account as the bucket. Modify
+%% the request to specify a KMS key from the same account, and then try
+%% again.
+%%
+%% The bucket owner's account was approved to make
+%% `UpdateObjectEncryption' requests
+%% that use any Amazon Web Services KMS key in their organization, but the
+%% bucket owner's account isn't part of
+%% an organization in Organizations. Make sure that the bucket owner's
+%% account and the
+%% specified KMS key belong to the same organization, and then try again.
+%%
+%% The specified Amazon Web Services KMS key must be from the same
+%% organization in Organizations as
+%% the bucket. Specify a KMS key that belongs to the same organization as the
+%% bucket, and then
+%% try again.
+%%
+%% The encryption type for the specified object can’t be updated because that
+%% object is
+%% protected by S3 Object Lock. If the object has a governance-mode retention
+%% period or a legal
+%% hold, you must first remove the Object Lock status on the object before
+%% you issue your
+%% `UpdateObjectEncryption' request. You can't use the
+%% `UpdateObjectEncryption'
+%% operation with objects that have an Object Lock compliance mode retention
+%% period applied to them.
+-spec update_object_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), update_object_encryption_request()) ->
+    {ok, update_object_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, update_object_encryption_errors(), tuple()}.
+update_object_encryption(Client, Bucket, Key, Input) ->
+    update_object_encryption(Client, Bucket, Key, Input, []).
+
+-spec update_object_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), update_object_encryption_request(), proplists:proplist()) ->
+    {ok, update_object_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, update_object_encryption_errors(), tuple()}.
+update_object_encryption(Client, Bucket, Key, Input0, Options0) ->
+    Method = put,
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?encryption"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"versionId">>, <<"VersionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Uploads a part in a multipart upload.
 %%
 %% In this operation, you provide new data as a part of an object in your
@@ -16140,6 +16493,13 @@ update_bucket_metadata_journal_table_configuration(Client, Bucket, Input0, Optio
 %% information, see
 %% CreateMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html.
+%%
+%% If you have server-side encryption with customer-provided keys (SSE-C)
+%% blocked for your general purpose bucket, you will get an HTTP 403 Access
+%% Denied error when you specify the SSE-C request headers while writing new
+%% data to your bucket. For more information, see Blocking or unblocking
+%% SSE-C for a general purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/blocking-unblocking-s3-c-encryption-gpb.html.
 %%
 %% If you request server-side encryption using a customer-provided encryption
 %% key (SSE-C) in
@@ -16444,6 +16804,13 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html and
 %% UploadPart:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html.
+%%
+%% If you have server-side encryption with customer-provided keys (SSE-C)
+%% blocked for your general purpose bucket, you will get an HTTP 403 Access
+%% Denied error when you specify the SSE-C request headers while writing new
+%% data to your bucket. For more information, see Blocking or unblocking
+%% SSE-C for a general purpose bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/blocking-unblocking-s3-c-encryption-gpb.html.
 %%
 %% Directory buckets -
 %% For directory buckets, there are only two supported options for

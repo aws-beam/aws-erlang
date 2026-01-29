@@ -122,6 +122,14 @@
 -type list_group_memberships_for_member_response() :: #{binary() => any()}.
 
 %% Example:
+%% role() :: #{
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type role() :: #{binary() => any()}.
+
+%% Example:
 %% phone_number() :: #{
 %%   <<"Primary">> => boolean(),
 %%   <<"Type">> => string(),
@@ -287,6 +295,7 @@
 %%   <<"CreatedBy">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"Emails">> => list(email()),
+%%   <<"Extensions">> => map(),
 %%   <<"ExternalIds">> => list(external_id()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"Locale">> => string(),
@@ -296,6 +305,7 @@
 %%   <<"Photos">> => list(photo()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
+%%   <<"Roles">> => list(role()),
 %%   <<"Timezone">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
@@ -343,6 +353,7 @@
 
 %% Example:
 %% describe_user_request() :: #{
+%%   <<"Extensions">> => list(string()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"UserId">> := string()
 %% }
@@ -410,6 +421,7 @@
 %%   <<"CreatedBy">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"Emails">> => list(email()),
+%%   <<"Extensions">> => map(),
 %%   <<"ExternalIds">> => list(external_id()),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"Locale">> => string(),
@@ -419,6 +431,7 @@
 %%   <<"Photos">> => list(photo()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
+%%   <<"Roles">> => list(role()),
 %%   <<"Timezone">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
@@ -447,6 +460,7 @@
 
 %% Example:
 %% list_users_request() :: #{
+%%   <<"Extensions">> => list(string()),
 %%   <<"Filters">> => list(filter()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -558,6 +572,7 @@
 %%   <<"Birthdate">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"Emails">> => list(email()),
+%%   <<"Extensions">> => map(),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"Locale">> => string(),
 %%   <<"Name">> => name(),
@@ -566,6 +581,7 @@
 %%   <<"Photos">> => list(photo()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
+%%   <<"Roles">> => list(role()),
 %%   <<"Timezone">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UserName">> => string(),

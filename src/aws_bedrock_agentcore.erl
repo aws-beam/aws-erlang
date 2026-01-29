@@ -1,11 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Bedrock AgentCore is in preview release and is subject to
-%% change.
+%% @doc Welcome to the Amazon Bedrock AgentCore Data Plane API reference.
 %%
-%% Welcome to the Amazon Bedrock AgentCore Data Plane API reference. Data
-%% Plane actions process and handle data or workloads within Amazon Web
+%% Data Plane actions process and handle data or workloads within Amazon Web
 %% Services services.
 -module(aws_bedrock_agentcore).
 
@@ -23,6 +21,8 @@
          delete_event/7,
          delete_memory_record/4,
          delete_memory_record/5,
+         evaluate/3,
+         evaluate/4,
          get_agent_card/2,
          get_agent_card/4,
          get_agent_card/5,
@@ -60,6 +60,8 @@
          list_code_interpreter_sessions/4,
          list_events/5,
          list_events/6,
+         list_memory_extraction_jobs/3,
+         list_memory_extraction_jobs/4,
          list_memory_records/3,
          list_memory_records/4,
          list_sessions/4,
@@ -70,6 +72,8 @@
          start_browser_session/4,
          start_code_interpreter_session/3,
          start_code_interpreter_session/4,
+         start_memory_extraction_job/3,
+         start_memory_extraction_job/4,
          stop_browser_session/3,
          stop_browser_session/4,
          stop_code_interpreter_session/3,
@@ -104,6 +108,22 @@
 %%   <<"streamEndpoint">> => string()
 %% }
 -type live_view_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_result_content() :: #{
+%%   <<"context">> => list(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"evaluatorName">> => string(),
+%%   <<"explanation">> => string(),
+%%   <<"label">> => [string()],
+%%   <<"tokenUsage">> => token_usage(),
+%%   <<"value">> => [float()]
+%% }
+-type evaluation_result_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -147,6 +167,13 @@
 
 
 %% Example:
+%% duplicate_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -184,6 +211,13 @@
 
 
 %% Example:
+%% retryable_conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type retryable_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_browser_sessions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -201,6 +235,16 @@
 %%   <<"timestamp">> => [non_neg_integer()]
 %% }
 -type memory_record_create_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_job_filter_input() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"sessionId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"strategyId">> => [string()]
+%% }
+-type extraction_job_filter_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -302,6 +346,14 @@
 
 
 %% Example:
+%% list_memory_extraction_jobs_output() :: #{
+%%   <<"jobs">> => list(extraction_job_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_extraction_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% tool_arguments() :: #{
 %%   <<"clearContext">> => [boolean()],
 %%   <<"code">> => string(),
@@ -329,6 +381,15 @@
 %%   <<"uri">> => [string()]
 %% }
 -type content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memory_extraction_jobs_input() :: #{
+%%   <<"filter">> => extraction_job_filter_input(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_extraction_jobs_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -374,6 +435,14 @@
 
 
 %% Example:
+%% start_memory_extraction_job_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"extractionJob">> := extraction_job()
+%% }
+-type start_memory_extraction_job_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttled_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -393,6 +462,7 @@
 %% Example:
 %% start_browser_session_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"extensions">> => list(browser_extension()),
 %%   <<"name">> => string(),
 %%   <<"sessionTimeoutSeconds">> => integer(),
 %%   <<"traceId">> => [string()],
@@ -408,6 +478,13 @@
 %%   <<"name">> => string()
 %% }
 -type branch_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_memory_extraction_job_output() :: #{
+%%   <<"jobId">> => [string()]
+%% }
+-type start_memory_extraction_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -447,6 +524,19 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_job_metadata() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"failureReason">> => [string()],
+%%   <<"jobID">> => [string()],
+%%   <<"messages">> => list(),
+%%   <<"sessionId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"strategyId">> => [string()]
+%% }
+-type extraction_job_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_input() :: #{}
@@ -530,6 +620,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"memoryRecordId">> => string(),
 %%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
 %%   <<"namespaces">> => list(string()),
 %%   <<"score">> => [float()]
 %% }
@@ -542,6 +633,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_metadata() :: #{
+%%   <<"eventId">> => [string()],
+%%   <<"messageIndex">> => [integer()]
+%% }
+-type message_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -625,10 +724,35 @@
 
 
 %% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"prefix">> => [string()],
+%%   <<"versionId">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_event_output() :: #{
 %%   <<"eventId">> => string()
 %% }
 -type delete_event_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_context() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"spanId">> => [string()],
+%%   <<"traceId">> => [string()]
+%% }
+-type span_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_response() :: #{
+%%   <<"evaluationResults">> => list(evaluation_result_content())
+%% }
+-type evaluate_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_memory_record_input() :: #{}
@@ -696,6 +820,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"memoryRecordId">> => string(),
 %%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
 %%   <<"namespaces">> => list(string())
 %% }
 -type memory_record() :: #{binary() => any()}.
@@ -719,6 +844,15 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_usage() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type token_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -769,6 +903,7 @@
 %% get_browser_session_response() :: #{
 %%   <<"browserIdentifier">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"extensions">> => list(browser_extension()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"sessionId">> => string(),
@@ -816,6 +951,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_extension() :: #{
+%%   <<"location">> => list()
+%% }
+-type browser_extension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -908,6 +1050,14 @@
 
 
 %% Example:
+%% evaluate_request() :: #{
+%%   <<"evaluationInput">> := list(),
+%%   <<"evaluationTarget">> => list()
+%% }
+-type evaluate_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_resource_api_key_response() :: #{
 %%   <<"apiKey">> => string()
 %% }
@@ -947,6 +1097,7 @@
 %% Example:
 %% search_criteria() :: #{
 %%   <<"memoryStrategyId">> => string(),
+%%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
 %%   <<"searchQuery">> => string(),
 %%   <<"topK">> => [integer()]
 %% }
@@ -1002,6 +1153,22 @@
 
 
 %% Example:
+%% memory_metadata_filter_expression() :: #{
+%%   <<"left">> => list(),
+%%   <<"operator">> => list(any()),
+%%   <<"right">> => list()
+%% }
+-type memory_metadata_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_job() :: #{
+%%   <<"jobId">> => [string()]
+%% }
+-type extraction_job() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_client_error() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1046,7 +1213,8 @@
     service_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    retryable_conflict_exception().
 
 -type delete_event_errors() ::
     validation_exception() | 
@@ -1065,6 +1233,17 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type evaluate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception() | 
+    duplicate_id_exception().
 
 -type get_agent_card_errors() ::
     runtime_client_error() | 
@@ -1197,6 +1376,14 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type list_memory_extraction_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
 -type list_memory_records_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1241,6 +1428,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type start_memory_extraction_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
 
 -type stop_browser_session_errors() ::
     throttling_exception() | 
@@ -1544,6 +1739,44 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Performs on-demand evaluation of agent traces using a specified
+%% evaluator.
+%%
+%% This synchronous API accepts traces in OpenTelemetry format and returns
+%% immediate scoring results with detailed explanations.
+-spec evaluate(aws_client:aws_client(), binary() | list(), evaluate_request()) ->
+    {ok, evaluate_response(), tuple()} |
+    {error, any()} |
+    {error, evaluate_errors(), tuple()}.
+evaluate(Client, EvaluatorId, Input) ->
+    evaluate(Client, EvaluatorId, Input, []).
+
+-spec evaluate(aws_client:aws_client(), binary() | list(), evaluate_request(), proplists:proplist()) ->
+    {ok, evaluate_response(), tuple()} |
+    {error, any()} |
+    {error, evaluate_errors(), tuple()}.
+evaluate(Client, EvaluatorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluations/evaluate/", aws_util:encode_uri(EvaluatorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the A2A agent card associated with an AgentCore Runtime
 %% agent.
 -spec get_agent_card(aws_client:aws_client(), binary() | list()) ->
@@ -1619,13 +1852,13 @@ get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, Options0)
 %% The following operations are related to `GetBrowserSession':
 %%
 %% StartBrowserSession:
-%% https://docs.aws.amazon.com/API_StartBrowserSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartBrowserSession.html
 %%
 %% ListBrowserSessions:
-%% https://docs.aws.amazon.com/API_ListBrowserSessions.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_ListBrowserSessions.html
 %%
 %% StopBrowserSession:
-%% https://docs.aws.amazon.com/API_StopBrowserSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopBrowserSession.html
 -spec get_browser_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_browser_session_response(), tuple()} |
     {error, any()} |
@@ -1679,13 +1912,13 @@ get_browser_session(Client, BrowserIdentifier, SessionId, QueryMap, HeadersMap, 
 %% The following operations are related to `GetCodeInterpreterSession':
 %%
 %% StartCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StartCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartCodeInterpreterSession.html
 %%
 %% ListCodeInterpreterSessions:
-%% https://docs.aws.amazon.com/API_ListCodeInterpreterSessions.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_ListCodeInterpreterSessions.html
 %%
 %% StopCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StopCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopCodeInterpreterSession.html
 -spec get_code_interpreter_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_code_interpreter_session_response(), tuple()} |
     {error, any()} |
@@ -2094,10 +2327,10 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
 %% The following operations are related to `InvokeCodeInterpreter':
 %%
 %% StartCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StartCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartCodeInterpreterSession.html
 %%
 %% GetCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_GetCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetCodeInterpreterSession.html
 -spec invoke_code_interpreter(aws_client:aws_client(), binary() | list(), invoke_code_interpreter_request()) ->
     {ok, invoke_code_interpreter_response(), tuple()} |
     {error, any()} |
@@ -2206,9 +2439,10 @@ list_actors(Client, MemoryId, Input0, Options0) ->
 %% The following operations are related to `ListBrowserSessions':
 %%
 %% StartBrowserSession:
-%% https://docs.aws.amazon.com/API_StartBrowserSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartBrowserSession.html
 %%
-%% GetBrowserSession: https://docs.aws.amazon.com/API_GetBrowserSession.html
+%% GetBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetBrowserSession.html
 -spec list_browser_sessions(aws_client:aws_client(), binary() | list(), list_browser_sessions_request()) ->
     {ok, list_browser_sessions_response(), tuple()} |
     {error, any()} |
@@ -2258,10 +2492,10 @@ list_browser_sessions(Client, BrowserIdentifier, Input0, Options0) ->
 %% The following operations are related to `ListCodeInterpreterSessions':
 %%
 %% StartCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StartCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartCodeInterpreterSession.html
 %%
 %% GetCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_GetCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetCodeInterpreterSession.html
 -spec list_code_interpreter_sessions(aws_client:aws_client(), binary() | list(), list_code_interpreter_sessions_request()) ->
     {ok, list_code_interpreter_sessions_response(), tuple()} |
     {error, any()} |
@@ -2317,6 +2551,44 @@ list_events(Client, ActorId, MemoryId, SessionId, Input) ->
 list_events(Client, ActorId, MemoryId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/actor/", aws_util:encode_uri(ActorId), "/sessions/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all long-term memory extraction jobs that are eligible to be
+%% started with optional filtering.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:ListMemoryExtractionJobs' permission.
+-spec list_memory_extraction_jobs(aws_client:aws_client(), binary() | list(), list_memory_extraction_jobs_input()) ->
+    {ok, list_memory_extraction_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_memory_extraction_jobs_errors(), tuple()}.
+list_memory_extraction_jobs(Client, MemoryId, Input) ->
+    list_memory_extraction_jobs(Client, MemoryId, Input, []).
+
+-spec list_memory_extraction_jobs(aws_client:aws_client(), binary() | list(), list_memory_extraction_jobs_input(), proplists:proplist()) ->
+    {ok, list_memory_extraction_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_memory_extraction_jobs_errors(), tuple()}.
+list_memory_extraction_jobs(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/extractionJobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2472,13 +2744,14 @@ retrieve_memory_records(Client, MemoryId, Input0, Options0) ->
 %%
 %% The following operations are related to `StartBrowserSession':
 %%
-%% GetBrowserSession: https://docs.aws.amazon.com/API_GetBrowserSession.html
+%% GetBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetBrowserSession.html
 %%
 %% UpdateBrowserStream:
-%% https://docs.aws.amazon.com/API_UpdateBrowserStream.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_UpdateBrowserStream.html
 %%
 %% StopBrowserSession:
-%% https://docs.aws.amazon.com/API_StopBrowserSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopBrowserSession.html
 -spec start_browser_session(aws_client:aws_client(), binary() | list(), start_browser_session_request()) ->
     {ok, start_browser_session_response(), tuple()} |
     {error, any()} |
@@ -2528,13 +2801,13 @@ start_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
 %% The following operations are related to `StartCodeInterpreterSession':
 %%
 %% InvokeCodeInterpreter:
-%% https://docs.aws.amazon.com/API_InvokeCodeInterpreter.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_InvokeCodeInterpreter.html
 %%
 %% GetCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_GetCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetCodeInterpreterSession.html
 %%
 %% StopCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StopCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopCodeInterpreterSession.html
 -spec start_code_interpreter_session(aws_client:aws_client(), binary() | list(), start_code_interpreter_session_request()) ->
     {ok, start_code_interpreter_session_response(), tuple()} |
     {error, any()} |
@@ -2571,6 +2844,48 @@ start_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a memory extraction job that processes events that failed
+%% extraction previously in an AgentCore Memory resource and produces
+%% structured memory records.
+%%
+%% When earlier extraction attempts have left events unprocessed, this job
+%% will pick up and extract those as well.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:StartMemoryExtractionJob' permission.
+-spec start_memory_extraction_job(aws_client:aws_client(), binary() | list(), start_memory_extraction_job_input()) ->
+    {ok, start_memory_extraction_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_memory_extraction_job_errors(), tuple()}.
+start_memory_extraction_job(Client, MemoryId, Input) ->
+    start_memory_extraction_job(Client, MemoryId, Input, []).
+
+-spec start_memory_extraction_job(aws_client:aws_client(), binary() | list(), start_memory_extraction_job_input(), proplists:proplist()) ->
+    {ok, start_memory_extraction_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_memory_extraction_job_errors(), tuple()}.
+start_memory_extraction_job(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/extractionJobs/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Terminates an active browser session in Amazon Bedrock.
 %%
 %% This operation stops the session, releases associated resources, and makes
@@ -2583,9 +2898,10 @@ start_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Option
 %% The following operations are related to `StopBrowserSession':
 %%
 %% StartBrowserSession:
-%% https://docs.aws.amazon.com/API_StartBrowserSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartBrowserSession.html
 %%
-%% GetBrowserSession: https://docs.aws.amazon.com/API_GetBrowserSession.html
+%% GetBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetBrowserSession.html
 -spec stop_browser_session(aws_client:aws_client(), binary() | list(), stop_browser_session_request()) ->
     {ok, stop_browser_session_response(), tuple()} |
     {error, any()} |
@@ -2636,10 +2952,10 @@ stop_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
 %% The following operations are related to `StopCodeInterpreterSession':
 %%
 %% StartCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_StartCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartCodeInterpreterSession.html
 %%
 %% GetCodeInterpreterSession:
-%% https://docs.aws.amazon.com/API_GetCodeInterpreterSession.html
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetCodeInterpreterSession.html
 -spec stop_code_interpreter_session(aws_client:aws_client(), binary() | list(), stop_code_interpreter_session_request()) ->
     {ok, stop_code_interpreter_session_response(), tuple()} |
     {error, any()} |

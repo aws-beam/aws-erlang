@@ -18,6 +18,8 @@
 
 -export([batch_get_collection/2,
          batch_get_collection/3,
+         batch_get_collection_group/2,
+         batch_get_collection_group/3,
          batch_get_effective_lifecycle_policy/2,
          batch_get_effective_lifecycle_policy/3,
          batch_get_lifecycle_policy/2,
@@ -28,6 +30,8 @@
          create_access_policy/3,
          create_collection/2,
          create_collection/3,
+         create_collection_group/2,
+         create_collection_group/3,
          create_index/2,
          create_index/3,
          create_lifecycle_policy/2,
@@ -42,6 +46,8 @@
          delete_access_policy/3,
          delete_collection/2,
          delete_collection/3,
+         delete_collection_group/2,
+         delete_collection_group/3,
          delete_index/2,
          delete_index/3,
          delete_lifecycle_policy/2,
@@ -66,6 +72,8 @@
          get_security_policy/3,
          list_access_policies/2,
          list_access_policies/3,
+         list_collection_groups/2,
+         list_collection_groups/3,
          list_collections/2,
          list_collections/3,
          list_lifecycle_policies/2,
@@ -88,6 +96,8 @@
          update_account_settings/3,
          update_collection/2,
          update_collection/3,
+         update_collection_group/2,
+         update_collection_group/3,
          update_index/2,
          update_index/3,
          update_lifecycle_policy/2,
@@ -104,6 +114,7 @@
 
 %% Example:
 %% collection_filters() :: #{
+%%   <<"collectionGroupName">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }
@@ -121,6 +132,13 @@
 %%   <<"identifiers">> := list(lifecycle_policy_identifier())
 %% }
 -type batch_get_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_collection_groups_response() :: #{
+%%   <<"collectionGroupSummaries">> => list(collection_group_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collection_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_endpoint_detail() :: #{
@@ -147,6 +165,13 @@
 %%   <<"userAttribute">> => string()
 %% }
 -type iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_config() :: #{
+%%   <<"aWSOwnedKey">> => [boolean()],
+%%   <<"kmsKeyArn">> => [string()]
+%% }
+-type encryption_config() :: #{binary() => any()}.
 
 %% Example:
 %% collection_error_detail() :: #{
@@ -241,7 +266,9 @@
 %% Example:
 %% collection_summary() :: #{
 %%   <<"arn">> => [string()],
+%%   <<"collectionGroupName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => [string()],
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }
@@ -300,6 +327,7 @@
 %% collection_detail() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"collectionEndpoint">> => [string()],
+%%   <<"collectionGroupName">> => string(),
 %%   <<"createdDate">> => [float()],
 %%   <<"dashboardEndpoint">> => [string()],
 %%   <<"description">> => [string()],
@@ -312,7 +340,8 @@
 %%   <<"name">> => string(),
 %%   <<"standbyReplicas">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
 %% }
 -type collection_detail() :: #{binary() => any()}.
 
@@ -329,6 +358,12 @@
 %%   <<"type">> := string()
 %% }
 -type delete_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_group_response() :: #{
+
+%% }
+-type delete_collection_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_lifecycle_policies_request() :: #{
@@ -378,11 +413,44 @@
 -type delete_vpc_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_collection_group_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"standbyReplicas">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_collection_group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% collection_group_error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type collection_group_error_detail() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_group_request() :: #{
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"name">> := string(),
+%%   <<"standbyReplicas">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_collection_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_vpc_endpoint_request() :: #{
@@ -396,6 +464,17 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_collections_response() :: #{binary() => any()}.
+
+%% Example:
+%% collection_group_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"numberOfCollections">> => [integer()]
+%% }
+-type collection_group_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_security_policy_response() :: #{
@@ -416,6 +495,12 @@
 %%   <<"id">> => string()
 %% }
 -type vpc_endpoint_error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% vector_options() :: #{
+%%   <<"ServerlessVectorAcceleration">> => string()
+%% }
+-type vector_options() :: #{binary() => any()}.
 
 %% Example:
 %% lifecycle_policy_resource_identifier() :: #{
@@ -553,6 +638,20 @@
 -type list_collections_request() :: #{binary() => any()}.
 
 %% Example:
+%% collection_group_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"numberOfCollections">> => [integer()],
+%%   <<"standbyReplicas">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type collection_group_detail() :: #{binary() => any()}.
+
+%% Example:
 %% delete_collection_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"id">> := string()
@@ -651,11 +750,14 @@
 %% Example:
 %% create_collection_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"collectionGroupName">> => string(),
 %%   <<"description">> => [string()],
+%%   <<"encryptionConfig">> => encryption_config(),
 %%   <<"name">> := string(),
 %%   <<"standbyReplicas">> => string(),
 %%   <<"tags">> => list(tag()),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
 %% }
 -type create_collection_request() :: #{binary() => any()}.
 
@@ -664,6 +766,13 @@
 %%   <<"UpdateVpcEndpointDetail">> => update_vpc_endpoint_detail()
 %% }
 -type update_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_collection_group_request() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"names">> => list(string())
+%% }
+-type batch_get_collection_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -688,6 +797,15 @@
 %%   <<"lifecyclePolicyDetail">> => lifecycle_policy_detail()
 %% }
 -type create_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% collection_group_capacity_limits() :: #{
+%%   <<"maxIndexingCapacityInOCU">> => float(),
+%%   <<"maxSearchCapacityInOCU">> => float(),
+%%   <<"minIndexingCapacityInOCU">> => float(),
+%%   <<"minSearchCapacityInOCU">> => float()
+%% }
+-type collection_group_capacity_limits() :: #{binary() => any()}.
 
 %% Example:
 %% security_config_detail() :: #{
@@ -780,6 +898,13 @@
 -type update_index_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_collection_groups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collection_groups_request() :: #{binary() => any()}.
+
+%% Example:
 %% access_policy_detail() :: #{
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => string(),
@@ -823,6 +948,13 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_collection_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% lifecycle_policy_stats() :: #{
@@ -873,6 +1005,13 @@
 -type capacity_limits() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_collection_group_response() :: #{
+%%   <<"collectionGroupDetails">> => list(collection_group_detail()),
+%%   <<"collectionGroupErrorDetails">> => list(collection_group_error_detail())
+%% }
+-type batch_get_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
 %% batch_get_effective_lifecycle_policy_response() :: #{
 %%   <<"effectiveLifecyclePolicyDetails">> => list(effective_lifecycle_policy_detail()),
 %%   <<"effectiveLifecyclePolicyErrorDetails">> => list(effective_lifecycle_policy_error_detail())
@@ -918,6 +1057,24 @@
 -type access_policy_stats() :: #{binary() => any()}.
 
 %% Example:
+%% update_collection_group_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string()
+%% }
+-type update_collection_group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_group_response() :: #{
+%%   <<"updateCollectionGroupDetail">> => update_collection_group_detail()
+%% }
+-type update_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
 %% ocu_limit_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -930,6 +1087,15 @@
 %%   <<"id">> := string()
 %% }
 -type update_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_group_request() :: #{
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> := string()
+%% }
+-type update_collection_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_vpc_endpoint_response() :: #{
@@ -960,6 +1126,12 @@
 %%   <<"type">> := string()
 %% }
 -type update_security_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_group_response() :: #{
+%%   <<"createCollectionGroupDetail">> => create_collection_group_detail()
+%% }
+-type create_collection_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_collection_detail() :: #{
@@ -1068,6 +1240,7 @@
 %% Example:
 %% create_collection_detail() :: #{
 %%   <<"arn">> => [string()],
+%%   <<"collectionGroupName">> => string(),
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
@@ -1076,7 +1249,8 @@
 %%   <<"name">> => string(),
 %%   <<"standbyReplicas">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
 %% }
 -type create_collection_detail() :: #{binary() => any()}.
 
@@ -1118,6 +1292,10 @@
     validation_exception() | 
     internal_server_exception().
 
+-type batch_get_collection_group_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type batch_get_effective_lifecycle_policy_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -1138,6 +1316,12 @@
 
 -type create_collection_errors() ::
     ocu_limit_exceeded_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_collection_group_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
@@ -1180,6 +1364,12 @@
     conflict_exception().
 
 -type delete_collection_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_collection_group_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
@@ -1245,6 +1435,10 @@
     validation_exception() | 
     internal_server_exception().
 
+-type list_collection_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type list_collections_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -1291,11 +1485,18 @@
 
 -type update_account_settings_errors() ::
     validation_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
 
 -type update_collection_errors() ::
     validation_exception() | 
     internal_server_exception() | 
+    conflict_exception().
+
+-type update_collection_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type update_index_errors() ::
@@ -1354,6 +1555,28 @@ batch_get_collection(Client, Input)
 batch_get_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCollection">>, Input, Options).
+
+%% @doc Returns attributes for one or more collection groups, including
+%% capacity limits and the number of collections in each group.
+%%
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
+-spec batch_get_collection_group(aws_client:aws_client(), batch_get_collection_group_request()) ->
+    {ok, batch_get_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_collection_group_errors(), tuple()}.
+batch_get_collection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_collection_group(Client, Input, []).
+
+-spec batch_get_collection_group(aws_client:aws_client(), batch_get_collection_group_request(), proplists:proplist()) ->
+    {ok, batch_get_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_collection_group_errors(), tuple()}.
+batch_get_collection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetCollectionGroup">>, Input, Options).
 
 %% @doc Returns a list of successful and failed retrievals for the OpenSearch
 %% Serverless indexes.
@@ -1462,6 +1685,30 @@ create_collection(Client, Input)
 create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
+
+%% @doc Creates a collection group within OpenSearch Serverless.
+%%
+%% Collection groups let you manage OpenSearch Compute Units (OCUs) at a
+%% group level, with multiple collections sharing the group's capacity
+%% limits.
+%%
+%% For more information, see Managing collection groups:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-collection-groups.html.
+-spec create_collection_group(aws_client:aws_client(), create_collection_group_request()) ->
+    {ok, create_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_collection_group_errors(), tuple()}.
+create_collection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_collection_group(Client, Input, []).
+
+-spec create_collection_group(aws_client:aws_client(), create_collection_group_request(), proplists:proplist()) ->
+    {ok, create_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_collection_group_errors(), tuple()}.
+create_collection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCollectionGroup">>, Input, Options).
 
 %% @doc Creates an index within an OpenSearch Serverless collection.
 %%
@@ -1619,6 +1866,28 @@ delete_collection(Client, Input)
 delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
+
+%% @doc Deletes a collection group.
+%%
+%% You can only delete empty collection groups that contain no collections.
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
+-spec delete_collection_group(aws_client:aws_client(), delete_collection_group_request()) ->
+    {ok, delete_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_collection_group_errors(), tuple()}.
+delete_collection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_collection_group(Client, Input, []).
+
+-spec delete_collection_group(aws_client:aws_client(), delete_collection_group_request(), proplists:proplist()) ->
+    {ok, delete_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_collection_group_errors(), tuple()}.
+delete_collection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCollectionGroup">>, Input, Options).
 
 %% @doc Deletes an index from an OpenSearch Serverless collection.
 %%
@@ -1863,6 +2132,27 @@ list_access_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessPolicies">>, Input, Options).
 
+%% @doc Returns a list of collection groups.
+%%
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
+-spec list_collection_groups(aws_client:aws_client(), list_collection_groups_request()) ->
+    {ok, list_collection_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_collection_groups_errors(), tuple()}.
+list_collection_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_collection_groups(Client, Input, []).
+
+-spec list_collection_groups(aws_client:aws_client(), list_collection_groups_request(), proplists:proplist()) ->
+    {ok, list_collection_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_collection_groups_errors(), tuple()}.
+list_collection_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCollectionGroups">>, Input, Options).
+
 %% @doc Lists all OpenSearch Serverless collections.
 %%
 %% For more information, see Creating and managing Amazon OpenSearch
@@ -2091,6 +2381,23 @@ update_collection(Client, Input)
 update_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCollection">>, Input, Options).
+
+%% @doc Updates the description and capacity limits of a collection group.
+-spec update_collection_group(aws_client:aws_client(), update_collection_group_request()) ->
+    {ok, update_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_collection_group_errors(), tuple()}.
+update_collection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_collection_group(Client, Input, []).
+
+-spec update_collection_group(aws_client:aws_client(), update_collection_group_request(), proplists:proplist()) ->
+    {ok, update_collection_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_collection_group_errors(), tuple()}.
+update_collection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCollectionGroup">>, Input, Options).
 
 %% @doc Updates an existing index in an OpenSearch Serverless collection.
 %%

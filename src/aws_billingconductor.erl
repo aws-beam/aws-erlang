@@ -597,7 +597,8 @@
 %% Example:
 %% account_grouping() :: #{
 %%   <<"AutoAssociate">> => [boolean()],
-%%   <<"LinkedAccountIds">> => list(string())
+%%   <<"LinkedAccountIds">> => list(string()),
+%%   <<"ResponsibilityTransferArn">> => string()
 %% }
 -type account_grouping() :: #{binary() => any()}.
 
@@ -753,6 +754,7 @@
 %% Example:
 %% line_item_filter() :: #{
 %%   <<"Attribute">> => list(any()),
+%%   <<"AttributeValues">> => list(string()),
 %%   <<"MatchOption">> => list(any()),
 %%   <<"Values">> => list(list(any())())
 %% }
@@ -779,7 +781,11 @@
 %% list_billing_groups_filter() :: #{
 %%   <<"Arns">> => list(string()),
 %%   <<"AutoAssociate">> => [boolean()],
+%%   <<"BillingGroupTypes">> => list(list(any())()),
+%%   <<"Names">> => list(string_search()),
 %%   <<"PricingPlan">> => string(),
+%%   <<"PrimaryAccountIds">> => list(string()),
+%%   <<"ResponsibilityTransferArns">> => list(string()),
 %%   <<"Statuses">> => list(list(any())())
 %% }
 -type list_billing_groups_filter() :: #{binary() => any()}.
@@ -795,7 +801,8 @@
 
 %% Example:
 %% list_billing_group_account_grouping() :: #{
-%%   <<"AutoAssociate">> => [boolean()]
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"ResponsibilityTransferArn">> => string()
 %% }
 -type list_billing_group_account_grouping() :: #{binary() => any()}.
 
@@ -838,7 +845,8 @@
 
 %% Example:
 %% update_billing_group_account_grouping() :: #{
-%%   <<"AutoAssociate">> => [boolean()]
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"ResponsibilityTransferArn">> => string()
 %% }
 -type update_billing_group_account_grouping() :: #{binary() => any()}.
 
@@ -964,6 +972,7 @@
 %% billing_group_list_element() :: #{
 %%   <<"AccountGrouping">> => list_billing_group_account_grouping(),
 %%   <<"Arn">> => string(),
+%%   <<"BillingGroupType">> => list(any()),
 %%   <<"ComputationPreference">> => computation_preference(),
 %%   <<"CreationTime">> => float(),
 %%   <<"Description">> => string(),
@@ -1107,6 +1116,14 @@
 %%   <<"SuccessfullyAssociatedResources">> => list(associate_resource_response_element())
 %% }
 -type batch_associate_resources_to_custom_line_item_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_search() :: #{
+%%   <<"SearchOption">> => list(any()),
+%%   <<"SearchValue">> => string()
+%% }
+-type string_search() :: #{binary() => any()}.
 
 
 %% Example:

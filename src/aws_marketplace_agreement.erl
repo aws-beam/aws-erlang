@@ -10,10 +10,9 @@
 %% listing, searching, and filtering agreements.
 %%
 %% To manage agreements in AWS Marketplace, you must ensure that your AWS
-%% Identity and
-%% Access Management (IAM) policies and roles are set up. The user must have
-%% the required
-%% policies/permissions that allow them to carry out the actions in AWS:
+%% Identity and Access Management (IAM) policies and roles are set up. The
+%% user must have the required policies/permissions that allow them to carry
+%% out the actions in AWS:
 %%
 %% `DescribeAgreement' – Grants permission to users to obtain detailed
 %% meta data about any of their agreements.
@@ -284,6 +283,15 @@
 -type configurable_upfront_rate_card_item() :: #{binary() => any()}.
 
 %% Example:
+%% variable_payment_term() :: #{
+%%   <<"configuration">> => variable_payment_term_configuration(),
+%%   <<"currencyCode">> => string(),
+%%   <<"maxTotalChargeAmount">> => string(),
+%%   <<"type">> => string()
+%% }
+-type variable_payment_term() :: #{binary() => any()}.
+
+%% Example:
 %% schedule_item() :: #{
 %%   <<"chargeAmount">> => string(),
 %%   <<"chargeDate">> => non_neg_integer()
@@ -302,6 +310,7 @@
 %% Example:
 %% proposal_summary() :: #{
 %%   <<"offerId">> => string(),
+%%   <<"offerSetId">> => string(),
 %%   <<"resources">> => list(resource())
 %% }
 -type proposal_summary() :: #{binary() => any()}.
@@ -343,6 +352,13 @@
 %%   <<"price">> => string()
 %% }
 -type rate_card_item() :: #{binary() => any()}.
+
+%% Example:
+%% variable_payment_term_configuration() :: #{
+%%   <<"expirationDuration">> => string(),
+%%   <<"paymentRequestApprovalStrategy">> => list(any())
+%% }
+-type variable_payment_term_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% configurable_upfront_pricing_term() :: #{
@@ -403,8 +419,7 @@ describe_agreement(Client, Input, Options)
     request(Client, <<"DescribeAgreement">>, Input, Options).
 
 %% @doc Obtains details about the terms in an agreement that you participated
-%% in as proposer or
-%% acceptor.
+%% in as proposer or acceptor.
 %%
 %% The details include:
 %%
@@ -412,19 +427,16 @@ describe_agreement(Client, Input, Options)
 %% `RenewalTerm', or `ConfigurableUpfrontPricingTerm'.
 %%
 %% `TermID' – The ID of the particular term, which is common between
-%% offer
-%% and agreement.
+%% offer and agreement.
 %%
 %% `TermPayload' – The key information contained in the term, such as the
 %% EULA for `LegalTerm' or pricing and dimensions for various pricing
-%% terms,
-%% such as `ConfigurableUpfrontPricingTerm' or
+%% terms, such as `ConfigurableUpfrontPricingTerm' or
 %% `UsageBasedPricingTerm'.
 %%
 %% `Configuration' – The buyer/acceptor's selection at the time of
 %% agreement creation, such as the number of units purchased for a dimension
-%% or setting
-%% the `EnableAutoRenew' flag.
+%% or setting the `EnableAutoRenew' flag.
 -spec get_agreement_terms(aws_client:aws_client(), get_agreement_terms_input()) ->
     {ok, get_agreement_terms_output(), tuple()} |
     {error, any()} |
@@ -441,56 +453,98 @@ get_agreement_terms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementTerms">>, Input, Options).
 
-%% @doc Searches across all agreements that a proposer or an acceptor has in
-%% AWS Marketplace.
+%% @doc Searches across all agreements that a proposer has in AWS
+%% Marketplace.
 %%
 %% The search returns a list of agreements with basic agreement information.
 %%
-%% The following filter combinations are supported:
+%% The following filter combinations are supported when the `PartyType'
+%% is `Proposer':
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `ResourceIdentifier'
+%% `AgreementType'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `OfferId'
+%% `AgreementType' + `EndTime'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId'
+%% `AgreementType' + `ResourceType'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
+%% `AgreementType' + `ResourceType' + `EndTime'
+%%
+%% `AgreementType' + `ResourceType' + `Status'
+%%
+%% `AgreementType' + `ResourceType' + `Status' + `EndTime'
+%%
+%% `AgreementType' + `ResourceId'
+%%
+%% `AgreementType' + `ResourceId' + `EndTime'
+%%
+%% `AgreementType' + `ResourceId' + `Status'
+%%
+%% `AgreementType' + `ResourceId' + `Status' + `EndTime'
+%%
+%% `AgreementType' + `AcceptorAccountId'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `EndTime'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `Status'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `Status' +
+%% `EndTime'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `OfferId'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
 %% `Status'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `ResourceIdentifier' + `Status'
+%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
+%% `EndTime'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `OfferId' + `Status'
+%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
+%% `Status' + `EndTime'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `Status'
+%% `AgreementType' + `AcceptorAccountId' + `ResourceId'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `ResourceType' + `Status'
-%%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceType' +
+%% `AgreementType' + `AcceptorAccountId' + `ResourceId' +
 %% `Status'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `OfferId'
+%% `AgreementType' + `AcceptorAccountId' + `ResourceId' +
+%% `EndTime'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `OfferId' + `Status'
+%% `AgreementType' + `AcceptorAccountId' + `ResourceId' +
+%% `Status' + `EndTime'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceIdentifier'
+%% `AgreementType' + `AcceptorAccountId' + `ResourceType'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceIdentifier' +
+%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
+%% `EndTime'
+%%
+%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
 %% `Status'
 %%
-%% `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceType'
+%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
+%% `Status' + `EndTime'
+%%
+%% `AgreementType' + `Status'
+%%
+%% `AgreementType' + `Status' + `EndTime'
+%%
+%% `AgreementType' + `OfferId'
+%%
+%% `AgreementType' + `OfferId' + `EndTime'
+%%
+%% `AgreementType' + `OfferId' + `Status'
+%%
+%% `AgreementType' + `OfferId' + `Status' + `EndTime'
+%%
+%% `AgreementType' + `OfferSetId'
+%%
+%% `AgreementType' + `OfferSetId' + `EndTime'
+%%
+%% `AgreementType' + `OfferSetId' + `Status'
+%%
+%% `AgreementType' + `OfferSetId' + `Status' + `EndTime'
+%%
+%% To filter by `EndTime', you can use either `BeforeEndTime' or
+%% `AfterEndTime'. Only `EndTime' is supported for sorting.
 -spec search_agreements(aws_client:aws_client(), search_agreements_input()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |

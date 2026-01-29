@@ -62,6 +62,10 @@
          create_job/3,
          create_quantum_task/2,
          create_quantum_task/3,
+         create_spending_limit/2,
+         create_spending_limit/3,
+         delete_spending_limit/3,
+         delete_spending_limit/4,
          get_device/2,
          get_device/4,
          get_device/5,
@@ -80,10 +84,14 @@
          search_jobs/3,
          search_quantum_tasks/2,
          search_quantum_tasks/3,
+         search_spending_limits/2,
+         search_spending_limits/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_spending_limit/3,
+         update_spending_limit/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -124,6 +132,14 @@
 
 
 %% Example:
+%% search_spending_limits_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"spendingLimits">> => list(spending_limit_summary())
+%% }
+-type search_spending_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_quantum_task_request() :: #{
 %%   <<"additionalAttributeNames">> => list(string())
 %% }
@@ -159,11 +175,44 @@
 
 
 %% Example:
+%% search_spending_limits_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type search_spending_limits_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spending_limits_request() :: #{
+%%   <<"filters">> => list(search_spending_limits_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_spending_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_quantum_task_response() :: #{
 %%   <<"cancellationStatus">> := string(),
 %%   <<"quantumTaskArn">> := string()
 %% }
 -type cancel_quantum_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% spending_limit_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deviceArn">> => string(),
+%%   <<"queuedSpend">> => [string()],
+%%   <<"spendingLimit">> => [string()],
+%%   <<"spendingLimitArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timePeriod">> => time_period(),
+%%   <<"totalSpend">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type spending_limit_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -268,6 +317,18 @@
 
 
 %% Example:
+%% time_period() :: #{
+%%   <<"endAt">> => [non_neg_integer()],
+%%   <<"startAt">> => [non_neg_integer()]
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% delete_spending_limit_request() :: #{}
+-type delete_spending_limit_request() :: #{}.
+
+
+%% Example:
 %% algorithm_specification() :: #{
 %%   <<"containerImage">> => container_image(),
 %%   <<"scriptModeConfig">> => script_mode_config()
@@ -323,6 +384,15 @@
 
 
 %% Example:
+%% update_spending_limit_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"spendingLimit">> => [string()],
+%%   <<"timePeriod">> => time_period()
+%% }
+-type update_spending_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -334,6 +404,10 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_spending_limit_response() :: #{}
+-type update_spending_limit_response() :: #{}.
 
 
 %% Example:
@@ -350,6 +424,13 @@
 %%   <<"programIndex">> => [float()]
 %% }
 -type program_set_validation_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_spending_limit_response() :: #{
+%%   <<"spendingLimitArn">> => string()
+%% }
+-type create_spending_limit_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,6 +624,10 @@
 %% }
 -type instance_config() :: #{binary() => any()}.
 
+%% Example:
+%% delete_spending_limit_response() :: #{}
+-type delete_spending_limit_response() :: #{}.
+
 
 %% Example:
 %% get_job_request() :: #{
@@ -580,6 +665,17 @@
 %%   <<"jobArn">> := string()
 %% }
 -type cancel_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_spending_limit_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"deviceArn">> := string(),
+%%   <<"spendingLimit">> := [string()],
+%%   <<"tags">> => map(),
+%%   <<"timePeriod">> => time_period()
+%% }
+-type create_spending_limit_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -645,6 +741,20 @@
     device_retired_exception() | 
     device_offline_exception().
 
+-type create_spending_limit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_exception() | 
+    device_retired_exception().
+
+-type delete_spending_limit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type get_device_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -689,6 +799,12 @@
     access_denied_exception() | 
     internal_service_exception().
 
+-type search_spending_limits_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_exception().
+
 -type tag_resource_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -696,6 +812,13 @@
 
 -type untag_resource_errors() ::
     validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_spending_limit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -821,6 +944,82 @@ create_quantum_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/quantum-task"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a spending limit for a specified quantum device.
+%%
+%% Spending limits help you control costs by setting maximum amounts that can
+%% be spent on quantum computing tasks within a specified time period.
+%% Simulators do not support spending limits.
+-spec create_spending_limit(aws_client:aws_client(), create_spending_limit_request()) ->
+    {ok, create_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_spending_limit_errors(), tuple()}.
+create_spending_limit(Client, Input) ->
+    create_spending_limit(Client, Input, []).
+
+-spec create_spending_limit(aws_client:aws_client(), create_spending_limit_request(), proplists:proplist()) ->
+    {ok, create_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_spending_limit_errors(), tuple()}.
+create_spending_limit(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/spending-limit"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing spending limit.
+%%
+%% This operation permanently removes the spending limit and cannot be
+%% undone. After deletion, the associated device becomes unrestricted for
+%% spending.
+-spec delete_spending_limit(aws_client:aws_client(), binary() | list(), delete_spending_limit_request()) ->
+    {ok, delete_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_spending_limit_errors(), tuple()}.
+delete_spending_limit(Client, SpendingLimitArn, Input) ->
+    delete_spending_limit(Client, SpendingLimitArn, Input, []).
+
+-spec delete_spending_limit(aws_client:aws_client(), binary() | list(), delete_spending_limit_request(), proplists:proplist()) ->
+    {ok, delete_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_spending_limit_errors(), tuple()}.
+delete_spending_limit(Client, SpendingLimitArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/spending-limit/", aws_util:encode_uri(SpendingLimitArn), "/delete"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1108,6 +1307,44 @@ search_quantum_tasks(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches and lists spending limits based on specified filters.
+%%
+%% This operation supports pagination and allows filtering by various
+%% criteria to find specific spending limits. We recommend using pagination
+%% to ensure that the operation returns quickly and successfully.
+-spec search_spending_limits(aws_client:aws_client(), search_spending_limits_request()) ->
+    {ok, search_spending_limits_response(), tuple()} |
+    {error, any()} |
+    {error, search_spending_limits_errors(), tuple()}.
+search_spending_limits(Client, Input) ->
+    search_spending_limits(Client, Input, []).
+
+-spec search_spending_limits(aws_client:aws_client(), search_spending_limits_request(), proplists:proplist()) ->
+    {ok, search_spending_limits_response(), tuple()} |
+    {error, any()} |
+    {error, search_spending_limits_errors(), tuple()}.
+search_spending_limits(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/spending-limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Add a tag to the specified resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -1175,6 +1412,43 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing spending limit.
+%%
+%% You can modify the spending amount or time period. Changes take effect
+%% immediately.
+-spec update_spending_limit(aws_client:aws_client(), binary() | list(), update_spending_limit_request()) ->
+    {ok, update_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_spending_limit_errors(), tuple()}.
+update_spending_limit(Client, SpendingLimitArn, Input) ->
+    update_spending_limit(Client, SpendingLimitArn, Input, []).
+
+-spec update_spending_limit(aws_client:aws_client(), binary() | list(), update_spending_limit_request(), proplists:proplist()) ->
+    {ok, update_spending_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_spending_limit_errors(), tuple()}.
+update_spending_limit(Client, SpendingLimitArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/spending-limit/", aws_util:encode_uri(SpendingLimitArn), "/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

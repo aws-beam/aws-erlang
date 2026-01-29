@@ -116,6 +116,7 @@
 %% reverse_geocode_request() :: #{
 %%   <<"AdditionalFeatures">> => list(string()),
 %%   <<"Filter">> => reverse_geocode_filter(),
+%%   <<"Heading">> => float(),
 %%   <<"IntendedUse">> => string(),
 %%   <<"Key">> => string(),
 %%   <<"Language">> => string(),
@@ -556,6 +557,7 @@
 
 %% Example:
 %% secondary_address_component() :: #{
+%%   <<"Designator">> => string(),
 %%   <<"Number">> => string()
 %% }
 -type secondary_address_component() :: #{binary() => any()}.
@@ -967,6 +969,10 @@
 %% filtering of results based on geographic location, country, or specific
 %% place types, and can be tailored using optional parameters like language
 %% and political views.
+%%
+%% For more information, see Autocomplete:
+%% https://docs.aws.amazon.com/location/latest/developerguide/autocomplete.html
+%% in the Amazon Location Service Developer Guide.
 -spec autocomplete(aws_client:aws_client(), autocomplete_request()) ->
     {ok, autocomplete_response(), tuple()} |
     {error, any()} |
@@ -1025,6 +1031,10 @@ autocomplete(Client, Input0, Options0) ->
 %% text or structured queries with components like street names, postal
 %% codes, and regions. The Geocode API can also provide additional features
 %% such as time zone information and the inclusion of political views.
+%%
+%% For more information, see Geocode:
+%% https://docs.aws.amazon.com/location/latest/developerguide/geocode.html in
+%% the Amazon Location Service Developer Guide.
 -spec geocode(aws_client:aws_client(), geocode_request()) ->
     {ok, geocode_response(), tuple()} |
     {error, any()} |
@@ -1078,6 +1088,10 @@ geocode(Client, Input0, Options0) ->
 %% @doc `GetPlace' finds a place by its unique ID.
 %%
 %% A `PlaceId' is returned by other place operations.
+%%
+%% For more information, see GetPlace:
+%% https://docs.aws.amazon.com/location/latest/developerguide/get-place.html
+%% in the Amazon Location Service Developer Guide.
 -spec get_place(aws_client:aws_client(), binary() | list()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
@@ -1146,6 +1160,10 @@ get_place(Client, PlaceId, QueryMap, HeadersMap, Options0)
 %% filtering to on place type so that you can refine result based on your
 %% need. Also, The Reverse Geocode API can also provide additional features
 %% such as time zone information and the inclusion of political views.
+%%
+%% For more information, see Reverse Geocode:
+%% https://docs.aws.amazon.com/location/latest/developerguide/reverse-geocode.html
+%% in the Amazon Location Service Developer Guide.
 -spec reverse_geocode(aws_client:aws_client(), reverse_geocode_request()) ->
     {ok, reverse_geocode_response(), tuple()} |
     {error, any()} |
@@ -1203,6 +1221,10 @@ reverse_geocode(Client, Input0, Options0) ->
 %% The API returns details such as a place name, address, phone, category,
 %% food type, contact, opening hours. Also, the API can return phonemes, time
 %% zones and more based on requested parameters.
+%%
+%% For more information, see Search Nearby:
+%% https://docs.aws.amazon.com/location/latest/developerguide/search-nearby.html
+%% in the Amazon Location Service Developer Guide.
 -spec search_nearby(aws_client:aws_client(), search_nearby_request()) ->
     {ok, search_nearby_response(), tuple()} |
     {error, any()} |
@@ -1257,6 +1279,10 @@ search_nearby(Client, Input0, Options0) ->
 %%
 %% You can then complete a follow-up query suggested from the `Suggest'
 %% API via a query id.
+%%
+%% For more information, see Search Text:
+%% https://docs.aws.amazon.com/location/latest/developerguide/search-text.html
+%% in the Amazon Location Service Developer Guide.
 -spec search_text(aws_client:aws_client(), search_text_request()) ->
     {ok, search_text_response(), tuple()} |
     {error, any()} |
@@ -1319,6 +1345,10 @@ search_text(Client, Input0, Options0) ->
 %% filtering results by location and other attributes, and allows for
 %% additional features like phonemes and timezones. The response includes
 %% refined query terms and detailed place information.
+%%
+%% For more information, see Suggest:
+%% https://docs.aws.amazon.com/location/latest/developerguide/suggest.html in
+%% the Amazon Location Service Developer Guide.
 -spec suggest(aws_client:aws_client(), suggest_request()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |

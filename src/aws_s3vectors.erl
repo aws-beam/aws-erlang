@@ -36,6 +36,9 @@
          get_vectors/3,
          list_indexes/2,
          list_indexes/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_vector_buckets/2,
          list_vector_buckets/3,
          list_vectors/2,
@@ -45,7 +48,11 @@
          put_vectors/2,
          put_vectors/3,
          query_vectors/2,
-         query_vectors/3]).
+         query_vectors/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -92,6 +99,7 @@
 %% Example:
 %% create_vector_bucket_input() :: #{
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"tags">> => map(),
 %%   <<"vectorBucketName">> := string()
 %% }
 -type create_vector_bucket_input() :: #{binary() => any()}.
@@ -125,6 +133,13 @@
 %%   <<"message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -189,6 +204,7 @@
 %%   <<"dataType">> => list(any()),
 %%   <<"dimension">> => integer(),
 %%   <<"distanceMetric">> => list(any()),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"indexArn">> => string(),
 %%   <<"indexName">> => string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
@@ -314,10 +330,21 @@
 
 
 %% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_vector_bucket_output() :: #{
 %%   <<"vectorBucket">> => vector_bucket()
 %% }
 -type get_vector_bucket_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
 
 
 %% Example:
@@ -386,6 +413,13 @@
 
 
 %% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_index_input() :: #{
 %%   <<"indexArn">> => string(),
 %%   <<"indexName">> => string(),
@@ -401,6 +435,10 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
 
 %% Example:
 %% delete_index_input() :: #{
@@ -409,6 +447,10 @@
 %%   <<"vectorBucketName">> => string()
 %% }
 -type delete_index_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -452,8 +494,10 @@
 %%   <<"dataType">> := list(any()),
 %%   <<"dimension">> := integer(),
 %%   <<"distanceMetric">> := list(any()),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"indexName">> := string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"tags">> => map(),
 %%   <<"vectorBucketArn">> => string(),
 %%   <<"vectorBucketName">> => string()
 %% }
@@ -497,7 +541,6 @@
 
 %% Example:
 %% query_output_vector() :: #{
-%%   <<"data">> => list(),
 %%   <<"distance">> => [float()],
 %%   <<"key">> => string(),
 %%   <<"metadata">> => any()
@@ -516,10 +559,12 @@
     conflict_exception().
 
 -type delete_index_errors() ::
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    not_found_exception().
 
 -type delete_vector_bucket_errors() ::
     service_unavailable_exception() | 
+    not_found_exception() | 
     conflict_exception().
 
 -type delete_vector_bucket_policy_errors() ::
@@ -559,6 +604,10 @@
     service_unavailable_exception() | 
     not_found_exception().
 
+-type list_tags_for_resource_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception().
+
 -type list_vector_buckets_errors() ::
     service_unavailable_exception().
 
@@ -589,19 +638,30 @@
     not_found_exception() | 
     kms_disabled_exception().
 
+-type tag_resource_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Creates a vector index within a vector bucket.
 %%
-%% Creates a vector index within a vector bucket. To specify the vector
-%% bucket, you must use either the vector bucket name or the vector bucket
-%% Amazon Resource Name (ARN).
+%% To specify the vector bucket, you must use either the vector bucket name
+%% or the vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:CreateIndex' permission to
 %% use this operation.
+%%
+%% You must have the `s3vectors:TagResource' permission in addition to
+%% `s3vectors:CreateIndex' permission to create a vector index with tags.
 -spec create_index(aws_client:aws_client(), create_index_input()) ->
     {ok, create_index_output(), tuple()} |
     {error, any()} |
@@ -635,14 +695,15 @@ create_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
-%%
-%% Creates a vector bucket in the Amazon Web Services Region that you want
-%% your bucket to be in.
+%% @doc Creates a vector bucket in the Amazon Web Services Region that you
+%% want your bucket to be in.
 %%
 %% Permissions You must have the `s3vectors:CreateVectorBucket'
 %% permission to use this operation.
+%%
+%% You must have the `s3vectors:TagResource' permission in addition to
+%% `s3vectors:CreateVectorBucket' permission to create a vector bucket
+%% with tags.
 -spec create_vector_bucket(aws_client:aws_client(), create_vector_bucket_input()) ->
     {ok, create_vector_bucket_output(), tuple()} |
     {error, any()} |
@@ -676,12 +737,11 @@ create_vector_bucket(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Deletes a vector index.
 %%
-%% Deletes a vector index. To specify the vector index, you can either use
-%% both the vector bucket name and vector index name, or use the vector index
-%% Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and vector index name, or use the vector index Amazon Resource Name
+%% (ARN).
 %%
 %% Permissions You must have the `s3vectors:DeleteIndex' permission to
 %% use this operation.
@@ -718,13 +778,11 @@ delete_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Deletes a vector bucket.
 %%
-%% Deletes a vector bucket. All vector indexes in the vector bucket must be
-%% deleted before the vector bucket can be deleted. To perform this
-%% operation, you must use either the vector bucket name or the vector bucket
-%% Amazon Resource Name (ARN).
+%% All vector indexes in the vector bucket must be deleted before the vector
+%% bucket can be deleted. To perform this operation, you must use either the
+%% vector bucket name or the vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:DeleteVectorBucket'
 %% permission to use this operation.
@@ -761,11 +819,10 @@ delete_vector_bucket(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Deletes a vector bucket policy.
 %%
-%% Deletes a vector bucket policy. To specify the bucket, you must use either
-%% the vector bucket name or the vector bucket Amazon Resource Name (ARN).
+%% To specify the bucket, you must use either the vector bucket name or the
+%% vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:DeleteVectorBucketPolicy'
 %% permission to use this operation.
@@ -802,12 +859,11 @@ delete_vector_bucket_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Deletes one or more vectors in a vector index.
 %%
-%% Deletes one or more vectors in a vector index. To specify the vector
-%% index, you can either use both the vector bucket name and vector index
-%% name, or use the vector index Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and vector index name, or use the vector index Amazon Resource Name
+%% (ARN).
 %%
 %% Permissions You must have the `s3vectors:DeleteVectors' permission to
 %% use this operation.
@@ -844,12 +900,11 @@ delete_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Returns vector index attributes.
 %%
-%% Returns vector index attributes. To specify the vector index, you can
-%% either use both the vector bucket name and the vector index name, or use
-%% the vector index Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and the vector index name, or use the vector index Amazon Resource
+%% Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:GetIndex' permission to use
 %% this operation.
@@ -886,12 +941,10 @@ get_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Returns vector bucket attributes.
 %%
-%% Returns vector bucket attributes. To specify the bucket, you must use
-%% either the vector bucket name or the vector bucket Amazon Resource Name
-%% (ARN).
+%% To specify the bucket, you must use either the vector bucket name or the
+%% vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:GetVectorBucket' permission
 %% to use this operation.
@@ -928,12 +981,10 @@ get_vector_bucket(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Gets details about a vector bucket policy.
 %%
-%% Gets details about a vector bucket policy. To specify the bucket, you must
-%% use either the vector bucket name or the vector bucket Amazon Resource
-%% Name (ARN).
+%% To specify the bucket, you must use either the vector bucket name or the
+%% vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:GetVectorBucketPolicy'
 %% permission to use this operation.
@@ -970,12 +1021,11 @@ get_vector_bucket_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Returns vector attributes.
 %%
-%% Returns vector attributes. To specify the vector index, you can either use
-%% both the vector bucket name and the vector index name, or use the vector
-%% index Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and the vector index name, or use the vector index Amazon Resource
+%% Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:GetVectors' permission to use
 %% this operation.
@@ -1012,12 +1062,11 @@ get_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Returns a list of all the vector indexes within the specified vector
+%% bucket.
 %%
-%% Returns a list of all the vector indexes within the specified vector
-%% bucket. To specify the bucket, you must use either the vector bucket name
-%% or the vector bucket Amazon Resource Name (ARN).
+%% To specify the bucket, you must use either the vector bucket name or the
+%% vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:ListIndexes' permission to
 %% use this operation.
@@ -1054,10 +1103,55 @@ list_indexes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Lists all of the tags applied to a specified Amazon S3 Vectors
+%% resource.
 %%
-%% Returns a list of all the vector buckets that are owned by the
+%% Each tag is a label consisting of a key and value pair. Tags can help you
+%% organize, track costs for, and control access to resources.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For vector buckets and vector indexes, you must have the
+%% `s3vectors:ListTagsForResource' permission to use this operation.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the vector buckets that are owned by the
 %% authenticated sender of the request.
 %%
 %% Permissions You must have the `s3vectors:ListVectorBuckets' permission
@@ -1095,12 +1189,11 @@ list_vector_buckets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc List vectors in the specified vector index.
 %%
-%% List vectors in the specified vector index. To specify the vector index,
-%% you can either use both the vector bucket name and the vector index name,
-%% or use the vector index Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and the vector index name, or use the vector index Amazon Resource
+%% Name (ARN).
 %%
 %% `ListVectors' operations proceed sequentially; however, for faster
 %% performance on a large number of vectors in a vector index, applications
@@ -1153,12 +1246,10 @@ list_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Creates a bucket policy for a vector bucket.
 %%
-%% Creates a bucket policy for a vector bucket. To specify the bucket, you
-%% must use either the vector bucket name or the vector bucket Amazon
-%% Resource Name (ARN).
+%% To specify the bucket, you must use either the vector bucket name or the
+%% vector bucket Amazon Resource Name (ARN).
 %%
 %% Permissions You must have the `s3vectors:PutVectorBucketPolicy'
 %% permission to use this operation.
@@ -1195,12 +1286,11 @@ put_vector_bucket_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Adds one or more vectors to a vector index.
 %%
-%% Adds one or more vectors to a vector index. To specify the vector index,
-%% you can either use both the vector bucket name and the vector index name,
-%% or use the vector index Amazon Resource Name (ARN).
+%% To specify the vector index, you can either use both the vector bucket
+%% name and the vector index name, or use the vector index Amazon Resource
+%% Name (ARN).
 %%
 %% For more information about limits, see Limitations and restrictions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-limitations.html
@@ -1252,14 +1342,13 @@ put_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 Vectors is in preview release for Amazon S3 and is subject
-%% to change.
+%% @doc Performs an approximate nearest neighbor search query in a vector
+%% index using a query vector.
 %%
-%% Performs an approximate nearest neighbor search query in a vector index
-%% using a query vector. By default, it returns the keys of approximate
-%% nearest neighbors. You can optionally include the computed distance
-%% (between the query vector and each vector in the response), the vector
-%% data, and metadata of each vector in the response.
+%% By default, it returns the keys of approximate nearest neighbors. You can
+%% optionally include the computed distance (between the query vector and
+%% each vector in the response), the vector data, and metadata of each vector
+%% in the response.
 %%
 %% To specify the vector index, you can either use both the vector bucket
 %% name and the vector index name, or use the vector index Amazon Resource
@@ -1311,6 +1400,97 @@ query_vectors(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Applies one or more user-defined tags to an Amazon S3 Vectors
+%% resource or updates existing tags.
+%%
+%% Each tag is a label consisting of a key and value pair. Tags can help you
+%% organize, track costs for, and control access to your resources. You can
+%% add up to 50 tags for each resource.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For vector buckets and vector indexes, you must have the
+%% `s3vectors:TagResource' permission to use this operation.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified user-defined tags from an Amazon S3 Vectors
+%% resource.
+%%
+%% You can pass one or more tag keys.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For vector buckets and vector indexes, you must have the
+%% `s3vectors:UntagResource' permission to use this operation.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

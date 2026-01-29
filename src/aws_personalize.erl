@@ -210,6 +210,7 @@
 %% Example:
 %% update_solution_request() :: #{
 %%   <<"performAutoTraining">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
 %%   <<"solutionArn">> := string(),
 %%   <<"solutionUpdateConfig">> => solution_update_config()
 %% }
@@ -411,6 +412,7 @@
 %%   <<"performAutoML">> => boolean(),
 %%   <<"performAutoTraining">> => boolean(),
 %%   <<"performHPO">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
 %%   <<"recipeArn">> => string(),
 %%   <<"solutionConfig">> => solution_config(),
 %%   <<"tags">> => list(tag())
@@ -483,6 +485,7 @@
 %%   <<"performAutoML">> => boolean(),
 %%   <<"performAutoTraining">> => boolean(),
 %%   <<"performHPO">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
 %%   <<"recipeArn">> => string(),
 %%   <<"solutionArn">> => string(),
 %%   <<"solutionConfig">> => solution_config(),
@@ -643,7 +646,8 @@
 
 %% Example:
 %% batch_inference_job_config() :: #{
-%%   <<"itemExplorationConfig">> => map()
+%%   <<"itemExplorationConfig">> => map(),
+%%   <<"rankingInfluence">> => map()
 %% }
 -type batch_inference_job_config() :: #{binary() => any()}.
 
@@ -657,6 +661,7 @@
 %% campaign_config() :: #{
 %%   <<"enableMetadataWithRecommendations">> => boolean(),
 %%   <<"itemExplorationConfig">> => map(),
+%%   <<"rankingInfluence">> => map(),
 %%   <<"syncWithLatestSolutionVersion">> => boolean()
 %% }
 -type campaign_config() :: #{binary() => any()}.
@@ -876,6 +881,7 @@
 %%   <<"name">> => string(),
 %%   <<"performAutoML">> => boolean(),
 %%   <<"performHPO">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
 %%   <<"recipeArn">> => string(),
 %%   <<"solutionArn">> => string(),
 %%   <<"solutionConfig">> => solution_config(),
@@ -1556,7 +1562,7 @@
 %%   <<"importMode">> => list(any()),
 %%   <<"jobName">> := string(),
 %%   <<"publishAttributionMetricsToS3">> => boolean(),
-%%   <<"roleArn">> := string(),
+%%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag())
 %% }
 -type create_dataset_import_job_request() :: #{binary() => any()}.
@@ -1667,6 +1673,7 @@
 %%   <<"failureReason">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"performAutoTraining">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
 %%   <<"solutionUpdateConfig">> => solution_update_config(),
 %%   <<"status">> => string()
 %% }
@@ -1785,7 +1792,8 @@
 
 %% Example:
 %% training_data_config() :: #{
-%%   <<"excludedDatasetColumns">> => map()
+%%   <<"excludedDatasetColumns">> => map(),
+%%   <<"includedDatasetColumns">> => map()
 %% }
 -type training_data_config() :: #{binary() => any()}.
 

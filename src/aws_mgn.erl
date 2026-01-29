@@ -314,6 +314,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -354,6 +355,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -422,6 +424,7 @@
 %%   <<"defaultLargeStagingDiskType">> := string(),
 %%   <<"ebsEncryption">> := string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"replicationServerInstanceType">> := string(),
 %%   <<"replicationServersSecurityGroupsIDs">> := list(string()),
 %%   <<"stagingAreaSubnetId">> := string(),
@@ -650,11 +653,13 @@
 %%   <<"copyTags">> => [boolean()],
 %%   <<"ec2LaunchTemplateID">> => string(),
 %%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"enableParametersEncryption">> => [boolean()],
 %%   <<"largeVolumeConf">> => launch_template_disk_conf(),
 %%   <<"launchConfigurationTemplateID">> := string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
+%%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
 %%   <<"smallVolumeConf">> => launch_template_disk_conf(),
 %%   <<"smallVolumeMaxSize">> => float(),
@@ -808,6 +813,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
@@ -983,10 +989,12 @@
 %%   <<"copyPrivateIp">> => [boolean()],
 %%   <<"copyTags">> => [boolean()],
 %%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"enableParametersEncryption">> => [boolean()],
 %%   <<"largeVolumeConf">> => launch_template_disk_conf(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
+%%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
 %%   <<"smallVolumeConf">> => launch_template_disk_conf(),
 %%   <<"smallVolumeMaxSize">> => float(),
@@ -1048,7 +1056,8 @@
 %%   <<"etaDateTime">> => string(),
 %%   <<"lagDuration">> => string(),
 %%   <<"lastSnapshotDateTime">> => string(),
-%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk())
+%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
+%%   <<"replicatorId">> => string()
 %% }
 -type data_replication_info() :: #{binary() => any()}.
 
@@ -1110,13 +1119,15 @@
 
 %% Example:
 %% import_task() :: #{
+%%   <<"arn">> => string(),
 %%   <<"creationDateTime">> => string(),
 %%   <<"endDateTime">> => string(),
 %%   <<"importID">> => string(),
 %%   <<"progressPercentage">> => [float()],
 %%   <<"s3BucketSource">> => s3_bucket_source(),
 %%   <<"status">> => string(),
-%%   <<"summary">> => import_task_summary()
+%%   <<"summary">> => import_task_summary(),
+%%   <<"tags">> => map()
 %% }
 -type import_task() :: #{binary() => any()}.
 
@@ -1201,6 +1212,7 @@
 
 %% Example:
 %% export_task() :: #{
+%%   <<"arn">> => string(),
 %%   <<"creationDateTime">> => string(),
 %%   <<"endDateTime">> => string(),
 %%   <<"exportID">> => string(),
@@ -1209,7 +1221,8 @@
 %%   <<"s3BucketOwner">> => string(),
 %%   <<"s3Key">> => string(),
 %%   <<"status">> => string(),
-%%   <<"summary">> => export_task_summary()
+%%   <<"summary">> => export_task_summary(),
+%%   <<"tags">> => map()
 %% }
 -type export_task() :: #{binary() => any()}.
 
@@ -1286,7 +1299,8 @@
 %% start_export_request() :: #{
 %%   <<"s3Bucket">> => string(),
 %%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string()
+%%   <<"s3Key">> => string(),
+%%   <<"tags">> => map()
 %% }
 -type start_export_request() :: #{binary() => any()}.
 
@@ -1579,7 +1593,9 @@
 
 %% Example:
 %% job_log_event_data() :: #{
+%%   <<"attemptCount">> => integer(),
 %%   <<"conversionServerID">> => string(),
+%%   <<"maxAttemptsCount">> => integer(),
 %%   <<"rawError">> => string(),
 %%   <<"sourceServerID">> => string(),
 %%   <<"targetInstanceID">> => string()
@@ -1657,6 +1673,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
@@ -1820,7 +1837,8 @@
 %% Example:
 %% start_import_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"s3BucketSource">> => s3_bucket_source()
+%%   <<"s3BucketSource">> => s3_bucket_source(),
+%%   <<"tags">> => map()
 %% }
 -type start_import_request() :: #{binary() => any()}.
 
@@ -1832,11 +1850,13 @@
 %%   <<"copyPrivateIp">> => [boolean()],
 %%   <<"copyTags">> => [boolean()],
 %%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"enableParametersEncryption">> => [boolean()],
 %%   <<"largeVolumeConf">> => launch_template_disk_conf(),
 %%   <<"launchConfigurationTemplateID">> := string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
+%%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
 %%   <<"smallVolumeConf">> => launch_template_disk_conf(),
 %%   <<"smallVolumeMaxSize">> => float(),
@@ -4140,7 +4160,8 @@ start_import(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts replication for SNAPSHOT_SHIPPING agents.
+%% @doc Start replication for source server irrespective of its replication
+%% type.
 -spec start_replication(aws_client:aws_client(), start_replication_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
@@ -4669,6 +4690,8 @@ update_source_server(Client, Input0, Options0) ->
 
 %% @doc Allows you to change between the AGENT_BASED replication type and the
 %% SNAPSHOT_SHIPPING replication type.
+%%
+%% SNAPSHOT_SHIPPING should be used for agentless replication.
 -spec update_source_server_replication_type(aws_client:aws_client(), update_source_server_replication_type_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |

@@ -2,26 +2,21 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Identity and Access Management Roles Anywhere provides a secure way
-%% for your workloads such as
-%% servers, containers, and applications that run outside of Amazon Web
-%% Services to obtain
-%% temporary Amazon Web Services credentials.
+%% for your workloads such as servers, containers, and applications that run
+%% outside of Amazon Web Services to obtain temporary Amazon Web Services
+%% credentials.
 %%
 %% Your workloads can use the same IAM policies and roles you have for native
 %% Amazon Web Services applications to access Amazon Web Services resources.
-%% Using IAM Roles Anywhere eliminates the need to
-%% manage long-term credentials for workloads running outside of Amazon Web
-%% Services.
+%% Using IAM Roles Anywhere eliminates the need to manage long-term
+%% credentials for workloads running outside of Amazon Web Services.
 %%
 %% To use IAM Roles Anywhere, your workloads must use X.509 certificates
 %% issued by their certificate authority (CA). You register the CA with IAM
 %% Roles Anywhere as a trust anchor to establish trust between your public
-%% key infrastructure
-%% (PKI) and IAM Roles Anywhere. If you don't manage your own PKI system,
-%% you
-%% can use Private Certificate Authority to create a CA and then use that to
-%% establish trust with
-%% IAM Roles Anywhere.
+%% key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage
+%% your own PKI system, you can use Private Certificate Authority to create a
+%% CA and then use that to establish trust with IAM Roles Anywhere.
 %%
 %% This guide describes the IAM Roles Anywhere operations that you can call
 %% programmatically. For more information about IAM Roles Anywhere, see the
@@ -674,8 +669,7 @@
 %%
 %% You use profiles to intersect permissions with IAM managed policies.
 %%
-%% Required permissions:
-%% `rolesanywhere:CreateProfile'.
+%% Required permissions: `rolesanywhere:CreateProfile'.
 -spec create_profile(aws_client:aws_client(), create_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -710,17 +704,15 @@ create_profile(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a trust anchor to establish trust between IAM Roles Anywhere
-%% and
-%% your certificate authority (CA).
+%% and your certificate authority (CA).
 %%
 %% You can define a trust anchor as a reference to an Private Certificate
 %% Authority (Private CA) or by uploading a CA certificate. Your Amazon Web
 %% Services workloads can authenticate with the trust anchor using
-%% certificates issued by
-%% the CA in exchange for temporary Amazon Web Services credentials.
+%% certificates issued by the CA in exchange for temporary Amazon Web
+%% Services credentials.
 %%
-%% Required permissions:
-%% `rolesanywhere:CreateTrustAnchor'.
+%% Required permissions: `rolesanywhere:CreateTrustAnchor'.
 -spec create_trust_anchor(aws_client:aws_client(), create_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
@@ -793,8 +785,7 @@ delete_attribute_mapping(Client, ProfileId, Input0, Options0) ->
 
 %% @doc Deletes a certificate revocation list (CRL).
 %%
-%% Required permissions:
-%% `rolesanywhere:DeleteCrl'.
+%% Required permissions: `rolesanywhere:DeleteCrl'.
 -spec delete_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -830,8 +821,7 @@ delete_crl(Client, CrlId, Input0, Options0) ->
 
 %% @doc Deletes a profile.
 %%
-%% Required permissions:
-%% `rolesanywhere:DeleteProfile'.
+%% Required permissions: `rolesanywhere:DeleteProfile'.
 -spec delete_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -867,8 +857,7 @@ delete_profile(Client, ProfileId, Input0, Options0) ->
 
 %% @doc Deletes a trust anchor.
 %%
-%% Required permissions:
-%% `rolesanywhere:DeleteTrustAnchor'.
+%% Required permissions: `rolesanywhere:DeleteTrustAnchor'.
 -spec delete_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
@@ -904,8 +893,7 @@ delete_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 
 %% @doc Disables a certificate revocation list (CRL).
 %%
-%% Required permissions:
-%% `rolesanywhere:DisableCrl'.
+%% Required permissions: `rolesanywhere:DisableCrl'.
 -spec disable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -943,8 +931,7 @@ disable_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% When disabled, temporary credential requests with this profile fail.
 %%
-%% Required permissions:
-%% `rolesanywhere:DisableProfile'.
+%% Required permissions: `rolesanywhere:DisableProfile'.
 -spec disable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -983,8 +970,7 @@ disable_profile(Client, ProfileId, Input0, Options0) ->
 %% When disabled, temporary credential requests specifying this trust anchor
 %% are unauthorized.
 %%
-%% Required permissions:
-%% `rolesanywhere:DisableTrustAnchor'.
+%% Required permissions: `rolesanywhere:DisableTrustAnchor'.
 -spec disable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
@@ -1023,8 +1009,7 @@ disable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %% When enabled, certificates stored in the CRL are unauthorized to receive
 %% session credentials.
 %%
-%% Required permissions:
-%% `rolesanywhere:EnableCrl'.
+%% Required permissions: `rolesanywhere:EnableCrl'.
 -spec enable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -1060,8 +1045,7 @@ enable_crl(Client, CrlId, Input0, Options0) ->
 
 %% @doc Enables temporary credential requests for a profile.
 %%
-%% Required permissions:
-%% `rolesanywhere:EnableProfile'.
+%% Required permissions: `rolesanywhere:EnableProfile'.
 -spec enable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -1100,8 +1084,7 @@ enable_profile(Client, ProfileId, Input0, Options0) ->
 %% When enabled, certificates in the trust anchor chain are authorized for
 %% trust validation.
 %%
-%% Required permissions:
-%% `rolesanywhere:EnableTrustAnchor'.
+%% Required permissions: `rolesanywhere:EnableTrustAnchor'.
 -spec enable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
@@ -1137,8 +1120,7 @@ enable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 
 %% @doc Gets a certificate revocation list (CRL).
 %%
-%% Required permissions:
-%% `rolesanywhere:GetCrl'.
+%% Required permissions: `rolesanywhere:GetCrl'.
 -spec get_crl(aws_client:aws_client(), binary() | list()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -1177,8 +1159,7 @@ get_crl(Client, CrlId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a profile.
 %%
-%% Required permissions:
-%% `rolesanywhere:GetProfile'.
+%% Required permissions: `rolesanywhere:GetProfile'.
 -spec get_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -1218,13 +1199,11 @@ get_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
 %% @doc Gets a subject, which associates a certificate identity with
 %% authentication attempts.
 %%
-%% The subject stores auditing information such as the status
-%% of the last authentication attempt, the certificate data used in the
-%% attempt, and the
+%% The subject stores auditing information such as the status of the last
+%% authentication attempt, the certificate data used in the attempt, and the
 %% last time the associated identity attempted authentication.
 %%
-%% Required permissions:
-%% `rolesanywhere:GetSubject'.
+%% Required permissions: `rolesanywhere:GetSubject'.
 -spec get_subject(aws_client:aws_client(), binary() | list()) ->
     {ok, subject_detail_response(), tuple()} |
     {error, any()} |
@@ -1263,8 +1242,7 @@ get_subject(Client, SubjectId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a trust anchor.
 %%
-%% Required permissions:
-%% `rolesanywhere:GetTrustAnchor'.
+%% Required permissions: `rolesanywhere:GetTrustAnchor'.
 -spec get_trust_anchor(aws_client:aws_client(), binary() | list()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
@@ -1303,14 +1281,12 @@ get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Imports the certificate revocation list (CRL).
 %%
-%% A CRL is a list of certificates that have
-%% been revoked by the issuing certificate Authority (CA).In order to be
-%% properly imported, a CRL must be in PEM
-%% format. IAM Roles Anywhere
-%% validates against the CRL before issuing credentials.
+%% A CRL is a list of certificates that have been revoked by the issuing
+%% certificate Authority (CA).In order to be properly imported, a CRL must be
+%% in PEM format. IAM Roles Anywhere validates against the CRL before issuing
+%% credentials.
 %%
-%% Required permissions:
-%% `rolesanywhere:ImportCrl'.
+%% Required permissions: `rolesanywhere:ImportCrl'.
 -spec import_crl(aws_client:aws_client(), import_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -1347,8 +1323,7 @@ import_crl(Client, Input0, Options0) ->
 %% @doc Lists all certificate revocation lists (CRL) in the authenticated
 %% account and Amazon Web Services Region.
 %%
-%% Required permissions:
-%% `rolesanywhere:ListCrls'.
+%% Required permissions: `rolesanywhere:ListCrls'.
 -spec list_crls(aws_client:aws_client()) ->
     {ok, list_crls_response(), tuple()} |
     {error, any()} |
@@ -1393,8 +1368,7 @@ list_crls(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all profiles in the authenticated account and Amazon Web
 %% Services Region.
 %%
-%% Required permissions:
-%% `rolesanywhere:ListProfiles'.
+%% Required permissions: `rolesanywhere:ListProfiles'.
 -spec list_profiles(aws_client:aws_client()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
@@ -1439,8 +1413,7 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the subjects in the authenticated account and Amazon Web
 %% Services Region.
 %%
-%% Required permissions:
-%% `rolesanywhere:ListSubjects'.
+%% Required permissions: `rolesanywhere:ListSubjects'.
 -spec list_subjects(aws_client:aws_client()) ->
     {ok, list_subjects_response(), tuple()} |
     {error, any()} |
@@ -1484,8 +1457,7 @@ list_subjects(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags attached to the resource.
 %%
-%% Required permissions:
-%% `rolesanywhere:ListTagsForResource'.
+%% Required permissions: `rolesanywhere:ListTagsForResource'.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1529,8 +1501,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the trust anchors in the authenticated account and Amazon Web
 %% Services Region.
 %%
-%% Required permissions:
-%% `rolesanywhere:ListTrustAnchors'.
+%% Required permissions: `rolesanywhere:ListTrustAnchors'.
 -spec list_trust_anchors(aws_client:aws_client()) ->
     {ok, list_trust_anchors_response(), tuple()} |
     {error, any()} |
@@ -1613,11 +1584,9 @@ put_attribute_mapping(Client, ProfileId, Input0, Options0) ->
 %% @doc Attaches a list of notification settings to a trust anchor.
 %%
 %% A notification setting includes information such as event name, threshold,
-%% status of
-%% the notification setting, and the channel to notify.
+%% status of the notification setting, and the channel to notify.
 %%
-%% Required permissions:
-%% `rolesanywhere:PutNotificationSettings'.
+%% Required permissions: `rolesanywhere:PutNotificationSettings'.
 -spec put_notification_settings(aws_client:aws_client(), put_notification_settings_request()) ->
     {ok, put_notification_settings_response(), tuple()} |
     {error, any()} |
@@ -1654,8 +1623,7 @@ put_notification_settings(Client, Input0, Options0) ->
 %% @doc Resets the custom notification setting to IAM Roles Anywhere default
 %% setting.
 %%
-%% Required permissions:
-%% `rolesanywhere:ResetNotificationSettings'.
+%% Required permissions: `rolesanywhere:ResetNotificationSettings'.
 -spec reset_notification_settings(aws_client:aws_client(), reset_notification_settings_request()) ->
     {ok, reset_notification_settings_response(), tuple()} |
     {error, any()} |
@@ -1691,8 +1659,7 @@ reset_notification_settings(Client, Input0, Options0) ->
 
 %% @doc Attaches tags to a resource.
 %%
-%% Required permissions:
-%% `rolesanywhere:TagResource'.
+%% Required permissions: `rolesanywhere:TagResource'.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1728,8 +1695,7 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes tags from the resource.
 %%
-%% Required permissions:
-%% `rolesanywhere:UntagResource'.
+%% Required permissions: `rolesanywhere:UntagResource'.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1765,12 +1731,11 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates the certificate revocation list (CRL).
 %%
-%% A CRL is a list of certificates that have
-%% been revoked by the issuing certificate authority (CA). IAM Roles Anywhere
-%% validates against the CRL before issuing credentials.
+%% A CRL is a list of certificates that have been revoked by the issuing
+%% certificate authority (CA). IAM Roles Anywhere validates against the CRL
+%% before issuing credentials.
 %%
-%% Required permissions:
-%% `rolesanywhere:UpdateCrl'.
+%% Required permissions: `rolesanywhere:UpdateCrl'.
 -spec update_crl(aws_client:aws_client(), binary() | list(), update_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
@@ -1804,14 +1769,12 @@ update_crl(Client, CrlId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a profile, a list of the roles that IAM
-%% Roles Anywhere service is trusted to assume.
+%% @doc Updates a profile, a list of the roles that IAM Roles Anywhere
+%% service is trusted to assume.
 %%
-%% You use profiles to intersect permissions with
-%% IAM managed policies.
+%% You use profiles to intersect permissions with IAM managed policies.
 %%
-%% Required permissions:
-%% `rolesanywhere:UpdateProfile'.
+%% Required permissions: `rolesanywhere:UpdateProfile'.
 -spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
@@ -1847,19 +1810,14 @@ update_profile(Client, ProfileId, Input0, Options0) ->
 
 %% @doc Updates a trust anchor.
 %%
-%% You establish trust between IAM Roles Anywhere
-%% and your certificate authority (CA) by configuring a trust anchor. You can
-%% define a trust
+%% You establish trust between IAM Roles Anywhere and your certificate
+%% authority (CA) by configuring a trust anchor. You can define a trust
 %% anchor as a reference to an Private Certificate Authority (Private CA) or
-%% by uploading a
-%% CA certificate. Your Amazon Web Services workloads can authenticate with
-%% the trust anchor
-%% using certificates issued by the CA in exchange for temporary Amazon Web
-%% Services
-%% credentials.
+%% by uploading a CA certificate. Your Amazon Web Services workloads can
+%% authenticate with the trust anchor using certificates issued by the CA in
+%% exchange for temporary Amazon Web Services credentials.
 %%
-%% Required permissions:
-%% `rolesanywhere:UpdateTrustAnchor'.
+%% Required permissions: `rolesanywhere:UpdateTrustAnchor'.
 -spec update_trust_anchor(aws_client:aws_client(), binary() | list(), update_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |

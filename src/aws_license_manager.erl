@@ -20,6 +20,10 @@
          create_grant_version/3,
          create_license/2,
          create_license/3,
+         create_license_asset_group/2,
+         create_license_asset_group/3,
+         create_license_asset_ruleset/2,
+         create_license_asset_ruleset/3,
          create_license_configuration/2,
          create_license_configuration/3,
          create_license_conversion_task_for_resource/2,
@@ -34,6 +38,10 @@
          delete_grant/3,
          delete_license/2,
          delete_license/3,
+         delete_license_asset_group/2,
+         delete_license_asset_group/3,
+         delete_license_asset_ruleset/2,
+         delete_license_asset_ruleset/3,
          delete_license_configuration/2,
          delete_license_configuration/3,
          delete_license_manager_report_generator/2,
@@ -48,6 +56,10 @@
          get_grant/3,
          get_license/2,
          get_license/3,
+         get_license_asset_group/2,
+         get_license_asset_group/3,
+         get_license_asset_ruleset/2,
+         get_license_asset_ruleset/3,
          get_license_configuration/2,
          get_license_configuration/3,
          get_license_conversion_task/2,
@@ -58,14 +70,22 @@
          get_license_usage/3,
          get_service_settings/2,
          get_service_settings/3,
+         list_assets_for_license_asset_group/2,
+         list_assets_for_license_asset_group/3,
          list_associations_for_license_configuration/2,
          list_associations_for_license_configuration/3,
          list_distributed_grants/2,
          list_distributed_grants/3,
          list_failures_for_license_configuration_operations/2,
          list_failures_for_license_configuration_operations/3,
+         list_license_asset_groups/2,
+         list_license_asset_groups/3,
+         list_license_asset_rulesets/2,
+         list_license_asset_rulesets/3,
          list_license_configurations/2,
          list_license_configurations/3,
+         list_license_configurations_for_organization/2,
+         list_license_configurations_for_organization/3,
          list_license_conversion_tasks/2,
          list_license_conversion_tasks/3,
          list_license_manager_report_generators/2,
@@ -98,6 +118,10 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_license_asset_group/2,
+         update_license_asset_group/3,
+         update_license_asset_ruleset/2,
+         update_license_asset_ruleset/3,
          update_license_configuration/2,
          update_license_configuration/3,
          update_license_manager_report_generator/2,
@@ -131,6 +155,12 @@
 -type check_in_license_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRuleset">> => license_asset_ruleset()
+%% }
+-type get_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
 %% report_frequency() :: #{
 %%   <<"period">> => list(any()),
 %%   <<"value">> => integer()
@@ -138,10 +168,45 @@
 -type report_frequency() :: #{binary() => any()}.
 
 %% Example:
+%% script_rule_statement() :: #{
+%%   <<"KeyToMatch">> => string(),
+%%   <<"Script">> => string()
+%% }
+-type script_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% cross_region_discovery_status() :: #{
+%%   <<"Message">> => map()
+%% }
+-type cross_region_discovery_status() :: #{binary() => any()}.
+
+%% Example:
 %% get_access_token_response() :: #{
 %%   <<"AccessToken">> => string()
 %% }
 -type get_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_group() :: #{
+%%   <<"AssociatedLicenseAssetRulesetARNs">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"LatestResourceDiscoveryTime">> => non_neg_integer(),
+%%   <<"LatestUsageAnalysisTime">> => non_neg_integer(),
+%%   <<"LicenseAssetGroupArn">> => string(),
+%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => list(license_asset_group_property()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type license_asset_group() :: #{binary() => any()}.
+
+%% Example:
+%% service_status() :: #{
+%%   <<"CrossAccountDiscovery">> => cross_account_discovery_service_status(),
+%%   <<"CrossRegionDiscovery">> => cross_region_discovery_status()
+%% }
+-type service_status() :: #{binary() => any()}.
 
 %% Example:
 %% create_grant_version_request() :: #{
@@ -168,6 +233,7 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> => list(any()),
+%%   <<"LicenseExpiry">> => float(),
 %%   <<"LicenseRules">> => list(string()),
 %%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
 %%   <<"Name">> => string(),
@@ -194,6 +260,15 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% license_asset_ruleset() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetRulesetArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> => list(license_asset_rule())
+%% }
+-type license_asset_ruleset() :: #{binary() => any()}.
+
+%% Example:
 %% list_usage_for_license_configuration_response() :: #{
 %%   <<"LicenseConfigurationUsageList">> => list(license_configuration_usage()),
 %%   <<"NextToken">> => string()
@@ -207,6 +282,15 @@
 -type create_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_license_asset_rulesets_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowAWSManagedLicenseAssetRulesets">> => boolean()
+%% }
+-type list_license_asset_rulesets_request() :: #{binary() => any()}.
+
+%% Example:
 %% filter_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -218,6 +302,12 @@
 %%   <<"Version">> => string()
 %% }
 -type get_license_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_ruleset_request() :: #{
+%%   <<"LicenseAssetRulesetArn">> := string()
+%% }
+-type get_license_asset_ruleset_request() :: #{binary() => any()}.
 
 %% Example:
 %% license_configuration_usage() :: #{
@@ -262,6 +352,12 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_group_request() :: #{
+%%   <<"LicenseAssetGroupArn">> := string()
+%% }
+-type get_license_asset_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% license_usage() :: #{
@@ -317,6 +413,15 @@
 %%   <<"EnableIntegration">> => boolean()
 %% }
 -type organization_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_for_organization_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseConfigurationArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_license_conversion_task_response() :: #{
@@ -380,6 +485,27 @@
 -type metadata() :: #{binary() => any()}.
 
 %% Example:
+%% update_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroupArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type update_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_group_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration_rule_statement() :: #{
+%%   <<"AndRuleStatement">> => and_rule_statement(),
+%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
+%%   <<"OrRuleStatement">> => or_rule_statement()
+%% }
+-type license_configuration_rule_statement() :: #{binary() => any()}.
+
+%% Example:
 %% list_license_versions_response() :: #{
 %%   <<"Licenses">> => list(license()),
 %%   <<"NextToken">> => string()
@@ -393,6 +519,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_license_manager_report_generators_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_groups_response() :: #{
+%%   <<"LicenseAssetGroups">> => list(license_asset_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_licenses_for_organization_request() :: #{
@@ -433,6 +566,12 @@
 -type no_entitlements_allowed_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_license_asset_ruleset_response() :: #{
+
+%% }
+-type delete_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_license_usage_request() :: #{
 %%   <<"LicenseArn">> := string()
 %% }
@@ -446,10 +585,24 @@
 -type list_distributed_grants_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRulesetArn">> => string()
+%% }
+-type update_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_license_configuration_response() :: #{
 
 %% }
 -type update_license_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% matching_rule_statement() :: #{
+%%   <<"Constraint">> => string(),
+%%   <<"KeyToMatch">> => string(),
+%%   <<"ValueToMatch">> => list(string())
+%% }
+-type matching_rule_statement() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -479,6 +632,16 @@
 -type update_license_manager_report_generator_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_license_asset_ruleset_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetRulesetArn">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> := list(license_asset_rule())
+%% }
+-type update_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
 %% consumption_configuration() :: #{
 %%   <<"BorrowConfiguration">> => borrow_configuration(),
 %%   <<"ProvisionalConfiguration">> => provisional_configuration(),
@@ -504,6 +667,13 @@
 
 %% }
 -type update_license_specifications_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroupArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_license_asset_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_license_request() :: #{
@@ -592,6 +762,13 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% asset() :: #{
+%%   <<"AssetArn">> => string(),
+%%   <<"LatestAssetDiscoveryTime">> => non_neg_integer()
+%% }
+-type asset() :: #{binary() => any()}.
+
+%% Example:
 %% redirect_exception() :: #{
 %%   <<"Location">> => string(),
 %%   <<"Message">> => string()
@@ -628,6 +805,12 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% license_asset_group_configuration() :: #{
+%%   <<"UsageDimension">> => string()
+%% }
+-type license_asset_group_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_service_settings_response() :: #{
 
 %% }
@@ -640,6 +823,20 @@
 %%   <<"Version">> => string()
 %% }
 -type create_license_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% and_rule_statement() :: #{
+%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
+%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
+%% }
+-type and_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% list_assets_for_license_asset_group_response() :: #{
+%%   <<"Assets">> => list(asset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_for_license_asset_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_license_response() :: #{
@@ -664,6 +861,7 @@
 %%   <<"LicenseConfigurationStatus">> => list(any()),
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
+%%   <<"LicenseExpiry">> => float(),
 %%   <<"LicenseRules">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"ProductInformationList">> => list(product_information())
@@ -707,6 +905,15 @@
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_assets_for_license_asset_group_request() :: #{
+%%   <<"AssetType">> := string(),
+%%   <<"LicenseAssetGroupArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_for_license_asset_group_request() :: #{binary() => any()}.
+
+%% Example:
 %% automated_discovery_information() :: #{
 %%   <<"LastRunTime">> => non_neg_integer()
 %% }
@@ -738,6 +945,13 @@
 -type delete_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_license_asset_rulesets_response() :: #{
+%%   <<"LicenseAssetRulesets">> => list(license_asset_ruleset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_rulesets_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_failures_for_license_configuration_operations_request() :: #{
 %%   <<"LicenseConfigurationArn">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -753,10 +967,26 @@
 -type extend_license_consumption_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_license_asset_ruleset_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Rules">> := list(license_asset_rule()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_token_request() :: #{
 %%   <<"TokenId">> := string()
 %% }
 -type delete_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroup">> => license_asset_group()
+%% }
+-type get_license_asset_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_grant_request() :: #{
@@ -801,6 +1031,12 @@
 -type s3_location() :: #{binary() => any()}.
 
 %% Example:
+%% region_status() :: #{
+%%   <<"Status">> => string()
+%% }
+-type region_status() :: #{binary() => any()}.
+
+%% Example:
 %% create_license_manager_report_generator_response() :: #{
 %%   <<"LicenseManagerReportGeneratorArn">> => string()
 %% }
@@ -833,6 +1069,13 @@
 %%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_for_organization_response() :: #{
+%%   <<"LicenseConfigurations">> => list(license_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% accept_grant_response() :: #{
@@ -877,12 +1120,26 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> := list(any()),
+%%   <<"LicenseExpiry">> => float(),
 %%   <<"LicenseRules">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"ProductInformationList">> => list(product_information()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_license_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_license_asset_group_request() :: #{
+%%   <<"AssociatedLicenseAssetRulesetARNs">> := list(string()),
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetGroupArn">> := string(),
+%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => list(license_asset_group_property()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_license_asset_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_grant_response() :: #{
@@ -953,6 +1210,7 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> => list(any()),
+%%   <<"LicenseExpiry">> => float(),
 %%   <<"LicenseRules">> => list(string()),
 %%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
 %%   <<"Name">> => string(),
@@ -962,6 +1220,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type get_license_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_group_request() :: #{
+%%   <<"LicenseAssetGroupArn">> := string()
+%% }
+-type delete_license_asset_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_licenses_response() :: #{
@@ -1021,7 +1285,10 @@
 
 %% Example:
 %% report_context() :: #{
-%%   <<"licenseConfigurationArns">> => list(string())
+%%   <<"licenseAssetGroupArns">> => list(string()),
+%%   <<"licenseConfigurationArns">> => list(string()),
+%%   <<"reportEndDate">> => non_neg_integer(),
+%%   <<"reportStartDate">> => non_neg_integer()
 %% }
 -type report_context() :: #{binary() => any()}.
 
@@ -1130,6 +1397,15 @@
 -type granted_license() :: #{binary() => any()}.
 
 %% Example:
+%% instance_rule_statement() :: #{
+%%   <<"AndRuleStatement">> => and_rule_statement(),
+%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
+%%   <<"OrRuleStatement">> => or_rule_statement(),
+%%   <<"ScriptRuleStatement">> => script_rule_statement()
+%% }
+-type instance_rule_statement() :: #{binary() => any()}.
+
+%% Example:
 %% create_grant_version_response() :: #{
 %%   <<"GrantArn">> => string(),
 %%   <<"Status">> => list(any()),
@@ -1160,10 +1436,13 @@
 
 %% Example:
 %% get_service_settings_response() :: #{
+%%   <<"CrossRegionDiscoveryHomeRegion">> => string(),
+%%   <<"CrossRegionDiscoverySourceRegions">> => list(string()),
 %%   <<"EnableCrossAccountsDiscovery">> => boolean(),
 %%   <<"LicenseManagerResourceShareArn">> => string(),
 %%   <<"OrganizationConfiguration">> => organization_configuration(),
 %%   <<"S3BucketArn">> => string(),
+%%   <<"ServiceStatus">> => service_status(),
 %%   <<"SnsTopicArn">> => string()
 %% }
 -type get_service_settings_response() :: #{binary() => any()}.
@@ -1211,14 +1490,32 @@
 
 %% Example:
 %% resource_inventory() :: #{
+%%   <<"AmiId">> => string(),
+%%   <<"HostId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"MarketplaceProductCodes">> => list(string()),
 %%   <<"Platform">> => string(),
 %%   <<"PlatformVersion">> => string(),
+%%   <<"Region">> => string(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwningAccountId">> => string(),
-%%   <<"ResourceType">> => list(any())
+%%   <<"ResourceType">> => list(any()),
+%%   <<"UsageOperation">> => string()
 %% }
 -type resource_inventory() :: #{binary() => any()}.
+
+%% Example:
+%% create_license_asset_group_request() :: #{
+%%   <<"AssociatedLicenseAssetRulesetARNs">> := list(string()),
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetGroupConfigurations">> := list(license_asset_group_configuration()),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => list(license_asset_group_property()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_license_asset_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_associations_for_license_configuration_request() :: #{
@@ -1277,6 +1574,18 @@
 -type unsupported_digital_signature_method_exception() :: #{binary() => any()}.
 
 %% Example:
+%% cross_account_discovery_service_status() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cross_account_discovery_service_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_ruleset_request() :: #{
+%%   <<"LicenseAssetRulesetArn">> := string()
+%% }
+-type delete_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
 %% issuer_details() :: #{
 %%   <<"KeyFingerprint">> => string(),
 %%   <<"Name">> => string(),
@@ -1291,6 +1600,20 @@
 -type get_license_usage_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRulesetArn">> => string()
+%% }
+-type create_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_groups_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_groups_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tokens_request() :: #{
 %%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
@@ -1298,6 +1621,21 @@
 %%   <<"TokenIds">> => list(string())
 %% }
 -type list_tokens_request() :: #{binary() => any()}.
+
+%% Example:
+%% or_rule_statement() :: #{
+%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
+%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
+%% }
+-type or_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% license_rule_statement() :: #{
+%%   <<"AndRuleStatement">> => and_rule_statement(),
+%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
+%%   <<"OrRuleStatement">> => or_rule_statement()
+%% }
+-type license_rule_statement() :: #{binary() => any()}.
 
 %% Example:
 %% checkout_borrow_license_request() :: #{
@@ -1309,6 +1647,13 @@
 %%   <<"NodeId">> => string()
 %% }
 -type checkout_borrow_license_request() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_group_property() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type license_asset_group_property() :: #{binary() => any()}.
 
 %% Example:
 %% create_token_request() :: #{
@@ -1336,6 +1681,20 @@
 -type create_grant_response() :: #{binary() => any()}.
 
 %% Example:
+%% license_asset_rule() :: #{
+%%   <<"RuleStatement">> => rule_statement()
+%% }
+-type license_asset_rule() :: #{binary() => any()}.
+
+%% Example:
+%% rule_statement() :: #{
+%%   <<"InstanceRuleStatement">> => instance_rule_statement(),
+%%   <<"LicenseConfigurationRuleStatement">> => license_configuration_rule_statement(),
+%%   <<"LicenseRuleStatement">> => license_rule_statement()
+%% }
+-type rule_statement() :: #{binary() => any()}.
+
+%% Example:
 %% provisional_configuration() :: #{
 %%   <<"MaxTimeToLiveInMinutes">> => integer()
 %% }
@@ -1356,6 +1715,7 @@
 %% Example:
 %% update_service_settings_request() :: #{
 %%   <<"EnableCrossAccountsDiscovery">> => boolean(),
+%%   <<"EnabledDiscoverySourceRegions">> => list(string()),
 %%   <<"OrganizationConfiguration">> => organization_configuration(),
 %%   <<"S3BucketArn">> => string(),
 %%   <<"SnsTopicArn">> => string()
@@ -1463,6 +1823,22 @@
     redirect_exception() | 
     rate_limit_exceeded_exception().
 
+-type create_license_asset_group_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_asset_ruleset_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
 -type create_license_configuration_errors() ::
     server_internal_exception() | 
     access_denied_exception() | 
@@ -1528,6 +1904,22 @@
     conflict_exception() | 
     rate_limit_exceeded_exception().
 
+-type delete_license_asset_group_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_license_asset_ruleset_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
 -type delete_license_configuration_errors() ::
     server_internal_exception() | 
     access_denied_exception() | 
@@ -1587,6 +1979,22 @@
     invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception().
 
+-type get_license_asset_group_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_asset_ruleset_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
 -type get_license_configuration_errors() ::
     server_internal_exception() | 
     access_denied_exception() | 
@@ -1625,6 +2033,14 @@
     authorization_exception() | 
     rate_limit_exceeded_exception().
 
+-type list_assets_for_license_asset_group_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
 -type list_associations_for_license_configuration_errors() ::
     server_internal_exception() | 
     access_denied_exception() | 
@@ -1649,7 +2065,31 @@
     invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception().
 
+-type list_license_asset_groups_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_license_asset_rulesets_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
 -type list_license_configurations_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception() | 
+    filter_limit_exceeded_exception().
+
+-type list_license_configurations_for_organization_errors() ::
     server_internal_exception() | 
     access_denied_exception() | 
     authorization_exception() | 
@@ -1742,6 +2182,7 @@
     filter_limit_exceeded_exception().
 
 -type list_tags_for_resource_errors() ::
+    validation_exception() | 
     server_internal_exception() | 
     access_denied_exception() | 
     authorization_exception() | 
@@ -1773,6 +2214,7 @@
     rate_limit_exceeded_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     server_internal_exception() | 
     access_denied_exception() | 
     authorization_exception() | 
@@ -1780,6 +2222,23 @@
     rate_limit_exceeded_exception().
 
 -type untag_resource_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_license_asset_group_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_license_asset_ruleset_errors() ::
+    validation_exception() | 
     server_internal_exception() | 
     access_denied_exception() | 
     authorization_exception() | 
@@ -1816,10 +2275,12 @@
     rate_limit_exceeded_exception().
 
 -type update_service_settings_errors() ::
+    validation_exception() | 
     server_internal_exception() | 
     access_denied_exception() | 
     authorization_exception() | 
     invalid_parameter_value_exception() | 
+    conflict_exception() | 
     rate_limit_exceeded_exception().
 
 %%====================================================================
@@ -1964,6 +2425,40 @@ create_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicense">>, Input, Options).
 
+%% @doc Creates a license asset group.
+-spec create_license_asset_group(aws_client:aws_client(), create_license_asset_group_request()) ->
+    {ok, create_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_asset_group_errors(), tuple()}.
+create_license_asset_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license_asset_group(Client, Input, []).
+
+-spec create_license_asset_group(aws_client:aws_client(), create_license_asset_group_request(), proplists:proplist()) ->
+    {ok, create_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_asset_group_errors(), tuple()}.
+create_license_asset_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicenseAssetGroup">>, Input, Options).
+
+%% @doc Creates a license asset ruleset.
+-spec create_license_asset_ruleset(aws_client:aws_client(), create_license_asset_ruleset_request()) ->
+    {ok, create_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_asset_ruleset_errors(), tuple()}.
+create_license_asset_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license_asset_ruleset(Client, Input, []).
+
+-spec create_license_asset_ruleset(aws_client:aws_client(), create_license_asset_ruleset_request(), proplists:proplist()) ->
+    {ok, create_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_asset_ruleset_errors(), tuple()}.
+create_license_asset_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicenseAssetRuleset">>, Input, Options).
+
 %% @doc Creates a license configuration.
 %%
 %% A license configuration is an abstraction of a customer license agreement
@@ -2100,6 +2595,40 @@ delete_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicense">>, Input, Options).
 
+%% @doc Deletes a license asset group.
+-spec delete_license_asset_group(aws_client:aws_client(), delete_license_asset_group_request()) ->
+    {ok, delete_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_asset_group_errors(), tuple()}.
+delete_license_asset_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_license_asset_group(Client, Input, []).
+
+-spec delete_license_asset_group(aws_client:aws_client(), delete_license_asset_group_request(), proplists:proplist()) ->
+    {ok, delete_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_asset_group_errors(), tuple()}.
+delete_license_asset_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLicenseAssetGroup">>, Input, Options).
+
+%% @doc Deletes a license asset ruleset.
+-spec delete_license_asset_ruleset(aws_client:aws_client(), delete_license_asset_ruleset_request()) ->
+    {ok, delete_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_asset_ruleset_errors(), tuple()}.
+delete_license_asset_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_license_asset_ruleset(Client, Input, []).
+
+-spec delete_license_asset_ruleset(aws_client:aws_client(), delete_license_asset_ruleset_request(), proplists:proplist()) ->
+    {ok, delete_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_asset_ruleset_errors(), tuple()}.
+delete_license_asset_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLicenseAssetRuleset">>, Input, Options).
+
 %% @doc Deletes the specified license configuration.
 %%
 %% You cannot delete a license configuration that is in use.
@@ -2231,6 +2760,40 @@ get_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicense">>, Input, Options).
 
+%% @doc Gets a license asset group.
+-spec get_license_asset_group(aws_client:aws_client(), get_license_asset_group_request()) ->
+    {ok, get_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_license_asset_group_errors(), tuple()}.
+get_license_asset_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_asset_group(Client, Input, []).
+
+-spec get_license_asset_group(aws_client:aws_client(), get_license_asset_group_request(), proplists:proplist()) ->
+    {ok, get_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_license_asset_group_errors(), tuple()}.
+get_license_asset_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseAssetGroup">>, Input, Options).
+
+%% @doc Gets a license asset ruleset.
+-spec get_license_asset_ruleset(aws_client:aws_client(), get_license_asset_ruleset_request()) ->
+    {ok, get_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, get_license_asset_ruleset_errors(), tuple()}.
+get_license_asset_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_asset_ruleset(Client, Input, []).
+
+-spec get_license_asset_ruleset(aws_client:aws_client(), get_license_asset_ruleset_request(), proplists:proplist()) ->
+    {ok, get_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, get_license_asset_ruleset_errors(), tuple()}.
+get_license_asset_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseAssetRuleset">>, Input, Options).
+
 %% @doc Gets detailed information about the specified license configuration.
 -spec get_license_configuration(aws_client:aws_client(), get_license_configuration_request()) ->
     {ok, get_license_configuration_response(), tuple()} |
@@ -2316,6 +2879,23 @@ get_service_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceSettings">>, Input, Options).
 
+%% @doc Lists assets for a license asset group.
+-spec list_assets_for_license_asset_group(aws_client:aws_client(), list_assets_for_license_asset_group_request()) ->
+    {ok, list_assets_for_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_for_license_asset_group_errors(), tuple()}.
+list_assets_for_license_asset_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_assets_for_license_asset_group(Client, Input, []).
+
+-spec list_assets_for_license_asset_group(aws_client:aws_client(), list_assets_for_license_asset_group_request(), proplists:proplist()) ->
+    {ok, list_assets_for_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_for_license_asset_group_errors(), tuple()}.
+list_assets_for_license_asset_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAssetsForLicenseAssetGroup">>, Input, Options).
+
 %% @doc Lists the resource associations for the specified license
 %% configuration.
 %%
@@ -2374,6 +2954,40 @@ list_failures_for_license_configuration_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFailuresForLicenseConfigurationOperations">>, Input, Options).
 
+%% @doc Lists license asset groups.
+-spec list_license_asset_groups(aws_client:aws_client(), list_license_asset_groups_request()) ->
+    {ok, list_license_asset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_asset_groups_errors(), tuple()}.
+list_license_asset_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_asset_groups(Client, Input, []).
+
+-spec list_license_asset_groups(aws_client:aws_client(), list_license_asset_groups_request(), proplists:proplist()) ->
+    {ok, list_license_asset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_asset_groups_errors(), tuple()}.
+list_license_asset_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseAssetGroups">>, Input, Options).
+
+%% @doc Lists license asset rulesets.
+-spec list_license_asset_rulesets(aws_client:aws_client(), list_license_asset_rulesets_request()) ->
+    {ok, list_license_asset_rulesets_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_asset_rulesets_errors(), tuple()}.
+list_license_asset_rulesets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_asset_rulesets(Client, Input, []).
+
+-spec list_license_asset_rulesets(aws_client:aws_client(), list_license_asset_rulesets_request(), proplists:proplist()) ->
+    {ok, list_license_asset_rulesets_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_asset_rulesets_errors(), tuple()}.
+list_license_asset_rulesets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseAssetRulesets">>, Input, Options).
+
 %% @doc Lists the license configurations for your account.
 -spec list_license_configurations(aws_client:aws_client(), list_license_configurations_request()) ->
     {ok, list_license_configurations_response(), tuple()} |
@@ -2390,6 +3004,23 @@ list_license_configurations(Client, Input)
 list_license_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseConfigurations">>, Input, Options).
+
+%% @doc Lists license configurations for an organization.
+-spec list_license_configurations_for_organization(aws_client:aws_client(), list_license_configurations_for_organization_request()) ->
+    {ok, list_license_configurations_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_configurations_for_organization_errors(), tuple()}.
+list_license_configurations_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_configurations_for_organization(Client, Input, []).
+
+-spec list_license_configurations_for_organization(aws_client:aws_client(), list_license_configurations_for_organization_request(), proplists:proplist()) ->
+    {ok, list_license_configurations_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_configurations_for_organization_errors(), tuple()}.
+list_license_configurations_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseConfigurationsForOrganization">>, Input, Options).
 
 %% @doc Lists the license type conversion tasks for your account.
 -spec list_license_conversion_tasks(aws_client:aws_client(), list_license_conversion_tasks_request()) ->
@@ -2688,6 +3319,40 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a license asset group.
+-spec update_license_asset_group(aws_client:aws_client(), update_license_asset_group_request()) ->
+    {ok, update_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_license_asset_group_errors(), tuple()}.
+update_license_asset_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_license_asset_group(Client, Input, []).
+
+-spec update_license_asset_group(aws_client:aws_client(), update_license_asset_group_request(), proplists:proplist()) ->
+    {ok, update_license_asset_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_license_asset_group_errors(), tuple()}.
+update_license_asset_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLicenseAssetGroup">>, Input, Options).
+
+%% @doc Updates a license asset ruleset.
+-spec update_license_asset_ruleset(aws_client:aws_client(), update_license_asset_ruleset_request()) ->
+    {ok, update_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, update_license_asset_ruleset_errors(), tuple()}.
+update_license_asset_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_license_asset_ruleset(Client, Input, []).
+
+-spec update_license_asset_ruleset(aws_client:aws_client(), update_license_asset_ruleset_request(), proplists:proplist()) ->
+    {ok, update_license_asset_ruleset_response(), tuple()} |
+    {error, any()} |
+    {error, update_license_asset_ruleset_errors(), tuple()}.
+update_license_asset_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLicenseAssetRuleset">>, Input, Options).
 
 %% @doc Modifies the attributes of an existing license configuration.
 -spec update_license_configuration(aws_client:aws_client(), update_license_configuration_request()) ->

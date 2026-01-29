@@ -45,6 +45,8 @@
          create_integration_workflow/4,
          create_profile/3,
          create_profile/4,
+         create_recommender/4,
+         create_recommender/5,
          create_segment_definition/4,
          create_segment_definition/5,
          create_segment_estimate/3,
@@ -59,6 +61,8 @@
          delete_domain/4,
          delete_domain_layout/4,
          delete_domain_layout/5,
+         delete_domain_object_type/4,
+         delete_domain_object_type/5,
          delete_event_stream/4,
          delete_event_stream/5,
          delete_event_trigger/4,
@@ -73,6 +77,8 @@
          delete_profile_object/4,
          delete_profile_object_type/4,
          delete_profile_object_type/5,
+         delete_recommender/4,
+         delete_recommender/5,
          delete_segment_definition/4,
          delete_segment_definition/5,
          delete_workflow/4,
@@ -93,6 +99,9 @@
          get_domain_layout/3,
          get_domain_layout/5,
          get_domain_layout/6,
+         get_domain_object_type/3,
+         get_domain_object_type/5,
+         get_domain_object_type/6,
          get_event_stream/3,
          get_event_stream/5,
          get_event_stream/6,
@@ -107,6 +116,8 @@
          get_matches/2,
          get_matches/4,
          get_matches/5,
+         get_object_type_attribute_statistics/5,
+         get_object_type_attribute_statistics/6,
          get_profile_history_record/4,
          get_profile_history_record/6,
          get_profile_history_record/7,
@@ -116,6 +127,11 @@
          get_profile_object_type_template/2,
          get_profile_object_type_template/4,
          get_profile_object_type_template/5,
+         get_profile_recommendations/4,
+         get_profile_recommendations/5,
+         get_recommender/3,
+         get_recommender/5,
+         get_recommender/6,
          get_segment_definition/3,
          get_segment_definition/5,
          get_segment_definition/6,
@@ -152,6 +168,9 @@
          list_domain_layouts/2,
          list_domain_layouts/4,
          list_domain_layouts/5,
+         list_domain_object_types/2,
+         list_domain_object_types/4,
+         list_domain_object_types/5,
          list_domains/1,
          list_domains/3,
          list_domains/4,
@@ -167,6 +186,9 @@
          list_integrations/2,
          list_integrations/4,
          list_integrations/5,
+         list_object_type_attribute_values/4,
+         list_object_type_attribute_values/6,
+         list_object_type_attribute_values/7,
          list_object_type_attributes/3,
          list_object_type_attributes/5,
          list_object_type_attributes/6,
@@ -183,6 +205,12 @@
          list_profile_object_types/5,
          list_profile_objects/3,
          list_profile_objects/4,
+         list_recommender_recipes/1,
+         list_recommender_recipes/3,
+         list_recommender_recipes/4,
+         list_recommenders/2,
+         list_recommenders/4,
+         list_recommenders/5,
          list_rule_based_matches/2,
          list_rule_based_matches/4,
          list_rule_based_matches/5,
@@ -199,6 +227,8 @@
          list_workflows/4,
          merge_profiles/3,
          merge_profiles/4,
+         put_domain_object_type/4,
+         put_domain_object_type/5,
          put_integration/3,
          put_integration/4,
          put_profile_object/3,
@@ -207,8 +237,12 @@
          put_profile_object_type/5,
          search_profiles/3,
          search_profiles/4,
+         start_recommender/4,
+         start_recommender/5,
          start_upload_job/4,
          start_upload_job/5,
+         stop_recommender/4,
+         stop_recommender/5,
          stop_upload_job/4,
          stop_upload_job/5,
          tag_resource/3,
@@ -224,7 +258,9 @@
          update_event_trigger/4,
          update_event_trigger/5,
          update_profile/3,
-         update_profile/4]).
+         update_profile/4,
+         update_recommender/4,
+         update_recommender/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -319,7 +355,8 @@
 
 %% Example:
 %% create_segment_estimate_request() :: #{
-%%   <<"SegmentQuery">> := segment_group_structure()
+%%   <<"SegmentQuery">> => segment_group_structure(),
+%%   <<"SegmentSqlQuery">> => string()
 %% }
 -type create_segment_estimate_request() :: #{binary() => any()}.
 
@@ -427,6 +464,7 @@
 
 %% Example:
 %% update_domain_request() :: #{
+%%   <<"DataStore">> => data_store_request(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
 %%   <<"DefaultExpirationDays">> => integer(),
@@ -455,6 +493,14 @@
 %%   <<"Timezone">> => string()
 %% }
 -type scheduled_trigger_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attribute_values_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -500,6 +546,10 @@
 %% }
 -type attribute_details() :: #{binary() => any()}.
 
+%% Example:
+%% delete_domain_object_type_request() :: #{}
+-type delete_domain_object_type_request() :: #{}.
+
 
 %% Example:
 %% detect_profile_object_type_response() :: #{
@@ -514,6 +564,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_resolution_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_recommendations_response() :: #{
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type get_profile_recommendations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -565,10 +622,27 @@
 
 
 %% Example:
+%% create_recommender_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderRecipeName">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% attribute_item() :: #{
 %%   <<"Name">> => string()
 %% }
 -type attribute_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_request() :: #{
+%%   <<"TrainingMetricsCount">> => integer()
+%% }
+-type get_recommender_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_calculated_attribute_for_profile_request() :: #{}
@@ -581,6 +655,13 @@
 %%   <<"SourceName">> => string()
 %% }
 -type conflict_resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommender_response() :: #{
+%%   <<"RecommenderName">> => string()
+%% }
+-type update_recommender_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -659,6 +740,17 @@
 
 
 %% Example:
+%% get_object_type_attribute_statistics_stats() :: #{
+%%   <<"Average">> => float(),
+%%   <<"Maximum">> => float(),
+%%   <<"Minimum">> => float(),
+%%   <<"Percentiles">> => get_object_type_attribute_statistics_percentiles(),
+%%   <<"StandardDeviation">> => float()
+%% }
+-type get_object_type_attribute_statistics_stats() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_source_properties() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"BucketPrefix">> => string()
@@ -673,6 +765,7 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"SegmentDefinitionArn">> => string(),
 %%   <<"SegmentDefinitionName">> => string(),
+%%   <<"SegmentType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type segment_definition_item() :: #{binary() => any()}.
@@ -689,6 +782,7 @@
 %% Example:
 %% update_domain_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
 %%   <<"DefaultExpirationDays">> => integer(),
@@ -726,6 +820,10 @@
 %% get_identity_resolution_job_request() :: #{}
 -type get_identity_resolution_job_request() :: #{}.
 
+%% Example:
+%% start_recommender_response() :: #{}
+-type start_recommender_response() :: #{}.
+
 
 %% Example:
 %% appflow_integration_workflow_step() :: #{
@@ -761,6 +859,19 @@
 
 
 %% Example:
+%% get_domain_object_type_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"Fields">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_domain_layout_response() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -778,12 +889,24 @@
 %% }
 -type address_dimension() :: #{binary() => any()}.
 
+%% Example:
+%% get_object_type_attribute_statistics_request() :: #{}
+-type get_object_type_attribute_statistics_request() :: #{}.
+
 
 %% Example:
 %% exporting_location() :: #{
 %%   <<"S3Exporting">> => s3_exporting_location()
 %% }
 -type exporting_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_values_response() :: #{
+%%   <<"Items">> => list(list_object_type_attribute_values_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attribute_values_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -813,6 +936,7 @@
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string()
 %% }
@@ -833,6 +957,22 @@
 %%   <<"UniqueKey">> => string()
 %% }
 -type get_upload_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_object_types_response() :: #{
+%%   <<"Items">> => list(domain_object_types_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_object_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_parameters() :: #{
+%%   <<"EventType">> => string(),
+%%   <<"EventValueThreshold">> => float()
+%% }
+-type event_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -861,6 +1001,17 @@
 %%   <<"TriggerConfig">> => trigger_config()
 %% }
 -type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_type_attribute_statistics_percentiles() :: #{
+%%   <<"P25">> => float(),
+%%   <<"P5">> => float(),
+%%   <<"P50">> => float(),
+%%   <<"P75">> => float(),
+%%   <<"P95">> => float()
+%% }
+-type get_object_type_attribute_statistics_percentiles() :: #{binary() => any()}.
 
 
 %% Example:
@@ -936,6 +1087,25 @@
 
 
 %% Example:
+%% catalog_item() :: #{
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"Category">> => string(),
+%%   <<"Code">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ImageLink">> => string(),
+%%   <<"Link">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Price">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type catalog_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% matching_rule() :: #{
 %%   <<"Rule">> => list(string())
 %% }
@@ -959,6 +1129,7 @@
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
@@ -1094,6 +1265,22 @@
 
 
 %% Example:
+%% recommender_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LatestRecommenderUpdate">> => recommender_update(),
+%%   <<"RecipeName">> => list(any()),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type recommender_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% workflow_step_item() :: #{
 %%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
 %% }
@@ -1107,6 +1294,14 @@
 %%   <<"Target">> => string()
 %% }
 -type object_type_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommender_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecommenderConfig">> => recommender_config()
+%% }
+-type update_recommender_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1161,6 +1356,7 @@
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
@@ -1249,6 +1445,15 @@
 
 
 %% Example:
+%% get_profile_recommendations_request() :: #{
+%%   <<"Context">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"RecommenderName">> := string()
+%% }
+-type get_profile_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_segment_definition_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -1256,6 +1461,8 @@
 %%   <<"SegmentDefinitionArn">> => string(),
 %%   <<"SegmentDefinitionName">> => string(),
 %%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSqlQuery">> => string(),
+%%   <<"SegmentType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type get_segment_definition_response() :: #{binary() => any()}.
@@ -1273,6 +1480,16 @@
 %%   <<"Status">> => list(any())
 %% }
 -type rule_based_matching_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_object_type_field() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type domain_object_type_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1338,6 +1555,7 @@
 
 %% Example:
 %% create_domain_request() :: #{
+%%   <<"DataStore">> => data_store_request(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
 %%   <<"DefaultExpirationDays">> := integer(),
@@ -1459,6 +1677,22 @@
 %% }
 -type list_profile_objects_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_recommender_request() :: #{}
+-type delete_recommender_request() :: #{}.
+
+%% Example:
+%% delete_domain_object_type_response() :: #{}
+-type delete_domain_object_type_response() :: #{}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"CatalogItem">> => catalog_item(),
+%%   <<"Score">> => float()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_item() :: #{
@@ -1534,6 +1768,14 @@
 
 
 %% Example:
+%% list_object_type_attribute_values_item() :: #{
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Value">> => string()
+%% }
+-type list_object_type_attribute_values_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
@@ -1577,10 +1819,34 @@
 
 
 %% Example:
+%% get_object_type_attribute_statistics_response() :: #{
+%%   <<"CalculatedAt">> => non_neg_integer(),
+%%   <<"Statistics">> => get_object_type_attribute_statistics_stats()
+%% }
+-type get_object_type_attribute_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_recipes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_recipes_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% exporting_config() :: #{
 %%   <<"S3Exporting">> => s3_exporting_config()
 %% }
 -type exporting_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_store_response() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Readiness">> => readiness()
+%% }
+-type data_store_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1590,6 +1856,10 @@
 %%   <<"Uri">> => string()
 %% }
 -type destination_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_response() :: #{}
+-type delete_recommender_response() :: #{}.
 
 
 %% Example:
@@ -1666,6 +1936,22 @@
 %% }
 -type source_segment() :: #{binary() => any()}.
 
+%% Example:
+%% start_recommender_request() :: #{}
+-type start_recommender_request() :: #{}.
+
+%% Example:
+%% stop_recommender_response() :: #{}
+-type stop_recommender_response() :: #{}.
+
+
+%% Example:
+%% list_domain_object_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_object_types_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_auto_merging_preview_request() :: #{
@@ -1674,6 +1960,17 @@
 %%   <<"MinAllowedConfidenceScoreForMerging">> => float()
 %% }
 -type get_auto_merging_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_update() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"Status">> => list(any())
+%% }
+-type recommender_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1696,6 +1993,21 @@
 %% Example:
 %% start_upload_job_response() :: #{}
 -type start_upload_job_response() :: #{}.
+
+
+%% Example:
+%% training_metrics() :: #{
+%%   <<"Metrics">> => map(),
+%%   <<"Time">> => non_neg_integer()
+%% }
+-type training_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_config() :: #{
+%%   <<"EventParametersList">> => list(event_parameters())
+%% }
+-type events_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1836,6 +2148,7 @@
 %% Example:
 %% get_domain_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
 %%   <<"DefaultExpirationDays">> => integer(),
@@ -2001,6 +2314,26 @@
 
 
 %% Example:
+%% recommender_recipe() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => list(any())
+%% }
+-type recommender_recipe() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_response() :: #{
+%%   <<"RecommenderArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_object_type_request() :: #{}
+-type get_domain_object_type_request() :: #{}.
+
+
+%% Example:
 %% object_attribute() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"FieldName">> => string(),
@@ -2021,6 +2354,10 @@
 %% get_segment_snapshot_request() :: #{}
 -type get_segment_snapshot_request() :: #{}.
 
+%% Example:
+%% stop_recommender_request() :: #{}
+-type stop_recommender_request() :: #{}.
+
 
 %% Example:
 %% salesforce_source_properties() :: #{
@@ -2039,6 +2376,16 @@
 %%   <<"WorkflowType">> => list(any())
 %% }
 -type get_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_domain_object_type_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"Fields">> := map(),
+%%   <<"Tags">> => map()
+%% }
+-type put_domain_object_type_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2133,7 +2480,8 @@
 %% create_segment_definition_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> := string(),
-%%   <<"SegmentGroups">> := segment_group(),
+%%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSqlQuery">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_segment_definition_request() :: #{binary() => any()}.
@@ -2193,6 +2541,14 @@
 
 
 %% Example:
+%% list_recommenders_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommenders">> => list(recommender_summary())
+%% }
+-type list_recommenders_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
@@ -2225,6 +2581,14 @@
 
 
 %% Example:
+%% recommender_config() :: #{
+%%   <<"EventsConfig">> => events_config(),
+%%   <<"TrainingFrequency">> => integer()
+%% }
+-type recommender_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -2239,6 +2603,7 @@
 %% Example:
 %% get_segment_membership_response() :: #{
 %%   <<"Failures">> => list(profile_query_failures()),
+%%   <<"LastComputedAt">> => non_neg_integer(),
 %%   <<"Profiles">> => list(profile_query_result()),
 %%   <<"SegmentDefinitionName">> => string()
 %% }
@@ -2291,6 +2656,7 @@
 %% Example:
 %% create_domain_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
 %%   <<"DefaultExpirationDays">> => integer(),
@@ -2353,6 +2719,14 @@
 
 
 %% Example:
+%% list_recommender_recipes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderRecipes">> => list(recommender_recipe())
+%% }
+-type list_recommender_recipes_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% threshold() :: #{
 %%   <<"Operator">> => list(any()),
 %%   <<"Value">> => string()
@@ -2372,6 +2746,13 @@
 %%   <<"ProfileObjectUniqueKey">> => string()
 %% }
 -type get_profile_history_record_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_store_request() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type data_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2597,6 +2978,17 @@
 
 
 %% Example:
+%% domain_object_types_list_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type domain_object_types_list_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% results_summary() :: #{
 %%   <<"CreatedRecords">> => float(),
 %%   <<"FailedRecords">> => float(),
@@ -2640,6 +3032,23 @@
 
 
 %% Example:
+%% get_recommender_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LatestRecommenderUpdate">> => recommender_update(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderName">> => string(),
+%%   <<"RecommenderRecipeName">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TrainingMetrics">> => list(training_metrics())
+%% }
+-type get_recommender_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integration_item() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
@@ -2649,6 +3058,7 @@
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
@@ -2763,6 +3173,14 @@
 
 
 %% Example:
+%% list_recommenders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommenders_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_calculated_attribute_definition_response() :: #{
 %%   <<"AttributeDetails">> => attribute_details(),
 %%   <<"CalculatedAttributeName">> => string(),
@@ -2796,6 +3214,19 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_domain_object_type_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"Fields">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type put_domain_object_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_domain_layout_request() :: #{}
@@ -2906,6 +3337,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_recommender_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_segment_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2955,6 +3393,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_domain_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_event_stream_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2998,6 +3443,13 @@
     resource_not_found_exception().
 
 -type delete_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_recommender_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3060,6 +3512,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_domain_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_event_stream_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3095,6 +3554,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_object_type_attribute_statistics_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_profile_history_record_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3110,6 +3576,20 @@
     resource_not_found_exception().
 
 -type get_profile_object_type_template_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_recommendations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recommender_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3207,6 +3687,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_domain_object_types_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_domains_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3236,6 +3723,13 @@
     resource_not_found_exception().
 
 -type list_integrations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_object_type_attribute_values_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3284,6 +3778,19 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_recommender_recipes_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommenders_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_rule_based_matches_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3323,6 +3830,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type put_domain_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type put_integration_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3351,7 +3865,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type start_recommender_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type start_upload_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type stop_recommender_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3404,6 +3932,13 @@
     resource_not_found_exception().
 
 -type update_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_recommender_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3829,6 +4364,40 @@ create_profile(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a recommender
+-spec create_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_request()) ->
+    {ok, create_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_errors(), tuple()}.
+create_recommender(Client, DomainName, RecommenderName, Input) ->
+    create_recommender(Client, DomainName, RecommenderName, Input, []).
+
+-spec create_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_request(), proplists:proplist()) ->
+    {ok, create_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_errors(), tuple()}.
+create_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a segment definition associated to the given domain.
 -spec create_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_definition_request()) ->
     {ok, create_segment_definition_response(), tuple()} |
@@ -4081,6 +4650,40 @@ delete_domain_layout(Client, DomainName, LayoutDefinitionName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete a DomainObjectType for the given Domain and ObjectType name.
+-spec delete_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_object_type_request()) ->
+    {ok, delete_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_object_type_errors(), tuple()}.
+delete_domain_object_type(Client, DomainName, ObjectTypeName, Input) ->
+    delete_domain_object_type(Client, DomainName, ObjectTypeName, Input, []).
+
+-spec delete_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_object_type_request(), proplists:proplist()) ->
+    {ok, delete_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_object_type_errors(), tuple()}.
+delete_domain_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/domain-object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disables and deletes the specified event stream.
 -spec delete_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), delete_event_stream_request()) ->
     {ok, delete_event_stream_response(), tuple()} |
@@ -4311,6 +4914,40 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a recommender.
+-spec delete_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_request()) ->
+    {ok, delete_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_errors(), tuple()}.
+delete_recommender(Client, DomainName, RecommenderName, Input) ->
+    delete_recommender(Client, DomainName, RecommenderName, Input, []).
+
+-spec delete_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_request(), proplists:proplist()) ->
+    {ok, delete_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_errors(), tuple()}.
+delete_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4644,6 +5281,43 @@ get_domain_layout(Client, DomainName, LayoutDefinitionName, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Return a DomainObjectType for the input Domain and ObjectType names.
+-spec get_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_object_type_errors(), tuple()}.
+get_domain_object_type(Client, DomainName, ObjectTypeName)
+  when is_map(Client) ->
+    get_domain_object_type(Client, DomainName, ObjectTypeName, #{}, #{}).
+
+-spec get_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_object_type_errors(), tuple()}.
+get_domain_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
+
+-spec get_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_object_type_errors(), tuple()}.
+get_domain_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/domain-object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about the specified event stream in a specific
 %% domain.
 -spec get_event_stream(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -4887,6 +5561,54 @@ get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc The GetObjectTypeAttributeValues API delivers statistical insights
+%% about attributes within a specific object type, but is exclusively
+%% available for domains with data store enabled.
+%%
+%% This API performs daily calculations to provide statistical information
+%% about your attribute values, helping you understand patterns and trends in
+%% your data. The statistical calculations are performed once per day,
+%% providing a consistent snapshot of your attribute data characteristics.
+%%
+%% You'll receive null values in two scenarios:
+%%
+%% During the first period after enabling data vault (unless a calculation
+%% cycle occurs, which happens once daily).
+%%
+%% For attributes that don't contain numeric values.
+-spec get_object_type_attribute_statistics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_object_type_attribute_statistics_request()) ->
+    {ok, get_object_type_attribute_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_object_type_attribute_statistics_errors(), tuple()}.
+get_object_type_attribute_statistics(Client, AttributeName, DomainName, ObjectTypeName, Input) ->
+    get_object_type_attribute_statistics(Client, AttributeName, DomainName, ObjectTypeName, Input, []).
+
+-spec get_object_type_attribute_statistics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_object_type_attribute_statistics_request(), proplists:proplist()) ->
+    {ok, get_object_type_attribute_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_object_type_attribute_statistics_errors(), tuple()}.
+get_object_type_attribute_statistics(Client, AttributeName, DomainName, ObjectTypeName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), "/attributes/", aws_util:encode_uri(AttributeName), "/statistics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a history record for a specific profile, for a specific
 %% domain.
 -spec get_profile_history_record(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -5004,6 +5726,84 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Fetches the recommendations for a profile in the input Customer
+%% Profiles domain.
+%%
+%% Fetches all the profile recommendations
+-spec get_profile_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), get_profile_recommendations_request()) ->
+    {ok, get_profile_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_recommendations_errors(), tuple()}.
+get_profile_recommendations(Client, DomainName, ProfileId, Input) ->
+    get_profile_recommendations(Client, DomainName, ProfileId, Input, []).
+
+-spec get_profile_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), get_profile_recommendations_request(), proplists:proplist()) ->
+    {ok, get_profile_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_recommendations_errors(), tuple()}.
+get_profile_recommendations(Client, DomainName, ProfileId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/", aws_util:encode_uri(ProfileId), "/recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a recommender.
+-spec get_recommender(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_errors(), tuple()}.
+get_recommender(Client, DomainName, RecommenderName)
+  when is_map(Client) ->
+    get_recommender(Client, DomainName, RecommenderName, #{}, #{}).
+
+-spec get_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_errors(), tuple()}.
+get_recommender(Client, DomainName, RecommenderName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommender(Client, DomainName, RecommenderName, QueryMap, HeadersMap, []).
+
+-spec get_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_errors(), tuple()}.
+get_recommender(Client, DomainName, RecommenderName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"training-metrics-count">>, maps:get(<<"training-metrics-count">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5517,6 +6317,48 @@ list_domain_layouts(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List all DomainObjectType(s) in a Customer Profiles domain.
+-spec list_domain_object_types(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_domain_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_object_types_errors(), tuple()}.
+list_domain_object_types(Client, DomainName)
+  when is_map(Client) ->
+    list_domain_object_types(Client, DomainName, #{}, #{}).
+
+-spec list_domain_object_types(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_domain_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_object_types_errors(), tuple()}.
+list_domain_object_types(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_object_types(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_domain_object_types(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_domain_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_object_types_errors(), tuple()}.
+list_domain_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/domain-object-types"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of all the domains for an AWS account that have been
 %% created.
 -spec list_domains(aws_client:aws_client()) ->
@@ -5725,6 +6567,55 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"include-hidden">>, maps:get(<<"include-hidden">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The ListObjectTypeAttributeValues API provides access to the most
+%% recent distinct values for any specified attribute, making it valuable for
+%% real-time data validation and consistency checks within your object types.
+%%
+%% This API works across domain, supporting both custom and standard object
+%% types. The API accepts the object type name, attribute name, and domain
+%% name as input parameters and returns values up to the storage limit of
+%% approximately 350KB.
+-spec list_object_type_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_object_type_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attribute_values_errors(), tuple()}.
+list_object_type_attribute_values(Client, AttributeName, DomainName, ObjectTypeName)
+  when is_map(Client) ->
+    list_object_type_attribute_values(Client, AttributeName, DomainName, ObjectTypeName, #{}, #{}).
+
+-spec list_object_type_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_object_type_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attribute_values_errors(), tuple()}.
+list_object_type_attribute_values(Client, AttributeName, DomainName, ObjectTypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_object_type_attribute_values(Client, AttributeName, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
+
+-spec list_object_type_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_object_type_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attribute_values_errors(), tuple()}.
+list_object_type_attribute_values(Client, AttributeName, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), "/attributes/", aws_util:encode_uri(AttributeName), "/values"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
@@ -5968,6 +6859,91 @@ list_profile_objects(Client, DomainName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of available recommender recipes that can be used to
+%% create recommenders.
+-spec list_recommender_recipes(aws_client:aws_client()) ->
+    {ok, list_recommender_recipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_recipes_errors(), tuple()}.
+list_recommender_recipes(Client)
+  when is_map(Client) ->
+    list_recommender_recipes(Client, #{}, #{}).
+
+-spec list_recommender_recipes(aws_client:aws_client(), map(), map()) ->
+    {ok, list_recommender_recipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_recipes_errors(), tuple()}.
+list_recommender_recipes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommender_recipes(Client, QueryMap, HeadersMap, []).
+
+-spec list_recommender_recipes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommender_recipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_recipes_errors(), tuple()}.
+list_recommender_recipes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/recommender-recipes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of recommenders in the specified domain.
+-spec list_recommenders(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommenders_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommenders_errors(), tuple()}.
+list_recommenders(Client, DomainName)
+  when is_map(Client) ->
+    list_recommenders(Client, DomainName, #{}, #{}).
+
+-spec list_recommenders(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommenders_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommenders_errors(), tuple()}.
+list_recommenders(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommenders(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_recommenders(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommenders_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommenders_errors(), tuple()}.
+list_recommenders(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a set of `MatchIds' that belong to the given domain.
 -spec list_rule_based_matches(aws_client:aws_client(), binary() | list()) ->
@@ -6240,6 +7216,43 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create/Update a DomainObjectType in a Customer Profiles domain.
+%%
+%% To create a new DomainObjectType, Data Store needs to be enabled on the
+%% Domain.
+-spec put_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), put_domain_object_type_request()) ->
+    {ok, put_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_domain_object_type_errors(), tuple()}.
+put_domain_object_type(Client, DomainName, ObjectTypeName, Input) ->
+    put_domain_object_type(Client, DomainName, ObjectTypeName, Input, []).
+
+-spec put_domain_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), put_domain_object_type_request(), proplists:proplist()) ->
+    {ok, put_domain_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_domain_object_type_errors(), tuple()}.
+put_domain_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/domain-object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds an integration between the service and a third-party service,
 %% which includes
 %% Amazon AppFlow and Amazon Connect.
@@ -6420,6 +7433,42 @@ search_profiles(Client, DomainName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a recommender that was previously stopped.
+%%
+%% Starting a recommender resumes its ability to generate recommendations.
+-spec start_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), start_recommender_request()) ->
+    {ok, start_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, start_recommender_errors(), tuple()}.
+start_recommender(Client, DomainName, RecommenderName, Input) ->
+    start_recommender(Client, DomainName, RecommenderName, Input, []).
+
+-spec start_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), start_recommender_request(), proplists:proplist()) ->
+    {ok, start_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, start_recommender_errors(), tuple()}.
+start_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), "/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API starts the processing of an upload job to ingest profile
 %% data.
 -spec start_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_upload_job_request()) ->
@@ -6436,6 +7485,43 @@ start_upload_job(Client, DomainName, JobId, Input) ->
 start_upload_job(Client, DomainName, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a recommender, suspending its ability to generate
+%% recommendations.
+%%
+%% The recommender can be restarted later using StartRecommender.
+-spec stop_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), stop_recommender_request()) ->
+    {ok, stop_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, stop_recommender_errors(), tuple()}.
+stop_recommender(Client, DomainName, RecommenderName, Input) ->
+    stop_recommender(Client, DomainName, RecommenderName, Input, []).
+
+-spec stop_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), stop_recommender_request(), proplists:proplist()) ->
+    {ok, stop_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, stop_recommender_errors(), tuple()}.
+stop_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), "/stop"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6777,6 +7863,41 @@ update_profile(Client, DomainName, Input) ->
 update_profile(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties of an existing recommender, allowing you to
+%% modify its configuration and description.
+-spec update_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), update_recommender_request()) ->
+    {ok, update_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, update_recommender_errors(), tuple()}.
+update_recommender(Client, DomainName, RecommenderName, Input) ->
+    update_recommender(Client, DomainName, RecommenderName, Input, []).
+
+-spec update_recommender(aws_client:aws_client(), binary() | list(), binary() | list(), update_recommender_request(), proplists:proplist()) ->
+    {ok, update_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, update_recommender_errors(), tuple()}.
+update_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

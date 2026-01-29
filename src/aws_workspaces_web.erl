@@ -2,19 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon WorkSpaces Secure Browser is a low cost, fully managed
-%% WorkSpace built
-%% specifically to facilitate secure, web-based workloads.
+%% WorkSpace built specifically to facilitate secure, web-based workloads.
 %%
-%% WorkSpaces Secure Browser makes it
-%% easy for customers to safely provide their employees with access to
-%% internal websites and
-%% SaaS web applications without the administrative burden of appliances or
-%% specialized client
+%% WorkSpaces Secure Browser makes it easy for customers to safely provide
+%% their employees with access to internal websites and SaaS web applications
+%% without the administrative burden of appliances or specialized client
 %% software. WorkSpaces Secure Browser provides simple policy tools tailored
-%% for user
-%% interactions, while offloading common tasks like capacity management,
-%% scaling, and
-%% maintaining browser images.
+%% for user interactions, while offloading common tasks like capacity
+%% management, scaling, and maintaining browser images.
 -module(aws_workspaces_web).
 
 -export([associate_browser_settings/3,
@@ -508,6 +503,18 @@
 
 
 %% Example:
+%% branding_configuration() :: #{
+%%   <<"colorTheme">> => list(any()),
+%%   <<"favicon">> => image_metadata(),
+%%   <<"localizedStrings">> => map(),
+%%   <<"logo">> => image_metadata(),
+%%   <<"termsOfService">> => string(),
+%%   <<"wallpaper">> => image_metadata()
+%% }
+-type branding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_trust_store_response() :: #{
 %%   <<"trustStore">> => trust_store()
 %% }
@@ -599,6 +606,7 @@
 
 %% Example:
 %% user_settings_summary() :: #{
+%%   <<"brandingConfiguration">> => branding_configuration(),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
 %%   <<"deepLinkAllowed">> => string(),
@@ -609,7 +617,8 @@
 %%   <<"printAllowed">> => string(),
 %%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> => string(),
-%%   <<"userSettingsArn">> => string()
+%%   <<"userSettingsArn">> => string(),
+%%   <<"webAuthnAllowed">> => string()
 %% }
 -type user_settings_summary() :: #{binary() => any()}.
 
@@ -638,6 +647,18 @@
 %%   <<"networkSettingsArn">> := string()
 %% }
 -type associate_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% branding_configuration_create_input() :: #{
+%%   <<"colorTheme">> => list(any()),
+%%   <<"favicon">> => list(),
+%%   <<"localizedStrings">> => map(),
+%%   <<"logo">> => list(),
+%%   <<"termsOfService">> => string(),
+%%   <<"wallpaper">> => list()
+%% }
+-type branding_configuration_create_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_session_request() :: #{}
@@ -1087,6 +1108,15 @@
 
 
 %% Example:
+%% image_metadata() :: #{
+%%   <<"fileExtension">> => string(),
+%%   <<"lastUploadTimestamp">> => non_neg_integer(),
+%%   <<"mimeType">> => list(any())
+%% }
+-type image_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% session() :: #{
 %%   <<"clientIpAddresses">> => list(string()),
 %%   <<"endTime">> => non_neg_integer(),
@@ -1109,6 +1139,7 @@
 
 %% Example:
 %% update_user_settings_request() :: #{
+%%   <<"brandingConfigurationInput">> => branding_configuration_update_input(),
 %%   <<"clientToken">> => string(),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
@@ -1119,7 +1150,8 @@
 %%   <<"pasteAllowed">> => string(),
 %%   <<"printAllowed">> => string(),
 %%   <<"toolbarConfiguration">> => toolbar_configuration(),
-%%   <<"uploadAllowed">> => string()
+%%   <<"uploadAllowed">> => string(),
+%%   <<"webAuthnAllowed">> => string()
 %% }
 -type update_user_settings_request() :: #{binary() => any()}.
 
@@ -1184,6 +1216,18 @@
 %% Example:
 %% delete_data_protection_settings_request() :: #{}
 -type delete_data_protection_settings_request() :: #{}.
+
+
+%% Example:
+%% branding_configuration_update_input() :: #{
+%%   <<"colorTheme">> => list(any()),
+%%   <<"favicon">> => list(),
+%%   <<"localizedStrings">> => map(),
+%%   <<"logo">> => list(),
+%%   <<"termsOfService">> => string(),
+%%   <<"wallpaper">> => list()
+%% }
+-type branding_configuration_update_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1273,6 +1317,7 @@
 %% Example:
 %% create_user_settings_request() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
+%%   <<"brandingConfigurationInput">> => branding_configuration_create_input(),
 %%   <<"clientToken">> => string(),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> := string(),
@@ -1285,7 +1330,8 @@
 %%   <<"printAllowed">> := string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"toolbarConfiguration">> => toolbar_configuration(),
-%%   <<"uploadAllowed">> := string()
+%%   <<"uploadAllowed">> := string(),
+%%   <<"webAuthnAllowed">> => string()
 %% }
 -type create_user_settings_request() :: #{binary() => any()}.
 
@@ -1329,6 +1375,20 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type create_data_protection_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% localized_branding_strings() :: #{
+%%   <<"browserTabTitle">> => string(),
+%%   <<"contactButtonText">> => string(),
+%%   <<"contactLink">> => string(),
+%%   <<"loadingText">> => string(),
+%%   <<"loginButtonText">> => string(),
+%%   <<"loginDescription">> => string(),
+%%   <<"loginTitle">> => string(),
+%%   <<"welcomeText">> => string()
+%% }
+-type localized_branding_strings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1483,6 +1543,7 @@
 %% user_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
 %%   <<"associatedPortalArns">> => list(string()),
+%%   <<"brandingConfiguration">> => branding_configuration(),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
 %%   <<"customerManagedKey">> => string(),
@@ -1494,7 +1555,8 @@
 %%   <<"printAllowed">> => string(),
 %%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> => string(),
-%%   <<"userSettingsArn">> => string()
+%%   <<"userSettingsArn">> => string(),
+%%   <<"webAuthnAllowed">> => string()
 %% }
 -type user_settings() :: #{binary() => any()}.
 
@@ -1849,6 +1911,7 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_browser_settings_errors() ::
@@ -2538,10 +2601,9 @@ associate_user_settings(Client, PortalArn, Input0, Options0) ->
 %% @doc Creates a browser settings resource that can be associated with a web
 %% portal.
 %%
-%% Once
-%% associated with a web portal, browser settings control how the browser
-%% will behave once a
-%% user starts a streaming session for the web portal.
+%% Once associated with a web portal, browser settings control how the
+%% browser will behave once a user starts a streaming session for the web
+%% portal.
 -spec create_browser_settings(aws_client:aws_client(), create_browser_settings_request()) ->
     {ok, create_browser_settings_response(), tuple()} |
     {error, any()} |
@@ -2683,10 +2745,8 @@ create_ip_access_settings(Client, Input0, Options0) ->
 %% @doc Creates a network settings resource that can be associated with a web
 %% portal.
 %%
-%% Once
-%% associated with a web portal, network settings define how streaming
-%% instances will connect
-%% with your specified VPC.
+%% Once associated with a web portal, network settings define how streaming
+%% instances will connect with your specified VPC.
 -spec create_network_settings(aws_client:aws_client(), create_network_settings_request()) ->
     {ok, create_network_settings_response(), tuple()} |
     {error, any()} |
@@ -2790,15 +2850,12 @@ create_session_logger(Client, Input0, Options0) ->
 
 %% @doc Creates a trust store that can be associated with a web portal.
 %%
-%% A trust store contains
-%% certificate authority (CA) certificates. Once associated with a web
-%% portal, the browser in
-%% a streaming session will recognize certificates that have been issued
-%% using any of the CAs
-%% in the trust store. If your organization has internal websites that use
-%% certificates issued
-%% by private CAs, you should add the private CA certificate to the trust
-%% store.
+%% A trust store contains certificate authority (CA) certificates. Once
+%% associated with a web portal, the browser in a streaming session will
+%% recognize certificates that have been issued using any of the CAs in the
+%% trust store. If your organization has internal websites that use
+%% certificates issued by private CAs, you should add the private CA
+%% certificate to the trust store.
 -spec create_trust_store(aws_client:aws_client(), create_trust_store_request()) ->
     {ok, create_trust_store_response(), tuple()} |
     {error, any()} |
@@ -2833,8 +2890,7 @@ create_trust_store(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user access logging settings resource that can be
-%% associated with a web
-%% portal.
+%% associated with a web portal.
 -spec create_user_access_logging_settings(aws_client:aws_client(), create_user_access_logging_settings_request()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
@@ -2871,10 +2927,8 @@ create_user_access_logging_settings(Client, Input0, Options0) ->
 %% @doc Creates a user settings resource that can be associated with a web
 %% portal.
 %%
-%% Once
-%% associated with a web portal, user settings control how users can transfer
-%% data between a
-%% streaming session and the their local devices.
+%% Once associated with a web portal, user settings control how users can
+%% transfer data between a streaming session and the their local devices.
 -spec create_user_settings(aws_client:aws_client(), create_user_settings_request()) ->
     {ok, create_user_settings_response(), tuple()} |
     {error, any()} |

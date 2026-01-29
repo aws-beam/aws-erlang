@@ -20,6 +20,14 @@
          create_integration_response/5,
          create_model/3,
          create_model/4,
+         create_portal/2,
+         create_portal/3,
+         create_portal_product/2,
+         create_portal_product/3,
+         create_product_page/3,
+         create_product_page/4,
+         create_product_rest_endpoint_page/3,
+         create_product_rest_endpoint_page/4,
          create_route/3,
          create_route/4,
          create_route_response/4,
@@ -50,6 +58,16 @@
          delete_integration_response/6,
          delete_model/4,
          delete_model/5,
+         delete_portal/3,
+         delete_portal/4,
+         delete_portal_product/3,
+         delete_portal_product/4,
+         delete_portal_product_sharing_policy/3,
+         delete_portal_product_sharing_policy/4,
+         delete_product_page/4,
+         delete_product_page/5,
+         delete_product_rest_endpoint_page/4,
+         delete_product_rest_endpoint_page/5,
          delete_route/4,
          delete_route/5,
          delete_route_request_parameter/5,
@@ -64,6 +82,8 @@
          delete_stage/5,
          delete_vpc_link/3,
          delete_vpc_link/4,
+         disable_portal/3,
+         disable_portal/4,
          export_api/4,
          export_api/6,
          export_api/7,
@@ -118,6 +138,21 @@
          get_models/2,
          get_models/4,
          get_models/5,
+         get_portal/2,
+         get_portal/4,
+         get_portal/5,
+         get_portal_product/2,
+         get_portal_product/4,
+         get_portal_product/5,
+         get_portal_product_sharing_policy/2,
+         get_portal_product_sharing_policy/4,
+         get_portal_product_sharing_policy/5,
+         get_product_page/3,
+         get_product_page/5,
+         get_product_page/6,
+         get_product_rest_endpoint_page/3,
+         get_product_rest_endpoint_page/5,
+         get_product_rest_endpoint_page/6,
          get_route/3,
          get_route/5,
          get_route/6,
@@ -150,9 +185,27 @@
          get_vpc_links/4,
          import_api/2,
          import_api/3,
+         list_portal_products/1,
+         list_portal_products/3,
+         list_portal_products/4,
+         list_portals/1,
+         list_portals/3,
+         list_portals/4,
+         list_product_pages/2,
+         list_product_pages/4,
+         list_product_pages/5,
+         list_product_rest_endpoint_pages/2,
+         list_product_rest_endpoint_pages/4,
+         list_product_rest_endpoint_pages/5,
          list_routing_rules/2,
          list_routing_rules/4,
          list_routing_rules/5,
+         preview_portal/3,
+         preview_portal/4,
+         publish_portal/3,
+         publish_portal/4,
+         put_portal_product_sharing_policy/3,
+         put_portal_product_sharing_policy/4,
          put_routing_rule/4,
          put_routing_rule/5,
          reimport_api/3,
@@ -179,6 +232,14 @@
          update_integration_response/6,
          update_model/4,
          update_model/5,
+         update_portal/3,
+         update_portal/4,
+         update_portal_product/3,
+         update_portal_product/4,
+         update_product_page/4,
+         update_product_page/5,
+         update_product_rest_endpoint_page/4,
+         update_product_rest_endpoint_page/5,
          update_route/4,
          update_route/5,
          update_route_response/5,
@@ -207,6 +268,14 @@
 
 
 %% Example:
+%% display_content() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type display_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_integration_response_response() :: #{
 %%   <<"ContentHandlingStrategy">> => list(any()),
 %%   <<"IntegrationResponseId">> => string(),
@@ -216,6 +285,16 @@
 %%   <<"TemplateSelectionExpression">> => string()
 %% }
 -type update_integration_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type update_product_page_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -282,12 +361,29 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+%% Example:
+%% apigatewayv2_none() :: #{}
+-type apigatewayv2_none() :: #{}.
+
+%% Example:
+%% get_portal_request() :: #{}
+-type get_portal_request() :: #{}.
+
 
 %% Example:
 %% tls_config_input() :: #{
 %%   <<"ServerNameToVerify">> => string()
 %% }
 -type tls_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_rest_endpoint_pages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type list_product_rest_endpoint_pages_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -392,6 +488,19 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_portal_product_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -518,12 +627,25 @@
 
 
 %% Example:
+%% create_product_rest_endpoint_page_request() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content(),
+%%   <<"RestEndpointIdentifier">> := rest_endpoint_identifier(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type create_product_rest_endpoint_page_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% mutual_tls_authentication() :: #{
 %%   <<"TruststoreUri">> => string(),
 %%   <<"TruststoreVersion">> => string(),
 %%   <<"TruststoreWarnings">> => list(string())
 %% }
 -type mutual_tls_authentication() :: #{binary() => any()}.
+
+%% Example:
+%% preview_portal_response() :: #{}
+-type preview_portal_response() :: #{}.
 
 
 %% Example:
@@ -563,6 +685,25 @@
 %%   <<"StageName">> => string()
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -618,6 +759,14 @@
 
 
 %% Example:
+%% a_cm_managed() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DomainName">> => string()
+%% }
+-type a_cm_managed() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_routing_rule_response() :: #{
 %%   <<"Actions">> => list(routing_rule_action()),
 %%   <<"Conditions">> => list(routing_rule_condition()),
@@ -646,9 +795,33 @@
 %% }
 -type reimport_api_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"AppClientId">> => string(),
+%%   <<"UserPoolArn">> => string(),
+%%   <<"UserPoolDomain">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_route_response_request() :: #{}
 -type get_route_response_request() :: #{}.
+
+
+%% Example:
+%% section() :: #{
+%%   <<"ProductRestEndpointPageArns">> => list(string()),
+%%   <<"SectionName">> => string()
+%% }
+-type section() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_portal_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type publish_portal_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -680,6 +853,17 @@
 %%   <<"Tags">> => map()
 %% }
 -type update_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_page_request() :: #{
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_product_page_request() :: #{binary() => any()}.
+
+%% Example:
+%% preview_portal_request() :: #{}
+-type preview_portal_request() :: #{}.
 
 
 %% Example:
@@ -718,6 +902,16 @@
 
 
 %% Example:
+%% get_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type get_product_page_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string())
 %% }
@@ -726,6 +920,16 @@
 %% Example:
 %% get_model_template_request() :: #{}
 -type get_model_template_request() :: #{}.
+
+
+%% Example:
+%% identifier_parts() :: #{
+%%   <<"Method">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"RestApiId">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type identifier_parts() :: #{binary() => any()}.
 
 %% Example:
 %% delete_authorizer_request() :: #{}
@@ -760,8 +964,31 @@
 -type get_stage_request() :: #{}.
 
 %% Example:
+%% delete_product_rest_endpoint_page_request() :: #{}
+-type delete_product_rest_endpoint_page_request() :: #{}.
+
+%% Example:
 %% get_authorizer_request() :: #{}
 -type get_authorizer_request() :: #{}.
+
+%% Example:
+%% delete_portal_product_sharing_policy_request() :: #{}
+-type delete_portal_product_sharing_policy_request() :: #{}.
+
+
+%% Example:
+%% product_rest_endpoint_page_summary_no_body() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"OperationName">> => string(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type product_rest_endpoint_page_summary_no_body() :: #{binary() => any()}.
 
 
 %% Example:
@@ -784,12 +1011,30 @@
 
 
 %% Example:
+%% create_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type create_product_page_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_api_mapping_request() :: #{
 %%   <<"ApiId">> := string(),
 %%   <<"ApiMappingKey">> => string(),
 %%   <<"Stage">> := string()
 %% }
 -type create_api_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"None">> => apigatewayv2_none()
+%% }
+-type authorization() :: #{binary() => any()}.
 
 
 %% Example:
@@ -839,6 +1084,10 @@
 -type create_integration_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_portal_product_sharing_policy_request() :: #{}
+-type get_portal_product_sharing_policy_request() :: #{}.
+
+%% Example:
 %% delete_stage_request() :: #{}
 -type delete_stage_request() :: #{}.
 
@@ -852,6 +1101,10 @@
 %% }
 -type put_routing_rule_request() :: #{binary() => any()}.
 
+%% Example:
+%% put_portal_product_sharing_policy_response() :: #{}
+-type put_portal_product_sharing_policy_response() :: #{}.
+
 
 %% Example:
 %% get_authorizers_request() :: #{
@@ -859,6 +1112,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_authorizers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portals_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_portal_request() :: #{}
+-type delete_portal_request() :: #{}.
 
 
 %% Example:
@@ -870,6 +1135,18 @@
 %% Example:
 %% delete_integration_request() :: #{}
 -type delete_integration_request() :: #{}.
+
+
+%% Example:
+%% custom_colors() :: #{
+%%   <<"AccentColor">> => string(),
+%%   <<"BackgroundColor">> => string(),
+%%   <<"ErrorValidationColor">> => string(),
+%%   <<"HeaderColor">> => string(),
+%%   <<"NavigationColor">> => string(),
+%%   <<"TextColor">> => string()
+%% }
+-type custom_colors() :: #{binary() => any()}.
 
 
 %% Example:
@@ -900,6 +1177,13 @@
 
 
 %% Example:
+%% create_product_page_request() :: #{
+%%   <<"DisplayContent">> := display_content()
+%% }
+-type create_product_page_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_api_response() :: #{
 %%   <<"ApiEndpoint">> => string(),
 %%   <<"ApiGatewayManaged">> => boolean(),
@@ -920,6 +1204,48 @@
 %%   <<"Warnings">> => list(string())
 %% }
 -type update_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portal_products_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwner">> => string()
+%% }
+-type list_portal_products_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_request() :: #{
+%%   <<"Authorization">> := authorization(),
+%%   <<"EndpointConfiguration">> := endpoint_configuration_request(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LogoUri">> => string(),
+%%   <<"PortalContent">> := portal_content(),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type update_portal_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_deployment_request() :: #{}
@@ -976,6 +1302,15 @@
 
 
 %% Example:
+%% endpoint_display_content_response() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"OperationName">> => string()
+%% }
+-type endpoint_display_content_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_model_template_response() :: #{
 %%   <<"Value">> => string()
 %% }
@@ -1015,6 +1350,22 @@
 %%   <<"Target">> => string()
 %% }
 -type route() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_rest_endpoint_page_request() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type update_product_rest_endpoint_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_display_content() :: #{
+%%   <<"None">> => apigatewayv2_none(),
+%%   <<"Overrides">> => display_content_overrides()
+%% }
+-type endpoint_display_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1080,6 +1431,13 @@
 
 
 %% Example:
+%% put_portal_product_sharing_policy_request() :: #{
+%%   <<"PolicyDocument">> := string()
+%% }
+-type put_portal_product_sharing_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_routes_response() :: #{
 %%   <<"Items">> => list(route()),
 %%   <<"NextToken">> => string()
@@ -1099,6 +1457,15 @@
 
 
 %% Example:
+%% display_order() :: #{
+%%   <<"Contents">> => list(section()),
+%%   <<"OverviewPageArn">> => string(),
+%%   <<"ProductPageArns">> => list(string())
+%% }
+-type display_order() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_route_response_request() :: #{
 %%   <<"ModelSelectionExpression">> => string(),
 %%   <<"ResponseModels">> => map(),
@@ -1106,6 +1473,19 @@
 %%   <<"RouteResponseKey">> => string()
 %% }
 -type update_route_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_portal_product_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1129,6 +1509,28 @@
 %%   <<"TlsConfig">> => tls_config_input()
 %% }
 -type update_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type update_product_rest_endpoint_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_portal_product_sharing_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PortalProductId">> => string()
+%% }
+-type get_portal_product_sharing_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_route_settings_request() :: #{}
@@ -1196,6 +1598,10 @@
 %% }
 -type update_route_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_product_page_request() :: #{}
+-type delete_product_page_request() :: #{}.
+
 
 %% Example:
 %% update_domain_name_request() :: #{
@@ -1248,6 +1654,23 @@
 
 
 %% Example:
+%% preview() :: #{
+%%   <<"PreviewStatus">> => list(any()),
+%%   <<"PreviewUrl">> => string(),
+%%   <<"StatusException">> => status_exception()
+%% }
+-type preview() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_response() :: #{
+%%   <<"Items">> => list(portal_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portals_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_domain_names_response() :: #{
 %%   <<"Items">> => list(domain_name()),
 %%   <<"NextToken">> => string()
@@ -1276,6 +1699,26 @@
 %%   <<"TlsConfig">> => tls_config_input()
 %% }
 -type create_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_product_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_page_request() :: #{
+%%   <<"DisplayContent">> => display_content()
+%% }
+-type update_product_page_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1327,9 +1770,25 @@
 %% }
 -type get_api_mappings_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_portal_product_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_product_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_model_request() :: #{}
 -type delete_model_request() :: #{}.
+
+
+%% Example:
+%% get_portal_product_request() :: #{
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_portal_product_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1337,6 +1796,16 @@
 %%   <<"ServerNameToVerify">> => string()
 %% }
 -type tls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_configuration_response() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"PortalDefaultDomainName">> => string(),
+%%   <<"PortalDomainHostedZoneId">> => string()
+%% }
+-type endpoint_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1364,6 +1833,14 @@
 
 
 %% Example:
+%% status_exception() :: #{
+%%   <<"Exception">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type status_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_route_result() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiKeyRequired">> => boolean(),
@@ -1387,11 +1864,32 @@
 
 
 %% Example:
+%% portal_product_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type portal_product_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_stages_response() :: #{
 %%   <<"Items">> => list(stage()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_stages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_pages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type list_product_pages_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1474,6 +1972,14 @@
 
 
 %% Example:
+%% list_product_pages_response() :: #{
+%%   <<"Items">> => list(product_page_summary_no_body()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_product_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_api_request() :: #{
 %%   <<"ApiKeySelectionExpression">> => string(),
 %%   <<"CorsConfiguration">> => cors(),
@@ -1492,6 +1998,15 @@
 
 
 %% Example:
+%% update_portal_product_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order()
+%% }
+-type update_portal_product_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_integration_response_request() :: #{
 %%   <<"ContentHandlingStrategy">> => list(any()),
 %%   <<"IntegrationResponseKey">> := string(),
@@ -1500,6 +2015,18 @@
 %%   <<"TemplateSelectionExpression">> => string()
 %% }
 -type create_integration_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_request() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_request(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LogoUri">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"RumAppMonitorName">> => string()
+%% }
+-type update_portal_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1512,6 +2039,38 @@
 %%   <<"Description">> => string()
 %% }
 -type update_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% display_content_overrides() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"OperationName">> => string()
+%% }
+-type display_content_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_theme() :: #{
+%%   <<"CustomColors">> => custom_colors(),
+%%   <<"LogoLastUploaded">> => non_neg_integer()
+%% }
+-type portal_theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RawDisplayContent">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type get_product_rest_endpoint_page_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_route_request() :: #{}
@@ -1568,6 +2127,14 @@
 
 
 %% Example:
+%% list_product_rest_endpoint_pages_response() :: #{
+%%   <<"Items">> => list(product_rest_endpoint_page_summary_no_body()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_product_rest_endpoint_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -1618,6 +2185,26 @@
 
 
 %% Example:
+%% portal_summary() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_route_response_response() :: #{
 %%   <<"ModelSelectionExpression">> => string(),
 %%   <<"ResponseModels">> => map(),
@@ -1645,6 +2232,15 @@
 %%   <<"Schema">> => string()
 %% }
 -type get_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_content() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Theme">> => portal_theme()
+%% }
+-type portal_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1683,6 +2279,14 @@
 %%   <<"VpcLinkVersion">> => list(any())
 %% }
 -type update_vpc_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portal_products_response() :: #{
+%%   <<"Items">> => list(portal_product_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portal_products_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1753,6 +2357,26 @@
 
 
 %% Example:
+%% get_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type get_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_route_request() :: #{
 %%   <<"ApiKeyRequired">> => boolean(),
 %%   <<"AuthorizationScopes">> => list(string()),
@@ -1770,11 +2394,36 @@
 
 
 %% Example:
+%% create_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type create_product_rest_endpoint_page_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_vpc_links_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_vpc_links_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_portal_product_request() :: #{}
+-type delete_portal_product_request() :: #{}.
+
+
+%% Example:
+%% rest_endpoint_identifier() :: #{
+%%   <<"IdentifierParts">> => identifier_parts()
+%% }
+-type rest_endpoint_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1816,6 +2465,16 @@
 %%   <<"Schema">> => string()
 %% }
 -type model() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_page_summary_no_body() :: #{
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PageTitle">> => string(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type product_page_summary_no_body() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1874,6 +2533,10 @@
 %%   <<"TemplateSelectionExpression">> => string()
 %% }
 -type get_integration_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_portal_request() :: #{}
+-type disable_portal_request() :: #{}.
 
 %% Example:
 %% get_api_request() :: #{}
@@ -1944,14 +2607,34 @@
 
 
 %% Example:
+%% endpoint_configuration_request() :: #{
+%%   <<"AcmManaged">> => a_cm_managed(),
+%%   <<"None">> => apigatewayv2_none()
+%% }
+-type endpoint_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% routing_rule_match_base_paths() :: #{
 %%   <<"AnyOf">> => list(string())
 %% }
 -type routing_rule_match_base_paths() :: #{binary() => any()}.
 
 %% Example:
+%% publish_portal_response() :: #{}
+-type publish_portal_response() :: #{}.
+
+%% Example:
 %% get_route_request() :: #{}
 -type get_route_request() :: #{}.
+
+
+%% Example:
+%% get_product_rest_endpoint_page_request() :: #{
+%%   <<"IncludeRawDisplayContent">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_product_rest_endpoint_page_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2011,6 +2694,28 @@
     bad_request_exception() | 
     not_found_exception() | 
     conflict_exception() | 
+    too_many_requests_exception().
+
+-type create_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    too_many_requests_exception().
+
+-type create_portal_product_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    too_many_requests_exception().
+
+-type create_product_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_product_rest_endpoint_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
     too_many_requests_exception().
 
 -type create_route_errors() ::
@@ -2082,6 +2787,35 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type delete_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    too_many_requests_exception().
+
+-type delete_portal_product_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_portal_product_sharing_policy_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_product_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_product_rest_endpoint_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type delete_route_errors() ::
     not_found_exception() | 
     too_many_requests_exception().
@@ -2109,6 +2843,13 @@
 
 -type delete_vpc_link_errors() ::
     not_found_exception() | 
+    too_many_requests_exception().
+
+-type disable_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
     too_many_requests_exception().
 
 -type export_api_errors() ::
@@ -2193,6 +2934,36 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type get_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_portal_product_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_portal_product_sharing_policy_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_product_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_product_rest_endpoint_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_route_errors() ::
     not_found_exception() | 
     too_many_requests_exception().
@@ -2245,8 +3016,50 @@
     conflict_exception() | 
     too_many_requests_exception().
 
+-type list_portal_products_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    too_many_requests_exception().
+
+-type list_portals_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    too_many_requests_exception().
+
+-type list_product_pages_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_product_rest_endpoint_pages_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type list_routing_rules_errors() ::
     bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type preview_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type publish_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type put_portal_product_sharing_policy_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
     not_found_exception() | 
     too_many_requests_exception().
 
@@ -2324,6 +3137,31 @@
     bad_request_exception() | 
     not_found_exception() | 
     conflict_exception() | 
+    too_many_requests_exception().
+
+-type update_portal_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type update_portal_product_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_product_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_product_rest_endpoint_page_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
     too_many_requests_exception().
 
 -type update_route_errors() ::
@@ -2606,6 +3444,142 @@ create_model(Client, ApiId, Input) ->
 create_model(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a portal.
+-spec create_portal(aws_client:aws_client(), create_portal_request()) ->
+    {ok, create_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_errors(), tuple()}.
+create_portal(Client, Input) ->
+    create_portal(Client, Input, []).
+
+-spec create_portal(aws_client:aws_client(), create_portal_request(), proplists:proplist()) ->
+    {ok, create_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_errors(), tuple()}.
+create_portal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portals"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new portal product.
+-spec create_portal_product(aws_client:aws_client(), create_portal_product_request()) ->
+    {ok, create_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_product_errors(), tuple()}.
+create_portal_product(Client, Input) ->
+    create_portal_product(Client, Input, []).
+
+-spec create_portal_product(aws_client:aws_client(), create_portal_product_request(), proplists:proplist()) ->
+    {ok, create_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_product_errors(), tuple()}.
+create_portal_product(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portalproducts"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new product page for a portal product.
+-spec create_product_page(aws_client:aws_client(), binary() | list(), create_product_page_request()) ->
+    {ok, create_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_product_page_errors(), tuple()}.
+create_product_page(Client, PortalProductId, Input) ->
+    create_product_page(Client, PortalProductId, Input, []).
+
+-spec create_product_page(aws_client:aws_client(), binary() | list(), create_product_page_request(), proplists:proplist()) ->
+    {ok, create_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_product_page_errors(), tuple()}.
+create_product_page(Client, PortalProductId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productpages"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a product REST endpoint page for a portal product.
+-spec create_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), create_product_rest_endpoint_page_request()) ->
+    {ok, create_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_product_rest_endpoint_page_errors(), tuple()}.
+create_product_rest_endpoint_page(Client, PortalProductId, Input) ->
+    create_product_rest_endpoint_page(Client, PortalProductId, Input, []).
+
+-spec create_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), create_product_rest_endpoint_page_request(), proplists:proplist()) ->
+    {ok, create_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_product_rest_endpoint_page_errors(), tuple()}.
+create_product_rest_endpoint_page(Client, PortalProductId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productrestendpointpages"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3138,6 +4112,176 @@ delete_model(Client, ApiId, ModelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a portal.
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_errors(), tuple()}.
+delete_portal(Client, PortalId, Input) ->
+    delete_portal(Client, PortalId, Input, []).
+
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_errors(), tuple()}.
+delete_portal(Client, PortalId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a portal product.
+-spec delete_portal_product(aws_client:aws_client(), binary() | list(), delete_portal_product_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_product_errors(), tuple()}.
+delete_portal_product(Client, PortalProductId, Input) ->
+    delete_portal_product(Client, PortalProductId, Input, []).
+
+-spec delete_portal_product(aws_client:aws_client(), binary() | list(), delete_portal_product_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_product_errors(), tuple()}.
+delete_portal_product(Client, PortalProductId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the sharing policy for a portal product.
+-spec delete_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), delete_portal_product_sharing_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_product_sharing_policy_errors(), tuple()}.
+delete_portal_product_sharing_policy(Client, PortalProductId, Input) ->
+    delete_portal_product_sharing_policy(Client, PortalProductId, Input, []).
+
+-spec delete_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), delete_portal_product_sharing_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_portal_product_sharing_policy_errors(), tuple()}.
+delete_portal_product_sharing_policy(Client, PortalProductId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/sharingpolicy"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a product page of a portal product.
+-spec delete_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), delete_product_page_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_product_page_errors(), tuple()}.
+delete_product_page(Client, PortalProductId, ProductPageId, Input) ->
+    delete_product_page(Client, PortalProductId, ProductPageId, Input, []).
+
+-spec delete_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), delete_product_page_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_product_page_errors(), tuple()}.
+delete_product_page(Client, PortalProductId, ProductPageId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productpages/", aws_util:encode_uri(ProductPageId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a product REST endpoint page.
+-spec delete_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), delete_product_rest_endpoint_page_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_product_rest_endpoint_page_errors(), tuple()}.
+delete_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input) ->
+    delete_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input, []).
+
+-spec delete_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), delete_product_rest_endpoint_page_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_product_rest_endpoint_page_errors(), tuple()}.
+delete_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productrestendpointpages/", aws_util:encode_uri(ProductRestEndpointPageId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a Route.
 -spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), delete_route_request()) ->
     {ok, undefined, tuple()} |
@@ -3361,6 +4505,40 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the publication of a portal portal.
+-spec disable_portal(aws_client:aws_client(), binary() | list(), disable_portal_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_portal_errors(), tuple()}.
+disable_portal(Client, PortalId, Input) ->
+    disable_portal(Client, PortalId, Input, []).
+
+-spec disable_portal(aws_client:aws_client(), binary() | list(), disable_portal_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_portal_errors(), tuple()}.
+disable_portal(Client, PortalId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), "/publish"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4092,6 +5270,204 @@ get_models(Client, ApiId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a portal.
+-spec get_portal(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_portal_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_errors(), tuple()}.
+get_portal(Client, PortalId)
+  when is_map(Client) ->
+    get_portal(Client, PortalId, #{}, #{}).
+
+-spec get_portal(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_portal_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_errors(), tuple()}.
+get_portal(Client, PortalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_portal(Client, PortalId, QueryMap, HeadersMap, []).
+
+-spec get_portal(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_portal_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_errors(), tuple()}.
+get_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a portal product.
+-spec get_portal_product(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_errors(), tuple()}.
+get_portal_product(Client, PortalProductId)
+  when is_map(Client) ->
+    get_portal_product(Client, PortalProductId, #{}, #{}).
+
+-spec get_portal_product(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_errors(), tuple()}.
+get_portal_product(Client, PortalProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_portal_product(Client, PortalProductId, QueryMap, HeadersMap, []).
+
+-spec get_portal_product(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_errors(), tuple()}.
+get_portal_product(Client, PortalProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the sharing policy for a portal product.
+-spec get_portal_product_sharing_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_portal_product_sharing_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_sharing_policy_errors(), tuple()}.
+get_portal_product_sharing_policy(Client, PortalProductId)
+  when is_map(Client) ->
+    get_portal_product_sharing_policy(Client, PortalProductId, #{}, #{}).
+
+-spec get_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_portal_product_sharing_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_sharing_policy_errors(), tuple()}.
+get_portal_product_sharing_policy(Client, PortalProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_portal_product_sharing_policy(Client, PortalProductId, QueryMap, HeadersMap, []).
+
+-spec get_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_portal_product_sharing_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_portal_product_sharing_policy_errors(), tuple()}.
+get_portal_product_sharing_policy(Client, PortalProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/sharingpolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a product page of a portal product.
+-spec get_product_page(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_page_errors(), tuple()}.
+get_product_page(Client, PortalProductId, ProductPageId)
+  when is_map(Client) ->
+    get_product_page(Client, PortalProductId, ProductPageId, #{}, #{}).
+
+-spec get_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_page_errors(), tuple()}.
+get_product_page(Client, PortalProductId, ProductPageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_product_page(Client, PortalProductId, ProductPageId, QueryMap, HeadersMap, []).
+
+-spec get_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_page_errors(), tuple()}.
+get_product_page(Client, PortalProductId, ProductPageId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productpages/", aws_util:encode_uri(ProductPageId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a product REST endpoint page.
+-spec get_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_rest_endpoint_page_errors(), tuple()}.
+get_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId)
+  when is_map(Client) ->
+    get_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, #{}, #{}).
+
+-spec get_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_rest_endpoint_page_errors(), tuple()}.
+get_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, QueryMap, HeadersMap, []).
+
+-spec get_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, get_product_rest_endpoint_page_errors(), tuple()}.
+get_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productrestendpointpages/", aws_util:encode_uri(ProductRestEndpointPageId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeRawDisplayContent">>, maps:get(<<"includeRawDisplayContent">>, QueryMap, undefined)},
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a Route.
 -spec get_route(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_route_result(), tuple()} |
@@ -4522,6 +5898,177 @@ import_api(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists portal products.
+-spec list_portal_products(aws_client:aws_client()) ->
+    {ok, list_portal_products_response(), tuple()} |
+    {error, any()} |
+    {error, list_portal_products_errors(), tuple()}.
+list_portal_products(Client)
+  when is_map(Client) ->
+    list_portal_products(Client, #{}, #{}).
+
+-spec list_portal_products(aws_client:aws_client(), map(), map()) ->
+    {ok, list_portal_products_response(), tuple()} |
+    {error, any()} |
+    {error, list_portal_products_errors(), tuple()}.
+list_portal_products(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_portal_products(Client, QueryMap, HeadersMap, []).
+
+-spec list_portal_products(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_portal_products_response(), tuple()} |
+    {error, any()} |
+    {error, list_portal_products_errors(), tuple()}.
+list_portal_products(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceOwner">>, maps:get(<<"resourceOwner">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists portals.
+-spec list_portals(aws_client:aws_client()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
+list_portals(Client)
+  when is_map(Client) ->
+    list_portals(Client, #{}, #{}).
+
+-spec list_portals(aws_client:aws_client(), map(), map()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
+list_portals(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_portals(Client, QueryMap, HeadersMap, []).
+
+-spec list_portals(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
+list_portals(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the product pages for a portal product.
+-spec list_product_pages(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_product_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_pages_errors(), tuple()}.
+list_product_pages(Client, PortalProductId)
+  when is_map(Client) ->
+    list_product_pages(Client, PortalProductId, #{}, #{}).
+
+-spec list_product_pages(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_product_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_pages_errors(), tuple()}.
+list_product_pages(Client, PortalProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_product_pages(Client, PortalProductId, QueryMap, HeadersMap, []).
+
+-spec list_product_pages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_product_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_pages_errors(), tuple()}.
+list_product_pages(Client, PortalProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productpages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the product REST endpoint pages of a portal product.
+-spec list_product_rest_endpoint_pages(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_product_rest_endpoint_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_rest_endpoint_pages_errors(), tuple()}.
+list_product_rest_endpoint_pages(Client, PortalProductId)
+  when is_map(Client) ->
+    list_product_rest_endpoint_pages(Client, PortalProductId, #{}, #{}).
+
+-spec list_product_rest_endpoint_pages(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_product_rest_endpoint_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_rest_endpoint_pages_errors(), tuple()}.
+list_product_rest_endpoint_pages(Client, PortalProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_product_rest_endpoint_pages(Client, PortalProductId, QueryMap, HeadersMap, []).
+
+-spec list_product_rest_endpoint_pages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_product_rest_endpoint_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_rest_endpoint_pages_errors(), tuple()}.
+list_product_rest_endpoint_pages(Client, PortalProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productrestendpointpages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists routing rules.
 -spec list_routing_rules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_routing_rules_response(), tuple()} |
@@ -4564,6 +6111,108 @@ list_routing_rules(Client, DomainName, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates a portal preview.
+-spec preview_portal(aws_client:aws_client(), binary() | list(), preview_portal_request()) ->
+    {ok, preview_portal_response(), tuple()} |
+    {error, any()} |
+    {error, preview_portal_errors(), tuple()}.
+preview_portal(Client, PortalId, Input) ->
+    preview_portal(Client, PortalId, Input, []).
+
+-spec preview_portal(aws_client:aws_client(), binary() | list(), preview_portal_request(), proplists:proplist()) ->
+    {ok, preview_portal_response(), tuple()} |
+    {error, any()} |
+    {error, preview_portal_errors(), tuple()}.
+preview_portal(Client, PortalId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), "/preview"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes a portal.
+-spec publish_portal(aws_client:aws_client(), binary() | list(), publish_portal_request()) ->
+    {ok, publish_portal_response(), tuple()} |
+    {error, any()} |
+    {error, publish_portal_errors(), tuple()}.
+publish_portal(Client, PortalId, Input) ->
+    publish_portal(Client, PortalId, Input, []).
+
+-spec publish_portal(aws_client:aws_client(), binary() | list(), publish_portal_request(), proplists:proplist()) ->
+    {ok, publish_portal_response(), tuple()} |
+    {error, any()} |
+    {error, publish_portal_errors(), tuple()}.
+publish_portal(Client, PortalId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), "/publish"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the sharing policy for a portal product.
+-spec put_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), put_portal_product_sharing_policy_request()) ->
+    {ok, put_portal_product_sharing_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_portal_product_sharing_policy_errors(), tuple()}.
+put_portal_product_sharing_policy(Client, PortalProductId, Input) ->
+    put_portal_product_sharing_policy(Client, PortalProductId, Input, []).
+
+-spec put_portal_product_sharing_policy(aws_client:aws_client(), binary() | list(), put_portal_product_sharing_policy_request(), proplists:proplist()) ->
+    {ok, put_portal_product_sharing_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_portal_product_sharing_policy_errors(), tuple()}.
+put_portal_product_sharing_policy(Client, PortalProductId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/sharingpolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a routing rule.
 -spec put_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), put_routing_rule_request()) ->
@@ -4994,6 +6643,142 @@ update_model(Client, ApiId, ModelId, Input) ->
 update_model(Client, ApiId, ModelId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a portal.
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request()) ->
+    {ok, update_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_errors(), tuple()}.
+update_portal(Client, PortalId, Input) ->
+    update_portal(Client, PortalId, Input, []).
+
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request(), proplists:proplist()) ->
+    {ok, update_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_errors(), tuple()}.
+update_portal(Client, PortalId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/portals/", aws_util:encode_uri(PortalId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the portal product.
+-spec update_portal_product(aws_client:aws_client(), binary() | list(), update_portal_product_request()) ->
+    {ok, update_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_product_errors(), tuple()}.
+update_portal_product(Client, PortalProductId, Input) ->
+    update_portal_product(Client, PortalProductId, Input, []).
+
+-spec update_portal_product(aws_client:aws_client(), binary() | list(), update_portal_product_request(), proplists:proplist()) ->
+    {ok, update_portal_product_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_product_errors(), tuple()}.
+update_portal_product(Client, PortalProductId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a product page of a portal product.
+-spec update_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), update_product_page_request()) ->
+    {ok, update_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_product_page_errors(), tuple()}.
+update_product_page(Client, PortalProductId, ProductPageId, Input) ->
+    update_product_page(Client, PortalProductId, ProductPageId, Input, []).
+
+-spec update_product_page(aws_client:aws_client(), binary() | list(), binary() | list(), update_product_page_request(), proplists:proplist()) ->
+    {ok, update_product_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_product_page_errors(), tuple()}.
+update_product_page(Client, PortalProductId, ProductPageId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productpages/", aws_util:encode_uri(ProductPageId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a product REST endpoint page.
+-spec update_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), update_product_rest_endpoint_page_request()) ->
+    {ok, update_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_product_rest_endpoint_page_errors(), tuple()}.
+update_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input) ->
+    update_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input, []).
+
+-spec update_product_rest_endpoint_page(aws_client:aws_client(), binary() | list(), binary() | list(), update_product_rest_endpoint_page_request(), proplists:proplist()) ->
+    {ok, update_product_rest_endpoint_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_product_rest_endpoint_page_errors(), tuple()}.
+update_product_rest_endpoint_page(Client, PortalProductId, ProductRestEndpointPageId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/portalproducts/", aws_util:encode_uri(PortalProductId), "/productrestendpointpages/", aws_util:encode_uri(ProductRestEndpointPageId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

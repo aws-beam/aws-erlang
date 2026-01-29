@@ -166,6 +166,14 @@
 
 
 %% Example:
+%% offer_set_release_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type offer_set_release_date_filter_date_range() :: #{binary() => any()}.
+
+
+%% Example:
 %% ami_product_sort() :: #{
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -235,6 +243,13 @@
 
 
 %% Example:
+%% offer_set_associated_offer_ids_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_set_associated_offer_ids_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_summary() :: #{
 %%   <<"ProductTitle">> => string(),
 %%   <<"Visibility">> => list(any())
@@ -277,6 +292,7 @@
 %%   <<"LastModifiedDate">> => string(),
 %%   <<"MachineLearningProductSummary">> => machine_learning_product_summary(),
 %%   <<"Name">> => string(),
+%%   <<"OfferSetSummary">> => offer_set_summary(),
 %%   <<"OfferSummary">> => offer_summary(),
 %%   <<"ResaleAuthorizationSummary">> => resale_authorization_summary(),
 %%   <<"SaaSProductSummary">> => saa_s_product_summary(),
@@ -333,11 +349,33 @@
 
 
 %% Example:
+%% offer_set_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_set_entity_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type offer_set_sort() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_last_modified_date_filter_date_range() :: #{
 %%   <<"AfterValue">> => string(),
 %%   <<"BeforeValue">> => string()
 %% }
 -type data_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_solution_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_set_solution_id_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -353,6 +391,13 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type container_product_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_release_date_filter() :: #{
+%%   <<"DateRange">> => offer_set_release_date_filter_date_range()
+%% }
+-type offer_set_release_date_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -447,6 +492,14 @@
 
 
 %% Example:
+%% offer_set_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type offer_set_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+
+%% Example:
 %% resale_authorization_reseller_legal_name_filter() :: #{
 %%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
@@ -506,6 +559,13 @@
 %%   <<"WildCardValue">> => string()
 %% }
 -type machine_learning_product_title_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_set_id_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -638,6 +698,19 @@
 
 
 %% Example:
+%% offer_set_filters() :: #{
+%%   <<"AssociatedOfferIds">> => offer_set_associated_offer_ids_filter(),
+%%   <<"EntityId">> => offer_set_entity_id_filter(),
+%%   <<"LastModifiedDate">> => offer_set_last_modified_date_filter(),
+%%   <<"Name">> => offer_set_name_filter(),
+%%   <<"ReleaseDate">> => offer_set_release_date_filter(),
+%%   <<"SolutionId">> => offer_set_solution_id_filter(),
+%%   <<"State">> => offer_set_state_filter()
+%% }
+-type offer_set_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_sort() :: #{
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -663,10 +736,22 @@
 
 
 %% Example:
+%% offer_set_summary() :: #{
+%%   <<"AssociatedOfferIds">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"ReleaseDate">> => string(),
+%%   <<"SolutionId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type offer_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% offer_summary() :: #{
 %%   <<"AvailabilityEndDate">> => string(),
 %%   <<"BuyerAccounts">> => list(string()),
 %%   <<"Name">> => string(),
+%%   <<"OfferSetId">> => string(),
 %%   <<"ProductId">> => string(),
 %%   <<"ReleaseDate">> => string(),
 %%   <<"ResaleAuthorizationId">> => string(),
@@ -714,6 +799,13 @@
 %%   <<"WildCardValue">> => string()
 %% }
 -type data_product_title_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => offer_set_last_modified_date_filter_date_range()
+%% }
+-type offer_set_last_modified_date_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -791,6 +883,13 @@
 %%   <<"WildCardValue">> => string()
 %% }
 -type offer_name_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_name_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_set_name_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -912,6 +1011,13 @@
 
 
 %% Example:
+%% offer_set_state_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type offer_set_state_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% resale_authorization_availability_end_date_filter_date_range() :: #{
 %%   <<"AfterValue">> => string(),
 %%   <<"BeforeValue">> => string()
@@ -996,6 +1102,7 @@
 %%   <<"EntityId">> => offer_entity_id_filter(),
 %%   <<"LastModifiedDate">> => offer_last_modified_date_filter(),
 %%   <<"Name">> => offer_name_filter(),
+%%   <<"OfferSetId">> => offer_set_id_filter(),
 %%   <<"ProductId">> => offer_product_id_filter(),
 %%   <<"ReleaseDate">> => offer_release_date_filter(),
 %%   <<"ResaleAuthorizationId">> => offer_resale_authorization_id_filter(),

@@ -266,6 +266,15 @@
 
 
 %% Example:
+%% wi_fi_simple_setup_configuration() :: #{
+%%   <<"EnableAsProvisionee">> => boolean(),
+%%   <<"EnableAsProvisioner">> => boolean(),
+%%   <<"TimeoutInMinutes">> => integer()
+%% }
+-type wi_fi_simple_setup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_hub_configuration_response() :: #{
 %%   <<"HubTokenTimerExpirySettingInSeconds">> => float(),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -1208,7 +1217,8 @@
 %%   <<"Model">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"SerialNumber">> => string()
+%%   <<"SerialNumber">> => string(),
+%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
 %% }
 -type update_managed_thing_request() :: #{binary() => any()}.
 
@@ -1401,6 +1411,8 @@
 %%   <<"ControllerIdentifier">> => string(),
 %%   <<"CustomProtocolDetail">> => map(),
 %%   <<"DiscoveryType">> := list(any()),
+%%   <<"EndDeviceIdentifier">> => string(),
+%%   <<"Protocol">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type start_device_discovery_request() :: #{binary() => any()}.
@@ -1855,7 +1867,8 @@
 %%   <<"SerialNumber">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"UniversalProductCode">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
 %% }
 -type get_managed_thing_response() :: #{binary() => any()}.
 
@@ -1977,7 +1990,8 @@
 %%   <<"Owner">> => string(),
 %%   <<"Role">> := list(any()),
 %%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
 %% }
 -type create_managed_thing_request() :: #{binary() => any()}.
 
@@ -2247,7 +2261,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_account_association_errors() ::
     throttling_exception() | 
@@ -5217,8 +5232,7 @@ put_hub_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Set the runtime log configuration for a specific managed thing or for
-%% all managed things as a group.
+%% @doc Set the runtime log configuration for a specific managed thing.
 -spec put_runtime_log_configuration(aws_client:aws_client(), binary() | list(), put_runtime_log_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

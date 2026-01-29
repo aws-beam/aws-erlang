@@ -41,7 +41,7 @@
 %%
 %% For more information about Signer, see the AWS Signer Developer
 %% Guide:
-%% https://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html.
+%% http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html.
 -module(aws_signer).
 
 -export([add_profile_permission/3,
@@ -848,9 +848,9 @@ add_profile_permission(Client, ProfileName, Input0, Options0) ->
 %% `CANCELED'.
 %%
 %% A canceled profile is still viewable with the `ListSigningProfiles'
-%% operation, but it cannot perform new signing jobs, and is deleted two
-%% years after
-%% cancelation.
+%% operation, but it cannot perform new signing jobs. See Data Retention:
+%% https://docs.aws.amazon.com/signer/latest/developerguide/retention.html
+%% for more information on scheduled deletion of a canceled signing profile.
 -spec cancel_signing_profile(aws_client:aws_client(), binary() | list(), cancel_signing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1373,7 +1373,7 @@ remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes the state of a signing job to REVOKED.
+%% @doc Changes the state of a signing job to `REVOKED'.
 %%
 %% This indicates that the signature is no
 %% longer valid.
@@ -1410,12 +1410,16 @@ revoke_signature(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes the state of a signing profile to REVOKED.
+%% @doc Changes the state of a signing profile to `REVOKED'.
 %%
 %% This indicates that signatures
 %% generated using the signing profile after an effective start date are no
 %% longer
-%% valid.
+%% valid. A revoked profile is still viewable with the
+%% `ListSigningProfiles'
+%% operation, but it cannot perform new signing jobs. See Data Retention:
+%% https://docs.aws.amazon.com/signer/latest/developerguide/retention.html
+%% for more information on scheduled deletion of a revoked signing profile.
 -spec revoke_signing_profile(aws_client:aws_client(), binary() | list(), revoke_signing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1486,9 +1490,8 @@ sign_payload(Client, Input0, Options0) ->
 %% @doc Initiates a signing job to be performed on the code provided.
 %%
 %% Signing jobs are
-%% viewable by the `ListSigningJobs' operation for two years after they
-%% are
-%% performed. Note the following requirements:
+%% viewable by the `ListSigningJobs' operation. Note the following
+%% requirements:
 %%
 %% You must create an Amazon S3 source bucket. For more information, see
 %% Creating a Bucket:

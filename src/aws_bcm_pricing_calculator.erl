@@ -175,10 +175,13 @@
 %% Example:
 %% create_bill_estimate_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
+%%   <<"costCategoryGroupSharingPreferenceEffectiveDate">> => [non_neg_integer()],
 %%   <<"costSummary">> => bill_estimate_cost_summary(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -220,10 +223,13 @@
 %% Example:
 %% update_bill_estimate_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
+%%   <<"costCategoryGroupSharingPreferenceEffectiveDate">> => [non_neg_integer()],
 %%   <<"costSummary">> => bill_estimate_cost_summary(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -332,10 +338,13 @@
 %% Example:
 %% get_bill_estimate_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
+%%   <<"costCategoryGroupSharingPreferenceEffectiveDate">> => [non_neg_integer()],
 %%   <<"costSummary">> => bill_estimate_cost_summary(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -590,9 +599,11 @@
 %% Example:
 %% get_bill_scenario_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -602,9 +613,11 @@
 %% Example:
 %% update_bill_scenario_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -803,9 +816,11 @@
 %% Example:
 %% bill_scenario_summary() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -814,7 +829,9 @@
 
 %% Example:
 %% update_bill_scenario_request() :: #{
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
 %%   <<"expiresAt">> => [non_neg_integer()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"identifier">> := string(),
 %%   <<"name">> => string()
 %% }
@@ -1104,6 +1121,8 @@
 %% Example:
 %% create_bill_scenario_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1187,9 +1206,11 @@
 %% Example:
 %% create_bill_scenario_response() :: #{
 %%   <<"billInterval">> => bill_interval(),
+%%   <<"costCategoryGroupSharingPreferenceArn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"groupSharingPreference">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())

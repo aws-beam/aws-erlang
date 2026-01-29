@@ -235,6 +235,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"fields">> := list(field_value()),
 %%   <<"performedBy">> => list(),
+%%   <<"tags">> => map(),
 %%   <<"templateId">> := string()
 %% }
 -type create_case_request() :: #{binary() => any()}.
@@ -282,7 +283,8 @@
 %%   <<"name">> := string(),
 %%   <<"requiredFields">> => list(required_field()),
 %%   <<"rules">> => list(template_rule()),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration())
 %% }
 -type create_template_request() :: #{binary() => any()}.
 
@@ -298,6 +300,7 @@
 %%   <<"requiredFields">> => list(required_field()),
 %%   <<"rules">> => list(template_rule()),
 %%   <<"status">> := string(),
+%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration()),
 %%   <<"tags">> => map(),
 %%   <<"templateArn">> := string(),
 %%   <<"templateId">> := string()
@@ -363,7 +366,8 @@
 %%   <<"name">> => string(),
 %%   <<"requiredFields">> => list(required_field()),
 %%   <<"rules">> => list(template_rule()),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration())
 %% }
 -type update_template_request() :: #{binary() => any()}.
 
@@ -495,6 +499,14 @@
 
 
 %% Example:
+%% tag_value() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_all_related_items_request() :: #{
 %%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => [integer()],
@@ -608,6 +620,7 @@
 %% template_summary() :: #{
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
+%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration()),
 %%   <<"templateArn">> => string(),
 %%   <<"templateId">> => string()
 %% }
@@ -1207,6 +1220,14 @@
 
 
 %% Example:
+%% tag_propagation_configuration() :: #{
+%%   <<"resourceType">> => string(),
+%%   <<"tagMap">> => map()
+%% }
+-type tag_propagation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% layout_configuration() :: #{
 %%   <<"defaultLayout">> => string()
 %% }
@@ -1683,6 +1704,9 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 %%
 %% Case system and custom fields are taken as an array id/value pairs with a
 %% declared data types.
+%%
+%% When creating a case from a template that has tag propagation
+%% configurations, the specified tags are automatically applied to the case.
 %%
 %% The following fields are required when creating a case:
 %%

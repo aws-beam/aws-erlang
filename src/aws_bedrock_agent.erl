@@ -521,6 +521,13 @@
 
 
 %% Example:
+%% video_segmentation_configuration() :: #{
+%%   <<"fixedLengthDuration">> => [integer()]
+%% }
+-type video_segmentation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% loop_flow_node_configuration() :: #{
 %%   <<"definition">> => flow_definition()
 %% }
@@ -818,6 +825,13 @@
 %%   <<"sql">> => string()
 %% }
 -type curated_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_segmentation_configuration() :: #{
+%%   <<"fixedLengthDuration">> => [integer()]
+%% }
+-type audio_segmentation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2558,6 +2572,13 @@
 %% }
 -type metadata_attribute_value() :: #{binary() => any()}.
 
+
+%% Example:
+%% audio_configuration() :: #{
+%%   <<"segmentationConfiguration">> => audio_segmentation_configuration()
+%% }
+-type audio_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -3133,6 +3154,13 @@
 
 
 %% Example:
+%% video_configuration() :: #{
+%%   <<"segmentationConfiguration">> => video_segmentation_configuration()
+%% }
+-type video_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% vector_ingestion_configuration() :: #{
 %%   <<"chunkingConfiguration">> => chunking_configuration(),
 %%   <<"contextEnrichmentConfiguration">> => context_enrichment_configuration(),
@@ -3235,8 +3263,10 @@
 
 %% Example:
 %% bedrock_embedding_model_configuration() :: #{
+%%   <<"audio">> => list(audio_configuration()),
 %%   <<"dimensions">> => integer(),
-%%   <<"embeddingDataType">> => list(any())
+%%   <<"embeddingDataType">> => list(any()),
+%%   <<"video">> => list(video_configuration())
 %% }
 -type bedrock_embedding_model_configuration() :: #{binary() => any()}.
 
@@ -5346,7 +5376,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a knoweldge base.
+%% @doc Gets information about a knowledge base.
 -spec get_knowledge_base(aws_client:aws_client(), binary() | list()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |

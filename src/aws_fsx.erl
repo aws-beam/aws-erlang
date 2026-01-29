@@ -264,6 +264,7 @@
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
 %%   <<"PreferredSubnetId">> => string(),
 %%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration(),
 %%   <<"ThroughputCapacity">> => integer(),
@@ -457,6 +458,13 @@
 -type create_file_system_response() :: #{binary() => any()}.
 
 %% Example:
+%% windows_fsrm_configuration() :: #{
+%%   <<"EventLogDestination">> => string(),
+%%   <<"FsrmServiceEnabled">> => boolean()
+%% }
+-type windows_fsrm_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% duration_since_last_access() :: #{
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => float()
@@ -514,6 +522,7 @@
 %% create_and_attach_s3_access_point_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"OntapConfiguration">> => create_and_attach_s3_access_point_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => create_and_attach_s3_access_point_open_z_f_s_configuration(),
 %%   <<"S3AccessPoint">> => create_and_attach_s3_access_point_s3_configuration(),
 %%   <<"Type">> := list(any())
@@ -664,6 +673,12 @@
 %%   <<"ClientConfigurations">> => list(open_z_f_s_client_configuration())
 %% }
 -type open_z_f_s_nfs_export() :: #{binary() => any()}.
+
+%% Example:
+%% ontap_unix_file_system_user() :: #{
+%%   <<"Name">> => string()
+%% }
+-type ontap_unix_file_system_user() :: #{binary() => any()}.
 
 %% Example:
 %% file_system_endpoints() :: #{
@@ -1438,12 +1453,25 @@
 -type access_point_already_owned_by_you() :: #{binary() => any()}.
 
 %% Example:
+%% s3_access_point_ontap_configuration() :: #{
+%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type s3_access_point_ontap_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% active_directory_backup_attributes() :: #{
 %%   <<"ActiveDirectoryId">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"ResourceARN">> => string()
 %% }
 -type active_directory_backup_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% ontap_windows_file_system_user() :: #{
+%%   <<"Name">> => string()
+%% }
+-type ontap_windows_file_system_user() :: #{binary() => any()}.
 
 %% Example:
 %% backup_failure_details() :: #{
@@ -1562,6 +1590,7 @@
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
 %%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration_updates(),
 %%   <<"ThroughputCapacity">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
@@ -1708,6 +1737,14 @@
 %%   <<"VolumeType">> => list(any())
 %% }
 -type volume() :: #{binary() => any()}.
+
+%% Example:
+%% ontap_file_system_identity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"UnixUser">> => ontap_unix_file_system_user(),
+%%   <<"WindowsUser">> => ontap_windows_file_system_user()
+%% }
+-type ontap_file_system_identity() :: #{binary() => any()}.
 
 %% Example:
 %% create_file_cache_response() :: #{
@@ -1875,6 +1912,7 @@
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
 %%   <<"MaintenanceOperationsInProgress">> => list(list(any())()),
 %%   <<"PreferredFileServerIp">> => string(),
 %%   <<"PreferredFileServerIpv6">> => string(),
@@ -1918,6 +1956,7 @@
 %%   <<"Lifecycle">> => list(any()),
 %%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
 %%   <<"Name">> => string(),
+%%   <<"OntapConfiguration">> => s3_access_point_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => s3_access_point_open_z_f_s_configuration(),
 %%   <<"S3AccessPoint">> => s3_access_point(),
 %%   <<"Type">> => list(any())
@@ -1983,6 +2022,13 @@
 %%   <<"FileSystem">> => file_system()
 %% }
 -type start_misconfigured_state_recovery_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_ontap_configuration() :: #{
+%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type create_and_attach_s3_access_point_ontap_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% volume_not_found() :: #{

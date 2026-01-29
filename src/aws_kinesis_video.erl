@@ -28,6 +28,8 @@
          describe_signaling_channel/3,
          describe_stream/2,
          describe_stream/3,
+         describe_stream_storage_configuration/2,
+         describe_stream_storage_configuration/3,
          get_data_endpoint/2,
          get_data_endpoint/3,
          get_signaling_channel_endpoint/2,
@@ -63,7 +65,9 @@
          update_signaling_channel/2,
          update_signaling_channel/3,
          update_stream/2,
-         update_stream/3]).
+         update_stream/3,
+         update_stream_storage_configuration/2,
+         update_stream_storage_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -125,6 +129,10 @@
 %%   <<"ChannelARN">> => string()
 %% }
 -type create_signaling_channel_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_stream_storage_configuration_output() :: #{}
+-type update_stream_storage_configuration_output() :: #{}.
 
 
 %% Example:
@@ -210,6 +218,15 @@
 %%   <<"UploaderStatus">> => list(any())
 %% }
 -type last_uploader_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_stream_storage_configuration_output() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"StreamStorageConfiguration">> => stream_storage_configuration()
+%% }
+-type describe_stream_storage_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -334,6 +351,16 @@
 
 
 %% Example:
+%% update_stream_storage_configuration_input() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"StreamStorageConfiguration">> := stream_storage_configuration()
+%% }
+-type update_stream_storage_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -387,6 +414,21 @@
 %%   <<"Type">> => string()
 %% }
 -type mapped_resource_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_stream_storage_configuration_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type describe_stream_storage_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_storage_configuration() :: #{
+%%   <<"DefaultStorageTier">> => list(any())
+%% }
+-type stream_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -711,6 +753,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MediaType">> => string(),
 %%   <<"StreamName">> := string(),
+%%   <<"StreamStorageConfiguration">> => stream_storage_configuration(),
 %%   <<"Tags">> => map()
 %% }
 -type create_stream_input() :: #{binary() => any()}.
@@ -938,6 +981,12 @@
     client_limit_exceeded_exception() | 
     resource_not_found_exception().
 
+-type describe_stream_storage_configuration_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    client_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type get_data_endpoint_errors() ::
     invalid_argument_exception() | 
     not_authorized_exception() | 
@@ -1057,6 +1106,14 @@
 -type update_stream_errors() ::
     invalid_argument_exception() | 
     not_authorized_exception() | 
+    client_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    version_mismatch_exception() | 
+    resource_in_use_exception().
+
+-type update_stream_storage_configuration_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
     client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
     version_mismatch_exception() | 
@@ -1543,6 +1600,47 @@ describe_stream(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the current storage configuration for the specified Kinesis
+%% video stream.
+%%
+%% In the request, you must specify either the `StreamName' or the
+%% `StreamARN'.
+%%
+%% You must have permissions for the
+%% `KinesisVideo:DescribeStreamStorageConfiguration' action.
+-spec describe_stream_storage_configuration(aws_client:aws_client(), describe_stream_storage_configuration_input()) ->
+    {ok, describe_stream_storage_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stream_storage_configuration_errors(), tuple()}.
+describe_stream_storage_configuration(Client, Input) ->
+    describe_stream_storage_configuration(Client, Input, []).
+
+-spec describe_stream_storage_configuration(aws_client:aws_client(), describe_stream_storage_configuration_input(), proplists:proplist()) ->
+    {ok, describe_stream_storage_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stream_storage_configuration_errors(), tuple()}.
+describe_stream_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describeStreamStorageConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets an endpoint for a specified stream for either reading or
 %% writing.
 %%
@@ -1603,7 +1701,10 @@ get_data_endpoint(Client, Input0, Options0) ->
 %% websocket
 %% endpoint. If you specify `HTTPS' as the protocol, this API generates
 %% an HTTPS
-%% endpoint.
+%% endpoint. If you specify `WEBRTC' as the protocol, but the signaling
+%% channel isn't
+%% configured for ingestion, you will receive the error
+%% `InvalidArgumentException'.
 %%
 %% `Role' determines the messaging permissions. A `MASTER' role
 %% results in this API generating an endpoint that a client can use to
@@ -2326,6 +2427,50 @@ update_stream(Client, Input) ->
 update_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateStream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the storage configuration for an existing Kinesis video
+%% stream.
+%%
+%% This operation allows you to modify the storage tier settings for a
+%% stream, enabling you to optimize storage costs and performance based on
+%% your access patterns.
+%%
+%% `UpdateStreamStorageConfiguration' is an asynchronous operation.
+%%
+%% You must have permissions for the
+%% `KinesisVideo:UpdateStreamStorageConfiguration' action.
+-spec update_stream_storage_configuration(aws_client:aws_client(), update_stream_storage_configuration_input()) ->
+    {ok, update_stream_storage_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_stream_storage_configuration_errors(), tuple()}.
+update_stream_storage_configuration(Client, Input) ->
+    update_stream_storage_configuration(Client, Input, []).
+
+-spec update_stream_storage_configuration(aws_client:aws_client(), update_stream_storage_configuration_input(), proplists:proplist()) ->
+    {ok, update_stream_storage_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_stream_storage_configuration_errors(), tuple()}.
+update_stream_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updateStreamStorageConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

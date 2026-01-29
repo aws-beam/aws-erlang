@@ -20,6 +20,9 @@
          list_customer_agreements/1,
          list_customer_agreements/3,
          list_customer_agreements/4,
+         list_report_versions/2,
+         list_report_versions/4,
+         list_report_versions/5,
          list_reports/1,
          list_reports/3,
          list_reports/4,
@@ -152,6 +155,23 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_customer_agreements_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportId">> := string()
+%% }
+-type list_report_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reports">> => list(report_summary())
+%% }
+-type list_report_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -315,6 +335,14 @@
 -type list_customer_agreements_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_report_versions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -540,6 +568,49 @@ list_customer_agreements(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List available report versions for a given report.
+-spec list_report_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_report_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_report_versions_errors(), tuple()}.
+list_report_versions(Client, ReportId)
+  when is_map(Client) ->
+    list_report_versions(Client, ReportId, #{}, #{}).
+
+-spec list_report_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_report_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_report_versions_errors(), tuple()}.
+list_report_versions(Client, ReportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_report_versions(Client, ReportId, QueryMap, HeadersMap, []).
+
+-spec list_report_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_report_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_report_versions_errors(), tuple()}.
+list_report_versions(Client, ReportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/report/listVersions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"reportId">>, ReportId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

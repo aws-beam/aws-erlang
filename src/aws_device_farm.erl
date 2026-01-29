@@ -288,18 +288,13 @@
 %% Example:
 %% create_remote_access_session_request() :: #{
 %%   <<"appArn">> => string(),
-%%   <<"clientId">> => string(),
 %%   <<"configuration">> => create_remote_access_session_configuration(),
 %%   <<"deviceArn">> := string(),
 %%   <<"instanceArn">> => string(),
 %%   <<"interactionMode">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"projectArn">> := string(),
-%%   <<"remoteDebugEnabled">> => boolean(),
-%%   <<"remoteRecordAppArn">> => string(),
-%%   <<"remoteRecordEnabled">> => boolean(),
-%%   <<"skipAppResign">> => boolean(),
-%%   <<"sshPublicKey">> => string()
+%%   <<"skipAppResign">> => boolean()
 %% }
 -type create_remote_access_session_request() :: #{binary() => any()}.
 
@@ -524,6 +519,13 @@
 %%   <<"arn">> := string()
 %% }
 -type delete_network_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type environment_variable() :: #{binary() => any()}.
 
 %% Example:
 %% get_vpce_configuration_result() :: #{
@@ -763,6 +765,8 @@
 %%   <<"billingMethod">> => list(any()),
 %%   <<"customerArtifactPaths">> => customer_artifact_paths(),
 %%   <<"deviceProxy">> => device_proxy(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"extraDataPackageArn">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"location">> => location(),
@@ -947,6 +951,8 @@
 %%   <<"arn">> => string(),
 %%   <<"created">> => non_neg_integer(),
 %%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1280,6 +1286,8 @@
 %% update_project_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1353,21 +1361,17 @@
 %%   <<"appUpload">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"billingMethod">> => list(any()),
-%%   <<"clientId">> => string(),
 %%   <<"created">> => non_neg_integer(),
 %%   <<"device">> => device(),
 %%   <<"deviceMinutes">> => device_minutes(),
 %%   <<"deviceProxy">> => device_proxy(),
 %%   <<"deviceUdid">> => string(),
 %%   <<"endpoint">> => string(),
-%%   <<"hostAddress">> => string(),
+%%   <<"endpoints">> => remote_access_endpoints(),
 %%   <<"instanceArn">> => string(),
 %%   <<"interactionMode">> => list(any()),
 %%   <<"message">> => string(),
 %%   <<"name">> => string(),
-%%   <<"remoteDebugEnabled">> => boolean(),
-%%   <<"remoteRecordAppArn">> => string(),
-%%   <<"remoteRecordEnabled">> => boolean(),
 %%   <<"result">> => list(any()),
 %%   <<"skipAppResign">> => boolean(),
 %%   <<"started">> => non_neg_integer(),
@@ -1540,6 +1544,8 @@
 %% Example:
 %% create_project_request() :: #{
 %%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1745,6 +1751,13 @@
 -type offering_promotion() :: #{binary() => any()}.
 
 %% Example:
+%% remote_access_endpoints() :: #{
+%%   <<"interactiveEndpoint">> => string(),
+%%   <<"remoteDriverEndpoint">> => string()
+%% }
+-type remote_access_endpoints() :: #{binary() => any()}.
+
+%% Example:
 %% list_offerings_result() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"offerings">> => list(offering())
@@ -1857,6 +1870,7 @@
 %%   <<"webUrl">> => string(),
 %%   <<"platform">> => list(any()),
 %%   <<"location">> => location(),
+%%   <<"environmentVariables">> => list(environment_variable()),
 %%   <<"counters">> => counters(),
 %%   <<"status">> => list(any()),
 %%   <<"jobTimeoutMinutes">> => integer(),
@@ -1867,6 +1881,7 @@
 %%   <<"locale">> => string(),
 %%   <<"skipAppResign">> => boolean(),
 %%   <<"appUpload">> => string(),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"deviceSelectionResult">> => device_selection_result(),
 %%   <<"radios">> => radios(),
 %%   <<"stopped">> => non_neg_integer(),
@@ -2581,7 +2596,9 @@ delete_network_profile(Client, Input, Options)
 
 %% @doc Deletes an AWS Device Farm project, given the project ARN.
 %%
-%% Deleting this resource does not stop an in-progress run.
+%% You cannot delete a project if it has an active run or session.
+%%
+%% You cannot undo this operation.
 -spec delete_project(aws_client:aws_client(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
@@ -2599,6 +2616,10 @@ delete_project(Client, Input, Options)
     request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Deletes a completed remote access session and its results.
+%%
+%% You cannot delete a remote access session if it is still active.
+%%
+%% You cannot undo this operation.
 -spec delete_remote_access_session(aws_client:aws_client(), delete_remote_access_session_request()) ->
     {ok, delete_remote_access_session_result(), tuple()} |
     {error, any()} |
@@ -2617,7 +2638,9 @@ delete_remote_access_session(Client, Input, Options)
 
 %% @doc Deletes the run, given the run ARN.
 %%
-%% Deleting this resource does not stop an in-progress run.
+%% You cannot delete a run if it is still active.
+%%
+%% You cannot undo this operation.
 -spec delete_run(aws_client:aws_client(), delete_run_request()) ->
     {ok, delete_run_result(), tuple()} |
     {error, any()} |
@@ -2637,9 +2660,9 @@ delete_run(Client, Input, Options)
 %% @doc Deletes a Selenium testing project and all content generated under
 %% it.
 %%
-%% You cannot undo this operation.
-%%
 %% You cannot delete a project if it has active sessions.
+%%
+%% You cannot undo this operation.
 -spec delete_test_grid_project(aws_client:aws_client(), delete_test_grid_project_request()) ->
     {ok, delete_test_grid_project_result(), tuple()} |
     {error, any()} |

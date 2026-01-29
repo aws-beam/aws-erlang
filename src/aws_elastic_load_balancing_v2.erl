@@ -32,7 +32,7 @@
 %%
 %% Network Load Balancer - Operates at the transport layer (layer 4) and
 %% supports TCP,
-%% TLS, and UDP.
+%% TLS, UDP, and QUIC.
 %%
 %% Gateway Load Balancer - Operates at the network layer (layer 3).
 %%
@@ -686,6 +686,7 @@
 %%   <<"Protocol">> => list(any()),
 %%   <<"ProtocolVersion">> => string(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"TargetControlPort">> => integer(),
 %%   <<"TargetType">> => list(any()),
 %%   <<"UnhealthyThresholdCount">> => integer(),
 %%   <<"VpcId">> => string()
@@ -1304,6 +1305,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"ProtocolVersion">> => string(),
+%%   <<"TargetControlPort">> => integer(),
 %%   <<"TargetGroupArn">> => string(),
 %%   <<"TargetGroupName">> => string(),
 %%   <<"TargetType">> => list(any()),

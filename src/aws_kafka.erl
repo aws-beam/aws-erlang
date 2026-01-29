@@ -49,6 +49,12 @@
          describe_replicator/2,
          describe_replicator/4,
          describe_replicator/5,
+         describe_topic/3,
+         describe_topic/5,
+         describe_topic/6,
+         describe_topic_partitions/3,
+         describe_topic_partitions/5,
+         describe_topic_partitions/6,
          describe_vpc_connection/2,
          describe_vpc_connection/4,
          describe_vpc_connection/5,
@@ -97,6 +103,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_topics/2,
+         list_topics/4,
+         list_topics/5,
          list_vpc_connections/1,
          list_vpc_connections/3,
          list_vpc_connections/4,
@@ -565,6 +574,10 @@
 %% }
 -type public_access() :: #{binary() => any()}.
 
+%% Example:
+%% describe_topic_request() :: #{}
+-type describe_topic_request() :: #{}.
+
 
 %% Example:
 %% configuration_info() :: #{
@@ -768,6 +781,16 @@
 
 
 %% Example:
+%% topic_partition_info() :: #{
+%%   <<"Isr">> => list(integer()),
+%%   <<"Leader">> => integer(),
+%%   <<"Partition">> => integer(),
+%%   <<"Replicas">> => list(integer())
+%% }
+-type topic_partition_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% topic_replication() :: #{
 %%   <<"CopyAccessControlListsForTopics">> => boolean(),
 %%   <<"CopyTopicConfigurations">> => boolean(),
@@ -894,6 +917,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_response() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type describe_topic_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1041,6 +1076,15 @@
 
 
 %% Example:
+%% list_topics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TopicNameFilter">> => string()
+%% }
+-type list_topics_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_replicator_response() :: #{
 %%   <<"ReplicatorArn">> => string(),
 %%   <<"ReplicatorState">> => list(any())
@@ -1108,6 +1152,14 @@
 
 
 %% Example:
+%% list_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Topics">> => list(topic_info())
+%% }
+-type list_topics_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% replication_topic_name_configuration() :: #{
 %%   <<"Type">> => list(any())
 %% }
@@ -1164,6 +1216,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_partitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_topic_partitions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1281,6 +1341,17 @@
 %% Example:
 %% describe_cluster_operation_request() :: #{}
 -type describe_cluster_operation_request() :: #{}.
+
+
+%% Example:
+%% topic_info() :: #{
+%%   <<"OutOfSyncReplicaCount">> => integer(),
+%%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type topic_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1819,6 +1890,14 @@
 
 
 %% Example:
+%% describe_topic_partitions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Partitions">> => list(topic_partition_info())
+%% }
+-type describe_topic_partitions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_configuration_revisions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2017,6 +2096,20 @@
     forbidden_exception() | 
     unauthorized_exception().
 
+-type describe_topic_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_topic_partitions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
 -type describe_vpc_connection_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2130,6 +2223,13 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception().
+
+-type list_topics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
 
 -type list_vpc_connections_errors() ::
     bad_request_exception() | 
@@ -2945,6 +3045,85 @@ describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns topic details of this topic on a MSK cluster.
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
+describe_topic(Client, ClusterArn, TopicName)
+  when is_map(Client) ->
+    describe_topic(Client, ClusterArn, TopicName, #{}, #{}).
+
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
+describe_topic(Client, ClusterArn, TopicName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic(Client, ClusterArn, TopicName, QueryMap, HeadersMap, []).
+
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
+describe_topic(Client, ClusterArn, TopicName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics/", aws_util:encode_uri(TopicName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns partition details of this topic on a MSK cluster.
+-spec describe_topic_partitions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_partitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_partitions_errors(), tuple()}.
+describe_topic_partitions(Client, ClusterArn, TopicName)
+  when is_map(Client) ->
+    describe_topic_partitions(Client, ClusterArn, TopicName, #{}, #{}).
+
+-spec describe_topic_partitions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_partitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_partitions_errors(), tuple()}.
+describe_topic_partitions(Client, ClusterArn, TopicName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic_partitions(Client, ClusterArn, TopicName, QueryMap, HeadersMap, []).
+
+-spec describe_topic_partitions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_partitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_partitions_errors(), tuple()}.
+describe_topic_partitions(Client, ClusterArn, TopicName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics/", aws_util:encode_uri(TopicName), "/partitions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a description of this MSK VPC connection.
 -spec describe_vpc_connection(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
@@ -3608,6 +3787,49 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List topics in a MSK cluster.
+-spec list_topics(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
+list_topics(Client, ClusterArn)
+  when is_map(Client) ->
+    list_topics(Client, ClusterArn, #{}, #{}).
+
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
+list_topics(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topics(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
+list_topics(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"topicNameFilter">>, maps:get(<<"topicNameFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

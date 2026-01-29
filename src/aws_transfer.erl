@@ -491,6 +491,14 @@
 -type start_remote_delete_response() :: #{binary() => any()}.
 
 %% Example:
+%% described_web_app_vpc_config() :: #{
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type described_web_app_vpc_config() :: #{binary() => any()}.
+
+%% Example:
 %% describe_web_app_customization_request() :: #{
 %%   <<"WebAppId">> := string()
 %% }
@@ -705,6 +713,7 @@
 %% Example:
 %% create_web_app_request() :: #{
 %%   <<"AccessEndpoint">> => string(),
+%%   <<"EndpointDetails">> => list(),
 %%   <<"IdentityProviderDetails">> := list(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"WebAppEndpointPolicy">> => list(any()),
@@ -1025,9 +1034,16 @@
 -type workflow_step() :: #{binary() => any()}.
 
 %% Example:
+%% update_web_app_vpc_config() :: #{
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type update_web_app_vpc_config() :: #{binary() => any()}.
+
+%% Example:
 %% listed_web_app() :: #{
 %%   <<"AccessEndpoint">> => string(),
 %%   <<"Arn">> => string(),
+%%   <<"EndpointType">> => list(any()),
 %%   <<"WebAppEndpoint">> => string(),
 %%   <<"WebAppId">> => string()
 %% }
@@ -1232,6 +1248,7 @@
 %% Example:
 %% update_web_app_request() :: #{
 %%   <<"AccessEndpoint">> => string(),
+%%   <<"EndpointDetails">> => list(),
 %%   <<"IdentityProviderDetails">> => list(),
 %%   <<"WebAppId">> := string(),
 %%   <<"WebAppUnits">> => list()
@@ -1417,6 +1434,14 @@
 %%   <<"DirectoryListingOptimization">> => list(any())
 %% }
 -type s3_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% web_app_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type web_app_vpc_config() :: #{binary() => any()}.
 
 %% Example:
 %% internal_service_error() :: #{
@@ -1658,7 +1683,9 @@
 %% described_web_app() :: #{
 %%   <<"AccessEndpoint">> => string(),
 %%   <<"Arn">> => string(),
+%%   <<"DescribedEndpointDetails">> => list(),
 %%   <<"DescribedIdentityProviderDetails">> => list(),
+%%   <<"EndpointType">> => list(any()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"WebAppEndpoint">> => string(),
 %%   <<"WebAppEndpointPolicy">> => list(any()),
@@ -2462,6 +2489,13 @@ create_user(Client, Input, Options)
 
 %% @doc Creates a web app based on specified parameters, and returns the ID
 %% for the new web app.
+%%
+%% You can configure the web app to be publicly accessible or hosted within a
+%% VPC.
+%%
+%% For more information about using VPC endpoints with Transfer Family, see
+%% Create a Transfer Family web app in a VPC:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/create-webapp-in-vpc.html.
 -spec create_web_app(aws_client:aws_client(), create_web_app_request()) ->
     {ok, create_web_app_response(), tuple()} |
     {error, any()} |
@@ -2929,6 +2963,13 @@ describe_user(Client, Input, Options)
     request(Client, <<"DescribeUser">>, Input, Options).
 
 %% @doc Describes the web app that's identified by `WebAppId'.
+%%
+%% The response includes endpoint configuration details such as whether the
+%% web app is publicly accessible or VPC hosted.
+%%
+%% For more information about using VPC endpoints with Transfer Family, see
+%% Create a Transfer Family web app in a VPC:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/create-webapp-in-vpc.html.
 -spec describe_web_app(aws_client:aws_client(), describe_web_app_request()) ->
     {ok, describe_web_app_response(), tuple()} |
     {error, any()} |
@@ -3313,6 +3354,13 @@ list_users(Client, Input, Options)
 
 %% @doc Lists all web apps associated with your Amazon Web Services account
 %% for your current region.
+%%
+%% The response includes the endpoint type for each web app, showing whether
+%% it is publicly accessible or VPC hosted.
+%%
+%% For more information about using VPC endpoints with Transfer Family, see
+%% Create a Transfer Family web app in a VPC:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/create-webapp-in-vpc.html.
 -spec list_web_apps(aws_client:aws_client(), list_web_apps_request()) ->
     {ok, list_web_apps_response(), tuple()} |
     {error, any()} |
@@ -3860,8 +3908,12 @@ update_user(Client, Input, Options)
 
 %% @doc Assigns new properties to a web app.
 %%
-%% You can modify the access point, identity provider details, and the web
-%% app units.
+%% You can modify the access point, identity provider details, endpoint
+%% configuration, and the web app units.
+%%
+%% For more information about using VPC endpoints with Transfer Family, see
+%% Create a Transfer Family web app in a VPC:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/create-webapp-in-vpc.html.
 -spec update_web_app(aws_client:aws_client(), update_web_app_request()) ->
     {ok, update_web_app_response(), tuple()} |
     {error, any()} |

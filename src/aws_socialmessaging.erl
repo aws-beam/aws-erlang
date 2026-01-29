@@ -153,8 +153,10 @@
 
 %% Example:
 %% update_whats_app_message_template_input() :: #{
+%%   <<"ctaUrlLinkTrackingOptedOut">> => boolean(),
 %%   <<"id">> := string(),
 %%   <<"metaTemplateId">> := string(),
+%%   <<"parameterFormat">> => string(),
 %%   <<"templateCategory">> => string(),
 %%   <<"templateComponents">> => binary()
 %% }
@@ -669,6 +671,7 @@
 %% Example:
 %% meta_library_template_definition() :: #{
 %%   <<"templateBody">> => string(),
+%%   <<"templateBodyExampleParams">> => list([string()]()),
 %%   <<"templateButtons">> => list(library_template_button_list()),
 %%   <<"templateCategory">> => string(),
 %%   <<"templateHeader">> => string(),
@@ -896,6 +899,9 @@ associate_whats_app_business_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new WhatsApp message template from a custom definition.
+%%
+%% Amazon Web Services End User Messaging Social does not store any WhatsApp
+%% message template content.
 -spec create_whats_app_message_template(aws_client:aws_client(), create_whats_app_message_template_input()) ->
     {ok, create_whats_app_message_template_output(), tuple()} |
     {error, any()} |
@@ -1152,9 +1158,8 @@ get_linked_whats_app_business_account(Client, Id, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Use your WhatsApp phone number id to get the WABA account id and
-%% phone number
-%% details.
+%% @doc Retrieve the WABA account id and phone number details of a WhatsApp
+%% business account phone number.
 -spec get_linked_whats_app_business_account_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, get_linked_whats_app_business_account_phone_number_output(), tuple()} |
     {error, any()} |

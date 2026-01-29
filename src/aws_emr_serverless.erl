@@ -230,12 +230,27 @@
 
 
 %% Example:
+%% job_level_cost_allocation_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type job_level_cost_allocation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% configuration() :: #{
 %%   <<"classification">> => string(),
 %%   <<"configurations">> => list(configuration()),
 %%   <<"properties">> => map()
 %% }
 -type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% disk_encryption_configuration() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type disk_encryption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -395,10 +410,12 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
 %%   <<"identityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"imageConfiguration">> => image_configuration(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
+%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"name">> => string(),
@@ -429,10 +446,12 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"clientToken">> := string(),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
 %%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
+%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"name">> => string(),
@@ -494,10 +513,12 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"clientToken">> := string(),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
 %%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
+%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
@@ -623,6 +644,7 @@
 %% Example:
 %% configuration_overrides() :: #{
 %%   <<"applicationConfiguration">> => list(configuration()),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration()
 %% }
 -type configuration_overrides() :: #{binary() => any()}.

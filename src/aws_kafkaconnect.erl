@@ -184,6 +184,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
 %%   <<"kafkaConnectVersion">> => string(),
 %%   <<"logDelivery">> => log_delivery_description(),
+%%   <<"networkType">> => string(),
 %%   <<"plugins">> => list(plugin_description()),
 %%   <<"serviceExecutionRoleArn">> => string(),
 %%   <<"stateDescription">> => state_description(),
@@ -597,6 +598,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> := kafka_cluster_encryption_in_transit(),
 %%   <<"kafkaConnectVersion">> := string(),
 %%   <<"logDelivery">> => log_delivery(),
+%%   <<"networkType">> => string(),
 %%   <<"plugins">> := list(plugin()),
 %%   <<"serviceExecutionRoleArn">> := string(),
 %%   <<"tags">> => map(),
@@ -655,6 +657,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
 %%   <<"kafkaConnectVersion">> => string(),
 %%   <<"logDelivery">> => log_delivery_description(),
+%%   <<"networkType">> => string(),
 %%   <<"plugins">> => list(plugin_description()),
 %%   <<"serviceExecutionRoleArn">> => string(),
 %%   <<"workerConfiguration">> => worker_configuration_description()
@@ -1460,10 +1463,9 @@ list_connector_operations(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all the connectors in this account and Region.
 %%
-%% The list is limited to
-%% connectors whose name starts with the specified prefix. The response also
-%% includes a
-%% description of each of the listed connectors.
+%% The list is limited to connectors whose name starts with the specified
+%% prefix. The response also includes a description of each of the listed
+%% connectors.
 -spec list_connectors(aws_client:aws_client()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
@@ -1701,6 +1703,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified connector.
+%%
+%% For request body, specify only one parameter: either `capacity' or
+%% `connectorConfiguration'.
 -spec update_connector(aws_client:aws_client(), binary() | list(), update_connector_request()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |

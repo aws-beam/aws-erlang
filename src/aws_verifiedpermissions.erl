@@ -258,6 +258,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"encryptionSettings">> => list(),
 %%   <<"tags">> => map(),
 %%   <<"validationSettings">> := validation_settings()
 %% }
@@ -369,6 +370,13 @@
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
+%% kms_encryption_state() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"key">> => string()
+%% }
+-type kms_encryption_state() :: #{binary() => any()}.
+
+%% Example:
 %% create_policy_store_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -403,7 +411,7 @@
 
 %% Example:
 %% update_policy_input() :: #{
-%%   <<"definition">> := list(),
+%%   <<"definition">> => list(),
 %%   <<"policyId">> := string(),
 %%   <<"policyStoreId">> := string()
 %% }
@@ -544,6 +552,13 @@
 %%   <<"userPoolArn">> => string()
 %% }
 -type identity_source_details() :: #{binary() => any()}.
+
+%% Example:
+%% kms_encryption_settings() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"key">> => string()
+%% }
+-type kms_encryption_settings() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -817,6 +832,7 @@
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"encryptionState">> => list(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"tags">> => map(),

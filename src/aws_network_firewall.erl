@@ -125,10 +125,20 @@
          associate_firewall_policy/3,
          associate_subnets/2,
          associate_subnets/3,
+         attach_rule_groups_to_proxy_configuration/2,
+         attach_rule_groups_to_proxy_configuration/3,
          create_firewall/2,
          create_firewall/3,
          create_firewall_policy/2,
          create_firewall_policy/3,
+         create_proxy/2,
+         create_proxy/3,
+         create_proxy_configuration/2,
+         create_proxy_configuration/3,
+         create_proxy_rule_group/2,
+         create_proxy_rule_group/3,
+         create_proxy_rules/2,
+         create_proxy_rules/3,
          create_rule_group/2,
          create_rule_group/3,
          create_t_l_s_inspection_configuration/2,
@@ -141,6 +151,14 @@
          delete_firewall_policy/3,
          delete_network_firewall_transit_gateway_attachment/2,
          delete_network_firewall_transit_gateway_attachment/3,
+         delete_proxy/2,
+         delete_proxy/3,
+         delete_proxy_configuration/2,
+         delete_proxy_configuration/3,
+         delete_proxy_rule_group/2,
+         delete_proxy_rule_group/3,
+         delete_proxy_rules/2,
+         delete_proxy_rules/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_rule_group/2,
@@ -159,6 +177,14 @@
          describe_flow_operation/3,
          describe_logging_configuration/2,
          describe_logging_configuration/3,
+         describe_proxy/2,
+         describe_proxy/3,
+         describe_proxy_configuration/2,
+         describe_proxy_configuration/3,
+         describe_proxy_rule/2,
+         describe_proxy_rule/3,
+         describe_proxy_rule_group/2,
+         describe_proxy_rule_group/3,
          describe_resource_policy/2,
          describe_resource_policy/3,
          describe_rule_group/2,
@@ -171,6 +197,8 @@
          describe_t_l_s_inspection_configuration/3,
          describe_vpc_endpoint_association/2,
          describe_vpc_endpoint_association/3,
+         detach_rule_groups_from_proxy_configuration/2,
+         detach_rule_groups_from_proxy_configuration/3,
          disassociate_availability_zones/2,
          disassociate_availability_zones/3,
          disassociate_subnets/2,
@@ -187,6 +215,12 @@
          list_flow_operation_results/3,
          list_flow_operations/2,
          list_flow_operations/3,
+         list_proxies/2,
+         list_proxies/3,
+         list_proxy_configurations/2,
+         list_proxy_configurations/3,
+         list_proxy_rule_groups/2,
+         list_proxy_rule_groups/3,
          list_rule_groups/2,
          list_rule_groups/3,
          list_t_l_s_inspection_configurations/2,
@@ -225,6 +259,16 @@
          update_firewall_policy_change_protection/3,
          update_logging_configuration/2,
          update_logging_configuration/3,
+         update_proxy/2,
+         update_proxy/3,
+         update_proxy_configuration/2,
+         update_proxy_configuration/3,
+         update_proxy_rule/2,
+         update_proxy_rule/3,
+         update_proxy_rule_group_priorities/2,
+         update_proxy_rule_group_priorities/3,
+         update_proxy_rule_priorities/2,
+         update_proxy_rule_priorities/3,
          update_rule_group/2,
          update_rule_group/3,
          update_subnet_change_protection/2,
@@ -322,16 +366,57 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% proxy() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"ListenerProperties">> => list(listener_property()),
+%%   <<"NatGatewayId">> => string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"ProxyModifyState">> => list(any()),
+%%   <<"ProxyName">> => string(),
+%%   <<"ProxyState">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TlsInterceptProperties">> => tls_intercept_properties(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type proxy() :: #{binary() => any()}.
+
+%% Example:
 %% delete_resource_policy_response() :: #{
 
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% unsupported_operation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rules_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_proxy_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% stateful_rule_group_override() :: #{
@@ -342,7 +427,8 @@
 %% Example:
 %% rule_group_metadata() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"VendorName">> => string()
 %% }
 -type rule_group_metadata() :: #{binary() => any()}.
 
@@ -363,6 +449,19 @@
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type start_flow_capture_request() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DefaultRulePhaseActions">> => proxy_config_default_rule_phase_actions_request(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> => list(proxy_config_rule_group()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_flow_operation_request() :: #{
@@ -415,6 +514,20 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_availability_zones_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_request() :: #{
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type describe_proxy_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_firewall_policy_change_protection_request() :: #{
@@ -494,6 +607,23 @@
 -type get_analysis_report_results_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_proxy_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxyConfigurations">> => list(proxy_configuration_metadata())
+%% }
+-type list_proxy_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Conditions">> => list(proxy_rule_condition()),
+%%   <<"Description">> => string(),
+%%   <<"InsertPosition">> => integer(),
+%%   <<"ProxyRuleName">> => string()
+%% }
+-type create_proxy_rule() :: #{binary() => any()}.
+
+%% Example:
 %% describe_rule_group_request() :: #{
 %%   <<"AnalyzeRuleGroup">> => boolean(),
 %%   <<"RuleGroupArn">> => string(),
@@ -501,6 +631,14 @@
 %%   <<"Type">> => list(any())
 %% }
 -type describe_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_condition() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionOperator">> => string(),
+%%   <<"ConditionValues">> => list(string())
+%% }
+-type proxy_rule_condition() :: #{binary() => any()}.
 
 %% Example:
 %% rule_group() :: #{
@@ -542,6 +680,13 @@
 -type t_l_s_inspection_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% proxy_configuration_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_configuration_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% update_logging_configuration_request() :: #{
 %%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
@@ -567,10 +712,24 @@
 -type update_firewall_encryption_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_proxies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxies_request() :: #{binary() => any()}.
+
+%% Example:
 %% publish_metric_action() :: #{
 %%   <<"Dimensions">> => list(dimension())
 %% }
 -type publish_metric_action() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_priority() :: #{
+%%   <<"NewPosition">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_priority() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -589,6 +748,15 @@
 %%   <<"SourcePort">> => string()
 %% }
 -type header() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_group_priorities_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> := list(proxy_rule_group_priority()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_group_priorities_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_metadata_response() :: #{
@@ -629,6 +797,13 @@
 -type associate_firewall_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_vpc_endpoint_associations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata())
@@ -640,6 +815,21 @@
 %%   <<"LogDestinationConfigs">> => list(log_destination_config())
 %% }
 -type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_response() :: #{
+%%   <<"ProxyRule">> => proxy_rule(),
+%%   <<"RemovedConditions">> => list(proxy_rule_condition()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% tls_certificate_data() :: #{
@@ -673,6 +863,13 @@
 -type describe_vpc_endpoint_association_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_proxy_configuration_response() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
+%% }
+-type delete_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_analysis_report_results_request() :: #{
 %%   <<"AnalysisReportId">> := string(),
 %%   <<"FirewallArn">> => string(),
@@ -681,6 +878,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_analysis_report_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_rule_groups_from_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type detach_rule_groups_from_proxy_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% reject_network_firewall_transit_gateway_attachment_response() :: #{
@@ -732,10 +936,32 @@
 -type ip_set_metadata() :: #{binary() => any()}.
 
 %% Example:
+%% create_proxy_response() :: #{
+%%   <<"Proxy">> => proxy(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_proxy_response() :: #{binary() => any()}.
+
+%% Example:
 %% insufficient_capacity_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rules_by_request_phase() :: #{
+%%   <<"PostRESPONSE">> => list(proxy_rule()),
+%%   <<"PreDNS">> => list(proxy_rule()),
+%%   <<"PreREQUEST">> => list(proxy_rule())
+%% }
+-type proxy_rules_by_request_phase() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% list_analysis_reports_response() :: #{
@@ -783,6 +1009,18 @@
 -type accept_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_proxy_request() :: #{
+%%   <<"ListenerProperties">> => list(listener_property_request()),
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"ProxyName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TlsInterceptProperties">> := tls_intercept_properties_request()
+%% }
+-type create_proxy_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_rule_group_summary_request() :: #{
 %%   <<"RuleGroupArn">> => string(),
 %%   <<"RuleGroupName">> => string(),
@@ -791,10 +1029,23 @@
 -type describe_rule_group_summary_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type delete_proxy_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpc_endpoint_association_request() :: #{
 %%   <<"VpcEndpointAssociationArn">> := string()
 %% }
 -type describe_vpc_endpoint_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rules_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group()
+%% }
+-type delete_proxy_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -853,6 +1104,23 @@
 -type invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
+%% describe_proxy_response() :: #{
+%%   <<"Proxy">> => describe_proxy_resource(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_priorities_response() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"RuleGroupRequestPhase">> => list(any()),
+%%   <<"Rules">> => list(proxy_rule_priority()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_priorities_response() :: #{binary() => any()}.
+
+%% Example:
 %% flow_operation_metadata() :: #{
 %%   <<"FlowOperationId">> => string(),
 %%   <<"FlowOperationStatus">> => list(any()),
@@ -884,6 +1152,45 @@
 -type disassociate_subnets_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_proxy_rule_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_metadata())
+%% }
+-type list_proxy_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"AddConditions">> => list(proxy_rule_condition()),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"ProxyRuleName">> := string(),
+%%   <<"RemoveConditions">> => list(proxy_rule_condition()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_rule_groups_from_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroupArns">> => list(string()),
+%%   <<"RuleGroupNames">> => list(string()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type detach_rule_groups_from_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_configuration_request() :: #{
+%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% sync_state() :: #{
 %%   <<"Attachment">> => attachment(),
 %%   <<"Config">> => map()
@@ -895,6 +1202,13 @@
 %%   <<"Count">> => integer()
 %% }
 -type hits() :: #{binary() => any()}.
+
+%% Example:
+%% tls_intercept_properties_request() :: #{
+%%   <<"PcaArn">> => string(),
+%%   <<"TlsInterceptMode">> => list(any())
+%% }
+-type tls_intercept_properties_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_response() :: #{
@@ -921,6 +1235,13 @@
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_endpoint_association() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_response() :: #{
+%%   <<"ProxyRule">> => proxy_rule(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_request() :: #{
@@ -956,6 +1277,16 @@
 %%   <<"Type">> => list(any())
 %% }
 -type rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_priorities_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"RuleGroupRequestPhase">> := list(any()),
+%%   <<"Rules">> := list(proxy_rule_priority()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_priorities_request() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_report() :: #{
@@ -999,6 +1330,13 @@
 -type stateful_rule() :: #{binary() => any()}.
 
 %% Example:
+%% listener_property() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type listener_property() :: #{binary() => any()}.
+
+%% Example:
 %% create_vpc_endpoint_association_response() :: #{
 %%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
 %%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
@@ -1020,6 +1358,13 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
+%% }
+-type describe_proxy_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_firewalls_response() :: #{
@@ -1046,6 +1391,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_analysis_reports_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_request() :: #{
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type delete_proxy_request() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_policy_response() :: #{
@@ -1088,10 +1441,24 @@
 -type update_firewall_policy_change_protection_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_proxy_rule_group_priorities_response() :: #{
+%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_priority_result()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_group_priorities_response() :: #{binary() => any()}.
+
+%% Example:
 %% reference_sets() :: #{
 %%   <<"IPSetReferences">> => map()
 %% }
 -type reference_sets() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rule_group_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type delete_proxy_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_subnet_change_protection_request() :: #{
@@ -1148,6 +1515,13 @@
 %%   <<"RuleVariables">> => map()
 %% }
 -type policy_variables() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_proxy_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_request() :: #{
@@ -1265,6 +1639,21 @@
 -type port_range() :: #{binary() => any()}.
 
 %% Example:
+%% list_proxies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Proxies">> => list(proxy_metadata())
+%% }
+-type list_proxies_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rules_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> := list(string())
+%% }
+-type delete_proxy_rules_request() :: #{binary() => any()}.
+
+%% Example:
 %% rules_source_list() :: #{
 %%   <<"GeneratedRulesType">> => list(any()),
 %%   <<"TargetTypes">> => list(list(any())()),
@@ -1312,6 +1701,15 @@
 -type update_firewall_delete_protection_response() :: #{binary() => any()}.
 
 %% Example:
+%% proxy_config_rule_group() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type proxy_config_rule_group() :: #{binary() => any()}.
+
+%% Example:
 %% port_set() :: #{
 %%   <<"Definition">> => list(string())
 %% }
@@ -1322,6 +1720,13 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_priority() :: #{
+%%   <<"NewPosition">> => integer(),
+%%   <<"ProxyRuleName">> => string()
+%% }
+-type proxy_rule_priority() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_attachment_sync_state() :: #{
@@ -1383,10 +1788,38 @@
 -type create_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% attach_rule_groups_to_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type attach_rule_groups_to_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxy_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxy_configurations_request() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_attachment() :: #{
+%%   <<"InsertPosition">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_group_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type describe_proxy_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_policy_metadata() :: #{
@@ -1394,6 +1827,13 @@
 %%   <<"Name">> => string()
 %% }
 -type firewall_policy_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_response() :: #{
+%%   <<"Proxy">> => proxy(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_response() :: #{binary() => any()}.
 
 %% Example:
 %% stateful_rule_options() :: #{
@@ -1431,6 +1871,13 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_resource_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
+%% }
+-type delete_proxy_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_response() :: #{
@@ -1492,6 +1939,13 @@
 -type describe_logging_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% listener_property_request() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type listener_property_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_resource_policy_response() :: #{
 %%   <<"Policy">> => string()
 %% }
@@ -1524,6 +1978,14 @@
 %%   <<"FirewallPolicyName">> => string()
 %% }
 -type delete_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_response() :: #{
+%%   <<"NatGatewayId">> => string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type delete_proxy_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_resource_policy_response() :: #{
@@ -1568,10 +2030,28 @@
 -type dimension() :: #{binary() => any()}.
 
 %% Example:
+%% list_proxy_rule_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxy_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_resource_policy_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_configuration_request() :: #{
+%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyConfigurationName">> := string(),
+%%   <<"RuleGroupArns">> => list(string()),
+%%   <<"RuleGroupNames">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_proxy_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% summary_configuration() :: #{
@@ -1638,6 +2118,13 @@
 -type update_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% proxy_rule_group_priority_result() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_priority_result() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_description_response() :: #{
 %%   <<"Description">> => string(),
 %%   <<"FirewallArn">> => string(),
@@ -1662,12 +2149,23 @@
 %%   <<"Capacity">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ListingName">> => string(),
+%%   <<"ProductId">> => string(),
 %%   <<"RuleGroupArn">> => string(),
 %%   <<"RuleGroupName">> => string(),
 %%   <<"StatefulRuleOptions">> => stateful_rule_options(),
-%%   <<"Type">> => list(any())
+%%   <<"Type">> => list(any()),
+%%   <<"VendorName">> => string()
 %% }
 -type describe_rule_group_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rules_by_request_phase() :: #{
+%%   <<"PostRESPONSE">> => list(create_proxy_rule()),
+%%   <<"PreDNS">> => list(create_proxy_rule()),
+%%   <<"PreREQUEST">> => list(create_proxy_rule())
+%% }
+-type create_proxy_rules_by_request_phase() :: #{binary() => any()}.
 
 %% Example:
 %% associate_subnets_request() :: #{
@@ -1683,6 +2181,14 @@
 %%   <<"AddressDefinition">> => string()
 %% }
 -type address() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"ProxyRuleName">> := string()
+%% }
+-type describe_proxy_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_metadata_request() :: #{
@@ -1721,6 +2227,18 @@
 -type describe_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% proxy_rule_group() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> => proxy_rules_by_request_phase(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proxy_rule_group() :: #{binary() => any()}.
+
+%% Example:
 %% stateless_rule() :: #{
 %%   <<"Priority">> => integer(),
 %%   <<"RuleDefinition">> => rule_definition()
@@ -1728,10 +2246,31 @@
 -type stateless_rule() :: #{binary() => any()}.
 
 %% Example:
+%% attach_rule_groups_to_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> := list(proxy_rule_group_attachment()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type attach_rule_groups_to_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_request() :: #{
+%%   <<"ListenerPropertiesToAdd">> => list(listener_property_request()),
+%%   <<"ListenerPropertiesToRemove">> => list(listener_property_request()),
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string(),
+%%   <<"TlsInterceptProperties">> => tls_intercept_properties_request(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_rule_group_request() :: #{
@@ -1755,6 +2294,13 @@
 %%   <<"TransitGatewayAttachmentId">> => string()
 %% }
 -type firewall_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% tls_intercept_properties() :: #{
+%%   <<"PcaArn">> => string(),
+%%   <<"TlsInterceptMode">> => list(any())
+%% }
+-type tls_intercept_properties() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_endpoint_association_request() :: #{
@@ -1828,11 +2374,30 @@
 -type ip_set_reference() :: #{binary() => any()}.
 
 %% Example:
+%% create_proxy_rule_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleGroupName">> := string(),
+%%   <<"Rules">> => proxy_rules_by_request_phase(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_proxy_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Conditions">> => list(proxy_rule_condition()),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleName">> => string()
+%% }
+-type proxy_rule() :: #{binary() => any()}.
+
+%% Example:
 %% list_rule_groups_request() :: #{
 %%   <<"ManagedType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Scope">> => list(any()),
+%%   <<"SubscriptionStatus">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type list_rule_groups_request() :: #{binary() => any()}.
@@ -1863,6 +2428,14 @@
 -type describe_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_proxy_rules_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> := create_proxy_rules_by_request_phase()
+%% }
+-type create_proxy_rules_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_vpc_endpoint_associations_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -1877,6 +2450,36 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type describe_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_config_default_rule_phase_actions_request() :: #{
+%%   <<"PostRESPONSE">> => list(any()),
+%%   <<"PreDNS">> => list(any()),
+%%   <<"PreREQUEST">> => list(any())
+%% }
+-type proxy_config_default_rule_phase_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_resource() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"ListenerProperties">> => list(listener_property()),
+%%   <<"NatGatewayId">> => string(),
+%%   <<"PrivateDNSName">> => string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"ProxyModifyState">> => list(any()),
+%%   <<"ProxyName">> => string(),
+%%   <<"ProxyState">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TlsInterceptProperties">> => tls_intercept_properties(),
+%%   <<"UpdateTime">> => non_neg_integer(),
+%%   <<"VpcEndpointServiceName">> => string()
+%% }
+-type describe_proxy_resource() :: #{binary() => any()}.
 
 %% Example:
 %% update_availability_zone_change_protection_request() :: #{
@@ -1919,6 +2522,12 @@
     insufficient_capacity_exception() | 
     invalid_operation_exception().
 
+-type attach_rule_groups_to_proxy_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type create_firewall_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -1933,6 +2542,32 @@
     internal_server_error() | 
     invalid_request_exception() | 
     insufficient_capacity_exception().
+
+-type create_proxy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type create_proxy_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_proxy_rule_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type create_proxy_rules_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
 
 -type create_rule_group_errors() ::
     limit_exceeded_exception() | 
@@ -1974,6 +2609,31 @@
     unsupported_operation_exception().
 
 -type delete_network_firewall_transit_gateway_attachment_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_proxy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type delete_proxy_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_proxy_rule_group_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_proxy_rules_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2038,6 +2698,30 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type describe_proxy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_proxy_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_proxy_rule_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_proxy_rule_group_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type describe_resource_policy_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -2069,6 +2753,12 @@
     resource_not_found_exception().
 
 -type describe_vpc_endpoint_association_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type detach_rule_groups_from_proxy_configuration_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2119,6 +2809,23 @@
     resource_not_found_exception().
 
 -type list_flow_operations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_proxies_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_proxy_configurations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_proxy_rule_groups_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2197,6 +2904,7 @@
     resource_owner_check_exception().
 
 -type update_firewall_analysis_settings_errors() ::
+    invalid_token_exception() | 
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2243,6 +2951,37 @@
 -type update_logging_configuration_errors() ::
     invalid_token_exception() | 
     log_destination_permission_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_proxy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type update_proxy_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_proxy_rule_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_proxy_rule_group_priorities_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_proxy_rule_priorities_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2385,6 +3124,29 @@ associate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSubnets">>, Input, Options).
 
+%% @doc Attaches `ProxyRuleGroup' resources to a `ProxyConfiguration'
+%%
+%% A Proxy Configuration defines the monitoring and protection behavior for a
+%% Proxy.
+%%
+%% The details of the behavior are defined in the rule groups that you add to
+%% your configuration.
+-spec attach_rule_groups_to_proxy_configuration(aws_client:aws_client(), attach_rule_groups_to_proxy_configuration_request()) ->
+    {ok, attach_rule_groups_to_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, attach_rule_groups_to_proxy_configuration_errors(), tuple()}.
+attach_rule_groups_to_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_rule_groups_to_proxy_configuration(Client, Input, []).
+
+-spec attach_rule_groups_to_proxy_configuration(aws_client:aws_client(), attach_rule_groups_to_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, attach_rule_groups_to_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, attach_rule_groups_to_proxy_configuration_errors(), tuple()}.
+attach_rule_groups_to_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachRuleGroupsToProxyConfiguration">>, Input, Options).
+
 %% @doc Creates an Network Firewall `Firewall' and accompanying
 %% `FirewallStatus' for a VPC.
 %%
@@ -2450,6 +3212,116 @@ create_firewall_policy(Client, Input)
 create_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallPolicy">>, Input, Options).
+
+%% @doc Creates an Network Firewall `Proxy'
+%%
+%% Attaches a Proxy configuration to a NAT Gateway.
+%%
+%% To manage a proxy's tags, use the standard Amazon Web Services
+%% resource tagging operations, `ListTagsForResource', `TagResource',
+%% and `UntagResource'.
+%%
+%% To retrieve information about proxies, use `ListProxies' and
+%% `DescribeProxy'.
+-spec create_proxy(aws_client:aws_client(), create_proxy_request()) ->
+    {ok, create_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_errors(), tuple()}.
+create_proxy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_proxy(Client, Input, []).
+
+-spec create_proxy(aws_client:aws_client(), create_proxy_request(), proplists:proplist()) ->
+    {ok, create_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_errors(), tuple()}.
+create_proxy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProxy">>, Input, Options).
+
+%% @doc Creates an Network Firewall `ProxyConfiguration'
+%%
+%% A Proxy Configuration defines the monitoring and protection behavior for a
+%% Proxy.
+%%
+%% The details of the behavior are defined in the rule groups that you add to
+%% your configuration.
+%%
+%% To manage a proxy configuration's tags, use the standard Amazon Web
+%% Services resource tagging operations, `ListTagsForResource',
+%% `TagResource', and `UntagResource'.
+%%
+%% To retrieve information about proxies, use `ListProxyConfigurations'
+%% and `DescribeProxyConfiguration'.
+-spec create_proxy_configuration(aws_client:aws_client(), create_proxy_configuration_request()) ->
+    {ok, create_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_configuration_errors(), tuple()}.
+create_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_proxy_configuration(Client, Input, []).
+
+-spec create_proxy_configuration(aws_client:aws_client(), create_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, create_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_configuration_errors(), tuple()}.
+create_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProxyConfiguration">>, Input, Options).
+
+%% @doc Creates an Network Firewall `ProxyRuleGroup'
+%%
+%% Collections of related proxy filtering rules.
+%%
+%% Rule groups help you manage and reuse sets of rules across multiple proxy
+%% configurations.
+%%
+%% To manage a proxy rule group's tags, use the standard Amazon Web
+%% Services resource tagging operations, `ListTagsForResource',
+%% `TagResource', and `UntagResource'.
+%%
+%% To retrieve information about proxy rule groups, use
+%% `ListProxyRuleGroups' and `DescribeProxyRuleGroup'.
+%%
+%% To retrieve information about individual proxy rules, use
+%% `DescribeProxyRuleGroup' and `DescribeProxyRule'.
+-spec create_proxy_rule_group(aws_client:aws_client(), create_proxy_rule_group_request()) ->
+    {ok, create_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_rule_group_errors(), tuple()}.
+create_proxy_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_proxy_rule_group(Client, Input, []).
+
+-spec create_proxy_rule_group(aws_client:aws_client(), create_proxy_rule_group_request(), proplists:proplist()) ->
+    {ok, create_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_rule_group_errors(), tuple()}.
+create_proxy_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProxyRuleGroup">>, Input, Options).
+
+%% @doc Creates Network Firewall `ProxyRule' resources.
+%%
+%% Attaches new proxy rule(s) to an existing proxy rule group.
+%%
+%% To retrieve information about individual proxy rules, use
+%% `DescribeProxyRuleGroup' and `DescribeProxyRule'.
+-spec create_proxy_rules(aws_client:aws_client(), create_proxy_rules_request()) ->
+    {ok, create_proxy_rules_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_rules_errors(), tuple()}.
+create_proxy_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_proxy_rules(Client, Input, []).
+
+-spec create_proxy_rules(aws_client:aws_client(), create_proxy_rules_request(), proplists:proplist()) ->
+    {ok, create_proxy_rules_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_rules_errors(), tuple()}.
+create_proxy_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProxyRules">>, Input, Options).
 
 %% @doc Creates the specified stateless or stateful rule group, which
 %% includes the rules for
@@ -2619,6 +3491,78 @@ delete_network_firewall_transit_gateway_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNetworkFirewallTransitGatewayAttachment">>, Input, Options).
 
+%% @doc Deletes the specified `Proxy'.
+%%
+%% Detaches a Proxy configuration from a NAT Gateway.
+-spec delete_proxy(aws_client:aws_client(), delete_proxy_request()) ->
+    {ok, delete_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_errors(), tuple()}.
+delete_proxy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_proxy(Client, Input, []).
+
+-spec delete_proxy(aws_client:aws_client(), delete_proxy_request(), proplists:proplist()) ->
+    {ok, delete_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_errors(), tuple()}.
+delete_proxy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProxy">>, Input, Options).
+
+%% @doc Deletes the specified `ProxyConfiguration'.
+-spec delete_proxy_configuration(aws_client:aws_client(), delete_proxy_configuration_request()) ->
+    {ok, delete_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_configuration_errors(), tuple()}.
+delete_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_proxy_configuration(Client, Input, []).
+
+-spec delete_proxy_configuration(aws_client:aws_client(), delete_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, delete_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_configuration_errors(), tuple()}.
+delete_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProxyConfiguration">>, Input, Options).
+
+%% @doc Deletes the specified `ProxyRuleGroup'.
+-spec delete_proxy_rule_group(aws_client:aws_client(), delete_proxy_rule_group_request()) ->
+    {ok, delete_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_rule_group_errors(), tuple()}.
+delete_proxy_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_proxy_rule_group(Client, Input, []).
+
+-spec delete_proxy_rule_group(aws_client:aws_client(), delete_proxy_rule_group_request(), proplists:proplist()) ->
+    {ok, delete_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_rule_group_errors(), tuple()}.
+delete_proxy_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProxyRuleGroup">>, Input, Options).
+
+%% @doc Deletes the specified `ProxyRule'(s).
+%%
+%% currently attached to a `ProxyRuleGroup'
+-spec delete_proxy_rules(aws_client:aws_client(), delete_proxy_rules_request()) ->
+    {ok, delete_proxy_rules_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_rules_errors(), tuple()}.
+delete_proxy_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_proxy_rules(Client, Input, []).
+
+-spec delete_proxy_rules(aws_client:aws_client(), delete_proxy_rules_request(), proplists:proplist()) ->
+    {ok, delete_proxy_rules_response(), tuple()} |
+    {error, any()} |
+    {error, delete_proxy_rules_errors(), tuple()}.
+delete_proxy_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProxyRules">>, Input, Options).
+
 %% @doc Deletes a resource policy that you created in a
 %% `PutResourcePolicy' request.
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
@@ -2786,6 +3730,75 @@ describe_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoggingConfiguration">>, Input, Options).
 
+%% @doc Returns the data objects for the specified proxy.
+-spec describe_proxy(aws_client:aws_client(), describe_proxy_request()) ->
+    {ok, describe_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_errors(), tuple()}.
+describe_proxy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_proxy(Client, Input, []).
+
+-spec describe_proxy(aws_client:aws_client(), describe_proxy_request(), proplists:proplist()) ->
+    {ok, describe_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_errors(), tuple()}.
+describe_proxy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProxy">>, Input, Options).
+
+%% @doc Returns the data objects for the specified proxy configuration.
+-spec describe_proxy_configuration(aws_client:aws_client(), describe_proxy_configuration_request()) ->
+    {ok, describe_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_configuration_errors(), tuple()}.
+describe_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_proxy_configuration(Client, Input, []).
+
+-spec describe_proxy_configuration(aws_client:aws_client(), describe_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, describe_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_configuration_errors(), tuple()}.
+describe_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProxyConfiguration">>, Input, Options).
+
+%% @doc Returns the data objects for the specified proxy configuration for
+%% the specified proxy rule group.
+-spec describe_proxy_rule(aws_client:aws_client(), describe_proxy_rule_request()) ->
+    {ok, describe_proxy_rule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_rule_errors(), tuple()}.
+describe_proxy_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_proxy_rule(Client, Input, []).
+
+-spec describe_proxy_rule(aws_client:aws_client(), describe_proxy_rule_request(), proplists:proplist()) ->
+    {ok, describe_proxy_rule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_rule_errors(), tuple()}.
+describe_proxy_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProxyRule">>, Input, Options).
+
+%% @doc Returns the data objects for the specified proxy rule group.
+-spec describe_proxy_rule_group(aws_client:aws_client(), describe_proxy_rule_group_request()) ->
+    {ok, describe_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_rule_group_errors(), tuple()}.
+describe_proxy_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_proxy_rule_group(Client, Input, []).
+
+-spec describe_proxy_rule_group(aws_client:aws_client(), describe_proxy_rule_group_request(), proplists:proplist()) ->
+    {ok, describe_proxy_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_proxy_rule_group_errors(), tuple()}.
+describe_proxy_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProxyRuleGroup">>, Input, Options).
+
 %% @doc Retrieves a resource policy that you created in a
 %% `PutResourcePolicy' request.
 -spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request()) ->
@@ -2904,6 +3917,30 @@ describe_vpc_endpoint_association(Client, Input)
 describe_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcEndpointAssociation">>, Input, Options).
+
+%% @doc Detaches `ProxyRuleGroup' resources from a
+%% `ProxyConfiguration'
+%%
+%% A Proxy Configuration defines the monitoring and protection behavior for a
+%% Proxy.
+%%
+%% The details of the behavior are defined in the rule groups that you add to
+%% your configuration.
+-spec detach_rule_groups_from_proxy_configuration(aws_client:aws_client(), detach_rule_groups_from_proxy_configuration_request()) ->
+    {ok, detach_rule_groups_from_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, detach_rule_groups_from_proxy_configuration_errors(), tuple()}.
+detach_rule_groups_from_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_rule_groups_from_proxy_configuration(Client, Input, []).
+
+-spec detach_rule_groups_from_proxy_configuration(aws_client:aws_client(), detach_rule_groups_from_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, detach_rule_groups_from_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, detach_rule_groups_from_proxy_configuration_errors(), tuple()}.
+detach_rule_groups_from_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachRuleGroupsFromProxyConfiguration">>, Input, Options).
 
 %% @doc Removes the specified Availability Zone associations from a transit
 %% gateway-attached firewall.
@@ -3095,6 +4132,74 @@ list_flow_operations(Client, Input)
 list_flow_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowOperations">>, Input, Options).
+
+%% @doc Retrieves the metadata for the proxies that you have defined.
+%%
+%% Depending on
+%% your setting for max results and the number of proxies, a single call
+%% might not
+%% return the full list.
+-spec list_proxies(aws_client:aws_client(), list_proxies_request()) ->
+    {ok, list_proxies_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxies_errors(), tuple()}.
+list_proxies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_proxies(Client, Input, []).
+
+-spec list_proxies(aws_client:aws_client(), list_proxies_request(), proplists:proplist()) ->
+    {ok, list_proxies_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxies_errors(), tuple()}.
+list_proxies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProxies">>, Input, Options).
+
+%% @doc Retrieves the metadata for the proxy configuration that you have
+%% defined.
+%%
+%% Depending on
+%% your setting for max results and the number of proxy configurations, a
+%% single call might not
+%% return the full list.
+-spec list_proxy_configurations(aws_client:aws_client(), list_proxy_configurations_request()) ->
+    {ok, list_proxy_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_configurations_errors(), tuple()}.
+list_proxy_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_proxy_configurations(Client, Input, []).
+
+-spec list_proxy_configurations(aws_client:aws_client(), list_proxy_configurations_request(), proplists:proplist()) ->
+    {ok, list_proxy_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_configurations_errors(), tuple()}.
+list_proxy_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProxyConfigurations">>, Input, Options).
+
+%% @doc Retrieves the metadata for the proxy rule groups that you have
+%% defined.
+%%
+%% Depending on
+%% your setting for max results and the number of proxy rule groups, a single
+%% call might not
+%% return the full list.
+-spec list_proxy_rule_groups(aws_client:aws_client(), list_proxy_rule_groups_request()) ->
+    {ok, list_proxy_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_rule_groups_errors(), tuple()}.
+list_proxy_rule_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_proxy_rule_groups(Client, Input, []).
+
+-spec list_proxy_rule_groups(aws_client:aws_client(), list_proxy_rule_groups_request(), proplists:proplist()) ->
+    {ok, list_proxy_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_rule_groups_errors(), tuple()}.
+list_proxy_rule_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProxyRuleGroups">>, Input, Options).
 
 %% @doc Retrieves the metadata for the rule groups that you have defined.
 %%
@@ -3605,6 +4710,91 @@ update_logging_configuration(Client, Input)
 update_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoggingConfiguration">>, Input, Options).
+
+%% @doc Updates the properties of the specified proxy.
+-spec update_proxy(aws_client:aws_client(), update_proxy_request()) ->
+    {ok, update_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_errors(), tuple()}.
+update_proxy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy(Client, Input, []).
+
+-spec update_proxy(aws_client:aws_client(), update_proxy_request(), proplists:proplist()) ->
+    {ok, update_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_errors(), tuple()}.
+update_proxy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxy">>, Input, Options).
+
+%% @doc Updates the properties of the specified proxy configuration.
+-spec update_proxy_configuration(aws_client:aws_client(), update_proxy_configuration_request()) ->
+    {ok, update_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_configuration_errors(), tuple()}.
+update_proxy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy_configuration(Client, Input, []).
+
+-spec update_proxy_configuration(aws_client:aws_client(), update_proxy_configuration_request(), proplists:proplist()) ->
+    {ok, update_proxy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_configuration_errors(), tuple()}.
+update_proxy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxyConfiguration">>, Input, Options).
+
+%% @doc Updates the properties of the specified proxy rule.
+-spec update_proxy_rule(aws_client:aws_client(), update_proxy_rule_request()) ->
+    {ok, update_proxy_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_errors(), tuple()}.
+update_proxy_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy_rule(Client, Input, []).
+
+-spec update_proxy_rule(aws_client:aws_client(), update_proxy_rule_request(), proplists:proplist()) ->
+    {ok, update_proxy_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_errors(), tuple()}.
+update_proxy_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxyRule">>, Input, Options).
+
+%% @doc Updates proxy rule group priorities within a proxy configuration.
+-spec update_proxy_rule_group_priorities(aws_client:aws_client(), update_proxy_rule_group_priorities_request()) ->
+    {ok, update_proxy_rule_group_priorities_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_group_priorities_errors(), tuple()}.
+update_proxy_rule_group_priorities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy_rule_group_priorities(Client, Input, []).
+
+-spec update_proxy_rule_group_priorities(aws_client:aws_client(), update_proxy_rule_group_priorities_request(), proplists:proplist()) ->
+    {ok, update_proxy_rule_group_priorities_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_group_priorities_errors(), tuple()}.
+update_proxy_rule_group_priorities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxyRuleGroupPriorities">>, Input, Options).
+
+%% @doc Updates proxy rule priorities within a proxy rule group.
+-spec update_proxy_rule_priorities(aws_client:aws_client(), update_proxy_rule_priorities_request()) ->
+    {ok, update_proxy_rule_priorities_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_priorities_errors(), tuple()}.
+update_proxy_rule_priorities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy_rule_priorities(Client, Input, []).
+
+-spec update_proxy_rule_priorities(aws_client:aws_client(), update_proxy_rule_priorities_request(), proplists:proplist()) ->
+    {ok, update_proxy_rule_priorities_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_rule_priorities_errors(), tuple()}.
+update_proxy_rule_priorities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxyRulePriorities">>, Input, Options).
 
 %% @doc Updates the rule settings for the specified rule group.
 %%

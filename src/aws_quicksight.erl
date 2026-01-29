@@ -258,6 +258,9 @@
          describe_role_custom_permission/4,
          describe_role_custom_permission/6,
          describe_role_custom_permission/7,
+         describe_self_upgrade_configuration/3,
+         describe_self_upgrade_configuration/5,
+         describe_self_upgrade_configuration/6,
          describe_template/3,
          describe_template/5,
          describe_template/6,
@@ -312,6 +315,8 @@
          get_flow_permissions/3,
          get_flow_permissions/5,
          get_flow_permissions/6,
+         get_identity_context/3,
+         get_identity_context/4,
          get_session_embed_url/2,
          get_session_embed_url/4,
          get_session_embed_url/5,
@@ -384,6 +389,9 @@
          list_role_memberships/4,
          list_role_memberships/6,
          list_role_memberships/7,
+         list_self_upgrades/3,
+         list_self_upgrades/5,
+         list_self_upgrades/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -533,6 +541,10 @@
          update_role_custom_permission/6,
          update_s_p_i_c_e_capacity_configuration/3,
          update_s_p_i_c_e_capacity_configuration/4,
+         update_self_upgrade/4,
+         update_self_upgrade/5,
+         update_self_upgrade_configuration/4,
+         update_self_upgrade_configuration/5,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -630,6 +642,7 @@
 %% Example:
 %% line_chart_default_series_settings() :: #{
 %%   <<"AxisBinding">> => list(any()),
+%%   <<"DecalSettings">> => decal_settings(),
 %%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
 %%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
 %% }
@@ -660,6 +673,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboards_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_self_upgrade_configuration_request() :: #{}
+-type describe_self_upgrade_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1081,7 +1098,7 @@
 %% start_dashboard_snapshot_job_request() :: #{
 %%   <<"SnapshotConfiguration">> := snapshot_configuration(),
 %%   <<"SnapshotJobId">> := string(),
-%%   <<"UserConfiguration">> := snapshot_user_configuration()
+%%   <<"UserConfiguration">> => snapshot_user_configuration()
 %% }
 -type start_dashboard_snapshot_job_request() :: #{binary() => any()}.
 
@@ -1524,6 +1541,15 @@
 %% }
 -type create_folder_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_identity_context_response() :: #{
+%%   <<"Context">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type get_identity_context_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_folder_request() :: #{}
 -type describe_folder_request() :: #{}.
@@ -1860,6 +1886,14 @@
 
 
 %% Example:
+%% list_self_upgrades_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_self_upgrades_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_action_connector_response() :: #{
 %%   <<"ActionConnectorId">> => [string()],
 %%   <<"Arn">> => string(),
@@ -2082,6 +2116,13 @@
 %%   <<"SheetTextBoxId">> => string()
 %% }
 -type sheet_text_box() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_customization_visual_options() :: #{
+%%   <<"FieldsConfiguration">> => visual_customization_fields_configuration()
+%% }
+-type dashboard_customization_visual_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2470,6 +2511,16 @@
 %%   <<"TemplateVersionNumber">> := float()
 %% }
 -type update_template_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_self_upgrades_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"SelfUpgradeRequestDetails">> => list(self_upgrade_request_detail()),
+%%   <<"Status">> => integer()
+%% }
+-type list_self_upgrades_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2987,6 +3038,14 @@
 
 
 %% Example:
+%% sheet_layout_group() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Members">> => list(sheet_layout_group_member())
+%% }
+-type sheet_layout_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_topics_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
@@ -3431,10 +3490,38 @@
 
 
 %% Example:
+%% sheet_background_style() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Gradient">> => string()
+%% }
+-type sheet_background_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_pair_credentials() :: #{
+%%   <<"KeyPairUsername">> => string(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"PrivateKeyPassphrase">> => string()
+%% }
+-type key_pair_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% snapshot_s3_destination_configuration() :: #{
 %%   <<"BucketConfiguration">> => s3_bucket_configuration()
 %% }
 -type snapshot_s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocoder_hierarchy() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"County">> => string(),
+%%   <<"PostCode">> => string(),
+%%   <<"State">> => string()
+%% }
+-type geocoder_hierarchy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3598,9 +3685,26 @@
 %% }
 -type theme_alias() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_field_bar_series_item() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"FieldValue">> => string(),
+%%   <<"Settings">> => bar_chart_series_settings()
+%% }
+-type data_field_bar_series_item() :: #{binary() => any()}.
+
 %% Example:
 %% update_dashboard_published_version_request() :: #{}
 -type update_dashboard_published_version_request() :: #{}.
+
+
+%% Example:
+%% field_bar_series_item() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Settings">> => bar_chart_series_settings()
+%% }
+-type field_bar_series_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3638,7 +3742,8 @@
 %% Example:
 %% free_form_layout_element_border_style() :: #{
 %%   <<"Color">> => string(),
-%%   <<"Visibility">> => list(any())
+%%   <<"Visibility">> => list(any()),
+%%   <<"Width">> => string()
 %% }
 -type free_form_layout_element_border_style() :: #{binary() => any()}.
 
@@ -3965,6 +4070,14 @@
 
 
 %% Example:
+%% visual_customization_fields_configuration() :: #{
+%%   <<"AdditionalFields">> => list(column_identifier()),
+%%   <<"Status">> => list(any())
+%% }
+-type visual_customization_fields_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% dynamic_default_value() :: #{
 %%   <<"DefaultValueColumn">> => column_identifier(),
 %%   <<"GroupNameColumn">> => column_identifier(),
@@ -4123,6 +4236,7 @@
 
 %% Example:
 %% line_chart_series_settings() :: #{
+%%   <<"DecalSettings">> => decal_settings(),
 %%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
 %%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
 %% }
@@ -4181,12 +4295,18 @@
 
 %% Example:
 %% grid_layout_element() :: #{
+%%   <<"BackgroundStyle">> => grid_layout_element_background_style(),
+%%   <<"BorderRadius">> => string(),
+%%   <<"BorderStyle">> => grid_layout_element_border_style(),
 %%   <<"ColumnIndex">> => integer(),
 %%   <<"ColumnSpan">> => integer(),
 %%   <<"ElementId">> => string(),
 %%   <<"ElementType">> => list(any()),
+%%   <<"LoadingAnimation">> => loading_animation(),
+%%   <<"Padding">> => string(),
 %%   <<"RowIndex">> => integer(),
-%%   <<"RowSpan">> => integer()
+%%   <<"RowSpan">> => integer(),
+%%   <<"SelectedBorderStyle">> => grid_layout_element_border_style()
 %% }
 -type grid_layout_element() :: #{binary() => any()}.
 
@@ -4792,7 +4912,8 @@
 
 %% Example:
 %% snapshot_job_result() :: #{
-%%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result())
+%%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result()),
+%%   <<"RegisteredUsers">> => list(registered_user_snapshot_job_result())
 %% }
 -type snapshot_job_result() :: #{binary() => any()}.
 
@@ -5028,6 +5149,14 @@
 
 
 %% Example:
+%% update_self_upgrade_request() :: #{
+%%   <<"Action">> := list(any()),
+%%   <<"UpgradeRequestId">> := string()
+%% }
+-type update_self_upgrade_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% body_section_dynamic_numeric_dimension_configuration() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"Limit">> => integer(),
@@ -5152,6 +5281,14 @@
 %%   <<"PolicyArn">> => string()
 %% }
 -type active_iam_policy_assignment() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_series_settings() :: #{
+%%   <<"BorderSettings">> => border_settings(),
+%%   <<"DecalSettings">> => decal_settings()
+%% }
+-type bar_chart_series_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5466,6 +5603,14 @@
 
 
 %% Example:
+%% field_combo_series_item() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Settings">> => combo_chart_series_settings()
+%% }
+-type field_combo_series_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% numeric_range_filter() :: #{
 %%   <<"AggregationFunction">> => aggregation_function(),
 %%   <<"Column">> => column_identifier(),
@@ -5513,6 +5658,13 @@
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_resource_link_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_upgrade_configuration() :: #{
+%%   <<"SelfUpgradeStatus">> => list(any())
+%% }
+-type self_upgrade_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5723,6 +5875,14 @@
 %%   <<"TargetColumnId">> => string()
 %% }
 -type data_set_column_id_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_default_series_settings() :: #{
+%%   <<"BorderSettings">> => border_settings(),
+%%   <<"DecalSettings">> => decal_settings()
+%% }
+-type bar_chart_default_series_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6182,6 +6342,10 @@
 %% }
 -type dashboard() :: #{binary() => any()}.
 
+%% Example:
+%% registered_user_quick_chat_embedding_configuration() :: #{}
+-type registered_user_quick_chat_embedding_configuration() :: #{}.
+
 
 %% Example:
 %% describe_topic_refresh_response() :: #{
@@ -6363,6 +6527,15 @@
 
 
 %% Example:
+%% update_self_upgrade_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"SelfUpgradeRequestDetail">> => self_upgrade_request_detail(),
+%%   <<"Status">> => integer()
+%% }
+-type update_self_upgrade_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% snapshot_anonymous_user_redacted() :: #{
 %%   <<"RowLevelPermissionTagKeys">> => list(string())
 %% }
@@ -6531,6 +6704,14 @@
 %%   <<"StrokeWidth">> => geospatial_line_width()
 %% }
 -type geospatial_circle_symbol_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% coordinate() :: #{
+%%   <<"Latitude">> => float(),
+%%   <<"Longitude">> => float()
+%% }
+-type coordinate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7255,6 +7436,14 @@
 
 
 %% Example:
+%% update_self_upgrade_configuration_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_self_upgrade_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% k_p_iprogress_bar_conditional_formatting() :: #{
 %%   <<"ForegroundColor">> => conditional_formatting_color()
 %% }
@@ -7272,7 +7461,8 @@
 %% Example:
 %% free_form_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options(),
-%%   <<"Elements">> => list(free_form_layout_element())
+%%   <<"Elements">> => list(free_form_layout_element()),
+%%   <<"Groups">> => list(sheet_layout_group())
 %% }
 -type free_form_layout_configuration() :: #{binary() => any()}.
 
@@ -7578,11 +7768,13 @@
 %%   <<"ColorLabelOptions">> => chart_axis_label_options(),
 %%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()),
 %%   <<"DataLabels">> => data_label_options(),
+%%   <<"DefaultSeriesSettings">> => bar_chart_default_series_settings(),
 %%   <<"FieldWells">> => bar_chart_field_wells(),
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"Legend">> => legend_options(),
 %%   <<"Orientation">> => list(any()),
 %%   <<"ReferenceLines">> => list(reference_line()),
+%%   <<"Series">> => list(bar_series_item()),
 %%   <<"SmallMultiplesOptions">> => small_multiples_options(),
 %%   <<"SortConfiguration">> => bar_chart_sort_configuration(),
 %%   <<"Tooltip">> => tooltip_options(),
@@ -7682,7 +7874,10 @@
 
 %% Example:
 %% tile_style() :: #{
-%%   <<"Border">> => border_style()
+%%   <<"BackgroundColor">> => string(),
+%%   <<"Border">> => border_style(),
+%%   <<"BorderRadius">> => string(),
+%%   <<"Padding">> => string()
 %% }
 -type tile_style() :: #{binary() => any()}.
 
@@ -7842,6 +8037,7 @@
 %% data_source_credentials() :: #{
 %%   <<"CopySourceArn">> => string(),
 %%   <<"CredentialPair">> => credential_pair(),
+%%   <<"KeyPairCredentials">> => key_pair_credentials(),
 %%   <<"SecretArn">> => string(),
 %%   <<"WebProxyCredentials">> => web_proxy_credentials()
 %% }
@@ -8297,6 +8493,14 @@
 
 
 %% Example:
+%% bar_series_item() :: #{
+%%   <<"DataFieldBarSeriesItem">> => data_field_bar_series_item(),
+%%   <<"FieldBarSeriesItem">> => field_bar_series_item()
+%% }
+-type bar_series_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% dataset_parameter() :: #{
 %%   <<"DateTimeDatasetParameter">> => date_time_dataset_parameter(),
 %%   <<"DecimalDatasetParameter">> => decimal_dataset_parameter(),
@@ -8536,6 +8740,15 @@
 %%   <<"Foreground">> => string()
 %% }
 -type palette() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_field_combo_series_item() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"FieldValue">> => string(),
+%%   <<"Settings">> => combo_chart_series_settings()
+%% }
+-type data_field_combo_series_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8803,6 +9016,7 @@
 %%   <<"CategoryAxis">> => axis_display_options(),
 %%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
 %%   <<"ColorLabelOptions">> => chart_axis_label_options(),
+%%   <<"DefaultSeriesSettings">> => combo_chart_default_series_settings(),
 %%   <<"FieldWells">> => combo_chart_field_wells(),
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"Legend">> => legend_options(),
@@ -8812,6 +9026,7 @@
 %%   <<"ReferenceLines">> => list(reference_line()),
 %%   <<"SecondaryYAxisDisplayOptions">> => axis_display_options(),
 %%   <<"SecondaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"Series">> => list(combo_series_item()),
 %%   <<"SingleAxisOptions">> => single_axis_options(),
 %%   <<"SortConfiguration">> => combo_chart_sort_configuration(),
 %%   <<"Tooltip">> => tooltip_options(),
@@ -8945,6 +9160,15 @@
 
 
 %% Example:
+%% border_settings() :: #{
+%%   <<"BorderColor">> => string(),
+%%   <<"BorderVisibility">> => list(any()),
+%%   <<"BorderWidth">> => string()
+%% }
+-type border_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_field_custom_text_content() :: #{
 %%   <<"FontConfiguration">> => font_configuration(),
 %%   <<"Value">> => string()
@@ -9056,6 +9280,15 @@
 
 
 %% Example:
+%% visual_subtitle_font_configuration() :: #{
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"TextAlignment">> => list(any()),
+%%   <<"TextTransform">> => list(any())
+%% }
+-type visual_subtitle_font_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_topic_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"RefreshArn">> => string(),
@@ -9139,6 +9372,16 @@
 %% Example:
 %% delete_identity_propagation_config_request() :: #{}
 -type delete_identity_propagation_config_request() :: #{}.
+
+
+%% Example:
+%% combo_chart_series_settings() :: #{
+%%   <<"BorderSettings">> => border_settings(),
+%%   <<"DecalSettings">> => decal_settings(),
+%%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
+%%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
+%% }
+-type combo_chart_series_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9279,6 +9522,7 @@
 %%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => geospatial_map_configuration(),
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()),
+%%   <<"GeocodingPreferences">> => list(geocode_preference()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -9457,9 +9701,17 @@
 
 
 %% Example:
+%% registered_user_snapshot_job_result() :: #{
+%%   <<"FileGroups">> => list(snapshot_job_result_file_group())
+%% }
+-type registered_user_snapshot_job_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% column_configuration() :: #{
 %%   <<"ColorsConfiguration">> => colors_configuration(),
 %%   <<"Column">> => column_identifier(),
+%%   <<"DecalSettingsConfiguration">> => decal_settings_configuration(),
 %%   <<"FormatConfiguration">> => format_configuration(),
 %%   <<"Role">> => list(any())
 %% }
@@ -9640,11 +9892,20 @@
 
 
 %% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% registered_user_embedding_experience_configuration() :: #{
 %%   <<"Dashboard">> => registered_user_dashboard_embedding_configuration(),
 %%   <<"DashboardVisual">> => registered_user_dashboard_visual_embedding_configuration(),
 %%   <<"GenerativeQnA">> => registered_user_generative_qn_a_embedding_configuration(),
 %%   <<"QSearchBar">> => registered_user_q_search_bar_embedding_configuration(),
+%%   <<"QuickChat">> => registered_user_quick_chat_embedding_configuration(),
 %%   <<"QuickSightConsole">> => registered_user_quick_sight_console_embedding_configuration()
 %% }
 -type registered_user_embedding_experience_configuration() :: #{binary() => any()}.
@@ -9809,6 +10070,7 @@
 %%   <<"ChartConfiguration">> => filled_map_configuration(),
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"ConditionalFormatting">> => filled_map_conditional_formatting(),
+%%   <<"GeocodingPreferences">> => list(geocode_preference()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -9819,6 +10081,7 @@
 
 %% Example:
 %% table_configuration() :: #{
+%%   <<"DashboardCustomizationVisualOptions">> => dashboard_customization_visual_options(),
 %%   <<"FieldOptions">> => table_field_options(),
 %%   <<"FieldWells">> => table_field_wells(),
 %%   <<"Interactions">> => visual_interaction_options(),
@@ -10616,9 +10879,22 @@
 
 %% Example:
 %% border_style() :: #{
-%%   <<"Show">> => boolean()
+%%   <<"Color">> => string(),
+%%   <<"Show">> => boolean(),
+%%   <<"Width">> => string()
 %% }
 -type border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% decal_settings() :: #{
+%%   <<"DecalColor">> => string(),
+%%   <<"DecalPatternType">> => list(any()),
+%%   <<"DecalStyleType">> => list(any()),
+%%   <<"DecalVisibility">> => list(any()),
+%%   <<"ElementValue">> => string()
+%% }
+-type decal_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10746,6 +11022,16 @@
 
 
 %% Example:
+%% combo_chart_default_series_settings() :: #{
+%%   <<"BorderSettings">> => border_settings(),
+%%   <<"DecalSettings">> => decal_settings(),
+%%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
+%%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
+%% }
+-type combo_chart_default_series_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_template_alias_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
@@ -10756,6 +11042,7 @@
 
 %% Example:
 %% sheet_style() :: #{
+%%   <<"Background">> => sheet_background_style(),
 %%   <<"Tile">> => tile_style(),
 %%   <<"TileLayout">> => tile_layout_style()
 %% }
@@ -11023,6 +11310,21 @@
 %%   <<"WebProxyUsername">> => string()
 %% }
 -type web_proxy_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_series_item() :: #{
+%%   <<"DataFieldComboSeriesItem">> => data_field_combo_series_item(),
+%%   <<"FieldComboSeriesItem">> => field_combo_series_item()
+%% }
+-type combo_series_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_self_upgrade_configuration_request() :: #{
+%%   <<"SelfUpgradeStatus">> := list(any())
+%% }
+-type update_self_upgrade_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12101,7 +12403,14 @@
 
 %% Example:
 %% typography() :: #{
-%%   <<"FontFamilies">> => list(font())
+%%   <<"AxisLabelFontConfiguration">> => font_configuration(),
+%%   <<"AxisTitleFontConfiguration">> => font_configuration(),
+%%   <<"DataLabelFontConfiguration">> => font_configuration(),
+%%   <<"FontFamilies">> => list(font()),
+%%   <<"LegendTitleFontConfiguration">> => font_configuration(),
+%%   <<"LegendValueFontConfiguration">> => font_configuration(),
+%%   <<"VisualSubtitleFontConfiguration">> => visual_subtitle_font_configuration(),
+%%   <<"VisualTitleFontConfiguration">> => visual_title_font_configuration()
 %% }
 -type typography() :: #{binary() => any()}.
 
@@ -12116,6 +12425,15 @@
 %%   <<"Version">> => template_version()
 %% }
 -type template() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_identity_context_request() :: #{
+%%   <<"Namespace">> => string(),
+%%   <<"SessionExpiresAt">> => [non_neg_integer()],
+%%   <<"UserIdentifier">> := list()
+%% }
+-type get_identity_context_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12324,6 +12642,15 @@
 %%   <<"NumericalDimensionField">> => numerical_dimension_field()
 %% }
 -type dimension_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_title_font_configuration() :: #{
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"TextAlignment">> => list(any()),
+%%   <<"TextTransform">> => list(any())
+%% }
+-type visual_title_font_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12844,6 +13171,15 @@
 
 
 %% Example:
+%% describe_self_upgrade_configuration_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"SelfUpgradeConfiguration">> => self_upgrade_configuration(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_self_upgrade_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% body_section_dynamic_category_dimension_configuration() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"Limit">> => integer(),
@@ -12984,6 +13320,7 @@
 
 %% Example:
 %% pivot_table_configuration() :: #{
+%%   <<"DashboardCustomizationVisualOptions">> => dashboard_customization_visual_options(),
 %%   <<"FieldOptions">> => pivot_table_field_options(),
 %%   <<"FieldWells">> => pivot_table_field_wells(),
 %%   <<"Interactions">> => visual_interaction_options(),
@@ -13017,6 +13354,21 @@
 %%   <<"Schedule">> := refresh_schedule()
 %% }
 -type create_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_upgrade_request_detail() :: #{
+%%   <<"CreationTime">> => float(),
+%%   <<"OriginalRole">> => list(any()),
+%%   <<"RequestNote">> => string(),
+%%   <<"RequestStatus">> => list(any()),
+%%   <<"RequestedRole">> => list(any()),
+%%   <<"UpgradeRequestId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"lastUpdateAttemptTime">> => float(),
+%%   <<"lastUpdateFailureReason">> => string()
+%% }
+-type self_upgrade_request_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13079,6 +13431,13 @@
 %%   <<"VisualId">> => string()
 %% }
 -type scatter_plot_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% decal_settings_configuration() :: #{
+%%   <<"CustomDecalSettings">> => list(decal_settings())
+%% }
+-type decal_settings_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_analysis_definition_request() :: #{}
@@ -13223,11 +13582,13 @@
 %% Example:
 %% free_form_layout_element() :: #{
 %%   <<"BackgroundStyle">> => free_form_layout_element_background_style(),
+%%   <<"BorderRadius">> => string(),
 %%   <<"BorderStyle">> => free_form_layout_element_border_style(),
 %%   <<"ElementId">> => string(),
 %%   <<"ElementType">> => list(any()),
 %%   <<"Height">> => string(),
 %%   <<"LoadingAnimation">> => loading_animation(),
+%%   <<"Padding">> => string(),
 %%   <<"RenderingRules">> => list(sheet_element_rendering_rule()),
 %%   <<"SelectedBorderStyle">> => free_form_layout_element_border_style(),
 %%   <<"Visibility">> => list(any()),
@@ -13385,6 +13746,14 @@
 %% Example:
 %% describe_quick_sight_q_search_configuration_request() :: #{}
 -type describe_quick_sight_q_search_configuration_request() :: #{}.
+
+
+%% Example:
+%% geocode_preference() :: #{
+%%   <<"Preference">> => list(),
+%%   <<"RequestKey">> => geocoder_hierarchy()
+%% }
+-type geocode_preference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13583,42 +13952,215 @@
 
 %% Example:
 %% capabilities() :: #{
+%%   <<"ShareComprehendMedicalAction">> => list(any()),
+%%   <<"ShareSAPMaterialStockAction">> => list(any()),
+%%   <<"FactSetAction">> => list(any()),
+%%   <<"UseSandPGMIAction">> => list(any()),
+%%   <<"ShareHuggingFaceAction">> => list(any()),
+%%   <<"ShareTextractAction">> => list(any()),
 %%   <<"ExportToPdfInScheduledReports">> => list(any()),
 %%   <<"Flow">> => list(any()),
+%%   <<"CreateAndUpdateOneDriveAction">> => list(any()),
+%%   <<"ShareZendeskAction">> => list(any()),
+%%   <<"UseMSExchangeAction">> => list(any()),
+%%   <<"ComprehendAction">> => list(any()),
+%%   <<"CreateAndUpdateFactSetAction">> => list(any()),
+%%   <<"CreateAndUpdateGenericHTTPAction">> => list(any()),
+%%   <<"HuggingFaceAction">> => list(any()),
+%%   <<"UseSAPBillOfMaterialAction">> => list(any()),
 %%   <<"ShareDatasets">> => list(any()),
+%%   <<"ShareAmazonBedrockKRSAction">> => list(any()),
+%%   <<"CanvaAgentAction">> => list(any()),
 %%   <<"ShareDashboards">> => list(any()),
+%%   <<"CreateAndUpdateBambooHRAction">> => list(any()),
+%%   <<"UseNewRelicAction">> => list(any()),
+%%   <<"CreateAndUpdateSalesforceAction">> => list(any()),
+%%   <<"UsePagerDutyAction">> => list(any()),
+%%   <<"ServiceNowAction">> => list(any()),
+%%   <<"OpenAPIAction">> => list(any()),
+%%   <<"TextractAction">> => list(any()),
+%%   <<"ShareBoxAgentAction">> => list(any()),
+%%   <<"ShareHubspotAction">> => list(any()),
+%%   <<"SalesforceAction">> => list(any()),
 %%   <<"IncludeContentInScheduledReportsEmail">> => list(any()),
+%%   <<"UseSalesforceAction">> => list(any()),
+%%   <<"UseGoogleCalendarAction">> => list(any()),
+%%   <<"ShareSmartsheetAction">> => list(any()),
+%%   <<"CreateAndUpdateCanvaAgentAction">> => list(any()),
+%%   <<"UseIntercomAction">> => list(any()),
+%%   <<"ShareSandPGMIAction">> => list(any()),
+%%   <<"PagerDutyAction">> => list(any()),
+%%   <<"ShareConfluenceAction">> => list(any()),
 %%   <<"CreateAndUpdateThemes">> => list(any()),
+%%   <<"JiraAction">> => list(any()),
+%%   <<"CreateAndUpdateAmazonBedrockFSAction">> => list(any()),
 %%   <<"RenameSharedFolders">> => list(any()),
+%%   <<"UseComprehendMedicalAction">> => list(any()),
+%%   <<"UseTextractAction">> => list(any()),
+%%   <<"UseComprehendAction">> => list(any()),
+%%   <<"UseSAPBusinessPartnerAction">> => list(any()),
+%%   <<"ShareSlackAction">> => list(any()),
+%%   <<"ShareMSTeamsAction">> => list(any()),
+%%   <<"ShareNotionAction">> => list(any()),
+%%   <<"UseGithubAction">> => list(any()),
+%%   <<"CreateAndUpdateTextractAction">> => list(any()),
 %%   <<"AddOrRunAnomalyDetectionForAnalyses">> => list(any()),
+%%   <<"CreateAndUpdateSAPBillOfMaterialAction">> => list(any()),
+%%   <<"ShareMSExchangeAction">> => list(any()),
 %%   <<"SubscribeDashboardEmailReports">> => list(any()),
+%%   <<"AmazonBedrockARSAction">> => list(any()),
+%%   <<"CreateAndUpdateAmazonBedrockKRSAction">> => list(any()),
+%%   <<"MCPAction">> => list(any()),
+%%   <<"UseSharePointAction">> => list(any()),
+%%   <<"ShareMCPAction">> => list(any()),
+%%   <<"ShareAmazonSThreeAction">> => list(any()),
+%%   <<"AmazonBedrockFSAction">> => list(any()),
+%%   <<"UseAmazonBedrockKRSAction">> => list(any()),
 %%   <<"CreateAndUpdateDataSources">> => list(any()),
+%%   <<"CreateAndUpdateComprehendMedicalAction">> => list(any()),
+%%   <<"CreateAndUpdateSandPGMIAction">> => list(any()),
+%%   <<"ShareSharePointAction">> => list(any()),
 %%   <<"PrintReports">> => list(any()),
+%%   <<"CreateAndUpdateServiceNowAction">> => list(any()),
+%%   <<"ZendeskAction">> => list(any()),
+%%   <<"CreateAndUpdateJiraAction">> => list(any()),
+%%   <<"UseOpenAPIAction">> => list(any()),
+%%   <<"UseSAPPhysicalInventoryAction">> => list(any()),
 %%   <<"KnowledgeBase">> => list(any()),
+%%   <<"UseSAPProductMasterDataAction">> => list(any()),
+%%   <<"ShareServiceNowAction">> => list(any()),
+%%   <<"ShareSAPPhysicalInventoryAction">> => list(any()),
+%%   <<"CreateAndUpdateSharePointAction">> => list(any()),
+%%   <<"CreateAndUpdateNewRelicAction">> => list(any()),
+%%   <<"SAPBillOfMaterialAction">> => list(any()),
+%%   <<"ShareMondayAction">> => list(any()),
+%%   <<"UseGenericHTTPAction">> => list(any()),
+%%   <<"UseHuggingFaceAction">> => list(any()),
+%%   <<"ComprehendMedicalAction">> => list(any()),
+%%   <<"CreateAndUpdateZendeskAction">> => list(any()),
 %%   <<"ExportToExcel">> => list(any()),
+%%   <<"UseSAPMaterialStockAction">> => list(any()),
+%%   <<"CreateAndUpdateSAPMaterialStockAction">> => list(any()),
+%%   <<"SAPMaterialStockAction">> => list(any()),
+%%   <<"ShareIntercomAction">> => list(any()),
 %%   <<"Space">> => list(any()),
 %%   <<"PublishWithoutApproval">> => list(any()),
+%%   <<"CreateAndUpdatePagerDutyAction">> => list(any()),
+%%   <<"UseServiceNowAction">> => list(any()),
+%%   <<"CreateAndUpdateIntercomAction">> => list(any()),
+%%   <<"ConfluenceAction">> => list(any()),
+%%   <<"CreateAndUpdateSandPGlobalEnergyAction">> => list(any()),
+%%   <<"SharePointAction">> => list(any()),
+%%   <<"UseBambooHRAction">> => list(any()),
+%%   <<"BambooHRAction">> => list(any()),
+%%   <<"SAPProductMasterDataAction">> => list(any()),
+%%   <<"UseOneDriveAction">> => list(any()),
+%%   <<"IntercomAction">> => list(any()),
 %%   <<"CreateChatAgents">> => list(any()),
+%%   <<"UseHubspotAction">> => list(any()),
+%%   <<"CreateAndUpdateHuggingFaceAction">> => list(any()),
+%%   <<"UseZendeskAction">> => list(any()),
+%%   <<"UseConfluenceAction">> => list(any()),
+%%   <<"CreateAndUpdateConfluenceAction">> => list(any()),
+%%   <<"CreateAndUpdateMondayAction">> => list(any()),
+%%   <<"GenericHTTPAction">> => list(any()),
+%%   <<"UseLinearAction">> => list(any()),
+%%   <<"ShareSandPGlobalEnergyAction">> => list(any()),
+%%   <<"UseCanvaAgentAction">> => list(any()),
+%%   <<"CreateAndUpdateGithubAction">> => list(any()),
+%%   <<"CreateAndUpdateSAPProductMasterDataAction">> => list(any()),
 %%   <<"PerformFlowUiTask">> => list(any()),
+%%   <<"ShareJiraAction">> => list(any()),
 %%   <<"CreateSharedFolders">> => list(any()),
+%%   <<"GoogleCalendarAction">> => list(any()),
 %%   <<"Analysis">> => list(any()),
+%%   <<"SandPGlobalEnergyAction">> => list(any()),
+%%   <<"CreateAndUpdateOpenAPIAction">> => list(any()),
+%%   <<"CreateAndUpdateAsanaAction">> => list(any()),
+%%   <<"CreateAndUpdateAmazonSThreeAction">> => list(any()),
 %%   <<"ExportToExcelInScheduledReports">> => list(any()),
+%%   <<"CreateAndUpdateSAPBusinessPartnerAction">> => list(any()),
 %%   <<"Research">> => list(any()),
+%%   <<"ShareAmazonBedrockFSAction">> => list(any()),
+%%   <<"UseAmazonBedrockFSAction">> => list(any()),
+%%   <<"UseSlackAction">> => list(any()),
+%%   <<"ShareLinearAction">> => list(any()),
+%%   <<"ShareAmazonBedrockARSAction">> => list(any()),
+%%   <<"CreateAndUpdateLinearAction">> => list(any()),
+%%   <<"UseMondayAction">> => list(any()),
+%%   <<"ShareFactSetAction">> => list(any()),
 %%   <<"Dashboard">> => list(any()),
+%%   <<"ShareAsanaAction">> => list(any()),
+%%   <<"SmartsheetAction">> => list(any()),
+%%   <<"ShareBambooHRAction">> => list(any()),
+%%   <<"ShareCanvaAgentAction">> => list(any()),
+%%   <<"SelfUpgradeUserRole">> => list(any()),
+%%   <<"ShareGithubAction">> => list(any()),
+%%   <<"ShareSalesforceAction">> => list(any()),
+%%   <<"CreateAndUpdateComprehendAction">> => list(any()),
+%%   <<"AmazonSThreeAction">> => list(any()),
+%%   <<"UseBoxAgentAction">> => list(any()),
+%%   <<"NewRelicAction">> => list(any()),
+%%   <<"CreateAndUpdateSmartsheetAction">> => list(any()),
+%%   <<"SAPBusinessPartnerAction">> => list(any()),
 %%   <<"Action">> => list(any()),
+%%   <<"CreateAndUpdateNotionAction">> => list(any()),
+%%   <<"CreateAndUpdateHubspotAction">> => list(any()),
 %%   <<"ChatAgent">> => list(any()),
 %%   <<"CreateSPICEDataset">> => list(any()),
+%%   <<"ShareComprehendAction">> => list(any()),
+%%   <<"CreateAndUpdateMSTeamsAction">> => list(any()),
+%%   <<"ShareGoogleCalendarAction">> => list(any()),
+%%   <<"UseMCPAction">> => list(any()),
+%%   <<"CreateAndUpdateSAPPhysicalInventoryAction">> => list(any()),
 %%   <<"ShareAnalyses">> => list(any()),
+%%   <<"UseAmazonSThreeAction">> => list(any()),
+%%   <<"OneDriveAction">> => list(any()),
+%%   <<"AsanaAction">> => list(any()),
+%%   <<"UseJiraAction">> => list(any()),
+%%   <<"GithubAction">> => list(any()),
 %%   <<"UseBedrockModels">> => list(any()),
 %%   <<"ExportToPdf">> => list(any()),
 %%   <<"CreateAndUpdateDashboardEmailReports">> => list(any()),
 %%   <<"ShareDataSources">> => list(any()),
+%%   <<"UseAmazonBedrockARSAction">> => list(any()),
 %%   <<"ViewAccountSPICECapacity">> => list(any()),
+%%   <<"UseNotionAction">> => list(any()),
+%%   <<"BoxAgentAction">> => list(any()),
+%%   <<"SAPPhysicalInventoryAction">> => list(any()),
+%%   <<"UseMSTeamsAction">> => list(any()),
+%%   <<"HubspotAction">> => list(any()),
+%%   <<"AmazonBedrockKRSAction">> => list(any()),
+%%   <<"NotionAction">> => list(any()),
+%%   <<"CreateAndUpdateGoogleCalendarAction">> => list(any()),
+%%   <<"ShareOneDriveAction">> => list(any()),
+%%   <<"UseAsanaAction">> => list(any()),
 %%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
+%%   <<"ShareSAPProductMasterDataAction">> => list(any()),
+%%   <<"SlackAction">> => list(any()),
+%%   <<"UseFactSetAction">> => list(any()),
+%%   <<"CreateAndUpdateSlackAction">> => list(any()),
+%%   <<"CreateAndUpdateMCPAction">> => list(any()),
 %%   <<"ExportToCsvInScheduledReports">> => list(any()),
+%%   <<"UseSmartsheetAction">> => list(any()),
 %%   <<"Automate">> => list(any()),
+%%   <<"CreateAndUpdateBoxAgentAction">> => list(any()),
+%%   <<"ShareSAPBillOfMaterialAction">> => list(any()),
+%%   <<"SandPGMIAction">> => list(any()),
+%%   <<"UseSandPGlobalEnergyAction">> => list(any()),
+%%   <<"CreateAndUpdateAmazonBedrockARSAction">> => list(any()),
+%%   <<"SharePagerDutyAction">> => list(any()),
+%%   <<"MondayAction">> => list(any()),
+%%   <<"LinearAction">> => list(any()),
+%%   <<"ShareGenericHTTPAction">> => list(any()),
+%%   <<"MSTeamsAction">> => list(any()),
+%%   <<"CreateAndUpdateMSExchangeAction">> => list(any()),
+%%   <<"ShareNewRelicAction">> => list(any()),
 %%   <<"ExportToCsv">> => list(any()),
 %%   <<"UseAgentWebSearch">> => list(any()),
+%%   <<"ShareOpenAPIAction">> => list(any()),
+%%   <<"ShareSAPBusinessPartnerAction">> => list(any()),
+%%   <<"MSExchangeAction">> => list(any()),
 %%   <<"CreateAndUpdateDatasets">> => list(any())
 %% }
 -type capabilities() :: #{binary() => any()}.
@@ -13766,6 +14308,14 @@
 
 
 %% Example:
+%% sheet_layout_group_member() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type sheet_layout_group_member() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_values_configuration() :: #{
 %%   <<"CustomValues">> => custom_parameter_values(),
 %%   <<"IncludeNullValue">> => boolean()
@@ -13908,6 +14458,23 @@
 %%   <<"VersionId">> := string()
 %% }
 -type update_brand_published_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_element_border_style() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Visibility">> => list(any()),
+%%   <<"Width">> => string()
+%% }
+-type grid_layout_element_border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_element_background_style() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type grid_layout_element_background_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14820,6 +15387,16 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type describe_self_upgrade_configuration_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
 -type describe_template_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -14983,6 +15560,14 @@
     throttling_exception() | 
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
+-type get_identity_context_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type get_session_embed_url_errors() ::
@@ -15171,6 +15756,17 @@
     internal_failure_exception().
 
 -type list_role_memberships_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_self_upgrades_errors() ::
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -15753,6 +16349,27 @@
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_self_upgrade_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_self_upgrade_configuration_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
     internal_failure_exception().
 
 -type update_template_errors() ::
@@ -19057,6 +19674,22 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 %%
 %% Poll job descriptions after a job starts to know the status of the job.
 %% For information on available status codes, see `JobStatus'.
+%%
+%% Registered user support
+%%
+%% This API can be called as before to get status of a job started by the
+%% same Quick Sight user.
+%%
+%% Possible error scenarios
+%%
+%% Request will fail with an Access Denied error in the following scenarios:
+%%
+%% The credentials have expired.
+%%
+%% Job has been started by a different user.
+%%
+%% Impersonated Quick Sight user doesn't have access to the specified
+%% dashboard in the job.
 -spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
@@ -19103,6 +19736,46 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 %% If the job has not finished running, this operation returns a message that
 %% says `Dashboard Snapshot Job with id has not reached a terminal
 %% state.'.
+%%
+%% Registered user support
+%%
+%% This API can be called as before to get the result of a job started by the
+%% same Quick Sight user. The result for the user will be returned in
+%% `RegisteredUsers' response attribute. The attribute will contain a
+%% list with at most one object in it.
+%%
+%% Possible error scenarios
+%%
+%% The request fails with an Access Denied error in the following scenarios:
+%%
+%% The credentials have expired.
+%%
+%% The job was started by a different user.
+%%
+%% The registered user doesn't have access to the specified dashboard.
+%%
+%% The request succeeds but the job fails in the following scenarios:
+%%
+%% `DASHBOARD_ACCESS_DENIED' - The registered user lost access to the
+%% dashboard.
+%%
+%% `CAPABILITY_RESTRICTED' - The registered user is restricted from
+%% exporting data in all selected formats.
+%%
+%% The request succeeds but the response contains an error code in the
+%% following scenarios:
+%%
+%% `CAPABILITY_RESTRICTED' - The registered user is restricted from
+%% exporting data in some selected formats.
+%%
+%% `RLS_CHANGED' - Row-level security settings have changed. Re-run the
+%% job with current settings.
+%%
+%% `CLS_CHANGED' - Column-level security settings have changed. Re-run
+%% the job with current settings.
+%%
+%% `DATASET_DELETED' - The dataset has been deleted. Verify the dataset
+%% exists before re-running the job.
 -spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
@@ -19941,6 +20614,43 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the self-upgrade configuration for a Quick Suite account.
+-spec describe_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_self_upgrade_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_self_upgrade_configuration_errors(), tuple()}.
+describe_self_upgrade_configuration(Client, AwsAccountId, Namespace)
+  when is_map(Client) ->
+    describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, #{}, #{}).
+
+-spec describe_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_self_upgrade_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_self_upgrade_configuration_errors(), tuple()}.
+describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+-spec describe_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_self_upgrade_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_self_upgrade_configuration_errors(), tuple()}.
+describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/self-upgrade-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20818,6 +21528,87 @@ get_flow_permissions(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, Options
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the identity context for a Quick Sight user in a specified
+%% namespace, allowing you to obtain identity tokens that can be used with
+%% identity-enhanced IAM role sessions to call identity-aware APIs.
+%%
+%% Currently, you can call the following APIs with identity-enhanced
+%% Credentials
+%%
+%% StartDashboardSnapshotJob:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StartDashboardSnapshotJob.html
+%%
+%% DescribeDashboardSnapshotJob:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardSnapshotJob.html
+%%
+%% DescribeDashboardSnapshotJobResult:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardSnapshotJobResult.html
+%%
+%% Supported Authentication Methods
+%%
+%% This API supports Quick Sight native users, IAM federated users, and
+%% Active Directory users. For Quick Sight users authenticated by Amazon Web
+%% Services Identity Center, see Identity Center documentation on
+%% identity-enhanced IAM role sessions:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-identity-enhanced-iam-role-sessions.html.
+%%
+%% Getting Identity-Enhanced Credentials
+%%
+%% To obtain identity-enhanced credentials, follow these steps:
+%%
+%% Call the GetIdentityContext API to retrieve an identity token for the
+%% specified user.
+%%
+%% Use the identity token with the STS AssumeRole API:
+%% https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html to
+%% obtain identity-enhanced IAM role session credentials.
+%%
+%% Usage with STS AssumeRole
+%%
+%% The identity token returned by this API should be used with the STS
+%% AssumeRole API to obtain credentials for an identity-enhanced IAM role
+%% session. When calling AssumeRole, include the identity token in the
+%% `ProvidedContexts' parameter with `ProviderArn' set to
+%% `arn:aws:iam::aws:contextProvider/QuickSight' and
+%% `ContextAssertion' set to the identity token received from this API.
+%%
+%% The assumed role must allow the `sts:SetContext' action in addition to
+%% `sts:AssumeRole' in its trust relationship policy. The trust policy
+%% should include both actions for the principal that will be assuming the
+%% role.
+-spec get_identity_context(aws_client:aws_client(), binary() | list(), get_identity_context_request()) ->
+    {ok, get_identity_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_context_errors(), tuple()}.
+get_identity_context(Client, AwsAccountId, Input) ->
+    get_identity_context(Client, AwsAccountId, Input, []).
+
+-spec get_identity_context(aws_client:aws_client(), binary() | list(), get_identity_context_request(), proplists:proplist()) ->
+    {ok, get_identity_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_context_errors(), tuple()}.
+get_identity_context(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-context"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a session URL and authorization code that you can use to
 %% embed the Amazon
@@ -21884,6 +22675,48 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all self-upgrade requests for a Quick Suite account.
+-spec list_self_upgrades(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_self_upgrades_response(), tuple()} |
+    {error, any()} |
+    {error, list_self_upgrades_errors(), tuple()}.
+list_self_upgrades(Client, AwsAccountId, Namespace)
+  when is_map(Client) ->
+    list_self_upgrades(Client, AwsAccountId, Namespace, #{}, #{}).
+
+-spec list_self_upgrades(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_self_upgrades_response(), tuple()} |
+    {error, any()} |
+    {error, list_self_upgrades_errors(), tuple()}.
+list_self_upgrades(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_self_upgrades(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+-spec list_self_upgrades(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_self_upgrades_response(), tuple()} |
+    {error, any()} |
+    {error, list_self_upgrades_errors(), tuple()}.
+list_self_upgrades(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/self-upgrade-requests"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -23040,11 +23873,14 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% You can request one or several of the following format configurations in
 %% each API call.
 %%
-%% 1 Paginated PDF
+%% 1 PDF
 %%
 %% 1 Excel workbook that includes up to 5 table or pivot table visuals
 %%
 %% 5 CSVs from table or pivot table visuals
+%%
+%% Exporting CSV, Excel, or Pixel Perfect PDF reports requires Pixel Perfect
+%% Report Add-on.
 %%
 %% The status of a submitted job can be polled with the
 %% `DescribeDashboardSnapshotJob' API. When you call the
@@ -23117,6 +23953,91 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% configuration.
 %%
 %% The size of the generated snapshots.
+%%
+%% Registered user support
+%%
+%% You can generate snapshots for registered Quick Sight users by using the
+%% Snapshot Job APIs with identity-enhanced IAM role session credentials:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-identity-enhanced-iam-role-sessions.html.
+%% This approach allows you to create snapshots on behalf of specific Quick
+%% Sight users while respecting their row-level security (RLS), column-level
+%% security (CLS), dynamic default parameters and dashboard parameter/filter
+%% settings.
+%%
+%% To generate snapshots for registered Quick Sight users, you need to:
+%%
+%% Obtain identity-enhanced IAM role session credentials from Amazon Web
+%% Services Security Token Service (STS).
+%%
+%% Use these credentials to call the Snapshot Job APIs.
+%%
+%% Identity-enhanced credentials are credentials that contain information
+%% about the end user (e.g., registered Quick Sight user).
+%%
+%% If your Quick Sight users are backed by Amazon Web Services Identity
+%% Center:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html,
+%% then you need to set up a trusted token issuer:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/setuptrustedtokenissuer.html.
+%% Then, getting identity-enhanced IAM credentials for a Quick Sight user
+%% will look like the following:
+%%
+%% Authenticate user with your OIDC compliant Identity Provider. You should
+%% get auth tokens back.
+%%
+%% Use the OIDC API, CreateTokenWithIAM:
+%% https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateTokenWithIAM.html,
+%% to exchange auth tokens to IAM tokens. One of the resulted tokens will be
+%% identity token.
+%%
+%% Call STS AssumeRole API as you normally would, but provide an extra
+%% `ProvidedContexts' parameter in the API request. The list of contexts
+%% must have a single trusted context assertion. The `ProviderArn' should
+%% be `arn:aws:iam::aws:contextProvider/IdentityCenter' while
+%% `ContextAssertion' will be the identity token you received in response
+%% from CreateTokenWithIAM
+%%
+%% For more details, see IdC documentation on Identity-enhanced IAM role
+%% sessions:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-identity-enhanced-iam-role-sessions.html.
+%%
+%% To obtain Identity-enhanced credentials for Quick Sight native users, IAM
+%% federated users, or Active Directory users, follow the steps below:
+%%
+%% Call Quick Sight GetIdentityContext API:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetIdentityContext.html
+%% to get identity token.
+%%
+%% Call STS AssumeRole API as you normally would, but provide extra
+%% `ProvidedContexts' parameter in the API request. The list of contexts
+%% must have a single trusted context assertion. The `ProviderArn' should
+%% be `arn:aws:iam::aws:contextProvider/QuickSight' while
+%% `ContextAssertion' will be the identity token you received in response
+%% from GetIdentityContext
+%%
+%% After obtaining the identity-enhanced IAM role session credentials, you
+%% can use them to start a job, describe the job and describe job result. You
+%% can use the same credentials as long as they haven't expired. All API
+%% requests made with these credentials are considered to be made by the
+%% impersonated Quick Sight user.
+%%
+%% When using identity-enhanced session credentials, set the
+%% UserConfiguration request attribute to null. Otherwise, the request will
+%% be invalid.
+%%
+%% Possible error scenarios
+%%
+%% The request fails with an Access Denied error in the following scenarios:
+%%
+%% The credentials have expired.
+%%
+%% The impersonated Quick Sight user doesn't have access to the specified
+%% dashboard.
+%%
+%% The impersonated Quick Sight user is restricted from exporting data in the
+%% selected formats. For more information about export restrictions, see
+%% Customizing access to Amazon Quick Sight capabilities:
+%% https://docs.aws.amazon.com/quicksuite/latest/userguide/create-custom-permisions-profile.html.
 -spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
@@ -24590,6 +25511,75 @@ update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input) ->
 update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/spice-capacity-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a self-upgrade request for a Quick Suite user by approving,
+%% denying, or verifying the request.
+-spec update_self_upgrade(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_request()) ->
+    {ok, update_self_upgrade_response(), tuple()} |
+    {error, any()} |
+    {error, update_self_upgrade_errors(), tuple()}.
+update_self_upgrade(Client, AwsAccountId, Namespace, Input) ->
+    update_self_upgrade(Client, AwsAccountId, Namespace, Input, []).
+
+-spec update_self_upgrade(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_request(), proplists:proplist()) ->
+    {ok, update_self_upgrade_response(), tuple()} |
+    {error, any()} |
+    {error, update_self_upgrade_errors(), tuple()}.
+update_self_upgrade(Client, AwsAccountId, Namespace, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/update-self-upgrade-request"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the self-upgrade configuration for a Quick Suite account.
+-spec update_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_configuration_request()) ->
+    {ok, update_self_upgrade_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_self_upgrade_configuration_errors(), tuple()}.
+update_self_upgrade_configuration(Client, AwsAccountId, Namespace, Input) ->
+    update_self_upgrade_configuration(Client, AwsAccountId, Namespace, Input, []).
+
+-spec update_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_configuration_request(), proplists:proplist()) ->
+    {ok, update_self_upgrade_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_self_upgrade_configuration_errors(), tuple()}.
+update_self_upgrade_configuration(Client, AwsAccountId, Namespace, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/self-upgrade-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

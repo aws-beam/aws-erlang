@@ -90,6 +90,8 @@
          list_cost_allocation_tags/3,
          list_cost_category_definitions/2,
          list_cost_category_definitions/3,
+         list_cost_category_resource_associations/2,
+         list_cost_category_resource_associations/3,
          list_savings_plans_purchase_recommendation_generation/2,
          list_savings_plans_purchase_recommendation_generation/3,
          list_tags_for_resource/2,
@@ -158,7 +160,8 @@
 %% list_cost_category_definitions_request() :: #{
 %%   <<"EffectiveOn">> => string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"SupportedResourceTypes">> => list(string())
 %% }
 -type list_cost_category_definitions_request() :: #{binary() => any()}.
 
@@ -243,6 +246,14 @@
 %%   <<"EC2ResourceUtilization">> => ec2_resource_utilization()
 %% }
 -type resource_utilization() :: #{binary() => any()}.
+
+%% Example:
+%% cost_category_resource_association() :: #{
+%%   <<"CostCategoryArn">> => string(),
+%%   <<"CostCategoryName">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type cost_category_resource_association() :: #{binary() => any()}.
 
 %% Example:
 %% get_tags_request() :: #{
@@ -708,6 +719,14 @@
 -type get_reservation_utilization_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_cost_category_resource_associations_request() :: #{
+%%   <<"CostCategoryArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cost_category_resource_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% start_commitment_purchase_analysis_response() :: #{
 %%   <<"AnalysisId">> => string(),
 %%   <<"AnalysisStartedTime">> => string(),
@@ -1015,6 +1034,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NumberOfRules">> => integer(),
 %%   <<"ProcessingStatus">> => list(cost_category_processing_status()),
+%%   <<"SupportedResourceTypes">> => list(string()),
 %%   <<"Values">> => list(string())
 %% }
 -type cost_category_reference() :: #{binary() => any()}.
@@ -1381,6 +1401,13 @@
 %%   <<"Status">> => list(any())
 %% }
 -type cost_category_processing_status() :: #{binary() => any()}.
+
+%% Example:
+%% list_cost_category_resource_associations_response() :: #{
+%%   <<"CostCategoryResourceAssociations">> => list(cost_category_resource_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cost_category_resource_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% cost_category_values() :: #{
@@ -1944,6 +1971,7 @@
 %%   <<"CurrentGeneration">> => boolean(),
 %%   <<"DatabaseEdition">> => string(),
 %%   <<"DatabaseEngine">> => string(),
+%%   <<"DeploymentModel">> => string(),
 %%   <<"DeploymentOption">> => string(),
 %%   <<"Family">> => string(),
 %%   <<"InstanceType">> => string(),
@@ -2142,6 +2170,10 @@
 -type list_cost_category_definitions_errors() ::
     limit_exceeded_exception().
 
+-type list_cost_category_resource_associations_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type list_savings_plans_purchase_recommendation_generation_errors() ::
     limit_exceeded_exception() | 
     data_unavailable_exception() | 
@@ -2242,7 +2274,7 @@ create_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAnomalySubscription">>, Input, Options).
 
-%% @doc Creates a new Cost Category with the requested name and rules.
+%% @doc Creates a new cost category with the requested name and rules.
 -spec create_cost_category_definition(aws_client:aws_client(), create_cost_category_definition_request()) ->
     {ok, create_cost_category_definition_response(), tuple()} |
     {error, any()} |
@@ -2293,10 +2325,10 @@ delete_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAnomalySubscription">>, Input, Options).
 
-%% @doc Deletes a Cost Category.
+%% @doc Deletes a cost category.
 %%
 %% Expenses from this month going forward will no longer be
-%% categorized with this Cost Category.
+%% categorized with this cost category.
 -spec delete_cost_category_definition(aws_client:aws_client(), delete_cost_category_definition_request()) ->
     {ok, delete_cost_category_definition_response(), tuple()} |
     {error, any()} |
@@ -2315,13 +2347,13 @@ delete_cost_category_definition(Client, Input, Options)
 
 %% @doc Returns the name, Amazon Resource Name (ARN), rules, definition, and
 %% effective dates of a
-%% Cost Category that's defined in the account.
+%% cost category that's defined in the account.
 %%
-%% You have the option to use `EffectiveOn' to return a Cost Category
+%% You have the option to use `EffectiveOn' to return a cost category
 %% that's
 %% active on a specific date. If there's no `EffectiveOn' specified,
 %% you see a Cost
-%% Category that's effective on the current date. If Cost Category is
+%% Category that's effective on the current date. If cost category is
 %% still effective,
 %% `EffectiveEnd' is omitted in the response.
 -spec describe_cost_category_definition(aws_client:aws_client(), describe_cost_category_definition_request()) ->
@@ -2538,9 +2570,9 @@ get_cost_and_usage_with_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostAndUsageWithResources">>, Input, Options).
 
-%% @doc Retrieves an array of Cost Category names and values incurred cost.
+%% @doc Retrieves an array of cost category names and values incurred cost.
 %%
-%% If some Cost Category names and values are not associated with any cost,
+%% If some cost category names and values are not associated with any cost,
 %% they will not
 %% be returned by this API.
 -spec get_cost_categories(aws_client:aws_client(), get_cost_categories_request()) ->
@@ -2631,7 +2663,7 @@ get_dimension_values(Client, Input, Options)
 %%
 %% An organization's management account can
 %% see the coverage of the associated member accounts. This supports
-%% dimensions, Cost Categories,
+%% dimensions, cost categories,
 %% and nested expressions. For any time period, you can filter data about
 %% reservation usage by
 %% the following dimensions:
@@ -2803,8 +2835,8 @@ get_savings_plan_purchase_recommendation_details(Client, Input, Options)
 %% This enables you to see how much of
 %% your cost is covered by a Savings Plan. An organization’s management
 %% account can see the
-%% coverage of the associated member accounts. This supports dimensions, Cost
-%% Categories, and
+%% coverage of the associated member accounts. This supports dimensions, cost
+%% categories, and
 %% nested expressions. For any time period, you can filter data for Savings
 %% Plans usage with the
 %% following dimensions:
@@ -3014,14 +3046,14 @@ list_cost_allocation_tags(Client, Input, Options)
 
 %% @doc Returns the name, Amazon Resource Name (ARN), `NumberOfRules' and
 %% effective
-%% dates of all Cost Categories defined in the account.
+%% dates of all cost categories defined in the account.
 %%
 %% You have the option to use
-%% `EffectiveOn' to return a list of Cost Categories that were active on
-%% a specific
-%% date. If there is no `EffectiveOn' specified, you’ll see Cost
-%% Categories that are
-%% effective on the current date. If Cost Category is still effective,
+%% `EffectiveOn' and `SupportedResourceTypes' to return a list of
+%% cost categories that were active on a specific
+%% date. If there is no `EffectiveOn' specified, you’ll see cost
+%% categories that are
+%% effective on the current date. If cost category is still effective,
 %% `EffectiveEnd'
 %% is omitted in the response. `ListCostCategoryDefinitions' supports
 %% pagination. The
@@ -3041,6 +3073,29 @@ list_cost_category_definitions(Client, Input)
 list_cost_category_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCostCategoryDefinitions">>, Input, Options).
+
+%% @doc Returns resource associations of all cost categories defined in the
+%% account.
+%%
+%% You have the option to use `CostCategoryArn' to get the association
+%% for a specific cost category. `ListCostCategoryResourceAssociations'
+%% supports pagination. The request can have a `MaxResults' range up to
+%% 100.
+-spec list_cost_category_resource_associations(aws_client:aws_client(), list_cost_category_resource_associations_request()) ->
+    {ok, list_cost_category_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_cost_category_resource_associations_errors(), tuple()}.
+list_cost_category_resource_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cost_category_resource_associations(Client, Input, []).
+
+-spec list_cost_category_resource_associations(aws_client:aws_client(), list_cost_category_resource_associations_request(), proplists:proplist()) ->
+    {ok, list_cost_category_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_cost_category_resource_associations_errors(), tuple()}.
+list_cost_category_resource_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCostCategoryResourceAssociations">>, Input, Options).
 
 %% @doc Retrieves a list of your historical recommendation generations within
 %% the past 30
@@ -3294,9 +3349,9 @@ update_cost_allocation_tags_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCostAllocationTagsStatus">>, Input, Options).
 
-%% @doc Updates an existing Cost Category.
+%% @doc Updates an existing cost category.
 %%
-%% Changes made to the Cost Category rules will be used to
+%% Changes made to the cost category rules will be used to
 %% categorize the current month’s expenses and future expenses. This won’t
 %% change categorization
 %% for the previous months.

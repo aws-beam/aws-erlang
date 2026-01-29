@@ -709,6 +709,8 @@
 %%   <<"BudgetedAndActualAmountsList">> => list(budgeted_and_actual_amounts()),
 %%   <<"CostFilters">> => map(),
 %%   <<"CostTypes">> => cost_types(),
+%%   <<"FilterExpression">> => expression(),
+%%   <<"Metrics">> => list(list(any())()),
 %%   <<"TimeUnit">> => list(any())
 %% }
 -type budget_performance_history() :: #{binary() => any()}.
@@ -948,6 +950,7 @@
     invalid_parameter_exception() | 
     access_denied_exception() | 
     not_found_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     expired_next_token_exception().
 
@@ -1014,7 +1017,8 @@
     invalid_parameter_exception() | 
     access_denied_exception() | 
     not_found_exception() | 
-    billing_view_health_status_exception().
+    billing_view_health_status_exception() | 
+    service_quota_exceeded_exception().
 
 -type update_budget_action_errors() ::
     internal_error_exception() | 

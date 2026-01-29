@@ -14,6 +14,8 @@
          get_tag_keys/3,
          get_tag_values/2,
          get_tag_values/3,
+         list_required_tags/2,
+         list_required_tags/3,
          start_report_creation/2,
          start_report_creation/3,
          tag_resources/2,
@@ -146,10 +148,32 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_required_tags_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_required_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_required_tags_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequiredTags">> => list(required_tag())
+%% }
+-type list_required_tags_output() :: #{binary() => any()}.
+
+%% Example:
 %% pagination_token_expired_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type pagination_token_expired_exception() :: #{binary() => any()}.
+
+%% Example:
+%% required_tag() :: #{
+%%   <<"CloudFormationResourceTypes">> => list(string()),
+%%   <<"ReportingTagKeys">> => list(string()),
+%%   <<"ResourceType">> => string()
+%% }
+-type required_tag() :: #{binary() => any()}.
 
 %% Example:
 %% resource_tag_mapping() :: #{
@@ -253,6 +277,12 @@
     internal_service_exception().
 
 -type get_tag_values_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type list_required_tags_errors() ::
     throttled_exception() | 
     pagination_token_expired_exception() | 
     invalid_parameter_exception() | 
@@ -365,6 +395,14 @@ get_compliance_summary(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
+%%
+%% `GetResources' does not return untagged resources.
+%%
+%% To find untagged resources in your account, use Amazon Web Services
+%% Resource Explorer with a
+%% query that uses `tag:none'. For more information, see Search query
+%% syntax reference for Resource Explorer:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html.
 -spec get_resources(aws_client:aws_client(), get_resources_input()) ->
     {ok, get_resources_output(), tuple()} |
     {error, any()} |
@@ -441,6 +479,24 @@ get_tag_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTagValues">>, Input, Options).
 
+%% @doc Lists the required tags for supported resource types in an Amazon Web
+%% Services account.
+-spec list_required_tags(aws_client:aws_client(), list_required_tags_input()) ->
+    {ok, list_required_tags_output(), tuple()} |
+    {error, any()} |
+    {error, list_required_tags_errors(), tuple()}.
+list_required_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_required_tags(Client, Input, []).
+
+-spec list_required_tags(aws_client:aws_client(), list_required_tags_input(), proplists:proplist()) ->
+    {ok, list_required_tags_output(), tuple()} |
+    {error, any()} |
+    {error, list_required_tags_errors(), tuple()}.
+list_required_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRequiredTags">>, Input, Options).
+
 %% @doc Generates a report that lists all tagged resources in the accounts
 %% across your
 %% organization and tells whether each resource is compliant with the
@@ -451,10 +507,29 @@ get_tag_values(Client, Input, Options)
 %%
 %% The generated report is saved to the following location:
 %%
-%% `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv'
+%% `s3://amzn-s3-demo-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv'
+%%
+%% For more information about evaluating resource compliance with tag
+%% policies, including
+%% the required permissions, review Permissions for evaluating
+%% organization-wide compliance:
+%% https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-policies-orgs.html#tag-policies-permissions-org
+%% in the
+%% Tagging Amazon Web Services Resources and Tag Editor user guide.
 %%
 %% You can call this operation only from the organization's
 %% management account and from the us-east-1 Region.
+%%
+%% If the account associated with the identity used to call
+%% `StartReportCreation' is different from the account that owns the
+%% Amazon S3
+%% bucket, there must be a bucket policy attached to the bucket to provide
+%% access. For more
+%% information, review Amazon S3 bucket
+%% policy for report storage:
+%% https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-policies-orgs.html#bucket-policy
+%% in the Tagging Amazon Web Services Resources and Tag
+%% Editor user guide.
 -spec start_report_creation(aws_client:aws_client(), start_report_creation_input()) ->
     {ok, start_report_creation_output(), tuple()} |
     {error, any()} |
@@ -502,6 +577,23 @@ start_report_creation(Client, Input, Options)
 %% more
 %% information, see the documentation for each service.
 %%
+%% When you use the Amazon Web Services Resource
+%% Groups Tagging API:
+%% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/overview.html
+%% to update tags for Amazon Web Services CloudFormation stack
+%% sets, Amazon Web Services calls the Amazon Web Services
+%% CloudFormation `UpdateStack'
+%% :
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html
+%% operation. This operation
+%% may initiate additional resource property updates in addition to the
+%% desired tag
+%% updates. To avoid unexpected resource updates, Amazon Web Services
+%% recommends that you only
+%% apply or update tags to your CloudFormation stack sets using Amazon Web
+%% Services
+%% CloudFormation.
+%%
 %% Do not store personally identifiable information (PII) or other
 %% confidential or
 %% sensitive information in tags. We use tags to provide you with billing and
@@ -518,9 +610,18 @@ start_report_creation(Client, Input, Options)
 %% `TagResources'
 %% operation, you must have both of the following permissions:
 %%
-%% `tag:TagResource'
+%% `tag:TagResources'
 %%
 %% `ec2:CreateTags'
+%%
+%% In addition, some services might have specific requirements for tagging
+%% some types
+%% of resources. For example, to tag an Amazon S3 bucket, you must also have
+%% the
+%% `s3:GetBucketTagging' permission. If the expected minimum permissions
+%% don't work, check the documentation for that service's tagging
+%% APIs for more
+%% information.
 -spec tag_resources(aws_client:aws_client(), tag_resources_input()) ->
     {ok, tag_resources_output(), tuple()} |
     {error, any()} |
@@ -567,9 +668,18 @@ tag_resources(Client, Input, Options)
 %% `UntagResources' operation, you must have both of the following
 %% permissions:
 %%
-%% `tag:UntagResource'
+%% `tag:UntagResources'
 %%
 %% `ec2:DeleteTags'
+%%
+%% In addition, some services might have specific requirements for untagging
+%% some
+%% types of resources. For example, to untag Amazon Web Services Glue
+%% Connection, you must also have the
+%% `glue:GetConnection' permission. If the expected minimum permissions
+%% don't work, check the documentation for that service's tagging
+%% APIs for more
+%% information.
 -spec untag_resources(aws_client:aws_client(), untag_resources_input()) ->
     {ok, untag_resources_output(), tuple()} |
     {error, any()} |

@@ -100,6 +100,7 @@
 
 %% Example:
 %% get_vpc_endpoint_service_name_output() :: #{
+%%   <<"clusterVpcEndpoint">> => string(),
 %%   <<"serviceName">> => string()
 %% }
 -type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.

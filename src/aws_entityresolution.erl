@@ -184,6 +184,14 @@
 
 
 %% Example:
+%% customer_profiles_integration_config() :: #{
+%%   <<"domainArn">> => string(),
+%%   <<"objectTypeArn">> => string()
+%% }
+-type customer_profiles_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_schema_mapping_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"mappedInputFields">> => list(schema_input_attribute()),
@@ -1011,6 +1019,7 @@
 %% output_source() :: #{
 %%   <<"KMSArn">> => string(),
 %%   <<"applyNormalization">> => [boolean()],
+%%   <<"customerProfilesIntegrationConfig">> => customer_profiles_integration_config(),
 %%   <<"output">> => list(output_attribute()),
 %%   <<"outputS3Path">> => string()
 %% }

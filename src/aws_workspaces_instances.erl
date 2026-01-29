@@ -109,6 +109,7 @@
 
 %% Example:
 %% create_workspace_instance_request() :: #{
+%%   <<"BillingConfiguration">> => billing_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ManagedInstance">> := managed_instance_request(),
 %%   <<"Tags">> => list(tag())
@@ -279,6 +280,7 @@
 
 %% Example:
 %% get_workspace_instance_response() :: #{
+%%   <<"BillingConfiguration">> => billing_configuration(),
 %%   <<"EC2InstanceErrors">> => list(ec2_instance_error()),
 %%   <<"EC2ManagedInstance">> => ec2_managed_instance(),
 %%   <<"ProvisionState">> => list(any()),
@@ -330,6 +332,12 @@
 %%   <<"Reason">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% billing_configuration() :: #{
+%%   <<"BillingMode">> => list(any())
+%% }
+-type billing_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% managed_instance_request() :: #{
@@ -455,10 +463,19 @@
 
 %% Example:
 %% list_instance_types_request() :: #{
+%%   <<"InstanceConfigurationFilter">> => instance_configuration_filter(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instance_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% supported_instance_configuration() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"Tenancy">> => list(any())
+%% }
+-type supported_instance_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% license_configuration_request() :: #{
@@ -468,7 +485,8 @@
 
 %% Example:
 %% instance_type_info() :: #{
-%%   <<"InstanceType">> => string()
+%%   <<"InstanceType">> => string(),
+%%   <<"SupportedInstanceConfigurations">> => list(supported_instance_configuration())
 %% }
 -type instance_type_info() :: #{binary() => any()}.
 
@@ -529,6 +547,14 @@
 %%   <<"EC2ExceptionType">> => [string()]
 %% }
 -type ec2_instance_error() :: #{binary() => any()}.
+
+%% Example:
+%% instance_configuration_filter() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"Tenancy">> => list(any())
+%% }
+-type instance_configuration_filter() :: #{binary() => any()}.
 
 %% Example:
 %% list_regions_response() :: #{
@@ -757,6 +783,8 @@ delete_volume(Client, Input, Options)
     request(Client, <<"DeleteVolume">>, Input, Options).
 
 %% @doc Deletes the specified WorkSpace
+%%
+%% Usage of this API will result in deletion of the resource in question.
 -spec delete_workspace_instance(aws_client:aws_client(), delete_workspace_instance_request()) ->
     {ok, delete_workspace_instance_response(), tuple()} |
     {error, any()} |

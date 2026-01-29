@@ -138,6 +138,8 @@
          delete_glue_identity_center_configuration/3,
          delete_integration/2,
          delete_integration/3,
+         delete_integration_resource_property/2,
+         delete_integration_resource_property/3,
          delete_integration_table_properties/2,
          delete_integration_table_properties/3,
          delete_job/2,
@@ -264,6 +266,8 @@
          get_jobs/3,
          get_mapping/2,
          get_mapping/3,
+         get_materialized_view_refresh_task_run/2,
+         get_materialized_view_refresh_task_run/3,
          get_ml_task_run/2,
          get_ml_task_run/3,
          get_ml_task_runs/2,
@@ -368,8 +372,12 @@
          list_dev_endpoints/3,
          list_entities/2,
          list_entities/3,
+         list_integration_resource_properties/2,
+         list_integration_resource_properties/3,
          list_jobs/2,
          list_jobs/3,
+         list_materialized_view_refresh_task_runs/2,
+         list_materialized_view_refresh_task_runs/3,
          list_ml_transforms/2,
          list_ml_transforms/3,
          list_registries/2,
@@ -436,6 +444,8 @@
          start_import_labels_task_run/3,
          start_job_run/2,
          start_job_run/3,
+         start_materialized_view_refresh_task_run/2,
+         start_materialized_view_refresh_task_run/3,
          start_ml_evaluation_task_run/2,
          start_ml_evaluation_task_run/3,
          start_ml_labeling_set_generation_task_run/2,
@@ -452,6 +462,8 @@
          stop_crawler/3,
          stop_crawler_schedule/2,
          stop_crawler_schedule/3,
+         stop_materialized_view_refresh_task_run/2,
+         stop_materialized_view_refresh_task_run/3,
          stop_session/2,
          stop_session/3,
          stop_trigger/2,
@@ -602,6 +614,7 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"FunctionName">> => string(),
+%%   <<"FunctionType">> => list(any()),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
 %%   <<"ResourceUris">> => list(resource_uri())
@@ -878,8 +891,13 @@
 %% view_definition_input() :: #{
 %%   <<"Definer">> => string(),
 %%   <<"IsProtected">> => boolean(),
+%%   <<"LastRefreshType">> => list(any()),
+%%   <<"RefreshSeconds">> => float(),
 %%   <<"Representations">> => list(view_representation_input()),
-%%   <<"SubObjects">> => list(string())
+%%   <<"SubObjectVersionIds">> => list(float()),
+%%   <<"SubObjects">> => list(string()),
+%%   <<"ViewVersionId">> => float(),
+%%   <<"ViewVersionToken">> => string()
 %% }
 -type view_definition_input() :: #{binary() => any()}.
 
@@ -964,9 +982,11 @@
 %% iceberg_struct_field() :: #{
 %%   <<"Doc">> => string(),
 %%   <<"Id">> => integer(),
+%%   <<"InitialDefault">> => any(),
 %%   <<"Name">> => string(),
 %%   <<"Required">> => boolean(),
-%%   <<"Type">> => any()
+%%   <<"Type">> => any(),
+%%   <<"WriteDefault">> => any()
 %% }
 -type iceberg_struct_field() :: #{binary() => any()}.
 
@@ -1710,6 +1730,13 @@
 -type entity() :: #{binary() => any()}.
 
 %% Example:
+%% integration_resource_property_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type integration_resource_property_filter() :: #{binary() => any()}.
+
+%% Example:
 %% iceberg_orphan_file_deletion_configuration() :: #{
 %%   <<"location">> => string(),
 %%   <<"orphanFileRetentionPeriodInDays">> => integer(),
@@ -1837,6 +1864,7 @@
 %% get_unfiltered_table_metadata_response() :: #{
 %%   <<"AuthorizedColumns">> => list(string()),
 %%   <<"CellFilters">> => list(column_row_filter()),
+%%   <<"IsMaterializedView">> => boolean(),
 %%   <<"IsMultiDialectView">> => boolean(),
 %%   <<"IsProtected">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
@@ -1867,6 +1895,26 @@
 %%   <<"TaskRunType">> => list(any())
 %% }
 -type task_run_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_run() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerId">> => string(),
+%%   <<"DPUSeconds">> => float(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MaterializedViewRefreshTaskRunId">> => string(),
+%%   <<"ProcessedBytes">> => float(),
+%%   <<"RefreshType">> => list(any()),
+%%   <<"Role">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type materialized_view_refresh_task_run() :: #{binary() => any()}.
 
 %% Example:
 %% delete_classifier_response() :: #{
@@ -1936,6 +1984,12 @@
 %%   <<"RunId">> := string()
 %% }
 -type get_workflow_run_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_resource_property_response() :: #{
+
+%% }
+-type delete_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_table_request() :: #{
@@ -2058,6 +2112,16 @@
 -type delete_table_optimizer_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_materialized_view_refresh_task_runs_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type list_materialized_view_refresh_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
 %% registry_id() :: #{
 %%   <<"RegistryArn">> => string(),
 %%   <<"RegistryName">> => string()
@@ -2156,6 +2220,15 @@
 %%   <<"NumberOfFilesCompacted">> => string()
 %% }
 -type run_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_encrypted_key() :: #{
+%%   <<"EncryptedById">> => string(),
+%%   <<"EncryptedKeyMetadata">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Properties">> => map()
+%% }
+-type iceberg_encrypted_key() :: #{binary() => any()}.
 
 %% Example:
 %% column_statistics_data() :: #{
@@ -3073,6 +3146,13 @@
 -type target_table_config() :: #{binary() => any()}.
 
 %% Example:
+%% list_materialized_view_refresh_task_runs_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRuns">> => list(materialized_view_refresh_task_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_materialized_view_refresh_task_runs_response() :: #{binary() => any()}.
+
+%% Example:
 %% status_details() :: #{
 %%   <<"RequestedChange">> => table(),
 %%   <<"ViewValidations">> => list(view_validation())
@@ -3489,6 +3569,12 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type register_schema_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_stopping_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_stopping_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_integration_table_properties_response() :: #{
@@ -3924,6 +4010,13 @@
 %%   <<"StreamName">> => string()
 %% }
 -type kinesis_streaming_source_options() :: #{binary() => any()}.
+
+%% Example:
+%% get_materialized_view_refresh_task_run_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"MaterializedViewRefreshTaskRunId">> := string()
+%% }
+-type get_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
 
 %% Example:
 %% redshift_target() :: #{
@@ -4513,6 +4606,15 @@
 -type delete_data_quality_ruleset_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_materialized_view_refresh_task_run_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"FullRefresh">> => boolean(),
+%%   <<"TableName">> := string()
+%% }
+-type start_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
+
+%% Example:
 %% workflow_graph() :: #{
 %%   <<"Edges">> => list(edge()),
 %%   <<"Nodes">> => list(node())
@@ -4522,6 +4624,7 @@
 %% Example:
 %% get_integration_resource_property_response() :: #{
 %%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
 %%   <<"SourceProcessingProperties">> => source_processing_properties(),
 %%   <<"TargetProcessingProperties">> => target_processing_properties()
 %% }
@@ -4722,6 +4825,12 @@
 %%   <<"Name">> => string()
 %% }
 -type update_grok_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_not_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_not_running_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_workflows_request() :: #{
@@ -5266,6 +5375,12 @@
 -type delete_dev_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_connection_response() :: #{
 
 %% }
@@ -5420,6 +5535,12 @@
 %%   <<"Serde">> => list(any())
 %% }
 -type update_csv_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_materialized_view_refresh_task_run_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRunId">> => string()
+%% }
+-type start_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
 
 %% Example:
 %% s3_catalog_delta_source() :: #{
@@ -5683,8 +5804,13 @@
 %% view_definition() :: #{
 %%   <<"Definer">> => string(),
 %%   <<"IsProtected">> => boolean(),
+%%   <<"LastRefreshType">> => list(any()),
+%%   <<"RefreshSeconds">> => float(),
 %%   <<"Representations">> => list(view_representation()),
-%%   <<"SubObjects">> => list(string())
+%%   <<"SubObjectVersionIds">> => list(float()),
+%%   <<"SubObjects">> => list(string()),
+%%   <<"ViewVersionId">> => float(),
+%%   <<"ViewVersionToken">> => string()
 %% }
 -type view_definition() :: #{binary() => any()}.
 
@@ -6329,6 +6455,7 @@
 %% user_defined_function_input() :: #{
 %%   <<"ClassName">> => string(),
 %%   <<"FunctionName">> => string(),
+%%   <<"FunctionType">> => list(any()),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
 %%   <<"ResourceUris">> => list(resource_uri())
@@ -6390,6 +6517,12 @@
 -type encryption_at_rest() :: #{binary() => any()}.
 
 %% Example:
+%% stop_materialized_view_refresh_task_run_response() :: #{
+
+%% }
+-type stop_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_plan_response() :: #{
 %%   <<"PythonScript">> => string(),
 %%   <<"ScalaCode">> => string()
@@ -6399,6 +6532,7 @@
 %% Example:
 %% update_integration_resource_property_response() :: #{
 %%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
 %%   <<"SourceProcessingProperties">> => source_processing_properties(),
 %%   <<"TargetProcessingProperties">> => target_processing_properties()
 %% }
@@ -6451,9 +6585,16 @@
 -type schema_change_policy() :: #{binary() => any()}.
 
 %% Example:
+%% get_materialized_view_refresh_task_run_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRun">> => materialized_view_refresh_task_run()
+%% }
+-type get_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_integration_resource_property_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetProcessingProperties">> => target_processing_properties()
 %% }
 -type create_integration_resource_property_request() :: #{binary() => any()}.
@@ -6832,6 +6973,9 @@
 
 %% Example:
 %% iceberg_table_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"EncryptionKey">> => iceberg_encrypted_key(),
+%%   <<"KeyId">> => string(),
 %%   <<"Location">> => string(),
 %%   <<"PartitionSpec">> => iceberg_partition_spec(),
 %%   <<"Properties">> => map(),
@@ -7219,6 +7363,14 @@
 -type permission_type_mismatch_exception() :: #{binary() => any()}.
 
 %% Example:
+%% stop_materialized_view_refresh_task_run_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type stop_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
+
+%% Example:
 %% evaluate_data_quality() :: #{
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
@@ -7285,6 +7437,13 @@
 %%   <<"TableVersions">> => list(table_version())
 %% }
 -type get_table_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_resource_properties_response() :: #{
+%%   <<"IntegrationResourcePropertyList">> => list(integration_resource_property()),
+%%   <<"Marker">> => string()
+%% }
+-type list_integration_resource_properties_response() :: #{binary() => any()}.
 
 %% Example:
 %% iceberg_compaction_metrics() :: #{
@@ -7807,6 +7966,15 @@
 -type streaming_data_preview_options() :: #{binary() => any()}.
 
 %% Example:
+%% integration_resource_property() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type integration_resource_property() :: #{binary() => any()}.
+
+%% Example:
 %% create_json_classifier_request() :: #{
 %%   <<"JsonPath">> => string(),
 %%   <<"Name">> => string()
@@ -8265,6 +8433,7 @@
 %%   <<"DatabaseName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FederatedTable">> => federated_table(),
+%%   <<"IsMaterializedView">> => boolean(),
 %%   <<"IsMultiDialectView">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
 %%   <<"LastAccessTime">> => non_neg_integer(),
@@ -8333,6 +8502,7 @@
 %% Example:
 %% create_integration_resource_property_response() :: #{
 %%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
 %%   <<"SourceProcessingProperties">> => source_processing_properties(),
 %%   <<"TargetProcessingProperties">> => target_processing_properties()
 %% }
@@ -8589,6 +8759,7 @@
 %% get_user_defined_functions_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> => string(),
+%%   <<"FunctionType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Pattern">> := string()
@@ -8692,6 +8863,12 @@
 %%   <<"TargetTable">> => data_quality_target_table()
 %% }
 -type data_quality_ruleset_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_running_exception() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_table_version_request() :: #{
@@ -8951,6 +9128,14 @@
 %%   <<"TableName">> := string()
 %% }
 -type update_column_statistics_for_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_resource_properties_request() :: #{
+%%   <<"Filters">> => list(integration_resource_property_filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type list_integration_resource_properties_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_workflow_response() :: #{
@@ -9482,6 +9667,15 @@
     internal_service_exception() | 
     entity_not_found_exception().
 
+-type delete_integration_resource_property_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type delete_integration_table_properties_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -9889,6 +10083,12 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_materialized_view_refresh_task_run_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_ml_task_run_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -10221,11 +10421,25 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type list_integration_resource_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type list_jobs_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type list_materialized_view_refresh_task_runs_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception().
 
 -type list_ml_transforms_errors() ::
     invalid_input_exception() | 
@@ -10450,6 +10664,14 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type start_materialized_view_refresh_task_run_errors() ::
+    materialized_view_refresh_task_running_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type start_ml_evaluation_task_run_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -10503,6 +10725,13 @@
     operation_timeout_exception() | 
     entity_not_found_exception() | 
     scheduler_not_running_exception().
+
+-type stop_materialized_view_refresh_task_run_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    materialized_view_refresh_task_not_running_exception() | 
+    materialized_view_refresh_task_stopping_exception() | 
+    operation_timeout_exception().
 
 -type stop_session_errors() ::
     concurrent_modification_exception() | 
@@ -12082,6 +12311,24 @@ delete_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIntegration">>, Input, Options).
 
+%% @doc This API is used for deleting the `ResourceProperty' of the Glue
+%% connection (for the source) or Glue database ARN (for the target).
+-spec delete_integration_resource_property(aws_client:aws_client(), delete_integration_resource_property_request()) ->
+    {ok, delete_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_resource_property_errors(), tuple()}.
+delete_integration_resource_property(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration_resource_property(Client, Input, []).
+
+-spec delete_integration_resource_property(aws_client:aws_client(), delete_integration_resource_property_request(), proplists:proplist()) ->
+    {ok, delete_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_resource_property_errors(), tuple()}.
+delete_integration_resource_property(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegrationResourceProperty">>, Input, Options).
+
 %% @doc Deletes the table properties that have been created for the tables
 %% that need to be replicated.
 -spec delete_integration_table_properties(aws_client:aws_client(), delete_integration_table_properties_request()) ->
@@ -13283,6 +13530,24 @@ get_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMapping">>, Input, Options).
 
+%% @doc Get the associated metadata/information for a task run, given a task
+%% run ID.
+-spec get_materialized_view_refresh_task_run(aws_client:aws_client(), get_materialized_view_refresh_task_run_request()) ->
+    {ok, get_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_materialized_view_refresh_task_run_errors(), tuple()}.
+get_materialized_view_refresh_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_materialized_view_refresh_task_run(Client, Input, []).
+
+-spec get_materialized_view_refresh_task_run(aws_client:aws_client(), get_materialized_view_refresh_task_run_request(), proplists:proplist()) ->
+    {ok, get_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_materialized_view_refresh_task_run_errors(), tuple()}.
+get_materialized_view_refresh_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMaterializedViewRefreshTaskRun">>, Input, Options).
+
 %% @doc Gets details for a specific task run on a machine learning transform.
 %%
 %% Machine learning
@@ -14293,6 +14558,25 @@ list_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntities">>, Input, Options).
 
+%% @doc List integration resource properties for a single customer.
+%%
+%% It supports the filters, maxRecords and markers.
+-spec list_integration_resource_properties(aws_client:aws_client(), list_integration_resource_properties_request()) ->
+    {ok, list_integration_resource_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_integration_resource_properties_errors(), tuple()}.
+list_integration_resource_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_integration_resource_properties(Client, Input, []).
+
+-spec list_integration_resource_properties(aws_client:aws_client(), list_integration_resource_properties_request(), proplists:proplist()) ->
+    {ok, list_integration_resource_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_integration_resource_properties_errors(), tuple()}.
+list_integration_resource_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIntegrationResourceProperties">>, Input, Options).
+
 %% @doc Retrieves the names of all job resources in this Amazon Web Services
 %% account, or the resources with the specified tag.
 %%
@@ -14319,6 +14603,23 @@ list_jobs(Client, Input)
 list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
+
+%% @doc List all task runs for a particular account.
+-spec list_materialized_view_refresh_task_runs(aws_client:aws_client(), list_materialized_view_refresh_task_runs_request()) ->
+    {ok, list_materialized_view_refresh_task_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_materialized_view_refresh_task_runs_errors(), tuple()}.
+list_materialized_view_refresh_task_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_materialized_view_refresh_task_runs(Client, Input, []).
+
+-spec list_materialized_view_refresh_task_runs(aws_client:aws_client(), list_materialized_view_refresh_task_runs_request(), proplists:proplist()) ->
+    {ok, list_materialized_view_refresh_task_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_materialized_view_refresh_task_runs_errors(), tuple()}.
+list_materialized_view_refresh_task_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMaterializedViewRefreshTaskRuns">>, Input, Options).
 
 %% @doc Retrieves a sortable, filterable list of existing Glue machine
 %% learning transforms in this Amazon Web Services account,
@@ -15043,6 +15344,24 @@ start_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartJobRun">>, Input, Options).
 
+%% @doc Starts a materialized view refresh task run, for a specified table
+%% and columns.
+-spec start_materialized_view_refresh_task_run(aws_client:aws_client(), start_materialized_view_refresh_task_run_request()) ->
+    {ok, start_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_materialized_view_refresh_task_run_errors(), tuple()}.
+start_materialized_view_refresh_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_materialized_view_refresh_task_run(Client, Input, []).
+
+-spec start_materialized_view_refresh_task_run(aws_client:aws_client(), start_materialized_view_refresh_task_run_request(), proplists:proplist()) ->
+    {ok, start_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_materialized_view_refresh_task_run_errors(), tuple()}.
+start_materialized_view_refresh_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMaterializedViewRefreshTaskRun">>, Input, Options).
+
 %% @doc Starts a task to estimate the quality of the transform.
 %%
 %% When you provide label sets as examples of truth, Glue machine learning
@@ -15221,6 +15540,24 @@ stop_crawler_schedule(Client, Input)
 stop_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
+
+%% @doc Stops a materialized view refresh task run, for a specified table and
+%% columns.
+-spec stop_materialized_view_refresh_task_run(aws_client:aws_client(), stop_materialized_view_refresh_task_run_request()) ->
+    {ok, stop_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, stop_materialized_view_refresh_task_run_errors(), tuple()}.
+stop_materialized_view_refresh_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_materialized_view_refresh_task_run(Client, Input, []).
+
+-spec stop_materialized_view_refresh_task_run(aws_client:aws_client(), stop_materialized_view_refresh_task_run_request(), proplists:proplist()) ->
+    {ok, stop_materialized_view_refresh_task_run_response(), tuple()} |
+    {error, any()} |
+    {error, stop_materialized_view_refresh_task_run_errors(), tuple()}.
+stop_materialized_view_refresh_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopMaterializedViewRefreshTaskRun">>, Input, Options).
 
 %% @doc Stops the session.
 -spec stop_session(aws_client:aws_client(), stop_session_request()) ->

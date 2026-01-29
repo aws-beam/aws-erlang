@@ -133,6 +133,13 @@
 
 
 %% Example:
+%% message_processing_metadata() :: #{
+%%   <<"MessageProcessingStatus">> => list(any())
+%% }
+-type message_processing_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% complete_attachment_upload_request() :: #{
 %%   <<"AttachmentIds">> := list(string()),
 %%   <<"ClientToken">> := string(),
@@ -286,6 +293,7 @@
 %% Example:
 %% message_metadata() :: #{
 %%   <<"MessageId">> => string(),
+%%   <<"MessageProcessingStatus">> => list(any()),
 %%   <<"Receipts">> => list(receipt())
 %% }
 -type message_metadata() :: #{binary() => any()}.
@@ -413,7 +421,8 @@
 %% Example:
 %% send_message_response() :: #{
 %%   <<"AbsoluteTime">> => string(),
-%%   <<"Id">> => string()
+%%   <<"Id">> => string(),
+%%   <<"MessageMetadata">> => message_processing_metadata()
 %% }
 -type send_message_response() :: #{binary() => any()}.
 

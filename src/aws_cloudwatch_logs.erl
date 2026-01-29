@@ -52,18 +52,26 @@
 
 -export([associate_kms_key/2,
          associate_kms_key/3,
+         associate_source_to_s3_table_integration/2,
+         associate_source_to_s3_table_integration/3,
          cancel_export_task/2,
          cancel_export_task/3,
+         cancel_import_task/2,
+         cancel_import_task/3,
          create_delivery/2,
          create_delivery/3,
          create_export_task/2,
          create_export_task/3,
+         create_import_task/2,
+         create_import_task/3,
          create_log_anomaly_detector/2,
          create_log_anomaly_detector/3,
          create_log_group/2,
          create_log_group/3,
          create_log_stream/2,
          create_log_stream/3,
+         create_scheduled_query/2,
+         create_scheduled_query/3,
          delete_account_policy/2,
          delete_account_policy/3,
          delete_data_protection_policy/2,
@@ -96,6 +104,8 @@
          delete_resource_policy/3,
          delete_retention_policy/2,
          delete_retention_policy/3,
+         delete_scheduled_query/2,
+         delete_scheduled_query/3,
          delete_subscription_filter/2,
          delete_subscription_filter/3,
          delete_transformer/2,
@@ -116,6 +126,10 @@
          describe_export_tasks/3,
          describe_field_indexes/2,
          describe_field_indexes/3,
+         describe_import_task_batches/2,
+         describe_import_task_batches/3,
+         describe_import_tasks/2,
+         describe_import_tasks/3,
          describe_index_policies/2,
          describe_index_policies/3,
          describe_log_groups/2,
@@ -134,6 +148,8 @@
          describe_subscription_filters/3,
          disassociate_kms_key/2,
          disassociate_kms_key/3,
+         disassociate_source_from_s3_table_integration/2,
+         disassociate_source_from_s3_table_integration/3,
          filter_log_events/2,
          filter_log_events/3,
          get_data_protection_policy/2,
@@ -152,6 +168,8 @@
          get_log_anomaly_detector/3,
          get_log_events/2,
          get_log_events/3,
+         get_log_fields/2,
+         get_log_fields/3,
          get_log_group_fields/2,
          get_log_group_fields/3,
          get_log_object/2,
@@ -160,8 +178,14 @@
          get_log_record/3,
          get_query_results/2,
          get_query_results/3,
+         get_scheduled_query/2,
+         get_scheduled_query/3,
+         get_scheduled_query_history/2,
+         get_scheduled_query_history/3,
          get_transformer/2,
          get_transformer/3,
+         list_aggregate_log_group_summaries/2,
+         list_aggregate_log_group_summaries/3,
          list_anomalies/2,
          list_anomalies/3,
          list_integrations/2,
@@ -172,6 +196,10 @@
          list_log_groups/3,
          list_log_groups_for_query/2,
          list_log_groups_for_query/3,
+         list_scheduled_queries/2,
+         list_scheduled_queries/3,
+         list_sources_for_s3_table_integration/2,
+         list_sources_for_s3_table_integration/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_tags_log_group/2,
@@ -196,6 +224,8 @@
          put_integration/3,
          put_log_events/2,
          put_log_events/3,
+         put_log_group_deletion_protection/2,
+         put_log_group_deletion_protection/3,
          put_metric_filter/2,
          put_metric_filter/3,
          put_query_definition/2,
@@ -231,7 +261,9 @@
          update_delivery_configuration/2,
          update_delivery_configuration/3,
          update_log_anomaly_detector/2,
-         update_log_anomaly_detector/3]).
+         update_log_anomaly_detector/3,
+         update_scheduled_query/2,
+         update_scheduled_query/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -259,6 +291,29 @@
 -type add_key_entry() :: #{binary() => any()}.
 
 %% Example:
+%% update_scheduled_query_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"lastExecutionStatus">> => list(any()),
+%%   <<"lastTriggeredTime">> => float(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
+%% }
+-type update_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
 %% trim_string() :: #{
 %%   <<"withKeys">> => list(string())
 %% }
@@ -272,6 +327,13 @@
 %%   <<"resourceArn">> => string()
 %% }
 -type describe_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_to_s3_table_integration_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"integrationArn">> := string()
+%% }
+-type associate_source_to_s3_table_integration_request() :: #{binary() => any()}.
 
 %% Example:
 %% delivery() :: #{
@@ -342,6 +404,16 @@
 %%   <<"anomalyDetectorArn">> := string()
 %% }
 -type get_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% trigger_history_record() :: #{
+%%   <<"destinations">> => list(scheduled_query_destination()),
+%%   <<"errorMessage">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"queryId">> => string(),
+%%   <<"triggeredTimestamp">> => float()
+%% }
+-type trigger_history_record() :: #{binary() => any()}.
 
 %% Example:
 %% put_delivery_destination_policy_request() :: #{
@@ -456,6 +528,14 @@
 -type put_destination_request() :: #{binary() => any()}.
 
 %% Example:
+%% log_field_type() :: #{
+%%   <<"element">> => log_field_type(),
+%%   <<"fields">> => list(log_fields_list_item()),
+%%   <<"type">> => string()
+%% }
+-type log_field_type() :: #{binary() => any()}.
+
+%% Example:
 %% get_query_results_response() :: #{
 %%   <<"encryptionKey">> => string(),
 %%   <<"queryLanguage">> => list(any()),
@@ -503,6 +583,13 @@
 -type substitute_string_entry() :: #{binary() => any()}.
 
 %% Example:
+%% list_sources_for_s3_table_integration_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sources">> => list(s3_table_integration_source())
+%% }
+-type list_sources_for_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% type_converter_entry() :: #{
 %%   <<"key">> => string(),
 %%   <<"type">> => list(any())
@@ -525,11 +612,30 @@
 -type copy_value_entry() :: #{binary() => any()}.
 
 %% Example:
+%% list_aggregate_log_group_summaries_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()),
+%%   <<"dataSources">> => list(data_source_filter()),
+%%   <<"groupBy">> := list(any()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_aggregate_log_group_summaries_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_queries_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queries">> => list(query_info())
 %% }
 -type describe_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_query_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_log_events_request() :: #{
@@ -557,6 +663,13 @@
 %%   <<"message">> => string()
 %% }
 -type data_already_accepted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_query_response() :: #{
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type create_scheduled_query_response() :: #{binary() => any()}.
 
 %% Example:
 %% export_task_execution_info() :: #{
@@ -591,6 +704,12 @@
 -type get_delivery_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_scheduled_query_response() :: #{
+
+%% }
+-type delete_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
 %% live_tail_session_metadata() :: #{
 %%   <<"sampled">> => boolean()
 %% }
@@ -598,6 +717,7 @@
 
 %% Example:
 %% create_log_group_request() :: #{
+%%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"logGroupClass">> => list(any()),
 %%   <<"logGroupName">> := string(),
@@ -606,10 +726,26 @@
 -type create_log_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_source_from_s3_table_integration_response() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type disassociate_source_from_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% fields_data() :: #{
 %%   <<"data">> => binary()
 %% }
 -type fields_data() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_query_destination() :: #{
+%%   <<"destinationIdentifier">> => string(),
+%%   <<"destinationType">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"processedIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type scheduled_query_destination() :: #{binary() => any()}.
 
 %% Example:
 %% open_search_encryption_policy() :: #{
@@ -675,6 +811,15 @@
 -type create_log_stream_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_import_task_batches_response() :: #{
+%%   <<"importBatches">> => list(import_batch()),
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_task_batches_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_log_record_response() :: #{
 %%   <<"logRecord">> => map()
 %% }
@@ -721,6 +866,29 @@
 -type update_delivery_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% put_log_group_deletion_protection_request() :: #{
+%%   <<"deletionProtectionEnabled">> := boolean(),
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type put_log_group_deletion_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sources_for_s3_table_integration_request() :: #{
+%%   <<"integrationArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sources_for_s3_table_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_queries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type list_scheduled_queries_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_anomaly_request() :: #{
 %%   <<"anomalyDetectorArn">> := string(),
 %%   <<"anomalyId">> => string(),
@@ -730,6 +898,25 @@
 %%   <<"suppressionType">> => list(any())
 %% }
 -type update_anomaly_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_query_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"queryLanguage">> := list(any()),
+%%   <<"queryString">> := string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> := string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"timezone">> => string()
+%% }
+-type create_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% parse_w_a_f() :: #{
@@ -769,6 +956,12 @@
 %%   <<"message">> => string()
 %% }
 -type session_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_statistics() :: #{
+%%   <<"bytesImported">> => float()
+%% }
+-type import_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% get_log_group_fields_response() :: #{
@@ -825,7 +1018,8 @@
 %%   <<"firstEventTime">> => float(),
 %%   <<"lastEventTime">> => float(),
 %%   <<"lastScanTime">> => float(),
-%%   <<"logGroupIdentifier">> => string()
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type field_index() :: #{binary() => any()}.
 
@@ -933,6 +1127,8 @@
 %% Example:
 %% list_log_groups_request() :: #{
 %%   <<"accountIdentifiers">> => list(string()),
+%%   <<"dataSources">> => list(data_source_filter()),
+%%   <<"fieldIndexNames">> => list(string()),
 %%   <<"includeLinkedAccounts">> => boolean(),
 %%   <<"limit">> => integer(),
 %%   <<"logGroupClass">> => list(any()),
@@ -956,6 +1152,14 @@
 -type list_integrations_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_import_task_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"importDestinationArn">> => string(),
+%%   <<"importId">> => string()
+%% }
+-type create_import_task_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_query_definitions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queryDefinitions">> => list(query_definition())
@@ -967,6 +1171,13 @@
 %%   <<"delivery">> => delivery()
 %% }
 -type get_delivery_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_fields_request() :: #{
+%%   <<"dataSourceName">> := string(),
+%%   <<"dataSourceType">> := string()
+%% }
+-type get_log_fields_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_subscription_filters_request() :: #{
@@ -1008,6 +1219,12 @@
 -type input_log_event() :: #{binary() => any()}.
 
 %% Example:
+%% get_scheduled_query_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_retention_policy_request() :: #{
 %%   <<"logGroupName">> := string()
 %% }
@@ -1029,6 +1246,20 @@
 %%   <<"timestamp">> => float()
 %% }
 -type live_tail_session_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% aggregate_log_group_summary() :: #{
+%%   <<"groupingIdentifiers">> => list(grouping_identifier()),
+%%   <<"logGroupCount">> => integer()
+%% }
+-type aggregate_log_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_aggregate_log_group_summaries_response() :: #{
+%%   <<"aggregateLogGroupSummaries">> => list(aggregate_log_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_aggregate_log_group_summaries_response() :: #{binary() => any()}.
 
 %% Example:
 %% s3_delivery_configuration() :: #{
@@ -1068,6 +1299,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_index_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_import_task_request() :: #{
+%%   <<"importId">> := string()
+%% }
+-type cancel_import_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_field_indexes_request() :: #{
@@ -1238,6 +1475,12 @@
 -type rename_key_entry() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_source_from_s3_table_integration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type disassociate_source_from_s3_table_integration_request() :: #{binary() => any()}.
+
+%% Example:
 %% associate_kms_key_request() :: #{
 %%   <<"kmsKeyId">> := string(),
 %%   <<"logGroupName">> => string(),
@@ -1299,6 +1542,29 @@
 %%   <<"tags">> => map()
 %% }
 -type put_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"lastExecutionStatus">> => list(any()),
+%%   <<"lastTriggeredTime">> => float(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
+%% }
+-type get_scheduled_query_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_field_indexes_response() :: #{
@@ -1373,6 +1639,16 @@
 -type describe_index_policies_response() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_import_task_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"importId">> => string(),
+%%   <<"importStatistics">> => import_statistics(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"lastUpdatedTime">> => float()
+%% }
+-type cancel_import_task_response() :: #{binary() => any()}.
+
+%% Example:
 %% filter_log_events_request() :: #{
 %%   <<"endTime">> => float(),
 %%   <<"filterPattern">> => string(),
@@ -1433,6 +1709,13 @@
 %%   <<"source">> => string()
 %% }
 -type parse_key_value() :: #{binary() => any()}.
+
+%% Example:
+%% log_fields_list_item() :: #{
+%%   <<"logFieldName">> => string(),
+%%   <<"logFieldType">> => log_field_type()
+%% }
+-type log_fields_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% delete_account_policy_request() :: #{
@@ -1497,6 +1780,21 @@
 -type list_log_groups_for_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_query_summary() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"lastExecutionStatus">> => list(any()),
+%%   <<"lastTriggeredTime">> => float(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"name">> => string(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
+%% }
+-type scheduled_query_summary() :: #{binary() => any()}.
+
+%% Example:
 %% open_search_lifecycle_policy() :: #{
 %%   <<"policyName">> => string(),
 %%   <<"status">> => open_search_resource_status()
@@ -1557,6 +1855,26 @@
 -type get_delivery_destination_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_import_task_batches_request() :: #{
+%%   <<"batchImportStatus">> => list(list(any())()),
+%%   <<"importId">> := string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_task_batches_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_history_request() :: #{
+%%   <<"endTime">> := float(),
+%%   <<"executionStatuses">> => list(list(any())()),
+%%   <<"identifier">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := float()
+%% }
+-type get_scheduled_query_history_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_delivery_configuration_request() :: #{
 %%   <<"fieldDelimiter">> => string(),
 %%   <<"id">> := string(),
@@ -1608,6 +1926,12 @@
 %%   <<"unit">> => list(any())
 %% }
 -type metric_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_log_group_request() :: #{
@@ -1679,6 +2003,14 @@
 -type rename_keys() :: #{binary() => any()}.
 
 %% Example:
+%% create_import_task_request() :: #{
+%%   <<"importFilter">> => import_filter(),
+%%   <<"importRoleArn">> := string(),
+%%   <<"importSourceArn">> := string()
+%% }
+-type create_import_task_request() :: #{binary() => any()}.
+
+%% Example:
 %% start_query_response() :: #{
 %%   <<"queryId">> => string()
 %% }
@@ -1698,6 +2030,12 @@
 %%   <<"logStreamNames">> => list(string())
 %% }
 -type start_live_tail_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_fields_response() :: #{
+%%   <<"logFields">> => list(log_fields_list_item())
+%% }
+-type get_log_fields_response() :: #{binary() => any()}.
 
 %% Example:
 %% filtered_log_event() :: #{
@@ -1722,6 +2060,12 @@
 -type policy() :: #{binary() => any()}.
 
 %% Example:
+%% associate_source_to_s3_table_integration_response() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type associate_source_to_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"expectedRevisionId">> => string(),
 %%   <<"policyDocument">> => string(),
@@ -1731,10 +2075,35 @@
 -type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_scheduled_query_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"identifier">> := string(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"queryLanguage">> := list(any()),
+%%   <<"queryString">> := string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> := string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
+%% }
+-type update_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_delivery_source_request() :: #{
 %%   <<"name">> := string()
 %% }
 -type delete_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type data_source_filter() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1747,6 +2116,13 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_filter() :: #{
+%%   <<"endEventTime">> => float(),
+%%   <<"startEventTime">> => float()
+%% }
+-type import_filter() :: #{binary() => any()}.
 
 %% Example:
 %% open_search_integration_details() :: #{
@@ -1786,6 +2162,7 @@
 %% Example:
 %% parse_to_o_c_s_f() :: #{
 %%   <<"eventSource">> => list(any()),
+%%   <<"mappingVersion">> => string(),
 %%   <<"ocsfVersion">> => list(any()),
 %%   <<"source">> => string()
 %% }
@@ -1806,10 +2183,27 @@
 -type rejected_log_events_info() :: #{binary() => any()}.
 
 %% Example:
+%% list_scheduled_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledQueries">> => list(scheduled_query_summary())
+%% }
+-type list_scheduled_queries_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_data_protection_policy_request() :: #{
 %%   <<"logGroupIdentifier">> := string()
 %% }
 -type get_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_table_integration_source() :: #{
+%%   <<"createdTimeStamp">> => float(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"identifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type s3_table_integration_source() :: #{binary() => any()}.
 
 %% Example:
 %% get_log_events_response() :: #{
@@ -1910,6 +2304,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => float(),
 %%   <<"dataProtectionStatus">> => list(any()),
+%%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"inheritedProperties">> => list(list(any())()),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"logGroupArn">> => string(),
@@ -1940,6 +2335,13 @@
 %%   <<"orderBy">> => list(any())
 %% }
 -type describe_log_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"destinationIdentifier">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% result_field() :: #{
@@ -2112,11 +2514,28 @@
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
+%% data_source() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
 %% describe_configuration_templates_response() :: #{
 %%   <<"configurationTemplates">> => list(configuration_template()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_configuration_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_request() :: #{
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_tasks_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_subscription_filter_request() :: #{
@@ -2192,6 +2611,20 @@
 -type describe_delivery_destinations_request() :: #{binary() => any()}.
 
 %% Example:
+%% import() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"errorMessage">> => string(),
+%%   <<"importDestinationArn">> => string(),
+%%   <<"importFilter">> => import_filter(),
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"importStatistics">> => import_statistics(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"lastUpdatedTime">> => float()
+%% }
+-type import() :: #{binary() => any()}.
+
+%% Example:
 %% create_delivery_request() :: #{
 %%   <<"deliveryDestinationArn">> := string(),
 %%   <<"deliverySourceName">> := string(),
@@ -2221,6 +2654,13 @@
 %%   <<"logEventMessages">> := list(string())
 %% }
 -type test_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% grouping_identifier() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type grouping_identifier() :: #{binary() => any()}.
 
 %% Example:
 %% parse_postgres() :: #{
@@ -2273,11 +2713,41 @@
 -type unrecognized_client_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_scheduled_query_history_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"triggerHistory">> => list(trigger_history_record())
+%% }
+-type get_scheduled_query_history_response() :: #{binary() => any()}.
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_batch() :: #{
+%%   <<"batchId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type import_batch() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_response() :: #{
+%%   <<"imports">> => list(import()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"s3Configuration">> => s3_configuration()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_configuration_templates_request() :: #{
@@ -2332,9 +2802,23 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type associate_source_to_s3_table_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type cancel_export_task_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type cancel_import_task_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     invalid_operation_exception().
 
@@ -2355,6 +2839,15 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type create_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_operation_exception().
+
 -type create_log_anomaly_detector_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
@@ -2374,6 +2867,15 @@
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
+
+-type create_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_account_policy_errors() ::
     invalid_parameter_exception() | 
@@ -2443,12 +2945,14 @@
     operation_aborted_exception().
 
 -type delete_log_group_errors() ::
+    validation_exception() | 
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
 
 -type delete_log_stream_errors() ::
+    validation_exception() | 
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
@@ -2476,6 +2980,13 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type delete_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_subscription_filter_errors() ::
     invalid_parameter_exception() | 
@@ -2535,6 +3046,20 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type describe_import_task_batches_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type describe_import_tasks_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
 -type describe_index_policies_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
@@ -2579,6 +3104,13 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type disassociate_source_from_s3_table_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type filter_log_events_errors() ::
     invalid_parameter_exception() | 
@@ -2633,6 +3165,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type get_log_fields_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
 -type get_log_group_fields_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
@@ -2657,11 +3195,30 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type get_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_scheduled_query_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_transformer_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     invalid_operation_exception().
+
+-type list_aggregate_log_group_summaries_errors() ::
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
 
 -type list_anomalies_errors() ::
     invalid_parameter_exception() | 
@@ -2687,6 +3244,19 @@
     invalid_parameter_exception() | 
     access_denied_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type list_scheduled_queries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sources_for_s3_table_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -2763,6 +3333,14 @@
     resource_not_found_exception() | 
     data_already_accepted_exception() | 
     invalid_sequence_token_exception().
+
+-type put_log_group_deletion_protection_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_operation_exception().
 
 -type put_metric_filter_errors() ::
     limit_exceeded_exception() | 
@@ -2873,6 +3451,13 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type update_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -2956,6 +3541,29 @@ associate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateKmsKey">>, Input, Options).
 
+%% @doc Associates a data source with an S3 Table Integration for query
+%% access in the 'logs'
+%% namespace.
+%%
+%% This enables querying log data using analytics engines that support
+%% Iceberg such as
+%% Amazon Athena, Amazon Redshift, and Apache Spark.
+-spec associate_source_to_s3_table_integration(aws_client:aws_client(), associate_source_to_s3_table_integration_request()) ->
+    {ok, associate_source_to_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, associate_source_to_s3_table_integration_errors(), tuple()}.
+associate_source_to_s3_table_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_source_to_s3_table_integration(Client, Input, []).
+
+-spec associate_source_to_s3_table_integration(aws_client:aws_client(), associate_source_to_s3_table_integration_request(), proplists:proplist()) ->
+    {ok, associate_source_to_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, associate_source_to_s3_table_integration_errors(), tuple()}.
+associate_source_to_s3_table_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateSourceToS3TableIntegration">>, Input, Options).
+
 %% @doc Cancels the specified export task.
 %%
 %% The task must be in the `PENDING' or `RUNNING' state.
@@ -2974,6 +3582,24 @@ cancel_export_task(Client, Input)
 cancel_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelExportTask">>, Input, Options).
+
+%% @doc Cancels an active import task and stops importing data from the
+%% CloudTrail Lake Event Data Store.
+-spec cancel_import_task(aws_client:aws_client(), cancel_import_task_request()) ->
+    {ok, cancel_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_import_task_errors(), tuple()}.
+cancel_import_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_import_task(Client, Input, []).
+
+-spec cancel_import_task(aws_client:aws_client(), cancel_import_task_request(), proplists:proplist()) ->
+    {ok, cancel_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_import_task_errors(), tuple()}.
+cancel_import_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelImportTask">>, Input, Options).
 
 %% @doc Creates a delivery.
 %%
@@ -3098,6 +3724,84 @@ create_export_task(Client, Input)
 create_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExportTask">>, Input, Options).
+
+%% @doc Starts an import from a data source to CloudWatch Log and creates a
+%% managed log group as the destination for the imported data.
+%%
+%% Currently, CloudTrail Event Data Store:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store.html
+%% is the only supported data source.
+%%
+%% The import task must satisfy the following constraints:
+%%
+%% The specified source must be in an ACTIVE state.
+%%
+%% The API caller must have permissions to access the data in the provided
+%% source and to perform iam:PassRole on the
+%% provided import role which has the same permissions, as described below.
+%%
+%% The provided IAM role must trust the &quot;cloudtrail.amazonaws.com&quot;
+%% principal and have the following permissions:
+%%
+%% cloudtrail:GetEventDataStoreData
+%%
+%% logs:CreateLogGroup
+%%
+%% logs:CreateLogStream
+%%
+%% logs:PutResourcePolicy
+%%
+%% (If source has an associated AWS KMS Key) kms:Decrypt
+%%
+%% (If source has an associated AWS KMS Key) kms:GenerateDataKey
+%%
+%% Example IAM policy for provided import role:
+%%
+%% `[ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;:
+%% &quot;iam:PassRole&quot;, &quot;Resource&quot;:
+%% &quot;arn:aws:iam::123456789012:role/apiCallerCredentials&quot;,
+%% &quot;Condition&quot;: { &quot;StringLike&quot;: {
+%% &quot;iam:AssociatedResourceARN&quot;:
+%% &quot;arn:aws:logs:us-east-1:123456789012:log-group:aws/cloudtrail/f1d45bff-d0e3-4868-b5d9-2eb678aa32fb:*&quot;
+%% } } }, { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;: [
+%% &quot;cloudtrail:GetEventDataStoreData&quot; ], &quot;Resource&quot;: [
+%% &quot;arn:aws:cloudtrail:us-east-1:123456789012:eventdatastore/f1d45bff-d0e3-4868-b5d9-2eb678aa32fb&quot;
+%% ] }, { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;: [
+%% &quot;logs:CreateImportTask&quot;, &quot;logs:CreateLogGroup&quot;,
+%% &quot;logs:CreateLogStream&quot;, &quot;logs:PutResourcePolicy&quot; ],
+%% &quot;Resource&quot;: [
+%% &quot;arn:aws:logs:us-east-1:123456789012:log-group:/aws/cloudtrail/*&quot;
+%% ] }, { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;: [
+%% &quot;kms:Decrypt&quot;, &quot;kms:GenerateDataKey&quot; ],
+%% &quot;Resource&quot;: [
+%% &quot;arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012&quot;
+%% ] } ]'
+%%
+%% If the import source has a customer managed key, the
+%% &quot;cloudtrail.amazonaws.com&quot; principal needs permissions to
+%% perform kms:Decrypt and kms:GenerateDataKey.
+%%
+%% There can be no more than 3 active imports per account at a given time.
+%%
+%% The startEventTime must be less than or equal to endEventTime.
+%%
+%% The data being imported must be within the specified source's
+%% retention period.
+-spec create_import_task(aws_client:aws_client(), create_import_task_request()) ->
+    {ok, create_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_import_task_errors(), tuple()}.
+create_import_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_import_task(Client, Input, []).
+
+-spec create_import_task(aws_client:aws_client(), create_import_task_request(), proplists:proplist()) ->
+    {ok, create_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_import_task_errors(), tuple()}.
+create_import_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateImportTask">>, Input, Options).
 
 %% @doc Creates an anomaly detector that regularly scans one or more log
 %% groups and look for patterns and anomalies in the logs.
@@ -3246,13 +3950,40 @@ create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
 
+%% @doc Creates a scheduled query that runs CloudWatch Logs Insights queries
+%% at regular intervals.
+%%
+%% Scheduled queries enable proactive monitoring by automatically executing
+%% queries to detect
+%% patterns and anomalies in your log data. Query results can be delivered to
+%% Amazon S3 for analysis
+%% or further processing.
+-spec create_scheduled_query(aws_client:aws_client(), create_scheduled_query_request()) ->
+    {ok, create_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduled_query_errors(), tuple()}.
+create_scheduled_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_scheduled_query(Client, Input, []).
+
+-spec create_scheduled_query(aws_client:aws_client(), create_scheduled_query_request(), proplists:proplist()) ->
+    {ok, create_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduled_query_errors(), tuple()}.
+create_scheduled_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateScheduledQuery">>, Input, Options).
+
 %% @doc Deletes a CloudWatch Logs account policy.
 %%
 %% This stops the account-wide policy from
-%% applying to log groups in the account. If you delete a data protection
-%% policy or subscription
-%% filter policy, any log-group level policies of those types remain in
-%% effect.
+%% applying to log groups or data sources in the account. If you delete a
+%% data protection policy
+%% or subscription filter policy, any log-group level policies of those types
+%% remain in effect.
+%% This operation supports deletion of data source-based field index
+%% policies, including facet
+%% configurations, in addition to log group-based policies.
 %%
 %% To use this operation, you must be signed on with the correct permissions
 %% depending on the
@@ -3273,6 +4004,12 @@ create_log_stream(Client, Input, Options)
 %% To delete a field index policy, you must have the
 %% `logs:DeleteIndexPolicy'
 %% and `logs:DeleteAccountPolicy' permissions.
+%%
+%% If you delete a field index policy that included facet configurations,
+%% those facets
+%% will no longer be available for interactive exploration in the CloudWatch
+%% Logs Insights
+%% console. However, facet data is retained for up to 30 days.
 %%
 %% If you delete a field index policy, the indexing of the log events that
 %% happened before
@@ -3450,15 +4187,25 @@ delete_destination(Client, Input, Options)
 %% still be used for
 %% as many as 30 days to improve CloudWatch Logs Insights queries.
 %%
+%% If the deleted policy included facet configurations, those facets will no
+%% longer be
+%% available for interactive exploration in the CloudWatch Logs Insights
+%% console for this log
+%% group. However, facet data is retained for up to 30 days.
+%%
 %% You can't use this operation to delete an account-level index policy.
-%% Instead, use DeletAccountPolicy:
+%% Instead, use DeleteAccountPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DeleteAccountPolicy.html.
 %%
 %% If you delete a log-group level field index policy and there is an
 %% account-level field
 %% index policy, in a few minutes the log group begins using that
 %% account-wide policy to index
-%% new incoming log events.
+%% new incoming log events. This operation only affects log group-level
+%% policies, including any
+%% facet configurations, and preserves any data source-based account policies
+%% that may apply to
+%% the log group.
 -spec delete_index_policy(aws_client:aws_client(), delete_index_policy_request()) ->
     {ok, delete_index_policy_response(), tuple()} |
     {error, any()} |
@@ -3641,6 +4388,26 @@ delete_retention_policy(Client, Input)
 delete_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
+
+%% @doc Deletes a scheduled query and stops all future executions.
+%%
+%% This operation also removes any
+%% configured actions and associated resources.
+-spec delete_scheduled_query(aws_client:aws_client(), delete_scheduled_query_request()) ->
+    {ok, delete_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_query_errors(), tuple()}.
+delete_scheduled_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_scheduled_query(Client, Input, []).
+
+-spec delete_scheduled_query(aws_client:aws_client(), delete_scheduled_query_request(), proplists:proplist()) ->
+    {ok, delete_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_query_errors(), tuple()}.
+delete_scheduled_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteScheduledQuery">>, Input, Options).
 
 %% @doc Deletes the specified subscription filter.
 -spec delete_subscription_filter(aws_client:aws_client(), delete_subscription_filter_request()) ->
@@ -3885,6 +4652,45 @@ describe_field_indexes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFieldIndexes">>, Input, Options).
 
+%% @doc Gets detailed information about the individual batches within an
+%% import task, including their status and any error messages.
+%%
+%% For CloudTrail Event Data Store sources, a batch refers to a subset of
+%% stored events grouped by their eventTime.
+-spec describe_import_task_batches(aws_client:aws_client(), describe_import_task_batches_request()) ->
+    {ok, describe_import_task_batches_response(), tuple()} |
+    {error, any()} |
+    {error, describe_import_task_batches_errors(), tuple()}.
+describe_import_task_batches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_import_task_batches(Client, Input, []).
+
+-spec describe_import_task_batches(aws_client:aws_client(), describe_import_task_batches_request(), proplists:proplist()) ->
+    {ok, describe_import_task_batches_response(), tuple()} |
+    {error, any()} |
+    {error, describe_import_task_batches_errors(), tuple()}.
+describe_import_task_batches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImportTaskBatches">>, Input, Options).
+
+%% @doc Lists and describes import tasks, with optional filtering by import
+%% status and source ARN.
+-spec describe_import_tasks(aws_client:aws_client(), describe_import_tasks_request()) ->
+    {ok, describe_import_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, describe_import_tasks_errors(), tuple()}.
+describe_import_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_import_tasks(Client, Input, []).
+
+-spec describe_import_tasks(aws_client:aws_client(), describe_import_tasks_request(), proplists:proplist()) ->
+    {ok, describe_import_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, describe_import_tasks_errors(), tuple()}.
+describe_import_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImportTasks">>, Input, Options).
+
 %% @doc Returns the field index policies of the specified log group.
 %%
 %% For more information about
@@ -3920,10 +4726,13 @@ describe_index_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndexPolicies">>, Input, Options).
 
-%% @doc Returns information about log groups.
+%% @doc Returns information about log groups, including data sources that
+%% ingest into each log
+%% group.
 %%
-%% You can return all your log groups or filter the
-%% results by prefix. The results are ASCII-sorted by log group name.
+%% You can return all your log groups or filter the results by prefix. The
+%% results are
+%% ASCII-sorted by log group name.
 %%
 %% CloudWatch Logs doesn't support IAM policies that control access to
 %% the
@@ -4028,6 +4837,14 @@ describe_metric_filters(Client, Input, Options)
 %%
 %% You can request all queries or limit it to queries of a
 %% specific log group or queries with a certain status.
+%%
+%% This operation includes both interactive queries started directly by users
+%% and automated
+%% queries executed by scheduled query configurations. Scheduled query
+%% executions appear in the
+%% results alongside manually initiated queries, providing visibility into
+%% all query activity in
+%% your account.
 -spec describe_queries(aws_client:aws_client(), describe_queries_request()) ->
     {ok, describe_queries_response(), tuple()} |
     {error, any()} |
@@ -4156,6 +4973,25 @@ disassociate_kms_key(Client, Input)
 disassociate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateKmsKey">>, Input, Options).
+
+%% @doc Disassociates a data source from an S3 Table Integration, removing
+%% query access and
+%% deleting all associated data from the integration.
+-spec disassociate_source_from_s3_table_integration(aws_client:aws_client(), disassociate_source_from_s3_table_integration_request()) ->
+    {ok, disassociate_source_from_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_from_s3_table_integration_errors(), tuple()}.
+disassociate_source_from_s3_table_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_source_from_s3_table_integration(Client, Input, []).
+
+-spec disassociate_source_from_s3_table_integration(aws_client:aws_client(), disassociate_source_from_s3_table_integration_request(), proplists:proplist()) ->
+    {ok, disassociate_source_from_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_from_s3_table_integration_errors(), tuple()}.
+disassociate_source_from_s3_table_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateSourceFromS3TableIntegration">>, Input, Options).
 
 %% @doc Lists log events from the specified log group.
 %%
@@ -4466,12 +5302,37 @@ get_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogEvents">>, Input, Options).
 
+%% @doc Discovers available fields for a specific data source and type.
+%%
+%% The response includes any
+%% field modifications introduced through pipelines, such as new fields or
+%% changed field types.
+-spec get_log_fields(aws_client:aws_client(), get_log_fields_request()) ->
+    {ok, get_log_fields_response(), tuple()} |
+    {error, any()} |
+    {error, get_log_fields_errors(), tuple()}.
+get_log_fields(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_log_fields(Client, Input, []).
+
+-spec get_log_fields(aws_client:aws_client(), get_log_fields_request(), proplists:proplist()) ->
+    {ok, get_log_fields_response(), tuple()} |
+    {error, any()} |
+    {error, get_log_fields_errors(), tuple()}.
+get_log_fields(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLogFields">>, Input, Options).
+
 %% @doc Returns a list of the fields that are included in log events in the
 %% specified log group.
 %%
 %% Includes the percentage of log events that contain each field. The search
 %% is limited to a time
 %% period that you specify.
+%%
+%% This operation is used for discovering fields within log group events. For
+%% discovering
+%% fields across data sources, use the GetLogFields operation.
 %%
 %% You can specify the log group to search by using either
 %% `logGroupIdentifier' or
@@ -4602,6 +5463,14 @@ get_log_record(Client, Input, Options)
 %% final
 %% results.
 %%
+%% This operation is used both for retrieving results from interactive
+%% queries and from
+%% automated scheduled query executions. Scheduled queries use
+%% `GetQueryResults'
+%% internally to retrieve query results for processing and delivery to
+%% configured
+%% destinations.
+%%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation
 %% in a monitoring account to start queries in linked source accounts. For
@@ -4623,6 +5492,44 @@ get_query_results(Client, Input)
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
+
+%% @doc Retrieves details about a specific scheduled query, including its
+%% configuration, execution
+%% status, and metadata.
+-spec get_scheduled_query(aws_client:aws_client(), get_scheduled_query_request()) ->
+    {ok, get_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_query_errors(), tuple()}.
+get_scheduled_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scheduled_query(Client, Input, []).
+
+-spec get_scheduled_query(aws_client:aws_client(), get_scheduled_query_request(), proplists:proplist()) ->
+    {ok, get_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_query_errors(), tuple()}.
+get_scheduled_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScheduledQuery">>, Input, Options).
+
+%% @doc Retrieves the execution history of a scheduled query within a
+%% specified time range,
+%% including query results and destination processing status.
+-spec get_scheduled_query_history(aws_client:aws_client(), get_scheduled_query_history_request()) ->
+    {ok, get_scheduled_query_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_query_history_errors(), tuple()}.
+get_scheduled_query_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scheduled_query_history(Client, Input, []).
+
+-spec get_scheduled_query_history(aws_client:aws_client(), get_scheduled_query_history_request(), proplists:proplist()) ->
+    {ok, get_scheduled_query_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_query_history_errors(), tuple()}.
+get_scheduled_query_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScheduledQueryHistory">>, Input, Options).
 
 %% @doc Returns the information about the log transformer associated with
 %% this log group.
@@ -4646,6 +5553,44 @@ get_transformer(Client, Input)
 get_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTransformer">>, Input, Options).
+
+%% @doc Returns an aggregate summary of all log groups in the Region grouped
+%% by specified data
+%% source characteristics.
+%%
+%% Supports optional filtering by log group class, name patterns, and
+%% data sources. If you perform this action in a monitoring account, you can
+%% also return
+%% aggregated summaries of log groups from source accounts that are linked to
+%% the monitoring
+%% account. For more information about using cross-account observability to
+%% set up monitoring
+%% accounts and source accounts, see CloudWatch
+%% cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+%%
+%% The operation aggregates log groups by data source name and type and
+%% optionally format,
+%% providing counts of log groups that share these characteristics. The
+%% operation paginates
+%% results. By default, it returns up to 50 results and includes a token to
+%% retrieve more
+%% results.
+-spec list_aggregate_log_group_summaries(aws_client:aws_client(), list_aggregate_log_group_summaries_request()) ->
+    {ok, list_aggregate_log_group_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_aggregate_log_group_summaries_errors(), tuple()}.
+list_aggregate_log_group_summaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_aggregate_log_group_summaries(Client, Input, []).
+
+-spec list_aggregate_log_group_summaries(aws_client:aws_client(), list_aggregate_log_group_summaries_request(), proplists:proplist()) ->
+    {ok, list_aggregate_log_group_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_aggregate_log_group_summaries_errors(), tuple()}.
+list_aggregate_log_group_summaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAggregateLogGroupSummaries">>, Input, Options).
 
 %% @doc Returns a list of anomalies that log anomaly detectors have found.
 %%
@@ -4720,9 +5665,15 @@ list_log_anomaly_detectors(Client, Input, Options)
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 %%
-%% You can optionally filter the list by log group class and by using regular
+%% You can optionally filter the list by log group class, by using regular
 %% expressions in
-%% your request to match strings in the log group names.
+%% your request to match strings in the log group names, by using the
+%% fieldIndexes parameter to
+%% filter log groups based on which field indexes are configured, by using
+%% the dataSources
+%% parameter to filter log groups by data source types, and by using the
+%% fieldIndexNames
+%% parameter to filter by specific field index names.
 %%
 %% This operation is paginated. By default, your first use of this operation
 %% returns 50
@@ -4772,6 +5723,45 @@ list_log_groups_for_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogGroupsForQuery">>, Input, Options).
 
+%% @doc Lists all scheduled queries in your account and region.
+%%
+%% You can filter results by state to
+%% show only enabled or disabled queries.
+-spec list_scheduled_queries(aws_client:aws_client(), list_scheduled_queries_request()) ->
+    {ok, list_scheduled_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduled_queries_errors(), tuple()}.
+list_scheduled_queries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_scheduled_queries(Client, Input, []).
+
+-spec list_scheduled_queries(aws_client:aws_client(), list_scheduled_queries_request(), proplists:proplist()) ->
+    {ok, list_scheduled_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduled_queries_errors(), tuple()}.
+list_scheduled_queries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListScheduledQueries">>, Input, Options).
+
+%% @doc Returns a list of data source associations for a specified S3 Table
+%% Integration, showing
+%% which data sources are currently associated for query access.
+-spec list_sources_for_s3_table_integration(aws_client:aws_client(), list_sources_for_s3_table_integration_request()) ->
+    {ok, list_sources_for_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, list_sources_for_s3_table_integration_errors(), tuple()}.
+list_sources_for_s3_table_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sources_for_s3_table_integration(Client, Input, []).
+
+-spec list_sources_for_s3_table_integration(aws_client:aws_client(), list_sources_for_s3_table_integration_request(), proplists:proplist()) ->
+    {ok, list_sources_for_s3_table_integration_response(), tuple()} |
+    {error, any()} |
+    {error, list_sources_for_s3_table_integration_errors(), tuple()}.
+list_sources_for_s3_table_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSourcesForS3TableIntegration">>, Input, Options).
+
 %% @doc Displays the tags associated with a CloudWatch Logs resource.
 %%
 %% Currently, log groups and
@@ -4820,8 +5810,18 @@ list_tags_log_group(Client, Input, Options)
 %% @doc Creates an account-level data protection policy, subscription filter
 %% policy, field index
 %% policy, transformer policy, or metric extraction policy that applies to
-%% all log groups or a
-%% subset of log groups in the account.
+%% all log groups, a
+%% subset of log groups, or a data source name and type combination in the
+%% account.
+%%
+%% For field index policies, you can configure indexed fields as facets
+%% to enable interactive exploration of your logs. Facets provide value
+%% distributions and counts
+%% for indexed fields in the CloudWatch Logs Insights console without
+%% requiring query
+%% execution. For more information, see Use facets to group and
+%% explore logs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Facets.html.
 %%
 %% To use this operation, you must be signed on with the correct permissions
 %% depending on the
@@ -4842,6 +5842,10 @@ list_tags_log_group(Client, Input, Options)
 %% To create a field index policy, you must have the
 %% `logs:PutIndexPolicy' and
 %% `logs:PutAccountPolicy' permissions.
+%%
+%% To configure facets for field index policies, you must have the
+%% `logs:PutIndexPolicy' and `logs:PutAccountPolicy'
+%% permissions.
 %%
 %% To create a metric extraction policy, you must have the
 %% `logs:PutMetricExtractionPolicy' and `logs:PutAccountPolicy'
@@ -5000,26 +6004,8 @@ list_tags_log_group(Client, Input, Options)
 %% use the same or overlapping log group name prefixes. For example, if you
 %% have one policy
 %% filtered to log groups that start with `my-log', you can't have
-%% another field index
+%% another transformer
 %% policy filtered to `my-logpprod' or `my-logging'.
-%%
-%% CloudWatch Logs provides default field indexes for all log groups in the
-%% Standard log
-%% class. Default field indexes are automatically available for the following
-%% fields:
-%%
-%% `@aws.region'
-%%
-%% `@aws.account'
-%%
-%% `@source.log'
-%%
-%% `traceId'
-%%
-%% Default field indexes are in addition to any custom field indexes you
-%% define within your
-%% policy. Default field indexes are not counted towards your field index
-%% quota.
 %%
 %% You can also set up a transformer at the log-group level. For more
 %% information, see PutTransformer:
@@ -5034,24 +6020,26 @@ list_tags_log_group(Client, Input, Options)
 %% Field index policy
 %%
 %% You can use field index policies to create indexes on fields found in log
-%% events in the
-%% log group. Creating field indexes can help lower the scan volume for
-%% CloudWatch Logs
-%% Insights queries that reference those fields, because these queries
-%% attempt to skip the
-%% processing of log events that are known to not match the indexed field.
-%% Good fields to index
-%% are fields that you often need to query for and fields or values that
-%% match only a small
-%% fraction of the total log events. Common examples of indexes include
-%% request ID, session ID,
-%% user IDs, or instance IDs. For more information, see Create field indexes
-%% to improve query performance and reduce costs:
+%% events for a log
+%% group or data source name and type combination. Creating field indexes can
+%% help lower the scan
+%% volume for CloudWatch Logs Insights queries that reference those fields,
+%% because these
+%% queries attempt to skip the processing of log events that are known to not
+%% match the indexed
+%% field. Good fields to index are fields that you often need to query for
+%% and fields or values
+%% that match only a small fraction of the total log events. Common examples
+%% of indexes include
+%% request ID, session ID, user IDs, or instance IDs. For more information,
+%% see Create field indexes to improve query performance and reduce costs:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html
 %%
 %% To find the fields that are in your log group events, use the
 %% GetLogGroupFields:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html
+%% operation. To find the fields for a data source use the GetLogFields:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogFields.html
 %% operation.
 %%
 %% For example, suppose you have created a field index for `requestId'.
@@ -5073,15 +6061,28 @@ list_tags_log_group(Client, Input, Options)
 %% groups in the
 %% account. Or you can create as many as 20 account-level field index
 %% policies that are each
-%% scoped to a subset of log groups with the `selectionCriteria'
-%% parameter. If you
-%% have multiple account-level index policies with selection criteria, no two
-%% of them can use the
-%% same or overlapping log group name prefixes. For example, if you have one
-%% policy filtered to
-%% log groups that start with `my-log', you can't have another field
-%% index policy
-%% filtered to `my-logpprod' or `my-logging'.
+%% scoped to a subset of log groups using `LogGroupNamePrefix' with the
+%% `selectionCriteria' parameter. You can have another 20 account-level
+%% field index
+%% policies using `DataSourceName' and `DataSourceType' for the
+%% `selectionCriteria' parameter. If you have multiple account-level
+%% index policies
+%% with `LogGroupNamePrefix' selection criteria, no two of them can use
+%% the same or
+%% overlapping log group name prefixes. For example, if you have one policy
+%% filtered to log
+%% groups that start with my-log, you can't have another field index
+%% policy
+%% filtered to my-logpprod or my-logging. Similarly, if
+%% you have multiple account-level index policies with `DataSourceName'
+%% and
+%% `DataSourceType' selection criteria, no two of them can use the same
+%% data source
+%% name and type combination. For example, if you have one policy filtered to
+%% the data source
+%% name `amazon_vpc' and data source type `flow' you cannot create
+%% another
+%% policy with this combination.
 %%
 %% If you create an account-level field index policy in a monitoring account
 %% in cross-account
@@ -5089,14 +6090,99 @@ list_tags_log_group(Client, Input, Options)
 %% not to any source
 %% accounts.
 %%
+%% CloudWatch Logs provides default field indexes for all log groups in the
+%% Standard log
+%% class. Default field indexes are automatically available for the following
+%% fields:
+%%
+%% `@logStream'
+%%
+%% `@aws.region'
+%%
+%% `@aws.account'
+%%
+%% `@source.log'
+%%
+%% `@data_source_name'
+%%
+%% `@data_source_type'
+%%
+%% `@data_format'
+%%
+%% `traceId'
+%%
+%% `severityText'
+%%
+%% `attributes.session.id'
+%%
+%% CloudWatch Logs provides default field indexes for certain data source
+%% name and type
+%% combinations as well. Default field indexes are automatically available
+%% for the following data
+%% source name and type combinations as identified in the following list:
+%%
+%% `amazon_vpc.flow'
+%%
+%% `action'
+%%
+%% `logStatus'
+%%
+%% `region'
+%%
+%% `flowDirection'
+%%
+%% `type'
+%%
+%% `amazon_route53.resolver_query'
+%%
+%% `transport'
+%%
+%% `rcode'
+%%
+%% `aws_waf.access'
+%%
+%% `action'
+%%
+%% `httpRequest.country'
+%%
+%% `aws_cloudtrail.data', `aws_cloudtrail.management'
+%%
+%% `eventSource'
+%%
+%% `eventName'
+%%
+%% `awsRegion'
+%%
+%% `userAgent'
+%%
+%% `errorCode'
+%%
+%% `eventType'
+%%
+%% `managementEvent'
+%%
+%% `readOnly'
+%%
+%% `eventCategory'
+%%
+%% `requestId'
+%%
+%% Default field indexes are in addition to any custom field indexes you
+%% define within your
+%% policy. Default field indexes are not counted towards your field index
+%% quota:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing-Syntax.
+%%
 %% If you want to create a field index policy for a single log group, you can
 %% use PutIndexPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html
 %% instead of `PutAccountPolicy'. If you do so, that log
-%% group will use only that log-group level policy, and will ignore the
-%% account-level policy that
-%% you create with PutAccountPolicy:
-%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
+%% group will use that log-group level policy and any account-level policies
+%% that match at the
+%% data source level; any account-level policy that matches at the log group
+%% level (for example,
+%% no selection criteria or log group name prefix selection criteria) will be
+%% ignored.
 %%
 %% Metric extraction policy
 %%
@@ -5537,6 +6623,17 @@ put_destination_policy(Client, Input, Options)
 %% see Create field indexes to improve query performance and reduce costs:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html.
 %%
+%% You can configure indexed fields as facets to enable interactive
+%% exploration and filtering of your logs in the CloudWatch Logs Insights
+%% console. Facets
+%% allow you to view value distributions and counts for indexed fields
+%% without running queries.
+%% When you create a field index, you can optionally set it as a facet to
+%% enable this interactive
+%% analysis capability. For more information, see Use facets to group and
+%% explore logs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Facets.html.
+%%
 %% To find the fields that are in your log group events, use the
 %% GetLogGroupFields:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html
@@ -5556,6 +6653,8 @@ put_destination_policy(Client, Input, Options)
 %% Standard log
 %% class. Default field indexes are automatically available for the following
 %% fields:
+%%
+%% `@logStream'
 %%
 %% `@aws.region'
 %%
@@ -5584,11 +6683,15 @@ put_destination_policy(Client, Input, Options)
 %% Log group-level field index policies created with `PutIndexPolicy'
 %% override
 %% account-level field index policies created with PutAccountPolicy:
-%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
-%% If you use `PutIndexPolicy' to create a field index
-%% policy for a log group, that log group uses only that policy. The log
-%% group ignores any
-%% account-wide field index policy that you might have created.
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html
+%% that apply to log groups. If you use `PutIndexPolicy'
+%% to create a field index policy for a log group, that log group uses only
+%% that policy for log
+%% group-level indexing, including any facet configurations. The log group
+%% ignores any
+%% account-wide field index policy that applies to log groups, but data
+%% source-based account
+%% policies may still apply.
 -spec put_index_policy(aws_client:aws_client(), put_index_policy_request()) ->
     {ok, put_index_policy_response(), tuple()} |
     {error, any()} |
@@ -5710,6 +6813,32 @@ put_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLogEvents">>, Input, Options).
 
+%% @doc Enables or disables deletion protection for the specified log group.
+%%
+%% When enabled on a
+%% log group, deletion protection blocks all deletion operations until it is
+%% explicitly
+%% disabled.
+%%
+%% For information about the parameters that are common to all actions, see
+%% Common Parameters:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/CommonParameters.html.
+-spec put_log_group_deletion_protection(aws_client:aws_client(), put_log_group_deletion_protection_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_log_group_deletion_protection_errors(), tuple()}.
+put_log_group_deletion_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_log_group_deletion_protection(Client, Input, []).
+
+-spec put_log_group_deletion_protection(aws_client:aws_client(), put_log_group_deletion_protection_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_log_group_deletion_protection_errors(), tuple()}.
+put_log_group_deletion_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutLogGroupDeletionProtection">>, Input, Options).
+
 %% @doc Creates or updates a metric filter and associates it with the
 %% specified log group.
 %%
@@ -5814,8 +6943,25 @@ put_query_definition(Client, Input, Options)
 %% Services services to put
 %% log events to this account, such as Amazon Route 53.
 %%
-%% An account can have up to 10 resource
-%% policies per Amazon Web Services Region.
+%% This API has the following
+%% restrictions:
+%%
+%% Supported actions - Policy only supports
+%% `logs:PutLogEvents' and `logs:CreateLogStream ' actions
+%%
+%% Supported principals - Policy only applies when
+%% operations are invoked by Amazon Web Services service principals (not IAM
+%% users, roles, or cross-account principals
+%%
+%% Policy limits - An account can have a maximum of 10
+%% policies without resourceARN and one per LogGroup resourceARN
+%%
+%% Resource policies with actions invoked by non-Amazon Web Services service
+%% principals
+%% (such as IAM users, roles, or other Amazon Web Services accounts) will not
+%% be
+%% enforced. For access control involving these principals, use the IAM
+%% policies.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -6101,11 +7247,13 @@ start_live_tail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLiveTail">>, Input, Options).
 
-%% @doc Starts a query of one or more log groups using CloudWatch Logs
+%% @doc Starts a query of one or more log groups or data sources using
+%% CloudWatch Logs
 %% Insights.
 %%
-%% You specify
-%% the log groups and time range to query and the query string to use.
+%% You specify the log groups or data sources and time range to query and the
+%% query
+%% string to use. You can query up to 10 data sources in a single query.
 %%
 %% For more information, see CloudWatch Logs Insights Query
 %% Syntax:
@@ -6118,6 +7266,14 @@ start_live_tail(Client, Input, Options)
 %% to retrieve the results of a query, using the `queryId'
 %% that `StartQuery' returns.
 %%
+%% Interactive queries started with `StartQuery' share concurrency limits
+%% with
+%% automated scheduled query executions. Both types of queries count toward
+%% the same regional
+%% concurrent query quota, so high scheduled query activity may affect the
+%% availability of
+%% concurrent slots for interactive queries.
+%%
 %% To specify the log groups to query, a `StartQuery' operation must
 %% include one
 %% of the following:
@@ -6128,7 +7284,9 @@ start_live_tail(Client, Input, Options)
 %% Or the `queryString' must include a `SOURCE' command to select
 %% log groups for the query. The `SOURCE' command can select log groups
 %% based on
-%% log group name prefix, account ID, and log class.
+%% log group name prefix, account ID, and log class, or select data sources
+%% using
+%% dataSource syntax in LogsQL, PPL, and SQL.
 %%
 %% For more information about the `SOURCE' command, see SOURCE:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-Source.html.
@@ -6182,6 +7340,14 @@ start_query(Client, Input, Options)
 %% ended, the operation returns an error indicating that the specified query
 %% is not
 %% running.
+%%
+%% This operation can be used to cancel both interactive queries and
+%% individual scheduled
+%% query executions. When used with scheduled queries, `StopQuery'
+%% cancels only the
+%% specific execution identified by the query ID, not the scheduled query
+%% configuration
+%% itself.
 -spec stop_query(aws_client:aws_client(), stop_query_request()) ->
     {ok, stop_query_response(), tuple()} |
     {error, any()} |
@@ -6458,6 +7624,27 @@ update_log_anomaly_detector(Client, Input)
 update_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).
+
+%% @doc Updates an existing scheduled query with new configuration.
+%%
+%% This operation uses PUT
+%% semantics, allowing modification of query parameters, schedule, and
+%% destinations.
+-spec update_scheduled_query(aws_client:aws_client(), update_scheduled_query_request()) ->
+    {ok, update_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduled_query_errors(), tuple()}.
+update_scheduled_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_scheduled_query(Client, Input, []).
+
+-spec update_scheduled_query(aws_client:aws_client(), update_scheduled_query_request(), proplists:proplist()) ->
+    {ok, update_scheduled_query_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduled_query_errors(), tuple()}.
+update_scheduled_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateScheduledQuery">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

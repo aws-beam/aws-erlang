@@ -181,6 +181,7 @@
 %% mxf_settings() :: #{
 %%   <<"AfdSignaling">> => list(any()),
 %%   <<"Profile">> => list(any()),
+%%   <<"UncompressedAudioWrapping">> => list(any()),
 %%   <<"XavcProfileSettings">> => mxf_xavc_profile_settings()
 %% }
 -type mxf_settings() :: #{binary() => any()}.
@@ -636,6 +637,7 @@
 %%   <<"FramerateDenominator">> => integer(),
 %%   <<"FramerateNumerator">> => integer(),
 %%   <<"Height">> => integer(),
+%%   <<"ImageInput">> => string(),
 %%   <<"SampleRate">> => integer(),
 %%   <<"Width">> => integer()
 %% }
@@ -1533,6 +1535,7 @@
 %%   <<"HrdBufferFinalFillPercentage">> => integer(),
 %%   <<"GopBReference">> => list(any()),
 %%   <<"HrdBufferInitialFillPercentage">> => integer(),
+%%   <<"MvOverPictureBoundaries">> => list(any()),
 %%   <<"AlternateTransferFunctionSei">> => list(any()),
 %%   <<"Tiles">> => list(any()),
 %%   <<"DynamicSubGop">> => list(any()),
@@ -1546,9 +1549,11 @@
 %%   <<"GopSizeUnits">> => list(any()),
 %%   <<"Bitrate">> => integer(),
 %%   <<"BandwidthReductionFilter">> => bandwidth_reduction_filter(),
+%%   <<"TreeBlockSize">> => list(any()),
 %%   <<"ParControl">> => list(any()),
 %%   <<"InterlaceMode">> => list(any()),
 %%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"TileHeight">> => integer(),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
 %%   <<"Deblocking">> => list(any()),
 %%   <<"RateControlMode">> => list(any()),
@@ -1558,16 +1563,19 @@
 %%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
 %%   <<"MinIInterval">> => integer(),
 %%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"TilePadding">> => list(any()),
 %%   <<"SceneChangeDetect">> => list(any()),
 %%   <<"SpatialAdaptiveQuantization">> => list(any()),
 %%   <<"ParDenominator">> => integer(),
 %%   <<"GopClosedCadence">> => integer(),
 %%   <<"MaxBitrate">> => integer(),
+%%   <<"TileWidth">> => integer(),
 %%   <<"HrdBufferSize">> => integer(),
 %%   <<"TemporalAdaptiveQuantization">> => list(any()),
 %%   <<"CodecLevel">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
-%%   <<"TemporalIds">> => list(any())
+%%   <<"TemporalIds">> => list(any()),
+%%   <<"MvTemporalPredictor">> => list(any())
 %% }
 -type h265_settings() :: #{binary() => any()}.
 
@@ -1635,6 +1643,7 @@
 
 %% Example:
 %% dolby_vision() :: #{
+%%   <<"Compatibility">> => list(any()),
 %%   <<"L6Metadata">> => dolby_vision_level6_metadata(),
 %%   <<"L6Mode">> => list(any()),
 %%   <<"Mapping">> => list(any()),
@@ -2475,6 +2484,7 @@
 
 %% Example:
 %% video_overlay_input() :: #{
+%%   <<"AudioSelectors">> => map(),
 %%   <<"FileInput">> => string(),
 %%   <<"InputClippings">> => list(video_overlay_input_clipping()),
 %%   <<"TimecodeSource">> => list(any()),

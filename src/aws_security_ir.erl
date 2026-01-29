@@ -34,11 +34,16 @@
          list_cases/3,
          list_comments/3,
          list_comments/4,
+         list_investigations/2,
+         list_investigations/4,
+         list_investigations/5,
          list_memberships/2,
          list_memberships/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         send_feedback/4,
+         send_feedback/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -93,6 +98,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type security_incident_response_not_active_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_feedback_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"usefulness">> := list(any())
+%% }
+-type send_feedback_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -173,6 +186,10 @@
 %% }
 -type create_case_request() :: #{binary() => any()}.
 
+%% Example:
+%% send_feedback_response() :: #{}
+-type send_feedback_response() :: #{}.
+
 
 %% Example:
 %% incident_responder() :: #{
@@ -182,6 +199,19 @@
 %%   <<"name">> => string()
 %% }
 -type incident_responder() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_action() :: #{
+%%   <<"actionType">> => list(any()),
+%%   <<"content">> => string(),
+%%   <<"feedback">> => investigation_feedback(),
+%%   <<"investigationId">> => string(),
+%%   <<"lastUpdated">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string()
+%% }
+-type investigation_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -228,6 +258,7 @@
 %%   <<"actualIncidentStartDate">> => [non_neg_integer()],
 %%   <<"caseArn">> => string(),
 %%   <<"caseAttachments">> => list(case_attachment_attributes()),
+%%   <<"caseMetadata">> => list(case_metadata_entry()),
 %%   <<"caseStatus">> => list(any()),
 %%   <<"closedDate">> => [non_neg_integer()],
 %%   <<"closureCode">> => list(any()),
@@ -273,6 +304,22 @@
 
 
 %% Example:
+%% list_investigations_response() :: #{
+%%   <<"investigationActions">> => list(investigation_action()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_metadata_entry() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type case_metadata_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_cases_item() :: #{
 %%   <<"caseArn">> => string(),
 %%   <<"caseId">> => string(),
@@ -314,6 +361,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_investigations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -447,6 +502,7 @@
 %% Example:
 %% update_case_request() :: #{
 %%   <<"actualIncidentStartDate">> => [non_neg_integer()],
+%%   <<"caseMetadata">> => list(case_metadata_entry()),
 %%   <<"description">> => string(),
 %%   <<"engagementType">> => list(any()),
 %%   <<"impactedAccountsToAdd">> => list(string()),
@@ -463,6 +519,15 @@
 %%   <<"watchersToDelete">> => list(watcher())
 %% }
 -type update_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_feedback() :: #{
+%%   <<"comment">> => string(),
+%%   <<"submittedAt">> => [non_neg_integer()],
+%%   <<"usefulness">> => list(any())
+%% }
+-type investigation_feedback() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1085,6 +1150,45 @@ list_comments(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Investigation performed by an agent for a security incident...
+-spec list_investigations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()}.
+list_investigations(Client, CaseId)
+  when is_map(Client) ->
+    list_investigations(Client, CaseId, #{}, #{}).
+
+-spec list_investigations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()}.
+list_investigations(Client, CaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_investigations(Client, CaseId, QueryMap, HeadersMap, []).
+
+-spec list_investigations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()}.
+list_investigations(Client, CaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/cases/", aws_util:encode_uri(CaseId), "/list-investigations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the memberships that the calling principal can access.
 -spec list_memberships(aws_client:aws_client(), list_memberships_request()) ->
     {ok, list_memberships_response(), tuple()} |
@@ -1153,6 +1257,38 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Send feedback based on response investigation action
+-spec send_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), send_feedback_request()) ->
+    {ok, send_feedback_response(), tuple()} |
+    {error, any()}.
+send_feedback(Client, CaseId, ResultId, Input) ->
+    send_feedback(Client, CaseId, ResultId, Input, []).
+
+-spec send_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), send_feedback_request(), proplists:proplist()) ->
+    {ok, send_feedback_response(), tuple()} |
+    {error, any()}.
+send_feedback(Client, CaseId, ResultId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/cases/", aws_util:encode_uri(CaseId), "/feedback/", aws_util:encode_uri(ResultId), "/send-feedback"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag(s) to a designated resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->

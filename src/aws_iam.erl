@@ -16,12 +16,16 @@
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/.
 -module(aws_iam).
 
--export([add_client_id_to_open_id_connect_provider/2,
+-export([accept_delegation_request/2,
+         accept_delegation_request/3,
+         add_client_id_to_open_id_connect_provider/2,
          add_client_id_to_open_id_connect_provider/3,
          add_role_to_instance_profile/2,
          add_role_to_instance_profile/3,
          add_user_to_group/2,
          add_user_to_group/3,
+         associate_delegation_request/2,
+         associate_delegation_request/3,
          attach_group_policy/2,
          attach_group_policy/3,
          attach_role_policy/2,
@@ -118,12 +122,16 @@
          disable_organizations_root_credentials_management/3,
          disable_organizations_root_sessions/2,
          disable_organizations_root_sessions/3,
+         disable_outbound_web_identity_federation/2,
+         disable_outbound_web_identity_federation/3,
          enable_mfa_device/2,
          enable_mfa_device/3,
          enable_organizations_root_credentials_management/2,
          enable_organizations_root_credentials_management/3,
          enable_organizations_root_sessions/2,
          enable_organizations_root_sessions/3,
+         enable_outbound_web_identity_federation/2,
+         enable_outbound_web_identity_federation/3,
          generate_credential_report/2,
          generate_credential_report/3,
          generate_organizations_access_report/2,
@@ -144,10 +152,14 @@
          get_context_keys_for_principal_policy/3,
          get_credential_report/2,
          get_credential_report/3,
+         get_delegation_request/2,
+         get_delegation_request/3,
          get_group/2,
          get_group/3,
          get_group_policy/2,
          get_group_policy/3,
+         get_human_readable_summary/2,
+         get_human_readable_summary/3,
          get_instance_profile/2,
          get_instance_profile/3,
          get_login_profile/2,
@@ -158,6 +170,8 @@
          get_open_id_connect_provider/3,
          get_organizations_access_report/2,
          get_organizations_access_report/3,
+         get_outbound_web_identity_federation_info/2,
+         get_outbound_web_identity_federation_info/3,
          get_policy/2,
          get_policy/3,
          get_policy_version/2,
@@ -192,6 +206,8 @@
          list_attached_role_policies/3,
          list_attached_user_policies/2,
          list_attached_user_policies/3,
+         list_delegation_requests/2,
+         list_delegation_requests/3,
          list_entities_for_policy/2,
          list_entities_for_policy/3,
          list_group_policies/2,
@@ -262,6 +278,8 @@
          put_user_permissions_boundary/3,
          put_user_policy/2,
          put_user_policy/3,
+         reject_delegation_request/2,
+         reject_delegation_request/3,
          remove_client_id_from_open_id_connect_provider/2,
          remove_client_id_from_open_id_connect_provider/3,
          remove_role_from_instance_profile/2,
@@ -272,6 +290,8 @@
          reset_service_specific_credential/3,
          resync_mfa_device/2,
          resync_mfa_device/3,
+         send_delegation_token/2,
+         send_delegation_token/3,
          set_default_policy_version/2,
          set_default_policy_version/3,
          set_security_token_service_preferences/2,
@@ -318,6 +338,8 @@
          update_account_password_policy/3,
          update_assume_role_policy/2,
          update_assume_role_policy/3,
+         update_delegation_request/2,
+         update_delegation_request/3,
          update_group/2,
          update_group/3,
          update_login_profile/2,
@@ -351,6 +373,13 @@
 
 
 %% Example:
+%% reject_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string(),
+%%   <<"Notes">> => string()
+%% }
+-type reject_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% put_user_policy_request() :: #{
 %%   <<"PolicyDocument">> := string(),
 %%   <<"PolicyName">> := string(),
@@ -369,6 +398,12 @@
 
 %% }
 -type list_saml_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type associate_delegation_request_request() :: #{binary() => any()}.
 
 %% Example:
 %% enable_organizations_root_credentials_management_response() :: #{
@@ -812,6 +847,12 @@
 -type delete_conflict_exception() :: #{binary() => any()}.
 
 %% Example:
+%% send_delegation_token_request() :: #{
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type send_delegation_token_request() :: #{binary() => any()}.
+
+%% Example:
 %% upload_ssh_public_key_response() :: #{
 %%   <<"SSHPublicKey">> => ssh_public_key()
 %% }
@@ -847,6 +888,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% feature_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_disabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% entity_info() :: #{
@@ -1023,6 +1070,12 @@
 -type delete_user_permissions_boundary_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_outbound_web_identity_federation_response() :: #{
+%%   <<"IssuerIdentifier">> => string()
+%% }
+-type enable_outbound_web_identity_federation_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_account_authorization_details_request() :: #{
 %%   <<"Filter">> => list(list(any())()),
 %%   <<"Marker">> => string(),
@@ -1056,6 +1109,14 @@
 %%   <<"Marker">> => string()
 %% }
 -type list_instance_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegation_requests_response() :: #{
+%%   <<"DelegationRequests">> => list(delegation_request()),
+%%   <<"Marker">> => string(),
+%%   <<"isTruncated">> => boolean()
+%% }
+-type list_delegation_requests_response() :: #{binary() => any()}.
 
 %% Example:
 %% service_not_supported_exception() :: #{
@@ -1491,6 +1552,14 @@
 -type list_access_keys_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_delegation_requests_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OwnerId">> => string()
+%% }
+-type list_delegation_requests_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_role_policy_request() :: #{
 %%   <<"PolicyName">> := string(),
 %%   <<"RoleName">> := string()
@@ -1730,6 +1799,14 @@
 -type tag_open_id_connect_provider_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_human_readable_summary_response() :: #{
+%%   <<"Locale">> => string(),
+%%   <<"SummaryContent">> => string(),
+%%   <<"SummaryState">> => list(any())
+%% }
+-type get_human_readable_summary_response() :: #{binary() => any()}.
+
+%% Example:
 %% generate_organizations_access_report_response() :: #{
 %%   <<"JobId">> => string()
 %% }
@@ -1940,6 +2017,13 @@
 -type list_mfa_device_tags_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_human_readable_summary_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"Locale">> => string()
+%% }
+-type get_human_readable_summary_request() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_authentication_code_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2109,6 +2193,13 @@
 -type update_saml_provider_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string(),
+%%   <<"Notes">> => string()
+%% }
+-type update_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% ssh_public_key() :: #{
 %%   <<"Fingerprint">> => string(),
 %%   <<"SSHPublicKeyBody">> => string(),
@@ -2149,6 +2240,39 @@
 -type update_open_id_connect_provider_thumbprint_request() :: #{binary() => any()}.
 
 %% Example:
+%% delegation_request() :: #{
+%%   <<"ApproverId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DelegationRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Notes">> => string(),
+%%   <<"OnlySendByOwner">> => boolean(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PermissionPolicy">> => string(),
+%%   <<"Permissions">> => delegation_permission(),
+%%   <<"RedirectUrl">> => string(),
+%%   <<"RejectionReason">> => string(),
+%%   <<"RequestMessage">> => string(),
+%%   <<"RequestorId">> => string(),
+%%   <<"RequestorName">> => string(),
+%%   <<"RolePermissionRestrictionArns">> => list(string()),
+%%   <<"SessionDuration">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedTime">> => non_neg_integer()
+%% }
+-type delegation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegation_request_response() :: #{
+%%   <<"DelegationRequest">> => delegation_request(),
+%%   <<"PermissionCheckResult">> => list(any()),
+%%   <<"PermissionCheckStatus">> => list(any())
+%% }
+-type get_delegation_request_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_ssh_public_key_response() :: #{
 %%   <<"SSHPublicKey">> => ssh_public_key()
 %% }
@@ -2168,6 +2292,12 @@
 %%   <<"UserPolicyList">> => list(policy_detail())
 %% }
 -type user_detail() :: #{binary() => any()}.
+
+%% Example:
+%% feature_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_access_key_response() :: #{
@@ -2323,6 +2453,13 @@
 %%   <<"UserName">> := string()
 %% }
 -type list_user_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegation_request_request() :: #{
+%%   <<"DelegationPermissionCheck">> => boolean(),
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type get_delegation_request_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_ssh_public_keys_response() :: #{
@@ -2640,6 +2777,12 @@
 -type get_credential_report_response() :: #{binary() => any()}.
 
 %% Example:
+%% accept_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type accept_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_account_aliases_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer()
@@ -2949,11 +3092,23 @@
 -type create_user_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_outbound_web_identity_federation_info_response() :: #{
+%%   <<"IssuerIdentifier">> => string(),
+%%   <<"JwtVendingEnabled">> => boolean()
+%% }
+-type get_outbound_web_identity_federation_info_response() :: #{binary() => any()}.
+
+%% Example:
 %% untag_instance_profile_request() :: #{
 %%   <<"InstanceProfileName">> := string(),
 %%   <<"TagKeys">> := list(string())
 %% }
 -type untag_instance_profile_request() :: #{binary() => any()}.
+
+-type accept_delegation_request_errors() ::
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
 
 -type add_client_id_to_open_id_connect_provider_errors() ::
     limit_exceeded_exception() | 
@@ -2971,6 +3126,12 @@
 
 -type add_user_to_group_errors() ::
     limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type associate_delegation_request_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
 
@@ -3273,6 +3434,9 @@
     service_access_not_enabled_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
+-type disable_outbound_web_identity_federation_errors() ::
+    feature_disabled_exception().
+
 -type enable_mfa_device_errors() ::
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
@@ -3295,6 +3459,9 @@
     organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
     account_not_management_or_delegated_administrator_exception().
+
+-type enable_outbound_web_identity_federation_errors() ::
+    feature_enabled_exception().
 
 -type generate_credential_report_errors() ::
     limit_exceeded_exception() | 
@@ -3330,11 +3497,20 @@
     credential_report_not_ready_exception() | 
     service_failure_exception().
 
+-type get_delegation_request_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
 -type get_group_errors() ::
     service_failure_exception() | 
     no_such_entity_exception().
 
 -type get_group_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_human_readable_summary_errors() ::
+    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
 
@@ -3357,6 +3533,9 @@
 
 -type get_organizations_access_report_errors() ::
     no_such_entity_exception().
+
+-type get_outbound_web_identity_federation_info_errors() ::
+    feature_disabled_exception().
 
 -type get_policy_errors() ::
     invalid_input_exception() | 
@@ -3428,6 +3607,11 @@
     no_such_entity_exception().
 
 -type list_attached_user_policies_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_delegation_requests_errors() ::
     invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
@@ -3579,6 +3763,12 @@
     service_failure_exception() | 
     no_such_entity_exception().
 
+-type reject_delegation_request_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
 -type remove_client_id_from_open_id_connect_provider_errors() ::
     concurrent_modification_exception() | 
     invalid_input_exception() | 
@@ -3603,6 +3793,12 @@
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
     invalid_authentication_code_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type send_delegation_token_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
 
@@ -3745,6 +3941,12 @@
     service_failure_exception() | 
     no_such_entity_exception().
 
+-type update_delegation_request_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
 -type update_group_errors() ::
     limit_exceeded_exception() | 
     service_failure_exception() | 
@@ -3837,6 +4039,37 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts a delegation request, granting the requested temporary
+%% access.
+%%
+%% Once the delegation request is accepted, it is eligible to send the
+%% exchange token to the partner.
+%% The SendDelegationToken:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SendDelegationToken.html
+%% API has to be explicitly called to send the delegation token.
+%%
+%% At the time of acceptance, IAM records the details and the state of the
+%% identity that called this API.
+%% This is the identity that gets mapped to the delegated credential.
+%%
+%% An accepted request may be rejected before the exchange token is sent to
+%% the partner.
+-spec accept_delegation_request(aws_client:aws_client(), accept_delegation_request_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accept_delegation_request_errors(), tuple()}.
+accept_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_delegation_request(Client, Input, []).
+
+-spec accept_delegation_request(aws_client:aws_client(), accept_delegation_request_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accept_delegation_request_errors(), tuple()}.
+accept_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptDelegationRequest">>, Input, Options).
 
 %% @doc Adds a new client ID (also known as audience) to the list of client
 %% IDs already
@@ -3933,6 +4166,50 @@ add_user_to_group(Client, Input)
 add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUserToGroup">>, Input, Options).
+
+%% @doc Associates a delegation request with the current identity.
+%%
+%% If the partner that created the delegation request has specified the owner
+%% account during creation,
+%% only an identity from that owner account can call the
+%% `AssociateDelegationRequest' API for
+%% the specified delegation request. Once the
+%% `AssociateDelegationRequest' API call is successful,
+%% the ARN of the current calling identity will be stored as the
+%% `ownerId'
+%% of the request.
+%%
+%% If the partner that created the delegation request has not specified the
+%% owner account during creation,
+%% any caller from any account can call the `AssociateDelegationRequest'
+%% API for
+%% the delegation request. Once this API call is successful, the ARN of the
+%% current calling identity will be stored as the
+%% `ownerId'
+%% and the Amazon Web Services account ID of the current calling identity
+%% will be stored as the
+%% `ownerAccount'
+%% of the request.
+%%
+%% For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec associate_delegation_request(aws_client:aws_client(), associate_delegation_request_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_delegation_request_errors(), tuple()}.
+associate_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_delegation_request(Client, Input, []).
+
+-spec associate_delegation_request(aws_client:aws_client(), associate_delegation_request_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_delegation_request_errors(), tuple()}.
+associate_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateDelegationRequest">>, Input, Options).
 
 %% @doc Attaches the specified managed policy to the specified IAM group.
 %%
@@ -4151,7 +4428,13 @@ create_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAlias">>, Input, Options).
 
-%% @doc This API is currently unavailable for general use.
+%% @doc Creates an IAM delegation request for temporary access delegation.
+%%
+%% This API is not available for general use. In order to use this API, a
+%% caller first need to
+%% go through an onboarding process described in the
+%% partner onboarding documentation:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation-partner-guide.html.
 -spec create_delegation_request(aws_client:aws_client(), create_delegation_request_request()) ->
     {ok, create_delegation_request_response(), tuple()} |
     {error, any()} |
@@ -5489,6 +5772,29 @@ disable_organizations_root_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableOrganizationsRootSessions">>, Input, Options).
 
+%% @doc Disables the outbound identity federation feature for your Amazon Web
+%% Services account.
+%%
+%% When disabled, IAM principals in the account cannot
+%% use the `GetWebIdentityToken' API to obtain JSON Web Tokens (JWTs) for
+%% authentication with external services. This operation
+%% does not affect tokens that were issued before the feature was disabled.
+-spec disable_outbound_web_identity_federation(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_outbound_web_identity_federation_errors(), tuple()}.
+disable_outbound_web_identity_federation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_outbound_web_identity_federation(Client, Input, []).
+
+-spec disable_outbound_web_identity_federation(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_outbound_web_identity_federation_errors(), tuple()}.
+disable_outbound_web_identity_federation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableOutboundWebIdentityFederation">>, Input, Options).
+
 %% @doc Enables the specified MFA device and associates it with the specified
 %% IAM user.
 %%
@@ -5591,6 +5897,30 @@ enable_organizations_root_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableOrganizationsRootSessions">>, Input, Options).
 
+%% @doc Enables the outbound identity federation feature for your Amazon Web
+%% Services account.
+%%
+%% When enabled, IAM principals in your account
+%% can use the `GetWebIdentityToken' API to obtain JSON Web Tokens (JWTs)
+%% for secure authentication with external services.
+%% This operation also generates a unique issuer URL for your Amazon Web
+%% Services account.
+-spec enable_outbound_web_identity_federation(aws_client:aws_client(), #{}) ->
+    {ok, enable_outbound_web_identity_federation_response(), tuple()} |
+    {error, any()} |
+    {error, enable_outbound_web_identity_federation_errors(), tuple()}.
+enable_outbound_web_identity_federation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_outbound_web_identity_federation(Client, Input, []).
+
+-spec enable_outbound_web_identity_federation(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, enable_outbound_web_identity_federation_response(), tuple()} |
+    {error, any()} |
+    {error, enable_outbound_web_identity_federation_errors(), tuple()}.
+enable_outbound_web_identity_federation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableOutboundWebIdentityFederation">>, Input, Options).
+
 %% @doc Generates a credential report for the Amazon Web Services account.
 %%
 %% For more information about the
@@ -5659,7 +5989,7 @@ generate_credential_report(Client, Input, Options)
 %% in the
 %% IAM User Guide.
 %%
-%% The data includes all attempts to access Amazon Web Services, not just the
+%% The data includes all attempts to access Amazon Web Services, not just the
 %% successful ones. This
 %% includes all attempts that were made using the Amazon Web Services
 %% Management Console, the Amazon Web Services API through any
@@ -5671,7 +6001,7 @@ generate_credential_report(Client, Input, Options)
 %% authoritative
 %% source for information about all API calls and whether they were
 %% successful or
-%% denied access. For more information, see Logging IAM events with
+%% denied access. For more information, see Logging IAM events with
 %% CloudTrail:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html
 %% in the IAM User Guide.
@@ -5834,7 +6164,7 @@ generate_organizations_access_report(Client, Input, Options)
 %% action last accessed information services and actions:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-action-last-accessed.html.
 %%
-%% The service last accessed data includes all attempts to access an Amazon
+%% The service last accessed data includes all attempts to access an Amazon
 %% Web Services API, not
 %% just the successful ones. This includes all attempts that were made using
 %% the
@@ -5847,7 +6177,7 @@ generate_organizations_access_report(Client, Input, Options)
 %% your CloudTrail logs as the authoritative source for information about all
 %% API calls
 %% and whether they were successful or denied access. For more information,
-%% see Logging
+%% see Logging
 %% IAM events with CloudTrail:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html
 %% in the
@@ -6146,6 +6476,36 @@ get_credential_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialReport">>, Input, Options).
 
+%% @doc Retrieves information about a specific delegation request.
+%%
+%% If a delegation request has no owner or owner account,
+%% `GetDelegationRequest' for that delegation request can be called by
+%% any account.
+%% If the owner account is assigned but there is
+%% no owner id, only identities within that owner account can call
+%% `GetDelegationRequest'
+%% for the delegation request. Once the delegation request is fully owned,
+%% the owner of the request gets
+%% a default permission to get that delegation request. For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec get_delegation_request(aws_client:aws_client(), get_delegation_request_request()) ->
+    {ok, get_delegation_request_response(), tuple()} |
+    {error, any()} |
+    {error, get_delegation_request_errors(), tuple()}.
+get_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delegation_request(Client, Input, []).
+
+-spec get_delegation_request(aws_client:aws_client(), get_delegation_request_request(), proplists:proplist()) ->
+    {ok, get_delegation_request_response(), tuple()} |
+    {error, any()} |
+    {error, get_delegation_request_errors(), tuple()}.
+get_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDelegationRequest">>, Input, Options).
+
 %% @doc Returns a list of IAM users that are in the specified IAM group.
 %%
 %% You can paginate
@@ -6209,6 +6569,48 @@ get_group_policy(Client, Input)
 get_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupPolicy">>, Input, Options).
+
+%% @doc Retrieves a human readable summary for a given entity.
+%%
+%% At this time, the only supported
+%% entity type is `delegation-request'
+%%
+%% This method uses a Large Language Model (LLM) to generate the summary.
+%%
+%% If a delegation request has no owner or owner account,
+%% `GetHumanReadableSummary' for that delegation request can be called by
+%% any account.
+%% If the owner account is assigned but there is
+%% no owner id, only identities within that owner account can call
+%% `GetHumanReadableSummary'
+%% for the delegation request to retrieve a summary of that request.
+%% Once the delegation request is fully owned, the owner of the request gets
+%% a default permission to get that delegation request. For more details,
+%% read
+%% default permissions granted to delegation requests: . These rules are
+%% identical to
+%% GetDelegationRequest:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetDelegationRequest.html
+%% API behavior, such that a party who has permissions to call
+%% GetDelegationRequest:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetDelegationRequest.html
+%% for a given delegation request will always be able to retrieve the human
+%% readable summary for that request.
+-spec get_human_readable_summary(aws_client:aws_client(), get_human_readable_summary_request()) ->
+    {ok, get_human_readable_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_human_readable_summary_errors(), tuple()}.
+get_human_readable_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_human_readable_summary(Client, Input, []).
+
+-spec get_human_readable_summary(aws_client:aws_client(), get_human_readable_summary_request(), proplists:proplist()) ->
+    {ok, get_human_readable_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_human_readable_summary_errors(), tuple()}.
+get_human_readable_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetHumanReadableSummary">>, Input, Options).
 
 %% @doc Retrieves information about the specified instance profile, including
 %% the instance
@@ -6361,6 +6763,29 @@ get_organizations_access_report(Client, Input)
 get_organizations_access_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationsAccessReport">>, Input, Options).
+
+%% @doc Retrieves the configuration information for the outbound identity
+%% federation feature in your Amazon Web Services account.
+%%
+%% The response includes the unique issuer URL for your
+%% Amazon Web Services account and the current enabled/disabled status of the
+%% feature. Use this operation to obtain the issuer URL that you need to
+%% configure trust relationships with external services.
+-spec get_outbound_web_identity_federation_info(aws_client:aws_client(), #{}) ->
+    {ok, get_outbound_web_identity_federation_info_response(), tuple()} |
+    {error, any()} |
+    {error, get_outbound_web_identity_federation_info_errors(), tuple()}.
+get_outbound_web_identity_federation_info(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_outbound_web_identity_federation_info(Client, Input, []).
+
+-spec get_outbound_web_identity_federation_info(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, get_outbound_web_identity_federation_info_response(), tuple()} |
+    {error, any()} |
+    {error, get_outbound_web_identity_federation_info_errors(), tuple()}.
+get_outbound_web_identity_federation_info(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOutboundWebIdentityFederationInfo">>, Input, Options).
 
 %% @doc Retrieves information about the specified managed policy, including
 %% the policy's
@@ -7021,6 +7446,32 @@ list_attached_user_policies(Client, Input)
 list_attached_user_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedUserPolicies">>, Input, Options).
+
+%% @doc Lists delegation requests based on the specified criteria.
+%%
+%% If a delegation request has no owner, even if it is assigned to a specific
+%% account, it will not be part of the
+%% `ListDelegationRequests' output for that account.
+%%
+%% For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec list_delegation_requests(aws_client:aws_client(), list_delegation_requests_request()) ->
+    {ok, list_delegation_requests_response(), tuple()} |
+    {error, any()} |
+    {error, list_delegation_requests_errors(), tuple()}.
+list_delegation_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_delegation_requests(Client, Input, []).
+
+-spec list_delegation_requests(aws_client:aws_client(), list_delegation_requests_request(), proplists:proplist()) ->
+    {ok, list_delegation_requests_response(), tuple()} |
+    {error, any()} |
+    {error, list_delegation_requests_errors(), tuple()}.
+list_delegation_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDelegationRequests">>, Input, Options).
 
 %% @doc Lists all IAM users, groups, and roles that the specified managed
 %% policy is attached
@@ -8186,6 +8637,34 @@ put_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutUserPolicy">>, Input, Options).
 
+%% @doc Rejects a delegation request, denying the requested temporary access.
+%%
+%% Once a request is rejected, it cannot be accepted or updated later.
+%% Rejected requests expire after 7 days.
+%%
+%% When rejecting a request, an optional explanation can be added using the
+%% `Notes' request parameter.
+%%
+%% For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec reject_delegation_request(aws_client:aws_client(), reject_delegation_request_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_delegation_request_errors(), tuple()}.
+reject_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_delegation_request(Client, Input, []).
+
+-spec reject_delegation_request(aws_client:aws_client(), reject_delegation_request_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_delegation_request_errors(), tuple()}.
+reject_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectDelegationRequest">>, Input, Options).
+
 %% @doc Removes the specified client ID (also known as audience) from the
 %% list of client IDs
 %% registered for the specified IAM OpenID Connect (OIDC) provider resource
@@ -8309,6 +8788,38 @@ resync_mfa_device(Client, Input)
 resync_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResyncMFADevice">>, Input, Options).
+
+%% @doc Sends the exchange token for an accepted delegation request.
+%%
+%% The exchange token is sent to the partner via an asynchronous notification
+%% channel, established by the partner.
+%%
+%% The delegation request must be in the `ACCEPTED' state when calling
+%% this API. After the
+%% `SendDelegationToken' API
+%% call is successful, the request transitions to a `FINALIZED' state and
+%% cannot be rolled back. However, a user may reject
+%% an accepted request before the `SendDelegationToken' API is called.
+%%
+%% For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec send_delegation_token(aws_client:aws_client(), send_delegation_token_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_delegation_token_errors(), tuple()}.
+send_delegation_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_delegation_token(Client, Input, []).
+
+-spec send_delegation_token(aws_client:aws_client(), send_delegation_token_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_delegation_token_errors(), tuple()}.
+send_delegation_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendDelegationToken">>, Input, Options).
 
 %% @doc Sets the specified version of the specified policy as the
 %% policy's default (operative)
@@ -9295,6 +9806,33 @@ update_assume_role_policy(Client, Input)
 update_assume_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssumeRolePolicy">>, Input, Options).
+
+%% @doc Updates an existing delegation request with additional information.
+%%
+%% When the delegation
+%% request is updated, it reaches the `PENDING_APPROVAL' state.
+%%
+%% Once a delegation request has an owner, that owner gets a default
+%% permission to update the
+%% delegation request. For more details, see
+%%
+%% Managing Permissions for Delegation Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation.html#temporary-delegation-managing-permissions.
+-spec update_delegation_request(aws_client:aws_client(), update_delegation_request_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_delegation_request_errors(), tuple()}.
+update_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_delegation_request(Client, Input, []).
+
+-spec update_delegation_request(aws_client:aws_client(), update_delegation_request_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_delegation_request_errors(), tuple()}.
+update_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDelegationRequest">>, Input, Options).
 
 %% @doc Updates the name and/or the path of the specified IAM group.
 %%

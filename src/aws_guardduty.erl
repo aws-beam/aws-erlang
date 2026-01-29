@@ -131,6 +131,9 @@
          get_malware_protection_plan/2,
          get_malware_protection_plan/4,
          get_malware_protection_plan/5,
+         get_malware_scan/2,
+         get_malware_scan/4,
+         get_malware_scan/5,
          get_malware_scan_settings/2,
          get_malware_scan_settings/4,
          get_malware_scan_settings/5,
@@ -178,6 +181,8 @@
          list_malware_protection_plans/1,
          list_malware_protection_plans/3,
          list_malware_protection_plans/4,
+         list_malware_scans/2,
+         list_malware_scans/3,
          list_members/2,
          list_members/4,
          list_members/5,
@@ -199,6 +204,8 @@
          list_trusted_entity_sets/2,
          list_trusted_entity_sets/4,
          list_trusted_entity_sets/5,
+         send_object_malware_scan/2,
+         send_object_malware_scan/3,
          start_malware_scan/2,
          start_malware_scan/3,
          start_monitoring_members/3,
@@ -250,10 +257,18 @@
 %% Example:
 %% resource_data() :: #{
 %%   <<"AccessKey">> => access_key(),
+%%   <<"AutoscalingAutoScalingGroup">> => autoscaling_auto_scaling_group(),
+%%   <<"CloudformationStack">> => cloudformation_stack(),
 %%   <<"Container">> => container_finding_resource(),
+%%   <<"Ec2Image">> => ec2_image(),
 %%   <<"Ec2Instance">> => ec2_instance(),
+%%   <<"Ec2LaunchTemplate">> => ec2_launch_template(),
 %%   <<"Ec2NetworkInterface">> => ec2_network_interface(),
+%%   <<"Ec2Vpc">> => ec2_vpc(),
+%%   <<"EcsCluster">> => ecs_cluster(),
+%%   <<"EcsTask">> => ecs_task(),
 %%   <<"EksCluster">> => eks_cluster(),
+%%   <<"IamInstanceProfile">> => iam_instance_profile_v2(),
 %%   <<"KubernetesWorkload">> => kubernetes_workload(),
 %%   <<"S3Bucket">> => s3_bucket(),
 %%   <<"S3Object">> => s3_object()
@@ -299,6 +314,34 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_snapshot_details() :: #{
+%%   <<"SnapshotArn">> => string()
+%% }
+-type ebs_snapshot_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_image_details() :: #{
+%%   <<"ImageArn">> => string()
+%% }
+-type ec2_image_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_scan() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanCompletedAt">> => non_neg_integer(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"ScanStartedAt">> => non_neg_integer(),
+%%   <<"ScanStatus">> => list(any()),
+%%   <<"ScanType">> => list(any())
+%% }
+-type malware_scan() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,6 +437,14 @@
 %% }
 -type remote_ip_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% recovery_point_details() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type recovery_point_details() :: #{binary() => any()}.
+
 %% Example:
 %% disable_organization_admin_account_response() :: #{}
 -type disable_organization_admin_account_response() :: #{}.
@@ -442,6 +493,14 @@
 %%   <<"LessThan">> => float()
 %% }
 -type filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_info() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -546,6 +605,14 @@
 
 
 %% Example:
+%% ec2_launch_template() :: #{
+%%   <<"Ec2InstanceUids">> => list(string()),
+%%   <<"Version">> => string()
+%% }
+-type ec2_launch_template() :: #{binary() => any()}.
+
+
+%% Example:
 %% sequence() :: #{
 %%   <<"Actors">> => list(actor()),
 %%   <<"AdditionalSequenceTypes">> => list(string()),
@@ -604,6 +671,13 @@
 %%   <<"Enable">> => boolean()
 %% }
 -type kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudformation_stack() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type cloudformation_stack() :: #{binary() => any()}.
 
 
 %% Example:
@@ -754,6 +828,13 @@
 
 
 %% Example:
+%% scan_configuration_recovery_point() :: #{
+%%   <<"BackupVaultName">> => string()
+%% }
+-type scan_configuration_recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
 %% kubernetes_api_call_action() :: #{
 %%   <<"Namespace">> => string(),
 %%   <<"Parameters">> => string(),
@@ -827,6 +908,20 @@
 %% Example:
 %% delete_threat_entity_set_request() :: #{}
 -type delete_threat_entity_set_request() :: #{}.
+
+
+%% Example:
+%% autoscaling_auto_scaling_group() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type autoscaling_auto_scaling_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_vpc() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type ec2_vpc() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1200,6 +1295,17 @@
 
 
 %% Example:
+%% scanned_resource() :: #{
+%%   <<"ResourceDetails">> => scanned_resource_details(),
+%%   <<"ScanStatusReason">> => list(any()),
+%%   <<"ScannedResourceArn">> => string(),
+%%   <<"ScannedResourceStatus">> => list(any()),
+%%   <<"ScannedResourceType">> => list(any())
+%% }
+-type scanned_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% disable_organization_admin_account_request() :: #{
 %%   <<"AdminAccountId">> := string()
 %% }
@@ -1258,11 +1364,26 @@
 
 
 %% Example:
+%% ebs_snapshot() :: #{
+%%   <<"DeviceName">> => string()
+%% }
+-type ebs_snapshot() :: #{binary() => any()}.
+
+
+%% Example:
 %% permission_configuration() :: #{
 %%   <<"AccountLevelPermissions">> => account_level_permissions(),
 %%   <<"BucketLevelPermissions">> => bucket_level_permissions()
 %% }
 -type permission_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_scans_filter_criterion() :: #{
+%%   <<"FilterCondition">> => filter_condition(),
+%%   <<"ListMalwareScansCriterionKey">> => list(any())
+%% }
+-type list_malware_scans_filter_criterion() :: #{binary() => any()}.
 
 %% Example:
 %% update_threat_intel_set_response() :: #{}
@@ -1274,6 +1395,29 @@
 %%   <<"Direction">> => list(any())
 %% }
 -type network_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_malware_scan_response() :: #{
+%%   <<"AdminDetectorId">> => string(),
+%%   <<"DetectorId">> => string(),
+%%   <<"FailedResourcesCount">> => integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanCategory">> => list(any()),
+%%   <<"ScanCompletedAt">> => non_neg_integer(),
+%%   <<"ScanConfiguration">> => scan_configuration(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanResultDetails">> => get_malware_scan_result_details(),
+%%   <<"ScanStartedAt">> => non_neg_integer(),
+%%   <<"ScanStatus">> => list(any()),
+%%   <<"ScanStatusReason">> => list(any()),
+%%   <<"ScanType">> => list(any()),
+%%   <<"ScannedResources">> => list(scanned_resource()),
+%%   <<"ScannedResourcesCount">> => integer(),
+%%   <<"SkippedResourcesCount">> => integer()
+%% }
+-type get_malware_scan_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1445,8 +1589,17 @@
 
 
 %% Example:
+%% list_malware_scans_filter_criteria() :: #{
+%%   <<"ListMalwareScansFilterCriterion">> => list(list_malware_scans_filter_criterion())
+%% }
+-type list_malware_scans_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_malware_scan_request() :: #{
-%%   <<"ResourceArn">> := string()
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"ScanConfiguration">> => start_malware_scan_configuration()
 %% }
 -type start_malware_scan_request() :: #{binary() => any()}.
 
@@ -1840,6 +1993,20 @@
 
 
 %% Example:
+%% get_malware_scan_result_details() :: #{
+%%   <<"FailedFileCount">> => float(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"SkippedFileCount">> => float(),
+%%   <<"ThreatFoundFileCount">> => float(),
+%%   <<"Threats">> => list(scan_result_threat()),
+%%   <<"TotalBytes">> => float(),
+%%   <<"TotalFileCount">> => float(),
+%%   <<"UniqueThreatCount">> => float()
+%% }
+-type get_malware_scan_result_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_malware_protection_plan_request() :: #{
 %%   <<"Actions">> => malware_protection_plan_actions(),
 %%   <<"ClientToken">> => string(),
@@ -1914,6 +2081,25 @@
 %%   <<"CountByResourceType">> => map()
 %% }
 -type coverage_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"RecoveryPoint">> => scan_configuration_recovery_point(),
+%%   <<"Role">> => string(),
+%%   <<"TriggerDetails">> => trigger_details()
+%% }
+-type scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_malware_scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"RecoveryPoint">> => recovery_point(),
+%%   <<"Role">> => string()
+%% }
+-type start_malware_scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2038,7 +2224,8 @@
 %% Example:
 %% trigger_details() :: #{
 %%   <<"Description">> => string(),
-%%   <<"GuardDutyFindingId">> => string()
+%%   <<"GuardDutyFindingId">> => string(),
+%%   <<"TriggerType">> => list(any())
 %% }
 -type trigger_details() :: #{binary() => any()}.
 
@@ -2071,6 +2258,13 @@
 
 
 %% Example:
+%% incremental_scan_details() :: #{
+%%   <<"BaselineResourceArn">> => string()
+%% }
+-type incremental_scan_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% security_group() :: #{
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string()
@@ -2098,8 +2292,10 @@
 %%   <<"LessThanOrEqual">> => float(),
 %%   <<"Lt">> => integer(),
 %%   <<"Lte">> => integer(),
+%%   <<"Matches">> => list(string()),
 %%   <<"Neq">> => list(string()),
-%%   <<"NotEquals">> => list(string())
+%%   <<"NotEquals">> => list(string()),
+%%   <<"NotMatches">> => list(string())
 %% }
 -type condition() :: #{binary() => any()}.
 
@@ -2159,6 +2355,16 @@
 
 
 %% Example:
+%% list_malware_scans_request() :: #{
+%%   <<"FilterCriteria">> => list_malware_scans_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
+%% }
+-type list_malware_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% detection() :: #{
 %%   <<"Anomaly">> => anomaly(),
 %%   <<"Sequence">> => sequence()
@@ -2198,7 +2404,12 @@
 
 %% Example:
 %% malware_scan_details() :: #{
-%%   <<"Threats">> => list(threat())
+%%   <<"ScanCategory">> => list(any()),
+%%   <<"ScanConfiguration">> => malware_protection_findings_scan_configuration(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Threats">> => list(threat()),
+%%   <<"UniqueThreatCount">> => integer()
 %% }
 -type malware_scan_details() :: #{binary() => any()}.
 
@@ -2410,6 +2621,10 @@
 %% }
 -type scan_file_path() :: #{binary() => any()}.
 
+%% Example:
+%% get_malware_scan_request() :: #{}
+-type get_malware_scan_request() :: #{}.
+
 
 %% Example:
 %% organization_kubernetes_configuration_result() :: #{
@@ -2570,6 +2785,14 @@
 
 
 %% Example:
+%% list_malware_scans_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Scans">> => list(malware_scan())
+%% }
+-type list_malware_scans_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% actor_process() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Path">> => string(),
@@ -2603,7 +2826,18 @@
 
 
 %% Example:
+%% malware_protection_findings_scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"TriggerType">> => list(any())
+%% }
+-type malware_protection_findings_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% threat() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Hash">> => string(),
+%%   <<"ItemDetails">> => list(item_details()),
 %%   <<"ItemPaths">> => list(item_path()),
 %%   <<"Name">> => string(),
 %%   <<"Source">> => string()
@@ -2701,6 +2935,14 @@
 %% }
 -type accept_invitation_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% ecs_cluster() :: #{
+%%   <<"Ec2InstanceUids">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type ecs_cluster() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -2782,6 +3024,13 @@
 
 
 %% Example:
+%% send_object_malware_scan_request() :: #{
+%%   <<"S3Object">> => s3_object_for_send_object_malware_scan()
+%% }
+-type send_object_malware_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% organization_feature_statistics() :: #{
 %%   <<"AdditionalConfiguration">> => list(organization_feature_statistics_additional_configuration()),
 %%   <<"EnabledAccountsCount">> => integer(),
@@ -2800,7 +3049,7 @@
 
 %% Example:
 %% get_remaining_free_trial_days_request() :: #{
-%%   <<"AccountIds">> => list(string())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type get_remaining_free_trial_days_request() :: #{binary() => any()}.
 
@@ -3035,11 +3284,22 @@
 
 
 %% Example:
+%% iam_instance_profile_v2() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type iam_instance_profile_v2() :: #{binary() => any()}.
+
+
+%% Example:
 %% rds_login_attempt_action() :: #{
 %%   <<"LoginAttributes">> => list(login_attribute()),
 %%   <<"RemoteIpDetails">> => remote_ip_details()
 %% }
 -type rds_login_attempt_action() :: #{binary() => any()}.
+
+%% Example:
+%% send_object_malware_scan_response() :: #{}
+-type send_object_malware_scan_response() :: #{}.
 
 
 %% Example:
@@ -3137,6 +3397,15 @@
 
 
 %% Example:
+%% s3_object_for_send_object_malware_scan() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object_for_send_object_malware_scan() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -3154,6 +3423,17 @@
 %% Example:
 %% get_malware_scan_settings_request() :: #{}
 -type get_malware_scan_settings_request() :: #{}.
+
+
+%% Example:
+%% scan_result_threat() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Hash">> => string(),
+%%   <<"ItemDetails">> => list(item_details()),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => list(any())
+%% }
+-type scan_result_threat() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3255,6 +3535,16 @@
 
 
 %% Example:
+%% ecs_task() :: #{
+%%   <<"ContainerUids">> => list(string()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LaunchType">> => list(any()),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type ecs_task() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_ip_set_response() :: #{
 %%   <<"IpSetId">> => string()
 %% }
@@ -3285,6 +3575,7 @@
 %%   <<"DbClusterIdentifier">> => string(),
 %%   <<"DbInstanceArn">> => string(),
 %%   <<"DbInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"Tags">> => list(tag())
@@ -3430,6 +3721,14 @@
 
 
 %% Example:
+%% scanned_resource_details() :: #{
+%%   <<"EbsSnapshot">> => ebs_snapshot(),
+%%   <<"EbsVolume">> => volume_detail()
+%% }
+-type scanned_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% detector_additional_configuration() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any())
@@ -3487,6 +3786,13 @@
 %% }
 -type access_key_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% ec2_image() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type ec2_image() :: #{binary() => any()}.
+
 %% Example:
 %% delete_filter_request() :: #{}
 -type delete_filter_request() :: #{}.
@@ -3530,6 +3836,23 @@
 
 
 %% Example:
+%% item_details() :: #{
+%%   <<"AdditionalInfo">> => additional_info(),
+%%   <<"Hash">> => string(),
+%%   <<"ItemPath">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type item_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point() :: #{
+%%   <<"BackupVaultName">> => string()
+%% }
+-type recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_usage_statistics_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UsageStatistics">> => usage_statistics()
@@ -3568,7 +3891,9 @@
 %% resource() :: #{
 %%   <<"AccessKeyDetails">> => access_key_details(),
 %%   <<"ContainerDetails">> => container(),
+%%   <<"EbsSnapshotDetails">> => ebs_snapshot_details(),
 %%   <<"EbsVolumeDetails">> => ebs_volume_details(),
+%%   <<"Ec2ImageDetails">> => ec2_image_details(),
 %%   <<"EcsClusterDetails">> => ecs_cluster_details(),
 %%   <<"EksClusterDetails">> => eks_cluster_details(),
 %%   <<"InstanceDetails">> => instance_details(),
@@ -3577,6 +3902,7 @@
 %%   <<"RdsDbInstanceDetails">> => rds_db_instance_details(),
 %%   <<"RdsDbUserDetails">> => rds_db_user_details(),
 %%   <<"RdsLimitlessDbDetails">> => rds_limitless_db_details(),
+%%   <<"RecoveryPointDetails">> => recovery_point_details(),
 %%   <<"ResourceType">> => string(),
 %%   <<"S3BucketDetails">> => list(s3_bucket_detail())
 %% }
@@ -3771,6 +4097,11 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_malware_scan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    resource_not_found_exception().
+
 -type get_malware_scan_settings_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
@@ -3844,6 +4175,10 @@
     internal_server_error_exception() | 
     access_denied_exception().
 
+-type list_malware_scans_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type list_members_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
@@ -3872,6 +4207,11 @@
 -type list_trusted_entity_sets_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type send_object_malware_scan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type start_malware_scan_errors() ::
     bad_request_exception() | 
@@ -5691,6 +6031,53 @@ get_malware_protection_plan(Client, MalwareProtectionPlanId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the detailed information for a specific malware scan.
+%%
+%% Each member account can view the malware scan details for their
+%% own account. An administrator can view malware scan details for all
+%% accounts in the organization.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more
+%% information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
+-spec get_malware_scan(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_malware_scan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_scan_errors(), tuple()}.
+get_malware_scan(Client, ScanId)
+  when is_map(Client) ->
+    get_malware_scan(Client, ScanId, #{}, #{}).
+
+-spec get_malware_scan(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_malware_scan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_scan_errors(), tuple()}.
+get_malware_scan(Client, ScanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_malware_scan(Client, ScanId, QueryMap, HeadersMap, []).
+
+-spec get_malware_scan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_malware_scan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_scan_errors(), tuple()}.
+get_malware_scan(Client, ScanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/malware-scan/", aws_util:encode_uri(ScanId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the details of the malware scan settings.
 %%
 %% There might be regional differences because some data sources might not be
@@ -6479,6 +6866,46 @@ list_malware_protection_plans(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of malware scans.
+%%
+%% Each member account can view the malware scans for their
+%% own accounts. An administrator can view the malware scans for all of its
+%% members' accounts.
+-spec list_malware_scans(aws_client:aws_client(), list_malware_scans_request()) ->
+    {ok, list_malware_scans_response(), tuple()} |
+    {error, any()} |
+    {error, list_malware_scans_errors(), tuple()}.
+list_malware_scans(Client, Input) ->
+    list_malware_scans(Client, Input, []).
+
+-spec list_malware_scans(aws_client:aws_client(), list_malware_scans_request(), proplists:proplist()) ->
+    {ok, list_malware_scans_response(), tuple()} |
+    {error, any()} |
+    {error, list_malware_scans_errors(), tuple()}.
+list_malware_scans(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/malware-scan"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists details about all member accounts for the current GuardDuty
 %% administrator
 %% account.
@@ -6800,17 +7227,68 @@ list_trusted_entity_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Initiates a malware scan for a specific S3 object.
+%%
+%% This API allows you to perform on-demand malware scanning of individual
+%% objects in S3 buckets that have Malware Protection for S3 enabled.
+%%
+%% When you use this API, the Amazon Web Services service terms for GuardDuty
+%% Malware
+%% Protection apply. For more information, see Amazon Web Services service
+%% terms for GuardDuty Malware Protection:
+%% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
+-spec send_object_malware_scan(aws_client:aws_client(), send_object_malware_scan_request()) ->
+    {ok, send_object_malware_scan_response(), tuple()} |
+    {error, any()} |
+    {error, send_object_malware_scan_errors(), tuple()}.
+send_object_malware_scan(Client, Input) ->
+    send_object_malware_scan(Client, Input, []).
+
+-spec send_object_malware_scan(aws_client:aws_client(), send_object_malware_scan_request(), proplists:proplist()) ->
+    {ok, send_object_malware_scan_response(), tuple()} |
+    {error, any()} |
+    {error, send_object_malware_scan_errors(), tuple()}.
+send_object_malware_scan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/object-malware-scan/send"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates the malware scan.
 %%
 %% Invoking this API will automatically create the Service-linked role:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
 %% in
-%% the corresponding account.
+%% the corresponding account if the resourceArn belongs to an EC2 instance.
 %%
 %% When the malware scan starts, you can use the associated scan ID to track
 %% the status of the scan. For more information,
-%% see DescribeMalwareScans:
-%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html.
+%% see ListMalwareScans:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareScans.html
+%% and GetMalwareScan:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareScan.html.
+%%
+%% When you use this API, the Amazon Web Services service terms for GuardDuty
+%% Malware
+%% Protection apply. For more information, see Amazon Web Services service
+%% terms for GuardDuty Malware Protection:
+%% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
 -spec start_malware_scan(aws_client:aws_client(), start_malware_scan_request()) ->
     {ok, start_malware_scan_response(), tuple()} |
     {error, any()} |

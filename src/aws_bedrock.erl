@@ -53,6 +53,8 @@
          delete_custom_model/4,
          delete_custom_model_deployment/3,
          delete_custom_model_deployment/4,
+         delete_enforced_guardrail_configuration/3,
+         delete_enforced_guardrail_configuration/4,
          delete_foundation_model_agreement/2,
          delete_foundation_model_agreement/3,
          delete_guardrail/3,
@@ -164,6 +166,9 @@
          list_custom_models/1,
          list_custom_models/3,
          list_custom_models/4,
+         list_enforced_guardrails_configuration/1,
+         list_enforced_guardrails_configuration/3,
+         list_enforced_guardrails_configuration/4,
          list_evaluation_jobs/1,
          list_evaluation_jobs/3,
          list_evaluation_jobs/4,
@@ -205,6 +210,8 @@
          list_provisioned_model_throughputs/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_enforced_guardrail_configuration/2,
+         put_enforced_guardrail_configuration/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
          put_use_case_for_model_access/2,
@@ -231,6 +238,8 @@
          update_automated_reasoning_policy_annotations/5,
          update_automated_reasoning_policy_test_case/4,
          update_automated_reasoning_policy_test_case/5,
+         update_custom_model_deployment/3,
+         update_custom_model_deployment/4,
          update_guardrail/3,
          update_guardrail/4,
          update_marketplace_model_endpoint/3,
@@ -504,6 +513,10 @@
 -type automated_reasoning_policy_definition_type_value_pair() :: #{binary() => any()}.
 
 %% Example:
+%% delete_enforced_guardrail_configuration_request() :: #{}
+-type delete_enforced_guardrail_configuration_request() :: #{}.
+
+%% Example:
 %% automated_reasoning_policy_planning() :: #{}
 -type automated_reasoning_policy_planning() :: #{}.
 
@@ -664,6 +677,15 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_generated_test_case() :: #{
+%%   <<"expectedAggregatedFindingsResult">> => list(any()),
+%%   <<"guardContent">> => string(),
+%%   <<"queryContent">> => string()
+%% }
+-type automated_reasoning_policy_generated_test_case() :: #{binary() => any()}.
 
 
 %% Example:
@@ -999,6 +1021,13 @@
 
 
 %% Example:
+%% list_enforced_guardrails_configuration_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_enforced_guardrails_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% marketplace_model_endpoint() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"endpointArn">> => string(),
@@ -1031,6 +1060,10 @@
 %%   <<"precomputedInferenceSourceIdentifiers">> => list(string())
 %% }
 -type evaluation_model_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_enforced_guardrail_configuration_response() :: #{}
+-type delete_enforced_guardrail_configuration_response() :: #{}.
 
 
 %% Example:
@@ -1093,6 +1126,22 @@
 
 
 %% Example:
+%% account_enforced_guardrail_output_configuration() :: #{
+%%   <<"configId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => [string()],
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"inputTags">> => list(any()),
+%%   <<"owner">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()]
+%% }
+-type account_enforced_guardrail_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_reasoning_policy_delete_rule_annotation() :: #{
 %%   <<"ruleId">> => string()
 %% }
@@ -1134,7 +1183,22 @@
 
 
 %% Example:
+%% r_f_t_hyper_parameters() :: #{
+%%   <<"batchSize">> => integer(),
+%%   <<"epochCount">> => integer(),
+%%   <<"evalInterval">> => integer(),
+%%   <<"inferenceMaxTokens">> => integer(),
+%%   <<"learningRate">> => float(),
+%%   <<"maxPromptLength">> => integer(),
+%%   <<"reasoningEffort">> => list(any()),
+%%   <<"trainingSamplePerPrompt">> => integer()
+%% }
+-type r_f_t_hyper_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% logging_config() :: #{
+%%   <<"audioDataDeliveryEnabled">> => [boolean()],
 %%   <<"cloudWatchConfig">> => cloud_watch_config(),
 %%   <<"embeddingDataDeliveryEnabled">> => [boolean()],
 %%   <<"imageDataDeliveryEnabled">> => [boolean()],
@@ -1536,6 +1600,13 @@
 
 
 %% Example:
+%% automated_reasoning_policy_scenarios() :: #{
+%%   <<"policyScenarios">> => list(automated_reasoning_policy_scenario())
+%% }
+-type automated_reasoning_policy_scenarios() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_automated_reasoning_policy_version_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"definitionHash">> => string(),
@@ -1925,6 +1996,14 @@
 
 
 %% Example:
+%% custom_model_deployment_update_details() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"updateStatus">> => list(any())
+%% }
+-type custom_model_deployment_update_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_output_data_config() :: #{
 %%   <<"s3Uri">> => string()
 %% }
@@ -2128,6 +2207,14 @@
 %% }
 -type training_metrics() :: #{binary() => any()}.
 
+
+%% Example:
+%% r_f_t_config() :: #{
+%%   <<"graderConfig">> => list(),
+%%   <<"hyperParameters">> => r_f_t_hyper_parameters()
+%% }
+-type r_f_t_config() :: #{binary() => any()}.
+
 %% Example:
 %% put_use_case_for_model_access_response() :: #{}
 -type put_use_case_for_model_access_response() :: #{}.
@@ -2233,6 +2320,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_imported_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_grader_config() :: #{
+%%   <<"lambdaArn">> => string()
+%% }
+-type lambda_grader_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2460,6 +2554,15 @@
 
 
 %% Example:
+%% put_enforced_guardrail_configuration_response() :: #{
+%%   <<"configId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()]
+%% }
+-type put_enforced_guardrail_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_foundation_model_agreement_offers_request() :: #{
 %%   <<"offerType">> => list(any())
 %% }
@@ -2580,6 +2683,13 @@
 
 
 %% Example:
+%% update_custom_model_deployment_response() :: #{
+%%   <<"customModelDeploymentArn">> => string()
+%% }
+-type update_custom_model_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_metric_evaluator_model_config() :: #{
 %%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model())
 %% }
@@ -2618,7 +2728,8 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"modelArn">> => string(),
 %%   <<"modelDeploymentName">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"updateDetails">> => custom_model_deployment_update_details()
 %% }
 -type get_custom_model_deployment_response() :: #{binary() => any()}.
 
@@ -3002,6 +3113,21 @@
 
 
 %% Example:
+%% put_enforced_guardrail_configuration_request() :: #{
+%%   <<"configId">> => string(),
+%%   <<"guardrailInferenceConfig">> := account_enforced_guardrail_inference_input_configuration()
+%% }
+-type put_enforced_guardrail_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_model_deployment_request() :: #{
+%%   <<"modelArn">> := string()
+%% }
+-type update_custom_model_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_model_customization_job_response() :: #{
 %%   <<"baseModelArn">> => string(),
 %%   <<"clientRequestToken">> => string(),
@@ -3074,6 +3200,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_generated_test_cases() :: #{
+%%   <<"generatedTestCases">> => list(automated_reasoning_policy_generated_test_case())
+%% }
+-type automated_reasoning_policy_generated_test_cases() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3524,6 +3657,15 @@
 
 
 %% Example:
+%% account_enforced_guardrail_inference_input_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"inputTags">> => list(any())
+%% }
+-type account_enforced_guardrail_inference_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_reasoning_policy_definition_type_value() :: #{
 %%   <<"description">> => string(),
 %%   <<"value">> => string()
@@ -3565,6 +3707,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enforced_guardrails_configuration_response() :: #{
+%%   <<"guardrailsConfig">> => list(account_enforced_guardrail_output_configuration()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_enforced_guardrails_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3848,6 +3998,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_enforced_guardrail_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_foundation_model_agreement_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4128,6 +4285,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_enforced_guardrails_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_evaluation_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4216,6 +4380,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_enforced_guardrail_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type put_model_invocation_logging_configuration_errors() ::
     throttling_exception() | 
@@ -4319,6 +4491,13 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     resource_in_use_exception().
+
+-type update_custom_model_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_guardrail_errors() ::
     throttling_exception() | 
@@ -5343,6 +5522,40 @@ delete_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input) -
 delete_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/model-customization/custom-model-deployments/", aws_util:encode_uri(CustomModelDeploymentIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the account-level enforced guardrail configuration.
+-spec delete_enforced_guardrail_configuration(aws_client:aws_client(), binary() | list(), delete_enforced_guardrail_configuration_request()) ->
+    {ok, delete_enforced_guardrail_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_enforced_guardrail_configuration_errors(), tuple()}.
+delete_enforced_guardrail_configuration(Client, ConfigId, Input) ->
+    delete_enforced_guardrail_configuration(Client, ConfigId, Input, []).
+
+-spec delete_enforced_guardrail_configuration(aws_client:aws_client(), binary() | list(), delete_enforced_guardrail_configuration_request(), proplists:proplist()) ->
+    {ok, delete_enforced_guardrail_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_enforced_guardrail_configuration_errors(), tuple()}.
+delete_enforced_guardrail_configuration(Client, ConfigId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/enforcedGuardrailsConfiguration/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7012,6 +7225,47 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the account-level enforced guardrail configurations.
+-spec list_enforced_guardrails_configuration(aws_client:aws_client()) ->
+    {ok, list_enforced_guardrails_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, list_enforced_guardrails_configuration_errors(), tuple()}.
+list_enforced_guardrails_configuration(Client)
+  when is_map(Client) ->
+    list_enforced_guardrails_configuration(Client, #{}, #{}).
+
+-spec list_enforced_guardrails_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, list_enforced_guardrails_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, list_enforced_guardrails_configuration_errors(), tuple()}.
+list_enforced_guardrails_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_enforced_guardrails_configuration(Client, QueryMap, HeadersMap, []).
+
+-spec list_enforced_guardrails_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_enforced_guardrails_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, list_enforced_guardrails_configuration_errors(), tuple()}.
+list_enforced_guardrails_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/enforcedGuardrailsConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all existing evaluation jobs.
 -spec list_evaluation_jobs(aws_client:aws_client()) ->
     {ok, list_evaluation_jobs_response(), tuple()} |
@@ -7701,6 +7955,40 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sets the account-level enforced guardrail configuration.
+-spec put_enforced_guardrail_configuration(aws_client:aws_client(), put_enforced_guardrail_configuration_request()) ->
+    {ok, put_enforced_guardrail_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_enforced_guardrail_configuration_errors(), tuple()}.
+put_enforced_guardrail_configuration(Client, Input) ->
+    put_enforced_guardrail_configuration(Client, Input, []).
+
+-spec put_enforced_guardrail_configuration(aws_client:aws_client(), put_enforced_guardrail_configuration_request(), proplists:proplist()) ->
+    {ok, put_enforced_guardrail_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_enforced_guardrail_configuration_errors(), tuple()}.
+put_enforced_guardrail_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/enforcedGuardrailsConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Set the configuration values for model invocation logging.
 -spec put_model_invocation_logging_configuration(aws_client:aws_client(), put_model_invocation_logging_configuration_request()) ->
     {ok, put_model_invocation_logging_configuration_response(), tuple()} |
@@ -8165,6 +8453,43 @@ update_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input
     Method = patch,
     Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases/", aws_util:encode_uri(TestCaseId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom model deployment with a new custom model.
+%%
+%% This allows you to deploy updated models without creating new deployment
+%% endpoints.
+-spec update_custom_model_deployment(aws_client:aws_client(), binary() | list(), update_custom_model_deployment_request()) ->
+    {ok, update_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_model_deployment_errors(), tuple()}.
+update_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input) ->
+    update_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input, []).
+
+-spec update_custom_model_deployment(aws_client:aws_client(), binary() | list(), update_custom_model_deployment_request(), proplists:proplist()) ->
+    {ok, update_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_model_deployment_errors(), tuple()}.
+update_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/model-customization/custom-model-deployments/", aws_util:encode_uri(CustomModelDeploymentIdentifier), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

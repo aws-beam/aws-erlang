@@ -35,6 +35,8 @@
          create_application/3,
          create_domain/2,
          create_domain/3,
+         create_index/3,
+         create_index/4,
          create_outbound_connection/2,
          create_outbound_connection/3,
          create_package/2,
@@ -51,6 +53,8 @@
          delete_domain/4,
          delete_inbound_connection/3,
          delete_inbound_connection/4,
+         delete_index/4,
+         delete_index/5,
          delete_outbound_connection/3,
          delete_outbound_connection/4,
          delete_package/3,
@@ -119,6 +123,9 @@
          get_domain_maintenance_status/3,
          get_domain_maintenance_status/5,
          get_domain_maintenance_status/6,
+         get_index/3,
+         get_index/5,
+         get_index/6,
          get_package_version_history/2,
          get_package_version_history/4,
          get_package_version_history/5,
@@ -192,6 +199,8 @@
          update_direct_query_data_source/4,
          update_domain_config/3,
          update_domain_config/4,
+         update_index/4,
+         update_index/5,
          update_package/2,
          update_package/3,
          update_package_scope/2,
@@ -485,6 +494,10 @@
 %%   <<"UpdateVersion">> => integer()
 %% }
 -type auto_tune_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_request() :: #{}
+-type delete_index_request() :: #{}.
 
 
 %% Example:
@@ -904,6 +917,13 @@
 
 
 %% Example:
+%% delete_index_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_index_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_domain_config_change_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -1005,7 +1025,8 @@
 %% Example:
 %% a_i_ml_options_output() :: #{
 %%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_output(),
-%%   <<"S3VectorsEngine">> => s3_vectors_engine()
+%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
+%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
 %% }
 -type a_i_ml_options_output() :: #{binary() => any()}.
 
@@ -1454,6 +1475,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"dataSources">> => list(data_source()),
 %%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tagList">> => list(tag())
 %% }
@@ -1547,6 +1569,7 @@
 %%   <<"dataSources">> => list(data_source()),
 %%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
 %%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"tagList">> => list(tag())
 %% }
@@ -1824,6 +1847,7 @@
 %%   <<"endpoint">> => string(),
 %%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
 %%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -1945,6 +1969,14 @@
 
 
 %% Example:
+%% create_index_request() :: #{
+%%   <<"IndexName">> := string(),
+%%   <<"IndexSchema">> := any()
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_store_access_option() :: #{
 %%   <<"KeyAccessRoleArn">> => string(),
 %%   <<"KeyStoreAccessEnabled">> => boolean()
@@ -1957,6 +1989,13 @@
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type dissociate_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"IndexSchema">> := any()
+%% }
+-type update_index_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2217,7 +2256,8 @@
 %% Example:
 %% a_i_ml_options_input() :: #{
 %%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_input(),
-%%   <<"S3VectorsEngine">> => s3_vectors_engine()
+%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
+%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
 %% }
 -type a_i_ml_options_input() :: #{binary() => any()}.
 
@@ -2236,6 +2276,13 @@
 %%   <<"UpgradeId">> => string()
 %% }
 -type upgrade_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_endpoint_request() :: #{}
@@ -2468,6 +2515,13 @@
 
 
 %% Example:
+%% create_index_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_policies_status() :: #{
 %%   <<"Options">> => string(),
 %%   <<"Status">> => option_status()
@@ -2597,6 +2651,13 @@
 
 
 %% Example:
+%% update_index_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type update_index_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_packages_request() :: #{
 %%   <<"Filters">> => list(describe_packages_filter()),
 %%   <<"MaxResults">> => integer(),
@@ -2666,6 +2727,10 @@
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
 
+%% Example:
+%% get_index_request() :: #{}
+-type get_index_request() :: #{}.
+
 
 %% Example:
 %% vpc_endpoint_error() :: #{
@@ -2708,6 +2773,13 @@
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type associate_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_vector_acceleration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type serverless_vector_acceleration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2769,6 +2841,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_for_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_index_response() :: #{
+%%   <<"IndexSchema">> => any()
+%% }
+-type get_index_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2883,6 +2962,16 @@
     invalid_type_exception() | 
     disabled_operation_exception().
 
+-type create_index_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type create_outbound_connection_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -2937,6 +3026,15 @@
     resource_not_found_exception().
 
 -type delete_inbound_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
 
@@ -3106,6 +3204,15 @@
     base_exception() | 
     validation_exception() | 
     internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
 
@@ -3294,6 +3401,15 @@
     internal_exception() | 
     invalid_type_exception() | 
     resource_not_found_exception().
+
+-type update_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type update_package_errors() ::
     limit_exceeded_exception() | 
@@ -3761,12 +3877,55 @@ create_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new cross-cluster search connection from a source Amazon
-%% OpenSearch Service
-%% domain to a destination domain.
+%% @doc Creates an OpenSearch index with optional automatic semantic
+%% enrichment for specified text fields.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% Automatic semantic enrichment enables semantic search capabilities without
+%% requiring machine learning expertise, improving search relevance by up to
+%% 20% by understanding search intent and contextual meaning beyond keyword
+%% matching. The semantic enrichment process has zero impact on search
+%% latency as sparse encodings are stored directly within the index during
+%% indexing. For more information, see Automatic semantic enrichment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/opensearch-semantic-enrichment.html.
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
+create_index(Client, DomainName, Input) ->
+    create_index(Client, DomainName, Input, []).
+
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request(), proplists:proplist()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
+create_index(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/index"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new cross-cluster search connection from a source Amazon
+%% OpenSearch Service domain
+%% to a destination domain.
+%%
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 -spec create_outbound_connection(aws_client:aws_client(), create_outbound_connection_request()) ->
     {ok, create_outbound_connection_response(), tuple()} |
@@ -4040,6 +4199,42 @@ delete_inbound_connection(Client, ConnectionId, Input) ->
 delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an OpenSearch index.
+%%
+%% This operation permanently removes the index and cannot be undone.
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
+delete_index(Client, DomainName, IndexName, Input) ->
+    delete_index(Client, DomainName, IndexName, Input, []).
+
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request(), proplists:proplist()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
+delete_index(Client, DomainName, IndexName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/index/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4840,7 +5035,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Dissociates multiple packages from a domain simulatneously.
+%% @doc Dissociates multiple packages from a domain simultaneously.
 -spec dissociate_packages(aws_client:aws_client(), dissociate_packages_request()) ->
     {ok, dissociate_packages_response(), tuple()} |
     {error, any()} |
@@ -5113,14 +5308,55 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of Amazon OpenSearch Service package versions, along
-%% with their
-%% creation time, commit message, and plugin properties (if the package is a
-%% zip plugin
-%% package).
+%% @doc Retrieves information about an OpenSearch index including its schema
+%% and semantic enrichment configuration.
 %%
-%% For more information, see Custom packages
-%% for Amazon OpenSearch Service:
+%% Use this operation to view the current index structure and semantic search
+%% settings.
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
+get_index(Client, DomainName, IndexName)
+  when is_map(Client) ->
+    get_index(Client, DomainName, IndexName, #{}, #{}).
+
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
+get_index(Client, DomainName, IndexName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_index(Client, DomainName, IndexName, QueryMap, HeadersMap, []).
+
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
+get_index(Client, DomainName, IndexName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/index/", aws_util:encode_uri(IndexName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of Amazon OpenSearch Service package versions, along
+%% with their creation
+%% time, commit message, and plugin properties (if the package is a zip
+%% plugin package).
+%%
+%% For more
+%% information, see Custom packages for Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 -spec get_package_version_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_package_version_history_response(), tuple()} |
@@ -5164,8 +5400,8 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the complete history of the last 10 upgrades performed on
-%% an Amazon
-%% OpenSearch Service domain.
+%% an Amazon OpenSearch
+%% Service domain.
 -spec get_upgrade_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
@@ -5208,8 +5444,8 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the most recent status of the last upgrade or upgrade
-%% eligibility check
-%% performed on an Amazon OpenSearch Service domain.
+%% eligibility check performed on
+%% an Amazon OpenSearch Service domain.
 -spec get_upgrade_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
@@ -6267,6 +6503,45 @@ update_domain_config(Client, DomainName, Input) ->
 update_domain_config(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing OpenSearch index schema and semantic enrichment
+%% configuration.
+%%
+%% This operation allows modification of field mappings and semantic search
+%% settings for text fields. Changes to semantic enrichment configuration
+%% will apply to newly ingested documents.
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
+update_index(Client, DomainName, IndexName, Input) ->
+    update_index(Client, DomainName, IndexName, Input, []).
+
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request(), proplists:proplist()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
+update_index(Client, DomainName, IndexName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/index/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

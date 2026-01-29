@@ -117,6 +117,18 @@
 -type accounting() :: #{binary() => any()}.
 
 %% Example:
+%% slurm_rest_request() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type slurm_rest_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
@@ -126,7 +138,8 @@
 %% update_cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => update_accounting_request(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
+%%   <<"slurmRest">> => update_slurm_rest_request()
 %% }
 -type update_cluster_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -199,8 +212,10 @@
 %% cluster_slurm_configuration() :: #{
 %%   <<"accounting">> => accounting(),
 %%   <<"authKey">> => slurm_auth_key(),
+%%   <<"jwtAuth">> => jwt_auth(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
+%%   <<"slurmRest">> => slurm_rest()
 %% }
 -type cluster_slurm_configuration() :: #{binary() => any()}.
 
@@ -360,6 +375,12 @@
 -type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% jwt_auth() :: #{
+%%   <<"jwtKey">> => jwt_key()
+%% }
+-type jwt_auth() :: #{binary() => any()}.
+
+%% Example:
 %% register_compute_node_group_instance_request() :: #{
 %%   <<"bootstrapId">> := string(),
 %%   <<"clusterIdentifier">> := string()
@@ -488,10 +509,28 @@
 -type delete_cluster_request() :: #{binary() => any()}.
 
 %% Example:
+%% slurm_rest() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type slurm_rest() :: #{binary() => any()}.
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_slurm_rest_request() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type update_slurm_rest_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% accounting_request() :: #{
@@ -511,7 +550,8 @@
 %% cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => accounting_request(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
+%%   <<"slurmRest">> => slurm_rest_request()
 %% }
 -type cluster_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -521,6 +561,13 @@
 %%   <<"version">> => [string()]
 %% }
 -type scheduler() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_key() :: #{
+%%   <<"secretArn">> => [string()],
+%%   <<"secretVersion">> => [string()]
+%% }
+-type jwt_key() :: #{binary() => any()}.
 
 %% Example:
 %% update_queue_slurm_configuration_request() :: #{
@@ -1113,7 +1160,7 @@ register_compute_node_group_instance(Client, Input, Options)
 %% To add a tag, specify a new tag key and a tag value. To edit a tag,
 %% specify an existing tag key and a new tag value.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
@@ -1121,7 +1168,7 @@ tag_resource(Client, Input)
     tag_resource(Client, Input, []).
 
 -spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
@@ -1133,7 +1180,7 @@ tag_resource(Client, Input, Options)
 %% To delete a tag, specify the tag key and the Amazon Resource Name (ARN) of
 %% the PCS resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
@@ -1141,7 +1188,7 @@ untag_resource(Client, Input)
     untag_resource(Client, Input, []).
 
 -spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)

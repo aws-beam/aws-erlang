@@ -88,8 +88,12 @@
          get_query_results/3,
          get_query_runtime_statistics/2,
          get_query_runtime_statistics/3,
+         get_resource_dashboard/2,
+         get_resource_dashboard/3,
          get_session/2,
          get_session/3,
+         get_session_endpoint/2,
+         get_session_endpoint/3,
          get_session_status/2,
          get_session_status/3,
          get_table_metadata/2,
@@ -312,6 +316,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EngineConfiguration">> => engine_configuration(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"NotebookVersion">> => string(),
 %%   <<"SessionConfiguration">> => session_configuration(),
 %%   <<"SessionId">> => string(),
@@ -359,10 +364,14 @@
 %% Example:
 %% start_session_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"CopyWorkGroupTags">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EngineConfiguration">> := engine_configuration(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"NotebookVersion">> => string(),
 %%   <<"SessionIdleTimeoutInMinutes">> => integer(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WorkGroup">> := string()
 %% }
 -type start_session_request() :: #{binary() => any()}.
@@ -378,6 +387,14 @@
 %%   <<"Name">> := string()
 %% }
 -type get_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_response() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"EndpointUrl">> => string()
+%% }
+-type get_session_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_notebook_output() :: #{
@@ -408,6 +425,7 @@
 %% Example:
 %% engine_configuration() :: #{
 %%   <<"AdditionalConfigs">> => map(),
+%%   <<"Classifications">> => list(classification()),
 %%   <<"CoordinatorDpuSize">> => integer(),
 %%   <<"DefaultExecutorDpuSize">> => integer(),
 %%   <<"MaxConcurrentDpus">> => integer(),
@@ -527,6 +545,12 @@
 -type update_named_query_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_session_endpoint_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
 %% put_capacity_assignment_configuration_input() :: #{
 %%   <<"CapacityAssignments">> := list(capacity_assignment()),
 %%   <<"CapacityReservationName">> := string()
@@ -586,6 +610,14 @@
 %%   <<"SessionId">> => string()
 %% }
 -type notebook_session_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"CloudWatchLoggingConfiguration">> => cloud_watch_logging_configuration(),
+%%   <<"ManagedLoggingConfiguration">> => managed_logging_configuration(),
+%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_assignment_configuration() :: #{
@@ -653,6 +685,7 @@
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"IdleTimeoutSeconds">> => float(),
+%%   <<"SessionIdleTimeoutInMinutes">> => integer(),
 %%   <<"WorkingDirectory">> => string()
 %% }
 -type session_configuration() :: #{binary() => any()}.
@@ -882,6 +915,14 @@
 %%   <<"WorkGroupNames">> => list(string())
 %% }
 -type capacity_assignment() :: #{binary() => any()}.
+
+%% Example:
+%% s3_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LogLocation">> => string()
+%% }
+-type s3_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% calculation_result() :: #{
@@ -1201,10 +1242,12 @@
 %%   <<"CustomerContentEncryptionConfiguration">> => customer_content_encryption_configuration(),
 %%   <<"EnableMinimumEncryptionConfiguration">> => boolean(),
 %%   <<"EnforceWorkGroupConfiguration">> => boolean(),
+%%   <<"EngineConfiguration">> => engine_configuration(),
 %%   <<"EngineVersion">> => engine_version(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"ManagedQueryResultsConfiguration">> => managed_query_results_configuration(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"PublishCloudWatchMetricsEnabled">> => boolean(),
 %%   <<"QueryResultsS3AccessGrantsConfiguration">> => query_results_s3_access_grants_configuration(),
 %%   <<"RequesterPaysEnabled">> => boolean(),
@@ -1225,9 +1268,11 @@
 %%   <<"CustomerContentEncryptionConfiguration">> => customer_content_encryption_configuration(),
 %%   <<"EnableMinimumEncryptionConfiguration">> => boolean(),
 %%   <<"EnforceWorkGroupConfiguration">> => boolean(),
+%%   <<"EngineConfiguration">> => engine_configuration(),
 %%   <<"EngineVersion">> => engine_version(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"ManagedQueryResultsConfigurationUpdates">> => managed_query_results_configuration_updates(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"PublishCloudWatchMetricsEnabled">> => boolean(),
 %%   <<"QueryResultsS3AccessGrantsConfiguration">> => query_results_s3_access_grants_configuration(),
 %%   <<"RemoveBytesScannedCutoffPerQuery">> => boolean(),
@@ -1246,6 +1291,7 @@
 %% Example:
 %% start_query_execution_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"EngineConfiguration">> => engine_configuration(),
 %%   <<"ExecutionParameters">> => list(string()),
 %%   <<"QueryExecutionContext">> => query_execution_context(),
 %%   <<"QueryString">> := string(),
@@ -1322,6 +1368,12 @@
 %%   <<"WorkGroup">> := string()
 %% }
 -type import_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_dashboard_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type get_resource_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -1422,6 +1474,12 @@
 -type identity_center_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% get_resource_dashboard_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type get_resource_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
 %% stop_calculation_execution_request() :: #{
 %%   <<"CalculationExecutionId">> := string()
 %% }
@@ -1480,6 +1538,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_catalogs_output() :: #{binary() => any()}.
+
+%% Example:
+%% classification() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => map()
+%% }
+-type classification() :: #{binary() => any()}.
 
 %% Example:
 %% delete_notebook_input() :: #{
@@ -1584,6 +1649,13 @@
 -type column_info() :: #{binary() => any()}.
 
 %% Example:
+%% managed_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKey">> => string()
+%% }
+-type managed_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% list_data_catalogs_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1651,6 +1723,15 @@
 
 %% }
 -type create_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type cloud_watch_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_named_query_output() :: #{
@@ -1741,6 +1822,7 @@
 %% query_execution_statistics() :: #{
 %%   <<"DataManifestLocation">> => string(),
 %%   <<"DataScannedInBytes">> => float(),
+%%   <<"DpuCount">> => float(),
 %%   <<"EngineExecutionTimeInMillis">> => float(),
 %%   <<"QueryPlanningTimeInMillis">> => float(),
 %%   <<"QueryQueueTimeInMillis">> => float(),
@@ -1893,7 +1975,17 @@
     internal_server_exception() | 
     invalid_request_exception().
 
+-type get_resource_dashboard_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type get_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_session_endpoint_errors() ::
     internal_server_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
@@ -2723,9 +2815,10 @@ get_query_results(Client, Input, Options)
 %% and output row
 %% count and data size) are updated asynchronously and may not be available
 %% immediately
-%% after a query completes. The non-timeline statistics are also not included
-%% when a query
-%% has row-level filters defined in Lake Formation.
+%% after a query completes or, in some cases, may not be returned. The
+%% non-timeline
+%% statistics are also not included when a query has row-level filters
+%% defined in Lake Formation.
 -spec get_query_runtime_statistics(aws_client:aws_client(), get_query_runtime_statistics_input()) ->
     {ok, get_query_runtime_statistics_output(), tuple()} |
     {error, any()} |
@@ -2741,6 +2834,23 @@ get_query_runtime_statistics(Client, Input)
 get_query_runtime_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryRuntimeStatistics">>, Input, Options).
+
+%% @doc Gets the Live UI/Persistence UI for a session.
+-spec get_resource_dashboard(aws_client:aws_client(), get_resource_dashboard_request()) ->
+    {ok, get_resource_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_dashboard_errors(), tuple()}.
+get_resource_dashboard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_dashboard(Client, Input, []).
+
+-spec get_resource_dashboard(aws_client:aws_client(), get_resource_dashboard_request(), proplists:proplist()) ->
+    {ok, get_resource_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_dashboard_errors(), tuple()}.
+get_resource_dashboard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceDashboard">>, Input, Options).
 
 %% @doc Gets the full details of a previously created session, including the
 %% session status
@@ -2760,6 +2870,24 @@ get_session(Client, Input)
 get_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSession">>, Input, Options).
+
+%% @doc Gets a connection endpoint and authentication token for a given
+%% session Id.
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_request()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session_endpoint(Client, Input, []).
+
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_request(), proplists:proplist()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSessionEndpoint">>, Input, Options).
 
 %% @doc Gets the current status of a session.
 -spec get_session_status(aws_client:aws_client(), get_session_status_request()) ->

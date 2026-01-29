@@ -469,6 +469,14 @@
 -type send_task_failure_input() :: #{binary() => any()}.
 
 %% Example:
+%% inspection_error_details() :: #{
+%%   <<"catchIndex">> => integer(),
+%%   <<"retryBackoffIntervalSeconds">> => integer(),
+%%   <<"retryIndex">> => integer()
+%% }
+-type inspection_error_details() :: #{binary() => any()}.
+
+%% Example:
 %% logging_configuration() :: #{
 %%   <<"destinations">> => list(log_destination()),
 %%   <<"includeExecutionData">> => boolean(),
@@ -575,6 +583,13 @@
 -type list_state_machines_input() :: #{binary() => any()}.
 
 %% Example:
+%% mock_error_output() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type mock_error_output() :: #{binary() => any()}.
+
+%% Example:
 %% inspection_data_request() :: #{
 %%   <<"body">> => string(),
 %%   <<"headers">> => string(),
@@ -647,13 +662,21 @@
 %% inspection_data() :: #{
 %%   <<"afterArguments">> => string(),
 %%   <<"afterInputPath">> => string(),
+%%   <<"afterItemBatcher">> => string(),
+%%   <<"afterItemSelector">> => string(),
+%%   <<"afterItemsPath">> => string(),
+%%   <<"afterItemsPointer">> => string(),
 %%   <<"afterParameters">> => string(),
 %%   <<"afterResultPath">> => string(),
 %%   <<"afterResultSelector">> => string(),
+%%   <<"errorDetails">> => inspection_error_details(),
 %%   <<"input">> => string(),
+%%   <<"maxConcurrency">> => integer(),
 %%   <<"request">> => inspection_data_request(),
 %%   <<"response">> => inspection_data_response(),
 %%   <<"result">> => string(),
+%%   <<"toleratedFailureCount">> => integer(),
+%%   <<"toleratedFailurePercentage">> => float(),
 %%   <<"variables">> => string()
 %% }
 -type inspection_data() :: #{binary() => any()}.
@@ -769,6 +792,15 @@
 %%   <<"error">> => string()
 %% }
 -type execution_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% test_state_configuration() :: #{
+%%   <<"errorCausedByState">> => string(),
+%%   <<"mapItemReaderData">> => string(),
+%%   <<"mapIterationFailureCount">> => integer(),
+%%   <<"retrierRetryCount">> => integer()
+%% }
+-type test_state_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% lambda_function_timed_out_event_details() :: #{
@@ -1148,6 +1180,14 @@
 -type update_map_run_input() :: #{binary() => any()}.
 
 %% Example:
+%% mock_input() :: #{
+%%   <<"errorOutput">> => mock_error_output(),
+%%   <<"fieldValidationMode">> => list(any()),
+%%   <<"result">> => string()
+%% }
+-type mock_input() :: #{binary() => any()}.
+
+%% Example:
 %% start_sync_execution_input() :: #{
 %%   <<"includedData">> => list(any()),
 %%   <<"input">> => string(),
@@ -1252,11 +1292,15 @@
 
 %% Example:
 %% test_state_input() :: #{
+%%   <<"context">> => string(),
 %%   <<"definition">> := string(),
 %%   <<"input">> => string(),
 %%   <<"inspectionLevel">> => list(any()),
+%%   <<"mock">> => mock_input(),
 %%   <<"revealSecrets">> => boolean(),
 %%   <<"roleArn">> => string(),
+%%   <<"stateConfiguration">> => test_state_configuration(),
+%%   <<"stateName">> => string(),
 %%   <<"variables">> => string()
 %% }
 -type test_state_input() :: #{binary() => any()}.
@@ -2894,7 +2938,8 @@ tag_resource(Client, Input, Options)
 %% of a state exceeds this duration, it fails with the `States.Timeout'
 %% error.
 %%
-%% `TestState' doesn't support Activity tasks:
+%% `TestState' only supports the following when a mock is specified:
+%% Activity tasks:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html,
 %% `.sync' or `.waitForTaskToken'
 %% service integration patterns:

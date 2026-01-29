@@ -34,6 +34,8 @@
          create_access_entry/4,
          create_addon/3,
          create_addon/4,
+         create_capability/3,
+         create_capability/4,
          create_cluster/2,
          create_cluster/3,
          create_eks_anywhere_subscription/2,
@@ -48,6 +50,8 @@
          delete_access_entry/5,
          delete_addon/4,
          delete_addon/5,
+         delete_capability/4,
+         delete_capability/5,
          delete_cluster/3,
          delete_cluster/4,
          delete_eks_anywhere_subscription/3,
@@ -72,6 +76,9 @@
          describe_addon_versions/1,
          describe_addon_versions/3,
          describe_addon_versions/4,
+         describe_capability/3,
+         describe_capability/5,
+         describe_capability/6,
          describe_cluster/2,
          describe_cluster/4,
          describe_cluster/5,
@@ -117,6 +124,9 @@
          list_associated_access_policies/3,
          list_associated_access_policies/5,
          list_associated_access_policies/6,
+         list_capabilities/2,
+         list_capabilities/4,
+         list_capabilities/5,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
@@ -155,6 +165,8 @@
          update_access_entry/5,
          update_addon/4,
          update_addon/5,
+         update_capability/4,
+         update_capability/5,
          update_cluster_config/3,
          update_cluster_config/4,
          update_cluster_version/3,
@@ -214,6 +226,13 @@
 
 
 %% Example:
+%% describe_capability_response() :: #{
+%%   <<"capability">> => capability()
+%% }
+-type describe_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_policy() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string()
@@ -228,6 +247,14 @@
 %%   <<"resourceIds">> => list(string())
 %% }
 -type addon_issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_role_mapping() :: #{
+%%   <<"identities">> => list(sso_identity()),
+%%   <<"role">> => list(any())
+%% }
+-type argo_cd_role_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -318,6 +345,13 @@
 
 
 %% Example:
+%% capability_configuration_request() :: #{
+%%   <<"argoCd">> => argo_cd_config_request()
+%% }
+-type capability_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_nodegroup_request() :: #{
 %%   <<"amiType">> => list(any()),
 %%   <<"capacityType">> => list(any()),
@@ -346,6 +380,19 @@
 %%   <<"preserve">> => boolean()
 %% }
 -type delete_addon_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capability_request() :: #{
+%%   <<"capabilityName">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"configuration">> => capability_configuration_request(),
+%%   <<"deletePropagationPolicy">> := list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_capability_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -433,6 +480,14 @@
 
 
 %% Example:
+%% update_argo_cd_config() :: #{
+%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
+%%   <<"rbacRoleMappings">> => update_role_mappings()
+%% }
+-type update_argo_cd_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% pod_identity_association() :: #{
 %%   <<"associationArn">> => string(),
 %%   <<"associationId">> => string(),
@@ -476,6 +531,14 @@
 %%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration())
 %% }
 -type describe_addon_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_role_mappings() :: #{
+%%   <<"addOrUpdateRoleMappings">> => list(argo_cd_role_mapping()),
+%%   <<"removeRoleMappings">> => list(argo_cd_role_mapping())
+%% }
+-type update_role_mappings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -626,6 +689,13 @@
 
 
 %% Example:
+%% delete_capability_response() :: #{
+%%   <<"capability">> => capability()
+%% }
+-type delete_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% addon_pod_identity_associations() :: #{
 %%   <<"roleArn">> => string(),
 %%   <<"serviceAccount">> => string()
@@ -639,6 +709,10 @@
 %% }
 -type identity_provider_config_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_capability_request() :: #{}
+-type describe_capability_request() :: #{}.
+
 
 %% Example:
 %% create_access_config_request() :: #{
@@ -650,6 +724,13 @@
 %% Example:
 %% delete_eks_anywhere_subscription_request() :: #{}
 -type delete_eks_anywhere_subscription_request() :: #{}.
+
+
+%% Example:
+%% control_plane_scaling_config() :: #{
+%%   <<"tier">> => list(any())
+%% }
+-type control_plane_scaling_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -707,11 +788,37 @@
 
 
 %% Example:
+%% create_capability_response() :: #{
+%%   <<"capability">> => capability()
+%% }
+-type create_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_pod_identity_associations_response() :: #{
 %%   <<"associations">> => list(pod_identity_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_pod_identity_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => capability_configuration_response(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deletePropagationPolicy">> => list(any()),
+%%   <<"health">> => capability_health(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type capability() :: #{binary() => any()}.
 
 
 %% Example:
@@ -738,6 +845,13 @@
 %%   <<"nodeRoleArn">> => string()
 %% }
 -type compute_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capability_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type update_capability_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -773,6 +887,19 @@
 %%   <<"tags">> => map()
 %% }
 -type addon() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type capability_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -857,6 +984,7 @@
 %%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_request(),
+%%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
 %%   <<"deletionProtection">> => boolean(),
 %%   <<"encryptionConfig">> => list(encryption_config()),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
@@ -943,6 +1071,17 @@
 %%   <<"association">> => pod_identity_association()
 %% }
 -type update_pod_identity_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_config_response() :: #{
+%%   <<"awsIdc">> => argo_cd_aws_idc_config_response(),
+%%   <<"namespace">> => string(),
+%%   <<"networkAccess">> => argo_cd_network_access_config_response(),
+%%   <<"rbacRoleMappings">> => list(argo_cd_role_mapping()),
+%%   <<"serverUrl">> => string()
+%% }
+-type argo_cd_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1043,6 +1182,7 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_response(),
 %%   <<"connectorConfig">> => connector_config_response(),
+%%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"deletionProtection">> => boolean(),
 %%   <<"encryptionConfig">> => list(encryption_config()),
@@ -1094,6 +1234,13 @@
 
 
 %% Example:
+%% capability_configuration_response() :: #{
+%%   <<"argoCd">> => argo_cd_config_response()
+%% }
+-type capability_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_addon_versions_response() :: #{
 %%   <<"addons">> => list(addon_info()),
 %%   <<"nextToken">> => string()
@@ -1110,6 +1257,14 @@
 
 
 %% Example:
+%% list_capabilities_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"clusterName">> => string(),
 %%   <<"message">> => string(),
@@ -1122,11 +1277,21 @@
 %% Example:
 %% list_updates_request() :: #{
 %%   <<"addonName">> => string(),
+%%   <<"capabilityName">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"nodegroupName">> => string()
 %% }
 -type list_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_aws_idc_config_response() :: #{
+%%   <<"idcInstanceArn">> => string(),
+%%   <<"idcManagedApplicationArn">> => string(),
+%%   <<"idcRegion">> => string()
+%% }
+-type argo_cd_aws_idc_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1194,6 +1359,13 @@
 %% Example:
 %% describe_nodegroup_request() :: #{}
 -type describe_nodegroup_request() :: #{}.
+
+
+%% Example:
+%% argo_cd_network_access_config_response() :: #{
+%%   <<"vpceIds">> => list(string())
+%% }
+-type argo_cd_network_access_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1276,6 +1448,16 @@
 
 
 %% Example:
+%% update_capability_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"configuration">> => update_capability_configuration(),
+%%   <<"deletePropagationPolicy">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type update_capability_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% disassociate_identity_provider_config_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"identityProviderConfig">> := identity_provider_config()
@@ -1323,6 +1505,13 @@
 %%   <<"nodeRepairConfigOverrides">> => list(node_repair_config_overrides())
 %% }
 -type node_repair_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_network_access_config_request() :: #{
+%%   <<"vpceIds">> => list(string())
+%% }
+-type argo_cd_network_access_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_fargate_profile_request() :: #{}
@@ -1438,6 +1627,30 @@
 %% }
 -type associated_access_policy() :: #{binary() => any()}.
 
+
+%% Example:
+%% capability_issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type capability_issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_aws_idc_config_request() :: #{
+%%   <<"idcInstanceArn">> => string(),
+%%   <<"idcRegion">> => string()
+%% }
+-type argo_cd_aws_idc_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sso_identity() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type sso_identity() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cluster_request() :: #{}
 -type delete_cluster_request() :: #{}.
@@ -1452,6 +1665,14 @@
 %% Example:
 %% start_insights_refresh_request() :: #{}
 -type start_insights_refresh_request() :: #{}.
+
+
+%% Example:
+%% list_capabilities_response() :: #{
+%%   <<"capabilities">> => list(capability_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1627,10 +1848,15 @@
 %% }
 -type addon_health() :: #{binary() => any()}.
 
+%% Example:
+%% delete_capability_request() :: #{}
+-type delete_capability_request() :: #{}.
+
 
 %% Example:
 %% describe_update_request() :: #{
 %%   <<"addonName">> => string(),
+%%   <<"capabilityName">> => string(),
 %%   <<"nodegroupName">> => string()
 %% }
 -type describe_update_request() :: #{binary() => any()}.
@@ -1783,6 +2009,16 @@
 
 
 %% Example:
+%% argo_cd_config_request() :: #{
+%%   <<"awsIdc">> => argo_cd_aws_idc_config_request(),
+%%   <<"namespace">> => string(),
+%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
+%%   <<"rbacRoleMappings">> => list(argo_cd_role_mapping())
+%% }
+-type argo_cd_config_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_insights_refresh_response() :: #{
 %%   <<"message">> => string(),
 %%   <<"status">> => list(any())
@@ -1903,6 +2139,13 @@
 
 
 %% Example:
+%% update_capability_configuration() :: #{
+%%   <<"argoCd">> => update_argo_cd_config()
+%% }
+-type update_capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% insight() :: #{
 %%   <<"additionalInfo">> => map(),
 %%   <<"category">> => list(any()),
@@ -1925,6 +2168,7 @@
 %%   <<"accessConfig">> => update_access_config_request(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_request(),
+%%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
 %%   <<"deletionProtection">> => boolean(),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
@@ -1993,6 +2237,13 @@
 %%   <<"cluster">> => cluster()
 %% }
 -type register_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_health() :: #{
+%%   <<"issues">> => list(capability_issue())
+%% }
+-type capability_health() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2178,6 +2429,15 @@
     client_exception() | 
     resource_in_use_exception().
 
+-type create_capability_errors() ::
+    server_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception().
+
 -type create_cluster_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2230,6 +2490,13 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     client_exception().
+
+-type delete_capability_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
 
 -type delete_cluster_errors() ::
     server_exception() | 
@@ -2293,6 +2560,12 @@
 -type describe_addon_versions_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type describe_capability_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception().
 
 -type describe_cluster_errors() ::
@@ -2391,6 +2664,10 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type list_capabilities_errors() ::
+    server_exception() | 
+    invalid_parameter_exception().
+
 -type list_clusters_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2481,6 +2758,13 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
+    resource_in_use_exception().
+
+-type update_capability_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
     resource_in_use_exception().
 
 -type update_cluster_config_errors() ::
@@ -2757,6 +3041,56 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a managed capability resource for an Amazon EKS cluster.
+%%
+%% Capabilities provide fully managed capabilities to build and scale with
+%% Kubernetes. When you create a capability, Amazon EKSprovisions and manages
+%% the infrastructure required to run the capability outside of your cluster.
+%% This approach reduces operational overhead and preserves cluster
+%% resources.
+%%
+%% You can only create one Capability of each type on a given Amazon EKS
+%% cluster. Valid types are Argo CD for declarative GitOps deployment, Amazon
+%% Web Services Controllers for Kubernetes (ACK) for resource management, and
+%% Kube Resource Orchestrator (KRO) for Kubernetes custom resource
+%% orchestration.
+%%
+%% For more information, see EKS Capabilities:
+%% https://docs.aws.amazon.com/eks/latest/userguide/capabilities.html in the
+%% Amazon EKS User Guide.
+-spec create_capability(aws_client:aws_client(), binary() | list(), create_capability_request()) ->
+    {ok, create_capability_response(), tuple()} |
+    {error, any()} |
+    {error, create_capability_errors(), tuple()}.
+create_capability(Client, ClusterName, Input) ->
+    create_capability(Client, ClusterName, Input, []).
+
+-spec create_capability(aws_client:aws_client(), binary() | list(), create_capability_request(), proplists:proplist()) ->
+    {ok, create_capability_response(), tuple()} |
+    {error, any()} |
+    {error, create_capability_errors(), tuple()}.
+create_capability(Client, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/capabilities"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon EKS control plane.
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
@@ -2770,7 +3104,7 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% Amazon EC2 instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
-%% Zones and fronted by an Elastic Load Balancing
+%% Zones and fronted by an ELB
 %% Network Load Balancer. Amazon EKS also provisions elastic network
 %% interfaces in your VPC subnets to provide
 %% connectivity from the control plane instances to the nodes (for example,
@@ -3210,6 +3544,51 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a managed capability from your Amazon EKS cluster.
+%%
+%% When you delete a capability, Amazon EKS removes the capability
+%% infrastructure but retains all resources that were managed by the
+%% capability.
+%%
+%% Before deleting a capability, you should delete all Kubernetes resources
+%% that were created by the capability. After the capability is deleted,
+%% these resources become difficult to manage because the controller that
+%% managed them is no longer available. To delete resources before removing
+%% the capability, use `kubectl delete' or remove them through your
+%% GitOps workflow.
+-spec delete_capability(aws_client:aws_client(), binary() | list(), binary() | list(), delete_capability_request()) ->
+    {ok, delete_capability_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capability_errors(), tuple()}.
+delete_capability(Client, CapabilityName, ClusterName, Input) ->
+    delete_capability(Client, CapabilityName, ClusterName, Input, []).
+
+-spec delete_capability(aws_client:aws_client(), binary() | list(), binary() | list(), delete_capability_request(), proplists:proplist()) ->
+    {ok, delete_capability_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capability_errors(), tuple()}.
+delete_capability(Client, CapabilityName, ClusterName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/capabilities/", aws_util:encode_uri(CapabilityName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Amazon EKS cluster control plane.
 %%
 %% If you have active services in your cluster that are associated with a
@@ -3631,6 +4010,45 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns detailed information about a specific managed capability in
+%% your Amazon EKS cluster, including its current status, configuration,
+%% health information, and any issues that may be affecting its operation.
+-spec describe_capability(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_capability_response(), tuple()} |
+    {error, any()} |
+    {error, describe_capability_errors(), tuple()}.
+describe_capability(Client, CapabilityName, ClusterName)
+  when is_map(Client) ->
+    describe_capability(Client, CapabilityName, ClusterName, #{}, #{}).
+
+-spec describe_capability(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_capability_response(), tuple()} |
+    {error, any()} |
+    {error, describe_capability_errors(), tuple()}.
+describe_capability(Client, CapabilityName, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_capability(Client, CapabilityName, ClusterName, QueryMap, HeadersMap, []).
+
+-spec describe_capability(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_capability_response(), tuple()} |
+    {error, any()} |
+    {error, describe_capability_errors(), tuple()}.
+describe_capability(Client, CapabilityName, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/capabilities/", aws_util:encode_uri(CapabilityName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data returned by this
@@ -4035,6 +4453,7 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
+        {<<"capabilityName">>, maps:get(<<"capabilityName">>, QueryMap, undefined)},
         {<<"nodegroupName">>, maps:get(<<"nodegroupName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -4266,6 +4685,51 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
 list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all managed capabilities in your Amazon EKS cluster.
+%%
+%% You can use this operation to get an overview of all capabilities and
+%% their current status.
+-spec list_capabilities(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_capabilities_response(), tuple()} |
+    {error, any()} |
+    {error, list_capabilities_errors(), tuple()}.
+list_capabilities(Client, ClusterName)
+  when is_map(Client) ->
+    list_capabilities(Client, ClusterName, #{}, #{}).
+
+-spec list_capabilities(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_capabilities_response(), tuple()} |
+    {error, any()} |
+    {error, list_capabilities_errors(), tuple()}.
+list_capabilities(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_capabilities(Client, ClusterName, QueryMap, HeadersMap, []).
+
+-spec list_capabilities(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_capabilities_response(), tuple()} |
+    {error, any()} |
+    {error, list_capabilities_errors(), tuple()}.
+list_capabilities(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/capabilities"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4676,6 +5140,7 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
+        {<<"capabilityName">>, maps:get(<<"capabilityName">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"nodegroupName">>, maps:get(<<"nodegroupName">>, QueryMap, undefined)}
@@ -4909,6 +5374,49 @@ update_addon(Client, AddonName, ClusterName, Input) ->
 update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), "/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of a managed capability in your Amazon EKS
+%% cluster.
+%%
+%% You can update the IAM role, configuration settings, and delete
+%% propagation policy for a capability.
+%%
+%% When you update a capability, Amazon EKS applies the changes and may
+%% restart capability components as needed. The capability remains available
+%% during the update process, but some operations may be temporarily
+%% unavailable.
+-spec update_capability(aws_client:aws_client(), binary() | list(), binary() | list(), update_capability_request()) ->
+    {ok, update_capability_response(), tuple()} |
+    {error, any()} |
+    {error, update_capability_errors(), tuple()}.
+update_capability(Client, CapabilityName, ClusterName, Input) ->
+    update_capability(Client, CapabilityName, ClusterName, Input, []).
+
+-spec update_capability(aws_client:aws_client(), binary() | list(), binary() | list(), update_capability_request(), proplists:proplist()) ->
+    {ok, update_capability_response(), tuple()} |
+    {error, any()} |
+    {error, update_capability_errors(), tuple()}.
+update_capability(Client, CapabilityName, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/capabilities/", aws_util:encode_uri(CapabilityName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

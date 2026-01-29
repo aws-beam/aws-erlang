@@ -134,6 +134,7 @@
 
 %% Example:
 %% organization_event_filter() :: #{
+%%   <<"actionabilities">> => list(list(any())()),
 %%   <<"awsAccountIds">> => list(string()),
 %%   <<"endTime">> => date_time_range(),
 %%   <<"entityArns">> => list(string()),
@@ -142,6 +143,7 @@
 %%   <<"eventTypeCategories">> => list(list(any())()),
 %%   <<"eventTypeCodes">> => list(string()),
 %%   <<"lastUpdatedTime">> => date_time_range(),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"regions">> => list(string()),
 %%   <<"services">> => list(string()),
 %%   <<"startTime">> => date_time_range()
@@ -354,6 +356,7 @@
 
 %% Example:
 %% event_filter() :: #{
+%%   <<"actionabilities">> => list(list(any())()),
 %%   <<"availabilityZones">> => list(string()),
 %%   <<"endTimes">> => list(date_time_range()),
 %%   <<"entityArns">> => list(string()),
@@ -363,6 +366,7 @@
 %%   <<"eventTypeCategories">> => list(list(any())()),
 %%   <<"eventTypeCodes">> => list(string()),
 %%   <<"lastUpdatedTimes">> => list(date_time_range()),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"regions">> => list(string()),
 %%   <<"services">> => list(string()),
 %%   <<"startTimes">> => list(date_time_range()),
@@ -390,6 +394,7 @@
 
 %% Example:
 %% event() :: #{
+%%   <<"actionability">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
@@ -397,6 +402,7 @@
 %%   <<"eventTypeCategory">> => list(any()),
 %%   <<"eventTypeCode">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"region">> => string(),
 %%   <<"service">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -428,8 +434,10 @@
 
 %% Example:
 %% event_type_filter() :: #{
+%%   <<"actionabilities">> => list(list(any())()),
 %%   <<"eventTypeCategories">> => list(list(any())()),
 %%   <<"eventTypeCodes">> => list(string()),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"services">> => list(string())
 %% }
 -type event_type_filter() :: #{binary() => any()}.
@@ -452,20 +460,24 @@
 
 %% Example:
 %% event_type() :: #{
+%%   <<"actionability">> => list(any()),
 %%   <<"category">> => list(any()),
 %%   <<"code">> => string(),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"service">> => string()
 %% }
 -type event_type() :: #{binary() => any()}.
 
 %% Example:
 %% organization_event() :: #{
+%%   <<"actionability">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"eventScopeCode">> => list(any()),
 %%   <<"eventTypeCategory">> => list(any()),
 %%   <<"eventTypeCode">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"personas">> => list(list(any())()),
 %%   <<"region">> => string(),
 %%   <<"service">> => string(),
 %%   <<"startTime">> => non_neg_integer(),

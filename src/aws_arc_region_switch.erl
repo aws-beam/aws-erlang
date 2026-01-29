@@ -45,6 +45,8 @@
          list_plans_in_region/3,
          list_route53_health_checks/2,
          list_route53_health_checks/3,
+         list_route53_health_checks_in_region/2,
+         list_route53_health_checks_in_region/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_plan_execution/2,
@@ -76,6 +78,25 @@
 -type global_aurora_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% s3_report_output_configuration() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"bucketPath">> => [string()]
+%% }
+-type s3_report_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% document_db_configuration() :: #{
+%%   <<"behavior">> => list(any()),
+%%   <<"crossAccountRole">> => string(),
+%%   <<"databaseClusterArns">> => list(string()),
+%%   <<"externalId">> => [string()],
+%%   <<"globalClusterIdentifier">> => string(),
+%%   <<"timeoutMinutes">> => [integer()],
+%%   <<"ungraceful">> => document_db_ungraceful()
+%% }
+-type document_db_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% lambda_ungraceful() :: #{
 %%   <<"behavior">> => list(any())
 %% }
@@ -94,6 +115,13 @@
 %%   <<"state">> => list(any())
 %% }
 -type arc_routing_control_state() :: #{binary() => any()}.
+
+%% Example:
+%% list_route53_health_checks_in_region_response() :: #{
+%%   <<"healthChecks">> => list(route53_health_check()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_route53_health_checks_in_region_response() :: #{binary() => any()}.
 
 %% Example:
 %% lambdas() :: #{
@@ -160,6 +188,13 @@
 %%   <<"minimumSuccessPercentage">> => [integer()]
 %% }
 -type ecs_ungraceful() :: #{binary() => any()}.
+
+%% Example:
+%% failed_report_output() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()]
+%% }
+-type failed_report_output() :: #{binary() => any()}.
 
 %% Example:
 %% region_switch_plan_configuration() :: #{
@@ -291,6 +326,16 @@
 -type get_plan_execution_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_route53_health_checks_in_region_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recordName">> => string()
+%% }
+-type list_route53_health_checks_in_region_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_plan_execution_events_response() :: #{
 %%   <<"items">> => list(execution_event()),
 %%   <<"nextToken">> => [string()]
@@ -340,6 +385,12 @@
 -type eks_cluster() :: #{binary() => any()}.
 
 %% Example:
+%% report_configuration() :: #{
+%%   <<"reportOutput">> => list(list())
+%% }
+-type report_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% workflow() :: #{
 %%   <<"steps">> => list(step()),
 %%   <<"workflowDescription">> => [string()],
@@ -383,6 +434,7 @@
 %%   <<"description">> => [string()],
 %%   <<"executionRole">> := string(),
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
+%%   <<"reportConfiguration">> => report_configuration(),
 %%   <<"triggers">> => list(trigger()),
 %%   <<"workflows">> := list(workflow())
 %% }
@@ -409,6 +461,12 @@
 %%   <<"ungraceful">> => ecs_ungraceful()
 %% }
 -type ecs_capacity_increase_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% document_db_ungraceful() :: #{
+%%   <<"ungraceful">> => list(any())
+%% }
+-type document_db_ungraceful() :: #{binary() => any()}.
 
 %% Example:
 %% list_plan_executions_response() :: #{
@@ -447,6 +505,7 @@
 %%   <<"executionId">> => string(),
 %%   <<"executionRegion">> => [string()],
 %%   <<"executionState">> => list(any()),
+%%   <<"generatedReportDetails">> => list(generated_report()),
 %%   <<"mode">> => list(any()),
 %%   <<"nextToken">> => [string()],
 %%   <<"plan">> => plan(),
@@ -497,7 +556,8 @@
 %%   <<"healthCheckId">> => string(),
 %%   <<"hostedZoneId">> => string(),
 %%   <<"recordName">> => string(),
-%%   <<"region">> => string()
+%%   <<"region">> => string(),
+%%   <<"status">> => list(any())
 %% }
 -type route53_health_check() :: #{binary() => any()}.
 
@@ -506,6 +566,13 @@
 %%   <<"plan">> => plan()
 %% }
 -type get_plan_in_region_response() :: #{binary() => any()}.
+
+%% Example:
+%% generated_report() :: #{
+%%   <<"reportGenerationTime">> => [non_neg_integer()],
+%%   <<"reportOutput">> => list()
+%% }
+-type generated_report() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -536,6 +603,12 @@
 %%   <<"arn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_report_output() :: #{
+%%   <<"s3ObjectKey">> => [string()]
+%% }
+-type s3_report_output() :: #{binary() => any()}.
 
 %% Example:
 %% global_aurora_ungraceful() :: #{
@@ -597,6 +670,7 @@
 %%   <<"recoveryApproach">> := list(any()),
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
 %%   <<"regions">> := list(string()),
+%%   <<"reportConfiguration">> => report_configuration(),
 %%   <<"tags">> => map(),
 %%   <<"triggers">> => list(trigger()),
 %%   <<"workflows">> := list(workflow())
@@ -745,6 +819,7 @@
 %%   <<"recoveryApproach">> => list(any()),
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
 %%   <<"regions">> => list(string()),
+%%   <<"reportConfiguration">> => report_configuration(),
 %%   <<"triggers">> => list(trigger()),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"version">> => [string()],
@@ -794,6 +869,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_route53_health_checks_in_region_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    illegal_argument_exception().
 
 -type list_tags_for_resource_errors() ::
     internal_server_exception() | 
@@ -1088,6 +1169,24 @@ list_route53_health_checks(Client, Input)
 list_route53_health_checks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoute53HealthChecks">>, Input, Options).
+
+%% @doc List the Amazon Route 53 health checks in a specific Amazon Web
+%% Services Region.
+-spec list_route53_health_checks_in_region(aws_client:aws_client(), list_route53_health_checks_in_region_request()) ->
+    {ok, list_route53_health_checks_in_region_response(), tuple()} |
+    {error, any()} |
+    {error, list_route53_health_checks_in_region_errors(), tuple()}.
+list_route53_health_checks_in_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_route53_health_checks_in_region(Client, Input, []).
+
+-spec list_route53_health_checks_in_region(aws_client:aws_client(), list_route53_health_checks_in_region_request(), proplists:proplist()) ->
+    {ok, list_route53_health_checks_in_region_response(), tuple()} |
+    {error, any()} |
+    {error, list_route53_health_checks_in_region_errors(), tuple()}.
+list_route53_health_checks_in_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRoute53HealthChecksInRegion">>, Input, Options).
 
 %% @doc Lists the tags attached to a Region switch resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->

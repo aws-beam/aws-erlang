@@ -607,7 +607,7 @@
 
 %% Example:
 %% create_landing_zone_input() :: #{
-%%   <<"manifest">> := any(),
+%%   <<"manifest">> => any(),
 %%   <<"remediationTypes">> => list(list(any())()),
 %%   <<"tags">> => map(),
 %%   <<"version">> := string()
@@ -653,7 +653,7 @@
 %% Example:
 %% update_landing_zone_input() :: #{
 %%   <<"landingZoneIdentifier">> := [string()],
-%%   <<"manifest">> := any(),
+%%   <<"manifest">> => any(),
 %%   <<"remediationTypes">> => list(list(any())()),
 %%   <<"version">> := string()
 %% }

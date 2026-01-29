@@ -181,10 +181,14 @@
          create_instance_export_task/3,
          create_internet_gateway/2,
          create_internet_gateway/3,
+         create_interruptible_capacity_reservation_allocation/2,
+         create_interruptible_capacity_reservation_allocation/3,
          create_ipam/2,
          create_ipam/3,
          create_ipam_external_resource_verification_token/2,
          create_ipam_external_resource_verification_token/3,
+         create_ipam_policy/2,
+         create_ipam_policy/3,
          create_ipam_pool/2,
          create_ipam_pool/3,
          create_ipam_prefix_list_resolver/2,
@@ -281,6 +285,10 @@
          create_transit_gateway_connect/3,
          create_transit_gateway_connect_peer/2,
          create_transit_gateway_connect_peer/3,
+         create_transit_gateway_metering_policy/2,
+         create_transit_gateway_metering_policy/3,
+         create_transit_gateway_metering_policy_entry/2,
+         create_transit_gateway_metering_policy_entry/3,
          create_transit_gateway_multicast_domain/2,
          create_transit_gateway_multicast_domain/3,
          create_transit_gateway_peering_attachment/2,
@@ -311,6 +319,8 @@
          create_vpc/3,
          create_vpc_block_public_access_exclusion/2,
          create_vpc_block_public_access_exclusion/3,
+         create_vpc_encryption_control/2,
+         create_vpc_encryption_control/3,
          create_vpc_endpoint/2,
          create_vpc_endpoint/3,
          create_vpc_endpoint_connection_notification/2,
@@ -319,6 +329,8 @@
          create_vpc_endpoint_service_configuration/3,
          create_vpc_peering_connection/2,
          create_vpc_peering_connection/3,
+         create_vpn_concentrator/2,
+         create_vpn_concentrator/3,
          create_vpn_connection/2,
          create_vpn_connection/3,
          create_vpn_connection_route/2,
@@ -361,6 +373,8 @@
          delete_ipam/3,
          delete_ipam_external_resource_verification_token/2,
          delete_ipam_external_resource_verification_token/3,
+         delete_ipam_policy/2,
+         delete_ipam_policy/3,
          delete_ipam_pool/2,
          delete_ipam_pool/3,
          delete_ipam_prefix_list_resolver/2,
@@ -451,6 +465,10 @@
          delete_transit_gateway_connect/3,
          delete_transit_gateway_connect_peer/2,
          delete_transit_gateway_connect_peer/3,
+         delete_transit_gateway_metering_policy/2,
+         delete_transit_gateway_metering_policy/3,
+         delete_transit_gateway_metering_policy_entry/2,
+         delete_transit_gateway_metering_policy_entry/3,
          delete_transit_gateway_multicast_domain/2,
          delete_transit_gateway_multicast_domain/3,
          delete_transit_gateway_peering_attachment/2,
@@ -481,6 +499,8 @@
          delete_vpc/3,
          delete_vpc_block_public_access_exclusion/2,
          delete_vpc_block_public_access_exclusion/3,
+         delete_vpc_encryption_control/2,
+         delete_vpc_encryption_control/3,
          delete_vpc_endpoint_connection_notifications/2,
          delete_vpc_endpoint_connection_notifications/3,
          delete_vpc_endpoint_service_configurations/2,
@@ -489,6 +509,8 @@
          delete_vpc_endpoints/3,
          delete_vpc_peering_connection/2,
          delete_vpc_peering_connection/3,
+         delete_vpn_concentrator/2,
+         delete_vpn_concentrator/3,
          delete_vpn_connection/2,
          delete_vpn_connection/3,
          delete_vpn_connection_route/2,
@@ -635,6 +657,10 @@
          describe_instance_event_windows/3,
          describe_instance_image_metadata/2,
          describe_instance_image_metadata/3,
+         describe_instance_sql_ha_history_states/2,
+         describe_instance_sql_ha_history_states/3,
+         describe_instance_sql_ha_states/2,
+         describe_instance_sql_ha_states/3,
          describe_instance_status/2,
          describe_instance_status/3,
          describe_instance_topology/2,
@@ -651,6 +677,8 @@
          describe_ipam_byoasn/3,
          describe_ipam_external_resource_verification_tokens/2,
          describe_ipam_external_resource_verification_tokens/3,
+         describe_ipam_policies/2,
+         describe_ipam_policies/3,
          describe_ipam_pools/2,
          describe_ipam_pools/3,
          describe_ipam_prefix_list_resolver_targets/2,
@@ -797,6 +825,8 @@
          describe_transit_gateway_connect_peers/3,
          describe_transit_gateway_connects/2,
          describe_transit_gateway_connects/3,
+         describe_transit_gateway_metering_policies/2,
+         describe_transit_gateway_metering_policies/3,
          describe_transit_gateway_multicast_domains/2,
          describe_transit_gateway_multicast_domains/3,
          describe_transit_gateway_peering_attachments/2,
@@ -841,6 +871,8 @@
          describe_vpc_classic_link/3,
          describe_vpc_classic_link_dns_support/2,
          describe_vpc_classic_link_dns_support/3,
+         describe_vpc_encryption_controls/2,
+         describe_vpc_encryption_controls/3,
          describe_vpc_endpoint_associations/2,
          describe_vpc_endpoint_associations/3,
          describe_vpc_endpoint_connection_notifications/2,
@@ -859,6 +891,8 @@
          describe_vpc_peering_connections/3,
          describe_vpcs/2,
          describe_vpcs/3,
+         describe_vpn_concentrators/2,
+         describe_vpn_concentrators/3,
          describe_vpn_connections/2,
          describe_vpn_connections/3,
          describe_vpn_gateways/2,
@@ -897,8 +931,12 @@
          disable_image_deprecation/3,
          disable_image_deregistration_protection/2,
          disable_image_deregistration_protection/3,
+         disable_instance_sql_ha_standby_detections/2,
+         disable_instance_sql_ha_standby_detections/3,
          disable_ipam_organization_admin_account/2,
          disable_ipam_organization_admin_account/3,
+         disable_ipam_policy/2,
+         disable_ipam_policy/3,
          disable_route_server_propagation/2,
          disable_route_server_propagation/3,
          disable_serial_console_access/2,
@@ -971,8 +1009,12 @@
          enable_image_deprecation/3,
          enable_image_deregistration_protection/2,
          enable_image_deregistration_protection/3,
+         enable_instance_sql_ha_standby_detections/2,
+         enable_instance_sql_ha_standby_detections/3,
          enable_ipam_organization_admin_account/2,
          enable_ipam_organization_admin_account/3,
+         enable_ipam_policy/2,
+         enable_ipam_policy/3,
          enable_reachability_analyzer_organization_sharing/2,
          enable_reachability_analyzer_organization_sharing/3,
          enable_route_server_propagation/2,
@@ -1033,6 +1075,8 @@
          get_ebs_default_kms_key_id/3,
          get_ebs_encryption_by_default/2,
          get_ebs_encryption_by_default/3,
+         get_enabled_ipam_policy/2,
+         get_enabled_ipam_policy/3,
          get_flow_logs_integration_template/2,
          get_flow_logs_integration_template/3,
          get_groups_for_capacity_reservation/2,
@@ -1059,6 +1103,10 @@
          get_ipam_discovered_public_addresses/3,
          get_ipam_discovered_resource_cidrs/2,
          get_ipam_discovered_resource_cidrs/3,
+         get_ipam_policy_allocation_rules/2,
+         get_ipam_policy_allocation_rules/3,
+         get_ipam_policy_organization_targets/2,
+         get_ipam_policy_organization_targets/3,
          get_ipam_pool_allocations/2,
          get_ipam_pool_allocations/3,
          get_ipam_pool_cidrs/2,
@@ -1103,6 +1151,8 @@
          get_subnet_cidr_reservations/3,
          get_transit_gateway_attachment_propagations/2,
          get_transit_gateway_attachment_propagations/3,
+         get_transit_gateway_metering_policy_entries/2,
+         get_transit_gateway_metering_policy_entries/3,
          get_transit_gateway_multicast_domain_associations/2,
          get_transit_gateway_multicast_domain_associations/3,
          get_transit_gateway_policy_table_associations/2,
@@ -1121,6 +1171,8 @@
          get_verified_access_endpoint_targets/3,
          get_verified_access_group_policy/2,
          get_verified_access_group_policy/3,
+         get_vpc_resources_blocking_encryption_enforcement/2,
+         get_vpc_resources_blocking_encryption_enforcement/3,
          get_vpn_connection_device_sample_configuration/2,
          get_vpn_connection_device_sample_configuration/3,
          get_vpn_connection_device_types/2,
@@ -1143,6 +1195,8 @@
          list_images_in_recycle_bin/3,
          list_snapshots_in_recycle_bin/2,
          list_snapshots_in_recycle_bin/3,
+         list_volumes_in_recycle_bin/2,
+         list_volumes_in_recycle_bin/3,
          lock_snapshot/2,
          lock_snapshot/3,
          modify_address_attribute/2,
@@ -1197,6 +1251,8 @@
          modify_instance_placement/3,
          modify_ipam/2,
          modify_ipam/3,
+         modify_ipam_policy_allocation_rules/2,
+         modify_ipam_policy_allocation_rules/3,
          modify_ipam_pool/2,
          modify_ipam_pool/3,
          modify_ipam_prefix_list_resolver/2,
@@ -1243,6 +1299,8 @@
          modify_traffic_mirror_session/3,
          modify_transit_gateway/2,
          modify_transit_gateway/3,
+         modify_transit_gateway_metering_policy/2,
+         modify_transit_gateway_metering_policy/3,
          modify_transit_gateway_prefix_list_reference/2,
          modify_transit_gateway_prefix_list_reference/3,
          modify_transit_gateway_vpc_attachment/2,
@@ -1271,6 +1329,8 @@
          modify_vpc_block_public_access_exclusion/3,
          modify_vpc_block_public_access_options/2,
          modify_vpc_block_public_access_options/3,
+         modify_vpc_encryption_control/2,
+         modify_vpc_encryption_control/3,
          modify_vpc_endpoint/2,
          modify_vpc_endpoint/3,
          modify_vpc_endpoint_connection_notification/2,
@@ -1393,6 +1453,8 @@
          restore_snapshot_from_recycle_bin/3,
          restore_snapshot_tier/2,
          restore_snapshot_tier/3,
+         restore_volume_from_recycle_bin/2,
+         restore_volume_from_recycle_bin/3,
          revoke_client_vpn_ingress/2,
          revoke_client_vpn_ingress/3,
          revoke_security_group_egress/2,
@@ -1439,6 +1501,8 @@
          unmonitor_instances/3,
          update_capacity_manager_organizations_access/2,
          update_capacity_manager_organizations_access/3,
+         update_interruptible_capacity_reservation_allocation/2,
+         update_interruptible_capacity_reservation_allocation/3,
          update_security_group_rule_descriptions_egress/2,
          update_security_group_rule_descriptions_egress/3,
          update_security_group_rule_descriptions_ingress/2,
@@ -1699,6 +1763,13 @@
 -type launch_template_and_overrides_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_ipam_policy_allocation_rules_result() :: #{
+%%   <<"IpamPolicyDocuments">> => list(ipam_policy_document()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_policy_allocation_rules_result() :: #{binary() => any()}.
+
+%% Example:
 %% phase2_integrity_algorithms_request_list_value() :: #{
 %%   <<"Value">> => string()
 %% }
@@ -1773,6 +1844,7 @@
 
 %% Example:
 %% byoip_cidr() :: #{
+%%   <<"AdvertisementType">> => string(),
 %%   <<"AsnAssociations">> => list(asn_association()),
 %%   <<"Cidr">> => string(),
 %%   <<"Description">> => string(),
@@ -1926,6 +1998,14 @@
 -type modify_id_format_request() :: #{binary() => any()}.
 
 %% Example:
+%% availability_zone_address() :: #{
+%%   <<"AllocationIds">> => list(string()),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string()
+%% }
+-type availability_zone_address() :: #{binary() => any()}.
+
+%% Example:
 %% delete_transit_gateway_connect_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"TransitGatewayAttachmentId">> := string()
@@ -1983,6 +2063,14 @@
 %%   <<"LocalGatewayVirtualInterface">> => local_gateway_virtual_interface()
 %% }
 -type create_local_gateway_virtual_interface_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transit_gateway_metering_policy_entry_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"PolicyRuleNumber">> := integer(),
+%%   <<"TransitGatewayMeteringPolicyId">> := string()
+%% }
+-type delete_transit_gateway_metering_policy_entry_request() :: #{binary() => any()}.
 
 %% Example:
 %% subnet_association() :: #{
@@ -2058,6 +2146,12 @@
 %%   <<"RouteServerPeer">> => route_server_peer()
 %% }
 -type create_route_server_peer_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_instance_sql_ha_standby_detections_result() :: #{
+%%   <<"Instances">> => list(registered_instance())
+%% }
+-type disable_instance_sql_ha_standby_detections_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_coip_pool_result() :: #{
@@ -2169,6 +2263,12 @@
 -type describe_transit_gateway_route_tables_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_vpc_encryption_control_result() :: #{
+%%   <<"VpcEncryptionControl">> => vpc_encryption_control()
+%% }
+-type delete_vpc_encryption_control_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_route_table_result() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"RouteTable">> => route_table()
@@ -2272,6 +2372,9 @@
 %%   <<"InstanceMatchCriteria">> => list(any()),
 %%   <<"InstancePlatform">> => list(any()),
 %%   <<"InstanceType">> => string(),
+%%   <<"Interruptible">> => boolean(),
+%%   <<"InterruptibleCapacityAllocation">> => interruptible_capacity_allocation(),
+%%   <<"InterruptionInfo">> => interruption_info(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PlacementGroupArn">> => string(),
@@ -2341,6 +2444,12 @@
 %%   <<"Tenancy">> => list(any())
 %% }
 -type launch_template_placement() :: #{binary() => any()}.
+
+%% Example:
+%% create_transit_gateway_metering_policy_entry_result() :: #{
+%%   <<"TransitGatewayMeteringPolicyEntry">> => transit_gateway_metering_policy_entry()
+%% }
+-type create_transit_gateway_metering_policy_entry_result() :: #{binary() => any()}.
 
 %% Example:
 %% volume_status_item() :: #{
@@ -2426,6 +2535,7 @@
 %% Example:
 %% search_transit_gateway_routes_result() :: #{
 %%   <<"AdditionalRoutesAvailable">> => boolean(),
+%%   <<"NextToken">> => string(),
 %%   <<"Routes">> => list(transit_gateway_route())
 %% }
 -type search_transit_gateway_routes_result() :: #{binary() => any()}.
@@ -2497,6 +2607,7 @@
 %%   <<"DefaultRouteTableAssociation">> => list(any()),
 %%   <<"DefaultRouteTablePropagation">> => list(any()),
 %%   <<"DnsSupport">> => list(any()),
+%%   <<"EncryptionSupport">> => encryption_support(),
 %%   <<"MulticastSupport">> => list(any()),
 %%   <<"PropagationDefaultRouteTableId">> => string(),
 %%   <<"SecurityGroupReferencingSupport">> => list(any()),
@@ -2846,6 +2957,12 @@
 -type associate_vpc_cidr_block_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_policy_result() :: #{
+%%   <<"IpamPolicy">> => ipam_policy()
+%% }
+-type delete_ipam_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% path_component() :: #{
 %%   <<"AclRule">> => analysis_acl_rule(),
 %%   <<"AdditionalDetails">> => list(additional_detail()),
@@ -2950,6 +3067,20 @@
 -type create_instance_event_window_result() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_encryption_control_configuration() :: #{
+%%   <<"EgressOnlyInternetGatewayExclusion">> => list(any()),
+%%   <<"ElasticFileSystemExclusion">> => list(any()),
+%%   <<"InternetGatewayExclusion">> => list(any()),
+%%   <<"LambdaExclusion">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"NatGatewayExclusion">> => list(any()),
+%%   <<"VirtualPrivateGatewayExclusion">> => list(any()),
+%%   <<"VpcLatticeExclusion">> => list(any()),
+%%   <<"VpcPeeringExclusion">> => list(any())
+%% }
+-type vpc_encryption_control_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_instance_event_notification_attributes_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceTagAttribute">> := deregister_instance_tag_attribute_request()
@@ -2965,6 +3096,13 @@
 %%   <<"RegionalSummaries">> => list(regional_summary())
 %% }
 -type attribute_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_sql_ha_states_result() :: #{
+%%   <<"Instances">> => list(registered_instance()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_sql_ha_states_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_transit_gateway_multicast_domain_result() :: #{
@@ -3297,6 +3435,17 @@
 %%   <<"RequesterPeeringConnectionOptions">> => peering_connection_options()
 %% }
 -type modify_vpc_peering_connection_options_result() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_metering_policy() :: #{
+%%   <<"MiddleboxAttachmentIds">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"TransitGatewayMeteringPolicyId">> => string(),
+%%   <<"UpdateEffectiveAt">> => non_neg_integer()
+%% }
+-type transit_gateway_metering_policy() :: #{binary() => any()}.
 
 %% Example:
 %% modify_vpc_block_public_access_options_result() :: #{
@@ -3709,6 +3858,7 @@
 %%   <<"AttachTime">> => non_neg_integer(),
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Device">> => string(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceOwningService">> => string(),
 %%   <<"State">> => list(any()),
@@ -3722,6 +3872,18 @@
 %%   <<"ResourceTypeOptions">> => list(resource_type_option())
 %% }
 -type resource_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_card_info() :: #{
+%%   <<"BaselineBandwidthInMbps">> => integer(),
+%%   <<"BaselineIops">> => integer(),
+%%   <<"BaselineThroughputInMBps">> => float(),
+%%   <<"EbsCardIndex">> => integer(),
+%%   <<"MaximumBandwidthInMbps">> => integer(),
+%%   <<"MaximumIops">> => integer(),
+%%   <<"MaximumThroughputInMBps">> => float()
+%% }
+-type ebs_card_info() :: #{binary() => any()}.
 
 %% Example:
 %% modify_transit_gateway_request() :: #{
@@ -3988,6 +4150,15 @@
 -type request_spot_fleet_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_transit_gateway_metering_policy_request() :: #{
+%%   <<"AddMiddleboxAttachmentIds">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"RemoveMiddleboxAttachmentIds">> => list(string()),
+%%   <<"TransitGatewayMeteringPolicyId">> := string()
+%% }
+-type modify_transit_gateway_metering_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_coip_pool_request() :: #{
 %%   <<"CoipPoolId">> := string(),
 %%   <<"DryRun">> => boolean()
@@ -4151,10 +4322,12 @@
 %% Example:
 %% ebs_info() :: #{
 %%   <<"AttachmentLimitType">> => list(any()),
+%%   <<"EbsCards">> => list(ebs_card_info()),
 %%   <<"EbsOptimizedInfo">> => ebs_optimized_info(),
 %%   <<"EbsOptimizedSupport">> => list(any()),
 %%   <<"EncryptionSupport">> => list(any()),
 %%   <<"MaximumEbsAttachments">> => integer(),
+%%   <<"MaximumEbsCards">> => integer(),
 %%   <<"NvmeSupport">> => list(any())
 %% }
 -type ebs_info() :: #{binary() => any()}.
@@ -4863,6 +5036,13 @@
 -type describe_security_groups_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_vpc_encryption_control_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"VpcEncryptionControlId">> := string()
+%% }
+-type delete_vpc_encryption_control_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_fleet_request() :: #{
 %%   <<"Context">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -5321,6 +5501,8 @@
 %% nat_gateway_address() :: #{
 %%   <<"AllocationId">> => string(),
 %%   <<"AssociationId">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FailureMessage">> => string(),
 %%   <<"IsPrimary">> => boolean(),
 %%   <<"NetworkInterfaceId">> => string(),
@@ -5458,6 +5640,14 @@
 -type public_ipv4_pool_range() :: #{binary() => any()}.
 
 %% Example:
+%% get_enabled_ipam_policy_result() :: #{
+%%   <<"IpamPolicyEnabled">> => boolean(),
+%%   <<"IpamPolicyId">> => string(),
+%%   <<"ManagedBy">> => list(any())
+%% }
+-type get_enabled_ipam_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% transit_gateway_multicast_domain_associations() :: #{
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
@@ -5541,6 +5731,12 @@
 -type transit_gateway_policy_rule() :: #{binary() => any()}.
 
 %% Example:
+%% create_vpn_concentrator_result() :: #{
+%%   <<"VpnConcentrator">> => vpn_concentrator()
+%% }
+-type create_vpn_concentrator_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_spot_price_history_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
@@ -5591,6 +5787,14 @@
 %%   <<"SubnetIds">> => list(string())
 %% }
 -type verified_access_endpoint_rds_options() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_encryption_control_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"VpcId">> := string()
+%% }
+-type create_vpc_encryption_control_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_spot_fleet_instances_response() :: #{
@@ -5700,6 +5904,17 @@
 -type describe_placement_groups_result() :: #{binary() => any()}.
 
 %% Example:
+%% vpn_concentrator() :: #{
+%%   <<"State">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"VpnConcentratorId">> => string()
+%% }
+-type vpn_concentrator() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_pool_cidr() :: #{
 %%   <<"Cidr">> => string(),
 %%   <<"FailureReason">> => ipam_pool_cidr_failure_reason(),
@@ -5718,6 +5933,13 @@
 %%   <<"VpnGatewayId">> => string()
 %% }
 -type modify_vpn_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_instance_sql_ha_standby_detections_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceIds">> := list(string())
+%% }
+-type disable_instance_sql_ha_standby_detections_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_traffic_mirror_filters_result() :: #{
@@ -5824,6 +6046,13 @@
 -type move_capacity_reservation_instances_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_transit_gateway_metering_policy_entries_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayMeteringPolicyEntries">> => list(transit_gateway_metering_policy_entry())
+%% }
+-type get_transit_gateway_metering_policy_entries_result() :: #{binary() => any()}.
+
+%% Example:
 %% start_network_insights_access_scope_analysis_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -5926,6 +6155,7 @@
 %%   <<"GroupArn">> => string(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
+%%   <<"LinkedGroupId">> => string(),
 %%   <<"PartitionCount">> => integer(),
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"State">> => list(any()),
@@ -6015,6 +6245,13 @@
 %%   <<"NetworkInsightsPathId">> => string()
 %% }
 -type delete_network_insights_path_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_volumes_in_recycle_bin_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Volumes">> => list(volume_recycle_bin_info())
+%% }
+-type list_volumes_in_recycle_bin_result() :: #{binary() => any()}.
 
 %% Example:
 %% native_application_oidc_options() :: #{
@@ -6158,6 +6395,13 @@
 -type reset_fpga_image_attribute_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPolicyId">> := string()
+%% }
+-type delete_ipam_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_flow_logs_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"FlowLogIds">> := list(string())
@@ -6259,6 +6503,14 @@
 -type describe_reserved_instances_modifications_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_instance_sql_ha_standby_detections_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"SqlServerCredentials">> => string()
+%% }
+-type enable_instance_sql_ha_standby_detections_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_instance_types_from_instance_requirements_request() :: #{
 %%   <<"ArchitectureTypes">> := list(list(any())()),
 %%   <<"Context">> => string(),
@@ -6276,6 +6528,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_hosts_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_sql_ha_history_states_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_instance_sql_ha_history_states_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_reservation_billing_requests_result() :: #{
@@ -6379,6 +6643,9 @@
 
 %% Example:
 %% cloud_watch_log_options_specification() :: #{
+%%   <<"BgpLogEnabled">> => boolean(),
+%%   <<"BgpLogGroupArn">> => string(),
+%%   <<"BgpLogOutputFormat">> => string(),
 %%   <<"LogEnabled">> => boolean(),
 %%   <<"LogGroupArn">> => string(),
 %%   <<"LogOutputFormat">> => string()
@@ -6397,6 +6664,12 @@
 %%   <<"Value">> => string()
 %% }
 -type phase2_integrity_algorithms_list_value() :: #{binary() => any()}.
+
+%% Example:
+%% restore_volume_from_recycle_bin_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type restore_volume_from_recycle_bin_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_reserved_instances_listings_result() :: #{
@@ -6823,7 +7096,8 @@
 %%   <<"Ipv6IpamPoolId">> => string(),
 %%   <<"Ipv6NetmaskLength">> => integer(),
 %%   <<"Ipv6Pool">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification())
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"VpcEncryptionControl">> => vpc_encryption_control_configuration()
 %% }
 -type create_vpc_request() :: #{binary() => any()}.
 
@@ -6840,6 +7114,13 @@
 %%   <<"CapacityReservationTarget">> => capacity_reservation_target_response()
 %% }
 -type capacity_reservation_specification_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_encryption_controls_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEncryptionControls">> => list(vpc_encryption_control())
+%% }
+-type describe_vpc_encryption_controls_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_ipam_discovered_accounts_request() :: #{
@@ -7338,6 +7619,16 @@
 -type describe_egress_only_internet_gateways_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_transit_gateway_metering_policy_entries_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayMeteringPolicyId">> := string()
+%% }
+-type get_transit_gateway_metering_policy_entries_request() :: #{binary() => any()}.
+
+%% Example:
 %% vpc_peering_connection_vpc_info() :: #{
 %%   <<"CidrBlock">> => string(),
 %%   <<"CidrBlockSet">> => list(cidr_block()),
@@ -7391,6 +7682,16 @@
 %%   <<"State">> => string()
 %% }
 -type cancel_import_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ipam_policies_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPolicyIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_policies_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_ipv6_address_request() :: #{
@@ -8038,6 +8339,12 @@
 -type elastic_gpu_health() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_policy_organization_target() :: #{
+%%   <<"OrganizationTargetId">> => string()
+%% }
+-type ipam_policy_organization_target() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_transit_gateway_policy_table_result() :: #{
 %%   <<"Association">> => transit_gateway_policy_table_association()
 %% }
@@ -8157,6 +8464,13 @@
 -type modify_capacity_reservation_fleet_result() :: #{binary() => any()}.
 
 %% Example:
+%% restore_volume_from_recycle_bin_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"VolumeId">> := string()
+%% }
+-type restore_volume_from_recycle_bin_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_spot_price_history_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SpotPriceHistory">> => list(spot_price())
@@ -8213,6 +8527,7 @@
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> => list(any()),
 %%   <<"VgwTelemetry">> => list(vgw_telemetry()),
+%%   <<"VpnConcentratorId">> => string(),
 %%   <<"VpnConnectionId">> => string(),
 %%   <<"VpnGatewayId">> => string()
 %% }
@@ -8287,6 +8602,17 @@
 %%   <<"IpamPoolCidr">> => ipam_pool_cidr()
 %% }
 -type deprovision_ipam_pool_cidr_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_interruptible_capacity_reservation_allocation_result() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InterruptibleCapacityReservationId">> => string(),
+%%   <<"InterruptionType">> => list(any()),
+%%   <<"SourceCapacityReservationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetInstanceCount">> => integer()
+%% }
+-type update_interruptible_capacity_reservation_allocation_result() :: #{binary() => any()}.
 
 %% Example:
 %% replace_root_volume_task() :: #{
@@ -8515,6 +8841,18 @@
 %%   <<"VerifiedAccessGroupId">> => string()
 %% }
 -type modify_verified_access_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_policy_allocation_rules_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPolicyId">> := string(),
+%%   <<"Locale">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type get_ipam_policy_allocation_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% ena_srd_udp_specification_request() :: #{
@@ -8840,6 +9178,13 @@
 -type provision_ipam_pool_cidr_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_ipam_policy_organization_targets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationTargets">> => list(ipam_policy_organization_target())
+%% }
+-type get_ipam_policy_organization_targets_result() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_cidr_authorization_context() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Signature">> => string()
@@ -8896,6 +9241,14 @@
 -type delete_launch_template_versions_response_success_item() :: #{binary() => any()}.
 
 %% Example:
+%% update_interruptible_capacity_reservation_allocation_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"TargetInstanceCount">> := integer()
+%% }
+-type update_interruptible_capacity_reservation_allocation_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_vpc_block_public_access_options_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InternetGatewayBlockMode">> := list(any())
@@ -8948,6 +9301,16 @@
 %%   <<"VpnConnectionId">> := string()
 %% }
 -type get_vpn_connection_device_sample_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_sql_ha_states_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_sql_ha_states_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_route_server_result() :: #{
@@ -9335,6 +9698,7 @@
 
 %% Example:
 %% network_card_info() :: #{
+%%   <<"AdditionalFlexibleNetworkInterfaces">> => integer(),
 %%   <<"BaselineBandwidthInGbps">> => float(),
 %%   <<"DefaultEnaQueueCountPerInterface">> => integer(),
 %%   <<"MaximumEnaQueueCount">> => integer(),
@@ -9389,6 +9753,7 @@
 %% Example:
 %% fleet_launch_template_overrides() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping_response()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
@@ -9495,6 +9860,7 @@
 %% create_placement_group_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupName">> => string(),
+%%   <<"LinkedGroupId">> => string(),
 %%   <<"PartitionCount">> => integer(),
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"Strategy">> => list(any()),
@@ -9511,6 +9877,7 @@
 %%   <<"DefaultRouteTableAssociation">> => list(any()),
 %%   <<"DefaultRouteTablePropagation">> => list(any()),
 %%   <<"DnsSupport">> => list(any()),
+%%   <<"EncryptionSupport">> => list(any()),
 %%   <<"PropagationDefaultRouteTableId">> => string(),
 %%   <<"RemoveTransitGatewayCidrBlocks">> => list(string()),
 %%   <<"SecurityGroupReferencingSupport">> => list(any()),
@@ -9540,6 +9907,8 @@
 %% Example:
 %% create_nat_gateway_request() :: #{
 %%   <<"AllocationId">> => string(),
+%%   <<"AvailabilityMode">> => list(any()),
+%%   <<"AvailabilityZoneAddresses">> => list(availability_zone_address()),
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectivityType">> => list(any()),
 %%   <<"DryRun">> => boolean(),
@@ -9547,8 +9916,9 @@
 %%   <<"SecondaryAllocationIds">> => list(string()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SecondaryPrivateIpAddresses">> => list(string()),
-%%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification())
+%%   <<"SubnetId">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"VpcId">> => string()
 %% }
 -type create_nat_gateway_request() :: #{binary() => any()}.
 
@@ -9677,6 +10047,16 @@
 -type accept_transit_gateway_peering_attachment_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_interruptible_capacity_reservation_allocation_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceCount">> := integer(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_interruptible_capacity_reservation_allocation_request() :: #{binary() => any()}.
+
+%% Example:
 %% successful_instance_credit_specification_item() :: #{
 %%   <<"InstanceId">> => string()
 %% }
@@ -9735,6 +10115,14 @@
 -type create_traffic_mirror_target_result() :: #{binary() => any()}.
 
 %% Example:
+%% enable_ipam_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPolicyId">> := string(),
+%%   <<"OrganizationTargetId">> => string()
+%% }
+-type enable_ipam_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% unassign_ipv6_addresses_request() :: #{
 %%   <<"Ipv6Addresses">> => list(string()),
 %%   <<"Ipv6Prefixes">> => list(string()),
@@ -9753,6 +10141,12 @@
 -type describe_transit_gateway_connect_peers_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_vpc_encryption_control_result() :: #{
+%%   <<"VpcEncryptionControl">> => vpc_encryption_control()
+%% }
+-type create_vpc_encryption_control_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_host_reservation_offerings_request() :: #{
 %%   <<"Filter">> => list(filter()),
 %%   <<"MaxDuration">> => integer(),
@@ -9768,6 +10162,13 @@
 %%   <<"CapacityManagerDataExportId">> => string()
 %% }
 -type create_capacity_manager_data_export_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_sql_ha_history_states_result() :: #{
+%%   <<"Instances">> => list(registered_instance()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_sql_ha_history_states_result() :: #{binary() => any()}.
 
 %% Example:
 %% creation_date_condition() :: #{
@@ -9941,6 +10342,12 @@
 %%   <<"OptInStatus">> := list(any())
 %% }
 -type modify_availability_zone_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ipam_policy_result() :: #{
+%%   <<"IpamPolicyId">> => string()
+%% }
+-type enable_ipam_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% price_schedule() :: #{
@@ -10295,6 +10702,12 @@
 -type describe_ipam_prefix_list_resolver_targets_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_transit_gateway_metering_policy_result() :: #{
+%%   <<"TransitGatewayMeteringPolicy">> => transit_gateway_metering_policy()
+%% }
+-type delete_transit_gateway_metering_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_reservation_target_response() :: #{
 %%   <<"CapacityReservationId">> => string(),
 %%   <<"CapacityReservationResourceGroupArn">> => string()
@@ -10507,6 +10920,15 @@
 %%   <<"TargetConfiguration">> => reserved_instances_configuration()
 %% }
 -type reserved_instances_modification_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_ipam_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_connect_request_bgp_options() :: #{
@@ -10845,8 +11267,15 @@
 -type client_vpn_endpoint_status() :: #{binary() => any()}.
 
 %% Example:
+%% modify_vpc_encryption_control_result() :: #{
+%%   <<"VpcEncryptionControl">> => vpc_encryption_control()
+%% }
+-type modify_vpc_encryption_control_result() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_ebs_block_device() :: #{
 %%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
@@ -10857,6 +11286,16 @@
 %%   <<"VolumeType">> => list(any())
 %% }
 -type launch_template_ebs_block_device() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_policy_allocation_rules_request() :: #{
+%%   <<"AllocationRules">> => list(ipam_policy_allocation_rule_request()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPolicyId">> := string(),
+%%   <<"Locale">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type modify_ipam_policy_allocation_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% route() :: #{
@@ -11040,6 +11479,7 @@
 %% attach_volume_request() :: #{
 %%   <<"Device">> := string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"InstanceId">> := string(),
 %%   <<"VolumeId">> := string()
 %% }
@@ -12034,9 +12474,12 @@
 %% Example:
 %% gpu_device_info() :: #{
 %%   <<"Count">> => integer(),
+%%   <<"GpuPartitionSize">> => float(),
+%%   <<"LogicalGpuCount">> => integer(),
 %%   <<"Manufacturer">> => string(),
 %%   <<"MemoryInfo">> => gpu_device_memory_info(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Workloads">> => list(string())
 %% }
 -type gpu_device_info() :: #{binary() => any()}.
 
@@ -12169,6 +12612,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
@@ -12208,6 +12652,26 @@
 %%   <<"Snapshots">> => list(snapshot_recycle_bin_info())
 %% }
 -type list_snapshots_in_recycle_bin_result() :: #{binary() => any()}.
+
+%% Example:
+%% volume_recycle_bin_info() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"Operator">> => operator_response(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"RecycleBinEnterTime">> => non_neg_integer(),
+%%   <<"RecycleBinExitTime">> => non_neg_integer(),
+%%   <<"Size">> => integer(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"SourceVolumeId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type volume_recycle_bin_info() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_prefix_list_resolvers_result() :: #{
@@ -12272,6 +12736,10 @@
 
 %% Example:
 %% nat_gateway() :: #{
+%%   <<"AttachedAppliances">> => list(nat_gateway_attached_appliance()),
+%%   <<"AutoProvisionZones">> => list(any()),
+%%   <<"AutoScalingIps">> => list(any()),
+%%   <<"AvailabilityMode">> => list(any()),
 %%   <<"ConnectivityType">> => list(any()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DeleteTime">> => non_neg_integer(),
@@ -12280,6 +12748,7 @@
 %%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string(),
 %%   <<"ProvisionedBandwidth">> => provisioned_bandwidth(),
+%%   <<"RouteTableId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -12506,6 +12975,7 @@
 %% Example:
 %% launch_template_overrides() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"Priority">> => float(),
@@ -13060,6 +13530,12 @@
 -type get_transit_gateway_route_table_associations_request() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_policy_allocation_rule() :: #{
+%%   <<"SourceIpamPoolId">> => string()
+%% }
+-type ipam_policy_allocation_rule() :: #{binary() => any()}.
+
+%% Example:
 %% export_client_vpn_client_certificate_revocation_list_result() :: #{
 %%   <<"CertificateRevocationList">> => string(),
 %%   <<"Status">> => client_certificate_revocation_list_status()
@@ -13386,6 +13862,15 @@
 -type copy_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_transit_gateway_metering_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MiddleboxAttachmentIds">> => list(string()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TransitGatewayId">> := string()
+%% }
+-type create_transit_gateway_metering_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_verified_access_endpoint_port_range() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"ToPort">> => integer()
@@ -13526,6 +14011,14 @@
 -type capacity_reservation_options() :: #{binary() => any()}.
 
 %% Example:
+%% disable_ipam_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPolicyId">> := string(),
+%%   <<"OrganizationTargetId">> => string()
+%% }
+-type disable_ipam_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_network_acls_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -13546,6 +14039,17 @@
 %%   <<"Return">> => boolean()
 %% }
 -type modify_private_dns_name_options_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_encryption_controls_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEncryptionControlIds">> => list(string()),
+%%   <<"VpcIds">> => list(string())
+%% }
+-type describe_vpc_encryption_controls_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_log_s3_destination() :: #{
@@ -13575,6 +14079,15 @@
 %%   <<"VpcId">> := string()
 %% }
 -type create_transit_gateway_vpc_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_policy_document() :: #{
+%%   <<"AllocationRules">> => list(ipam_policy_allocation_rule()),
+%%   <<"IpamPolicyId">> => string(),
+%%   <<"Locale">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type ipam_policy_document() :: #{binary() => any()}.
 
 %% Example:
 %% get_verified_access_group_policy_request() :: #{
@@ -13616,6 +14129,7 @@
 %% Example:
 %% spot_placement() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"Tenancy">> => list(any())
 %% }
@@ -14103,6 +14617,12 @@
 -type modify_vpn_tunnel_options_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_policy_result() :: #{
+%%   <<"IpamPolicy">> => ipam_policy()
+%% }
+-type create_ipam_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% instance_network_interface_attachment() :: #{
 %%   <<"AttachTime">> => non_neg_integer(),
 %%   <<"AttachmentId">> => string(),
@@ -14190,6 +14710,8 @@
 %% Example:
 %% associate_nat_gateway_address_request() :: #{
 %%   <<"AllocationIds">> := list(string()),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"NatGatewayId">> := string(),
 %%   <<"PrivateIpAddresses">> => list(string())
@@ -14436,6 +14958,19 @@
 %%   <<"VpnConnectionDeviceSampleConfiguration">> => string()
 %% }
 -type get_vpn_connection_device_sample_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_policy() :: #{
+%%   <<"IpamId">> => string(),
+%%   <<"IpamPolicyArn">> => string(),
+%%   <<"IpamPolicyId">> => string(),
+%%   <<"IpamPolicyRegion">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type ipam_policy() :: #{binary() => any()}.
 
 %% Example:
 %% enable_capacity_manager_request() :: #{
@@ -14840,6 +15375,13 @@
 -type fleet_launch_template_specification() :: #{binary() => any()}.
 
 %% Example:
+%% get_vpc_resources_blocking_encryption_enforcement_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NonCompliantResources">> => list(vpc_encryption_non_compliant_resource())
+%% }
+-type get_vpc_resources_blocking_encryption_enforcement_result() :: #{binary() => any()}.
+
+%% Example:
 %% delete_network_insights_analysis_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"NetworkInsightsAnalysisId">> := string()
@@ -14857,6 +15399,13 @@
 %%   <<"UnusedReservationBillingOwnerId">> => string()
 %% }
 -type capacity_reservation_billing_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ipam_policies_result() :: #{
+%%   <<"IpamPolicies">> => list(ipam_policy()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_policies_result() :: #{binary() => any()}.
 
 %% Example:
 %% send_diagnostic_interrupt_request() :: #{
@@ -15343,6 +15892,12 @@
 -type restore_address_to_classic_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_transit_gateway_metering_policy_result() :: #{
+%%   <<"TransitGatewayMeteringPolicy">> => transit_gateway_metering_policy()
+%% }
+-type create_transit_gateway_metering_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_carrier_gateways_result() :: #{
 %%   <<"CarrierGateways">> => list(carrier_gateway()),
 %%   <<"NextToken">> => string()
@@ -15655,6 +16210,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> := list(filter()),
 %%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type search_transit_gateway_routes_request() :: #{binary() => any()}.
@@ -15893,6 +16449,12 @@
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type enable_transit_gateway_route_table_propagation_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_policy_allocation_rules_result() :: #{
+%%   <<"IpamPolicyDocument">> => ipam_policy_document()
+%% }
+-type modify_ipam_policy_allocation_rules_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_verified_access_endpoint_result() :: #{
@@ -16384,6 +16946,12 @@
 -type ebs_status_details() :: #{binary() => any()}.
 
 %% Example:
+%% disable_ipam_policy_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type disable_ipam_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_launch_template_config_request() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification_request(),
 %%   <<"Overrides">> => list(fleet_launch_template_overrides_request())
@@ -16416,6 +16984,20 @@
 %%   <<"Return">> => boolean()
 %% }
 -type disable_vpc_classic_link_dns_support_result() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_metering_policy_rule() :: #{
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"DestinationPortRange">> => string(),
+%%   <<"DestinationTransitGatewayAttachmentId">> => string(),
+%%   <<"DestinationTransitGatewayAttachmentType">> => list(any()),
+%%   <<"Protocol">> => string(),
+%%   <<"SourceCidrBlock">> => string(),
+%%   <<"SourcePortRange">> => string(),
+%%   <<"SourceTransitGatewayAttachmentId">> => string(),
+%%   <<"SourceTransitGatewayAttachmentType">> => list(any())
+%% }
+-type transit_gateway_metering_policy_rule() :: #{binary() => any()}.
 
 %% Example:
 %% target_group() :: #{
@@ -16557,6 +17139,7 @@
 %%   <<"AssociatedResource">> => string(),
 %%   <<"AttachTime">> => non_neg_integer(),
 %%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"Operator">> => operator_response(),
 %%   <<"Status">> => list(any()),
 %%   <<"VolumeId">> => string(),
@@ -16776,6 +17359,12 @@
 -type describe_iam_instance_profile_associations_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_transit_gateway_metering_policy_result() :: #{
+%%   <<"TransitGatewayMeteringPolicy">> => transit_gateway_metering_policy()
+%% }
+-type modify_transit_gateway_metering_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% dns_options_specification() :: #{
 %%   <<"DnsRecordIpType">> => list(any()),
 %%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean(),
@@ -16899,6 +17488,15 @@
 -type bundle_task_error() :: #{binary() => any()}.
 
 %% Example:
+%% list_volumes_in_recycle_bin_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VolumeIds">> => list(string())
+%% }
+-type list_volumes_in_recycle_bin_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_fleet_history_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EventType">> => list(any()),
@@ -16976,6 +17574,9 @@
 %%   <<"CapacityReservationId">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"InstanceUsages">> => list(instance_usage()),
+%%   <<"Interruptible">> => boolean(),
+%%   <<"InterruptibleCapacityAllocation">> => interruptible_capacity_allocation(),
+%%   <<"InterruptionInfo">> => interruption_info(),
 %%   <<"NextToken">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"TotalInstanceCount">> => integer()
@@ -17079,6 +17680,13 @@
 %%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_ipam_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_support() :: #{
+%%   <<"EncryptionState">> => list(any()),
+%%   <<"StateMessage">> => string()
+%% }
+-type encryption_support() :: #{binary() => any()}.
 
 %% Example:
 %% prefix_list() :: #{
@@ -17380,6 +17988,19 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_aws_network_performance_metric_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transit_gateway_metering_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayMeteringPolicyId">> := string()
+%% }
+-type delete_transit_gateway_metering_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transit_gateway_metering_policy_entry_result() :: #{
+%%   <<"TransitGatewayMeteringPolicyEntry">> => transit_gateway_metering_policy_entry()
+%% }
+-type delete_transit_gateway_metering_policy_entry_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_reserved_instances_request() :: #{
@@ -17799,6 +18420,24 @@
 -type revoke_client_vpn_ingress_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_transit_gateway_metering_policy_entry_request() :: #{
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"DestinationPortRange">> => string(),
+%%   <<"DestinationTransitGatewayAttachmentId">> => string(),
+%%   <<"DestinationTransitGatewayAttachmentType">> => list(any()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"MeteredAccount">> := list(any()),
+%%   <<"PolicyRuleNumber">> := integer(),
+%%   <<"Protocol">> => string(),
+%%   <<"SourceCidrBlock">> => string(),
+%%   <<"SourcePortRange">> => string(),
+%%   <<"SourceTransitGatewayAttachmentId">> => string(),
+%%   <<"SourceTransitGatewayAttachmentType">> => list(any()),
+%%   <<"TransitGatewayMeteringPolicyId">> := string()
+%% }
+-type create_transit_gateway_metering_policy_entry_request() :: #{binary() => any()}.
+
+%% Example:
 %% security_group_rule_request() :: #{
 %%   <<"CidrIpv4">> => string(),
 %%   <<"CidrIpv6">> => string(),
@@ -18003,6 +18642,13 @@
 -type cpu_performance_factor_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_vpn_concentrator_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"VpnConcentratorId">> := string()
+%% }
+-type delete_vpn_concentrator_request() :: #{binary() => any()}.
+
+%% Example:
 %% availability_zone_message() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -18025,6 +18671,18 @@
 %%   <<"Value">> => float()
 %% }
 -type metric_point() :: #{binary() => any()}.
+
+%% Example:
+%% nat_gateway_attached_appliance() :: #{
+%%   <<"ApplianceArn">> => string(),
+%%   <<"AttachmentState">> => list(any()),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"ModificationState">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type nat_gateway_attached_appliance() :: #{binary() => any()}.
 
 %% Example:
 %% delete_launch_template_versions_response_error_item() :: #{
@@ -18125,6 +18783,13 @@
 %%   <<"PrefixListIds">> => list(string())
 %% }
 -type describe_prefix_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transit_gateway_metering_policies_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayMeteringPolicies">> => list(transit_gateway_metering_policy())
+%% }
+-type describe_transit_gateway_metering_policies_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_instance_connect_endpoint_request() :: #{
@@ -18701,6 +19366,22 @@
 -type ipam_organizational_unit_exclusion() :: #{binary() => any()}.
 
 %% Example:
+%% modify_vpc_encryption_control_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EgressOnlyInternetGatewayExclusion">> => list(any()),
+%%   <<"ElasticFileSystemExclusion">> => list(any()),
+%%   <<"InternetGatewayExclusion">> => list(any()),
+%%   <<"LambdaExclusion">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"NatGatewayExclusion">> => list(any()),
+%%   <<"VirtualPrivateGatewayExclusion">> => list(any()),
+%%   <<"VpcEncryptionControlId">> := string(),
+%%   <<"VpcLatticeExclusion">> => list(any()),
+%%   <<"VpcPeeringExclusion">> => list(any())
+%% }
+-type modify_vpc_encryption_control_request() :: #{binary() => any()}.
+
+%% Example:
 %% transit_gateway_vpc_attachment_options() :: #{
 %%   <<"ApplianceModeSupport">> => list(any()),
 %%   <<"DnsSupport">> => list(any()),
@@ -18716,6 +19397,15 @@
 %%   <<"PreviousStatus">> => client_vpn_connection_status()
 %% }
 -type terminate_connection_status() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_resources_blocking_encryption_enforcement_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcId">> := string()
+%% }
+-type get_vpc_resources_blocking_encryption_enforcement_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_policy_table_request() :: #{
@@ -18810,6 +19500,7 @@
 %% Example:
 %% fleet_launch_template_overrides_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"BlockDeviceMappings">> => list(fleet_block_device_mapping_request()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements_request(),
@@ -18862,6 +19553,15 @@
 %%   <<"State">> => list(any())
 %% }
 -type associate_security_group_vpc_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_interruptible_capacity_reservation_allocation_result() :: #{
+%%   <<"InterruptionType">> => list(any()),
+%%   <<"SourceCapacityReservationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetInstanceCount">> => integer()
+%% }
+-type create_interruptible_capacity_reservation_allocation_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_client_vpn_target_network_result() :: #{
@@ -19429,6 +20129,12 @@
 -type describe_capacity_manager_data_exports_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_instance_sql_ha_standby_detections_result() :: #{
+%%   <<"Instances">> => list(registered_instance())
+%% }
+-type enable_instance_sql_ha_standby_detections_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_traffic_mirror_filter_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
@@ -19475,6 +20181,12 @@
 %%   <<"RegionName">> => string()
 %% }
 -type add_ipam_operating_region() :: #{binary() => any()}.
+
+%% Example:
+%% get_enabled_ipam_policy_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type get_enabled_ipam_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_declarative_policies_report_summary_result() :: #{
@@ -19616,6 +20328,16 @@
 %%   <<"ReservedInstancesId">> => string()
 %% }
 -type failed_queued_purchase_deletion() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transit_gateway_metering_policies_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayMeteringPolicyIds">> => list(string())
+%% }
+-type describe_transit_gateway_metering_policies_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_verified_access_endpoint_policy_result() :: #{
@@ -19863,6 +20585,16 @@
 -type modify_vpc_endpoint_service_permissions_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_ipam_policy_organization_targets_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPolicyId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_policy_organization_targets_request() :: #{binary() => any()}.
+
+%% Example:
 %% prefix_list_id() :: #{
 %%   <<"Description">> => string(),
 %%   <<"PrefixListId">> => string()
@@ -19950,6 +20682,7 @@
 %% Example:
 %% launch_template_ebs_block_device_request() :: #{
 %%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"EbsCardIndex">> => integer(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
@@ -20113,6 +20846,12 @@
 -type get_ipam_discovered_accounts_result() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_policy_allocation_rule_request() :: #{
+%%   <<"SourceIpamPoolId">> => string()
+%% }
+-type ipam_policy_allocation_rule_request() :: #{binary() => any()}.
+
+%% Example:
 %% enable_snapshot_block_public_access_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"State">> := list(any())
@@ -20127,6 +20866,17 @@
 %%   <<"TotalUnavailableCapacity">> => integer()
 %% }
 -type capacity_reservation_status() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_metering_policy_entry() :: #{
+%%   <<"MeteredAccount">> => list(any()),
+%%   <<"MeteringPolicyRule">> => transit_gateway_metering_policy_rule(),
+%%   <<"PolicyRuleNumber">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateEffectiveAt">> => non_neg_integer(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type transit_gateway_metering_policy_entry() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_vpc_attachment_request() :: #{
@@ -20265,9 +21015,25 @@
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> := string(),
+%%   <<"VpnConcentratorId">> => string(),
 %%   <<"VpnGatewayId">> => string()
 %% }
 -type create_vpn_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpn_concentrator_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type delete_vpn_concentrator_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpn_concentrator_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_vpn_concentrator_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_image_usage_reports_result() :: #{
@@ -20377,6 +21143,9 @@
 
 %% Example:
 %% cloud_watch_log_options() :: #{
+%%   <<"BgpLogEnabled">> => boolean(),
+%%   <<"BgpLogGroupArn">> => string(),
+%%   <<"BgpLogOutputFormat">> => string(),
 %%   <<"LogEnabled">> => boolean(),
 %%   <<"LogGroupArn">> => string(),
 %%   <<"LogOutputFormat">> => string()
@@ -20581,11 +21350,28 @@
 -type load_permission_modifications() :: #{binary() => any()}.
 
 %% Example:
+%% interruption_info() :: #{
+%%   <<"InterruptionType">> => list(any()),
+%%   <<"SourceCapacityReservationId">> => string()
+%% }
+-type interruption_info() :: #{binary() => any()}.
+
+%% Example:
 %% client_connect_options() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"LambdaFunctionArn">> => string()
 %% }
 -type client_connect_options() :: #{binary() => any()}.
+
+%% Example:
+%% interruptible_capacity_allocation() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InterruptibleCapacityReservationId">> => string(),
+%%   <<"InterruptionType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetInstanceCount">> => integer()
+%% }
+-type interruptible_capacity_allocation() :: #{binary() => any()}.
 
 %% Example:
 %% subnet_ip_prefixes() :: #{
@@ -20762,6 +21548,15 @@
 -type fleet_spot_capacity_rebalance() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_encryption_non_compliant_resource() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsExcludable">> => boolean(),
+%%   <<"Type">> => string()
+%% }
+-type vpc_encryption_non_compliant_resource() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_spot_instance_requests_result() :: #{
 %%   <<"CancelledSpotInstanceRequests">> => list(cancelled_spot_instance_request())
 %% }
@@ -20873,6 +21668,13 @@
 %%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type describe_vpc_endpoints_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpn_concentrators_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpnConcentrators">> => list(vpn_concentrator())
+%% }
+-type describe_vpn_concentrators_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_capacity_manager_metric_data_request() :: #{
@@ -21129,6 +21931,16 @@
 -type delete_network_insights_access_scope_analysis_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_vpn_concentrators_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpnConcentratorIds">> => list(string())
+%% }
+-type describe_vpn_concentrators_request() :: #{binary() => any()}.
+
+%% Example:
 %% associated_target_network() :: #{
 %%   <<"NetworkId">> => string(),
 %%   <<"NetworkType">> => list(any())
@@ -21228,6 +22040,18 @@
 %%   <<"RouteServerId">> := string()
 %% }
 -type get_route_server_routing_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% registered_instance() :: #{
+%%   <<"HaStatus">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ProcessingStatus">> => string(),
+%%   <<"SqlServerCredentials">> => string(),
+%%   <<"SqlServerLicenseUsage">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type registered_instance() :: #{binary() => any()}.
 
 %% Example:
 %% disk_image_detail() :: #{
@@ -23885,6 +24709,26 @@ create_internet_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInternetGateway">>, Input, Options).
 
+%% @doc
+%% Creates an interruptible Capacity Reservation by specifying the number of
+%% unused instances you want to allocate from your source reservation.
+%%
+%% This helps you make unused capacity available for other workloads within
+%% your account while maintaining control to reclaim it.
+-spec create_interruptible_capacity_reservation_allocation(aws_client:aws_client(), create_interruptible_capacity_reservation_allocation_request()) ->
+    {ok, create_interruptible_capacity_reservation_allocation_result(), tuple()} |
+    {error, any()}.
+create_interruptible_capacity_reservation_allocation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_interruptible_capacity_reservation_allocation(Client, Input, []).
+
+-spec create_interruptible_capacity_reservation_allocation(aws_client:aws_client(), create_interruptible_capacity_reservation_allocation_request(), proplists:proplist()) ->
+    {ok, create_interruptible_capacity_reservation_allocation_result(), tuple()} |
+    {error, any()}.
+create_interruptible_capacity_reservation_allocation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInterruptibleCapacityReservationAllocation">>, Input, Options).
+
 %% @doc Create an IPAM.
 %%
 %% Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use
@@ -23931,6 +24775,35 @@ create_ipam_external_resource_verification_token(Client, Input)
 create_ipam_external_resource_verification_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpamExternalResourceVerificationToken">>, Input, Options).
+
+%% @doc Creates an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+%%
+%% For more information, see Define public IPv4 allocation strategy with IPAM
+%% policies:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/define-public-ipv4-allocation-strategy-with-ipam-policies.html
+%% in the Amazon VPC IPAM User Guide.
+-spec create_ipam_policy(aws_client:aws_client(), create_ipam_policy_request()) ->
+    {ok, create_ipam_policy_result(), tuple()} |
+    {error, any()}.
+create_ipam_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_policy(Client, Input, []).
+
+-spec create_ipam_policy(aws_client:aws_client(), create_ipam_policy_request(), proplists:proplist()) ->
+    {ok, create_ipam_policy_result(), tuple()} |
+    {error, any()}.
+create_ipam_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamPolicy">>, Input, Options).
 
 %% @doc Create an IP address pool for Amazon VPC IP Address Manager (IPAM).
 %%
@@ -25367,6 +26240,38 @@ create_transit_gateway_connect_peer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransitGatewayConnectPeer">>, Input, Options).
 
+%% @doc Creates a metering policy for a transit gateway to track and measure
+%% network traffic.
+-spec create_transit_gateway_metering_policy(aws_client:aws_client(), create_transit_gateway_metering_policy_request()) ->
+    {ok, create_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_metering_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_transit_gateway_metering_policy(Client, Input, []).
+
+-spec create_transit_gateway_metering_policy(aws_client:aws_client(), create_transit_gateway_metering_policy_request(), proplists:proplist()) ->
+    {ok, create_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_metering_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTransitGatewayMeteringPolicy">>, Input, Options).
+
+%% @doc Creates an entry in a transit gateway metering policy to define
+%% traffic measurement rules.
+-spec create_transit_gateway_metering_policy_entry(aws_client:aws_client(), create_transit_gateway_metering_policy_entry_request()) ->
+    {ok, create_transit_gateway_metering_policy_entry_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_metering_policy_entry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_transit_gateway_metering_policy_entry(Client, Input, []).
+
+-spec create_transit_gateway_metering_policy_entry(aws_client:aws_client(), create_transit_gateway_metering_policy_entry_request(), proplists:proplist()) ->
+    {ok, create_transit_gateway_metering_policy_entry_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_metering_policy_entry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTransitGatewayMeteringPolicyEntry">>, Input, Options).
+
 %% @doc Creates a multicast domain using the specified transit gateway.
 %%
 %% The transit gateway must be in the available state before you create a
@@ -25698,6 +26603,29 @@ create_vpc_block_public_access_exclusion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcBlockPublicAccessExclusion">>, Input, Options).
 
+%% @doc Creates a VPC Encryption Control configuration for a specified VPC.
+%%
+%% VPC Encryption Control enables you to enforce encryption for all data in
+%% transit within and between VPCs to meet compliance requirements for
+%% standards like HIPAA, FedRAMP, and PCI DSS.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec create_vpc_encryption_control(aws_client:aws_client(), create_vpc_encryption_control_request()) ->
+    {ok, create_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+create_vpc_encryption_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpc_encryption_control(Client, Input, []).
+
+-spec create_vpc_encryption_control(aws_client:aws_client(), create_vpc_encryption_control_request(), proplists:proplist()) ->
+    {ok, create_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+create_vpc_encryption_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpcEncryptionControl">>, Input, Options).
+
 %% @doc Creates a VPC endpoint.
 %%
 %% A VPC endpoint provides a private connection between the
@@ -25821,6 +26749,22 @@ create_vpc_peering_connection(Client, Input)
 create_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcPeeringConnection">>, Input, Options).
+
+%% @doc Creates a VPN concentrator that aggregates multiple VPN connections
+%% to a transit gateway.
+-spec create_vpn_concentrator(aws_client:aws_client(), create_vpn_concentrator_request()) ->
+    {ok, create_vpn_concentrator_result(), tuple()} |
+    {error, any()}.
+create_vpn_concentrator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpn_concentrator(Client, Input, []).
+
+-spec create_vpn_concentrator(aws_client:aws_client(), create_vpn_concentrator_request(), proplists:proplist()) ->
+    {ok, create_vpn_concentrator_result(), tuple()} |
+    {error, any()}.
+create_vpn_concentrator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpnConcentrator">>, Input, Options).
 
 %% @doc Creates a VPN connection between an existing virtual private gateway
 %% or transit
@@ -26296,6 +27240,30 @@ delete_ipam_external_resource_verification_token(Client, Input)
 delete_ipam_external_resource_verification_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpamExternalResourceVerificationToken">>, Input, Options).
+
+%% @doc Deletes an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+-spec delete_ipam_policy(aws_client:aws_client(), delete_ipam_policy_request()) ->
+    {ok, delete_ipam_policy_result(), tuple()} |
+    {error, any()}.
+delete_ipam_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_policy(Client, Input, []).
+
+-spec delete_ipam_policy(aws_client:aws_client(), delete_ipam_policy_request(), proplists:proplist()) ->
+    {ok, delete_ipam_policy_result(), tuple()} |
+    {error, any()}.
+delete_ipam_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamPolicy">>, Input, Options).
 
 %% @doc Delete an IPAM pool.
 %%
@@ -27155,6 +28123,36 @@ delete_transit_gateway_connect_peer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTransitGatewayConnectPeer">>, Input, Options).
 
+%% @doc Deletes a transit gateway metering policy.
+-spec delete_transit_gateway_metering_policy(aws_client:aws_client(), delete_transit_gateway_metering_policy_request()) ->
+    {ok, delete_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_metering_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_transit_gateway_metering_policy(Client, Input, []).
+
+-spec delete_transit_gateway_metering_policy(aws_client:aws_client(), delete_transit_gateway_metering_policy_request(), proplists:proplist()) ->
+    {ok, delete_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_metering_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTransitGatewayMeteringPolicy">>, Input, Options).
+
+%% @doc Deletes an entry from a transit gateway metering policy.
+-spec delete_transit_gateway_metering_policy_entry(aws_client:aws_client(), delete_transit_gateway_metering_policy_entry_request()) ->
+    {ok, delete_transit_gateway_metering_policy_entry_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_metering_policy_entry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_transit_gateway_metering_policy_entry(Client, Input, []).
+
+-spec delete_transit_gateway_metering_policy_entry(aws_client:aws_client(), delete_transit_gateway_metering_policy_entry_request(), proplists:proplist()) ->
+    {ok, delete_transit_gateway_metering_policy_entry_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_metering_policy_entry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTransitGatewayMeteringPolicyEntry">>, Input, Options).
+
 %% @doc Deletes the specified transit gateway multicast domain.
 -spec delete_transit_gateway_multicast_domain(aws_client:aws_client(), delete_transit_gateway_multicast_domain_request()) ->
     {ok, delete_transit_gateway_multicast_domain_result(), tuple()} |
@@ -27422,6 +28420,27 @@ delete_vpc_block_public_access_exclusion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcBlockPublicAccessExclusion">>, Input, Options).
 
+%% @doc Deletes a VPC Encryption Control configuration.
+%%
+%% This removes the encryption policy enforcement from the specified VPC.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec delete_vpc_encryption_control(aws_client:aws_client(), delete_vpc_encryption_control_request()) ->
+    {ok, delete_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+delete_vpc_encryption_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpc_encryption_control(Client, Input, []).
+
+-spec delete_vpc_encryption_control(aws_client:aws_client(), delete_vpc_encryption_control_request(), proplists:proplist()) ->
+    {ok, delete_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+delete_vpc_encryption_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpcEncryptionControl">>, Input, Options).
+
 %% @doc Deletes the specified VPC endpoint connection notifications.
 -spec delete_vpc_endpoint_connection_notifications(aws_client:aws_client(), delete_vpc_endpoint_connection_notifications_request()) ->
     {ok, delete_vpc_endpoint_connection_notifications_result(), tuple()} |
@@ -27507,6 +28526,21 @@ delete_vpc_peering_connection(Client, Input)
 delete_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringConnection">>, Input, Options).
+
+%% @doc Deletes the specified VPN concentrator.
+-spec delete_vpn_concentrator(aws_client:aws_client(), delete_vpn_concentrator_request()) ->
+    {ok, delete_vpn_concentrator_result(), tuple()} |
+    {error, any()}.
+delete_vpn_concentrator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpn_concentrator(Client, Input, []).
+
+-spec delete_vpn_concentrator(aws_client:aws_client(), delete_vpn_concentrator_request(), proplists:proplist()) ->
+    {ok, delete_vpn_concentrator_result(), tuple()} |
+    {error, any()}.
+delete_vpn_concentrator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpnConcentrator">>, Input, Options).
 
 %% @doc Deletes the specified VPN connection.
 %%
@@ -29045,7 +30079,9 @@ describe_import_snapshot_tasks(Client, Input, Options)
 %% @doc Describes the specified attribute of the specified instance.
 %%
 %% You can specify only one
-%% attribute at a time.
+%% attribute at a time. Available attributes include SQL license exemption
+%% configuration
+%% for instances registered with the SQL LE service.
 -spec describe_instance_attribute(aws_client:aws_client(), describe_instance_attribute_request()) ->
     {ok, instance_attribute(), tuple()} |
     {error, any()}.
@@ -29228,6 +30264,41 @@ describe_instance_image_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceImageMetadata">>, Input, Options).
 
+%% @doc Describes the historical SQL Server High Availability states for
+%% Amazon EC2
+%% instances that are enabled for Amazon EC2 High Availability for SQL Server
+%% monitoring.
+-spec describe_instance_sql_ha_history_states(aws_client:aws_client(), describe_instance_sql_ha_history_states_request()) ->
+    {ok, describe_instance_sql_ha_history_states_result(), tuple()} |
+    {error, any()}.
+describe_instance_sql_ha_history_states(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_sql_ha_history_states(Client, Input, []).
+
+-spec describe_instance_sql_ha_history_states(aws_client:aws_client(), describe_instance_sql_ha_history_states_request(), proplists:proplist()) ->
+    {ok, describe_instance_sql_ha_history_states_result(), tuple()} |
+    {error, any()}.
+describe_instance_sql_ha_history_states(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceSqlHaHistoryStates">>, Input, Options).
+
+%% @doc Describes the SQL Server High Availability states for Amazon EC2
+%% instances that are
+%% enabled for Amazon EC2 High Availability for SQL Server monitoring.
+-spec describe_instance_sql_ha_states(aws_client:aws_client(), describe_instance_sql_ha_states_request()) ->
+    {ok, describe_instance_sql_ha_states_result(), tuple()} |
+    {error, any()}.
+describe_instance_sql_ha_states(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_sql_ha_states(Client, Input, []).
+
+-spec describe_instance_sql_ha_states(aws_client:aws_client(), describe_instance_sql_ha_states_request(), proplists:proplist()) ->
+    {ok, describe_instance_sql_ha_states_result(), tuple()} |
+    {error, any()}.
+describe_instance_sql_ha_states(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceSqlHaStates">>, Input, Options).
+
 %% @doc Describes the status of the specified instances or all of your
 %% instances.
 %%
@@ -29397,6 +30468,11 @@ describe_instance_types(Client, Input, Options)
 %% quickly and
 %% successfully.
 %%
+%% The response includes SQL license exemption status information for
+%% instances registered
+%% with the SQL LE service, providing visibility into license exemption
+%% configuration and status.
+%%
 %% If you specify an instance ID that is not valid, an error is returned. If
 %% you specify
 %% an instance that you do not own, it is not included in the output.
@@ -29508,6 +30584,30 @@ describe_ipam_external_resource_verification_tokens(Client, Input)
 describe_ipam_external_resource_verification_tokens(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpamExternalResourceVerificationTokens">>, Input, Options).
+
+%% @doc Describes one or more IPAM policies.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+-spec describe_ipam_policies(aws_client:aws_client(), describe_ipam_policies_request()) ->
+    {ok, describe_ipam_policies_result(), tuple()} |
+    {error, any()}.
+describe_ipam_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_policies(Client, Input, []).
+
+-spec describe_ipam_policies(aws_client:aws_client(), describe_ipam_policies_request(), proplists:proplist()) ->
+    {ok, describe_ipam_policies_result(), tuple()} |
+    {error, any()}.
+describe_ipam_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamPolicies">>, Input, Options).
 
 %% @doc Get information about your IPAM pools.
 -spec describe_ipam_pools(aws_client:aws_client(), describe_ipam_pools_request()) ->
@@ -31118,6 +32218,21 @@ describe_transit_gateway_connects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTransitGatewayConnects">>, Input, Options).
 
+%% @doc Describes one or more transit gateway metering policies.
+-spec describe_transit_gateway_metering_policies(aws_client:aws_client(), describe_transit_gateway_metering_policies_request()) ->
+    {ok, describe_transit_gateway_metering_policies_result(), tuple()} |
+    {error, any()}.
+describe_transit_gateway_metering_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_transit_gateway_metering_policies(Client, Input, []).
+
+-spec describe_transit_gateway_metering_policies(aws_client:aws_client(), describe_transit_gateway_metering_policies_request(), proplists:proplist()) ->
+    {ok, describe_transit_gateway_metering_policies_result(), tuple()} |
+    {error, any()}.
+describe_transit_gateway_metering_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTransitGatewayMeteringPolicies">>, Input, Options).
+
 %% @doc Describes one or more transit gateway multicast domains.
 -spec describe_transit_gateway_multicast_domains(aws_client:aws_client(), describe_transit_gateway_multicast_domains_request()) ->
     {ok, describe_transit_gateway_multicast_domains_result(), tuple()} |
@@ -31587,6 +32702,30 @@ describe_vpc_classic_link_dns_support(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcClassicLinkDnsSupport">>, Input, Options).
 
+%% @doc Describes one or more VPC Encryption Control configurations.
+%%
+%% VPC Encryption Control enables you to enforce encryption for all data in
+%% transit within and between VPCs to meet compliance requirements You can
+%% filter the results to return information about specific encryption
+%% controls or VPCs.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec describe_vpc_encryption_controls(aws_client:aws_client(), describe_vpc_encryption_controls_request()) ->
+    {ok, describe_vpc_encryption_controls_result(), tuple()} |
+    {error, any()}.
+describe_vpc_encryption_controls(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_encryption_controls(Client, Input, []).
+
+-spec describe_vpc_encryption_controls(aws_client:aws_client(), describe_vpc_encryption_controls_request(), proplists:proplist()) ->
+    {ok, describe_vpc_encryption_controls_result(), tuple()} |
+    {error, any()}.
+describe_vpc_encryption_controls(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcEncryptionControls">>, Input, Options).
+
 %% @doc Describes the VPC resources, VPC endpoint services, Amazon Lattice
 %% services, or service networks
 %% associated with the VPC endpoint.
@@ -31757,6 +32896,21 @@ describe_vpcs(Client, Input)
 describe_vpcs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcs">>, Input, Options).
+
+%% @doc Describes one or more of your VPN concentrators.
+-spec describe_vpn_concentrators(aws_client:aws_client(), describe_vpn_concentrators_request()) ->
+    {ok, describe_vpn_concentrators_result(), tuple()} |
+    {error, any()}.
+describe_vpn_concentrators(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpn_concentrators(Client, Input, []).
+
+-spec describe_vpn_concentrators(aws_client:aws_client(), describe_vpn_concentrators_request(), proplists:proplist()) ->
+    {ok, describe_vpn_concentrators_result(), tuple()} |
+    {error, any()}.
+describe_vpn_concentrators(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpnConcentrators">>, Input, Options).
 
 %% @doc Describes one or more of your VPN connections.
 %%
@@ -32217,6 +33371,28 @@ disable_image_deregistration_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableImageDeregistrationProtection">>, Input, Options).
 
+%% @doc Disable Amazon EC2 instances running in an SQL Server High
+%% Availability cluster from SQL Server High Availability
+%% instance standby detection monitoring.
+%%
+%% Once disabled, Amazon Web Services no longer monitors the
+%% metadata for the instances to determine whether they are active or standby
+%% nodes in the
+%% SQL Server High Availability cluster.
+-spec disable_instance_sql_ha_standby_detections(aws_client:aws_client(), disable_instance_sql_ha_standby_detections_request()) ->
+    {ok, disable_instance_sql_ha_standby_detections_result(), tuple()} |
+    {error, any()}.
+disable_instance_sql_ha_standby_detections(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_instance_sql_ha_standby_detections(Client, Input, []).
+
+-spec disable_instance_sql_ha_standby_detections(aws_client:aws_client(), disable_instance_sql_ha_standby_detections_request(), proplists:proplist()) ->
+    {ok, disable_instance_sql_ha_standby_detections_result(), tuple()} |
+    {error, any()}.
+disable_instance_sql_ha_standby_detections(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableInstanceSqlHaStandbyDetections">>, Input, Options).
+
 %% @doc Disable the IPAM account.
 %%
 %% For more information, see Enable integration with Organizations:
@@ -32235,6 +33411,30 @@ disable_ipam_organization_admin_account(Client, Input)
 disable_ipam_organization_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableIpamOrganizationAdminAccount">>, Input, Options).
+
+%% @doc Disables an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+-spec disable_ipam_policy(aws_client:aws_client(), disable_ipam_policy_request()) ->
+    {ok, disable_ipam_policy_result(), tuple()} |
+    {error, any()}.
+disable_ipam_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_ipam_policy(Client, Input, []).
+
+-spec disable_ipam_policy(aws_client:aws_client(), disable_ipam_policy_request(), proplists:proplist()) ->
+    {ok, disable_ipam_policy_result(), tuple()} |
+    {error, any()}.
+disable_ipam_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableIpamPolicy">>, Input, Options).
 
 %% @doc Disables route propagation from a route server to a specified route
 %% table.
@@ -33120,6 +34320,41 @@ enable_image_deregistration_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableImageDeregistrationProtection">>, Input, Options).
 
+%% @doc Enable Amazon EC2 instances running in an SQL Server High
+%% Availability cluster for SQL Server High Availability
+%% instance standby detection monitoring.
+%%
+%% Once enabled, Amazon Web Services monitors the metadata for
+%% the instances to determine whether they are active or standby nodes in the
+%% SQL Server High Availability cluster.
+%% If the instances are determined to be standby failover nodes, Amazon Web
+%% Services
+%% automatically applies SQL Server licensing fee waiver for those instances.
+%%
+%% To register an instance, it must be running a Windows SQL Server
+%% license-included
+%% AMI and have the Amazon Web Services Systems Manager agent installed and
+%% running. Only Windows Server 2019 and later
+%% and SQL Server (Standard and Enterprise editions) 2017 and later are
+%% supported. For more
+%% information, see
+%% Prerequisites for using SQL Server High Availability instance standby
+%% detection:
+%% https://docs.aws.amazon.com/sql-server-ec2/latest/userguide/prerequisites-and-requirements.html.
+-spec enable_instance_sql_ha_standby_detections(aws_client:aws_client(), enable_instance_sql_ha_standby_detections_request()) ->
+    {ok, enable_instance_sql_ha_standby_detections_result(), tuple()} |
+    {error, any()}.
+enable_instance_sql_ha_standby_detections(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_instance_sql_ha_standby_detections(Client, Input, []).
+
+-spec enable_instance_sql_ha_standby_detections(aws_client:aws_client(), enable_instance_sql_ha_standby_detections_request(), proplists:proplist()) ->
+    {ok, enable_instance_sql_ha_standby_detections_result(), tuple()} |
+    {error, any()}.
+enable_instance_sql_ha_standby_detections(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableInstanceSqlHaStandbyDetections">>, Input, Options).
+
 %% @doc Enable an Organizations member account as the IPAM admin account.
 %%
 %% You cannot select the Organizations management account as the IPAM admin
@@ -33139,6 +34374,35 @@ enable_ipam_organization_admin_account(Client, Input)
 enable_ipam_organization_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableIpamOrganizationAdminAccount">>, Input, Options).
+
+%% @doc Enables an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+%%
+%% For more information, see Define public IPv4 allocation strategy with IPAM
+%% policies:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/define-public-ipv4-allocation-strategy-with-ipam-policies.html
+%% in the Amazon VPC IPAM User Guide.
+-spec enable_ipam_policy(aws_client:aws_client(), enable_ipam_policy_request()) ->
+    {ok, enable_ipam_policy_result(), tuple()} |
+    {error, any()}.
+enable_ipam_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_ipam_policy(Client, Input, []).
+
+-spec enable_ipam_policy(aws_client:aws_client(), enable_ipam_policy_request(), proplists:proplist()) ->
+    {ok, enable_ipam_policy_result(), tuple()} |
+    {error, any()}.
+enable_ipam_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableIpamPolicy">>, Input, Options).
 
 %% @doc Establishes a trust relationship between Reachability Analyzer and
 %% Organizations.
@@ -33799,6 +35063,30 @@ get_ebs_encryption_by_default(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEbsEncryptionByDefault">>, Input, Options).
 
+%% @doc Gets the enabled IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+-spec get_enabled_ipam_policy(aws_client:aws_client(), get_enabled_ipam_policy_request()) ->
+    {ok, get_enabled_ipam_policy_result(), tuple()} |
+    {error, any()}.
+get_enabled_ipam_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_enabled_ipam_policy(Client, Input, []).
+
+-spec get_enabled_ipam_policy(aws_client:aws_client(), get_enabled_ipam_policy_request(), proplists:proplist()) ->
+    {ok, get_enabled_ipam_policy_result(), tuple()} |
+    {error, any()}.
+get_enabled_ipam_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEnabledIpamPolicy">>, Input, Options).
+
 %% @doc Generates a CloudFormation template that streamlines and automates
 %% the integration of VPC flow logs
 %% with Amazon Athena.
@@ -34109,6 +35397,64 @@ get_ipam_discovered_resource_cidrs(Client, Input)
 get_ipam_discovered_resource_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIpamDiscoveredResourceCidrs">>, Input, Options).
+
+%% @doc Gets the allocation rules for an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+%%
+%% Allocation rules are optional configurations within an IPAM policy that
+%% map Amazon Web Services resource types to specific IPAM pools. If no rules
+%% are defined, the resource types default to using Amazon-provided IP
+%% addresses.
+-spec get_ipam_policy_allocation_rules(aws_client:aws_client(), get_ipam_policy_allocation_rules_request()) ->
+    {ok, get_ipam_policy_allocation_rules_result(), tuple()} |
+    {error, any()}.
+get_ipam_policy_allocation_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_policy_allocation_rules(Client, Input, []).
+
+-spec get_ipam_policy_allocation_rules(aws_client:aws_client(), get_ipam_policy_allocation_rules_request(), proplists:proplist()) ->
+    {ok, get_ipam_policy_allocation_rules_result(), tuple()} |
+    {error, any()}.
+get_ipam_policy_allocation_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamPolicyAllocationRules">>, Input, Options).
+
+%% @doc Gets the Amazon Web Services Organizations targets for an IPAM
+%% policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+%%
+%% A target can be an individual Amazon Web Services account or an entity
+%% within an Amazon Web Services Organization to which an IPAM policy can be
+%% applied.
+-spec get_ipam_policy_organization_targets(aws_client:aws_client(), get_ipam_policy_organization_targets_request()) ->
+    {ok, get_ipam_policy_organization_targets_result(), tuple()} |
+    {error, any()}.
+get_ipam_policy_organization_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_policy_organization_targets(Client, Input, []).
+
+-spec get_ipam_policy_organization_targets(aws_client:aws_client(), get_ipam_policy_organization_targets_request(), proplists:proplist()) ->
+    {ok, get_ipam_policy_organization_targets_result(), tuple()} |
+    {error, any()}.
+get_ipam_policy_organization_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamPolicyOrganizationTargets">>, Input, Options).
 
 %% @doc Get a list of all the CIDR allocations in an IPAM pool.
 %%
@@ -34638,6 +35984,21 @@ get_transit_gateway_attachment_propagations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTransitGatewayAttachmentPropagations">>, Input, Options).
 
+%% @doc Retrieves the entries for a transit gateway metering policy.
+-spec get_transit_gateway_metering_policy_entries(aws_client:aws_client(), get_transit_gateway_metering_policy_entries_request()) ->
+    {ok, get_transit_gateway_metering_policy_entries_result(), tuple()} |
+    {error, any()}.
+get_transit_gateway_metering_policy_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_transit_gateway_metering_policy_entries(Client, Input, []).
+
+-spec get_transit_gateway_metering_policy_entries(aws_client:aws_client(), get_transit_gateway_metering_policy_entries_request(), proplists:proplist()) ->
+    {ok, get_transit_gateway_metering_policy_entries_result(), tuple()} |
+    {error, any()}.
+get_transit_gateway_metering_policy_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTransitGatewayMeteringPolicyEntries">>, Input, Options).
+
 %% @doc Gets information about the associations for the transit gateway
 %% multicast domain.
 -spec get_transit_gateway_multicast_domain_associations(aws_client:aws_client(), get_transit_gateway_multicast_domain_associations_request()) ->
@@ -34778,6 +36139,26 @@ get_verified_access_group_policy(Client, Input)
 get_verified_access_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVerifiedAccessGroupPolicy">>, Input, Options).
+
+%% @doc Gets information about resources in a VPC that are blocking
+%% encryption enforcement.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec get_vpc_resources_blocking_encryption_enforcement(aws_client:aws_client(), get_vpc_resources_blocking_encryption_enforcement_request()) ->
+    {ok, get_vpc_resources_blocking_encryption_enforcement_result(), tuple()} |
+    {error, any()}.
+get_vpc_resources_blocking_encryption_enforcement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_vpc_resources_blocking_encryption_enforcement(Client, Input, []).
+
+-spec get_vpc_resources_blocking_encryption_enforcement(aws_client:aws_client(), get_vpc_resources_blocking_encryption_enforcement_request(), proplists:proplist()) ->
+    {ok, get_vpc_resources_blocking_encryption_enforcement_result(), tuple()} |
+    {error, any()}.
+get_vpc_resources_blocking_encryption_enforcement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetVpcResourcesBlockingEncryptionEnforcement">>, Input, Options).
 
 %% @doc Download an Amazon Web Services-provided sample configuration file to
 %% be used with the customer
@@ -35044,6 +36425,21 @@ list_snapshots_in_recycle_bin(Client, Input)
 list_snapshots_in_recycle_bin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshotsInRecycleBin">>, Input, Options).
+
+%% @doc Lists one or more volumes that are currently in the Recycle Bin.
+-spec list_volumes_in_recycle_bin(aws_client:aws_client(), list_volumes_in_recycle_bin_request()) ->
+    {ok, list_volumes_in_recycle_bin_result(), tuple()} |
+    {error, any()}.
+list_volumes_in_recycle_bin(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_volumes_in_recycle_bin(Client, Input, []).
+
+-spec list_volumes_in_recycle_bin(aws_client:aws_client(), list_volumes_in_recycle_bin_request(), proplists:proplist()) ->
+    {ok, list_volumes_in_recycle_bin_result(), tuple()} |
+    {error, any()}.
+list_volumes_in_recycle_bin(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVolumesInRecycleBin">>, Input, Options).
 
 %% @doc Locks an Amazon EBS snapshot in either governance or compliance
 %% mode to protect it against accidental or malicious deletions for a
@@ -35864,6 +37260,35 @@ modify_ipam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIpam">>, Input, Options).
 
+%% @doc Modifies the allocation rules in an IPAM policy.
+%%
+%% An IPAM policy is a set of rules that define how public IPv4 addresses
+%% from IPAM pools are allocated to Amazon Web Services resources. Each rule
+%% maps an Amazon Web Services service to IPAM pools that the service will
+%% use to get IP addresses. A single policy can have multiple rules and be
+%% applied to multiple Amazon Web Services Regions. If the IPAM pool run out
+%% of addresses then the services fallback to Amazon-provided IP addresses. A
+%% policy can be applied to an individual Amazon Web Services account or an
+%% entity within Amazon Web Services Organizations.
+%%
+%% Allocation rules are optional configurations within an IPAM policy that
+%% map Amazon Web Services resource types to specific IPAM pools. If no rules
+%% are defined, the resource types default to using Amazon-provided IP
+%% addresses.
+-spec modify_ipam_policy_allocation_rules(aws_client:aws_client(), modify_ipam_policy_allocation_rules_request()) ->
+    {ok, modify_ipam_policy_allocation_rules_result(), tuple()} |
+    {error, any()}.
+modify_ipam_policy_allocation_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ipam_policy_allocation_rules(Client, Input, []).
+
+-spec modify_ipam_policy_allocation_rules(aws_client:aws_client(), modify_ipam_policy_allocation_rules_request(), proplists:proplist()) ->
+    {ok, modify_ipam_policy_allocation_rules_result(), tuple()} |
+    {error, any()}.
+modify_ipam_policy_allocation_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpamPolicyAllocationRules">>, Input, Options).
+
 %% @doc Modify the configurations of an IPAM pool.
 %%
 %% For more information, see Modify a pool:
@@ -36407,6 +37832,21 @@ modify_transit_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTransitGateway">>, Input, Options).
 
+%% @doc Modifies a transit gateway metering policy.
+-spec modify_transit_gateway_metering_policy(aws_client:aws_client(), modify_transit_gateway_metering_policy_request()) ->
+    {ok, modify_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_metering_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_transit_gateway_metering_policy(Client, Input, []).
+
+-spec modify_transit_gateway_metering_policy(aws_client:aws_client(), modify_transit_gateway_metering_policy_request(), proplists:proplist()) ->
+    {ok, modify_transit_gateway_metering_policy_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_metering_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTransitGatewayMeteringPolicy">>, Input, Options).
+
 %% @doc Modifies a reference (route) to a prefix list in a specified transit
 %% gateway route table.
 -spec modify_transit_gateway_prefix_list_reference(aws_client:aws_client(), modify_transit_gateway_prefix_list_reference_request()) ->
@@ -36576,11 +38016,17 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% require detaching and
 %% reattaching the volume or stopping and restarting the instance.
 %%
-%% After modifying a volume, you must wait at least six hours and ensure that
-%% the volume
-%% is in the `in-use' or `available' state before you can modify the
-%% same
-%% volume. This is sometimes referred to as a cooldown period.
+%% After you initiate a volume modification, you must wait for that
+%% modification to reach the
+%% `completed' state before you can initiate another modification for the
+%% same volume.
+%% You can modify a volume up to four times within a rolling 24-hour period,
+%% as long as the volume
+%% is in the `in-use' or `available' state, and all previous
+%% modifications
+%% for that volume are `completed'. If you exceed this limit, you get an
+%% error message
+%% that indicates when you can perform your next modification.
 -spec modify_volume(aws_client:aws_client(), modify_volume_request()) ->
     {ok, modify_volume_result(), tuple()} |
     {error, any()}.
@@ -36681,6 +38127,28 @@ modify_vpc_block_public_access_options(Client, Input)
 modify_vpc_block_public_access_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyVpcBlockPublicAccessOptions">>, Input, Options).
+
+%% @doc Modifies the encryption control configuration for a VPC.
+%%
+%% You can update the encryption mode and exclusion settings for various
+%% gateway types and peering connections.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec modify_vpc_encryption_control(aws_client:aws_client(), modify_vpc_encryption_control_request()) ->
+    {ok, modify_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+modify_vpc_encryption_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_vpc_encryption_control(Client, Input, []).
+
+-spec modify_vpc_encryption_control(aws_client:aws_client(), modify_vpc_encryption_control_request(), proplists:proplist()) ->
+    {ok, modify_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+modify_vpc_encryption_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyVpcEncryptionControl">>, Input, Options).
 
 %% @doc Modifies attributes of a specified VPC endpoint.
 %%
@@ -38273,6 +39741,26 @@ restore_snapshot_tier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreSnapshotTier">>, Input, Options).
 
+%% @doc Restores a volume from the Recycle Bin.
+%%
+%% For more information, see Restore
+%% volumes from the Recycle Bin:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-volumes.html#recycle-bin-restore-volumes
+%% in the Amazon EBS User Guide.
+-spec restore_volume_from_recycle_bin(aws_client:aws_client(), restore_volume_from_recycle_bin_request()) ->
+    {ok, restore_volume_from_recycle_bin_result(), tuple()} |
+    {error, any()}.
+restore_volume_from_recycle_bin(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_volume_from_recycle_bin(Client, Input, []).
+
+-spec restore_volume_from_recycle_bin(aws_client:aws_client(), restore_volume_from_recycle_bin_request(), proplists:proplist()) ->
+    {ok, restore_volume_from_recycle_bin_result(), tuple()} |
+    {error, any()}.
+restore_volume_from_recycle_bin(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreVolumeFromRecycleBin">>, Input, Options).
+
 %% @doc Removes an ingress authorization rule from a Client VPN endpoint.
 -spec revoke_client_vpn_ingress(aws_client:aws_client(), revoke_client_vpn_ingress_request()) ->
     {ok, revoke_client_vpn_ingress_result(), tuple()} |
@@ -39103,6 +40591,24 @@ update_capacity_manager_organizations_access(Client, Input)
 update_capacity_manager_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapacityManagerOrganizationsAccess">>, Input, Options).
+
+%% @doc
+%% Modifies the number of instances allocated to an interruptible
+%% reservation, allowing you to add more capacity or reclaim capacity to your
+%% source Capacity Reservation.
+-spec update_interruptible_capacity_reservation_allocation(aws_client:aws_client(), update_interruptible_capacity_reservation_allocation_request()) ->
+    {ok, update_interruptible_capacity_reservation_allocation_result(), tuple()} |
+    {error, any()}.
+update_interruptible_capacity_reservation_allocation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_interruptible_capacity_reservation_allocation(Client, Input, []).
+
+-spec update_interruptible_capacity_reservation_allocation(aws_client:aws_client(), update_interruptible_capacity_reservation_allocation_request(), proplists:proplist()) ->
+    {ok, update_interruptible_capacity_reservation_allocation_result(), tuple()} |
+    {error, any()}.
+update_interruptible_capacity_reservation_allocation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInterruptibleCapacityReservationAllocation">>, Input, Options).
 
 %% @doc Updates the description of an egress (outbound) security group rule.
 %%

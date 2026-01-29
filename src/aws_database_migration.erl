@@ -571,6 +571,12 @@
 -type instance_profile() :: #{binary() => any()}.
 
 %% Example:
+%% lakehouse_settings() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lakehouse_settings() :: #{binary() => any()}.
+
+%% Example:
 %% default_error_details() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1222,6 +1228,15 @@
 -type describe_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
+%% progress() :: #{
+%%   <<"ProcessedObject">> => processed_object(),
+%%   <<"ProgressPercent">> => float(),
+%%   <<"ProgressStep">> => string(),
+%%   <<"TotalObjects">> => float()
+%% }
+-type progress() :: #{binary() => any()}.
+
+%% Example:
 %% describe_fleet_advisor_collectors_request() :: #{
 %%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
@@ -1473,6 +1488,7 @@
 %%   <<"Error">> => list(),
 %%   <<"ExportSqlDetails">> => export_sql_details(),
 %%   <<"MigrationProjectArn">> => string(),
+%%   <<"Progress">> => progress(),
 %%   <<"RequestIdentifier">> => string(),
 %%   <<"Status">> => string()
 %% }
@@ -1688,6 +1704,7 @@
 %%   <<"CdcStartTime">> => non_neg_integer(),
 %%   <<"CdcStopPosition">> => string(),
 %%   <<"FailureMessages">> => list(string()),
+%%   <<"IsReadOnly">> => boolean(),
 %%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()),
 %%   <<"ProvisionData">> => provision_data(),
 %%   <<"RecoveryCheckpoint">> => string(),
@@ -2006,6 +2023,14 @@
 -type describe_extension_pack_associations_response() :: #{binary() => any()}.
 
 %% Example:
+%% processed_object() :: #{
+%%   <<"EndpointType">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type processed_object() :: #{binary() => any()}.
+
+%% Example:
 %% kerberos_authentication_settings() :: #{
 %%   <<"KeyCacheSecretIamArn">> => string(),
 %%   <<"KeyCacheSecretId">> => string(),
@@ -2018,6 +2043,17 @@
 %%   <<"ReplicationTask">> => replication_task()
 %% }
 -type move_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% sybase_ase_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EncryptPassword">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type sybase_ase_data_provider_settings() :: #{binary() => any()}.
 
 %% Example:
 %% delete_collector_request() :: #{
@@ -2348,12 +2384,14 @@
 %%   <<"EndpointType">> => list(any()),
 %%   <<"EngineName">> => string(),
 %%   <<"EngineDisplayName">> => string(),
+%%   <<"LakehouseSettings">> => lakehouse_settings(),
 %%   <<"CertificateArn">> => string(),
 %%   <<"NeptuneSettings">> => neptune_settings(),
 %%   <<"MySQLSettings">> => my_s_q_l_settings(),
 %%   <<"Username">> => string(),
 %%   <<"ExternalTableDefinition">> => string(),
 %%   <<"SslMode">> => list(any()),
+%%   <<"IsReadOnly">> => boolean(),
 %%   <<"S3Settings">> => s3_settings(),
 %%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
 %%   <<"DatabaseName">> => string(),
@@ -2507,6 +2545,7 @@
 %%   <<"CertificatePem">> => string(),
 %%   <<"CertificateWallet">> => binary(),
 %%   <<"KeyLength">> => integer(),
+%%   <<"KmsKeyId">> => string(),
 %%   <<"SigningAlgorithm">> => string(),
 %%   <<"ValidFromDate">> => non_neg_integer(),
 %%   <<"ValidToDate">> => non_neg_integer()
@@ -2953,6 +2992,7 @@
 
 %% Example:
 %% replication_subnet_group() :: #{
+%%   <<"IsReadOnly">> => boolean(),
 %%   <<"ReplicationSubnetGroupDescription">> => string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
@@ -3111,6 +3151,7 @@
 %%   <<"CertificateIdentifier">> := string(),
 %%   <<"CertificatePem">> => string(),
 %%   <<"CertificateWallet">> => binary(),
+%%   <<"KmsKeyId">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_certificate_message() :: #{binary() => any()}.
@@ -3486,6 +3527,7 @@
 %% Example:
 %% replication_config() :: #{
 %%   <<"ComputeConfig">> => compute_config(),
+%%   <<"IsReadOnly">> => boolean(),
 %%   <<"ReplicationConfigArn">> => string(),
 %%   <<"ReplicationConfigCreateTime">> => non_neg_integer(),
 %%   <<"ReplicationConfigIdentifier">> => string(),
@@ -4031,6 +4073,7 @@
 -type import_certificate_errors() ::
     resource_quota_exceeded_fault() | 
     resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_certificate_fault().
 
 -type list_tags_for_resource_errors() ::

@@ -195,6 +195,9 @@
          list_quick_responses/2,
          list_quick_responses/4,
          list_quick_responses/5,
+         list_spans/3,
+         list_spans/5,
+         list_spans/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -210,6 +213,8 @@
          remove_knowledge_base_template_uri/4,
          render_message_template/4,
          render_message_template/5,
+         retrieve/3,
+         retrieve/4,
          search_content/3,
          search_content/4,
          search_message_templates/3,
@@ -301,6 +306,13 @@
 %% }
 -type put_feedback_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% suggested_message_data_details() :: #{
+%%   <<"messageText">> => string()
+%% }
+-type suggested_message_data_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_a_i_agent_version_response() :: #{}
 -type delete_a_i_agent_version_response() :: #{}.
@@ -316,6 +328,7 @@
 
 %% Example:
 %% message_configuration() :: #{
+%%   <<"generateChunkedMessage">> => [boolean()],
 %%   <<"generateFillerMessage">> => [boolean()]
 %% }
 -type message_configuration() :: #{binary() => any()}.
@@ -347,6 +360,16 @@
 %% Example:
 %% delete_message_template_attachment_response() :: #{}
 -type delete_message_template_attachment_response() :: #{}.
+
+
+%% Example:
+%% retrieval_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"knowledgeSource">> => list(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"overrideKnowledgeBaseSearchType">> => string()
+%% }
+-type retrieval_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -382,6 +405,13 @@
 
 
 %% Example:
+%% whats_app_message_template_content() :: #{
+%%   <<"data">> => string()
+%% }
+-type whats_app_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_a_i_agent_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -402,8 +432,17 @@
 
 
 %% Example:
+%% orchestrator_configuration_entry() :: #{
+%%   <<"aiAgentId">> => string(),
+%%   <<"orchestratorUseCase">> => string()
+%% }
+-type orchestrator_configuration_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_assistant_a_i_agent_request() :: #{
-%%   <<"aiAgentType">> := string()
+%%   <<"aiAgentType">> := string(),
+%%   <<"orchestratorUseCase">> => string()
 %% }
 -type remove_assistant_a_i_agent_request() :: #{binary() => any()}.
 
@@ -523,6 +562,15 @@
 
 
 %% Example:
+%% span_tool_use_value() :: #{
+%%   <<"arguments">> => any(),
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string()
+%% }
+-type span_tool_use_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_a_i_agent_response() :: #{
 %%   <<"aiAgent">> => a_i_agent_data(),
 %%   <<"versionNumber">> => float()
@@ -588,6 +636,7 @@
 
 %% Example:
 %% get_next_message_response() :: #{
+%%   <<"chunkedResponseTerminated">> => [boolean()],
 %%   <<"conversationSessionData">> => list(runtime_session_data()),
 %%   <<"conversationState">> => conversation_state(),
 %%   <<"nextMessageToken">> => string(),
@@ -611,6 +660,18 @@
 %%   <<"tags">> => map()
 %% }
 -type content_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"citationSpan">> => citation_span(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceURL">> => string(),
+%%   <<"title">> => string()
+%% }
+-type citation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,7 +787,8 @@
 %% Example:
 %% intent_detected_data_details() :: #{
 %%   <<"intent">> => string(),
-%%   <<"intentId">> => string()
+%%   <<"intentId">> => string(),
+%%   <<"relevanceLevel">> => string()
 %% }
 -type intent_detected_data_details() :: #{binary() => any()}.
 
@@ -783,6 +845,17 @@
 
 
 %% Example:
+%% orchestration_a_i_agent_configuration() :: #{
+%%   <<"connectInstanceArn">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"orchestrationAIGuardrailId">> => string(),
+%%   <<"orchestrationAIPromptId">> => string(),
+%%   <<"toolConfigurations">> => list(tool_configuration())
+%% }
+-type orchestration_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% request_timeout_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -818,6 +891,7 @@
 %% update_a_iprompt_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
 %%   <<"modelId">> => string(),
 %%   <<"templateConfiguration">> => list(),
 %%   <<"visibilityStatus">> := string()
@@ -912,11 +986,59 @@
 
 
 %% Example:
+%% span_attributes() :: #{
+%%   <<"aiAgentOrchestratorUseCase">> => string(),
+%%   <<"inputMessages">> => list(span_message()),
+%%   <<"responseModel">> => string(),
+%%   <<"promptType">> => string(),
+%%   <<"usageOutputTokens">> => [integer()],
+%%   <<"errorType">> => string(),
+%%   <<"promptName">> => string(),
+%%   <<"aiAgentId">> => string(),
+%%   <<"promptId">> => string(),
+%%   <<"contactId">> => string(),
+%%   <<"systemInstructions">> => list(list()),
+%%   <<"initialContactId">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"requestModel">> => string(),
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"responseFinishReasons">> => list(string()),
+%%   <<"aiAgentVersion">> => [integer()],
+%%   <<"promptVersion">> => [integer()],
+%%   <<"topP">> => [float()],
+%%   <<"usageInputTokens">> => [integer()],
+%%   <<"operationName">> => string(),
+%%   <<"aiAgentArn">> => string(),
+%%   <<"requestMaxTokens">> => [integer()],
+%%   <<"providerName">> => string(),
+%%   <<"aiAgentType">> => string(),
+%%   <<"promptArn">> => string(),
+%%   <<"agentId">> => string(),
+%%   <<"aiAgentInvoker">> => string(),
+%%   <<"temperature">> => [float()],
+%%   <<"aiAgentName">> => string(),
+%%   <<"sessionName">> => string(),
+%%   <<"usageTotalTokens">> => [integer()],
+%%   <<"outputMessages">> => list(span_message()),
+%%   <<"cacheWriteInputTokens">> => [integer()]
+%% }
+-type span_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_a_i_agent_version_response() :: #{
 %%   <<"aiAgent">> => a_i_agent_data(),
 %%   <<"versionNumber">> => float()
 %% }
 -type create_a_i_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_output_configuration() :: #{
+%%   <<"outputVariableNameOverride">> => string(),
+%%   <<"sessionDataNamespace">> => string()
+%% }
+-type tool_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -955,6 +1077,15 @@
 %% Example:
 %% get_session_request() :: #{}
 -type get_session_request() :: #{}.
+
+
+%% Example:
+%% span_text_value() :: #{
+%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
+%%   <<"citations">> => list(span_citation()),
+%%   <<"value">> => string()
+%% }
+-type span_text_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_i_agent_request() :: #{}
@@ -1066,15 +1197,24 @@
 %% create_message_template_request() :: #{
 %%   <<"channelSubtype">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"content">> := list(),
+%%   <<"content">> => list(),
 %%   <<"defaultAttributes">> => message_template_attributes(),
 %%   <<"description">> => string(),
 %%   <<"groupingConfiguration">> => grouping_configuration(),
 %%   <<"language">> => string(),
-%%   <<"name">> := string(),
+%%   <<"name">> => string(),
+%%   <<"sourceConfiguration">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type create_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_instruction() :: #{
+%%   <<"examples">> => list([string()]()),
+%%   <<"instruction">> => [string()]
+%% }
+-type tool_instruction() :: #{binary() => any()}.
 
 %% Example:
 %% delete_assistant_request() :: #{}
@@ -1132,6 +1272,8 @@
 %%   <<"contactArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
 %%   <<"tagFilter">> => list(),
 %%   <<"tags">> => map()
 %% }
@@ -1203,6 +1345,16 @@
 
 
 %% Example:
+%% span_citation() :: #{
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"title">> => string()
+%% }
+-type span_citation() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_knowledge_base_template_uri_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
@@ -1214,6 +1366,14 @@
 
 
 %% Example:
+%% annotation() :: #{
+%%   <<"destructiveHint">> => [boolean()],
+%%   <<"title">> => [string()]
+%% }
+-type annotation() :: #{binary() => any()}.
+
+
+%% Example:
 %% a_iprompt_data() :: #{
 %%   <<"aiPromptArn">> => string(),
 %%   <<"aiPromptId">> => string(),
@@ -1221,6 +1381,7 @@
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
 %%   <<"modelId">> => string(),
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -1241,6 +1402,23 @@
 %% }
 -type update_a_i_guardrail_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% span() :: #{
+%%   <<"assistantId">> => string(),
+%%   <<"attributes">> => span_attributes(),
+%%   <<"endTimestamp">> => [non_neg_integer()],
+%%   <<"parentSpanId">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"spanId">> => string(),
+%%   <<"spanName">> => string(),
+%%   <<"spanType">> => string(),
+%%   <<"startTimestamp">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type span() :: #{binary() => any()}.
+
 %% Example:
 %% delete_a_iprompt_version_response() :: #{}
 -type delete_a_iprompt_version_response() :: #{}.
@@ -1255,6 +1433,13 @@
 %%   <<"attachment">> => message_template_attachment()
 %% }
 -type create_message_template_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notes_data_details() :: #{
+%%   <<"completion">> => string()
+%% }
+-type notes_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1325,6 +1510,19 @@
 %%   <<"quickResponseSummaries">> => list(quick_response_summary())
 %% }
 -type list_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_a_p_n_s_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"mediaUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_a_p_n_s_message_template_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1486,15 +1684,24 @@
 %% update_message_template_request() :: #{
 %%   <<"content">> => list(),
 %%   <<"defaultAttributes">> => message_template_attributes(),
-%%   <<"language">> => string()
+%%   <<"language">> => string(),
+%%   <<"sourceConfiguration">> => list()
 %% }
 -type update_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_assessment() :: #{
+%%   <<"blocked">> => [boolean()]
+%% }
+-type a_i_guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:
 %% extended_message_template_data() :: #{
 %%   <<"attachments">> => list(message_template_attachment()),
 %%   <<"attributeTypes">> => list(string()),
+%%   <<"channel">> => string(),
 %%   <<"channelSubtype">> => string(),
 %%   <<"content">> => list(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -1511,10 +1718,19 @@
 %%   <<"messageTemplateContentSha256">> => string(),
 %%   <<"messageTemplateId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"sourceConfigurationSummary">> => list(),
 %%   <<"tags">> => map(),
 %%   <<"versionNumber">> => float()
 %% }
 -type extended_message_template_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% notes_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type notes_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1536,6 +1752,8 @@
 
 %% Example:
 %% text_message() :: #{
+%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
+%%   <<"citations">> => list(citation()),
 %%   <<"value">> => string()
 %% }
 -type text_message() :: #{binary() => any()}.
@@ -1597,6 +1815,7 @@
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => assistant_integration_configuration(),
 %%   <<"name">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
@@ -1639,6 +1858,13 @@
 %%   <<"assistant">> => assistant_data()
 %% }
 -type create_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_interaction_configuration() :: #{
+%%   <<"isUserConfirmationRequired">> => [boolean()]
+%% }
+-type user_interaction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1688,6 +1914,7 @@
 %% get_recommendations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextChunkToken">> => string(),
+%%   <<"recommendationType">> => string(),
 %%   <<"waitTimeSeconds">> => integer()
 %% }
 -type get_recommendations_request() :: #{binary() => any()}.
@@ -1749,6 +1976,8 @@
 %% update_session_request() :: #{
 %%   <<"aiAgentConfiguration">> => map(),
 %%   <<"description">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
 %%   <<"tagFilter">> => list()
 %% }
 -type update_session_request() :: #{binary() => any()}.
@@ -1782,6 +2011,19 @@
 %%   <<"recommendationIds">> => list(string())
 %% }
 -type notify_recommendations_received_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_message_template_source_configuration_summary() :: #{
+%%   <<"businessAccountId">> => string(),
+%%   <<"components">> => list(string()),
+%%   <<"language">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string(),
+%%   <<"templateId">> => string()
+%% }
+-type whats_app_message_template_source_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1824,6 +2066,16 @@
 %%   <<"tags">> => map()
 %% }
 -type quick_response_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_result() :: #{
+%%   <<"associationId">> => string(),
+%%   <<"contentText">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceId">> => string()
+%% }
+-type retrieve_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1882,6 +2134,16 @@
 
 
 %% Example:
+%% a_iprompt_inference_configuration() :: #{
+%%   <<"maxTokensToSample">> => integer(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type a_iprompt_inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_assistant_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1910,6 +2172,21 @@
 
 
 %% Example:
+%% push_ad_m_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_ad_m_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_quick_response_response() :: #{
 %%   <<"quickResponse">> => quick_response_data()
 %% }
@@ -1925,12 +2202,21 @@
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => assistant_integration_configuration(),
 %%   <<"name">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => string()
 %% }
 -type assistant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type case_summarization_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1955,12 +2241,29 @@
 
 
 %% Example:
+%% filter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => any()
+%% }
+-type filter_attribute() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"field">> => string(),
 %%   <<"operator">> => string(),
 %%   <<"value">> => string()
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_a_i_agent_configuration() :: #{
+%%   <<"caseSummarizationAIGuardrailId">> => string(),
+%%   <<"caseSummarizationAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type case_summarization_a_i_agent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2021,6 +2324,7 @@
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => session_integration_configuration(),
 %%   <<"name">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
 %%   <<"origin">> => string(),
 %%   <<"sessionArn">> => string(),
 %%   <<"sessionId">> => string(),
@@ -2049,6 +2353,14 @@
 
 
 %% Example:
+%% tool_override_input_value() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"value">> => list()
+%% }
+-type tool_override_input_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_message_template_version_response() :: #{
 %%   <<"messageTemplate">> => extended_message_template_data()
 %% }
@@ -2057,6 +2369,7 @@
 
 %% Example:
 %% message_template_search_result_data() :: #{
+%%   <<"channel">> => string(),
 %%   <<"channelSubtype">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -2070,6 +2383,7 @@
 %%   <<"messageTemplateArn">> => string(),
 %%   <<"messageTemplateId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"sourceConfigurationSummary">> => list(),
 %%   <<"tags">> => map(),
 %%   <<"versionNumber">> => float()
 %% }
@@ -2121,6 +2435,21 @@
 %%   <<"parsingPrompt">> => parsing_prompt()
 %% }
 -type bedrock_foundation_model_configuration_for_parsing() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_baidu_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_baidu_message_template_content() :: #{binary() => any()}.
 
 %% Example:
 %% delete_content_association_response() :: #{}
@@ -2182,6 +2511,21 @@
 
 
 %% Example:
+%% push_f_cm_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_f_cm_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_a_i_guardrail_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -2224,10 +2568,19 @@
 
 
 %% Example:
+%% list_spans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"spans">> => list(span())
+%% }
+-type list_spans_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_a_iprompt_request() :: #{
 %%   <<"apiFormat">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
 %%   <<"modelId">> := string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map(),
@@ -2283,14 +2636,56 @@
 
 
 %% Example:
+%% unprocessable_content_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unprocessable_content_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_message_template_source_configuration() :: #{
+%%   <<"businessAccountId">> => string(),
+%%   <<"components">> => list(string()),
+%%   <<"templateId">> => string()
+%% }
+-type whats_app_message_template_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_message_template_response() :: #{
 %%   <<"messageTemplate">> => extended_message_template_data()
 %% }
 -type get_message_template_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% tool_override_constant_input_value() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tool_override_constant_input_value() :: #{binary() => any()}.
+
 %% Example:
 %% get_quick_response_request() :: #{}
 -type get_quick_response_request() :: #{}.
+
+
+%% Example:
+%% tool_configuration() :: #{
+%%   <<"annotations">> => annotation(),
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => any(),
+%%   <<"instruction">> => tool_instruction(),
+%%   <<"outputFilters">> => list(tool_output_filter()),
+%%   <<"outputSchema">> => any(),
+%%   <<"overrideInputValues">> => list(tool_override_input_value()),
+%%   <<"title">> => string(),
+%%   <<"toolId">> => string(),
+%%   <<"toolName">> => string(),
+%%   <<"toolType">> => string(),
+%%   <<"userInteractionConfiguration">> => user_interaction_configuration()
+%% }
+-type tool_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2331,6 +2726,7 @@
 %% Example:
 %% message_template_summary() :: #{
 %%   <<"activeVersionNumber">> => float(),
+%%   <<"channel">> => string(),
 %%   <<"channelSubtype">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -2341,6 +2737,7 @@
 %%   <<"messageTemplateArn">> => string(),
 %%   <<"messageTemplateId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"sourceConfiguration">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type message_template_summary() :: #{binary() => any()}.
@@ -2446,6 +2843,16 @@
 %% Example:
 %% get_content_request() :: #{}
 -type get_content_request() :: #{}.
+
+
+%% Example:
+%% push_message_template_content() :: #{
+%%   <<"adm">> => push_ad_m_message_template_content(),
+%%   <<"apns">> => push_a_p_n_s_message_template_content(),
+%%   <<"baidu">> => push_baidu_message_template_content(),
+%%   <<"fcm">> => push_f_cm_message_template_content()
+%% }
+-type push_message_template_content() :: #{binary() => any()}.
 
 %% Example:
 %% delete_quick_response_request() :: #{}
@@ -2572,6 +2979,7 @@
 %% self_service_conversation_history() :: #{
 %%   <<"botResponse">> => string(),
 %%   <<"inputTranscript">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
 %%   <<"turnNumber">> => [integer()]
 %% }
 -type self_service_conversation_history() :: #{binary() => any()}.
@@ -2646,10 +3054,13 @@
 
 %% Example:
 %% send_message_request() :: #{
+%%   <<"aiAgentId">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"configuration">> => message_configuration(),
 %%   <<"conversationContext">> => conversation_context(),
 %%   <<"message">> := message_input(),
+%%   <<"metadata">> => map(),
+%%   <<"orchestratorUseCase">> => string(),
 %%   <<"type">> := string()
 %% }
 -type send_message_request() :: #{binary() => any()}.
@@ -2662,6 +3073,7 @@
 %% Example:
 %% message_template_data() :: #{
 %%   <<"attributeTypes">> => list(string()),
+%%   <<"channel">> => string(),
 %%   <<"channelSubtype">> => string(),
 %%   <<"content">> => list(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -2677,6 +3089,7 @@
 %%   <<"messageTemplateContentSha256">> => string(),
 %%   <<"messageTemplateId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"sourceConfigurationSummary">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type message_template_data() :: #{binary() => any()}.
@@ -2741,7 +3154,8 @@
 %% render_message_template_response() :: #{
 %%   <<"attachments">> => list(message_template_attachment()),
 %%   <<"attributesNotInterpolated">> => list(string()),
-%%   <<"content">> => list()
+%%   <<"content">> => list(),
+%%   <<"sourceConfigurationSummary">> => list()
 %% }
 -type render_message_template_response() :: #{binary() => any()}.
 
@@ -2764,6 +3178,7 @@
 
 %% Example:
 %% message_template_version_summary() :: #{
+%%   <<"channel">> => string(),
 %%   <<"channelSubtype">> => string(),
 %%   <<"isActive">> => [boolean()],
 %%   <<"knowledgeBaseArn">> => string(),
@@ -2842,14 +3257,56 @@
 
 
 %% Example:
+%% note_taking_a_i_agent_configuration() :: #{
+%%   <<"locale">> => string(),
+%%   <<"noteTakingAIGuardrailId">> => string(),
+%%   <<"noteTakingAIPromptId">> => string()
+%% }
+-type note_taking_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_full_a_iprompt_edit_template_configuration() :: #{
 %%   <<"text">> => string()
 %% }
 -type text_full_a_iprompt_edit_template_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% tool_output_filter() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"outputConfiguration">> => tool_output_configuration()
+%% }
+-type tool_output_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_bedrock_knowledge_base_config() :: #{
+%%   <<"accessRoleArn">> => string(),
+%%   <<"bedrockKnowledgeBaseArn">> => string()
+%% }
+-type external_bedrock_knowledge_base_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggested_message_reference() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string()
+%% }
+-type suggested_message_reference() :: #{binary() => any()}.
+
 %% Example:
 %% get_assistant_association_request() :: #{}
 -type get_assistant_association_request() :: #{}.
+
+
+%% Example:
+%% span_tool_result_value() :: #{
+%%   <<"error">> => string(),
+%%   <<"toolUseId">> => string(),
+%%   <<"values">> => list(list())
+%% }
+-type span_tool_result_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_content_response() :: #{}
@@ -2896,7 +3353,8 @@
 %% Example:
 %% update_assistant_a_i_agent_request() :: #{
 %%   <<"aiAgentType">> := string(),
-%%   <<"configuration">> := a_i_agent_configuration_data()
+%%   <<"configuration">> := a_i_agent_configuration_data(),
+%%   <<"orchestratorUseCase">> => string()
 %% }
 -type update_assistant_a_i_agent_request() :: #{binary() => any()}.
 
@@ -2918,6 +3376,14 @@
 
 
 %% Example:
+%% list_spans_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_spans_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_content_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -2927,11 +3393,29 @@
 
 
 %% Example:
+%% retrieve_request() :: #{
+%%   <<"retrievalConfiguration">> := retrieval_configuration(),
+%%   <<"retrievalQuery">> := string()
+%% }
+-type retrieve_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% ranking_data() :: #{
 %%   <<"relevanceLevel">> => string(),
 %%   <<"relevanceScore">> => float()
 %% }
 -type ranking_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_message() :: #{
+%%   <<"messageId">> => string(),
+%%   <<"participant">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"values">> => list(list())
+%% }
+-type span_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2993,7 +3477,8 @@
 %%   <<"associationConfigurations">> => list(association_configuration()),
 %%   <<"intentLabelingGenerationAIPromptId">> => string(),
 %%   <<"locale">> => string(),
-%%   <<"queryReformulationAIPromptId">> => string()
+%%   <<"queryReformulationAIPromptId">> => string(),
+%%   <<"suggestedMessages">> => list(string())
 %% }
 -type answer_recommendation_a_i_agent_configuration() :: #{binary() => any()}.
 
@@ -3029,6 +3514,23 @@
 
 
 %% Example:
+%% tool_use_result_data() :: #{
+%%   <<"inputSchema">> => any(),
+%%   <<"toolName">> => string(),
+%%   <<"toolResult">> => any(),
+%%   <<"toolUseId">> => string()
+%% }
+-type tool_use_result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_input_data() :: #{
+%%   <<"caseArn">> => string()
+%% }
+-type case_summarization_input_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_content_associations_response() :: #{
 %%   <<"contentAssociationSummaries">> => list(content_association_summary()),
 %%   <<"nextToken">> => string()
@@ -3042,6 +3544,13 @@
 %%   <<"modifiedTime">> => [non_neg_integer()]
 %% }
 -type create_a_i_agent_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_response() :: #{
+%%   <<"results">> => list(retrieve_result())
+%% }
+-type retrieve_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_assistant_association_response() :: #{}
@@ -3119,6 +3628,7 @@
 
 %% Example:
 %% list_messages_request() :: #{
+%%   <<"filter">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -3465,6 +3975,7 @@
 -type get_next_message_errors() ::
     validation_exception() | 
     access_denied_exception() | 
+    unprocessable_content_exception() | 
     resource_not_found_exception().
 
 -type get_quick_response_errors() ::
@@ -3577,6 +4088,11 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type list_spans_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
@@ -3613,6 +4129,16 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type retrieve_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception() | 
+    dependency_failed_exception().
+
 -type search_content_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -3643,9 +4169,11 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    dependency_failed_exception().
 
 -type start_content_upload_errors() ::
     validation_exception() | 
@@ -5535,6 +6063,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextChunkToken">>, maps:get(<<"nextChunkToken">>, QueryMap, undefined)},
+        {<<"recommendationType">>, maps:get(<<"recommendationType">>, QueryMap, undefined)},
         {<<"waitTimeSeconds">>, maps:get(<<"waitTimeSeconds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -6213,6 +6742,7 @@ list_messages(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -6244,6 +6774,50 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves AI agent execution traces for a session, providing granular
+%% visibility into agent orchestration flows, LLM interactions, and tool
+%% invocations.
+-spec list_spans(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_spans_response(), tuple()} |
+    {error, any()} |
+    {error, list_spans_errors(), tuple()}.
+list_spans(Client, AssistantId, SessionId)
+  when is_map(Client) ->
+    list_spans(Client, AssistantId, SessionId, #{}, #{}).
+
+-spec list_spans(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_spans_response(), tuple()} |
+    {error, any()} |
+    {error, list_spans_errors(), tuple()}.
+list_spans(Client, AssistantId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_spans(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
+
+-spec list_spans(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_spans_response(), tuple()} |
+    {error, any()} |
+    {error, list_spans_errors(), tuple()}.
+list_spans(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/spans"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6450,7 +7024,8 @@ remove_assistant_a_i_agent(Client, AssistantId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"aiAgentType">>, <<"aiAgentType">>}
+                     {<<"aiAgentType">>, <<"aiAgentType">>},
+                     {<<"orchestratorUseCase">>, <<"orchestratorUseCase">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -6511,6 +7086,40 @@ render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
 render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/render"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves content from knowledge sources based on a query.
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request()) ->
+    {ok, retrieve_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_errors(), tuple()}.
+retrieve(Client, AssistantId, Input) ->
+    retrieve(Client, AssistantId, Input, []).
+
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request(), proplists:proplist()) ->
+    {ok, retrieve_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_errors(), tuple()}.
+retrieve(Client, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/retrieve"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

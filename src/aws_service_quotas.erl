@@ -30,6 +30,8 @@
          get_auto_management_configuration/3,
          get_aws_default_service_quota/2,
          get_aws_default_service_quota/3,
+         get_quota_utilization_report/2,
+         get_quota_utilization_report/3,
          get_requested_service_quota_change/2,
          get_requested_service_quota_change/3,
          get_service_quota/2,
@@ -56,6 +58,8 @@
          request_service_quota_increase/3,
          start_auto_management/2,
          start_auto_management/3,
+         start_quota_utilization_report/2,
+         start_quota_utilization_report/3,
          stop_auto_management/2,
          stop_auto_management/3,
          tag_resource/2,
@@ -145,6 +149,14 @@
 
 %% }
 -type associate_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_quota_utilization_report_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ReportId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_quota_utilization_report_response() :: #{binary() => any()}.
 
 %% Example:
 %% dependency_access_denied_exception() :: #{
@@ -284,6 +296,7 @@
 %%   <<"QuotaContext">> => quota_context_info(),
 %%   <<"QuotaName">> => string(),
 %%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"RequestType">> => list(any()),
 %%   <<"Requester">> => string(),
 %%   <<"ServiceCode">> => string(),
 %%   <<"ServiceName">> => string(),
@@ -363,6 +376,14 @@
 -type request_service_quota_increase_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_quota_utilization_report_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportId">> := string()
+%% }
+-type get_quota_utilization_report_request() :: #{binary() => any()}.
+
+%% Example:
 %% service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -422,6 +443,19 @@
 %%   <<"QuotaName">> => string()
 %% }
 -type quota_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_quota_utilization_report_response() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"GeneratedAt">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(quota_utilization_info()),
+%%   <<"ReportId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalCount">> => integer()
+%% }
+-type get_quota_utilization_report_response() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -494,11 +528,31 @@
 -type no_available_organization_exception() :: #{binary() => any()}.
 
 %% Example:
+%% start_quota_utilization_report_request() :: #{
+
+%% }
+-type start_quota_utilization_report_request() :: #{binary() => any()}.
+
+%% Example:
 %% error_reason() :: #{
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string()
 %% }
 -type error_reason() :: #{binary() => any()}.
+
+%% Example:
+%% quota_utilization_info() :: #{
+%%   <<"Adjustable">> => boolean(),
+%%   <<"AppliedValue">> => float(),
+%%   <<"DefaultValue">> => float(),
+%%   <<"Namespace">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string(),
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Utilization">> => float()
+%% }
+-type quota_utilization_info() :: #{binary() => any()}.
 
 %% Example:
 %% update_auto_management_request() :: #{
@@ -679,6 +733,13 @@
     too_many_requests_exception() | 
     illegal_argument_exception().
 
+-type get_quota_utilization_report_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
 -type get_requested_service_quota_change_errors() ::
     access_denied_exception() | 
     no_such_resource_exception() | 
@@ -784,6 +845,14 @@
     dependency_access_denied_exception().
 
 -type start_auto_management_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type start_quota_utilization_report_errors() ::
+    invalid_pagination_token_exception() | 
     access_denied_exception() | 
     no_such_resource_exception() | 
     service_exception() | 
@@ -970,6 +1039,43 @@ get_aws_default_service_quota(Client, Input)
 get_aws_default_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
+
+%% @doc Retrieves the quota utilization report for your Amazon Web Services
+%% account.
+%%
+%% This operation returns
+%% paginated results showing your quota usage across all Amazon Web Services
+%% services, sorted by utilization
+%% percentage in descending order (highest utilization first).
+%%
+%% You must first initiate a report using the
+%% `StartQuotaUtilizationReport'
+%% operation. The report generation process is asynchronous and may take
+%% several seconds to
+%% complete. Poll this operation periodically to check the status and
+%% retrieve results when
+%% the report is ready.
+%%
+%% Each report contains up to 1,000 quota records per page. Use the
+%% `NextToken'
+%% parameter to retrieve additional pages of results. Reports are
+%% automatically deleted after
+%% 15 minutes.
+-spec get_quota_utilization_report(aws_client:aws_client(), get_quota_utilization_report_request()) ->
+    {ok, get_quota_utilization_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_quota_utilization_report_errors(), tuple()}.
+get_quota_utilization_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_quota_utilization_report(Client, Input, []).
+
+-spec get_quota_utilization_report(aws_client:aws_client(), get_quota_utilization_report_request(), proplists:proplist()) ->
+    {ok, get_quota_utilization_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_quota_utilization_report_errors(), tuple()}.
+get_quota_utilization_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQuotaUtilizationReport">>, Input, Options).
 
 %% @doc Retrieves information about the specified quota increase request.
 -spec get_requested_service_quota_change(aws_client:aws_client(), get_requested_service_quota_change_request()) ->
@@ -1232,6 +1338,35 @@ start_auto_management(Client, Input)
 start_auto_management(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAutoManagement">>, Input, Options).
+
+%% @doc Initiates the generation of a quota utilization report for your
+%% Amazon Web Services account.
+%%
+%% This
+%% asynchronous operation analyzes your quota usage across all Amazon Web
+%% Services services and returns
+%% a unique report identifier that you can use to retrieve the results.
+%%
+%% The report generation process may take several seconds to complete,
+%% depending on the
+%% number of quotas in your account. Use the `GetQuotaUtilizationReport'
+%% operation
+%% to check the status and retrieve the results when the report is ready.
+-spec start_quota_utilization_report(aws_client:aws_client(), start_quota_utilization_report_request()) ->
+    {ok, start_quota_utilization_report_response(), tuple()} |
+    {error, any()} |
+    {error, start_quota_utilization_report_errors(), tuple()}.
+start_quota_utilization_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_quota_utilization_report(Client, Input, []).
+
+-spec start_quota_utilization_report(aws_client:aws_client(), start_quota_utilization_report_request(), proplists:proplist()) ->
+    {ok, start_quota_utilization_report_response(), tuple()} |
+    {error, any()} |
+    {error, start_quota_utilization_report_errors(), tuple()}.
+start_quota_utilization_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartQuotaUtilizationReport">>, Input, Options).
 
 %% @doc Stops Service Quotas Automatic Management:
 %% https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html

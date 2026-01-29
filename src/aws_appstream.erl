@@ -1,29 +1,31 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon AppStream 2.0
+%% @doc Amazon WorkSpaces Applications
 %%
-%% This is the Amazon AppStream 2.0 API Reference.
+%% This is the Amazon WorkSpaces Applications API Reference.
 %%
 %% This documentation provides descriptions and syntax for each of the
-%% actions and data types in AppStream 2.0. AppStream 2.0 is a fully managed,
-%% secure application streaming service that lets you stream desktop
-%% applications to users without rewriting applications. AppStream 2.0
-%% manages the AWS resources that are required to host and run your
-%% applications, scales automatically, and provides access to your users on
-%% demand.
+%% actions and data types in WorkSpaces Applications. WorkSpaces Applications
+%% is a fully managed, secure application streaming service that lets you
+%% stream desktop applications to users without rewriting applications.
+%% WorkSpaces Applications manages the AWS resources that are required to
+%% host and run your applications, scales automatically, and provides access
+%% to your users on demand.
 %%
-%% You can call the AppStream 2.0 API operations by using an interface VPC
-%% endpoint (interface endpoint). For more information, see Access AppStream
-%% 2.0 API Operations and CLI Commands Through an Interface VPC Endpoint:
+%% You can call the WorkSpaces Applications API operations by using an
+%% interface VPC endpoint (interface endpoint). For more information, see
+%% Access WorkSpaces Applications API Operations and CLI Commands Through an
+%% Interface VPC Endpoint:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html
-%% in the Amazon AppStream 2.0 Administration Guide.
+%% in the Amazon WorkSpaces Applications Administration Guide.
 %%
-%% To learn more about AppStream 2.0, see the following resources:
+%% To learn more about WorkSpaces Applications, see the following resources:
 %%
-%% Amazon AppStream 2.0 product page: http://aws.amazon.com/appstream2
+%% Amazon WorkSpaces Applications product page:
+%% http://aws.amazon.com/appstream2
 %%
-%% Amazon AppStream 2.0 documentation:
+%% Amazon WorkSpaces Applications documentation:
 %% http://aws.amazon.com/documentation/appstream2
 -module(aws_appstream).
 
@@ -55,12 +57,16 @@
          create_directory_config/3,
          create_entitlement/2,
          create_entitlement/3,
+         create_export_image_task/2,
+         create_export_image_task/3,
          create_fleet/2,
          create_fleet/3,
          create_image_builder/2,
          create_image_builder/3,
          create_image_builder_streaming_url/2,
          create_image_builder_streaming_url/3,
+         create_imported_image/2,
+         create_imported_image/3,
          create_stack/2,
          create_stack/3,
          create_streaming_url/2,
@@ -153,12 +159,16 @@
          enable_user/3,
          expire_session/2,
          expire_session/3,
+         get_export_image_task/2,
+         get_export_image_task/3,
          list_associated_fleets/2,
          list_associated_fleets/3,
          list_associated_stacks/2,
          list_associated_stacks/3,
          list_entitled_applications/2,
          list_entitled_applications/3,
+         list_export_image_tasks/2,
+         list_export_image_tasks/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_app_block_builder/2,
@@ -244,6 +254,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
 %%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
 %%   <<"State">> => list(any()),
 %%   <<"StateChangeReason">> => image_builder_state_change_reason(),
 %%   <<"VpcConfig">> => vpc_config()
@@ -309,6 +320,12 @@
 %%   <<"Application">> => application()
 %% }
 -type create_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_app_block_builder_app_block_result() :: #{
@@ -483,6 +500,7 @@
 %%   <<"MaxUserDurationInSeconds">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"StreamView">> => list(any()),
 %%   <<"Tags">> => map(),
@@ -714,6 +732,16 @@
 %%   <<"DirectoryConfig">> => directory_config()
 %% }
 -type update_directory_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_image_task_request() :: #{
+%%   <<"AmiDescription">> => string(),
+%%   <<"AmiName">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"ImageName">> := string(),
+%%   <<"TagSpecifications">> => map()
+%% }
+-type create_export_image_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_app_block_result() :: #{
@@ -1005,6 +1033,14 @@
 -type app_block() :: #{binary() => any()}.
 
 %% Example:
+%% list_export_image_tasks_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_export_image_tasks_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_fleet_request() :: #{
 %%   <<"AttributesToDelete">> => list(list(any())()),
 %%   <<"ComputeCapacity">> => compute_capacity(),
@@ -1024,6 +1060,7 @@
 %%   <<"MaxUserDurationInSeconds">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"StreamView">> => list(any()),
 %%   <<"UsbDeviceFilterStrings">> => list(string()),
@@ -1039,6 +1076,13 @@
 %%   <<"SubscriptionErrors">> => list(last_report_generation_execution_error())
 %% }
 -type usage_report_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% list_export_image_tasks_result() :: #{
+%%   <<"ExportImageTasks">> => list(export_image_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_export_image_tasks_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_entitlement_result() :: #{
@@ -1068,6 +1112,7 @@
 %%   <<"ImageName">> => string(),
 %%   <<"InstanceType">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"RootVolumeConfig">> => volume_config(),
 %%   <<"SoftwaresToInstall">> => list(string()),
 %%   <<"SoftwaresToUninstall">> => list(string()),
 %%   <<"Tags">> => map(),
@@ -1321,6 +1366,12 @@
 -type list_entitled_applications_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_export_image_task_result() :: #{
+%%   <<"ExportImageTask">> => export_image_task()
+%% }
+-type get_export_image_task_result() :: #{binary() => any()}.
+
+%% Example:
 %% streaming_experience_settings() :: #{
 %%   <<"PreferredProtocol">> => list(any())
 %% }
@@ -1342,6 +1393,13 @@
 -type describe_software_associations_request() :: #{binary() => any()}.
 
 %% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
 %% entitlement_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1352,6 +1410,12 @@
 
 %% }
 -type delete_directory_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_image_task_request() :: #{
+%%   <<"TaskId">> => string()
+%% }
+-type get_export_image_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_role_exception() :: #{
@@ -1443,6 +1507,12 @@
 -type delete_application_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_export_image_task_result() :: #{
+%%   <<"ExportImageTask">> => export_image_task()
+%% }
+-type create_export_image_task_result() :: #{binary() => any()}.
+
+%% Example:
 %% batch_associate_user_stack_request() :: #{
 %%   <<"UserStackAssociations">> := list(user_stack_association())
 %% }
@@ -1483,6 +1553,20 @@
 -type theme_footer_link() :: #{binary() => any()}.
 
 %% Example:
+%% export_image_task() :: #{
+%%   <<"AmiDescription">> => string(),
+%%   <<"AmiId">> => string(),
+%%   <<"AmiName">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => list(error_details()),
+%%   <<"ImageArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"TagSpecifications">> => map(),
+%%   <<"TaskId">> => string()
+%% }
+-type export_image_task() :: #{binary() => any()}.
+
+%% Example:
 %% entitlement() :: #{
 %%   <<"AppVisibility">> => list(any()),
 %%   <<"Attributes">> => list(entitlement_attribute()),
@@ -1509,6 +1593,7 @@
 %%   <<"ImageErrors">> => list(resource_error()),
 %%   <<"ImagePermissions">> => image_permissions(),
 %%   <<"ImageSharedWithOthers">> => list(any()),
+%%   <<"ImageType">> => list(any()),
 %%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"ManagedSoftwareIncluded">> => boolean(),
 %%   <<"Name">> => string(),
@@ -1687,6 +1772,12 @@
 -type delete_entitlement_request() :: #{binary() => any()}.
 
 %% Example:
+%% runtime_validation_config() :: #{
+%%   <<"IntendedInstanceType">> => string()
+%% }
+-type runtime_validation_config() :: #{binary() => any()}.
+
+%% Example:
 %% delete_stack_result() :: #{
 
 %% }
@@ -1704,6 +1795,12 @@
 %%   <<"UserName">> => string()
 %% }
 -type user() :: #{binary() => any()}.
+
+%% Example:
+%% volume_config() :: #{
+%%   <<"VolumeSizeInGb">> => integer()
+%% }
+-type volume_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_sessions_request() :: #{
@@ -1729,6 +1826,21 @@
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_imported_image_request() :: #{
+%%   <<"AgentSoftwareVersion">> => list(any()),
+%%   <<"AppCatalogConfig">> => list(application_config()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RuntimeValidationConfig">> => runtime_validation_config(),
+%%   <<"SourceAmiId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_imported_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_software_deployment_to_image_builder_result() :: #{
@@ -1790,6 +1902,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_app_block_builders_request() :: #{binary() => any()}.
+
+%% Example:
+%% application_config() :: #{
+%%   <<"AbsoluteAppPath">> => string(),
+%%   <<"AbsoluteIconPath">> => string(),
+%%   <<"AbsoluteManifestPath">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LaunchParameters">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type application_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_user_stack_associations_request() :: #{
@@ -1953,6 +2077,7 @@
 %%   <<"MaxUserDurationInSeconds">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"State">> => list(any()),
 %%   <<"StreamView">> => list(any()),
@@ -1997,6 +2122,12 @@
 %%   <<"UserStackAssociation">> => user_stack_association()
 %% }
 -type user_stack_association_error() :: #{binary() => any()}.
+
+%% Example:
+%% create_imported_image_result() :: #{
+%%   <<"Image">> => image()
+%% }
+-type create_imported_image_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_software_deployment_to_image_builder_request() :: #{
@@ -2140,6 +2271,15 @@
     operation_not_permitted_exception() | 
     resource_not_found_exception().
 
+-type create_export_image_task_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_account_status_exception() | 
+    invalid_role_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    resource_not_available_exception().
+
 -type create_fleet_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -2169,6 +2309,16 @@
 -type create_image_builder_streaming_url_errors() ::
     operation_not_permitted_exception() | 
     resource_not_found_exception().
+
+-type create_imported_image_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    incompatible_image_exception() | 
+    invalid_account_status_exception() | 
+    invalid_role_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation_exception().
 
 -type create_stack_errors() ::
     resource_already_exists_exception() | 
@@ -2388,10 +2538,17 @@
     invalid_account_status_exception() | 
     resource_not_found_exception().
 
+-type get_export_image_task_errors() ::
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
+
 -type list_entitled_applications_errors() ::
     entitlement_not_found_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception().
+
+-type list_export_image_tasks_errors() ::
+    operation_not_permitted_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
@@ -2669,7 +2826,7 @@ copy_image(Client, Input, Options)
 
 %% @doc Creates an app block.
 %%
-%% App blocks are an Amazon AppStream 2.0 resource that stores the details
+%% App blocks are a WorkSpaces Applications resource that stores the details
 %% about the
 %% virtual hard disk in an S3 bucket. It also stores the setup script with
 %% details about
@@ -2732,8 +2889,8 @@ create_app_block_builder_streaming_url(Client, Input, Options)
 
 %% @doc Creates an application.
 %%
-%% Applications are an Amazon AppStream 2.0 resource that stores the details
-%% about how to
+%% Applications are a WorkSpaces Applications resource that stores the
+%% details about how to
 %% launch applications on Elastic fleet streaming instances. An application
 %% consists of the
 %% launch details, icon, and display name. Applications are associated with
@@ -2759,7 +2916,7 @@ create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
 
-%% @doc Creates a Directory Config object in AppStream 2.0.
+%% @doc Creates a Directory Config object in WorkSpaces Applications.
 %%
 %% This object includes the configuration information required to join fleets
 %% and image builders to Microsoft Active Directory domains.
@@ -2784,7 +2941,7 @@ create_directory_config(Client, Input, Options)
 %% Entitlements control access to specific applications within
 %% a stack, based on user attributes. Entitlements apply to SAML 2.0
 %% federated user
-%% identities. Amazon AppStream 2.0 user pool and streaming URL users are
+%% identities. WorkSpaces Applications user pool and streaming URL users are
 %% entitled to all
 %% applications in a stack. Entitlements don't apply to the desktop
 %% stream view
@@ -2806,6 +2963,27 @@ create_entitlement(Client, Input)
 create_entitlement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEntitlement">>, Input, Options).
+
+%% @doc Creates a task to export a WorkSpaces Applications image to an EC2
+%% AMI.
+%%
+%% This allows you to use your customized WorkSpaces Applications images with
+%% other AWS services or for backup purposes.
+-spec create_export_image_task(aws_client:aws_client(), create_export_image_task_request()) ->
+    {ok, create_export_image_task_result(), tuple()} |
+    {error, any()} |
+    {error, create_export_image_task_errors(), tuple()}.
+create_export_image_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_export_image_task(Client, Input, []).
+
+-spec create_export_image_task(aws_client:aws_client(), create_export_image_task_request(), proplists:proplist()) ->
+    {ok, create_export_image_task_result(), tuple()} |
+    {error, any()} |
+    {error, create_export_image_task_errors(), tuple()}.
+create_export_image_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExportImageTask">>, Input, Options).
 
 %% @doc Creates a fleet.
 %%
@@ -2866,6 +3044,28 @@ create_image_builder_streaming_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageBuilderStreamingURL">>, Input, Options).
 
+%% @doc Creates a custom WorkSpaces Applications image by importing an EC2
+%% AMI.
+%%
+%% This allows you to use your own customized AMI to create WorkSpaces
+%% Applications images that support additional instance types beyond the
+%% standard stream.* instances.
+-spec create_imported_image(aws_client:aws_client(), create_imported_image_request()) ->
+    {ok, create_imported_image_result(), tuple()} |
+    {error, any()} |
+    {error, create_imported_image_errors(), tuple()}.
+create_imported_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_imported_image(Client, Input, []).
+
+-spec create_imported_image(aws_client:aws_client(), create_imported_image_request(), proplists:proplist()) ->
+    {ok, create_imported_image_result(), tuple()} |
+    {error, any()} |
+    {error, create_imported_image_errors(), tuple()}.
+create_imported_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateImportedImage">>, Input, Options).
+
 %% @doc Creates a stack to start streaming applications to users.
 %%
 %% A stack consists of an associated fleet, user access policies, and storage
@@ -2886,8 +3086,8 @@ create_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStack">>, Input, Options).
 
-%% @doc Creates a temporary URL to start an AppStream 2.0 streaming session
-%% for the specified user.
+%% @doc Creates a temporary URL to start an WorkSpaces Applications streaming
+%% session for the specified user.
 %%
 %% A streaming URL enables application streaming to be tested without user
 %% setup.
@@ -2926,13 +3126,13 @@ create_theme_for_stack(Client, Input, Options)
     request(Client, <<"CreateThemeForStack">>, Input, Options).
 
 %% @doc Creates a new image with the latest Windows operating system updates,
-%% driver updates, and AppStream 2.0 agent software.
+%% driver updates, and WorkSpaces Applications agent software.
 %%
 %% For more information, see the &quot;Update an Image by Using
-%% Managed AppStream 2.0 Image Updates&quot; section in Administer Your
-%% AppStream 2.0 Images:
+%% Managed WorkSpaces Applications Image Updates&quot; section in Administer
+%% Your WorkSpaces Applications Images:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/administer-images.html,
-%% in the Amazon AppStream 2.0 Administration Guide.
+%% in the Amazon WorkSpaces Applications Administration Guide.
 -spec create_updated_image(aws_client:aws_client(), create_updated_image_request()) ->
     {ok, create_updated_image_result(), tuple()} |
     {error, any()} |
@@ -3040,7 +3240,8 @@ delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
 
-%% @doc Deletes the specified Directory Config object from AppStream 2.0.
+%% @doc Deletes the specified Directory Config object from WorkSpaces
+%% Applications.
 %%
 %% This object includes the information required to join streaming instances
 %% to an Active Directory domain.
@@ -3332,8 +3533,8 @@ describe_applications(Client, Input, Options)
     request(Client, <<"DescribeApplications">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more specified Directory
-%% Config objects for AppStream 2.0, if the names for these objects are
-%% provided.
+%% Config objects for WorkSpaces Applications, if the names for these objects
+%% are provided.
 %%
 %% Otherwise, all Directory Config objects in the account are described.
 %% These objects include the configuration information required to join
@@ -3595,8 +3796,8 @@ describe_users(Client, Input, Options)
 
 %% @doc Disables the specified user in the user pool.
 %%
-%% Users can't sign in to AppStream 2.0 until they are re-enabled. This
-%% action does not delete the user.
+%% Users can't sign in to WorkSpaces Applications until they are
+%% re-enabled. This action does not delete the user.
 -spec disable_user(aws_client:aws_client(), disable_user_request()) ->
     {ok, disable_user_result(), tuple()} |
     {error, any()} |
@@ -3702,7 +3903,7 @@ disassociate_software_from_image_builder(Client, Input, Options)
 
 %% @doc Enables a user in the user pool.
 %%
-%% After being enabled, users can sign in to AppStream 2.0 and open
+%% After being enabled, users can sign in to WorkSpaces Applications and open
 %% applications from the stacks to which they are assigned.
 -spec enable_user(aws_client:aws_client(), enable_user_request()) ->
     {ok, enable_user_result(), tuple()} |
@@ -3734,6 +3935,24 @@ expire_session(Client, Input)
 expire_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExpireSession">>, Input, Options).
+
+%% @doc Retrieves information about an export image task, including its
+%% current state, progress, and any error details.
+-spec get_export_image_task(aws_client:aws_client(), get_export_image_task_request()) ->
+    {ok, get_export_image_task_result(), tuple()} |
+    {error, any()} |
+    {error, get_export_image_task_errors(), tuple()}.
+get_export_image_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_export_image_task(Client, Input, []).
+
+-spec get_export_image_task(aws_client:aws_client(), get_export_image_task_request(), proplists:proplist()) ->
+    {ok, get_export_image_task_result(), tuple()} |
+    {error, any()} |
+    {error, get_export_image_task_errors(), tuple()}.
+get_export_image_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetExportImageTask">>, Input, Options).
 
 %% @doc Retrieves the name of the fleet that is associated with the specified
 %% stack.
@@ -3784,14 +4003,34 @@ list_entitled_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitledApplications">>, Input, Options).
 
-%% @doc Retrieves a list of all tags for the specified AppStream 2.0
-%% resource.
+%% @doc Lists export image tasks, with optional filtering and pagination.
 %%
-%% You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+%% Use this operation to monitor the status of multiple export operations.
+-spec list_export_image_tasks(aws_client:aws_client(), list_export_image_tasks_request()) ->
+    {ok, list_export_image_tasks_result(), tuple()} |
+    {error, any()} |
+    {error, list_export_image_tasks_errors(), tuple()}.
+list_export_image_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_export_image_tasks(Client, Input, []).
+
+-spec list_export_image_tasks(aws_client:aws_client(), list_export_image_tasks_request(), proplists:proplist()) ->
+    {ok, list_export_image_tasks_result(), tuple()} |
+    {error, any()} |
+    {error, list_export_image_tasks_errors(), tuple()}.
+list_export_image_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExportImageTasks">>, Input, Options).
+
+%% @doc Retrieves a list of all tags for the specified WorkSpaces
+%% Applications resource.
+%%
+%% You can tag WorkSpaces Applications image builders, images, fleets, and
+%% stacks.
 %%
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
-%% in the Amazon AppStream 2.0 Administration Guide.
+%% in the Amazon WorkSpaces Applications Administration Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3940,10 +4179,11 @@ stop_image_builder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopImageBuilder">>, Input, Options).
 
-%% @doc Adds or overwrites one or more tags for the specified AppStream 2.0
-%% resource.
+%% @doc Adds or overwrites one or more tags for the specified WorkSpaces
+%% Applications resource.
 %%
-%% You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+%% You can tag WorkSpaces Applications image builders, images, fleets, and
+%% stacks.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key,
@@ -3955,7 +4195,7 @@ stop_image_builder(Client, Input, Options)
 %%
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
-%% in the Amazon AppStream 2.0 Administration Guide.
+%% in the Amazon WorkSpaces Applications Administration Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -3972,15 +4212,15 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Disassociates one or more specified tags from the specified AppStream
-%% 2.0 resource.
+%% @doc Disassociates one or more specified tags from the specified
+%% WorkSpaces Applications resource.
 %%
 %% To list the current tags for your resources, use
 %% `ListTagsForResource'.
 %%
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
-%% in the Amazon AppStream 2.0 Administration Guide.
+%% in the Amazon WorkSpaces Applications Administration Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -4038,7 +4278,8 @@ update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
 
-%% @doc Updates the specified Directory Config object in AppStream 2.0.
+%% @doc Updates the specified Directory Config object in WorkSpaces
+%% Applications.
 %%
 %% This object includes the configuration information required to join fleets
 %% and image builders to Microsoft Active Directory domains.

@@ -2016,7 +2016,9 @@
 %%   <<"ImageSource">> => list(),
 %%   <<"InfrastructureConfigurationArn">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
+%%   <<"ProgressPercentage">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string()
 %% }
 -type describe_custom_workspace_image_import_result() :: #{binary() => any()}.
 
@@ -3068,7 +3070,7 @@ authorize_ip_rules(Client, Input, Options)
 %% Region.
 %%
 %% In Amazon Web Services GovCloud (US), to copy images to and from other
-%% Regions, contact Amazon Web ServicesSupport.
+%% Regions, contact Amazon Web Services Support.
 %%
 %% Before copying a shared image, be sure to verify that it has been shared
 %% from the
@@ -4782,7 +4784,7 @@ stop_workspaces_pool(Client, Input, Options)
 %% Terminating a WorkSpace is a permanent action and cannot be undone. The
 %% user's data
 %% is destroyed. If you need to archive any user data, contact Amazon Web
-%% ServicesSupport before
+%% Services Support before
 %% terminating the WorkSpace.
 %%
 %% You can terminate a WorkSpace that is in any state except `SUSPENDED'.
@@ -4992,7 +4994,7 @@ update_workspace_bundle(Client, Input, Options)
 %% Region.
 %%
 %% In Amazon Web Services GovCloud (US), to copy images to and from other
-%% Regions, contact Amazon Web ServicesSupport.
+%% Regions, contact Amazon Web Services Support.
 %%
 %% For more information about sharing images, see Share or Unshare a Custom
 %% WorkSpaces Image:
@@ -5007,7 +5009,7 @@ update_workspace_bundle(Client, Input, Options)
 %% isn't supported at this time in Amazon Web Services GovCloud (US). To
 %% share BYOL images
 %% across accounts in Amazon Web Services GovCloud (US), contact Amazon Web
-%% ServicesSupport.
+%% Services Support.
 -spec update_workspace_image_permission(aws_client:aws_client(), update_workspace_image_permission_request()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |

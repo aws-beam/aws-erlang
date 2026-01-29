@@ -17,6 +17,8 @@
          create_browser/3,
          create_code_interpreter/2,
          create_code_interpreter/3,
+         create_evaluator/2,
+         create_evaluator/3,
          create_gateway/2,
          create_gateway/3,
          create_gateway_target/3,
@@ -25,6 +27,12 @@
          create_memory/3,
          create_oauth2_credential_provider/2,
          create_oauth2_credential_provider/3,
+         create_online_evaluation_config/2,
+         create_online_evaluation_config/3,
+         create_policy/3,
+         create_policy/4,
+         create_policy_engine/2,
+         create_policy_engine/3,
          create_workload_identity/2,
          create_workload_identity/3,
          delete_agent_runtime/3,
@@ -37,6 +45,8 @@
          delete_browser/4,
          delete_code_interpreter/3,
          delete_code_interpreter/4,
+         delete_evaluator/3,
+         delete_evaluator/4,
          delete_gateway/3,
          delete_gateway/4,
          delete_gateway_target/4,
@@ -45,6 +55,14 @@
          delete_memory/4,
          delete_oauth2_credential_provider/2,
          delete_oauth2_credential_provider/3,
+         delete_online_evaluation_config/3,
+         delete_online_evaluation_config/4,
+         delete_policy/4,
+         delete_policy/5,
+         delete_policy_engine/3,
+         delete_policy_engine/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          delete_workload_identity/2,
          delete_workload_identity/3,
          get_agent_runtime/2,
@@ -61,6 +79,9 @@
          get_code_interpreter/2,
          get_code_interpreter/4,
          get_code_interpreter/5,
+         get_evaluator/2,
+         get_evaluator/4,
+         get_evaluator/5,
          get_gateway/2,
          get_gateway/4,
          get_gateway/5,
@@ -72,6 +93,21 @@
          get_memory/5,
          get_oauth2_credential_provider/2,
          get_oauth2_credential_provider/3,
+         get_online_evaluation_config/2,
+         get_online_evaluation_config/4,
+         get_online_evaluation_config/5,
+         get_policy/3,
+         get_policy/5,
+         get_policy/6,
+         get_policy_engine/2,
+         get_policy_engine/4,
+         get_policy_engine/5,
+         get_policy_generation/3,
+         get_policy_generation/5,
+         get_policy_generation/6,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          get_token_vault/2,
          get_token_vault/3,
          get_workload_identity/2,
@@ -88,6 +124,8 @@
          list_browsers/3,
          list_code_interpreters/2,
          list_code_interpreters/3,
+         list_evaluators/2,
+         list_evaluators/3,
          list_gateway_targets/2,
          list_gateway_targets/4,
          list_gateway_targets/5,
@@ -98,13 +136,31 @@
          list_memories/3,
          list_oauth2_credential_providers/2,
          list_oauth2_credential_providers/3,
+         list_online_evaluation_configs/2,
+         list_online_evaluation_configs/3,
+         list_policies/2,
+         list_policies/4,
+         list_policies/5,
+         list_policy_engines/1,
+         list_policy_engines/3,
+         list_policy_engines/4,
+         list_policy_generation_assets/3,
+         list_policy_generation_assets/5,
+         list_policy_generation_assets/6,
+         list_policy_generations/2,
+         list_policy_generations/4,
+         list_policy_generations/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          list_workload_identities/2,
          list_workload_identities/3,
+         put_resource_policy/3,
+         put_resource_policy/4,
          set_token_vault_cm_k/2,
          set_token_vault_cm_k/3,
+         start_policy_generation/3,
+         start_policy_generation/4,
          synchronize_gateway_targets/3,
          synchronize_gateway_targets/4,
          tag_resource/3,
@@ -117,6 +173,8 @@
          update_agent_runtime_endpoint/5,
          update_api_key_credential_provider/2,
          update_api_key_credential_provider/3,
+         update_evaluator/3,
+         update_evaluator/4,
          update_gateway/3,
          update_gateway/4,
          update_gateway_target/4,
@@ -125,6 +183,12 @@
          update_memory/4,
          update_oauth2_credential_provider/2,
          update_oauth2_credential_provider/3,
+         update_online_evaluation_config/3,
+         update_online_evaluation_config/4,
+         update_policy/4,
+         update_policy/5,
+         update_policy_engine/3,
+         update_policy_engine/4,
          update_workload_identity/2,
          update_workload_identity/3]).
 
@@ -133,13 +197,24 @@
 
 
 %% Example:
+%% custom_claim_validation_type() :: #{
+%%   <<"authorizingClaimMatchValue">> => authorizing_claim_match_value_type(),
+%%   <<"inboundTokenClaimName">> => string(),
+%%   <<"inboundTokenClaimValueType">> => list(any())
+%% }
+-type custom_claim_validation_type() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_gateway_request() :: #{
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"exceptionLevel">> => list(any()),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> := list(any()),
 %%   <<"roleArn">> := string()
@@ -148,12 +223,28 @@
 
 
 %% Example:
+%% lambda_interceptor_configuration() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_interceptor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% modify_strategy_configuration() :: #{
 %%   <<"consolidation">> => list(),
 %%   <<"extraction">> => list(),
+%%   <<"reflection">> => list(),
 %%   <<"selfManagedConfiguration">> => modify_self_managed_configuration()
 %% }
 -type modify_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_tool_configuration() :: #{
+%%   <<"toolFilters">> => list(api_gateway_tool_filter()),
+%%   <<"toolOverrides">> => list(api_gateway_tool_override())
+%% }
+-type api_gateway_tool_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,6 +331,10 @@
 %% }
 -type included_oauth2_provider_config_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% browser_summary() :: #{
@@ -280,6 +375,29 @@
 %%   <<"runtime">> => list(any())
 %% }
 -type code_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% numerical_scale_definition() :: #{
+%%   <<"definition">> => [string()],
+%%   <<"label">> => [string()],
+%%   <<"value">> => [float()]
+%% }
+-type numerical_scale_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_policy_engine_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -327,6 +445,18 @@
 %% }
 -type kms_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% get_evaluator_request() :: #{}
+-type get_evaluator_request() :: #{}.
+
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% schema_definition() :: #{
@@ -361,8 +491,10 @@
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayUrl">> => string(),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> => list(any()),
 %%   <<"roleArn">> => string(),
@@ -375,11 +507,31 @@
 
 
 %% Example:
+%% api_gateway_tool_override() :: #{
+%%   <<"description">> => [string()],
+%%   <<"method">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type api_gateway_tool_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% salesforce_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string()
 %% }
 -type salesforce_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list(string()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -391,10 +543,37 @@
 
 
 %% Example:
+%% cloud_watch_output_config() :: #{
+%%   <<"logGroupName">> => string()
+%% }
+-type cloud_watch_output_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_oauth2_credential_provider_request() :: #{
 %%   <<"name">> := string()
 %% }
 -type get_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_online_evaluation_config_response() :: #{
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_online_evaluation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluators_response() :: #{
+%%   <<"evaluators">> => list(evaluator_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_evaluators_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -405,10 +584,50 @@
 
 
 %% Example:
+%% update_evaluator_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluatorConfig">> => list(),
+%%   <<"level">> => list(any())
+%% }
+-type update_evaluator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceScope">> => string()
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_based_trigger_input() :: #{
 %%   <<"messageCount">> => [integer()]
 %% }
 -type message_based_trigger_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% api_gateway_target_configuration() :: #{
+%%   <<"apiGatewayToolConfiguration">> => api_gateway_tool_configuration(),
+%%   <<"restApiId">> => [string()],
+%%   <<"stage">> => [string()]
+%% }
+-type api_gateway_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_assets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generation_assets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,6 +638,14 @@
 %%   <<"targetId">> => string()
 %% }
 -type delete_gateway_target_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_tool_filter() :: #{
+%%   <<"filterPath">> => [string()],
+%%   <<"methods">> => list(list(any())())
+%% }
+-type api_gateway_tool_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,6 +687,20 @@
 
 
 %% Example:
+%% get_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_engine_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_browser_response() :: #{
 %%   <<"browserArn">> => string(),
 %%   <<"browserId">> => string(),
@@ -486,12 +727,37 @@
 
 
 %% Example:
+%% policy_generation_asset() :: #{
+%%   <<"definition">> => list(),
+%%   <<"findings">> => list(finding()),
+%%   <<"policyGenerationAssetId">> => string(),
+%%   <<"rawTextFragment">> => string()
+%% }
+-type policy_generation_asset() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_browser_response() :: #{
 %%   <<"browserId">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_browser_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_online_evaluation_config_request() :: #{}
+-type get_online_evaluation_config_request() :: #{}.
+
+
+%% Example:
+%% create_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"definition">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"validationMode">> => list(any())
+%% }
+-type create_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -500,9 +766,12 @@
 %% }
 -type get_agent_runtime_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_memory_input() :: #{}
--type get_memory_input() :: #{}.
+%% get_memory_input() :: #{
+%%   <<"view">> => list(any())
+%% }
+-type get_memory_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -558,11 +827,34 @@
 
 
 %% Example:
+%% episodic_override_reflection_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()],
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_override_reflection_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_preference_override_configuration_input() :: #{
 %%   <<"consolidation">> => user_preference_override_consolidation_configuration_input(),
 %%   <<"extraction">> => user_preference_override_extraction_configuration_input()
 %% }
 -type user_preference_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_reflection_configuration() :: #{
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_reflection_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -572,6 +864,7 @@
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -580,6 +873,52 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_gateway_target_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_override_configuration_input() :: #{
+%%   <<"consolidation">> => episodic_override_consolidation_configuration_input(),
+%%   <<"extraction">> => episodic_override_extraction_configuration_input(),
+%%   <<"reflection">> => episodic_override_reflection_configuration_input()
+%% }
+-type episodic_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_online_evaluation_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataSourceConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"evaluationExecutionRoleArn">> => string(),
+%%   <<"evaluators">> => list(list()),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"rule">> => rule()
+%% }
+-type update_online_evaluation_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_evaluator_response() :: #{
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% online_evaluation_config_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"onlineEvaluationConfigName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type online_evaluation_config_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workload_identity_response() :: #{}
@@ -603,11 +942,35 @@
 
 
 %% Example:
+%% gateway_policy_engine_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"mode">> => list(any())
+%% }
+-type gateway_policy_engine_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% semantic_override_consolidation_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
 %% }
 -type semantic_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -630,6 +993,22 @@
 %%   <<"triggerConditions">> => list(list())
 %% }
 -type self_managed_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -685,6 +1064,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> := string(),
 %%   <<"targetConfiguration">> := list()
 %% }
@@ -724,6 +1104,7 @@
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -740,6 +1121,26 @@
 %%   <<"clientSecret">> => string()
 %% }
 -type github_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engines_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyEngines">> => list(policy_engine())
+%% }
+-type list_policy_engines_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_engine_request() :: #{}
+-type get_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% list_online_evaluation_configs_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"onlineEvaluationConfigs">> => list(online_evaluation_config_summary())
+%% }
+-type list_online_evaluation_configs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -763,6 +1164,10 @@
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type github_oauth2_provider_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_evaluator_request() :: #{}
+-type delete_evaluator_request() :: #{}.
 
 
 %% Example:
@@ -802,6 +1207,16 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type gateway_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_memory_strategy_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"reflectionConfiguration">> => episodic_reflection_configuration_input()
+%% }
+-type episodic_memory_strategy_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -872,6 +1287,20 @@
 
 
 %% Example:
+%% create_online_evaluation_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataSourceConfig">> := list(),
+%%   <<"description">> => string(),
+%%   <<"enableOnCreate">> := [boolean()],
+%%   <<"evaluationExecutionRoleArn">> := string(),
+%%   <<"evaluators">> := list(list()),
+%%   <<"onlineEvaluationConfigName">> := string(),
+%%   <<"rule">> := rule()
+%% }
+-type create_online_evaluation_config_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_browser_request() :: #{
 %%   <<"browserSigning">> => browser_signing_config_input(),
 %%   <<"clientToken">> => string(),
@@ -900,6 +1329,7 @@
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -925,6 +1355,19 @@
 
 
 %% Example:
+%% create_online_evaluation_config_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"outputConfig">> => output_config(),
+%%   <<"status">> => list(any())
+%% }
+-type create_online_evaluation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_workload_identity_request() :: #{
 %%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
 %%   <<"name">> := string(),
@@ -943,8 +1386,10 @@
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayUrl">> => string(),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> => list(any()),
 %%   <<"roleArn">> => string(),
@@ -957,6 +1402,13 @@
 
 
 %% Example:
+%% episodic_reflection_configuration_input() :: #{
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_reflection_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% included_oauth2_provider_config_output() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
@@ -965,10 +1417,44 @@
 
 
 %% Example:
+%% llm_as_a_judge_evaluator_config() :: #{
+%%   <<"instructions">> => string(),
+%%   <<"modelConfig">> => list(),
+%%   <<"ratingScale">> => list()
+%% }
+-type llm_as_a_judge_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
 -type create_memory_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorizing_claim_match_value_type() :: #{
+%%   <<"claimMatchOperator">> => list(any()),
+%%   <<"claimMatchValue">> => list()
+%% }
+-type authorizing_claim_match_value_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_reflection_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()],
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_reflection_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_override_consolidation_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_override_consolidation_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1004,6 +1490,15 @@
 %%   <<"tokenVaultId">> => string()
 %% }
 -type set_token_vault_cm_k_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_evaluator_model_config() :: #{
+%%   <<"additionalModelRequestFields">> => any(),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"modelId">> => string()
+%% }
+-type bedrock_evaluator_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1101,6 +1596,26 @@
 
 
 %% Example:
+%% get_online_evaluation_config_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataSourceConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"evaluationExecutionRoleArn">> => string(),
+%%   <<"evaluators">> => list(list()),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"onlineEvaluationConfigName">> => string(),
+%%   <<"outputConfig">> => output_config(),
+%%   <<"rule">> => rule(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_online_evaluation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_config() :: #{
 %%   <<"securityGroups">> => list(string()),
 %%   <<"subnets">> => list(string())
@@ -1122,6 +1637,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding() :: #{
+%%   <<"description">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type finding() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1149,12 +1672,27 @@
 
 
 %% Example:
+%% episodic_override_extraction_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_override_extraction_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_oauth2_credential_provider_request() :: #{
 %%   <<"credentialProviderVendor">> := list(any()),
 %%   <<"name">> := string(),
 %%   <<"oauth2ProviderConfigInput">> := list()
 %% }
 -type update_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_config() :: #{
+%%   <<"sessionTimeoutMinutes">> => [integer()]
+%% }
+-type session_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1173,6 +1711,23 @@
 
 
 %% Example:
+%% update_policy_request() :: #{
+%%   <<"definition">> := list(),
+%%   <<"description">> => string(),
+%%   <<"validationMode">> => list(any())
+%% }
+-type update_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_workload_identities_response() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"workloadIdentities">> => list(workload_identity_type())
@@ -1182,6 +1737,16 @@
 %% Example:
 %% get_code_interpreter_request() :: #{}
 -type get_code_interpreter_request() :: #{}.
+
+
+%% Example:
+%% create_evaluator_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_evaluator_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1208,6 +1773,46 @@
 
 
 %% Example:
+%% delete_online_evaluation_config_response() :: #{
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_online_evaluation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cedar_policy() :: #{
+%%   <<"statement">> => string()
+%% }
+-type cedar_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_assets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerationAssets">> => list(policy_generation_asset())
+%% }
+-type list_policy_generation_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_generation() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => [string()],
 %%   <<"prefix">> => [string()],
@@ -1221,6 +1826,14 @@
 %%   <<"containerUri">> => string()
 %% }
 -type container_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> => list(policy_generation())
+%% }
+-type list_policy_generations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1240,8 +1853,10 @@
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayUrl">> => string(),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> => list(any()),
 %%   <<"roleArn">> => string(),
@@ -1258,6 +1873,10 @@
 %%   <<"name">> := string()
 %% }
 -type delete_workload_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -1283,6 +1902,64 @@
 
 
 %% Example:
+%% get_policy_generation_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"samplingConfig">> => sampling_config(),
+%%   <<"sessionConfig">> => session_config()
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_input_config() :: #{
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"serviceNames">> => list(string())
+%% }
+-type cloud_watch_logs_input_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_preference_override_extraction_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -1301,6 +1978,8 @@
 %% Example:
 %% o_auth_credential_provider() :: #{
 %%   <<"customParameters">> => map(),
+%%   <<"defaultReturnUrl">> => string(),
+%%   <<"grantType">> => list(any()),
 %%   <<"providerArn">> => string(),
 %%   <<"scopes">> => list(string())
 %% }
@@ -1341,6 +2020,22 @@
 
 
 %% Example:
+%% get_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
@@ -1353,6 +2048,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_memory_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_online_evaluation_config_request() :: #{}
+-type delete_online_evaluation_config_request() :: #{}.
 
 
 %% Example:
@@ -1395,12 +2094,27 @@
 %% }
 -type list_browsers_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_policy_request() :: #{}
+-type delete_policy_request() :: #{}.
+
+%% Example:
+%% get_policy_generation_request() :: #{}
+-type get_policy_generation_request() :: #{}.
+
 
 %% Example:
 %% delete_browser_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_browser_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sampling_config() :: #{
+%%   <<"samplingPercentage">> => float()
+%% }
+-type sampling_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1424,6 +2138,15 @@
 
 
 %% Example:
+%% metadata_configuration() :: #{
+%%   <<"allowedQueryParameters">> => list(string()),
+%%   <<"allowedRequestHeaders">> => list(string()),
+%%   <<"allowedResponseHeaders">> => list(string())
+%% }
+-type metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% modify_memory_strategy_input() :: #{
 %%   <<"configuration">> => modify_strategy_configuration(),
 %%   <<"description">> => string(),
@@ -1440,8 +2163,10 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"exceptionLevel">> => list(any()),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> := list(any()),
 %%   <<"roleArn">> := string(),
@@ -1465,6 +2190,7 @@
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -1486,6 +2212,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
@@ -1538,6 +2265,47 @@
 
 
 %% Example:
+%% policy() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_consolidation_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_consolidation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"content">> := list(),
+%%   <<"name">> := string(),
+%%   <<"resource">> := list()
+%% }
+-type start_policy_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% set_token_vault_cm_k_request() :: #{
 %%   <<"kmsConfiguration">> := kms_configuration(),
 %%   <<"tokenVaultId">> => string()
@@ -1569,6 +2337,20 @@
 
 
 %% Example:
+%% create_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_policy_engine_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_token_vault_response() :: #{
 %%   <<"kmsConfiguration">> => kms_configuration(),
 %%   <<"lastModifiedDate">> => [non_neg_integer()],
@@ -1578,10 +2360,34 @@
 
 
 %% Example:
+%% categorical_scale_definition() :: #{
+%%   <<"definition">> => [string()],
+%%   <<"label">> => [string()]
+%% }
+-type categorical_scale_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% summary_override_configuration_input() :: #{
 %%   <<"consolidation">> => summary_override_consolidation_configuration_input()
 %% }
 -type summary_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluator_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorConfig">> => list(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"evaluatorName">> => string(),
+%%   <<"level">> => list(any()),
+%%   <<"lockedForModification">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_evaluator_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1595,6 +2401,7 @@
 %% strategy_configuration() :: #{
 %%   <<"consolidation">> => list(),
 %%   <<"extraction">> => list(),
+%%   <<"reflection">> => list(),
 %%   <<"selfManagedConfiguration">> => self_managed_configuration(),
 %%   <<"type">> => list(any())
 %% }
@@ -1622,6 +2429,15 @@
 %% }
 -type semantic_override_extraction_configuration_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_policy_engine_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_policy_engine_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -1631,9 +2447,19 @@
 %% custom_j_w_t_authorizer_configuration() :: #{
 %%   <<"allowedAudience">> => list(string()),
 %%   <<"allowedClients">> => list(string()),
+%%   <<"allowedScopes">> => list(string()),
+%%   <<"customClaims">> => list(custom_claim_validation_type()),
 %%   <<"discoveryUrl">> => string()
 %% }
 -type custom_j_w_t_authorizer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engines_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_engines_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1654,6 +2480,13 @@
 %%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
 %% }
 -type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_config() :: #{
+%%   <<"cloudWatchConfig">> => cloud_watch_output_config()
+%% }
+-type output_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1693,6 +2526,24 @@
 
 
 %% Example:
+%% list_online_evaluation_configs_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_online_evaluation_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_evaluator_response() :: #{
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_runtime_response() :: #{
 %%   <<"agentRuntimeId">> => string(),
 %%   <<"status">> => list(any())
@@ -1701,10 +2552,32 @@
 
 
 %% Example:
+%% list_evaluators_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_evaluators_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_based_trigger() :: #{
 %%   <<"idleSessionTimeout">> => [integer()]
 %% }
 -type time_based_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_policy_engine_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_oauth2_credential_provider_response() :: #{}
@@ -1722,6 +2595,14 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% episodic_extraction_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_extraction_override() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1778,6 +2659,13 @@
 
 
 %% Example:
+%% interceptor_input_configuration() :: #{
+%%   <<"passRequestHeaders">> => [boolean()]
+%% }
+-type interceptor_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_configuration() :: #{
 %%   <<"bucketOwnerAccountId">> => string(),
 %%   <<"uri">> => string()
@@ -1792,6 +2680,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type list_code_interpreters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1836,6 +2731,10 @@
 %% }
 -type google_oauth2_provider_config_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% semantic_override_configuration_input() :: #{
@@ -1877,6 +2776,20 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type browser_signing_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_engine() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_engine() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1962,6 +2875,17 @@
 
 
 %% Example:
+%% create_evaluator_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluatorConfig">> := list(),
+%%   <<"evaluatorName">> := string(),
+%%   <<"level">> := list(any())
+%% }
+-type create_evaluator_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_agent_runtime_endpoint_request() :: #{
 %%   <<"agentRuntimeVersion">> => string(),
 %%   <<"clientToken">> => string(),
@@ -1974,6 +2898,7 @@
 %% update_gateway_target_request() :: #{
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> := string(),
 %%   <<"targetConfiguration">> := list()
 %% }
@@ -1987,6 +2912,22 @@
 %%   <<"workloadIdentityArn">> => string()
 %% }
 -type create_workload_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type start_policy_generation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2025,6 +2966,22 @@
 
 
 %% Example:
+%% evaluator_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"evaluatorName">> => string(),
+%%   <<"evaluatorType">> => list(any()),
+%%   <<"level">> => list(any()),
+%%   <<"lockedForModification">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type evaluator_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_preference_override_consolidation_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -2054,6 +3011,10 @@
 %% }
 -type google_oauth2_provider_config_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_policy_engine_request() :: #{}
+-type delete_policy_engine_request() :: #{}.
+
 
 %% Example:
 %% list_gateway_targets_request() :: #{
@@ -2078,9 +3039,25 @@
 %% }
 -type linkedin_oauth2_provider_config_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_policy_engine_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_policy_engine_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_gateway_request() :: #{}
 -type get_gateway_request() :: #{}.
+
+
+%% Example:
+%% gateway_interceptor_configuration() :: #{
+%%   <<"inputConfiguration">> => interceptor_input_configuration(),
+%%   <<"interceptionPoints">> => list(list(any())()),
+%%   <<"interceptor">> => list()
+%% }
+-type gateway_interceptor_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2145,6 +3122,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_evaluator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2183,6 +3168,31 @@
     encryption_failure() | 
     decryption_failure() | 
     unauthorized_exception().
+
+-type create_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type create_workload_identity_errors() ::
     throttling_exception() | 
@@ -2232,6 +3242,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_evaluator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2253,6 +3271,7 @@
     access_denied_exception() | 
     service_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     throttled_exception().
 
 -type delete_oauth2_credential_provider_errors() ::
@@ -2262,6 +3281,37 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
+
+-type delete_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_workload_identity_errors() ::
     throttling_exception() | 
@@ -2308,6 +3358,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type get_evaluator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2337,6 +3394,41 @@
     resource_not_found_exception() | 
     decryption_failure() | 
     unauthorized_exception().
+
+-type get_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_token_vault_errors() ::
     throttling_exception() | 
@@ -2393,6 +3485,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_evaluators_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_gateway_targets_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2420,6 +3518,39 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type list_online_evaluation_configs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_policy_engines_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_policy_generation_assets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_policy_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2435,6 +3566,13 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type set_token_vault_cm_k_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2443,6 +3581,15 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
+
+-type start_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type synchronize_gateway_targets_errors() ::
     throttling_exception() | 
@@ -2498,6 +3645,15 @@
     decryption_failure() | 
     unauthorized_exception().
 
+-type update_evaluator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2536,6 +3692,31 @@
     encryption_failure() | 
     decryption_failure() | 
     unauthorized_exception().
+
+-type update_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_workload_identity_errors() ::
     throttling_exception() | 
@@ -2719,6 +3900,44 @@ create_code_interpreter(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a custom evaluator for agent quality assessment.
+%%
+%% Custom evaluators use LLM-as-a-Judge configurations with user-defined
+%% prompts, rating scales, and model settings to evaluate agent performance
+%% at tool call, trace, or session levels.
+-spec create_evaluator(aws_client:aws_client(), create_evaluator_request()) ->
+    {ok, create_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, create_evaluator_errors(), tuple()}.
+create_evaluator(Client, Input) ->
+    create_evaluator(Client, Input, []).
+
+-spec create_evaluator(aws_client:aws_client(), create_evaluator_request(), proplists:proplist()) ->
+    {ok, create_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, create_evaluator_errors(), tuple()}.
+create_evaluator(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluators/create"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a gateway for Amazon Bedrock Agent.
 %%
 %% A gateway serves as an integration point between your agent and external
@@ -2845,6 +4064,135 @@ create_oauth2_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/CreateOauth2CredentialProvider"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an online evaluation configuration for continuous monitoring
+%% of agent performance.
+%%
+%% Online evaluation automatically samples live traffic from CloudWatch logs
+%% at specified rates and applies evaluators to assess agent quality in
+%% production.
+-spec create_online_evaluation_config(aws_client:aws_client(), create_online_evaluation_config_request()) ->
+    {ok, create_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_online_evaluation_config_errors(), tuple()}.
+create_online_evaluation_config(Client, Input) ->
+    create_online_evaluation_config(Client, Input, []).
+
+-spec create_online_evaluation_config(aws_client:aws_client(), create_online_evaluation_config_request(), proplists:proplist()) ->
+    {ok, create_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_online_evaluation_config_errors(), tuple()}.
+create_online_evaluation_config(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/online-evaluation-configs/create"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a policy within the AgentCore Policy system.
+%%
+%% Policies provide real-time, deterministic control over agentic
+%% interactions with AgentCore Gateway. Using the Cedar policy language, you
+%% can define fine-grained policies that specify which interactions with
+%% Gateway tools are permitted based on input parameters and OAuth claims,
+%% ensuring agents operate within defined boundaries and business rules. The
+%% policy is validated during creation against the Cedar schema generated
+%% from the Gateway's tools' input schemas, which defines the
+%% available tools, their parameters, and expected data types. This is an
+%% asynchronous operation. Use the GetPolicy:
+%% https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_GetPolicy.html
+%% operation to poll the `status' field to track completion.
+-spec create_policy(aws_client:aws_client(), binary() | list(), create_policy_request()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_errors(), tuple()}.
+create_policy(Client, PolicyEngineId, Input) ->
+    create_policy(Client, PolicyEngineId, Input, []).
+
+-spec create_policy(aws_client:aws_client(), binary() | list(), create_policy_request(), proplists:proplist()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_errors(), tuple()}.
+create_policy(Client, PolicyEngineId, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new policy engine within the AgentCore Policy system.
+%%
+%% A policy engine is a collection of policies that evaluates and authorizes
+%% agent tool calls. When associated with Gateways (each Gateway can be
+%% associated with at most one policy engine, but multiple Gateways can be
+%% associated with the same engine), the policy engine intercepts all agent
+%% requests and determines whether to allow or deny each action based on the
+%% defined policies. This is an asynchronous operation. Use the
+%% GetPolicyEngine:
+%% https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_GetPolicyEngine.html
+%% operation to poll the `status' field to track completion.
+-spec create_policy_engine(aws_client:aws_client(), create_policy_engine_request()) ->
+    {ok, create_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_engine_errors(), tuple()}.
+create_policy_engine(Client, Input) ->
+    create_policy_engine(Client, Input, []).
+
+-spec create_policy_engine(aws_client:aws_client(), create_policy_engine_request(), proplists:proplist()) ->
+    {ok, create_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_engine_errors(), tuple()}.
+create_policy_engine(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy-engines"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3071,6 +4419,43 @@ delete_code_interpreter(Client, CodeInterpreterId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a custom evaluator.
+%%
+%% Builtin evaluators cannot be deleted. The evaluator must not be referenced
+%% by any active online evaluation configurations.
+-spec delete_evaluator(aws_client:aws_client(), binary() | list(), delete_evaluator_request()) ->
+    {ok, delete_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, delete_evaluator_errors(), tuple()}.
+delete_evaluator(Client, EvaluatorId, Input) ->
+    delete_evaluator(Client, EvaluatorId, Input, []).
+
+-spec delete_evaluator(aws_client:aws_client(), binary() | list(), delete_evaluator_request(), proplists:proplist()) ->
+    {ok, delete_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, delete_evaluator_errors(), tuple()}.
+delete_evaluator(Client, EvaluatorId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/evaluators/", aws_util:encode_uri(EvaluatorId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a gateway.
 -spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request()) ->
     {ok, delete_gateway_response(), tuple()} |
@@ -3189,6 +4574,157 @@ delete_oauth2_credential_provider(Client, Input) ->
 delete_oauth2_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/DeleteOauth2CredentialProvider"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an online evaluation configuration and stops any ongoing
+%% evaluation processes associated with it.
+-spec delete_online_evaluation_config(aws_client:aws_client(), binary() | list(), delete_online_evaluation_config_request()) ->
+    {ok, delete_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_online_evaluation_config_errors(), tuple()}.
+delete_online_evaluation_config(Client, OnlineEvaluationConfigId, Input) ->
+    delete_online_evaluation_config(Client, OnlineEvaluationConfigId, Input, []).
+
+-spec delete_online_evaluation_config(aws_client:aws_client(), binary() | list(), delete_online_evaluation_config_request(), proplists:proplist()) ->
+    {ok, delete_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_online_evaluation_config_errors(), tuple()}.
+delete_online_evaluation_config(Client, OnlineEvaluationConfigId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/online-evaluation-configs/", aws_util:encode_uri(OnlineEvaluationConfigId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing policy from the AgentCore Policy system.
+%%
+%% Once deleted, the policy can no longer be used for agent behavior control
+%% and all references to it become invalid. This is an asynchronous
+%% operation. Use the `GetPolicy' operation to poll the `status'
+%% field to track completion.
+-spec delete_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_request()) ->
+    {ok, delete_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
+delete_policy(Client, PolicyEngineId, PolicyId, Input) ->
+    delete_policy(Client, PolicyEngineId, PolicyId, Input, []).
+
+-spec delete_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_request(), proplists:proplist()) ->
+    {ok, delete_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
+delete_policy(Client, PolicyEngineId, PolicyId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing policy engine from the AgentCore Policy system.
+%%
+%% The policy engine must not have any associated policies before deletion.
+%% Once deleted, the policy engine and all its configurations become
+%% unavailable for policy management and evaluation. This is an asynchronous
+%% operation. Use the `GetPolicyEngine' operation to poll the
+%% `status' field to track completion.
+-spec delete_policy_engine(aws_client:aws_client(), binary() | list(), delete_policy_engine_request()) ->
+    {ok, delete_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_engine_errors(), tuple()}.
+delete_policy_engine(Client, PolicyEngineId, Input) ->
+    delete_policy_engine(Client, PolicyEngineId, Input, []).
+
+-spec delete_policy_engine(aws_client:aws_client(), binary() | list(), delete_policy_engine_request(), proplists:proplist()) ->
+    {ok, delete_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_engine_errors(), tuple()}.
+delete_policy_engine(Client, PolicyEngineId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the resource-based policy for a specified resource.
+%%
+%% This feature is currently available only for AgentCore Runtime and
+%% Gateway.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3428,6 +4964,46 @@ get_code_interpreter(Client, CodeInterpreterId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves detailed information about an evaluator, including its
+%% configuration, status, and metadata.
+%%
+%% Works with both built-in and custom evaluators.
+-spec get_evaluator(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluator_errors(), tuple()}.
+get_evaluator(Client, EvaluatorId)
+  when is_map(Client) ->
+    get_evaluator(Client, EvaluatorId, #{}, #{}).
+
+-spec get_evaluator(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluator_errors(), tuple()}.
+get_evaluator(Client, EvaluatorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evaluator(Client, EvaluatorId, QueryMap, HeadersMap, []).
+
+-spec get_evaluator(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluator_errors(), tuple()}.
+get_evaluator(Client, EvaluatorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluators/", aws_util:encode_uri(EvaluatorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a specific Gateway.
 -spec get_gateway(aws_client:aws_client(), binary() | list()) ->
     {ok, get_gateway_response(), tuple()} |
@@ -3535,7 +5111,11 @@ get_memory(Client, MemoryId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"view">>, maps:get(<<"view">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3572,6 +5152,211 @@ get_oauth2_credential_provider(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about an online evaluation
+%% configuration, including its rules, data sources, evaluators, and
+%% execution status.
+-spec get_online_evaluation_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_online_evaluation_config_errors(), tuple()}.
+get_online_evaluation_config(Client, OnlineEvaluationConfigId)
+  when is_map(Client) ->
+    get_online_evaluation_config(Client, OnlineEvaluationConfigId, #{}, #{}).
+
+-spec get_online_evaluation_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_online_evaluation_config_errors(), tuple()}.
+get_online_evaluation_config(Client, OnlineEvaluationConfigId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_online_evaluation_config(Client, OnlineEvaluationConfigId, QueryMap, HeadersMap, []).
+
+-spec get_online_evaluation_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_online_evaluation_config_errors(), tuple()}.
+get_online_evaluation_config(Client, OnlineEvaluationConfigId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/online-evaluation-configs/", aws_util:encode_uri(OnlineEvaluationConfigId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific policy within the
+%% AgentCore Policy system.
+%%
+%% This operation returns the complete policy definition, metadata, and
+%% current status, allowing administrators to review and manage policy
+%% configurations.
+-spec get_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, PolicyEngineId, PolicyId)
+  when is_map(Client) ->
+    get_policy(Client, PolicyEngineId, PolicyId, #{}, #{}).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap, []).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific policy engine within
+%% the AgentCore Policy system.
+%%
+%% This operation returns the complete policy engine configuration, metadata,
+%% and current status, allowing administrators to review and manage policy
+%% engine settings.
+-spec get_policy_engine(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_errors(), tuple()}.
+get_policy_engine(Client, PolicyEngineId)
+  when is_map(Client) ->
+    get_policy_engine(Client, PolicyEngineId, #{}, #{}).
+
+-spec get_policy_engine(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_errors(), tuple()}.
+get_policy_engine(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_engine(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec get_policy_engine(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_errors(), tuple()}.
+get_policy_engine(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a policy generation request within the
+%% AgentCore Policy system.
+%%
+%% Policy generation converts natural language descriptions into Cedar policy
+%% statements using AI-powered translation, enabling non-technical users to
+%% create policies.
+-spec get_policy_generation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_errors(), tuple()}.
+get_policy_generation(Client, PolicyEngineId, PolicyGenerationId)
+  when is_map(Client) ->
+    get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, #{}, #{}).
+
+-spec get_policy_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_errors(), tuple()}.
+get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, []).
+
+-spec get_policy_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_errors(), tuple()}.
+get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations/", aws_util:encode_uri(PolicyGenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource-based policy for a specified resource.
+%%
+%% This feature is currently available only for AgentCore Runtime and
+%% Gateway.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a token vault.
 -spec get_token_vault(aws_client:aws_client(), get_token_vault_request()) ->
@@ -3857,6 +5642,43 @@ list_code_interpreters(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all available evaluators, including both builtin evaluators
+%% provided by the service and custom evaluators created by the user.
+-spec list_evaluators(aws_client:aws_client(), list_evaluators_request()) ->
+    {ok, list_evaluators_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluators_errors(), tuple()}.
+list_evaluators(Client, Input) ->
+    list_evaluators(Client, Input, []).
+
+-spec list_evaluators(aws_client:aws_client(), list_evaluators_request(), proplists:proplist()) ->
+    {ok, list_evaluators_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluators_errors(), tuple()}.
+list_evaluators(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluators"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all targets for a specific gateway.
 -spec list_gateway_targets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_gateway_targets_response(), tuple()} |
@@ -4010,6 +5832,230 @@ list_oauth2_credential_providers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all online evaluation configurations in the account, providing
+%% summary information about each configuration's status and settings.
+-spec list_online_evaluation_configs(aws_client:aws_client(), list_online_evaluation_configs_request()) ->
+    {ok, list_online_evaluation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_online_evaluation_configs_errors(), tuple()}.
+list_online_evaluation_configs(Client, Input) ->
+    list_online_evaluation_configs(Client, Input, []).
+
+-spec list_online_evaluation_configs(aws_client:aws_client(), list_online_evaluation_configs_request(), proplists:proplist()) ->
+    {ok, list_online_evaluation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_online_evaluation_configs_errors(), tuple()}.
+list_online_evaluation_configs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/online-evaluation-configs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of policies within the AgentCore Policy engine.
+%%
+%% This operation supports pagination and filtering to help administrators
+%% manage and discover policies across policy engines. Results can be
+%% filtered by policy engine or resource associations.
+-spec list_policies(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_policies_errors(), tuple()}.
+list_policies(Client, PolicyEngineId)
+  when is_map(Client) ->
+    list_policies(Client, PolicyEngineId, #{}, #{}).
+
+-spec list_policies(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_policies_errors(), tuple()}.
+list_policies(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policies(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec list_policies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_policies_errors(), tuple()}.
+list_policies(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetResourceScope">>, maps:get(<<"targetResourceScope">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of policy engines within the AgentCore Policy
+%% system.
+%%
+%% This operation supports pagination to help administrators discover and
+%% manage policy engines across their account. Each policy engine serves as a
+%% container for related policies.
+-spec list_policy_engines(aws_client:aws_client()) ->
+    {ok, list_policy_engines_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engines_errors(), tuple()}.
+list_policy_engines(Client)
+  when is_map(Client) ->
+    list_policy_engines(Client, #{}, #{}).
+
+-spec list_policy_engines(aws_client:aws_client(), map(), map()) ->
+    {ok, list_policy_engines_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engines_errors(), tuple()}.
+list_policy_engines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_engines(Client, QueryMap, HeadersMap, []).
+
+-spec list_policy_engines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_engines_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engines_errors(), tuple()}.
+list_policy_engines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of generated policy assets from a policy generation
+%% request within the AgentCore Policy system.
+%%
+%% This operation returns the actual Cedar policies and related artifacts
+%% produced by the AI-powered policy generation process, allowing users to
+%% review and select from multiple generated policy options.
+-spec list_policy_generation_assets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_policy_generation_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_assets_errors(), tuple()}.
+list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId)
+  when is_map(Client) ->
+    list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId, #{}, #{}).
+
+-spec list_policy_generation_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_policy_generation_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_assets_errors(), tuple()}.
+list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, []).
+
+-spec list_policy_generation_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_generation_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_assets_errors(), tuple()}.
+list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations/", aws_util:encode_uri(PolicyGenerationId), "/assets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of policy generation requests within the AgentCore
+%% Policy system.
+%%
+%% This operation supports pagination and filtering to help track and manage
+%% AI-powered policy generation operations.
+-spec list_policy_generations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
+list_policy_generations(Client, PolicyEngineId)
+  when is_map(Client) ->
+    list_policy_generations(Client, PolicyEngineId, #{}, #{}).
+
+-spec list_policy_generations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
+list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec list_policy_generations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
+list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags associated with the specified resource.
 %%
 %% This feature is currently available only for AgentCore Runtime, Browser,
@@ -4084,6 +6130,44 @@ list_workload_identities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates or updates a resource-based policy for a resource with the
+%% specified resourceArn.
+%%
+%% This feature is currently available only for AgentCore Runtime and
+%% Gateway.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input) ->
+    put_resource_policy(Client, ResourceArn, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sets the customer master key (CMK) for a token vault.
 -spec set_token_vault_cm_k(aws_client:aws_client(), set_token_vault_cm_k_request()) ->
     {ok, set_token_vault_cm_k_response(), tuple()} |
@@ -4100,6 +6184,54 @@ set_token_vault_cm_k(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/set-token-vault-cmk"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates the AI-powered generation of Cedar policies from natural
+%% language descriptions within the AgentCore Policy system.
+%%
+%% This feature enables both technical and non-technical users to create
+%% policies by describing their authorization requirements in plain English,
+%% which is then automatically translated into formal Cedar policy
+%% statements. The generation process analyzes the natural language input
+%% along with the Gateway's tool context to produce validated policy
+%% options. Generated policy assets are automatically deleted after 7 days,
+%% so you should review and create policies from the generated assets within
+%% this timeframe. Once created, policies are permanent and not subject to
+%% this expiration. Generated policies should be reviewed and tested in
+%% log-only mode before deploying to production. Use this when you want to
+%% describe policy intent naturally rather than learning Cedar syntax, though
+%% generated policies may require refinement for complex scenarios.
+-spec start_policy_generation(aws_client:aws_client(), binary() | list(), start_policy_generation_request()) ->
+    {ok, start_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_generation_errors(), tuple()}.
+start_policy_generation(Client, PolicyEngineId, Input) ->
+    start_policy_generation(Client, PolicyEngineId, Input, []).
+
+-spec start_policy_generation(aws_client:aws_client(), binary() | list(), start_policy_generation_request(), proplists:proplist()) ->
+    {ok, start_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_generation_errors(), tuple()}.
+start_policy_generation(Client, PolicyEngineId, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4334,6 +6466,44 @@ update_api_key_credential_provider(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a custom evaluator's configuration, description, or
+%% evaluation level.
+%%
+%% Built-in evaluators cannot be updated. The evaluator must not be locked
+%% for modification.
+-spec update_evaluator(aws_client:aws_client(), binary() | list(), update_evaluator_request()) ->
+    {ok, update_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, update_evaluator_errors(), tuple()}.
+update_evaluator(Client, EvaluatorId, Input) ->
+    update_evaluator(Client, EvaluatorId, Input, []).
+
+-spec update_evaluator(aws_client:aws_client(), binary() | list(), update_evaluator_request(), proplists:proplist()) ->
+    {ok, update_evaluator_response(), tuple()} |
+    {error, any()} |
+    {error, update_evaluator_errors(), tuple()}.
+update_evaluator(Client, EvaluatorId, Input0, Options0) ->
+    Method = put,
+    Path = ["/evaluators/", aws_util:encode_uri(EvaluatorId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing gateway.
 -spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request()) ->
     {ok, update_gateway_response(), tuple()} |
@@ -4452,6 +6622,122 @@ update_oauth2_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/UpdateOauth2CredentialProvider"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an online evaluation configuration's settings, including
+%% rules, data sources, evaluators, and execution status.
+%%
+%% Changes take effect immediately for ongoing evaluations.
+-spec update_online_evaluation_config(aws_client:aws_client(), binary() | list(), update_online_evaluation_config_request()) ->
+    {ok, update_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_online_evaluation_config_errors(), tuple()}.
+update_online_evaluation_config(Client, OnlineEvaluationConfigId, Input) ->
+    update_online_evaluation_config(Client, OnlineEvaluationConfigId, Input, []).
+
+-spec update_online_evaluation_config(aws_client:aws_client(), binary() | list(), update_online_evaluation_config_request(), proplists:proplist()) ->
+    {ok, update_online_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_online_evaluation_config_errors(), tuple()}.
+update_online_evaluation_config(Client, OnlineEvaluationConfigId, Input0, Options0) ->
+    Method = put,
+    Path = ["/online-evaluation-configs/", aws_util:encode_uri(OnlineEvaluationConfigId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing policy within the AgentCore Policy system.
+%%
+%% This operation allows modification of the policy description and
+%% definition while maintaining the policy's identity. The updated policy
+%% is validated against the Cedar schema before being applied. This is an
+%% asynchronous operation. Use the `GetPolicy' operation to poll the
+%% `status' field to track completion.
+-spec update_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_policy_request()) ->
+    {ok, update_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_policy_errors(), tuple()}.
+update_policy(Client, PolicyEngineId, PolicyId, Input) ->
+    update_policy(Client, PolicyEngineId, PolicyId, Input, []).
+
+-spec update_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_policy_request(), proplists:proplist()) ->
+    {ok, update_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_policy_errors(), tuple()}.
+update_policy(Client, PolicyEngineId, PolicyId, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing policy engine within the AgentCore Policy system.
+%%
+%% This operation allows modification of the policy engine description while
+%% maintaining its identity. This is an asynchronous operation. Use the
+%% `GetPolicyEngine' operation to poll the `status' field to track
+%% completion.
+-spec update_policy_engine(aws_client:aws_client(), binary() | list(), update_policy_engine_request()) ->
+    {ok, update_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, update_policy_engine_errors(), tuple()}.
+update_policy_engine(Client, PolicyEngineId, Input) ->
+    update_policy_engine(Client, PolicyEngineId, Input, []).
+
+-spec update_policy_engine(aws_client:aws_client(), binary() | list(), update_policy_engine_request(), proplists:proplist()) ->
+    {ok, update_policy_engine_response(), tuple()} |
+    {error, any()} |
+    {error, update_policy_engine_errors(), tuple()}.
+update_policy_engine(Client, PolicyEngineId, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

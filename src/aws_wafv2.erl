@@ -382,6 +382,13 @@
 -type list_ip_sets_request() :: #{binary() => any()}.
 
 %% Example:
+%% disallowed_feature() :: #{
+%%   <<"Feature">> => string(),
+%%   <<"RequiredPricingPlan">> => string()
+%% }
+-type disallowed_feature() :: #{binary() => any()}.
+
+%% Example:
 %% rate_based_statement_managed_keys_ip_set() :: #{
 %%   <<"Addresses">> => list(string()),
 %%   <<"IPAddressVersion">> => list(any())
@@ -822,6 +829,13 @@
 %%   <<"CustomRequestHandling">> => custom_request_handling()
 %% }
 -type challenge_action() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_feature_not_included_in_pricing_plan_exception() :: #{
+%%   <<"DisallowedFeatures">> => list(disallowed_feature()),
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_feature_not_included_in_pricing_plan_exception() :: #{binary() => any()}.
 
 %% Example:
 %% describe_all_managed_products_request() :: #{
@@ -2236,6 +2250,7 @@
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception() | 
     w_a_f_unavailable_entity_exception() | 
     w_a_f_nonexistent_item_exception().
 
@@ -2547,6 +2562,7 @@
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception() | 
     w_a_f_service_linked_role_error_exception() | 
     w_a_f_nonexistent_item_exception().
 
@@ -2627,6 +2643,7 @@
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception() | 
     w_a_f_unavailable_entity_exception() | 
     w_a_f_nonexistent_item_exception() | 
     w_a_f_expired_managed_rule_group_version_exception().

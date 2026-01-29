@@ -2,11 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Launch Wizard offers a guided way of sizing, configuring, and
-%% deploying Amazon Web Services resources for
-%% third party applications, such as Microsoft SQL Server Always On and HANA
-%% based SAP
-%% systems, without the need to manually identify and provision individual
-%% Amazon Web Services
+%% deploying Amazon Web Services resources for third party applications, such
+%% as Microsoft SQL Server Always On and HANA based SAP systems, without the
+%% need to manually identify and provision individual Amazon Web Services
 %% resources.
 -module(aws_launch_wizard).
 
@@ -16,12 +14,16 @@
          delete_deployment/3,
          get_deployment/2,
          get_deployment/3,
+         get_deployment_pattern_version/2,
+         get_deployment_pattern_version/3,
          get_workload/2,
          get_workload/3,
          get_workload_deployment_pattern/2,
          get_workload_deployment_pattern/3,
          list_deployment_events/2,
          list_deployment_events/3,
+         list_deployment_pattern_versions/2,
+         list_deployment_pattern_versions/3,
          list_deployments/2,
          list_deployments/3,
          list_tags_for_resource/2,
@@ -34,7 +36,9 @@
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_deployment/2,
+         update_deployment/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -68,6 +72,17 @@
 
 
 %% Example:
+%% deployment_pattern_version_data_summary() :: #{
+%%   <<"deploymentPatternName">> => [string()],
+%%   <<"deploymentPatternVersionName">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"documentationUrl">> => [string()],
+%%   <<"workloadName">> => [string()]
+%% }
+-type deployment_pattern_version_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_workloads_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -78,6 +93,7 @@
 %% Example:
 %% workload_data_summary() :: #{
 %%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
 %%   <<"workloadName">> => string()
 %% }
 -type workload_data_summary() :: #{binary() => any()}.
@@ -103,6 +119,15 @@
 
 
 %% Example:
+%% get_deployment_pattern_version_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"deploymentPatternVersionName">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_deployment_pattern_version_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_deployment_input() :: #{
 %%   <<"deploymentId">> := string()
 %% }
@@ -112,7 +137,7 @@
 %% Example:
 %% deployment_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list([string()]())
+%%   <<"values">> => list(string())
 %% }
 -type deployment_filter() :: #{binary() => any()}.
 
@@ -129,6 +154,17 @@
 %%   <<"workloadName">> := string()
 %% }
 -type get_workload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_pattern_versions_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"filters">> => list(deployment_pattern_version_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workloadName">> := string()
+%% }
+-type list_deployment_pattern_versions_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -151,10 +187,32 @@
 
 
 %% Example:
+%% get_deployment_pattern_version_output() :: #{
+%%   <<"deploymentPatternVersion">> => deployment_pattern_version_data_summary()
+%% }
+-type get_deployment_pattern_version_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_deployment_output() :: #{
+%%   <<"deployment">> => deployment_data_summary()
+%% }
+-type update_deployment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_pattern_version_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type deployment_pattern_version_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -193,6 +251,7 @@
 %% Example:
 %% workload_deployment_pattern_data_summary() :: #{
 %%   <<"deploymentPatternName">> => string(),
+%%   <<"deploymentPatternVersionName">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
 %%   <<"status">> => list(any()),
@@ -214,6 +273,7 @@
 %% deployment_data_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"id">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
 %%   <<"patternName">> => string(),
 %%   <<"status">> => list(any()),
@@ -329,6 +389,7 @@
 %%   <<"deletedAt">> => [non_neg_integer()],
 %%   <<"deploymentArn">> => [string()],
 %%   <<"id">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
 %%   <<"patternName">> => string(),
 %%   <<"resourceGroup">> => [string()],
@@ -343,6 +404,7 @@
 %% Example:
 %% workload_deployment_pattern_data() :: #{
 %%   <<"deploymentPatternName">> => string(),
+%%   <<"deploymentPatternVersionName">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
 %%   <<"specifications">> => list(deployment_specifications_field()),
@@ -355,10 +417,30 @@
 
 
 %% Example:
+%% update_deployment_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"deploymentPatternVersionName">> => string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"force">> => [boolean()],
+%%   <<"specifications">> := map(),
+%%   <<"workloadVersionName">> => string()
+%% }
+-type update_deployment_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_workload_deployment_pattern_output() :: #{
 %%   <<"workloadDeploymentPattern">> => workload_deployment_pattern_data()
 %% }
 -type get_workload_deployment_pattern_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_pattern_versions_output() :: #{
+%%   <<"deploymentPatternVersions">> => list(deployment_pattern_version_data_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_pattern_versions_output() :: #{binary() => any()}.
 
 -type create_deployment_errors() ::
     validation_exception() | 
@@ -377,6 +459,10 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_deployment_pattern_version_errors() ::
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_workload_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -388,6 +474,11 @@
     resource_not_found_exception().
 
 -type list_deployment_events_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_deployment_pattern_versions_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -420,16 +511,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_deployment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    resource_limit_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates a deployment for the given workload.
 %%
-%% Deployments created by this operation are
-%% not available in the Launch Wizard console to use the `Clone
-%% deployment' action
-%% on.
+%% Deployments created by this operation are not available in the Launch
+%% Wizard console to use the `Clone deployment' action on.
 -spec create_deployment(aws_client:aws_client(), create_deployment_input()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
@@ -531,6 +626,40 @@ get_deployment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns information about a deployment pattern version.
+-spec get_deployment_pattern_version(aws_client:aws_client(), get_deployment_pattern_version_input()) ->
+    {ok, get_deployment_pattern_version_output(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_pattern_version_errors(), tuple()}.
+get_deployment_pattern_version(Client, Input) ->
+    get_deployment_pattern_version(Client, Input, []).
+
+-spec get_deployment_pattern_version(aws_client:aws_client(), get_deployment_pattern_version_input(), proplists:proplist()) ->
+    {ok, get_deployment_pattern_version_output(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_pattern_version_errors(), tuple()}.
+get_deployment_pattern_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getDeploymentPatternVersion"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns information about a workload.
 -spec get_workload(aws_client:aws_client(), get_workload_input()) ->
     {ok, get_workload_output(), tuple()} |
@@ -566,16 +695,15 @@ get_workload(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details for a given workload and deployment pattern,
-%% including the available
-%% specifications.
+%% including the available specifications.
 %%
 %% You can use the ListWorkloads:
 %% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloads.html
 %% operation to discover the available workload names and the
 %% ListWorkloadDeploymentPatterns:
 %% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloadDeploymentPatterns.html
-%% operation to discover the available deployment
-%% pattern names of a given workload.
+%% operation to discover the available deployment pattern names of a given
+%% workload.
 -spec get_workload_deployment_pattern(aws_client:aws_client(), get_workload_deployment_pattern_input()) ->
     {ok, get_workload_deployment_pattern_output(), tuple()} |
     {error, any()} |
@@ -624,6 +752,40 @@ list_deployment_events(Client, Input) ->
 list_deployment_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listDeploymentEvents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the deployment pattern versions.
+-spec list_deployment_pattern_versions(aws_client:aws_client(), list_deployment_pattern_versions_input()) ->
+    {ok, list_deployment_pattern_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_pattern_versions_errors(), tuple()}.
+list_deployment_pattern_versions(Client, Input) ->
+    list_deployment_pattern_versions(Client, Input, []).
+
+-spec list_deployment_pattern_versions(aws_client:aws_client(), list_deployment_pattern_versions_input(), proplists:proplist()) ->
+    {ok, list_deployment_pattern_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_pattern_versions_errors(), tuple()}.
+list_deployment_pattern_versions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listDeploymentPatternVersions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -858,6 +1020,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a deployment.
+-spec update_deployment(aws_client:aws_client(), update_deployment_input()) ->
+    {ok, update_deployment_output(), tuple()} |
+    {error, any()} |
+    {error, update_deployment_errors(), tuple()}.
+update_deployment(Client, Input) ->
+    update_deployment(Client, Input, []).
+
+-spec update_deployment(aws_client:aws_client(), update_deployment_input(), proplists:proplist()) ->
+    {ok, update_deployment_output(), tuple()} |
+    {error, any()} |
+    {error, update_deployment_errors(), tuple()}.
+update_deployment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updateDeployment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

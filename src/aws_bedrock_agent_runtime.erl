@@ -449,7 +449,9 @@
 
 %% Example:
 %% knowledge_base_query() :: #{
-%%   <<"text">> => [string()]
+%%   <<"image">> => input_image(),
+%%   <<"text">> => [string()],
+%%   <<"type">> => list(any())
 %% }
 -type knowledge_base_query() :: #{binary() => any()}.
 
@@ -724,10 +726,12 @@
 
 %% Example:
 %% retrieval_result_content() :: #{
+%%   <<"audio">> => audio_segment(),
 %%   <<"byteContent">> => [string()],
 %%   <<"row">> => list(retrieval_result_content_column()),
 %%   <<"text">> => [string()],
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"video">> => video_segment()
 %% }
 -type retrieval_result_content() :: #{binary() => any()}.
 
@@ -1042,6 +1046,14 @@
 
 
 %% Example:
+%% video_segment() :: #{
+%%   <<"s3Uri">> => [string()],
+%%   <<"summary">> => [string()]
+%% }
+-type video_segment() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_completion_event() :: #{
 %%   <<"completionReason">> => list(any())
 %% }
@@ -1160,6 +1172,14 @@
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_output_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_segment() :: #{
+%%   <<"s3Uri">> => [string()],
+%%   <<"transcription">> => [string()]
+%% }
+-type audio_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1435,6 +1455,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_invocations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_image() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"inlineContent">> => binary()
+%% }
+-type input_image() :: #{binary() => any()}.
 
 
 %% Example:

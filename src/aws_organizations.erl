@@ -132,6 +132,8 @@
          describe_policy/3,
          describe_resource_policy/2,
          describe_resource_policy/3,
+         describe_responsibility_transfer/2,
+         describe_responsibility_transfer/3,
          detach_policy/2,
          detach_policy/3,
          disable_aws_service_access/2,
@@ -146,6 +148,8 @@
          enable_policy_type/3,
          invite_account_to_organization/2,
          invite_account_to_organization/3,
+         invite_organization_to_transfer_responsibility/2,
+         invite_organization_to_transfer_responsibility/3,
          leave_organization/2,
          leave_organization/3,
          list_accounts/2,
@@ -170,8 +174,12 @@
          list_handshakes_for_account/3,
          list_handshakes_for_organization/2,
          list_handshakes_for_organization/3,
+         list_inbound_responsibility_transfers/2,
+         list_inbound_responsibility_transfers/3,
          list_organizational_units_for_parent/2,
          list_organizational_units_for_parent/3,
+         list_outbound_responsibility_transfers/2,
+         list_outbound_responsibility_transfers/3,
          list_parents/2,
          list_parents/3,
          list_policies/2,
@@ -194,12 +202,16 @@
          remove_account_from_organization/3,
          tag_resource/2,
          tag_resource/3,
+         terminate_responsibility_transfer/2,
+         terminate_responsibility_transfer/3,
          untag_resource/2,
          untag_resource/3,
          update_organizational_unit/2,
          update_organizational_unit/3,
          update_policy/2,
-         update_policy/3]).
+         update_policy/3,
+         update_responsibility_transfer/2,
+         update_responsibility_transfer/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -304,6 +316,13 @@
 %%   <<"AccountId">> := string()
 %% }
 -type describe_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_outbound_responsibility_transfers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
+%% }
+-type list_outbound_responsibility_transfers_response() :: #{binary() => any()}.
 
 %% Example:
 %% finalizing_organization_exception() :: #{
@@ -454,6 +473,21 @@
 -type list_parents_request() :: #{binary() => any()}.
 
 %% Example:
+%% responsibility_transfer() :: #{
+%%   <<"ActiveHandshakeId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => transfer_participant(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => transfer_participant(),
+%%   <<"Type">> => list(any())
+%% }
+-type responsibility_transfer() :: #{binary() => any()}.
+
+%% Example:
 %% handshake_party() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Type">> => list(any())
@@ -567,6 +601,12 @@
 -type describe_create_account_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_responsibility_transfer_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type describe_responsibility_transfer_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_organizational_unit_response() :: #{
 %%   <<"OrganizationalUnit">> => organizational_unit()
 %% }
@@ -602,6 +642,12 @@
 -type list_handshakes_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type update_responsibility_transfer_response() :: #{binary() => any()}.
+
+%% Example:
 %% organization_not_empty_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -613,6 +659,12 @@
 %%   <<"Targets">> => list(policy_target_summary())
 %% }
 -type list_targets_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% invite_organization_to_transfer_responsibility_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type invite_organization_to_transfer_responsibility_response() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -681,6 +733,13 @@
 -type handshake_already_in_state_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_inbound_responsibility_transfers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
+%% }
+-type list_inbound_responsibility_transfers_response() :: #{binary() => any()}.
+
+%% Example:
 %% duplicate_policy_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -728,6 +787,13 @@
 -type create_account_status() :: #{binary() => any()}.
 
 %% Example:
+%% update_responsibility_transfer_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_responsibility_transfer_request() :: #{binary() => any()}.
+
+%% Example:
 %% account() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Email">> => string(),
@@ -741,6 +807,12 @@
 -type account() :: #{binary() => any()}.
 
 %% Example:
+%% describe_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type describe_responsibility_transfer_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_organizational_unit_response() :: #{
 %%   <<"OrganizationalUnit">> => organizational_unit()
 %% }
@@ -752,6 +824,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_handshakes_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_responsibility_transfer_request() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Id">> := string()
+%% }
+-type terminate_responsibility_transfer_request() :: #{binary() => any()}.
 
 %% Example:
 %% delegated_service() :: #{
@@ -804,6 +883,12 @@
 -type update_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% responsibility_transfer_already_in_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type responsibility_transfer_already_in_status_exception() :: #{binary() => any()}.
+
+%% Example:
 %% describe_effective_policy_response() :: #{
 %%   <<"EffectivePolicy">> => effective_policy()
 %% }
@@ -820,6 +905,15 @@
 %%   <<"Message">> => string()
 %% }
 -type parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_inbound_responsibility_transfers_request() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type list_inbound_responsibility_transfers_request() :: #{binary() => any()}.
 
 %% Example:
 %% root_not_found_exception() :: #{
@@ -920,6 +1014,23 @@
 %%   <<"RootId">> := string()
 %% }
 -type disable_policy_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% responsibility_transfer_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type responsibility_transfer_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invite_organization_to_transfer_responsibility_request() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"SourceName">> := string(),
+%%   <<"StartTimestamp">> := non_neg_integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Target">> := handshake_party(),
+%%   <<"Type">> := list(any())
+%% }
+-type invite_organization_to_transfer_responsibility_request() :: #{binary() => any()}.
 
 %% Example:
 %% handshake() :: #{
@@ -1024,6 +1135,13 @@
 %%   <<"AccountId">> := string()
 %% }
 -type close_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_participant() :: #{
+%%   <<"ManagementAccountEmail">> => string(),
+%%   <<"ManagementAccountId">> => string()
+%% }
+-type transfer_participant() :: #{binary() => any()}.
 
 %% Example:
 %% policy_in_use_exception() :: #{
@@ -1195,6 +1313,14 @@
 -type source_parent_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_outbound_responsibility_transfers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type list_outbound_responsibility_transfers_request() :: #{binary() => any()}.
+
+%% Example:
 %% access_denied_for_dependency_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
@@ -1213,6 +1339,12 @@
 %%   <<"CreateAccountStatus">> => create_account_status()
 %% }
 -type create_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_responsibility_transfer_transition_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_responsibility_transfer_transition_exception() :: #{binary() => any()}.
 
 %% Example:
 %% policy_changes_in_progress_exception() :: #{
@@ -1284,6 +1416,12 @@
 -type list_accounts_request() :: #{binary() => any()}.
 
 %% Example:
+%% terminate_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type terminate_responsibility_transfer_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_handshakes_for_account_request() :: #{
 %%   <<"Filter">> => handshake_filter(),
 %%   <<"MaxResults">> => integer(),
@@ -1346,9 +1484,11 @@
 
 -type accept_handshake_errors() ::
     access_denied_for_dependency_exception() | 
+    constraint_violation_exception() | 
     concurrent_modification_exception() | 
     invalid_handshake_transition_exception() | 
     access_denied_exception() | 
+    master_cannot_leave_organization_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     handshake_already_in_state_exception() | 
@@ -1462,6 +1602,7 @@
     too_many_requests_exception().
 
 -type delete_organization_errors() ::
+    constraint_violation_exception() | 
     concurrent_modification_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
@@ -1582,6 +1723,15 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
+-type describe_responsibility_transfer_errors() ::
+    access_denied_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
 -type detach_policy_errors() ::
     policy_changes_in_progress_exception() | 
     policy_not_attached_exception() | 
@@ -1663,6 +1813,18 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
     finalizing_organization_exception() | 
+    duplicate_handshake_exception() | 
+    handshake_constraint_violation_exception().
+
+-type invite_organization_to_transfer_responsibility_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
     duplicate_handshake_exception() | 
     handshake_constraint_violation_exception().
 
@@ -1773,9 +1935,28 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
+-type list_inbound_responsibility_transfers_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
 -type list_organizational_units_for_parent_errors() ::
     access_denied_exception() | 
     parent_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_outbound_responsibility_transfers_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     too_many_requests_exception() | 
@@ -1885,6 +2066,19 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
+-type terminate_responsibility_transfer_errors() ::
+    invalid_responsibility_transfer_transition_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    unsupported_api_endpoint_exception() | 
+    responsibility_transfer_already_in_status_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
 -type untag_resource_errors() ::
     target_not_found_exception() | 
     constraint_violation_exception() | 
@@ -1919,50 +2113,54 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
+-type update_responsibility_transfer_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
-%% @doc Sends a response to the originator of a handshake agreeing to the
-%% action proposed by
-%% the handshake request.
+%% @doc Accepts a handshake by sending an `ACCEPTED' response to the
+%% sender.
 %%
-%% You can only call this operation by the following principals when they
-%% also have the
-%% relevant IAM permissions:
+%% You
+%% can view accepted handshakes in API responses for 30 days before they are
+%% deleted.
 %%
-%% Invitation to join or Approve all features request handshakes: only a
-%% principal from
-%% the member account.
+%% Only the management account can accept the following
+%% handshakes:
 %%
-%% The user who calls the API for an invitation to join must have the
-%% `organizations:AcceptHandshake' permission. If you enabled all
-%% features in the organization, the user must also have the
-%% `iam:CreateServiceLinkedRole' permission so that Organizations can
-%% create the required service-linked role named
-%% `AWSServiceRoleForOrganizations'. For
-%% more information, see Organizations and service-linked roles:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integrate_services-using_slrs
+%% Enable all features final confirmation
+%% (`APPROVE_ALL_FEATURES')
+%%
+%% Billing transfer (`TRANSFER_RESPONSIBILITY')
+%%
+%% For more information, see Enabling all features:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/manage-begin-all-features-standard-migration.html#manage-approve-all-features-invite
+%% and Responding to a billing transfer invitation:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_transfer_billing-respond-invitation.html
 %% in the
 %% Organizations User Guide.
 %%
-%% Enable all features final confirmation
-%% handshake: only a principal from the management account.
+%% Only a member account can accept the following
+%% handshakes:
 %%
-%% For more information about invitations, see Inviting an
-%% Amazon Web Services account to join your organization:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html
-%% in the
-%% Organizations User Guide. For more information about requests to
-%% enable all features in the organization, see Enabling all features in your
-%% organization:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
-%% in
-%% the Organizations User Guide.
+%% Invitation to join (`INVITE')
 %%
-%% After you accept a handshake, it continues to appear in the results of
-%% relevant APIs
-%% for only 30 days. After that, it's deleted.
+%% Approve all features request (`ENABLE_ALL_FEATURES')
+%%
+%% For more information, see Responding to invitations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_accept-decline-invite.html
+%% and Enabling all features:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/manage-begin-all-features-standard-migration.html#manage-approve-all-features-invite
+%% in the Organizations User Guide.
 -spec accept_handshake(aws_client:aws_client(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
@@ -2010,9 +2208,23 @@ accept_handshake(Client, Input, Options)
 %% SECURITYHUB_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% UPGRADE_ROLLOUT_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html
+%%
+%% INSPECTOR_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html
+%%
+%% BEDROCK_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html
+%%
+%% S3_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html
+%%
+%% NETWORK_SECURITY_DIRECTOR_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html
+%%
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec attach_policy(aws_client:aws_client(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2029,20 +2241,16 @@ attach_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachPolicy">>, Input, Options).
 
-%% @doc Cancels a handshake.
+%% @doc Cancels a `Handshake'.
 %%
-%% Canceling a handshake sets the handshake state to
-%% `CANCELED'.
+%% Only the account that sent a handshake can call this operation. The
+%% recipient of the handshake can't cancel it, but can use
+%% `DeclineHandshake' to decline. After a handshake is canceled, the
+%% recipient can no longer respond to the handshake.
 %%
-%% This operation can be called only from the account that originated the
-%% handshake. The recipient of the handshake can't cancel it, but can use
-%% `DeclineHandshake' instead. After a handshake is canceled, the
-%% recipient
-%% can no longer respond to that handshake.
-%%
-%% After you cancel a handshake, it continues to appear in the results of
-%% relevant APIs
-%% for only 30 days. After that, it's deleted.
+%% You can view canceled handshakes in API responses for 30 days before they
+%% are
+%% deleted.
 -spec cancel_handshake(aws_client:aws_client(), cancel_handshake_request()) ->
     {ok, cancel_handshake_response(), tuple()} |
     {error, any()} |
@@ -2179,8 +2387,7 @@ close_account(Client, Input, Options)
 %% information for the new account from the organization's management
 %% account.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 %%
 %% For more information about creating accounts, see Creating
 %% a member account in your organization:
@@ -2484,8 +2691,7 @@ create_organization(Client, Input, Options)
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec create_organizational_unit(aws_client:aws_client(), create_organizational_unit_request()) ->
     {ok, create_organizational_unit_response(), tuple()} |
     {error, any()} |
@@ -2513,9 +2719,8 @@ create_organizational_unit(Client, Input, Options)
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec create_policy(aws_client:aws_client(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
@@ -2532,20 +2737,15 @@ create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
 
-%% @doc Declines a handshake request.
+%% @doc Declines a `Handshake'.
 %%
-%% This sets the handshake state to `DECLINED'
-%% and effectively deactivates the request.
+%% Only the account that receives a handshake can call this operation. The
+%% sender of the handshake can use `CancelHandshake' to
+%% cancel if the handshake hasn't yet been responded to.
 %%
-%% This operation can be called only from the account that received the
-%% handshake. The originator of the handshake can use `CancelHandshake'
-%% instead. The originator can't reactivate a declined request, but can
-%% reinitiate the
-%% process with a new handshake request.
-%%
-%% After you decline a handshake, it continues to appear in the results of
-%% relevant APIs
-%% for only 30 days. After that, it's deleted.
+%% You can view canceled handshakes in API responses for 30 days before they
+%% are
+%% deleted.
 -spec decline_handshake(aws_client:aws_client(), decline_handshake_request()) ->
     {ok, decline_handshake_response(), tuple()} |
     {error, any()} |
@@ -2588,8 +2788,7 @@ delete_organization(Client, Input, Options)
 %% You must first remove
 %% all accounts and child OUs from the OU that you want to delete.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec delete_organizational_unit(aws_client:aws_client(), delete_organizational_unit_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2613,9 +2812,8 @@ delete_organizational_unit(Client, Input, Options)
 %% (OUs), roots,
 %% and accounts.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2634,8 +2832,7 @@ delete_policy(Client, Input, Options)
 
 %% @doc Deletes the resource policy from your organization.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec delete_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2673,8 +2870,7 @@ delete_resource_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
 %% in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec deregister_delegated_administrator(aws_client:aws_client(), deregister_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2694,9 +2890,8 @@ deregister_delegated_administrator(Client, Input, Options)
 %% @doc Retrieves Organizations-related information about the specified
 %% account.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec describe_account(aws_client:aws_client(), describe_account_request()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
@@ -2716,9 +2911,8 @@ describe_account(Client, Input, Options)
 %% @doc Retrieves the current status of an asynchronous request to create an
 %% account.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec describe_create_account_status(aws_client:aws_client(), describe_create_account_status_request()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
@@ -2755,7 +2949,7 @@ describe_create_account_status(Client, Input, Options)
 %% in the
 %% Organizations User Guide.
 %%
-%% This operation can be called from any account in the organization.
+%% You can call this operation from any account in a organization.
 -spec describe_effective_policy(aws_client:aws_client(), describe_effective_policy_request()) ->
     {ok, describe_effective_policy_response(), tuple()} |
     {error, any()} |
@@ -2772,18 +2966,15 @@ describe_effective_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePolicy">>, Input, Options).
 
-%% @doc Retrieves information about a previously requested handshake.
+%% @doc Returns details for a handshake.
 %%
-%% The handshake ID comes
-%% from the response to the original `InviteAccountToOrganization'
-%% operation that generated the handshake.
+%% A handshake is the secure exchange of information
+%% between two Amazon Web Services accounts: a sender and a recipient.
 %%
-%% You can access handshakes that are `ACCEPTED', `DECLINED', or
-%% `CANCELED' for only 30 days after they change to that state.
-%% They're then
-%% deleted and no longer accessible.
+%% You can view `ACCEPTED', `DECLINED', or `CANCELED'
+%% handshakes in API Responses for 30 days before they are deleted.
 %%
-%% This operation can be called from any account in the organization.
+%% You can call this operation from any account in a organization.
 -spec describe_handshake(aws_client:aws_client(), describe_handshake_request()) ->
     {ok, describe_handshake_response(), tuple()} |
     {error, any()} |
@@ -2804,7 +2995,7 @@ describe_handshake(Client, Input, Options)
 %% account belongs
 %% to.
 %%
-%% This operation can be called from any account in the organization.
+%% You can call this operation from any account in a organization.
 %%
 %% Even if a policy type is shown as available in the organization, you can
 %% disable
@@ -2829,9 +3020,8 @@ describe_organization(Client, Input, Options)
 
 %% @doc Retrieves information about an organizational unit (OU).
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec describe_organizational_unit(aws_client:aws_client(), describe_organizational_unit_request()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
@@ -2850,9 +3040,8 @@ describe_organizational_unit(Client, Input, Options)
 
 %% @doc Retrieves information about a policy.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec describe_policy(aws_client:aws_client(), describe_policy_request()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
@@ -2871,9 +3060,8 @@ describe_policy(Client, Input, Options)
 
 %% @doc Retrieves information about a resource policy.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec describe_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -2889,6 +3077,28 @@ describe_resource_policy(Client, Input)
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
+
+%% @doc Returns details for a transfer.
+%%
+%% A transfer is an arrangement
+%% between two management accounts where one account designates the other
+%% with specified
+%% responsibilities for their organization.
+-spec describe_responsibility_transfer(aws_client:aws_client(), describe_responsibility_transfer_request()) ->
+    {ok, describe_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, describe_responsibility_transfer_errors(), tuple()}.
+describe_responsibility_transfer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_responsibility_transfer(Client, Input, []).
+
+-spec describe_responsibility_transfer(aws_client:aws_client(), describe_responsibility_transfer_request(), proplists:proplist()) ->
+    {ok, describe_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, describe_responsibility_transfer_errors(), tuple()}.
+describe_responsibility_transfer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResponsibilityTransfer">>, Input, Options).
 
 %% @doc Detaches a policy from a target root, organizational unit (OU), or
 %% account.
@@ -2917,9 +3127,8 @@ describe_resource_policy(Client, Input, Options)
 %% authorization strategy of a &quot;deny list:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist&quot;.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec detach_policy(aws_client:aws_client(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3018,8 +3227,7 @@ detach_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
 %% in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec disable_aws_service_access(aws_client:aws_client(), disable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3057,9 +3265,8 @@ disable_aws_service_access(Client, Input, Options)
 %% specified
 %% root, and then use this operation.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 %%
 %% To view the status of available policy types in the organization, use
 %% `ListRoots'.
@@ -3126,8 +3333,7 @@ disable_policy_type(Client, Input, Options)
 %% your account
 %% administrators are aware of this.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec enable_all_features(aws_client:aws_client(), enable_all_features_request()) ->
     {ok, enable_all_features_response(), tuple()} |
     {error, any()} |
@@ -3177,8 +3383,7 @@ enable_all_features(Client, Input, Options)
 %% in the
 %% Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec enable_aws_service_access(aws_client:aws_client(), enable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3208,9 +3413,8 @@ enable_aws_service_access(Client, Input, Options)
 %% recommends that you first use `ListRoots' to see the status of policy
 %% types for a specified root, and then use this operation.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 %%
 %% You can enable a policy type in a root only if that policy type is
 %% available in the
@@ -3254,8 +3458,7 @@ enable_policy_type(Client, Input, Options)
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec invite_account_to_organization(aws_client:aws_client(), invite_account_to_organization_request()) ->
     {ok, invite_account_to_organization_response(), tuple()} |
     {error, any()} |
@@ -3272,6 +3475,30 @@ invite_account_to_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InviteAccountToOrganization">>, Input, Options).
 
+%% @doc Sends an invitation to another organization's management account
+%% to designate your
+%% account with the specified responsibilities for their organization.
+%%
+%% The invitation is
+%% implemented as a `Handshake' whose details are in the response.
+%%
+%% You can only call this operation from the management account.
+-spec invite_organization_to_transfer_responsibility(aws_client:aws_client(), invite_organization_to_transfer_responsibility_request()) ->
+    {ok, invite_organization_to_transfer_responsibility_response(), tuple()} |
+    {error, any()} |
+    {error, invite_organization_to_transfer_responsibility_errors(), tuple()}.
+invite_organization_to_transfer_responsibility(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    invite_organization_to_transfer_responsibility(Client, Input, []).
+
+-spec invite_organization_to_transfer_responsibility(aws_client:aws_client(), invite_organization_to_transfer_responsibility_request(), proplists:proplist()) ->
+    {ok, invite_organization_to_transfer_responsibility_response(), tuple()} |
+    {error, any()} |
+    {error, invite_organization_to_transfer_responsibility_errors(), tuple()}.
+invite_organization_to_transfer_responsibility(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InviteOrganizationToTransferResponsibility">>, Input, Options).
+
 %% @doc Removes a member account from its parent organization.
 %%
 %% This version of the operation
@@ -3280,8 +3507,7 @@ invite_account_to_organization(Client, Input, Options)
 %% the management account, use `RemoveAccountFromOrganization'
 %% instead.
 %%
-%% This operation can be called only from a member account in the
-%% organization.
+%% You can only call from operation from a member account.
 %%
 %% The management account in an organization with all features enabled can
 %% set service control policies (SCPs) that can restrict what administrators
@@ -3357,18 +3583,16 @@ leave_organization(Client, Input, Options)
 %% specified root or organizational unit (OU), use the
 %% `ListAccountsForParent' operation instead.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_accounts(aws_client:aws_client(), list_accounts_request()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
@@ -3396,18 +3620,16 @@ list_accounts(Client, Input, Options)
 %% organization, use
 %% the `ListAccounts' operation.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_accounts_for_parent(aws_client:aws_client(), list_accounts_for_parent_request()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
@@ -3434,9 +3656,8 @@ list_accounts_for_parent(Client, Input, Options)
 %% that fails validation checks, resulting in the effective policy not
 %% being fully enforced on all the intended accounts within an organization.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_accounts_with_invalid_effective_policy(aws_client:aws_client(), list_accounts_with_invalid_effective_policy_request()) ->
     {ok, list_accounts_with_invalid_effective_policy_response(), tuple()} |
     {error, any()} |
@@ -3469,9 +3690,8 @@ list_accounts_with_invalid_effective_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
 %% in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_aws_service_access_for_organization(aws_client:aws_client(), list_aws_service_access_for_organization_request()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
@@ -3495,18 +3715,16 @@ list_aws_service_access_for_organization(Client, Input, Options)
 %% This operation, along with `ListParents'
 %% enables you to traverse the tree structure that makes up this root.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_children(aws_client:aws_client(), list_children_request()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
@@ -3527,18 +3745,16 @@ list_children(Client, Input, Options)
 %% that is currently
 %% being tracked for the organization.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_create_account_status(aws_client:aws_client(), list_create_account_status_request()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
@@ -3559,9 +3775,8 @@ list_create_account_status(Client, Input, Options)
 %% delegated administrators in this
 %% organization.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_delegated_administrators(aws_client:aws_client(), list_delegated_administrators_request()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
@@ -3582,9 +3797,8 @@ list_delegated_administrators(Client, Input, Options)
 %% is a delegated
 %% administrator.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_delegated_services_for_account(aws_client:aws_client(), list_delegated_services_for_account_request()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
@@ -3606,9 +3820,8 @@ list_delegated_services_for_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html
 %% for a specified account and policy type.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_effective_policy_validation_errors(aws_client:aws_client(), list_effective_policy_validation_errors_request()) ->
     {ok, list_effective_policy_validation_errors_response(), tuple()} |
     {error, any()} |
@@ -3625,26 +3838,21 @@ list_effective_policy_validation_errors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEffectivePolicyValidationErrors">>, Input, Options).
 
-%% @doc Lists the current handshakes that are associated with the account of
-%% the requesting
-%% user.
+%% @doc Lists the recent handshakes that you have received.
 %%
-%% Handshakes that are `ACCEPTED', `DECLINED',
-%% `CANCELED', or `EXPIRED' appear in the results of this API for
-%% only 30 days after changing to that state. After that, they're deleted
-%% and no longer
-%% accessible.
+%% You can view `CANCELED', `ACCEPTED', `DECLINED', or
+%% `EXPIRED' handshakes in API responses for 30 days before they are
+%% deleted.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% You can call this operation from any account in a organization.
 %%
-%% This operation can be called from any account in the organization.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 -spec list_handshakes_for_account(aws_client:aws_client(), list_handshakes_for_account_request()) ->
     {ok, list_handshakes_for_account_response(), tuple()} |
     {error, any()} |
@@ -3661,33 +3869,22 @@ list_handshakes_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForAccount">>, Input, Options).
 
-%% @doc Lists the handshakes that are associated with the organization that
-%% the requesting
-%% user is part of.
+%% @doc Lists the recent handshakes that you have sent.
 %%
-%% The `ListHandshakesForOrganization' operation returns a list
-%% of handshake structures. Each structure contains details and status about
-%% a
-%% handshake.
+%% You can view `CANCELED', `ACCEPTED', `DECLINED', or
+%% `EXPIRED' handshakes in API responses for 30 days before they are
+%% deleted.
 %%
-%% Handshakes that are `ACCEPTED', `DECLINED',
-%% `CANCELED', or `EXPIRED' appear in the results of this API for
-%% only 30 days after changing to that state. After that, they're deleted
-%% and no longer
-%% accessible.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
-%%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 -spec list_handshakes_for_organization(aws_client:aws_client(), list_handshakes_for_organization_request()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
@@ -3704,21 +3901,48 @@ list_handshakes_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForOrganization">>, Input, Options).
 
+%% @doc Lists transfers that allow you to manage the specified
+%% responsibilities for another
+%% organization.
+%%
+%% This operation returns both transfer invitations and transfers.
+%%
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
+-spec list_inbound_responsibility_transfers(aws_client:aws_client(), list_inbound_responsibility_transfers_request()) ->
+    {ok, list_inbound_responsibility_transfers_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_responsibility_transfers_errors(), tuple()}.
+list_inbound_responsibility_transfers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inbound_responsibility_transfers(Client, Input, []).
+
+-spec list_inbound_responsibility_transfers(aws_client:aws_client(), list_inbound_responsibility_transfers_request(), proplists:proplist()) ->
+    {ok, list_inbound_responsibility_transfers_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_responsibility_transfers_errors(), tuple()}.
+list_inbound_responsibility_transfers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInboundResponsibilityTransfers">>, Input, Options).
+
 %% @doc Lists the organizational units (OUs) in a parent organizational unit
 %% or root.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_organizational_units_for_parent(aws_client:aws_client(), list_organizational_units_for_parent_request()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
@@ -3735,6 +3959,36 @@ list_organizational_units_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizationalUnitsForParent">>, Input, Options).
 
+%% @doc Lists transfers that allow an account outside your organization to
+%% manage the
+%% specified responsibilities for your organization.
+%%
+%% This operation returns both transfer
+%% invitations and transfers.
+%%
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
+-spec list_outbound_responsibility_transfers(aws_client:aws_client(), list_outbound_responsibility_transfers_request()) ->
+    {ok, list_outbound_responsibility_transfers_response(), tuple()} |
+    {error, any()} |
+    {error, list_outbound_responsibility_transfers_errors(), tuple()}.
+list_outbound_responsibility_transfers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_outbound_responsibility_transfers(Client, Input, []).
+
+-spec list_outbound_responsibility_transfers(aws_client:aws_client(), list_outbound_responsibility_transfers_request(), proplists:proplist()) ->
+    {ok, list_outbound_responsibility_transfers_response(), tuple()} |
+    {error, any()} |
+    {error, list_outbound_responsibility_transfers_errors(), tuple()}.
+list_outbound_responsibility_transfers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOutboundResponsibilityTransfers">>, Input, Options).
+
 %% @doc Lists the root or organizational units (OUs) that serve as the
 %% immediate parent of the
 %% specified child OU or account.
@@ -3742,18 +3996,16 @@ list_organizational_units_for_parent(Client, Input, Options)
 %% This operation, along with `ListChildren'
 %% enables you to traverse the tree structure that makes up this root.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 %%
 %% In the current release, a child can have only a single parent.
 -spec list_parents(aws_client:aws_client(), list_parents_request()) ->
@@ -3775,18 +4027,16 @@ list_parents(Client, Input, Options)
 %% @doc Retrieves the list of all policies in an organization of a specified
 %% type.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
@@ -3810,18 +4060,16 @@ list_policies(Client, Input, Options)
 %% You must specify the policy type that you want
 %% included in the returned list.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_policies_for_target(aws_client:aws_client(), list_policies_for_target_request()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
@@ -3840,18 +4088,16 @@ list_policies_for_target(Client, Input, Options)
 
 %% @doc Lists the roots that are defined in the current organization.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 %%
 %% Policy types can be enabled and disabled in roots. This is distinct from
 %% whether
@@ -3890,9 +4136,8 @@ list_roots(Client, Input, Options)
 %%
 %% Policy (any type)
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3913,18 +4158,16 @@ list_tags_for_resource(Client, Input, Options)
 %% the specified
 %% policy is attached to.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a `List*' operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% When calling List* operations, always check the `NextToken' response
+%% parameter value, even if you receive an empty result set.
+%% These operations can occasionally return an empty set of results even when
+%% more results are available.
+%% Continue making requests until `NextToken' returns null. A null
+%% `NextToken' value indicates that you have retrieved all available
+%% results.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec list_targets_for_policy(aws_client:aws_client(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
@@ -3945,8 +4188,7 @@ list_targets_for_policy(Client, Input, Options)
 %% organizational unit (OU) to
 %% the specified destination parent root or OU.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec move_account(aws_client:aws_client(), move_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3965,8 +4207,7 @@ move_account(Client, Input, Options)
 
 %% @doc Creates or updates a resource policy.
 %%
-%% This operation can be called only from the organization's management
-%% account..
+%% You can only call this operation from the management account..
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -4002,8 +4243,7 @@ put_resource_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
 %% in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec register_delegated_administrator(aws_client:aws_client(), register_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4031,9 +4271,8 @@ register_delegated_administrator(Client, Input, Options)
 %% accrued by the member account after it's removed from the
 %% organization.
 %%
-%% This operation can be called only from the organization's management
-%% account. Member accounts can remove themselves with
-%% `LeaveOrganization' instead.
+%% You can only call this operation from the management account. Member
+%% accounts can remove themselves with `LeaveOrganization' instead.
 %%
 %% You can remove an account from your organization only if the account is
 %% configured with the information required to operate as a standalone
@@ -4086,9 +4325,8 @@ remove_account_from_organization(Client, Input, Options)
 %%
 %% Policy (any type)
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4105,6 +4343,27 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
+%% @doc Ends a transfer.
+%%
+%% A transfer is an arrangement between two
+%% management accounts where one account designates the other with specified
+%% responsibilities for their organization.
+-spec terminate_responsibility_transfer(aws_client:aws_client(), terminate_responsibility_transfer_request()) ->
+    {ok, terminate_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_responsibility_transfer_errors(), tuple()}.
+terminate_responsibility_transfer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_responsibility_transfer(Client, Input, []).
+
+-spec terminate_responsibility_transfer(aws_client:aws_client(), terminate_responsibility_transfer_request(), proplists:proplist()) ->
+    {ok, terminate_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_responsibility_transfer_errors(), tuple()}.
+terminate_responsibility_transfer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateResponsibilityTransfer">>, Input, Options).
+
 %% @doc Removes any tags with the specified keys from the specified resource.
 %%
 %% You can attach tags to the following resources in Organizations.
@@ -4117,9 +4376,8 @@ tag_resource(Client, Input, Options)
 %%
 %% Policy (any type)
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4143,8 +4401,7 @@ untag_resource(Client, Input, Options)
 %% remain
 %% attached.
 %%
-%% This operation can be called only from the organization's management
-%% account.
+%% You can only call this operation from the management account.
 -spec update_organizational_unit(aws_client:aws_client(), update_organizational_unit_request()) ->
     {ok, update_organizational_unit_response(), tuple()} |
     {error, any()} |
@@ -4168,9 +4425,8 @@ update_organizational_unit(Client, Input, Options)
 %% policy's
 %% type.
 %%
-%% This operation can be called only from the organization's
-%% management account or by a member account that is a delegated
-%% administrator.
+%% You can only call this operation from the management account or a member
+%% account that is a delegated administrator.
 -spec update_policy(aws_client:aws_client(), update_policy_request()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |
@@ -4186,6 +4442,29 @@ update_policy(Client, Input)
 update_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicy">>, Input, Options).
+
+%% @doc Updates a transfer.
+%%
+%% A transfer is the arrangement between two
+%% management accounts where one account designates the other with specified
+%% responsibilities for their organization.
+%%
+%% You can update the name assigned to a transfer.
+-spec update_responsibility_transfer(aws_client:aws_client(), update_responsibility_transfer_request()) ->
+    {ok, update_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, update_responsibility_transfer_errors(), tuple()}.
+update_responsibility_transfer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_responsibility_transfer(Client, Input, []).
+
+-spec update_responsibility_transfer(aws_client:aws_client(), update_responsibility_transfer_request(), proplists:proplist()) ->
+    {ok, update_responsibility_transfer_response(), tuple()} |
+    {error, any()} |
+    {error, update_responsibility_transfer_errors(), tuple()}.
+update_responsibility_transfer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResponsibilityTransfer">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

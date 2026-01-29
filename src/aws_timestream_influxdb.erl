@@ -38,6 +38,10 @@
          list_db_parameter_groups/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         reboot_db_cluster/2,
+         reboot_db_cluster/3,
+         reboot_db_instance/2,
+         reboot_db_instance/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -475,6 +479,12 @@
 -type list_db_instances_output() :: #{binary() => any()}.
 
 %% Example:
+%% reboot_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type reboot_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -528,6 +538,39 @@
 %%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type update_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type reboot_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type reboot_db_instance_input() :: #{binary() => any()}.
 
 %% Example:
 %% duration() :: #{
@@ -660,6 +703,13 @@
 -type influx_dbv3_core_parameters() :: #{binary() => any()}.
 
 %% Example:
+%% reboot_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string(),
+%%   <<"instanceIds">> => list(string())
+%% }
+-type reboot_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
 %% create_db_instance_input() :: #{
 %%   <<"allocatedStorage">> := integer(),
 %%   <<"bucket">> => string(),
@@ -775,6 +825,22 @@
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
+
+-type reboot_db_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reboot_db_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     service_quota_exceeded_exception() | 
@@ -1024,6 +1090,40 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Reboots a Timestream for InfluxDB cluster.
+-spec reboot_db_cluster(aws_client:aws_client(), reboot_db_cluster_input()) ->
+    {ok, reboot_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_db_cluster_errors(), tuple()}.
+reboot_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_db_cluster(Client, Input, []).
+
+-spec reboot_db_cluster(aws_client:aws_client(), reboot_db_cluster_input(), proplists:proplist()) ->
+    {ok, reboot_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_db_cluster_errors(), tuple()}.
+reboot_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootDbCluster">>, Input, Options).
+
+%% @doc Reboots a Timestream for InfluxDB instance.
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_input()) ->
+    {ok, reboot_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_db_instance_errors(), tuple()}.
+reboot_db_instance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_db_instance(Client, Input, []).
+
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_input(), proplists:proplist()) ->
+    {ok, reboot_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_db_instance_errors(), tuple()}.
+reboot_db_instance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootDbInstance">>, Input, Options).
 
 %% @doc Tags are composed of a Key/Value pairs.
 %%

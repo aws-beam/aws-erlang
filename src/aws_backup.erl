@@ -35,6 +35,8 @@
          create_restore_testing_plan/3,
          create_restore_testing_selection/3,
          create_restore_testing_selection/4,
+         create_tiering_configuration/2,
+         create_tiering_configuration/3,
          delete_backup_plan/3,
          delete_backup_plan/4,
          delete_backup_selection/4,
@@ -57,6 +59,8 @@
          delete_restore_testing_plan/4,
          delete_restore_testing_selection/4,
          delete_restore_testing_selection/5,
+         delete_tiering_configuration/3,
+         delete_tiering_configuration/4,
          describe_backup_job/2,
          describe_backup_job/4,
          describe_backup_job/5,
@@ -90,6 +94,9 @@
          describe_restore_job/2,
          describe_restore_job/4,
          describe_restore_job/5,
+         describe_scan_job/2,
+         describe_scan_job/4,
+         describe_scan_job/5,
          disassociate_backup_vault_mpa_approval_team/3,
          disassociate_backup_vault_mpa_approval_team/4,
          disassociate_recovery_point/4,
@@ -140,6 +147,9 @@
          get_supported_resource_types/1,
          get_supported_resource_types/3,
          get_supported_resource_types/4,
+         get_tiering_configuration/2,
+         get_tiering_configuration/4,
+         get_tiering_configuration/5,
          list_backup_job_summaries/1,
          list_backup_job_summaries/3,
          list_backup_job_summaries/4,
@@ -215,9 +225,18 @@
          list_restore_testing_selections/2,
          list_restore_testing_selections/4,
          list_restore_testing_selections/5,
+         list_scan_job_summaries/1,
+         list_scan_job_summaries/3,
+         list_scan_job_summaries/4,
+         list_scan_jobs/1,
+         list_scan_jobs/3,
+         list_scan_jobs/4,
          list_tags/2,
          list_tags/4,
          list_tags/5,
+         list_tiering_configurations/1,
+         list_tiering_configurations/3,
+         list_tiering_configurations/4,
          put_backup_vault_access_policy/3,
          put_backup_vault_access_policy/4,
          put_backup_vault_lock_configuration/3,
@@ -236,6 +255,8 @@
          start_report_job/4,
          start_restore_job/2,
          start_restore_job/3,
+         start_scan_job/2,
+         start_scan_job/3,
          stop_backup_job/3,
          stop_backup_job/4,
          tag_resource/3,
@@ -259,7 +280,9 @@
          update_restore_testing_plan/3,
          update_restore_testing_plan/4,
          update_restore_testing_selection/4,
-         update_restore_testing_selection/5]).
+         update_restore_testing_selection/5,
+         update_tiering_configuration/3,
+         update_tiering_configuration/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -334,7 +357,8 @@
 %% backup_plan_input() :: #{
 %%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanName">> => string(),
-%%   <<"Rules">> => list(backup_rule_input())
+%%   <<"Rules">> => list(backup_rule_input()),
+%%   <<"ScanSettings">> => list(scan_setting())
 %% }
 -type backup_plan_input() :: #{binary() => any()}.
 
@@ -407,6 +431,7 @@
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"Index">> => list(any()),
 %%   <<"Lifecycle">> => lifecycle(),
+%%   <<"LogicallyAirGappedBackupVaultArn">> => string(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"ResourceArn">> := string(),
 %%   <<"StartWindowMinutes">> => float()
@@ -423,6 +448,7 @@
 %%   <<"CompositeMemberIdentifier">> => string(),
 %%   <<"CopyJobId">> => string(),
 %%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreatedByBackupJobId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DestinationBackupVaultArn">> => string(),
 %%   <<"DestinationEncryptionKeyArn">> => string(),
@@ -510,13 +536,15 @@
 %% backup_plan() :: #{
 %%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanName">> => string(),
-%%   <<"Rules">> => list(backup_rule())
+%%   <<"Rules">> => list(backup_rule()),
+%%   <<"ScanSettings">> => list(scan_setting())
 %% }
 -type backup_plan() :: #{binary() => any()}.
 
 
 %% Example:
 %% recovery_point_by_backup_vault() :: #{
+%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
 %%   <<"BackupSizeInBytes">> => float(),
 %%   <<"BackupVaultArn">> => string(),
 %%   <<"BackupVaultName">> => string(),
@@ -690,6 +718,15 @@
 
 
 %% Example:
+%% aggregated_scan_result() :: #{
+%%   <<"FailedScan">> => boolean(),
+%%   <<"Findings">> => list(list(any())()),
+%%   <<"LastComputed">> => non_neg_integer()
+%% }
+-type aggregated_scan_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_backup_vault_input() :: #{
 %%   <<"BackupVaultTags">> => map(),
 %%   <<"CreatorRequestId">> => string(),
@@ -719,6 +756,21 @@
 
 
 %% Example:
+%% scan_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type scan_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_backup_plans_output() :: #{
 %%   <<"BackupPlansList">> => list(backup_plans_list_member()),
 %%   <<"NextToken">> => string()
@@ -745,6 +797,15 @@
 %%   <<"State">> => list(any())
 %% }
 -type restore_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tiering_configuration_input() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"TieringConfiguration">> := tiering_configuration_input_for_create(),
+%%   <<"TieringConfigurationTags">> => map()
+%% }
+-type create_tiering_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -780,6 +841,16 @@
 %%   <<"Title">> := string()
 %% }
 -type create_legal_hold_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_result() :: #{
+%%   <<"Findings">> => list(list(any())()),
+%%   <<"LastScanTimestamp">> => non_neg_integer(),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ScanJobState">> => list(any())
+%% }
+-type scan_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_backup_selection_input() :: #{}
@@ -836,6 +907,20 @@
 
 
 %% Example:
+%% start_scan_job_input() :: #{
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"IamRoleArn">> := [string()],
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"MalwareScanner">> := list(any()),
+%%   <<"RecoveryPointArn">> := [string()],
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanMode">> := list(any()),
+%%   <<"ScannerRoleArn">> := [string()]
+%% }
+-type start_scan_job_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_recovery_point_index_settings_output() :: #{
 %%   <<"BackupVaultName">> => string(),
 %%   <<"Index">> => list(any()),
@@ -866,6 +951,13 @@
 %%   <<"VaultType">> => list(any())
 %% }
 -type describe_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tiering_configuration_output() :: #{
+%%   <<"TieringConfiguration">> => tiering_configuration()
+%% }
+-type get_tiering_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -916,6 +1008,32 @@
 
 
 %% Example:
+%% describe_scan_job_output() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"BackupVaultArn">> => [string()],
+%%   <<"BackupVaultName">> => [string()],
+%%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"CreatedBy">> => scan_job_creator(),
+%%   <<"CreationDate">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"RecoveryPointArn">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"ResourceName">> => [string()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanJobId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info(),
+%%   <<"ScannerRoleArn">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type describe_scan_job_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% control_scope() :: #{
 %%   <<"ComplianceResourceIds">> => list(string()),
 %%   <<"ComplianceResourceTypes">> => list(string()),
@@ -954,6 +1072,36 @@
 %%   <<"ControlScope">> => control_scope()
 %% }
 -type framework_control() :: #{binary() => any()}.
+
+%% Example:
+%% get_tiering_configuration_input() :: #{}
+-type get_tiering_configuration_input() :: #{}.
+
+
+%% Example:
+%% scan_job() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"BackupVaultArn">> => [string()],
+%%   <<"BackupVaultName">> => [string()],
+%%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"CreatedBy">> => scan_job_creator(),
+%%   <<"CreationDate">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"RecoveryPointArn">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"ResourceName">> => [string()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanJobId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info(),
+%%   <<"ScannerRoleArn">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type scan_job() :: #{binary() => any()}.
 
 
 %% Example:
@@ -999,6 +1147,15 @@
 
 
 %% Example:
+%% resource_selection() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"Resources">> => list(string()),
+%%   <<"TieringDownSettingsInDays">> => integer()
+%% }
+-type resource_selection() :: #{binary() => any()}.
+
+
+%% Example:
 %% backup_selection() :: #{
 %%   <<"Conditions">> => conditions(),
 %%   <<"IamRoleArn">> => string(),
@@ -1033,6 +1190,7 @@
 %% Example:
 %% lifecycle() :: #{
 %%   <<"DeleteAfterDays">> => float(),
+%%   <<"DeleteAfterEvent">> => list(any()),
 %%   <<"MoveToColdStorageAfterDays">> => float(),
 %%   <<"OptInToArchiveForSupportedResources">> => boolean()
 %% }
@@ -1130,6 +1288,24 @@
 %% Example:
 %% get_backup_vault_access_policy_input() :: #{}
 -type get_backup_vault_access_policy_input() :: #{}.
+
+
+%% Example:
+%% tiering_configuration_input_for_create() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ResourceSelection">> => list(resource_selection()),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configuration_input_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tiering_configuration_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type create_tiering_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1321,6 +1497,13 @@
 
 
 %% Example:
+%% scan_result_info() :: #{
+%%   <<"ScanResultStatus">> => list(any())
+%% }
+-type scan_result_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_copy_job_output() :: #{
 %%   <<"CopyJobId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -1339,6 +1522,15 @@
 %%   <<"State">> => list(any())
 %% }
 -type list_restore_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanJobSummaries">> => list(scan_job_summary())
+%% }
+-type list_scan_job_summaries_output() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_recovery_point_from_parent_input() :: #{}
@@ -1449,6 +1641,20 @@
 
 
 %% Example:
+%% list_scan_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type list_scan_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% dependency_failure_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Context">> => string(),
@@ -1465,6 +1671,16 @@
 %%   <<"RuleId">> => string()
 %% }
 -type scheduled_plan_execution_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tiering_configuration_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type update_tiering_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1564,6 +1780,17 @@
 
 
 %% Example:
+%% tiering_configurations_list_member() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configurations_list_member() :: #{binary() => any()}.
+
+
+%% Example:
 %% report_delivery_channel() :: #{
 %%   <<"Formats">> => list(string()),
 %%   <<"S3BucketName">> => string(),
@@ -1618,6 +1845,14 @@
 
 
 %% Example:
+%% scan_action() :: #{
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ScanMode">> => list(any())
+%% }
+-type scan_action() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := map()
 %% }
@@ -1663,9 +1898,20 @@
 %% }
 -type list_restore_jobs_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_tiering_configuration_input() :: #{
+%%   <<"TieringConfiguration">> := tiering_configuration_input_for_update()
+%% }
+-type update_tiering_configuration_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_selection_input() :: #{}
 -type get_backup_selection_input() :: #{}.
+
+%% Example:
+%% delete_tiering_configuration_input() :: #{}
+-type delete_tiering_configuration_input() :: #{}.
 
 
 %% Example:
@@ -1681,6 +1927,7 @@
 
 %% Example:
 %% recovery_point_by_resource() :: #{
+%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
 %%   <<"BackupSizeBytes">> => float(),
 %%   <<"BackupVaultName">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -1754,6 +2001,14 @@
 
 
 %% Example:
+%% list_tiering_configurations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tiering_configurations_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% restore_testing_selection_for_create() :: #{
 %%   <<"IamRoleArn">> => [string()],
 %%   <<"ProtectedResourceArns">> => list(string()),
@@ -1764,6 +2019,10 @@
 %%   <<"ValidationWindowHours">> => integer()
 %% }
 -type restore_testing_selection_for_create() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tiering_configuration_output() :: #{}
+-type delete_tiering_configuration_output() :: #{}.
 
 
 %% Example:
@@ -1818,6 +2077,10 @@
 -type list_legal_holds_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_scan_job_input() :: #{}
+-type describe_scan_job_input() :: #{}.
+
+%% Example:
 %% delete_backup_vault_access_policy_input() :: #{}
 -type delete_backup_vault_access_policy_input() :: #{}.
 
@@ -1832,10 +2095,12 @@
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleId">> => string(),
 %%   <<"RuleName">> => string(),
+%%   <<"ScanActions">> => list(scan_action()),
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleExpressionTimezone">> => string(),
 %%   <<"StartWindowMinutes">> => float(),
-%%   <<"TargetBackupVaultName">> => string()
+%%   <<"TargetBackupVaultName">> => string(),
+%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
 %% }
 -type backup_rule() :: #{binary() => any()}.
 
@@ -1917,6 +2182,7 @@
 %%   <<"ByParentJobId">> => string(),
 %%   <<"ByResourceArn">> => string(),
 %%   <<"ByResourceType">> => string(),
+%%   <<"BySourceRecoveryPointArn">> => string(),
 %%   <<"ByState">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1960,6 +2226,24 @@
 %%   <<"SourceBackupVaultName">> := string()
 %% }
 -type start_copy_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_jobs_input() :: #{
+%%   <<"ByAccountId">> => [string()],
+%%   <<"ByBackupVaultName">> => [string()],
+%%   <<"ByCompleteAfter">> => [non_neg_integer()],
+%%   <<"ByCompleteBefore">> => [non_neg_integer()],
+%%   <<"ByMalwareScanner">> => list(any()),
+%%   <<"ByRecoveryPointArn">> => [string()],
+%%   <<"ByResourceArn">> => [string()],
+%%   <<"ByResourceType">> => list(any()),
+%%   <<"ByScanResultStatus">> => list(any()),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_scan_jobs_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_report_plan_input() :: #{}
@@ -2014,6 +2298,14 @@
 %%   <<"CreatorRequestId">> => string()
 %% }
 -type create_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering_configuration_input_for_update() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ResourceSelection">> => list(resource_selection())
+%% }
+-type tiering_configuration_input_for_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2083,6 +2375,14 @@
 
 
 %% Example:
+%% list_scan_jobs_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ScanJobs">> => list(scan_job())
+%% }
+-type list_scan_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_protected_resource_output() :: #{
 %%   <<"LastBackupTime">> => non_neg_integer(),
 %%   <<"LastBackupVaultArn">> => string(),
@@ -2123,10 +2423,12 @@
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleName">> => string(),
+%%   <<"ScanActions">> => list(scan_action()),
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleExpressionTimezone">> => string(),
 %%   <<"StartWindowMinutes">> => float(),
-%%   <<"TargetBackupVaultName">> => string()
+%%   <<"TargetBackupVaultName">> => string(),
+%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
 %% }
 -type backup_rule_input() :: #{binary() => any()}.
 
@@ -2140,6 +2442,16 @@
 %%   <<"StartWindowHours">> => integer()
 %% }
 -type restore_testing_plan_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_job_creator() :: #{
+%%   <<"BackupPlanArn">> => [string()],
+%%   <<"BackupPlanId">> => [string()],
+%%   <<"BackupPlanVersion">> => [string()],
+%%   <<"BackupRuleId">> => [string()]
+%% }
+-type scan_job_creator() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2354,6 +2666,15 @@
 
 
 %% Example:
+%% scan_setting() :: #{
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"ScannerRoleArn">> => string()
+%% }
+-type scan_setting() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_restore_testing_selections_output() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list())
@@ -2386,6 +2707,7 @@
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourceName">> => string(),
 %%   <<"ResourceType">> => string(),
+%%   <<"ScanResults">> => list(scan_result()),
 %%   <<"SourceBackupVaultArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
@@ -2451,6 +2773,19 @@
 %%   <<"SourceBackupVaultArn">> := string()
 %% }
 -type create_restore_access_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering_configuration() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ResourceSelection">> => list(resource_selection()),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2560,10 +2895,26 @@
 
 
 %% Example:
+%% list_tiering_configurations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TieringConfigurations">> => list(tiering_configurations_list_member())
+%% }
+-type list_tiering_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_restore_testing_selection_input() :: #{
 %%   <<"RestoreTestingSelection">> := restore_testing_selection_for_update()
 %% }
 -type update_restore_testing_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_scan_job_output() :: #{
+%%   <<"CreationDate">> => [non_neg_integer()],
+%%   <<"ScanJobId">> => [string()]
+%% }
+-type start_scan_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2585,6 +2936,7 @@
 %%   <<"BackupPlanArn">> => string(),
 %%   <<"BackupPlanId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ScanSettings">> => list(scan_setting()),
 %%   <<"VersionId">> => string()
 %% }
 -type update_backup_plan_output() :: #{binary() => any()}.
@@ -2693,6 +3045,14 @@
     already_exists_exception() | 
     missing_parameter_value_exception().
 
+-type create_tiering_configuration_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
 -type delete_backup_plan_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
@@ -2762,6 +3122,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type delete_tiering_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
 -type describe_backup_job_errors() ::
     service_unavailable_exception() | 
     dependency_failure_exception() | 
@@ -2820,6 +3186,12 @@
 -type describe_restore_job_errors() ::
     service_unavailable_exception() | 
     dependency_failure_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_scan_job_errors() ::
+    service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     missing_parameter_value_exception().
@@ -2929,6 +3301,12 @@
 
 -type get_supported_resource_types_errors() ::
     service_unavailable_exception().
+
+-type get_tiering_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
 
 -type list_backup_job_summaries_errors() ::
     service_unavailable_exception() | 
@@ -3055,11 +3433,23 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception().
 
+-type list_scan_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_scan_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
 -type list_tags_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     missing_parameter_value_exception().
+
+-type list_tiering_configurations_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_backup_vault_access_policy_errors() ::
     service_unavailable_exception() | 
@@ -3117,6 +3507,14 @@
     missing_parameter_value_exception().
 
 -type start_restore_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_scan_job_errors() ::
+    limit_exceeded_exception() | 
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     invalid_request_exception() | 
@@ -3202,6 +3600,15 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type update_tiering_configuration_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
     missing_parameter_value_exception().
 
 %%====================================================================
@@ -3702,6 +4109,47 @@ create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a tiering configuration.
+%%
+%% A tiering configuration enables automatic movement of backup data to a
+%% lower-cost storage tier based on the age of backed-up objects in the
+%% backup vault.
+%%
+%% Each vault can only have one vault-specific tiering configuration, in
+%% addition to any global configuration that applies to all vaults.
+-spec create_tiering_configuration(aws_client:aws_client(), create_tiering_configuration_input()) ->
+    {ok, create_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_tiering_configuration_errors(), tuple()}.
+create_tiering_configuration(Client, Input) ->
+    create_tiering_configuration(Client, Input, []).
+
+-spec create_tiering_configuration(aws_client:aws_client(), create_tiering_configuration_input(), proplists:proplist()) ->
+    {ok, create_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_tiering_configuration_errors(), tuple()}.
+create_tiering_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/tiering-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a backup plan.
 %%
 %% A backup plan can only be deleted after all associated selections
@@ -4109,6 +4557,41 @@ delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the tiering configuration specified by a tiering
+%% configuration name.
+-spec delete_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_tiering_configuration_input()) ->
+    {ok, delete_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tiering_configuration_errors(), tuple()}.
+delete_tiering_configuration(Client, TieringConfigurationName, Input) ->
+    delete_tiering_configuration(Client, TieringConfigurationName, Input, []).
+
+-spec delete_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_tiering_configuration_input(), proplists:proplist()) ->
+    {ok, delete_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tiering_configuration_errors(), tuple()}.
+delete_tiering_configuration(Client, TieringConfigurationName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tiering-configurations/", aws_util:encode_uri(TieringConfigurationName), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4552,6 +5035,43 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns scan job details for the specified ScanJobID.
+-spec describe_scan_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_scan_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_scan_job_errors(), tuple()}.
+describe_scan_job(Client, ScanJobId)
+  when is_map(Client) ->
+    describe_scan_job(Client, ScanJobId, #{}, #{}).
+
+-spec describe_scan_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_scan_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_scan_job_errors(), tuple()}.
+describe_scan_job(Client, ScanJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_scan_job(Client, ScanJobId, QueryMap, HeadersMap, []).
+
+-spec describe_scan_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_scan_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_scan_job_errors(), tuple()}.
+describe_scan_job(Client, ScanJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scan/jobs/", aws_util:encode_uri(ScanJobId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5273,6 +5793,47 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns `TieringConfiguration' details for the specified
+%% `TieringConfigurationName'.
+%%
+%% The details are the body of a tiering configuration
+%% in JSON format, in addition to configuration metadata.
+-spec get_tiering_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_tiering_configuration_errors(), tuple()}.
+get_tiering_configuration(Client, TieringConfigurationName)
+  when is_map(Client) ->
+    get_tiering_configuration(Client, TieringConfigurationName, #{}, #{}).
+
+-spec get_tiering_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_tiering_configuration_errors(), tuple()}.
+get_tiering_configuration(Client, TieringConfigurationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_tiering_configuration(Client, TieringConfigurationName, QueryMap, HeadersMap, []).
+
+-spec get_tiering_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_tiering_configuration_errors(), tuple()}.
+get_tiering_configuration(Client, TieringConfigurationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tiering-configurations/", aws_util:encode_uri(TieringConfigurationName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This is a request for a summary of backup jobs created
 %% or running within the most recent 30 days.
 %%
@@ -5709,6 +6270,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"parentJobId">>, maps:get(<<"parentJobId">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"sourceRecoveryPointArn">>, maps:get(<<"sourceRecoveryPointArn">>, QueryMap, undefined)},
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
@@ -6466,6 +7028,108 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This is a request for a summary of scan jobs created or running
+%% within the most recent 30 days.
+-spec list_scan_job_summaries(aws_client:aws_client()) ->
+    {ok, list_scan_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_job_summaries_errors(), tuple()}.
+list_scan_job_summaries(Client)
+  when is_map(Client) ->
+    list_scan_job_summaries(Client, #{}, #{}).
+
+-spec list_scan_job_summaries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_scan_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_job_summaries_errors(), tuple()}.
+list_scan_job_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scan_job_summaries(Client, QueryMap, HeadersMap, []).
+
+-spec list_scan_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_scan_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_job_summaries_errors(), tuple()}.
+list_scan_job_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/scan-job-summaries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)},
+        {<<"AggregationPeriod">>, maps:get(<<"AggregationPeriod">>, QueryMap, undefined)},
+        {<<"MalwareScanner">>, maps:get(<<"MalwareScanner">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)},
+        {<<"ScanResultStatus">>, maps:get(<<"ScanResultStatus">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of existing scan jobs for an authenticated account for
+%% the last 30 days.
+-spec list_scan_jobs(aws_client:aws_client()) ->
+    {ok, list_scan_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_jobs_errors(), tuple()}.
+list_scan_jobs(Client)
+  when is_map(Client) ->
+    list_scan_jobs(Client, #{}, #{}).
+
+-spec list_scan_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_scan_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_jobs_errors(), tuple()}.
+list_scan_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scan_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_scan_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_scan_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_scan_jobs_errors(), tuple()}.
+list_scan_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scan/jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"ByAccountId">>, maps:get(<<"ByAccountId">>, QueryMap, undefined)},
+        {<<"ByBackupVaultName">>, maps:get(<<"ByBackupVaultName">>, QueryMap, undefined)},
+        {<<"ByCompleteAfter">>, maps:get(<<"ByCompleteAfter">>, QueryMap, undefined)},
+        {<<"ByCompleteBefore">>, maps:get(<<"ByCompleteBefore">>, QueryMap, undefined)},
+        {<<"ByMalwareScanner">>, maps:get(<<"ByMalwareScanner">>, QueryMap, undefined)},
+        {<<"ByRecoveryPointArn">>, maps:get(<<"ByRecoveryPointArn">>, QueryMap, undefined)},
+        {<<"ByResourceArn">>, maps:get(<<"ByResourceArn">>, QueryMap, undefined)},
+        {<<"ByResourceType">>, maps:get(<<"ByResourceType">>, QueryMap, undefined)},
+        {<<"ByScanResultStatus">>, maps:get(<<"ByScanResultStatus">>, QueryMap, undefined)},
+        {<<"ByState">>, maps:get(<<"ByState">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the tags assigned to the resource, such as a target recovery
 %% point, backup plan,
 %% or backup vault.
@@ -6512,6 +7176,48 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tiering configurations.
+-spec list_tiering_configurations(aws_client:aws_client()) ->
+    {ok, list_tiering_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_tiering_configurations_errors(), tuple()}.
+list_tiering_configurations(Client)
+  when is_map(Client) ->
+    list_tiering_configurations(Client, #{}, #{}).
+
+-spec list_tiering_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_tiering_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_tiering_configurations_errors(), tuple()}.
+list_tiering_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tiering_configurations(Client, QueryMap, HeadersMap, []).
+
+-spec list_tiering_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_tiering_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_tiering_configurations_errors(), tuple()}.
+list_tiering_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tiering-configurations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6862,6 +7568,40 @@ start_restore_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts scanning jobs for specific resources.
+-spec start_scan_job(aws_client:aws_client(), start_scan_job_input()) ->
+    {ok, start_scan_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_scan_job_errors(), tuple()}.
+start_scan_job(Client, Input) ->
+    start_scan_job(Client, Input, []).
+
+-spec start_scan_job(aws_client:aws_client(), start_scan_job_input(), proplists:proplist()) ->
+    {ok, start_scan_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_scan_job_errors(), tuple()}.
+start_scan_job(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/scan/job"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -7360,6 +8100,52 @@ update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request will send changes to your specified tiering
+%% configuration.
+%%
+%% `TieringConfigurationName'
+%% cannot be updated after it is created.
+%%
+%% `ResourceSelection' can contain:
+%%
+%% `Resources'
+%%
+%% `TieringDownSettingsInDays'
+%%
+%% `ResourceType'
+-spec update_tiering_configuration(aws_client:aws_client(), binary() | list(), update_tiering_configuration_input()) ->
+    {ok, update_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_tiering_configuration_errors(), tuple()}.
+update_tiering_configuration(Client, TieringConfigurationName, Input) ->
+    update_tiering_configuration(Client, TieringConfigurationName, Input, []).
+
+-spec update_tiering_configuration(aws_client:aws_client(), binary() | list(), update_tiering_configuration_input(), proplists:proplist()) ->
+    {ok, update_tiering_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_tiering_configuration_errors(), tuple()}.
+update_tiering_configuration(Client, TieringConfigurationName, Input0, Options0) ->
+    Method = put,
+    Path = ["/tiering-configurations/", aws_util:encode_uri(TieringConfigurationName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

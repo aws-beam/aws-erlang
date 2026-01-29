@@ -271,6 +271,7 @@
 %% Example:
 %% playback_configuration() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
+%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -348,6 +349,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_vod_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_request() :: #{
+%%   <<"Body">> => string(),
+%%   <<"CompressRequest">> => list(any()),
+%%   <<"Headers">> => map(),
+%%   <<"Method">> => list(any())
+%% }
+-type http_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -939,6 +950,13 @@
 
 
 %% Example:
+%% ad_decision_server_configuration() :: #{
+%%   <<"HttpRequest">> => http_request()
+%% }
+-type ad_decision_server_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% transition() :: #{
 %%   <<"DurationMillis">> => float(),
 %%   <<"RelativePosition">> => list(any()),
@@ -961,6 +979,7 @@
 %% Example:
 %% get_playback_configuration_response() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
+%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -1123,6 +1142,7 @@
 %% Example:
 %% put_playback_configuration_request() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
+%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -1270,6 +1290,7 @@
 %% Example:
 %% put_playback_configuration_response() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
+%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),

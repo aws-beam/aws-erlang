@@ -791,7 +791,9 @@
 %%   <<"mandatoryParameters">> => list(command_parameter()),
 %%   <<"namespace">> => list(any()),
 %%   <<"payload">> => command_payload(),
+%%   <<"payloadTemplate">> => string(),
 %%   <<"pendingDeletion">> => boolean(),
+%%   <<"preprocessor">> => command_preprocessor(),
 %%   <<"roleArn">> => string()
 %% }
 -type get_command_response() :: #{binary() => any()}.
@@ -1978,6 +1980,15 @@
 
 
 %% Example:
+%% log_event_configuration() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"logDestination">> => string(),
+%%   <<"logLevel">> => list(any())
+%% }
+-type log_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_topic_rule_destination_response() :: #{
 %%   <<"topicRuleDestination">> => topic_rule_destination()
 %% }
@@ -2119,6 +2130,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_json_substitution_command_preprocessor_config() :: #{
+%%   <<"outputFormat">> => list(any())
+%% }
+-type aws_json_substitution_command_preprocessor_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2494,6 +2512,13 @@
 %%   <<"certificateProviderName">> => string()
 %% }
 -type create_certificate_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_preprocessor() :: #{
+%%   <<"awsJsonSubstitution">> => aws_json_substitution_command_preprocessor_config()
+%% }
+-type command_preprocessor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2979,6 +3004,8 @@
 %%   <<"mandatoryParameters">> => list(command_parameter()),
 %%   <<"namespace">> => list(any()),
 %%   <<"payload">> => command_payload(),
+%%   <<"payloadTemplate">> => string(),
+%%   <<"preprocessor">> => command_preprocessor(),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag())
 %% }
@@ -3215,7 +3242,9 @@
 %%   <<"defaultValue">> => command_parameter_value(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"value">> => command_parameter_value()
+%%   <<"type">> => list(any()),
+%%   <<"value">> => command_parameter_value(),
+%%   <<"valueConditions">> => list(command_parameter_value_condition())
 %% }
 -type command_parameter() :: #{binary() => any()}.
 
@@ -3886,9 +3915,12 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_v2_logging_options_request() :: #{}
--type get_v2_logging_options_request() :: #{}.
+%% get_v2_logging_options_request() :: #{
+%%   <<"verbose">> => boolean()
+%% }
+-type get_v2_logging_options_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4307,6 +4339,17 @@
 %%   <<"clientToken">> => string()
 %% }
 -type disassociate_sbom_from_package_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_parameter_value_comparison_operand() :: #{
+%%   <<"number">> => string(),
+%%   <<"numberRange">> => command_parameter_value_number_range(),
+%%   <<"numbers">> => list(string()),
+%%   <<"string">> => string(),
+%%   <<"strings">> => list(string())
+%% }
+-type command_parameter_value_comparison_operand() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4964,6 +5007,15 @@
 
 
 %% Example:
+%% batch_config() :: #{
+%%   <<"maxBatchOpenMs">> => integer(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"maxBatchSizeBytes">> => integer()
+%% }
+-type batch_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_job_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -5387,6 +5439,14 @@
 
 
 %% Example:
+%% command_parameter_value_number_range() :: #{
+%%   <<"max">> => string(),
+%%   <<"min">> => string()
+%% }
+-type command_parameter_value_number_range() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_fleet_metric_request() :: #{
 %%   <<"aggregationField">> => string(),
 %%   <<"aggregationType">> => aggregation_type(),
@@ -5538,7 +5598,9 @@
 %% Example:
 %% http_action() :: #{
 %%   <<"auth">> => http_authorization(),
+%%   <<"batchConfig">> => batch_config(),
 %%   <<"confirmationUrl">> => string(),
+%%   <<"enableBatching">> => boolean(),
 %%   <<"headers">> => list(http_action_header()),
 %%   <<"url">> => string()
 %% }
@@ -5585,6 +5647,7 @@
 %% set_v2_logging_options_request() :: #{
 %%   <<"defaultLogLevel">> => list(any()),
 %%   <<"disableAllLogs">> => boolean(),
+%%   <<"eventConfigurations">> => list(log_event_configuration()),
 %%   <<"roleArn">> => string()
 %% }
 -type set_v2_logging_options_request() :: #{binary() => any()}.
@@ -5703,6 +5766,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_package_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_parameter_value_condition() :: #{
+%%   <<"comparisonOperator">> => list(any()),
+%%   <<"operand">> => command_parameter_value_comparison_operand()
+%% }
+-type command_parameter_value_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6600,6 +6671,7 @@
 %% get_v2_logging_options_response() :: #{
 %%   <<"defaultLogLevel">> => list(any()),
 %%   <<"disableAllLogs">> => boolean(),
+%%   <<"eventConfigurations">> => list(log_event_configuration()),
 %%   <<"roleArn">> => string()
 %% }
 -type get_v2_logging_options_response() :: #{binary() => any()}.
@@ -13416,9 +13488,9 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 %% Amazon Web Services account in
 %% Amazon Web Services IoT Core.
 %%
-%% For more information, see Key management in IoT:
-%% https://docs.aws.amazon.com/iot/latest/developerguide/key-management.html
-%% from
+%% For more information, see Data encryption at rest:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/encryption-at-rest.html
+%% in
 %% the Amazon Web Services IoT Core Developer Guide.
 -spec describe_encryption_configuration(aws_client:aws_client()) ->
     {ok, describe_encryption_configuration_response(), tuple()} |
@@ -15464,7 +15536,11 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"verbose">>, maps:get(<<"verbose">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -19599,11 +19675,10 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 %%
-%% You can cancel the transfer until it is acknowledged by the recipient.
+%% You can cancel the transfer until it is accepted by the recipient.
 %%
-%% No notification is sent to the transfer destination's account.
-%% It's up to the caller
-%% to notify the transfer target.
+%% No notification is sent to the transfer destination's account. The
+%% caller is responsible for notifying the transfer target.
 %%
 %% The certificate being transferred must not be in the `ACTIVE' state.
 %% You can use the
@@ -19613,16 +19688,17 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% `DetachPolicy' action to detach them.
 %%
 %% Customer managed key behavior: When you use a customer managed key to
-%% secure your data and then transfer
-%% the key to a customer in a different account using the
+%% encrypt your data and then transfer
+%% the certificate to a customer in a different account using the
 %% `TransferCertificate' operation, the certificates will no longer be
-%% protected by their
+%% encrypted by their
 %% customer managed key configuration. During the transfer process,
-%% certificates are encrypted using IoT owned keys.
+%% certificates are encrypted using Amazon Web Services IoT Core owned keys.
 %%
 %% While a certificate is in the PENDING_TRANSFER state, it's always
-%% protected by IoT owned keys, regardless of the customer managed key
-%% configuration of either the source or destination account.
+%% protected by Amazon Web Services IoT Core owned keys, regardless of the
+%% customer managed key configuration of either the source or destination
+%% account.
 %%
 %% Once the transfer is completed through `AcceptCertificateTransfer',
 %% `RejectCertificateTransfer', or
@@ -19630,8 +19706,8 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% customer managed key configuration of the account that owns
 %% the certificate after the transfer operation:
 %%
-%% If the transfer is accepted: The certificate is protected by the
-%% destination account's customer managed key configuration.
+%% If the transfer is accepted: The certificate is encrypted by the target
+%% account's customer managed key configuration.
 %%
 %% If the transfer is rejected or cancelled: The certificate is protected by
 %% the source account's customer managed key configuration.
@@ -20189,15 +20265,16 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Updates the encryption configuration.
 %%
-%% By default, all Amazon Web Services IoT Core data at rest is
-%% encrypted using Amazon Web Services owned keys. Amazon Web Services IoT
-%% Core also supports symmetric customer managed keys
-%% from Amazon Web Services Key Management Service (KMS). With customer
-%% managed keys, you create, own, and
-%% manage the KMS keys in your Amazon Web Services account. For more
-%% information, see Data
-%% encryption:
-%% https://docs.aws.amazon.com/iot/latest/developerguide/data-encryption.html
+%% By default, Amazon Web Services IoT Core encrypts your data at rest using
+%% Amazon Web Services owned keys. Amazon Web Services IoT Core also supports
+%% symmetric customer managed keys
+%% from Key Management Service (KMS). With customer managed keys, you create,
+%% own, and
+%% manage the KMS keys in your Amazon Web Services account.
+%%
+%% Before using this API, you must set up permissions for Amazon Web Services
+%% IoT Core to access KMS. For more information, see Data encryption at rest:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/encryption-at-rest.html
 %% in the Amazon Web Services IoT Core Developer Guide.
 -spec update_encryption_configuration(aws_client:aws_client(), update_encryption_configuration_request()) ->
     {ok, update_encryption_configuration_response(), tuple()} |

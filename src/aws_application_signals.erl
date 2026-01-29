@@ -46,6 +46,8 @@
          get_service_level_objective/5,
          list_audit_findings/2,
          list_audit_findings/3,
+         list_entity_events/2,
+         list_entity_events/3,
          list_grouping_attribute_definitions/2,
          list_grouping_attribute_definitions/3,
          list_service_dependencies/2,
@@ -105,6 +107,7 @@
 %% Example:
 %% auditor_result() :: #{
 %%   <<"Auditor">> => [string()],
+%%   <<"Data">> => map(),
 %%   <<"Description">> => [string()],
 %%   <<"Severity">> => list(any())
 %% }
@@ -117,6 +120,16 @@
 %%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_events_output() :: #{
+%%   <<"ChangeEvents">> => list(change_event()),
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_entity_events_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -196,6 +209,7 @@
 %% list_audit_findings_input() :: #{
 %%   <<"AuditTargets">> := list(audit_target()),
 %%   <<"Auditors">> => list([string()]()),
+%%   <<"DetailLevel">> => list(any()),
 %%   <<"EndTime">> := [non_neg_integer()],
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -311,6 +325,8 @@
 
 %% Example:
 %% list_grouping_attribute_definitions_input() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"NextToken">> => string()
 %% }
 -type list_grouping_attribute_definitions_input() :: #{binary() => any()}.
@@ -798,7 +814,9 @@
 %% Example:
 %% list_audit_findings_output() :: #{
 %%   <<"AuditFindings">> => list(audit_finding()),
-%%   <<"NextToken">> => string()
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()]
 %% }
 -type list_audit_findings_output() :: #{binary() => any()}.
 
@@ -872,6 +890,17 @@
 %%   <<"Slo">> => service_level_objective()
 %% }
 -type create_service_level_objective_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_events_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"Entity">> := map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_entity_events_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1005,6 +1034,10 @@
     resource_not_found_exception().
 
 -type list_audit_findings_errors() ::
+    throttling_exception() | 
+    validation_exception().
+
+-type list_entity_events_errors() ::
     throttling_exception() | 
     validation_exception().
 
@@ -1274,14 +1307,10 @@ create_service_level_objective(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a grouping configuration that defines how services are
-%% grouped and organized in Application Signals.
+%% @doc Deletes the grouping configuration for this account.
 %%
-%% Once deleted, services will no longer be grouped according to the
-%% specified configuration rules.
-%%
-%% This operation is irreversible. After deletion, you must recreate the
-%% grouping configuration if you want to restore the same grouping behavior.
+%% This removes all custom grouping attribute definitions that were
+%% previously configured.
 -spec delete_grouping_configuration(aws_client:aws_client(), #{}) ->
     {ok, delete_grouping_configuration_output(), tuple()} |
     {error, any()} |
@@ -1423,14 +1452,13 @@ get_service_level_objective(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of audit findings for Application Signals resources.
+%% @doc Returns a list of audit findings that provide automated analysis of
+%% service behavior and root cause analysis.
 %%
-%% Audit findings identify potential issues, misconfigurations, or compliance
-%% violations in your observability setup.
-%%
-%% You can filter findings by time range, auditor type, and target resources
-%% to focus on specific areas of concern. This operation supports pagination
-%% for large result sets.
+%% These findings help identify the most significant observations about your
+%% services, including performance issues, anomalies, and potential problems.
+%% The findings are generated using heuristic algorithms based on established
+%% troubleshooting patterns.
 -spec list_audit_findings(aws_client:aws_client(), list_audit_findings_input()) ->
     {ok, list_audit_findings_output(), tuple()} |
     {error, any()} |
@@ -1466,14 +1494,52 @@ list_audit_findings(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the available grouping attribute definitions that can be
-%% used to create grouping configurations.
+%% @doc Returns a list of change events for a specific entity, such as
+%% deployments, configuration changes, or other state-changing activities.
 %%
-%% These definitions specify the attributes and rules available for
-%% organizing services.
+%% This operation helps track the history of changes that may have affected
+%% service performance.
+-spec list_entity_events(aws_client:aws_client(), list_entity_events_input()) ->
+    {ok, list_entity_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_events_errors(), tuple()}.
+list_entity_events(Client, Input) ->
+    list_entity_events(Client, Input, []).
+
+-spec list_entity_events(aws_client:aws_client(), list_entity_events_input(), proplists:proplist()) ->
+    {ok, list_entity_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_events_errors(), tuple()}.
+list_entity_events(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"MaxResults">>, <<"MaxResults">>},
+                     {<<"NextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the current grouping configuration for this account,
+%% including all custom grouping attribute definitions that have been
+%% configured.
 %%
-%% Use this operation to discover what grouping options are available before
-%% creating or updating grouping configurations.
+%% These definitions determine how services are logically grouped based on
+%% telemetry attributes, Amazon Web Services tags, or predefined mappings.
 -spec list_grouping_attribute_definitions(aws_client:aws_client(), list_grouping_attribute_definitions_input()) ->
     {ok, list_grouping_attribute_definitions_output(), tuple()} |
     {error, any()} |
@@ -1503,6 +1569,8 @@ list_grouping_attribute_definitions(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"AwsAccountId">>, <<"AwsAccountId">>},
+                     {<<"IncludeLinkedAccounts">>, <<"IncludeLinkedAccounts">>},
                      {<<"NextToken">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -1716,15 +1784,11 @@ list_service_operations(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the current state information for services monitored by
-%% Application Signals.
+%% @doc Returns information about the last deployment and other change states
+%% of services.
 %%
-%% Service states include health status, recent change events, and other
-%% operational metadata.
-%%
-%% You can filter results by time range, AWS account, and service attributes
-%% to focus on specific services or time periods. This operation supports
-%% pagination and can include data from linked accounts.
+%% This API provides visibility into recent changes that may have affected
+%% service performance, helping with troubleshooting and change correlation.
 -spec list_service_states(aws_client:aws_client(), list_service_states_input()) ->
     {ok, list_service_states_output(), tuple()} |
     {error, any()} |
@@ -1852,13 +1916,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates or updates a grouping configuration that defines how services
-%% are organized and grouped in Application Signals dashboards and service
-%% maps.
+%% @doc Creates or updates the grouping configuration for this account.
 %%
-%% Grouping configurations allow you to logically organize services based on
-%% attributes such as environment, team ownership, or business function,
-%% making it easier to monitor and manage related services together.
+%% This operation allows you to define custom grouping attributes that
+%% determine how services are logically grouped based on telemetry
+%% attributes, Amazon Web Services tags, or predefined mappings. These
+%% grouping attributes can then be used to organize and filter services in
+%% the Application Signals console and APIs.
 -spec put_grouping_configuration(aws_client:aws_client(), put_grouping_configuration_input()) ->
     {ok, put_grouping_configuration_output(), tuple()} |
     {error, any()} |
@@ -1911,6 +1975,10 @@ put_grouping_configuration(Client, Input0, Options0) ->
 %% `tag:GetResources'
 %%
 %% `autoscaling:DescribeAutoScalingGroups'
+%%
+%% A service-linked CloudTrail event channel is created to process CloudTrail
+%% events and return change event information. This includes last deployment
+%% time, userName, eventName, and other event metadata.
 %%
 %% After completing this step, you still need to instrument your Java and
 %% Python applications to send data to Application Signals. For more

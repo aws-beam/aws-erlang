@@ -330,6 +330,7 @@
 %% create_application_request() :: #{
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> := application_source_config(),
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IframeConfig">> => iframe_config(),
@@ -423,6 +424,7 @@
 %% update_application_request() :: #{
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"IframeConfig">> => iframe_config(),
 %%   <<"InitializationTimeout">> => integer(),
@@ -452,6 +454,7 @@
 %% get_application_response() :: #{
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -472,6 +475,7 @@
 
 %% Example:
 %% list_applications_request() :: #{
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -570,6 +574,7 @@
 
 %% Example:
 %% application_summary() :: #{
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
@@ -1314,6 +1319,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"applicationType">>, maps:get(<<"applicationType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],

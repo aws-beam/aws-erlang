@@ -25,6 +25,8 @@
          create_cache_policy/3,
          create_cloud_front_origin_access_identity/2,
          create_cloud_front_origin_access_identity/3,
+         create_connection_function/2,
+         create_connection_function/3,
          create_connection_group/2,
          create_connection_group/3,
          create_continuous_deployment_policy/2,
@@ -65,6 +67,8 @@
          create_streaming_distribution/3,
          create_streaming_distribution_with_tags/2,
          create_streaming_distribution_with_tags/3,
+         create_trust_store/2,
+         create_trust_store/3,
          create_vpc_origin/2,
          create_vpc_origin/3,
          delete_anycast_ip_list/3,
@@ -73,6 +77,8 @@
          delete_cache_policy/4,
          delete_cloud_front_origin_access_identity/3,
          delete_cloud_front_origin_access_identity/4,
+         delete_connection_function/3,
+         delete_connection_function/4,
          delete_connection_group/3,
          delete_connection_group/4,
          delete_continuous_deployment_policy/3,
@@ -107,8 +113,13 @@
          delete_response_headers_policy/4,
          delete_streaming_distribution/3,
          delete_streaming_distribution/4,
+         delete_trust_store/3,
+         delete_trust_store/4,
          delete_vpc_origin/3,
          delete_vpc_origin/4,
+         describe_connection_function/2,
+         describe_connection_function/4,
+         describe_connection_function/5,
          describe_function/2,
          describe_function/4,
          describe_function/5,
@@ -134,6 +145,9 @@
          get_cloud_front_origin_access_identity_config/2,
          get_cloud_front_origin_access_identity_config/4,
          get_cloud_front_origin_access_identity_config/5,
+         get_connection_function/2,
+         get_connection_function/4,
+         get_connection_function/5,
          get_connection_group/2,
          get_connection_group/4,
          get_connection_group/5,
@@ -225,6 +239,9 @@
          get_streaming_distribution_config/2,
          get_streaming_distribution_config/4,
          get_streaming_distribution_config/5,
+         get_trust_store/2,
+         get_trust_store/4,
+         get_trust_store/5,
          get_vpc_origin/2,
          get_vpc_origin/4,
          get_vpc_origin/5,
@@ -240,6 +257,8 @@
          list_conflicting_aliases/3,
          list_conflicting_aliases/5,
          list_conflicting_aliases/6,
+         list_connection_functions/2,
+         list_connection_functions/3,
          list_connection_groups/2,
          list_connection_groups/3,
          list_continuous_deployment_policies/1,
@@ -258,6 +277,9 @@
          list_distributions_by_cache_policy_id/2,
          list_distributions_by_cache_policy_id/4,
          list_distributions_by_cache_policy_id/5,
+         list_distributions_by_connection_function/2,
+         list_distributions_by_connection_function/4,
+         list_distributions_by_connection_function/5,
          list_distributions_by_connection_mode/2,
          list_distributions_by_connection_mode/4,
          list_distributions_by_connection_mode/5,
@@ -275,6 +297,9 @@
          list_distributions_by_response_headers_policy_id/2,
          list_distributions_by_response_headers_policy_id/4,
          list_distributions_by_response_headers_policy_id/5,
+         list_distributions_by_trust_store/2,
+         list_distributions_by_trust_store/4,
+         list_distributions_by_trust_store/5,
          list_distributions_by_vpc_origin_id/2,
          list_distributions_by_vpc_origin_id/4,
          list_distributions_by_vpc_origin_id/5,
@@ -325,15 +350,21 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_trust_stores/2,
+         list_trust_stores/3,
          list_vpc_origins/1,
          list_vpc_origins/3,
          list_vpc_origins/4,
+         publish_connection_function/3,
+         publish_connection_function/4,
          publish_function/3,
          publish_function/4,
          put_resource_policy/2,
          put_resource_policy/3,
          tag_resource/2,
          tag_resource/3,
+         test_connection_function/3,
+         test_connection_function/4,
          test_function/3,
          test_function/4,
          untag_resource/2,
@@ -344,6 +375,8 @@
          update_cache_policy/4,
          update_cloud_front_origin_access_identity/3,
          update_cloud_front_origin_access_identity/4,
+         update_connection_function/3,
+         update_connection_function/4,
          update_connection_group/3,
          update_connection_group/4,
          update_continuous_deployment_policy/3,
@@ -378,6 +411,8 @@
          update_response_headers_policy/4,
          update_streaming_distribution/3,
          update_streaming_distribution/4,
+         update_trust_store/3,
+         update_trust_store/4,
          update_vpc_origin/3,
          update_vpc_origin/4,
          verify_dns_configuration/2,
@@ -396,6 +431,15 @@
 %% Example:
 %% get_distribution_tenant_request() :: #{}
 -type get_distribution_tenant_request() :: #{}.
+
+
+%% Example:
+%% list_distributions_by_trust_store_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"TrustStoreIdentifier">> := string()
+%% }
+-type list_distributions_by_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -586,6 +630,20 @@
 
 
 %% Example:
+%% trust_store_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfCaCertificates">> => integer(),
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type trust_store_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% no_such_continuous_deployment_policy() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -609,6 +667,16 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_custom_headers_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% ipam_cidr_config() :: #{
+%%   <<"AnycastIp">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ipam_cidr_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -793,6 +861,13 @@
 
 
 %% Example:
+%% list_distributions_by_connection_function_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_origin_request_policy_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"OriginRequestPolicy">> => origin_request_policy()
@@ -853,6 +928,7 @@
 %%   <<"Id">> => string(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> => integer(),
+%%   <<"IpamConfig">> => ipam_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => string()
@@ -983,6 +1059,14 @@
 
 
 %% Example:
+%% update_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string()
+%% }
+-type update_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_protocol_settings() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1030,6 +1114,10 @@
 %%   <<"Message">> => string()
 %% }
 -type public_key_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_request() :: #{}
+-type get_trust_store_request() :: #{}.
 
 
 %% Example:
@@ -1306,6 +1394,7 @@
 %%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"Comment">> => string(),
+%%   <<"ConnectionFunctionAssociation">> => connection_function_association(),
 %%   <<"ConnectionMode">> => list(any()),
 %%   <<"CustomErrorResponses">> => custom_error_responses(),
 %%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
@@ -1323,6 +1412,7 @@
 %%   <<"Staging">> => boolean(),
 %%   <<"Status">> => string(),
 %%   <<"ViewerCertificate">> => viewer_certificate(),
+%%   <<"ViewerMtlsConfig">> => viewer_mtls_config(),
 %%   <<"WebACLId">> => string()
 %% }
 -type distribution_summary() :: #{binary() => any()}.
@@ -1476,6 +1566,16 @@
 
 
 %% Example:
+%% create_connection_function_request() :: #{
+%%   <<"ConnectionFunctionCode">> := binary(),
+%%   <<"ConnectionFunctionConfig">> := function_config(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_function_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FunctionSummary">> => function_summary()
@@ -1547,6 +1647,13 @@
 
 
 %% Example:
+%% test_connection_function_result() :: #{
+%%   <<"ConnectionFunctionTestResult">> => connection_function_test_result()
+%% }
+-type test_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% monitoring_subscription() :: #{
 %%   <<"RealtimeMetricsSubscriptionConfig">> => realtime_metrics_subscription_config()
 %% }
@@ -1578,6 +1685,14 @@
 %%   <<"Prefix">> => string()
 %% }
 -type streaming_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_store_request() :: #{
+%%   <<"CaCertificatesBundleSource">> := list(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1665,6 +1780,14 @@
 
 
 %% Example:
+%% list_trust_stores_result() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreList">> => list(trust_store_summary())
+%% }
+-type list_trust_stores_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% response_headers_policy_referrer_policy() :: #{
 %%   <<"Override">> => boolean(),
 %%   <<"ReferrerPolicy">> => list(any())
@@ -1746,6 +1869,16 @@
 
 
 %% Example:
+%% ca_certificates_bundle_s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type ca_certificates_bundle_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_type_profile() :: #{
 %%   <<"ContentType">> => string(),
 %%   <<"Format">> => list(any()),
@@ -1818,12 +1951,21 @@
 
 
 %% Example:
+%% list_trust_stores_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_trust_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% anycast_ip_list_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> => integer(),
+%%   <<"IpamConfig">> => ipam_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => string()
@@ -1837,6 +1979,13 @@
 %%   <<"IfMatch">> => string()
 %% }
 -type update_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_trust_store_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1865,6 +2014,14 @@
 %%   <<"FunctionARN">> => string()
 %% }
 -type function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type update_trust_store_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2001,6 +2158,13 @@
 %%   <<"Status">> => string()
 %% }
 -type list_key_value_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_trust_store_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_trust_store_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2242,6 +2406,7 @@
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"CallerReference">> => string(),
 %%   <<"Comment">> => string(),
+%%   <<"ConnectionFunctionAssociation">> => connection_function_association(),
 %%   <<"ConnectionMode">> => list(any()),
 %%   <<"ContinuousDeploymentPolicyId">> => string(),
 %%   <<"CustomErrorResponses">> => custom_error_responses(),
@@ -2258,6 +2423,7 @@
 %%   <<"Staging">> => boolean(),
 %%   <<"TenantConfig">> => tenant_config(),
 %%   <<"ViewerCertificate">> => viewer_certificate(),
+%%   <<"ViewerMtlsConfig">> => viewer_mtls_config(),
 %%   <<"WebACLId">> => string()
 %% }
 -type distribution_config() :: #{binary() => any()}.
@@ -2283,6 +2449,15 @@
 %%   <<"Stage">> => list(any())
 %% }
 -type get_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trust_store_request() :: #{
+%%   <<"CaCertificatesBundleSource">> := list(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2391,6 +2566,13 @@
 
 
 %% Example:
+%% get_connection_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type get_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_distributions_by_connection_mode_result() :: #{
 %%   <<"DistributionList">> => distribution_list()
 %% }
@@ -2417,6 +2599,13 @@
 %%   <<"Message">> => string()
 %% }
 -type no_such_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_connection_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type describe_connection_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2499,6 +2688,15 @@
 %%   <<"IfMatch">> := string()
 %% }
 -type delete_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_function_request() :: #{
+%%   <<"ConnectionFunctionCode">> := binary(),
+%%   <<"ConnectionFunctionConfig">> := function_config(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_connection_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2894,6 +3092,15 @@
 
 
 %% Example:
+%% list_distributions_by_connection_function_request() :: #{
+%%   <<"ConnectionFunctionIdentifier">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_forward_cookies() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3112,6 +3319,13 @@
 
 
 %% Example:
+%% delete_connection_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_key() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
@@ -3146,6 +3360,15 @@
 
 
 %% Example:
+%% test_connection_function_request() :: #{
+%%   <<"ConnectionObject">> := binary(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Stage">> => list(any())
+%% }
+-type test_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_level_encryption_profile_summary() :: #{
 %%   <<"Comment">> => string(),
 %%   <<"EncryptionEntities">> => encryption_entities(),
@@ -3174,6 +3397,15 @@
 
 
 %% Example:
+%% list_connection_functions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Stage">> => list(any())
+%% }
+-type list_connection_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_cache_policy_result() :: #{
 %%   <<"CachePolicy">> => cache_policy(),
 %%   <<"ETag">> => string(),
@@ -3189,6 +3421,14 @@
 %%   <<"Name">> := string()
 %% }
 -type create_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% viewer_mtls_config() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"TrustStoreConfig">> => trust_store_config()
+%% }
+-type viewer_mtls_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3442,6 +3682,17 @@
 
 
 %% Example:
+%% connection_function_test_result() :: #{
+%%   <<"ComputeUtilization">> => string(),
+%%   <<"ConnectionFunctionErrorMessage">> => string(),
+%%   <<"ConnectionFunctionExecutionLogs">> => list(string()),
+%%   <<"ConnectionFunctionOutput">> => string(),
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
+%% }
+-type connection_function_test_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_functions_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
@@ -3468,6 +3719,7 @@
 %% create_anycast_ip_list_request() :: #{
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> := integer(),
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => tags()
 %% }
@@ -3529,6 +3781,14 @@
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string()
+%% }
+-type describe_connection_function_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3850,6 +4110,14 @@
 
 
 %% Example:
+%% get_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type get_trust_store_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_vpc_origin_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"VpcOrigin">> => vpc_origin()
@@ -3944,6 +4212,14 @@
 %%   <<"ETag">> => string()
 %% }
 -type get_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type create_trust_store_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4180,6 +4456,14 @@
 
 
 %% Example:
+%% ipam_config() :: #{
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
+%%   <<"Quantity">> => integer()
+%% }
+-type ipam_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_level_encryption_profile_size_exceeded() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -4350,6 +4634,13 @@
 
 
 %% Example:
+%% publish_connection_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type publish_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_viewer_certificate() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -4362,6 +4653,20 @@
 %%   <<"ETag">> => string()
 %% }
 -type update_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_function_summary() :: #{
+%%   <<"ConnectionFunctionArn">> => string(),
+%%   <<"ConnectionFunctionConfig">> => function_config(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Stage">> => list(any()),
+%%   <<"Status">> => string()
+%% }
+-type connection_function_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4765,6 +5070,13 @@
 
 
 %% Example:
+%% publish_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
+%% }
+-type publish_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_key_config() :: #{
 %%   <<"CallerReference">> => string(),
 %%   <<"Comment">> => string(),
@@ -5099,6 +5411,15 @@
 
 
 %% Example:
+%% trust_store_config() :: #{
+%%   <<"AdvertiseTrustStoreCaNames">> => boolean(),
+%%   <<"IgnoreCertificateExpiry">> => boolean(),
+%%   <<"TrustStoreId">> => string()
+%% }
+-type trust_store_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% response_headers_policy_summary() :: #{
 %%   <<"ResponseHeadersPolicy">> => response_headers_policy(),
 %%   <<"Type">> => list(any())
@@ -5111,6 +5432,23 @@
 %%   <<"AnycastIpLists">> => anycast_ip_list_collection()
 %% }
 -type list_anycast_ip_lists_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connection_functions_result() :: #{
+%%   <<"ConnectionFunctions">> => list(connection_function_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_connection_functions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_connection_function_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5396,6 +5734,13 @@
 
 
 %% Example:
+%% connection_function_association() :: #{
+%%   <<"Id">> => string()
+%% }
+-type connection_function_association() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_streaming_distribution_with_tags_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"Location">> => string(),
@@ -5424,11 +5769,33 @@
 
 
 %% Example:
+%% get_connection_function_result() :: #{
+%%   <<"ConnectionFunctionCode">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_distribution_with_staging_config_result() :: #{
 %%   <<"Distribution">> => distribution(),
 %%   <<"ETag">> => string()
 %% }
 -type update_distribution_with_staging_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_store() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfCaCertificates">> => integer(),
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type trust_store() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5461,6 +5828,7 @@
     illegal_update().
 
 -type associate_distribution_tenant_web_acl_errors() ::
+    entity_limit_exceeded() | 
     precondition_failed() | 
     invalid_argument() | 
     access_denied() | 
@@ -5468,6 +5836,7 @@
     invalid_if_match_version().
 
 -type associate_distribution_web_acl_errors() ::
+    entity_limit_exceeded() | 
     precondition_failed() | 
     invalid_argument() | 
     access_denied() | 
@@ -5564,6 +5933,15 @@
     missing_body() | 
     invalid_argument() | 
     cloud_front_origin_access_identity_already_exists().
+
+-type create_connection_function_errors() ::
+    entity_limit_exceeded() | 
+    unsupported_operation() | 
+    entity_size_limit_exceeded() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
 
 -type create_connection_group_errors() ::
     entity_limit_exceeded() | 
@@ -5861,6 +6239,14 @@
     invalid_tagging() | 
     invalid_origin_access_identity().
 
+-type create_trust_store_errors() ::
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_tagging().
+
 -type create_vpc_origin_errors() ::
     entity_limit_exceeded() | 
     inconsistent_quantities() | 
@@ -5893,6 +6279,15 @@
     no_such_cloud_front_origin_access_identity() | 
     access_denied() | 
     cloud_front_origin_access_identity_in_use() | 
+    invalid_if_match_version().
+
+-type delete_connection_function_errors() ::
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
     invalid_if_match_version().
 
 -type delete_connection_group_errors() ::
@@ -6018,6 +6413,14 @@
     invalid_if_match_version() | 
     streaming_distribution_not_disabled().
 
+-type delete_trust_store_errors() ::
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type delete_vpc_origin_errors() ::
     illegal_delete() | 
     cannot_delete_entity_while_in_use() | 
@@ -6027,6 +6430,12 @@
     access_denied() | 
     entity_not_found() | 
     invalid_if_match_version().
+
+-type describe_connection_function_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type describe_function_errors() ::
     no_such_function_exists() | 
@@ -6073,6 +6482,11 @@
 -type get_cloud_front_origin_access_identity_config_errors() ::
     no_such_cloud_front_origin_access_identity() | 
     access_denied().
+
+-type get_connection_function_errors() ::
+    unsupported_operation() | 
+    access_denied() | 
+    entity_not_found().
 
 -type get_connection_group_errors() ::
     access_denied() | 
@@ -6203,6 +6617,11 @@
     no_such_streaming_distribution() | 
     access_denied().
 
+-type get_trust_store_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type get_vpc_origin_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
@@ -6226,6 +6645,11 @@
 -type list_conflicting_aliases_errors() ::
     no_such_distribution() | 
     invalid_argument().
+
+-type list_connection_functions_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied().
 
 -type list_connection_groups_errors() ::
     invalid_argument() | 
@@ -6261,6 +6685,11 @@
     invalid_argument() | 
     access_denied().
 
+-type list_distributions_by_connection_function_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type list_distributions_by_connection_mode_errors() ::
     invalid_argument() | 
     access_denied().
@@ -6287,6 +6716,11 @@
     no_such_response_headers_policy() | 
     invalid_argument() | 
     access_denied().
+
+-type list_distributions_by_trust_store_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_distributions_by_vpc_origin_id_errors() ::
     unsupported_operation() | 
@@ -6361,11 +6795,24 @@
     access_denied() | 
     invalid_tagging().
 
+-type list_trust_stores_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type list_vpc_origins_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
     access_denied() | 
     entity_not_found().
+
+-type publish_connection_function_errors() ::
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type publish_function_errors() ::
     no_such_function_exists() | 
@@ -6387,6 +6834,14 @@
     invalid_argument() | 
     access_denied() | 
     invalid_tagging().
+
+-type test_connection_function_errors() ::
+    test_function_failed() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type test_function_errors() ::
     test_function_failed() | 
@@ -6430,6 +6885,15 @@
     invalid_argument() | 
     access_denied() | 
     illegal_update() | 
+    invalid_if_match_version().
+
+-type update_connection_function_errors() ::
+    precondition_failed() | 
+    unsupported_operation() | 
+    entity_size_limit_exceeded() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
     invalid_if_match_version().
 
 -type update_connection_group_errors() ::
@@ -6536,6 +7000,7 @@
     too_many_distributions_associated_to_field_level_encryption_config() | 
     invalid_location_code() | 
     invalid_response_code() | 
+    entity_limit_exceeded() | 
     no_such_realtime_log_config() | 
     invalid_function_association() | 
     illegal_field_level_encryption_config_association_with_cache_behavior() | 
@@ -6718,6 +7183,13 @@
     illegal_update() | 
     invalid_if_match_version() | 
     invalid_origin_access_identity().
+
+-type update_trust_store_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type update_vpc_origin_errors() ::
     entity_limit_exceeded() | 
@@ -7131,6 +7603,57 @@ create_cloud_front_origin_access_identity(Client, Input) ->
 create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a connection function.
+-spec create_connection_function(aws_client:aws_client(), create_connection_function_request()) ->
+    {ok, create_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, create_connection_function_errors(), tuple()}.
+create_connection_function(Client, Input) ->
+    create_connection_function(Client, Input, []).
+
+-spec create_connection_function(aws_client:aws_client(), create_connection_function_request(), proplists:proplist()) ->
+    {ok, create_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, create_connection_function_errors(), tuple()}.
+create_connection_function(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-function"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8293,6 +8816,56 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
         Result
     end.
 
+%% @doc Creates a trust store.
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_request()) ->
+    {ok, create_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, create_trust_store_errors(), tuple()}.
+create_trust_store(Client, Input) ->
+    create_trust_store(Client, Input, []).
+
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_request(), proplists:proplist()) ->
+    {ok, create_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, create_trust_store_errors(), tuple()}.
+create_trust_store(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/trust-store"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Create an Amazon CloudFront VPC origin.
 -spec create_vpc_origin(aws_client:aws_client(), create_vpc_origin_request()) ->
     {ok, create_vpc_origin_result(), tuple()} |
@@ -8439,6 +9012,42 @@ delete_cloud_front_origin_access_identity(Client, Id, Input) ->
 delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a connection function.
+-spec delete_connection_function(aws_client:aws_client(), binary() | list(), delete_connection_function_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_function_errors(), tuple()}.
+delete_connection_function(Client, Id, Input) ->
+    delete_connection_function(Client, Id, Input, []).
+
+-spec delete_connection_function(aws_client:aws_client(), binary() | list(), delete_connection_function_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_function_errors(), tuple()}.
+delete_connection_function(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9170,6 +9779,42 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a trust store.
+-spec delete_trust_store(aws_client:aws_client(), binary() | list(), delete_trust_store_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_trust_store_errors(), tuple()}.
+delete_trust_store(Client, Id, Input) ->
+    delete_trust_store(Client, Id, Input, []).
+
+-spec delete_trust_store(aws_client:aws_client(), binary() | list(), delete_trust_store_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_trust_store_errors(), tuple()}.
+delete_trust_store(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/trust-store/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an Amazon CloudFront VPC origin.
 -spec delete_vpc_origin(aws_client:aws_client(), binary() | list(), delete_vpc_origin_request()) ->
     {ok, delete_vpc_origin_result(), tuple()} |
@@ -9205,6 +9850,63 @@ delete_vpc_origin(Client, Id, Input0, Options0) ->
     Input = Input2,
 
     case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Describes a connection function.
+-spec describe_connection_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_connection_function_errors(), tuple()}.
+describe_connection_function(Client, Identifier)
+  when is_map(Client) ->
+    describe_connection_function(Client, Identifier, #{}, #{}).
+
+-spec describe_connection_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_connection_function_errors(), tuple()}.
+describe_connection_function(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_connection_function(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec describe_connection_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_connection_function_errors(), tuple()}.
+describe_connection_function(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Identifier), "/describe"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -9711,6 +10413,64 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets a connection function.
+-spec get_connection_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_function_errors(), tuple()}.
+get_connection_function(Client, Identifier)
+  when is_map(Client) ->
+    get_connection_function(Client, Identifier, #{}, #{}).
+
+-spec get_connection_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_function_errors(), tuple()}.
+get_connection_function(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection_function(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_connection_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_function_errors(), tuple()}.
+get_connection_function(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Content-Type">>, <<"ContentType">>},
             {<<"ETag">>, <<"ETag">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -11346,6 +12106,59 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
         Result
     end.
 
+%% @doc Gets a trust store.
+-spec get_trust_store(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, get_trust_store_errors(), tuple()}.
+get_trust_store(Client, Identifier)
+  when is_map(Client) ->
+    get_trust_store(Client, Identifier, #{}, #{}).
+
+-spec get_trust_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, get_trust_store_errors(), tuple()}.
+get_trust_store(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trust_store(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_trust_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, get_trust_store_errors(), tuple()}.
+get_trust_store(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/trust-store/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Get the details of an Amazon CloudFront VPC origin.
 -spec get_vpc_origin(aws_client:aws_client(), binary() | list()) ->
     {ok, get_vpc_origin_result(), tuple()} |
@@ -11622,6 +12435,40 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists connection functions.
+-spec list_connection_functions(aws_client:aws_client(), list_connection_functions_request()) ->
+    {ok, list_connection_functions_result(), tuple()} |
+    {error, any()} |
+    {error, list_connection_functions_errors(), tuple()}.
+list_connection_functions(Client, Input) ->
+    list_connection_functions(Client, Input, []).
+
+-spec list_connection_functions(aws_client:aws_client(), list_connection_functions_request(), proplists:proplist()) ->
+    {ok, list_connection_functions_result(), tuple()} |
+    {error, any()} |
+    {error, list_connection_functions_errors(), tuple()}.
+list_connection_functions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-functions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the connection groups in your Amazon Web Services account.
 -spec list_connection_groups(aws_client:aws_client(), list_connection_groups_request()) ->
@@ -11913,6 +12760,49 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists distributions by connection function.
+-spec list_distributions_by_connection_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_function_errors(), tuple()}.
+list_distributions_by_connection_function(Client, ConnectionFunctionIdentifier)
+  when is_map(Client) ->
+    list_distributions_by_connection_function(Client, ConnectionFunctionIdentifier, #{}, #{}).
+
+-spec list_distributions_by_connection_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_function_errors(), tuple()}.
+list_distributions_by_connection_function(Client, ConnectionFunctionIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_connection_function(Client, ConnectionFunctionIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_connection_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_function_errors(), tuple()}.
+list_distributions_by_connection_function(Client, ConnectionFunctionIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByConnectionFunction"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"ConnectionFunctionIdentifier">>, ConnectionFunctionIdentifier},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the distributions by the connection mode that you specify.
 -spec list_distributions_by_connection_mode(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_connection_mode_result(), tuple()} |
@@ -12190,6 +13080,49 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
       [
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists distributions by trust store.
+-spec list_distributions_by_trust_store(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_trust_store_errors(), tuple()}.
+list_distributions_by_trust_store(Client, TrustStoreIdentifier)
+  when is_map(Client) ->
+    list_distributions_by_trust_store(Client, TrustStoreIdentifier, #{}, #{}).
+
+-spec list_distributions_by_trust_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_trust_store_errors(), tuple()}.
+list_distributions_by_trust_store(Client, TrustStoreIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_trust_store(Client, TrustStoreIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_trust_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_trust_store_errors(), tuple()}.
+list_distributions_by_trust_store(Client, TrustStoreIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByTrustStore"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"TrustStoreIdentifier">>, TrustStoreIdentifier}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -13012,6 +13945,40 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists trust stores.
+-spec list_trust_stores(aws_client:aws_client(), list_trust_stores_request()) ->
+    {ok, list_trust_stores_result(), tuple()} |
+    {error, any()} |
+    {error, list_trust_stores_errors(), tuple()}.
+list_trust_stores(Client, Input) ->
+    list_trust_stores(Client, Input, []).
+
+-spec list_trust_stores(aws_client:aws_client(), list_trust_stores_request(), proplists:proplist()) ->
+    {ok, list_trust_stores_result(), tuple()} |
+    {error, any()} |
+    {error, list_trust_stores_errors(), tuple()}.
+list_trust_stores(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/trust-stores"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List the CloudFront VPC origins in your account.
 -spec list_vpc_origins(aws_client:aws_client()) ->
     {ok, list_vpc_origins_result(), tuple()} |
@@ -13053,6 +14020,42 @@ list_vpc_origins(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Publishes a connection function.
+-spec publish_connection_function(aws_client:aws_client(), binary() | list(), publish_connection_function_request()) ->
+    {ok, publish_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, publish_connection_function_errors(), tuple()}.
+publish_connection_function(Client, Id, Input) ->
+    publish_connection_function(Client, Id, Input, []).
+
+-spec publish_connection_function(aws_client:aws_client(), binary() | list(), publish_connection_function_request(), proplists:proplist()) ->
+    {ok, publish_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, publish_connection_function_errors(), tuple()}.
+publish_connection_function(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Id), "/publish"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Publishes a CloudFront function by copying the function code from the
 %% `DEVELOPMENT' stage to `LIVE'.
@@ -13173,6 +14176,42 @@ tag_resource(Client, Input0, Options0) ->
                      {<<"Resource">>, <<"Resource">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Tests a connection function.
+-spec test_connection_function(aws_client:aws_client(), binary() | list(), test_connection_function_request()) ->
+    {ok, test_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, test_connection_function_errors(), tuple()}.
+test_connection_function(Client, Id, Input) ->
+    test_connection_function(Client, Id, Input, []).
+
+-spec test_connection_function(aws_client:aws_client(), binary() | list(), test_connection_function_request(), proplists:proplist()) ->
+    {ok, test_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, test_connection_function_errors(), tuple()}.
+test_connection_function(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Id), "/test"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests a CloudFront function.
@@ -13402,6 +14441,58 @@ update_cloud_front_origin_access_identity(Client, Id, Input) ->
 update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Updates a connection function.
+-spec update_connection_function(aws_client:aws_client(), binary() | list(), update_connection_function_request()) ->
+    {ok, update_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, update_connection_function_errors(), tuple()}.
+update_connection_function(Client, Id, Input) ->
+    update_connection_function(Client, Id, Input, []).
+
+-spec update_connection_function(aws_client:aws_client(), binary() | list(), update_connection_function_request(), proplists:proplist()) ->
+    {ok, update_connection_function_result(), tuple()} |
+    {error, any()} |
+    {error, update_connection_function_errors(), tuple()}.
+update_connection_function(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/connection-function/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14426,6 +15517,58 @@ update_streaming_distribution(Client, Id, Input) ->
 update_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Updates a trust store.
+-spec update_trust_store(aws_client:aws_client(), binary() | list(), update_trust_store_request()) ->
+    {ok, update_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, update_trust_store_errors(), tuple()}.
+update_trust_store(Client, Id, Input) ->
+    update_trust_store(Client, Id, Input, []).
+
+-spec update_trust_store(aws_client:aws_client(), binary() | list(), update_trust_store_request(), proplists:proplist()) ->
+    {ok, update_trust_store_result(), tuple()} |
+    {error, any()} |
+    {error, update_trust_store_errors(), tuple()}.
+update_trust_store(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/trust-store/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

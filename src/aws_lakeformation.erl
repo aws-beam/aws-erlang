@@ -70,6 +70,8 @@
          get_resource_l_f_tags/3,
          get_table_objects/2,
          get_table_objects/3,
+         get_temporary_data_location_credentials/2,
+         get_temporary_data_location_credentials/3,
          get_temporary_glue_partition_credentials/2,
          get_temporary_glue_partition_credentials/3,
          get_temporary_glue_table_credentials/2,
@@ -284,6 +286,7 @@
 
 %% Example:
 %% update_resource_request() :: #{
+%%   <<"ExpectedResourceOwnerAccount">> => string(),
 %%   <<"HybridAccessEnabled">> => boolean(),
 %%   <<"ResourceArn">> := string(),
 %%   <<"RoleArn">> := string(),
@@ -390,6 +393,7 @@
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
+%%   <<"ServiceIntegrations">> => list(list()),
 %%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
@@ -413,6 +417,7 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
 %%   <<"InstanceArn">> => string(),
+%%   <<"ServiceIntegrations">> => list(list()),
 %%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type create_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
@@ -539,6 +544,15 @@
 %%   <<"QueryId">> := string()
 %% }
 -type get_query_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_data_location_credentials_response() :: #{
+%%   <<"AccessibleDataLocations">> => list(string()),
+%%   <<"Credentials">> => temporary_credentials(),
+%%   <<"CredentialsScope">> => list(any())
+%% }
+-type get_temporary_data_location_credentials_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -768,6 +782,13 @@
 %%   <<"WorkUnitToken">> := string()
 %% }
 -type get_work_unit_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1021,6 +1042,7 @@
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"ResourceShare">> => string(),
+%%   <<"ServiceIntegrations">> => list(list()),
 %%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
@@ -1032,6 +1054,16 @@
 %%   <<"State">> => list(any())
 %% }
 -type get_query_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% temporary_credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type temporary_credentials() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1127,6 +1159,16 @@
 
 
 %% Example:
+%% get_temporary_data_location_credentials_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CredentialsScope">> => list(any()),
+%%   <<"DataLocations">> => list(string()),
+%%   <<"DurationSeconds">> => integer()
+%% }
+-type get_temporary_data_location_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_permissions_failure_entry() :: #{
 %%   <<"Error">> => error_detail(),
 %%   <<"RequestEntry">> => batch_permissions_request_entry()
@@ -1180,6 +1222,7 @@
 
 %% Example:
 %% register_resource_request() :: #{
+%%   <<"ExpectedResourceOwnerAccount">> => string(),
 %%   <<"HybridAccessEnabled">> => boolean(),
 %%   <<"ResourceArn">> := string(),
 %%   <<"RoleArn">> => string(),
@@ -1381,10 +1424,12 @@
 
 %% Example:
 %% resource_info() :: #{
+%%   <<"ExpectedResourceOwnerAccount">> => string(),
 %%   <<"HybridAccessEnabled">> => boolean(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"VerificationStatus">> => list(any()),
 %%   <<"WithFederation">> => boolean(),
 %%   <<"WithPrivilegedAccess">> => boolean()
 %% }
@@ -1468,6 +1513,13 @@
 %%   <<"CatalogId">> => string()
 %% }
 -type delete_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_connect() :: #{
+%%   <<"Authorization">> => list(any())
+%% }
+-type redshift_connect() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_transaction_response() :: #{}
@@ -1881,6 +1933,15 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_temporary_data_location_credentials_errors() ::
+    glue_encryption_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_temporary_glue_partition_credentials_errors() ::
     permission_type_mismatch_exception() | 
     access_denied_exception() | 
@@ -2122,10 +2183,22 @@ add_l_f_tags_to_resource(Client, Input0, Options0) ->
 %%
 %% This decorated role is expected to access data in Amazon S3 by getting
 %% temporary access from Lake Formation which is authorized via the virtual
-%% API `GetDataAccess'. Therefore, all SAML roles that can be assumed via
+%% API `GetDataAccess'.
+%% Therefore, all SAML roles that can be assumed via
 %% `AssumeDecoratedRoleWithSAML' must at a minimum include
-%% `lakeformation:GetDataAccess' in their role policies. A typical IAM
-%% policy attached to such a role would look as follows:
+%% `lakeformation:GetDataAccess' in their role policies.
+%% A typical IAM policy attached to such a role would include the following
+%% actions:
+%%
+%% glue:*Database*
+%%
+%% glue:*Table*
+%%
+%% glue:*Partition*
+%%
+%% glue:*UserDefinedFunction*
+%%
+%% lakeformation:GetDataAccess
 -spec assume_decorated_role_with_saml(aws_client:aws_client(), assume_decorated_role_with_saml_request()) ->
     {ok, assume_decorated_role_with_saml_response(), tuple()} |
     {error, any()} |
@@ -2522,13 +2595,16 @@ delete_data_cells_filter(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified LF-tag given a key name.
+%% @doc Deletes an LF-tag by its key name.
 %%
-%% If the input parameter tag key was not found, then the operation will
-%% throw an exception. When you delete an LF-tag, the `LFTagPolicy'
-%% attached to the LF-tag becomes invalid. If the deleted LF-tag was still
-%% assigned to any resource, the tag policy attach to the deleted LF-tag will
-%% no longer be applied to the resource.
+%% The operation fails if the specified tag key doesn't
+%% exist. When you delete an LF-Tag:
+%%
+%% The associated LF-Tag policy becomes invalid.
+%%
+%% Resources that had this tag assigned will no longer have the tag policy
+%% applied to
+%% them.
 -spec delete_l_f_tag(aws_client:aws_client(), delete_l_f_tag_request()) ->
     {ok, delete_l_f_tag_response(), tuple()} |
     {error, any()} |
@@ -3250,6 +3326,66 @@ get_table_objects(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Allows a user or application in a secure environment to access data
+%% in a specific Amazon S3 location registered with Lake Formation by
+%% providing temporary scoped credentials that are limited to the requested
+%% data location and
+%% the caller's authorized access level.
+%%
+%% The API operation returns an error in the following scenarios:
+%%
+%% The data location is not registered with Lake Formation.
+%%
+%% No Glue table is associated with the data location.
+%%
+%% The caller doesn't have required permissions on the associated table.
+%% The caller must have
+%% `SELECT' or `SUPER' permissions on the associated table, and
+%% credential vending for full table access must be enabled in the data lake
+%% settings.
+%%
+%% For more information, see Application integration for full table access:
+%% https://docs.aws.amazon.com/lake-formation/latest/dg/full-table-credential-vending.html.
+%%
+%% The data location is in a different Amazon Web Services Region. Lake
+%% Formation doesn't
+%% support cross-Region access when vending credentials for a data location.
+%% Lake Formation only supports Amazon S3 paths registered within the same
+%% Region as the API
+%% call.
+-spec get_temporary_data_location_credentials(aws_client:aws_client(), get_temporary_data_location_credentials_request()) ->
+    {ok, get_temporary_data_location_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_temporary_data_location_credentials_errors(), tuple()}.
+get_temporary_data_location_credentials(Client, Input) ->
+    get_temporary_data_location_credentials(Client, Input, []).
+
+-spec get_temporary_data_location_credentials(aws_client:aws_client(), get_temporary_data_location_credentials_request(), proplists:proplist()) ->
+    {ok, get_temporary_data_location_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_temporary_data_location_credentials_errors(), tuple()}.
+get_temporary_data_location_credentials(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTemporaryDataLocationCredentials"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is identical to `GetTemporaryTableCredentials' except
 %% that this is used when the target Data Catalog resource is of type
 %% Partition.
@@ -3590,7 +3726,10 @@ list_lake_formation_opt_ins(Client, Input0, Options0) ->
 %% only the principal permissions for ALTER.
 %%
 %% This operation returns only those permissions that have been explicitly
-%% granted.
+%% granted. If both
+%% `Principal' and `Resource' parameters are provided, the response
+%% returns effective permissions rather than the explicitly granted
+%% permissions.
 %%
 %% For information about permissions, see Security and Access Control to
 %% Metadata and Data:

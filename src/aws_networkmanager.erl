@@ -24,6 +24,8 @@
          create_connection/4,
          create_core_network/2,
          create_core_network/3,
+         create_core_network_prefix_list_association/2,
+         create_core_network_prefix_list_association/3,
          create_device/3,
          create_device/4,
          create_direct_connect_gateway_attachment/2,
@@ -52,6 +54,8 @@
          delete_core_network/4,
          delete_core_network_policy_version/4,
          delete_core_network_policy_version/5,
+         delete_core_network_prefix_list_association/4,
+         delete_core_network_prefix_list_association/5,
          delete_device/4,
          delete_device/5,
          delete_global_network/3,
@@ -159,6 +163,9 @@
          get_vpc_attachment/2,
          get_vpc_attachment/4,
          get_vpc_attachment/5,
+         list_attachment_routing_policy_associations/2,
+         list_attachment_routing_policy_associations/4,
+         list_attachment_routing_policy_associations/5,
          list_attachments/1,
          list_attachments/3,
          list_attachments/4,
@@ -168,6 +175,11 @@
          list_core_network_policy_versions/2,
          list_core_network_policy_versions/4,
          list_core_network_policy_versions/5,
+         list_core_network_prefix_list_associations/2,
+         list_core_network_prefix_list_associations/4,
+         list_core_network_prefix_list_associations/5,
+         list_core_network_routing_information/3,
+         list_core_network_routing_information/4,
          list_core_networks/1,
          list_core_networks/3,
          list_core_networks/4,
@@ -180,6 +192,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_attachment_routing_policy_label/2,
+         put_attachment_routing_policy_label/3,
          put_core_network_policy/3,
          put_core_network_policy/4,
          put_resource_policy/3,
@@ -188,6 +202,8 @@
          register_transit_gateway/4,
          reject_attachment/3,
          reject_attachment/4,
+         remove_attachment_routing_policy_label/4,
+         remove_attachment_routing_policy_label/5,
          restore_core_network_policy_version/4,
          restore_core_network_policy_version/5,
          start_organization_service_access_update/2,
@@ -356,6 +372,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_network_policy_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_attachment_routing_policy_label_request() :: #{
+%%   <<"AttachmentId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"RoutingPolicyLabel">> := string()
+%% }
+-type put_attachment_routing_policy_label_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -552,6 +578,16 @@
 
 
 %% Example:
+%% create_core_network_prefix_list_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"PrefixListAlias">> := string(),
+%%   <<"PrefixListArn">> := string()
+%% }
+-type create_core_network_prefix_list_association_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% site_to_site_vpn_attachment() :: #{
 %%   <<"Attachment">> => attachment(),
 %%   <<"VpnConnectionArn">> => string()
@@ -599,6 +635,15 @@
 
 
 %% Example:
+%% remove_attachment_routing_policy_label_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"RoutingPolicyLabel">> => string()
+%% }
+-type remove_attachment_routing_policy_label_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% connect_peer_configuration() :: #{
 %%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()),
 %%   <<"CoreNetworkAddress">> => string(),
@@ -613,6 +658,7 @@
 %% create_transit_gateway_route_table_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"PeeringId">> := string(),
+%%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayRouteTableArn">> := string()
 %% }
@@ -650,6 +696,7 @@
 %% create_site_to_site_vpn_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
+%%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpnConnectionArn">> := string()
 %% }
@@ -685,6 +732,18 @@
 %%   <<"ResourceArn">> => string()
 %% }
 -type peering_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_information_next_hop() :: #{
+%%   <<"CoreNetworkAttachmentId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SegmentName">> => string()
+%% }
+-type routing_information_next_hop() :: #{binary() => any()}.
 
 
 %% Example:
@@ -930,6 +989,7 @@
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"DirectConnectGatewayArn">> := string(),
 %%   <<"EdgeLocations">> := list(string()),
+%%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
@@ -1015,6 +1075,10 @@
 %% get_connect_attachment_request() :: #{}
 -type get_connect_attachment_request() :: #{}.
 
+%% Example:
+%% delete_core_network_prefix_list_association_request() :: #{}
+-type delete_core_network_prefix_list_association_request() :: #{}.
+
 
 %% Example:
 %% create_connect_attachment_request() :: #{
@@ -1022,10 +1086,26 @@
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"EdgeLocation">> := string(),
 %%   <<"Options">> := connect_attachment_options(),
+%%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TransportAttachmentId">> := string()
 %% }
 -type create_connect_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_routing_information_request() :: #{
+%%   <<"CommunityMatches">> => list(string()),
+%%   <<"EdgeLocation">> := string(),
+%%   <<"ExactAsPathMatches">> => list(string()),
+%%   <<"LocalPreferenceMatches">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MedMatches">> => list(string()),
+%%   <<"NextHopFilters">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"SegmentName">> := string()
+%% }
+-type list_core_network_routing_information_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1105,12 +1185,17 @@
 %% Example:
 %% core_network_change_values() :: #{
 %%   <<"Asn">> => float(),
+%%   <<"AttachmentId">> => string(),
 %%   <<"Cidr">> => string(),
 %%   <<"DestinationIdentifier">> => string(),
 %%   <<"DnsSupport">> => boolean(),
 %%   <<"EdgeLocations">> => list(string()),
 %%   <<"InsideCidrBlocks">> => list(string()),
 %%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"PeerEdgeLocations">> => list(string()),
+%%   <<"RoutingPolicy">> => string(),
+%%   <<"RoutingPolicyAssociationDetails">> => list(routing_policy_association_detail()),
+%%   <<"RoutingPolicyDirection">> => list(any()),
 %%   <<"SecurityGroupReferencingSupport">> => boolean(),
 %%   <<"SegmentName">> => string(),
 %%   <<"ServiceInsertionActions">> => list(service_insertion_action()),
@@ -1128,6 +1213,15 @@
 
 
 %% Example:
+%% list_core_network_prefix_list_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type list_core_network_prefix_list_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_network_resources_request() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"AwsRegion">> => string(),
@@ -1139,6 +1233,15 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type get_network_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachment_routing_policy_associations_request() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_routing_policy_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1250,6 +1353,18 @@
 
 
 %% Example:
+%% core_network_routing_information() :: #{
+%%   <<"AsPath">> => list(string()),
+%%   <<"Communities">> => list(string()),
+%%   <<"LocalPreference">> => string(),
+%%   <<"Med">> => string(),
+%%   <<"NextHop">> => routing_information_next_hop(),
+%%   <<"Prefix">> => string()
+%% }
+-type core_network_routing_information() :: #{binary() => any()}.
+
+
+%% Example:
 %% connection() :: #{
 %%   <<"ConnectedDeviceId">> => string(),
 %%   <<"ConnectedLinkId">> => string(),
@@ -1312,6 +1427,16 @@
 
 
 %% Example:
+%% attachment_routing_policy_association_summary() :: #{
+%%   <<"AssociatedRoutingPolicies">> => list(string()),
+%%   <<"AttachmentId">> => string(),
+%%   <<"PendingRoutingPolicies">> => list(string()),
+%%   <<"RoutingPolicyLabel">> => string()
+%% }
+-type attachment_routing_policy_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% connect_peer_bgp_configuration() :: #{
 %%   <<"CoreNetworkAddress">> => string(),
 %%   <<"CoreNetworkAsn">> => float(),
@@ -1327,6 +1452,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_connect_peer_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_attachment_routing_policy_label_request() :: #{}
+-type remove_attachment_routing_policy_label_request() :: #{}.
 
 
 %% Example:
@@ -1381,6 +1510,14 @@
 %% }
 -type attachment_error() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_core_network_prefix_list_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PrefixListAssociations">> => list(prefix_list_association())
+%% }
+-type list_core_network_prefix_list_associations_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_site_request() :: #{}
 -type delete_site_request() :: #{}.
@@ -1426,6 +1563,14 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type network_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachment_routing_policy_associations_response() :: #{
+%%   <<"AttachmentRoutingPolicyAssociations">> => list(attachment_routing_policy_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_routing_policy_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1626,6 +1771,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"Options">> => vpc_options(),
+%%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"SubnetArns">> := list(string()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpcArn">> := string()
@@ -1638,6 +1784,14 @@
 %%   <<"Name">> => string()
 %% }
 -type network_function_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_core_network_prefix_list_association_response() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type delete_core_network_prefix_list_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1770,6 +1924,9 @@
 %%   <<"Cidr">> => string(),
 %%   <<"EdgeLocation">> => string(),
 %%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"PeerEdgeLocation">> => string(),
+%%   <<"RoutingPolicyAssociationDetails">> => list(routing_policy_association_detail()),
+%%   <<"RoutingPolicyDirection">> => list(any()),
 %%   <<"SegmentName">> => string()
 %% }
 -type core_network_change_event_values() :: #{binary() => any()}.
@@ -1882,6 +2039,14 @@
 
 
 %% Example:
+%% routing_policy_association_detail() :: #{
+%%   <<"RoutingPolicyNames">> => list(string()),
+%%   <<"SharedSegments">> => list(string())
+%% }
+-type routing_policy_association_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% core_network_policy_error() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string(),
@@ -1982,6 +2147,14 @@
 
 
 %% Example:
+%% list_core_network_routing_information_response() :: #{
+%%   <<"CoreNetworkRoutingInformation">> => list(core_network_routing_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_network_routing_information_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_global_network_response() :: #{
 %%   <<"GlobalNetwork">> => global_network()
 %% }
@@ -2069,6 +2242,15 @@
 
 
 %% Example:
+%% put_attachment_routing_policy_label_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"RoutingPolicyLabel">> => string()
+%% }
+-type put_attachment_routing_policy_label_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_transit_gateway_connect_peer_request() :: #{
 %%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> => string(),
@@ -2085,6 +2267,15 @@
 %% }
 -type core_network_segment_edge_identifier() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_core_network_prefix_list_association_response() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"PrefixListAlias">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type create_core_network_prefix_list_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_request() :: #{}
 -type delete_resource_policy_request() :: #{}.
@@ -2096,6 +2287,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_list_association() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"PrefixListAlias">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type prefix_list_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2476,6 +2676,15 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_core_network_prefix_list_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_device_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2588,6 +2797,15 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_core_network_prefix_list_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2883,6 +3101,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_attachment_routing_policy_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_attachments_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2896,6 +3121,20 @@
     internal_server_exception().
 
 -type list_core_network_policy_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_core_network_prefix_list_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_core_network_routing_information_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2920,6 +3159,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_attachment_routing_policy_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type put_core_network_policy_errors() ::
     throttling_exception() | 
@@ -2951,6 +3199,15 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type remove_attachment_routing_policy_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -3441,6 +3698,41 @@ create_core_network(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an association between a core network and a prefix list for
+%% routing control.
+-spec create_core_network_prefix_list_association(aws_client:aws_client(), create_core_network_prefix_list_association_request()) ->
+    {ok, create_core_network_prefix_list_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_core_network_prefix_list_association_errors(), tuple()}.
+create_core_network_prefix_list_association(Client, Input) ->
+    create_core_network_prefix_list_association(Client, Input, []).
+
+-spec create_core_network_prefix_list_association(aws_client:aws_client(), create_core_network_prefix_list_association_request(), proplists:proplist()) ->
+    {ok, create_core_network_prefix_list_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_core_network_prefix_list_association_errors(), tuple()}.
+create_core_network_prefix_list_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prefix-list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new device in a global network.
 %%
 %% If you specify both a site ID and a
@@ -3909,6 +4201,40 @@ delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input
 delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an association between a core network and a prefix list.
+-spec delete_core_network_prefix_list_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_core_network_prefix_list_association_request()) ->
+    {ok, delete_core_network_prefix_list_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_core_network_prefix_list_association_errors(), tuple()}.
+delete_core_network_prefix_list_association(Client, CoreNetworkId, PrefixListArn, Input) ->
+    delete_core_network_prefix_list_association(Client, CoreNetworkId, PrefixListArn, Input, []).
+
+-spec delete_core_network_prefix_list_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_core_network_prefix_list_association_request(), proplists:proplist()) ->
+    {ok, delete_core_network_prefix_list_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_core_network_prefix_list_association_errors(), tuple()}.
+delete_core_network_prefix_list_association(Client, CoreNetworkId, PrefixListArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prefix-list/", aws_util:encode_uri(PrefixListArn), "/core-network/", aws_util:encode_uri(CoreNetworkId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5546,6 +5872,50 @@ get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the routing policy associations for attachments in a core
+%% network.
+-spec list_attachment_routing_policy_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_attachment_routing_policy_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachment_routing_policy_associations_errors(), tuple()}.
+list_attachment_routing_policy_associations(Client, CoreNetworkId)
+  when is_map(Client) ->
+    list_attachment_routing_policy_associations(Client, CoreNetworkId, #{}, #{}).
+
+-spec list_attachment_routing_policy_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_attachment_routing_policy_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachment_routing_policy_associations_errors(), tuple()}.
+list_attachment_routing_policy_associations(Client, CoreNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attachment_routing_policy_associations(Client, CoreNetworkId, QueryMap, HeadersMap, []).
+
+-spec list_attachment_routing_policy_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attachment_routing_policy_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachment_routing_policy_associations_errors(), tuple()}.
+list_attachment_routing_policy_associations(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/routing-policy-label/core-network/", aws_util:encode_uri(CoreNetworkId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"attachmentId">>, maps:get(<<"attachmentId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of core network attachments.
 -spec list_attachments(aws_client:aws_client()) ->
     {ok, list_attachments_response(), tuple()} |
@@ -5677,6 +6047,86 @@ list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, O
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the prefix list associations for a core network.
+-spec list_core_network_prefix_list_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_core_network_prefix_list_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_prefix_list_associations_errors(), tuple()}.
+list_core_network_prefix_list_associations(Client, CoreNetworkId)
+  when is_map(Client) ->
+    list_core_network_prefix_list_associations(Client, CoreNetworkId, #{}, #{}).
+
+-spec list_core_network_prefix_list_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_core_network_prefix_list_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_prefix_list_associations_errors(), tuple()}.
+list_core_network_prefix_list_associations(Client, CoreNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_network_prefix_list_associations(Client, CoreNetworkId, QueryMap, HeadersMap, []).
+
+-spec list_core_network_prefix_list_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_core_network_prefix_list_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_prefix_list_associations_errors(), tuple()}.
+list_core_network_prefix_list_associations(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prefix-list/core-network/", aws_util:encode_uri(CoreNetworkId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"prefixListArn">>, maps:get(<<"prefixListArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists routing information for a core network, including routes and
+%% their attributes.
+-spec list_core_network_routing_information(aws_client:aws_client(), binary() | list(), list_core_network_routing_information_request()) ->
+    {ok, list_core_network_routing_information_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_routing_information_errors(), tuple()}.
+list_core_network_routing_information(Client, CoreNetworkId, Input) ->
+    list_core_network_routing_information(Client, CoreNetworkId, Input, []).
+
+-spec list_core_network_routing_information(aws_client:aws_client(), binary() | list(), list_core_network_routing_information_request(), proplists:proplist()) ->
+    {ok, list_core_network_routing_information_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_routing_information_errors(), tuple()}.
+list_core_network_routing_information(Client, CoreNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-routing-information"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of owned and shared core networks.
 -spec list_core_networks(aws_client:aws_client()) ->
@@ -5843,6 +6293,41 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Applies a routing policy label to an attachment for traffic routing
+%% decisions.
+-spec put_attachment_routing_policy_label(aws_client:aws_client(), put_attachment_routing_policy_label_request()) ->
+    {ok, put_attachment_routing_policy_label_response(), tuple()} |
+    {error, any()} |
+    {error, put_attachment_routing_policy_label_errors(), tuple()}.
+put_attachment_routing_policy_label(Client, Input) ->
+    put_attachment_routing_policy_label(Client, Input, []).
+
+-spec put_attachment_routing_policy_label(aws_client:aws_client(), put_attachment_routing_policy_label_request(), proplists:proplist()) ->
+    {ok, put_attachment_routing_policy_label_response(), tuple()} |
+    {error, any()} |
+    {error, put_attachment_routing_policy_label_errors(), tuple()}.
+put_attachment_routing_policy_label(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/routing-policy-label"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new, immutable version of a core network policy.
 %%
 %% A subsequent change set is created showing the differences between the
@@ -5974,6 +6459,40 @@ reject_attachment(Client, AttachmentId, Input) ->
 reject_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = post,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/reject"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a routing policy label from an attachment.
+-spec remove_attachment_routing_policy_label(aws_client:aws_client(), binary() | list(), binary() | list(), remove_attachment_routing_policy_label_request()) ->
+    {ok, remove_attachment_routing_policy_label_response(), tuple()} |
+    {error, any()} |
+    {error, remove_attachment_routing_policy_label_errors(), tuple()}.
+remove_attachment_routing_policy_label(Client, AttachmentId, CoreNetworkId, Input) ->
+    remove_attachment_routing_policy_label(Client, AttachmentId, CoreNetworkId, Input, []).
+
+-spec remove_attachment_routing_policy_label(aws_client:aws_client(), binary() | list(), binary() | list(), remove_attachment_routing_policy_label_request(), proplists:proplist()) ->
+    {ok, remove_attachment_routing_policy_label_response(), tuple()} |
+    {error, any()} |
+    {error, remove_attachment_routing_policy_label_errors(), tuple()}.
+remove_attachment_routing_policy_label(Client, AttachmentId, CoreNetworkId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/routing-policy-label/core-network/", aws_util:encode_uri(CoreNetworkId), "/attachment/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

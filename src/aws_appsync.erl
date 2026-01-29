@@ -1386,7 +1386,7 @@
 
 %% Example:
 %% update_api_request() :: #{
-%%   <<"eventConfig">> => event_config(),
+%%   <<"eventConfig">> := event_config(),
 %%   <<"name">> := string(),
 %%   <<"ownerContact">> => string()
 %% }
@@ -1538,7 +1538,7 @@
 
 %% Example:
 %% create_api_request() :: #{
-%%   <<"eventConfig">> => event_config(),
+%%   <<"eventConfig">> := event_config(),
 %%   <<"name">> := string(),
 %%   <<"ownerContact">> => string(),
 %%   <<"tags">> => map()

@@ -145,7 +145,8 @@
 %%   <<"name">> => string(),
 %%   <<"schedule">> => schedule(),
 %%   <<"source">> => list(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
 %% }
 -type campaign() :: #{binary() => any()}.
 
@@ -156,6 +157,13 @@
 %%   <<"objectTypeNames">> => map()
 %% }
 -type customer_profiles_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_integration_summary() :: #{
+%%   <<"functionArn">> => string()
+%% }
+-type lambda_integration_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -386,6 +394,13 @@
 
 
 %% Example:
+%% lambda_integration_config() :: #{
+%%   <<"functionArn">> => string()
+%% }
+-type lambda_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"xAmzErrorType">> => string()
@@ -468,6 +483,16 @@
 
 
 %% Example:
+%% whats_app_channel_subtype_parameters() :: #{
+%%   <<"connectSourcePhoneNumberArn">> => string(),
+%%   <<"destinationPhoneNumber">> => string(),
+%%   <<"templateArn">> => string(),
+%%   <<"templateParameters">> => map()
+%% }
+-type whats_app_channel_subtype_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_campaign_communication_limits_request() :: #{
 %%   <<"communicationLimitsOverride">> := communication_limits_config()
 %% }
@@ -505,7 +530,8 @@
 %%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
 %%   <<"attributes">> => map(),
 %%   <<"connectSourcePhoneNumber">> => string(),
-%%   <<"destinationPhoneNumber">> => string()
+%%   <<"destinationPhoneNumber">> => string(),
+%%   <<"ringTimeout">> => integer()
 %% }
 -type telephony_channel_subtype_parameters() :: #{binary() => any()}.
 
@@ -575,7 +601,8 @@
 %% channel_subtype_config() :: #{
 %%   <<"email">> => email_channel_subtype_config(),
 %%   <<"sms">> => sms_channel_subtype_config(),
-%%   <<"telephony">> => telephony_channel_subtype_config()
+%%   <<"telephony">> => telephony_channel_subtype_config(),
+%%   <<"whatsApp">> => whats_app_channel_subtype_config()
 %% }
 -type channel_subtype_config() :: #{binary() => any()}.
 
@@ -608,7 +635,8 @@
 %%   <<"email">> => time_window(),
 %%   <<"localTimeZoneConfig">> => local_time_zone_config(),
 %%   <<"sms">> => time_window(),
-%%   <<"telephony">> => time_window()
+%%   <<"telephony">> => time_window(),
+%%   <<"whatsApp">> => time_window()
 %% }
 -type communication_time_config() :: #{binary() => any()}.
 
@@ -626,6 +654,14 @@
 %%   <<"startTime">> => string()
 %% }
 -type time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_outbound_config() :: #{
+%%   <<"connectSourcePhoneNumberArn">> => string(),
+%%   <<"wisdomTemplateArn">> => string()
+%% }
+-type whats_app_outbound_config() :: #{binary() => any()}.
 
 %% Example:
 %% pause_campaign_request() :: #{}
@@ -646,7 +682,7 @@
 
 %% Example:
 %% create_campaign_request() :: #{
-%%   <<"channelSubtypeConfig">> := channel_subtype_config(),
+%%   <<"channelSubtypeConfig">> => channel_subtype_config(),
 %%   <<"communicationLimitsOverride">> => communication_limits_config(),
 %%   <<"communicationTimeConfig">> => communication_time_config(),
 %%   <<"connectCampaignFlowArn">> => string(),
@@ -654,7 +690,8 @@
 %%   <<"name">> := string(),
 %%   <<"schedule">> => schedule(),
 %%   <<"source">> => list(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
 %% }
 -type create_campaign_request() :: #{binary() => any()}.
 
@@ -722,7 +759,8 @@
 %% telephony_outbound_config() :: #{
 %%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
 %%   <<"connectContactFlowId">> => string(),
-%%   <<"connectSourcePhoneNumber">> => string()
+%%   <<"connectSourcePhoneNumber">> => string(),
+%%   <<"ringTimeout">> => integer()
 %% }
 -type telephony_outbound_config() :: #{binary() => any()}.
 
@@ -739,6 +777,13 @@
 %%   <<"integrationConfig">> := list()
 %% }
 -type put_connect_instance_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_integration_identifier() :: #{
+%%   <<"functionArn">> => string()
+%% }
+-type lambda_integration_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -832,6 +877,15 @@
 
 
 %% Example:
+%% whats_app_channel_subtype_config() :: #{
+%%   <<"capacity">> => float(),
+%%   <<"defaultOutboundConfig">> => whats_app_outbound_config(),
+%%   <<"outboundMode">> => list()
+%% }
+-type whats_app_channel_subtype_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% campaign_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"channelSubtypes">> => list(string()),
@@ -839,7 +893,8 @@
 %%   <<"connectInstanceId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"schedule">> => schedule()
+%%   <<"schedule">> => schedule(),
+%%   <<"type">> => string()
 %% }
 -type campaign_summary() :: #{binary() => any()}.
 

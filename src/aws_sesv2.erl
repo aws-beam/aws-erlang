@@ -117,6 +117,8 @@
          get_domain_statistics_report/4,
          get_domain_statistics_report/6,
          get_domain_statistics_report/7,
+         get_email_address_insights/2,
+         get_email_address_insights/3,
          get_email_identity/2,
          get_email_identity/4,
          get_email_identity/5,
@@ -403,7 +405,8 @@
 
 %% Example:
 %% suppression_attributes() :: #{
-%%   <<"SuppressedReasons">> => list(list(any())())
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"ValidationAttributes">> => suppression_validation_attributes()
 %% }
 -type suppression_attributes() :: #{binary() => any()}.
 
@@ -613,6 +616,14 @@
 
 
 %% Example:
+%% suppression_condition_threshold() :: #{
+%%   <<"ConditionThresholdEnabled">> => list(any()),
+%%   <<"OverallConfidenceThreshold">> => suppression_confidence_threshold()
+%% }
+-type suppression_condition_threshold() :: #{binary() => any()}.
+
+
+%% Example:
 %% kinesis_firehose_destination() :: #{
 %%   <<"DeliveryStreamArn">> => string(),
 %%   <<"IamRoleArn">> => string()
@@ -720,6 +731,7 @@
 %%   <<"FailureRedirectionURL">> => string(),
 %%   <<"FromEmailAddress">> => string(),
 %%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateContent">> => string(),
 %%   <<"TemplateName">> => string(),
 %%   <<"TemplateSubject">> => string()
@@ -734,6 +746,7 @@
 %%   <<"NextSigningKeyLength">> => list(any()),
 %%   <<"SigningAttributesOrigin">> => list(any()),
 %%   <<"SigningEnabled">> => boolean(),
+%%   <<"SigningHostedZone">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tokens">> => list(string())
 %% }
@@ -885,6 +898,13 @@
 %% }
 -type list_multi_region_endpoints_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% email_address_insights_verdict() :: #{
+%%   <<"ConfidenceVerdict">> => list(any())
+%% }
+-type email_address_insights_verdict() :: #{binary() => any()}.
+
 %% Example:
 %% put_account_vdm_attributes_response() :: #{}
 -type put_account_vdm_attributes_response() :: #{}.
@@ -1003,7 +1023,8 @@
 
 %% Example:
 %% put_account_suppression_attributes_request() :: #{
-%%   <<"SuppressedReasons">> => list(list(any())())
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"ValidationAttributes">> => suppression_validation_attributes()
 %% }
 -type put_account_suppression_attributes_request() :: #{binary() => any()}.
 
@@ -1059,7 +1080,8 @@
 
 %% Example:
 %% put_configuration_set_suppression_options_request() :: #{
-%%   <<"SuppressedReasons">> => list(list(any())())
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"ValidationOptions">> => suppression_validation_options()
 %% }
 -type put_configuration_set_suppression_options_request() :: #{binary() => any()}.
 
@@ -1097,6 +1119,7 @@
 
 %% Example:
 %% create_email_template_request() :: #{
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateContent">> := email_template_content(),
 %%   <<"TemplateName">> := string()
 %% }
@@ -1148,6 +1171,18 @@
 %%   <<"BlacklistItemNames">> := list(string())
 %% }
 -type get_blacklist_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_insights_mailbox_evaluations() :: #{
+%%   <<"HasValidDnsRecords">> => email_address_insights_verdict(),
+%%   <<"HasValidSyntax">> => email_address_insights_verdict(),
+%%   <<"IsDisposable">> => email_address_insights_verdict(),
+%%   <<"IsRandomInput">> => email_address_insights_verdict(),
+%%   <<"IsRoleAddress">> => email_address_insights_verdict(),
+%%   <<"MailboxExists">> => email_address_insights_verdict()
+%% }
+-type email_address_insights_mailbox_evaluations() :: #{binary() => any()}.
 
 %% Example:
 %% put_email_identity_configuration_set_attributes_response() :: #{}
@@ -1218,6 +1253,13 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type list_resource_tenants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% suppression_confidence_threshold() :: #{
+%%   <<"ConfidenceVerdictThreshold">> => list(any())
+%% }
+-type suppression_confidence_threshold() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1584,6 +1626,7 @@
 %%   <<"FailureRedirectionURL">> := string(),
 %%   <<"FromEmailAddress">> := string(),
 %%   <<"SuccessRedirectionURL">> := string(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateContent">> := string(),
 %%   <<"TemplateName">> := string(),
 %%   <<"TemplateSubject">> := string()
@@ -1712,6 +1755,13 @@
 %%   <<"Subject">> => string()
 %% }
 -type get_message_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_email_address_insights_response() :: #{
+%%   <<"MailboxValidation">> => mailbox_validation()
+%% }
+-type get_email_address_insights_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2102,7 +2152,8 @@
 
 %% Example:
 %% suppression_options() :: #{
-%%   <<"SuppressedReasons">> => list(list(any())())
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"ValidationOptions">> => suppression_validation_options()
 %% }
 -type suppression_options() :: #{binary() => any()}.
 
@@ -2206,7 +2257,8 @@
 %% Example:
 %% put_email_identity_dkim_signing_attributes_response() :: #{
 %%   <<"DkimStatus">> => list(any()),
-%%   <<"DkimTokens">> => list(string())
+%%   <<"DkimTokens">> => list(string()),
+%%   <<"SigningHostedZone">> => string()
 %% }
 -type put_email_identity_dkim_signing_attributes_response() :: #{binary() => any()}.
 
@@ -2341,6 +2393,13 @@
 
 
 %% Example:
+%% suppression_validation_attributes() :: #{
+%%   <<"ConditionThreshold">> => suppression_condition_threshold()
+%% }
+-type suppression_validation_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_configuration_set_sending_options_request() :: #{
 %%   <<"SendingEnabled">> => boolean()
 %% }
@@ -2384,6 +2443,14 @@
 
 
 %% Example:
+%% mailbox_validation() :: #{
+%%   <<"Evaluations">> => email_address_insights_mailbox_evaluations(),
+%%   <<"IsValid">> => email_address_insights_verdict()
+%% }
+-type mailbox_validation() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_tenant_request() :: #{
 %%   <<"TenantName">> := string()
 %% }
@@ -2399,6 +2466,7 @@
 
 %% Example:
 %% get_email_template_response() :: #{
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateContent">> => email_template_content(),
 %%   <<"TemplateName">> => string()
 %% }
@@ -2544,6 +2612,13 @@
 
 
 %% Example:
+%% get_email_address_insights_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type get_email_address_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_deliverability_campaign() :: #{
 %%   <<"CampaignId">> => string(),
 %%   <<"DeleteRate">> => float(),
@@ -2629,6 +2704,13 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type list_email_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% suppression_validation_options() :: #{
+%%   <<"ConditionThreshold">> => suppression_condition_threshold()
+%% }
+-type suppression_validation_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3063,6 +3145,10 @@
 -type get_domain_statistics_report_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_email_address_insights_errors() ::
+    bad_request_exception() | 
     too_many_requests_exception().
 
 -type get_email_identity_errors() ::
@@ -5229,6 +5315,42 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides validation insights about a specific email address,
+%% including syntax validation, DNS record checks, mailbox existence, and
+%% other deliverability factors.
+-spec get_email_address_insights(aws_client:aws_client(), get_email_address_insights_request()) ->
+    {ok, get_email_address_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_email_address_insights_errors(), tuple()}.
+get_email_address_insights(Client, Input) ->
+    get_email_address_insights(Client, Input, []).
+
+-spec get_email_address_insights(aws_client:aws_client(), get_email_address_insights_request(), proplists:proplist()) ->
+    {ok, get_email_address_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_email_address_insights_errors(), tuple()}.
+get_email_address_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/email-address-insights"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides information about a specific identity, including the
 %% identity's verification
 %% status, sending authorization policies, its DKIM authentication status,
@@ -7170,7 +7292,7 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input) ->
     {error, put_email_identity_dkim_signing_attributes_errors(), tuple()}.
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
-    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim/signing"],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim/signing"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

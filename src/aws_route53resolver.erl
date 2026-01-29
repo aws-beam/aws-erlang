@@ -654,8 +654,10 @@
 %%   <<"PreferredInstanceType">> => string(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"RniEnhancedMetricsEnabled">> => boolean(),
 %%   <<"SecurityGroupIds">> := list(string()),
-%%   <<"Tags">> => list(tag())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetNameServerMetricsEnabled">> => boolean()
 %% }
 -type create_resolver_endpoint_request() :: #{binary() => any()}.
 
@@ -988,9 +990,11 @@
 %%   <<"PreferredInstanceType">> => string(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"RniEnhancedMetricsEnabled">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetNameServerMetricsEnabled">> => boolean()
 %% }
 -type resolver_endpoint() :: #{binary() => any()}.
 
@@ -1279,6 +1283,8 @@
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointId">> := string(),
 %%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"RniEnhancedMetricsEnabled">> => boolean(),
+%%   <<"TargetNameServerMetricsEnabled">> => boolean(),
 %%   <<"UpdateIpAddresses">> => list(update_ip_address())
 %% }
 -type update_resolver_endpoint_request() :: #{binary() => any()}.

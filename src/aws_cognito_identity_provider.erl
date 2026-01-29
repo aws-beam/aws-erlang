@@ -1523,6 +1523,7 @@
 %%   <<"CustomMessage">> => string(),
 %%   <<"CustomSMSSender">> => custom_sms_lambda_version_config_type(),
 %%   <<"DefineAuthChallenge">> => string(),
+%%   <<"InboundFederation">> => inbound_federation_lambda_type(),
 %%   <<"KMSKeyID">> => string(),
 %%   <<"PostAuthentication">> => string(),
 %%   <<"PostConfirmation">> => string(),
@@ -2149,6 +2150,13 @@
 %%   <<"message">> => string()
 %% }
 -type user_lambda_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_federation_lambda_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
+%% }
+-type inbound_federation_lambda_type() :: #{binary() => any()}.
 
 %% Example:
 %% delete_user_pool_request() :: #{
@@ -6573,7 +6581,7 @@ delete_user_attributes(Client, Input, Options)
 %% pools in an inactive state for 14
 %% days, then begins a cleanup process that fully removes them from Amazon
 %% Web Services systems. In case
-%% of accidental deletion, contact Amazon Web ServicesSupport within 14 days
+%% of accidental deletion, contact Amazon Web Services Support within 14 days
 %% for restoration
 %% assistance.
 %%

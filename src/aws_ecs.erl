@@ -37,6 +37,8 @@
          create_capacity_provider/3,
          create_cluster/2,
          create_cluster/3,
+         create_express_gateway_service/2,
+         create_express_gateway_service/3,
          create_service/2,
          create_service/3,
          create_task_set/2,
@@ -49,6 +51,8 @@
          delete_capacity_provider/3,
          delete_cluster/2,
          delete_cluster/3,
+         delete_express_gateway_service/2,
+         delete_express_gateway_service/3,
          delete_service/2,
          delete_service/3,
          delete_task_definitions/2,
@@ -65,6 +69,8 @@
          describe_clusters/3,
          describe_container_instances/2,
          describe_container_instances/3,
+         describe_express_gateway_service/2,
+         describe_express_gateway_service/3,
          describe_service_deployments/2,
          describe_service_deployments/3,
          describe_service_revisions/2,
@@ -145,6 +151,8 @@
          update_container_agent/3,
          update_container_instances_state/2,
          update_container_instances_state/3,
+         update_express_gateway_service/2,
+         update_express_gateway_service/3,
          update_service/2,
          update_service/3,
          update_service_primary_task_set/2,
@@ -340,6 +348,13 @@
 -type stop_task_request() :: #{binary() => any()}.
 
 %% Example:
+%% ingress_path_summary() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"endpoint">> => string()
+%% }
+-type ingress_path_summary() :: #{binary() => any()}.
+
+%% Example:
 %% describe_container_instances_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"containerInstances">> := list(string()),
@@ -392,11 +407,33 @@
 -type inference_accelerator() :: #{binary() => any()}.
 
 %% Example:
+%% managed_metric_alarm() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_metric_alarm() :: #{binary() => any()}.
+
+%% Example:
 %% run_task_response() :: #{
 %%   <<"failures">> => list(failure()),
 %%   <<"tasks">> => list(task())
 %% }
 -type run_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_ingress_path() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"certificate">> => managed_certificate(),
+%%   <<"endpoint">> => string(),
+%%   <<"listener">> => managed_listener(),
+%%   <<"loadBalancer">> => managed_load_balancer(),
+%%   <<"loadBalancerSecurityGroups">> => list(managed_security_group()),
+%%   <<"rule">> => managed_listener_rule(),
+%%   <<"targetGroups">> => list(managed_target_group())
+%% }
+-type managed_ingress_path() :: #{binary() => any()}.
 
 %% Example:
 %% proxy_configuration() :: #{
@@ -405,6 +442,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_network_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type express_gateway_service_network_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% attribute_limit_exceeded_exception() :: #{
@@ -456,6 +500,15 @@
 -type service_event() :: #{binary() => any()}.
 
 %% Example:
+%% service_current_revision_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"pendingTaskCount">> => integer(),
+%%   <<"requestedTaskCount">> => integer(),
+%%   <<"runningTaskCount">> => integer()
+%% }
+-type service_current_revision_summary() :: #{binary() => any()}.
+
+%% Example:
 %% describe_services_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"include">> => list(list(any())()),
@@ -497,6 +550,7 @@
 
 %% Example:
 %% create_managed_instances_provider_configuration() :: #{
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template(),
 %%   <<"propagateTags">> => list(any())
@@ -705,38 +759,41 @@
 
 %% Example:
 %% service() :: #{
+%%   <<"propagateTags">> => list(any()),
+%%   <<"placementStrategy">> => list(placement_strategy()),
+%%   <<"taskSets">> => list(task_set()),
+%%   <<"clusterArn">> => string(),
+%%   <<"serviceRegistries">> => list(service_registry()),
+%%   <<"schedulingStrategy">> => list(any()),
 %%   <<"availabilityZoneRebalancing">> => list(any()),
 %%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"clusterArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"deploymentConfiguration">> => deployment_configuration(),
-%%   <<"deploymentController">> => deployment_controller(),
+%%   <<"serviceName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"currentServiceRevisions">> => list(service_current_revision_summary()),
+%%   <<"platformVersion">> => string(),
 %%   <<"deployments">> => list(deployment()),
 %%   <<"desiredCount">> => integer(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"events">> => list(service_event()),
-%%   <<"healthCheckGracePeriodSeconds">> => integer(),
-%%   <<"launchType">> => list(any()),
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"pendingCount">> => integer(),
-%%   <<"placementConstraints">> => list(placement_constraint()),
-%%   <<"placementStrategy">> => list(placement_strategy()),
 %%   <<"platformFamily">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"propagateTags">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"runningCount">> => integer(),
-%%   <<"schedulingStrategy">> => list(any()),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"serviceRegistries">> => list(service_registry()),
 %%   <<"status">> => string(),
-%%   <<"tags">> => list(tag()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"serviceArn">> => string(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"events">> => list(service_event()),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"launchType">> => list(any()),
 %%   <<"taskDefinition">> => string(),
-%%   <<"taskSets">> => list(task_set())
+%%   <<"tags">> => list(tag()),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"resourceManagementType">> => list(any()),
+%%   <<"pendingCount">> => integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"currentServiceDeployment">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"placementConstraints">> => list(placement_constraint()),
+%%   <<"runningCount">> => integer(),
+%%   <<"deploymentController">> => deployment_controller()
 %% }
 -type service() :: #{binary() => any()}.
 
@@ -746,6 +803,13 @@
 %%   <<"ipAddress">> => string()
 %% }
 -type host_entry() :: #{binary() => any()}.
+
+%% Example:
+%% describe_express_gateway_service_request() :: #{
+%%   <<"include">> => list(list(any())()),
+%%   <<"serviceArn">> := string()
+%% }
+-type describe_express_gateway_service_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_task_definitions_request() :: #{
@@ -799,6 +863,13 @@
 %%   <<"taskSet">> => task_set()
 %% }
 -type delete_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_status() :: #{
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type express_gateway_service_status() :: #{binary() => any()}.
 
 %% Example:
 %% update_container_instances_state_request() :: #{
@@ -899,6 +970,7 @@
 
 %% Example:
 %% managed_instances_provider() :: #{
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template(),
 %%   <<"propagateTags">> => list(any())
@@ -911,6 +983,7 @@
 %%   <<"launchType">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"resourceManagementType">> => list(any()),
 %%   <<"schedulingStrategy">> => list(any())
 %% }
 -type list_services_request() :: #{binary() => any()}.
@@ -944,6 +1017,12 @@
 %%   <<"taskDefinition">> => task_definition()
 %% }
 -type deregister_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_express_gateway_service_request() :: #{
+%%   <<"serviceArn">> := string()
+%% }
+-type delete_express_gateway_service_request() :: #{binary() => any()}.
 
 %% Example:
 %% namespace_not_found_exception() :: #{
@@ -1036,6 +1115,13 @@
 %%   <<"serviceDeployments">> => list(service_deployment_brief())
 %% }
 -type list_service_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_aws_logs_configuration() :: #{
+%%   <<"logGroup">> => string(),
+%%   <<"logStreamPrefix">> => string()
+%% }
+-type express_gateway_service_aws_logs_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% service_connect_configuration() :: #{
@@ -1227,6 +1313,18 @@
 -type deployment_lifecycle_hook() :: #{binary() => any()}.
 
 %% Example:
+%% managed_load_balancer() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scheme">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_load_balancer() :: #{binary() => any()}.
+
+%% Example:
 %% attachment_state_change() :: #{
 %%   <<"attachmentArn">> => string(),
 %%   <<"status">> => string()
@@ -1269,6 +1367,16 @@
 -type cluster_setting() :: #{binary() => any()}.
 
 %% Example:
+%% managed_certificate() :: #{
+%%   <<"arn">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_certificate() :: #{binary() => any()}.
+
+%% Example:
 %% accelerator_count_request() :: #{
 %%   <<"max">> => integer(),
 %%   <<"min">> => integer()
@@ -1289,6 +1397,12 @@
 %%   <<"taskSets">> => list(string())
 %% }
 -type describe_task_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_express_gateway_service_response() :: #{
+%%   <<"service">> => updated_express_gateway_service()
+%% }
+-type update_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
 %% submit_container_state_change_request() :: #{
@@ -1513,12 +1627,33 @@
 -type submit_task_state_change_request() :: #{binary() => any()}.
 
 %% Example:
+%% managed_log_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_log_group() :: #{binary() => any()}.
+
+%% Example:
 %% update_managed_instances_provider_configuration() :: #{
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
 %%   <<"propagateTags">> => list(any())
 %% }
 -type update_managed_instances_provider_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_managed_resources() :: #{
+%%   <<"autoScaling">> => managed_auto_scaling(),
+%%   <<"ingressPaths">> => list(managed_ingress_path()),
+%%   <<"logGroups">> => list(managed_log_group()),
+%%   <<"metricAlarms">> => list(managed_metric_alarm()),
+%%   <<"serviceSecurityGroups">> => list(managed_security_group())
+%% }
+-type e_c_s_managed_resources() :: #{binary() => any()}.
 
 %% Example:
 %% health_check() :: #{
@@ -1563,6 +1698,20 @@
 -type task_set_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_express_gateway_service_request() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> => express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceArn">> := string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type update_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
 %% session() :: #{
 %%   <<"sessionId">> => string(),
 %%   <<"streamUrl">> => string(),
@@ -1577,6 +1726,23 @@
 -type delete_cluster_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_express_gateway_service_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"infrastructureRoleArn">> := string(),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> := express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type create_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_capacity_provider_response() :: #{
 %%   <<"capacityProvider">> => capacity_provider()
 %% }
@@ -1587,6 +1753,12 @@
 %%   <<"containerInstance">> => container_instance()
 %% }
 -type update_container_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type express_gateway_repository_credentials() :: #{binary() => any()}.
 
 %% Example:
 %% put_attributes_response() :: #{
@@ -1718,6 +1890,12 @@
 -type list_clusters_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type describe_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_task_definition_request() :: #{
 %%   <<"include">> => list(list(any())()),
 %%   <<"taskDefinition">> := string()
@@ -1744,11 +1922,27 @@
 -type platform_unknown_exception() :: #{binary() => any()}.
 
 %% Example:
+%% managed_auto_scaling() :: #{
+%%   <<"applicationAutoScalingPolicies">> => list(managed_application_auto_scaling_policy()),
+%%   <<"scalableTarget">> => managed_scalable_target()
+%% }
+-type managed_auto_scaling() :: #{binary() => any()}.
+
+%% Example:
 %% delete_attributes_request() :: #{
 %%   <<"attributes">> := list(attribute()),
 %%   <<"cluster">> => string()
 %% }
 -type delete_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_scaling_target() :: #{
+%%   <<"autoScalingMetric">> => list(any()),
+%%   <<"autoScalingTargetValue">> => integer(),
+%%   <<"maxTaskCount">> => integer(),
+%%   <<"minTaskCount">> => integer()
+%% }
+-type express_gateway_scaling_target() :: #{binary() => any()}.
 
 %% Example:
 %% e_f_s_authorization_config() :: #{
@@ -1882,6 +2076,12 @@
 -type managed_scaling() :: #{binary() => any()}.
 
 %% Example:
+%% delete_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type delete_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
 %% created_at() :: #{
 %%   <<"after">> => non_neg_integer(),
 %%   <<"before">> => non_neg_integer()
@@ -1975,6 +2175,21 @@
 %%   <<"managedTerminationProtection">> => list(any())
 %% }
 -type auto_scaling_group_provider() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_express_gateway_service() :: #{
+%%   <<"activeConfigurations">> => list(express_gateway_service_configuration()),
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentDeployment">> => string(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"status">> => express_gateway_service_status(),
+%%   <<"tags">> => list(tag()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type e_c_s_express_gateway_service() :: #{binary() => any()}.
 
 %% Example:
 %% platform_task_definition_incompatibility_exception() :: #{
@@ -2116,6 +2331,29 @@
 -type resolved_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% managed_scalable_target() :: #{
+%%   <<"arn">> => string(),
+%%   <<"maxCapacity">> => integer(),
+%%   <<"minCapacity">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_scalable_target() :: #{binary() => any()}.
+
+%% Example:
+%% managed_target_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"healthCheckPort">> => integer(),
+%%   <<"port">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_target_group() :: #{binary() => any()}.
+
+%% Example:
 %% service_connect_service() :: #{
 %%   <<"clientAliases">> => list(service_connect_client_alias()),
 %%   <<"discoveryName">> => string(),
@@ -2237,6 +2475,12 @@
 -type stop_task_response() :: #{binary() => any()}.
 
 %% Example:
+%% infrastructure_optimization() :: #{
+%%   <<"scaleInAfter">> => integer()
+%% }
+-type infrastructure_optimization() :: #{binary() => any()}.
+
+%% Example:
 %% list_services_by_namespace_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"serviceArns">> => list(string())
@@ -2306,6 +2550,31 @@
 -type protected_task() :: #{binary() => any()}.
 
 %% Example:
+%% express_gateway_service_configuration() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"ingressPaths">> => list(ingress_path_summary()),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> => express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type express_gateway_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_listener() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_listener() :: #{binary() => any()}.
+
+%% Example:
 %% service_connect_tls_configuration() :: #{
 %%   <<"issuerCertificateAuthority">> => service_connect_tls_certificate_authority(),
 %%   <<"kmsKey">> => string(),
@@ -2319,6 +2588,7 @@
 %%   <<"clusterArn">> => string(),
 %%   <<"containerImages">> => list(container_image()),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"ecsManagedResources">> => e_c_s_managed_resources(),
 %%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
 %%   <<"guardDutyEnabled">> => boolean(),
 %%   <<"launchType">> => list(any()),
@@ -2338,6 +2608,18 @@
 -type service_revision() :: #{binary() => any()}.
 
 %% Example:
+%% managed_application_auto_scaling_policy() :: #{
+%%   <<"arn">> => string(),
+%%   <<"metric">> => string(),
+%%   <<"policyType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"targetValue">> => float(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_application_auto_scaling_policy() :: #{binary() => any()}.
+
+%% Example:
 %% memory_mi_b_request() :: #{
 %%   <<"max">> => integer(),
 %%   <<"min">> => integer()
@@ -2350,6 +2632,15 @@
 %%   <<"min">> => integer()
 %% }
 -type network_interface_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% managed_security_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_security_group() :: #{binary() => any()}.
 
 %% Example:
 %% list_attributes_request() :: #{
@@ -2404,6 +2695,12 @@
 -type submit_attachment_state_changes_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type create_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_account_setting_request() :: #{
 %%   <<"name">> := list(any()),
 %%   <<"principalArn">> => string()
@@ -2418,7 +2715,9 @@
 
 %% Example:
 %% instance_launch_template() :: #{
+%%   <<"capacityOptionType">> => list(any()),
 %%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"fipsEnabled">> => boolean(),
 %%   <<"instanceRequirements">> => instance_requirements_request(),
 %%   <<"monitoring">> => list(any()),
 %%   <<"networkConfiguration">> => managed_instances_network_configuration(),
@@ -2440,11 +2739,32 @@
 -type describe_service_revisions_request() :: #{binary() => any()}.
 
 %% Example:
+%% managed_listener_rule() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_listener_rule() :: #{binary() => any()}.
+
+%% Example:
 %% list_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"taskArns">> => list(string())
 %% }
 -type list_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_container() :: #{
+%%   <<"awsLogsConfiguration">> => express_gateway_service_aws_logs_configuration(),
+%%   <<"command">> => list(string()),
+%%   <<"containerPort">> => integer(),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"image">> => string(),
+%%   <<"repositoryCredentials">> => express_gateway_repository_credentials(),
+%%   <<"secrets">> => list(secret())
+%% }
+-type express_gateway_container() :: #{binary() => any()}.
 
 %% Example:
 %% create_service_response() :: #{
@@ -2546,6 +2866,18 @@
 %%   <<"dockerVersion">> => string()
 %% }
 -type version_info() :: #{binary() => any()}.
+
+%% Example:
+%% updated_express_gateway_service() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"status">> => express_gateway_service_status(),
+%%   <<"targetConfiguration">> => express_gateway_service_configuration(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type updated_express_gateway_service() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_primary_task_set_response() :: #{
@@ -2720,6 +3052,16 @@
     client_exception() | 
     namespace_not_found_exception().
 
+-type create_express_gateway_service_errors() ::
+    server_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
 -type create_service_errors() ::
     server_exception() | 
     platform_task_definition_incompatibility_exception() | 
@@ -2772,6 +3114,16 @@
     cluster_not_found_exception() | 
     update_in_progress_exception().
 
+-type delete_express_gateway_service_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
 -type delete_service_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2823,6 +3175,15 @@
     server_exception() | 
     invalid_parameter_exception() | 
     client_exception() | 
+    cluster_not_found_exception().
+
+-type describe_express_gateway_service_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
     cluster_not_found_exception().
 
 -type describe_service_deployments_errors() ::
@@ -3088,6 +3449,16 @@
     client_exception() | 
     cluster_not_found_exception().
 
+-type update_express_gateway_service_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
 -type update_service_errors() ::
     server_exception() | 
     platform_task_definition_incompatibility_exception() | 
@@ -3196,6 +3567,40 @@ create_cluster(Client, Input)
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
+
+%% @doc Creates an Express service that simplifies deploying containerized
+%% web applications on
+%% Amazon ECS with managed Amazon Web Services infrastructure.
+%%
+%% This operation provisions and configures
+%% Application Load Balancers, target groups, security groups, and
+%% auto-scaling policies
+%% automatically.
+%%
+%% Specify a primary container configuration with your application image and
+%% basic
+%% settings. Amazon ECS creates the necessary Amazon Web Services resources
+%% for traffic distribution, health
+%% monitoring, network access control, and capacity management.
+%%
+%% Provide an execution role for task operations and an infrastructure role
+%% for managing
+%% Amazon Web Services resources on your behalf.
+-spec create_express_gateway_service(aws_client:aws_client(), create_express_gateway_service_request()) ->
+    {ok, create_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_express_gateway_service_errors(), tuple()}.
+create_express_gateway_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_express_gateway_service(Client, Input, []).
+
+-spec create_express_gateway_service(aws_client:aws_client(), create_express_gateway_service_request(), proplists:proplist()) ->
+    {ok, create_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_express_gateway_service_errors(), tuple()}.
+create_express_gateway_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExpressGatewayService">>, Input, Options).
 
 %% @doc Runs and maintains your desired number of tasks from a specified task
 %% definition.
@@ -3600,6 +4005,39 @@ delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
+%% @doc Deletes an Express service and removes all associated Amazon Web
+%% Services resources.
+%%
+%% This operation
+%% stops service tasks, removes the Application Load Balancer, target groups,
+%% security groups,
+%% auto-scaling policies, and other managed infrastructure components.
+%%
+%% The service enters a `DRAINING' state where existing tasks complete
+%% current
+%% requests without starting new tasks. After all tasks stop, the service and
+%% infrastructure
+%% are permanently removed.
+%%
+%% This operation cannot be reversed. Back up important data and verify the
+%% service is no
+%% longer needed before deletion.
+-spec delete_express_gateway_service(aws_client:aws_client(), delete_express_gateway_service_request()) ->
+    {ok, delete_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_express_gateway_service_errors(), tuple()}.
+delete_express_gateway_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_express_gateway_service(Client, Input, []).
+
+-spec delete_express_gateway_service(aws_client:aws_client(), delete_express_gateway_service_request(), proplists:proplist()) ->
+    {ok, delete_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_express_gateway_service_errors(), tuple()}.
+delete_express_gateway_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExpressGatewayService">>, Input, Options).
+
 %% @doc Deletes a specified service within a cluster.
 %%
 %% You can delete a service if you have no
@@ -3871,6 +4309,34 @@ describe_container_instances(Client, Input)
 describe_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
+
+%% @doc Retrieves detailed information about an Express service, including
+%% current status,
+%% configuration, managed infrastructure, and service revisions.
+%%
+%% Returns comprehensive service details, active service revisions, ingress
+%% paths with
+%% endpoints, and managed Amazon Web Services resource status including load
+%% balancers and auto-scaling
+%% policies.
+%%
+%% Use the `include' parameter to retrieve additional information such as
+%% resource tags.
+-spec describe_express_gateway_service(aws_client:aws_client(), describe_express_gateway_service_request()) ->
+    {ok, describe_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, describe_express_gateway_service_errors(), tuple()}.
+describe_express_gateway_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_express_gateway_service(Client, Input, []).
+
+-spec describe_express_gateway_service(aws_client:aws_client(), describe_express_gateway_service_request(), proplists:proplist()) ->
+    {ok, describe_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, describe_express_gateway_service_errors(), tuple()}.
+describe_express_gateway_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExpressGatewayService">>, Input, Options).
 
 %% @doc Describes one or more of your service deployments.
 %%
@@ -4727,12 +5193,15 @@ stop_service_deployment(Client, Input, Options)
 %% ```
 %% docker stop''' is issued to the containers running in the
 %% task. This results in a
-%% `SIGTERM' value and a default 30-second timeout, after which the
-%% `SIGKILL' value is sent and the containers are forcibly stopped. If
-%% the
-%% container handles the `SIGTERM' value gracefully and exits within 30
-%% seconds
-%% from receiving it, no `SIGKILL' value is sent.
+%% stop signal value and a default 30-second timeout, after which the
+%% `SIGKILL' value is sent and the containers are forcibly stopped. This
+%% signal can be defined in your container image with the `STOPSIGNAL'
+%% instruction
+%% and will default to `SIGTERM'. If the container handles the
+%% `SIGTERM'
+%% value gracefully and exits within 30 seconds from receiving it, no
+%% `SIGKILL' value
+%% is sent.
 %%
 %% For Windows containers, POSIX signals do not work and runtime stops the
 %% container by
@@ -5064,6 +5533,38 @@ update_container_instances_state(Client, Input)
 update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
+
+%% @doc Updates an existing Express service configuration.
+%%
+%% Modifies container settings, resource
+%% allocation, auto-scaling configuration, and other service parameters
+%% without recreating the
+%% service.
+%%
+%% Amazon ECS creates a new service revision with updated configuration and
+%% performs a rolling
+%% deployment to replace existing tasks. The service remains available during
+%% updates,
+%% ensuring zero-downtime deployments.
+%%
+%% Some parameters like the infrastructure role cannot be modified after
+%% service creation
+%% and require creating a new service.
+-spec update_express_gateway_service(aws_client:aws_client(), update_express_gateway_service_request()) ->
+    {ok, update_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, update_express_gateway_service_errors(), tuple()}.
+update_express_gateway_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_express_gateway_service(Client, Input, []).
+
+-spec update_express_gateway_service(aws_client:aws_client(), update_express_gateway_service_request(), proplists:proplist()) ->
+    {ok, update_express_gateway_service_response(), tuple()} |
+    {error, any()} |
+    {error, update_express_gateway_service_errors(), tuple()}.
+update_express_gateway_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateExpressGatewayService">>, Input, Options).
 
 %% @doc Modifies the parameters of a service.
 %%

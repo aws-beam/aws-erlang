@@ -163,6 +163,13 @@
 -type stop_key_usage_input() :: #{binary() => any()}.
 
 %% Example:
+%% export_as2805_key_cryptogram() :: #{
+%%   <<"As2805KeyVariant">> => list(any()),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type export_as2805_key_cryptogram() :: #{binary() => any()}.
+
+%% Example:
 %% import_tr34_key_block() :: #{
 %%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
 %%   <<"ImportToken">> => string(),
@@ -671,6 +678,17 @@
 %%   <<"KeySerialNumber">> => string()
 %% }
 -type export_dukpt_initial_key() :: #{binary() => any()}.
+
+%% Example:
+%% import_as2805_key_cryptogram() :: #{
+%%   <<"As2805KeyVariant">> => list(any()),
+%%   <<"Exportable">> => [boolean()],
+%%   <<"KeyAlgorithm">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"WrappedKeyCryptogram">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type import_as2805_key_cryptogram() :: #{binary() => any()}.
 
 %% Example:
 %% restore_key_output() :: #{

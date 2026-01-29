@@ -198,6 +198,8 @@
          update_health_check/4,
          update_hosted_zone_comment/3,
          update_hosted_zone_comment/4,
+         update_hosted_zone_features/3,
+         update_hosted_zone_features/4,
          update_traffic_policy_comment/4,
          update_traffic_policy_comment/5,
          update_traffic_policy_instance/3,
@@ -560,6 +562,10 @@
 %%   <<"Limit">> => hosted_zone_limit()
 %% }
 -type get_hosted_zone_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_hosted_zone_features_response() :: #{}
+-type update_hosted_zone_features_response() :: #{}.
 
 
 %% Example:
@@ -1070,6 +1076,13 @@
 %%   <<"message">> => string()
 %% }
 -type traffic_policy_instance_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_failure_reasons() :: #{
+%%   <<"AcceleratedRecovery">> => string()
+%% }
+-type hosted_zone_failure_reasons() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1754,6 +1767,7 @@
 %% hosted_zone() :: #{
 %%   <<"CallerReference">> => string(),
 %%   <<"Config">> => hosted_zone_config(),
+%%   <<"Features">> => hosted_zone_features(),
 %%   <<"Id">> => string(),
 %%   <<"LinkedService">> => linked_service(),
 %%   <<"Name">> => string(),
@@ -2085,6 +2099,14 @@
 
 
 %% Example:
+%% hosted_zone_features() :: #{
+%%   <<"AcceleratedRecoveryStatus">> => list(any()),
+%%   <<"FailureReasons">> => hosted_zone_failure_reasons()
+%% }
+-type hosted_zone_features() :: #{binary() => any()}.
+
+
+%% Example:
 %% test_dns_answer_response() :: #{
 %%   <<"Nameserver">> => string(),
 %%   <<"Protocol">> => string(),
@@ -2136,6 +2158,13 @@
 %%   <<"CollectionVersion">> => float()
 %% }
 -type change_cidr_collection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hosted_zone_features_request() :: #{
+%%   <<"EnableAcceleratedRecovery">> => boolean()
+%% }
+-type update_hosted_zone_features_request() :: #{binary() => any()}.
 
 -type activate_key_signing_key_errors() ::
     no_such_key_signing_key() | 
@@ -2504,6 +2533,12 @@
 
 -type update_hosted_zone_comment_errors() ::
     prior_request_not_complete() | 
+    no_such_hosted_zone() | 
+    invalid_input().
+
+-type update_hosted_zone_features_errors() ::
+    prior_request_not_complete() | 
+    limits_exceeded() | 
     no_such_hosted_zone() | 
     invalid_input().
 
@@ -6442,6 +6477,46 @@ update_hosted_zone_comment(Client, Id, Input) ->
 update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the features configuration for a hosted zone.
+%%
+%% This operation allows you to enable or disable specific features for your
+%% hosted zone, such as accelerated recovery.
+%%
+%% Accelerated recovery enables you to update DNS records in your public
+%% hosted zone even when the us-east-1 region is unavailable.
+-spec update_hosted_zone_features(aws_client:aws_client(), binary() | list(), update_hosted_zone_features_request()) ->
+    {ok, update_hosted_zone_features_response(), tuple()} |
+    {error, any()} |
+    {error, update_hosted_zone_features_errors(), tuple()}.
+update_hosted_zone_features(Client, HostedZoneId, Input) ->
+    update_hosted_zone_features(Client, HostedZoneId, Input, []).
+
+-spec update_hosted_zone_features(aws_client:aws_client(), binary() | list(), update_hosted_zone_features_request(), proplists:proplist()) ->
+    {ok, update_hosted_zone_features_response(), tuple()} |
+    {error, any()} |
+    {error, update_hosted_zone_features_errors(), tuple()}.
+update_hosted_zone_features(Client, HostedZoneId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/features"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -424,6 +424,16 @@
 -type describe_location_object_storage_request() :: #{binary() => any()}.
 
 %% Example:
+%% task_execution_folders_failed_detail() :: #{
+%%   <<"Delete">> => float(),
+%%   <<"List">> => float(),
+%%   <<"Prepare">> => float(),
+%%   <<"Transfer">> => float(),
+%%   <<"Verify">> => float()
+%% }
+-type task_execution_folders_failed_detail() :: #{binary() => any()}.
+
+%% Example:
 %% update_location_nfs_response() :: #{
 
 %% }
@@ -592,6 +602,8 @@
 %% update_location_smb_request() :: #{
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosKeytab">> => binary(),
@@ -917,32 +929,41 @@
 
 %% Example:
 %% describe_task_execution_response() :: #{
-%%   <<"BytesCompressed">> => float(),
-%%   <<"BytesTransferred">> => float(),
+%%   <<"Result">> => task_execution_result_detail(),
 %%   <<"BytesWritten">> => float(),
+%%   <<"EstimatedFoldersToDelete">> => float(),
+%%   <<"StartTime">> => non_neg_integer(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EstimatedBytesToTransfer">> => float(),
-%%   <<"EstimatedFilesToDelete">> => float(),
-%%   <<"EstimatedFilesToTransfer">> => float(),
-%%   <<"Excludes">> => list(filter_rule()),
-%%   <<"FilesDeleted">> => float(),
-%%   <<"FilesFailed">> => task_execution_files_failed_detail(),
-%%   <<"FilesListed">> => task_execution_files_listed_detail(),
-%%   <<"FilesPrepared">> => float(),
-%%   <<"FilesSkipped">> => float(),
 %%   <<"FilesTransferred">> => float(),
 %%   <<"FilesVerified">> => float(),
-%%   <<"Includes">> => list(filter_rule()),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"ManifestConfig">> => manifest_config(),
+%%   <<"FilesPrepared">> => float(),
+%%   <<"FoldersFailed">> => task_execution_folders_failed_detail(),
+%%   <<"FilesFailed">> => task_execution_files_failed_detail(),
+%%   <<"EstimatedBytesToTransfer">> => float(),
+%%   <<"FoldersDeleted">> => float(),
+%%   <<"FilesSkipped">> => float(),
 %%   <<"Options">> => options(),
+%%   <<"FoldersVerified">> => float(),
+%%   <<"FilesListed">> => task_execution_files_listed_detail(),
+%%   <<"EstimatedFoldersToTransfer">> => float(),
+%%   <<"EstimatedFilesToTransfer">> => float(),
 %%   <<"ReportResult">> => report_result(),
-%%   <<"Result">> => task_execution_result_detail(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
+%%   <<"BytesTransferred">> => float(),
+%%   <<"EstimatedFilesToDelete">> => float(),
+%%   <<"FoldersPrepared">> => float(),
+%%   <<"FoldersListed">> => task_execution_folders_listed_detail(),
+%%   <<"BytesCompressed">> => float(),
+%%   <<"ManifestConfig">> => manifest_config(),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"TaskExecutionArn">> => string(),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"FoldersTransferred">> => float(),
+%%   <<"TaskReportConfig">> => task_report_config(),
 %%   <<"TaskMode">> => list(any()),
-%%   <<"TaskReportConfig">> => task_report_config()
+%%   <<"Status">> => list(any()),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"FilesDeleted">> => float(),
+%%   <<"FoldersSkipped">> => float()
 %% }
 -type describe_task_execution_response() :: #{binary() => any()}.
 
@@ -980,6 +1001,8 @@
 %% create_location_smb_request() :: #{
 %%   <<"AgentArns">> := list(string()),
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosKeytab">> => binary(),
@@ -1347,12 +1370,15 @@
 %% describe_location_smb_response() :: #{
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosPrincipal">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
 %%   <<"MountOptions">> => smb_mount_options(),
 %%   <<"User">> => string()
 %% }
@@ -1389,6 +1415,13 @@
 %%   <<"S3StorageClass">> => list(any())
 %% }
 -type describe_location_s3_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_execution_folders_listed_detail() :: #{
+%%   <<"AtDestinationForDelete">> => float(),
+%%   <<"AtSource">> => float()
+%% }
+-type task_execution_folders_listed_detail() :: #{binary() => any()}.
 
 %% Example:
 %% start_task_execution_request() :: #{

@@ -23,6 +23,11 @@
          associate_environment_role/6,
          associate_governed_terms/5,
          associate_governed_terms/6,
+         batch_get_attributes_metadata/5,
+         batch_get_attributes_metadata/7,
+         batch_get_attributes_metadata/8,
+         batch_put_attributes_metadata/5,
+         batch_put_attributes_metadata/6,
          cancel_metadata_generation_run/4,
          cancel_metadata_generation_run/5,
          cancel_subscription/4,
@@ -93,6 +98,8 @@
          delete_asset_type/5,
          delete_connection/4,
          delete_connection/5,
+         delete_data_export_configuration/3,
+         delete_data_export_configuration/4,
          delete_data_product/4,
          delete_data_product/5,
          delete_data_source/4,
@@ -154,6 +161,9 @@
          get_connection/3,
          get_connection/5,
          get_connection/6,
+         get_data_export_configuration/2,
+         get_data_export_configuration/4,
+         get_data_export_configuration/5,
          get_data_product/3,
          get_data_product/5,
          get_data_product/6,
@@ -346,6 +356,8 @@
          post_lineage_event/4,
          post_time_series_data_points/5,
          post_time_series_data_points/6,
+         put_data_export_configuration/3,
+         put_data_export_configuration/4,
          put_environment_blueprint_configuration/4,
          put_environment_blueprint_configuration/5,
          reject_predictions/4,
@@ -406,6 +418,8 @@
          update_project/5,
          update_project_profile/4,
          update_project_profile/5,
+         update_root_domain_unit_owner/3,
+         update_root_domain_unit_owner/4,
          update_rule/4,
          update_rule/5,
          update_subscription_grant_status/5,
@@ -484,6 +498,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"targetIdentifier">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type list_metadata_generation_runs_input() :: #{binary() => any()}.
@@ -624,6 +639,14 @@
 
 
 %% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"sseAlgorithm">> => [string()]
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_glossary_term_output() :: #{
 %%   <<"domainId">> => string(),
 %%   <<"glossaryId">> => string(),
@@ -702,6 +725,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_data_source_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_type_stat() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_generation_run_type_stat() :: #{binary() => any()}.
 
 
 %% Example:
@@ -788,6 +820,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -930,6 +963,10 @@
 %%   <<"schedule">> => [string()]
 %% }
 -type lineage_sync_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% update_root_domain_unit_owner_output() :: #{}
+-type update_root_domain_unit_owner_output() :: #{}.
 
 
 %% Example:
@@ -1315,6 +1352,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -1866,6 +1904,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -2103,6 +2142,13 @@
 
 
 %% Example:
+%% subscribed_iam_principal() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type subscribed_iam_principal() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_serverless_storage() :: #{
 %%   <<"workgroupName">> => [string()]
 %% }
@@ -2115,6 +2161,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
@@ -2201,7 +2248,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"owningProjectIdentifier">> := string(),
 %%   <<"target">> := metadata_generation_run_target(),
-%%   <<"type">> := list(any())
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
 %% }
 -type start_metadata_generation_run_input() :: #{binary() => any()}.
 
@@ -2402,6 +2450,15 @@
 %% }
 -type iam_properties_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_data_export_configuration_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"enableExport">> := [boolean()],
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type put_data_export_configuration_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscription_target_input() :: #{}
 -type delete_subscription_target_input() :: #{}.
@@ -2445,6 +2502,10 @@
 %% }
 -type lineage_node_type_item() :: #{binary() => any()}.
 
+%% Example:
+%% delete_data_export_configuration_input() :: #{}
+-type delete_data_export_configuration_input() :: #{}.
+
 
 %% Example:
 %% get_metadata_generation_run_output() :: #{
@@ -2455,7 +2516,9 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"target">> => metadata_generation_run_target(),
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"typeStats">> => list(metadata_generation_run_type_stat()),
+%%   <<"types">> => list(list(any())())
 %% }
 -type get_metadata_generation_run_output() :: #{binary() => any()}.
 
@@ -2645,6 +2708,14 @@
 
 
 %% Example:
+%% batch_get_attributes_metadata_input() :: #{
+%%   <<"attributeIdentifiers">> := list(string()),
+%%   <<"entityRevision">> => string()
+%% }
+-type batch_get_attributes_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_environment_output() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"awsAccountRegion">> => string(),
@@ -2827,7 +2898,8 @@
 %%   <<"id">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
 %% }
 -type start_metadata_generation_run_output() :: #{binary() => any()}.
 
@@ -2840,6 +2912,7 @@
 %%   <<"manageAccessRole">> := string(),
 %%   <<"name">> := string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> := list(subscription_target_form()),
 %%   <<"type">> := [string()]
 %% }
@@ -2903,6 +2976,10 @@
 %% Example:
 %% delete_environment_blueprint_input() :: #{}
 -type delete_environment_blueprint_input() :: #{}.
+
+%% Example:
+%% delete_data_export_configuration_output() :: #{}
+-type delete_data_export_configuration_output() :: #{}.
 
 
 %% Example:
@@ -3149,6 +3226,13 @@
 
 
 %% Example:
+%% batch_put_attribute_output() :: #{
+%%   <<"attributeIdentifier">> => string()
+%% }
+-type batch_put_attribute_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% accept_rule() :: #{
 %%   <<"rule">> => list(any()),
 %%   <<"threshold">> => [float()]
@@ -3242,6 +3326,15 @@
 %%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type get_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_root_domain_unit_owner_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"currentOwner">> := string(),
+%%   <<"newOwner">> := [string()]
+%% }
+-type update_root_domain_unit_owner_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3437,6 +3530,15 @@
 %%   <<"businessNameGeneration">> => business_name_generation_configuration()
 %% }
 -type prediction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_error() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type attribute_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3797,6 +3899,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
@@ -3991,6 +4094,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
@@ -4005,6 +4109,8 @@
 %% Example:
 %% filter() :: #{
 %%   <<"attribute">> => string(),
+%%   <<"intValue">> => [float()],
+%%   <<"operator">> => list(any()),
 %%   <<"value">> => [string()]
 %% }
 -type filter() :: #{binary() => any()}.
@@ -4068,6 +4174,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -4540,6 +4647,10 @@
 -type sso_user_profile_details() :: #{binary() => any()}.
 
 %% Example:
+%% put_data_export_configuration_output() :: #{}
+-type put_data_export_configuration_output() :: #{}.
+
+%% Example:
 %% cancel_metadata_generation_run_input() :: #{}
 -type cancel_metadata_generation_run_input() :: #{}.
 
@@ -4563,6 +4674,10 @@
 %% Example:
 %% delete_asset_input() :: #{}
 -type delete_asset_input() :: #{}.
+
+%% Example:
+%% get_data_export_configuration_input() :: #{}
+-type get_data_export_configuration_input() :: #{}.
 
 
 %% Example:
@@ -4803,6 +4918,13 @@
 
 
 %% Example:
+%% glossary_term_enforcement_detail() :: #{
+%%   <<"requiredGlossaryTermIds">> => list(string())
+%% }
+-type glossary_term_enforcement_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_governed_terms_input() :: #{
 %%   <<"governedGlossaryTerms">> := list(string())
 %% }
@@ -4885,6 +5007,14 @@
 %%   <<"revision">> => string()
 %% }
 -type get_data_product_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_input() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"forms">> => list(form_input())
+%% }
+-type attribute_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5055,6 +5185,13 @@
 %%   <<"schemaName">> => [string()]
 %% }
 -type relational_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_iam_principal_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_iam_principal_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_form_type_input() :: #{}
@@ -5439,7 +5576,8 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"target">> => metadata_generation_run_target(),
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
 %% }
 -type metadata_generation_run_item() :: #{binary() => any()}.
 
@@ -5780,6 +5918,14 @@
 
 
 %% Example:
+%% batch_put_attributes_metadata_output() :: #{
+%%   <<"attributes">> => list(batch_put_attribute_output()),
+%%   <<"errors">> => list(attribute_error())
+%% }
+-type batch_put_attributes_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_location() :: #{
 %%   <<"accessRole">> => [string()],
 %%   <<"awsAccountId">> => string(),
@@ -5975,6 +6121,14 @@
 
 
 %% Example:
+%% batch_get_attribute_output() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"forms">> => list(form_output())
+%% }
+-type batch_get_attribute_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_lineage_sync_configuration_input() :: #{
 %%   <<"enabled">> => [boolean()],
 %%   <<"schedule">> => lineage_sync_schedule()
@@ -6123,6 +6277,18 @@
 
 
 %% Example:
+%% get_data_export_configuration_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"isExportEnabled">> => [boolean()],
+%%   <<"s3TableBucketArn">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_data_export_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_unit_group_properties() :: #{
 %%   <<"groupId">> => [string()]
 %% }
@@ -6172,9 +6338,12 @@
 %% }
 -type update_glossary_input() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_metadata_generation_run_input() :: #{}
--type get_metadata_generation_run_input() :: #{}.
+%% get_metadata_generation_run_input() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type get_metadata_generation_run_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_environment_profile_input() :: #{}
@@ -6202,6 +6371,22 @@
 %% Example:
 %% delete_project_profile_output() :: #{}
 -type delete_project_profile_output() :: #{}.
+
+
+%% Example:
+%% batch_get_attributes_metadata_output() :: #{
+%%   <<"attributes">> => list(batch_get_attribute_output()),
+%%   <<"errors">> => list(attribute_error())
+%% }
+-type batch_get_attributes_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_attributes_metadata_input() :: #{
+%%   <<"attributes">> := list(attribute_input()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_put_attributes_metadata_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6251,6 +6436,7 @@
 %%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form())
 %% }
 -type update_subscription_target_input() :: #{binary() => any()}.
@@ -6474,6 +6660,21 @@
     conflict_exception().
 
 -type associate_governed_terms_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_get_attributes_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_put_attributes_metadata_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6768,6 +6969,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_data_export_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_data_product_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -6974,6 +7183,13 @@
     resource_not_found_exception().
 
 -type get_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_export_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -7435,6 +7651,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type put_data_export_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type put_environment_blueprint_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -7659,6 +7884,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_root_domain_unit_owner_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -7894,6 +8127,82 @@ associate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType,
 associate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/associate-governed-terms"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the attribute metadata.
+-spec batch_get_attributes_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, batch_get_attributes_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_attributes_metadata_errors(), tuple()}.
+batch_get_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, AttributeIdentifiers)
+  when is_map(Client) ->
+    batch_get_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, AttributeIdentifiers, #{}, #{}).
+
+-spec batch_get_attributes_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, batch_get_attributes_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_attributes_metadata_errors(), tuple()}.
+batch_get_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, AttributeIdentifiers, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, AttributeIdentifiers, QueryMap, HeadersMap, []).
+
+-spec batch_get_attributes_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_attributes_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_attributes_metadata_errors(), tuple()}.
+batch_get_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, AttributeIdentifiers, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/attributes-metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"attributeIdentifier">>, AttributeIdentifiers},
+        {<<"entityRevision">>, maps:get(<<"entityRevision">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Writes the attribute metadata.
+-spec batch_put_attributes_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_put_attributes_metadata_input()) ->
+    {ok, batch_put_attributes_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, batch_put_attributes_metadata_errors(), tuple()}.
+batch_put_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    batch_put_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec batch_put_attributes_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_put_attributes_metadata_input(), proplists:proplist()) ->
+    {ok, batch_put_attributes_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, batch_put_attributes_metadata_errors(), tuple()}.
+batch_put_attributes_metadata(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/attributes-metadata"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9346,6 +9655,48 @@ delete_connection(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes data export configuration for a domain.
+%%
+%% This operation does not delete the S3 table created by the
+%% PutDataExportConfiguration operation.
+%%
+%% To temporarily disable export without deleting the configuration, use the
+%% PutDataExportConfiguration operation with the `--no-enable-export'
+%% flag instead. This allows you to re-enable export for the same domain
+%% using the `--enable-export' flag without deleting S3 table.
+-spec delete_data_export_configuration(aws_client:aws_client(), binary() | list(), delete_data_export_configuration_input()) ->
+    {ok, delete_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_export_configuration_errors(), tuple()}.
+delete_data_export_configuration(Client, DomainIdentifier, Input) ->
+    delete_data_export_configuration(Client, DomainIdentifier, Input, []).
+
+-spec delete_data_export_configuration(aws_client:aws_client(), binary() | list(), delete_data_export_configuration_input(), proplists:proplist()) ->
+    {ok, delete_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_export_configuration_errors(), tuple()}.
+delete_data_export_configuration(Client, DomainIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-export-configuration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a data product in Amazon DataZone.
 %%
 %% Prerequisites:
@@ -10434,6 +10785,43 @@ get_connection(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets data export configuration details.
+-spec get_data_export_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_export_configuration_errors(), tuple()}.
+get_data_export_configuration(Client, DomainIdentifier)
+  when is_map(Client) ->
+    get_data_export_configuration(Client, DomainIdentifier, #{}, #{}).
+
+-spec get_data_export_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_export_configuration_errors(), tuple()}.
+get_data_export_configuration(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_export_configuration(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_data_export_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_export_configuration_errors(), tuple()}.
+get_data_export_configuration(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-export-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the data product.
 %%
 %% Prerequisites:
@@ -11309,7 +11697,11 @@ get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, Head
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -12633,6 +13025,7 @@ list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap, Op
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"targetIdentifier">>, maps:get(<<"targetIdentifier">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -12959,6 +13352,7 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
+        {<<"owningIamPrincipalArn">>, maps:get(<<"owningIamPrincipalArn">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
         {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
@@ -13010,6 +13404,7 @@ list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, Optio
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
+        {<<"owningIamPrincipalArn">>, maps:get(<<"owningIamPrincipalArn">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
         {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
@@ -13104,6 +13499,7 @@ list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
+        {<<"owningIamPrincipalArn">>, maps:get(<<"owningIamPrincipalArn">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
         {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
@@ -13251,6 +13647,58 @@ post_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityT
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/time-series-data-points"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates data export configuration details.
+%%
+%% If you want to temporarily disable export and later re-enable it for the
+%% same domain, use the `--no-enable-export' flag to disable and the
+%% `--enable-export' flag to re-enable. This preserves the configuration
+%% and allows you to re-enable export without deleting S3 table.
+%%
+%% You can enable asset metadata export for only one domain per account per
+%% Region. To enable export for a different domain, complete the following
+%% steps:
+%%
+%% Delete the export configuration for the currently enabled domain using the
+%% DeleteDataExportConfiguration operation.
+%%
+%% Delete the asset S3 table under the aws-sagemaker-catalog S3 table bucket.
+%% We recommend backing up the S3 table before deletion.
+%%
+%% Call the PutDataExportConfiguration API to enable export for the new
+%% domain.
+-spec put_data_export_configuration(aws_client:aws_client(), binary() | list(), put_data_export_configuration_input()) ->
+    {ok, put_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_data_export_configuration_errors(), tuple()}.
+put_data_export_configuration(Client, DomainIdentifier, Input) ->
+    put_data_export_configuration(Client, DomainIdentifier, Input, []).
+
+-spec put_data_export_configuration(aws_client:aws_client(), binary() | list(), put_data_export_configuration_input(), proplists:proplist()) ->
+    {ok, put_data_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_data_export_configuration_errors(), tuple()}.
+put_data_export_configuration(Client, DomainIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-export-configuration"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -13508,6 +13956,35 @@ revoke_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 %%
 %% For paginated results, be prepared to use --next-token to fetch additional
 %% pages.
+%%
+%% To run a standard free-text search, the `searchText' parameter must be
+%% supplied. By default, all searchable fields are indexed for semantic
+%% search and will return semantic matches for SearchListings queries. To
+%% prevent semantic search indexing for a custom form attribute, see the
+%% CreateFormType API documentation:
+%% https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormType.html.
+%% To run a lexical search query, enclose the query with double quotes
+%% (&quot;&quot;). This will disable semantic search even for fields that
+%% have semantic search enabled and will only return results that contain the
+%% keywords wrapped by double quotes (order of tokens in the query is not
+%% enforced). Free-text search is supported for all attributes annotated with
+%% @amazon.datazone#searchable.
+%%
+%% To run a filtered search, provide filter clause using the `filters'
+%% parameter. To filter on glossary terms, use the special attribute
+%% `__DataZoneGlossaryTerms'. To filter on an indexed numeric attribute
+%% (i.e., a numeric attribute annotated with
+%% `@amazon.datazone#sortable'), provide a filter using the
+%% `intValue' parameter. The filters parameter can also be used to run
+%% more advanced free-text searches that target specific attributes
+%% (attributes must be annotated with `@amazon.datazone#searchable' for
+%% free-text search). Create/update timestamp filtering is supported using
+%% the special `creationTime'/`lastUpdatedTime' attributes. Filter
+%% types can be mixed and matched to power complex queries.
+%%
+%% To find out whether an attribute has been annotated and indexed for a
+%% given search type, use the GetFormType API to retrieve the form containing
+%% the attribute.
 -spec search(aws_client:aws_client(), binary() | list(), search_input()) ->
     {ok, search_output(), tuple()} |
     {error, any()} |
@@ -13593,7 +14070,7 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
 %% The SearchListings API gives users flexibility in specifying what kind of
 %% search is run.
 %%
-%% To run a free-text search, the `searchText' parameter must be
+%% To run a standard free-text search, the `searchText' parameter must be
 %% supplied. By default, all searchable fields are indexed for semantic
 %% search and will return semantic matches for SearchListings queries. To
 %% prevent semantic search indexing for a custom form attribute, see the
@@ -13606,9 +14083,17 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
 %% enforced). Free-text search is supported for all attributes annotated with
 %% @amazon.datazone#searchable.
 %%
-%% To run a filtered search, provide filter clause using the filters
+%% To run a filtered search, provide filter clause using the `filters'
 %% parameter. To filter on glossary terms, use the special attribute
-%% `__DataZoneGlossaryTerms'.
+%% `__DataZoneGlossaryTerms'. To filter on an indexed numeric attribute
+%% (i.e., a numeric attribute annotated with
+%% `@amazon.datazone#sortable'), provide a filter using the
+%% `intValue' parameter. The filters parameter can also be used to run
+%% more advanced free-text searches that target specific attributes
+%% (attributes must be annotated with `@amazon.datazone#searchable' for
+%% free-text search). Create/update timestamp filtering is supported using
+%% the special `creationTime'/`lastUpdatedTime' attributes. Filter
+%% types can be mixed and matched to power complex queries.
 %%
 %% To find out whether an attribute has been annotated and indexed for a
 %% given search type, use the GetFormType API to retrieve the form containing
@@ -13774,7 +14259,8 @@ start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input0, Op
 %%
 %% Asset must have a structured schema with valid rows and columns.
 %%
-%% Valid values for --type: BUSINESS_DESCRIPTIONS, BUSINESS_NAMES.
+%% Valid values for --type: BUSINESS_DESCRIPTIONS, BUSINESS_NAMES,
+%% BUSINESS_GLOSSARY_ASSOCIATIONS.
 %%
 %% The user must have permission to run metadata generation in the
 %% domain/project.
@@ -14406,6 +14892,40 @@ update_project_profile(Client, DomainIdentifier, Identifier, Input0, Options0) -
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the owner of the root domain unit.
+-spec update_root_domain_unit_owner(aws_client:aws_client(), binary() | list(), update_root_domain_unit_owner_input()) ->
+    {ok, update_root_domain_unit_owner_output(), tuple()} |
+    {error, any()} |
+    {error, update_root_domain_unit_owner_errors(), tuple()}.
+update_root_domain_unit_owner(Client, DomainIdentifier, Input) ->
+    update_root_domain_unit_owner(Client, DomainIdentifier, Input, []).
+
+-spec update_root_domain_unit_owner(aws_client:aws_client(), binary() | list(), update_root_domain_unit_owner_input(), proplists:proplist()) ->
+    {ok, update_root_domain_unit_owner_output(), tuple()} |
+    {error, any()} |
+    {error, update_root_domain_unit_owner_errors(), tuple()}.
+update_root_domain_unit_owner(Client, DomainIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/root-domain-unit-owner"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

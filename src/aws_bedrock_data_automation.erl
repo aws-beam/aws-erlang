@@ -4,7 +4,9 @@
 %% @doc Amazon Bedrock Data Automation BuildTime
 -module(aws_bedrock_data_automation).
 
--export([create_blueprint/2,
+-export([copy_blueprint_stage/3,
+         copy_blueprint_stage/4,
+         create_blueprint/2,
          create_blueprint/3,
          create_blueprint_version/3,
          create_blueprint_version/4,
@@ -16,8 +18,12 @@
          delete_data_automation_project/4,
          get_blueprint/3,
          get_blueprint/4,
+         get_blueprint_optimization_status/3,
+         get_blueprint_optimization_status/4,
          get_data_automation_project/3,
          get_data_automation_project/4,
+         invoke_blueprint_optimization_async/2,
+         invoke_blueprint_optimization_async/3,
          list_blueprints/2,
          list_blueprints/3,
          list_data_automation_projects/2,
@@ -106,8 +112,18 @@
 
 
 %% Example:
+%% sensitive_data_configuration() :: #{
+%%   <<"detectionMode">> => list(any()),
+%%   <<"detectionScope">> => list(list(any())()),
+%%   <<"piiEntitiesConfiguration">> => p_i_i_entities_configuration()
+%% }
+-type sensitive_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_override_configuration() :: #{
-%%   <<"modalityProcessing">> => modality_processing_configuration()
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
 %% }
 -type image_override_configuration() :: #{binary() => any()}.
 
@@ -117,7 +133,8 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"projectArn">> => string(),
 %%   <<"projectName">> => string(),
-%%   <<"projectStage">> => list(any())
+%%   <<"projectStage">> => list(any()),
+%%   <<"projectType">> => list(any())
 %% }
 -type data_automation_project_summary() :: #{binary() => any()}.
 
@@ -201,6 +218,14 @@
 %% }
 -type list_data_automation_projects_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% blueprint_optimization_sample() :: #{
+%%   <<"assetS3Object">> => s3_object(),
+%%   <<"groundTruthS3Object">> => s3_object()
+%% }
+-type blueprint_optimization_sample() :: #{binary() => any()}.
+
 %% Example:
 %% delete_blueprint_response() :: #{}
 -type delete_blueprint_response() :: #{}.
@@ -209,6 +234,7 @@
 %% Example:
 %% document_override_configuration() :: #{
 %%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration(),
 %%   <<"splitter">> => splitter_configuration()
 %% }
 -type document_override_configuration() :: #{binary() => any()}.
@@ -216,7 +242,8 @@
 
 %% Example:
 %% video_override_configuration() :: #{
-%%   <<"modalityProcessing">> => modality_processing_configuration()
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
 %% }
 -type video_override_configuration() :: #{binary() => any()}.
 
@@ -227,6 +254,14 @@
 %%   <<"generativeField">> => audio_standard_generative_field()
 %% }
 -type audio_standard_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"s3Uri">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,10 +311,26 @@
 
 
 %% Example:
+%% invoke_blueprint_optimization_async_response() :: #{
+%%   <<"invocationArn">> => string()
+%% }
+-type invoke_blueprint_optimization_async_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_extraction_granularity() :: #{
 %%   <<"types">> => list(list(any())())
 %% }
 -type document_extraction_granularity() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_blueprint_stage_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sourceStage">> := list(any()),
+%%   <<"targetStage">> := list(any())
+%% }
+-type copy_blueprint_stage_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -365,6 +416,7 @@
 %%   <<"projectDescription">> => string(),
 %%   <<"projectName">> := string(),
 %%   <<"projectStage">> => list(any()),
+%%   <<"projectType">> => list(any()),
 %%   <<"standardOutputConfiguration">> := standard_output_configuration(),
 %%   <<"tags">> => list(tag())
 %% }
@@ -430,6 +482,8 @@
 %%   <<"kmsEncryptionContext">> => map(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"optimizationSamples">> => list(blueprint_optimization_sample()),
+%%   <<"optimizationTime">> => non_neg_integer(),
 %%   <<"schema">> => string(),
 %%   <<"type">> => list(any())
 %% }
@@ -448,6 +502,7 @@
 %%   <<"projectDescription">> => string(),
 %%   <<"projectName">> => string(),
 %%   <<"projectStage">> => list(any()),
+%%   <<"projectType">> => list(any()),
 %%   <<"standardOutputConfiguration">> => standard_output_configuration(),
 %%   <<"status">> => list(any())
 %% }
@@ -494,6 +549,14 @@
 
 
 %% Example:
+%% p_i_i_entities_configuration() :: #{
+%%   <<"piiEntityTypes">> => list(list(any())()),
+%%   <<"redactionMaskMode">> => list(any())
+%% }
+-type p_i_i_entities_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_standard_extraction() :: #{
 %%   <<"boundingBox">> => document_bounding_box(),
 %%   <<"granularity">> => document_extraction_granularity()
@@ -514,6 +577,14 @@
 %%   <<"speakerLabeling">> => speaker_labeling_configuration()
 %% }
 -type transcript_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_optimization_object() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"stage">> => list(any())
+%% }
+-type blueprint_optimization_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -541,6 +612,13 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% blueprint_optimization_output_configuration() :: #{
+%%   <<"s3Object">> => s3_object()
+%% }
+-type blueprint_optimization_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -613,9 +691,20 @@
 
 
 %% Example:
+%% get_blueprint_optimization_status_response() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => [string()],
+%%   <<"outputConfiguration">> => blueprint_optimization_output_configuration(),
+%%   <<"status">> => list(any())
+%% }
+-type get_blueprint_optimization_status_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% audio_override_configuration() :: #{
 %%   <<"languageConfiguration">> => audio_language_configuration(),
-%%   <<"modalityProcessing">> => modality_processing_configuration()
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
 %% }
 -type audio_override_configuration() :: #{binary() => any()}.
 
@@ -689,6 +778,26 @@
 %% }
 -type list_data_automation_projects_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_blueprint_optimization_status_request() :: #{}
+-type get_blueprint_optimization_status_request() :: #{}.
+
+
+%% Example:
+%% invoke_blueprint_optimization_async_request() :: #{
+%%   <<"blueprint">> := blueprint_optimization_object(),
+%%   <<"dataAutomationProfileArn">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"outputConfiguration">> := blueprint_optimization_output_configuration(),
+%%   <<"samples">> := list(blueprint_optimization_sample()),
+%%   <<"tags">> => list(tag())
+%% }
+-type invoke_blueprint_optimization_async_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_blueprint_stage_response() :: #{}
+-type copy_blueprint_stage_response() :: #{}.
+
 
 %% Example:
 %% blueprint_filter() :: #{
@@ -705,6 +814,13 @@
 %%   <<"textFormat">> => document_output_text_format()
 %% }
 -type document_output_format() :: #{binary() => any()}.
+
+-type copy_blueprint_stage_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type create_blueprint_errors() ::
     throttling_exception() | 
@@ -751,11 +867,26 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_blueprint_optimization_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_automation_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type invoke_blueprint_optimization_async_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type list_blueprints_errors() ::
@@ -814,6 +945,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Copies a Blueprint from one stage to another
+-spec copy_blueprint_stage(aws_client:aws_client(), binary() | list(), copy_blueprint_stage_request()) ->
+    {ok, copy_blueprint_stage_response(), tuple()} |
+    {error, any()} |
+    {error, copy_blueprint_stage_errors(), tuple()}.
+copy_blueprint_stage(Client, BlueprintArn, Input) ->
+    copy_blueprint_stage(Client, BlueprintArn, Input, []).
+
+-spec copy_blueprint_stage(aws_client:aws_client(), binary() | list(), copy_blueprint_stage_request(), proplists:proplist()) ->
+    {ok, copy_blueprint_stage_response(), tuple()} |
+    {error, any()} |
+    {error, copy_blueprint_stage_errors(), tuple()}.
+copy_blueprint_stage(Client, BlueprintArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/blueprints/", aws_util:encode_uri(BlueprintArn), "/copy-stage"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Bedrock Data Automation Blueprint
 -spec create_blueprint(aws_client:aws_client(), create_blueprint_request()) ->
@@ -1021,6 +1186,40 @@ get_blueprint(Client, BlueprintArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc API used to get blueprint optimization status.
+-spec get_blueprint_optimization_status(aws_client:aws_client(), binary() | list(), get_blueprint_optimization_status_request()) ->
+    {ok, get_blueprint_optimization_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_blueprint_optimization_status_errors(), tuple()}.
+get_blueprint_optimization_status(Client, InvocationArn, Input) ->
+    get_blueprint_optimization_status(Client, InvocationArn, Input, []).
+
+-spec get_blueprint_optimization_status(aws_client:aws_client(), binary() | list(), get_blueprint_optimization_status_request(), proplists:proplist()) ->
+    {ok, get_blueprint_optimization_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_blueprint_optimization_status_errors(), tuple()}.
+get_blueprint_optimization_status(Client, InvocationArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/getBlueprintOptimizationStatus/", aws_util:encode_uri(InvocationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets an existing Amazon Bedrock Data Automation Project
 -spec get_data_automation_project(aws_client:aws_client(), binary() | list(), get_data_automation_project_request()) ->
     {ok, get_data_automation_project_response(), tuple()} |
@@ -1036,6 +1235,40 @@ get_data_automation_project(Client, ProjectArn, Input) ->
 get_data_automation_project(Client, ProjectArn, Input0, Options0) ->
     Method = post,
     Path = ["/data-automation-projects/", aws_util:encode_uri(ProjectArn), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Invoke an async job to perform Blueprint Optimization
+-spec invoke_blueprint_optimization_async(aws_client:aws_client(), invoke_blueprint_optimization_async_request()) ->
+    {ok, invoke_blueprint_optimization_async_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_blueprint_optimization_async_errors(), tuple()}.
+invoke_blueprint_optimization_async(Client, Input) ->
+    invoke_blueprint_optimization_async(Client, Input, []).
+
+-spec invoke_blueprint_optimization_async(aws_client:aws_client(), invoke_blueprint_optimization_async_request(), proplists:proplist()) ->
+    {ok, invoke_blueprint_optimization_async_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_blueprint_optimization_async_errors(), tuple()}.
+invoke_blueprint_optimization_async(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/invokeBlueprintOptimizationAsync"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

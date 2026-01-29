@@ -9,8 +9,8 @@
 %%
 %% You can use CloudFormation to leverage Amazon Web Services products, such
 %% as Amazon Elastic Compute Cloud, Amazon Elastic Block Store,
-%% Amazon Simple Notification Service, Elastic Load Balancing, and Amazon EC2
-%% Auto Scaling to build highly reliable, highly scalable, cost-effective
+%% Amazon Simple Notification Service, ELB, and Amazon EC2 Auto Scaling to
+%% build highly reliable, highly scalable, cost-effective
 %% applications without creating or configuring the underlying Amazon Web
 %% Services infrastructure.
 %%
@@ -76,6 +76,8 @@
          describe_change_set/3,
          describe_change_set_hooks/2,
          describe_change_set_hooks/3,
+         describe_events/2,
+         describe_events/3,
          describe_generated_template/2,
          describe_generated_template/3,
          describe_organizations_access/2,
@@ -514,6 +516,7 @@
 %%   <<"HookStatusReason">> => string(),
 %%   <<"HookType">> => string(),
 %%   <<"LogicalResourceId">> => string(),
+%%   <<"OperationId">> => string(),
 %%   <<"PhysicalResourceId">> => string(),
 %%   <<"ResourceProperties">> => string(),
 %%   <<"ResourceStatus">> => list(any()),
@@ -585,6 +588,7 @@
 
 %% Example:
 %% update_stack_output() :: #{
+%%   <<"OperationId">> => string(),
 %%   <<"StackId">> => string()
 %% }
 -type update_stack_output() :: #{binary() => any()}.
@@ -699,9 +703,12 @@
 %% Example:
 %% resource_target_definition() :: #{
 %%   <<"AfterValue">> => string(),
+%%   <<"AfterValueFrom">> => list(any()),
 %%   <<"Attribute">> => list(any()),
 %%   <<"AttributeChangeType">> => list(any()),
 %%   <<"BeforeValue">> => string(),
+%%   <<"BeforeValueFrom">> => list(any()),
+%%   <<"Drift">> => live_resource_drift(),
 %%   <<"Name">> => string(),
 %%   <<"Path">> => string(),
 %%   <<"RequiresRecreation">> => list(any())
@@ -785,6 +792,14 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type stack_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% live_resource_drift() :: #{
+%%   <<"ActualValue">> => string(),
+%%   <<"DriftDetectionTimestamp">> => non_neg_integer(),
+%%   <<"PreviousValue">> => string()
+%% }
+-type live_resource_drift() :: #{binary() => any()}.
 
 %% Example:
 %% update_termination_protection_input() :: #{
@@ -877,6 +892,16 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type describe_resource_scan_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_input() :: #{
+%%   <<"ChangeSetName">> => string(),
+%%   <<"Filters">> => event_filter(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_events_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_stack_set_input() :: #{
@@ -1037,6 +1062,7 @@
 
 %% Example:
 %% create_stack_output() :: #{
+%%   <<"OperationId">> => string(),
 %%   <<"StackId">> => string()
 %% }
 -type create_stack_output() :: #{binary() => any()}.
@@ -1053,6 +1079,7 @@
 %%   <<"DisableRollback">> => boolean(),
 %%   <<"DriftInformation">> => stack_drift_information(),
 %%   <<"EnableTerminationProtection">> => boolean(),
+%%   <<"LastOperations">> => list(operation_entry()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"NotificationARNs">> => list(string()),
 %%   <<"Outputs">> => list(output()),
@@ -1210,6 +1237,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DeletionTime">> => non_neg_integer(),
 %%   <<"DriftInformation">> => stack_drift_information_summary(),
+%%   <<"LastOperations">> => list(operation_entry()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"ParentId">> => string(),
 %%   <<"RootId">> => string(),
@@ -1267,6 +1295,13 @@
 %%   <<"StackName">> => string()
 %% }
 -type delete_change_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_drift_ignored_attribute() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type resource_drift_ignored_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% type_not_found_exception() :: #{
@@ -1363,6 +1398,7 @@
 %%   <<"ChangeSetName">> := string(),
 %%   <<"ChangeSetType">> => list(any()),
 %%   <<"ClientToken">> => string(),
+%%   <<"DeploymentMode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"ImportExistingResources">> => boolean(),
 %%   <<"IncludeNestedStacks">> => boolean(),
@@ -1579,6 +1615,38 @@
 -type list_stack_set_operations_output() :: #{binary() => any()}.
 
 %% Example:
+%% operation_event() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DetailedStatus">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventId">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"HookFailureMode">> => list(any()),
+%%   <<"HookInvocationPoint">> => list(any()),
+%%   <<"HookStatus">> => list(any()),
+%%   <<"HookStatusReason">> => string(),
+%%   <<"HookType">> => string(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationStatus">> => list(any()),
+%%   <<"OperationType">> => list(any()),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceProperties">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"ValidationFailureMode">> => list(any()),
+%%   <<"ValidationName">> => string(),
+%%   <<"ValidationPath">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusReason">> => string()
+%% }
+-type operation_event() :: #{binary() => any()}.
+
+%% Example:
 %% estimate_template_cost_input() :: #{
 %%   <<"Parameters">> => list(parameter()),
 %%   <<"TemplateBody">> => string(),
@@ -1596,6 +1664,7 @@
 
 %% Example:
 %% rollback_stack_output() :: #{
+%%   <<"OperationId">> => string(),
 %%   <<"StackId">> => string()
 %% }
 -type rollback_stack_output() :: #{binary() => any()}.
@@ -1619,6 +1688,7 @@
 %%   <<"ChangeSetName">> => string(),
 %%   <<"Changes">> => list(change()),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentMode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"ExecutionStatus">> => list(any()),
 %%   <<"ImportExistingResources">> => boolean(),
@@ -1630,6 +1700,7 @@
 %%   <<"ParentChangeSetId">> => string(),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
 %%   <<"RootChangeSetId">> => string(),
+%%   <<"StackDriftStatus">> => list(any()),
 %%   <<"StackId">> => string(),
 %%   <<"StackName">> => string(),
 %%   <<"Status">> => list(any()),
@@ -1644,6 +1715,12 @@
 %%   <<"StackName">> := string()
 %% }
 -type describe_stack_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% event_filter() :: #{
+%%   <<"FailedEvents">> => boolean()
+%% }
+-type event_filter() :: #{binary() => any()}.
 
 %% Example:
 %% required_activated_type() :: #{
@@ -1826,6 +1903,13 @@
 %%   <<"CallAs">> => list(any())
 %% }
 -type describe_organizations_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% operation_entry() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"OperationType">> => list(any())
+%% }
+-type operation_entry() :: #{binary() => any()}.
 
 %% Example:
 %% list_exports_input() :: #{
@@ -2207,6 +2291,13 @@
 -type record_handler_progress_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_events_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OperationEvents">> => list(operation_event())
+%% }
+-type describe_events_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_stack_instances_input() :: #{
 %%   <<"Accounts">> => list(string()),
 %%   <<"CallAs">> => list(any()),
@@ -2549,7 +2640,10 @@
 %%   <<"ModuleInfo">> => module_info(),
 %%   <<"PhysicalResourceId">> => string(),
 %%   <<"PolicyAction">> => list(any()),
+%%   <<"PreviousDeploymentContext">> => string(),
 %%   <<"Replacement">> => list(any()),
+%%   <<"ResourceDriftIgnoredAttributes">> => list(resource_drift_ignored_attribute()),
+%%   <<"ResourceDriftStatus">> => list(any()),
 %%   <<"ResourceType">> => string(),
 %%   <<"Scope">> => list(list(any())())
 %% }
@@ -2709,6 +2803,7 @@
 
 %% Example:
 %% auto_deployment() :: #{
+%%   <<"DependsOn">> => list(string()),
 %%   <<"Enabled">> => boolean(),
 %%   <<"RetainStacksOnAccountRemoval">> => boolean()
 %% }
@@ -3604,6 +3699,49 @@ describe_change_set_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSetHooks">>, Input, Options).
 
+%% @doc Returns CloudFormation events based on flexible query criteria.
+%%
+%% Groups events by operation ID,
+%% enabling you to focus on individual stack operations during deployment.
+%%
+%% An operation is any action performed on a stack, including stack lifecycle
+%% actions
+%% (Create, Update, Delete, Rollback), change set creation, nested stack
+%% creation, and automatic
+%% rollbacks triggered by failures. Each operation has a unique identifier
+%% (Operation ID) and
+%% represents a discrete change attempt on the stack.
+%%
+%% Returns different types of events including:
+%%
+%% Progress events - Status updates during stack operation
+%% execution.
+%%
+%% Validation errors - Failures from CloudFormation Early
+%% Validations.
+%%
+%% Provisioning errors - Resource creation and update
+%% failures.
+%%
+%% Hook invocation errors - Failures from CloudFormation
+%% Hook during stack operations.
+%%
+%% One of `ChangeSetName', `OperationId' or `StackName'
+%% must be specified as input.
+-spec describe_events(aws_client:aws_client(), describe_events_input()) ->
+    {ok, describe_events_output(), tuple()} |
+    {error, any()}.
+describe_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_events(Client, Input, []).
+
+-spec describe_events(aws_client:aws_client(), describe_events_input(), proplists:proplist()) ->
+    {ok, describe_events_output(), tuple()} |
+    {error, any()}.
+describe_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEvents">>, Input, Options).
+
 %% @doc Describes a generated template.
 %%
 %% The output includes details about the progress of the
@@ -4282,6 +4420,14 @@ get_generated_template(Client, Input, Options)
 %% @doc Retrieves detailed information and remediation guidance for a Hook
 %% invocation
 %% result.
+%%
+%% If the Hook uses a KMS key to encrypt annotations, callers of the
+%% `GetHookResult' operation must have `kms:Decrypt' permissions. For
+%% more information, see KMS key policy
+%% and permissions for encrypting CloudFormation Hooks results at rest:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-kms-key-policy.html
+%% in the
+%% CloudFormation Hooks User Guide.
 -spec get_hook_result(aws_client:aws_client(), get_hook_result_input()) ->
     {ok, get_hook_result_output(), tuple()} |
     {error, any()} |

@@ -6,6 +6,8 @@
 
 -export([get_data_automation_status/2,
          get_data_automation_status/3,
+         invoke_data_automation/2,
+         invoke_data_automation/3,
          invoke_data_automation_async/2,
          invoke_data_automation_async/3,
          list_tags_for_resource/2,
@@ -68,6 +70,9 @@
 %% get_data_automation_status_response() :: #{
 %%   <<"errorMessage">> => [string()],
 %%   <<"errorType">> => [string()],
+%%   <<"jobCompletionTime">> => [non_neg_integer()],
+%%   <<"jobDurationInSeconds">> => [integer()],
+%%   <<"jobSubmissionTime">> => [non_neg_integer()],
 %%   <<"outputConfiguration">> => output_configuration(),
 %%   <<"status">> => list(any())
 %% }
@@ -107,6 +112,23 @@
 -type invoke_data_automation_async_response() :: #{binary() => any()}.
 
 %% Example:
+%% invoke_data_automation_request() :: #{
+%%   <<"blueprints">> => list(blueprint()),
+%%   <<"dataAutomationConfiguration">> => data_automation_configuration(),
+%%   <<"dataAutomationProfileArn">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"inputConfiguration">> := sync_input_configuration()
+%% }
+-type invoke_data_automation_request() :: #{binary() => any()}.
+
+%% Example:
+%% invoke_data_automation_response() :: #{
+%%   <<"outputSegments">> => list(output_segment()),
+%%   <<"semanticModality">> => list(any())
+%% }
+-type invoke_data_automation_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceARN">> := string()
 %% }
@@ -131,6 +153,14 @@
 -type output_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% output_segment() :: #{
+%%   <<"customOutput">> => [string()],
+%%   <<"customOutputStatus">> => list(any()),
+%%   <<"standardOutput">> => [string()]
+%% }
+-type output_segment() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -141,6 +171,19 @@
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sync_input_configuration() :: #{
+%%   <<"bytes">> => [binary()],
+%%   <<"s3Uri">> => string()
+%% }
+-type sync_input_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -207,6 +250,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type invoke_data_automation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type invoke_data_automation_async_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -256,6 +306,23 @@ get_data_automation_status(Client, Input)
 get_data_automation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataAutomationStatus">>, Input, Options).
+
+%% @doc Sync API: Invoke data automation.
+-spec invoke_data_automation(aws_client:aws_client(), invoke_data_automation_request()) ->
+    {ok, invoke_data_automation_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_data_automation_errors(), tuple()}.
+invoke_data_automation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    invoke_data_automation(Client, Input, []).
+
+-spec invoke_data_automation(aws_client:aws_client(), invoke_data_automation_request(), proplists:proplist()) ->
+    {ok, invoke_data_automation_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_data_automation_errors(), tuple()}.
+invoke_data_automation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InvokeDataAutomation">>, Input, Options).
 
 %% @doc Async API: Invoke data automation.
 -spec invoke_data_automation_async(aws_client:aws_client(), invoke_data_automation_async_request()) ->

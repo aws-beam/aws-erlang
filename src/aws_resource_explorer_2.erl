@@ -190,7 +190,8 @@
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"Owner">> => [string()],
 %%   <<"Scope">> => [string()],
-%%   <<"ViewArn">> => [string()]
+%%   <<"ViewArn">> => [string()],
+%%   <<"ViewName">> => string()
 %% }
 -type view() :: #{binary() => any()}.
 
@@ -223,6 +224,7 @@
 %%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"ScopeType">> => [string()],
 %%   <<"ServiceViewArn">> => [string()],
+%%   <<"ServiceViewName">> => string(),
 %%   <<"StreamingAccessForService">> => [string()]
 %% }
 -type service_view() :: #{binary() => any()}.

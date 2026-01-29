@@ -281,6 +281,8 @@
          modify_event_subscription/3,
          modify_integration/2,
          modify_integration/3,
+         modify_lakehouse_configuration/2,
+         modify_lakehouse_configuration/3,
          modify_redshift_idc_application/2,
          modify_redshift_idc_application/3,
          modify_scheduled_action/2,
@@ -1669,6 +1671,12 @@
 -type snapshot_copy_already_enabled_fault() :: #{binary() => any()}.
 
 %% Example:
+%% connect() :: #{
+%%   <<"Authorization">> => list(any())
+%% }
+-type connect() :: #{binary() => any()}.
+
+%% Example:
 %% copy_cluster_snapshot_message() :: #{
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
 %%   <<"SourceSnapshotClusterIdentifier">> => string(),
@@ -1706,6 +1714,17 @@
 %%   <<"Severity">> => string()
 %% }
 -type event_info_map() :: #{binary() => any()}.
+
+%% Example:
+%% modify_lakehouse_configuration_message() :: #{
+%%   <<"CatalogName">> => string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"LakehouseIdcApplicationArn">> => string(),
+%%   <<"LakehouseIdcRegistration">> => list(any()),
+%%   <<"LakehouseRegistration">> => list(any())
+%% }
+-type modify_lakehouse_configuration_message() :: #{binary() => any()}.
 
 %% Example:
 %% batch_modify_cluster_snapshots_output_message() :: #{
@@ -1849,6 +1868,7 @@
 %%   <<"MasterPasswordSecretKmsKeyId">> => string(),
 %%   <<"ElasticIpStatus">> => elastic_ip_status(),
 %%   <<"ExpectedNextSnapshotScheduleTimeStatus">> => string(),
+%%   <<"LakehouseRegistrationStatus">> => string(),
 %%   <<"AquaConfiguration">> => aqua_configuration(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"MasterUsername">> => string(),
@@ -1871,6 +1891,7 @@
 %%   <<"NumberOfNodes">> => integer(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"CatalogArn">> => string(),
 %%   <<"Endpoint">> => endpoint(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"ReservedNodeExchangeStatus">> => reserved_node_exchange_status(),
@@ -1881,7 +1902,8 @@
 %%   <<"CustomDomainCertificateArn">> => string(),
 %%   <<"AllowVersionUpgrade">> => boolean(),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"MultiAZ">> => string()
+%%   <<"MultiAZ">> => string(),
+%%   <<"ExtraComputeForAutomaticOptimization">> => string()
 %% }
 -type cluster() :: #{binary() => any()}.
 
@@ -2008,6 +2030,15 @@
 -type describe_endpoint_authorization_message() :: #{binary() => any()}.
 
 %% Example:
+%% lakehouse_configuration() :: #{
+%%   <<"CatalogArn">> => string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"LakehouseIdcApplicationArn">> => string(),
+%%   <<"LakehouseRegistrationStatus">> => string()
+%% }
+-type lakehouse_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% source_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2061,6 +2092,7 @@
 
 %% Example:
 %% redshift_idc_application() :: #{
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IdcDisplayName">> => string(),
@@ -2573,6 +2605,7 @@
 
 %% Example:
 %% create_redshift_idc_application_message() :: #{
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"IdcDisplayName">> := string(),
@@ -3011,6 +3044,7 @@
 %%   <<"ClusterSecurityGroups">> => list(string()),
 %%   <<"DBName">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"CatalogName">> => string(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"NodeType">> := string(),
 %%   <<"VpcSecurityGroupIds">> => list(string()),
@@ -3028,7 +3062,8 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"LoadSampleData">> => string(),
 %%   <<"AllowVersionUpgrade">> => boolean(),
-%%   <<"MultiAZ">> => boolean()
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"ExtraComputeForAutomaticOptimization">> => boolean()
 %% }
 -type create_cluster_message() :: #{binary() => any()}.
 
@@ -3511,6 +3546,7 @@
 %%   <<"ElasticIp">> => string(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"ExtraComputeForAutomaticOptimization">> => boolean(),
 %%   <<"HsmClientCertificateIdentifier">> => string(),
 %%   <<"HsmConfigurationIdentifier">> => string(),
 %%   <<"IpAddressType">> => string(),
@@ -3664,6 +3700,7 @@
 %%   <<"SnapshotClusterIdentifier">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"IamRoles">> => list(string()),
+%%   <<"RedshiftIdcApplicationArn">> => string(),
 %%   <<"ElasticIp">> => string(),
 %%   <<"ClusterSubnetGroupName">> => string(),
 %%   <<"OwnerAccount">> => string(),
@@ -3681,6 +3718,7 @@
 %%   <<"ClusterSecurityGroups">> => list(string()),
 %%   <<"NodeType">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"CatalogName">> => string(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"VpcSecurityGroupIds">> => list(string()),
 %%   <<"ClusterParameterGroupName">> => string(),
@@ -4110,6 +4148,7 @@
     authentication_profile_already_exists_fault().
 
 -type create_cluster_errors() ::
+    dependent_service_unavailable_fault() | 
     tag_limit_exceeded_fault() | 
     invalid_retention_period_fault() | 
     cluster_already_exists_fault() | 
@@ -4121,6 +4160,7 @@
     number_of_nodes_quota_exceeded_fault() | 
     hsm_client_certificate_not_found_fault() | 
     redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
     cluster_parameter_group_not_found_fault() | 
     invalid_tag_fault() | 
     invalid_elastic_ip_fault() | 
@@ -4701,6 +4741,15 @@
     unsupported_operation_fault() | 
     integration_already_exists_fault().
 
+-type modify_lakehouse_configuration_errors() ::
+    dependent_service_unavailable_fault() | 
+    invalid_cluster_state_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
+    unauthorized_operation() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
 -type modify_redshift_idc_application_errors() ::
     dependent_service_unavailable_fault() | 
     redshift_idc_application_not_exists_fault() | 
@@ -4799,6 +4848,8 @@
     number_of_nodes_quota_exceeded_fault() | 
     hsm_client_certificate_not_found_fault() | 
     invalid_reserved_node_state_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
     cluster_parameter_group_not_found_fault() | 
     invalid_tag_fault() | 
     invalid_elastic_ip_fault() | 
@@ -7714,6 +7765,26 @@ modify_integration(Client, Input)
 modify_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIntegration">>, Input, Options).
+
+%% @doc Modifies the lakehouse configuration for a cluster.
+%%
+%% This operation allows you to manage Amazon Redshift federated permissions
+%% and Amazon Web Services IAM Identity Center trusted identity propagation.
+-spec modify_lakehouse_configuration(aws_client:aws_client(), modify_lakehouse_configuration_message()) ->
+    {ok, lakehouse_configuration(), tuple()} |
+    {error, any()} |
+    {error, modify_lakehouse_configuration_errors(), tuple()}.
+modify_lakehouse_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_lakehouse_configuration(Client, Input, []).
+
+-spec modify_lakehouse_configuration(aws_client:aws_client(), modify_lakehouse_configuration_message(), proplists:proplist()) ->
+    {ok, lakehouse_configuration(), tuple()} |
+    {error, any()} |
+    {error, modify_lakehouse_configuration_errors(), tuple()}.
+modify_lakehouse_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyLakehouseConfiguration">>, Input, Options).
 
 %% @doc Changes an existing Amazon Redshift IAM Identity Center application.
 -spec modify_redshift_idc_application(aws_client:aws_client(), modify_redshift_idc_application_message()) ->

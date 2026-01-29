@@ -7,13 +7,12 @@
 %% interfaces you can use to manage Amazon Redshift Serverless.
 %%
 %% Amazon Redshift Serverless automatically provisions data warehouse
-%% capacity and intelligently scales the
-%% underlying resources based on workload demands. Amazon Redshift Serverless
-%% adjusts capacity in seconds to deliver consistently high
-%% performance and simplified operations for even the most demanding and
-%% volatile workloads. Amazon Redshift Serverless lets you
-%% focus on using your data to acquire new insights for your business and
-%% customers.
+%% capacity and intelligently scales the underlying resources based on
+%% workload demands. Amazon Redshift Serverless adjusts capacity in seconds
+%% to deliver consistently high performance and simplified operations for
+%% even the most demanding and volatile workloads. Amazon Redshift Serverless
+%% lets you focus on using your data to acquire new insights for your
+%% business and customers.
 %%
 %% To learn more about Amazon Redshift Serverless, see What is Amazon
 %% Redshift Serverless?:
@@ -64,6 +63,8 @@
          get_custom_domain_association/3,
          get_endpoint_access/2,
          get_endpoint_access/3,
+         get_identity_center_auth_token/2,
+         get_identity_center_auth_token/3,
          get_namespace/2,
          get_namespace/3,
          get_recovery_point/2,
@@ -134,6 +135,8 @@
          update_custom_domain_association/3,
          update_endpoint_access/2,
          update_endpoint_access/3,
+         update_lakehouse_configuration/2,
+         update_lakehouse_configuration/3,
          update_namespace/2,
          update_namespace/3,
          update_scheduled_action/2,
@@ -195,6 +198,12 @@
 %%   <<"vpcSecurityGroupIds">> => list(string())
 %% }
 -type update_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_request() :: #{
+%%   <<"workgroupNames">> := list(string())
+%% }
+-type get_identity_center_auth_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_snapshot_request() :: #{
@@ -474,6 +483,15 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_lakehouse_configuration_response() :: #{
+%%   <<"catalogArn">> => [string()],
+%%   <<"lakehouseIdcApplicationArn">> => [string()],
+%%   <<"lakehouseRegistrationStatus">> => [string()],
+%%   <<"namespaceName">> => string()
+%% }
+-type update_lakehouse_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_usage_limit_response() :: #{
 %%   <<"usageLimit">> => usage_limit()
 %% }
@@ -555,6 +573,17 @@
 -type get_namespace_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_lakehouse_configuration_request() :: #{
+%%   <<"catalogName">> => string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"lakehouseIdcApplicationArn">> => [string()],
+%%   <<"lakehouseIdcRegistration">> => string(),
+%%   <<"lakehouseRegistration">> => string(),
+%%   <<"namespaceName">> := string()
+%% }
+-type update_lakehouse_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_recovery_point_request() :: #{
 %%   <<"recoveryPointId">> := [string()]
 %% }
@@ -575,6 +604,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_scheduled_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type dry_run_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_workgroup_request() :: #{
@@ -662,6 +697,7 @@
 %%   <<"customDomainName">> => string(),
 %%   <<"endpoint">> => endpoint(),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> => [string()],
@@ -694,6 +730,13 @@
 %%   <<"usageLimits">> => list(usage_limit())
 %% }
 -type list_usage_limits_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_response() :: #{
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"token">> => [string()]
+%% }
+-type get_identity_center_auth_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_snapshots_response() :: #{
@@ -895,6 +938,7 @@
 %%   <<"baseCapacity">> => [integer()],
 %%   <<"configParameters">> => list(config_parameter()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> := string(),
@@ -1297,6 +1341,7 @@
 %%   <<"baseCapacity">> => [integer()],
 %%   <<"configParameters">> => list(config_parameter()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"port">> => [integer()],
@@ -1361,11 +1406,13 @@
 %%   <<"adminPasswordSecretArn">> => [string()],
 %%   <<"adminPasswordSecretKmsKeyId">> => string(),
 %%   <<"adminUsername">> => string(),
+%%   <<"catalogArn">> => [string()],
 %%   <<"creationDate">> => [non_neg_integer()],
 %%   <<"dbName">> => [string()],
 %%   <<"defaultIamRoleArn">> => [string()],
 %%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
+%%   <<"lakehouseRegistrationStatus">> => [string()],
 %%   <<"logExports">> => list(string()),
 %%   <<"namespaceArn">> => [string()],
 %%   <<"namespaceId">> => [string()],
@@ -1611,6 +1658,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_identity_center_auth_token_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dry_run_exception().
+
 -type get_namespace_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -1659,7 +1715,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    dry_run_exception().
 
 -type get_usage_limit_errors() ::
     validation_exception() | 
@@ -1814,6 +1871,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_lakehouse_configuration_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dry_run_exception().
+
 -type update_namespace_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -1859,8 +1923,8 @@
 
 %% @doc Converts a recovery point to a snapshot.
 %%
-%% For more information about recovery points and snapshots,
-%% see Working with snapshots and recovery points:
+%% For more information about recovery points and snapshots, see Working with
+%% snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html.
 -spec convert_recovery_point_to_snapshot(aws_client:aws_client(), convert_recovery_point_to_snapshot_request()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
@@ -1931,8 +1995,7 @@ create_namespace(Client, Input, Options)
 
 %% @doc Creates an Amazon Redshift Serverless reservation, which gives you
 %% the option to commit to a specified number of Redshift Processing Units
-%% (RPUs)
-%% for a year at a discount from Serverless on-demand (OD) rates.
+%% (RPUs) for a year at a discount from Serverless on-demand (OD) rates.
 -spec create_reservation(aws_client:aws_client(), create_reservation_request()) ->
     {ok, create_reservation_response(), tuple()} |
     {error, any()} |
@@ -1972,9 +2035,8 @@ create_scheduled_action(Client, Input, Options)
 
 %% @doc Creates a snapshot of all databases in a namespace.
 %%
-%% For more information about snapshots, see
-%%
-%% Working with snapshots and recovery points:
+%% For more information about snapshots, see Working with snapshots and
+%% recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html.
 -spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
@@ -2033,20 +2095,17 @@ create_usage_limit(Client, Input, Options)
 %% @doc Creates an workgroup in Amazon Redshift Serverless.
 %%
 %% VPC Block Public Access (BPA) enables you to block resources in VPCs and
-%% subnets that
-%% you own in a Region from reaching or being reached from the internet
-%% through internet
-%% gateways and egress-only internet gateways. If a workgroup is in an
-%% account with VPC BPA
-%% turned on, the following capabilities are blocked:
+%% subnets that you own in a Region from reaching or being reached from the
+%% internet through internet gateways and egress-only internet gateways. If a
+%% workgroup is in an account with VPC BPA turned on, the following
+%% capabilities are blocked:
 %%
 %% Creating a public access workgroup
 %%
 %% Modifying a private workgroup to public
 %%
 %% Adding a subnet with VPC BPA turned on to the workgroup when the workgroup
-%% is
-%% public
+%% is public
 %%
 %% For more information about VPC BPA, see Block public access to VPCs and
 %% subnets:
@@ -2224,19 +2283,19 @@ delete_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkgroup">>, Input, Options).
 
-%% @doc Returns a database user name and temporary password with
-%% temporary authorization to log in to Amazon Redshift Serverless.
+%% @doc Returns a database user name and temporary password with temporary
+%% authorization to log in to Amazon Redshift Serverless.
 %%
-%% By default, the temporary credentials expire in 900 seconds.
-%% You can optionally specify a duration between 900 seconds (15 minutes) and
-%% 3600 seconds (60 minutes).
+%% By default, the temporary credentials expire in 900 seconds. You can
+%% optionally specify a duration between 900 seconds (15 minutes) and 3600
+%% seconds (60 minutes).
 %%
 %% The Identity and Access Management (IAM) user or role that runs
 %% GetCredentials must have an IAM policy attached that allows access to all
 %% necessary actions and resources.
 %%
-%% If the `DbName' parameter is specified, the IAM policy must
-%% allow access to the resource dbname for the specified database name.
+%% If the `DbName' parameter is specified, the IAM policy must allow
+%% access to the resource dbname for the specified database name.
 -spec get_credentials(aws_client:aws_client(), get_credentials_request()) ->
     {ok, get_credentials_response(), tuple()} |
     {error, any()} |
@@ -2287,6 +2346,33 @@ get_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEndpointAccess">>, Input, Options).
 
+%% @doc Returns an Identity Center authentication token for accessing Amazon
+%% Redshift Serverless workgroups.
+%%
+%% The token provides secure access to data within the specified workgroups
+%% using Identity Center identity propagation. The token expires after a
+%% specified duration and must be refreshed for continued access.
+%%
+%% The Identity and Access Management (IAM) user or role that runs
+%% GetIdentityCenterAuthToken must have appropriate permissions to access the
+%% specified workgroups and Identity Center integration must be configured
+%% for the workgroups.
+-spec get_identity_center_auth_token(aws_client:aws_client(), get_identity_center_auth_token_request()) ->
+    {ok, get_identity_center_auth_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_center_auth_token_errors(), tuple()}.
+get_identity_center_auth_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_identity_center_auth_token(Client, Input, []).
+
+-spec get_identity_center_auth_token(aws_client:aws_client(), get_identity_center_auth_token_request(), proplists:proplist()) ->
+    {ok, get_identity_center_auth_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_center_auth_token_errors(), tuple()}.
+get_identity_center_auth_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIdentityCenterAuthToken">>, Input, Options).
+
 %% @doc Returns information about a namespace in Amazon Redshift Serverless.
 -spec get_namespace(aws_client:aws_client(), get_namespace_request()) ->
     {ok, get_namespace_response(), tuple()} |
@@ -2324,8 +2410,8 @@ get_recovery_point(Client, Input, Options)
 %% @doc Gets an Amazon Redshift Serverless reservation.
 %%
 %% A reservation gives you the option to commit to a specified number of
-%% Redshift Processing Units (RPUs)
-%% for a year at a discount from Serverless on-demand (OD) rates.
+%% Redshift Processing Units (RPUs) for a year at a discount from Serverless
+%% on-demand (OD) rates.
 -spec get_reservation(aws_client:aws_client(), get_reservation_request()) ->
     {ok, get_reservation_response(), tuple()} |
     {error, any()} |
@@ -2818,8 +2904,8 @@ restore_table_from_recovery_point(Client, Input, Options)
 %% @doc Restores a table from a snapshot to your Amazon Redshift Serverless
 %% instance.
 %%
-%% You can't use this operation to
-%% restore tables with interleaved sort keys:
+%% You can't use this operation to restore tables with interleaved sort
+%% keys:
 %% https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved.
 -spec restore_table_from_snapshot(aws_client:aws_client(), restore_table_from_snapshot_request()) ->
     {ok, restore_table_from_snapshot_response(), tuple()} |
@@ -2906,13 +2992,32 @@ update_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointAccess">>, Input, Options).
 
+%% @doc Modifies the lakehouse configuration for a namespace.
+%%
+%% This operation allows you to manage Amazon Redshift federated permissions
+%% and Amazon Web Services IAM Identity Center trusted identity propagation.
+-spec update_lakehouse_configuration(aws_client:aws_client(), update_lakehouse_configuration_request()) ->
+    {ok, update_lakehouse_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_lakehouse_configuration_errors(), tuple()}.
+update_lakehouse_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_lakehouse_configuration(Client, Input, []).
+
+-spec update_lakehouse_configuration(aws_client:aws_client(), update_lakehouse_configuration_request(), proplists:proplist()) ->
+    {ok, update_lakehouse_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_lakehouse_configuration_errors(), tuple()}.
+update_lakehouse_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLakehouseConfiguration">>, Input, Options).
+
 %% @doc Updates a namespace with the specified settings.
 %%
 %% Unless required, you can't update multiple parameters in one request.
-%% For example,
-%% you must specify both `adminUsername' and `adminUserPassword' to
-%% update either field, but you can't update both `kmsKeyId'
-%% and `logExports' in a single request.
+%% For example, you must specify both `adminUsername' and
+%% `adminUserPassword' to update either field, but you can't update
+%% both `kmsKeyId' and `logExports' in a single request.
 -spec update_namespace(aws_client:aws_client(), update_namespace_request()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |
@@ -3001,25 +3106,22 @@ update_usage_limit(Client, Input, Options)
 
 %% @doc Updates a workgroup with the specified configuration settings.
 %%
-%% You can't update multiple parameters in one request. For example,
-%% you can update `baseCapacity' or `port' in a single request, but
-%% you can't update both in the same request.
+%% You can't update multiple parameters in one request. For example, you
+%% can update `baseCapacity' or `port' in a single request, but you
+%% can't update both in the same request.
 %%
 %% VPC Block Public Access (BPA) enables you to block resources in VPCs and
-%% subnets that
-%% you own in a Region from reaching or being reached from the internet
-%% through internet
-%% gateways and egress-only internet gateways. If a workgroup is in an
-%% account with VPC BPA
-%% turned on, the following capabilities are blocked:
+%% subnets that you own in a Region from reaching or being reached from the
+%% internet through internet gateways and egress-only internet gateways. If a
+%% workgroup is in an account with VPC BPA turned on, the following
+%% capabilities are blocked:
 %%
 %% Creating a public access workgroup
 %%
 %% Modifying a private workgroup to public
 %%
 %% Adding a subnet with VPC BPA turned on to the workgroup when the workgroup
-%% is
-%% public
+%% is public
 %%
 %% For more information about VPC BPA, see Block public access to VPCs and
 %% subnets:

@@ -484,6 +484,7 @@
 %%   <<"sizeInGb">> => [float()],
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
+%%   <<"syntheticDataConfiguration">> => synthetic_data_configuration(),
 %%   <<"tags">> => map(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -767,6 +768,13 @@
 %%   <<"noiseLevel">> => list(any())
 %% }
 -type metrics_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_privacy_scores() :: #{
+%%   <<"membershipInferenceAttackScores">> => list(membership_inference_attack_score())
+%% }
+-type data_privacy_scores() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1065,6 +1073,15 @@
 
 
 %% Example:
+%% ml_synthetic_data_parameters() :: #{
+%%   <<"columnClassification">> => column_classification_details(),
+%%   <<"epsilon">> => [float()],
+%%   <<"maxMembershipInferenceAttackScore">> => [float()]
+%% }
+-type ml_synthetic_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% configured_model_algorithm_association_summary() :: #{
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmArn">> => string(),
@@ -1174,6 +1191,15 @@
 
 
 %% Example:
+%% synthetic_data_column_properties() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => list(any()),
+%%   <<"isPredictiveValue">> => [boolean()]
+%% }
+-type synthetic_data_column_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% collaboration_configured_model_algorithm_association_summary() :: #{
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmArn">> => string(),
@@ -1205,6 +1231,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_classification_details() :: #{
+%%   <<"columnMapping">> => list(synthetic_data_column_properties())
+%% }
+-type column_classification_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1280,6 +1313,13 @@
 
 
 %% Example:
+%% synthetic_data_evaluation_scores() :: #{
+%%   <<"dataPrivacyScores">> => data_privacy_scores()
+%% }
+-type synthetic_data_evaluation_scores() :: #{binary() => any()}.
+
+
+%% Example:
 %% logs_configuration_policy() :: #{
 %%   <<"allowedAccountIds">> => list([string()]()),
 %%   <<"filterPattern">> => [string()],
@@ -1310,6 +1350,7 @@
 %% Example:
 %% worker_compute_configuration() :: #{
 %%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
 %%   <<"type">> => list(any())
 %% }
 -type worker_compute_configuration() :: #{binary() => any()}.
@@ -1482,6 +1523,14 @@
 
 
 %% Example:
+%% membership_inference_attack_score() :: #{
+%%   <<"attackVersion">> => list(any()),
+%%   <<"score">> => [float()]
+%% }
+-type membership_inference_attack_score() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_collaboration_ml_input_channel_response() :: #{
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmAssociations">> => list(string()),
@@ -1496,6 +1545,7 @@
 %%   <<"retentionInDays">> => [integer()],
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
+%%   <<"syntheticDataConfiguration">> => synthetic_data_configuration(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type get_collaboration_ml_input_channel_response() :: #{binary() => any()}.
@@ -1798,6 +1848,14 @@
 %%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type list_collaboration_trained_model_inference_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_configuration() :: #{
+%%   <<"syntheticDataEvaluationScores">> => synthetic_data_evaluation_scores(),
+%%   <<"syntheticDataParameters">> => ml_synthetic_data_parameters()
+%% }
+-type synthetic_data_configuration() :: #{binary() => any()}.
 
 -type cancel_trained_model_errors() ::
     throttling_exception() | 

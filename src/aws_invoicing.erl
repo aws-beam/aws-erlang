@@ -21,10 +21,51 @@
 %% can automate the creation of new invoice units and subsequently automate
 %% the addition of new accounts to your invoice units.
 %%
+%% Amazon Web Services Procurement Portal Preferences
+%%
+%% You can use Amazon Web Services Procurement Portal Preferences APIs to
+%% programmatically create, update, delete, get, and list procurement portal
+%% connections and e-invoice delivery settings. You can also programmatically
+%% fetch and modify the status of procurement portal configurations. For
+%% example, SAP Business Network or Coupa connections, configure e-invoice
+%% delivery and purchase order retrieval features.
+%%
+%% You can use Amazon Web Services Procurement Portal Preferences to connect
+%% e-invoice delivery to your procurement portals based on your
+%% organizational needs. By using Amazon Web Services Procurement Portal
+%% Preferences, you can configure connections to SAP Business Network and
+%% Coupa procurement portals that retrieve purchase orders and deliver Amazon
+%% Web Services invoices on the same day they are generated. You can also set
+%% up testing environments to validate invoice delivery without affecting
+%% live transactions, and manage contact information for portal setup and
+%% support.
+%%
+%% Administrative users should understand that billing read-only policies
+%% will show all procurement portal connection details. Review your IAM
+%% policies to ensure appropriate access controls are in place for
+%% procurement portal preferences.
+%%
+%% Amazon Web Services Invoice Management
+%%
+%% You can use Amazon Web Services Invoice Management APIs to
+%% programmatically list invoice summaries and get invoice documents. You can
+%% also programmatically fetch invoice documents with S3 pre-signed URLs.
+%%
+%% You can use Amazon Web Services Invoice Management to access invoice
+%% information based on your organizational needs. By using Amazon Web
+%% Services Invoice Management, you can retrieve paginated lists of invoice
+%% summaries that include invoice metadata such as invoice IDs, amounts, and
+%% currencies without downloading documents. You can also download invoice
+%% documents in PDF format using S3 pre-signed URLs with built-in expiration.
+%% As you manage invoices across your organization using Amazon Web Services
+%% Invoice Management APIs, you can create invoice retrieval processes and
+%% integrate invoice data into your financial systems.
+%%
 %% Service endpoint
 %%
 %% You can use the following endpoints for Amazon Web Services Invoice
-%% Configuration:
+%% Configuration, Amazon Web Services Procurement Portal Preferences, and
+%% Amazon Web Services Invoice Management:
 %%
 %% `https://invoicing.us-east-1.api.aws'
 -module(aws_invoicing).
@@ -33,27 +74,46 @@
          batch_get_invoice_profile/3,
          create_invoice_unit/2,
          create_invoice_unit/3,
+         create_procurement_portal_preference/2,
+         create_procurement_portal_preference/3,
          delete_invoice_unit/2,
          delete_invoice_unit/3,
+         delete_procurement_portal_preference/2,
+         delete_procurement_portal_preference/3,
          get_invoice_p_d_f/2,
          get_invoice_p_d_f/3,
          get_invoice_unit/2,
          get_invoice_unit/3,
+         get_procurement_portal_preference/2,
+         get_procurement_portal_preference/3,
          list_invoice_summaries/2,
          list_invoice_summaries/3,
          list_invoice_units/2,
          list_invoice_units/3,
+         list_procurement_portal_preferences/2,
+         list_procurement_portal_preferences/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_procurement_portal_preference/2,
+         put_procurement_portal_preference/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
          update_invoice_unit/2,
-         update_invoice_unit/3]).
+         update_invoice_unit/3,
+         update_procurement_portal_preference_status/2,
+         update_procurement_portal_preference_status/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% purchase_order_data_source() :: #{
+%%   <<"EinvoiceDeliveryDocumentType">> => list(any()),
+%%   <<"PurchaseOrderDataSourceType">> => list(any())
+%% }
+-type purchase_order_data_source() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -61,6 +121,26 @@
 %%   <<"ResourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_procurement_portal_preference_request() :: #{
+%%   <<"BuyerDomain">> := list(any()),
+%%   <<"BuyerIdentifier">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Contacts">> := list(contact()),
+%%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
+%%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalName">> := list(any()),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEnabled">> := [boolean()],
+%%   <<"ResourceTags">> => list(resource_tag()),
+%%   <<"Selector">> => procurement_portal_preference_selector(),
+%%   <<"SupplierDomain">> := list(any()),
+%%   <<"SupplierIdentifier">> := string(),
+%%   <<"TestEnvPreference">> => test_env_preference_input()
+%% }
+-type create_procurement_portal_preference_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_invoice_unit_response() :: #{
@@ -93,6 +173,48 @@
 -type entity() :: #{binary() => any()}.
 
 %% Example:
+%% put_procurement_portal_preference_request() :: #{
+%%   <<"Contacts">> := list(contact()),
+%%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
+%%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEnabled">> := [boolean()],
+%%   <<"Selector">> => procurement_portal_preference_selector(),
+%%   <<"TestEnvPreference">> => test_env_preference_input()
+%% }
+-type put_procurement_portal_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% procurement_portal_preference() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"Contacts">> => list(contact()),
+%%   <<"CreateDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryEnabled">> => [boolean()],
+%%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
+%%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
+%%   <<"LastUpdateDate">> => [non_neg_integer()],
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalName">> => list(any()),
+%%   <<"ProcurementPortalPreferenceArn">> => string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEnabled">> => [boolean()],
+%%   <<"PurchaseOrderRetrievalEndpoint">> => string(),
+%%   <<"PurchaseOrderRetrievalPreferenceStatus">> => list(any()),
+%%   <<"PurchaseOrderRetrievalPreferenceStatusReason">> => string(),
+%%   <<"Selector">> => procurement_portal_preference_selector(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string(),
+%%   <<"TestEnvPreference">> => test_env_preference(),
+%%   <<"Version">> => [float()]
+%% }
+-type procurement_portal_preference() :: #{binary() => any()}.
+
+%% Example:
 %% discounts_breakdown_amount() :: #{
 %%   <<"Amount">> => string(),
 %%   <<"Description">> => string(),
@@ -106,6 +228,12 @@
 %%   <<"StartDate">> => [non_neg_integer()]
 %% }
 -type date_interval() :: #{binary() => any()}.
+
+%% Example:
+%% update_procurement_portal_preference_status_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type update_procurement_portal_preference_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% invoice_summaries_filter() :: #{
@@ -170,6 +298,20 @@
 -type list_invoice_units_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type delete_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
@@ -220,6 +362,13 @@
 -type invoice_summary() :: #{binary() => any()}.
 
 %% Example:
+%% list_procurement_portal_preferences_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_procurement_portal_preferences_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceTags">> => list(resource_tag())
 %% }
@@ -247,6 +396,27 @@
 -type validation_exception_field() :: #{binary() => any()}.
 
 %% Example:
+%% einvoice_delivery_preference() :: #{
+%%   <<"ConnectionTestingMethod">> => list(any()),
+%%   <<"EinvoiceDeliveryActivationDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryAttachmentTypes">> => list(list(any())()),
+%%   <<"EinvoiceDeliveryDocumentTypes">> => list(list(any())()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"PurchaseOrderDataSources">> => list(purchase_order_data_source())
+%% }
+-type einvoice_delivery_preference() :: #{binary() => any()}.
+
+%% Example:
+%% update_procurement_portal_preference_status_request() :: #{
+%%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
+%%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string(),
+%%   <<"PurchaseOrderRetrievalPreferenceStatus">> => list(any()),
+%%   <<"PurchaseOrderRetrievalPreferenceStatusReason">> => string()
+%% }
+-type update_procurement_portal_preference_status_request() :: #{binary() => any()}.
+
+%% Example:
 %% invoice_currency_amount() :: #{
 %%   <<"AmountBreakdown">> => amount_breakdown(),
 %%   <<"CurrencyCode">> => string(),
@@ -264,6 +434,13 @@
 -type discounts_breakdown() :: #{binary() => any()}.
 
 %% Example:
+%% contact() :: #{
+%%   <<"Email">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type contact() :: #{binary() => any()}.
+
+%% Example:
 %% billing_period() :: #{
 %%   <<"Month">> => integer(),
 %%   <<"Year">> => integer()
@@ -277,6 +454,23 @@
 %%   <<"Rate">> => string()
 %% }
 -type fees_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% test_env_preference_input() :: #{
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string()
+%% }
+-type test_env_preference_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_procurement_portal_preference_request() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> := string()
+%% }
+-type delete_procurement_portal_preference_request() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -302,10 +496,22 @@
 -type resource_tag() :: #{binary() => any()}.
 
 %% Example:
+%% put_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type put_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_invoice_p_d_f_response() :: #{
 %%   <<"InvoicePDF">> => invoice_p_d_f()
 %% }
 -type get_invoice_p_d_f_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type create_procurement_portal_preference_response() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -321,7 +527,26 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreference">> => procurement_portal_preference()
+%% }
+-type get_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_env_preference() :: #{
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEndpoint">> => string(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string()
+%% }
+-type test_env_preference() :: #{binary() => any()}.
+
+%% Example:
 %% invoice_unit_rule() :: #{
+%%   <<"BillSourceAccounts">> => list(string()),
 %%   <<"LinkedAccounts">> => list(string())
 %% }
 -type invoice_unit_rule() :: #{binary() => any()}.
@@ -397,8 +622,16 @@
 -type amount_breakdown() :: #{binary() => any()}.
 
 %% Example:
+%% list_procurement_portal_preferences_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcurementPortalPreferences">> => list(procurement_portal_preference_summary())
+%% }
+-type list_procurement_portal_preferences_response() :: #{binary() => any()}.
+
+%% Example:
 %% filters() :: #{
 %%   <<"Accounts">> => list(string()),
+%%   <<"BillSourceAccounts">> => list(string()),
 %%   <<"InvoiceReceivers">> => list(string()),
 %%   <<"Names">> => list(string())
 %% }
@@ -416,6 +649,12 @@
 %%   <<"InvoiceUnitArn">> => string()
 %% }
 -type create_invoice_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_procurement_portal_preference_request() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> := string()
+%% }
+-type get_procurement_portal_preference_request() :: #{binary() => any()}.
 
 %% Example:
 %% fees_breakdown() :: #{
@@ -444,6 +683,28 @@
 -type invoice_unit() :: #{binary() => any()}.
 
 %% Example:
+%% procurement_portal_preference_summary() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"CreateDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryEnabled">> => [boolean()],
+%%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
+%%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
+%%   <<"LastUpdateDate">> => [non_neg_integer()],
+%%   <<"ProcurementPortalName">> => list(any()),
+%%   <<"ProcurementPortalPreferenceArn">> => string(),
+%%   <<"PurchaseOrderRetrievalEnabled">> => [boolean()],
+%%   <<"PurchaseOrderRetrievalPreferenceStatus">> => list(any()),
+%%   <<"PurchaseOrderRetrievalPreferenceStatusReason">> => string(),
+%%   <<"Selector">> => procurement_portal_preference_selector(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string(),
+%%   <<"Version">> => [float()]
+%% }
+-type procurement_portal_preference_summary() :: #{binary() => any()}.
+
+%% Example:
 %% list_invoice_summaries_request() :: #{
 %%   <<"Filter">> => invoice_summaries_filter(),
 %%   <<"MaxResults">> => integer(),
@@ -451,6 +712,13 @@
 %%   <<"Selector">> := invoice_summaries_selector()
 %% }
 -type list_invoice_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% procurement_portal_preference_selector() :: #{
+%%   <<"InvoiceUnitArns">> => list(string()),
+%%   <<"SellerOfRecords">> => list(string())
+%% }
+-type procurement_portal_preference_selector() :: #{binary() => any()}.
 
 %% Example:
 %% taxes_breakdown() :: #{
@@ -472,11 +740,27 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type create_procurement_portal_preference_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_invoice_unit_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_procurement_portal_preference_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type get_invoice_p_d_f_errors() ::
@@ -493,6 +777,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_procurement_portal_preference_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type list_invoice_summaries_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -506,12 +799,29 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_procurement_portal_preferences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_procurement_portal_preference_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
@@ -534,6 +844,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_procurement_portal_preference_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -576,6 +895,27 @@ create_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInvoiceUnit">>, Input, Options).
 
+%% @doc Creates a procurement portal preference configuration for e-invoice
+%% delivery and purchase order retrieval.
+%%
+%% This preference defines how invoices are delivered to a procurement portal
+%% and how purchase orders are retrieved.
+-spec create_procurement_portal_preference(aws_client:aws_client(), create_procurement_portal_preference_request()) ->
+    {ok, create_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, create_procurement_portal_preference_errors(), tuple()}.
+create_procurement_portal_preference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_procurement_portal_preference(Client, Input, []).
+
+-spec create_procurement_portal_preference(aws_client:aws_client(), create_procurement_portal_preference_request(), proplists:proplist()) ->
+    {ok, create_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, create_procurement_portal_preference_errors(), tuple()}.
+create_procurement_portal_preference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProcurementPortalPreference">>, Input, Options).
+
 %% @doc This deletes an invoice unit with the provided invoice unit ARN.
 -spec delete_invoice_unit(aws_client:aws_client(), delete_invoice_unit_request()) ->
     {ok, delete_invoice_unit_response(), tuple()} |
@@ -592,6 +932,26 @@ delete_invoice_unit(Client, Input)
 delete_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInvoiceUnit">>, Input, Options).
+
+%% @doc Deletes an existing procurement portal preference.
+%%
+%% This action cannot be undone. Active e-invoice delivery and PO retrieval
+%% configurations will be terminated.
+-spec delete_procurement_portal_preference(aws_client:aws_client(), delete_procurement_portal_preference_request()) ->
+    {ok, delete_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, delete_procurement_portal_preference_errors(), tuple()}.
+delete_procurement_portal_preference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_procurement_portal_preference(Client, Input, []).
+
+-spec delete_procurement_portal_preference(aws_client:aws_client(), delete_procurement_portal_preference_request(), proplists:proplist()) ->
+    {ok, delete_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, delete_procurement_portal_preference_errors(), tuple()}.
+delete_procurement_portal_preference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProcurementPortalPreference">>, Input, Options).
 
 %% @doc Returns a URL to download the invoice document and supplemental
 %% documents associated with an invoice.
@@ -635,6 +995,24 @@ get_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInvoiceUnit">>, Input, Options).
 
+%% @doc Retrieves the details of a specific procurement portal preference
+%% configuration.
+-spec get_procurement_portal_preference(aws_client:aws_client(), get_procurement_portal_preference_request()) ->
+    {ok, get_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, get_procurement_portal_preference_errors(), tuple()}.
+get_procurement_portal_preference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_procurement_portal_preference(Client, Input, []).
+
+-spec get_procurement_portal_preference(aws_client:aws_client(), get_procurement_portal_preference_request(), proplists:proplist()) ->
+    {ok, get_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, get_procurement_portal_preference_errors(), tuple()}.
+get_procurement_portal_preference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProcurementPortalPreference">>, Input, Options).
+
 %% @doc Retrieves your invoice details programmatically, without line item
 %% details.
 -spec list_invoice_summaries(aws_client:aws_client(), list_invoice_summaries_request()) ->
@@ -671,6 +1049,24 @@ list_invoice_units(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInvoiceUnits">>, Input, Options).
 
+%% @doc Retrieves a list of procurement portal preferences associated with
+%% the Amazon Web Services account.
+-spec list_procurement_portal_preferences(aws_client:aws_client(), list_procurement_portal_preferences_request()) ->
+    {ok, list_procurement_portal_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portal_preferences_errors(), tuple()}.
+list_procurement_portal_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_procurement_portal_preferences(Client, Input, []).
+
+-spec list_procurement_portal_preferences(aws_client:aws_client(), list_procurement_portal_preferences_request(), proplists:proplist()) ->
+    {ok, list_procurement_portal_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portal_preferences_errors(), tuple()}.
+list_procurement_portal_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProcurementPortalPreferences">>, Input, Options).
+
 %% @doc Lists the tags for a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -687,6 +1083,26 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Updates an existing procurement portal preference configuration.
+%%
+%% This operation can modify settings for e-invoice delivery and purchase
+%% order retrieval.
+-spec put_procurement_portal_preference(aws_client:aws_client(), put_procurement_portal_preference_request()) ->
+    {ok, put_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, put_procurement_portal_preference_errors(), tuple()}.
+put_procurement_portal_preference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_procurement_portal_preference(Client, Input, []).
+
+-spec put_procurement_portal_preference(aws_client:aws_client(), put_procurement_portal_preference_request(), proplists:proplist()) ->
+    {ok, put_procurement_portal_preference_response(), tuple()} |
+    {error, any()} |
+    {error, put_procurement_portal_preference_errors(), tuple()}.
+put_procurement_portal_preference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutProcurementPortalPreference">>, Input, Options).
 
 %% @doc Adds a tag to a resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -739,6 +1155,25 @@ update_invoice_unit(Client, Input)
 update_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInvoiceUnit">>, Input, Options).
+
+%% @doc Updates the status of a procurement portal preference, including the
+%% activation state of e-invoice delivery and purchase order retrieval
+%% features.
+-spec update_procurement_portal_preference_status(aws_client:aws_client(), update_procurement_portal_preference_status_request()) ->
+    {ok, update_procurement_portal_preference_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_procurement_portal_preference_status_errors(), tuple()}.
+update_procurement_portal_preference_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_procurement_portal_preference_status(Client, Input, []).
+
+-spec update_procurement_portal_preference_status(aws_client:aws_client(), update_procurement_portal_preference_status_request(), proplists:proplist()) ->
+    {ok, update_procurement_portal_preference_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_procurement_portal_preference_status_errors(), tuple()}.
+update_procurement_portal_preference_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProcurementPortalPreferenceStatus">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

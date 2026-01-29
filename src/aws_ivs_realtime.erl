@@ -790,6 +790,16 @@
 
 
 %% Example:
+%% exchanged_participant_token() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"capabilities">> => list(string()),
+%%   <<"expirationTime">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type exchanged_participant_token() :: #{binary() => any()}.
+
+
+%% Example:
 %% destination_summary() :: #{
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
@@ -967,7 +977,9 @@
 %%   <<"errorCode">> => list(any()),
 %%   <<"eventTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"newToken">> => exchanged_participant_token(),
 %%   <<"participantId">> => string(),
+%%   <<"previousToken">> => exchanged_participant_token(),
 %%   <<"remoteParticipantId">> => string(),
 %%   <<"replica">> => boolean()
 %% }

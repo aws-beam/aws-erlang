@@ -133,8 +133,6 @@
          batch_update_findings_v2/3,
          batch_update_standards_control_associations/2,
          batch_update_standards_control_associations/3,
-         connector_registrations_v2/2,
-         connector_registrations_v2/3,
          create_action_target/2,
          create_action_target/3,
          create_aggregator_v2/2,
@@ -248,6 +246,8 @@
          get_finding_statistics_v2/3,
          get_findings/2,
          get_findings/3,
+         get_findings_trends_v2/2,
+         get_findings_trends_v2/3,
          get_findings_v2/2,
          get_findings_v2/3,
          get_insight_results/2,
@@ -265,6 +265,8 @@
          get_members/3,
          get_resources_statistics_v2/2,
          get_resources_statistics_v2/3,
+         get_resources_trends_v2/2,
+         get_resources_trends_v2/3,
          get_resources_v2/2,
          get_resources_v2/3,
          get_security_control_definition/2,
@@ -313,6 +315,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         register_connector_v2/2,
+         register_connector_v2/3,
          start_configuration_policy_association/2,
          start_configuration_policy_association/3,
          start_configuration_policy_disassociation/2,
@@ -377,6 +381,14 @@
 %% Example:
 %% disassociate_from_master_account_request() :: #{}
 -type disassociate_from_master_account_request() :: #{}.
+
+
+%% Example:
+%% resources_trends_metrics_result() :: #{
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"TrendsValues">> => resources_trends_values()
+%% }
+-type resources_trends_metrics_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -627,6 +639,14 @@
 %%   <<"Drop">> => list(string())
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resources_trends_string_filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Filter">> => string_filter()
+%% }
+-type resources_trends_string_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1104,6 +1124,13 @@
 
 
 %% Example:
+%% trends_values() :: #{
+%%   <<"SeverityTrends">> => severity_trends_count()
+%% }
+-type trends_values() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_details() :: #{
 %%   <<"Sasl">> => aws_msk_cluster_cluster_info_client_authentication_sasl_details(),
 %%   <<"Tls">> => aws_msk_cluster_cluster_info_client_authentication_tls_details(),
@@ -1274,14 +1301,6 @@
 %%   <<"Product">> => float()
 %% }
 -type severity_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_registrations_v2_response() :: #{
-%%   <<"ConnectorArn">> => string(),
-%%   <<"ConnectorId">> => string()
-%% }
--type connector_registrations_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2214,6 +2233,17 @@
 
 
 %% Example:
+%% get_resources_trends_v2_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Filters">> => resources_trends_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_resources_trends_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_geo_location() :: #{
 %%   <<"City">> => string(),
 %%   <<"Country">> => string(),
@@ -2868,6 +2898,14 @@
 
 
 %% Example:
+%% register_connector_v2_response() :: #{
+%%   <<"ConnectorArn">> => string(),
+%%   <<"ConnectorId">> => string()
+%% }
+-type register_connector_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% finding_history_update_source() :: #{
 %%   <<"Identity">> => string(),
 %%   <<"Type">> => list(any())
@@ -3203,6 +3241,14 @@
 
 
 %% Example:
+%% trends_metrics_result() :: #{
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"TrendsValues">> => trends_values()
+%% }
+-type trends_metrics_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_details() :: #{
 %%   <<"AbortIncompleteMultipartUpload">> => aws_s3_bucket_bucket_lifecycle_configuration_rules_abort_incomplete_multipart_upload_details(),
 %%   <<"ExpirationDate">> => string(),
@@ -3428,14 +3474,6 @@
 %%   <<"VersionLabel">> => string()
 %% }
 -type aws_elastic_beanstalk_environment_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_registrations_v2_request() :: #{
-%%   <<"AuthCode">> := string(),
-%%   <<"AuthState">> := string()
-%% }
--type connector_registrations_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4086,7 +4124,8 @@
 %% create_ticket_v2_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectorId">> := string(),
-%%   <<"FindingMetadataUid">> := string()
+%%   <<"FindingMetadataUid">> := string(),
+%%   <<"Mode">> => list(any())
 %% }
 -type create_ticket_v2_request() :: #{binary() => any()}.
 
@@ -4314,6 +4353,14 @@
 %% Example:
 %% update_action_target_response() :: #{}
 -type update_action_target_response() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4797,8 +4844,8 @@
 %% Example:
 %% service_now_detail() :: #{
 %%   <<"AuthStatus">> => list(any()),
-%%   <<"ClientId">> => string(),
-%%   <<"InstanceName">> => string()
+%%   <<"InstanceName">> => string(),
+%%   <<"SecretArn">> => string()
 %% }
 -type service_now_detail() :: #{binary() => any()}.
 
@@ -4985,6 +5032,13 @@
 %%   <<"Target">> := list()
 %% }
 -type get_configuration_policy_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_update_configuration() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type service_now_update_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_aggregator_v2_request() :: #{}
@@ -5385,6 +5439,14 @@
 
 
 %% Example:
+%% resources_trends_filters() :: #{
+%%   <<"CompositeFilters">> => list(resources_trends_composite_filter()),
+%%   <<"CompositeOperator">> => list(any())
+%% }
+-type resources_trends_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% waf_override_action() :: #{
 %%   <<"Type">> => string()
 %% }
@@ -5487,6 +5549,15 @@
 %% Example:
 %% accept_invitation_response() :: #{}
 -type accept_invitation_response() :: #{}.
+
+
+%% Example:
+%% resources_trends_composite_filter() :: #{
+%%   <<"NestedCompositeFilters">> => list(resources_trends_composite_filter()),
+%%   <<"Operator">> => list(any()),
+%%   <<"StringFilters">> => list(resources_trends_string_filter())
+%% }
+-type resources_trends_composite_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5899,6 +5970,15 @@
 
 
 %% Example:
+%% findings_trends_composite_filter() :: #{
+%%   <<"NestedCompositeFilters">> => list(findings_trends_composite_filter()),
+%%   <<"Operator">> => list(any()),
+%%   <<"StringFilters">> => list(findings_trends_string_filter())
+%% }
+-type findings_trends_composite_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_waf_regional_rate_based_rule_match_predicate() :: #{
 %%   <<"DataId">> => string(),
 %%   <<"Negated">> => boolean(),
@@ -6088,6 +6168,13 @@
 
 
 %% Example:
+%% resources_trends_values() :: #{
+%%   <<"ResourcesCount">> => resources_count()
+%% }
+-type resources_trends_values() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_app_sync_graph_ql_api_additional_authentication_providers_details() :: #{
 %%   <<"AuthenticationType">> => string(),
 %%   <<"LambdaAuthorizerConfig">> => aws_app_sync_graph_ql_api_lambda_authorizer_config_details(),
@@ -6139,6 +6226,17 @@
 
 
 %% Example:
+%% get_findings_trends_v2_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Filters">> => findings_trends_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_findings_trends_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_elasticsearch_domain_service_software_options() :: #{
 %%   <<"AutomatedUpdateDate">> => string(),
 %%   <<"Cancellable">> => boolean(),
@@ -6175,6 +6273,14 @@
 %%   <<"Notifications">> => aws_backup_backup_vault_notifications_details()
 %% }
 -type aws_backup_backup_vault_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_trends_string_filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Filter">> => string_filter()
+%% }
+-type findings_trends_string_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6510,6 +6616,20 @@
 %%   <<"MoveToColdStorageAfterDays">> => float()
 %% }
 -type aws_backup_backup_plan_lifecycle_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% severity_trends_count() :: #{
+%%   <<"Critical">> => float(),
+%%   <<"Fatal">> => float(),
+%%   <<"High">> => float(),
+%%   <<"Informational">> => float(),
+%%   <<"Low">> => float(),
+%%   <<"Medium">> => float(),
+%%   <<"Other">> => float(),
+%%   <<"Unknown">> => float()
+%% }
+-type severity_trends_count() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7330,6 +7450,14 @@
 
 
 %% Example:
+%% register_connector_v2_request() :: #{
+%%   <<"AuthCode">> := string(),
+%%   <<"AuthState">> := string()
+%% }
+-type register_connector_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_wafv2_action_allow_details() :: #{
 %%   <<"CustomRequestHandling">> => aws_wafv2_custom_request_handling_details()
 %% }
@@ -7379,11 +7507,17 @@
 
 %% Example:
 %% update_connector_v2_request() :: #{
-%%   <<"ClientSecret">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Provider">> => list()
 %% }
 -type update_connector_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resources_count() :: #{
+%%   <<"AllResources">> => float()
+%% }
+-type resources_count() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7571,6 +7705,15 @@
 %%   <<"EncryptionConfiguration">> => aws_athena_work_group_configuration_result_configuration_encryption_configuration_details()
 %% }
 -type aws_athena_work_group_configuration_result_configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_trends_v2_response() :: #{
+%%   <<"Granularity">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"TrendsMetrics">> => list(trends_metrics_result())
+%% }
+-type get_findings_trends_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7884,9 +8027,8 @@
 
 %% Example:
 %% service_now_provider_configuration() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"InstanceName">> => string()
+%%   <<"InstanceName">> => string(),
+%%   <<"SecretArn">> => string()
 %% }
 -type service_now_provider_configuration() :: #{binary() => any()}.
 
@@ -8749,6 +8891,14 @@
 
 
 %% Example:
+%% findings_trends_filters() :: #{
+%%   <<"CompositeFilters">> => list(findings_trends_composite_filter()),
+%%   <<"CompositeOperator">> => list(any())
+%% }
+-type findings_trends_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_redshift_cluster_logging_status() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"LastFailureMessage">> => string(),
@@ -9408,7 +9558,8 @@
 %% create_connector_v2_response() :: #{
 %%   <<"AuthUrl">> => string(),
 %%   <<"ConnectorArn">> => string(),
-%%   <<"ConnectorId">> => string()
+%%   <<"ConnectorId">> => string(),
+%%   <<"ConnectorStatus">> => list(any())
 %% }
 -type create_connector_v2_response() :: #{binary() => any()}.
 
@@ -9673,6 +9824,15 @@
 %% }
 -type aws_ec2_launch_template_data_block_device_mapping_set_ebs_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_resources_trends_v2_response() :: #{
+%%   <<"Granularity">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"TrendsMetrics">> => list(resources_trends_metrics_result())
+%% }
+-type get_resources_trends_v2_response() :: #{binary() => any()}.
+
 -type accept_administrator_invitation_errors() ::
     limit_exceeded_exception() | 
     internal_exception() | 
@@ -9769,14 +9929,6 @@
     invalid_input_exception() | 
     invalid_access_exception().
 
--type connector_registrations_v2_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
 -type create_action_target_errors() ::
     resource_conflict_exception() | 
     limit_exceeded_exception() | 
@@ -9789,6 +9941,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -9804,6 +9957,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_configuration_policy_errors() ::
@@ -9819,6 +9973,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -10131,6 +10286,12 @@
     invalid_input_exception() | 
     invalid_access_exception().
 
+-type get_findings_trends_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_findings_v2_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -10179,6 +10340,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type get_resources_trends_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type get_resources_v2_errors() ::
     throttling_exception() | 
@@ -10292,6 +10459,14 @@
     internal_exception() | 
     invalid_input_exception() | 
     resource_not_found_exception().
+
+-type register_connector_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_configuration_policy_association_errors() ::
     limit_exceeded_exception() | 
@@ -11012,8 +11187,7 @@ batch_update_findings(Client, Input0, Options0) ->
 %% `securityhub:BatchUpdateFindings' action.
 %% Updates from `BatchUpdateFindingsV2' don't affect the value of
 %% f`inding_info.modified_time', `finding_info.modified_time_dt',
-%% `time', `time_dt for a finding'. This API is in public preview and
-%% subject to change.
+%% `time', `time_dt for a finding'.
 -spec batch_update_findings_v2(aws_client:aws_client(), batch_update_findings_v2_request()) ->
     {ok, batch_update_findings_v2_response(), tuple()} |
     {error, any()} |
@@ -11083,43 +11257,6 @@ batch_update_standards_control_associations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to complete the authorization based on input
-%% parameters.
-%%
-%% This API is in preview release and subject to change.
--spec connector_registrations_v2(aws_client:aws_client(), connector_registrations_v2_request()) ->
-    {ok, connector_registrations_v2_response(), tuple()} |
-    {error, any()} |
-    {error, connector_registrations_v2_errors(), tuple()}.
-connector_registrations_v2(Client, Input) ->
-    connector_registrations_v2(Client, Input, []).
-
--spec connector_registrations_v2(aws_client:aws_client(), connector_registrations_v2_request(), proplists:proplist()) ->
-    {ok, connector_registrations_v2_response(), tuple()} |
-    {error, any()} |
-    {error, connector_registrations_v2_errors(), tuple()}.
-connector_registrations_v2(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/connectorsv2/registrations"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
 %% @doc Creates a custom action target in Security Hub.
 %%
 %% You can use custom actions on findings and insights in Security Hub to
@@ -11159,8 +11296,6 @@ create_action_target(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables aggregation across Amazon Web Services Regions.
-%%
-%% This API is in public preview and subject to change.
 -spec create_aggregator_v2(aws_client:aws_client(), create_aggregator_v2_request()) ->
     {ok, create_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -11230,8 +11365,6 @@ create_automation_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a V2 automation rule.
-%%
-%% This API is in public preview and subject to change.
 -spec create_automation_rule_v2(aws_client:aws_client(), create_automation_rule_v2_request()) ->
     {ok, create_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -11304,8 +11437,6 @@ create_configuration_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a connectorV2 based on input parameters.
-%%
-%% This API is in preview release and subject to change.
 -spec create_connector_v2(aws_client:aws_client(), create_connector_v2_request()) ->
     {ok, create_connector_v2_response(), tuple()} |
     {error, any()} |
@@ -11511,8 +11642,6 @@ create_members(Client, Input0, Options0) ->
 
 %% @doc Grants permission to create a ticket in the chosen ITSM based on
 %% finding information for the provided finding metadata UID.
-%%
-%% This API is in preview release and subject to change.
 -spec create_ticket_v2(aws_client:aws_client(), create_ticket_v2_request()) ->
     {ok, create_ticket_v2_response(), tuple()} |
     {error, any()} |
@@ -11635,8 +11764,6 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Aggregator V2.
-%%
-%% This API is in public preview and subject to change.
 -spec delete_aggregator_v2(aws_client:aws_client(), binary() | list(), delete_aggregator_v2_request()) ->
     {ok, delete_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -11671,8 +11798,6 @@ delete_aggregator_v2(Client, AggregatorV2Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a V2 automation rule.
-%%
-%% This API is in public preview and subject to change.
 -spec delete_automation_rule_v2(aws_client:aws_client(), binary() | list(), delete_automation_rule_v2_request()) ->
     {ok, delete_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -11748,8 +11873,6 @@ delete_configuration_policy(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a connectorV2.
-%%
-%% This API is in preview release and subject to change.
 -spec delete_connector_v2(aws_client:aws_client(), binary() | list(), delete_connector_v2_request()) ->
     {ok, delete_connector_v2_response(), tuple()} |
     {error, any()} |
@@ -12120,8 +12243,6 @@ describe_products(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the product integration.
-%%
-%% This API is in public preview and subject to change.
 -spec describe_products_v2(aws_client:aws_client()) ->
     {ok, describe_products_v2_response(), tuple()} |
     {error, any()} |
@@ -12164,8 +12285,6 @@ describe_products_v2(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about the service resource in your account.
-%%
-%% This API is in public preview and subject to change.
 -spec describe_security_hub_v2(aws_client:aws_client()) ->
     {ok, describe_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12425,8 +12544,6 @@ disable_security_hub(Client, Input0, Options0) ->
 
 %% @doc Disable the service for the current Amazon Web Services Region or
 %% specified Amazon Web Services Region.
-%%
-%% This API is in public preview and subject to change.
 -spec disable_security_hub_v2(aws_client:aws_client(), disable_security_hub_v2_request()) ->
     {ok, disable_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12737,8 +12854,6 @@ enable_security_hub(Client, Input0, Options0) ->
 
 %% @doc Enables the service in account for the current Amazon Web Services
 %% Region or specified Amazon Web Services Region.
-%%
-%% This API is in public preview and subject to change.
 -spec enable_security_hub_v2(aws_client:aws_client(), enable_security_hub_v2_request()) ->
     {ok, enable_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12815,8 +12930,6 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the configuration of the specified Aggregator V2.
-%%
-%% This API is in public preview and subject to change.
 -spec get_aggregator_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, get_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -12854,8 +12967,6 @@ get_aggregator_v2(Client, AggregatorV2Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an automation rule for the V2 service.
-%%
-%% This API is in public preview and subject to change.
 -spec get_automation_rule_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, get_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -12976,8 +13087,6 @@ get_configuration_policy_association(Client, Input0, Options0) ->
 
 %% @doc Grants permission to retrieve details for a connectorV2 based on
 %% connector id.
-%%
-%% This API is in preview release and subject to change.
 -spec get_connector_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connector_v2_response(), tuple()} |
     {error, any()} |
@@ -13144,8 +13253,7 @@ get_finding_history(Client, Input0, Options0) ->
 %%
 %% `GetFindingStatisticsV2' use `securityhub:GetAdhocInsightResults'
 %% in the `Action' element of an IAM policy statement.
-%% You must have permission to perform the `s' action. This API is in
-%% public preview and subject to change.
+%% You must have permission to perform the `s' action.
 -spec get_finding_statistics_v2(aws_client:aws_client(), get_finding_statistics_v2_request()) ->
     {ok, get_finding_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13217,13 +13325,50 @@ get_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns findings trend data based on the specified criteria.
+%%
+%% This operation helps you analyze patterns and changes in findings over
+%% time.
+-spec get_findings_trends_v2(aws_client:aws_client(), get_findings_trends_v2_request()) ->
+    {ok, get_findings_trends_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_findings_trends_v2_errors(), tuple()}.
+get_findings_trends_v2(Client, Input) ->
+    get_findings_trends_v2(Client, Input, []).
+
+-spec get_findings_trends_v2(aws_client:aws_client(), get_findings_trends_v2_request(), proplists:proplist()) ->
+    {ok, get_findings_trends_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_findings_trends_v2_errors(), tuple()}.
+get_findings_trends_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/findingsTrendsv2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Return a list of findings that match the specified criteria.
 %%
 %% `GetFindings' and `GetFindingsV2' both use
 %% `securityhub:GetFindings' in the `Action' element of an IAM policy
 %% statement.
 %% You must have permission to perform the `securityhub:GetFindings'
-%% action. This API is in public preview and subject to change.
+%% action.
 -spec get_findings_v2(aws_client:aws_client(), get_findings_v2_request()) ->
     {ok, get_findings_v2_response(), tuple()} |
     {error, any()} |
@@ -13476,8 +13621,6 @@ get_members(Client, Input0, Options0) ->
 
 %% @doc Retrieves statistical information about Amazon Web Services resources
 %% and their associated security findings.
-%%
-%% This API is in public preview and subject to change.
 -spec get_resources_statistics_v2(aws_client:aws_client(), get_resources_statistics_v2_request()) ->
     {ok, get_resources_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13511,9 +13654,44 @@ get_resources_statistics_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of resources.
+%% @doc Returns resource trend data based on the specified criteria.
 %%
-%% This API is in public preview and subject to change.
+%% This operation helps you analyze patterns and changes in resource
+%% compliance over time.
+-spec get_resources_trends_v2(aws_client:aws_client(), get_resources_trends_v2_request()) ->
+    {ok, get_resources_trends_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_resources_trends_v2_errors(), tuple()}.
+get_resources_trends_v2(Client, Input) ->
+    get_resources_trends_v2(Client, Input, []).
+
+-spec get_resources_trends_v2(aws_client:aws_client(), get_resources_trends_v2_request(), proplists:proplist()) ->
+    {ok, get_resources_trends_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_resources_trends_v2_errors(), tuple()}.
+get_resources_trends_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/resourcesTrendsv2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of resources.
 -spec get_resources_v2(aws_client:aws_client(), get_resources_v2_request()) ->
     {ok, get_resources_v2_response(), tuple()} |
     {error, any()} |
@@ -13650,8 +13828,6 @@ invite_members(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of V2 aggregators.
-%%
-%% This API is in public preview and subject to change.
 -spec list_aggregators_v2(aws_client:aws_client()) ->
     {ok, list_aggregators_v2_response(), tuple()} |
     {error, any()} |
@@ -13738,8 +13914,6 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of automation rules and metadata for the calling
 %% account.
-%%
-%% This API is in public preview and subject to change.
 -spec list_automation_rules_v2(aws_client:aws_client()) ->
     {ok, list_automation_rules_v2_response(), tuple()} |
     {error, any()} |
@@ -13871,8 +14045,6 @@ list_configuration_policy_associations(Client, Input0, Options0) ->
 
 %% @doc Grants permission to retrieve a list of connectorsV2 and their
 %% metadata for the calling account.
-%%
-%% This API is in preview release and subject to change.
 -spec list_connectors_v2(aws_client:aws_client()) ->
     {ok, list_connectors_v2_response(), tuple()} |
     {error, any()} |
@@ -14287,6 +14459,41 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Grants permission to complete the authorization based on input
+%% parameters.
+-spec register_connector_v2(aws_client:aws_client(), register_connector_v2_request()) ->
+    {ok, register_connector_v2_response(), tuple()} |
+    {error, any()} |
+    {error, register_connector_v2_errors(), tuple()}.
+register_connector_v2(Client, Input) ->
+    register_connector_v2(Client, Input, []).
+
+-spec register_connector_v2(aws_client:aws_client(), register_connector_v2_request(), proplists:proplist()) ->
+    {ok, register_connector_v2_response(), tuple()} |
+    {error, any()} |
+    {error, register_connector_v2_errors(), tuple()}.
+register_connector_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connectorsv2/register"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc
 %% Associates a target account, organizational unit, or the root with a
 %% specified configuration.
@@ -14478,8 +14685,6 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Udpates the configuration for the Aggregator V2.
-%%
-%% This API is in public preview and subject to change.
 -spec update_aggregator_v2(aws_client:aws_client(), binary() | list(), update_aggregator_v2_request()) ->
     {ok, update_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -14514,8 +14719,6 @@ update_aggregator_v2(Client, AggregatorV2Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a V2 automation rule.
-%%
-%% This API is in public preview and subject to change.
 -spec update_automation_rule_v2(aws_client:aws_client(), binary() | list(), update_automation_rule_v2_request()) ->
     {ok, update_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -14589,8 +14792,6 @@ update_configuration_policy(Client, Identifier, Input0, Options0) ->
 
 %% @doc Grants permission to update a connectorV2 based on its id and input
 %% parameters.
-%%
-%% This API is in preview release and subject to change.
 -spec update_connector_v2(aws_client:aws_client(), binary() | list(), update_connector_v2_request()) ->
     {ok, update_connector_v2_response(), tuple()} |
     {error, any()} |

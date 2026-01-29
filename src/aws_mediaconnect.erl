@@ -40,18 +40,39 @@
          add_flow_sources/4,
          add_flow_vpc_interfaces/3,
          add_flow_vpc_interfaces/4,
+         batch_get_router_input/2,
+         batch_get_router_input/4,
+         batch_get_router_input/5,
+         batch_get_router_network_interface/2,
+         batch_get_router_network_interface/4,
+         batch_get_router_network_interface/5,
+         batch_get_router_output/2,
+         batch_get_router_output/4,
+         batch_get_router_output/5,
          create_bridge/2,
          create_bridge/3,
          create_flow/2,
          create_flow/3,
          create_gateway/2,
          create_gateway/3,
+         create_router_input/2,
+         create_router_input/3,
+         create_router_network_interface/2,
+         create_router_network_interface/3,
+         create_router_output/2,
+         create_router_output/3,
          delete_bridge/3,
          delete_bridge/4,
          delete_flow/3,
          delete_flow/4,
          delete_gateway/3,
          delete_gateway/4,
+         delete_router_input/3,
+         delete_router_input/4,
+         delete_router_network_interface/3,
+         delete_router_network_interface/4,
+         delete_router_output/3,
+         delete_router_output/4,
          deregister_gateway_instance/3,
          deregister_gateway_instance/4,
          describe_bridge/2,
@@ -78,6 +99,21 @@
          describe_reservation/2,
          describe_reservation/4,
          describe_reservation/5,
+         get_router_input/2,
+         get_router_input/4,
+         get_router_input/5,
+         get_router_input_source_metadata/2,
+         get_router_input_source_metadata/4,
+         get_router_input_source_metadata/5,
+         get_router_input_thumbnail/2,
+         get_router_input_thumbnail/4,
+         get_router_input_thumbnail/5,
+         get_router_network_interface/2,
+         get_router_network_interface/4,
+         get_router_network_interface/5,
+         get_router_output/2,
+         get_router_output/4,
+         get_router_output/5,
          grant_flow_entitlements/3,
          grant_flow_entitlements/4,
          list_bridges/1,
@@ -101,6 +137,15 @@
          list_reservations/1,
          list_reservations/3,
          list_reservations/4,
+         list_router_inputs/2,
+         list_router_inputs/3,
+         list_router_network_interfaces/2,
+         list_router_network_interfaces/3,
+         list_router_outputs/2,
+         list_router_outputs/3,
+         list_tags_for_global_resource/2,
+         list_tags_for_global_resource/4,
+         list_tags_for_global_resource/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -118,14 +163,32 @@
          remove_flow_source/5,
          remove_flow_vpc_interface/4,
          remove_flow_vpc_interface/5,
+         restart_router_input/3,
+         restart_router_input/4,
+         restart_router_output/3,
+         restart_router_output/4,
          revoke_flow_entitlement/4,
          revoke_flow_entitlement/5,
          start_flow/3,
          start_flow/4,
+         start_router_input/3,
+         start_router_input/4,
+         start_router_output/3,
+         start_router_output/4,
          stop_flow/3,
          stop_flow/4,
+         stop_router_input/3,
+         stop_router_input/4,
+         stop_router_output/3,
+         stop_router_output/4,
+         tag_global_resource/3,
+         tag_global_resource/4,
          tag_resource/3,
          tag_resource/4,
+         take_router_input/3,
+         take_router_input/4,
+         untag_global_resource/3,
+         untag_global_resource/4,
          untag_resource/3,
          untag_resource/4,
          update_bridge/3,
@@ -147,10 +210,50 @@
          update_flow_source/4,
          update_flow_source/5,
          update_gateway_instance/3,
-         update_gateway_instance/4]).
+         update_gateway_instance/4,
+         update_router_input/3,
+         update_router_input/4,
+         update_router_network_interface/3,
+         update_router_network_interface/4,
+         update_router_output/3,
+         update_router_output/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% router_input_thumbnail_details() :: #{
+%%   <<"Thumbnail">> => [binary()],
+%%   <<"ThumbnailMessages">> => list(router_input_message()),
+%%   <<"Timecode">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type router_input_thumbnail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_stream_details() :: #{
+%%   <<"SourceIndexOneStreamDetails">> => merge_router_input_indexed_stream_details(),
+%%   <<"SourceIndexZeroStreamDetails">> => merge_router_input_indexed_stream_details()
+%% }
+-type merge_router_input_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_router_network_interface_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type vpc_router_network_interface_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_network_interface_error()),
+%%   <<"RouterNetworkInterfaces">> => list(router_network_interface())
+%% }
+-type batch_get_router_network_interface_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -163,6 +266,7 @@
 
 %% Example:
 %% update_flow_request() :: #{
+%%   <<"EncodingConfig">> => encoding_config(),
 %%   <<"FlowSize">> => list(any()),
 %%   <<"Maintenance">> => update_maintenance(),
 %%   <<"NdiConfig">> => ndi_config(),
@@ -170,6 +274,17 @@
 %%   <<"SourceMonitoringConfig">> => monitoring_config()
 %% }
 -type update_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% take_router_input_response() :: #{
+%%   <<"RoutedState">> => list(any()),
+%%   <<"RouterInputArn">> => string(),
+%%   <<"RouterInputName">> => [string()],
+%%   <<"RouterOutputArn">> => string(),
+%%   <<"RouterOutputName">> => [string()]
+%% }
+-type take_router_input_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -196,6 +311,10 @@
 %%   <<"MediaStreamName">> => [string()]
 %% }
 -type media_stream_output_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_router_input_request() :: #{}
+-type stop_router_input_request() :: #{}.
 
 
 %% Example:
@@ -234,13 +353,39 @@
 
 
 %% Example:
+%% create_router_output_request() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"ClientToken">> => [string()],
+%%   <<"Configuration">> := list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> := [float()],
+%%   <<"Name">> := [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutingScope">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> := list(any())
+%% }
+-type create_router_output_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_flow_source_metadata_response() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"Messages">> => list(message_detail()),
+%%   <<"NdiInfo">> => ndi_source_metadata_info(),
 %%   <<"Timestamp">> => [non_neg_integer()],
 %%   <<"TransportMediaInfo">> => transport_media_info()
 %% }
 -type describe_flow_source_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type delete_router_output_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -249,6 +394,23 @@
 %% }
 -type grant_flow_entitlements_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_router_network_interface_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"Name">> => [string()]
+%% }
+-type update_router_network_interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_network_interfaces_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_network_interfaces_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_gateway_instance_request() :: #{}
 -type describe_gateway_instance_request() :: #{}.
@@ -256,6 +418,15 @@
 %% Example:
 %% describe_flow_source_metadata_request() :: #{}
 -type describe_flow_source_metadata_request() :: #{}.
+
+
+%% Example:
+%% srt_listener_router_output_configuration() :: #{
+%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"Port">> => [integer()]
+%% }
+-type srt_listener_router_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,8 +443,81 @@
 
 
 %% Example:
+%% batch_get_router_input_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_input_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_router_network_interface_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type delete_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_encryption_key_configuration() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type secrets_manager_encryption_key_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"Configuration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"InputType">> => list(any()),
+%%   <<"IpAddress">> => [string()],
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaintenanceType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"MaximumRoutedOutputs">> => [integer()],
+%%   <<"Messages">> => list(router_input_message()),
+%%   <<"Name">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedOutputs">> => [integer()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"StreamDetails">> => list(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => list(any()),
+%%   <<"TransitEncryption">> => router_input_transit_encryption(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% restart_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type restart_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_media_info() :: #{
+%%   <<"Streams">> => list(ndi_media_stream_info())
+%% }
+-type ndi_media_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_flow_request() :: #{
 %%   <<"AvailabilityZone">> => [string()],
+%%   <<"EncodingConfig">> => encoding_config(),
 %%   <<"Entitlements">> => list(grant_entitlement_request()),
 %%   <<"FlowSize">> => list(any()),
 %%   <<"FlowTags">> => map(),
@@ -297,6 +541,38 @@
 %% }
 -type update_bridge_state_request() :: #{binary() => any()}.
 
+%% Example:
+%% start_router_output_request() :: #{}
+-type start_router_output_request() :: #{}.
+
+%% Example:
+%% start_router_input_request() :: #{}
+-type start_router_input_request() :: #{}.
+
+
+%% Example:
+%% rtp_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"ForwardErrorCorrection">> => list(any())
+%% }
+-type rtp_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type start_router_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_global_resource_request() :: #{}
+-type list_tags_for_global_resource_request() :: #{}.
+
 
 %% Example:
 %% list_gateway_instances_response() :: #{
@@ -304,6 +580,29 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_gateway_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_router_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"OutputType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedInputArn">> => string(),
+%%   <<"RoutedState">> => list(any()),
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -346,11 +645,27 @@
 
 
 %% Example:
+%% create_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type create_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% add_flow_media_streams_response() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"MediaStreams">> => list(media_stream())
 %% }
 -type add_flow_media_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_router_input_source_metadata_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"SourceMetadataDetails">> => router_input_source_metadata_details()
+%% }
+-type get_router_input_source_metadata_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -385,6 +700,37 @@
 
 
 %% Example:
+%% media_live_transit_encryption() :: #{
+%%   <<"EncryptionKeyConfiguration">> => list(),
+%%   <<"EncryptionKeyType">> => list(any())
+%% }
+-type media_live_transit_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_live_input_router_output_configuration() :: #{
+%%   <<"DestinationTransitEncryption">> => media_live_transit_encryption(),
+%%   <<"MediaLiveInputArn">> => string(),
+%%   <<"MediaLivePipelineId">> => list(any())
+%% }
+-type media_live_input_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_encryption_configuration() :: #{
+%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
+%% }
+-type srt_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type get_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_bridge_output_request() :: #{
 %%   <<"NetworkOutput">> => update_bridge_network_output_request()
 %% }
@@ -397,6 +743,10 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_encryption_key_configuration() :: #{}
+-type automatic_encryption_key_configuration() :: #{}.
 
 
 %% Example:
@@ -489,10 +839,37 @@
 
 
 %% Example:
+%% router_output_message() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type router_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_output_request() :: #{}
+-type get_router_output_request() :: #{}.
+
+
+%% Example:
 %% create_flow420_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type create_flow420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_router_input_indexed_stream_details() :: #{
+%%   <<"SourceIndex">> => [integer()],
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type failover_router_input_indexed_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_info() :: #{
+%%   <<"SourceName">> => [string()]
+%% }
+-type ndi_source_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -506,6 +883,14 @@
 %%   <<"Status">> => list(any())
 %% }
 -type listed_flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_indexed_stream_details() :: #{
+%%   <<"SourceIndex">> => [integer()],
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type merge_router_input_indexed_stream_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,6 +909,15 @@
 %%   <<"BridgePlacement">> => list(any())
 %% }
 -type update_gateway_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type stop_router_input_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -556,6 +950,14 @@
 
 
 %% Example:
+%% failover_router_input_stream_details() :: #{
+%%   <<"SourceIndexOneStreamDetails">> => failover_router_input_indexed_stream_details(),
+%%   <<"SourceIndexZeroStreamDetails">> => failover_router_input_indexed_stream_details()
+%% }
+-type failover_router_input_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_flow_media_stream_response() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"MediaStreamName">> => [string()]
@@ -571,10 +973,21 @@
 
 
 %% Example:
+%% create_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type create_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_router_network_interface_request() :: #{}
+-type delete_router_network_interface_request() :: #{}.
 
 
 %% Example:
@@ -583,6 +996,10 @@
 %%   <<"SourceName">> => [string()]
 %% }
 -type remove_bridge_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_maintenance_configuration() :: #{}
+-type default_maintenance_configuration() :: #{}.
 
 
 %% Example:
@@ -599,6 +1016,17 @@
 %%   <<"EncoderProfile">> => list(any())
 %% }
 -type encoding_parameters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_router_input_configuration() :: #{
+%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"SourceAddress">> => [string()],
+%%   <<"SourcePort">> => [integer()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_caller_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -667,6 +1095,21 @@
 
 
 %% Example:
+%% list_router_network_interfaces_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterNetworkInterfaces">> => list(listed_router_network_interface())
+%% }
+-type list_router_network_interfaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type update_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_detail() :: #{
 %%   <<"Code">> => [string()],
 %%   <<"Message">> => [string()],
@@ -681,6 +1124,20 @@
 %%   <<"Lang">> => [string()]
 %% }
 -type media_stream_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_global_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_global_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type update_router_input_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -708,11 +1165,29 @@
 
 
 %% Example:
+%% list_tags_for_global_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_global_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% egress_gateway_bridge() :: #{
 %%   <<"InstanceId">> => [string()],
 %%   <<"MaxBitrate">> => [integer()]
 %% }
 -type egress_gateway_bridge() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_request() :: #{}
+-type get_router_input_request() :: #{}.
+
+
+%% Example:
+%% public_router_network_interface_configuration() :: #{
+%%   <<"AllowRules">> => list(public_router_network_interface_rule())
+%% }
+-type public_router_network_interface_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -727,7 +1202,10 @@
 %%   <<"MaxSyncBuffer">> => [integer()],
 %%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
+%%   <<"NdiSourceSettings">> => ndi_source_settings(),
 %%   <<"Protocol">> => list(any()),
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceListenerAddress">> => [string()],
@@ -745,6 +1223,31 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_flow_router_output_configuration() :: #{
+%%   <<"DestinationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"FlowArn">> => string(),
+%%   <<"FlowSourceArn">> => string()
+%% }
+-type media_connect_flow_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_transit_encryption() :: #{
+%%   <<"EncryptionKeyConfiguration">> => list(),
+%%   <<"EncryptionKeyType">> => list(any())
+%% }
+-type router_input_transit_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% rist_router_input_configuration() :: #{
+%%   <<"Port">> => [integer()],
+%%   <<"RecoveryLatencyMilliseconds">> => [float()]
+%% }
+-type rist_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -772,6 +1275,14 @@
 %% Example:
 %% delete_bridge_request() :: #{}
 -type delete_bridge_request() :: #{}.
+
+
+%% Example:
+%% rist_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()]
+%% }
+-type rist_router_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -804,6 +1315,7 @@
 %%   <<"MaxSyncBuffer">> => [integer()],
 %%   <<"MinLatency">> => [integer()],
 %%   <<"NdiProgramName">> => [string()],
+%%   <<"NdiSourceSettings">> => ndi_source_settings(),
 %%   <<"NdiSpeedHqQuality">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"RemoteId">> => [string()],
@@ -842,6 +1354,15 @@
 
 
 %% Example:
+%% get_router_input_thumbnail_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"ThumbnailDetails">> => router_input_thumbnail_details()
+%% }
+-type get_router_input_thumbnail_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% maintenance() :: #{
 %%   <<"MaintenanceDay">> => list(any()),
 %%   <<"MaintenanceDeadline">> => [string()],
@@ -874,6 +1395,21 @@
 %% }
 -type remove_bridge_output_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_router_output_request() :: #{}
+-type delete_router_output_request() :: #{}.
+
+%% Example:
+%% media_connect_flow_router_output_stream_details() :: #{}
+-type media_connect_flow_router_output_stream_details() :: #{}.
+
+
+%% Example:
+%% take_router_input_request() :: #{
+%%   <<"RouterInputArn">> => string()
+%% }
+-type take_router_input_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% fmtp() :: #{
@@ -886,6 +1422,13 @@
 %%   <<"Tcs">> => list(any())
 %% }
 -type fmtp() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_global_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_global_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -908,6 +1451,10 @@
 %%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
 %% }
 -type set_gateway_bridge_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_network_interface_request() :: #{}
+-type get_router_network_interface_request() :: #{}.
 
 
 %% Example:
@@ -963,6 +1510,10 @@
 %% }
 -type stop_flow_response() :: #{binary() => any()}.
 
+%% Example:
+%% media_connect_flow_router_input_stream_details() :: #{}
+-type media_connect_flow_router_input_stream_details() :: #{}.
+
 
 %% Example:
 %% encryption() :: #{
@@ -1007,6 +1558,17 @@
 
 
 %% Example:
+%% get_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
+%% }
+-type get_router_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_source_metadata_request() :: #{}
+-type get_router_input_source_metadata_request() :: #{}.
+
+
+%% Example:
 %% grant_flow_entitlements420_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -1034,6 +1596,10 @@
 %% }
 -type audio_monitoring_setting() :: #{binary() => any()}.
 
+%% Example:
+%% media_live_input_router_output_stream_details() :: #{}
+-type media_live_input_router_output_stream_details() :: #{}.
+
 
 %% Example:
 %% resource_specification() :: #{
@@ -1041,6 +1607,13 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type resource_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
+%% }
+-type update_router_output_response() :: #{binary() => any()}.
 
 %% Example:
 %% remove_bridge_output_request() :: #{}
@@ -1072,6 +1645,14 @@
 %%   <<"Start">> => [string()]
 %% }
 -type reservation() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoding_config() :: #{
+%%   <<"EncodingProfile">> => list(any()),
+%%   <<"VideoMaxBitrate">> => [integer()]
+%% }
+-type encoding_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1136,6 +1717,22 @@
 %% }
 -type add_bridge_outputs_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% listed_router_network_interface() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedInputCount">> => [integer()],
+%%   <<"AssociatedOutputCount">> => [integer()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_network_interface() :: #{binary() => any()}.
+
 %% Example:
 %% remove_flow_source_request() :: #{}
 -type remove_flow_source_request() :: #{}.
@@ -1146,11 +1743,26 @@
 
 
 %% Example:
+%% list_router_outputs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterOutputs">> => list(listed_router_output())
+%% }
+-type list_router_outputs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_flow_source_response() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"SourceArn">> => [string()]
 %% }
 -type remove_flow_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_output_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type router_output_service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1184,7 +1796,26 @@
 
 
 %% Example:
+%% router_network_interface() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedInputCount">> => [integer()],
+%%   <<"AssociatedOutputCount">> => [integer()],
+%%   <<"Configuration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type router_network_interface() :: #{binary() => any()}.
+
+
+%% Example:
 %% source() :: #{
+%%   <<"ConnectedRouterOutputArn">> => [string()],
 %%   <<"DataTransferSubscriberFeePercent">> => [integer()],
 %%   <<"Decryption">> => encryption(),
 %%   <<"Description">> => [string()],
@@ -1195,6 +1826,8 @@
 %%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()),
 %%   <<"Name">> => [string()],
 %%   <<"PeerIpAddress">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceArn">> => [string()],
@@ -1221,6 +1854,47 @@
 %% }
 -type update_gateway_instance_response() :: #{binary() => any()}.
 
+%% Example:
+%% restart_router_output_request() :: #{}
+-type restart_router_output_request() :: #{}.
+
+
+%% Example:
+%% update_router_output_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Name">> => [string()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"Tier">> => list(any())
+%% }
+-type update_router_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_inputs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterInputs">> => list(listed_router_input())
+%% }
+-type list_router_inputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_input_request() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"ClientToken">> => [string()],
+%%   <<"Configuration">> := list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> := [float()],
+%%   <<"Name">> := [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutingScope">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> := list(any()),
+%%   <<"TransitEncryption">> => router_input_transit_encryption()
+%% }
+-type create_router_input_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_failover_config() :: #{
@@ -1245,6 +1919,15 @@
 %%   <<"Bridge">> => bridge()
 %% }
 -type update_bridge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_configuration() :: #{
+%%   <<"MergeRecoveryWindowMilliseconds">> => [float()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"ProtocolConfigurations">> => list(list())
+%% }
+-type merge_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1280,6 +1963,17 @@
 
 
 %% Example:
+%% start_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type start_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% entitlement() :: #{
 %%   <<"DataTransferSubscriberFeePercent">> => [integer()],
 %%   <<"Description">> => [string()],
@@ -1290,6 +1984,10 @@
 %%   <<"Subscribers">> => list([string()]())
 %% }
 -type entitlement() :: #{binary() => any()}.
+
+%% Example:
+%% restart_router_input_request() :: #{}
+-type restart_router_input_request() :: #{}.
 
 
 %% Example:
@@ -1328,6 +2026,33 @@
 
 
 %% Example:
+%% standard_router_output_stream_details() :: #{
+%%   <<"DestinationIpAddress">> => [string()]
+%% }
+-type standard_router_output_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_inputs_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_inputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_network_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_thumbnail_request() :: #{}
+-type get_router_input_thumbnail_request() :: #{}.
+
+
+%% Example:
 %% list_reservations_response() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"Reservations">> => list(reservation())
@@ -1344,10 +2069,45 @@
 
 
 %% Example:
+%% srt_decryption_configuration() :: #{
+%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
+%% }
+-type srt_decryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_metadata_info() :: #{
+%%   <<"ActiveSource">> => ndi_source_info(),
+%%   <<"DiscoveredSources">> => list(ndi_source_info()),
+%%   <<"MediaInfo">> => ndi_media_info(),
+%%   <<"Messages">> => list(message_detail())
+%% }
+-type ndi_source_metadata_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% messages() :: #{
 %%   <<"Errors">> => list([string()]())
 %% }
 -type messages() :: #{binary() => any()}.
+
+
+%% Example:
+%% window_maintenance_schedule() :: #{
+%%   <<"End">> => [non_neg_integer()],
+%%   <<"ScheduledTime">> => [non_neg_integer()],
+%%   <<"Start">> => [non_neg_integer()]
+%% }
+-type window_maintenance_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type delete_router_input_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1371,6 +2131,15 @@
 %%   <<"Name">> => [string()]
 %% }
 -type interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type stop_router_output_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1401,11 +2170,68 @@
 
 
 %% Example:
+%% srt_caller_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_caller_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_output_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_output_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_output_error()),
+%%   <<"RouterOutputs">> => list(router_output())
+%% }
+-type batch_get_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_entitlements_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_entitlements_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_router_network_interface_rule() :: #{
+%%   <<"Cidr">> => [string()]
+%% }
+-type public_router_network_interface_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% restart_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type restart_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_input_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtp_router_input_configuration() :: #{
+%%   <<"ForwardErrorCorrection">> => list(any()),
+%%   <<"Port">> => [integer()]
+%% }
+-type rtp_router_input_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -1414,6 +2240,15 @@
 %% Example:
 %% describe_reservation_request() :: #{}
 -type describe_reservation_request() :: #{}.
+
+
+%% Example:
+%% srt_listener_router_input_configuration() :: #{
+%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"Port">> => [integer()]
+%% }
+-type srt_listener_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1428,11 +2263,33 @@
 
 
 %% Example:
+%% standard_router_input_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list()
+%% }
+-type standard_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% frame_resolution() :: #{
 %%   <<"FrameHeight">> => [integer()],
 %%   <<"FrameWidth">> => [integer()]
 %% }
 -type frame_resolution() :: #{binary() => any()}.
+
+%% Example:
+%% delete_router_input_request() :: #{}
+-type delete_router_input_request() :: #{}.
+
+
+%% Example:
+%% batch_get_router_output_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_output_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1465,6 +2322,15 @@
 
 
 %% Example:
+%% router_input_source_metadata_details() :: #{
+%%   <<"RouterInputMetadata">> => list(),
+%%   <<"SourceMetadataMessages">> => list(router_input_message()),
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type router_input_source_metadata_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% add_bridge_output_request() :: #{
 %%   <<"NetworkOutput">> => add_bridge_network_output_request()
 %% }
@@ -1478,6 +2344,17 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_gateway_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_input_stream_details() :: #{
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type standard_router_input_stream_details() :: #{binary() => any()}.
+
+%% Example:
+%% stop_router_output_request() :: #{}
+-type stop_router_output_request() :: #{}.
 
 
 %% Example:
@@ -1509,6 +2386,22 @@
 %%   <<"VpcInterfaceAdapter">> => [string()]
 %% }
 -type ndi_discovery_server_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
+%% }
+-type create_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_network_interface_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1558,6 +2451,8 @@
 %%   <<"Port">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"RemoteId">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SmoothingLatency">> => [integer()],
@@ -1582,6 +2477,48 @@
 
 
 %% Example:
+%% listed_router_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"InputType">> => list(any()),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedOutputs">> => [integer()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_input_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Name">> => [string()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"Tier">> => list(any()),
+%%   <<"TransitEncryption">> => router_input_transit_encryption()
+%% }
+-type update_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_network_interface_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type router_network_interface_service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_flow_output_response() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"Output">> => output()
@@ -1601,6 +2538,14 @@
 %%   <<"Sources">> := list(add_bridge_source_request())
 %% }
 -type add_bridge_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_transit_encryption() :: #{
+%%   <<"EncryptionKeyConfiguration">> => list(),
+%%   <<"EncryptionKeyType">> => list(any())
+%% }
+-type flow_transit_encryption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1635,6 +2580,35 @@
 %%   <<"Flow">> => flow()
 %% }
 -type update_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"Configuration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"IpAddress">> => [string()],
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaintenanceType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Messages">> => list(router_output_message()),
+%%   <<"Name">> => [string()],
+%%   <<"OutputType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedInputArn">> => string(),
+%%   <<"RoutedState">> => list(any()),
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"StreamDetails">> => list(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type router_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1696,6 +2670,7 @@
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Description">> => [string()],
 %%   <<"EgressIp">> => [string()],
+%%   <<"EncodingConfig">> => encoding_config(),
 %%   <<"Entitlements">> => list(entitlement()),
 %%   <<"FlowArn">> => [string()],
 %%   <<"FlowSize">> => list(any()),
@@ -1715,6 +2690,23 @@
 
 
 %% Example:
+%% get_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type get_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_router_input_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"PrimarySourceIndex">> => [integer()],
+%%   <<"ProtocolConfigurations">> => list(list()),
+%%   <<"SourcePriorityMode">> => list(any())
+%% }
+-type failover_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% set_source_request() :: #{
 %%   <<"Decryption">> => encryption(),
 %%   <<"Description">> => [string()],
@@ -1727,7 +2719,10 @@
 %%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"Name">> => [string()],
+%%   <<"NdiSourceSettings">> => ndi_source_settings(),
 %%   <<"Protocol">> => list(any()),
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceListenerAddress">> => [string()],
@@ -1788,11 +2783,27 @@
 
 
 %% Example:
+%% media_connect_flow_router_input_configuration() :: #{
+%%   <<"FlowArn">> => string(),
+%%   <<"FlowOutputArn">> => string(),
+%%   <<"SourceTransitDecryption">> => flow_transit_encryption()
+%% }
+-type media_connect_flow_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% black_frames() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"ThresholdSeconds">> => [integer()]
 %% }
 -type black_frames() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type router_input_service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1848,6 +2859,24 @@
 
 
 %% Example:
+%% create_router_network_interface_request() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"Configuration">> := list(),
+%%   <<"Name">> := [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_router_network_interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_settings() :: #{
+%%   <<"SourceName">> => [string()]
+%% }
+-type ndi_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_interface_attachment() :: #{
 %%   <<"VpcInterfaceName">> => [string()]
 %% }
@@ -1858,6 +2887,7 @@
 %% output() :: #{
 %%   <<"BridgeArn">> => [string()],
 %%   <<"BridgePorts">> => list([integer()]()),
+%%   <<"ConnectedRouterInputArn">> => [string()],
 %%   <<"DataTransferSubscriberFeePercent">> => [integer()],
 %%   <<"Description">> => [string()],
 %%   <<"Destination">> => [string()],
@@ -1871,6 +2901,8 @@
 %%   <<"OutputStatus">> => list(any()),
 %%   <<"PeerIpAddress">> => [string()],
 %%   <<"Port">> => [integer()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
 %%   <<"Transport">> => transport(),
 %%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
 %% }
@@ -1911,6 +2943,45 @@
 
 
 %% Example:
+%% router_input_message() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type router_input_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_outputs_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_outputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_media_stream_info() :: #{
+%%   <<"Channels">> => [integer()],
+%%   <<"Codec">> => [string()],
+%%   <<"FrameRate">> => [string()],
+%%   <<"FrameResolution">> => frame_resolution(),
+%%   <<"SampleRate">> => [integer()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"StreamId">> => [integer()],
+%%   <<"StreamType">> => [string()]
+%% }
+-type ndi_media_stream_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_input_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_input_error()),
+%%   <<"RouterInputs">> => list(router_input())
+%% }
+-type batch_get_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% media_stream_source_configuration() :: #{
 %%   <<"EncodingName">> => list(any()),
 %%   <<"InputConfigurations">> => list(input_configuration()),
@@ -1925,6 +2996,23 @@
 %%   <<"NetworkSource">> => bridge_network_source()
 %% }
 -type bridge_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_output_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list()
+%% }
+-type standard_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% preferred_day_time_maintenance_configuration() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"Time">> => [string()]
+%% }
+-type preferred_day_time_maintenance_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1944,6 +3032,8 @@
 %%   <<"Port">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"RemoteId">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SmoothingLatency">> => [integer()],
 %%   <<"StreamId">> => [string()],
@@ -2002,6 +3092,27 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type batch_get_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type batch_get_router_network_interface_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type batch_get_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
 -type create_bridge_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2028,6 +3139,33 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type create_router_input_errors() ::
+    router_input_service_quota_exceeded_exception() | 
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_router_network_interface_errors() ::
+    bad_request_exception() | 
+    router_network_interface_service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    router_output_service_quota_exceeded_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type delete_bridge_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2046,6 +3184,33 @@
     forbidden_exception().
 
 -type delete_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_router_network_interface_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_router_output_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     service_unavailable_exception() | 
@@ -2128,6 +3293,49 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type get_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_router_input_source_metadata_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_router_input_thumbnail_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_router_network_interface_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type grant_flow_entitlements_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2181,6 +3389,32 @@
     internal_server_error_exception() | 
     service_unavailable_exception() | 
     too_many_requests_exception().
+
+-type list_router_inputs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_router_network_interfaces_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_router_outputs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_global_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     bad_request_exception() | 
@@ -2245,6 +3479,24 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type restart_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type restart_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type revoke_flow_entitlement_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2261,6 +3513,24 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type start_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type start_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type stop_flow_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2269,7 +3539,44 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type stop_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type stop_router_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type tag_global_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
 -type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type take_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type untag_global_resource_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception().
@@ -2356,6 +3663,32 @@
     forbidden_exception().
 
 -type update_gateway_instance_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_router_input_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_router_network_interface_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_router_output_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     service_unavailable_exception() | 
@@ -2577,6 +3910,132 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about multiple router inputs in AWS Elemental
+%% MediaConnect.
+-spec batch_get_router_input(aws_client:aws_client(), binary() | list()) ->
+    {ok, batch_get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_input_errors(), tuple()}.
+batch_get_router_input(Client, Arns)
+  when is_map(Client) ->
+    batch_get_router_input(Client, Arns, #{}, #{}).
+
+-spec batch_get_router_input(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, batch_get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_input_errors(), tuple()}.
+batch_get_router_input(Client, Arns, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_router_input(Client, Arns, QueryMap, HeadersMap, []).
+
+-spec batch_get_router_input(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_input_errors(), tuple()}.
+batch_get_router_input(Client, Arns, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerInputs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arns">>, Arns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about multiple router network interfaces in AWS
+%% Elemental MediaConnect.
+-spec batch_get_router_network_interface(aws_client:aws_client(), binary() | list()) ->
+    {ok, batch_get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_network_interface_errors(), tuple()}.
+batch_get_router_network_interface(Client, Arns)
+  when is_map(Client) ->
+    batch_get_router_network_interface(Client, Arns, #{}, #{}).
+
+-spec batch_get_router_network_interface(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, batch_get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_network_interface_errors(), tuple()}.
+batch_get_router_network_interface(Client, Arns, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_router_network_interface(Client, Arns, QueryMap, HeadersMap, []).
+
+-spec batch_get_router_network_interface(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_network_interface_errors(), tuple()}.
+batch_get_router_network_interface(Client, Arns, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerNetworkInterfaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arns">>, Arns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about multiple router outputs in AWS Elemental
+%% MediaConnect.
+-spec batch_get_router_output(aws_client:aws_client(), binary() | list()) ->
+    {ok, batch_get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_output_errors(), tuple()}.
+batch_get_router_output(Client, Arns)
+  when is_map(Client) ->
+    batch_get_router_output(Client, Arns, #{}, #{}).
+
+-spec batch_get_router_output(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, batch_get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_output_errors(), tuple()}.
+batch_get_router_output(Client, Arns, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_router_output(Client, Arns, QueryMap, HeadersMap, []).
+
+-spec batch_get_router_output(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_router_output_errors(), tuple()}.
+batch_get_router_output(Client, Arns, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerOutputs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arns">>, Arns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Creates a new bridge.
 %%
 %% The request must include one source.
@@ -2686,6 +4145,108 @@ create_gateway(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new router input in AWS Elemental MediaConnect.
+-spec create_router_input(aws_client:aws_client(), create_router_input_request()) ->
+    {ok, create_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_input_errors(), tuple()}.
+create_router_input(Client, Input) ->
+    create_router_input(Client, Input, []).
+
+-spec create_router_input(aws_client:aws_client(), create_router_input_request(), proplists:proplist()) ->
+    {ok, create_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_input_errors(), tuple()}.
+create_router_input(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerInput"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new router network interface in AWS Elemental MediaConnect.
+-spec create_router_network_interface(aws_client:aws_client(), create_router_network_interface_request()) ->
+    {ok, create_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_network_interface_errors(), tuple()}.
+create_router_network_interface(Client, Input) ->
+    create_router_network_interface(Client, Input, []).
+
+-spec create_router_network_interface(aws_client:aws_client(), create_router_network_interface_request(), proplists:proplist()) ->
+    {ok, create_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_network_interface_errors(), tuple()}.
+create_router_network_interface(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerNetworkInterface"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new router output in AWS Elemental MediaConnect.
+-spec create_router_output(aws_client:aws_client(), create_router_output_request()) ->
+    {ok, create_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_output_errors(), tuple()}.
+create_router_output(Client, Input) ->
+    create_router_output(Client, Input, []).
+
+-spec create_router_output(aws_client:aws_client(), create_router_output_request(), proplists:proplist()) ->
+    {ok, create_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, create_router_output_errors(), tuple()}.
+create_router_output(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerOutput"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a bridge.
 %%
 %% Before you can delete a bridge, you must stop the bridge.
@@ -2776,6 +4337,108 @@ delete_gateway(Client, GatewayArn, Input) ->
 delete_gateway(Client, GatewayArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/gateways/", aws_util:encode_uri(GatewayArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a router input from AWS Elemental MediaConnect.
+-spec delete_router_input(aws_client:aws_client(), binary() | list(), delete_router_input_request()) ->
+    {ok, delete_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_input_errors(), tuple()}.
+delete_router_input(Client, Arn, Input) ->
+    delete_router_input(Client, Arn, Input, []).
+
+-spec delete_router_input(aws_client:aws_client(), binary() | list(), delete_router_input_request(), proplists:proplist()) ->
+    {ok, delete_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_input_errors(), tuple()}.
+delete_router_input(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/routerInput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a router network interface from AWS Elemental MediaConnect.
+-spec delete_router_network_interface(aws_client:aws_client(), binary() | list(), delete_router_network_interface_request()) ->
+    {ok, delete_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_network_interface_errors(), tuple()}.
+delete_router_network_interface(Client, Arn, Input) ->
+    delete_router_network_interface(Client, Arn, Input, []).
+
+-spec delete_router_network_interface(aws_client:aws_client(), binary() | list(), delete_router_network_interface_request(), proplists:proplist()) ->
+    {ok, delete_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_network_interface_errors(), tuple()}.
+delete_router_network_interface(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/routerNetworkInterface/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a router output from AWS Elemental MediaConnect.
+-spec delete_router_output(aws_client:aws_client(), binary() | list(), delete_router_output_request()) ->
+    {ok, delete_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_output_errors(), tuple()}.
+delete_router_output(Client, Arn, Input) ->
+    delete_router_output(Client, Arn, Input, []).
+
+-spec delete_router_output(aws_client:aws_client(), binary() | list(), delete_router_output_request(), proplists:proplist()) ->
+    {ok, delete_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, delete_router_output_errors(), tuple()}.
+delete_router_output(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/routerOutput/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3148,6 +4811,196 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a specific router input in AWS Elemental
+%% MediaConnect.
+-spec get_router_input(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_errors(), tuple()}.
+get_router_input(Client, Arn)
+  when is_map(Client) ->
+    get_router_input(Client, Arn, #{}, #{}).
+
+-spec get_router_input(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_errors(), tuple()}.
+get_router_input(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_router_input(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_router_input(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_errors(), tuple()}.
+get_router_input(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerInput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed metadata information about a specific router input
+%% source, including stream details and connection state.
+-spec get_router_input_source_metadata(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_router_input_source_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_source_metadata_errors(), tuple()}.
+get_router_input_source_metadata(Client, Arn)
+  when is_map(Client) ->
+    get_router_input_source_metadata(Client, Arn, #{}, #{}).
+
+-spec get_router_input_source_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_router_input_source_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_source_metadata_errors(), tuple()}.
+get_router_input_source_metadata(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_router_input_source_metadata(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_router_input_source_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_router_input_source_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_source_metadata_errors(), tuple()}.
+get_router_input_source_metadata(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerInput/", aws_util:encode_uri(Arn), "/source-metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the thumbnail for a router input in AWS Elemental
+%% MediaConnect.
+-spec get_router_input_thumbnail(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_router_input_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_thumbnail_errors(), tuple()}.
+get_router_input_thumbnail(Client, Arn)
+  when is_map(Client) ->
+    get_router_input_thumbnail(Client, Arn, #{}, #{}).
+
+-spec get_router_input_thumbnail(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_router_input_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_thumbnail_errors(), tuple()}.
+get_router_input_thumbnail(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_router_input_thumbnail(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_router_input_thumbnail(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_router_input_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_input_thumbnail_errors(), tuple()}.
+get_router_input_thumbnail(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerInput/", aws_util:encode_uri(Arn), "/thumbnail"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific router network interface in
+%% AWS Elemental MediaConnect.
+-spec get_router_network_interface(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_network_interface_errors(), tuple()}.
+get_router_network_interface(Client, Arn)
+  when is_map(Client) ->
+    get_router_network_interface(Client, Arn, #{}, #{}).
+
+-spec get_router_network_interface(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_network_interface_errors(), tuple()}.
+get_router_network_interface(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_router_network_interface(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_router_network_interface(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_network_interface_errors(), tuple()}.
+get_router_network_interface(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerNetworkInterface/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific router output in AWS Elemental
+%% MediaConnect.
+-spec get_router_output(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_output_errors(), tuple()}.
+get_router_output(Client, Arn)
+  when is_map(Client) ->
+    get_router_output(Client, Arn, #{}, #{}).
+
+-spec get_router_output(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_output_errors(), tuple()}.
+get_router_output(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_router_output(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_router_output(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, get_router_output_errors(), tuple()}.
+get_router_output(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/routerOutput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Grants entitlements to an existing flow.
 -spec grant_flow_entitlements(aws_client:aws_client(), binary() | list(), grant_flow_entitlements_request()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
@@ -3502,7 +5355,157 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all tags on a MediaConnect resource.
+%% @doc Retrieves a list of router inputs in AWS Elemental MediaConnect.
+-spec list_router_inputs(aws_client:aws_client(), list_router_inputs_request()) ->
+    {ok, list_router_inputs_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_inputs_errors(), tuple()}.
+list_router_inputs(Client, Input) ->
+    list_router_inputs(Client, Input, []).
+
+-spec list_router_inputs(aws_client:aws_client(), list_router_inputs_request(), proplists:proplist()) ->
+    {ok, list_router_inputs_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_inputs_errors(), tuple()}.
+list_router_inputs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerInputs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of router network interfaces in AWS Elemental
+%% MediaConnect.
+-spec list_router_network_interfaces(aws_client:aws_client(), list_router_network_interfaces_request()) ->
+    {ok, list_router_network_interfaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_network_interfaces_errors(), tuple()}.
+list_router_network_interfaces(Client, Input) ->
+    list_router_network_interfaces(Client, Input, []).
+
+-spec list_router_network_interfaces(aws_client:aws_client(), list_router_network_interfaces_request(), proplists:proplist()) ->
+    {ok, list_router_network_interfaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_network_interfaces_errors(), tuple()}.
+list_router_network_interfaces(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerNetworkInterfaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of router outputs in AWS Elemental MediaConnect.
+-spec list_router_outputs(aws_client:aws_client(), list_router_outputs_request()) ->
+    {ok, list_router_outputs_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_outputs_errors(), tuple()}.
+list_router_outputs(Client, Input) ->
+    list_router_outputs(Client, Input, []).
+
+-spec list_router_outputs(aws_client:aws_client(), list_router_outputs_request(), proplists:proplist()) ->
+    {ok, list_router_outputs_response(), tuple()} |
+    {error, any()} |
+    {error, list_router_outputs_errors(), tuple()}.
+list_router_outputs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerOutputs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the tags associated with a global resource in AWS Elemental
+%% MediaConnect.
+%%
+%% The API supports the following global resources: router inputs, router
+%% outputs and router network interfaces.
+-spec list_tags_for_global_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_global_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_global_resource_errors(), tuple()}.
+list_tags_for_global_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_global_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_global_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_global_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_global_resource_errors(), tuple()}.
+list_tags_for_global_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_global_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_global_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_global_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_global_resource_errors(), tuple()}.
+list_tags_for_global_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/global/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all tags on a MediaConnect resource in the current region.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3796,6 +5799,80 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Restarts a router input.
+%%
+%% This operation can be used to recover from errors or refresh the input
+%% state.
+-spec restart_router_input(aws_client:aws_client(), binary() | list(), restart_router_input_request()) ->
+    {ok, restart_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, restart_router_input_errors(), tuple()}.
+restart_router_input(Client, Arn, Input) ->
+    restart_router_input(Client, Arn, Input, []).
+
+-spec restart_router_input(aws_client:aws_client(), binary() | list(), restart_router_input_request(), proplists:proplist()) ->
+    {ok, restart_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, restart_router_input_errors(), tuple()}.
+restart_router_input(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerInput/restart/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Restarts a router output.
+%%
+%% This operation can be used to recover from errors or refresh the output
+%% state.
+-spec restart_router_output(aws_client:aws_client(), binary() | list(), restart_router_output_request()) ->
+    {ok, restart_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, restart_router_output_errors(), tuple()}.
+restart_router_output(Client, Arn, Input) ->
+    restart_router_output(Client, Arn, Input, []).
+
+-spec restart_router_output(aws_client:aws_client(), binary() | list(), restart_router_output_request(), proplists:proplist()) ->
+    {ok, restart_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, restart_router_output_errors(), tuple()}.
+restart_router_output(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerOutput/restart/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Revokes an entitlement from a flow.
 %%
 %% Once an entitlement is revoked, the content becomes unavailable to the
@@ -3867,6 +5944,74 @@ start_flow(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a router input in AWS Elemental MediaConnect.
+-spec start_router_input(aws_client:aws_client(), binary() | list(), start_router_input_request()) ->
+    {ok, start_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, start_router_input_errors(), tuple()}.
+start_router_input(Client, Arn, Input) ->
+    start_router_input(Client, Arn, Input, []).
+
+-spec start_router_input(aws_client:aws_client(), binary() | list(), start_router_input_request(), proplists:proplist()) ->
+    {ok, start_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, start_router_input_errors(), tuple()}.
+start_router_input(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerInput/start/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a router output in AWS Elemental MediaConnect.
+-spec start_router_output(aws_client:aws_client(), binary() | list(), start_router_output_request()) ->
+    {ok, start_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, start_router_output_errors(), tuple()}.
+start_router_output(Client, Arn, Input) ->
+    start_router_output(Client, Arn, Input, []).
+
+-spec start_router_output(aws_client:aws_client(), binary() | list(), start_router_output_request(), proplists:proplist()) ->
+    {ok, start_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, start_router_output_errors(), tuple()}.
+start_router_output(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerOutput/start/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops a flow.
 -spec stop_flow(aws_client:aws_client(), binary() | list(), stop_flow_request()) ->
     {ok, stop_flow_response(), tuple()} |
@@ -3901,8 +6046,113 @@ stop_flow(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops a router input in AWS Elemental MediaConnect.
+-spec stop_router_input(aws_client:aws_client(), binary() | list(), stop_router_input_request()) ->
+    {ok, stop_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, stop_router_input_errors(), tuple()}.
+stop_router_input(Client, Arn, Input) ->
+    stop_router_input(Client, Arn, Input, []).
+
+-spec stop_router_input(aws_client:aws_client(), binary() | list(), stop_router_input_request(), proplists:proplist()) ->
+    {ok, stop_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, stop_router_input_errors(), tuple()}.
+stop_router_input(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerInput/stop/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a router output in AWS Elemental MediaConnect.
+-spec stop_router_output(aws_client:aws_client(), binary() | list(), stop_router_output_request()) ->
+    {ok, stop_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, stop_router_output_errors(), tuple()}.
+stop_router_output(Client, Arn, Input) ->
+    stop_router_output(Client, Arn, Input, []).
+
+-spec stop_router_output(aws_client:aws_client(), binary() | list(), stop_router_output_request(), proplists:proplist()) ->
+    {ok, stop_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, stop_router_output_errors(), tuple()}.
+stop_router_output(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/routerOutput/stop/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds tags to a global resource in AWS Elemental MediaConnect.
+%%
+%% The API supports the following global resources: router inputs, router
+%% outputs and router network interfaces.
+-spec tag_global_resource(aws_client:aws_client(), binary() | list(), tag_global_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_global_resource_errors(), tuple()}.
+tag_global_resource(Client, ResourceArn, Input) ->
+    tag_global_resource(Client, ResourceArn, Input, []).
+
+-spec tag_global_resource(aws_client:aws_client(), binary() | list(), tag_global_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_global_resource_errors(), tuple()}.
+tag_global_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/global/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn'.
+%% `resourceArn' in the current region.
 %%
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags
@@ -3940,7 +6190,80 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes specified tags from a resource.
+%% @doc Associates a router input with a router output in AWS Elemental
+%% MediaConnect.
+-spec take_router_input(aws_client:aws_client(), binary() | list(), take_router_input_request()) ->
+    {ok, take_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, take_router_input_errors(), tuple()}.
+take_router_input(Client, RouterOutputArn, Input) ->
+    take_router_input(Client, RouterOutputArn, Input, []).
+
+-spec take_router_input(aws_client:aws_client(), binary() | list(), take_router_input_request(), proplists:proplist()) ->
+    {ok, take_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, take_router_input_errors(), tuple()}.
+take_router_input(Client, RouterOutputArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/routerOutput/takeRouterInput/", aws_util:encode_uri(RouterOutputArn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from a global resource in AWS Elemental MediaConnect.
+%%
+%% The API supports the following global resources: router inputs, router
+%% outputs and router network interfaces.
+-spec untag_global_resource(aws_client:aws_client(), binary() | list(), untag_global_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_global_resource_errors(), tuple()}.
+untag_global_resource(Client, ResourceArn, Input) ->
+    untag_global_resource(Client, ResourceArn, Input, []).
+
+-spec untag_global_resource(aws_client:aws_client(), binary() | list(), untag_global_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_global_resource_errors(), tuple()}.
+untag_global_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/global/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes specified tags from a resource in the current region.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4112,6 +6435,28 @@ update_bridge_state(Client, BridgeArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing flow.
+%%
+%% Because `UpdateFlowSources' and `UpdateFlow' are separate
+%% operations, you can't change both the source type AND the flow size in
+%% a single request.
+%%
+%% If you have a `MEDIUM' flow and you want to change the flow source to
+%% NDI®:
+%%
+%% First, use the `UpdateFlow' operation to upgrade the flow size to
+%% `LARGE'.
+%%
+%% After that, you can then use the `UpdateFlowSource' operation to
+%% configure the NDI source.
+%%
+%% If you're switching from an NDI source to a transport stream (TS)
+%% source and want to downgrade the flow size:
+%%
+%% First, use the `UpdateFlowSource' operation to change the flow source
+%% type.
+%%
+%% After that, you can then use the `UpdateFlow' operation to downgrade
+%% the flow size to `MEDIUM'.
 -spec update_flow(aws_client:aws_client(), binary() | list(), update_flow_request()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
@@ -4252,6 +6597,28 @@ update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the source of a flow.
+%%
+%% Because `UpdateFlowSources' and `UpdateFlow' are separate
+%% operations, you can't change both the source type AND the flow size in
+%% a single request.
+%%
+%% If you have a `MEDIUM' flow and you want to change the flow source to
+%% NDI®:
+%%
+%% First, use the `UpdateFlow' operation to upgrade the flow size to
+%% `LARGE'.
+%%
+%% After that, you can then use the `UpdateFlowSource' operation to
+%% configure the NDI source.
+%%
+%% If you're switching from an NDI source to a transport stream (TS)
+%% source and want to downgrade the flow size:
+%%
+%% First, use the `UpdateFlowSource' operation to change the flow source
+%% type.
+%%
+%% After that, you can then use the `UpdateFlow' operation to downgrade
+%% the flow size to `MEDIUM'.
 -spec update_flow_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_source_request()) ->
     {ok, update_flow_source_response(), tuple()} |
     {error, any()} |
@@ -4301,6 +6668,111 @@ update_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing router input in AWS
+%% Elemental MediaConnect.
+-spec update_router_input(aws_client:aws_client(), binary() | list(), update_router_input_request()) ->
+    {ok, update_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_input_errors(), tuple()}.
+update_router_input(Client, Arn, Input) ->
+    update_router_input(Client, Arn, Input, []).
+
+-spec update_router_input(aws_client:aws_client(), binary() | list(), update_router_input_request(), proplists:proplist()) ->
+    {ok, update_router_input_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_input_errors(), tuple()}.
+update_router_input(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/routerInput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing router network interface in
+%% AWS Elemental MediaConnect.
+-spec update_router_network_interface(aws_client:aws_client(), binary() | list(), update_router_network_interface_request()) ->
+    {ok, update_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_network_interface_errors(), tuple()}.
+update_router_network_interface(Client, Arn, Input) ->
+    update_router_network_interface(Client, Arn, Input, []).
+
+-spec update_router_network_interface(aws_client:aws_client(), binary() | list(), update_router_network_interface_request(), proplists:proplist()) ->
+    {ok, update_router_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_network_interface_errors(), tuple()}.
+update_router_network_interface(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/routerNetworkInterface/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing router output in AWS
+%% Elemental MediaConnect.
+-spec update_router_output(aws_client:aws_client(), binary() | list(), update_router_output_request()) ->
+    {ok, update_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_output_errors(), tuple()}.
+update_router_output(Client, Arn, Input) ->
+    update_router_output(Client, Arn, Input, []).
+
+-spec update_router_output(aws_client:aws_client(), binary() | list(), update_router_output_request(), proplists:proplist()) ->
+    {ok, update_router_output_response(), tuple()} |
+    {error, any()} |
+    {error, update_router_output_errors(), tuple()}.
+update_router_output(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/routerOutput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

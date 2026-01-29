@@ -2548,6 +2548,7 @@
 %% script() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"NodeJsVersion">> => string(),
 %%   <<"ScriptArn">> => string(),
 %%   <<"ScriptId">> => string(),
 %%   <<"SizeOnDisk">> => float(),
@@ -2999,6 +3000,7 @@
 %% Example:
 %% create_script_input() :: #{
 %%   <<"Name">> => string(),
+%%   <<"NodeJsVersion">> => string(),
 %%   <<"StorageLocation">> => s3_location(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"Version">> => string(),
@@ -8545,6 +8547,11 @@ resume_game_server_group(Client, Input, Options)
 %% For examples of searching game sessions, see the ones below, and also see
 %% Search game sessions by game property:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#game-properties-search.
+%%
+%% Avoid using periods (&quot;.&quot;) in property keys if you plan to search
+%% for game sessions by properties. Property keys containing periods cannot
+%% be searched and will be filtered out from search results due to search
+%% index limitations.
 %%
 %% maximumSessions -- Maximum number of player
 %% sessions allowed for a game session.

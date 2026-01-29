@@ -624,6 +624,7 @@
 
 %% Example:
 %% speke_key_provider() :: #{
+%%   <<"CertificateArn">> => [string()],
 %%   <<"DrmSystems">> => list(list(any())()),
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"ResourceId">> => [string()],
@@ -672,6 +673,7 @@
 %% Example:
 %% filter_configuration() :: #{
 %%   <<"ClipStartTime">> => [non_neg_integer()],
+%%   <<"DrmSettings">> => [string()],
 %%   <<"End">> => [non_neg_integer()],
 %%   <<"ManifestFilter">> => [string()],
 %%   <<"Start">> => [non_neg_integer()],
@@ -923,7 +925,8 @@
 
 %% Example:
 %% scte() :: #{
-%%   <<"ScteFilter">> => list(list(any())())
+%%   <<"ScteFilter">> => list(list(any())()),
+%%   <<"ScteInSegments">> => list(any())
 %% }
 -type scte() :: #{binary() => any()}.
 

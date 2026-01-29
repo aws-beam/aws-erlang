@@ -37,6 +37,8 @@
 
 -export([accept_marketplace_registration/2,
          accept_marketplace_registration/3,
+         associate_iam_role_to_resource/2,
+         associate_iam_role_to_resource/3,
          create_cloud_autonomous_vm_cluster/2,
          create_cloud_autonomous_vm_cluster/3,
          create_cloud_exadata_infrastructure/2,
@@ -57,6 +59,8 @@
          delete_odb_network/3,
          delete_odb_peering_connection/2,
          delete_odb_peering_connection/3,
+         disassociate_iam_role_from_resource/2,
+         disassociate_iam_role_from_resource/3,
          get_cloud_autonomous_vm_cluster/2,
          get_cloud_autonomous_vm_cluster/3,
          get_cloud_exadata_infrastructure/2,
@@ -131,6 +135,12 @@
 -type create_odb_network_output() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_iam_role_from_resource_output() :: #{
+
+%% }
+-type disassociate_iam_role_from_resource_output() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tags">> := map()
@@ -141,6 +151,7 @@
 %% get_oci_onboarding_status_output() :: #{
 %%   <<"existingTenancyActivationLink">> => [string()],
 %%   <<"newTenancyActivationLink">> => [string()],
+%%   <<"ociIdentityDomain">> => oci_identity_domain(),
 %%   <<"status">> => list(any())
 %% }
 -type get_oci_onboarding_status_output() :: #{binary() => any()}.
@@ -238,6 +249,7 @@
 %% cloud_vm_cluster() :: #{
 %%   <<"timeZone">> => [string()],
 %%   <<"clusterName">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
 %%   <<"lastUpdateHistoryEntryId">> => [string()],
 %%   <<"hostname">> => [string()],
 %%   <<"nodeCount">> => [integer()],
@@ -245,6 +257,7 @@
 %%   <<"odbNetworkId">> => string(),
 %%   <<"domain">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"iamRoles">> => list(iam_role()),
 %%   <<"storageSizeInGBs">> => [integer()],
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => [string()],
@@ -261,6 +274,7 @@
 %%   <<"scanIpIds">> => list([string()]()),
 %%   <<"cloudExadataInfrastructureId">> => [string()],
 %%   <<"cloudVmClusterId">> => string(),
+%%   <<"cloudExadataInfrastructureArn">> => string(),
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"scanDnsRecordId">> => [string()],
 %%   <<"shape">> => [string()],
@@ -298,11 +312,16 @@
 %%   <<"backupSubnetCidr">> => [string()],
 %%   <<"clientSubnetCidr">> := [string()],
 %%   <<"clientToken">> => string(),
+%%   <<"crossRegionS3RestoreSourcesToEnable">> => list([string()]()),
 %%   <<"customDomainName">> => [string()],
 %%   <<"defaultDnsPrefix">> => [string()],
 %%   <<"displayName">> := string(),
+%%   <<"kmsAccess">> => list(any()),
+%%   <<"kmsPolicyDocument">> => string(),
 %%   <<"s3Access">> => list(any()),
 %%   <<"s3PolicyDocument">> => string(),
+%%   <<"stsAccess">> => list(any()),
+%%   <<"stsPolicyDocument">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"zeroEtlAccess">> => list(any())
 %% }
@@ -351,12 +370,14 @@
 %% cloud_autonomous_vm_cluster_summary() :: #{
 %%   <<"timeZone">> => [string()],
 %%   <<"availableContainerDatabases">> => [integer()],
+%%   <<"odbNetworkArn">> => string(),
 %%   <<"scanListenerPortNonTls">> => [integer()],
 %%   <<"hostname">> => [string()],
 %%   <<"nodeCount">> => [integer()],
 %%   <<"odbNetworkId">> => string(),
 %%   <<"domain">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"iamRoles">> => list(iam_role()),
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => string(),
 %%   <<"description">> => [string()],
@@ -372,6 +393,7 @@
 %%   <<"reclaimableCpus">> => [float()],
 %%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"totalContainerDatabases">> => [integer()],
+%%   <<"cloudExadataInfrastructureArn">> => string(),
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"shape">> => [string()],
 %%   <<"cpuPercentage">> => [float()],
@@ -586,6 +608,15 @@
 -type delete_odb_peering_connection_input() :: #{binary() => any()}.
 
 %% Example:
+%% kms_access() :: #{
+%%   <<"domainName">> => [string()],
+%%   <<"ipv4Addresses">> => list([string()]()),
+%%   <<"kmsPolicyDocument">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type kms_access() :: #{binary() => any()}.
+
+%% Example:
 %% exadata_iorm_config() :: #{
 %%   <<"dbPlans">> => list(db_iorm_config()),
 %%   <<"lifecycleDetails">> => [string()],
@@ -593,6 +624,14 @@
 %%   <<"objective">> => list(any())
 %% }
 -type exadata_iorm_config() :: #{binary() => any()}.
+
+%% Example:
+%% associate_iam_role_to_resource_input() :: #{
+%%   <<"awsIntegration">> := list(any()),
+%%   <<"iamRoleArn">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type associate_iam_role_to_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_cloud_autonomous_vm_clusters_input() :: #{
@@ -754,6 +793,12 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% associate_iam_role_to_resource_output() :: #{
+
+%% }
+-type associate_iam_role_to_resource_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_cloud_vm_clusters_input() :: #{
 %%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"maxResults">> => [integer()],
@@ -775,6 +820,14 @@
 %%   <<"isIncidentLogsEnabled">> => [boolean()]
 %% }
 -type data_collection_options() :: #{binary() => any()}.
+
+%% Example:
+%% cross_region_s3_restore_sources_access() :: #{
+%%   <<"ipv4Addresses">> => list([string()]()),
+%%   <<"region">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type cross_region_s3_restore_sources_access() :: #{binary() => any()}.
 
 %% Example:
 %% update_cloud_exadata_infrastructure_output() :: #{
@@ -817,7 +870,7 @@
 
 %% Example:
 %% initialize_service_input() :: #{
-
+%%   <<"ociIdentityDomain">> => [boolean()]
 %% }
 -type initialize_service_input() :: #{binary() => any()}.
 
@@ -870,11 +923,17 @@
 
 %% Example:
 %% update_odb_network_input() :: #{
+%%   <<"crossRegionS3RestoreSourcesToDisable">> => list([string()]()),
+%%   <<"crossRegionS3RestoreSourcesToEnable">> => list([string()]()),
 %%   <<"displayName">> => string(),
+%%   <<"kmsAccess">> => list(any()),
+%%   <<"kmsPolicyDocument">> => string(),
 %%   <<"peeredCidrsToBeAdded">> => list([string()]()),
 %%   <<"peeredCidrsToBeRemoved">> => list([string()]()),
 %%   <<"s3Access">> => list(any()),
 %%   <<"s3PolicyDocument">> => string(),
+%%   <<"stsAccess">> => list(any()),
+%%   <<"stsPolicyDocument">> => string(),
 %%   <<"zeroEtlAccess">> => list(any())
 %% }
 -type update_odb_network_input() :: #{binary() => any()}.
@@ -982,6 +1041,15 @@
 -type list_db_servers_input() :: #{binary() => any()}.
 
 %% Example:
+%% sts_access() :: #{
+%%   <<"domainName">> => [string()],
+%%   <<"ipv4Addresses">> => list([string()]()),
+%%   <<"status">> => list(any()),
+%%   <<"stsPolicyDocument">> => [string()]
+%% }
+-type sts_access() :: #{binary() => any()}.
+
+%% Example:
 %% initialize_service_output() :: #{
 
 %% }
@@ -1036,6 +1104,15 @@
 %%   <<"vmName">> => [string()]
 %% }
 -type autonomous_virtual_machine_summary() :: #{binary() => any()}.
+
+%% Example:
+%% iam_role() :: #{
+%%   <<"awsIntegration">> => list(any()),
+%%   <<"iamRoleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type iam_role() :: #{binary() => any()}.
 
 %% Example:
 %% create_cloud_exadata_infrastructure_output() :: #{
@@ -1114,6 +1191,17 @@
 -type db_node() :: #{binary() => any()}.
 
 %% Example:
+%% oci_identity_domain() :: #{
+%%   <<"accountSetupCloudFormationUrl">> => [string()],
+%%   <<"ociIdentityDomainId">> => [string()],
+%%   <<"ociIdentityDomainResourceUrl">> => [string()],
+%%   <<"ociIdentityDomainUrl">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type oci_identity_domain() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -1156,6 +1244,7 @@
 %% cloud_vm_cluster_summary() :: #{
 %%   <<"timeZone">> => [string()],
 %%   <<"clusterName">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
 %%   <<"lastUpdateHistoryEntryId">> => [string()],
 %%   <<"hostname">> => [string()],
 %%   <<"nodeCount">> => [integer()],
@@ -1163,6 +1252,7 @@
 %%   <<"odbNetworkId">> => string(),
 %%   <<"domain">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"iamRoles">> => list(iam_role()),
 %%   <<"storageSizeInGBs">> => [integer()],
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => [string()],
@@ -1179,6 +1269,7 @@
 %%   <<"scanIpIds">> => list([string()]()),
 %%   <<"cloudExadataInfrastructureId">> => [string()],
 %%   <<"cloudVmClusterId">> => string(),
+%%   <<"cloudExadataInfrastructureArn">> => string(),
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"scanDnsRecordId">> => [string()],
 %%   <<"shape">> => [string()],
@@ -1314,6 +1405,14 @@
 -type db_server() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_iam_role_from_resource_input() :: #{
+%%   <<"awsIntegration">> := list(any()),
+%%   <<"iamRoleArn">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type disassociate_iam_role_from_resource_input() :: #{binary() => any()}.
+
+%% Example:
 %% accept_marketplace_registration_input() :: #{
 %%   <<"marketplaceRegistrationToken">> := [string()]
 %% }
@@ -1337,12 +1436,15 @@
 
 %% Example:
 %% managed_services() :: #{
+%%   <<"crossRegionS3RestoreSourcesAccess">> => list(cross_region_s3_restore_sources_access()),
+%%   <<"kmsAccess">> => kms_access(),
 %%   <<"managedS3BackupAccess">> => managed_s3_backup_access(),
 %%   <<"managedServicesIpv4Cidrs">> => list([string()]()),
 %%   <<"resourceGatewayArn">> => string(),
 %%   <<"s3Access">> => s3_access(),
 %%   <<"serviceNetworkArn">> => string(),
 %%   <<"serviceNetworkEndpoint">> => service_network_endpoint(),
+%%   <<"stsAccess">> => sts_access(),
 %%   <<"zeroEtlAccess">> => zero_etl_access()
 %% }
 -type managed_services() :: #{binary() => any()}.
@@ -1411,12 +1513,14 @@
 %% cloud_autonomous_vm_cluster() :: #{
 %%   <<"timeZone">> => [string()],
 %%   <<"availableContainerDatabases">> => [integer()],
+%%   <<"odbNetworkArn">> => string(),
 %%   <<"scanListenerPortNonTls">> => [integer()],
 %%   <<"hostname">> => [string()],
 %%   <<"nodeCount">> => [integer()],
 %%   <<"odbNetworkId">> => string(),
 %%   <<"domain">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"iamRoles">> => list(iam_role()),
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => string(),
 %%   <<"description">> => [string()],
@@ -1432,6 +1536,7 @@
 %%   <<"reclaimableCpus">> => [float()],
 %%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"totalContainerDatabases">> => [integer()],
+%%   <<"cloudExadataInfrastructureArn">> => string(),
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"shape">> => [string()],
 %%   <<"cpuPercentage">> => [float()],
@@ -1489,6 +1594,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    conflict_exception().
+
+-type associate_iam_role_to_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_cloud_autonomous_vm_cluster_errors() ::
@@ -1568,6 +1681,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type disassociate_iam_role_from_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_cloud_autonomous_vm_cluster_errors() ::
     throttling_exception() | 
@@ -1788,6 +1909,25 @@ accept_marketplace_registration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptMarketplaceRegistration">>, Input, Options).
 
+%% @doc Associates an Amazon Web Services Identity and Access Management
+%% (IAM) service role with a specified resource to enable Amazon Web Services
+%% service integration.
+-spec associate_iam_role_to_resource(aws_client:aws_client(), associate_iam_role_to_resource_input()) ->
+    {ok, associate_iam_role_to_resource_output(), tuple()} |
+    {error, any()} |
+    {error, associate_iam_role_to_resource_errors(), tuple()}.
+associate_iam_role_to_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_iam_role_to_resource(Client, Input, []).
+
+-spec associate_iam_role_to_resource(aws_client:aws_client(), associate_iam_role_to_resource_input(), proplists:proplist()) ->
+    {ok, associate_iam_role_to_resource_output(), tuple()} |
+    {error, any()} |
+    {error, associate_iam_role_to_resource_errors(), tuple()}.
+associate_iam_role_to_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateIamRoleToResource">>, Input, Options).
+
 %% @doc Creates a new Autonomous VM cluster in the specified Exadata
 %% infrastructure.
 -spec create_cloud_autonomous_vm_cluster(aws_client:aws_client(), create_cloud_autonomous_vm_cluster_input()) ->
@@ -1967,6 +2107,25 @@ delete_odb_peering_connection(Client, Input)
 delete_odb_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOdbPeeringConnection">>, Input, Options).
+
+%% @doc Disassociates an Amazon Web Services Identity and Access Management
+%% (IAM) service role from a specified resource to disable Amazon Web
+%% Services service integration.
+-spec disassociate_iam_role_from_resource(aws_client:aws_client(), disassociate_iam_role_from_resource_input()) ->
+    {ok, disassociate_iam_role_from_resource_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_iam_role_from_resource_errors(), tuple()}.
+disassociate_iam_role_from_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_iam_role_from_resource(Client, Input, []).
+
+-spec disassociate_iam_role_from_resource(aws_client:aws_client(), disassociate_iam_role_from_resource_input(), proplists:proplist()) ->
+    {ok, disassociate_iam_role_from_resource_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_iam_role_from_resource_errors(), tuple()}.
+disassociate_iam_role_from_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateIamRoleFromResource">>, Input, Options).
 
 %% @doc Gets information about a specific Autonomous VM cluster.
 -spec get_cloud_autonomous_vm_cluster(aws_client:aws_client(), get_cloud_autonomous_vm_cluster_input()) ->

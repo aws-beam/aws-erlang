@@ -211,6 +211,8 @@
          update_analysis_template/5,
          update_collaboration/3,
          update_collaboration/4,
+         update_collaboration_change_request/4,
+         update_collaboration_change_request/5,
          update_configured_audience_model_association/4,
          update_configured_audience_model_association/5,
          update_configured_table/3,
@@ -390,6 +392,7 @@
 %%   <<"collaborationIdentifier">> := string(),
 %%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
+%%   <<"isMetricsEnabled">> => [boolean()],
 %%   <<"jobLogStatus">> => list(any()),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
 %%   <<"queryLogStatus">> := list(any()),
@@ -487,6 +490,7 @@
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
 %%   <<"sourceMetadata">> => list(),
+%%   <<"syntheticDataParameters">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
 %%   <<"validations">> => list(analysis_template_validation_status_detail())
 %% }
@@ -840,6 +844,7 @@
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
+%%   <<"isMetricsEnabled">> => [boolean()],
 %%   <<"jobLogStatus">> => list(any()),
 %%   <<"memberStatus">> => string(),
 %%   <<"membershipArn">> => string(),
@@ -1091,6 +1096,13 @@
 %% }
 -type get_collaboration_privacy_budget_template_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% approval_status_details() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type approval_status_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_analysis_rule_output() :: #{}
 -type delete_configured_table_analysis_rule_output() :: #{}.
@@ -1232,6 +1244,13 @@
 
 
 %% Example:
+%% collaboration_change_specification() :: #{
+%%   <<"autoApprovedChangeTypes">> => list(list(any())())
+%% }
+-type collaboration_change_specification() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_configured_audience_model_association_output() :: #{
 %%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
 %% }
@@ -1269,6 +1288,7 @@
 
 %% Example:
 %% collaboration_change_request_summary() :: #{
+%%   <<"approvals">> => map(),
 %%   <<"changes">> => list(change()),
 %%   <<"collaborationId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -1662,6 +1682,13 @@
 
 
 %% Example:
+%% membership_synthetic_data_generation_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_synthetic_data_generation_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_protected_job_result_configuration() :: #{
 %%   <<"outputConfiguration">> => list(),
 %%   <<"roleArn">> => string()
@@ -1765,6 +1792,15 @@
 
 
 %% Example:
+%% ml_synthetic_data_parameters() :: #{
+%%   <<"columnClassification">> => column_classification_details(),
+%%   <<"epsilon">> => [float()],
+%%   <<"maxMembershipInferenceAttackScore">> => float()
+%% }
+-type ml_synthetic_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_id_namespace_association_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingConfig">> => id_mapping_config(),
@@ -1824,6 +1860,13 @@
 %%   <<"location">> => [string()]
 %% }
 -type protected_query_s3_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_collaboration_change_request_input() :: #{
+%%   <<"action">> := list(any())
+%% }
+-type update_collaboration_change_request_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1911,6 +1954,13 @@
 
 
 %% Example:
+%% synthetic_data_generation_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type synthetic_data_generation_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_parameter() :: #{
 %%   <<"defaultValue">> => string(),
 %%   <<"name">> => string(),
@@ -1953,6 +2003,7 @@
 %%   <<"creatorPaymentConfiguration">> => payment_configuration(),
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> := string(),
+%%   <<"isMetricsEnabled">> => [boolean()],
 %%   <<"jobLogStatus">> => list(any()),
 %%   <<"members">> := list(member_specification()),
 %%   <<"name">> := string(),
@@ -2032,6 +2083,15 @@
 
 
 %% Example:
+%% synthetic_data_column_properties() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => list(any()),
+%%   <<"isPredictiveValue">> => [boolean()]
+%% }
+-type synthetic_data_column_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_collaboration_privacy_budgets_output() :: #{
 %%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()),
 %%   <<"nextToken">> => string()
@@ -2072,6 +2132,7 @@
 
 %% Example:
 %% collaboration_change_request() :: #{
+%%   <<"approvals">> => map(),
 %%   <<"changes">> => list(change()),
 %%   <<"collaborationId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -2139,6 +2200,13 @@
 %%   <<"privacyBudgetTemplate">> => privacy_budget_template()
 %% }
 -type update_privacy_budget_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_classification_details() :: #{
+%%   <<"columnMapping">> => list(synthetic_data_column_properties())
+%% }
+-type column_classification_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2238,6 +2306,7 @@
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
 %%   <<"sourceMetadata">> => list(),
+%%   <<"syntheticDataParameters">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
 %%   <<"validations">> => list(analysis_template_validation_status_detail())
 %% }
@@ -2459,6 +2528,7 @@
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
+%%   <<"isSyntheticData">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -2535,6 +2605,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
+%%   <<"isSyntheticData">> => [boolean()],
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
 %%   <<"name">> => string(),
@@ -2665,7 +2736,8 @@
 %% Example:
 %% membership_ml_payment_config() :: #{
 %%   <<"modelInference">> => membership_model_inference_payment_config(),
-%%   <<"modelTraining">> => membership_model_training_payment_config()
+%%   <<"modelTraining">> => membership_model_training_payment_config(),
+%%   <<"syntheticDataGeneration">> => membership_synthetic_data_generation_payment_config()
 %% }
 -type membership_ml_payment_config() :: #{binary() => any()}.
 
@@ -2749,7 +2821,8 @@
 %% Example:
 %% ml_payment_config() :: #{
 %%   <<"modelInference">> => model_inference_payment_config(),
-%%   <<"modelTraining">> => model_training_payment_config()
+%%   <<"modelTraining">> => model_training_payment_config(),
+%%   <<"syntheticDataGeneration">> => synthetic_data_generation_payment_config()
 %% }
 -type ml_payment_config() :: #{binary() => any()}.
 
@@ -2821,6 +2894,7 @@
 %%   <<"name">> := string(),
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> := list(),
+%%   <<"syntheticDataParameters">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type create_analysis_template_input() :: #{binary() => any()}.
@@ -2863,7 +2937,8 @@
 
 %% Example:
 %% protected_job_parameters() :: #{
-%%   <<"analysisTemplateArn">> => string()
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"parameters">> => map()
 %% }
 -type protected_job_parameters() :: #{binary() => any()}.
 
@@ -2961,6 +3036,13 @@
 
 
 %% Example:
+%% update_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type update_collaboration_change_request_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_mapping_table_input_reference_properties() :: #{
 %%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
 %% }
@@ -2979,6 +3061,7 @@
 %%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"id">> => string(),
+%%   <<"isMetricsEnabled">> => [boolean()],
 %%   <<"jobLogStatus">> => list(any()),
 %%   <<"memberAbilities">> => list(list(any())()),
 %%   <<"mlMemberAbilities">> => ml_member_abilities(),
@@ -3643,6 +3726,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type update_collaboration_change_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_configured_audience_model_association_errors() ::
     throttling_exception() | 
@@ -6575,6 +6666,47 @@ update_collaboration(Client, CollaborationIdentifier, Input) ->
 update_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing collaboration change request.
+%%
+%% This operation allows approval actions for pending change requests in
+%% collaborations (APPROVE, DENY, CANCEL, COMMIT).
+%%
+%% For change requests without automatic approval, a member in the
+%% collaboration can manually APPROVE or DENY a change request. The
+%% collaboration owner can manually CANCEL or COMMIT a change request.
+-spec update_collaboration_change_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_collaboration_change_request_input()) ->
+    {ok, update_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, update_collaboration_change_request_errors(), tuple()}.
+update_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, Input) ->
+    update_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, Input, []).
+
+-spec update_collaboration_change_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_collaboration_change_request_input(), proplists:proplist()) ->
+    {ok, update_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, update_collaboration_change_request_errors(), tuple()}.
+update_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/changeRequests/", aws_util:encode_uri(ChangeRequestIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

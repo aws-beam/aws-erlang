@@ -123,7 +123,8 @@
 %%   <<"pointInTimeRecovery">> => point_in_time_recovery(),
 %%   <<"replicaSpecifications">> => list(replica_specification()),
 %%   <<"tableName">> := string(),
-%%   <<"ttl">> => time_to_live()
+%%   <<"ttl">> => time_to_live(),
+%%   <<"warmThroughputSpecification">> => warm_throughput_specification()
 %% }
 -type update_table_request() :: #{binary() => any()}.
 
@@ -241,7 +242,8 @@
 %%   <<"schemaDefinition">> := schema_definition(),
 %%   <<"tableName">> := string(),
 %%   <<"tags">> => list(tag()),
-%%   <<"ttl">> => time_to_live()
+%%   <<"ttl">> => time_to_live(),
+%%   <<"warmThroughputSpecification">> => warm_throughput_specification()
 %% }
 -type create_table_request() :: #{binary() => any()}.
 
@@ -262,7 +264,8 @@
 %%   <<"schemaDefinition">> => schema_definition(),
 %%   <<"status">> => string(),
 %%   <<"tableName">> := string(),
-%%   <<"ttl">> => time_to_live()
+%%   <<"ttl">> => time_to_live(),
+%%   <<"warmThroughputSpecification">> => warm_throughput_specification_summary()
 %% }
 -type get_table_response() :: #{binary() => any()}.
 
@@ -427,7 +430,8 @@
 %% replica_specification_summary() :: #{
 %%   <<"capacitySpecification">> => capacity_specification_summary(),
 %%   <<"region">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"warmThroughputSpecification">> => warm_throughput_specification_summary()
 %% }
 -type replica_specification_summary() :: #{binary() => any()}.
 
@@ -568,6 +572,13 @@
 -type restore_table_response() :: #{binary() => any()}.
 
 %% Example:
+%% warm_throughput_specification() :: #{
+%%   <<"readUnitsPerSecond">> => [float()],
+%%   <<"writeUnitsPerSecond">> => [float()]
+%% }
+-type warm_throughput_specification() :: #{binary() => any()}.
+
+%% Example:
 %% get_table_auto_scaling_settings_response() :: #{
 %%   <<"autoScalingSpecification">> => auto_scaling_specification(),
 %%   <<"keyspaceName">> => string(),
@@ -637,6 +648,14 @@
 %%   <<"type">> => string()
 %% }
 -type column_definition() :: #{binary() => any()}.
+
+%% Example:
+%% warm_throughput_specification_summary() :: #{
+%%   <<"readUnitsPerSecond">> => [float()],
+%%   <<"status">> => string(),
+%%   <<"writeUnitsPerSecond">> => [float()]
+%% }
+-type warm_throughput_specification_summary() :: #{binary() => any()}.
 
 -type create_keyspace_errors() ::
     validation_exception() | 

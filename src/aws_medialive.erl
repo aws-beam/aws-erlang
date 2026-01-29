@@ -604,6 +604,14 @@
 
 
 %% Example:
+%% router_destination() :: #{
+%%   <<"AvailabilityZoneName">> => string(),
+%%   <<"RouterOutputArn">> => string()
+%% }
+-type router_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZones">> => list(string()),
@@ -680,6 +688,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"MaintenanceStatus">> => string(),
@@ -958,6 +967,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -1152,6 +1162,10 @@
 %% }
 -type caption_selector_settings() :: #{binary() => any()}.
 
+%% Example:
+%% hlg2020_settings() :: #{}
+-type hlg2020_settings() :: #{}.
+
 
 %% Example:
 %% input_loss_failover_settings() :: #{
@@ -1194,6 +1208,15 @@
 %%   <<"VideoQuality">> => string()
 %% }
 -type list_reservations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_settings() :: #{
+%%   <<"Destinations">> => list(router_destination()),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type router_input_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1408,6 +1431,7 @@
 %%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
 %%   <<"DolbyVision81Settings">> => dolby_vision81_settings(),
 %%   <<"Hdr10Settings">> => hdr10_settings(),
+%%   <<"Hlg2020Settings">> => hlg2020_settings(),
 %%   <<"Rec601Settings">> => rec601_settings(),
 %%   <<"Rec709Settings">> => rec709_settings()
 %% }
@@ -1513,6 +1537,13 @@
 %%   <<"Tag">> => string()
 %% }
 -type id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% disabled_locking_settings() :: #{
+%%   <<"CustomEpoch">> => string()
+%% }
+-type disabled_locking_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2046,9 +2077,13 @@
 %% }
 -type multicast_input_settings() :: #{binary() => any()}.
 
+
 %% Example:
-%% pipeline_locking_settings() :: #{}
--type pipeline_locking_settings() :: #{}.
+%% pipeline_locking_settings() :: #{
+%%   <<"CustomEpoch">> => string(),
+%%   <<"PipelineLockingMethod">> => list(any())
+%% }
+-type pipeline_locking_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2240,6 +2275,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_settings(),
 %%   <<"SdiSources">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()),
@@ -2282,6 +2318,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -2326,6 +2363,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -2341,6 +2379,13 @@
 %% Example:
 %% start_channel_request() :: #{}
 -type start_channel_request() :: #{}.
+
+
+%% Example:
+%% router_destination_settings() :: #{
+%%   <<"AvailabilityZoneName">> => string()
+%% }
+-type router_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2406,6 +2451,7 @@
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_input_settings(),
 %%   <<"SdiSources">> => list(string()),
 %%   <<"SecurityGroups">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
@@ -2455,6 +2501,7 @@
 %%   <<"SdiSources">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()),
+%%   <<"SpecialRouterSettings">> => special_router_settings(),
 %%   <<"SrtSettings">> => srt_settings_request()
 %% }
 -type update_input_request() :: #{binary() => any()}.
@@ -2726,6 +2773,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -2808,6 +2856,13 @@
 
 
 %% Example:
+%% media_package_additional_destinations() :: #{
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type media_package_additional_destinations() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_network_settings() :: #{
 %%   <<"DefaultRoute">> => string(),
 %%   <<"InterfaceMappings">> => list(interface_mapping())
@@ -2863,6 +2918,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_sdi_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_primary_channel_settings() :: #{
+%%   <<"FollowingChannelArns">> => list(string()),
+%%   <<"LinkedChannelType">> => list(any())
+%% }
+-type describe_primary_channel_settings() :: #{binary() => any()}.
 
 %% Example:
 %% scte20_plus_embedded_destination_settings() :: #{}
@@ -2991,6 +3054,7 @@
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_input_settings(),
 %%   <<"SdiSources">> => list(string()),
 %%   <<"SecurityGroups">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
@@ -3022,6 +3086,7 @@
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_create_settings(),
 %%   <<"Name">> => string(),
@@ -3127,6 +3192,7 @@
 
 %% Example:
 %% output_locking_settings() :: #{
+%%   <<"DisabledLockingSettings">> => disabled_locking_settings(),
 %%   <<"EpochLockingSettings">> => epoch_locking_settings(),
 %%   <<"PipelineLockingSettings">> => pipeline_locking_settings()
 %% }
@@ -3231,6 +3297,14 @@
 
 
 %% Example:
+%% linked_channel_settings() :: #{
+%%   <<"FollowerChannelSettings">> => follower_channel_settings(),
+%%   <<"PrimaryChannelSettings">> => primary_channel_settings()
+%% }
+-type linked_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% feature_activations() :: #{
 %%   <<"InputPrepareScheduleActions">> => list(any()),
 %%   <<"OutputStaticImageOverlayScheduleActions">> => list(any())
@@ -3269,6 +3343,14 @@
 %%   <<"UsagePrice">> => float()
 %% }
 -type reservation() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_follower_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any()),
+%%   <<"PrimaryChannelArn">> => string()
+%% }
+-type describe_follower_channel_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3573,6 +3655,7 @@
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_update_settings(),
 %%   <<"Name">> => string(),
@@ -3637,7 +3720,10 @@
 %%   <<"QvbrQualityLevel">> => integer(),
 %%   <<"RateControlMode">> => list(any()),
 %%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings()
+%%   <<"SpatialAq">> => list(any()),
+%%   <<"TemporalAq">> => list(any()),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
+%%   <<"TimecodeInsertion">> => list(any())
 %% }
 -type av1_settings() :: #{binary() => any()}.
 
@@ -3823,6 +3909,7 @@
 
 %% Example:
 %% media_package_v2_group_settings() :: #{
+%%   <<"AdditionalDestinations">> => list(media_package_additional_destinations()),
 %%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
 %%   <<"Id3Behavior">> => list(any()),
 %%   <<"KlvBehavior">> => list(any()),
@@ -4076,6 +4163,13 @@
 %%   <<"Name">> => string()
 %% }
 -type update_event_bridge_rule_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% special_router_settings() :: #{
+%%   <<"RouterArn">> => string()
+%% }
+-type special_router_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4696,6 +4790,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -4750,6 +4845,7 @@
 %%   <<"Id">> => string(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
@@ -5051,6 +5147,14 @@
 
 
 %% Example:
+%% follower_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any()),
+%%   <<"PrimaryChannelArn">> => string()
+%% }
+-type follower_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% wav_settings() :: #{
 %%   <<"BitDepth">> => float(),
 %%   <<"CodingMode">> => list(any()),
@@ -5106,6 +5210,14 @@
 %% Example:
 %% reject_input_device_transfer_request() :: #{}
 -type reject_input_device_transfer_request() :: #{}.
+
+
+%% Example:
+%% describe_linked_channel_settings() :: #{
+%%   <<"FollowerChannelSettings">> => describe_follower_channel_settings(),
+%%   <<"PrimaryChannelSettings">> => describe_primary_channel_settings()
+%% }
+-type describe_linked_channel_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5305,6 +5417,13 @@
 
 
 %% Example:
+%% primary_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any())
+%% }
+-type primary_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% mpeg2_filter_settings() :: #{
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
@@ -5413,6 +5532,15 @@
 %%   <<"StyleControl">> => list(any())
 %% }
 -type ebu_tt_d_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_settings() :: #{
+%%   <<"Destinations">> => list(router_destination_settings()),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type router_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5736,9 +5864,11 @@
 
 %% Example:
 %% media_package_output_destination_settings() :: #{
+%%   <<"ChannelEndpointId">> => string(),
 %%   <<"ChannelGroup">> => string(),
 %%   <<"ChannelId">> => string(),
-%%   <<"ChannelName">> => string()
+%%   <<"ChannelName">> => string(),
+%%   <<"MediaPackageRegionName">> => string()
 %% }
 -type media_package_output_destination_settings() :: #{binary() => any()}.
 

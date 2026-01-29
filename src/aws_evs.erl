@@ -26,6 +26,8 @@
          disassociate_eip_from_vlan/3,
          get_environment/2,
          get_environment/3,
+         get_versions/2,
+         get_versions/3,
          list_environment_hosts/2,
          list_environment_hosts/3,
          list_environment_vlans/2,
@@ -126,6 +128,7 @@
 %% create_environment_host_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"environmentId">> := string(),
+%%   <<"esxVersion">> => string(),
 %%   <<"host">> := host_info_for_create()
 %% }
 -type create_environment_host_request() :: #{binary() => any()}.
@@ -179,6 +182,15 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% vcf_version_info() :: #{
+%%   <<"defaultEsxVersion">> => [string()],
+%%   <<"instanceTypes">> => list(list(any())()),
+%%   <<"status">> => [string()],
+%%   <<"vcfVersion">> => list(any())
+%% }
+-type vcf_version_info() :: #{binary() => any()}.
+
+%% Example:
 %% service_access_security_groups() :: #{
 %%   <<"securityGroups">> => list(string())
 %% }
@@ -189,6 +201,13 @@
 %%   <<"vlan">> => vlan()
 %% }
 -type associate_eip_to_vlan_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_type_esx_versions_info() :: #{
+%%   <<"esxVersions">> => list([string()]()),
+%%   <<"instanceType">> => list(any())
+%% }
+-type instance_type_esx_versions_info() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_eip_from_vlan_response() :: #{
@@ -335,6 +354,12 @@
 -type create_environment_response() :: #{binary() => any()}.
 
 %% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
 %% delete_environment_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -411,6 +436,13 @@
 -type create_environment_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_versions_response() :: #{
+%%   <<"instanceTypeEsxVersions">> => list(instance_type_esx_versions_info()),
+%%   <<"vcfVersions">> => list(vcf_version_info())
+%% }
+-type get_versions_response() :: #{binary() => any()}.
+
+%% Example:
 %% vlan() :: #{
 %%   <<"availabilityZone">> => [string()],
 %%   <<"cidr">> => string(),
@@ -426,6 +458,12 @@
 %%   <<"vlanState">> => list(any())
 %% }
 -type vlan() :: #{binary() => any()}.
+
+%% Example:
+%% get_versions_request() :: #{
+
+%% }
+-type get_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_environment_response() :: #{
@@ -475,6 +513,10 @@
 -type get_environment_errors() ::
     validation_exception() | 
     resource_not_found_exception().
+
+-type get_versions_errors() ::
+    throttling_exception() | 
+    internal_server_exception().
 
 -type list_environment_hosts_errors() ::
     validation_exception() | 
@@ -534,6 +576,11 @@ associate_eip_to_vlan(Client, Input, Options)
 %% completes, you can configure VCF in the vSphere user interface according
 %% to your needs.
 %%
+%% When creating a new environment, the default ESX version for the selected
+%% VCF version will be used, you cannot choose a specific ESX version in
+%% `CreateEnvironment' action. When a host has been added with a specific
+%% ESX version, it can only be upgraded using vCenter Lifecycle Manager.
+%%
 %% You cannot use the `dedicatedHostId' and `placementGroupId'
 %% parameters together in the same `CreateEnvironment' action. This
 %% results in a `ValidationException' response.
@@ -553,17 +600,23 @@ create_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironment">>, Input, Options).
 
-%% @doc Creates an ESXi host and adds it to an Amazon EVS environment.
+%% @doc Creates an ESX host and adds it to an Amazon EVS environment.
 %%
 %% Amazon EVS supports 4-16 hosts per environment.
 %%
 %% This action can only be used after the Amazon EVS environment is deployed.
 %%
 %% You can use the `dedicatedHostId' parameter to specify an Amazon EC2
-%% Dedicated Host for ESXi host creation.
+%% Dedicated Host for ESX host creation.
 %%
 %% You can use the `placementGroupId' parameter to specify a cluster or
 %% partition placement group to launch EC2 instances into.
+%%
+%% If you don't specify an ESX version when adding hosts using
+%% `CreateEnvironmentHost' action, Amazon EVS automatically uses the
+%% default ESX version associated with your environment's VCF version. To
+%% find the default ESX version for a particular VCF version, use the
+%% `GetVersions' action.
 %%
 %% You cannot use the `dedicatedHostId' and `placementGroupId'
 %% parameters together in the same `CreateEnvironmentHost' action. This
@@ -666,6 +719,27 @@ get_environment(Client, Input)
 get_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironment">>, Input, Options).
+
+%% @doc Returns information about VCF versions, ESX versions and EC2 instance
+%% types provided by Amazon EVS.
+%%
+%% For each VCF version, the response also includes the default ESX version
+%% and provided EC2 instance types.
+-spec get_versions(aws_client:aws_client(), get_versions_request()) ->
+    {ok, get_versions_response(), tuple()} |
+    {error, any()} |
+    {error, get_versions_errors(), tuple()}.
+get_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_versions(Client, Input, []).
+
+-spec get_versions(aws_client:aws_client(), get_versions_request(), proplists:proplist()) ->
+    {ok, get_versions_response(), tuple()} |
+    {error, any()} |
+    {error, get_versions_errors(), tuple()}.
+get_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetVersions">>, Input, Options).
 
 %% @doc List the hosts within an environment.
 -spec list_environment_hosts(aws_client:aws_client(), list_environment_hosts_request()) ->

@@ -85,8 +85,12 @@
          add_layer_version_permission/5,
          add_permission/3,
          add_permission/4,
+         checkpoint_durable_execution/3,
+         checkpoint_durable_execution/4,
          create_alias/3,
          create_alias/4,
+         create_capacity_provider/2,
+         create_capacity_provider/3,
          create_code_signing_config/2,
          create_code_signing_config/3,
          create_event_source_mapping/2,
@@ -97,6 +101,8 @@
          create_function_url_config/4,
          delete_alias/4,
          delete_alias/5,
+         delete_capacity_provider/3,
+         delete_capacity_provider/4,
          delete_code_signing_config/3,
          delete_code_signing_config/4,
          delete_event_source_mapping/3,
@@ -121,9 +127,21 @@
          get_alias/3,
          get_alias/5,
          get_alias/6,
+         get_capacity_provider/2,
+         get_capacity_provider/4,
+         get_capacity_provider/5,
          get_code_signing_config/2,
          get_code_signing_config/4,
          get_code_signing_config/5,
+         get_durable_execution/2,
+         get_durable_execution/4,
+         get_durable_execution/5,
+         get_durable_execution_history/2,
+         get_durable_execution_history/4,
+         get_durable_execution_history/5,
+         get_durable_execution_state/3,
+         get_durable_execution_state/5,
+         get_durable_execution_state/6,
          get_event_source_mapping/2,
          get_event_source_mapping/4,
          get_event_source_mapping/5,
@@ -145,6 +163,9 @@
          get_function_recursion_config/2,
          get_function_recursion_config/4,
          get_function_recursion_config/5,
+         get_function_scaling_config/3,
+         get_function_scaling_config/5,
+         get_function_scaling_config/6,
          get_function_url_config/2,
          get_function_url_config/4,
          get_function_url_config/5,
@@ -175,9 +196,15 @@
          list_aliases/2,
          list_aliases/4,
          list_aliases/5,
+         list_capacity_providers/1,
+         list_capacity_providers/3,
+         list_capacity_providers/4,
          list_code_signing_configs/1,
          list_code_signing_configs/3,
          list_code_signing_configs/4,
+         list_durable_executions_by_function/2,
+         list_durable_executions_by_function/4,
+         list_durable_executions_by_function/5,
          list_event_source_mappings/1,
          list_event_source_mappings/3,
          list_event_source_mappings/4,
@@ -187,6 +214,9 @@
          list_function_url_configs/2,
          list_function_url_configs/4,
          list_function_url_configs/5,
+         list_function_versions_by_capacity_provider/2,
+         list_function_versions_by_capacity_provider/4,
+         list_function_versions_by_capacity_provider/5,
          list_functions/1,
          list_functions/3,
          list_functions/4,
@@ -220,6 +250,8 @@
          put_function_event_invoke_config/4,
          put_function_recursion_config/3,
          put_function_recursion_config/4,
+         put_function_scaling_config/3,
+         put_function_scaling_config/4,
          put_provisioned_concurrency_config/3,
          put_provisioned_concurrency_config/4,
          put_runtime_management_config/3,
@@ -228,12 +260,22 @@
          remove_layer_version_permission/6,
          remove_permission/4,
          remove_permission/5,
+         send_durable_execution_callback_failure/3,
+         send_durable_execution_callback_failure/4,
+         send_durable_execution_callback_heartbeat/3,
+         send_durable_execution_callback_heartbeat/4,
+         send_durable_execution_callback_success/3,
+         send_durable_execution_callback_success/4,
+         stop_durable_execution/3,
+         stop_durable_execution/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
          update_alias/4,
          update_alias/5,
+         update_capacity_provider/3,
+         update_capacity_provider/4,
          update_code_signing_config/3,
          update_code_signing_config/4,
          update_event_source_mapping/3,
@@ -295,6 +337,33 @@
 
 
 %% Example:
+%% operation() :: #{
+%%   <<"CallbackDetails">> => callback_details(),
+%%   <<"ChainedInvokeDetails">> => chained_invoke_details(),
+%%   <<"ContextDetails">> => context_details(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"ExecutionDetails">> => execution_details(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepDetails">> => step_details(),
+%%   <<"SubType">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitDetails">> => wait_details()
+%% }
+-type operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_stopped_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_stopped_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% kms_disabled_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -343,6 +412,7 @@
 %%   <<"FunctionName">> => string(),
 %%   <<"FunctionResponseTypes">> => list(list(any())()),
 %%   <<"KMSKeyArn">> => string(),
+%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer(),
 %%   <<"MaximumRecordAgeInSeconds">> => integer(),
 %%   <<"MaximumRetryAttempts">> => integer(),
@@ -358,11 +428,37 @@
 
 
 %% Example:
+%% delete_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type delete_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_version_config() :: #{
 %%   <<"Error">> => runtime_version_error(),
 %%   <<"RuntimeVersionArn">> => string()
 %% }
 -type runtime_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_versions_by_capacity_provider_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_versions_by_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_request() :: #{}
+-type delete_capacity_provider_request() :: #{}.
+
+
+%% Example:
+%% wait_succeeded_details() :: #{
+%%   <<"Duration">> => integer()
+%% }
+-type wait_succeeded_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -373,14 +469,39 @@
 
 
 %% Example:
+%% lambda_managed_instances_capacity_provider_config() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"ExecutionEnvironmentMemoryGiBPerVCpu">> => float(),
+%%   <<"PerExecutionEnvironmentMaxConcurrency">> => integer()
+%% }
+-type lambda_managed_instances_capacity_provider_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_function_scaling_config_response() :: #{
+%%   <<"AppliedFunctionScalingConfig">> => function_scaling_config(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"RequestedFunctionScalingConfig">> => function_scaling_config()
+%% }
+-type get_function_scaling_config_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_code_signing_config_request() :: #{}
 -type get_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% get_function_scaling_config_request() :: #{
+%%   <<"Qualifier">> := string()
+%% }
+-type get_function_scaling_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -392,6 +513,14 @@
 %% Example:
 %% delete_function_code_signing_config_request() :: #{}
 -type delete_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% event_result() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type event_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -420,6 +549,16 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type provisioned_concurrency_config_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_object() :: #{
+%%   <<"ErrorData">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string(),
+%%   <<"StackTrace">> => list(string())
+%% }
+-type error_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -456,11 +595,25 @@
 
 
 %% Example:
+%% callback_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type callback_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_provisioned_concurrency_configs_response() :: #{
 %%   <<"NextMarker">> => string(),
 %%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item())
 %% }
 -type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type context_succeeded_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -490,6 +643,13 @@
 
 
 %% Example:
+%% execution_details() :: #{
+%%   <<"InputPayload">> => string()
+%% }
+-type execution_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter_criteria() :: #{
 %%   <<"Filters">> => list(filter())
 %% }
@@ -510,6 +670,10 @@
 %% get_account_settings_request() :: #{}
 -type get_account_settings_request() :: #{}.
 
+%% Example:
+%% send_durable_execution_callback_failure_response() :: #{}
+-type send_durable_execution_callback_failure_response() :: #{}.
+
 
 %% Example:
 %% create_alias_request() :: #{
@@ -519,6 +683,17 @@
 %%   <<"RoutingConfig">> => alias_routing_configuration()
 %% }
 -type create_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type callback_failed_details() :: #{binary() => any()}.
+
+%% Example:
+%% step_started_details() :: #{}
+-type step_started_details() :: #{}.
 
 
 %% Example:
@@ -568,10 +743,35 @@
 
 
 %% Example:
+%% update_capacity_provider_request() :: #{
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config()
+%% }
+-type update_capacity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type execution_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_options() :: #{
+%%   <<"ReplayChildren">> => boolean()
+%% }
+-type context_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_function_recursion_config_response() :: #{
 %%   <<"RecursiveLoop">> => list(any())
 %% }
 -type put_function_recursion_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_durable_execution_request() :: #{}
+-type get_durable_execution_request() :: #{}.
 
 
 %% Example:
@@ -597,6 +797,29 @@
 %%   <<"NextMarker">> => string()
 %% }
 -type list_layers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_started_details() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"Input">> => event_input(),
+%%   <<"TenantId">> => string()
+%% }
+-type chained_invoke_started_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type execution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -639,6 +862,7 @@
 
 %% Example:
 %% invocation_response() :: #{
+%%   <<"DurableExecutionArn">> => string(),
 %%   <<"ExecutedVersion">> => string(),
 %%   <<"FunctionError">> => string(),
 %%   <<"LogResult">> => string(),
@@ -668,6 +892,40 @@
 
 
 %% Example:
+%% get_durable_execution_history_request() :: #{
+%%   <<"IncludeExecutionData">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ReverseOrder">> => boolean()
+%% }
+-type get_durable_execution_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_scaling_config() :: #{
+%%   <<"MaxVCpuCount">> => integer(),
+%%   <<"ScalingMode">> => list(any()),
+%%   <<"ScalingPolicies">> => list(target_tracking_scaling_policy())
+%% }
+-type capacity_provider_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_scaling_config() :: #{
+%%   <<"MaxExecutionEnvironments">> => integer(),
+%%   <<"MinExecutionEnvironments">> => integer()
+%% }
+-type function_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_function_url_config_request() :: #{
 %%   <<"AuthType">> => list(any()),
 %%   <<"Cors">> => cors(),
@@ -678,11 +936,35 @@
 
 
 %% Example:
+%% chained_invoke_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type chained_invoke_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_versions_by_capacity_provider_response() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"FunctionVersions">> => list(function_versions_by_capacity_provider_list_item()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_versions_by_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% self_managed_kafka_event_source_config() :: #{
 %%   <<"ConsumerGroupId">> => string(),
 %%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
 %% }
 -type self_managed_kafka_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_tracking_scaling_policy() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_scaling_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -701,6 +983,14 @@
 
 
 %% Example:
+%% capacity_provider_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type capacity_provider_vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_function_response() :: #{
 %%   <<"Code">> => function_code_location(),
 %%   <<"Concurrency">> => concurrency(),
@@ -709,6 +999,10 @@
 %%   <<"TagsError">> => tags_error()
 %% }
 -type get_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% context_started_details() :: #{}
+-type context_started_details() :: #{}.
 
 
 %% Example:
@@ -792,6 +1086,28 @@
 
 
 %% Example:
+%% callback_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type callback_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_durable_executions_by_function_request() :: #{
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Qualifier">> => string(),
+%%   <<"ReverseOrder">> => boolean(),
+%%   <<"StartedAfter">> => non_neg_integer(),
+%%   <<"StartedBefore">> => non_neg_integer(),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_durable_executions_by_function_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_provisioned_concurrency_config_request() :: #{
 %%   <<"ProvisionedConcurrentExecutions">> := integer(),
 %%   <<"Qualifier">> := string()
@@ -809,6 +1125,33 @@
 %% Example:
 %% delete_layer_version_request() :: #{}
 -type delete_layer_version_request() :: #{}.
+
+
+%% Example:
+%% operation_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CallbackOptions">> => callback_options(),
+%%   <<"ChainedInvokeOptions">> => chained_invoke_options(),
+%%   <<"ContextOptions">> => context_options(),
+%%   <<"Error">> => error_object(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentId">> => string(),
+%%   <<"Payload">> => string(),
+%%   <<"StepOptions">> => step_options(),
+%%   <<"SubType">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitOptions">> => wait_options()
+%% }
+-type operation_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% checkpoint_updated_execution_state() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Operations">> => list(operation())
+%% }
+-type checkpoint_updated_execution_state() :: #{binary() => any()}.
 
 
 %% Example:
@@ -839,9 +1182,21 @@
 %% }
 -type get_function_concurrency_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% execution_started_details() :: #{
+%%   <<"ExecutionTimeout">> => integer(),
+%%   <<"Input">> => event_input()
+%% }
+-type execution_started_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_source_mapping_request() :: #{}
 -type delete_event_source_mapping_request() :: #{}.
+
+%% Example:
+%% send_durable_execution_callback_heartbeat_request() :: #{}
+-type send_durable_execution_callback_heartbeat_request() :: #{}.
 
 
 %% Example:
@@ -850,6 +1205,29 @@
 %%   <<"Type">> => string()
 %% }
 -type recursive_invocation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_state_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Operations">> => list(operation())
+%% }
+-type get_durable_execution_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_input() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type event_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -866,6 +1244,30 @@
 %% Example:
 %% get_alias_request() :: #{}
 -type get_alias_request() :: #{}.
+
+
+%% Example:
+%% wait_options() :: #{
+%%   <<"WaitSeconds">> => integer()
+%% }
+-type wait_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type list_capacity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_details() :: #{
+%%   <<"CurrentAttempt">> => integer(),
+%%   <<"NextAttemptDelaySeconds">> => integer()
+%% }
+-type retry_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -915,6 +1317,14 @@
 
 
 %% Example:
+%% durable_config() :: #{
+%%   <<"ExecutionTimeout">> => integer(),
+%%   <<"RetentionPeriodInDays">> => integer()
+%% }
+-type durable_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -944,6 +1354,14 @@
 %%   <<"FullDocument">> => list(any())
 %% }
 -type document_db_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% durable_execution_already_started_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type durable_execution_already_started_exception() :: #{binary() => any()}.
 
 %% Example:
 %% delete_code_signing_config_request() :: #{}
@@ -988,9 +1406,20 @@
 %% publish_version_request() :: #{
 %%   <<"CodeSha256">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"PublishTo">> => list(any()),
 %%   <<"RevisionId">> => string()
 %% }
 -type publish_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_completed_details() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => event_error(),
+%%   <<"RequestId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type invocation_completed_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -999,6 +1428,22 @@
 %%   <<"FunctionName">> => string()
 %% }
 -type put_function_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_response() :: #{
+%%   <<"CapacityProviders">> => list(capacity_provider()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_capacity_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_failed_details() :: #{
+%%   <<"Error">> => event_error(),
+%%   <<"RetryDetails">> => retry_details()
+%% }
+-type step_failed_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1014,11 +1459,20 @@
 
 
 %% Example:
+%% event_error() :: #{
+%%   <<"Payload">> => error_object(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type event_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_function_code_request() :: #{
 %%   <<"Architectures">> => list(list(any())()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ImageUri">> => string(),
 %%   <<"Publish">> => boolean(),
+%%   <<"PublishTo">> => list(any()),
 %%   <<"RevisionId">> => string(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
@@ -1049,38 +1503,39 @@
 
 %% Example:
 %% event_source_mapping_configuration() :: #{
-%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
-%%   <<"BatchSize">> => integer(),
-%%   <<"BisectBatchOnFunctionError">> => boolean(),
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
-%%   <<"EventSourceArn">> => string(),
-%%   <<"EventSourceMappingArn">> => string(),
-%%   <<"FilterCriteria">> => filter_criteria(),
-%%   <<"FilterCriteriaError">> => filter_criteria_error(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionResponseTypes">> => list(list(any())()),
-%%   <<"KMSKeyArn">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastProcessingResult">> => string(),
-%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
-%%   <<"MaximumRecordAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer(),
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"Queues">> => list(string()),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"UUID">> => string(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"StateTransitionReason">> => string(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
+%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
+%%   <<"EventSourceMappingArn">> => string(),
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"State">> => string(),
+%%   <<"StartingPosition">> => list(any()),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"FilterCriteria">> => filter_criteria(),
 %%   <<"ParallelizationFactor">> => integer(),
 %%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
-%%   <<"Queues">> => list(string()),
-%%   <<"ScalingConfig">> => scaling_config(),
-%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
-%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
 %%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
-%%   <<"StartingPosition">> => list(any()),
-%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"StateTransitionReason">> => string(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
+%%   <<"FilterCriteriaError">> => filter_criteria_error(),
+%%   <<"LastProcessingResult">> => string(),
 %%   <<"Topics">> => list(string()),
 %%   <<"TumblingWindowInSeconds">> => integer(),
-%%   <<"UUID">> => string()
+%%   <<"BisectBatchOnFunctionError">> => boolean()
 %% }
 -type event_source_mapping_configuration() :: #{binary() => any()}.
 
@@ -1088,7 +1543,8 @@
 %% Example:
 %% provisioned_poller_config() :: #{
 %%   <<"MaximumPollers">> => integer(),
-%%   <<"MinimumPollers">> => integer()
+%%   <<"MinimumPollers">> => integer(),
+%%   <<"PollerGroupName">> => string()
 %% }
 -type provisioned_poller_config() :: #{binary() => any()}.
 
@@ -1106,6 +1562,7 @@
 %%   <<"FunctionName">> := string(),
 %%   <<"FunctionResponseTypes">> => list(list(any())()),
 %%   <<"KMSKeyArn">> => string(),
+%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer(),
 %%   <<"MaximumRecordAgeInSeconds">> => integer(),
 %%   <<"MaximumRetryAttempts">> => integer(),
@@ -1124,6 +1581,19 @@
 %%   <<"TumblingWindowInSeconds">> => integer()
 %% }
 -type create_event_source_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_provider_request() :: #{}
+-type get_capacity_provider_request() :: #{}.
+
+
+%% Example:
+%% checkpoint_durable_execution_request() :: #{
+%%   <<"CheckpointToken">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Updates">> => list(operation_update())
+%% }
+-type checkpoint_durable_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1147,6 +1617,15 @@
 
 
 %% Example:
+%% get_durable_execution_state_request() :: #{
+%%   <<"CheckpointToken">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_durable_execution_state_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_provisioned_concurrency_config_response() :: #{
 %%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
 %%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
@@ -1156,6 +1635,13 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_response() :: #{
+%%   <<"StatusCode">> => integer()
+%% }
+-type delete_function_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1203,6 +1689,13 @@
 
 
 %% Example:
+%% execution_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type execution_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_limit() :: #{
 %%   <<"CodeSizeUnzipped">> => float(),
 %%   <<"CodeSizeZipped">> => float(),
@@ -1233,6 +1726,13 @@
 %%   <<"LocalMountPath">> => string()
 %% }
 -type file_system_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% wait_cancelled_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type wait_cancelled_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1274,6 +1774,30 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_response() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => error_object(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"InputPayload">> => string(),
+%%   <<"Result">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TraceHeader">> => trace_header(),
+%%   <<"Version">> => string()
+%% }
+-type get_durable_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_source_mapping_logging_config() :: #{
+%%   <<"SystemLogLevel">> => list(any())
+%% }
+-type event_source_mapping_logging_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1320,6 +1844,13 @@
 
 
 %% Example:
+%% create_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type create_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% request_too_large_exception() :: #{
 %%   <<"Type">> => string(),
 %%   <<"message">> => string()
@@ -1347,6 +1878,52 @@
 %%   <<"Qualifier">> := string()
 %% }
 -type get_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_started_details() :: #{
+%%   <<"CallbackId">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"Timeout">> => integer()
+%% }
+-type callback_started_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% checkpoint_durable_execution_response() :: #{
+%%   <<"CheckpointToken">> => string(),
+%%   <<"NewExecutionState">> => checkpoint_updated_execution_state()
+%% }
+-type checkpoint_durable_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type update_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_details() :: #{
+%%   <<"Error">> => error_object(),
+%%   <<"Result">> => string()
+%% }
+-type chained_invoke_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_stopped_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type execution_stopped_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_permissions_config() :: #{
+%%   <<"CapacityProviderOperatorRoleArn">> => string()
+%% }
+-type capacity_provider_permissions_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1411,6 +1988,17 @@
 %% }
 -type put_function_code_signing_config_request() :: #{binary() => any()}.
 
+%% Example:
+%% send_durable_execution_callback_success_response() :: #{}
+-type send_durable_execution_callback_success_response() :: #{}.
+
+
+%% Example:
+%% send_durable_execution_callback_success_request() :: #{
+%%   <<"Result">> => binary()
+%% }
+-type send_durable_execution_callback_success_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_layer_version_permission_response() :: #{
@@ -1418,6 +2006,43 @@
 %%   <<"Statement">> => string()
 %% }
 -type add_layer_version_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"CallbackFailedDetails">> => callback_failed_details(),
+%%   <<"CallbackStartedDetails">> => callback_started_details(),
+%%   <<"CallbackSucceededDetails">> => callback_succeeded_details(),
+%%   <<"CallbackTimedOutDetails">> => callback_timed_out_details(),
+%%   <<"ChainedInvokeFailedDetails">> => chained_invoke_failed_details(),
+%%   <<"ChainedInvokeStartedDetails">> => chained_invoke_started_details(),
+%%   <<"ChainedInvokeStoppedDetails">> => chained_invoke_stopped_details(),
+%%   <<"ChainedInvokeSucceededDetails">> => chained_invoke_succeeded_details(),
+%%   <<"ChainedInvokeTimedOutDetails">> => chained_invoke_timed_out_details(),
+%%   <<"ContextFailedDetails">> => context_failed_details(),
+%%   <<"ContextStartedDetails">> => context_started_details(),
+%%   <<"ContextSucceededDetails">> => context_succeeded_details(),
+%%   <<"EventId">> => integer(),
+%%   <<"EventTimestamp">> => non_neg_integer(),
+%%   <<"EventType">> => list(any()),
+%%   <<"ExecutionFailedDetails">> => execution_failed_details(),
+%%   <<"ExecutionStartedDetails">> => execution_started_details(),
+%%   <<"ExecutionStoppedDetails">> => execution_stopped_details(),
+%%   <<"ExecutionSucceededDetails">> => execution_succeeded_details(),
+%%   <<"ExecutionTimedOutDetails">> => execution_timed_out_details(),
+%%   <<"Id">> => string(),
+%%   <<"InvocationCompletedDetails">> => invocation_completed_details(),
+%%   <<"Name">> => string(),
+%%   <<"ParentId">> => string(),
+%%   <<"StepFailedDetails">> => step_failed_details(),
+%%   <<"StepStartedDetails">> => step_started_details(),
+%%   <<"StepSucceededDetails">> => step_succeeded_details(),
+%%   <<"SubType">> => string(),
+%%   <<"WaitCancelledDetails">> => wait_cancelled_details(),
+%%   <<"WaitStartedDetails">> => wait_started_details(),
+%%   <<"WaitSucceededDetails">> => wait_succeeded_details()
+%% }
+-type event() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_source_mapping_request() :: #{}
@@ -1435,10 +2060,12 @@
 %% Example:
 %% invocation_request() :: #{
 %%   <<"ClientContext">> => string(),
+%%   <<"DurableExecutionName">> => string(),
 %%   <<"InvocationType">> => list(any()),
 %%   <<"LogType">> => list(any()),
 %%   <<"Payload">> => binary(),
-%%   <<"Qualifier">> => string()
+%%   <<"Qualifier">> => string(),
+%%   <<"TenantId">> => string()
 %% }
 -type invocation_request() :: #{binary() => any()}.
 
@@ -1476,14 +2103,37 @@
 
 
 %% Example:
+%% callback_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type callback_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_with_response_stream_request() :: #{
 %%   <<"ClientContext">> => string(),
 %%   <<"InvocationType">> => list(any()),
 %%   <<"LogType">> => list(any()),
 %%   <<"Payload">> => binary(),
-%%   <<"Qualifier">> => string()
+%%   <<"Qualifier">> => string(),
+%%   <<"TenantId">> => string()
 %% }
 -type invoke_with_response_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_durable_execution_callback_failure_request() :: #{
+%%   <<"Error">> => error_object()
+%% }
+-type send_durable_execution_callback_failure_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% wait_started_details() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
+%% }
+-type wait_started_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1494,10 +2144,41 @@
 
 
 %% Example:
+%% context_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type context_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
 -type update_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_requirements() :: #{
+%%   <<"AllowedInstanceTypes">> => list(string()),
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"ExcludedInstanceTypes">> => list(string())
+%% }
+-type instance_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_versions_by_capacity_provider_list_item() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type function_versions_by_capacity_provider_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type get_capacity_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1549,6 +2230,14 @@
 
 
 %% Example:
+%% capacity_provider_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
@@ -1576,6 +2265,7 @@
 %%   <<"CodeSize">> => float(),
 %%   <<"Architectures">> => list(list(any())()),
 %%   <<"FileSystemConfigs">> => list(file_system_config()),
+%%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"LastUpdateStatusReasonCode">> => list(any()),
 %%   <<"KMSKeyArn">> => string(),
 %%   <<"PackageType">> => list(any()),
@@ -1588,6 +2278,7 @@
 %%   <<"LastUpdateStatus">> => list(any()),
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Timeout">> => integer(),
+%%   <<"DurableConfig">> => durable_config(),
 %%   <<"MasterArn">> => string(),
 %%   <<"SnapStart">> => snap_start_response(),
 %%   <<"CodeSha256">> => string(),
@@ -1598,10 +2289,12 @@
 %%   <<"StateReasonCode">> => list(any()),
 %%   <<"RevisionId">> => string(),
 %%   <<"FunctionName">> => string(),
+%%   <<"TenancyConfig">> => tenancy_config(),
 %%   <<"LastUpdateStatusReason">> => string(),
 %%   <<"SigningJobArn">> => string(),
 %%   <<"Runtime">> => list(any()),
 %%   <<"TracingConfig">> => tracing_config_response(),
+%%   <<"ConfigSha256">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"SigningProfileVersionArn">> => string(),
 %%   <<"Handler">> => string()
@@ -1636,11 +2329,25 @@
 
 
 %% Example:
+%% capacity_provider_config() :: #{
+%%   <<"LambdaManagedInstancesCapacityProviderConfig">> => lambda_managed_instances_capacity_provider_config()
+%% }
+-type capacity_provider_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% e_n_i_limit_reached_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type e_n_i_limit_reached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_durable_execution_response() :: #{
+%%   <<"StopTimestamp">> => non_neg_integer()
+%% }
+-type stop_durable_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1659,6 +2366,22 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_layer_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_scaling_config_request() :: #{
+%%   <<"FunctionScalingConfig">> => function_scaling_config(),
+%%   <<"Qualifier">> := string()
+%% }
+-type put_function_scaling_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_durable_executions_by_function_response() :: #{
+%%   <<"DurableExecutions">> => list(execution()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_durable_executions_by_function_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1702,6 +2425,13 @@
 
 
 %% Example:
+%% wait_details() :: #{
+%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
+%% }
+-type wait_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% on_success() :: #{
 %%   <<"Destination">> => string()
 %% }
@@ -1717,8 +2447,10 @@
 
 %% Example:
 %% update_function_configuration_request() :: #{
+%%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
+%%   <<"DurableConfig">> => durable_config(),
 %%   <<"Environment">> => environment(),
 %%   <<"EphemeralStorage">> => ephemeral_storage(),
 %%   <<"FileSystemConfigs">> => list(file_system_config()),
@@ -1781,11 +2513,62 @@
 
 
 %% Example:
+%% get_durable_execution_history_response() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"NextMarker">> => string()
+%% }
+-type get_durable_execution_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"PermissionsConfig">> => capacity_provider_permissions_config(),
+%%   <<"State">> => list(any()),
+%%   <<"VpcConfig">> => capacity_provider_vpc_config()
+%% }
+-type capacity_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_versions_per_capacity_provider_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type function_versions_per_capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_options() :: #{
+%%   <<"HeartbeatTimeoutSeconds">> => integer(),
+%%   <<"TimeoutSeconds">> => integer()
+%% }
+-type callback_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_versions_by_function_response() :: #{
 %%   <<"NextMarker">> => string(),
 %%   <<"Versions">> => list(function_configuration())
 %% }
 -type list_versions_by_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capacity_provider_request() :: #{
+%%   <<"CapacityProviderName">> := string(),
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"PermissionsConfig">> := capacity_provider_permissions_config(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcConfig">> := capacity_provider_vpc_config()
+%% }
+-type create_capacity_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1821,6 +2604,13 @@
 
 
 %% Example:
+%% step_options() :: #{
+%%   <<"NextAttemptDelaySeconds">> => integer()
+%% }
+-type step_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_function_event_invoke_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
@@ -1828,12 +2618,31 @@
 
 
 %% Example:
+%% step_details() :: #{
+%%   <<"Attempt">> => integer(),
+%%   <<"Error">> => error_object(),
+%%   <<"NextAttemptTimestamp">> => non_neg_integer(),
+%%   <<"Result">> => string()
+%% }
+-type step_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type execution_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_function_request() :: #{
 %%   <<"Architectures">> => list(list(any())()),
+%%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"Code">> := function_code(),
 %%   <<"CodeSigningConfigArn">> => string(),
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
+%%   <<"DurableConfig">> => durable_config(),
 %%   <<"Environment">> => environment(),
 %%   <<"EphemeralStorage">> => ephemeral_storage(),
 %%   <<"FileSystemConfigs">> => list(file_system_config()),
@@ -1846,10 +2655,12 @@
 %%   <<"MemorySize">> => integer(),
 %%   <<"PackageType">> => list(any()),
 %%   <<"Publish">> => boolean(),
+%%   <<"PublishTo">> => list(any()),
 %%   <<"Role">> := string(),
 %%   <<"Runtime">> => list(any()),
 %%   <<"SnapStart">> => snap_start(),
 %%   <<"Tags">> => map(),
+%%   <<"TenancyConfig">> => tenancy_config(),
 %%   <<"Timeout">> => integer(),
 %%   <<"TracingConfig">> => tracing_config(),
 %%   <<"VpcConfig">> => vpc_config()
@@ -1866,6 +2677,21 @@
 
 
 %% Example:
+%% no_published_version_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type no_published_version_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_durable_execution_request() :: #{
+%%   <<"Error">> => error_object()
+%% }
+-type stop_durable_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% tags_error() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
@@ -1879,6 +2705,13 @@
 %%   <<"Type">> => string()
 %% }
 -type ec2_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_header() :: #{
+%%   <<"XAmznTraceId">> => string()
+%% }
+-type trace_header() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_request() :: #{}
@@ -1911,6 +2744,14 @@
 
 
 %% Example:
+%% chained_invoke_options() :: #{
+%%   <<"FunctionName">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type chained_invoke_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% alias_routing_configuration() :: #{
 %%   <<"AdditionalVersionWeights">> => map()
 %% }
@@ -1926,11 +2767,25 @@
 
 
 %% Example:
+%% put_function_scaling_config_response() :: #{
+%%   <<"FunctionState">> => list(any())
+%% }
+-type put_function_scaling_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_subnet_id_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type invalid_subnet_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tenancy_config() :: #{
+%%   <<"TenantIsolationMode">> => list(any())
+%% }
+-type tenancy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1981,6 +2836,10 @@
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
 
+%% Example:
+%% send_durable_execution_callback_heartbeat_response() :: #{}
+-type send_durable_execution_callback_heartbeat_response() :: #{}.
+
 
 %% Example:
 %% list_function_event_invoke_configs_request() :: #{
@@ -1988,6 +2847,15 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_function_event_invoke_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_details() :: #{
+%%   <<"Error">> => error_object(),
+%%   <<"ReplayChildren">> => boolean(),
+%%   <<"Result">> => string()
+%% }
+-type context_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2007,6 +2875,15 @@
 %% Example:
 %% delete_alias_request() :: #{}
 -type delete_alias_request() :: #{}.
+
+
+%% Example:
+%% callback_details() :: #{
+%%   <<"CallbackId">> => string(),
+%%   <<"Error">> => error_object(),
+%%   <<"Result">> => string()
+%% }
+-type callback_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2065,6 +2942,14 @@
 
 
 %% Example:
+%% step_succeeded_details() :: #{
+%%   <<"Result">> => event_result(),
+%%   <<"RetryDetails">> => retry_details()
+%% }
+-type step_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% add_permission_response() :: #{
 %%   <<"Statement">> => string()
 %% }
@@ -2100,11 +2985,23 @@
     too_many_requests_exception() | 
     policy_length_exceeded_exception().
 
+-type checkpoint_durable_execution_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
 -type create_alias_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_capacity_provider_errors() ::
+    resource_conflict_exception() | 
+    capacity_provider_limit_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
     too_many_requests_exception().
 
 -type create_code_signing_config_errors() ::
@@ -2121,6 +3018,7 @@
 -type create_function_errors() ::
     resource_conflict_exception() | 
     code_storage_exceeded_exception() | 
+    function_versions_per_capacity_provider_limit_exceeded_exception() | 
     invalid_code_signature_exception() | 
     code_verification_failed_exception() | 
     service_exception() | 
@@ -2140,6 +3038,13 @@
     resource_conflict_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type delete_capacity_provider_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type delete_code_signing_config_errors() ::
@@ -2212,10 +3117,33 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type get_capacity_provider_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_code_signing_config_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception().
+
+-type get_durable_execution_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_durable_execution_history_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_durable_execution_state_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
 
 -type get_event_source_mapping_errors() ::
     service_exception() | 
@@ -2254,6 +3182,12 @@
     too_many_requests_exception().
 
 -type get_function_recursion_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_scaling_config_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2310,6 +3244,7 @@
     kms_invalid_state_exception() | 
     e_f_s_i_o_exception() | 
     ec2_throttled_exception() | 
+    no_published_version_exception() | 
     ec2_unexpected_exception() | 
     e_f_s_mount_failure_exception() | 
     e_n_i_limit_reached_exception() | 
@@ -2322,6 +3257,7 @@
     subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
+    durable_execution_already_started_exception() | 
     resource_not_found_exception() | 
     invalid_request_content_exception() | 
     invalid_runtime_exception() | 
@@ -2350,6 +3286,7 @@
     kms_invalid_state_exception() | 
     e_f_s_i_o_exception() | 
     ec2_throttled_exception() | 
+    no_published_version_exception() | 
     ec2_unexpected_exception() | 
     e_f_s_mount_failure_exception() | 
     e_n_i_limit_reached_exception() | 
@@ -2381,9 +3318,20 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type list_capacity_providers_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
 -type list_code_signing_configs_errors() ::
     service_exception() | 
     invalid_parameter_value_exception().
+
+-type list_durable_executions_by_function_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 -type list_event_source_mappings_errors() ::
     service_exception() | 
@@ -2398,6 +3346,12 @@
     too_many_requests_exception().
 
 -type list_function_url_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_function_versions_by_capacity_provider_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2453,6 +3407,7 @@
     resource_conflict_exception() | 
     precondition_failed_exception() | 
     code_storage_exceeded_exception() | 
+    function_versions_per_capacity_provider_limit_exceeded_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2487,6 +3442,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type put_function_scaling_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type put_provisioned_concurrency_config_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
@@ -2515,6 +3477,30 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type send_durable_execution_callback_failure_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception() | 
+    too_many_requests_exception().
+
+-type send_durable_execution_callback_heartbeat_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception() | 
+    too_many_requests_exception().
+
+-type send_durable_execution_callback_success_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception() | 
+    too_many_requests_exception().
+
+-type stop_durable_execution_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type tag_resource_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
@@ -2532,6 +3518,13 @@
 -type update_alias_errors() ::
     resource_conflict_exception() | 
     precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_capacity_provider_errors() ::
+    resource_conflict_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2694,6 +3687,52 @@ add_permission(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Saves the progress of a durable function:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html
+%% execution during runtime.
+%%
+%% This API is used by the Lambda durable functions SDK to checkpoint
+%% completed steps and schedule asynchronous operations. You typically
+%% don't need to call this API directly as the SDK handles checkpointing
+%% automatically.
+%%
+%% Each checkpoint operation consumes the current checkpoint token and
+%% returns a new one for the next checkpoint. This ensures that checkpoints
+%% are applied in the correct order and prevents duplicate or out-of-order
+%% state updates.
+-spec checkpoint_durable_execution(aws_client:aws_client(), binary() | list(), checkpoint_durable_execution_request()) ->
+    {ok, checkpoint_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, checkpoint_durable_execution_errors(), tuple()}.
+checkpoint_durable_execution(Client, DurableExecutionArn, Input) ->
+    checkpoint_durable_execution(Client, DurableExecutionArn, Input, []).
+
+-spec checkpoint_durable_execution(aws_client:aws_client(), binary() | list(), checkpoint_durable_execution_request(), proplists:proplist()) ->
+    {ok, checkpoint_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, checkpoint_durable_execution_errors(), tuple()}.
+checkpoint_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/checkpoint"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
 %% for a Lambda function version.
@@ -2719,6 +3758,41 @@ create_alias(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a capacity provider that manages compute resources for Lambda
+%% functions
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request()) ->
+    {ok, create_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, create_capacity_provider_errors(), tuple()}.
+create_capacity_provider(Client, Input) ->
+    create_capacity_provider(Client, Input, []).
+
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request(), proplists:proplist()) ->
+    {ok, create_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, create_capacity_provider_errors(), tuple()}.
+create_capacity_provider(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-11-30/capacity-providers"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2803,8 +3877,8 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html
 %%
-%% The following error handling options are available only for DynamoDB and
-%% Kinesis event sources:
+%% The following error handling options are available for stream sources
+%% (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
 %%
 %% `BisectBatchOnFunctionError' – If the function returns an error, split
 %% the batch in two and retry.
@@ -2817,16 +3891,16 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% retries. The default value is infinite (-1). When set to infinite (-1),
 %% failed records are retried until the record expires.
 %%
+%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
+%% SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see
+%% Adding a destination:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
+%%
+%% The following option is available only for DynamoDB and Kinesis event
+%% sources:
+%%
 %% `ParallelizationFactor' – Process multiple batches from each shard
 %% concurrently.
-%%
-%% For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache
-%% Kafka), the following option is also available:
-%%
-%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
-%% SNS topic, or Amazon S3 bucket. For more information, see Adding a
-%% destination:
-%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
 %%
 %% For information about which configuration parameters apply to each event
 %% source, see the following topics.
@@ -3060,6 +4134,43 @@ delete_alias(Client, FunctionName, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a capacity provider.
+%%
+%% You cannot delete a capacity provider that is currently being used by
+%% Lambda functions.
+-spec delete_capacity_provider(aws_client:aws_client(), binary() | list(), delete_capacity_provider_request()) ->
+    {ok, delete_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_errors(), tuple()}.
+delete_capacity_provider(Client, CapacityProviderName, Input) ->
+    delete_capacity_provider(Client, CapacityProviderName, Input, []).
+
+-spec delete_capacity_provider(aws_client:aws_client(), binary() | list(), delete_capacity_provider_request(), proplists:proplist()) ->
+    {ok, delete_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_errors(), tuple()}.
+delete_capacity_provider(Client, CapacityProviderName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2025-11-30/capacity-providers/", aws_util:encode_uri(CapacityProviderName), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the code signing configuration.
 %%
 %% You can delete the code signing configuration only if no function is using
@@ -3152,20 +4263,20 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% resources that invoke your function directly, delete the trigger in the
 %% service where you originally configured it.
 -spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_function_response(), tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
 
 -spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_function_response(), tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
-    SuccessStatusCode = 204,
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3481,6 +4592,44 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a specific capacity provider, including
+%% its configuration, state, and associated resources.
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderName)
+  when is_map(Client) ->
+    get_capacity_provider(Client, CapacityProviderName, #{}, #{}).
+
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap, []).
+
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-11-30/capacity-providers/", aws_util:encode_uri(CapacityProviderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about the specified code signing configuration.
 -spec get_code_signing_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_code_signing_config_response(), tuple()} |
@@ -3515,6 +4664,155 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Opti
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html,
+%% including its current status, input payload, result or error information,
+%% and execution metadata such as start time and usage statistics.
+-spec get_durable_execution(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_errors(), tuple()}.
+get_durable_execution(Client, DurableExecutionArn)
+  when is_map(Client) ->
+    get_durable_execution(Client, DurableExecutionArn, #{}, #{}).
+
+-spec get_durable_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_errors(), tuple()}.
+get_durable_execution(Client, DurableExecutionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_durable_execution(Client, DurableExecutionArn, QueryMap, HeadersMap, []).
+
+-spec get_durable_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_errors(), tuple()}.
+get_durable_execution(Client, DurableExecutionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the execution history for a durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html,
+%% showing all the steps, callbacks, and events that occurred during the
+%% execution.
+%%
+%% This provides a detailed audit trail of the execution's progress over
+%% time.
+%%
+%% The history is available while the execution is running and for a
+%% retention period after it completes (1-90 days, default 30 days). You can
+%% control whether to include execution data such as step results and
+%% callback payloads.
+-spec get_durable_execution_history(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_durable_execution_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_history_errors(), tuple()}.
+get_durable_execution_history(Client, DurableExecutionArn)
+  when is_map(Client) ->
+    get_durable_execution_history(Client, DurableExecutionArn, #{}, #{}).
+
+-spec get_durable_execution_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_durable_execution_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_history_errors(), tuple()}.
+get_durable_execution_history(Client, DurableExecutionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_durable_execution_history(Client, DurableExecutionArn, QueryMap, HeadersMap, []).
+
+-spec get_durable_execution_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_durable_execution_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_history_errors(), tuple()}.
+get_durable_execution_history(Client, DurableExecutionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/history"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"IncludeExecutionData">>, maps:get(<<"IncludeExecutionData">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"ReverseOrder">>, maps:get(<<"ReverseOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current execution state required for the replay process
+%% during durable function:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html
+%% execution.
+%%
+%% This API is used by the Lambda durable functions SDK to get state
+%% information needed for replay. You typically don't need to call this
+%% API directly as the SDK handles state management automatically.
+%%
+%% The response contains operations ordered by start sequence number in
+%% ascending order. Completed operations with children don't include
+%% child operation details since they don't need to be replayed.
+-spec get_durable_execution_state(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_durable_execution_state_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_state_errors(), tuple()}.
+get_durable_execution_state(Client, DurableExecutionArn, CheckpointToken)
+  when is_map(Client) ->
+    get_durable_execution_state(Client, DurableExecutionArn, CheckpointToken, #{}, #{}).
+
+-spec get_durable_execution_state(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_durable_execution_state_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_state_errors(), tuple()}.
+get_durable_execution_state(Client, DurableExecutionArn, CheckpointToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_durable_execution_state(Client, DurableExecutionArn, CheckpointToken, QueryMap, HeadersMap, []).
+
+-spec get_durable_execution_state(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_durable_execution_state_response(), tuple()} |
+    {error, any()} |
+    {error, get_durable_execution_state_errors(), tuple()}.
+get_durable_execution_state(Client, DurableExecutionArn, CheckpointToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/state"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"CheckpointToken">>, CheckpointToken},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3810,6 +5108,48 @@ get_function_recursion_config(Client, FunctionName, QueryMap, HeadersMap, Option
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the scaling configuration for a Lambda Managed Instances
+%% function.
+-spec get_function_scaling_config(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_function_scaling_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_scaling_config_errors(), tuple()}.
+get_function_scaling_config(Client, FunctionName, Qualifier)
+  when is_map(Client) ->
+    get_function_scaling_config(Client, FunctionName, Qualifier, #{}, #{}).
+
+-spec get_function_scaling_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_function_scaling_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_scaling_config_errors(), tuple()}.
+get_function_scaling_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_scaling_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
+
+-spec get_function_scaling_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_scaling_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_scaling_config_errors(), tuple()}.
+get_function_scaling_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-11-30/functions/", aws_util:encode_uri(FunctionName), "/function-scaling-config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Qualifier">>, Qualifier}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4189,8 +5529,10 @@ invoke(Client, FunctionName, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
+                       {<<"X-Amz-Durable-Execution-Name">>, <<"DurableExecutionName">>},
                        {<<"X-Amz-Invocation-Type">>, <<"InvocationType">>},
-                       {<<"X-Amz-Log-Type">>, <<"LogType">>}
+                       {<<"X-Amz-Log-Type">>, <<"LogType">>},
+                       {<<"X-Amz-Tenant-Id">>, <<"TenantId">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -4205,6 +5547,7 @@ invoke(Client, FunctionName, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"X-Amz-Durable-Execution-Arn">>, <<"DurableExecutionArn">>},
             {<<"X-Amz-Executed-Version">>, <<"ExecutedVersion">>},
             {<<"X-Amz-Function-Error">>, <<"FunctionError">>},
             {<<"X-Amz-Log-Result">>, <<"LogResult">>}
@@ -4301,7 +5644,8 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
     HeadersMapping = [
                        {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
                        {<<"X-Amz-Invocation-Type">>, <<"InvocationType">>},
-                       {<<"X-Amz-Log-Type">>, <<"LogType">>}
+                       {<<"X-Amz-Log-Type">>, <<"LogType">>},
+                       {<<"X-Amz-Tenant-Id">>, <<"TenantId">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -4376,6 +5720,49 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of capacity providers in your account.
+-spec list_capacity_providers(aws_client:aws_client()) ->
+    {ok, list_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_providers_errors(), tuple()}.
+list_capacity_providers(Client)
+  when is_map(Client) ->
+    list_capacity_providers(Client, #{}, #{}).
+
+-spec list_capacity_providers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_providers_errors(), tuple()}.
+list_capacity_providers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_capacity_providers(Client, QueryMap, HeadersMap, []).
+
+-spec list_capacity_providers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_providers_errors(), tuple()}.
+list_capacity_providers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-11-30/capacity-providers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of code signing configurations:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuring-codesigning.html.
 %%
@@ -4417,6 +5804,59 @@ list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of durable executions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html for a
+%% specified Lambda function.
+%%
+%% You can filter the results by execution name, status, and start time
+%% range. This API supports pagination for large result sets.
+-spec list_durable_executions_by_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_durable_executions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_durable_executions_by_function_errors(), tuple()}.
+list_durable_executions_by_function(Client, FunctionName)
+  when is_map(Client) ->
+    list_durable_executions_by_function(Client, FunctionName, #{}, #{}).
+
+-spec list_durable_executions_by_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_durable_executions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_durable_executions_by_function_errors(), tuple()}.
+list_durable_executions_by_function(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_durable_executions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
+
+-spec list_durable_executions_by_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_durable_executions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_durable_executions_by_function_errors(), tuple()}.
+list_durable_executions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-12-01/functions/", aws_util:encode_uri(FunctionName), "/durable-executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"DurableExecutionName">>, maps:get(<<"DurableExecutionName">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)},
+        {<<"ReverseOrder">>, maps:get(<<"ReverseOrder">>, QueryMap, undefined)},
+        {<<"StartedAfter">>, maps:get(<<"StartedAfter">>, QueryMap, undefined)},
+        {<<"StartedBefore">>, maps:get(<<"StartedBefore">>, QueryMap, undefined)},
+        {<<"Statuses">>, maps:get(<<"Statuses">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4539,6 +5979,49 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
 list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/urls"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of function versions that are configured to use a
+%% specific capacity provider.
+-spec list_function_versions_by_capacity_provider(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_function_versions_by_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_versions_by_capacity_provider_errors(), tuple()}.
+list_function_versions_by_capacity_provider(Client, CapacityProviderName)
+  when is_map(Client) ->
+    list_function_versions_by_capacity_provider(Client, CapacityProviderName, #{}, #{}).
+
+-spec list_function_versions_by_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_function_versions_by_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_versions_by_capacity_provider_errors(), tuple()}.
+list_function_versions_by_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_function_versions_by_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap, []).
+
+-spec list_function_versions_by_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_function_versions_by_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_versions_by_capacity_provider_errors(), tuple()}.
+list_function_versions_by_capacity_provider(Client, CapacityProviderName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2025-11-30/capacity-providers/", aws_util:encode_uri(CapacityProviderName), "/function-versions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5175,6 +6658,46 @@ put_function_recursion_config(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sets the scaling configuration for a Lambda Managed Instances
+%% function.
+%%
+%% The scaling configuration defines the minimum and maximum number of
+%% execution environments that can be provisioned for the function, allowing
+%% you to control scaling behavior and resource allocation.
+-spec put_function_scaling_config(aws_client:aws_client(), binary() | list(), put_function_scaling_config_request()) ->
+    {ok, put_function_scaling_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_scaling_config_errors(), tuple()}.
+put_function_scaling_config(Client, FunctionName, Input) ->
+    put_function_scaling_config(Client, FunctionName, Input, []).
+
+-spec put_function_scaling_config(aws_client:aws_client(), binary() | list(), put_function_scaling_config_request(), proplists:proplist()) ->
+    {ok, put_function_scaling_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_scaling_config_errors(), tuple()}.
+put_function_scaling_config(Client, FunctionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2025-11-30/functions/", aws_util:encode_uri(FunctionName), "/function-scaling-config"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a provisioned concurrency configuration to a function's
 %% alias or version.
 -spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request()) ->
@@ -5328,6 +6851,158 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sends a failure response for a callback operation in a durable
+%% execution.
+%%
+%% Use this API when an external system cannot complete a callback operation
+%% successfully.
+-spec send_durable_execution_callback_failure(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_failure_request()) ->
+    {ok, send_durable_execution_callback_failure_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_failure_errors(), tuple()}.
+send_durable_execution_callback_failure(Client, CallbackId, Input) ->
+    send_durable_execution_callback_failure(Client, CallbackId, Input, []).
+
+-spec send_durable_execution_callback_failure(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_failure_request(), proplists:proplist()) ->
+    {ok, send_durable_execution_callback_failure_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_failure_errors(), tuple()}.
+send_durable_execution_callback_failure(Client, CallbackId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-execution-callbacks/", aws_util:encode_uri(CallbackId), "/fail"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends a heartbeat signal for a long-running callback operation to
+%% prevent timeout.
+%%
+%% Use this API to extend the callback timeout period while the external
+%% operation is still in progress.
+-spec send_durable_execution_callback_heartbeat(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_heartbeat_request()) ->
+    {ok, send_durable_execution_callback_heartbeat_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_heartbeat_errors(), tuple()}.
+send_durable_execution_callback_heartbeat(Client, CallbackId, Input) ->
+    send_durable_execution_callback_heartbeat(Client, CallbackId, Input, []).
+
+-spec send_durable_execution_callback_heartbeat(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_heartbeat_request(), proplists:proplist()) ->
+    {ok, send_durable_execution_callback_heartbeat_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_heartbeat_errors(), tuple()}.
+send_durable_execution_callback_heartbeat(Client, CallbackId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-execution-callbacks/", aws_util:encode_uri(CallbackId), "/heartbeat"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends a successful completion response for a callback operation in a
+%% durable execution.
+%%
+%% Use this API when an external system has successfully completed a callback
+%% operation.
+-spec send_durable_execution_callback_success(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_success_request()) ->
+    {ok, send_durable_execution_callback_success_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_success_errors(), tuple()}.
+send_durable_execution_callback_success(Client, CallbackId, Input) ->
+    send_durable_execution_callback_success(Client, CallbackId, Input, []).
+
+-spec send_durable_execution_callback_success(aws_client:aws_client(), binary() | list(), send_durable_execution_callback_success_request(), proplists:proplist()) ->
+    {ok, send_durable_execution_callback_success_response(), tuple()} |
+    {error, any()} |
+    {error, send_durable_execution_callback_success_errors(), tuple()}.
+send_durable_execution_callback_success(Client, CallbackId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-execution-callbacks/", aws_util:encode_uri(CallbackId), "/succeed"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html.
+%%
+%% The execution transitions to STOPPED status and cannot be resumed. Any
+%% in-progress operations are terminated.
+-spec stop_durable_execution(aws_client:aws_client(), binary() | list(), stop_durable_execution_request()) ->
+    {ok, stop_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_durable_execution_errors(), tuple()}.
+stop_durable_execution(Client, DurableExecutionArn, Input) ->
+    stop_durable_execution(Client, DurableExecutionArn, Input, []).
+
+-spec stop_durable_execution(aws_client:aws_client(), binary() | list(), stop_durable_execution_request(), proplists:proplist()) ->
+    {ok, stop_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_durable_execution_errors(), tuple()}.
+stop_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds tags: https://docs.aws.amazon.com/lambda/latest/dg/tagging.html
 %% to a function, event source mapping, or code signing configuration.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
@@ -5435,6 +7110,40 @@ update_alias(Client, FunctionName, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the configuration of an existing capacity provider.
+-spec update_capacity_provider(aws_client:aws_client(), binary() | list(), update_capacity_provider_request()) ->
+    {ok, update_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, update_capacity_provider_errors(), tuple()}.
+update_capacity_provider(Client, CapacityProviderName, Input) ->
+    update_capacity_provider(Client, CapacityProviderName, Input, []).
+
+-spec update_capacity_provider(aws_client:aws_client(), binary() | list(), update_capacity_provider_request(), proplists:proplist()) ->
+    {ok, update_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, update_capacity_provider_errors(), tuple()}.
+update_capacity_provider(Client, CapacityProviderName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2025-11-30/capacity-providers/", aws_util:encode_uri(CapacityProviderName), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update the code signing configuration.
 %%
 %% Changes to the code signing configuration take effect the next time a user
@@ -5499,8 +7208,8 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html
 %%
-%% The following error handling options are available only for DynamoDB and
-%% Kinesis event sources:
+%% The following error handling options are available for stream sources
+%% (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
 %%
 %% `BisectBatchOnFunctionError' – If the function returns an error, split
 %% the batch in two and retry.
@@ -5513,16 +7222,16 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% retries. The default value is infinite (-1). When set to infinite (-1),
 %% failed records are retried until the record expires.
 %%
+%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
+%% SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see
+%% Adding a destination:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
+%%
+%% The following option is available only for DynamoDB and Kinesis event
+%% sources:
+%%
 %% `ParallelizationFactor' – Process multiple batches from each shard
 %% concurrently.
-%%
-%% For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache
-%% Kafka), the following option is also available:
-%%
-%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
-%% SNS topic, or Amazon S3 bucket. For more information, see Adding a
-%% destination:
-%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
 %%
 %% For information about which configuration parameters apply to each event
 %% source, see the following topics.

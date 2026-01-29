@@ -15,6 +15,8 @@
          get_preferences/3,
          get_recommendation/2,
          get_recommendation/3,
+         list_efficiency_metrics/2,
+         list_efficiency_metrics/3,
          list_enrollment_statuses/2,
          list_enrollment_statuses/3,
          list_recommendation_summaries/2,
@@ -179,6 +181,14 @@
 -type list_enrollment_statuses_request() :: #{binary() => any()}.
 
 %% Example:
+%% nat_gateway_configuration() :: #{
+%%   <<"activeConnectionCount">> => [float()],
+%%   <<"packetsInFromDestination">> => [float()],
+%%   <<"packetsInFromSource">> => [float()]
+%% }
+-type nat_gateway_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% lambda_function_configuration() :: #{
 %%   <<"compute">> => compute_configuration()
 %% }
@@ -217,6 +227,13 @@
 %%   <<"status">> := list(any())
 %% }
 -type update_enrollment_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_period() :: #{
+%%   <<"end">> => [string()],
+%%   <<"start">> => [string()]
+%% }
+-type time_period() :: #{binary() => any()}.
 
 %% Example:
 %% rds_reserved_instances() :: #{
@@ -365,6 +382,13 @@
 -type ec2_reserved_instances_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% list_efficiency_metrics_response() :: #{
+%%   <<"efficiencyMetricsByGroup">> => list(efficiency_metrics_by_group()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_efficiency_metrics_response() :: #{binary() => any()}.
+
+%% Example:
 %% recommendation() :: #{
 %%   <<"accountId">> => [string()],
 %%   <<"actionType">> => [string()],
@@ -483,6 +507,13 @@
 %%   <<"costCalculation">> => resource_cost_calculation()
 %% }
 -type ec2_instance() :: #{binary() => any()}.
+
+%% Example:
+%% nat_gateway() :: #{
+%%   <<"configuration">> => nat_gateway_configuration(),
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type nat_gateway() :: #{binary() => any()}.
 
 %% Example:
 %% savings_plans_cost_calculation() :: #{
@@ -605,10 +636,27 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% efficiency_metrics_by_group() :: #{
+%%   <<"group">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"metricsByTime">> => list(metrics_by_time())
+%% }
+-type efficiency_metrics_by_group() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_by_time() :: #{
+%%   <<"savings">> => [float()],
+%%   <<"score">> => [float()],
+%%   <<"spend">> => [float()],
+%%   <<"timestamp">> => [string()]
+%% }
+-type metrics_by_time() :: #{binary() => any()}.
 
 %% Example:
 %% ec2_instance_savings_plans_configuration() :: #{
@@ -662,6 +710,17 @@
 %%   <<"recommendationCount">> => [integer()]
 %% }
 -type recommendation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_efficiency_metrics_request() :: #{
+%%   <<"granularity">> := list(any()),
+%%   <<"groupBy">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"orderBy">> => order_by(),
+%%   <<"timePeriod">> := time_period()
+%% }
+-type list_efficiency_metrics_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_recommendations_response() :: #{
@@ -744,6 +803,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_efficiency_metrics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_enrollment_statuses_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -822,6 +887,33 @@ get_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecommendation">>, Input, Options).
 
+%% @doc Returns cost efficiency metrics aggregated over time and optionally
+%% grouped by a specified dimension.
+%%
+%% The metrics provide insights into your cost optimization progress by
+%% tracking estimated savings, spending, and measures how effectively
+%% you're optimizing your Cloud resources.
+%%
+%% The operation supports both daily and monthly time granularities and
+%% allows grouping results by account ID, Amazon Web Services Region. Results
+%% are returned as time-series data, enabling you to analyze trends in your
+%% cost optimization performance over the specified time period.
+-spec list_efficiency_metrics(aws_client:aws_client(), list_efficiency_metrics_request()) ->
+    {ok, list_efficiency_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_efficiency_metrics_errors(), tuple()}.
+list_efficiency_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_efficiency_metrics(Client, Input, []).
+
+-spec list_efficiency_metrics(aws_client:aws_client(), list_efficiency_metrics_request(), proplists:proplist()) ->
+    {ok, list_efficiency_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_efficiency_metrics_errors(), tuple()}.
+list_efficiency_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEfficiencyMetrics">>, Input, Options).
+
 %% @doc Retrieves the enrollment status for an account.
 %%
 %% It can also return the list of accounts that are enrolled under the
@@ -884,9 +976,8 @@ list_recommendations(Client, Input, Options)
 %% @doc Updates the enrollment (opt in and opt out) status of an account to
 %% the Cost Optimization Hub service.
 %%
-%% If the account is a management account or delegated administrator of an
-%% organization, this action can also be used to enroll member accounts of
-%% the organization.
+%% If the account is a management account of an organization, this action can
+%% also be used to enroll member accounts of the organization.
 %%
 %% You must have the appropriate permissions to opt in to Cost Optimization
 %% Hub and to view its recommendations. When you opt in, Cost Optimization

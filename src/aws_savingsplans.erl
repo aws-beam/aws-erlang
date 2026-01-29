@@ -390,6 +390,7 @@
 
 -type describe_savings_plan_rates_errors() ::
     validation_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type describe_savings_plans_errors() ::
@@ -498,7 +499,7 @@ delete_queued_savings_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the rates for the specified Savings Plan.
+%% @doc Describes the rates for a specific, existing Savings Plan.
 -spec describe_savings_plan_rates(aws_client:aws_client(), describe_savings_plan_rates_request()) ->
     {ok, describe_savings_plan_rates_response(), tuple()} |
     {error, any()} |
@@ -566,7 +567,8 @@ describe_savings_plans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the offering rates for the specified Savings Plans.
+%% @doc Describes the offering rates for Savings Plans you might want to
+%% purchase.
 -spec describe_savings_plans_offering_rates(aws_client:aws_client(), describe_savings_plans_offering_rates_request()) ->
     {ok, describe_savings_plans_offering_rates_response(), tuple()} |
     {error, any()} |

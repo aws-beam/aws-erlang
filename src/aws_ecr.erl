@@ -51,10 +51,16 @@
          delete_repository_creation_template/3,
          delete_repository_policy/2,
          delete_repository_policy/3,
+         delete_signing_configuration/2,
+         delete_signing_configuration/3,
+         deregister_pull_time_update_exclusion/2,
+         deregister_pull_time_update_exclusion/3,
          describe_image_replication_status/2,
          describe_image_replication_status/3,
          describe_image_scan_findings/2,
          describe_image_scan_findings/3,
+         describe_image_signing_status/2,
+         describe_image_signing_status/3,
          describe_images/2,
          describe_images/3,
          describe_pull_through_cache_rules/2,
@@ -81,10 +87,16 @@
          get_registry_scanning_configuration/3,
          get_repository_policy/2,
          get_repository_policy/3,
+         get_signing_configuration/2,
+         get_signing_configuration/3,
          initiate_layer_upload/2,
          initiate_layer_upload/3,
+         list_image_referrers/2,
+         list_image_referrers/3,
          list_images/2,
          list_images/3,
+         list_pull_time_update_exclusions/2,
+         list_pull_time_update_exclusions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_account_setting/2,
@@ -103,6 +115,10 @@
          put_registry_scanning_configuration/3,
          put_replication_configuration/2,
          put_replication_configuration/3,
+         put_signing_configuration/2,
+         put_signing_configuration/3,
+         register_pull_time_update_exclusion/2,
+         register_pull_time_update_exclusion/3,
          set_repository_policy/2,
          set_repository_policy/3,
          start_image_scan/2,
@@ -113,6 +129,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_image_storage_class/2,
+         update_image_storage_class/3,
          update_pull_through_cache_rule/2,
          update_pull_through_cache_rule/3,
          update_repository_creation_template/2,
@@ -151,6 +169,13 @@
 %%   <<"repository">> => repository()
 %% }
 -type create_repository_response() :: #{binary() => any()}.
+
+%% Example:
+%% signing_rule() :: #{
+%%   <<"repositoryFilters">> => list(signing_repository_filter()),
+%%   <<"signingProfileArn">> => string()
+%% }
+-type signing_rule() :: #{binary() => any()}.
 
 %% Example:
 %% image_replication_status() :: #{
@@ -230,6 +255,23 @@
 -type lifecycle_policy_preview_in_progress_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_image_referrers_request() :: #{
+%%   <<"filter">> => list_image_referrers_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"subjectId">> := subject_identifier()
+%% }
+-type list_image_referrers_request() :: #{binary() => any()}.
+
+%% Example:
+%% exclusion_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type exclusion_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% image_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -276,6 +318,15 @@
 -type layer_failure() :: #{binary() => any()}.
 
 %% Example:
+%% image_signing_status() :: #{
+%%   <<"failureCode">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"signingProfileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type image_signing_status() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
@@ -293,6 +344,12 @@
 %%   <<"message">> => string()
 %% }
 -type image_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_signing_configuration_request() :: #{
+%%   <<"signingConfiguration">> := signing_configuration()
+%% }
+-type put_signing_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_repository_creation_template_request() :: #{
@@ -486,6 +543,12 @@
 -type repository_policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% blocked_by_organization_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type blocked_by_organization_policy_exception() :: #{binary() => any()}.
+
+%% Example:
 %% get_repository_policy_response() :: #{
 %%   <<"policyText">> => string(),
 %%   <<"registryId">> => string(),
@@ -613,6 +676,25 @@
 -type enhanced_image_scan_finding() :: #{binary() => any()}.
 
 %% Example:
+%% list_image_referrers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"referrers">> => list(image_referrer())
+%% }
+-type list_image_referrers_response() :: #{binary() => any()}.
+
+%% Example:
+%% image_archived_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_archived_exception() :: #{binary() => any()}.
+
+%% Example:
+%% signing_configuration() :: #{
+%%   <<"rules">> => list(signing_rule())
+%% }
+-type signing_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_lifecycle_policy_preview_response() :: #{
 %%   <<"lifecyclePolicyText">> => string(),
 %%   <<"nextToken">> => string(),
@@ -632,6 +714,7 @@
 
 %% Example:
 %% lifecycle_policy_rule_action() :: #{
+%%   <<"targetStorageClass">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type lifecycle_policy_rule_action() :: #{binary() => any()}.
@@ -718,6 +801,13 @@
 -type invalid_layer_part_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_signing_configuration_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"signingConfiguration">> => signing_configuration()
+%% }
+-type get_signing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_pull_through_cache_rule_request() :: #{
 %%   <<"credentialArn">> => string(),
 %%   <<"customRoleArn">> => string(),
@@ -780,6 +870,13 @@
 -type get_lifecycle_policy_preview_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_pull_time_update_exclusions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullTimeUpdateExclusions">> => list(string())
+%% }
+-type list_pull_time_update_exclusions_response() :: #{binary() => any()}.
+
+%% Example:
 %% repository() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
@@ -819,6 +916,13 @@
 -type delete_repository_request() :: #{binary() => any()}.
 
 %% Example:
+%% transitioning_image_total_count() :: #{
+%%   <<"imageTotalCount">> => integer(),
+%%   <<"targetStorageClass">> => list(any())
+%% }
+-type transitioning_image_total_count() :: #{binary() => any()}.
+
+%% Example:
 %% layer() :: #{
 %%   <<"layerAvailability">> => list(any()),
 %%   <<"layerDigest">> => string(),
@@ -829,6 +933,7 @@
 
 %% Example:
 %% list_images_filter() :: #{
+%%   <<"imageStatus">> => list(any()),
 %%   <<"tagStatus">> => list(any())
 %% }
 -type list_images_filter() :: #{binary() => any()}.
@@ -870,6 +975,13 @@
 -type vulnerable_package() :: #{binary() => any()}.
 
 %% Example:
+%% register_pull_time_update_exclusion_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"principalArn">> => string()
+%% }
+-type register_pull_time_update_exclusion_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag())
 %% }
@@ -887,6 +999,12 @@
 %%   <<"message">> => string()
 %% }
 -type unable_to_get_upstream_layer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_pull_time_update_exclusion_request() :: #{
+%%   <<"principalArn">> := string()
+%% }
+-type deregister_pull_time_update_exclusion_request() :: #{binary() => any()}.
 
 %% Example:
 %% validate_pull_through_cache_rule_response() :: #{
@@ -920,6 +1038,13 @@
 %%   <<"authorizationData">> => list(authorization_data())
 %% }
 -type get_authorization_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signing_configuration_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"signingConfiguration">> => signing_configuration()
+%% }
+-type delete_signing_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_authorization_token_request() :: #{
@@ -981,6 +1106,12 @@
 %%   <<"message">> => string()
 %% }
 -type unable_to_decrypt_secret_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% signing_configuration_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type signing_configuration_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_image_request() :: #{
@@ -1159,6 +1290,14 @@
 -type batch_delete_image_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_image_signing_status_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_image_signing_status_request() :: #{binary() => any()}.
+
+%% Example:
 %% secret_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1189,6 +1328,18 @@
 -type describe_registry_request() :: #{binary() => any()}.
 
 %% Example:
+%% register_pull_time_update_exclusion_request() :: #{
+%%   <<"principalArn">> := string()
+%% }
+-type register_pull_time_update_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_storage_class_update_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_storage_class_update_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
 %% delete_pull_through_cache_rule_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialArn">> => string(),
@@ -1199,6 +1350,13 @@
 %%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type delete_pull_through_cache_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% signing_repository_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type signing_repository_filter() :: #{binary() => any()}.
 
 %% Example:
 %% replication_rule() :: #{
@@ -1230,6 +1388,15 @@
 %%   <<"repositoryName">> := string()
 %% }
 -type get_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_signing_status_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"signingStatuses">> => list(image_signing_status())
+%% }
+-type describe_image_signing_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -1269,10 +1436,26 @@
 -type batch_check_layer_availability_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_image_referrers_filter() :: #{
+%%   <<"artifactStatus">> => list(any()),
+%%   <<"artifactTypes">> => list(string())
+%% }
+-type list_image_referrers_filter() :: #{binary() => any()}.
+
+%% Example:
 %% get_registry_scanning_configuration_request() :: #{
 
 %% }
 -type get_registry_scanning_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_storage_class_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"imageStatus">> => list(any()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type update_image_storage_class_response() :: #{binary() => any()}.
 
 %% Example:
 %% server_exception() :: #{
@@ -1289,7 +1472,8 @@
 
 %% Example:
 %% lifecycle_policy_preview_summary() :: #{
-%%   <<"expiringImageTotalCount">> => integer()
+%%   <<"expiringImageTotalCount">> => integer(),
+%%   <<"transitioningImageTotalCounts">> => list(transitioning_image_total_count())
 %% }
 -type lifecycle_policy_preview_summary() :: #{binary() => any()}.
 
@@ -1298,6 +1482,15 @@
 %%   <<"message">> => string()
 %% }
 -type repository_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_storage_class_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"targetStorageClass">> := list(any())
+%% }
+-type update_image_storage_class_request() :: #{binary() => any()}.
 
 %% Example:
 %% attribute() :: #{
@@ -1349,6 +1542,12 @@
 -type get_registry_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_signing_configuration_request() :: #{
+
+%% }
+-type delete_signing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_pull_through_cache_rules_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"pullThroughCacheRules">> => list(pull_through_cache_rule())
@@ -1390,6 +1589,23 @@
 -type repository_scanning_configuration_failure() :: #{binary() => any()}.
 
 %% Example:
+%% put_signing_configuration_response() :: #{
+%%   <<"signingConfiguration">> => signing_configuration()
+%% }
+-type put_signing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% image_referrer() :: #{
+%%   <<"annotations">> => map(),
+%%   <<"artifactStatus">> => list(any()),
+%%   <<"artifactType">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"mediaType">> => string(),
+%%   <<"size">> => float()
+%% }
+-type image_referrer() :: #{binary() => any()}.
+
+%% Example:
 %% delete_pull_through_cache_rule_request() :: #{
 %%   <<"ecrRepositoryPrefix">> := string(),
 %%   <<"registryId">> => string()
@@ -1397,12 +1613,25 @@
 -type delete_pull_through_cache_rule_request() :: #{binary() => any()}.
 
 %% Example:
+%% subject_identifier() :: #{
+%%   <<"imageDigest">> => string()
+%% }
+-type subject_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_pull_time_update_exclusion_response() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type deregister_pull_time_update_exclusion_response() :: #{binary() => any()}.
+
+%% Example:
 %% lifecycle_policy_preview_result() :: #{
 %%   <<"action">> => lifecycle_policy_rule_action(),
 %%   <<"appliedRulePriority">> => integer(),
 %%   <<"imageDigest">> => string(),
 %%   <<"imagePushedAt">> => non_neg_integer(),
-%%   <<"imageTags">> => list(string())
+%%   <<"imageTags">> => list(string()),
+%%   <<"storageClass">> => list(any())
 %% }
 -type lifecycle_policy_preview_result() :: #{binary() => any()}.
 
@@ -1454,12 +1683,22 @@
 %%   <<"imageScanFindingsSummary">> => image_scan_findings_summary(),
 %%   <<"imageScanStatus">> => image_scan_status(),
 %%   <<"imageSizeInBytes">> => float(),
+%%   <<"imageStatus">> => list(any()),
 %%   <<"imageTags">> => list(string()),
+%%   <<"lastActivatedAt">> => non_neg_integer(),
+%%   <<"lastArchivedAt">> => non_neg_integer(),
 %%   <<"lastRecordedPullTime">> => non_neg_integer(),
 %%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
+%%   <<"repositoryName">> => string(),
+%%   <<"subjectManifestDigest">> => string()
 %% }
 -type image_detail() :: #{binary() => any()}.
+
+%% Example:
+%% exclusion_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type exclusion_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% empty_upload_exception() :: #{
@@ -1469,6 +1708,7 @@
 
 %% Example:
 %% describe_images_filter() :: #{
+%%   <<"imageStatus">> => list(any()),
 %%   <<"tagStatus">> => list(any())
 %% }
 -type describe_images_filter() :: #{binary() => any()}.
@@ -1549,6 +1789,13 @@
 -type start_lifecycle_policy_preview_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_pull_time_update_exclusions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pull_time_update_exclusions_request() :: #{binary() => any()}.
+
+%% Example:
 %% scanning_repository_filter() :: #{
 %%   <<"filter">> => string(),
 %%   <<"filterType">> => list(any())
@@ -1571,6 +1818,12 @@
 %%   <<"uploadId">> := string()
 %% }
 -type upload_layer_part_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_configuration_request() :: #{
+
+%% }
+-type get_signing_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% resource() :: #{
@@ -1686,6 +1939,18 @@
     invalid_parameter_exception() | 
     repository_policy_not_found_exception().
 
+-type delete_signing_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    signing_configuration_not_found_exception().
+
+-type deregister_pull_time_update_exclusion_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    exclusion_not_found_exception().
+
 -type describe_image_replication_status_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
@@ -1699,6 +1964,13 @@
     validation_exception() | 
     invalid_parameter_exception() | 
     scan_not_found_exception() | 
+    image_not_found_exception().
+
+-type describe_image_signing_status_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_images_errors() ::
@@ -1776,15 +2048,33 @@
     invalid_parameter_exception() | 
     repository_policy_not_found_exception().
 
+-type get_signing_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    signing_configuration_not_found_exception().
+
 -type initiate_layer_upload_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
     kms_exception() | 
     invalid_parameter_exception().
 
+-type list_image_referrers_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
 -type list_images_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
+    invalid_parameter_exception().
+
+-type list_pull_time_update_exclusions_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    validation_exception() | 
     invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -1835,9 +2125,22 @@
 -type put_registry_scanning_configuration_errors() ::
     server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception().
+    invalid_parameter_exception() | 
+    blocked_by_organization_policy_exception().
 
 -type put_replication_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type put_signing_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type register_pull_time_update_exclusion_errors() ::
+    exclusion_already_exists_exception() | 
+    limit_exceeded_exception() | 
     server_exception() | 
     validation_exception() | 
     invalid_parameter_exception().
@@ -1853,6 +2156,7 @@
     server_exception() | 
     validation_exception() | 
     invalid_parameter_exception() | 
+    image_archived_exception() | 
     unsupported_image_type_exception() | 
     image_not_found_exception().
 
@@ -1877,6 +2181,14 @@
     server_exception() | 
     invalid_parameter_exception() | 
     invalid_tag_parameter_exception().
+
+-type update_image_storage_class_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    image_storage_class_update_not_supported_exception() | 
+    invalid_parameter_exception() | 
+    image_not_found_exception().
 
 -type update_pull_through_cache_rule_errors() ::
     unable_to_access_secret_exception() | 
@@ -2222,6 +2534,55 @@ delete_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
 
+%% @doc Deletes the registry's signing configuration.
+%%
+%% Images pushed after deletion of the signing
+%% configuration will no longer be automatically signed.
+%%
+%% For more information, see Managed signing:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html
+%% in the
+%% Amazon Elastic Container Registry User Guide.
+%%
+%% Deleting the signing configuration does not affect existing image
+%% signatures.
+-spec delete_signing_configuration(aws_client:aws_client(), delete_signing_configuration_request()) ->
+    {ok, delete_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_signing_configuration_errors(), tuple()}.
+delete_signing_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_signing_configuration(Client, Input, []).
+
+-spec delete_signing_configuration(aws_client:aws_client(), delete_signing_configuration_request(), proplists:proplist()) ->
+    {ok, delete_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_signing_configuration_errors(), tuple()}.
+delete_signing_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSigningConfiguration">>, Input, Options).
+
+%% @doc Removes a principal from the pull time update exclusion list for a
+%% registry.
+%%
+%% Once removed, Amazon ECR will resume updating the pull time if the
+%% specified principal pulls an image.
+-spec deregister_pull_time_update_exclusion(aws_client:aws_client(), deregister_pull_time_update_exclusion_request()) ->
+    {ok, deregister_pull_time_update_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_pull_time_update_exclusion_errors(), tuple()}.
+deregister_pull_time_update_exclusion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_pull_time_update_exclusion(Client, Input, []).
+
+-spec deregister_pull_time_update_exclusion(aws_client:aws_client(), deregister_pull_time_update_exclusion_request(), proplists:proplist()) ->
+    {ok, deregister_pull_time_update_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_pull_time_update_exclusion_errors(), tuple()}.
+deregister_pull_time_update_exclusion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterPullTimeUpdateExclusion">>, Input, Options).
+
 %% @doc Returns the replication status for a specified image.
 -spec describe_image_replication_status(aws_client:aws_client(), describe_image_replication_status_request()) ->
     {ok, describe_image_replication_status_response(), tuple()} |
@@ -2256,6 +2617,33 @@ describe_image_scan_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageScanFindings">>, Input, Options).
 
+%% @doc Returns the signing status for a specified image.
+%%
+%% If the image matched
+%% signing rules that reference different signing profiles, a status is
+%% returned
+%% for each profile.
+%%
+%% For more information, see Managed signing:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html
+%% in the
+%% Amazon Elastic Container Registry User Guide.
+-spec describe_image_signing_status(aws_client:aws_client(), describe_image_signing_status_request()) ->
+    {ok, describe_image_signing_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_signing_status_errors(), tuple()}.
+describe_image_signing_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_signing_status(Client, Input, []).
+
+-spec describe_image_signing_status(aws_client:aws_client(), describe_image_signing_status_request(), proplists:proplist()) ->
+    {ok, describe_image_signing_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_signing_status_errors(), tuple()}.
+describe_image_signing_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageSigningStatus">>, Input, Options).
+
 %% @doc Returns metadata about the images in a repository.
 %%
 %% Starting with Docker version 1.9, the Docker client compresses image
@@ -2266,14 +2654,14 @@ describe_image_scan_findings(Client, Input, Options)
 %% a larger
 %% image than the image shown in the Amazon Web Services Management Console.
 %%
-%% The new version of Amazon ECR Basic Scanning doesn't use the
+%% The new version of Amazon ECR
+%% Basic Scanning doesn't use the
 %% `ImageDetail$imageScanFindingsSummary' and
-%% `ImageDetail$imageScanStatus'
-%% attributes from the API response to return scan results.
-%% Use the `DescribeImageScanFindings' API instead. For more
-%% information about Amazon Web Services native basic scanning, see Scan
-%% images for software
-%% vulnerabilities in Amazon ECR:
+%% `ImageDetail$imageScanStatus' attributes from the API response to
+%% return scan results. Use the `DescribeImageScanFindings' API
+%% instead. For more information about Amazon Web Services native basic
+%% scanning, see Scan
+%% images for software vulnerabilities in Amazon ECR:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html.
 -spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_response(), tuple()} |
@@ -2535,6 +2923,29 @@ get_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryPolicy">>, Input, Options).
 
+%% @doc Retrieves the registry's signing configuration, which defines
+%% rules for automatically signing images using Amazon Web Services Signer.
+%%
+%% For more information, see Managed signing:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html
+%% in the
+%% Amazon Elastic Container Registry User Guide.
+-spec get_signing_configuration(aws_client:aws_client(), get_signing_configuration_request()) ->
+    {ok, get_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_signing_configuration_errors(), tuple()}.
+get_signing_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_signing_configuration(Client, Input, []).
+
+-spec get_signing_configuration(aws_client:aws_client(), get_signing_configuration_request(), proplists:proplist()) ->
+    {ok, get_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_signing_configuration_errors(), tuple()}.
+get_signing_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSigningConfiguration">>, Input, Options).
+
 %% @doc Notifies Amazon ECR that you intend to upload an image layer.
 %%
 %% When an image is pushed, the InitiateLayerUpload API is called once per
@@ -2563,6 +2974,23 @@ initiate_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
 
+%% @doc Lists the artifacts associated with a specified subject image.
+-spec list_image_referrers(aws_client:aws_client(), list_image_referrers_request()) ->
+    {ok, list_image_referrers_response(), tuple()} |
+    {error, any()} |
+    {error, list_image_referrers_errors(), tuple()}.
+list_image_referrers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_image_referrers(Client, Input, []).
+
+-spec list_image_referrers(aws_client:aws_client(), list_image_referrers_request(), proplists:proplist()) ->
+    {ok, list_image_referrers_response(), tuple()} |
+    {error, any()} |
+    {error, list_image_referrers_errors(), tuple()}.
+list_image_referrers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListImageReferrers">>, Input, Options).
+
 %% @doc Lists all the image IDs for the specified repository.
 %%
 %% You can filter images based on whether or not they are tagged by using the
@@ -2587,6 +3015,24 @@ list_images(Client, Input)
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
+
+%% @doc Lists the IAM principals that are excluded from having their image
+%% pull times recorded.
+-spec list_pull_time_update_exclusions(aws_client:aws_client(), list_pull_time_update_exclusions_request()) ->
+    {ok, list_pull_time_update_exclusions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pull_time_update_exclusions_errors(), tuple()}.
+list_pull_time_update_exclusions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pull_time_update_exclusions(Client, Input, []).
+
+-spec list_pull_time_update_exclusions(aws_client:aws_client(), list_pull_time_update_exclusions_request(), proplists:proplist()) ->
+    {ok, list_pull_time_update_exclusions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pull_time_update_exclusions_errors(), tuple()}.
+list_pull_time_update_exclusions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPullTimeUpdateExclusions">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECR resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
@@ -2801,6 +3247,57 @@ put_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutReplicationConfiguration">>, Input, Options).
 
+%% @doc Creates or updates the registry's signing configuration, which
+%% defines
+%% rules for automatically signing images with Amazon Web Services Signer.
+%%
+%% For more information, see Managed signing:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html
+%% in the
+%% Amazon Elastic Container Registry User Guide.
+%%
+%% To successfully generate a signature, the IAM principal pushing images
+%% must have
+%% permission to sign payloads with the Amazon Web Services Signer signing
+%% profile referenced in the signing
+%% configuration.
+-spec put_signing_configuration(aws_client:aws_client(), put_signing_configuration_request()) ->
+    {ok, put_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_signing_configuration_errors(), tuple()}.
+put_signing_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_signing_configuration(Client, Input, []).
+
+-spec put_signing_configuration(aws_client:aws_client(), put_signing_configuration_request(), proplists:proplist()) ->
+    {ok, put_signing_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_signing_configuration_errors(), tuple()}.
+put_signing_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutSigningConfiguration">>, Input, Options).
+
+%% @doc Adds an IAM principal to the pull time update exclusion list for a
+%% registry.
+%%
+%% Amazon ECR will not record the pull time if an excluded principal pulls an
+%% image.
+-spec register_pull_time_update_exclusion(aws_client:aws_client(), register_pull_time_update_exclusion_request()) ->
+    {ok, register_pull_time_update_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, register_pull_time_update_exclusion_errors(), tuple()}.
+register_pull_time_update_exclusion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_pull_time_update_exclusion(Client, Input, []).
+
+-spec register_pull_time_update_exclusion(aws_client:aws_client(), register_pull_time_update_exclusion_request(), proplists:proplist()) ->
+    {ok, register_pull_time_update_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, register_pull_time_update_exclusion_errors(), tuple()}.
+register_pull_time_update_exclusion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterPullTimeUpdateExclusion">>, Input, Options).
+
 %% @doc Applies a repository policy to the specified repository to control
 %% access permissions.
 %%
@@ -2826,16 +3323,16 @@ set_repository_policy(Client, Input, Options)
 
 %% @doc Starts a basic image vulnerability scan.
 %%
-%% A basic image scan can only be started once per 24
-%% hours on an individual image. This limit includes if an image was scanned
-%% on initial
-%% push. You can start up to 100,000 basic scans per 24 hours. This limit
-%% includes both scans on initial push
-%% and scans initiated by the StartImageScan API. For more information, see
-%% Basic scanning:
+%% A basic image scan can only be started once per 24 hours on an individual
+%% image. This
+%% limit includes if an image was scanned on initial push. You can start up
+%% to 100,000
+%% basic scans per 24 hours. This limit includes both scans on initial push
+%% and scans
+%% initiated by the StartImageScan API. For more information, see Basic
+%% scanning:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning-basic.html
-%% in the
-%% Amazon Elastic Container Registry User Guide.
+%% in the Amazon Elastic Container Registry User Guide.
 -spec start_image_scan(aws_client:aws_client(), start_image_scan_request()) ->
     {ok, start_image_scan_response(), tuple()} |
     {error, any()} |
@@ -2909,6 +3406,27 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Transitions an image between storage classes.
+%%
+%% You can transition images from Amazon ECR standard storage class to Amazon
+%% ECR archival storage class for long-term storage, or restore archived
+%% images back to Amazon ECR standard.
+-spec update_image_storage_class(aws_client:aws_client(), update_image_storage_class_request()) ->
+    {ok, update_image_storage_class_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_storage_class_errors(), tuple()}.
+update_image_storage_class(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_image_storage_class(Client, Input, []).
+
+-spec update_image_storage_class(aws_client:aws_client(), update_image_storage_class_request(), proplists:proplist()) ->
+    {ok, update_image_storage_class_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_storage_class_errors(), tuple()}.
+update_image_storage_class(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateImageStorageClass">>, Input, Options).
 
 %% @doc Updates an existing pull through cache rule.
 -spec update_pull_through_cache_rule(aws_client:aws_client(), update_pull_through_cache_rule_request()) ->

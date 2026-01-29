@@ -123,6 +123,8 @@
          exit_standby/3,
          get_predictive_scaling_forecast/2,
          get_predictive_scaling_forecast/3,
+         launch_instances/2,
+         launch_instances/3,
          put_lifecycle_hook/2,
          put_lifecycle_hook/3,
          put_notification_configuration/2,
@@ -248,7 +250,8 @@
 %%   <<"RollbackDetails">> => rollback_details(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%%   <<"StatusReason">> => string(),
+%%   <<"Strategy">> => list(any())
 %% }
 -type instance_refresh() :: #{binary() => any()}.
 
@@ -465,6 +468,12 @@
 -type capacity_reservation_target() :: #{binary() => any()}.
 
 %% Example:
+%% idempotent_parameter_mismatch_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_error() :: #{binary() => any()}.
+
+%% Example:
 %% record_lifecycle_action_heartbeat_answer() :: #{
 
 %% }
@@ -606,6 +615,12 @@
 -type get_predictive_scaling_forecast_answer() :: #{binary() => any()}.
 
 %% Example:
+%% retention_triggers() :: #{
+%%   <<"TerminateHookAbandon">> => list(any())
+%% }
+-type retention_triggers() :: #{binary() => any()}.
+
+%% Example:
 %% scaling_activity_in_progress_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -634,6 +649,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type launch_configurations_type() :: #{binary() => any()}.
+
+%% Example:
+%% instance_lifecycle_policy() :: #{
+%%   <<"RetentionTriggers">> => retention_triggers()
+%% }
+-type instance_lifecycle_policy() :: #{binary() => any()}.
 
 %% Example:
 %% delete_notification_configuration_type() :: #{
@@ -677,6 +698,18 @@
 %%   <<"TrafficSources">> => list(traffic_source_state())
 %% }
 -type describe_traffic_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% launch_instances_error() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"MarketType">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type launch_instances_error() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instance_refreshes_type() :: #{
@@ -964,6 +997,7 @@
 %%   <<"AutoScalingGroupName">> => string(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"HealthStatus">> => string(),
+%%   <<"ImageId">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"LaunchConfigurationName">> => string(),
@@ -1070,6 +1104,7 @@
 
 %% Example:
 %% launch_template_overrides() :: #{
+%%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"InstanceType">> => string(),
 %%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
@@ -1114,37 +1149,39 @@
 %% Example:
 %% create_auto_scaling_group_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
-%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
-%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"CapacityRebalance">> => boolean(),
-%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
-%%   <<"Context">> => string(),
-%%   <<"DefaultCooldown">> => integer(),
-%%   <<"DefaultInstanceWarmup">> => integer(),
-%%   <<"DesiredCapacity">> => integer(),
-%%   <<"DesiredCapacityType">> => string(),
-%%   <<"HealthCheckGracePeriod">> => integer(),
-%%   <<"HealthCheckType">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
-%%   <<"LaunchConfigurationName">> => string(),
-%%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"LifecycleHookSpecificationList">> => list(lifecycle_hook_specification()),
-%%   <<"LoadBalancerNames">> => list(string()),
-%%   <<"MaxInstanceLifetime">> => integer(),
-%%   <<"MaxSize">> := integer(),
-%%   <<"MinSize">> := integer(),
-%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
-%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
-%%   <<"PlacementGroup">> => string(),
 %%   <<"ServiceLinkedRoleARN">> => string(),
-%%   <<"SkipZonalShiftValidation">> => boolean(),
-%%   <<"Tags">> => list(tag()),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
 %%   <<"TargetGroupARNs">> => list(string()),
+%%   <<"LifecycleHookSpecificationList">> => list(lifecycle_hook_specification()),
 %%   <<"TerminationPolicies">> => list(string()),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"InstanceId">> => string(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"VPCZoneIdentifier">> => string(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"MinSize">> := integer(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
+%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"LoadBalancerNames">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"CapacityRebalance">> => boolean(),
 %%   <<"TrafficSources">> => list(traffic_source_identifier()),
-%%   <<"VPCZoneIdentifier">> => string()
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"MaxSize">> := integer(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DeletionProtection">> => list(any())
 %% }
 -type create_auto_scaling_group_type() :: #{binary() => any()}.
 
@@ -1273,9 +1310,22 @@
 -type describe_warm_pool_answer() :: #{binary() => any()}.
 
 %% Example:
+%% launch_instances_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ClientToken">> := string(),
+%%   <<"RequestedCapacity">> := integer(),
+%%   <<"RetryStrategy">> => list(any()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type launch_instances_request() :: #{binary() => any()}.
+
+%% Example:
 %% instance() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"HealthStatus">> => string(),
+%%   <<"ImageId">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"LaunchConfigurationName">> => string(),
@@ -1405,6 +1455,7 @@
 %%   <<"Context">> => string(),
 %%   <<"MaxInstanceLifetime">> => integer(),
 %%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
 %%   <<"LaunchTemplate">> => launch_template_specification(),
 %%   <<"AvailabilityZones">> => list(string()),
 %%   <<"LoadBalancerNames">> => list(string()),
@@ -1421,7 +1472,8 @@
 %%   <<"MinSize">> => integer(),
 %%   <<"DesiredCapacity">> => integer(),
 %%   <<"DefaultInstanceWarmup">> => integer(),
-%%   <<"WarmPoolSize">> => integer()
+%%   <<"WarmPoolSize">> => integer(),
+%%   <<"DeletionProtection">> => list(any())
 %% }
 -type auto_scaling_group() :: #{binary() => any()}.
 
@@ -1468,6 +1520,15 @@
 -type batch_put_scheduled_update_group_action_type() :: #{binary() => any()}.
 
 %% Example:
+%% launch_instances_result() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Errors">> => list(launch_instances_error()),
+%%   <<"Instances">> => list(instance_collection())
+%% }
+-type launch_instances_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_instance_refreshes_answer() :: #{
 %%   <<"InstanceRefreshes">> => list(instance_refresh()),
 %%   <<"NextToken">> => string()
@@ -1491,10 +1552,12 @@
 %%   <<"Context">> => string(),
 %%   <<"DefaultCooldown">> => integer(),
 %%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DeletionProtection">> => list(any()),
 %%   <<"DesiredCapacity">> => integer(),
 %%   <<"DesiredCapacityType">> => string(),
 %%   <<"HealthCheckGracePeriod">> => integer(),
 %%   <<"HealthCheckType">> => string(),
+%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
 %%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
 %%   <<"LaunchConfigurationName">> => string(),
 %%   <<"LaunchTemplate">> => launch_template_specification(),
@@ -1562,6 +1625,17 @@
 %%   <<"References">> => list(performance_factor_reference_request())
 %% }
 -type cpu_performance_factor_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_collection() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"InstanceType">> => string(),
+%%   <<"MarketType">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type instance_collection() :: #{binary() => any()}.
 
 %% Example:
 %% attach_load_balancer_target_groups_type() :: #{
@@ -1710,6 +1784,7 @@
 %% describe_scaling_activities_type() :: #{
 %%   <<"ActivityIds">> => list(string()),
 %%   <<"AutoScalingGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludeDeletedGroups">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1841,14 +1916,17 @@
 
 -type attach_load_balancer_target_groups_errors() ::
     service_linked_role_failure() | 
+    instance_refresh_in_progress_fault() | 
     resource_contention_fault().
 
 -type attach_load_balancers_errors() ::
     service_linked_role_failure() | 
+    instance_refresh_in_progress_fault() | 
     resource_contention_fault().
 
 -type attach_traffic_sources_errors() ::
     service_linked_role_failure() | 
+    instance_refresh_in_progress_fault() | 
     resource_contention_fault().
 
 -type batch_delete_scheduled_action_errors() ::
@@ -2025,6 +2103,10 @@
 -type get_predictive_scaling_forecast_errors() ::
     resource_contention_fault().
 
+-type launch_instances_errors() ::
+    resource_contention_fault() | 
+    idempotent_parameter_mismatch_error().
+
 -type put_lifecycle_hook_errors() ::
     resource_contention_fault() | 
     limit_exceeded_fault().
@@ -2045,6 +2127,7 @@
     limit_exceeded_fault().
 
 -type put_warm_pool_errors() ::
+    instance_refresh_in_progress_fault() | 
     resource_contention_fault() | 
     limit_exceeded_fault().
 
@@ -2193,8 +2276,8 @@ attach_load_balancer_target_groups(Client, Input, Options)
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by
-%% [https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html],
+%% This API operation is superseded by AttachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html,
 %% which
 %% can attach multiple traffic sources types.
 %%
@@ -3380,7 +3463,7 @@ detach_instances(Client, Input, Options)
 
 %% @doc
 %% This API operation is superseded by DetachTrafficSources:
-%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html,
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachTrafficSources.html,
 %% which
 %% can detach multiple traffic sources types.
 %%
@@ -3656,6 +3739,27 @@ get_predictive_scaling_forecast(Client, Input)
 get_predictive_scaling_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPredictiveScalingForecast">>, Input, Options).
+
+%% @doc Launches a specified number of instances in an Auto Scaling group.
+%%
+%% Returns instance IDs and
+%% other details if launch is successful or error details if launch is
+%% unsuccessful.
+-spec launch_instances(aws_client:aws_client(), launch_instances_request()) ->
+    {ok, launch_instances_result(), tuple()} |
+    {error, any()} |
+    {error, launch_instances_errors(), tuple()}.
+launch_instances(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    launch_instances(Client, Input, []).
+
+-spec launch_instances(aws_client:aws_client(), launch_instances_request(), proplists:proplist()) ->
+    {ok, launch_instances_result(), tuple()} |
+    {error, any()} |
+    {error, launch_instances_errors(), tuple()}.
+launch_instances(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"LaunchInstances">>, Input, Options).
 
 %% @doc Creates or updates a lifecycle hook for the specified Auto Scaling
 %% group.

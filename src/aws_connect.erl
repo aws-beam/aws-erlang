@@ -6,33 +6,30 @@
 %% Amazon Connect actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html
 %%
-%% Amazon Connect
-%% data types:
+%% Amazon Connect data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html
 %%
 %% Amazon Connect is a cloud-based contact center solution that you use to
-%% set up and
-%% manage a customer contact center and provide reliable customer engagement
-%% at any scale.
+%% set up and manage a customer contact
+%% center and provide reliable customer engagement at any scale.
 %%
 %% Amazon Connect provides metrics and real-time reporting that enable you to
-%% optimize
-%% contact routing. You can also resolve customer issues more efficiently by
-%% getting customers in
+%% optimize contact routing. You can
+%% also resolve customer issues more efficiently by getting customers in
 %% touch with the appropriate agents.
 %%
 %% There are limits to the number of Amazon Connect resources that you can
-%% create. There
-%% are also limits to the number of requests that you can make per second.
-%% For more information, see
+%% create. There are also limits to the
+%% number of requests that you can make per second. For more information, see
 %% Amazon Connect Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% You can use an endpoint to connect programmatically to an Amazon Web
-%% Services service. For a
-%% list of Amazon Connect endpoints, see Amazon Connect Endpoints:
+%% Services service. For a list of Amazon Connect endpoints, see Amazon
+%% Connect
+%% Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
 
@@ -52,6 +49,8 @@
          associate_email_address_alias/5,
          associate_flow/3,
          associate_flow/4,
+         associate_hours_of_operations/4,
+         associate_hours_of_operations/5,
          associate_instance_storage_config/3,
          associate_instance_storage_config/4,
          associate_lambda_function/3,
@@ -66,12 +65,22 @@
          associate_routing_profile_queues/5,
          associate_security_key/3,
          associate_security_key/4,
+         associate_security_profiles/3,
+         associate_security_profiles/4,
          associate_traffic_distribution_group_user/3,
          associate_traffic_distribution_group_user/4,
          associate_user_proficiencies/4,
          associate_user_proficiencies/5,
+         associate_workspace/4,
+         associate_workspace/5,
          batch_associate_analytics_data_set/3,
          batch_associate_analytics_data_set/4,
+         batch_create_data_table_value/4,
+         batch_create_data_table_value/5,
+         batch_delete_data_table_value/4,
+         batch_delete_data_table_value/5,
+         batch_describe_data_table_value/4,
+         batch_describe_data_table_value/5,
          batch_disassociate_analytics_data_set/3,
          batch_disassociate_analytics_data_set/4,
          batch_get_attached_file_metadata/3,
@@ -80,6 +89,8 @@
          batch_get_flow_association/4,
          batch_put_contact/3,
          batch_put_contact/4,
+         batch_update_data_table_value/4,
+         batch_update_data_table_value/5,
          claim_phone_number/2,
          claim_phone_number/3,
          complete_attached_file_upload/4,
@@ -92,8 +103,16 @@
          create_contact_flow/4,
          create_contact_flow_module/3,
          create_contact_flow_module/4,
+         create_contact_flow_module_alias/4,
+         create_contact_flow_module_alias/5,
+         create_contact_flow_module_version/4,
+         create_contact_flow_module_version/5,
          create_contact_flow_version/4,
          create_contact_flow_version/5,
+         create_data_table/3,
+         create_data_table/4,
+         create_data_table_attribute/4,
+         create_data_table_attribute/5,
          create_email_address/3,
          create_email_address/4,
          create_evaluation_form/3,
@@ -128,6 +147,8 @@
          create_security_profile/4,
          create_task_template/3,
          create_task_template/4,
+         create_test_case/3,
+         create_test_case/4,
          create_traffic_distribution_group/2,
          create_traffic_distribution_group/3,
          create_use_case/4,
@@ -142,6 +163,10 @@
          create_view_version/5,
          create_vocabulary/3,
          create_vocabulary/4,
+         create_workspace/3,
+         create_workspace/4,
+         create_workspace_page/4,
+         create_workspace_page/5,
          deactivate_evaluation_form/4,
          deactivate_evaluation_form/5,
          delete_attached_file/4,
@@ -152,8 +177,16 @@
          delete_contact_flow/5,
          delete_contact_flow_module/4,
          delete_contact_flow_module/5,
+         delete_contact_flow_module_alias/5,
+         delete_contact_flow_module_alias/6,
+         delete_contact_flow_module_version/5,
+         delete_contact_flow_module_version/6,
          delete_contact_flow_version/5,
          delete_contact_flow_version/6,
+         delete_data_table/4,
+         delete_data_table/5,
+         delete_data_table_attribute/5,
+         delete_data_table_attribute/6,
          delete_email_address/4,
          delete_email_address/5,
          delete_evaluation_form/4,
@@ -184,6 +217,8 @@
          delete_security_profile/5,
          delete_task_template/4,
          delete_task_template/5,
+         delete_test_case/4,
+         delete_test_case/5,
          delete_traffic_distribution_group/3,
          delete_traffic_distribution_group/4,
          delete_use_case/5,
@@ -198,6 +233,12 @@
          delete_view_version/6,
          delete_vocabulary/4,
          delete_vocabulary/5,
+         delete_workspace/4,
+         delete_workspace/5,
+         delete_workspace_media/4,
+         delete_workspace_media/5,
+         delete_workspace_page/5,
+         delete_workspace_page/6,
          describe_agent_status/3,
          describe_agent_status/5,
          describe_agent_status/6,
@@ -216,6 +257,15 @@
          describe_contact_flow_module/3,
          describe_contact_flow_module/5,
          describe_contact_flow_module/6,
+         describe_contact_flow_module_alias/4,
+         describe_contact_flow_module_alias/6,
+         describe_contact_flow_module_alias/7,
+         describe_data_table/3,
+         describe_data_table/5,
+         describe_data_table/6,
+         describe_data_table_attribute/4,
+         describe_data_table_attribute/6,
+         describe_data_table_attribute/7,
          describe_email_address/3,
          describe_email_address/5,
          describe_email_address/6,
@@ -261,6 +311,9 @@
          describe_security_profile/3,
          describe_security_profile/5,
          describe_security_profile/6,
+         describe_test_case/3,
+         describe_test_case/5,
+         describe_test_case/6,
          describe_traffic_distribution_group/2,
          describe_traffic_distribution_group/4,
          describe_traffic_distribution_group/5,
@@ -279,6 +332,9 @@
          describe_vocabulary/3,
          describe_vocabulary/5,
          describe_vocabulary/6,
+         describe_workspace/3,
+         describe_workspace/5,
+         describe_workspace/6,
          disassociate_analytics_data_set/3,
          disassociate_analytics_data_set/4,
          disassociate_approved_origin/3,
@@ -289,6 +345,8 @@
          disassociate_email_address_alias/5,
          disassociate_flow/5,
          disassociate_flow/6,
+         disassociate_hours_of_operations/4,
+         disassociate_hours_of_operations/5,
          disassociate_instance_storage_config/4,
          disassociate_instance_storage_config/5,
          disassociate_lambda_function/3,
@@ -303,12 +361,18 @@
          disassociate_routing_profile_queues/5,
          disassociate_security_key/4,
          disassociate_security_key/5,
+         disassociate_security_profiles/3,
+         disassociate_security_profiles/4,
          disassociate_traffic_distribution_group_user/3,
          disassociate_traffic_distribution_group_user/4,
          disassociate_user_proficiencies/4,
          disassociate_user_proficiencies/5,
+         disassociate_workspace/4,
+         disassociate_workspace/5,
          dismiss_user_contact/4,
          dismiss_user_contact/5,
+         evaluate_data_table_values/4,
+         evaluate_data_table_values/5,
          get_attached_file/4,
          get_attached_file/6,
          get_attached_file/7,
@@ -340,11 +404,16 @@
          get_task_template/3,
          get_task_template/5,
          get_task_template/6,
+         get_test_case_execution_summary/4,
+         get_test_case_execution_summary/6,
+         get_test_case_execution_summary/7,
          get_traffic_distribution/2,
          get_traffic_distribution/4,
          get_traffic_distribution/5,
          import_phone_number/2,
          import_phone_number/3,
+         import_workspace_media/4,
+         import_workspace_media/5,
          list_agent_statuses/2,
          list_agent_statuses/4,
          list_agent_statuses/5,
@@ -366,9 +435,18 @@
          list_bots/3,
          list_bots/5,
          list_bots/6,
+         list_child_hours_of_operations/3,
+         list_child_hours_of_operations/5,
+         list_child_hours_of_operations/6,
          list_contact_evaluations/3,
          list_contact_evaluations/5,
          list_contact_evaluations/6,
+         list_contact_flow_module_aliases/3,
+         list_contact_flow_module_aliases/5,
+         list_contact_flow_module_aliases/6,
+         list_contact_flow_module_versions/3,
+         list_contact_flow_module_versions/5,
+         list_contact_flow_module_versions/6,
          list_contact_flow_modules/2,
          list_contact_flow_modules/4,
          list_contact_flow_modules/5,
@@ -381,8 +459,19 @@
          list_contact_references/4,
          list_contact_references/6,
          list_contact_references/7,
+         list_data_table_attributes/4,
+         list_data_table_attributes/5,
+         list_data_table_primary_values/4,
+         list_data_table_primary_values/5,
+         list_data_table_values/4,
+         list_data_table_values/5,
+         list_data_tables/2,
+         list_data_tables/4,
+         list_data_tables/5,
          list_default_vocabularies/3,
          list_default_vocabularies/4,
+         list_entity_security_profiles/3,
+         list_entity_security_profiles/4,
          list_evaluation_form_versions/3,
          list_evaluation_form_versions/5,
          list_evaluation_form_versions/6,
@@ -456,6 +545,9 @@
          list_security_profile_applications/3,
          list_security_profile_applications/5,
          list_security_profile_applications/6,
+         list_security_profile_flow_modules/3,
+         list_security_profile_flow_modules/5,
+         list_security_profile_flow_modules/6,
          list_security_profile_permissions/3,
          list_security_profile_permissions/5,
          list_security_profile_permissions/6,
@@ -468,6 +560,15 @@
          list_task_templates/2,
          list_task_templates/4,
          list_task_templates/5,
+         list_test_case_execution_records/4,
+         list_test_case_execution_records/6,
+         list_test_case_execution_records/7,
+         list_test_case_executions/2,
+         list_test_case_executions/4,
+         list_test_case_executions/5,
+         list_test_cases/2,
+         list_test_cases/4,
+         list_test_cases/5,
          list_traffic_distribution_group_users/2,
          list_traffic_distribution_group_users/4,
          list_traffic_distribution_group_users/5,
@@ -492,6 +593,15 @@
          list_views/2,
          list_views/4,
          list_views/5,
+         list_workspace_media/3,
+         list_workspace_media/5,
+         list_workspace_media/6,
+         list_workspace_pages/3,
+         list_workspace_pages/5,
+         list_workspace_pages/6,
+         list_workspaces/2,
+         list_workspaces/4,
+         list_workspaces/5,
          monitor_contact/2,
          monitor_contact/3,
          pause_contact/2,
@@ -518,6 +628,8 @@
          search_contact_flows/3,
          search_contacts/2,
          search_contacts/3,
+         search_data_tables/2,
+         search_data_tables/3,
          search_email_addresses/2,
          search_email_addresses/3,
          search_evaluation_forms/2,
@@ -540,12 +652,20 @@
          search_routing_profiles/3,
          search_security_profiles/2,
          search_security_profiles/3,
+         search_test_cases/2,
+         search_test_cases/3,
          search_user_hierarchy_groups/2,
          search_user_hierarchy_groups/3,
          search_users/2,
          search_users/3,
+         search_views/2,
+         search_views/3,
          search_vocabularies/3,
          search_vocabularies/4,
+         search_workspace_associations/2,
+         search_workspace_associations/3,
+         search_workspaces/2,
+         search_workspaces/3,
          send_chat_integration_event/2,
          send_chat_integration_event/3,
          send_outbound_email/3,
@@ -556,6 +676,8 @@
          start_chat_contact/3,
          start_contact_evaluation/3,
          start_contact_evaluation/4,
+         start_contact_media_processing/2,
+         start_contact_media_processing/3,
          start_contact_recording/2,
          start_contact_recording/3,
          start_contact_streaming/2,
@@ -572,14 +694,20 @@
          start_screen_sharing/3,
          start_task_contact/2,
          start_task_contact/3,
+         start_test_case_execution/4,
+         start_test_case_execution/5,
          start_web_r_t_c_contact/2,
          start_web_r_t_c_contact/3,
          stop_contact/2,
          stop_contact/3,
+         stop_contact_media_processing/2,
+         stop_contact_media_processing/3,
          stop_contact_recording/2,
          stop_contact_recording/3,
          stop_contact_streaming/2,
          stop_contact_streaming/3,
+         stop_test_case_execution/5,
+         stop_test_case_execution/6,
          submit_contact_evaluation/4,
          submit_contact_evaluation/5,
          suspend_contact_recording/2,
@@ -608,6 +736,8 @@
          update_contact_flow_content/5,
          update_contact_flow_metadata/4,
          update_contact_flow_metadata/5,
+         update_contact_flow_module_alias/5,
+         update_contact_flow_module_alias/6,
          update_contact_flow_module_content/4,
          update_contact_flow_module_content/5,
          update_contact_flow_module_metadata/4,
@@ -618,6 +748,12 @@
          update_contact_routing_data/5,
          update_contact_schedule/2,
          update_contact_schedule/3,
+         update_data_table_attribute/5,
+         update_data_table_attribute/6,
+         update_data_table_metadata/4,
+         update_data_table_metadata/5,
+         update_data_table_primary_values/4,
+         update_data_table_primary_values/5,
          update_email_address_metadata/4,
          update_email_address_metadata/5,
          update_evaluation_form/4,
@@ -674,6 +810,8 @@
          update_security_profile/5,
          update_task_template/4,
          update_task_template/5,
+         update_test_case/4,
+         update_test_case/5,
          update_traffic_distribution/3,
          update_traffic_distribution/4,
          update_user_hierarchy/4,
@@ -695,7 +833,15 @@
          update_view_content/4,
          update_view_content/5,
          update_view_metadata/4,
-         update_view_metadata/5]).
+         update_view_metadata/5,
+         update_workspace_metadata/4,
+         update_workspace_metadata/5,
+         update_workspace_page/5,
+         update_workspace_page/6,
+         update_workspace_theme/4,
+         update_workspace_theme/5,
+         update_workspace_visibility/4,
+         update_workspace_visibility/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -708,6 +854,13 @@
 %%   <<"StorageConfig">> := instance_storage_config()
 %% }
 -type associate_instance_storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_media_response() :: #{
+%%   <<"Media">> => list(media_item())
+%% }
+-type list_workspace_media_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -730,6 +883,14 @@
 %%   <<"EnableAnswerMachineDetection">> => boolean()
 %% }
 -type answer_machine_detection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> => list(data_table_value_summary())
+%% }
+-type list_data_table_values_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -791,6 +952,31 @@
 %%   <<"VocabularyId">> => string()
 %% }
 -type associate_default_vocabulary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_review_configuration() :: #{
+%%   <<"EligibilityDays">> => integer(),
+%%   <<"ReviewNotificationRecipients">> => list(evaluation_review_notification_recipient())
+%% }
+-type evaluation_review_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type create_data_table_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_enum() :: #{
+%%   <<"Strict">> => boolean(),
+%%   <<"Values">> => list(string())
+%% }
+-type validation_enum() :: #{binary() => any()}.
 
 
 %% Example:
@@ -869,6 +1055,22 @@
 
 
 %% Example:
+%% evaluation_review_notification_recipient_value() :: #{
+%%   <<"UserId">> => string()
+%% }
+-type evaluation_review_notification_recipient_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_attribute_response() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string()
+%% }
+-type create_data_table_attribute_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% participant_capabilities() :: #{
 %%   <<"ScreenShare">> => list(any()),
 %%   <<"Video">> => list(any())
@@ -890,13 +1092,17 @@
 
 %% Example:
 %% update_evaluation_form_request() :: #{
+%%   <<"AsDraft">> => boolean(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"CreateNewVersion">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationFormVersion">> := integer(),
 %%   <<"Items">> := list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
 %%   <<"Title">> := string()
 %% }
 -type update_evaluation_form_request() :: #{binary() => any()}.
@@ -940,6 +1146,25 @@
 %%   <<"UserId">> := string()
 %% }
 -type disassociate_traffic_distribution_group_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_update_data_table_value_success_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_attribute_filter() :: #{
+%%   <<"AndCondition">> => contact_flow_attribute_and_condition(),
+%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
+%%   <<"OrConditions">> => list(contact_flow_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type contact_flow_attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1009,15 +1234,29 @@
 
 
 %% Example:
+%% evaluation_form_multi_select_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
+%%   <<"DefaultOptionRefIds">> => list(string()),
+%%   <<"Options">> => list(list())
+%% }
+-type evaluation_form_multi_select_question_automation() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_flow_module() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Content">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
+%%   <<"FlowModuleContentSha256">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"Settings">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
 %% }
 -type contact_flow_module() :: #{binary() => any()}.
 
@@ -1034,11 +1273,38 @@
 
 
 %% Example:
+%% primary_value_response() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type primary_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_test_case_response() :: #{}
+-type delete_test_case_response() :: #{}.
+
+
+%% Example:
 %% range() :: #{
 %%   <<"MaxProficiencyLevel">> => float(),
 %%   <<"MinProficiencyLevel">> => float()
 %% }
 -type range() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_success_result() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type batch_describe_data_table_value_success_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_user_hierarchy_structure_request() :: #{}
@@ -1047,6 +1313,16 @@
 %% Example:
 %% get_federation_token_request() :: #{}
 -type get_federation_token_request() :: #{}.
+
+
+%% Example:
+%% test_case_search_criteria() :: #{
+%%   <<"AndConditions">> => list(test_case_search_criteria()),
+%%   <<"OrConditions">> => list(test_case_search_criteria()),
+%%   <<"StatusCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type test_case_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1106,6 +1382,14 @@
 %% }
 -type campaign() :: #{binary() => any()}.
 
+
+%% Example:
+%% contact_flow_attribute_and_condition() :: #{
+%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type contact_flow_attribute_and_condition() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_hierarchy_group_request() :: #{}
 -type describe_user_hierarchy_group_request() :: #{}.
@@ -1140,6 +1424,7 @@
 %%   <<"ContactFlowId">> := string(),
 %%   <<"DestinationEndpoint">> := endpoint(),
 %%   <<"InitialSystemMessage">> => chat_message(),
+%%   <<"InitialTemplatedSystemMessage">> => templated_message_config(),
 %%   <<"InstanceId">> := string(),
 %%   <<"ParticipantDetails">> => participant_details(),
 %%   <<"RelatedContactId">> => string(),
@@ -1216,6 +1501,13 @@
 %% }
 -type prompt_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_workspace_visibility_request() :: #{
+%%   <<"Visibility">> := list(any())
+%% }
+-type update_workspace_visibility_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_hours_of_operation_override_request() :: #{}
 -type delete_hours_of_operation_override_request() :: #{}.
@@ -1249,6 +1541,13 @@
 
 
 %% Example:
+%% flow_quick_connect_config() :: #{
+%%   <<"ContactFlowId">> => string()
+%% }
+-type flow_quick_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% replicate_instance_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ReplicaAlias">> := string(),
@@ -1268,6 +1567,7 @@
 
 %% Example:
 %% contact_flow_search_filter() :: #{
+%%   <<"FlowAttributeFilter">> => contact_flow_attribute_filter(),
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type contact_flow_search_filter() :: #{binary() => any()}.
@@ -1281,9 +1581,42 @@
 %% }
 -type search_hours_of_operations_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% search_data_tables_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"DataTables">> => list(data_table()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_data_tables_response() :: #{binary() => any()}.
+
 %% Example:
 %% associate_contact_with_user_response() :: #{}
 -type associate_contact_with_user_response() :: #{}.
+
+
+%% Example:
+%% list_child_hours_of_operations_response() :: #{
+%%   <<"ChildHoursOfOperationsSummaryList">> => list(hours_of_operations_identifier()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_child_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_media_request() :: #{
+%%   <<"MediaType">> := list(any())
+%% }
+-type delete_workspace_media_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_invocation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type external_invocation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1307,10 +1640,33 @@
 
 
 %% Example:
+%% workspace_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type workspace_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_test_case_exception() :: #{
+%%   <<"Problems">> => list(problem_detail())
+%% }
+-type invalid_test_case_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% activate_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> := integer()
 %% }
 -type activate_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"SecurityProfiles">> := list(security_profile_item())
+%% }
+-type disassociate_security_profiles_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1362,7 +1718,9 @@
 %%   <<"Channel">> => list(any()),
 %%   <<"Queue">> => queue_reference(),
 %%   <<"RoutingProfile">> => routing_profile_reference(),
-%%   <<"RoutingStepExpression">> => string()
+%%   <<"RoutingStepExpression">> => string(),
+%%   <<"Subtype">> => string(),
+%%   <<"ValidationTestType">> => string()
 %% }
 -type dimensions() :: #{binary() => any()}.
 
@@ -1407,6 +1765,25 @@
 
 
 %% Example:
+%% get_test_case_execution_summary_response() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ObservationSummary">> => observation_summary(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_test_case_execution_summary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_update_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_suggested_answer_transcript_millisecond_offsets() :: #{
 %%   <<"BeginOffsetMillis">> => integer()
 %% }
@@ -1419,6 +1796,13 @@
 %%   <<"IsReadOnly">> => boolean()
 %% }
 -type predefined_attribute_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% font_family() :: #{
+%%   <<"Default">> => list(any())
+%% }
+-type font_family() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1499,6 +1883,15 @@
 
 
 %% Example:
+%% update_workspace_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type update_workspace_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% upload_url_metadata() :: #{
 %%   <<"HeadersToInclude">> => map(),
 %%   <<"Url">> => string(),
@@ -1563,6 +1956,17 @@
 %%   <<"PromptPresignedUrl">> => string()
 %% }
 -type get_prompt_file_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_search_criteria() :: #{
+%%   <<"AndConditions">> => list(view_search_criteria()),
+%%   <<"OrConditions">> => list(view_search_criteria()),
+%%   <<"StringCondition">> => string_condition(),
+%%   <<"ViewStatusCondition">> => list(any()),
+%%   <<"ViewTypeCondition">> => list(any())
+%% }
+-type view_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1650,10 +2054,28 @@
 
 
 %% Example:
+%% list_data_table_attributes_response() :: #{
+%%   <<"Attributes">> => list(data_table_attribute()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_table_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_agent_status_response() :: #{
 %%   <<"AgentStatus">> => agent_status()
 %% }
 -type describe_agent_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_review_metadata() :: #{
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ReviewId">> => string(),
+%%   <<"ReviewRequestComments">> => list(evaluation_review_request_comment())
+%% }
+-type evaluation_review_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1662,6 +2084,10 @@
 %%   <<"NewChatCreated">> => boolean()
 %% }
 -type send_chat_integration_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_flow_module_alias_request() :: #{}
+-type delete_contact_flow_module_alias_request() :: #{}.
 
 
 %% Example:
@@ -1710,6 +2136,14 @@
 
 
 %% Example:
+%% batch_delete_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_delete_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_delete_data_table_value_success_result())
+%% }
+-type batch_delete_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% searchable_segment_attributes_criteria() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Values">> => list(string())
@@ -1719,6 +2153,25 @@
 %% Example:
 %% delete_contact_flow_version_request() :: #{}
 -type delete_contact_flow_version_request() :: #{}.
+
+
+%% Example:
+%% list_test_case_execution_records_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_test_case_execution_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_flow_modules_response() :: #{
+%%   <<"AllowedFlowModules">> => list(flow_module()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_flow_modules_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1765,6 +2218,15 @@
 %%   <<"SecurityProfileId">> => string()
 %% }
 -type create_security_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_batch_association_summary() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type failed_batch_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1817,6 +2279,7 @@
 %%   <<"Config">> := list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"ParentHoursOfOperationConfigs">> => list(parent_hours_of_operation_config()),
 %%   <<"Tags">> => map(),
 %%   <<"TimeZone">> := string()
 %% }
@@ -1860,8 +2323,10 @@
 %% update_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
+%%   <<"AllowedFlowModules">> => list(flow_module()),
 %%   <<"Applications">> => list(application()),
 %%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
 %%   <<"HierarchyRestrictedResources">> => list(string()),
 %%   <<"Permissions">> => list(string()),
 %%   <<"TagRestrictedResources">> => list(string())
@@ -1904,6 +2369,14 @@
 %%   <<"Metrics">> := list(contact_metric_info())
 %% }
 -type get_contact_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_execution_records_response() :: #{
+%%   <<"ExecutionRecords">> => list(execution_record()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_test_case_execution_records_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vocabulary_request() :: #{}
@@ -1956,6 +2429,23 @@
 
 
 %% Example:
+%% associate_hours_of_operations_request() :: #{
+%%   <<"ParentHoursOfOperationConfigs">> := list(parent_hours_of_operation_config())
+%% }
+-type associate_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_lock_version() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"DataTable">> => string(),
+%%   <<"PrimaryValues">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type data_table_lock_version() :: #{binary() => any()}.
+
+
+%% Example:
 %% view() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Content">> => view_content(),
@@ -2003,6 +2493,14 @@
 
 
 %% Example:
+%% images_logo() :: #{
+%%   <<"Default">> => string(),
+%%   <<"Favicon">> => string()
+%% }
+-type images_logo() :: #{binary() => any()}.
+
+
+%% Example:
 %% hours_of_operation() :: #{
 %%   <<"Config">> => list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
@@ -2011,6 +2509,7 @@
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"ParentHoursOfOperations">> => list(hours_of_operations_identifier()),
 %%   <<"Tags">> => map(),
 %%   <<"TimeZone">> => string()
 %% }
@@ -2091,6 +2590,13 @@
 
 
 %% Example:
+%% filter_v2_string_condition() :: #{
+%%   <<"Comparison">> => list(any())
+%% }
+-type filter_v2_string_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_task_template_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Constraints">> => task_template_constraints(),
@@ -2119,6 +2625,10 @@
 %% }
 -type kinesis_firehose_config() :: #{binary() => any()}.
 
+%% Example:
+%% describe_contact_flow_module_alias_request() :: #{}
+-type describe_contact_flow_module_alias_request() :: #{}.
+
 
 %% Example:
 %% task_template_field() :: #{
@@ -2135,6 +2645,19 @@
 %%   <<"EvaluationForm">> => evaluation_form()
 %% }
 -type describe_evaluation_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_evaluated_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Error">> => boolean(),
+%%   <<"EvaluatedValue">> => string(),
+%%   <<"Found">> => boolean(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"RecordId">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type data_table_evaluated_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2161,6 +2684,13 @@
 %%   <<"IntegrationAssociationId">> => string()
 %% }
 -type create_integration_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_test_case_request() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type describe_test_case_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2209,6 +2739,14 @@
 
 
 %% Example:
+%% list_contact_flow_module_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% lex_v2_bot() :: #{
 %%   <<"AliasArn">> => string()
 %% }
@@ -2228,6 +2766,34 @@
 %%   <<"Message">> => string()
 %% }
 -type contact_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% palette_primary() :: #{
+%%   <<"Active">> => string(),
+%%   <<"ContrastText">> => string(),
+%%   <<"Default">> => string()
+%% }
+-type palette_primary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_contact_participant() :: #{
+%%   <<"ContactParticipantId">> => string(),
+%%   <<"ContactParticipantRole">> => list(any())
+%% }
+-type evaluation_contact_participant() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2265,6 +2831,15 @@
 
 
 %% Example:
+%% contact_flow_module_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow_module_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_hours_of_operation_request() :: #{
 %%   <<"Config">> => list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
@@ -2289,6 +2864,40 @@
 %%   <<"MinValue">> => integer()
 %% }
 -type number_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"TimeZone">> := string(),
+%%   <<"ValueLockLevel">> := list(any())
+%% }
+-type update_data_table_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_config() :: #{
+%%   <<"Images">> => workspace_theme_images(),
+%%   <<"Palette">> => workspace_theme_palette(),
+%%   <<"Typography">> => workspace_theme_typography()
+%% }
+-type workspace_theme_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_summary() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string(),
+%%   <<"Value">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type data_table_value_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2367,6 +2976,7 @@
 
 %% Example:
 %% wisdom_info() :: #{
+%%   <<"AiAgents">> => list(ai_agent_info()),
 %%   <<"SessionArn">> => string()
 %% }
 -type wisdom_info() :: #{binary() => any()}.
@@ -2430,10 +3040,25 @@
 
 
 %% Example:
+%% update_data_table_metadata_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type update_data_table_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_hierarchy_group() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type agent_hierarchy_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_workspace_media_request() :: #{
+%%   <<"MediaSource">> := string(),
+%%   <<"MediaType">> := list(any())
+%% }
+-type import_workspace_media_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2502,6 +3127,23 @@
 
 
 %% Example:
+%% palette_navigation() :: #{
+%%   <<"Background">> => string(),
+%%   <<"InvertActionsColors">> => boolean(),
+%%   <<"Text">> => string(),
+%%   <<"TextActive">> => string(),
+%%   <<"TextBackgroundActive">> => string(),
+%%   <<"TextBackgroundHover">> => string(),
+%%   <<"TextHover">> => string()
+%% }
+-type palette_navigation() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_table_attribute_request() :: #{}
+-type delete_data_table_attribute_request() :: #{}.
+
+
+%% Example:
 %% update_contact_flow_module_metadata_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
@@ -2546,6 +3188,10 @@
 %% }
 -type list_evaluation_form_versions_request() :: #{binary() => any()}.
 
+%% Example:
+%% stop_test_case_execution_response() :: #{}
+-type stop_test_case_execution_response() :: #{}.
+
 
 %% Example:
 %% search_agent_statuses_request() :: #{
@@ -2564,6 +3210,24 @@
 %%   <<"RawMessage">> => inbound_raw_message()
 %% }
 -type inbound_email_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_attribute() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"DataTableArn">> => string(),
+%%   <<"DataTableId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type data_table_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% delete_view_version_request() :: #{}
@@ -2606,6 +3270,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type queue() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"SecurityProfiles">> := list(security_profile_item())
+%% }
+-type associate_security_profiles_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2710,11 +3383,29 @@
 
 
 %% Example:
+%% multi_select_question_rule_category_automation() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Condition">> => list(any()),
+%%   <<"OptionRefIds">> => list(string())
+%% }
+-type multi_select_question_rule_category_automation() :: #{binary() => any()}.
+
+
+%% Example:
 %% download_url_metadata() :: #{
 %%   <<"Url">> => string(),
 %%   <<"UrlExpiry">> => string()
 %% }
 -type download_url_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_attributes_request() :: #{
+%%   <<"AttributeIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_table_attributes_request() :: #{binary() => any()}.
 
 %% Example:
 %% suspend_contact_recording_response() :: #{}
@@ -2737,10 +3428,34 @@
 
 
 %% Example:
+%% batch_describe_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_describe_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_describe_data_table_value_success_result())
+%% }
+-type batch_describe_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_version_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlowModuleContentSha256">> => string()
+%% }
+-type create_contact_flow_module_version_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_version_response() :: #{
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type create_contact_flow_module_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2749,7 +3464,9 @@
 %%   <<"Description">> => string(),
 %%   <<"EffectiveFrom">> => string(),
 %%   <<"EffectiveTill">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"OverrideType">> => list(any()),
+%%   <<"RecurrenceConfig">> => recurrence_config()
 %% }
 -type update_hours_of_operation_override_request() :: #{binary() => any()}.
 
@@ -2765,10 +3482,32 @@
 
 
 %% Example:
+%% workspace_theme_palette() :: #{
+%%   <<"Canvas">> => palette_canvas(),
+%%   <<"Header">> => palette_header(),
+%%   <<"Navigation">> => palette_navigation(),
+%%   <<"Primary">> => palette_primary()
+%% }
+-type workspace_theme_palette() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_quick_connect_config_request() :: #{
 %%   <<"QuickConnectConfig">> := quick_connect_config()
 %% }
 -type update_quick_connect_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"Value">> => string()
+%% }
+-type data_table_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2847,6 +3586,17 @@
 
 
 %% Example:
+%% describe_data_table_response() :: #{
+%%   <<"DataTable">> => data_table()
+%% }
+-type describe_data_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_contact_media_processing_response() :: #{}
+-type stop_contact_media_processing_response() :: #{}.
+
+
+%% Example:
 %% list_rules_request() :: #{
 %%   <<"EventSourceName">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -2854,6 +3604,32 @@
 %%   <<"PublishStatus">> => list(any())
 %% }
 -type list_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_attribute_value_filter() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type primary_attribute_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"Id">> => string(),
+%%   <<"InitializationData">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseSha256">> => string()
+%% }
+-type test_case() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2865,6 +3641,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type import_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_hours_of_operations_request() :: #{
+%%   <<"ParentHoursOfOperationIds">> := list(string())
+%% }
+-type disassociate_hours_of_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2881,6 +3664,13 @@
 %%   <<"Id">> => string()
 %% }
 -type queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type view_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2907,6 +3697,13 @@
 
 
 %% Example:
+%% participant_configuration() :: #{
+%%   <<"ResponseMode">> => list(any())
+%% }
+-type participant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% available_number_summary() :: #{
 %%   <<"PhoneNumber">> => string(),
 %%   <<"PhoneNumberCountryCode">> => list(any()),
@@ -2918,6 +3715,7 @@
 %% Example:
 %% get_effective_hours_of_operations_response() :: #{
 %%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()),
+%%   <<"EffectiveOverrideHoursList">> => list(effective_override_hours()),
 %%   <<"TimeZone">> => string()
 %% }
 -type get_effective_hours_of_operations_response() :: #{binary() => any()}.
@@ -3011,6 +3809,18 @@
 
 
 %% Example:
+%% test_case_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type test_case_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% destination_not_allowed_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3022,6 +3832,17 @@
 %%   <<"Id">> => task_template_field_identifier()
 %% }
 -type invisible_field_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_attribute_access_control_configuration_item() :: #{
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value())
+%% }
+-type primary_attribute_access_control_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_response() :: #{}
+-type delete_workspace_response() :: #{}.
 
 
 %% Example:
@@ -3101,6 +3922,15 @@
 
 
 %% Example:
+%% search_test_cases_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"TestCases">> => list(test_case())
+%% }
+-type search_test_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_attached_file_request() :: #{
 %%   <<"AssociatedResourceArn">> := string(),
 %%   <<"UrlExpiryInSeconds">> => integer()
@@ -3122,6 +3952,27 @@
 %% Example:
 %% describe_phone_number_request() :: #{}
 -type describe_phone_number_request() :: #{}.
+
+
+%% Example:
+%% validation() :: #{
+%%   <<"Enum">> => validation_enum(),
+%%   <<"ExclusiveMaximum">> => float(),
+%%   <<"ExclusiveMinimum">> => float(),
+%%   <<"IgnoreCase">> => boolean(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"MaxValues">> => integer(),
+%%   <<"Maximum">> => float(),
+%%   <<"MinLength">> => integer(),
+%%   <<"MinValues">> => integer(),
+%%   <<"Minimum">> => float(),
+%%   <<"MultipleOf">> => float()
+%% }
+-type validation() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_table_request() :: #{}
+-type delete_data_table_request() :: #{}.
 
 %% Example:
 %% resume_contact_recording_response() :: #{}
@@ -3210,6 +4061,10 @@
 %% }
 -type update_contact_evaluation_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_workspace_page_response() :: #{}
+-type delete_workspace_page_response() :: #{}.
+
 
 %% Example:
 %% list_analytics_data_lake_data_sets_request() :: #{
@@ -3256,10 +4111,32 @@
 
 
 %% Example:
+%% test_case_execution() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseExecutionId">> => string(),
+%%   <<"TestCaseExecutionStatus">> => list(any()),
+%%   <<"TestCaseId">> => string()
+%% }
+-type test_case_execution() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_user_hierarchy_structure_response() :: #{
 %%   <<"HierarchyStructure">> => hierarchy_structure()
 %% }
 -type describe_user_hierarchy_structure_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_page() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"Page">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Slug">> => string()
+%% }
+-type workspace_page() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3275,6 +4152,14 @@
 %%   <<"User">> => user_reference()
 %% }
 -type user_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_override_hours() :: #{
+%%   <<"Date">> => string(),
+%%   <<"OverrideHours">> => list(override_hour())
+%% }
+-type effective_override_hours() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3317,6 +4202,10 @@
 %% }
 -type describe_predefined_attribute_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_workspace_theme_response() :: #{}
+-type update_workspace_theme_response() :: #{}.
+
 
 %% Example:
 %% start_email_contact_response() :: #{
@@ -3333,6 +4222,14 @@
 %%   <<"UserId">> => string()
 %% }
 -type get_federation_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_cases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TestCaseSummaryList">> => list(test_case_summary())
+%% }
+-type list_test_cases_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3372,6 +4269,22 @@
 
 
 %% Example:
+%% create_test_case_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"InitializationData">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type create_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_quick_connect_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
@@ -3379,6 +4292,10 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_quick_connect_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_table_attribute_request() :: #{}
+-type describe_data_table_attribute_request() :: #{}.
 
 
 %% Example:
@@ -3428,6 +4345,21 @@
 
 
 %% Example:
+%% describe_workspace_response() :: #{
+%%   <<"Workspace">> => workspace()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_module_aliases_response() :: #{
+%%   <<"ContactFlowModuleAliasSummaryList">> => list(contact_flow_module_alias_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% task_template_info_v2() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Name">> => string()
@@ -3474,6 +4406,16 @@
 %% }
 -type list_lambda_functions_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_workspace_page_request() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"Page">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Slug">> => string()
+%% }
+-type create_workspace_page_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_routing_profile_request() :: #{}
 -type delete_routing_profile_request() :: #{}.
@@ -3488,6 +4430,10 @@
 %% Example:
 %% empty_field_value() :: #{}
 -type empty_field_value() :: #{}.
+
+%% Example:
+%% delete_workspace_media_response() :: #{}
+-type delete_workspace_media_response() :: #{}.
 
 
 %% Example:
@@ -3504,6 +4450,13 @@
 %%   <<"OutboundEmailConfig">> := outbound_email_config()
 %% }
 -type update_queue_outbound_email_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_association_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type workspace_association_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3540,6 +4493,15 @@
 %% Example:
 %% describe_agent_status_request() :: #{}
 -type describe_agent_status_request() :: #{}.
+
+
+%% Example:
+%% palette_canvas() :: #{
+%%   <<"ActiveBackground">> => string(),
+%%   <<"ContainerBackground">> => string(),
+%%   <<"PageBackground">> => string()
+%% }
+-type palette_canvas() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3625,8 +4587,10 @@
 %% create_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
+%%   <<"AllowedFlowModules">> => list(flow_module()),
 %%   <<"Applications">> => list(application()),
 %%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
 %%   <<"HierarchyRestrictedResources">> => list(string()),
 %%   <<"Permissions">> => list(string()),
 %%   <<"SecurityProfileName">> := string(),
@@ -3634,6 +4598,14 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_identifier() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_value_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3676,6 +4648,16 @@
 
 
 %% Example:
+%% start_contact_media_processing_request() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"FailureMode">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"ProcessorArn">> => string()
+%% }
+-type start_contact_media_processing_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_contact_metrics_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -3711,6 +4693,10 @@
 %% }
 -type create_traffic_distribution_group_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_contact_flow_module_alias_response() :: #{}
+-type update_contact_flow_module_alias_response() :: #{}.
+
 
 %% Example:
 %% security_profile_summary() :: #{
@@ -3737,12 +4723,17 @@
 %% }
 -type describe_evaluation_form_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_test_case_execution_summary_request() :: #{}
+-type get_test_case_execution_summary_request() :: #{}.
+
 
 %% Example:
 %% send_notification_action_definition() :: #{
 %%   <<"Content">> => string(),
 %%   <<"ContentType">> => list(any()),
 %%   <<"DeliveryMethod">> => list(any()),
+%%   <<"Exclusion">> => notification_recipient_type(),
 %%   <<"Recipient">> => notification_recipient_type(),
 %%   <<"Subject">> => string()
 %% }
@@ -3763,6 +4754,38 @@
 %%   <<"Status">> => list(any())
 %% }
 -type phone_number_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_primary_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryValuesList">> => list(record_primary_value())
+%% }
+-type list_data_table_primary_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type workspace_search_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3789,6 +4812,23 @@
 %%   <<"HoursOfOperation">> => hours_of_operation()
 %% }
 -type describe_hours_of_operation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_delete_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_child_hours_of_operations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_child_hours_of_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3852,6 +4892,14 @@
 
 
 %% Example:
+%% batch_create_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_create_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_create_data_table_value_success_result())
+%% }
+-type batch_create_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_task_template_request() :: #{
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
@@ -3880,11 +4928,22 @@
 
 %% Example:
 %% evaluation_score() :: #{
+%%   <<"AppliedWeight">> => float(),
 %%   <<"AutomaticFail">> => boolean(),
 %%   <<"NotApplicable">> => boolean(),
 %%   <<"Percentage">> => float()
 %% }
 -type evaluation_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
+%%   <<"RecordIds">> => list(string())
+%% }
+-type list_data_table_values_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3921,6 +4980,20 @@
 
 
 %% Example:
+%% batch_update_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value())
+%% }
+-type batch_update_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_theme_request() :: #{
+%%   <<"Theme">> => workspace_theme()
+%% }
+-type update_workspace_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_participant_response() :: #{
 %%   <<"ParticipantCredentials">> => participant_token_credentials(),
 %%   <<"ParticipantId">> => string()
@@ -3950,6 +5023,13 @@
 
 
 %% Example:
+%% stop_test_case_execution_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type stop_test_case_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_view_versions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -3962,7 +5042,9 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Content">> := string(),
 %%   <<"Description">> => string(),
+%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
 %%   <<"Name">> := string(),
+%%   <<"Settings">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_contact_flow_module_request() :: #{binary() => any()}.
@@ -4013,6 +5095,14 @@
 
 
 %% Example:
+%% update_data_table_attribute_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string()
+%% }
+-type update_data_table_attribute_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_authentication_profiles_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -4025,6 +5115,14 @@
 %%   <<"EmailAddressId">> => string()
 %% }
 -type alias_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_visibility_response() :: #{}
+-type update_workspace_visibility_response() :: #{}.
+
+%% Example:
+%% update_workspace_metadata_response() :: #{}
+-type update_workspace_metadata_response() :: #{}.
 
 
 %% Example:
@@ -4043,6 +5141,15 @@
 
 
 %% Example:
+%% batch_create_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_create_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_phone_config() :: #{
 %%   <<"AfterContactWorkTimeLimit">> => integer(),
 %%   <<"AutoAccept">> => boolean(),
@@ -4051,6 +5158,17 @@
 %%   <<"PhoneType">> => list(any())
 %% }
 -type user_phone_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_connect_contact_data() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"QuickConnectId">> => string(),
+%%   <<"QuickConnectName">> => string(),
+%%   <<"QuickConnectType">> => list(any())
+%% }
+-type quick_connect_contact_data() :: #{binary() => any()}.
 
 %% Example:
 %% describe_email_address_request() :: #{}
@@ -4075,12 +5193,15 @@
 %%   <<"EvaluationFormId">> => string(),
 %%   <<"EvaluationFormVersion">> => integer(),
 %%   <<"Items">> => list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Locked">> => boolean(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
 %%   <<"Title">> => string()
 %% }
 -type evaluation_form() :: #{binary() => any()}.
@@ -4142,6 +5263,15 @@
 
 
 %% Example:
+%% hours_of_operations_identifier() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type hours_of_operations_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_phone_numbers_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -4157,6 +5287,14 @@
 %%   <<"Version">> => float()
 %% }
 -type create_contact_flow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme() :: #{
+%%   <<"Dark">> => workspace_theme_config(),
+%%   <<"Light">> => workspace_theme_config()
+%% }
+-type workspace_theme() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4208,7 +5346,8 @@
 %% Example:
 %% filter_v2() :: #{
 %%   <<"FilterKey">> => string(),
-%%   <<"FilterValues">> => list(string())
+%%   <<"FilterValues">> => list(string()),
+%%   <<"StringCondition">> => filter_v2_string_condition()
 %% }
 -type filter_v2() :: #{binary() => any()}.
 
@@ -4254,7 +5393,8 @@
 %% Example:
 %% application() :: #{
 %%   <<"ApplicationPermissions">> => list(string()),
-%%   <<"Namespace">> => string()
+%%   <<"Namespace">> => string(),
+%%   <<"Type">> => list(any())
 %% }
 -type application() :: #{binary() => any()}.
 
@@ -4328,12 +5468,16 @@
 
 %% Example:
 %% create_evaluation_form_request() :: #{
+%%   <<"AsDraft">> => boolean(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Items">> := list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
 %%   <<"Tags">> => map(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
 %%   <<"Title">> := string()
 %% }
 -type create_evaluation_form_request() :: #{binary() => any()}.
@@ -4485,6 +5629,14 @@
 
 
 %% Example:
+%% flow_module() :: #{
+%%   <<"FlowModuleId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type flow_module() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_push_notification_registration_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactConfiguration">> := contact_configuration(),
@@ -4493,6 +5645,21 @@
 %%   <<"PinpointAppArn">> := string()
 %% }
 -type create_push_notification_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_views_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => view_search_criteria(),
+%%   <<"SearchFilter">> => view_search_filter()
+%% }
+-type search_views_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_flow_module_version_response() :: #{}
+-type delete_contact_flow_module_version_response() :: #{}.
 
 
 %% Example:
@@ -4515,6 +5682,10 @@
 %% }
 -type quick_connect_search_filter() :: #{binary() => any()}.
 
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
+
 
 %% Example:
 %% disassociate_lambda_function_request() :: #{
@@ -4522,6 +5693,19 @@
 %%   <<"FunctionArn">> := string()
 %% }
 -type disassociate_lambda_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_workspace_media_response() :: #{}
+-type import_workspace_media_response() :: #{}.
+
+
+%% Example:
+%% primary_attribute_value() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"AttributeName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type primary_attribute_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4559,6 +5743,23 @@
 %%   <<"PhoneConfig">> := user_phone_config()
 %% }
 -type update_user_phone_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_search_criteria() :: #{
+%%   <<"AndConditions">> => list(data_table_search_criteria()),
+%%   <<"OrConditions">> => list(data_table_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type data_table_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_security_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityProfiles">> => list(security_profile_item())
+%% }
+-type list_entity_security_profiles_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4606,6 +5807,18 @@
 
 
 %% Example:
+%% batch_update_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_update_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_update_data_table_value_success_result())
+%% }
+-type batch_update_data_table_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_table_request() :: #{}
+-type describe_data_table_request() :: #{}.
+
+
+%% Example:
 %% template_attributes() :: #{
 %%   <<"CustomAttributes">> => map(),
 %%   <<"CustomerProfileAttributes">> => string()
@@ -4623,6 +5836,15 @@
 %%   <<"Time">> => list()
 %% }
 -type real_time_contact_analysis_segment_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_delete_data_table_value_success_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4702,11 +5924,28 @@
 
 
 %% Example:
+%% list_test_case_executions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TestCaseExecutions">> => list(test_case_execution())
+%% }
+-type list_test_case_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_analytics_data_set_request() :: #{
 %%   <<"DataSetId">> := string(),
 %%   <<"TargetAccountId">> => string()
 %% }
 -type associate_analytics_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_association_search_criteria() :: #{
+%%   <<"AndConditions">> => list(workspace_association_search_criteria()),
+%%   <<"OrConditions">> => list(workspace_association_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type workspace_association_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4718,6 +5957,13 @@
 %%   <<"SearchFilter">> => user_search_filter()
 %% }
 -type search_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_case_execution_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type start_test_case_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4733,6 +5979,22 @@
 %%   <<"UserProficiencies">> := list(user_proficiency_disassociate())
 %% }
 -type disassociate_user_proficiencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_language_configuration() :: #{
+%%   <<"FormLanguage">> => list(any())
+%% }
+-type evaluation_form_language_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% observation_summary() :: #{
+%%   <<"ObservationsFailed">> => integer(),
+%%   <<"ObservationsPassed">> => integer(),
+%%   <<"TotalObservations">> => integer()
+%% }
+-type observation_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4783,7 +6045,8 @@
 %%   <<"StartTimestamp">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StopTimestamp">> => non_neg_integer(),
-%%   <<"StorageType">> => list(any())
+%%   <<"StorageType">> => list(any()),
+%%   <<"UnprocessedTranscriptLocation">> => string()
 %% }
 -type recording_info() :: #{binary() => any()}.
 
@@ -4852,6 +6115,7 @@
 
 %% Example:
 %% start_task_contact_request() :: #{
+%%   <<"Attachments">> => list(task_attachment()),
 %%   <<"Attributes">> => map(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactFlowId">> => string(),
@@ -4919,6 +6183,16 @@
 
 
 %% Example:
+%% list_data_table_primary_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
+%%   <<"RecordIds">> => list(string())
+%% }
+-type list_data_table_primary_values_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_email_addresses_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -4937,6 +6211,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_integration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_attribute_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> := list(any())
+%% }
+-type update_data_table_attribute_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4986,10 +6271,42 @@
 
 
 %% Example:
+%% workspace_association_search_summary() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"WorkspaceArn">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type workspace_association_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% chat_participant_role_config() :: #{
 %%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration())
 %% }
 -type chat_participant_role_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_case_execution_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TestCaseExecutionId">> => string(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type start_test_case_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value())
+%% }
+-type batch_create_data_table_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_test_case_request() :: #{}
+-type delete_test_case_request() :: #{}.
 
 
 %% Example:
@@ -5027,6 +6344,14 @@
 
 
 %% Example:
+%% list_contact_flow_module_aliases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% hierarchy_path() :: #{
 %%   <<"LevelFive">> => hierarchy_group_summary(),
 %%   <<"LevelFour">> => hierarchy_group_summary(),
@@ -5039,6 +6364,7 @@
 
 %% Example:
 %% quick_connect_config() :: #{
+%%   <<"FlowConfig">> => flow_quick_connect_config(),
 %%   <<"PhoneConfig">> => phone_number_quick_connect_config(),
 %%   <<"QueueConfig">> => queue_quick_connect_config(),
 %%   <<"QuickConnectType">> => list(any()),
@@ -5053,6 +6379,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_flow_module_alias_request() :: #{
+%%   <<"ContactFlowModuleVersion">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_contact_flow_module_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5107,6 +6442,13 @@
 
 
 %% Example:
+%% workspace_theme_images() :: #{
+%%   <<"Logo">> => images_logo()
+%% }
+-type workspace_theme_images() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_flow_module_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -5114,6 +6456,21 @@
 %%   <<"State">> => list(any())
 %% }
 -type contact_flow_module_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_pages_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspacePageList">> => list(workspace_page())
+%% }
+-type list_workspace_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_primary_values_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type update_data_table_primary_values_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5126,7 +6483,11 @@
 %%   <<"CalibrationSessionId">> => string(),
 %%   <<"ContactAgentId">> => string(),
 %%   <<"ContactId">> => string(),
+%%   <<"ContactParticipantId">> => string(),
+%%   <<"ContactParticipantRole">> => list(any()),
 %%   <<"EvaluatorArn">> => string(),
+%%   <<"ReviewId">> => string(),
+%%   <<"SamplingJobId">> => string(),
 %%   <<"ScoreAutomaticFail">> => boolean(),
 %%   <<"ScoreNotApplicable">> => boolean(),
 %%   <<"ScorePercentage">> => float()
@@ -5145,6 +6506,10 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type flow_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
 
 
 %% Example:
@@ -5186,6 +6551,7 @@
 %%   <<"Campaign">> => campaign(),
 %%   <<"ContactEvaluations">> => map(),
 %%   <<"InitiationMethod">> => list(any()),
+%%   <<"RingStartTimestamp">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"DisconnectReason">> => string(),
 %%   <<"OutboundStrategy">> => outbound_strategy(),
@@ -5204,6 +6570,7 @@
 %%   <<"LastPausedTimestamp">> => non_neg_integer(),
 %%   <<"ChatMetrics">> => chat_metrics(),
 %%   <<"CustomerId">> => string(),
+%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
 %%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
 %%   <<"QualityMetrics">> => quality_metrics(),
 %%   <<"TaskTemplateInfo">> => task_template_info_v2(),
@@ -5226,9 +6593,20 @@
 %%   <<"Description">> => string(),
 %%   <<"Channel">> => list(any()),
 %%   <<"QueuePriority">> => float(),
+%%   <<"NextContacts">> => list(next_contact_entry()),
 %%   <<"Customer">> => customer()
 %% }
 -type contact() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_data_table_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimeZone">> => string(),
+%%   <<"Values">> := list(data_table_value_evaluation_set())
+%% }
+-type evaluate_data_table_values_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5258,6 +6636,26 @@
 %%   <<"QueueId">> => string()
 %% }
 -type routing_profile_queue_reference() :: #{binary() => any()}.
+
+%% Example:
+%% start_contact_media_processing_response() :: #{}
+-type start_contact_media_processing_response() :: #{}.
+
+
+%% Example:
+%% granular_access_control_configuration() :: #{
+%%   <<"DataTableAccessControlConfiguration">> => data_table_access_control_configuration()
+%% }
+-type granular_access_control_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% global_resiliency_metadata() :: #{
+%%   <<"ActiveRegion">> => string(),
+%%   <<"OriginRegion">> => string(),
+%%   <<"TrafficDistributionGroupId">> => string()
+%% }
+-type global_resiliency_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5352,6 +6750,17 @@
 
 
 %% Example:
+%% search_data_tables_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => data_table_search_criteria(),
+%%   <<"SearchFilter">> => data_table_search_filter()
+%% }
+-type search_data_tables_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% voice_recording_configuration() :: #{
 %%   <<"IvrRecordingTrack">> => list(any()),
 %%   <<"VoiceRecordingTrack">> => list(any())
@@ -5415,6 +6824,14 @@
 
 
 %% Example:
+%% list_data_tables_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_tables_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_view_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ViewVersionSummaryList">> => list(view_version_summary())
@@ -5439,6 +6856,27 @@
 
 
 %% Example:
+%% contact_flow_module_alias_info() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"ContactFlowModuleId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_module_alias_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_delete_value_identifier())
+%% }
+-type batch_delete_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% interval_details() :: #{
 %%   <<"IntervalPeriod">> => list(any()),
 %%   <<"TimeZone">> => string()
@@ -5457,6 +6895,17 @@
 %%   <<"Status">> => list(any())
 %% }
 -type contact_evaluation() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspaces_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => workspace_search_criteria(),
+%%   <<"SearchFilter">> => workspace_search_filter()
+%% }
+-type search_workspaces_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5492,10 +6941,28 @@
 
 
 %% Example:
+%% search_test_cases_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => test_case_search_criteria(),
+%%   <<"SearchFilter">> => test_case_search_filter()
+%% }
+-type search_test_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_routing_profile_agent_availability_timer_request() :: #{
 %%   <<"AgentAvailabilityTimer">> := list(any())
 %% }
 -type update_routing_profile_agent_availability_timer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_batch_association_summary() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type successful_batch_association_summary() :: #{binary() => any()}.
 
 %% Example:
 %% resume_contact_response() :: #{}
@@ -5540,6 +7007,13 @@
 
 
 %% Example:
+%% batch_describe_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value_identifier())
+%% }
+-type batch_describe_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_case_action_definition() :: #{
 %%   <<"Fields">> => list(field_value())
 %% }
@@ -5556,6 +7030,7 @@
 %%   <<"AllowedAccessControlTags">> => map(),
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
 %%   <<"HierarchyRestrictedResources">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
@@ -5590,6 +7065,7 @@
 
 %% Example:
 %% current_metric() :: #{
+%%   <<"MetricId">> => string(),
 %%   <<"Name">> => list(any()),
 %%   <<"Unit">> => list(any())
 %% }
@@ -5628,7 +7104,9 @@
 %%   <<"HoursOfOperationArn">> => string(),
 %%   <<"HoursOfOperationId">> => string(),
 %%   <<"HoursOfOperationOverrideId">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"OverrideType">> => list(any()),
+%%   <<"RecurrenceConfig">> => recurrence_config()
 %% }
 -type hours_of_operation_override() :: #{binary() => any()}.
 
@@ -5638,6 +7116,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormTitle">> => string(),
 %%   <<"EvaluationFormVersion">> => integer(),
 %%   <<"EvaluationId">> => string(),
 %%   <<"EvaluationType">> => list(any()),
@@ -5647,6 +7126,10 @@
 %%   <<"Tags">> => map()
 %% }
 -type evaluation_search_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_page_response() :: #{}
+-type update_workspace_page_response() :: #{}.
 
 
 %% Example:
@@ -5669,6 +7152,14 @@
 %%   <<"RuleId">> => string()
 %% }
 -type rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_evaluation_set() :: #{
+%%   <<"AttributeNames">> => list(string()),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_value_evaluation_set() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5695,10 +7186,41 @@
 
 
 %% Example:
+%% security_profile_item() :: #{
+%%   <<"Id">> => string()
+%% }
+-type security_profile_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_hours_of_operation_override_response() :: #{
 %%   <<"HoursOfOperationOverride">> => hours_of_operation_override()
 %% }
 -type describe_hours_of_operation_override_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"WorkspaceArn">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Theme">> => workspace_theme(),
+%%   <<"Title">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type workspace() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5735,6 +7257,13 @@
 %%   <<"LexBot">> := lex_bot()
 %% }
 -type associate_lex_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_table_attribute_response() :: #{
+%%   <<"Attribute">> => data_table_attribute()
+%% }
+-type describe_data_table_attribute_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_security_profile_request() :: #{}
@@ -5782,6 +7311,14 @@
 
 
 %% Example:
+%% list_workspaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceSummaryList">> => list(workspace_summary())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% quality_metrics() :: #{
 %%   <<"Agent">> => agent_quality_metrics(),
 %%   <<"Customer">> => customer_quality_metrics()
@@ -5819,6 +7356,13 @@
 %% Example:
 %% describe_rule_request() :: #{}
 -type describe_rule_request() :: #{}.
+
+
+%% Example:
+%% describe_test_case_response() :: #{
+%%   <<"TestCase">> => test_case()
+%% }
+-type describe_test_case_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5868,6 +7412,14 @@
 %% }
 -type resume_contact_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% stop_contact_media_processing_request() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type stop_contact_media_processing_request() :: #{binary() => any()}.
+
 %% Example:
 %% associate_traffic_distribution_group_user_response() :: #{}
 -type associate_traffic_distribution_group_user_response() :: #{}.
@@ -5883,6 +7435,13 @@
 %% Example:
 %% update_contact_routing_data_response() :: #{}
 -type update_contact_routing_data_response() :: #{}.
+
+
+%% Example:
+%% delete_data_table_attribute_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type delete_data_table_attribute_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_flow_association_request() :: #{}
@@ -5938,6 +7497,15 @@
 
 
 %% Example:
+%% data_table_delete_value_identifier() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_delete_value_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_status_search_filter() :: #{
 %%   <<"AttributeFilter">> => control_plane_attribute_filter()
 %% }
@@ -5953,6 +7521,10 @@
 %%   <<"TelephonyConfig">> => telephony_config()
 %% }
 -type get_traffic_distribution_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_flow_module_alias_response() :: #{}
+-type delete_contact_flow_module_alias_response() :: #{}.
 
 
 %% Example:
@@ -6122,6 +7694,23 @@
 
 
 %% Example:
+%% execution_record() :: #{
+%%   <<"ObservationId">> => string(),
+%%   <<"Record">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type execution_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_type_condition() :: #{
+%%   <<"ContactFlowType">> => list(any())
+%% }
+-type contact_flow_type_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% sign_in_config() :: #{
 %%   <<"Distributions">> => list(sign_in_distribution())
 %% }
@@ -6184,6 +7773,20 @@
 %% }
 -type current_metric_sort_criteria() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_test_case_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"InitializationData">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_test_case_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_traffic_distribution_response() :: #{}
 -type update_traffic_distribution_response() :: #{}.
@@ -6229,6 +7832,14 @@
 %%   <<"Code">> => string()
 %% }
 -type disconnect_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_cases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_test_cases_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6326,6 +7937,14 @@
 %%   <<"EvaluationId">> => string()
 %% }
 -type start_contact_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case_entry_point() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"VoiceCallEntryPointParameters">> => voice_call_entry_point_parameters()
+%% }
+-type test_case_entry_point() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6458,10 +8077,27 @@
 
 
 %% Example:
+%% list_data_tables_response() :: #{
+%%   <<"DataTableSummaryList">> => list(data_table_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_tables_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_answer_input() :: #{
 %%   <<"Value">> => list()
 %% }
 -type evaluation_answer_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_search_criteria() :: #{
+%%   <<"AndConditions">> => list(workspace_search_criteria()),
+%%   <<"OrConditions">> => list(workspace_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type workspace_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6478,6 +8114,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_default_vocabularies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_active_region_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_active_region_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6513,6 +8156,13 @@
 %%   <<"InstanceId">> := string()
 %% }
 -type update_contact_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_typography() :: #{
+%%   <<"FontFamily">> => font_family()
+%% }
+-type workspace_theme_typography() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6637,6 +8287,14 @@
 
 
 %% Example:
+%% list_workspaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_contact_flows_response() :: #{
 %%   <<"ContactFlowSummaryList">> => list(contact_flow_summary()),
 %%   <<"NextToken">> => string()
@@ -6660,6 +8318,19 @@
 %%   <<"SearchFilter">> => quick_connect_search_filter()
 %% }
 -type search_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_executions_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TestCaseId">> => string(),
+%%   <<"TestCaseName">> => string()
+%% }
+-type list_test_case_executions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6687,6 +8358,15 @@
 %% Example:
 %% delete_quick_connect_request() :: #{}
 -type delete_quick_connect_request() :: #{}.
+
+
+%% Example:
+%% create_contact_flow_module_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"ContactFlowModuleVersion">> := float(),
+%%   <<"Description">> => string()
+%% }
+-type create_contact_flow_module_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6743,6 +8423,15 @@
 
 
 %% Example:
+%% voice_call_entry_point_parameters() :: #{
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"FlowId">> => string(),
+%%   <<"SourcePhoneNumber">> => string()
+%% }
+-type voice_call_entry_point_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% phone_number_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -6751,6 +8440,14 @@
 %%   <<"PhoneNumberType">> => list(any())
 %% }
 -type phone_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type primary_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6874,11 +8571,27 @@
 
 
 %% Example:
+%% recurrence_config() :: #{
+%%   <<"RecurrencePattern">> => recurrence_pattern()
+%% }
+-type recurrence_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% current_metric_data() :: #{
 %%   <<"Metric">> => current_metric(),
 %%   <<"Value">> => float()
 %% }
 -type current_metric_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_views_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Views">> => list(view())
+%% }
+-type search_views_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6927,6 +8640,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"Channel">> => list(any()),
 %%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
 %%   <<"Id">> => string(),
 %%   <<"InitialContactId">> => string(),
 %%   <<"InitiationMethod">> => list(any()),
@@ -6936,7 +8650,8 @@
 %%   <<"QueueInfo">> => contact_search_summary_queue_info(),
 %%   <<"RoutingCriteria">> => routing_criteria(),
 %%   <<"ScheduledTimestamp">> => non_neg_integer(),
-%%   <<"SegmentAttributes">> => map()
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"Tags">> => map()
 %% }
 -type contact_search_summary() :: #{binary() => any()}.
 
@@ -6947,7 +8662,9 @@
 %%   <<"Description">> => string(),
 %%   <<"EffectiveFrom">> := string(),
 %%   <<"EffectiveTill">> := string(),
-%%   <<"Name">> := string()
+%%   <<"Name">> := string(),
+%%   <<"OverrideType">> => list(any()),
+%%   <<"RecurrenceConfig">> => recurrence_config()
 %% }
 -type create_hours_of_operation_override_request() :: #{binary() => any()}.
 
@@ -6989,6 +8706,14 @@
 %% Example:
 %% disassociate_flow_response() :: #{}
 -type disassociate_flow_response() :: #{}.
+
+
+%% Example:
+%% evaluation_form_multi_select_question_option() :: #{
+%%   <<"RefId">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type evaluation_form_multi_select_question_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7104,6 +8829,14 @@
 
 
 %% Example:
+%% list_contact_flow_module_versions_response() :: #{
+%%   <<"ContactFlowModuleVersionSummaryList">> => list(contact_flow_module_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_phone_numbers_v2_response() :: #{
 %%   <<"ListPhoneNumbersSummaryList">> => list(list_phone_numbers_summary()),
 %%   <<"NextToken">> => string()
@@ -7141,6 +8874,7 @@
 %% Example:
 %% metric_v2() :: #{
 %%   <<"MetricFilters">> => list(metric_filter_v2()),
+%%   <<"MetricId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Threshold">> => list(threshold_v2())
 %% }
@@ -7181,6 +8915,7 @@
 %%   <<"QueueId">> => string(),
 %%   <<"References">> => map(),
 %%   <<"RelatedContactId">> => string(),
+%%   <<"RingTimeoutInSeconds">> => integer(),
 %%   <<"SourcePhoneNumber">> => string(),
 %%   <<"TrafficType">> => list(any())
 %% }
@@ -7243,7 +8978,9 @@
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"Queues">> => list(string()),
 %%   <<"RoutingProfiles">> => list(string()),
-%%   <<"RoutingStepExpressions">> => list(string())
+%%   <<"RoutingStepExpressions">> => list(string()),
+%%   <<"Subtypes">> => list(string()),
+%%   <<"ValidationTestTypes">> => list(string())
 %% }
 -type filters() :: #{binary() => any()}.
 
@@ -7302,6 +9039,17 @@
 
 
 %% Example:
+%% data_table_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type data_table_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_single_select_question_properties() :: #{
 %%   <<"Automation">> => evaluation_form_single_select_question_automation(),
 %%   <<"DisplayAs">> => list(any()),
@@ -7344,6 +9092,20 @@
 
 
 %% Example:
+%% palette_header() :: #{
+%%   <<"Background">> => string(),
+%%   <<"InvertActionsColors">> => boolean(),
+%%   <<"Text">> => string(),
+%%   <<"TextHover">> => string()
+%% }
+-type palette_header() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_table_response() :: #{}
+-type delete_data_table_response() :: #{}.
+
+
+%% Example:
 %% send_outbound_email_request() :: #{
 %%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
 %%   <<"ClientToken">> => string(),
@@ -7354,6 +9116,14 @@
 %%   <<"TrafficType">> := list(any())
 %% }
 -type send_outbound_email_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_pages_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workspace_pages_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7370,6 +9140,14 @@
 %% Example:
 %% disassociate_traffic_distribution_group_user_response() :: #{}
 -type disassociate_traffic_distribution_group_user_response() :: #{}.
+
+
+%% Example:
+%% create_test_case_response() :: #{
+%%   <<"TestCaseArn">> => string(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type create_test_case_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7447,6 +9225,14 @@
 
 
 %% Example:
+%% next_contact_entry() :: #{
+%%   <<"NextContactMetadata">> => list(),
+%%   <<"Type">> => list(any())
+%% }
+-type next_contact_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_details() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string()
@@ -7505,6 +9291,13 @@
 %%   <<"MatchType">> => list(any())
 %% }
 -type search_contacts_additional_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_target_configuration() :: #{
+%%   <<"ContactInteractionType">> => list(any())
+%% }
+-type evaluation_form_target_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7587,13 +9380,29 @@
 
 
 %% Example:
+%% ai_agent_info() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiAgentVersionId">> => string(),
+%%   <<"AiUseCase">> => list(any())
+%% }
+-type ai_agent_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_flow_module_version_request() :: #{}
+-type delete_contact_flow_module_version_request() :: #{}.
+
+
+%% Example:
 %% evaluation_metadata() :: #{
 %%   <<"Acknowledgement">> => evaluation_acknowledgement(),
 %%   <<"AutoEvaluation">> => auto_evaluation_details(),
 %%   <<"CalibrationSessionId">> => string(),
 %%   <<"ContactAgentId">> => string(),
 %%   <<"ContactId">> => string(),
+%%   <<"ContactParticipant">> => evaluation_contact_participant(),
 %%   <<"EvaluatorArn">> => string(),
+%%   <<"Review">> => evaluation_review_metadata(),
+%%   <<"SamplingJobId">> => string(),
 %%   <<"Score">> => evaluation_score()
 %% }
 -type evaluation_metadata() :: #{binary() => any()}.
@@ -7607,6 +9416,15 @@
 %%   <<"RoutingProfileManualAssignmentQueueConfigSummaryList">> => list(routing_profile_manual_assignment_queue_config_summary())
 %% }
 -type list_routing_profile_manual_assignment_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspace_associations_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceAssociations">> => list(workspace_association_search_summary())
+%% }
+-type search_workspace_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7624,6 +9442,16 @@
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_form_scoring_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"RecordId">> => string()
+%% }
+-type batch_create_data_table_value_success_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7682,6 +9510,25 @@
 %%   <<"AssociationId">> => string()
 %% }
 -type associate_security_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_describe_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_page_request() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"NewPage">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Slug">> => string()
+%% }
+-type update_workspace_page_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7788,6 +9635,18 @@
 
 
 %% Example:
+%% contact_flow_module_alias_summary() :: #{
+%%   <<"AliasDescription">> => string(),
+%%   <<"AliasId">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_module_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_queue_quick_connects_request() :: #{
 %%   <<"QuickConnectIds">> := list(string())
 %% }
@@ -7820,6 +9679,10 @@
 %% disassociate_email_address_alias_response() :: #{}
 -type disassociate_email_address_alias_response() :: #{}.
 
+%% Example:
+%% create_workspace_page_response() :: #{}
+-type create_workspace_page_response() :: #{}.
+
 
 %% Example:
 %% attachment_reference() :: #{
@@ -7829,6 +9692,13 @@
 %%   <<"Value">> => string()
 %% }
 -type attachment_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type test_case_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7879,6 +9749,17 @@
 
 
 %% Example:
+%% recurrence_pattern() :: #{
+%%   <<"ByMonth">> => list(integer()),
+%%   <<"ByMonthDay">> => list(integer()),
+%%   <<"ByWeekdayOccurrence">> => list(integer()),
+%%   <<"Frequency">> => list(any()),
+%%   <<"Interval">> => integer()
+%% }
+-type recurrence_pattern() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_routing_profile_response() :: #{
 %%   <<"RoutingProfile">> => routing_profile()
 %% }
@@ -7908,6 +9789,14 @@
 
 
 %% Example:
+%% associate_workspace_response() :: #{
+%%   <<"FailedList">> => list(failed_batch_association_summary()),
+%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% }
+-type associate_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_item_enablement_configuration() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Condition">> => evaluation_form_item_enablement_condition(),
@@ -7923,8 +9812,10 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactFlowId">> := string(),
 %%   <<"CustomerId">> => string(),
+%%   <<"DisconnectOnCustomerExit">> => list(list(any())()),
 %%   <<"InitialMessage">> => chat_message(),
 %%   <<"InstanceId">> := string(),
+%%   <<"ParticipantConfiguration">> => participant_configuration(),
 %%   <<"ParticipantDetails">> := participant_details(),
 %%   <<"PersistentChat">> => persistent_chat(),
 %%   <<"RelatedContactId">> => string(),
@@ -7975,6 +9866,13 @@
 
 
 %% Example:
+%% data_table_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type data_table_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_search_criteria() :: #{
 %%   <<"AndConditions">> => list(prompt_search_criteria()),
 %%   <<"OrConditions">> => list(prompt_search_criteria()),
@@ -7982,14 +9880,20 @@
 %% }
 -type prompt_search_criteria() :: #{binary() => any()}.
 
+%% Example:
+%% update_test_case_response() :: #{}
+-type update_test_case_response() :: #{}.
+
 
 %% Example:
 %% search_criteria() :: #{
+%%   <<"ActiveRegions">> => list(string()),
 %%   <<"AdditionalTimeRange">> => search_contacts_additional_time_range(),
 %%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
 %%   <<"AgentIds">> => list(string()),
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"ContactAnalysis">> => contact_analysis(),
+%%   <<"ContactTags">> => control_plane_tag_filter(),
 %%   <<"InitiationMethods">> => list(list(any())()),
 %%   <<"Name">> => name_criteria(),
 %%   <<"QueueIds">> => list(string()),
@@ -8082,6 +9986,14 @@
 
 
 %% Example:
+%% list_security_profile_flow_modules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_contact_with_user_request() :: #{
 %%   <<"UserId">> := string()
 %% }
@@ -8105,6 +10017,7 @@
 %%   <<"AutoEvaluationEnabled">> => boolean(),
 %%   <<"AutoEvaluationStatus">> => list(any()),
 %%   <<"CalibrationSessionId">> => string(),
+%%   <<"ContactParticipant">> => evaluation_contact_participant(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
@@ -8160,6 +10073,14 @@
 
 
 %% Example:
+%% task_attachment() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"S3Url">> => string()
+%% }
+-type task_attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_queues_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
@@ -8199,6 +10120,14 @@
 %% describe_quick_connect_request() :: #{}
 -type describe_quick_connect_request() :: #{}.
 
+
+%% Example:
+%% evaluation_review_notification_recipient() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => evaluation_review_notification_recipient_value()
+%% }
+-type evaluation_review_notification_recipient() :: #{binary() => any()}.
+
 %% Example:
 %% delete_predefined_attribute_request() :: #{}
 -type delete_predefined_attribute_request() :: #{}.
@@ -8210,6 +10139,26 @@
 %%   <<"UserId">> => string()
 %% }
 -type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> => string(),
+%%   <<"ValueLockLevel">> => list(any()),
+%%   <<"Version">> => string(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type data_table() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8233,11 +10182,13 @@
 %% evaluation_form_search_summary() :: #{
 %%   <<"ActiveVersion">> => integer(),
 %%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"ContactInteractionType">> => list(any()),
 %%   <<"CreatedBy">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormLanguage">> => list(any()),
 %%   <<"LastActivatedBy">> => string(),
 %%   <<"LastActivatedTime">> => non_neg_integer(),
 %%   <<"LastModifiedBy">> => string(),
@@ -8347,6 +10298,29 @@
 
 
 %% Example:
+%% describe_contact_flow_module_alias_response() :: #{
+%%   <<"ContactFlowModuleAlias">> => contact_flow_module_alias_info()
+%% }
+-type describe_contact_flow_module_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspaces_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Workspaces">> => list(workspace_search_summary())
+%% }
+-type search_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parent_hours_of_operation_config() :: #{
+%%   <<"HoursOfOperationId">> => string()
+%% }
+-type parent_hours_of_operation_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% hierarchy_structure_update() :: #{
 %%   <<"LevelFive">> => hierarchy_level_update(),
 %%   <<"LevelFour">> => hierarchy_level_update(),
@@ -8374,6 +10348,15 @@
 
 
 %% Example:
+%% evaluation_review_request_comment() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer()
+%% }
+-type evaluation_review_request_comment() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt() :: #{
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
@@ -8395,6 +10378,20 @@
 %%   <<"TurnControlUrl">> => string()
 %% }
 -type media_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_workspace_request() :: #{
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type disassociate_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_workspace_request() :: #{
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type associate_workspace_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8470,6 +10467,50 @@
 %% }
 -type date_reference() :: #{binary() => any()}.
 
+%% Example:
+%% delete_workspace_page_request() :: #{}
+-type delete_workspace_page_request() :: #{}.
+
+
+%% Example:
+%% evaluation_form_multi_select_question_properties() :: #{
+%%   <<"Automation">> => evaluation_form_multi_select_question_automation(),
+%%   <<"DisplayAs">> => list(any()),
+%%   <<"Options">> => list(evaluation_form_multi_select_question_option())
+%% }
+-type evaluation_form_multi_select_question_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> := string(),
+%%   <<"ValueLockLevel">> := list(any())
+%% }
+-type create_data_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspace_associations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => workspace_association_search_criteria(),
+%%   <<"SearchFilter">> => workspace_association_search_filter()
+%% }
+-type search_workspace_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_alias_response() :: #{
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_contact_flow_module_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_contact_evaluations_request() :: #{
@@ -8483,6 +10524,22 @@
 
 
 %% Example:
+%% disassociate_workspace_response() :: #{
+%%   <<"FailedList">> => list(failed_batch_association_summary()),
+%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% }
+-type disassociate_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_item() :: #{
+%%   <<"Source">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type media_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_queue_response() :: #{
 %%   <<"QueueArn">> => string(),
 %%   <<"QueueId">> => string()
@@ -8491,11 +10548,28 @@
 
 
 %% Example:
+%% update_data_table_primary_values_request() :: #{
+%%   <<"LockVersion">> := data_table_lock_version(),
+%%   <<"NewPrimaryValues">> := list(primary_value()),
+%%   <<"PrimaryValues">> := list(primary_value())
+%% }
+-type update_data_table_primary_values_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_email_address_metadata_response() :: #{
 %%   <<"EmailAddressArn">> => string(),
 %%   <<"EmailAddressId">> => string()
 %% }
 -type update_email_address_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_data_table_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> => list(data_table_evaluated_value())
+%% }
+-type evaluate_data_table_values_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8569,6 +10643,13 @@
 
 
 %% Example:
+%% data_table_access_control_configuration() :: #{
+%%   <<"PrimaryAttributeAccessControlConfiguration">> => primary_attribute_access_control_configuration_item()
+%% }
+-type data_table_access_control_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_contact_flow_response() :: #{
 %%   <<"ContactFlowArn">> => string(),
 %%   <<"ContactFlowId">> => string(),
@@ -8615,6 +10696,27 @@
 
 
 %% Example:
+%% create_workspace_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Theme">> => workspace_theme(),
+%%   <<"Title">> => string()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_hour() :: #{
+%%   <<"End">> => override_time_slice(),
+%%   <<"OperationalStatus">> => list(any()),
+%%   <<"OverrideName">> => string(),
+%%   <<"Start">> => override_time_slice()
+%% }
+-type override_hour() :: #{binary() => any()}.
+
+
+%% Example:
 %% suspend_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"ContactRecordingType">> => list(any()),
@@ -8656,7 +10758,10 @@
 %%   <<"EvaluationFormId">> => string(),
 %%   <<"EvaluationFormVersion">> => integer(),
 %%   <<"Items">> => list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
 %%   <<"Title">> => string()
 %% }
 -type evaluation_form_content() :: #{binary() => any()}.
@@ -8668,7 +10773,8 @@
 
 %% Example:
 %% update_contact_flow_module_content_request() :: #{
-%%   <<"Content">> := string()
+%%   <<"Content">> => string(),
+%%   <<"Settings">> => string()
 %% }
 -type update_contact_flow_module_content_request() :: #{binary() => any()}.
 
@@ -8682,6 +10788,17 @@
 
 
 %% Example:
+%% create_data_table_attribute_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> := list(any())
+%% }
+-type create_data_table_attribute_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% instance_storage_config() :: #{
 %%   <<"AssociationId">> => string(),
 %%   <<"KinesisFirehoseConfig">> => kinesis_firehose_config(),
@@ -8691,6 +10808,20 @@
 %%   <<"StorageType">> => list(any())
 %% }
 -type instance_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_workspace_media_request() :: #{}
+-type list_workspace_media_request() :: #{}.
+
+
+%% Example:
+%% record_primary_value() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string()
+%% }
+-type record_primary_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8803,6 +10934,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type associate_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    conditional_operation_failed_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type associate_instance_storage_config_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -8860,6 +11000,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type associate_security_profiles_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    conditional_operation_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type associate_traffic_distribution_group_user_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -8875,9 +11024,46 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type associate_workspace_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type batch_associate_analytics_data_set_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_create_data_table_value_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type batch_delete_data_table_value_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type batch_describe_data_table_value_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -8910,6 +11096,15 @@
     access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_update_data_table_value_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type claim_phone_number_errors() ::
@@ -8969,6 +11164,25 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type create_contact_flow_module_alias_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_contact_flow_module_version_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type create_contact_flow_version_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -8976,6 +11190,28 @@
     access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_data_table_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type create_data_table_attribute_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type create_email_address_errors() ::
@@ -9003,6 +11239,7 @@
     limit_exceeded_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -9124,6 +11361,19 @@
     internal_service_exception() | 
     property_validation_exception().
 
+-type create_test_case_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    invalid_test_case_exception().
+
 -type create_traffic_distribution_group_errors() ::
     resource_conflict_exception() | 
     resource_not_ready_exception() | 
@@ -9189,6 +11439,29 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type create_workspace_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_workspace_page_errors() ::
+    resource_conflict_exception() | 
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type deactivate_evaluation_form_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -9226,12 +11499,46 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type delete_contact_flow_module_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_contact_flow_module_version_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type delete_contact_flow_version_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_data_table_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type delete_data_table_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type delete_email_address_errors() ::
@@ -9343,6 +11650,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type delete_test_case_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type delete_traffic_distribution_group_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -9397,6 +11712,30 @@
     internal_service_exception() | 
     resource_in_use_exception().
 
+-type delete_workspace_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_workspace_media_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_workspace_page_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type describe_agent_status_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -9433,6 +11772,30 @@
     contact_flow_not_published_exception().
 
 -type describe_contact_flow_module_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_contact_flow_module_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_data_table_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_data_table_attribute_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -9543,6 +11906,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type describe_test_case_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type describe_traffic_distribution_group_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -9586,6 +11957,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type describe_workspace_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type disassociate_analytics_data_set_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -9619,6 +11998,14 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    conditional_operation_failed_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -9672,6 +12059,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type disassociate_security_profiles_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    conditional_operation_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type disassociate_traffic_distribution_group_user_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -9687,7 +12083,23 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type disassociate_workspace_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type dismiss_user_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type evaluate_data_table_values_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -9780,6 +12192,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type get_test_case_execution_summary_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type get_traffic_distribution_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -9792,6 +12212,13 @@
     idempotency_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type import_workspace_media_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -9843,9 +12270,32 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type list_child_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_contact_evaluations_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_flow_module_aliases_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_flow_module_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -9879,10 +12329,49 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type list_data_table_attributes_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_data_table_primary_values_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_data_table_values_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_data_tables_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_default_vocabularies_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
+    internal_service_exception().
+
+-type list_entity_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_service_exception().
 
 -type list_evaluation_form_versions_errors() ::
@@ -10056,6 +12545,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type list_security_profile_flow_modules_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_security_profile_permissions_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -10080,6 +12576,30 @@
 -type list_task_templates_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_test_case_execution_records_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_test_case_executions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_test_cases_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10140,6 +12660,30 @@
     too_many_requests_exception() | 
     internal_service_exception().
 
+-type list_workspace_media_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_workspace_pages_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_workspaces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type monitor_contact_errors() ::
     throttling_exception() | 
     idempotency_exception() | 
@@ -10196,6 +12740,7 @@
     internal_service_exception().
 
 -type resume_contact_recording_errors() ::
+    invalid_active_region_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10235,6 +12780,13 @@
     internal_service_exception().
 
 -type search_contacts_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_data_tables_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -10320,6 +12872,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type search_test_cases_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type search_user_hierarchy_groups_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -10334,10 +12894,34 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type search_views_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type search_vocabularies_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
+    internal_service_exception().
+
+-type search_workspace_associations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_workspaces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_service_exception().
 
 -type send_chat_integration_event_errors() ::
@@ -10379,7 +12963,17 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type start_contact_media_processing_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type start_contact_recording_errors() ::
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -10444,6 +13038,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type start_test_case_execution_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type start_web_r_t_c_contact_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
@@ -10452,19 +13055,37 @@
     internal_service_exception().
 
 -type stop_contact_errors() ::
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
     contact_not_found_exception().
 
+-type stop_contact_media_processing_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type stop_contact_recording_errors() ::
+    invalid_active_region_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
 -type stop_contact_streaming_errors() ::
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type stop_test_case_execution_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10477,12 +13098,14 @@
     internal_service_exception().
 
 -type suspend_contact_recording_errors() ::
+    invalid_active_region_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
 -type tag_contact_errors() ::
     throttling_exception() | 
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -10506,6 +13129,7 @@
 
 -type untag_contact_errors() ::
     throttling_exception() | 
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -10536,6 +13160,7 @@
 
 -type update_contact_errors() ::
     throttling_exception() | 
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
@@ -10544,6 +13169,7 @@
     internal_service_exception().
 
 -type update_contact_attributes_errors() ::
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -10568,6 +13194,16 @@
     duplicate_resource_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_flow_module_alias_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    conditional_operation_failed_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10600,6 +13236,7 @@
 -type update_contact_routing_data_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
+    invalid_active_region_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
@@ -10611,6 +13248,36 @@
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_data_table_attribute_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type update_data_table_metadata_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type update_data_table_primary_values_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type update_email_address_metadata_errors() ::
@@ -10828,6 +13495,16 @@
     internal_service_exception() | 
     property_validation_exception().
 
+-type update_test_case_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    invalid_test_case_exception().
+
 -type update_traffic_distribution_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -10913,6 +13590,41 @@
     internal_service_exception() | 
     resource_in_use_exception().
 
+-type update_workspace_metadata_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_workspace_page_errors() ::
+    resource_conflict_exception() | 
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_workspace_theme_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_workspace_visibility_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -10920,9 +13632,8 @@
 %% @doc Activates an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% After the
-%% evaluation form is activated, it is available to start new evaluations
-%% based on the form.
+%% After the evaluation form is
+%% activated, it is available to start new evaluations based on the form.
 -spec activate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), activate_evaluation_form_request()) ->
     {ok, activate_evaluation_form_response(), tuple()} |
     {error, any()} |
@@ -10959,7 +13670,8 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 %% @doc Associates the specified dataset for a Amazon Connect instance with
 %% the target account.
 %%
-%% You can associate only one dataset in a single call.
+%% You can associate
+%% only one dataset in a single call.
 -spec associate_analytics_data_set(aws_client:aws_client(), binary() | list(), associate_analytics_data_set_request()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
@@ -11034,8 +13746,8 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Amazon Lex
-%% or Amazon Lex V2 bot.
+%% Amazon Lex or Amazon Lex V2
+%% bot.
 -spec associate_bot(aws_client:aws_client(), binary() | list(), associate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11078,38 +13790,38 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 %% Programmatically assign queued contacts to available users.
 %%
 %% Leverage the IAM context key `connect:PreferredUserArn' to restrict
-%% contact
-%% association to specific preferred user.
+%% contact association to specific
+%% preferred user.
 %%
 %% Important things to know
 %%
 %% Use this API with chat, email, and task contacts. It does not support
-%% voice
-%% contacts.
+%% voice contacts.
 %%
 %% Use it to associate contacts with users regardless of their current state,
-%% including
-%% custom states. Ensure your application logic accounts for user
-%% availability before making
+%% including custom states. Ensure
+%% your application logic accounts for user availability before making
 %% associations.
 %%
 %% It honors the IAM context key `connect:PreferredUserArn' to prevent
-%% unauthorized contact associations.
+%% unauthorized contact
+%% associations.
 %%
 %% It respects the IAM context key `connect:PreferredUserArn' to enforce
-%% authorization controls and prevent unauthorized contact associations.
-%% Verify that your IAM
-%% policies are properly configured to support your intended use cases.
+%% authorization controls and
+%% prevent unauthorized contact associations. Verify that your IAM policies
+%% are properly configured to support your
+%% intended use cases.
 %%
 %% The service quota Queues per routing profile per instance applies to
-%% manually assigned queues, too. For more information about this quota, see
-%% Amazon Connect quotas:
+%% manually assigned
+%% queues, too. For more information about this quota, see Amazon Connect
+%% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec associate_contact_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_contact_with_user_request()) ->
     {ok, associate_contact_with_user_response(), tuple()} |
     {error, any()} |
@@ -11145,8 +13857,9 @@ associate_contact_with_user(Client, ContactId, InstanceId, Input0, Options0) ->
 
 %% @doc Associates an existing vocabulary as the default.
 %%
-%% Contact Lens for Amazon Connect uses the vocabulary in post-call
-%% and real-time analysis sessions for the given language.
+%% Contact Lens for Amazon Connect uses the vocabulary in post-call and
+%% real-time
+%% analysis sessions for the given language.
 -spec associate_default_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), associate_default_vocabulary_request()) ->
     {ok, associate_default_vocabulary_response(), tuple()} |
     {error, any()} |
@@ -11181,42 +13894,40 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an email address alias with an existing email address in
-%% an Amazon Connect
-%% instance.
+%% an Amazon Connect instance.
 %%
-%% This creates a forwarding relationship where emails sent to the alias
-%% email address are
-%% automatically forwarded to the primary email address.
+%% This creates
+%% a forwarding relationship where emails sent to the alias email address are
+%% automatically forwarded to the primary
+%% email address.
 %%
 %% Use cases
 %%
 %% Following are common uses cases for this API:
 %%
 %% Unified customer support: Create multiple entry points (for example,
-%% support@example.com,
-%% help@example.com, customercare@example.com) that all forward to a single
-%% agent queue for
+%% support@example.com, help@example.com, customercare@example.com) that all
+%% forward to a single agent queue for
 %% streamlined management.
 %%
 %% Department consolidation: Forward emails from legacy department addresses
-%% (for example,
-%% sales@example.com, info@example.com) to a centralized customer service
-%% email during
-%% organizational restructuring.
+%% (for example, sales@example.com, info@example.com) to a centralized
+%% customer service email during organizational
+%% restructuring.
 %%
 %% Brand management: Enable you to use familiar brand-specific email
-%% addresses that forward
-%% to the appropriate Amazon Connect instance email address.
+%% addresses
+%% that forward to the appropriate Amazon Connect instance email address.
 %%
 %% Important things to know
 %%
 %% Each email address can have a maximum of one alias. You cannot create
-%% multiple aliases for
-%% the same email address.
+%% multiple aliases for the same email
+%% address.
 %%
 %% If the alias email address already receives direct emails, it continues to
-%% receive direct
-%% emails plus forwarded emails.
+%% receive direct emails plus
+%% forwarded emails.
 %%
 %% You cannot chain email aliases together (that is, create an alias of an
 %% alias).
@@ -11233,16 +13944,15 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 %%
 %% The status of the forwarding configuration.
 %%
-%% Endpoints: See
-%% Amazon Connect endpoints and quotas:
+%% Endpoints: See Amazon Connect endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 %%
 %% Related operations
 %%
 %% DisassociateEmailAddressAlias:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateEmailAddressAlias.html:
-%% Removes the alias association between two email
-%% addresses in an Amazon Connect instance.
+%% Removes the alias association between two email addresses in an Amazon
+%% Connect instance.
 %%
 %% DescribeEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
@@ -11254,18 +13964,15 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 %%
 %% CreateEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEmailAddress.html:
-%% Create new email addresses that can participate in alias
-%% relationships.
+%% Create new email addresses that can participate in alias relationships.
 %%
 %% DeleteEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEmailAddress.html:
-%% Remove email addresses (automatically removes any alias
-%% relationships).
+%% Remove email addresses (automatically removes any alias relationships).
 %%
 %% UpdateEmailAddressMetadata:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEmailAddressMetadata.html:
-%% Modify email address properties (does not affect alias
-%% relationships).
+%% Modify email address properties (does not affect alias relationships).
 -spec associate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), associate_email_address_alias_request()) ->
     {ok, associate_email_address_alias_response(), tuple()} |
     {error, any()} |
@@ -11333,20 +14040,60 @@ associate_flow(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Associates a set of hours of operations with another hours of
+%% operation.
+%%
+%% Refer to Administrator Guide here :
+%% https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html
+%% for more information on inheriting overrides from parent hours of
+%% operation(s).
+-spec associate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), associate_hours_of_operations_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_hours_of_operations_errors(), tuple()}.
+associate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input) ->
+    associate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input, []).
+
+-spec associate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), associate_hours_of_operations_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_hours_of_operations_errors(), tuple()}.
+associate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/associate-hours"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
 %% Associates a storage resource type for the first time. You can only
-%% associate one type of
-%% storage configuration in a single call. This means, for example, that you
-%% can't define an
-%% instance with multiple S3 buckets for storing chat transcripts.
+%% associate one type of storage configuration
+%% in a single call. This means, for example, that you can't define an
+%% instance with multiple S3 buckets for storing
+%% chat transcripts.
 %%
 %% This API does not create a resource that doesn't exist. It only
-%% associates it to the
-%% instance. Ensure that the resource being specified in the storage
-%% configuration, like an S3
-%% bucket, exists when being used for association.
+%% associates it to the instance. Ensure that the
+%% resource being specified in the storage configuration, like an S3 bucket,
+%% exists when being used for
+%% association.
 -spec associate_instance_storage_config(aws_client:aws_client(), binary() | list(), associate_instance_storage_config_request()) ->
     {ok, associate_instance_storage_config_response(), tuple()} |
     {error, any()} |
@@ -11384,8 +14131,7 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Lambda
-%% function.
+%% Lambda function.
 -spec associate_lambda_function(aws_client:aws_client(), binary() | list(), associate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11423,8 +14169,8 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Amazon Lex
-%% V1 bot. This API only supports the association of Amazon Lex V1 bots.
+%% Amazon Lex V1 bot. This API
+%% only supports the association of Amazon Lex V1 bots.
 -spec associate_lex_bot(aws_client:aws_client(), binary() | list(), associate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11462,19 +14208,16 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 %% instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling this API using an instance in the
-%% Amazon Web Services Region where the traffic distribution group was
-%% created, you can use either a full phone number
-%% ARN or UUID value for the `PhoneNumberId' URI request parameter.
-%% However, if the
-%% number is claimed to a traffic distribution group and you are calling this
-%% API using an instance in the alternate
-%% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN.
-%% If a UUID is provided
+%% calling this API using an instance in the Amazon Web Services Region where
+%% the traffic distribution group was created, you can use either a full
+%% phone number ARN or UUID value for the
+%% `PhoneNumberId' URI request parameter. However, if the number is
+%% claimed to a traffic distribution group and you are calling
+%% this API using an instance in the alternate Amazon Web Services Region
+%% associated with the traffic distribution group, you must provide a
+%% full phone number ARN. If a UUID is provided
 %% in
-%% this scenario, you will receive a
-%% `ResourceNotFoundException'.
+%% this scenario, you will receive a `ResourceNotFoundException'.
 -spec associate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), associate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11613,10 +14356,46 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Associate security profiles with an Entity in an Amazon Connect
+%% instance.
+-spec associate_security_profiles(aws_client:aws_client(), binary() | list(), associate_security_profiles_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_security_profiles_errors(), tuple()}.
+associate_security_profiles(Client, InstanceId, Input) ->
+    associate_security_profiles(Client, InstanceId, Input, []).
+
+-spec associate_security_profiles(aws_client:aws_client(), binary() | list(), associate_security_profiles_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_security_profiles_errors(), tuple()}.
+associate_security_profiles(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/associate-security-profiles/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates an agent with a traffic distribution group.
 %%
-%% This API can be called only in the
-%% Region where the traffic distribution group is created.
+%% This API can be called only in the Region where the traffic distribution
+%% group
+%% is created.
 -spec associate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -11684,11 +14463,47 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Associates a workspace with one or more users or routing profiles,
+%% allowing them to access the workspace's
+%% configured views and pages.
+-spec associate_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), associate_workspace_request()) ->
+    {ok, associate_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, associate_workspace_errors(), tuple()}.
+associate_workspace(Client, InstanceId, WorkspaceId, Input) ->
+    associate_workspace(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec associate_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), associate_workspace_request(), proplists:proplist()) ->
+    {ok, associate_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, associate_workspace_errors(), tuple()}.
+associate_workspace(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates a list of analytics datasets for a given Amazon Connect
-%% instance to a target
-%% account.
+%% instance to a target account.
 %%
-%% You can associate multiple datasets in a single call.
+%% You can
+%% associate multiple datasets in a single call.
 -spec batch_associate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_associate_analytics_data_set_request()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
@@ -11722,10 +14537,135 @@ batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates values for attributes in a data table.
+%%
+%% The value may be a default or it may be associated with a primary
+%% value. The value must pass all customer defined validation as well as the
+%% default validation for the value type. The
+%% operation must conform to Batch Operation API Standards. Although the
+%% standard specifies that successful and failed
+%% entities are listed separately in the response, authorization fails if any
+%% primary values or attributes are
+%% unauthorized. The combination of primary values and the attribute name
+%% serve as the identifier for the individual
+%% item request.
+-spec batch_create_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_data_table_value_request()) ->
+    {ok, batch_create_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_data_table_value_errors(), tuple()}.
+batch_create_data_table_value(Client, DataTableId, InstanceId, Input) ->
+    batch_create_data_table_value(Client, DataTableId, InstanceId, Input, []).
+
+-spec batch_create_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_data_table_value_request(), proplists:proplist()) ->
+    {ok, batch_create_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_data_table_value_errors(), tuple()}.
+batch_create_data_table_value(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/create"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes multiple values from a data table.
+%%
+%% API users may delete values at any time. When deletion is requested
+%% from the admin website, a warning is shown alerting the user of the most
+%% recent time the attribute and its values
+%% were accessed. System managed values are not deletable by customers.
+-spec batch_delete_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_data_table_value_request()) ->
+    {ok, batch_delete_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_data_table_value_errors(), tuple()}.
+batch_delete_data_table_value(Client, DataTableId, InstanceId, Input) ->
+    batch_delete_data_table_value(Client, DataTableId, InstanceId, Input, []).
+
+-spec batch_delete_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_data_table_value_request(), proplists:proplist()) ->
+    {ok, batch_delete_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_data_table_value_errors(), tuple()}.
+batch_delete_data_table_value(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple values from a data table without evaluating
+%% expressions.
+%%
+%% Returns the raw stored values along
+%% with metadata such as lock versions and modification timestamps.
+%% &quot;Describe&quot; is a deprecated term but is allowed to
+%% maintain consistency with existing operations.
+-spec batch_describe_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_describe_data_table_value_request()) ->
+    {ok, batch_describe_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_describe_data_table_value_errors(), tuple()}.
+batch_describe_data_table_value(Client, DataTableId, InstanceId, Input) ->
+    batch_describe_data_table_value(Client, DataTableId, InstanceId, Input, []).
+
+-spec batch_describe_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_describe_data_table_value_request(), proplists:proplist()) ->
+    {ok, batch_describe_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_describe_data_table_value_errors(), tuple()}.
+batch_describe_data_table_value(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/describe"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes a list of analytics datasets associated with a given Amazon
 %% Connect instance.
 %%
-%% You can disassociate multiple datasets in a single call.
+%% You can disassociate
+%% multiple datasets in a single call.
 -spec batch_disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_disassociate_analytics_data_set_request()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
     {error, any()} |
@@ -11762,8 +14702,8 @@ batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 %% @doc Allows you to retrieve metadata about multiple attached files on an
 %% associated resource.
 %%
-%% Each attached file provided in the input list must be associated with the
-%% input
+%% Each attached file
+%% provided in the input list must be associated with the input
 %% AssociatedResourceArn.
 -spec batch_get_attached_file_metadata(aws_client:aws_client(), binary() | list(), batch_get_attached_file_metadata_request()) ->
     {ok, batch_get_attached_file_metadata_response(), tuple()} |
@@ -11835,19 +14775,18 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
 
 %% @doc
 %% Only the Amazon Connect outbound campaigns service principal is allowed to
-%% assume a
-%% role in your account and call this API.
+%% assume a role in your account
+%% and call this API.
 %%
 %% Allows you to create a batch of contacts in Amazon Connect. The outbound
-%% campaigns
-%% capability ingests dial requests via the PutDialRequestBatch:
+%% campaigns capability ingests dial
+%% requests via the PutDialRequestBatch:
 %% https://docs.aws.amazon.com/connect-outbound/latest/APIReference/API_PutDialRequestBatch.html
-%% API. It then uses BatchPutContact to create contacts corresponding
-%% to those dial requests. If agents are available, the dial requests are
-%% dialed out, which results
-%% in a voice call. The resulting voice call uses the same contactId that was
-%% created by
-%% BatchPutContact.
+%% API. It then uses BatchPutContact to create contacts corresponding to
+%% those dial
+%% requests. If agents are available, the dial requests are dialed out, which
+%% results in a voice call. The resulting
+%% voice call uses the same contactId that was created by BatchPutContact.
 -spec batch_put_contact(aws_client:aws_client(), binary() | list(), batch_put_contact_request()) ->
     {ok, batch_put_contact_response(), tuple()} |
     {error, any()} |
@@ -11881,29 +14820,70 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Claims an available phone number to your Amazon Connect instance or
-%% traffic distribution
-%% group.
+%% @doc Updates multiple data table values using all properties from
+%% BatchCreateDataTableValue.
 %%
-%% You can call this API only in the same Amazon Web Services Region where
-%% the Amazon Connect instance or traffic distribution group was created.
+%% System managed values
+%% are not modifiable by customers. The operation requires proper lock
+%% versions to prevent concurrent modification
+%% conflicts.
+-spec batch_update_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_data_table_value_request()) ->
+    {ok, batch_update_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_data_table_value_errors(), tuple()}.
+batch_update_data_table_value(Client, DataTableId, InstanceId, Input) ->
+    batch_update_data_table_value(Client, DataTableId, InstanceId, Input, []).
+
+-spec batch_update_data_table_value(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_data_table_value_request(), proplists:proplist()) ->
+    {ok, batch_update_data_table_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_data_table_value_errors(), tuple()}.
+batch_update_data_table_value(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Claims an available phone number to your Amazon Connect instance or
+%% traffic distribution group.
+%%
+%% You can call
+%% this API only in the same Amazon Web Services Region where the Amazon
+%% Connect instance or traffic distribution group was
+%% created.
 %%
 %% For more information about how to use this operation, see Claim a phone
-%% number in your
-%% country:
+%% number in your country:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-number.html
-%% and Claim phone
-%% numbers to traffic distribution groups:
+%% and Claim
+%% phone numbers to traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-numbers-traffic-distribution-groups.html
 %% in the Amazon Connect Administrator
 %% Guide.
 %%
 %% You can call the SearchAvailablePhoneNumbers:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html
-%% API for available phone numbers that you can claim. Call
-%% the DescribePhoneNumber:
+%% API for
+%% available phone numbers that you can claim. Call the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
-%% API to verify the status of a previous ClaimPhoneNumber:
+%% API to verify the status
+%% of a previous ClaimPhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimPhoneNumber.html
 %% operation.
 %%
@@ -11964,8 +14944,8 @@ claim_phone_number(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows you to confirm that the attached file has been uploaded using
-%% the pre-signed URL
-%% provided in the StartAttachedFileUpload API.
+%% the pre-signed URL provided in the
+%% StartAttachedFileUpload API.
 -spec complete_attached_file_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_attached_file_upload_request()) ->
     {ok, complete_attached_file_upload_response(), tuple()} |
     {error, any()} |
@@ -12038,27 +15018,26 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 %% Only the VOICE, EMAIL, and TASK channels are supported.
 %%
 %% For VOICE: The supported initiation method is `TRANSFER'. The contacts
-%% created
-%% with this initiation method have a subtype `connect:ExternalAudio'.
+%% created with this
+%% initiation method have a subtype `connect:ExternalAudio'.
 %%
 %% For EMAIL: The supported initiation methods are `OUTBOUND',
-%% `AGENT_REPLY', and `FLOW'.
+%% `AGENT_REPLY', and
+%% `FLOW'.
 %%
 %% For TASK: The supported initiation method is `API'. Contacts created
-%% with this
-%% API have a sub-type of `connect:ExternalTask'.
+%% with this API have a sub-type
+%% of `connect:ExternalTask'.
 %%
 %% Creates a new VOICE, EMAIL, or TASK contact.
 %%
 %% After a contact is created, you can move it to the desired state by using
-%% the
-%% `InitiateAs' parameter. While you can use API to create task contacts
-%% that are in the
+%% the `InitiateAs' parameter.
+%% While you can use API to create task contacts that are in the
 %% `COMPLETED' state, you must contact Amazon Web Services Support before
-%% using it for
-%% bulk import use cases. Bulk import causes your requests to be throttled or
-%% fail if your
-%% CreateContact limits aren't high enough.
+%% using it for bulk import use cases. Bulk import causes your requests to be
+%% throttled or
+%% fail if your CreateContact limits aren't high enough.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
@@ -12164,14 +15143,85 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a named alias that points to a specific version of a contact
+%% flow module.
+-spec create_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_module_alias_request()) ->
+    {ok, create_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_module_alias_errors(), tuple()}.
+create_contact_flow_module_alias(Client, ContactFlowModuleId, InstanceId, Input) ->
+    create_contact_flow_module_alias(Client, ContactFlowModuleId, InstanceId, Input, []).
+
+-spec create_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_module_alias_request(), proplists:proplist()) ->
+    {ok, create_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_module_alias_errors(), tuple()}.
+create_contact_flow_module_alias(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/alias"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an immutable snapshot of a contact flow module, preserving
+%% its content and settings at a specific point
+%% in time for version control and rollback capabilities.
+-spec create_contact_flow_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_module_version_request()) ->
+    {ok, create_contact_flow_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_module_version_errors(), tuple()}.
+create_contact_flow_module_version(Client, ContactFlowModuleId, InstanceId, Input) ->
+    create_contact_flow_module_version(Client, ContactFlowModuleId, InstanceId, Input, []).
+
+-spec create_contact_flow_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_module_version_request(), proplists:proplist()) ->
+    {ok, create_contact_flow_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_module_version_errors(), tuple()}.
+create_contact_flow_module_version(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/version"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Publishes a new version of the flow provided.
 %%
-%% Versions are immutable and monotonically
-%% increasing. If the `FlowContentSha256' provided is different from the
-%% `FlowContentSha256' of the `$LATEST' published flow content, then
-%% an error
-%% is returned. This API only supports creating versions for flows of type
-%% `Campaign'.
+%% Versions are immutable and monotonically increasing. If the
+%% `FlowContentSha256' provided is different from the
+%% `FlowContentSha256' of the
+%% `$LATEST' published flow content, then an error is returned. This API
+%% only supports creating versions for
+%% flows of type `Campaign'.
 -spec create_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_version_request()) ->
     {ok, create_contact_flow_version_response(), tuple()} |
     {error, any()} |
@@ -12205,13 +15255,94 @@ create_contact_flow_version(Client, ContactFlowId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new data table with the specified properties.
+%%
+%% Supports the creation of all table properties except for
+%% attributes and values. A table with no attributes and values is a valid
+%% state for a table. The number of tables per
+%% instance is limited to 100 per instance. Customers can request an increase
+%% by using Amazon Web Services Service Quotas.
+-spec create_data_table(aws_client:aws_client(), binary() | list(), create_data_table_request()) ->
+    {ok, create_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_table_errors(), tuple()}.
+create_data_table(Client, InstanceId, Input) ->
+    create_data_table(Client, InstanceId, Input, []).
+
+-spec create_data_table(aws_client:aws_client(), binary() | list(), create_data_table_request(), proplists:proplist()) ->
+    {ok, create_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_table_errors(), tuple()}.
+create_data_table(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds an attribute to an existing data table.
+%%
+%% Creating a new primary attribute uses the empty value for the
+%% specified value type for all existing records. This should not affect
+%% uniqueness of published data tables since the
+%% existing primary values will already be unique. Creating attributes does
+%% not create any values. System managed tables
+%% may not allow customers to create new attributes.
+-spec create_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_table_attribute_request()) ->
+    {ok, create_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_table_attribute_errors(), tuple()}.
+create_data_table_attribute(Client, DataTableId, InstanceId, Input) ->
+    create_data_table_attribute(Client, DataTableId, InstanceId, Input, []).
+
+-spec create_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_table_attribute_request(), proplists:proplist()) ->
+    {ok, create_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_table_attribute_errors(), tuple()}.
+create_data_table_attribute(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/attributes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create new email address in the specified Amazon Connect instance.
 %%
-%% For more information
-%% about email addresses, see Create email addresses:
+%% For more information about email
+%% addresses, see Create email
+%% addresses:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec create_email_address(aws_client:aws_client(), binary() | list(), create_email_address_request()) ->
     {ok, create_email_address_response(), tuple()} |
     {error, any()} |
@@ -12247,12 +15378,10 @@ create_email_address(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates an evaluation form in the specified Amazon Connect instance.
 %%
-%% The form can be
-%% used to define questions related to agent performance, and create sections
-%% to organize such
-%% questions. Question and section identifiers cannot be duplicated within
-%% the same evaluation
-%% form.
+%% The form can be used to define
+%% questions related to agent performance, and create sections to organize
+%% such questions. Question and section
+%% identifiers cannot be duplicated within the same evaluation form.
 -spec create_evaluation_form(aws_client:aws_client(), binary() | list(), create_evaluation_form_request()) ->
     {ok, create_evaluation_form_response(), tuple()} |
     {error, any()} |
@@ -12321,8 +15450,7 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an hours of operation override in an Amazon Connect hours of
-%% operation
-%% resource.
+%% operation resource.
 -spec create_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), create_hours_of_operation_override_request()) ->
     {ok, create_hours_of_operation_override_response(), tuple()} |
     {error, any()} |
@@ -12360,16 +15488,15 @@ create_hours_of_operation_override(Client, HoursOfOperationId, InstanceId, Input
 %% change.
 %%
 %% Initiates an Amazon Connect instance with all the supported channels
-%% enabled. It does
-%% not attach any storage, such as Amazon Simple Storage Service (Amazon S3)
-%% or Amazon Kinesis. It
-%% also does not allow for any configurations on features, such as Contact
-%% Lens for Amazon Connect.
+%% enabled. It does not attach any
+%% storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon
+%% Kinesis. It also does not allow for any
+%% configurations on features, such as Contact Lens for Amazon Connect.
 %%
-%% For more information, see Create an Amazon Connect
-%% instance:
+%% For more information, see Create an Amazon Connect instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instances.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% Amazon Connect enforces a limit on the total number of instances that you
 %% can create or delete in 30 days.
@@ -12412,8 +15539,7 @@ create_instance(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Web Services resource association with an Amazon
-%% Connect
-%% instance.
+%% Connect instance.
 -spec create_integration_association(aws_client:aws_client(), binary() | list(), create_integration_association_request()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
@@ -12449,11 +15575,11 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Adds a new participant into an on-going chat contact or webRTC call.
 %%
-%% For more information,
-%% see Customize chat flow experiences by integrating custom participants:
+%% For more information, see Customize chat flow experiences by
+%% integrating custom participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html
-%% or Enable
-%% multi-user web, in-app, and video calling:
+%% or Enable multi-user web, in-app, and video
+%% calling:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html.
 -spec create_participant(aws_client:aws_client(), create_participant_request()) ->
     {ok, create_participant_response(), tuple()} |
@@ -12490,11 +15616,11 @@ create_participant(Client, Input0, Options0) ->
 
 %% @doc Enables rehydration of chats for the lifespan of a contact.
 %%
-%% For more information about chat
-%% rehydration, see Enable persistent chat:
+%% For more information about chat rehydration, see
+%% Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in
+%% the Amazon Connect Administrator Guide.
 -spec create_persistent_contact_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_persistent_contact_association_request()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
@@ -12531,8 +15657,8 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 %% @doc Creates a new predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% A predefined
-%% attribute is made up of a name and a value.
+%% A predefined attribute
+%% is made up of a name and a value.
 %%
 %% For the predefined attributes per instance quota, see Amazon Connect
 %% quotas:
@@ -12543,24 +15669,21 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 %% Following are common uses cases for this API:
 %%
 %% Create an attribute for routing proficiency (for example, agent
-%% certification) that has
-%% predefined values (for example, a list of possible certifications). For
-%% more information, see
-%% Create
-%% predefined attributes for routing contacts to agents:
+%% certification) that has predefined values (for
+%% example, a list of possible certifications). For more information, see
+%% Create predefined attributes for routing contacts to
+%% agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Create an attribute for business unit name that has a list of predefined
-%% business unit
-%% names used in your organization. This is a use case where information for
-%% a contact varies
-%% between transfers or conferences. For more information, see Use contact
-%% segment
-%% attributes:
+%% business unit names used in your
+%% organization. This is a use case where information for a contact varies
+%% between transfers or conferences. For more
+%% information, see Use contact segment attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -12597,10 +15720,10 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a prompt.
 %%
 %% For more information about prompts, such as supported file types and
-%% maximum length, see Create prompts:
+%% maximum length, see
+%% Create prompts:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
-%% Amazon Connect Administrator
-%% Guide.
+%% Amazon Connect Administrator Guide.
 -spec create_prompt(aws_client:aws_client(), binary() | list(), create_prompt_request()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
@@ -12635,14 +15758,13 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates registration for a device token and a chat contact to receive
-%% real-time push
-%% notifications.
+%% real-time push notifications.
 %%
-%% For more information about push notifications, see Set up push
-%% notifications in Amazon Connect for mobile chat:
+%% For more
+%% information about push notifications, see Set up push notifications in
+%% Amazon Connect for mobile chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-push-notifications-for-mobile-chat.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec create_push_notification_registration(aws_client:aws_client(), binary() | list(), create_push_notification_registration_request()) ->
     {ok, create_push_notification_registration_response(), tuple()} |
     {error, any()} |
@@ -12692,17 +15814,17 @@ create_push_notification_registration(Client, InstanceId, Input0, Options0) ->
 %% `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
-%% `instance' in the
-%% path, for example,
-%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This
-%% is the same ARN format that is returned when you call the
-%% ListPhoneNumbersV2:
+%% `instance' in the path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
+%% same ARN format that is returned
+%% when you call the ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
 %% API.
 %%
 %% If you plan to use IAM policies to allow/deny access to this API for phone
-%% number resources claimed to a traffic distribution group, see Allow or
-%% Deny queue API actions for phone numbers in a replica Region:
+%% number resources
+%% claimed to a traffic distribution group, see Allow or Deny queue API
+%% actions for phone numbers in a replica Region:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
 -spec create_queue(aws_client:aws_client(), binary() | list(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
@@ -12807,10 +15929,10 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates a rule for the specified Amazon Connect instance.
 %%
-%% Use the Rules Function language:
+%% Use the Rules Function
+%% language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
-%% to
-%% code conditions for the rule.
+%% to code conditions for the rule.
 -spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
@@ -12848,11 +15970,10 @@ create_rule(Client, InstanceId, Input0, Options0) ->
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
@@ -12921,6 +16042,45 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a test case with its content and metadata for the specified
+%% Amazon Connect instance.
+-spec create_test_case(aws_client:aws_client(), binary() | list(), create_test_case_request()) ->
+    {ok, create_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_test_case_errors(), tuple()}.
+create_test_case(Client, InstanceId, Input) ->
+    create_test_case(Client, InstanceId, Input, []).
+
+-spec create_test_case(aws_client:aws_client(), binary() | list(), create_test_case_request(), proplists:proplist()) ->
+    {ok, create_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_test_case_errors(), tuple()}.
+create_test_case(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-last-modified-region">>, <<"LastModifiedRegion">>},
+                       {<<"x-amz-last-modified-time">>, <<"LastModifiedTime">>},
+                       {<<"x-amz-resource-id">>, <<"TestCaseId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a traffic distribution group given an Amazon Connect instance
 %% that has been replicated.
 %%
@@ -12937,8 +16097,8 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %% For more information about creating traffic distribution groups, see Set
 %% up traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html
-%% in
-%% the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec create_traffic_distribution_group(aws_client:aws_client(), create_traffic_distribution_group_request()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
@@ -13010,17 +16170,16 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %%
 %% Certain UserIdentityInfo:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html
-%% parameters
-%% are required in some situations. For example, `Email', `FirstName'
-%% and
-%% `LastName' are required if you are using Amazon Connect or SAML for
-%% identity
-%% management.
+%% parameters are required in some situations. For example, `Email',
+%% `FirstName' and `LastName' are required if you are using Amazon
+%% Connect or SAML for
+%% identity management.
 %%
 %% For information about how to create users using the Amazon Connect admin
 %% website, see Add Users:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect
+%% Administrator Guide.
 -spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
@@ -13094,14 +16253,13 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
 %% The views will have a unique name for each connect instance.
 %%
 %% It performs basic content validation if the status is `SAVED' or full
-%% content
-%% validation if the status is set to `PUBLISHED'. An error is returned
-%% if validation
-%% fails. It associates either the `$SAVED' qualifier or both of the
-%% `$SAVED'
-%% and `$LATEST' qualifiers with the provided view content based on the
-%% status. The view
-%% is idempotent if ClientToken is provided.
+%% content validation if the
+%% status is set to `PUBLISHED'. An error is returned if validation
+%% fails. It associates either the
+%% `$SAVED' qualifier or both of the `$SAVED' and `$LATEST'
+%% qualifiers with the
+%% provided view content based on the status. The view is idempotent if
+%% ClientToken is provided.
 -spec create_view(aws_client:aws_client(), binary() | list(), create_view_request()) ->
     {ok, create_view_response(), tuple()} |
     {error, any()} |
@@ -13140,10 +16298,9 @@ create_view(Client, InstanceId, Input0, Options0) ->
 %% Versions are immutable and monotonically increasing.
 %%
 %% It returns the highest version if there is no change in content compared
-%% to that version. An
-%% error is displayed if the supplied ViewContentSha256 is different from the
-%% ViewContentSha256 of
-%% the `$LATEST' alias.
+%% to that version. An error is displayed
+%% if the supplied ViewContentSha256 is different from the ViewContentSha256
+%% of the `$LATEST' alias.
 -spec create_view_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_view_version_request()) ->
     {ok, create_view_version_response(), tuple()} |
     {error, any()} |
@@ -13180,11 +16337,10 @@ create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
 %% @doc Creates a custom vocabulary associated with your Amazon Connect
 %% instance.
 %%
-%% You can set a
-%% custom vocabulary to be your default vocabulary for a given language.
-%% Contact Lens for Amazon Connect uses the default
-%% vocabulary in post-call and real-time contact analysis sessions for that
-%% language.
+%% You can set a custom vocabulary to
+%% be your default vocabulary for a given language. Contact Lens for Amazon
+%% Connect uses the default vocabulary in post-call and real-time
+%% contact analysis sessions for that language.
 -spec create_vocabulary(aws_client:aws_client(), binary() | list(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
@@ -13218,12 +16374,84 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a workspace that defines the user experience by mapping views
+%% to pages.
+%%
+%% Workspaces can be assigned to
+%% users or routing profiles.
+-spec create_workspace(aws_client:aws_client(), binary() | list(), create_workspace_request()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
+create_workspace(Client, InstanceId, Input) ->
+    create_workspace(Client, InstanceId, Input, []).
+
+-spec create_workspace(aws_client:aws_client(), binary() | list(), create_workspace_request(), proplists:proplist()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
+create_workspace(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a view with a page in a workspace, defining what users see
+%% when they navigate to that page.
+-spec create_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), create_workspace_page_request()) ->
+    {ok, create_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_page_errors(), tuple()}.
+create_workspace_page(Client, InstanceId, WorkspaceId, Input) ->
+    create_workspace_page(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec create_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), create_workspace_page_request(), proplists:proplist()) ->
+    {ok, create_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_page_errors(), tuple()}.
+create_workspace_page(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/pages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deactivates an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% After a form is deactivated,
-%% it is no longer available for users to start new evaluations based on the
-%% form.
+%% After a form is deactivated, it is no longer
+%% available for users to start new evaluations based on the form.
 -spec deactivate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_evaluation_form_request()) ->
     {ok, deactivate_evaluation_form_response(), tuple()} |
     {error, any()} |
@@ -13259,8 +16487,8 @@ deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options
 
 %% @doc Deletes an attached file along with the underlying S3 Object.
 %%
-%% The attached file is permanently deleted if S3 bucket
-%% versioning is not enabled.
+%% The attached file is permanently deleted if S3 bucket versioning is not
+%% enabled.
 -spec delete_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attached_file_request()) ->
     {ok, delete_attached_file_response(), tuple()} |
     {error, any()} |
@@ -13398,6 +16626,76 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes an alias reference, breaking the named connection to the
+%% underlying module version without affecting the
+%% version itself.
+-spec delete_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_module_alias_request()) ->
+    {ok, delete_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_module_alias_errors(), tuple()}.
+delete_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input) ->
+    delete_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input, []).
+
+-spec delete_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_module_alias_request(), proplists:proplist()) ->
+    {ok, delete_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_module_alias_errors(), tuple()}.
+delete_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/alias/", aws_util:encode_uri(AliasId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a specific version of a contact flow module.
+-spec delete_contact_flow_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_module_version_request()) ->
+    {ok, delete_contact_flow_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_module_version_errors(), tuple()}.
+delete_contact_flow_module_version(Client, ContactFlowModuleId, ContactFlowModuleVersion, InstanceId, Input) ->
+    delete_contact_flow_module_version(Client, ContactFlowModuleId, ContactFlowModuleVersion, InstanceId, Input, []).
+
+-spec delete_contact_flow_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_module_version_request(), proplists:proplist()) ->
+    {ok, delete_contact_flow_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_module_version_errors(), tuple()}.
+delete_contact_flow_module_version(Client, ContactFlowModuleId, ContactFlowModuleVersion, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/version/", aws_util:encode_uri(ContactFlowModuleVersion), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the particular version specified in flow version identifier.
 -spec delete_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_version_request()) ->
     {ok, delete_contact_flow_version_response(), tuple()} |
@@ -13413,6 +16711,84 @@ delete_contact_flow_version(Client, ContactFlowId, ContactFlowVersion, InstanceI
 delete_contact_flow_version(Client, ContactFlowId, ContactFlowVersion, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/version/", aws_util:encode_uri(ContactFlowVersion), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a data table and all associated attributes, versions, audits,
+%% and values.
+%%
+%% Does not update any references
+%% to the data table, even from other data tables. This includes dynamic
+%% values and conditional validations. System
+%% managed data tables are not deletable by customers. API users may delete
+%% the table at any time. When deletion is
+%% requested from the admin website, a warning is shown alerting the user of
+%% the most recent time the table and its
+%% values were accessed.
+-spec delete_data_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_table_request()) ->
+    {ok, delete_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_table_errors(), tuple()}.
+delete_data_table(Client, DataTableId, InstanceId, Input) ->
+    delete_data_table(Client, DataTableId, InstanceId, Input, []).
+
+-spec delete_data_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_table_request(), proplists:proplist()) ->
+    {ok, delete_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_table_errors(), tuple()}.
+delete_data_table(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an attribute and all its values from a data table.
+-spec delete_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_table_attribute_request()) ->
+    {ok, delete_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_table_attribute_errors(), tuple()}.
+delete_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input) ->
+    delete_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input, []).
+
+-spec delete_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_table_attribute_request(), proplists:proplist()) ->
+    {ok, delete_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_table_attribute_errors(), tuple()}.
+delete_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/attributes/", aws_util:encode_uri(AttributeName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -13469,8 +16845,7 @@ delete_email_address(Client, EmailAddressId, InstanceId, Input0, Options0) ->
 %% @doc Deletes an evaluation form in the specified Amazon Connect instance.
 %%
 %% If the version property is provided, only the specified version of the
-%% evaluation form is
-%% deleted.
+%% evaluation form is deleted.
 %%
 %% If no version is provided, then the full form (all versions) is deleted.
 -spec delete_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), delete_evaluation_form_request()) ->
@@ -13542,8 +16917,7 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an hours of operation override in an Amazon Connect hours of
-%% operation
-%% resource.
+%% operation resource.
 -spec delete_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hours_of_operation_override_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -13583,8 +16957,8 @@ delete_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationO
 %% Deletes the Amazon Connect instance. For more information, see Delete your
 %% Amazon Connect instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-connect-instance.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% Amazon Connect enforces a limit on the total number of instances that you
 %% can create or delete in 30 days.
@@ -13630,8 +17004,8 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 %% @doc Deletes an Amazon Web Services resource association from an Amazon
 %% Connect instance.
 %%
-%% The
-%% association must not have any use cases associated with it.
+%% The association must not
+%% have any use cases associated with it.
 -spec delete_integration_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_integration_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -13807,10 +17181,9 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
 %%
 %% After calling DeleteUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteUser.html,
-%% it's important to
-%% call `DeleteQuickConnect' to delete any records related to the deleted
-%% users. This
-%% will help you:
+%% it's important to call `DeleteQuickConnect' to delete any records
+%% related to the
+%% deleted users. This will help you:
 %%
 %% Avoid dangling resources that impact your service quotas.
 %%
@@ -13818,9 +17191,8 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
 %% options.
 %%
 %% Avoid the disruption of other Amazon Connect processes, such as instance
-%% replication
-%% and syncing if you're using Amazon Connect
-%% Global Resiliency:
+%% replication and syncing if
+%% you're using Amazon Connect Global Resiliency:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 -spec delete_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_connect_request()) ->
     {ok, undefined, tuple()} |
@@ -13991,17 +17363,51 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the test case that has already been created for the specified
+%% Amazon Connect instance.
+-spec delete_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_test_case_request()) ->
+    {ok, delete_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_case_errors(), tuple()}.
+delete_test_case(Client, InstanceId, TestCaseId, Input) ->
+    delete_test_case(Client, InstanceId, TestCaseId, Input, []).
+
+-spec delete_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_test_case_request(), proplists:proplist()) ->
+    {ok, delete_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_case_errors(), tuple()}.
+delete_test_case(Client, InstanceId, TestCaseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a traffic distribution group.
 %%
 %% This API can be called only in the Region where the traffic distribution
-%% group is
-%% created.
+%% group is created.
 %%
 %% For more information about deleting traffic distribution groups, see
 %% Delete traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html
-%% in
-%% the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec delete_traffic_distribution_group(aws_client:aws_client(), binary() | list(), delete_traffic_distribution_group_request()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
@@ -14072,17 +17478,15 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 %%
 %% For information about what happens to a user's data when their account
-%% is deleted, see
-%% Delete Users from
-%% Your Amazon Connect Instance:
+%% is deleted, see Delete Users from Your Amazon Connect
+%% Instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
-%% the Amazon Connect Administrator
-%% Guide.
+%% the Amazon Connect Administrator Guide.
 %%
 %% After calling DeleteUser, call DeleteQuickConnect:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteQuickConnect.html
-%% to
-%% delete any records related to the deleted users. This will help you:
+%% to delete any records
+%% related to the deleted users. This will help you:
 %%
 %% Avoid dangling resources that impact your service quotas.
 %%
@@ -14090,9 +17494,8 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% options.
 %%
 %% Avoid the disruption of other Amazon Connect processes, such as instance
-%% replication
-%% and syncing if you're using Amazon Connect
-%% Global Resiliency:
+%% replication and syncing if
+%% you're using Amazon Connect Global Resiliency:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 -spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, undefined, tuple()} |
@@ -14129,8 +17532,8 @@ delete_user(Client, InstanceId, UserId, Input0, Options0) ->
 
 %% @doc Deletes an existing user hierarchy group.
 %%
-%% It must not be associated with any agents or have
-%% any active child groups.
+%% It must not be associated with any agents or have any active child
+%% groups.
 -spec delete_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -14166,8 +17569,7 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 
 %% @doc Deletes the view entirely.
 %%
-%% It deletes the view and all associated qualifiers (versions and
-%% aliases).
+%% It deletes the view and all associated qualifiers (versions and aliases).
 -spec delete_view(aws_client:aws_client(), binary() | list(), binary() | list(), delete_view_request()) ->
     {ok, delete_view_response(), tuple()} |
     {error, any()} |
@@ -14251,6 +17653,113 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input) ->
 delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary-remove/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a workspace and removes all associated view and resource
+%% assignments.
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_request()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
+delete_workspace(Client, InstanceId, WorkspaceId, Input) ->
+    delete_workspace(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
+delete_workspace(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a media asset (such as a logo) from a workspace.
+-spec delete_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_media_request()) ->
+    {ok, delete_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_media_errors(), tuple()}.
+delete_workspace_media(Client, InstanceId, WorkspaceId, Input) ->
+    delete_workspace_media(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec delete_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_media_request(), proplists:proplist()) ->
+    {ok, delete_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_media_errors(), tuple()}.
+delete_workspace_media(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/media"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"mediaType">>, <<"MediaType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the association between a view and a page in a workspace.
+%%
+%% The page will display the default view after
+%% deletion.
+-spec delete_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_workspace_page_request()) ->
+    {ok, delete_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_page_errors(), tuple()}.
+delete_workspace_page(Client, InstanceId, Page, WorkspaceId, Input) ->
+    delete_workspace_page(Client, InstanceId, Page, WorkspaceId, Input, []).
+
+-spec delete_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_workspace_page_request(), proplists:proplist()) ->
+    {ok, delete_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_page_errors(), tuple()}.
+delete_workspace_page(Client, InstanceId, Page, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/pages/", aws_util:encode_uri(Page), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14360,36 +17869,35 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %% Following are common uses cases for this API:
 %%
 %% Retrieve contact information such as the caller's phone number and the
-%% specific number the
-%% caller dialed to integrate into custom monitoring or custom agent
-%% experience solutions.
+%% specific number the caller dialed to
+%% integrate into custom monitoring or custom agent experience solutions.
 %%
 %% Detect when a customer chat session disconnects due to a network issue on
-%% the agent's end.
-%% Use the DisconnectReason field in the ContactTraceRecord:
+%% the agent's end. Use the
+%% DisconnectReason field in the ContactTraceRecord:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/ctr-data-model.html#ctr-ContactTraceRecord
-%% to detect this event and then re-queue the chat for
-%% followup.
+%% to detect
+%% this event and then re-queue the chat for followup.
 %%
 %% Identify after contact work (ACW) duration and call recordings information
-%% when a
-%% COMPLETED event is received by using the contact event stream:
+%% when a COMPLETED event is received
+%% by using the contact event
+%% stream:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-events.html.
 %%
 %% Important things to know
 %%
 %% `SystemEndpoint' is not populated for contacts with initiation method
-%% of
-%% MONITOR, QUEUE_TRANSFER, or CALLBACK
+%% of MONITOR, QUEUE_TRANSFER,
+%% or CALLBACK
 %%
 %% Contact information remains available in Amazon Connect for 24 months from
 %% the
 %% `InitiationTimestamp', and then it is deleted. Only contact
-%% information that is
-%% available in Amazon Connect is returned by this API.
+%% information that is available in Amazon Connect is returned by this API.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
@@ -14471,22 +17979,20 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
-%% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
-%% a flow is
-%% published, `$SAVED' needs to be supplied to view saved content that
-%% has not been
-%% published.
+%% content of a Flow. For
+%% example, `arn:aws:.../contact-flow/{id}:$SAVED'. After a flow is
+%% published, `$SAVED' needs to
+%% be supplied to view saved content that has not been published.
 %%
 %% Use `arn:aws:.../contact-flow/{id}:{version}' to retrieve the content
-%% of a
-%% specific flow version.
+%% of a specific flow
+%% version.
 %%
-%% In the response, Status indicates the flow status as either
-%% `SAVED' or `PUBLISHED'. The `PUBLISHED' status will initiate
-%% validation on the content. `SAVED' does not initiate validation of the
-%% content.
-%% `SAVED' | `PUBLISHED'
+%% In the response, Status indicates the flow status as either `SAVED'
+%% or `PUBLISHED'. The `PUBLISHED' status will initiate validation on
+%% the content.
+%% `SAVED' does not initiate validation of the content. `SAVED' |
+%% `PUBLISHED'
 -spec describe_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
@@ -14526,12 +18032,10 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
 %% @doc Describes the specified flow module.
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
-%% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
-%% a flow is
-%% published, `$SAVED' needs to be supplied to view saved content that
-%% has not been
-%% published.
+%% content of a Flow. For
+%% example, `arn:aws:.../contact-flow/{id}:$SAVED'. After a flow is
+%% published, `$SAVED' needs to
+%% be supplied to view saved content that has not been published.
 -spec describe_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
@@ -14555,6 +18059,130 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific alias, including
+%% which version it currently points to and its
+%% metadata.
+-spec describe_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_module_alias_errors(), tuple()}.
+describe_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId)
+  when is_map(Client) ->
+    describe_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, #{}, #{}).
+
+-spec describe_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_module_alias_errors(), tuple()}.
+describe_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_module_alias_errors(), tuple()}.
+describe_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/alias/", aws_util:encode_uri(AliasId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns all properties for a data table except for attributes and
+%% values.
+%%
+%% All properties from CreateDataTable
+%% are returned as well as properties for region replication, versioning, and
+%% system tables. &quot;Describe&quot; is a deprecated
+%% term but is allowed to maintain consistency with existing operations.
+-spec describe_data_table(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_errors(), tuple()}.
+describe_data_table(Client, DataTableId, InstanceId)
+  when is_map(Client) ->
+    describe_data_table(Client, DataTableId, InstanceId, #{}, #{}).
+
+-spec describe_data_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_errors(), tuple()}.
+describe_data_table(Client, DataTableId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_table(Client, DataTableId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_data_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_errors(), tuple()}.
+describe_data_table(Client, DataTableId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns detailed information for a specific data table attribute
+%% including its configuration, validation rules,
+%% and metadata.
+%%
+%% &quot;Describe&quot; is a deprecated term but is allowed to maintain
+%% consistency with existing operations.
+-spec describe_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_attribute_errors(), tuple()}.
+describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId)
+  when is_map(Client) ->
+    describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, #{}, #{}).
+
+-spec describe_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_attribute_errors(), tuple()}.
+describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_table_attribute_errors(), tuple()}.
+describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/attributes/", aws_util:encode_uri(AttributeName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14608,9 +18236,8 @@ describe_email_address(Client, EmailAddressId, InstanceId, QueryMap, HeadersMap,
 %% @doc Describes an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% If the version
-%% property is not provided, the latest version of the evaluation form is
-%% described.
+%% If the version property is not
+%% provided, the latest version of the evaluation form is described.
 -spec describe_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
@@ -14729,14 +18356,13 @@ describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperatio
 %% change.
 %%
 %% Returns the current state of the specified instance identifier. It tracks
-%% the instance while
-%% it is being created and returns an error status, if applicable.
+%% the instance while it is being created
+%% and returns an error status, if applicable.
 %%
 %% If an instance is not created successfully, the instance status reason
-%% field returns details
-%% relevant to the reason. The instance in a failed state is returned only
-%% for 24 hours after the
-%% CreateInstance API was invoked.
+%% field returns details relevant to the
+%% reason. The instance in a failed state is returned only for 24 hours after
+%% the CreateInstance API was invoked.
 -spec describe_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
@@ -14817,8 +18443,8 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 %% change.
 %%
 %% Retrieves the current storage configurations for the specified resource
-%% type, association
-%% ID, and instance ID.
+%% type, association ID, and instance
+%% ID.
 -spec describe_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
@@ -14860,19 +18486,17 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details and status of a phone number that’s claimed to your
-%% Amazon Connect instance
-%% or traffic distribution group.
+%% Amazon Connect instance or traffic distribution group.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling in the Amazon Web Services Region
-%% where the traffic distribution group was created, you can use either a
-%% phone number ARN or UUID value for the
-%% `PhoneNumberId' URI request parameter. However, if the number is
-%% claimed to a traffic distribution group
-%% and you are calling this API in the alternate Amazon Web Services Region
-%% associated with the
-%% traffic distribution group, you must provide a full phone number ARN. If a
-%% UUID is provided
+%% calling in the Amazon Web Services Region where the traffic distribution
+%% group was
+%% created, you can use either a phone number ARN or UUID value for the
+%% `PhoneNumberId' URI request
+%% parameter. However, if the number is claimed to a traffic distribution
+%% group and you are calling this API in the alternate Amazon Web Services
+%% Region associated with the traffic distribution group, you must provide a
+%% full phone number ARN. If a UUID is provided
 %% in
 %% this scenario, you receive a `ResourceNotFoundException'.
 -spec describe_phone_number(aws_client:aws_client(), binary() | list()) ->
@@ -14914,22 +18538,19 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% @doc Describes a predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% A predefined
-%% attribute is made up of a name and a value. You can use predefined
-%% attributes
-%% for:
+%% A predefined attribute
+%% is made up of a name and a value. You can use predefined attributes for:
 %%
 %% Routing proficiency (for example, agent certification) that has predefined
-%% values (for
-%% example, a list of possible certifications). For more information, see
-%% Create
-%% predefined attributes for routing contacts to agents:
+%% values (for example, a list of
+%% possible certifications). For more information, see Create predefined
+%% attributes for routing contacts to
+%% agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the
-%% business unit handling the contact. For more information, see Use contact
-%% segment
+%% the name of the business unit
+%% handling the contact. For more information, see Use contact segment
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
@@ -14937,8 +18558,8 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
@@ -15089,11 +18710,12 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap,
 %% @doc Describes the specified routing profile.
 %%
 %% `DescribeRoutingProfile' does not populate AssociatedQueueIds in its
-%% response.
-%% The example Response Syntax shown on this page is incorrect; we are
-%% working to update it. SearchRoutingProfiles:
+%% response. The example Response
+%% Syntax shown on this page is incorrect; we are working to update it.
+%% SearchRoutingProfiles:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchRoutingProfiles.html
-%% does include AssociatedQueueIds.
+%% does include
+%% AssociatedQueueIds.
 -spec describe_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
@@ -15171,11 +18793,10 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec describe_security_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
@@ -15210,6 +18831,48 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the specified test case and allows you to get the content
+%% and metadata of the test case for the specified Amazon Connect instance.
+-spec describe_test_case(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, describe_test_case_errors(), tuple()}.
+describe_test_case(Client, InstanceId, TestCaseId)
+  when is_map(Client) ->
+    describe_test_case(Client, InstanceId, TestCaseId, #{}, #{}).
+
+-spec describe_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, describe_test_case_errors(), tuple()}.
+describe_test_case(Client, InstanceId, TestCaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_test_case(Client, InstanceId, TestCaseId, QueryMap, HeadersMap, []).
+
+-spec describe_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, describe_test_case_errors(), tuple()}.
+describe_test_case(Client, InstanceId, TestCaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -15252,10 +18915,12 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 
 %% @doc Describes the specified user.
 %%
-%% You can find the instance ID in the Amazon Connect console:
+%% You can find the instance ID in the Amazon Connect
+%% console:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html
-%% (it’s the final part of the ARN). The console does not display the
-%% user IDs. Instead, list the users and note the IDs provided in the output.
+%% (it’s the final part of the ARN). The console does not display the user
+%% IDs. Instead, list the users
+%% and note the IDs provided in the output.
 -spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
@@ -15375,13 +19040,13 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 %% `$SAVED' needs to be supplied if a view is unpublished.
 %%
 %% The view identifier can contain an optional qualifier, for example,
-%% `:$SAVED', which is either an actual version number or an Amazon
-%% Connect managed qualifier `$SAVED | $LATEST'. If it is not supplied,
-%% then
-%% `$LATEST' is assumed for customer managed views and an error is
-%% returned if there is
-%% no published content available. Version 1 is assumed for Amazon Web
-%% Services managed views.
+%% `:$SAVED', which
+%% is either an actual version number or an Amazon Connect managed qualifier
+%% `$SAVED | $LATEST'. If it is
+%% not supplied, then `$LATEST' is assumed for customer managed views and
+%% an error is returned if there is no
+%% published content available. Version 1 is assumed for Amazon Web Services
+%% managed views.
 -spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
@@ -15442,6 +19107,44 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
 describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a workspace, including its configuration and
+%% metadata.
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, InstanceId, WorkspaceId)
+  when is_map(Client) ->
+    describe_workspace(Client, InstanceId, WorkspaceId, #{}, #{}).
+
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_workspace(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -15533,8 +19236,7 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
-%% Amazon Lex or Amazon Lex V2
-%% bot.
+%% Amazon Lex or Amazon Lex V2 bot.
 -spec disassociate_bot(aws_client:aws_client(), binary() | list(), disassociate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15571,10 +19273,10 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %% @doc Removes the alias association between two email addresses in an
 %% Amazon Connect instance.
 %%
-%% After disassociation, emails sent to the former alias email address are no
-%% longer forwarded to
-%% the primary email address. Both email addresses continue to exist
-%% independently and can receive
+%% After
+%% disassociation, emails sent to the former alias email address are no
+%% longer forwarded to the primary email address.
+%% Both email addresses continue to exist independently and can receive
 %% emails directly.
 %%
 %% Use cases
@@ -15582,34 +19284,30 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %% Following are common uses cases for this API:
 %%
 %% Department separation: Remove alias relationships when splitting a
-%% consolidated support
-%% queue back into separate department-specific queues.
+%% consolidated support queue back into separate department-specific queues.
 %%
 %% Email address retirement: Cleanly remove forwarding relationships before
-%% decommissioning
-%% old email addresses.
+%% decommissioning old email addresses.
 %%
 %% Organizational restructuring: Reconfigure email routing when business
-%% processes change and
-%% aliases are no longer needed.
+%% processes change and aliases are no longer needed.
 %%
 %% Important things to know
 %%
 %% Concurrent operations: This API uses distributed locking, so concurrent
-%% operations on the
-%% same email addresses may be temporarily blocked.
+%% operations on the same email addresses
+%% may be temporarily blocked.
 %%
 %% Emails sent to the former alias address are still delivered directly to
-%% that address if it
-%% exists.
+%% that address if it exists.
 %%
 %% You do not need to delete the email addresses after disassociation. Both
-%% addresses remain
-%% active independently.
+%% addresses remain active
+%% independently.
 %%
 %% After a successful disassociation, you can immediately create a new alias
-%% relationship
-%% with the same addresses.
+%% relationship with the same
+%% addresses.
 %%
 %% 200 status means alias was successfully disassociated.
 %%
@@ -15621,16 +19319,15 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% The timestamp of when the disassociation occurred.
 %%
-%% Endpoints: See
-%% Amazon Connect endpoints and quotas:
+%% Endpoints: See Amazon Connect endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 %%
 %% Related operations
 %%
 %% AssociateEmailAddressAlias:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateEmailAddressAlias.html:
-%% Associates an email address alias with an existing email
-%% address in an Amazon Connect instance.
+%% Associates an email address alias with an existing email address in an
+%% Amazon Connect instance.
 %%
 %% DescribeEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
@@ -15642,18 +19339,15 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% CreateEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEmailAddress.html:
-%% Create new email addresses that can participate in alias
-%% relationships.
+%% Create new email addresses that can participate in alias relationships.
 %%
 %% DeleteEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEmailAddress.html:
-%% Remove email addresses (automatically removes any alias
-%% relationships).
+%% Remove email addresses (automatically removes any alias relationships).
 %%
 %% UpdateEmailAddressMetadata:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEmailAddressMetadata.html:
-%% Modify email address properties (does not affect alias
-%% relationships).
+%% Modify email address properties (does not affect alias relationships).
 -spec disassociate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_email_address_alias_request()) ->
     {ok, disassociate_email_address_alias_response(), tuple()} |
     {error, any()} |
@@ -15721,12 +19415,51 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a set of hours of operations with another hours of
+%% operation.
+%%
+%% Refer to Administrator Guide here :
+%% https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html
+%% for more information on inheriting overrides from parent hours of
+%% operation(s).
+-spec disassociate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_hours_of_operations_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_hours_of_operations_errors(), tuple()}.
+disassociate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input) ->
+    disassociate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input, []).
+
+-spec disassociate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_hours_of_operations_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_hours_of_operations_errors(), tuple()}.
+disassociate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/disassociate-hours"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
 %% Removes the storage type configurations for the specified resource type
-%% and association
-%% ID.
+%% and association ID.
 -spec disassociate_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15766,8 +19499,7 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 %% change.
 %%
 %% Remove the Lambda function from the dropdown options available in the
-%% relevant
-%% flow blocks.
+%% relevant flow blocks.
 -spec disassociate_lambda_function(aws_client:aws_client(), binary() | list(), disassociate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15807,8 +19539,7 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
-%% Amazon Lex
-%% bot.
+%% Amazon Lex bot.
 -spec disassociate_lex_bot(aws_client:aws_client(), binary() | list(), disassociate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15846,20 +19577,18 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the flow association from a phone number claimed to your
-%% Amazon Connect
-%% instance.
+%% Amazon Connect instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling this API using an instance in the
-%% Amazon Web Services Region where the traffic distribution group was
-%% created, you can use either a full phone number
-%% ARN or UUID value for the `PhoneNumberId' URI request parameter.
-%% However, if the
-%% number is claimed to a traffic distribution group and you are calling this
-%% API using an instance in the alternate
-%% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN.
-%% If a UUID is provided in this scenario, you will receive a
+%% calling this API using an instance in the Amazon Web Services Region where
+%% the traffic distribution group was created, you can use either a full
+%% phone number ARN or UUID value for the
+%% `PhoneNumberId' URI request parameter. However, if the number is
+%% claimed to a traffic distribution group and you are calling
+%% this API using an instance in the alternate Amazon Web Services Region
+%% associated with the traffic distribution group, you must provide a
+%% full phone number ARN. If a UUID is provided in this scenario, you will
+%% receive a
 %% `ResourceNotFoundException'.
 -spec disassociate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), disassociate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
@@ -15932,9 +19661,8 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0)
 %% @doc Disassociates a set of queues from a routing profile.
 %%
 %% Up to 10 queue references can be disassociated in a single API call. More
-%% than 10 queue
-%% references results in a single call results in an
-%% InvalidParameterException.
+%% than 10 queue references results in a
+%% single call results in an InvalidParameterException.
 -spec disassociate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -16006,10 +19734,45 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a security profile attached to a Q in Connect AI Agent
+%% Entity in an Amazon Connect instance.
+-spec disassociate_security_profiles(aws_client:aws_client(), binary() | list(), disassociate_security_profiles_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_security_profiles_errors(), tuple()}.
+disassociate_security_profiles(Client, InstanceId, Input) ->
+    disassociate_security_profiles(Client, InstanceId, Input, []).
+
+-spec disassociate_security_profiles(aws_client:aws_client(), binary() | list(), disassociate_security_profiles_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_security_profiles_errors(), tuple()}.
+disassociate_security_profiles(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/disassociate-security-profiles/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates an agent from a traffic distribution group.
 %%
-%% This API can be called only in the
-%% Region where the traffic distribution group is created.
+%% This API can be called only in the Region where the
+%% traffic distribution group is created.
 -spec disassociate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -16079,14 +19842,48 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes the association between a workspace and one or more users or
+%% routing profiles.
+-spec disassociate_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_workspace_request()) ->
+    {ok, disassociate_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_workspace_errors(), tuple()}.
+disassociate_workspace(Client, InstanceId, WorkspaceId, Input) ->
+    disassociate_workspace(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec disassociate_workspace(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_workspace_request(), proplists:proplist()) ->
+    {ok, disassociate_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_workspace_errors(), tuple()}.
+disassociate_workspace(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/disassociate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Dismisses contacts from an agent’s CCP and returns the agent to an
-%% available state, which
-%% allows the agent to receive a new routed contact.
+%% available state, which allows the agent to
+%% receive a new routed contact.
 %%
-%% Contacts can only be dismissed if they are in a
-%% `MISSED', `ERROR', `ENDED', or `REJECTED' state in
-%% the Agent
-%% Event Stream:
+%% Contacts can only be dismissed if they are in a `MISSED',
+%% `ERROR', `ENDED', or `REJECTED' state in the Agent Event
+%% Stream:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html.
 -spec dismiss_user_contact(aws_client:aws_client(), binary() | list(), binary() | list(), dismiss_user_contact_request()) ->
     {ok, dismiss_user_contact_response(), tuple()} |
@@ -16121,12 +19918,56 @@ dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Evaluates values at the time of the request and returns them.
+%%
+%% It considers the request's timezone or the table's
+%% timezone, in that order, when accessing time based tables. When a value is
+%% accessed, the accessor's identity and the
+%% time of access are saved alongside the value to help identify values that
+%% are actively in use. The term &quot;Batch&quot; is
+%% not included in the operation name since it does not meet all the criteria
+%% for a batch operation as specified in
+%% Batch Operations: Amazon Web Services API Standards.
+-spec evaluate_data_table_values(aws_client:aws_client(), binary() | list(), binary() | list(), evaluate_data_table_values_request()) ->
+    {ok, evaluate_data_table_values_response(), tuple()} |
+    {error, any()} |
+    {error, evaluate_data_table_values_errors(), tuple()}.
+evaluate_data_table_values(Client, DataTableId, InstanceId, Input) ->
+    evaluate_data_table_values(Client, DataTableId, InstanceId, Input, []).
+
+-spec evaluate_data_table_values(aws_client:aws_client(), binary() | list(), binary() | list(), evaluate_data_table_values_request(), proplists:proplist()) ->
+    {ok, evaluate_data_table_values_response(), tuple()} |
+    {error, any()} |
+    {error, evaluate_data_table_values_errors(), tuple()}.
+evaluate_data_table_values(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/evaluate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides a pre-signed URL for download of an approved attached file.
 %%
-%% This API also returns
-%% metadata about the attached file. It will only return a downloadURL if the
-%% status of the attached
-%% file is `APPROVED'.
+%% This API also returns metadata about the
+%% attached file. It will only return a downloadURL if the status of the
+%% attached file is `APPROVED'.
 -spec get_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_attached_file_response(), tuple()} |
     {error, any()} |
@@ -16219,22 +20060,20 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% Make data-driven routing decisions between primary and alternative queues.
 %%
 %% Enhance queue visibility and leverage agent proficiencies to streamline
-%% contact
-%% routing.
+%% contact routing.
 %%
 %% Important things to know
 %%
 %% The only way to retrieve the position of the contact in queue is by using
-%% this API. You
-%% can't retrieve the position by using flows and attributes.
+%% this API. You can't retrieve the
+%% position by using flows and attributes.
 %%
 %% For more information, see the Position in queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% metric in
-%% the Amazon Connect Administrator Guide.
+%% metric in the Amazon Connect Administrator Guide.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec get_contact_metrics(aws_client:aws_client(), get_contact_metrics_request()) ->
     {ok, get_contact_metrics_response(), tuple()} |
     {error, any()} |
@@ -16273,21 +20112,20 @@ get_contact_metrics(Client, Input0, Options0) ->
 %%
 %% For a description of each metric, see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
-%% metric values in the
-%% response:
+%% metric values in the response:
 %%
-%% Metric value is null: The calculation cannot be
-%% performed due to divide by zero or insufficient data
+%% Metric value is null: The calculation cannot be performed due to divide by
+%% zero or insufficient data
 %%
-%% Metric value is a number (including 0) of defined type:
-%% The number provided is the calculation result
+%% Metric value is a number (including 0) of defined type: The number
+%% provided
+%% is the calculation result
 %%
-%% MetricResult list is empty: The request cannot find any
-%% data in the system
+%% MetricResult list is empty: The request cannot find any data in the
+%% system
 %%
 %% The following guidelines can help you work with the API:
 %%
@@ -16410,24 +20248,21 @@ get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDa
 
 %% @doc Supports SAML sign-in for Amazon Connect.
 %%
-%% Retrieves a token for federation. The token is
-%% for the Amazon Connect user which corresponds to the IAM credentials that
-%% were
-%% used to invoke this action.
+%% Retrieves a token for federation. The token is for the Amazon Connect user
+%% which corresponds to the IAM credentials that were used to invoke this
+%% action.
 %%
 %% For more information about how SAML sign-in works in Amazon Connect, see
-%% Configure SAML with
-%% IAM for Amazon Connect in the Amazon Connect Administrator
-%% Guide.:
+%% Configure SAML with IAM for Amazon Connect
+%% in the Amazon Connect Administrator Guide.:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/configure-saml.html
 %%
 %% This API doesn't support root users. If you try to invoke
-%% GetFederationToken with root
-%% credentials, an error message similar to the following one appears:
+%% GetFederationToken with root credentials, an error
+%% message similar to the following one appears:
 %%
-%% ```
-%% Provided identity: Principal: (...). User: (...). cannot be used for
-%% federation with Amazon Connect'''
+%% `Provided identity: Principal: (...). User: (...). cannot be used for
+%% federation with Amazon Connect'
 -spec get_federation_token(aws_client:aws_client(), binary() | list()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
@@ -16506,23 +20341,19 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 %%
 %% For a description of each historical metric, see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
 %% We recommend using the GetMetricDataV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html
-%% API. It
-%% provides more flexibility, features, and the ability to query longer time
-%% ranges than
-%% `GetMetricData'. Use it to retrieve historical agent and contact
-%% metrics for the
-%% last 3 months, at varying intervals. You can also use it to build custom
-%% dashboards to measure
-%% historical queue and agent performance. For example, you can track the
-%% number of incoming
-%% contacts for the last 7 days, with data split by day, to see how contact
-%% volume changed per day
-%% of the week.
+%% API. It provides more flexibility, features, and the ability to query
+%% longer time ranges
+%% than `GetMetricData'. Use it to retrieve historical agent and contact
+%% metrics for the last 3 months, at
+%% varying intervals. You can also use it to build custom dashboards to
+%% measure historical queue and agent performance.
+%% For example, you can track the number of incoming contacts for the last 7
+%% days, with data split by day, to see how
+%% contact volume changed per day of the week.
 -spec get_metric_data(aws_client:aws_client(), binary() | list(), get_metric_data_request()) ->
     {ok, get_metric_data_response(), tuple()} |
     {error, any()} |
@@ -16560,33 +20391,31 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %%
 %% `GetMetricDataV2' offers more features than GetMetricData:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricData.html,
-%% the previous
-%% version of this API. It has new metrics, offers filtering at a metric
-%% level, and offers the
-%% ability to filter and group data by channels, queues, routing profiles,
-%% agents, and agent
-%% hierarchy levels. It can retrieve historical data for the last 3 months,
-%% at varying intervals. It
-%% does not support agent queues.
+%% the previous version of this API. It
+%% has new metrics, offers filtering at a metric level, and offers the
+%% ability to filter and group data by channels,
+%% queues, routing profiles, agents, and agent hierarchy levels. It can
+%% retrieve historical data for the last 3 months,
+%% at varying intervals. It does not support agent queues.
 %%
 %% For a description of the historical metrics that are supported by
-%% `GetMetricDataV2' and `GetMetricData', see Metrics definitions:
+%% `GetMetricDataV2' and
+%% `GetMetricData', see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
-%% metric values in the
-%% response:
+%% metric values in the response:
 %%
-%% Metric value is null: The calculation cannot be
-%% performed due to divide by zero or insufficient data
+%% Metric value is null: The calculation cannot be performed due to divide by
+%% zero or insufficient data
 %%
-%% Metric value is a number (including 0) of defined type:
-%% The number provided is the calculation result
+%% Metric value is a number (including 0) of defined type: The number
+%% provided
+%% is the calculation result
 %%
-%% MetricResult list is empty: The request cannot find any
-%% data in the system
+%% MetricResult list is empty: The request cannot find any data in the
+%% system
 %%
 %% The following guidelines can help you work with the API:
 %%
@@ -16670,8 +20499,7 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a specific task template in the specified Amazon
-%% Connect
-%% instance.
+%% Connect instance.
 -spec get_task_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
@@ -16709,6 +20537,44 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Opti
         {<<"snapshotVersion">>, maps:get(<<"snapshotVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an overview of a test execution that includes the status of
+%% the execution, start and end time, and observation summary.
+-spec get_test_case_execution_summary(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_test_case_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_case_execution_summary_errors(), tuple()}.
+get_test_case_execution_summary(Client, InstanceId, TestCaseExecutionId, TestCaseId)
+  when is_map(Client) ->
+    get_test_case_execution_summary(Client, InstanceId, TestCaseExecutionId, TestCaseId, #{}, #{}).
+
+-spec get_test_case_execution_summary(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_test_case_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_case_execution_summary_errors(), tuple()}.
+get_test_case_execution_summary(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_test_case_execution_summary(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap, []).
+
+-spec get_test_case_execution_summary(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_test_case_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_case_execution_summary_errors(), tuple()}.
+get_test_case_execution_summary(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), "/", aws_util:encode_uri(TestCaseExecutionId), "/summary"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -16751,41 +20617,36 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports a claimed phone number from an external service, such as
-%% Amazon Web Services End User
-%% Messaging, into an Amazon Connect instance.
+%% Amazon Web Services End User Messaging, into an
+%% Amazon Connect instance.
 %%
 %% You can call this API only in the same Amazon Web Services Region where
 %% the Amazon Connect instance was created.
 %%
 %% Call the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
-%% API
-%% to verify the status of a previous `ImportPhoneNumber' operation.
+%% API to verify the status of a previous `ImportPhoneNumber' operation.
 %%
 %% If you plan to claim or import numbers and then release numbers
-%% frequently, contact us for a
-%% service quota exception. Otherwise, it is possible you will be blocked
-%% from claiming and
-%% releasing any more numbers until up to 180 days past the oldest number
-%% released has expired.
+%% frequently, contact us for a service quota
+%% exception. Otherwise, it is possible you will be blocked from claiming and
+%% releasing any more numbers until up to 180
+%% days past the oldest number released has expired.
 %%
 %% By default you can claim or import and then release up to 200% of your
-%% maximum number of
-%% active phone numbers. If you claim or import and then release phone
-%% numbers using the UI or API
-%% during a rolling 180 day cycle that exceeds 200% of your phone number
-%% service level quota, you
-%% will be blocked from claiming or importing any more numbers until 180 days
-%% past the oldest number
-%% released has expired.
+%% maximum number of active phone numbers.
+%% If you claim or import and then release phone numbers using the UI or API
+%% during a rolling 180 day cycle that exceeds
+%% 200% of your phone number service level quota, you will be blocked from
+%% claiming or importing any more numbers until
+%% 180 days past the oldest number released has expired.
 %%
 %% For example, if you already have 99 claimed or imported numbers and a
-%% service level quota of
-%% 99 phone numbers, and in any 180 day period you release 99, claim 99, and
-%% then release 99, you
-%% will have exceeded the 200% limit. At that point you are blocked from
-%% claiming any more numbers
-%% until you open an Amazon Web Services Support ticket.
+%% service level quota of 99 phone numbers,
+%% and in any 180 day period you release 99, claim 99, and then release 99,
+%% you will have exceeded the 200% limit. At
+%% that point you are blocked from claiming any more numbers until you open
+%% an Amazon Web Services Support ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -16800,6 +20661,40 @@ import_phone_number(Client, Input) ->
 import_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/import"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Imports a media asset (such as a logo) for use in a workspace.
+-spec import_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), import_workspace_media_request()) ->
+    {ok, import_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, import_workspace_media_errors(), tuple()}.
+import_workspace_media(Client, InstanceId, WorkspaceId, Input) ->
+    import_workspace_media(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec import_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), import_workspace_media_request(), proplists:proplist()) ->
+    {ok, import_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, import_workspace_media_errors(), tuple()}.
+import_workspace_media(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/media"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -16863,8 +20758,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the association status of requested dataset ID for a given
-%% Amazon Connect
-%% instance.
+%% Amazon Connect instance.
 -spec list_analytics_data_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
@@ -16908,8 +20802,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data lake datasets available to associate with for a given
-%% Amazon Connect
-%% instance.
+%% Amazon Connect instance.
 -spec list_analytics_data_lake_data_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_lake_data_sets_response(), tuple()} |
     {error, any()} |
@@ -16998,8 +20891,7 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about contact tree, a list of associated
-%% contacts with a unique
-%% identifier.
+%% contacts with a unique identifier.
 -spec list_associated_contacts(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_associated_contacts_response(), tuple()} |
     {error, any()} |
@@ -17049,7 +20941,8 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% request access to this API, contact Amazon Web Services Support.
 %%
 %% Provides summary information about the authentication profiles in a
-%% specified Amazon Connect instance.
+%% specified Amazon Connect
+%% instance.
 -spec list_authentication_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_authentication_profiles_response(), tuple()} |
     {error, any()} |
@@ -17095,8 +20988,10 @@ list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% For the specified version of Amazon Lex, returns a paginated list of all
-%% the Amazon Lex bots currently associated with the instance. Use this API
-%% to return both Amazon Lex V1 and V2 bots.
+%% the Amazon Lex bots
+%% currently associated with the instance. Use this API to return both Amazon
+%% Lex V1 and V2
+%% bots.
 -spec list_bots(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
@@ -17132,6 +21027,54 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"lexVersion">>, LexVersion},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides information about the child hours of operations for the
+%% specified parent hours of operation.
+%%
+%% For more information about child hours of operations, see Link overrides
+%% from different hours of operation:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/ in the
+%% Administrator Guide.
+-spec list_child_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_child_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_child_hours_of_operations_errors(), tuple()}.
+list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId)
+  when is_map(Client) ->
+    list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId, #{}, #{}).
+
+-spec list_child_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_child_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_child_hours_of_operations_errors(), tuple()}.
+list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_child_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_child_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_child_hours_of_operations_errors(), tuple()}.
+list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/hours"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -17181,9 +21124,95 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all aliases associated with a contact flow module, showing
+%% their current version mappings and
+%% metadata.
+-spec list_contact_flow_module_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_contact_flow_module_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_aliases_errors(), tuple()}.
+list_contact_flow_module_aliases(Client, ContactFlowModuleId, InstanceId)
+  when is_map(Client) ->
+    list_contact_flow_module_aliases(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
+
+-spec list_contact_flow_module_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_contact_flow_module_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_aliases_errors(), tuple()}.
+list_contact_flow_module_aliases(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flow_module_aliases(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_contact_flow_module_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contact_flow_module_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_aliases_errors(), tuple()}.
+list_contact_flow_module_aliases(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/aliases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of all versions for a specific contact
+%% flow module.
+-spec list_contact_flow_module_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_contact_flow_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_versions_errors(), tuple()}.
+list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId)
+  when is_map(Client) ->
+    list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
+
+-spec list_contact_flow_module_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_contact_flow_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_versions_errors(), tuple()}.
+list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_contact_flow_module_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contact_flow_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_module_versions_errors(), tuple()}.
+list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the flow modules for the specified Amazon
-%% Connect
-%% instance.
+%% Connect instance.
 -spec list_contact_flow_modules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
@@ -17227,8 +21256,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all the available versions for the specified Amazon Connect
-%% instance and flow
-%% identifier.
+%% instance and flow identifier.
 -spec list_contact_flow_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_contact_flow_versions_response(), tuple()} |
     {error, any()} |
@@ -17279,8 +21307,8 @@ list_contact_flow_versions(Client, ContactFlowId, InstanceId, QueryMap, HeadersM
 %%
 %% For more information about flows, see Flows:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect
+%% Administrator Guide.
 -spec list_contact_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
@@ -17327,9 +21355,10 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% For the specified `referenceTypes', returns a list of references
-%% associated with
-%% the contact. References are links to documents that are related to a
-%% contact, such as emails, attachments, or URLs.
+%% associated with the contact.
+%% References are links to documents that are related to a contact, such as
+%% emails, attachments,
+%% or URLs.
 -spec list_contact_references(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
@@ -17371,6 +21400,173 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns all attributes for a specified data table.
+%%
+%% A maximum of 100 attributes per data table is allowed.
+%% Customers can request an increase by using Amazon Web Services Service
+%% Quotas. The response can be filtered by specific attribute IDs
+%% for CloudFormation integration.
+-spec list_data_table_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_attributes_request()) ->
+    {ok, list_data_table_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_attributes_errors(), tuple()}.
+list_data_table_attributes(Client, DataTableId, InstanceId, Input) ->
+    list_data_table_attributes(Client, DataTableId, InstanceId, Input, []).
+
+-spec list_data_table_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_attributes_request(), proplists:proplist()) ->
+    {ok, list_data_table_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_attributes_errors(), tuple()}.
+list_data_table_attributes(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/attributes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all primary value combinations for a given data table.
+%%
+%% Returns the unique combinations of primary
+%% attribute values that identify records in the table. Up to 100 records are
+%% returned per request.
+-spec list_data_table_primary_values(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_primary_values_request()) ->
+    {ok, list_data_table_primary_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_primary_values_errors(), tuple()}.
+list_data_table_primary_values(Client, DataTableId, InstanceId, Input) ->
+    list_data_table_primary_values(Client, DataTableId, InstanceId, Input, []).
+
+-spec list_data_table_primary_values(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_primary_values_request(), proplists:proplist()) ->
+    {ok, list_data_table_primary_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_primary_values_errors(), tuple()}.
+list_data_table_primary_values(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/list-primary"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists values stored in a data table with optional filtering by record
+%% IDs or primary attribute values.
+%%
+%% Returns
+%% the raw stored values along with metadata such as lock versions and
+%% modification timestamps.
+-spec list_data_table_values(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_values_request()) ->
+    {ok, list_data_table_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_values_errors(), tuple()}.
+list_data_table_values(Client, DataTableId, InstanceId, Input) ->
+    list_data_table_values(Client, DataTableId, InstanceId, Input, []).
+
+-spec list_data_table_values(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_table_values_request(), proplists:proplist()) ->
+    {ok, list_data_table_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_table_values_errors(), tuple()}.
+list_data_table_values(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all data tables for the specified Amazon Connect instance.
+%%
+%% Returns summary information for each table
+%% including basic metadata and modification details.
+-spec list_data_tables(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_tables_errors(), tuple()}.
+list_data_tables(Client, InstanceId)
+  when is_map(Client) ->
+    list_data_tables(Client, InstanceId, #{}, #{}).
+
+-spec list_data_tables(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_tables_errors(), tuple()}.
+list_data_tables(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_tables(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_data_tables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_tables_errors(), tuple()}.
+list_data_tables(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the default vocabularies for the specified Amazon Connect
 %% instance.
 -spec list_default_vocabularies(aws_client:aws_client(), binary() | list(), list_default_vocabularies_request()) ->
@@ -17387,6 +21583,41 @@ list_default_vocabularies(Client, InstanceId, Input) ->
 list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/default-vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all security profiles attached to a Q in Connect AIAgent Entity
+%% in an Amazon Connect instance.
+-spec list_entity_security_profiles(aws_client:aws_client(), binary() | list(), list_entity_security_profiles_request()) ->
+    {ok, list_entity_security_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_entity_security_profiles_errors(), tuple()}.
+list_entity_security_profiles(Client, InstanceId, Input) ->
+    list_entity_security_profiles(Client, InstanceId, Input, []).
+
+-spec list_entity_security_profiles(aws_client:aws_client(), binary() | list(), list_entity_security_profiles_request(), proplists:proplist()) ->
+    {ok, list_entity_security_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_entity_security_profiles_errors(), tuple()}.
+list_entity_security_profiles(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/entity-security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -17577,14 +21808,13 @@ list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
-%% Amazon Connect
-%% instance.
+%% Amazon Connect instance.
 %%
 %% For more information about hours of operation, see Set the Hours of
-%% Operation for a
-%% Queue:
+%% Operation for a Queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec list_hours_of_operations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
@@ -17675,8 +21905,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Returns a paginated list of storage configs for the identified instance
-%% and resource
-%% type.
+%% and resource type.
 -spec list_instance_storage_configs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
@@ -17723,10 +21952,10 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 %% change.
 %%
 %% Return a list of instances which are in active state, creation-in-progress
-%% state, and failed
-%% state. Instances that aren't successfully created (they are in a
-%% failed state) are returned only
-%% for 24 hours after the CreateInstance API was invoked.
+%% state, and failed state. Instances
+%% that aren't successfully created (they are in a failed state) are
+%% returned only for 24 hours after the CreateInstance
+%% API was invoked.
 -spec list_instances(aws_client:aws_client()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
@@ -17769,8 +21998,7 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the Amazon Web Services resource
-%% associations for the
-%% specified Amazon Connect instance.
+%% associations for the specified Amazon Connect instance.
 -spec list_integration_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
@@ -17818,8 +22046,8 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 %% change.
 %%
 %% Returns a paginated list of all Lambda functions that display in the
-%% dropdown options in the
-%% relevant flow blocks.
+%% dropdown options in the relevant flow
+%% blocks.
 -spec list_lambda_functions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
@@ -17865,8 +22093,8 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Returns a paginated list of all the Amazon Lex V1 bots currently
-%% associated with the
-%% instance. To return both Amazon Lex V1 and V2 bots, use the ListBots:
+%% associated with the instance. To return
+%% both Amazon Lex V1 and V2 bots, use the ListBots:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListBots.html
 %% API.
 -spec list_lex_bots(aws_client:aws_client(), binary() | list()) ->
@@ -17914,33 +22142,28 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Connect instance.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your
-%% Contact Center:
+%% Your Contact
+%% Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
 %% We recommend using ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
-%% to
-%% return phone number types. ListPhoneNumbers doesn't support number
-%% types `UIFN',
-%% `SHARED', `THIRD_PARTY_TF', and `THIRD_PARTY_DID'. While it
+%% to return phone number types. ListPhoneNumbers doesn't support number
+%% types
+%% `UIFN', `SHARED', `THIRD_PARTY_TF', and `THIRD_PARTY_DID'.
+%% While it
 %% returns numbers of those types, it incorrectly lists them as
-%% `TOLL_FREE' or
-%% `DID'.
+%% `TOLL_FREE' or `DID'.
 %%
 %% The phone number `Arn' value that is returned from each of the items
-%% in the
-%% PhoneNumberSummaryList:
+%% in the PhoneNumberSummaryList:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbers.html#connect-ListPhoneNumbers-response-PhoneNumberSummaryList
-%% cannot be used to tag phone number resources. It will fail
-%% with a `ResourceNotFoundException'. Instead, use the
-%% ListPhoneNumbersV2:
+%% cannot be used to tag phone number resources. It will fail with a
+%% `ResourceNotFoundException'. Instead, use the ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
-%% API.
-%% It returns the new phone number ARN that can be used to tag phone number
-%% resources.
+%% API. It returns the new
+%% phone number ARN that can be used to tag phone number resources.
 -spec list_phone_numbers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
@@ -17987,25 +22210,23 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Lists phone numbers claimed to your Amazon Connect instance or
 %% traffic distribution group.
 %%
-%% If the provided
-%% `TargetArn' is a traffic distribution group, you can call this API in
-%% both Amazon Web Services Regions
-%% associated with traffic distribution group.
+%% If the provided `TargetArn'
+%% is a traffic distribution group, you can call this API in both Amazon Web
+%% Services Regions associated with traffic distribution group.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your
-%% Contact Center:
+%% Your Contact
+%% Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 %%
 %% When given an instance ARN, `ListPhoneNumbersV2' returns only the
-%% phone
-%% numbers claimed to the instance.
+%% phone numbers claimed to the
+%% instance.
 %%
 %% When given a traffic distribution group ARN `ListPhoneNumbersV2'
-%% returns only the phone numbers
-%% claimed to the traffic distribution group.
+%% returns only the phone numbers claimed to the
+%% traffic distribution group.
 -spec list_phone_numbers_v2(aws_client:aws_client(), list_phone_numbers_v2_request()) ->
     {ok, list_phone_numbers_v2_response(), tuple()} |
     {error, any()} |
@@ -18042,22 +22263,19 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 %% @doc Lists predefined attributes for the specified Amazon Connect
 %% instance.
 %%
-%% A predefined
-%% attribute is made up of a name and a value. You can use predefined
-%% attributes
-%% for:
+%% A predefined attribute is
+%% made up of a name and a value. You can use predefined attributes for:
 %%
 %% Routing proficiency (for example, agent certification) that has predefined
-%% values (for
-%% example, a list of possible certifications). For more information, see
-%% Create
-%% predefined attributes for routing contacts to agents:
+%% values (for example, a list of
+%% possible certifications). For more information, see Create predefined
+%% attributes for routing contacts to
+%% agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the
-%% business unit handling the contact. For more information, see Use contact
-%% segment
+%% the name of the business unit
+%% handling the contact. For more information, see Use contact segment
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
@@ -18065,8 +22283,8 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec list_predefined_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -18196,17 +22414,15 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
 %%
-%% If you do not specify a `QueueTypes'
-%% parameter, both standard and agent queues are returned. This might cause
-%% an unexpected truncation
-%% of results if you have more than 1000 agents and you limit the number of
-%% results of the API call
-%% in code.
+%% If you do not specify a `QueueTypes' parameter, both standard and
+%% agent queues are returned. This might cause an unexpected truncation of
+%% results if you have more than 1000 agents and
+%% you limit the number of results of the API call in code.
 %%
-%% For more information about queues, see Queues: Standard and
-%% Agent:
+%% For more information about queues, see Queues: Standard and Agent:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec list_queues(aws_client:aws_client(), binary() | list()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
@@ -18296,11 +22512,12 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Provides a list of analysis segments for a real-time chat analysis
 %% session.
 %%
-%% This API
-%% supports CHAT channels only.
+%% This API supports CHAT channels
+%% only.
 %%
 %% This API does not support VOICE. If you attempt to use it for VOICE, an
-%% `InvalidRequestException' occurs.
+%% `InvalidRequestException'
+%% occurs.
 -spec list_realtime_contact_analysis_segments_v2(aws_client:aws_client(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request()) ->
     {ok, list_realtime_contact_analysis_segments_v2_response(), tuple()} |
     {error, any()} |
@@ -18341,29 +22558,26 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
 %% Following are common uses cases for this API:
 %%
 %% This API returns list of queues where contacts can be manually assigned or
-%% picked by an
-%% agent who has access to the Worklist app. The user can additionally filter
-%% on queues, if they
-%% have access to those queues (otherwise a invalid request exception will be
-%% thrown).
+%% picked by an agent who has access
+%% to the Worklist app. The user can additionally filter on queues, if they
+%% have access to those queues (otherwise a
+%% invalid request exception will be thrown).
 %%
 %% For information about how manual contact assignment works in the agent
-%% workspace, see the
-%% Access the
-%% Worklist app in the Amazon Connect agent workspace:
+%% workspace, see the Access the Worklist app in the Amazon Connect agent
+%% workspace:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/worklist-app.html in
 %% the Amazon Connect Administrator Guide.
 %%
 %% Important things to know
 %%
 %% This API only returns the manual assignment queues associated with a
-%% routing profile. Use
-%% the ListRoutingProfileQueues API to list the auto assignment queues for
-%% the routing
-%% profile.
+%% routing profile. Use the
+%% ListRoutingProfileQueues API to list the auto assignment queues for the
+%% routing profile.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec list_routing_profile_manual_assignment_queues(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_routing_profile_manual_assignment_queues_response(), tuple()} |
     {error, any()} |
@@ -18448,13 +22662,11 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the routing profiles for the
-%% specified Amazon Connect
-%% instance.
+%% specified Amazon Connect instance.
 %%
 %% For more information about routing profiles, see Routing Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html
-%% and Create a Routing
-%% Profile:
+%% and Create a Routing Profile:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html
 %% in the Amazon Connect Administrator Guide.
 -spec list_routing_profiles(aws_client:aws_client(), binary() | list()) ->
@@ -18588,8 +22800,8 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of third-party applications in a specific security
-%% profile.
+%% @doc Returns a list of third-party applications or MCP Servers in a
+%% specific security profile.
 -spec list_security_profile_applications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
@@ -18631,15 +22843,56 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc A list of Flow Modules an AI Agent can invoke as a tool
+-spec list_security_profile_flow_modules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_security_profile_flow_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_flow_modules_errors(), tuple()}.
+list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId)
+  when is_map(Client) ->
+    list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId, #{}, #{}).
+
+-spec list_security_profile_flow_modules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_security_profile_flow_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_flow_modules_errors(), tuple()}.
+list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
+
+-spec list_security_profile_flow_modules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_security_profile_flow_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_flow_modules_errors(), tuple()}.
+list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/security-profiles-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the permissions granted to a security profile.
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec list_security_profile_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
@@ -18687,11 +22940,10 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 %%
 %% For more information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec list_security_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_security_profiles_response(), tuple()} |
@@ -18736,11 +22988,11 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags for the specified resource.
 %%
-%% For sample policies that use tags, see Amazon Connect
-%% Identity-Based Policy Examples:
+%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% Policy
+%% Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -18816,6 +23068,142 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists detailed steps of test case execution that includes all
+%% observations along with actions taken and data associated in the specified
+%% Amazon Connect instance.
+-spec list_test_case_execution_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_test_case_execution_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_execution_records_errors(), tuple()}.
+list_test_case_execution_records(Client, InstanceId, TestCaseExecutionId, TestCaseId)
+  when is_map(Client) ->
+    list_test_case_execution_records(Client, InstanceId, TestCaseExecutionId, TestCaseId, #{}, #{}).
+
+-spec list_test_case_execution_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_case_execution_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_execution_records_errors(), tuple()}.
+list_test_case_execution_records(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_case_execution_records(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap, []).
+
+-spec list_test_case_execution_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_case_execution_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_execution_records_errors(), tuple()}.
+list_test_case_execution_records(Client, InstanceId, TestCaseExecutionId, TestCaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), "/", aws_util:encode_uri(TestCaseExecutionId), "/records"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all test case executions and allows filtering by test case id,
+%% test case name, start time, end time or status of the execution for the
+%% specified Amazon Connect instance.
+-spec list_test_case_executions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_test_case_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_executions_errors(), tuple()}.
+list_test_case_executions(Client, InstanceId)
+  when is_map(Client) ->
+    list_test_case_executions(Client, InstanceId, #{}, #{}).
+
+-spec list_test_case_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_test_case_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_executions_errors(), tuple()}.
+list_test_case_executions(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_case_executions(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_test_case_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_case_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_case_executions_errors(), tuple()}.
+list_test_case_executions(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/test-case-executions/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"testCaseId">>, maps:get(<<"testCaseId">>, QueryMap, undefined)},
+        {<<"testCaseName">>, maps:get(<<"testCaseName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the test cases present in the specific Amazon Connect instance.
+-spec list_test_cases(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_cases_errors(), tuple()}.
+list_test_cases(Client, InstanceId)
+  when is_map(Client) ->
+    list_test_cases(Client, InstanceId, #{}, #{}).
+
+-spec list_test_cases(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_cases_errors(), tuple()}.
+list_test_cases(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_cases(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_test_cases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_cases_errors(), tuple()}.
+list_test_cases(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/test-cases-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -18949,14 +23337,12 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the hierarchy groups for the
-%% specified Amazon Connect
-%% instance.
+%% specified Amazon Connect instance.
 %%
 %% For more information about agent hierarchies, see Set Up Agent
 %% Hierarchies:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html
-%% in the
-%% Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec list_user_hierarchy_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
@@ -19041,8 +23427,7 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the users for the specified Amazon
-%% Connect
-%% instance.
+%% Connect instance.
 -spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
@@ -19085,8 +23470,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all the available versions for the specified Amazon Connect
-%% instance and view
-%% identifier.
+%% instance and view identifier.
 %%
 %% Results will be sorted from highest to lowest.
 -spec list_view_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -19175,11 +23559,132 @@ list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists media assets (such as logos) associated with a workspace.
+-spec list_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_media_errors(), tuple()}.
+list_workspace_media(Client, InstanceId, WorkspaceId)
+  when is_map(Client) ->
+    list_workspace_media(Client, InstanceId, WorkspaceId, #{}, #{}).
+
+-spec list_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_media_errors(), tuple()}.
+list_workspace_media(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workspace_media(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec list_workspace_media(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspace_media_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_media_errors(), tuple()}.
+list_workspace_media(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/media"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the page configurations in a workspace, including the views
+%% assigned to each page.
+-spec list_workspace_pages(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_workspace_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_pages_errors(), tuple()}.
+list_workspace_pages(Client, InstanceId, WorkspaceId)
+  when is_map(Client) ->
+    list_workspace_pages(Client, InstanceId, WorkspaceId, #{}, #{}).
+
+-spec list_workspace_pages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_workspace_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_pages_errors(), tuple()}.
+list_workspace_pages(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workspace_pages(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec list_workspace_pages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspace_pages_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspace_pages_errors(), tuple()}.
+list_workspace_pages(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/pages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the workspaces in an Amazon Connect instance.
+-spec list_workspaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client, InstanceId)
+  when is_map(Client) ->
+    list_workspaces(Client, InstanceId, #{}, #{}).
+
+-spec list_workspaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workspaces(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_workspaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Initiates silent monitoring of a contact.
 %%
-%% The Contact Control Panel (CCP) of the user
-%% specified by userId will be set to silent monitoring mode on the
-%% contact.
+%% The Contact Control Panel (CCP) of the user specified by
+%% userId will be set to silent monitoring mode on the contact.
 -spec monitor_contact(aws_client:aws_client(), monitor_contact_request()) ->
     {ok, monitor_contact_response(), tuple()} |
     {error, any()} |
@@ -19249,13 +23754,13 @@ pause_contact(Client, Input0, Options0) ->
 
 %% @doc Changes the current status of a user or agent in Amazon Connect.
 %%
-%% If the agent is
-%% currently handling a contact, this sets the agent's next status.
+%% If the agent is currently handling a
+%% contact, this sets the agent's next status.
 %%
 %% For more information, see Agent status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-agent-status.html
-%% and Set your next
-%% status:
+%% and Set your
+%% next status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-next-status.html
 %% in the Amazon Connect Administrator Guide.
 -spec put_user_status(aws_client:aws_client(), binary() | list(), binary() | list(), put_user_status_request()) ->
@@ -19294,19 +23799,17 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% @doc Releases a phone number previously claimed to an Amazon Connect
 %% instance or traffic distribution group.
 %%
-%% You
-%% can call this API only in the Amazon Web Services Region where the number
-%% was claimed.
+%% You can call this API
+%% only in the Amazon Web Services Region where the number was claimed.
 %%
 %% To release phone numbers from a traffic distribution group, use the
-%% `ReleasePhoneNumber' API, not the
-%% Amazon Connect admin website.
+%% `ReleasePhoneNumber' API, not the Amazon Connect admin website.
 %%
 %% After releasing a phone number, the phone number enters into a cooldown
-%% period for up to
-%% 180 days. It cannot be searched for or claimed again until the period has
-%% ended. If you
-%% accidentally release a phone number, contact Amazon Web Services Support.
+%% period for up to 180 days. It cannot be
+%% searched for or claimed again until the period has ended. If you
+%% accidentally release a phone number, contact
+%% Amazon Web Services Support.
 %%
 %% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
@@ -19366,16 +23869,15 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Replicates an Amazon Connect instance in the specified Amazon Web
-%% Services Region and
-%% copies configuration information for Amazon Connect resources across
-%% Amazon Web Services Regions.
+%% Services Region and copies configuration
+%% information for Amazon Connect resources across Amazon Web Services
+%% Regions.
 %%
 %% For more information about replicating an Amazon Connect instance, see
-%% Create
-%% a replica of your existing Amazon Connect instance:
+%% Create a replica of your existing Amazon Connect
+%% instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec replicate_instance(aws_client:aws_client(), binary() | list(), replicate_instance_request()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
@@ -19444,13 +23946,12 @@ resume_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, and the recording has been
-%% suspended using
-%% SuspendContactRecording, this API resumes recording whatever recording is
-%% selected in the flow
+%% suspended using SuspendContactRecording, this API
+%% resumes recording whatever recording is selected in the flow
 %% configuration: call, screen, or both.
 %%
-%% If only call recording or only screen recording is enabled,
-%% then it would resume.
+%% If only call
+%% recording or only screen recording is enabled, then it would resume.
 %%
 %% Voice and screen recordings are supported.
 -spec resume_contact_recording(aws_client:aws_client(), resume_contact_recording_request()) ->
@@ -19522,13 +24023,12 @@ search_agent_statuses(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for available phone numbers that you can claim to your
-%% Amazon Connect instance
-%% or traffic distribution group.
+%% Amazon Connect instance or traffic distribution group.
 %%
-%% If the provided `TargetArn' is a traffic distribution group, you can
-%% call this API in both
-%% Amazon Web Services Regions associated with the traffic distribution
-%% group.
+%% If the
+%% provided `TargetArn' is a traffic distribution group, you can call
+%% this API in both Amazon Web Services Regions associated with
+%% the traffic distribution group.
 -spec search_available_phone_numbers(aws_client:aws_client(), search_available_phone_numbers_request()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
@@ -19576,17 +24076,15 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 %% Important things to know
 %%
 %% A Search operation, unlike a List operation, takes time to index changes
-%% to resource
-%% (create, update or delete). If you don't see updated information for
-%% recently changed
-%% contact evaluations, try calling the API again in a few seconds. Contact
-%% Evaluations
-%% may not be fully backfilled with historical data in all regions yet,
-%% however all recently
-%% created Contact Evaluations should be available for search.
+%% to resource (create, update or
+%% delete). If you don't see updated information for recently changed
+%% contact evaluations, try calling the API again
+%% in a few seconds. Contact Evaluations may not be fully backfilled with
+%% historical data in all regions yet, however
+%% all recently created Contact Evaluations should be available for search.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_contact_evaluations(aws_client:aws_client(), search_contact_evaluations_request()) ->
     {ok, search_contact_evaluations_response(), tuple()} |
     {error, any()} |
@@ -19724,6 +24222,46 @@ search_contacts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for data tables based on the table's ID, name, and
+%% description.
+%%
+%% In the future, this operation can
+%% support searching on attribute names and possibly primary values. Follows
+%% other search operations closely and
+%% supports both search criteria and filters.
+-spec search_data_tables(aws_client:aws_client(), search_data_tables_request()) ->
+    {ok, search_data_tables_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_tables_errors(), tuple()}.
+search_data_tables(Client, Input) ->
+    search_data_tables(Client, Input, []).
+
+-spec search_data_tables(aws_client:aws_client(), search_data_tables_request(), proplists:proplist()) ->
+    {ok, search_data_tables_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_tables_errors(), tuple()}.
+search_data_tables(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-data-tables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches email address in an instance, with optional filtering.
 -spec search_email_addresses(aws_client:aws_client(), search_email_addresses_request()) ->
     {ok, search_email_addresses_response(), tuple()} |
@@ -19775,13 +24313,13 @@ search_email_addresses(Client, Input0, Options0) ->
 %% Important things to know
 %%
 %% A Search operation, unlike a List operation, takes time to index changes
-%% to resource
-%% (create, update or delete). If you don't see updated information for
-%% recently changed
-%% contact evaluations, try calling the API again in a few seconds.
+%% to resource (create, update or
+%% delete). If you don't see updated information for recently changed
+%% contact evaluations, try calling the API again
+%% in a few seconds.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_evaluation_forms(aws_client:aws_client(), search_evaluation_forms_request()) ->
     {ok, search_evaluation_forms_response(), tuple()} |
     {error, any()} |
@@ -19850,8 +24388,7 @@ search_hours_of_operation_overrides(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches the hours of operation in an Amazon Connect instance, with
-%% optional
-%% filtering.
+%% optional filtering.
 -spec search_hours_of_operations(aws_client:aws_client(), search_hours_of_operations_request()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
     {error, any()} |
@@ -19887,22 +24424,19 @@ search_hours_of_operations(Client, Input0, Options0) ->
 
 %% @doc Searches predefined attributes that meet certain criteria.
 %%
-%% A predefined
-%% attribute is made up of a name and a value. You can use predefined
-%% attributes
-%% for:
+%% A predefined attribute is made
+%% up of a name and a value. You can use predefined attributes for:
 %%
 %% Routing proficiency (for example, agent certification) that has predefined
-%% values (for
-%% example, a list of possible certifications). For more information, see
-%% Create
-%% predefined attributes for routing contacts to agents:
+%% values (for example, a list of
+%% possible certifications). For more information, see Create predefined
+%% attributes for routing contacts to
+%% agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the
-%% business unit handling the contact. For more information, see Use contact
-%% segment
+%% the name of the business unit
+%% handling the contact. For more information, see Use contact segment
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
@@ -19910,8 +24444,8 @@ search_hours_of_operations(Client, Input0, Options0) ->
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -20128,16 +24662,14 @@ search_routing_profiles(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches security profiles in an Amazon Connect instance, with
-%% optional
-%% filtering.
+%% optional filtering.
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec search_security_profiles(aws_client:aws_client(), search_security_profiles_request()) ->
     {ok, search_security_profiles_response(), tuple()} |
@@ -20172,14 +24704,47 @@ search_security_profiles(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for test cases in the specified Amazon Connect instance,
+%% with optional filtering.
+-spec search_test_cases(aws_client:aws_client(), search_test_cases_request()) ->
+    {ok, search_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, search_test_cases_errors(), tuple()}.
+search_test_cases(Client, Input) ->
+    search_test_cases(Client, Input, []).
+
+-spec search_test_cases(aws_client:aws_client(), search_test_cases_request(), proplists:proplist()) ->
+    {ok, search_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, search_test_cases_errors(), tuple()}.
+search_test_cases(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-test-cases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches UserHierarchyGroups in an Amazon Connect instance, with
-%% optional
-%% filtering.
+%% optional filtering.
 %%
 %% The UserHierarchyGroup with `&quot;LevelId&quot;: &quot;0&quot;' is
-%% the foundation for building
-%% levels on top of an instance. It is not user-definable, nor is it visible
-%% in the UI.
+%% the foundation for building levels on top of an
+%% instance. It is not user-definable, nor is it visible in the UI.
 -spec search_user_hierarchy_groups(aws_client:aws_client(), search_user_hierarchy_groups_request()) ->
     {ok, search_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
@@ -20250,9 +24815,43 @@ search_users(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches views based on name, description, or tags.
+-spec search_views(aws_client:aws_client(), search_views_request()) ->
+    {ok, search_views_response(), tuple()} |
+    {error, any()} |
+    {error, search_views_errors(), tuple()}.
+search_views(Client, Input) ->
+    search_views(Client, Input, []).
+
+-spec search_views(aws_client:aws_client(), search_views_request(), proplists:proplist()) ->
+    {ok, search_views_response(), tuple()} |
+    {error, any()} |
+    {error, search_views_errors(), tuple()}.
+search_views(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-views"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for vocabularies within a specific Amazon Connect instance
-%% using
-%% `State', `NameStartsWith', and `LanguageCode'.
+%% using `State',
+%% `NameStartsWith', and `LanguageCode'.
 -spec search_vocabularies(aws_client:aws_client(), binary() | list(), search_vocabularies_request()) ->
     {ok, search_vocabularies_response(), tuple()} |
     {error, any()} |
@@ -20286,28 +24885,95 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for workspace associations with users or routing profiles
+%% based on various criteria.
+-spec search_workspace_associations(aws_client:aws_client(), search_workspace_associations_request()) ->
+    {ok, search_workspace_associations_response(), tuple()} |
+    {error, any()} |
+    {error, search_workspace_associations_errors(), tuple()}.
+search_workspace_associations(Client, Input) ->
+    search_workspace_associations(Client, Input, []).
+
+-spec search_workspace_associations(aws_client:aws_client(), search_workspace_associations_request(), proplists:proplist()) ->
+    {ok, search_workspace_associations_response(), tuple()} |
+    {error, any()} |
+    {error, search_workspace_associations_errors(), tuple()}.
+search_workspace_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-workspace-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches workspaces based on name, description, visibility, or tags.
+-spec search_workspaces(aws_client:aws_client(), search_workspaces_request()) ->
+    {ok, search_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, search_workspaces_errors(), tuple()}.
+search_workspaces(Client, Input) ->
+    search_workspaces(Client, Input, []).
+
+-spec search_workspaces(aws_client:aws_client(), search_workspaces_request(), proplists:proplist()) ->
+    {ok, search_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, search_workspaces_errors(), tuple()}.
+search_workspaces(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-workspaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Processes chat integration events from Amazon Web Services or
-%% external integrations to
-%% Amazon Connect.
+%% external integrations to Amazon Connect.
 %%
-%% A chat integration event includes:
+%% A chat
+%% integration event includes:
 %%
 %% SourceId, DestinationId, and Subtype: a set of identifiers, uniquely
-%% representing a
-%% chat
+%% representing a chat
 %%
 %% ChatEvent: details of the chat action to perform such as sending a
-%% message, event, or
-%% disconnecting from a chat
+%% message, event, or disconnecting from a
+%% chat
 %%
 %% When a chat integration event is sent with chat identifiers that do not
-%% map to an active
-%% chat contact, a new chat contact is also created before handling chat
-%% action.
+%% map to an active chat contact, a new
+%% chat contact is also created before handling chat action.
 %%
 %% Access to this API is currently restricted to Amazon Web Services End User
-%% Messaging for
-%% supporting SMS integration.
+%% Messaging for supporting SMS
+%% integration.
 -spec send_chat_integration_event(aws_client:aws_client(), send_chat_integration_event_request()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |
@@ -20343,13 +25009,13 @@ send_chat_integration_event(Client, Input0, Options0) ->
 
 %% @doc Send outbound email for outbound campaigns.
 %%
-%% For more information about outbound campaigns,
-%% see Set up Amazon Connect outbound campaigns:
+%% For more information about outbound campaigns, see Set up Amazon Connect
+%% outbound campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-outbound-campaigns.html.
 %%
 %% Only the Amazon Connect outbound campaigns service principal is allowed to
-%% assume a
-%% role in your account and call this API.
+%% assume a role in your account
+%% and call this API.
 -spec send_outbound_email(aws_client:aws_client(), binary() | list(), send_outbound_email_request()) ->
     {ok, send_outbound_email_response(), tuple()} |
     {error, any()} |
@@ -20388,9 +25054,7 @@ send_outbound_email(Client, InstanceId, Input0, Options0) ->
 %%
 %% You may only use this API to upload attachments to an Amazon Connect Case:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html
-%% or
-%% Amazon Connect
-%% Email:
+%% or Amazon Connect Email:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html.
 -spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
     {ok, start_attached_file_upload_response(), tuple()} |
@@ -20428,35 +25092,33 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Initiates a flow to start a new chat for the customer.
 %%
-%% Response of this API provides a token
-%% required to obtain credentials from the CreateParticipantConnection:
+%% Response of this API provides a token required to obtain
+%% credentials from the CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% API in the Amazon Connect Participant Service.
 %%
 %% When a new chat contact is successfully created, clients must subscribe to
-%% the participant’s
-%% connection for the created chat within 5 minutes. This is achieved by
-%% invoking CreateParticipantConnection:
+%% the participant’s connection for the
+%% created chat within 5 minutes. This is achieved by invoking
+%% CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% with WEBSOCKET and CONNECTION_CREDENTIALS.
 %%
 %% A 429 error occurs in the following situations:
 %%
 %% API rate limit is exceeded. API TPS throttling returns a
-%% `TooManyRequests'
-%% exception.
+%% `TooManyRequests' exception.
 %%
-%% The quota for concurrent active
-%% chats:
+%% The quota for
+%% concurrent active chats:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% is exceeded. Active chat throttling returns a
 %% `LimitExceededException'.
 %%
 %% If you use the `ChatDurationInMinutes' parameter and receive a 400
-%% error, your
-%% account may not support the ability to configure custom chat durations.
-%% For more information,
-%% contact Amazon Web Services Support.
+%% error, your account may not
+%% support the ability to configure custom chat durations. For more
+%% information, contact Amazon Web Services Support.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -20501,17 +25163,16 @@ start_chat_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an empty evaluation in the specified Amazon Connect instance,
-%% using the given
-%% evaluation form for the particular contact.
+%% using the given evaluation form for the
+%% particular contact.
 %%
-%% The evaluation form version used for the contact
-%% evaluation corresponds to the currently activated version. If no version
-%% is activated for the
-%% evaluation form, the contact evaluation cannot be started.
+%% The evaluation form version used for the contact evaluation corresponds to
+%% the currently
+%% activated version. If no version is activated for the evaluation form, the
+%% contact evaluation cannot be started.
 %%
 %% Evaluations created through the public API do not contain answer values
-%% suggested from
-%% automation.
+%% suggested from automation.
 -spec start_contact_evaluation(aws_client:aws_client(), binary() | list(), start_contact_evaluation_request()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |
@@ -20545,27 +25206,63 @@ start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Enables in-flight message processing for an ongoing chat session.
+%%
+%% Message processing will stay active for the
+%% rest of the chat, even if an individual contact segment ends.
+-spec start_contact_media_processing(aws_client:aws_client(), start_contact_media_processing_request()) ->
+    {ok, start_contact_media_processing_response(), tuple()} |
+    {error, any()} |
+    {error, start_contact_media_processing_errors(), tuple()}.
+start_contact_media_processing(Client, Input) ->
+    start_contact_media_processing(Client, Input, []).
+
+-spec start_contact_media_processing(aws_client:aws_client(), start_contact_media_processing_request(), proplists:proplist()) ->
+    {ok, start_contact_media_processing_response(), tuple()} |
+    {error, any()} |
+    {error, start_contact_media_processing_errors(), tuple()}.
+start_contact_media_processing(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/start-contact-media-processing"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts recording the contact:
 %%
-%% If the API is called before the agent joins the call, recording
-%% starts when the agent joins the call.
+%% If the API is called before the agent joins the call, recording starts
+%% when the agent
+%% joins the call.
 %%
-%% If the API is called after the agent joins the call, recording starts
-%% at the time of the API call.
+%% If the API is called after the agent joins the call, recording starts at
+%% the time of the
+%% API call.
 %%
 %% StartContactRecording is a one-time action. For example, if you use
-%% StopContactRecording to
-%% stop recording an ongoing call, you can't use StartContactRecording to
-%% restart it. For scenarios
-%% where the recording has started and you want to suspend and resume it,
-%% such as when collecting
-%% sensitive information (for example, a credit card number), use
-%% SuspendContactRecording and
-%% ResumeContactRecording.
+%% StopContactRecording to stop recording an
+%% ongoing call, you can't use StartContactRecording to restart it. For
+%% scenarios where the recording has started and
+%% you want to suspend and resume it, such as when collecting sensitive
+%% information (for example, a credit card number),
+%% use SuspendContactRecording and ResumeContactRecording.
 %%
 %% You can use this API to override the recording behavior configured in the
-%% Set recording
-%% behavior:
+%% Set recording behavior:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html
 %% block.
 %%
@@ -20606,10 +25303,10 @@ start_contact_recording(Client, Input0, Options0) ->
 %% @doc Initiates real-time message streaming for a new chat contact.
 %%
 %% For more information about message streaming, see Enable real-time chat
-%% message
-%% streaming:
+%% message streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -20654,10 +25351,10 @@ start_contact_streaming(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an inbound email contact and initiates a flow to start the
-%% email contact for the
-%% customer.
+%% email contact for the customer.
 %%
-%% Response of this API provides the ContactId of the email contact created.
+%% Response of
+%% this API provides the ContactId of the email contact created.
 -spec start_email_contact(aws_client:aws_client(), start_email_contact_request()) ->
     {ok, start_email_contact_response(), tuple()} |
     {error, any()} |
@@ -20691,35 +25388,40 @@ start_email_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a new outbound SMS contact to a customer.
+%% @doc Initiates a new outbound SMS or WhatsApp contact to a customer.
 %%
 %% Response of this API provides the
-%% `ContactId' of the outbound SMS contact created.
+%% `ContactId' of the outbound SMS or WhatsApp contact created.
 %%
 %% SourceEndpoint only supports Endpoints with
 %% `CONNECT_PHONENUMBER_ARN' as Type and DestinationEndpoint only
-%% supports Endpoints with `TELEPHONE_NUMBER' as
-%% Type. ContactFlowId initiates the flow to manage the new SMS
-%% contact created.
+%% supports
+%% Endpoints with `TELEPHONE_NUMBER' as Type. ContactFlowId initiates the
+%% flow to manage the new contact created.
 %%
-%% This API can be used to initiate outbound SMS contacts for an agent, or it
-%% can also deflect
-%% an ongoing contact to an outbound SMS contact by using the
+%% This API can be used to initiate outbound SMS or WhatsApp contacts for an
+%% agent, or it can also deflect
+%% an ongoing contact to an outbound SMS or WhatsApp contact by using the
 %% StartOutboundChatContact:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html
-%% Flow Action.
+%% Flow
+%% Action.
 %%
-%% For more information about using SMS in Amazon Connect, see the following
-%% topics in the
-%% Amazon Connect Administrator Guide:
+%% For more information about using SMS or WhatsApp in Amazon Connect, see
+%% the following topics in
+%% the Amazon Connect Administrator Guide:
 %%
-%% Set
-%% up SMS messaging:
+%% Set up SMS
+%% messaging:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-sms-messaging.html
 %%
-%% Request an
-%% SMS-enabled phone number through AWS End User Messaging SMS:
+%% Request an SMS-enabled phone
+%% number through Amazon Web Services End User Messaging SMS:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/sms-number.html
+%%
+%% Set up WhatsApp
+%% Business messaging:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/whatsapp-integration.html
 -spec start_outbound_chat_contact(aws_client:aws_client(), start_outbound_chat_contact_request()) ->
     {ok, start_outbound_chat_contact_response(), tuple()} |
     {error, any()} |
@@ -20754,8 +25456,8 @@ start_outbound_chat_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initiates a flow to send an agent reply or outbound email contact
-%% (created from the
-%% CreateContact API) to a customer.
+%% (created from the CreateContact API) to a
+%% customer.
 -spec start_outbound_email_contact(aws_client:aws_client(), start_outbound_email_contact_request()) ->
     {ok, start_outbound_email_contact_response(), tuple()} |
     {error, any()} |
@@ -20791,33 +25493,38 @@ start_outbound_email_contact(Client, Input0, Options0) ->
 
 %% @doc Places an outbound call to a contact, and then initiates the flow.
 %%
-%% It performs the actions
-%% in the flow that's specified (in `ContactFlowId').
+%% It performs the actions in the flow that's
+%% specified (in `ContactFlowId').
 %%
 %% Agents do not initiate the outbound API, which means that they do not dial
-%% the contact. If
-%% the flow places an outbound call to a contact, and then puts the contact
-%% in queue, the call is
-%% then routed to the agent, like any other inbound case.
+%% the contact. If the flow places an
+%% outbound call to a contact, and then puts the contact in queue, the call
+%% is then routed to the agent, like any other
+%% inbound case.
 %%
-%% There is a 60-second dialing timeout for this operation. If the call is
-%% not connected after
-%% 60 seconds, it fails.
+%% Dialing timeout for this operation can be configured with the
+%% “RingTimeoutInSeconds” parameter. If not
+%% specified, the default dialing timeout will be 60 seconds which means if
+%% the call is not connected within 60 seconds,
+%% it fails.
 %%
 %% UK numbers with a 447 prefix are not allowed by default. Before you can
-%% dial these UK
-%% mobile numbers, you must submit a service quota increase request. For more
-%% information, see
-%% Amazon Connect Service Quotas:
+%% dial these UK mobile numbers, you must
+%% submit a service quota increase request. For more information, see Amazon
+%% Connect Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
-%% `TrafficType' = `CAMPAIGN', you must submit a service quota
-%% increase
-%% request to the quota Amazon Connect campaigns:
+%% `TrafficType' =
+%% `CAMPAIGN', you must submit a service quota increase request to the
+%% quota Amazon Connect campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas.
+%%
+%% For Preview dialing mode, only the Amazon Connect outbound campaigns
+%% service principal is allowed to assume a
+%% role in your account and call this API with OutboundStrategy.
 -spec start_outbound_voice_contact(aws_client:aws_client(), start_outbound_voice_contact_request()) ->
     {ok, start_outbound_voice_contact_response(), tuple()} |
     {error, any()} |
@@ -20853,11 +25560,11 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
 %% @doc Starts screen sharing for a contact.
 %%
-%% For more information about screen sharing, see Set up in-app, web,
-%% video calling, and screen sharing capabilities:
+%% For more information about screen sharing, see Set up in-app, web, video
+%% calling, and screen sharing
+%% capabilities:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec start_screen_sharing(aws_client:aws_client(), start_screen_sharing_request()) ->
     {ok, start_screen_sharing_response(), tuple()} |
     {error, any()} |
@@ -20893,24 +25600,24 @@ start_screen_sharing(Client, Input0, Options0) ->
 
 %% @doc Initiates a flow to start a new task contact.
 %%
-%% For more information about task contacts, see
-%% Concepts: Tasks in
-%% Amazon Connect:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html in the
+%% For more information about task contacts, see Concepts: Tasks in Amazon
+%% Connect: https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html
+%% in the
 %% Amazon Connect Administrator Guide.
 %%
 %% When using `PreviousContactId' and `RelatedContactId' input
-%% parameters, note the following:
+%% parameters, note the
+%% following:
 %%
 %% `PreviousContactId'
 %%
 %% Any updates to user-defined task contact attributes on any contact linked
-%% through the
-%% same `PreviousContactId' will affect every contact in the chain.
+%% through the same
+%% `PreviousContactId' will affect every contact in the chain.
 %%
 %% There can be a maximum of 12 linked task contacts in a chain. That is, 12
-%% task contacts
-%% can be created that share the same `PreviousContactId'.
+%% task contacts can be created that
+%% share the same `PreviousContactId'.
 %%
 %% `RelatedContactId'
 %%
@@ -20918,33 +25625,31 @@ start_screen_sharing(Client, Input0, Options0) ->
 %% contact.
 %%
 %% Any update on attributes in a new task contact does not update attributes
-%% on previous
-%% contact.
+%% on previous contact.
 %%
 %% There’s no limit on the number of task contacts that can be created that
 %% use the same
 %% `RelatedContactId'.
 %%
 %% In addition, when calling StartTaskContact include only one of these
-%% parameters:
-%% `ContactFlowID', `QuickConnectID', or `TaskTemplateID'. Only
-%% one parameter is required as long as the task template has a flow
-%% configured to run it. If more
-%% than one parameter is specified, or only the `TaskTemplateID' is
-%% specified but it does
-%% not have a flow configured, the request returns an error because Amazon
-%% Connect cannot
-%% identify the unique flow to run when the task is created.
+%% parameters: `ContactFlowID',
+%% `QuickConnectID', or `TaskTemplateID'. Only one parameter is
+%% required as long as the task
+%% template has a flow configured to run it. If more than one parameter is
+%% specified, or only the
+%% `TaskTemplateID' is specified but it does not have a flow configured,
+%% the request returns an error
+%% because Amazon Connect cannot identify the unique flow to run when the
+%% task is created.
 %%
 %% A `ServiceQuotaExceededException' occurs when the number of open tasks
-%% exceeds
-%% the active tasks quota or there are already 12 tasks referencing the same
-%% `PreviousContactId'. For more information about service quotas for
-%% task contacts, see
-%% Amazon Connect service quotas:
+%% exceeds the active tasks quota
+%% or there are already 12 tasks referencing the same
+%% `PreviousContactId'. For more information about service
+%% quotas for task contacts, see Amazon Connect service quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec start_task_contact(aws_client:aws_client(), start_task_contact_request()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
@@ -20978,12 +25683,47 @@ start_task_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts executing a published test case.
+-spec start_test_case_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_test_case_execution_request()) ->
+    {ok, start_test_case_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_test_case_execution_errors(), tuple()}.
+start_test_case_execution(Client, InstanceId, TestCaseId, Input) ->
+    start_test_case_execution(Client, InstanceId, TestCaseId, Input, []).
+
+-spec start_test_case_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_test_case_execution_request(), proplists:proplist()) ->
+    {ok, start_test_case_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_test_case_execution_errors(), tuple()}.
+start_test_case_execution(Client, InstanceId, TestCaseId, Input0, Options0) ->
+    Method = put,
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), "/start-execution"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Places an inbound in-app, web, or video call to a contact, and then
 %% initiates the flow.
 %%
-%% It
-%% performs the actions in the flow that are specified (in ContactFlowId) and
-%% present in the Amazon Connect instance (specified as InstanceId).
+%% It performs the actions
+%% in the flow that are specified (in ContactFlowId) and present in the
+%% Amazon Connect instance (specified as
+%% InstanceId).
 -spec start_web_r_t_c_contact(aws_client:aws_client(), start_web_r_t_c_contact_request()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
     {error, any()} |
@@ -21019,8 +25759,9 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 
 %% @doc Ends the specified contact.
 %%
-%% Use this API to stop queued callbacks. It does not work for
-%% voice contacts that use the following initiation methods:
+%% Use this API to stop queued callbacks. It does not work for voice contacts
+%% that use
+%% the following initiation methods:
 %%
 %% DISCONNECT
 %%
@@ -21033,8 +25774,7 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 %% MONITOR
 %%
 %% Chat and task contacts can be terminated in any state, regardless of
-%% initiation
-%% method.
+%% initiation method.
 -spec stop_contact(aws_client:aws_client(), stop_contact_request()) ->
     {ok, stop_contact_response(), tuple()} |
     {error, any()} |
@@ -21068,16 +25808,49 @@ stop_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops in-flight message processing for an ongoing chat session.
+-spec stop_contact_media_processing(aws_client:aws_client(), stop_contact_media_processing_request()) ->
+    {ok, stop_contact_media_processing_response(), tuple()} |
+    {error, any()} |
+    {error, stop_contact_media_processing_errors(), tuple()}.
+stop_contact_media_processing(Client, Input) ->
+    stop_contact_media_processing(Client, Input, []).
+
+-spec stop_contact_media_processing(aws_client:aws_client(), stop_contact_media_processing_request(), proplists:proplist()) ->
+    {ok, stop_contact_media_processing_response(), tuple()} |
+    {error, any()} |
+    {error, stop_contact_media_processing_errors(), tuple()}.
+stop_contact_media_processing(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/stop-contact-media-processing"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops recording a call when a contact is being recorded.
 %%
-%% StopContactRecording is a one-time
-%% action. If you use StopContactRecording to stop recording an ongoing call,
-%% you can't use
-%% StartContactRecording to restart it. For scenarios where the recording has
-%% started and you want
-%% to suspend it for sensitive information (for example, to collect a credit
-%% card number), and then
-%% restart it, use SuspendContactRecording and ResumeContactRecording.
+%% StopContactRecording is a one-time action. If you use
+%% StopContactRecording to stop recording an ongoing call, you can't use
+%% StartContactRecording to restart it. For
+%% scenarios where the recording has started and you want to suspend it for
+%% sensitive information (for example, to
+%% collect a credit card number), and then restart it, use
+%% SuspendContactRecording and ResumeContactRecording.
 %%
 %% Only voice recordings are supported at this time.
 -spec stop_contact_recording(aws_client:aws_client(), stop_contact_recording_request()) ->
@@ -21115,8 +25888,8 @@ stop_contact_recording(Client, Input0, Options0) ->
 
 %% @doc Ends message streaming on a specified contact.
 %%
-%% To restart message streaming on that
-%% contact, call the StartContactStreaming:
+%% To restart message streaming on that contact, call the
+%% StartContactStreaming:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
 %% API.
 -spec stop_contact_streaming(aws_client:aws_client(), stop_contact_streaming_request()) ->
@@ -21152,20 +25925,52 @@ stop_contact_streaming(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops a running test execution.
+-spec stop_test_case_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_test_case_execution_request()) ->
+    {ok, stop_test_case_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_test_case_execution_errors(), tuple()}.
+stop_test_case_execution(Client, InstanceId, TestCaseExecutionId, TestCaseId, Input) ->
+    stop_test_case_execution(Client, InstanceId, TestCaseExecutionId, TestCaseId, Input, []).
+
+-spec stop_test_case_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_test_case_execution_request(), proplists:proplist()) ->
+    {ok, stop_test_case_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_test_case_execution_errors(), tuple()}.
+stop_test_case_execution(Client, InstanceId, TestCaseExecutionId, TestCaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), "/", aws_util:encode_uri(TestCaseExecutionId), "/stop-execution"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Submits a contact evaluation in the specified Amazon Connect
 %% instance.
 %%
-%% Answers included
-%% in the request are merged with existing answers for the given evaluation.
-%% If no answers or notes
-%% are passed, the evaluation is submitted with the existing answers and
-%% notes. You can delete an
-%% answer or note by passing an empty object (`{}') to the question
-%% identifier.
+%% Answers included in the request are
+%% merged with existing answers for the given evaluation. If no answers or
+%% notes are passed, the evaluation is submitted
+%% with the existing answers and notes. You can delete an answer or note by
+%% passing an empty object (`{}') to
+%% the question identifier.
 %%
 %% If a contact evaluation is already in submitted state, this operation will
-%% trigger a
-%% resubmission.
+%% trigger a resubmission.
 -spec submit_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), submit_contact_evaluation_request()) ->
     {ok, submit_contact_evaluation_response(), tuple()} |
     {error, any()} |
@@ -21200,20 +26005,20 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API suspends recording
-%% whatever is selected in the
-%% flow configuration: call (IVR or agent), screen, or both.
+%% whatever is selected in the flow configuration:
+%% call (IVR or agent), screen, or both.
 %%
-%% If only call recording or only screen
-%% recording is enabled, then it would be suspended. For example, you might
-%% suspend the screen
-%% recording while collecting sensitive information, such as a credit card
-%% number. Then use ResumeContactRecording:
+%% If only call recording or only screen recording is enabled, then it would
+%% be
+%% suspended. For example, you might suspend the screen recording while
+%% collecting sensitive information, such as a
+%% credit card number. Then use ResumeContactRecording:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ResumeContactRecording.html
-%% to restart recording the screen.
+%% to restart
+%% recording the screen.
 %%
 %% The period of time that the recording is suspended is filled with silence
-%% in the final
-%% recording.
+%% in the final recording.
 %%
 %% Voice (IVR, agent) and screen recordings are supported.
 -spec suspend_contact_recording(aws_client:aws_client(), suspend_contact_recording_request()) ->
@@ -21251,9 +26056,9 @@ suspend_contact_recording(Client, Input0, Options0) ->
 
 %% @doc Adds the specified tags to the contact resource.
 %%
-%% For more information about this API is
-%% used, see Set
-%% up granular billing for a detailed view of your Amazon Connect usage:
+%% For more information about this API is used, see Set up granular billing
+%% for a detailed
+%% view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 -spec tag_contact(aws_client:aws_client(), tag_contact_request()) ->
     {ok, tag_contact_response(), tuple()} |
@@ -21291,17 +26096,16 @@ tag_contact(Client, Input0, Options0) ->
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% Some of the supported resource types are agents, routing profiles, queues,
-%% quick connects,
-%% flows, agent statuses, hours of operation, phone numbers, security
-%% profiles, and task templates.
-%% For a complete list, see Tagging resources in Amazon Connect:
+%% quick connects, flows, agent
+%% statuses, hours of operation, phone numbers, security profiles, and task
+%% templates. For a complete list, see Tagging resources in Amazon Connect:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
-%% For sample policies that use tags, see Amazon Connect
-%% Identity-Based Policy Examples:
+%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% Policy
+%% Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -21337,14 +26141,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Transfers `TASK' or `EMAIL'
 %% contacts from one agent or queue to another agent or queue at any point
-%% after a contact is created.
+%% after a contact is
+%% created.
 %%
-%% You can transfer a contact to another queue by providing the flow
-%% which orchestrates the contact to the destination queue. This gives you
-%% more control over contact
-%% handling and helps you adhere to the service level agreement (SLA)
-%% guaranteed to your
-%% customers.
+%% You can transfer a contact to another queue by providing the flow which
+%% orchestrates the contact to the
+%% destination queue. This gives you more control over contact handling and
+%% helps you adhere to the service level
+%% agreement (SLA) guaranteed to your customers.
 %%
 %% Note the following requirements:
 %%
@@ -21353,8 +26157,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Do not use both `QueueId' and `UserId' in the same call.
 %%
 %% The following flow types are supported: Inbound flow, Transfer to agent
-%% flow, and Transfer
-%% to queue flow.
+%% flow, and Transfer to queue
+%% flow.
 %%
 %% The `TransferContact' API can be called only on active contacts.
 %%
@@ -21394,9 +26198,9 @@ transfer_contact(Client, Input0, Options0) ->
 
 %% @doc Removes the specified tags from the contact resource.
 %%
-%% For more information about this API is
-%% used, see Set
-%% up granular billing for a detailed view of your Amazon Connect usage:
+%% For more information about this API is used, see Set up granular billing
+%% for a detailed
+%% view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 -spec untag_contact(aws_client:aws_client(), binary() | list(), binary() | list(), untag_contact_request()) ->
     {ok, untag_contact_response(), tuple()} |
@@ -21545,12 +26349,11 @@ update_authentication_profile(Client, AuthenticationProfileId, InstanceId, Input
 %% change.
 %%
 %% Adds or updates user-defined contact information associated with the
-%% specified contact. At
-%% least one field to be updated must be present in the request.
+%% specified contact. At least one field to be
+%% updated must be present in the request.
 %%
 %% You can add or update user-defined contact information for both ongoing
-%% and completed
-%% contacts.
+%% and completed contacts.
 -spec update_contact(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
@@ -21584,28 +26387,22 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or updates
-%% user-defined contact attributes
-%% associated with the specified contact.
+%% @doc Creates or updates user-defined contact
+%% attributes associated with the specified contact.
 %%
 %% You can create or update user-defined attributes for both ongoing and
-%% completed contacts.
-%% For example, while the call is active, you can update the customer's
-%% name or the reason the
-%% customer called. You can add notes about steps that the agent took during
-%% the call that display
-%% to the next agent that takes the call. You can also update attributes for
-%% a contact using data
-%% from your CRM application and save the data with the contact in Amazon
-%% Connect. You could
-%% also flag calls for additional analysis, such as legal review or to
-%% identify abusive
-%% callers.
+%% completed contacts. For example, while the
+%% call is active, you can update the customer's name or the reason the
+%% customer called. You can add notes about steps
+%% that the agent took during the call that display to the next agent that
+%% takes the call. You can also update
+%% attributes for a contact using data from your CRM application and save the
+%% data with the contact in Amazon Connect. You could also flag calls for
+%% additional analysis, such as legal review or to identify abusive callers.
 %%
 %% Contact attributes are available in Amazon Connect for 24 months, and are
-%% then deleted.
-%% For information about contact record retention and the maximum size of the
-%% contact record
+%% then deleted. For information
+%% about contact record retention and the maximum size of the contact record
 %% attributes section, see Feature
 %% specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
@@ -21646,12 +26443,11 @@ update_contact_attributes(Client, Input0, Options0) ->
 %% @doc Updates details about a contact evaluation in the specified Amazon
 %% Connect instance.
 %%
-%% A
-%% contact evaluation must be in draft state. Answers included in the request
-%% are merged with
-%% existing answers for the given evaluation. An answer or note can be
-%% deleted by passing an empty
-%% object (`{}') to the question identifier.
+%% A contact evaluation
+%% must be in draft state. Answers included in the request are merged with
+%% existing answers for the given evaluation. An
+%% answer or note can be deleted by passing an empty object (`{}') to the
+%% question identifier.
 -spec update_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_evaluation_request()) ->
     {ok, update_contact_evaluation_response(), tuple()} |
     {error, any()} |
@@ -21692,12 +26488,10 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
-%% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
-%% a flow is
-%% published, `$SAVED' needs to be supplied to view saved content that
-%% has not been
-%% published.
+%% content of a Flow. For
+%% example, `arn:aws:.../contact-flow/{id}:$SAVED'. After a flow is
+%% published, `$SAVED' needs to
+%% be supplied to view saved content that has not been published.
 -spec update_contact_flow_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_content_request()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
@@ -21765,16 +26559,49 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a specific Aliases metadata, including the version it’s tied
+%% to, it’s name, and description.
+-spec update_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_contact_flow_module_alias_request()) ->
+    {ok, update_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_flow_module_alias_errors(), tuple()}.
+update_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input) ->
+    update_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input, []).
+
+-spec update_contact_flow_module_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_contact_flow_module_alias_request(), proplists:proplist()) ->
+    {ok, update_contact_flow_module_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_flow_module_alias_errors(), tuple()}.
+update_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/alias/", aws_util:encode_uri(AliasId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates specified flow module for the specified Amazon Connect
 %% instance.
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
-%% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
-%% a flow is
-%% published, `$SAVED' needs to be supplied to view saved content that
-%% has not been
-%% published.
+%% content of a Flow. For
+%% example, `arn:aws:.../contact-flow/{id}:$SAVED'. After a flow is
+%% published, `$SAVED' needs to
+%% be supplied to view saved content that has not been published.
 -spec update_contact_flow_module_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_content_request()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
@@ -21883,26 +26710,22 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 %% @doc Updates routing priority and age on the contact (QueuePriority and
 %% QueueTimeAdjustmentInSeconds).
 %%
-%% These properties can be used to change a customer's position in the
-%% queue. For example, you can
-%% move a contact to the back of the queue by setting a lower routing
-%% priority relative to other
-%% contacts in queue; or you can move a contact to the front of the queue by
-%% increasing the routing
+%% These properties can be used to change a customer's position
+%% in the queue. For example, you can move a contact to the back of the queue
+%% by setting a lower routing priority
+%% relative to other contacts in queue; or you can move a contact to the
+%% front of the queue by increasing the routing
 %% age which will make the contact look artificially older and therefore
-%% higher up in the
-%% first-in-first-out routing order. Note that adjusting the routing age of a
-%% contact affects only
-%% its position in queue, and not its actual queue wait time as reported
-%% through metrics. These
-%% properties can also be updated by using the Set routing priority / age
-%% flow
+%% higher up in the first-in-first-out routing
+%% order. Note that adjusting the routing age of a contact affects only its
+%% position in queue, and not its actual queue
+%% wait time as reported through metrics. These properties can also be
+%% updated by using the Set routing priority / age flow
 %% block:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html.
 %%
 %% Either QueuePriority or QueueTimeAdjustmentInSeconds should be provided
-%% within the request body, but not
-%% both.
+%% within the request body, but not both.
 -spec update_contact_routing_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_routing_data_request()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
@@ -21971,12 +26794,134 @@ update_contact_schedule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates all properties for an attribute using all properties from
+%% CreateDataTableAttribute.
+%%
+%% There are no other
+%% granular update endpoints. It does not act as a patch operation - all
+%% properties must be provided. System managed
+%% attributes are not mutable by customers. Changing an attribute's
+%% validation does not invalidate existing values since
+%% validation only runs when values are created or updated.
+-spec update_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_table_attribute_request()) ->
+    {ok, update_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_attribute_errors(), tuple()}.
+update_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input) ->
+    update_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input, []).
+
+-spec update_data_table_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_table_attribute_request(), proplists:proplist()) ->
+    {ok, update_data_table_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_attribute_errors(), tuple()}.
+update_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/attributes/", aws_util:encode_uri(AttributeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the metadata properties of a data table.
+%%
+%% Accepts all fields similar to CreateDataTable, except for
+%% fields and tags. There are no other granular update endpoints. It does not
+%% act as a patch operation - all properties
+%% must be provided or defaults will be used. Fields follow the same
+%% requirements as CreateDataTable.
+-spec update_data_table_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_table_metadata_request()) ->
+    {ok, update_data_table_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_metadata_errors(), tuple()}.
+update_data_table_metadata(Client, DataTableId, InstanceId, Input) ->
+    update_data_table_metadata(Client, DataTableId, InstanceId, Input, []).
+
+-spec update_data_table_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_table_metadata_request(), proplists:proplist()) ->
+    {ok, update_data_table_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_metadata_errors(), tuple()}.
+update_data_table_metadata(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the primary values for a record.
+%%
+%% This operation affects all existing values that are currently
+%% associated to the record and its primary values. Users that have
+%% restrictions on attributes and/or primary values are
+%% not authorized to use this endpoint. The combination of new primary values
+%% must be unique within the table.
+-spec update_data_table_primary_values(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_table_primary_values_request()) ->
+    {ok, update_data_table_primary_values_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_primary_values_errors(), tuple()}.
+update_data_table_primary_values(Client, DataTableId, InstanceId, Input) ->
+    update_data_table_primary_values(Client, DataTableId, InstanceId, Input, []).
+
+-spec update_data_table_primary_values(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_table_primary_values_request(), proplists:proplist()) ->
+    {ok, update_data_table_primary_values_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_table_primary_values_errors(), tuple()}.
+update_data_table_primary_values(Client, DataTableId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-tables/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(DataTableId), "/values/update-primary"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an email address metadata.
 %%
-%% For more information about email addresses, see Create email
-%% addresses:
+%% For more information about email addresses, see Create email addresses:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect
+%% Administrator Guide.
 -spec update_email_address_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_address_metadata_request()) ->
     {ok, update_email_address_metadata_response(), tuple()} |
     {error, any()} |
@@ -22011,16 +26956,15 @@ update_email_address_metadata(Client, EmailAddressId, InstanceId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates details about a specific evaluation form version in the
-%% specified Amazon Connect
-%% instance.
+%% specified Amazon Connect instance.
 %%
-%% Question and section identifiers cannot be duplicated within the same
-%% evaluation
+%% Question
+%% and section identifiers cannot be duplicated within the same evaluation
 %% form.
 %%
 %% This operation does not support partial updates. Instead it does a full
-%% update of evaluation
-%% form content.
+%% update of evaluation form
+%% content.
 -spec update_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), update_evaluation_form_request()) ->
     {ok, update_evaluation_form_response(), tuple()} |
     {error, any()} |
@@ -22200,20 +27144,20 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
 
 %% @doc Instructs Amazon Connect to resume the authentication process.
 %%
-%% The subsequent actions
-%% depend on the request body contents:
+%% The subsequent actions depend on the request
+%% body contents:
 %%
-%% If a code is provided: Connect retrieves the identity
-%% information from Amazon Cognito and imports it into Connect Customer
-%% Profiles.
+%% If a code is provided: Connect retrieves the identity information from
+%% Amazon
+%% Cognito and imports it into Connect Customer Profiles.
 %%
-%% If an error is provided: The error branch of the
-%% Authenticate Customer block is executed.
+%% If an error is provided: The error branch of the Authenticate Customer
+%% block
+%% is executed.
 %%
 %% The API returns a success response to acknowledge the request. However,
-%% the interaction and
-%% exchange of identity information occur asynchronously after the response
-%% is returned.
+%% the interaction and exchange of
+%% identity information occur asynchronously after the response is returned.
 -spec update_participant_authentication(aws_client:aws_client(), update_participant_authentication_request()) ->
     {ok, update_participant_authentication_response(), tuple()} |
     {error, any()} |
@@ -22248,8 +27192,8 @@ update_participant_authentication(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates timeouts for when human chat participants are to be
-%% considered idle, and when agents
-%% are automatically disconnected from a chat due to idleness.
+%% considered idle, and when agents are automatically
+%% disconnected from a chat due to idleness.
 %%
 %% You can set four timers:
 %%
@@ -22298,22 +27242,19 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates your claimed phone number from its current Amazon Connect
-%% instance or traffic distribution group to
-%% another Amazon Connect instance or traffic distribution group in the same
-%% Amazon Web Services Region.
+%% instance or traffic distribution group to another Amazon Connect instance
+%% or traffic distribution group in the same Amazon Web Services Region.
 %%
 %% After using this API, you must verify that the phone number is attached to
-%% the correct flow
-%% in the target instance or traffic distribution group. You need to do this
-%% because the API
-%% switches only the phone number to a new instance or traffic distribution
-%% group. It doesn't
-%% migrate the flow configuration of the phone number, too.
+%% the correct flow in the target
+%% instance or traffic distribution group. You need to do this because the
+%% API switches only the phone number to a new
+%% instance or traffic distribution group. It doesn't migrate the flow
+%% configuration of the phone number, too.
 %%
 %% You can call DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
-%% API
-%% to verify the status of a previous UpdatePhoneNumber:
+%% API to verify the status of a previous UpdatePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumber.html
 %% operation.
 -spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request()) ->
@@ -22391,8 +27332,8 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 %% @doc Updates a predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% A predefined
-%% attribute is made up of a name and a value.
+%% A predefined attribute is
+%% made up of a name and a value.
 %%
 %% For the predefined attributes per instance quota, see Amazon Connect
 %% quotas:
@@ -22403,23 +27344,21 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 %% Following are common uses cases for this API:
 %%
 %% Update routing proficiency (for example, agent certification) that has
-%% predefined values
-%% (for example, a list of possible certifications). For more information,
-%% see Create
-%% predefined attributes for routing contacts to agents:
+%% predefined values (for example, a list
+%% of possible certifications). For more information, see Create predefined
+%% attributes for routing contacts to
+%% agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Update an attribute for business unit name that has a list of predefined
-%% business unit
-%% names used in your organization. This is a use case where information for
-%% a contact varies
-%% between transfers or conferences. For more information, see Use contact
-%% segment
-%% attributes:
+%% business unit names used in your
+%% organization. This is a use case where information for a contact varies
+%% between transfers or conferences. For more
+%% information, see Use contact segment attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% Endpoints: See Amazon Connect endpoints and
-%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22522,8 +27461,7 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the maximum number of contacts allowed in a queue before it
-%% is considered
-%% full.
+%% is considered full.
 -spec update_queue_max_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_max_contacts_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22594,8 +27532,7 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the outbound caller ID name, number, and outbound whisper
-%% flow for a specified
-%% queue.
+%% flow for a specified queue.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
 %% created in the
@@ -22611,17 +27548,17 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
-%% `instance' in the
-%% path, for example,
-%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This
-%% is the same ARN format that is returned when you call the
-%% ListPhoneNumbersV2:
+%% `instance' in the path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
+%% same ARN format that is returned
+%% when you call the ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
 %% API.
 %%
 %% If you plan to use IAM policies to allow/deny access to this API for phone
-%% number resources claimed to a traffic distribution group, see Allow or
-%% Deny queue API actions for phone numbers in a replica Region:
+%% number resources
+%% claimed to a traffic distribution group, see Allow or Deny queue API
+%% actions for phone numbers in a replica Region:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
 -spec update_queue_outbound_caller_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request()) ->
     {ok, undefined, tuple()} |
@@ -22796,9 +27733,8 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Whether agents with this routing profile will have their routing
-%% order calculated based on
-%% time since their last inbound contact or longest idle
-%% time.
+%% order calculated based on time since
+%% their last inbound contact or longest idle time.
 -spec update_routing_profile_agent_availability_timer(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22833,8 +27769,7 @@ update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfi
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the channels that agents can handle in the Contact Control
-%% Panel (CCP) for a routing
-%% profile.
+%% Panel (CCP) for a routing profile.
 -spec update_routing_profile_concurrency(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22904,8 +27839,8 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 
 %% @doc Updates the name and description of a routing profile.
 %%
-%% The request accepts the following data in JSON format.
-%% At least `Name' or `Description' must be provided.
+%% The request accepts the following data in JSON format. At least `Name'
+%% or `Description' must be provided.
 -spec update_routing_profile_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22976,10 +27911,10 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 
 %% @doc Updates a rule for the specified Amazon Connect instance.
 %%
-%% Use the Rules Function language:
+%% Use the Rules Function
+%% language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
-%% to
-%% code conditions for the rule.
+%% to code conditions for the rule.
 -spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -23017,11 +27952,10 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the
-%% Amazon Connect Administrator Guide. For a mapping of the API name and
-%% user interface name of the security profile permissions, see List of
-%% security profile
-%% permissions:
+%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% and user interface name of the security
+%% profile permissions, see List
+%% of security profile permissions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec update_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_security_profile_request()) ->
     {ok, undefined, tuple()} |
@@ -23059,8 +27993,8 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
 %% @doc Updates details about a specific task template in the specified
 %% Amazon Connect instance.
 %%
-%% This operation does not support partial updates. Instead it does a full
-%% update of template
+%% This operation does
+%% not support partial updates. Instead it does a full update of template
 %% content.
 -spec update_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_task_template_request()) ->
     {ok, update_task_template_response(), tuple()} |
@@ -23095,15 +28029,55 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates any of the metadata for a test case, such as the name,
+%% description, and status or content of an existing test case.
+%%
+%% This API doesn't allow customers to update the tags of the test case
+%% resource for the specified Amazon Connect instance.
+-spec update_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_test_case_request()) ->
+    {ok, update_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, update_test_case_errors(), tuple()}.
+update_test_case(Client, InstanceId, TestCaseId, Input) ->
+    update_test_case(Client, InstanceId, TestCaseId, Input, []).
+
+-spec update_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_test_case_request(), proplists:proplist()) ->
+    {ok, update_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, update_test_case_errors(), tuple()}.
+update_test_case(Client, InstanceId, TestCaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/test-cases/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(TestCaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-last-modified-region">>, <<"LastModifiedRegion">>},
+                       {<<"x-amz-last-modified-time">>, <<"LastModifiedTime">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
 %%
 %% When you shift telephony traffic, also shift agents and/or agent sign-ins
-%% to ensure they
-%% can handle the calls in the other Region. If you don't shift the
-%% agents, voice calls will go to
-%% the shifted Region but there won't be any agents available to receive
-%% the calls.
+%% to ensure they can handle the calls
+%% in the other Region. If you don't shift the agents, voice calls will
+%% go to the shifted Region but there won't be any
+%% agents available to receive the calls.
 %%
 %% The `SignInConfig' distribution is available only on a
 %% default `TrafficDistributionGroup' (see the `IsDefault' parameter
@@ -23116,8 +28090,8 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% an `InvalidRequestException' is returned.
 %%
 %% For more information about updating a traffic distribution group, see
-%% Update telephony
-%% traffic distribution across Amazon Web Services Regions
+%% Update telephony traffic distribution
+%% across Amazon Web Services Regions
 %% :
 %% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
 %% in the Amazon Connect Administrator Guide.
@@ -23260,17 +28234,15 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %% @doc Updates the identity information for the specified user.
 %%
 %% We strongly recommend limiting who has the ability to invoke
-%% `UpdateUserIdentityInfo'. Someone with that ability can change the
-%% login credentials
-%% of other users by changing their email address. This poses a security risk
-%% to your organization.
-%% They can change the email address of a user to the attacker's email
-%% address, and then reset the
-%% password through email. For more information, see Best Practices for
-%% Security Profiles:
+%% `UpdateUserIdentityInfo'. Someone with
+%% that ability can change the login credentials of other users by changing
+%% their email address. This poses a security
+%% risk to your organization. They can change the email address of a user to
+%% the attacker's email address, and then
+%% reset the password through email. For more information, see Best Practices
+%% for Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec update_user_identity_info(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_identity_info_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -23441,15 +28413,15 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the view content of the given view identifier in the
-%% specified Amazon Connect
-%% instance.
+%% specified Amazon Connect instance.
 %%
 %% It performs content validation if `Status' is set to `SAVED' and
-%% performs full content validation if `Status' is `PUBLISHED'. Note
-%% that the
-%% `$SAVED' alias' content will always be updated, but the
-%% `$LATEST' alias'
-%% content will only be updated if `Status' is `PUBLISHED'.
+%% performs full content
+%% validation if `Status' is `PUBLISHED'. Note that the `$SAVED'
+%% alias' content will
+%% always be updated, but the `$LATEST' alias' content will only be
+%% updated if `Status' is
+%% `PUBLISHED'.
 -spec update_view_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_content_request()) ->
     {ok, update_view_content_response(), tuple()} |
     {error, any()} |
@@ -23485,8 +28457,8 @@ update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
 
 %% @doc Updates the view metadata.
 %%
-%% Note that either `Name' or `Description'
-%% must be provided.
+%% Note that either `Name' or `Description' must be
+%% provided.
 -spec update_view_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_metadata_request()) ->
     {ok, update_view_metadata_response(), tuple()} |
     {error, any()} |
@@ -23501,6 +28473,147 @@ update_view_metadata(Client, InstanceId, ViewId, Input) ->
 update_view_metadata(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = post,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the metadata of a workspace, such as its name and
+%% description.
+-spec update_workspace_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_metadata_request()) ->
+    {ok, update_workspace_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_metadata_errors(), tuple()}.
+update_workspace_metadata(Client, InstanceId, WorkspaceId, Input) ->
+    update_workspace_metadata(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec update_workspace_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_metadata_request(), proplists:proplist()) ->
+    {ok, update_workspace_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_metadata_errors(), tuple()}.
+update_workspace_metadata(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of a page in a workspace, including the
+%% associated view and input data.
+-spec update_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_workspace_page_request()) ->
+    {ok, update_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_page_errors(), tuple()}.
+update_workspace_page(Client, InstanceId, Page, WorkspaceId, Input) ->
+    update_workspace_page(Client, InstanceId, Page, WorkspaceId, Input, []).
+
+-spec update_workspace_page(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_workspace_page_request(), proplists:proplist()) ->
+    {ok, update_workspace_page_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_page_errors(), tuple()}.
+update_workspace_page(Client, InstanceId, Page, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/pages/", aws_util:encode_uri(Page), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the theme configuration for a workspace, including colors and
+%% styling.
+-spec update_workspace_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_theme_request()) ->
+    {ok, update_workspace_theme_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_theme_errors(), tuple()}.
+update_workspace_theme(Client, InstanceId, WorkspaceId, Input) ->
+    update_workspace_theme(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec update_workspace_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_theme_request(), proplists:proplist()) ->
+    {ok, update_workspace_theme_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_theme_errors(), tuple()}.
+update_workspace_theme(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/theme"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the visibility setting of a workspace, controlling whether it
+%% is available to all users, assigned users
+%% only, or none.
+-spec update_workspace_visibility(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_visibility_request()) ->
+    {ok, update_workspace_visibility_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_visibility_errors(), tuple()}.
+update_workspace_visibility(Client, InstanceId, WorkspaceId, Input) ->
+    update_workspace_visibility(Client, InstanceId, WorkspaceId, Input, []).
+
+-spec update_workspace_visibility(aws_client:aws_client(), binary() | list(), binary() | list(), update_workspace_visibility_request(), proplists:proplist()) ->
+    {ok, update_workspace_visibility_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_visibility_errors(), tuple()}.
+update_workspace_visibility(Client, InstanceId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(WorkspaceId), "/visibility"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

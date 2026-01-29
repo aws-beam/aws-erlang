@@ -1,7 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc Amazon Lex Model Building Service provides APIs for creating,
+%% managing, and deploying conversational bots and their components.
 -module(aws_lex_models_v2).
 
 -export([batch_create_custom_vocabulary_item/5,
@@ -309,6 +310,9 @@
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type bot_locale_import_specification() :: #{binary() => any()}.
@@ -320,6 +324,15 @@
 %%   <<"version">> => string()
 %% }
 -type bedrock_guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_disambiguation_settings() :: #{
+%%   <<"customDisambiguationMessage">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"maxDisambiguationIntents">> => integer()
+%% }
+-type intent_disambiguation_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -545,6 +558,7 @@
 %%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentName">> := string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"outputContexts">> => list(output_context()),
@@ -1313,6 +1327,7 @@
 %% intent_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputContexts">> => list(input_context()),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
@@ -1703,6 +1718,7 @@
 %%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
@@ -2248,6 +2264,7 @@
 %%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentName">> := string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"outputContexts">> => list(output_context()),
@@ -2800,6 +2817,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_bot_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unified_speech_settings() :: #{
+%%   <<"speechFoundationModel">> => speech_foundation_model()
+%% }
+-type unified_speech_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3568,6 +3592,14 @@
 
 
 %% Example:
+%% deepgram_speech_model_config() :: #{
+%%   <<"apiTokenSecretArn">> => string(),
+%%   <<"modelId">> => string()
+%% }
+-type deepgram_speech_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_bot_alias_response() :: #{
 %%   <<"botAliasHistoryEvents">> => list(bot_alias_history_event()),
 %%   <<"botAliasId">> => string(),
@@ -3618,11 +3650,26 @@
 
 
 %% Example:
+%% speech_recognition_settings() :: #{
+%%   <<"speechModelConfig">> => speech_model_config(),
+%%   <<"speechModelPreference">> => list(any())
+%% }
+-type speech_recognition_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_resource_policy_request() :: #{
 %%   <<"expectedRevisionId">> => string(),
 %%   <<"policy">> := string()
 %% }
 -type update_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% speech_model_config() :: #{
+%%   <<"deepgramConfig">> => deepgram_speech_model_config()
+%% }
+-type speech_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3667,6 +3714,9 @@
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"recommendedActions">> => list(string()),
 %%   <<"slotTypesCount">> => integer(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type describe_bot_locale_response() :: #{binary() => any()}.
@@ -3701,6 +3751,7 @@
 %%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
@@ -3793,7 +3844,9 @@
 
 %% Example:
 %% nlu_improvement_specification() :: #{
-%%   <<"enabled">> => boolean()
+%%   <<"assistedNluMode">> => list(any()),
+%%   <<"enabled">> => boolean(),
+%%   <<"intentDisambiguationSettings">> => intent_disambiguation_settings()
 %% }
 -type nlu_improvement_specification() :: #{binary() => any()}.
 
@@ -4063,6 +4116,9 @@
 %%   <<"localeId">> => string(),
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type create_bot_locale_response() :: #{binary() => any()}.
@@ -4084,6 +4140,9 @@
 %%   <<"description">> => string(),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type update_bot_locale_request() :: #{binary() => any()}.
@@ -4166,6 +4225,14 @@
 %%   <<"s3BucketTranscriptSource">> => s3_bucket_transcript_source()
 %% }
 -type transcript_source_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% speech_foundation_model() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"voiceId">> => string()
+%% }
+-type speech_foundation_model() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4271,6 +4338,9 @@
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"recommendedActions">> => list(string()),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type update_bot_locale_response() :: #{binary() => any()}.
@@ -4485,6 +4555,7 @@
 %%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
@@ -4521,6 +4592,9 @@
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"localeId">> := string(),
 %%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type create_bot_locale_request() :: #{binary() => any()}.

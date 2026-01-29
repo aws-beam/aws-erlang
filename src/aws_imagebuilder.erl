@@ -49,6 +49,8 @@
          delete_lifecycle_policy/3,
          delete_workflow/2,
          delete_workflow/3,
+         distribute_image/2,
+         distribute_image/3,
          get_component/2,
          get_component/4,
          get_component/5,
@@ -158,6 +160,8 @@
          put_image_policy/3,
          put_image_recipe_policy/2,
          put_image_recipe_policy/3,
+         retry_image/2,
+         retry_image/3,
          send_workflow_step_action/2,
          send_workflow_step_action/3,
          start_image_pipeline_execution/2,
@@ -222,6 +226,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"data">> => string(),
 %%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"semanticVersion">> := string(),
@@ -358,6 +363,14 @@
 
 
 %% Example:
+%% retry_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
+%% }
+-type retry_image_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_distribution_configuration_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"distributionConfigurationArn">> => string(),
@@ -406,6 +419,13 @@
 
 
 %% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_image_pipelines_response() :: #{
 %%   <<"imagePipelineList">> => list(image_pipeline()),
 %%   <<"nextToken">> => string(),
@@ -418,6 +438,7 @@
 %% create_image_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"imageBuildVersionArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type create_image_response() :: #{binary() => any()}.
@@ -638,9 +659,18 @@
 %% Example:
 %% get_container_recipe_response() :: #{
 %%   <<"containerRecipe">> => container_recipe(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type get_container_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribute_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
+%% }
+-type distribute_image_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -680,6 +710,7 @@
 %% Example:
 %% get_image_response() :: #{
 %%   <<"image">> => image(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type get_image_response() :: #{binary() => any()}.
@@ -784,6 +815,7 @@
 %% Example:
 %% get_component_response() :: #{
 %%   <<"component">> => component(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type get_component_response() :: #{binary() => any()}.
@@ -863,6 +895,13 @@
 
 
 %% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% import_component_request() :: #{
 %%   <<"changeDescription">> => string(),
 %%   <<"clientToken">> := string(),
@@ -939,6 +978,7 @@
 %%   <<"endTime">> => string(),
 %%   <<"message">> => string(),
 %%   <<"parallelGroup">> => string(),
+%%   <<"retried">> => boolean(),
 %%   <<"startTime">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"totalStepCount">> => integer(),
@@ -1088,6 +1128,7 @@
 %% create_component_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"componentBuildVersionArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type create_component_response() :: #{binary() => any()}.
@@ -1147,6 +1188,7 @@
 %% create_image_recipe_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"imageRecipeArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type create_image_recipe_response() :: #{binary() => any()}.
@@ -1582,6 +1624,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"data">> => string(),
 %%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"platform">> := list(any()),
@@ -1892,6 +1935,18 @@
 
 
 %% Example:
+%% distribute_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"distributionConfigurationArn">> := string(),
+%%   <<"executionRole">> := string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
+%%   <<"sourceImage">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type distribute_image_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_component_response() :: #{
 %%   <<"componentBuildVersionArn">> => string(),
 %%   <<"requestId">> => string()
@@ -2165,6 +2220,7 @@
 %% Example:
 %% create_workflow_response() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"workflowBuildVersionArn">> => string()
 %% }
 -type create_workflow_response() :: #{binary() => any()}.
@@ -2219,6 +2275,13 @@
 %%   <<"requestId">> => string()
 %% }
 -type update_infrastructure_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2386,6 +2449,7 @@
 %% create_container_recipe_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"containerRecipeArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type create_container_recipe_response() :: #{binary() => any()}.
@@ -2598,6 +2662,16 @@
 
 
 %% Example:
+%% latest_version_references() :: #{
+%%   <<"latestMajorVersionArn">> => string(),
+%%   <<"latestMinorVersionArn">> => string(),
+%%   <<"latestPatchVersionArn">> => string(),
+%%   <<"latestVersionArn">> => string()
+%% }
+-type latest_version_references() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_infrastructure_configurations_request() :: #{
 %%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
@@ -2650,6 +2724,14 @@
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"imageBuildVersionArn">> := string()
+%% }
+-type retry_image_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2762,6 +2844,7 @@
 %% Example:
 %% get_image_recipe_response() :: #{
 %%   <<"imageRecipe">> => image_recipe(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
 -type get_image_recipe_response() :: #{binary() => any()}.
@@ -2846,6 +2929,7 @@
 
 %% Example:
 %% get_workflow_response() :: #{
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"workflow">> => workflow()
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
@@ -2881,7 +2965,8 @@
     call_rate_limit_exceeded_exception() | 
     forbidden_exception() | 
     resource_in_use_exception() | 
-    invalid_version_number_exception().
+    invalid_version_number_exception() | 
+    dry_run_operation_exception().
 
 -type create_container_recipe_errors() ::
     resource_already_exists_exception() | 
@@ -2980,7 +3065,8 @@
     call_rate_limit_exceeded_exception() | 
     forbidden_exception() | 
     resource_in_use_exception() | 
-    invalid_version_number_exception().
+    invalid_version_number_exception() | 
+    dry_run_operation_exception().
 
 -type delete_component_errors() ::
     resource_dependency_exception() | 
@@ -3062,6 +3148,20 @@
     client_exception() | 
     call_rate_limit_exceeded_exception() | 
     forbidden_exception().
+
+-type distribute_image_errors() ::
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
 
 -type get_component_errors() ::
     service_unavailable_exception() | 
@@ -3456,6 +3556,16 @@
     client_exception() | 
     call_rate_limit_exceeded_exception() | 
     forbidden_exception().
+
+-type retry_image_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
 
 -type send_workflow_step_action_errors() ::
     service_unavailable_exception() | 
@@ -4295,6 +4405,41 @@ delete_workflow(Client, Input0, Options0) ->
                      {<<"workflowBuildVersionArn">>, <<"workflowBuildVersionArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc DistributeImage distributes existing AMIs to additional regions and
+%% accounts without rebuilding the image.
+-spec distribute_image(aws_client:aws_client(), distribute_image_request()) ->
+    {ok, distribute_image_response(), tuple()} |
+    {error, any()} |
+    {error, distribute_image_errors(), tuple()}.
+distribute_image(Client, Input) ->
+    distribute_image(Client, Input, []).
+
+-spec distribute_image(aws_client:aws_client(), distribute_image_request(), proplists:proplist()) ->
+    {ok, distribute_image_response(), tuple()} |
+    {error, any()} |
+    {error, distribute_image_errors(), tuple()}.
+distribute_image(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/DistributeImage"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a component object.
@@ -6079,6 +6224,41 @@ put_image_recipe_policy(Client, Input) ->
 put_image_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImageRecipePolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc RetryImage retries an image distribution without rebuilding the
+%% image.
+-spec retry_image(aws_client:aws_client(), retry_image_request()) ->
+    {ok, retry_image_response(), tuple()} |
+    {error, any()} |
+    {error, retry_image_errors(), tuple()}.
+retry_image(Client, Input) ->
+    retry_image(Client, Input, []).
+
+-spec retry_image(aws_client:aws_client(), retry_image_request(), proplists:proplist()) ->
+    {ok, retry_image_response(), tuple()} |
+    {error, any()} |
+    {error, retry_image_errors(), tuple()}.
+retry_image(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/RetryImage"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
