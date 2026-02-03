@@ -140,6 +140,7 @@
 %% get_session_response() :: #{
 %%   <<"ActionCompletionStrategy">> => list(any()),
 %%   <<"ActionName">> => string(),
+%%   <<"AdditionalSecurityRequirements">> => list(list(any())()),
 %%   <<"ApprovalStrategy">> => list(),
 %%   <<"ApprovalTeamArn">> => string(),
 %%   <<"ApprovalTeamName">> => string(),
@@ -239,6 +240,14 @@
 %%   <<"ResourceArn">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mfa_method() :: #{
+%%   <<"SyncStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type mfa_method() :: #{binary() => any()}.
 
 %% Example:
 %% delete_inactive_approval_team_version_request() :: #{}
@@ -361,6 +370,7 @@
 %% Example:
 %% get_approval_team_response_approver() :: #{
 %%   <<"ApproverId">> => string(),
+%%   <<"MfaMethods">> => list(mfa_method()),
 %%   <<"PrimaryIdentityId">> => string(),
 %%   <<"PrimaryIdentitySourceArn">> => string(),
 %%   <<"PrimaryIdentityStatus">> => list(any()),
@@ -605,6 +615,7 @@
 %% list_sessions_response_session() :: #{
 %%   <<"ActionCompletionStrategy">> => list(any()),
 %%   <<"ActionName">> => string(),
+%%   <<"AdditionalSecurityRequirements">> => list(list(any())()),
 %%   <<"ApprovalTeamArn">> => string(),
 %%   <<"ApprovalTeamName">> => string(),
 %%   <<"CompletionTime">> => non_neg_integer(),
@@ -662,7 +673,8 @@
 %% update_approval_team_request() :: #{
 %%   <<"ApprovalStrategy">> => list(),
 %%   <<"Approvers">> => list(approval_team_request_approver()),
-%%   <<"Description">> => string()
+%%   <<"Description">> => string(),
+%%   <<"UpdateActions">> => list(list(any())())
 %% }
 -type update_approval_team_request() :: #{binary() => any()}.
 
@@ -1104,12 +1116,6 @@ get_identity_source(Client, IdentitySourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Returns details for the version of a policy.
 %%
 %% Policies define the permissions for team resources.
-%%
-%% The protected operation for a service integration might require specific
-%% permissions. For more information, see How other services work with
-%% Multi-party approval:
-%% https://docs.aws.amazon.com/mpa/latest/userguide/mpa-integrations.html in
-%% the Multi-party approval User Guide.
 -spec get_policy_version(aws_client:aws_client(), binary() | list()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
@@ -1300,12 +1306,6 @@ list_identity_sources(Client, Input0, Options0) ->
 %% @doc Returns a list of policies.
 %%
 %% Policies define the permissions for team resources.
-%%
-%% The protected operation for a service integration might require specific
-%% permissions. For more information, see How other services work with
-%% Multi-party approval:
-%% https://docs.aws.amazon.com/mpa/latest/userguide/mpa-integrations.html in
-%% the Multi-party approval User Guide.
 -spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
@@ -1344,12 +1344,6 @@ list_policies(Client, Input0, Options0) ->
 %% @doc Returns a list of the versions for policies.
 %%
 %% Policies define the permissions for team resources.
-%%
-%% The protected operation for a service integration might require specific
-%% permissions. For more information, see How other services work with
-%% Multi-party approval:
-%% https://docs.aws.amazon.com/mpa/latest/userguide/mpa-integrations.html in
-%% the Multi-party approval User Guide.
 -spec list_policy_versions(aws_client:aws_client(), binary() | list(), list_policy_versions_request()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |

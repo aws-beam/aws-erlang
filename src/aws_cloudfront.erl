@@ -4148,6 +4148,13 @@
 
 
 %% Example:
+%% origin_mtls_config() :: #{
+%%   <<"ClientCertificateArn">> => string()
+%% }
+-type origin_mtls_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_field_level_encryption_profile_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile(),
@@ -5726,6 +5733,7 @@
 %%   <<"HTTPSPort">> => integer(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"OriginKeepaliveTimeout">> => integer(),
+%%   <<"OriginMtlsConfig">> => origin_mtls_config(),
 %%   <<"OriginProtocolPolicy">> => list(any()),
 %%   <<"OriginReadTimeout">> => integer(),
 %%   <<"OriginSslProtocols">> => origin_ssl_protocols()

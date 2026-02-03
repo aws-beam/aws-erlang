@@ -1295,7 +1295,8 @@
 %%   <<"evaluationExecutionRoleArn">> := string(),
 %%   <<"evaluators">> := list(list()),
 %%   <<"onlineEvaluationConfigName">> := string(),
-%%   <<"rule">> := rule()
+%%   <<"rule">> := rule(),
+%%   <<"tags">> => map()
 %% }
 -type create_online_evaluation_config_request() :: #{binary() => any()}.
 
@@ -2880,7 +2881,8 @@
 %%   <<"description">> => string(),
 %%   <<"evaluatorConfig">> := list(),
 %%   <<"evaluatorName">> := string(),
-%%   <<"level">> := list(any())
+%%   <<"level">> := list(any()),
+%%   <<"tags">> => map()
 %% }
 -type create_evaluator_request() :: #{binary() => any()}.
 
