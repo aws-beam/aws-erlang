@@ -38,7 +38,9 @@
 %% Services: http://aws.amazon.com/tools/.
 -module(aws_sso_admin).
 
--export([attach_customer_managed_policy_reference_to_permission_set/2,
+-export([add_region/2,
+         add_region/3,
+         attach_customer_managed_policy_reference_to_permission_set/2,
          attach_customer_managed_policy_reference_to_permission_set/3,
          attach_managed_policy_to_permission_set/2,
          attach_managed_policy_to_permission_set/3,
@@ -98,6 +100,8 @@
          describe_permission_set/3,
          describe_permission_set_provisioning_status/2,
          describe_permission_set_provisioning_status/3,
+         describe_region/2,
+         describe_region/3,
          describe_trusted_token_issuer/2,
          describe_trusted_token_issuer/3,
          detach_customer_managed_policy_reference_from_permission_set/2,
@@ -154,6 +158,8 @@
          list_permission_sets/3,
          list_permission_sets_provisioned_to_account/2,
          list_permission_sets_provisioned_to_account/3,
+         list_regions/2,
+         list_regions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_trusted_token_issuers/2,
@@ -174,6 +180,8 @@
          put_inline_policy_to_permission_set/3,
          put_permissions_boundary_to_permission_set/2,
          put_permissions_boundary_to_permission_set/3,
+         remove_region/2,
+         remove_region/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -271,6 +279,12 @@
 -type list_application_assignments_filter() :: #{binary() => any()}.
 
 %% Example:
+%% remove_region_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type remove_region_response() :: #{binary() => any()}.
+
+%% Example:
 %% application_provider() :: #{
 %%   <<"ApplicationProviderArn">> => string(),
 %%   <<"DisplayData">> => display_data(),
@@ -285,6 +299,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_authentication_methods_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_region_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"RegionName">> := string()
+%% }
+-type describe_region_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_application_session_configuration_request() :: #{
@@ -372,6 +393,13 @@
 %%   <<"TrustedTokenIssuerType">> => list(any())
 %% }
 -type trusted_token_issuer_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% remove_region_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"RegionName">> := string()
+%% }
+-type remove_region_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_inline_policy_for_permission_set_response() :: #{
@@ -800,6 +828,12 @@
 -type permissions_boundary() :: #{binary() => any()}.
 
 %% Example:
+%% add_region_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type add_region_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_inline_policy_to_permission_set_response() :: #{
 
 %% }
@@ -833,6 +867,7 @@
 %%   <<"ApplicationArn">> => string(),
 %%   <<"ApplicationProviderArn">> => string(),
 %%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"CreatedFrom">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
@@ -895,6 +930,14 @@
 %%   <<"PermissionSetProvisioningStatus">> => permission_set_provisioning_status()
 %% }
 -type describe_permission_set_provisioning_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_regions_request() :: #{binary() => any()}.
 
 %% Example:
 %% permission_set_provisioning_status() :: #{
@@ -1389,6 +1432,15 @@
 -type list_account_assignment_deletion_status_request() :: #{binary() => any()}.
 
 %% Example:
+%% region_metadata() :: #{
+%%   <<"AddedDate">> => non_neg_integer(),
+%%   <<"IsPrimaryRegion">> => boolean(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type region_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% create_instance_access_control_attribute_configuration_request() :: #{
 %%   <<"InstanceAccessControlAttributeConfiguration">> := instance_access_control_attribute_configuration(),
 %%   <<"InstanceArn">> := string()
@@ -1448,6 +1500,15 @@
 -type attach_customer_managed_policy_reference_to_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_region_response() :: #{
+%%   <<"AddedDate">> => non_neg_integer(),
+%%   <<"IsPrimaryRegion">> => boolean(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_region_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_trusted_token_issuer_request() :: #{
 %%   <<"TrustedTokenIssuerArn">> := string()
 %% }
@@ -1482,6 +1543,13 @@
 
 %% }
 -type refresh_token_grant() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Regions">> => list(region_metadata())
+%% }
+-type list_regions_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_permission_set_provisioning_status_request() :: #{
@@ -1593,6 +1661,7 @@
 %%   <<"ApplicationArn">> => string(),
 %%   <<"ApplicationProviderArn">> => string(),
 %%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"CreatedFrom">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
@@ -1607,6 +1676,13 @@
 %%   <<"LongDescription">> => string()
 %% }
 -type resource_server_scope_details() :: #{binary() => any()}.
+
+%% Example:
+%% add_region_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"RegionName">> := string()
+%% }
+-type add_region_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_application_request() :: #{
@@ -1625,6 +1701,14 @@
 
 %% }
 -type detach_managed_policy_from_permission_set_response() :: #{binary() => any()}.
+
+-type add_region_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type attach_customer_managed_policy_reference_to_permission_set_errors() ::
     throttling_exception() | 
@@ -1861,6 +1945,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_region_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_trusted_token_issuer_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2056,6 +2147,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2134,6 +2231,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type remove_region_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type tag_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2194,6 +2299,43 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds a Region to an IAM Identity Center instance.
+%%
+%% This operation initiates an asynchronous workflow to replicate the IAM
+%% Identity Center instance to the target Region. The Region status is set to
+%% ADDING at first and changes to ACTIVE when the workflow completes.
+%%
+%% To use this operation, your IAM Identity Center instance and the target
+%% Region must meet the requirements described in the IAM Identity Center
+%% User Guide:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/multi-region-iam-identity-center.html#multi-region-prerequisites.
+%%
+%% The following actions are related to `AddRegion':
+%%
+%% RemoveRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RemoveRegion.html
+%%
+%% DescribeRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeRegion.html
+%%
+%% ListRegions:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListRegions.html
+-spec add_region(aws_client:aws_client(), add_region_request()) ->
+    {ok, add_region_response(), tuple()} |
+    {error, any()} |
+    {error, add_region_errors(), tuple()}.
+add_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_region(Client, Input, []).
+
+-spec add_region(aws_client:aws_client(), add_region_request(), proplists:proplist()) ->
+    {ok, add_region_response(), tuple()} |
+    {error, any()} |
+    {error, add_region_errors(), tuple()}.
+add_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddRegion">>, Input, Options).
 
 %% @doc Attaches the specified customer managed policy to the specified
 %% `PermissionSet'.
@@ -2829,6 +2971,40 @@ describe_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissionSetProvisioningStatus">>, Input, Options).
 
+%% @doc Retrieves details about a specific Region enabled in an IAM Identity
+%% Center instance.
+%%
+%% Details include the Region name, current status (ACTIVE, ADDING, or
+%% REMOVING), the date when the Region was added, and whether it is the
+%% primary Region. The request must be made from one of the enabled Regions
+%% of the IAM Identity Center instance.
+%%
+%% The following actions are related to `DescribeRegion':
+%%
+%% AddRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html
+%%
+%% RemoveRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RemoveRegion.html
+%%
+%% ListRegions:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListRegions.html
+-spec describe_region(aws_client:aws_client(), describe_region_request()) ->
+    {ok, describe_region_response(), tuple()} |
+    {error, any()} |
+    {error, describe_region_errors(), tuple()}.
+describe_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_region(Client, Input, []).
+
+-spec describe_region(aws_client:aws_client(), describe_region_request(), proplists:proplist()) ->
+    {ok, describe_region_response(), tuple()} |
+    {error, any()} |
+    {error, describe_region_errors(), tuple()}.
+describe_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRegion">>, Input, Options).
+
 %% @doc Retrieves details about a trusted token issuer configuration stored
 %% in an instance of IAM Identity Center.
 %%
@@ -3354,6 +3530,37 @@ list_permission_sets_provisioned_to_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSetsProvisionedToAccount">>, Input, Options).
 
+%% @doc Lists all enabled Regions of an IAM Identity Center instance,
+%% including those that are being added or removed.
+%%
+%% This operation returns Regions with ACTIVE, ADDING, or REMOVING status.
+%%
+%% The following actions are related to `ListRegions':
+%%
+%% AddRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html
+%%
+%% RemoveRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RemoveRegion.html
+%%
+%% DescribeRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeRegion.html
+-spec list_regions(aws_client:aws_client(), list_regions_request()) ->
+    {ok, list_regions_response(), tuple()} |
+    {error, any()} |
+    {error, list_regions_errors(), tuple()}.
+list_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_regions(Client, Input, []).
+
+-spec list_regions(aws_client:aws_client(), list_regions_request(), proplists:proplist()) ->
+    {ok, list_regions_response(), tuple()} |
+    {error, any()} |
+    {error, list_regions_errors(), tuple()}.
+list_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRegions">>, Input, Options).
+
 %% @doc Lists the tags that are attached to a specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -3601,6 +3808,41 @@ put_permissions_boundary_to_permission_set(Client, Input)
 put_permissions_boundary_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionsBoundaryToPermissionSet">>, Input, Options).
+
+%% @doc Removes an additional Region from an IAM Identity Center instance.
+%%
+%% This operation initiates an asynchronous workflow to clean up IAM Identity
+%% Center resources in the specified additional Region. The Region status is
+%% set to REMOVING and the Region record is deleted when the workflow
+%% completes. The request must be made from the primary Region. The target
+%% Region cannot be the primary Region, and no other add or remove Region
+%% workflows can be in progress.
+%%
+%% The following actions are related to `RemoveRegion':
+%%
+%% AddRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html
+%%
+%% DescribeRegion:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeRegion.html
+%%
+%% ListRegions:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListRegions.html
+-spec remove_region(aws_client:aws_client(), remove_region_request()) ->
+    {ok, remove_region_response(), tuple()} |
+    {error, any()} |
+    {error, remove_region_errors(), tuple()}.
+remove_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_region(Client, Input, []).
+
+-spec remove_region(aws_client:aws_client(), remove_region_request(), proplists:proplist()) ->
+    {ok, remove_region_response(), tuple()} |
+    {error, any()} |
+    {error, remove_region_errors(), tuple()}.
+remove_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveRegion">>, Input, Options).
 
 %% @doc Associates a set of tags with a specified resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->

@@ -142,6 +142,7 @@
 %% enable_enhanced_monitoring_input() :: #{
 %%   <<"ShardLevelMetrics">> := list(list(any())()),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type enable_enhanced_monitoring_input() :: #{binary() => any()}.
@@ -154,6 +155,7 @@
 %%   <<"ShardFilter">> => shard_filter(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type list_shards_input() :: #{binary() => any()}.
@@ -169,7 +171,8 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StreamARN">> := string(),
-%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%%   <<"StreamCreationTimestamp">> => non_neg_integer(),
+%%   <<"StreamId">> => string()
 %% }
 -type list_stream_consumers_input() :: #{binary() => any()}.
 
@@ -190,6 +193,7 @@
 %% Example:
 %% update_stream_warm_throughput_input() :: #{
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"WarmThroughputMiBps">> := integer()
 %% }
@@ -219,6 +223,7 @@
 %% update_shard_count_input() :: #{
 %%   <<"ScalingType">> := list(any()),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"TargetShardCount">> := integer()
 %% }
@@ -251,6 +256,7 @@
 %% decrease_stream_retention_period_input() :: #{
 %%   <<"RetentionPeriodHours">> := integer(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type decrease_stream_retention_period_input() :: #{binary() => any()}.
@@ -266,6 +272,7 @@
 %%   <<"RetentionPeriodHours">> => integer(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
 %%   <<"StreamName">> => string(),
 %%   <<"StreamStatus">> => list(any()),
@@ -277,7 +284,8 @@
 %% deregister_stream_consumer_input() :: #{
 %%   <<"ConsumerARN">> => string(),
 %%   <<"ConsumerName">> => string(),
-%%   <<"StreamARN">> => string()
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
 %% }
 -type deregister_stream_consumer_input() :: #{binary() => any()}.
 
@@ -291,6 +299,7 @@
 %% increase_stream_retention_period_input() :: #{
 %%   <<"RetentionPeriodHours">> := integer(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type increase_stream_retention_period_input() :: #{binary() => any()}.
@@ -299,13 +308,15 @@
 %% delete_stream_input() :: #{
 %%   <<"EnforceConsumerDeletion">> => boolean(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type delete_stream_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_input() :: #{
-%%   <<"ResourceARN">> := string()
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
 %% }
 -type delete_resource_policy_input() :: #{binary() => any()}.
 
@@ -319,6 +330,7 @@
 %% put_records_input() :: #{
 %%   <<"Records">> := list(put_records_request_entry()),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type put_records_input() :: #{binary() => any()}.
@@ -335,6 +347,7 @@
 %% Example:
 %% add_tags_to_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"Tags">> := map()
 %% }
@@ -406,7 +419,8 @@
 %% Example:
 %% put_resource_policy_input() :: #{
 %%   <<"Policy">> := string(),
-%%   <<"ResourceARN">> := string()
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
 %% }
 -type put_resource_policy_input() :: #{binary() => any()}.
 
@@ -423,6 +437,7 @@
 %% register_stream_consumer_input() :: #{
 %%   <<"ConsumerName">> := string(),
 %%   <<"StreamARN">> := string(),
+%%   <<"StreamId">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type register_stream_consumer_input() :: #{binary() => any()}.
@@ -433,6 +448,7 @@
 %%   <<"ShardIteratorType">> := list(any()),
 %%   <<"StartingSequenceNumber">> => string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"Timestamp">> => non_neg_integer()
 %% }
@@ -442,13 +458,15 @@
 %% describe_stream_consumer_input() :: #{
 %%   <<"ConsumerARN">> => string(),
 %%   <<"ConsumerName">> => string(),
-%%   <<"StreamARN">> => string()
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
 %% }
 -type describe_stream_consumer_input() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"TagKeys">> := list(string())
 %% }
@@ -459,6 +477,7 @@
 %%   <<"AdjacentShardToMerge">> := string(),
 %%   <<"ShardToMerge">> := string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type merge_shards_input() :: #{binary() => any()}.
@@ -478,6 +497,7 @@
 %% Example:
 %% describe_stream_summary_input() :: #{
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type describe_stream_summary_input() :: #{binary() => any()}.
@@ -485,6 +505,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string(),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
@@ -538,7 +559,8 @@
 %% subscribe_to_shard_input() :: #{
 %%   <<"ConsumerARN">> := string(),
 %%   <<"ShardId">> := string(),
-%%   <<"StartingPosition">> := starting_position()
+%%   <<"StartingPosition">> := starting_position(),
+%%   <<"StreamId">> => string()
 %% }
 -type subscribe_to_shard_input() :: #{binary() => any()}.
 
@@ -559,6 +581,7 @@
 %%   <<"EncryptionType">> := list(any()),
 %%   <<"KeyId">> := string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type stop_stream_encryption_input() :: #{binary() => any()}.
@@ -567,7 +590,8 @@
 %% get_records_input() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"ShardIterator">> := string(),
-%%   <<"StreamARN">> => string()
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
 %% }
 -type get_records_input() :: #{binary() => any()}.
 
@@ -598,6 +622,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string(),
 %%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
@@ -607,6 +632,7 @@
 %%   <<"ExclusiveStartTagKey">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type list_tags_for_stream_input() :: #{binary() => any()}.
@@ -622,7 +648,8 @@
 
 %% Example:
 %% get_resource_policy_input() :: #{
-%%   <<"ResourceARN">> := string()
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
 %% }
 -type get_resource_policy_input() :: #{binary() => any()}.
 
@@ -635,6 +662,7 @@
 %% Example:
 %% update_stream_mode_input() :: #{
 %%   <<"StreamARN">> := string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamModeDetails">> := stream_mode_details(),
 %%   <<"WarmThroughputMiBps">> => integer()
 %% }
@@ -655,7 +683,8 @@
 
 %% Example:
 %% list_tags_for_resource_input() :: #{
-%%   <<"ResourceARN">> := string()
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
 %% }
 -type list_tags_for_resource_input() :: #{binary() => any()}.
 
@@ -679,7 +708,8 @@
 %% Example:
 %% update_max_record_size_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> := integer(),
-%%   <<"StreamARN">> => string()
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
 %% }
 -type update_max_record_size_input() :: #{binary() => any()}.
 
@@ -740,6 +770,7 @@
 %%   <<"EncryptionType">> := list(any()),
 %%   <<"KeyId">> := string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type start_stream_encryption_input() :: #{binary() => any()}.
@@ -748,6 +779,7 @@
 %% disable_enhanced_monitoring_input() :: #{
 %%   <<"ShardLevelMetrics">> := list(list(any())()),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type disable_enhanced_monitoring_input() :: #{binary() => any()}.
@@ -784,6 +816,7 @@
 %%   <<"NewStartingHashKey">> := string(),
 %%   <<"ShardToSplit">> := string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type split_shard_input() :: #{binary() => any()}.
@@ -795,6 +828,7 @@
 %%   <<"PartitionKey">> := string(),
 %%   <<"SequenceNumberForOrdering">> => string(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type put_record_input() :: #{binary() => any()}.
@@ -810,6 +844,7 @@
 %%   <<"ExclusiveStartShardId">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type describe_stream_input() :: #{binary() => any()}.

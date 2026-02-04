@@ -1743,7 +1743,8 @@
 %% array_properties_detail() :: #{
 %%   <<"index">> => integer(),
 %%   <<"size">> => integer(),
-%%   <<"statusSummary">> => map()
+%%   <<"statusSummary">> => map(),
+%%   <<"statusSummaryLastUpdatedAt">> => float()
 %% }
 -type array_properties_detail() :: #{binary() => any()}.
 
@@ -1758,7 +1759,9 @@
 %% Example:
 %% array_properties_summary() :: #{
 %%   <<"index">> => integer(),
-%%   <<"size">> => integer()
+%%   <<"size">> => integer(),
+%%   <<"statusSummary">> => map(),
+%%   <<"statusSummaryLastUpdatedAt">> => float()
 %% }
 -type array_properties_summary() :: #{binary() => any()}.
 

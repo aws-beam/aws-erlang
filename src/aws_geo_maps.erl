@@ -117,6 +117,7 @@
 
 %% Example:
 %% get_style_descriptor_request() :: #{
+%%   <<"Buildings">> => string(),
 %%   <<"ColorScheme">> => string(),
 %%   <<"ContourDensity">> => string(),
 %%   <<"Key">> => string(),
@@ -454,6 +455,7 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"buildings">>, maps:get(<<"buildings">>, QueryMap, undefined)},
         {<<"color-scheme">>, maps:get(<<"color-scheme">>, QueryMap, undefined)},
         {<<"contour-density">>, maps:get(<<"contour-density">>, QueryMap, undefined)},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},

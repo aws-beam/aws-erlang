@@ -160,6 +160,7 @@
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
 %%   <<"GlobalTableVersion">> => string(),
 %%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()),
 %%   <<"ItemCount">> => float(),
@@ -519,11 +520,13 @@
 
 %% Example:
 %% create_table_input() :: #{
-%%   <<"AttributeDefinitions">> := list(attribute_definition()),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()),
-%%   <<"KeySchema">> := list(key_schema_element()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
+%%   <<"GlobalTableSourceArn">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"LocalSecondaryIndexes">> => list(local_secondary_index()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
@@ -1840,6 +1843,7 @@
 %% Example:
 %% replica_description() :: #{
 %%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
 %%   <<"KMSMasterKeyId">> => string(),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
