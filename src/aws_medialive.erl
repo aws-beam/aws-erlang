@@ -563,6 +563,15 @@
 %% }
 -type input_source() :: #{binary() => any()}.
 
+
+%% Example:
+%% srt_listener_settings() :: #{
+%%   <<"Decryption">> => srt_listener_decryption(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_listener_settings() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_input_device_transfer_response() :: #{}
 -type cancel_input_device_transfer_response() :: #{}.
@@ -682,6 +691,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -961,6 +971,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -1676,6 +1687,7 @@
 %% Example:
 %% input_security_group() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"State">> => list(any()),
@@ -2313,6 +2325,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"Id">> => string(),
@@ -2357,6 +2370,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -2674,6 +2688,7 @@
 %% node_interface_mapping() :: #{
 %%   <<"LogicalInterfaceName">> => string(),
 %%   <<"NetworkInterfaceMode">> => list(any()),
+%%   <<"PhysicalInterfaceIpAddresses">> => list(string()),
 %%   <<"PhysicalInterfaceName">> => string()
 %% }
 -type node_interface_mapping() :: #{binary() => any()}.
@@ -2755,7 +2770,8 @@
 
 %% Example:
 %% srt_settings_request() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source_request())
+%%   <<"SrtCallerSources">> => list(srt_caller_source_request()),
+%%   <<"SrtListenerSettings">> => srt_listener_settings_request()
 %% }
 -type srt_settings_request() :: #{binary() => any()}.
 
@@ -2767,6 +2783,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -3081,6 +3098,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -3362,7 +3380,9 @@
 
 %% Example:
 %% srt_output_destination_settings() :: #{
+%%   <<"ConnectionMode">> => list(any()),
 %%   <<"EncryptionPassphraseSecretArn">> => string(),
+%%   <<"ListenerPort">> => integer(),
 %%   <<"StreamId">> => string(),
 %%   <<"Url">> => string()
 %% }
@@ -3650,6 +3670,7 @@
 %%   <<"AnywhereSettings">> => anywhere_settings(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -4678,6 +4699,7 @@
 %% Example:
 %% describe_input_security_group_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"State">> => list(any()),
@@ -4784,6 +4806,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -4839,6 +4862,7 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -4951,7 +4975,8 @@
 
 %% Example:
 %% srt_settings() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source())
+%%   <<"SrtCallerSources">> => list(srt_caller_source()),
+%%   <<"SrtListenerSettings">> => srt_listener_settings()
 %% }
 -type srt_settings() :: #{binary() => any()}.
 
@@ -5409,6 +5434,14 @@
 
 
 %% Example:
+%% srt_listener_decryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_listener_decryption() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_anywhere_settings() :: #{
 %%   <<"ChannelPlacementGroupId">> => string(),
 %%   <<"ClusterId">> => string()
@@ -5766,6 +5799,15 @@
 
 
 %% Example:
+%% srt_listener_settings_request() :: #{
+%%   <<"Decryption">> => srt_listener_decryption_request(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_listener_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_account_configuration_request() :: #{
 %%   <<"AccountConfiguration">> => account_configuration()
 %% }
@@ -5806,6 +5848,14 @@
 %%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request())
 %% }
 -type update_node_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_decryption_request() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_listener_decryption_request() :: #{binary() => any()}.
 
 
 %% Example:

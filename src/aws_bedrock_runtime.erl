@@ -197,6 +197,7 @@
 %%   <<"guardrailConfig">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> => list(message()),
+%%   <<"outputConfig">> => output_config(),
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
@@ -651,7 +652,8 @@
 %% tool_specification() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => list(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"strict">> => [boolean()]
 %% }
 -type tool_specification() :: #{binary() => any()}.
 
@@ -880,6 +882,7 @@
 %%   <<"guardrailConfig">> => guardrail_stream_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> => list(message()),
+%%   <<"outputConfig">> => output_config(),
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
@@ -964,6 +967,13 @@
 %%   <<"submitTime">> => non_neg_integer()
 %% }
 -type async_invoke_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_config() :: #{
+%%   <<"textFormat">> => output_format()
+%% }
+-type output_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1135,6 +1145,23 @@
 %%   <<"latency">> => list(any())
 %% }
 -type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_schema_definition() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"schema">> => [string()]
+%% }
+-type json_schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_format() :: #{
+%%   <<"structure">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type output_format() :: #{binary() => any()}.
 
 
 %% Example:

@@ -914,6 +914,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"maxConcurrentSessions">> => integer(),
+%%   <<"portalCustomDomain">> => string(),
 %%   <<"tags">> => list(tag())
 %% }
 -type create_portal_request() :: #{binary() => any()}.
@@ -1355,7 +1356,8 @@
 %%   <<"authenticationType">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"instanceType">> => string(),
-%%   <<"maxConcurrentSessions">> => integer()
+%%   <<"maxConcurrentSessions">> => integer(),
+%%   <<"portalCustomDomain">> => string()
 %% }
 -type update_portal_request() :: #{binary() => any()}.
 
@@ -1502,6 +1504,7 @@
 %%   <<"maxConcurrentSessions">> => integer(),
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"portalArn">> => string(),
+%%   <<"portalCustomDomain">> => string(),
 %%   <<"portalEndpoint">> => string(),
 %%   <<"portalStatus">> => string(),
 %%   <<"rendererType">> => string(),
@@ -1728,6 +1731,7 @@
 %%   <<"maxConcurrentSessions">> => integer(),
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"portalArn">> => string(),
+%%   <<"portalCustomDomain">> => string(),
 %%   <<"portalEndpoint">> => string(),
 %%   <<"portalStatus">> => string(),
 %%   <<"rendererType">> => string(),

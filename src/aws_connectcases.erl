@@ -442,6 +442,13 @@
 %% }
 -type get_case_rule_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% text_attributes() :: #{
+%%   <<"isMultiline">> => [boolean()]
+%% }
+-type text_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% delete_layout_response() :: #{}
 -type delete_layout_response() :: #{}.
@@ -638,6 +645,7 @@
 
 %% Example:
 %% create_field_request() :: #{
+%%   <<"attributes">> => list(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"type">> := string()
@@ -772,6 +780,7 @@
 
 %% Example:
 %% field_summary() :: #{
+%%   <<"attributes">> => list(),
 %%   <<"fieldArn">> => string(),
 %%   <<"fieldId">> => string(),
 %%   <<"name">> => string(),
@@ -936,6 +945,7 @@
 
 %% Example:
 %% update_field_request() :: #{
+%%   <<"attributes">> => list(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -1044,7 +1054,8 @@
 %% Example:
 %% search_cases_response() :: #{
 %%   <<"cases">> := list(search_cases_response_item()),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"totalCount">> => float()
 %% }
 -type search_cases_response() :: #{binary() => any()}.
 
@@ -1163,6 +1174,7 @@
 
 %% Example:
 %% get_field_response() :: #{
+%%   <<"attributes">> => list(),
 %%   <<"createdTime">> => non_neg_integer(),
 %%   <<"deleted">> => boolean(),
 %%   <<"description">> => string(),
