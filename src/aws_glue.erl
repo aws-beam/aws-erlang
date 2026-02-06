@@ -124,6 +124,8 @@
          delete_column_statistics_task_settings/3,
          delete_connection/2,
          delete_connection/3,
+         delete_connection_type/2,
+         delete_connection_type/3,
          delete_crawler/2,
          delete_crawler/3,
          delete_custom_entity_type/2,
@@ -412,6 +414,8 @@
          put_workflow_run_properties/3,
          query_schema_version_metadata/2,
          query_schema_version_metadata/3,
+         register_connection_type/2,
+         register_connection_type/3,
          register_schema_version/2,
          register_schema_version/3,
          remove_schema_version_metadata/2,
@@ -560,6 +564,18 @@
 %%   <<"Name">> := string()
 %% }
 -type start_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% client_credentials_properties() :: #{
+%%   <<"ClientId">> => connector_property(),
+%%   <<"ClientSecret">> => connector_property(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"Scope">> => connector_property(),
+%%   <<"TokenUrl">> => connector_property(),
+%%   <<"TokenUrlParameters">> => list(connector_property())
+%% }
+-type client_credentials_properties() :: #{binary() => any()}.
 
 %% Example:
 %% delete_catalog_response() :: #{
@@ -1630,6 +1646,16 @@
 -type get_security_configurations_request() :: #{binary() => any()}.
 
 %% Example:
+%% j_w_t_bearer_properties() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"JwtToken">> => connector_property(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"TokenUrl">> => connector_property(),
+%%   <<"TokenUrlParameters">> => list(connector_property())
+%% }
+-type j_w_t_bearer_properties() :: #{binary() => any()}.
+
+%% Example:
 %% ml_transform() :: #{
 %%   <<"CreatedOn">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -1743,6 +1769,15 @@
 %%   <<"runRateInHours">> => integer()
 %% }
 -type iceberg_orphan_file_deletion_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% extracted_parameter() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
+%%   <<"Value">> => response_extraction_mapping()
+%% }
+-type extracted_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_data_quality_result_response() :: #{
@@ -2554,6 +2589,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_quality_statistic_annotations_response() :: #{binary() => any()}.
+
+%% Example:
+%% cursor_configuration() :: #{
+%%   <<"LimitParameter">> => extracted_parameter(),
+%%   <<"NextPage">> => extracted_parameter()
+%% }
+-type cursor_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% find_matches_parameters() :: #{
@@ -3387,6 +3429,13 @@
 -type select_fields() :: #{binary() => any()}.
 
 %% Example:
+%% connection_properties_configuration() :: #{
+%%   <<"AdditionalRequestParameters">> => list(connector_property()),
+%%   <<"Url">> => connector_property()
+%% }
+-type connection_properties_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_column_statistics_for_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ColumnName">> := string(),
@@ -3575,6 +3624,13 @@
 %%   <<"Message">> => string()
 %% }
 -type materialized_view_refresh_task_stopping_exception() :: #{binary() => any()}.
+
+%% Example:
+%% basic_authentication_properties() :: #{
+%%   <<"Password">> => connector_property(),
+%%   <<"Username">> => connector_property()
+%% }
+-type basic_authentication_properties() :: #{binary() => any()}.
 
 %% Example:
 %% create_integration_table_properties_response() :: #{
@@ -3838,6 +3894,18 @@
 -type upsert_redshift_target_options() :: #{binary() => any()}.
 
 %% Example:
+%% connector_property() :: #{
+%%   <<"AllowedValues">> => list([string()]()),
+%%   <<"DefaultValue">> => [string()],
+%%   <<"KeyOverride">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
+%%   <<"PropertyType">> => list(any()),
+%%   <<"Required">> => boolean()
+%% }
+-type connector_property() :: #{binary() => any()}.
+
+%% Example:
 %% allowed_value() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Value">> => string()
@@ -3849,6 +3917,12 @@
 %%   <<"Name">> => string()
 %% }
 -type delete_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_authentication_properties() :: #{
+%%   <<"AuthenticationParameters">> => list(connector_property())
+%% }
+-type custom_authentication_properties() :: #{binary() => any()}.
 
 %% Example:
 %% s3_hudi_source() :: #{
@@ -4332,6 +4406,7 @@
 %%   <<"Description">> => string(),
 %%   <<"PhysicalConnectionRequirements">> => map(),
 %%   <<"PythonConnectionProperties">> => map(),
+%%   <<"RestConfiguration">> => rest_configuration(),
 %%   <<"SparkConnectionProperties">> => map()
 %% }
 -type describe_connection_type_response() :: #{binary() => any()}.
@@ -4719,6 +4794,13 @@
 -type crawler_running_exception() :: #{binary() => any()}.
 
 %% Example:
+%% field_definition() :: #{
+%%   <<"FieldDataType">> => list(any()),
+%%   <<"Name">> => [string()]
+%% }
+-type field_definition() :: #{binary() => any()}.
+
+%% Example:
 %% grok_classifier() :: #{
 %%   <<"Classification">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -4735,6 +4817,18 @@
 %%   <<"Name">> => string()
 %% }
 -type stop_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_connection_type_request() :: #{
+%%   <<"ConnectionProperties">> := connection_properties_configuration(),
+%%   <<"ConnectionType">> := string(),
+%%   <<"ConnectorAuthenticationConfiguration">> := connector_authentication_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationType">> := list(any()),
+%%   <<"RestConfiguration">> := rest_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type register_connection_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% join() :: #{
@@ -5375,10 +5469,27 @@
 -type delete_dev_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
+%% offset_configuration() :: #{
+%%   <<"LimitParameter">> => extracted_parameter(),
+%%   <<"OffsetParameter">> => extracted_parameter()
+%% }
+-type offset_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_integration_resource_property_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type delete_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"PaginationConfiguration">> => pagination_configuration(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"RequestParameters">> => list(connector_property()),
+%%   <<"RequestPath">> => string(),
+%%   <<"ResponseConfiguration">> => response_configuration()
+%% }
+-type source_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_connection_response() :: #{
@@ -6483,6 +6594,12 @@
 -type get_classifiers_request() :: #{binary() => any()}.
 
 %% Example:
+%% register_connection_type_response() :: #{
+%%   <<"ConnectionTypeArn">> => string()
+%% }
+-type register_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% my_s_q_l_catalog_target() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Inputs">> => list(string()),
@@ -6561,6 +6678,12 @@
 -type list_statements_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_connection_type_response() :: #{
+
+%% }
+-type delete_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% batch_get_jobs_response() :: #{
 %%   <<"Jobs">> => list(job()),
 %%   <<"JobsNotFound">> => list(string())
@@ -6589,6 +6712,22 @@
 %%   <<"MaterializedViewRefreshTaskRun">> => materialized_view_refresh_task_run()
 %% }
 -type get_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% connector_authorization_code_properties() :: #{
+%%   <<"AuthorizationCode">> => connector_property(),
+%%   <<"AuthorizationCodeUrl">> => connector_property(),
+%%   <<"ClientId">> => connector_property(),
+%%   <<"ClientSecret">> => connector_property(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"Prompt">> => connector_property(),
+%%   <<"RedirectUri">> => connector_property(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"Scope">> => connector_property(),
+%%   <<"TokenUrl">> => connector_property(),
+%%   <<"TokenUrlParameters">> => list(connector_property())
+%% }
+-type connector_authorization_code_properties() :: #{binary() => any()}.
 
 %% Example:
 %% create_integration_resource_property_request() :: #{
@@ -6925,6 +7064,13 @@
 -type delete_dev_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
+%% entity_configuration() :: #{
+%%   <<"Schema">> => map(),
+%%   <<"SourceConfiguration">> => source_configuration()
+%% }
+-type entity_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_dev_endpoints_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6989,6 +7135,15 @@
 %%   <<"JobName">> := string()
 %% }
 -type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% connector_o_auth2_properties() :: #{
+%%   <<"AuthorizationCodeProperties">> => connector_authorization_code_properties(),
+%%   <<"ClientCredentialsProperties">> => client_credentials_properties(),
+%%   <<"JWTBearerProperties">> => j_w_t_bearer_properties(),
+%%   <<"OAuth2GrantType">> => list(any())
+%% }
+-type connector_o_auth2_properties() :: #{binary() => any()}.
 
 %% Example:
 %% p_i_idetection() :: #{
@@ -7223,6 +7378,12 @@
 -type get_data_catalog_encryption_settings_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_connection_type_request() :: #{
+%%   <<"ConnectionType">> := string()
+%% }
+-type delete_connection_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% job() :: #{
 %%   <<"AllocatedCapacity">> => integer(),
 %%   <<"CodeGenConfigurationNodes">> => map(),
@@ -7275,11 +7436,22 @@
 %%   <<"DataOperationScopes">> => list(list(any())()),
 %%   <<"DefaultValue">> => [string()],
 %%   <<"Description">> => string(),
+%%   <<"KeyOverride">> => [string()],
 %%   <<"Name">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
 %%   <<"PropertyTypes">> => list(list(any())()),
 %%   <<"Required">> => boolean()
 %% }
 -type property() :: #{binary() => any()}.
+
+%% Example:
+%% connector_authentication_configuration() :: #{
+%%   <<"AuthenticationTypes">> => list(list(any())()),
+%%   <<"BasicAuthenticationProperties">> => basic_authentication_properties(),
+%%   <<"CustomAuthenticationProperties">> => custom_authentication_properties(),
+%%   <<"OAuth2Properties">> => connector_o_auth2_properties()
+%% }
+-type connector_authentication_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_connection_type_request() :: #{
@@ -7535,6 +7707,13 @@
 -type compaction_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% response_configuration() :: #{
+%%   <<"ErrorPath">> => string(),
+%%   <<"ResultPath">> => string()
+%% }
+-type response_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_unfiltered_partitions_metadata_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UnfilteredPartitions">> => list(unfiltered_partition())
@@ -7671,6 +7850,13 @@
 %%   <<"RunId">> := string()
 %% }
 -type stop_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% pagination_configuration() :: #{
+%%   <<"CursorConfiguration">> => cursor_configuration(),
+%%   <<"OffsetConfiguration">> => offset_configuration()
+%% }
+-type pagination_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_registry_response() :: #{
@@ -8417,6 +8603,13 @@
 -type delete_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% response_extraction_mapping() :: #{
+%%   <<"ContentPath">> => string(),
+%%   <<"HeaderKey">> => string()
+%% }
+-type response_extraction_mapping() :: #{binary() => any()}.
+
+%% Example:
 %% s3_direct_source_additional_options() :: #{
 %%   <<"BoundedFiles">> => float(),
 %%   <<"BoundedSize">> => float(),
@@ -9086,6 +9279,14 @@
 -type get_column_statistics_task_settings_response() :: #{binary() => any()}.
 
 %% Example:
+%% rest_configuration() :: #{
+%%   <<"EntityConfigurations">> => map(),
+%%   <<"GlobalSourceConfiguration">> => source_configuration(),
+%%   <<"ValidationEndpointConfiguration">> => source_configuration()
+%% }
+-type rest_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% string_column_statistics_data() :: #{
 %%   <<"AverageLength">> => float(),
 %%   <<"MaximumLength">> => float(),
@@ -9609,6 +9810,14 @@
     entity_not_found_exception().
 
 -type delete_connection_errors() ::
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_connection_type_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -10553,6 +10762,14 @@
     access_denied_exception() | 
     invalid_input_exception() | 
     entity_not_found_exception().
+
+-type register_connection_type_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
 
 -type register_schema_version_errors() ::
     concurrent_modification_exception() | 
@@ -12173,6 +12390,27 @@ delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
 
+%% @doc Deletes a custom connection type in Glue.
+%%
+%% The connection type must exist and be registered before it can be deleted.
+%% This operation supports cleanup of connection type resources and helps
+%% maintain proper lifecycle management of custom connection types.
+-spec delete_connection_type(aws_client:aws_client(), delete_connection_type_request()) ->
+    {ok, delete_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_connection_type_errors(), tuple()}.
+delete_connection_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_connection_type(Client, Input, []).
+
+-spec delete_connection_type(aws_client:aws_client(), delete_connection_type_request(), proplists:proplist()) ->
+    {ok, delete_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_connection_type_errors(), tuple()}.
+delete_connection_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConnectionType">>, Input, Options).
+
 %% @doc Removes a specified crawler from the Glue Data Catalog, unless the
 %% crawler state is
 %% `RUNNING'.
@@ -12699,6 +12937,14 @@ delete_workflow(Client, Input, Options)
 
 %% @doc The `DescribeConnectionType' API provides full details of the
 %% supported options for a given connection type in Glue.
+%%
+%% The response includes authentication configuration details that show
+%% supported authentication types and properties, and RestConfiguration for
+%% custom REST-based connection types registered via
+%% `RegisterConnectionType'.
+%%
+%% See also: `ListConnectionTypes', `RegisterConnectionType',
+%% `DeleteConnectionType'
 -spec describe_connection_type(aws_client:aws_client(), describe_connection_type_request()) ->
     {ok, describe_connection_type_response(), tuple()} |
     {error, any()} |
@@ -14313,9 +14559,14 @@ list_column_statistics_task_runs(Client, Input, Options)
 %% learn available connection types in Glue.
 %%
 %% The response contains a list of connection types with high-level details
-%% of what is supported for each connection type. The connection types listed
-%% are the set of supported options for the `ConnectionType' value in the
+%% of what is supported for each connection type, including both built-in
+%% connection types and custom connection types registered via
+%% `RegisterConnectionType'. The connection types listed are the set of
+%% supported options for the `ConnectionType' value in the
 %% `CreateConnection' API.
+%%
+%% See also: `DescribeConnectionType', `RegisterConnectionType',
+%% `DeleteConnectionType'
 -spec list_connection_types(aws_client:aws_client(), list_connection_types_request()) ->
     {ok, list_connection_types_response(), tuple()} |
     {error, any()} |
@@ -14952,6 +15203,39 @@ query_schema_version_metadata(Client, Input)
 query_schema_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QuerySchemaVersionMetadata">>, Input, Options).
+
+%% @doc Registers a custom connection type in Glue based on the configuration
+%% provided.
+%%
+%% This operation enables customers to configure custom connectors for any
+%% data source with REST-based APIs, eliminating the need for building custom
+%% Lambda connectors.
+%%
+%% The registered connection type stores details about how requests and
+%% responses are interpreted by REST sources, including connection
+%% properties, authentication configuration, and REST configuration with
+%% entity definitions. Once registered, customers can create connections
+%% using this connection type and work with them the same way as natively
+%% supported Glue connectors.
+%%
+%% Supports multiple authentication types including Basic, OAuth2 (Client
+%% Credentials, JWT Bearer, Authorization Code), and Custom Auth
+%% configurations.
+-spec register_connection_type(aws_client:aws_client(), register_connection_type_request()) ->
+    {ok, register_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, register_connection_type_errors(), tuple()}.
+register_connection_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_connection_type(Client, Input, []).
+
+-spec register_connection_type(aws_client:aws_client(), register_connection_type_request(), proplists:proplist()) ->
+    {ok, register_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, register_connection_type_errors(), tuple()}.
+register_connection_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterConnectionType">>, Input, Options).
 
 %% @doc Adds a new version to the existing schema.
 %%

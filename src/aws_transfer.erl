@@ -797,6 +797,7 @@
 
 %% Example:
 %% as2_connector_config() :: #{
+%%   <<"AsyncMdnConfig">> => as2_async_mdn_connector_config(),
 %%   <<"BasicAuthSecretId">> => string(),
 %%   <<"Compression">> => list(any()),
 %%   <<"EncryptionAlgorithm">> => list(any()),
@@ -1214,6 +1215,13 @@
 %%   <<"WorkflowId">> := string()
 %% }
 -type send_workflow_step_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_http_header() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_http_header() :: #{binary() => any()}.
 
 %% Example:
 %% import_host_key_response() :: #{
@@ -1731,6 +1739,13 @@
 -type create_user_response() :: #{binary() => any()}.
 
 %% Example:
+%% as2_async_mdn_connector_config() :: #{
+%%   <<"ServerIds">> => list(string()),
+%%   <<"Url">> => string()
+%% }
+-type as2_async_mdn_connector_config() :: #{binary() => any()}.
+
+%% Example:
 %% update_certificate_response() :: #{
 %%   <<"CertificateId">> => string()
 %% }
@@ -1748,6 +1763,7 @@
 %% Example:
 %% start_file_transfer_request() :: #{
 %%   <<"ConnectorId">> := string(),
+%%   <<"CustomHttpHeaders">> => list(custom_http_header()),
 %%   <<"LocalDirectoryPath">> => string(),
 %%   <<"RemoteDirectoryPath">> => string(),
 %%   <<"RetrieveFilePaths">> => list(string()),

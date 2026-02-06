@@ -1478,8 +1478,8 @@ create_graph_using_import_task(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a private graph endpoint to allow private access from to the
-%% graph from within a VPC.
+%% @doc Create a private graph endpoint to allow private access to the graph
+%% from within a VPC.
 %%
 %% You can attach security groups to the private graph endpoint.
 %%
@@ -1554,7 +1554,7 @@ delete_graph(Client, GraphIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specifed graph snapshot.
+%% @doc Deletes the specified graph snapshot.
 -spec delete_graph_snapshot(aws_client:aws_client(), binary() | list(), delete_graph_snapshot_input()) ->
     {ok, delete_graph_snapshot_output(), tuple()} |
     {error, any()} |

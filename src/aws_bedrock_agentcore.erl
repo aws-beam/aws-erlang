@@ -68,6 +68,8 @@
          list_sessions/5,
          retrieve_memory_records/3,
          retrieve_memory_records/4,
+         save_browser_session_profile/3,
+         save_browser_session_profile/4,
          start_browser_session/3,
          start_browser_session/4,
          start_code_interpreter_session/3,
@@ -464,6 +466,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"extensions">> => list(browser_extension()),
 %%   <<"name">> => string(),
+%%   <<"profileConfiguration">> => browser_profile_configuration(),
 %%   <<"sessionTimeoutSeconds">> => integer(),
 %%   <<"traceId">> => [string()],
 %%   <<"traceParent">> => [string()],
@@ -636,6 +639,17 @@
 
 
 %% Example:
+%% save_browser_session_profile_request() :: #{
+%%   <<"browserIdentifier">> := [string()],
+%%   <<"clientToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type save_browser_session_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_metadata() :: #{
 %%   <<"eventId">> => [string()],
 %%   <<"messageIndex">> => [integer()]
@@ -730,6 +744,16 @@
 %%   <<"versionId">> => [string()]
 %% }
 -type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% save_browser_session_profile_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"profileIdentifier">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type save_browser_session_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -906,6 +930,7 @@
 %%   <<"extensions">> => list(browser_extension()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"profileConfiguration">> => browser_profile_configuration(),
 %%   <<"sessionId">> => string(),
 %%   <<"sessionReplayArtifact">> => [string()],
 %%   <<"sessionTimeoutSeconds">> => integer(),
@@ -1162,6 +1187,13 @@
 
 
 %% Example:
+%% browser_profile_configuration() :: #{
+%%   <<"profileIdentifier">> => string()
+%% }
+-type browser_profile_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% extraction_job() :: #{
 %%   <<"jobId">> => [string()]
 %% }
@@ -1410,6 +1442,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type save_browser_session_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_browser_session_errors() ::
     throttling_exception() | 
@@ -1840,7 +1880,7 @@ get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Retrieves detailed information about a specific browser session in
-%% Amazon Bedrock.
+%% Amazon Bedrock AgentCore.
 %%
 %% This operation returns the session's configuration, current status,
 %% associated streams, and metadata.
@@ -1900,7 +1940,7 @@ get_browser_session(Client, BrowserIdentifier, SessionId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves detailed information about a specific code interpreter
-%% session in Amazon Bedrock.
+%% session in Amazon Bedrock AgentCore.
 %%
 %% This operation returns the session's configuration, current status,
 %% and metadata.
@@ -2310,7 +2350,7 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
     end.
 
 %% @doc Executes code within an active code interpreter session in Amazon
-%% Bedrock.
+%% Bedrock AgentCore.
 %%
 %% This operation processes the provided code, runs it in a secure
 %% environment, and returns the execution results including output, errors,
@@ -2424,8 +2464,8 @@ list_actors(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of browser sessions in Amazon Bedrock that match the
-%% specified criteria.
+%% @doc Retrieves a list of browser sessions in Amazon Bedrock AgentCore that
+%% match the specified criteria.
 %%
 %% This operation returns summary information about each session, including
 %% identifiers, status, and timestamps.
@@ -2476,8 +2516,8 @@ list_browser_sessions(Client, BrowserIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of code interpreter sessions in Amazon Bedrock that
-%% match the specified criteria.
+%% @doc Retrieves a list of code interpreter sessions in Amazon Bedrock
+%% AgentCore that match the specified criteria.
 %%
 %% This operation returns summary information about each session, including
 %% identifiers, status, and timestamps.
@@ -2731,7 +2771,68 @@ retrieve_memory_records(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates and initializes a browser session in Amazon Bedrock.
+%% @doc Saves the current state of a browser session as a reusable profile in
+%% Amazon Bedrock AgentCore.
+%%
+%% A browser profile captures persistent browser data such as cookies and
+%% local storage from an active session, enabling you to reuse this data in
+%% future browser sessions.
+%%
+%% To save a browser session profile, you must specify the profile
+%% identifier, browser identifier, and session ID. The session must be active
+%% when saving the profile. Once saved, the profile can be used with the
+%% `StartBrowserSession' operation to initialize new sessions with the
+%% stored browser state.
+%%
+%% Browser profiles are useful for scenarios that require persistent
+%% authentication, maintaining user preferences across sessions, or
+%% continuing tasks that depend on previously stored browser data.
+%%
+%% The following operations are related to `SaveBrowserSessionProfile':
+%%
+%% StartBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartBrowserSession.html
+%%
+%% GetBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetBrowserSession.html
+-spec save_browser_session_profile(aws_client:aws_client(), binary() | list(), save_browser_session_profile_request()) ->
+    {ok, save_browser_session_profile_response(), tuple()} |
+    {error, any()} |
+    {error, save_browser_session_profile_errors(), tuple()}.
+save_browser_session_profile(Client, ProfileIdentifier, Input) ->
+    save_browser_session_profile(Client, ProfileIdentifier, Input, []).
+
+-spec save_browser_session_profile(aws_client:aws_client(), binary() | list(), save_browser_session_profile_request(), proplists:proplist()) ->
+    {ok, save_browser_session_profile_response(), tuple()} |
+    {error, any()} |
+    {error, save_browser_session_profile_errors(), tuple()}.
+save_browser_session_profile(Client, ProfileIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/browser-profiles/", aws_util:encode_uri(ProfileIdentifier), "/save"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates and initializes a browser session in Amazon Bedrock
+%% AgentCore.
 %%
 %% The session enables agents to navigate and interact with web content,
 %% extract information from websites, and perform web-based tasks as part of
@@ -2749,6 +2850,9 @@ retrieve_memory_records(Client, MemoryId, Input0, Options0) ->
 %%
 %% UpdateBrowserStream:
 %% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_UpdateBrowserStream.html
+%%
+%% SaveBrowserSessionProfile:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_SaveBrowserSessionProfile.html
 %%
 %% StopBrowserSession:
 %% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopBrowserSession.html
@@ -2788,7 +2892,8 @@ start_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates and initializes a code interpreter session in Amazon Bedrock.
+%% @doc Creates and initializes a code interpreter session in Amazon Bedrock
+%% AgentCore.
 %%
 %% The session enables agents to execute code as part of their response
 %% generation, supporting programming languages such as Python for data
@@ -2886,7 +2991,7 @@ start_memory_extraction_job(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Terminates an active browser session in Amazon Bedrock.
+%% @doc Terminates an active browser session in Amazon Bedrock AgentCore.
 %%
 %% This operation stops the session, releases associated resources, and makes
 %% the session unavailable for further use.
@@ -2939,7 +3044,8 @@ stop_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Terminates an active code interpreter session in Amazon Bedrock.
+%% @doc Terminates an active code interpreter session in Amazon Bedrock
+%% AgentCore.
 %%
 %% This operation stops the session, releases associated resources, and makes
 %% the session unavailable for further use.

@@ -15,6 +15,8 @@
          create_api_key_credential_provider/3,
          create_browser/2,
          create_browser/3,
+         create_browser_profile/2,
+         create_browser_profile/3,
          create_code_interpreter/2,
          create_code_interpreter/3,
          create_evaluator/2,
@@ -43,6 +45,8 @@
          delete_api_key_credential_provider/3,
          delete_browser/3,
          delete_browser/4,
+         delete_browser_profile/3,
+         delete_browser_profile/4,
          delete_code_interpreter/3,
          delete_code_interpreter/4,
          delete_evaluator/3,
@@ -76,6 +80,9 @@
          get_browser/2,
          get_browser/4,
          get_browser/5,
+         get_browser_profile/2,
+         get_browser_profile/4,
+         get_browser_profile/5,
          get_code_interpreter/2,
          get_code_interpreter/4,
          get_code_interpreter/5,
@@ -120,6 +127,8 @@
          list_agent_runtimes/3,
          list_api_key_credential_providers/2,
          list_api_key_credential_providers/3,
+         list_browser_profiles/2,
+         list_browser_profiles/3,
          list_browsers/2,
          list_browsers/3,
          list_code_interpreters/2,
@@ -456,6 +465,14 @@
 %%   <<"policies">> => list(policy())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browser_profiles_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1122,6 +1139,10 @@
 %% }
 -type github_oauth2_provider_config_input() :: #{binary() => any()}.
 
+%% Example:
+%% get_browser_profile_request() :: #{}
+-type get_browser_profile_request() :: #{}.
+
 
 %% Example:
 %% list_policy_engines_response() :: #{
@@ -1164,6 +1185,17 @@
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type github_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_browser_profile_response() :: #{
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_browser_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_evaluator_request() :: #{}
@@ -1342,6 +1374,14 @@
 
 
 %% Example:
+%% list_browser_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profileSummaries">> => list(browser_profile_summary())
+%% }
+-type list_browser_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1407,6 +1447,16 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_browser_profile_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_browser_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2037,6 +2087,16 @@
 
 
 %% Example:
+%% create_browser_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_browser_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
@@ -2240,6 +2300,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_workload_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_browser_profile_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_browser_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2504,6 +2571,22 @@
 %%   <<"targetVersion">> => string()
 %% }
 -type agent_runtime_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_browser_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastSavedBrowserId">> => string(),
+%%   <<"lastSavedBrowserSessionId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_browser_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_gateway_request() :: #{}
@@ -2876,6 +2959,22 @@
 
 
 %% Example:
+%% browser_profile_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastSavedBrowserId">> => string(),
+%%   <<"lastSavedBrowserSessionId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type browser_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_evaluator_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -3116,6 +3215,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_browser_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_code_interpreter_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3235,6 +3342,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_browser_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_code_interpreter_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3351,6 +3466,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_browser_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type get_code_interpreter_errors() ::
@@ -3474,6 +3596,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
+
+-type list_browser_profiles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_browsers_errors() ::
     throttling_exception() | 
@@ -3850,6 +3978,44 @@ create_browser(Client, Input0, Options0) ->
     Method = put,
     Path = ["/browsers"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a browser profile in Amazon Bedrock AgentCore.
+%%
+%% A browser profile stores persistent browser data such as cookies, local
+%% storage, session storage, and browsing history that can be saved from
+%% browser sessions and reused in subsequent sessions.
+-spec create_browser_profile(aws_client:aws_client(), create_browser_profile_request()) ->
+    {ok, create_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_browser_profile_errors(), tuple()}.
+create_browser_profile(Client, Input) ->
+    create_browser_profile(Client, Input, []).
+
+-spec create_browser_profile(aws_client:aws_client(), create_browser_profile_request(), proplists:proplist()) ->
+    {ok, create_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_browser_profile_errors(), tuple()}.
+create_browser_profile(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/browser-profiles"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4367,6 +4533,41 @@ delete_browser(Client, BrowserId, Input0, Options0) ->
     Method = delete,
     Path = ["/browsers/", aws_util:encode_uri(BrowserId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a browser profile.
+-spec delete_browser_profile(aws_client:aws_client(), binary() | list(), delete_browser_profile_request()) ->
+    {ok, delete_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_browser_profile_errors(), tuple()}.
+delete_browser_profile(Client, ProfileId, Input) ->
+    delete_browser_profile(Client, ProfileId, Input, []).
+
+-spec delete_browser_profile(aws_client:aws_client(), binary() | list(), delete_browser_profile_request(), proplists:proplist()) ->
+    {ok, delete_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_browser_profile_errors(), tuple()}.
+delete_browser_profile(Client, ProfileId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/browser-profiles/", aws_util:encode_uri(ProfileId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4916,6 +5117,43 @@ get_browser(Client, BrowserId, QueryMap, HeadersMap)
 get_browser(Client, BrowserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/browsers/", aws_util:encode_uri(BrowserId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a browser profile.
+-spec get_browser_profile(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_browser_profile_errors(), tuple()}.
+get_browser_profile(Client, ProfileId)
+  when is_map(Client) ->
+    get_browser_profile(Client, ProfileId, #{}, #{}).
+
+-spec get_browser_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_browser_profile_errors(), tuple()}.
+get_browser_profile(Client, ProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_browser_profile(Client, ProfileId, QueryMap, HeadersMap, []).
+
+-spec get_browser_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_browser_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_browser_profile_errors(), tuple()}.
+get_browser_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/browser-profiles/", aws_util:encode_uri(ProfileId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5570,6 +5808,42 @@ list_api_key_credential_providers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all browser profiles in your account.
+-spec list_browser_profiles(aws_client:aws_client(), list_browser_profiles_request()) ->
+    {ok, list_browser_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_browser_profiles_errors(), tuple()}.
+list_browser_profiles(Client, Input) ->
+    list_browser_profiles(Client, Input, []).
+
+-spec list_browser_profiles(aws_client:aws_client(), list_browser_profiles_request(), proplists:proplist()) ->
+    {ok, list_browser_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_browser_profiles_errors(), tuple()}.
+list_browser_profiles(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/browser-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all custom browsers in your account.
 -spec list_browsers(aws_client:aws_client(), list_browsers_request()) ->
     {ok, list_browsers_response(), tuple()} |
@@ -6061,7 +6335,7 @@ list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the tags associated with the specified resource.
 %%
 %% This feature is currently available only for AgentCore Runtime, Browser,
-%% Code Interpreter tool, and Gateway.
+%% Browser Profile, Code Interpreter tool, and Gateway.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -6294,7 +6568,7 @@ synchronize_gateway_targets(Client, GatewayIdentifier, Input0, Options0) ->
 %% associated with that resource are also deleted.
 %%
 %% This feature is currently available only for AgentCore Runtime, Browser,
-%% Code Interpreter tool, and Gateway.
+%% Browser Profile, Code Interpreter tool, and Gateway.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -6331,7 +6605,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes the specified tags from the specified resource.
 %%
 %% This feature is currently available only for AgentCore Runtime, Browser,
-%% Code Interpreter tool, and Gateway.
+%% Browser Profile, Code Interpreter tool, and Gateway.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

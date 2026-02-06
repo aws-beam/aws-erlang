@@ -3723,6 +3723,7 @@
 %% Example:
 %% av1_settings() :: #{
 %%   <<"AfdSignaling">> => list(any()),
+%%   <<"BitDepth">> => list(any()),
 %%   <<"Bitrate">> => integer(),
 %%   <<"BufSize">> => integer(),
 %%   <<"ColorSpaceSettings">> => av1_color_space_settings(),

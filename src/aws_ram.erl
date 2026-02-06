@@ -75,6 +75,8 @@
          list_resource_types/3,
          list_resources/2,
          list_resources/3,
+         list_source_associations/2,
+         list_source_associations/3,
          promote_permission_created_from_policy/2,
          promote_permission_created_from_policy/3,
          promote_resource_share_created_from_policy/2,
@@ -201,6 +203,19 @@
 %%   <<"statusMessage">> => string()
 %% }
 -type resource_share_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_source() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"resourceShareArn">> => string(),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type associated_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,6 +422,14 @@
 %%   <<"returnValue">> => boolean()
 %% }
 -type disassociate_resource_share_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sourceAssociations">> => list(associated_source())
+%% }
+-type list_source_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -995,6 +1018,18 @@
 
 
 %% Example:
+%% list_source_associations_request() :: #{
+%%   <<"associationStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceType">> => string()
+%% }
+-type list_source_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% replace_permission_associations_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"fromPermissionArn">> := string(),
@@ -1116,6 +1151,7 @@
 -type create_resource_share_errors() ::
     tag_policy_violation_exception() | 
     invalid_client_token_exception() | 
+    throttling_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
@@ -1148,6 +1184,7 @@
 
 -type delete_resource_share_errors() ::
     invalid_client_token_exception() | 
+    throttling_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
@@ -1159,6 +1196,7 @@
 
 -type disassociate_resource_share_errors() ::
     invalid_client_token_exception() | 
+    throttling_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
@@ -1299,6 +1337,14 @@
     service_unavailable_exception() | 
     invalid_next_token_exception().
 
+-type list_source_associations_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
 -type promote_permission_created_from_policy_errors() ::
     server_internal_exception() | 
     malformed_arn_exception() | 
@@ -1306,6 +1352,7 @@
     unknown_resource_exception() | 
     operation_not_permitted_exception() | 
     service_unavailable_exception() | 
+    invalid_policy_exception() | 
     missing_required_parameter_exception().
 
 -type promote_resource_share_created_from_policy_errors() ::
@@ -1423,8 +1470,8 @@ accept_resource_share_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds the specified list of principals and list of resources to a
-%% resource share.
+%% @doc Adds the specified list of principals, resources, and source
+%% constraints to a resource share.
 %%
 %% Principals that
 %% already have access to this resource share immediately receive access to
@@ -1596,8 +1643,9 @@ create_permission_version(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% for the resources that you
 %% want to share, a list of principals you want to share the resources with,
-%% and the
-%% permissions to grant those principals.
+%% the
+%% permissions to grant those principals, and optionally source constraints
+%% to enhance security for service principal sharing.
 %%
 %% Sharing a resource makes it available for use by principals outside of the
 %% Amazon Web Services account that created the resource. Sharing doesn't
@@ -1762,8 +1810,8 @@ delete_resource_share(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified principals or resources from participating in
-%% the specified
+%% @doc Removes the specified principals, resources, or source constraints
+%% from participating in the specified
 %% resource share.
 -spec disassociate_resource_share(aws_client:aws_client(), disassociate_resource_share_request()) ->
     {ok, disassociate_resource_share_response(), tuple()} |
@@ -1927,6 +1975,14 @@ get_permission(Client, Input0, Options0) ->
 %% @doc Retrieves the resource policies for the specified resources that you
 %% own and have
 %% shared.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
@@ -1963,6 +2019,14 @@ get_resource_policies(Client, Input0, Options0) ->
 %% @doc Retrieves the lists of resources and principals that associated for
 %% resource shares that you
 %% own.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec get_resource_share_associations(aws_client:aws_client(), get_resource_share_associations_request()) ->
     {ok, get_resource_share_associations_response(), tuple()} |
     {error, any()} |
@@ -1998,6 +2062,14 @@ get_resource_share_associations(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about invitations that you have received for
 %% resource shares.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec get_resource_share_invitations(aws_client:aws_client(), get_resource_share_invitations_request()) ->
     {ok, get_resource_share_invitations_response(), tuple()} |
     {error, any()} |
@@ -2033,6 +2105,14 @@ get_resource_share_invitations(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about the resource shares that you own or that are
 %% shared with you.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec get_resource_shares(aws_client:aws_client(), get_resource_shares_request()) ->
     {ok, get_resource_shares_response(), tuple()} |
     {error, any()} |
@@ -2072,6 +2152,14 @@ get_resource_shares(Client, Input0, Options0) ->
 %%
 %% That means that you haven't accepted or rejected the
 %% invitation and the invitation hasn't expired.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_pending_invitation_resources(aws_client:aws_client(), list_pending_invitation_resources_request()) ->
     {ok, list_pending_invitation_resources_response(), tuple()} |
     {error, any()} |
@@ -2112,6 +2200,14 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 %% This lets you see which resource shares use which versions of the
 %% specified
 %% managed permission.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_permission_associations(aws_client:aws_client(), list_permission_associations_request()) ->
     {ok, list_permission_associations_response(), tuple()} |
     {error, any()} |
@@ -2146,6 +2242,14 @@ list_permission_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the available versions of the specified RAM permission.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_permission_versions(aws_client:aws_client(), list_permission_versions_request()) ->
     {ok, list_permission_versions_response(), tuple()} |
     {error, any()} |
@@ -2182,6 +2286,14 @@ list_permission_versions(Client, Input0, Options0) ->
 %% @doc Retrieves a list of available RAM permissions that you can use for
 %% the supported
 %% resource types.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_permissions(aws_client:aws_client(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
@@ -2218,6 +2330,14 @@ list_permissions(Client, Input0, Options0) ->
 %% @doc Lists the principals that you are sharing resources with or that are
 %% sharing resources
 %% with you.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_principals(aws_client:aws_client(), list_principals_request()) ->
     {ok, list_principals_response(), tuple()} |
     {error, any()} |
@@ -2254,6 +2374,14 @@ list_principals(Client, Input0, Options0) ->
 %% @doc Retrieves the current status of the asynchronous tasks performed by
 %% RAM when you
 %% perform the `ReplacePermissionAssociationsWork' operation.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_replace_permission_associations_work(aws_client:aws_client(), list_replace_permission_associations_work_request()) ->
     {ok, list_replace_permission_associations_work_response(), tuple()} |
     {error, any()} |
@@ -2288,6 +2416,14 @@ list_replace_permission_associations_work(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the RAM permissions that are associated with a resource share.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_resource_share_permissions(aws_client:aws_client(), list_resource_share_permissions_request()) ->
     {ok, list_resource_share_permissions_response(), tuple()} |
     {error, any()} |
@@ -2358,6 +2494,14 @@ list_resource_types(Client, Input0, Options0) ->
 %% @doc Lists the resources that you added to a resource share or the
 %% resources that are shared with
 %% you.
+%%
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more
+%% results available. The `NextToken' response parameter value is
+%% `null'
+%% only
+%% when there are no more results to display.
 -spec list_resources(aws_client:aws_client(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
@@ -2372,6 +2516,48 @@ list_resources(Client, Input) ->
 list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists source associations for resource shares.
+%%
+%% Source associations control which sources can be used with service
+%% principals in resource shares. This operation provides visibility into
+%% source associations for resource share owners.
+%%
+%% You can filter the results by resource share Amazon Resource Name (ARN),
+%% source ID, source type, or association status. We recommend using
+%% pagination to ensure that the operation returns quickly and successfully.
+-spec list_source_associations(aws_client:aws_client(), list_source_associations_request()) ->
+    {ok, list_source_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_source_associations_errors(), tuple()}.
+list_source_associations(Client, Input) ->
+    list_source_associations(Client, Input, []).
+
+-spec list_source_associations(aws_client:aws_client(), list_source_associations_request(), proplists:proplist()) ->
+    {ok, list_source_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_source_associations_errors(), tuple()}.
+list_source_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listsourceassociations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
