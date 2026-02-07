@@ -117,12 +117,14 @@
 %%   <<"dataAutomationConfiguration">> => data_automation_configuration(),
 %%   <<"dataAutomationProfileArn">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"inputConfiguration">> := sync_input_configuration()
+%%   <<"inputConfiguration">> := sync_input_configuration(),
+%%   <<"outputConfiguration">> => output_configuration()
 %% }
 -type invoke_data_automation_request() :: #{binary() => any()}.
 
 %% Example:
 %% invoke_data_automation_response() :: #{
+%%   <<"outputConfiguration">> => output_configuration(),
 %%   <<"outputSegments">> => list(output_segment()),
 %%   <<"semanticModality">> => list(any())
 %% }

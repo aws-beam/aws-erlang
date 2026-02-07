@@ -1080,6 +1080,7 @@
 %%   <<"priority">> := integer(),
 %%   <<"sourceJobId">> => string(),
 %%   <<"storageProfileId">> => string(),
+%%   <<"tags">> => map(),
 %%   <<"targetTaskRunStatus">> => list(any()),
 %%   <<"template">> => string(),
 %%   <<"templateType">> => list(any())

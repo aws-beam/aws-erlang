@@ -223,6 +223,7 @@
 %% Example:
 %% managed_thing_association() :: #{
 %%   <<"AccountAssociationId">> => string(),
+%%   <<"ManagedThingAssociationStatus">> => list(any()),
 %%   <<"ManagedThingId">> => string()
 %% }
 -type managed_thing_association() :: #{binary() => any()}.
@@ -311,6 +312,14 @@
 
 
 %% Example:
+%% auth_material() :: #{
+%%   <<"AuthMaterialName">> => string(),
+%%   <<"SecretsManager">> => secrets_manager()
+%% }
+-type auth_material() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_managed_thing_command_request() :: #{
 %%   <<"AccountAssociationId">> => string(),
 %%   <<"ConnectorAssociationId">> => string(),
@@ -328,6 +337,7 @@
 
 %% Example:
 %% auth_config_update() :: #{
+%%   <<"GeneralAuthorizationUpdate">> => general_authorization_update(),
 %%   <<"oAuthUpdate">> => o_auth_update()
 %% }
 -type auth_config_update() :: #{binary() => any()}.
@@ -642,6 +652,7 @@
 %% Example:
 %% create_provisioning_profile_request() :: #{
 %%   <<"CaCertificate">> => string(),
+%%   <<"ClaimCertificate">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ProvisioningType">> := list(any()),
@@ -992,6 +1003,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectorDestinationId">> := string(),
 %%   <<"Description">> => string(),
+%%   <<"GeneralAuthorization">> => general_authorization_name(),
 %%   <<"Name">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -1151,12 +1163,12 @@
 %% Example:
 %% create_connector_destination_request() :: #{
 %%   <<"AuthConfig">> := auth_config(),
-%%   <<"AuthType">> := list(any()),
+%%   <<"AuthType">> => list(any()),
 %%   <<"ClientToken">> => string(),
 %%   <<"CloudConnectorId">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"SecretsManager">> := secrets_manager()
+%%   <<"SecretsManager">> => secrets_manager()
 %% }
 -type create_connector_destination_request() :: #{binary() => any()}.
 
@@ -1408,6 +1420,7 @@
 %%   <<"AuthenticationMaterialType">> => list(any()),
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectorAssociationIdentifier">> => string(),
+%%   <<"ConnectorDeviceIdList">> => list(string()),
 %%   <<"ControllerIdentifier">> => string(),
 %%   <<"CustomProtocolDetail">> => map(),
 %%   <<"DiscoveryType">> := list(any()),
@@ -1616,6 +1629,7 @@
 
 %% Example:
 %% auth_config() :: #{
+%%   <<"GeneralAuthorization">> => list(auth_material()),
 %%   <<"oAuth">> => o_auth_config()
 %% }
 -type auth_config() :: #{binary() => any()}.
@@ -1753,6 +1767,7 @@
 %%   <<"ConnectorDestinationId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"ErrorMessage">> => string(),
+%%   <<"GeneralAuthorization">> => general_authorization_name(),
 %%   <<"Name">> => string(),
 %%   <<"OAuthAuthorizationUrl">> => string(),
 %%   <<"Tags">> => map()
@@ -1765,6 +1780,13 @@
 %%   <<"EventLogLevel">> := list(any())
 %% }
 -type update_event_log_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% general_authorization_name() :: #{
+%%   <<"AuthMaterialName">> => string()
+%% }
+-type general_authorization_name() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1808,6 +1830,14 @@
 %%   <<"Id">> => string()
 %% }
 -type create_credential_locker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% general_authorization_update() :: #{
+%%   <<"AuthMaterialsToAdd">> => list(auth_material()),
+%%   <<"AuthMaterialsToUpdate">> => list(auth_material())
+%% }
+-type general_authorization_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2640,7 +2670,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_device_discovery_errors() ::
     throttling_exception() | 
@@ -5122,7 +5153,7 @@ list_schema_versions(Client, Type, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List tags for the specified resource.
+%% @doc Lists the tags for a specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -5515,7 +5546,7 @@ start_device_discovery(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add tags for the specified resource.
+%% @doc Adds tags to a specified resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -5549,7 +5580,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove tags for the specified resource.
+%% @doc Removes tags from a specified resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

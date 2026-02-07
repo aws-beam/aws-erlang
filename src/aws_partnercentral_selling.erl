@@ -512,6 +512,22 @@
 -type list_engagement_from_opportunity_tasks_request() :: #{binary() => any()}.
 
 %% Example:
+%% aws_opportunity_summary_full_view() :: #{
+%%   <<"Customer">> => aws_opportunity_customer(),
+%%   <<"Insights">> => aws_opportunity_insights(),
+%%   <<"InvolvementType">> => list(any()),
+%%   <<"InvolvementTypeChangeReason">> => list(any()),
+%%   <<"LifeCycle">> => aws_opportunity_life_cycle(),
+%%   <<"OpportunityTeam">> => list(aws_team_member()),
+%%   <<"Origin">> => list(any()),
+%%   <<"Project">> => aws_opportunity_project(),
+%%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
+%%   <<"RelatedOpportunityId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type aws_opportunity_summary_full_view() :: #{binary() => any()}.
+
+%% Example:
 %% aws_opportunity_project() :: #{
 %%   <<"AwsPartition">> => list(any()),
 %%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
@@ -788,6 +804,7 @@
 %% Example:
 %% list_opportunities_request() :: #{
 %%   <<"Catalog">> := string(),
+%%   <<"CreatedDate">> => created_date_filter(),
 %%   <<"CustomerCompanyName">> => list([string()]()),
 %%   <<"Identifier">> => list(string()),
 %%   <<"LastModifiedDate">> => last_modified_date(),
@@ -1281,7 +1298,8 @@
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceSnapshotTemplateName">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Revision">> => integer()
+%%   <<"Revision">> => integer(),
+%%   <<"TargetMemberAccounts">> => list(string())
 %% }
 -type get_resource_snapshot_response() :: #{binary() => any()}.
 
@@ -1419,6 +1437,13 @@
 %%   <<"StreetAddress">> => string()
 %% }
 -type address() :: #{binary() => any()}.
+
+%% Example:
+%% created_date_filter() :: #{
+%%   <<"AfterCreatedDate">> => non_neg_integer(),
+%%   <<"BeforeCreatedDate">> => non_neg_integer()
+%% }
+-type created_date_filter() :: #{binary() => any()}.
 
 %% Example:
 %% solution_base() :: #{
