@@ -16,6 +16,8 @@
          create_configuration/3,
          create_replicator/2,
          create_replicator/3,
+         create_topic/3,
+         create_topic/4,
          create_vpc_connection/2,
          create_vpc_connection/3,
          delete_cluster/3,
@@ -26,6 +28,8 @@
          delete_configuration/4,
          delete_replicator/3,
          delete_replicator/4,
+         delete_topic/4,
+         delete_topic/5,
          delete_vpc_connection/3,
          delete_vpc_connection/4,
          describe_cluster/2,
@@ -142,7 +146,9 @@
          update_security/3,
          update_security/4,
          update_storage/3,
-         update_storage/4]).
+         update_storage/4,
+         update_topic/4,
+         update_topic/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -374,6 +380,14 @@
 
 
 %% Example:
+%% kafka_request_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type kafka_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_operation_v2_summary() :: #{
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterType">> => list(any()),
@@ -494,6 +508,16 @@
 
 
 %% Example:
+%% create_topic_request() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> := integer(),
+%%   <<"ReplicationFactor">> := integer(),
+%%   <<"TopicName">> := string()
+%% }
+-type create_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% kafka_cluster_client_vpc_config() :: #{
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string())
@@ -543,6 +567,14 @@
 
 
 %% Example:
+%% update_topic_request() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> => integer()
+%% }
+-type update_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_clusters_v2_request() :: #{
 %%   <<"ClusterNameFilter">> => string(),
 %%   <<"ClusterTypeFilter">> => string(),
@@ -573,6 +605,14 @@
 %%   <<"Type">> => string()
 %% }
 -type public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_timeout_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type kafka_timeout_exception() :: #{binary() => any()}.
 
 %% Example:
 %% describe_topic_request() :: #{}
@@ -781,6 +821,15 @@
 
 
 %% Example:
+%% create_topic_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type create_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% topic_partition_info() :: #{
 %%   <<"Isr">> => list(integer()),
 %%   <<"Leader">> => integer(),
@@ -898,6 +947,14 @@
 %%   <<"Endpoints">> => list(string())
 %% }
 -type controller_node_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_exists_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type topic_exists_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1142,6 +1199,14 @@
 %%   <<"ServerProperties">> := binary()
 %% }
 -type create_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reassignment_in_progress_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type reassignment_in_progress_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1444,6 +1509,15 @@
 
 
 %% Example:
+%% update_topic_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type update_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% ebs_storage_info() :: #{
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"VolumeSize">> => integer()
@@ -1479,6 +1553,14 @@
 %%   <<"ClusterOperationArn">> => string()
 %% }
 -type update_broker_count_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_topic_or_partition_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unknown_topic_or_partition_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1548,6 +1630,14 @@
 
 
 %% Example:
+%% cluster_connectivity_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type cluster_connectivity_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_cluster_operations_v2_response() :: #{
 %%   <<"ClusterOperationInfoList">> => list(cluster_operation_v2_summary()),
 %%   <<"NextToken">> => string()
@@ -1565,6 +1655,15 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_topic_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type delete_topic_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1603,6 +1702,14 @@
 
 
 %% Example:
+%% not_controller_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type not_controller_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% kafka_cluster_description() :: #{
 %%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
 %%   <<"KafkaClusterAlias">> => string(),
@@ -1625,6 +1732,14 @@
 %%   <<"VpcConnectionArn">> => string()
 %% }
 -type delete_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% controller_moved_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type controller_moved_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1904,6 +2019,10 @@
 %% }
 -type list_configuration_revisions_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_topic_request() :: #{}
+-type delete_topic_request() :: #{}.
+
 
 %% Example:
 %% cluster_operation_v2_serverless() :: #{
@@ -1935,6 +2054,14 @@
 %%   <<"VpcConfigs">> => list(vpc_config())
 %% }
 -type serverless() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_subscribed_to_topic_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type group_subscribed_to_topic_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2000,6 +2127,24 @@
     forbidden_exception() | 
     unauthorized_exception().
 
+-type create_topic_errors() ::
+    group_subscribed_to_topic_exception() | 
+    bad_request_exception() | 
+    controller_moved_exception() | 
+    not_controller_exception() | 
+    internal_server_error_exception() | 
+    cluster_connectivity_exception() | 
+    unknown_topic_or_partition_exception() | 
+    service_unavailable_exception() | 
+    reassignment_in_progress_exception() | 
+    conflict_exception() | 
+    topic_exists_exception() | 
+    too_many_requests_exception() | 
+    kafka_timeout_exception() | 
+    forbidden_exception() | 
+    kafka_request_exception() | 
+    unauthorized_exception().
+
 -type create_vpc_connection_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -2034,6 +2179,20 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     unauthorized_exception().
+
+-type delete_topic_errors() ::
+    group_subscribed_to_topic_exception() | 
+    bad_request_exception() | 
+    controller_moved_exception() | 
+    not_controller_exception() | 
+    internal_server_error_exception() | 
+    cluster_connectivity_exception() | 
+    unknown_topic_or_partition_exception() | 
+    reassignment_in_progress_exception() | 
+    not_found_exception() | 
+    kafka_timeout_exception() | 
+    forbidden_exception() | 
+    kafka_request_exception().
 
 -type delete_vpc_connection_errors() ::
     bad_request_exception() | 
@@ -2368,6 +2527,22 @@
     forbidden_exception() | 
     unauthorized_exception().
 
+-type update_topic_errors() ::
+    group_subscribed_to_topic_exception() | 
+    bad_request_exception() | 
+    controller_moved_exception() | 
+    not_controller_exception() | 
+    internal_server_error_exception() | 
+    cluster_connectivity_exception() | 
+    unknown_topic_or_partition_exception() | 
+    service_unavailable_exception() | 
+    reassignment_in_progress_exception() | 
+    not_found_exception() | 
+    kafka_timeout_exception() | 
+    forbidden_exception() | 
+    kafka_request_exception() | 
+    unauthorized_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -2576,6 +2751,40 @@ create_replicator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a topic in the specified MSK cluster.
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
+create_topic(Client, ClusterArn, Input) ->
+    create_topic(Client, ClusterArn, Input, []).
+
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request(), proplists:proplist()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
+create_topic(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new MSK VPC connection.
 -spec create_vpc_connection(aws_client:aws_client(), create_vpc_connection_request()) ->
     {ok, create_vpc_connection_response(), tuple()} |
@@ -2748,6 +2957,40 @@ delete_replicator(Client, ReplicatorArn, Input0, Options0) ->
                      {<<"currentVersion">>, <<"CurrentVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a topic in the specified MSK cluster.
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request()) ->
+    {ok, delete_topic_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
+delete_topic(Client, ClusterArn, TopicName, Input) ->
+    delete_topic(Client, ClusterArn, TopicName, Input, []).
+
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request(), proplists:proplist()) ->
+    {ok, delete_topic_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
+delete_topic(Client, ClusterArn, TopicName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics/", aws_util:encode_uri(TopicName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MSK VPC connection.
@@ -4447,6 +4690,40 @@ update_storage(Client, ClusterArn, Input) ->
 update_storage(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/storage"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of the specified topic.
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request()) ->
+    {ok, update_topic_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_errors(), tuple()}.
+update_topic(Client, ClusterArn, TopicName, Input) ->
+    update_topic(Client, ClusterArn, TopicName, Input, []).
+
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request(), proplists:proplist()) ->
+    {ok, update_topic_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_errors(), tuple()}.
+update_topic(Client, ClusterArn, TopicName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topics/", aws_util:encode_uri(TopicName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

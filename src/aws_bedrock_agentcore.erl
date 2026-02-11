@@ -220,6 +220,14 @@
 
 
 %% Example:
+%% proxy_configuration() :: #{
+%%   <<"bypass">> => proxy_bypass(),
+%%   <<"proxies">> => list(list())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_browser_sessions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -277,6 +285,16 @@
 %%   <<"right">> => list()
 %% }
 -type event_metadata_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_proxy() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"domainPatterns">> => list(string()),
+%%   <<"port">> => [integer()],
+%%   <<"server">> => string()
+%% }
+-type external_proxy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,6 +485,7 @@
 %%   <<"extensions">> => list(browser_extension()),
 %%   <<"name">> => string(),
 %%   <<"profileConfiguration">> => browser_profile_configuration(),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"sessionTimeoutSeconds">> => integer(),
 %%   <<"traceId">> => [string()],
 %%   <<"traceParent">> => [string()],
@@ -747,6 +766,20 @@
 
 
 %% Example:
+%% basic_auth() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type basic_auth() :: #{binary() => any()}.
+
+
+%% Example:
+%% proxy_bypass() :: #{
+%%   <<"domainPatterns">> => list(string())
+%% }
+-type proxy_bypass() :: #{binary() => any()}.
+
+
+%% Example:
 %% save_browser_session_profile_response() :: #{
 %%   <<"browserIdentifier">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -931,6 +964,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"profileConfiguration">> => browser_profile_configuration(),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"sessionId">> => string(),
 %%   <<"sessionReplayArtifact">> => [string()],
 %%   <<"sessionTimeoutSeconds">> => integer(),

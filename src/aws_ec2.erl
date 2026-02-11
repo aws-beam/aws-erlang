@@ -255,6 +255,10 @@
          create_route_server_peer/3,
          create_route_table/2,
          create_route_table/3,
+         create_secondary_network/2,
+         create_secondary_network/3,
+         create_secondary_subnet/2,
+         create_secondary_subnet/3,
          create_security_group/2,
          create_security_group/3,
          create_snapshot/2,
@@ -439,6 +443,10 @@
          delete_route_server_peer/3,
          delete_route_table/2,
          delete_route_table/3,
+         delete_secondary_network/2,
+         delete_secondary_network/3,
+         delete_secondary_subnet/2,
+         delete_secondary_subnet/3,
          delete_security_group/2,
          delete_security_group/3,
          delete_snapshot/2,
@@ -775,6 +783,12 @@
          describe_scheduled_instance_availability/3,
          describe_scheduled_instances/2,
          describe_scheduled_instances/3,
+         describe_secondary_interfaces/2,
+         describe_secondary_interfaces/3,
+         describe_secondary_networks/2,
+         describe_secondary_networks/3,
+         describe_secondary_subnets/2,
+         describe_secondary_subnets/3,
          describe_security_group_references/2,
          describe_security_group_references/3,
          describe_security_group_rules/2,
@@ -2848,6 +2862,18 @@
 -type modify_transit_gateway_prefix_list_reference_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_secondary_subnet_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Ipv4CidrBlock">> := string(),
+%%   <<"SecondaryNetworkId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_secondary_subnet_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_tags_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Resources">> := list(string()),
@@ -2866,6 +2892,21 @@
 %%   <<"TargetGroups">> => list(target_group())
 %% }
 -type target_groups_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_secondary_interface() :: #{
+%%   <<"Attachment">> => instance_secondary_interface_attachment(),
+%%   <<"InterfaceType">> => list(any()),
+%%   <<"MacAddress">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PrivateIpAddresses">> => list(instance_secondary_interface_private_ip_address()),
+%%   <<"SecondaryInterfaceId">> => string(),
+%%   <<"SecondaryNetworkId">> => string(),
+%%   <<"SecondarySubnetId">> => string(),
+%%   <<"SourceDestCheck">> => boolean(),
+%%   <<"Status">> => list(any())
+%% }
+-type instance_secondary_interface() :: #{binary() => any()}.
 
 %% Example:
 %% instance_metadata_options_request() :: #{
@@ -4487,6 +4528,12 @@
 -type ipam_external_resource_verification_token() :: #{binary() => any()}.
 
 %% Example:
+%% secondary_interface_ipv4_address() :: #{
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type secondary_interface_ipv4_address() :: #{binary() => any()}.
+
+%% Example:
 %% import_image_license_configuration_request() :: #{
 %%   <<"LicenseConfigurationArn">> => string()
 %% }
@@ -5718,6 +5765,13 @@
 %%   <<"Min">> => float()
 %% }
 -type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_secondary_interfaces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecondaryInterfaces">> => list(secondary_interface())
+%% }
+-type describe_secondary_interfaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_policy_rule() :: #{
@@ -7184,7 +7238,8 @@
 %%   <<"Ipv6AddressCount">> => integer(),
 %%   <<"Operator">> => operator_request(),
 %%   <<"ImageId">> => string(),
-%%   <<"InstanceMarketOptions">> => instance_market_options_request()
+%%   <<"InstanceMarketOptions">> => instance_market_options_request(),
+%%   <<"SecondaryInterfaces">> => list(instance_secondary_interface_specification_request())
 %% }
 -type run_instances_request() :: #{binary() => any()}.
 
@@ -7250,6 +7305,13 @@
 %%   <<"PrivateIpAddress">> => string()
 %% }
 -type scheduled_instances_private_ip_address_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_secondary_subnet_result() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"SecondarySubnet">> => secondary_subnet()
+%% }
+-type create_secondary_subnet_result() :: #{binary() => any()}.
 
 %% Example:
 %% traffic_mirror_filter_rule() :: #{
@@ -7498,6 +7560,19 @@
 %%   <<"ScheduledInstanceAvailabilitySet">> => list(scheduled_instance_availability())
 %% }
 -type describe_scheduled_instance_availability_result() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_interface_attachment() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"AttachmentId">> => string(),
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceOwnerId">> => string(),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type secondary_interface_attachment() :: #{binary() => any()}.
 
 %% Example:
 %% restore_snapshot_from_recycle_bin_result() :: #{
@@ -9114,6 +9189,26 @@
 -type deregister_image_request() :: #{binary() => any()}.
 
 %% Example:
+%% secondary_interface() :: #{
+%%   <<"Attachment">> => secondary_interface_attachment(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"MacAddress">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PrivateIpv4Addresses">> => list(secondary_interface_ipv4_address()),
+%%   <<"SecondaryInterfaceArn">> => string(),
+%%   <<"SecondaryInterfaceId">> => string(),
+%%   <<"SecondaryInterfaceType">> => list(any()),
+%%   <<"SecondaryNetworkId">> => string(),
+%%   <<"SecondaryNetworkType">> => list(any()),
+%%   <<"SecondarySubnetId">> => string(),
+%%   <<"SourceDestCheck">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type secondary_interface() :: #{binary() => any()}.
+
+%% Example:
 %% attach_classic_link_vpc_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -9231,6 +9326,12 @@
 %%   <<"TenantId">> => string()
 %% }
 -type create_verified_access_trust_provider_device_options() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_interface_private_ip_address_specification_request() :: #{
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type secondary_interface_private_ip_address_specification_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_launch_template_versions_response_success_item() :: #{
@@ -9577,6 +9678,12 @@
 %%   <<"StateTransitionTime">> => non_neg_integer()
 %% }
 -type disable_fast_launch_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_secondary_interface_private_ip_address() :: #{
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type instance_secondary_interface_private_ip_address() :: #{binary() => any()}.
 
 %% Example:
 %% describe_traffic_mirror_sessions_request() :: #{
@@ -10359,6 +10466,16 @@
 -type price_schedule() :: #{binary() => any()}.
 
 %% Example:
+%% describe_secondary_subnets_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecondarySubnetIds">> => list(string())
+%% }
+-type describe_secondary_subnets_request() :: #{binary() => any()}.
+
+%% Example:
 %% allocate_hosts_request() :: #{
 %%   <<"AssetIds">> => list(string()),
 %%   <<"AutoPlacement">> => list(any()),
@@ -10691,6 +10808,16 @@
 -type create_verified_access_endpoint_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_secondary_networks_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecondaryNetworkIds">> => list(string())
+%% }
+-type describe_secondary_networks_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_ipam_prefix_list_resolver_targets_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -10960,6 +11087,13 @@
 -type image_disk_container() :: #{binary() => any()}.
 
 %% Example:
+%% describe_secondary_networks_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecondaryNetworks">> => list(secondary_network())
+%% }
+-type describe_secondary_networks_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_client_vpn_endpoint_result() :: #{
 %%   <<"ClientVpnEndpointId">> => string(),
 %%   <<"DnsName">> => string(),
@@ -11191,6 +11325,13 @@
 %%   <<"ServiceId">> := string()
 %% }
 -type modify_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secondary_network_result() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"SecondaryNetwork">> => secondary_network()
+%% }
+-type delete_secondary_network_result() :: #{binary() => any()}.
 
 %% Example:
 %% creation_date_condition_request() :: #{
@@ -11902,6 +12043,13 @@
 -type modify_vpc_attribute_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_secondary_subnets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecondarySubnets">> => list(secondary_subnet())
+%% }
+-type describe_secondary_subnets_result() :: #{binary() => any()}.
+
+%% Example:
 %% instance_connect_endpoint_dns_names() :: #{
 %%   <<"DnsName">> => string(),
 %%   <<"FipsDnsName">> => string()
@@ -12206,7 +12354,8 @@
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Operator">> => operator_response(),
 %%   <<"ImageId">> => string(),
-%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options()
+%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options(),
+%%   <<"SecondaryInterfaces">> => list(launch_template_instance_secondary_interface_specification())
 %% }
 -type response_launch_template_data() :: #{binary() => any()}.
 
@@ -12299,6 +12448,12 @@
 %%   <<"PrivateIpAddress">> => string()
 %% }
 -type network_interface_private_ip_address() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_interface_private_ip_address_specification() :: #{
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type secondary_interface_private_ip_address_specification() :: #{binary() => any()}.
 
 %% Example:
 %% describe_snapshots_result() :: #{
@@ -12839,6 +12994,18 @@
 %%   <<"UserBucket">> => user_bucket()
 %% }
 -type snapshot_disk_container() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_instance_secondary_interface_specification_request() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"InterfaceType">> => list(any()),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"PrivateIpAddressCount">> => integer(),
+%%   <<"PrivateIpAddresses">> => list(secondary_interface_private_ip_address_specification_request()),
+%%   <<"SecondarySubnetId">> => string()
+%% }
+-type launch_template_instance_secondary_interface_specification_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instance_type_offerings_request() :: #{
@@ -13572,12 +13739,15 @@
 %%   <<"EncryptionInTransitSupported">> => boolean(),
 %%   <<"FlexibleEnaQueuesSupport">> => list(any()),
 %%   <<"Ipv4AddressesPerInterface">> => integer(),
+%%   <<"Ipv4AddressesPerSecondaryInterface">> => integer(),
 %%   <<"Ipv6AddressesPerInterface">> => integer(),
 %%   <<"Ipv6Supported">> => boolean(),
 %%   <<"MaximumNetworkCards">> => integer(),
 %%   <<"MaximumNetworkInterfaces">> => integer(),
+%%   <<"MaximumSecondaryNetworkInterfaces">> => integer(),
 %%   <<"NetworkCards">> => list(network_card_info()),
-%%   <<"NetworkPerformance">> => string()
+%%   <<"NetworkPerformance">> => string(),
+%%   <<"SecondaryNetworkSupported">> => boolean()
 %% }
 -type network_info() :: #{binary() => any()}.
 
@@ -14236,6 +14406,13 @@
 -type phase1_d_h_group_numbers_list_value() :: #{binary() => any()}.
 
 %% Example:
+%% create_secondary_network_result() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"SecondaryNetwork">> => secondary_network()
+%% }
+-type create_secondary_network_result() :: #{binary() => any()}.
+
+%% Example:
 %% restore_snapshot_tier_result() :: #{
 %%   <<"IsPermanentRestore">> => boolean(),
 %%   <<"RestoreDuration">> => integer(),
@@ -14318,6 +14495,22 @@
 -type delete_launch_template_versions_result() :: #{binary() => any()}.
 
 %% Example:
+%% secondary_subnet() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"Ipv4CidrBlockAssociations">> => list(secondary_subnet_ipv4_cidr_block_association()),
+%%   <<"OwnerId">> => string(),
+%%   <<"SecondaryNetworkId">> => string(),
+%%   <<"SecondaryNetworkType">> => list(any()),
+%%   <<"SecondarySubnetArn">> => string(),
+%%   <<"SecondarySubnetId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type secondary_subnet() :: #{binary() => any()}.
+
+%% Example:
 %% instance_metadata_options_response() :: #{
 %%   <<"HttpEndpoint">> => list(any()),
 %%   <<"HttpProtocolIpv6">> => list(any()),
@@ -14377,6 +14570,18 @@
 %%   <<"Remove">> => list(create_volume_permission())
 %% }
 -type create_volume_permission_modifications() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_instance_secondary_interface_specification() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"InterfaceType">> => list(any()),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"PrivateIpAddressCount">> => integer(),
+%%   <<"PrivateIpAddresses">> => list(secondary_interface_private_ip_address_specification()),
+%%   <<"SecondarySubnetId">> => string()
+%% }
+-type launch_template_instance_secondary_interface_specification() :: #{binary() => any()}.
 
 %% Example:
 %% client_login_banner_options() :: #{
@@ -14667,6 +14872,12 @@
 -type describe_security_group_vpc_associations_result() :: #{binary() => any()}.
 
 %% Example:
+%% instance_secondary_interface_private_ip_address_request() :: #{
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type instance_secondary_interface_private_ip_address_request() :: #{binary() => any()}.
+
+%% Example:
 %% media_device_memory_info() :: #{
 %%   <<"SizeInMiB">> => integer()
 %% }
@@ -14818,7 +15029,8 @@
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Operator">> => operator_request(),
 %%   <<"ImageId">> => string(),
-%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options_request()
+%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options_request(),
+%%   <<"SecondaryInterfaces">> => list(launch_template_instance_secondary_interface_specification_request())
 %% }
 -type request_launch_template_data() :: #{binary() => any()}.
 
@@ -15698,6 +15910,7 @@
 %%   <<"BootMode">> => list(any()),
 %%   <<"Operator">> => operator_response(),
 %%   <<"ImageId">> => string(),
+%%   <<"SecondaryInterfaces">> => list(instance_secondary_interface()),
 %%   <<"InstanceLifecycle">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"ProductCodes">> => list(product_code()),
@@ -16535,6 +16748,16 @@
 %%   <<"LocationType">> => list(any())
 %% }
 -type instance_type_offering() :: #{binary() => any()}.
+
+%% Example:
+%% create_secondary_network_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Ipv4CidrBlock">> := string(),
+%%   <<"NetworkType">> := list(any()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_secondary_network_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_event_window_disassociation_request() :: #{
@@ -17517,6 +17740,14 @@
 -type list_snapshots_in_recycle_bin_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_secondary_network_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"SecondaryNetworkId">> := string()
+%% }
+-type delete_secondary_network_request() :: #{binary() => any()}.
+
+%% Example:
 %% unsuccessful_instance_credit_specification_item() :: #{
 %%   <<"Error">> => unsuccessful_instance_credit_specification_item_error(),
 %%   <<"InstanceId">> => string()
@@ -17752,6 +17983,19 @@
 %%   <<"Message">> => string()
 %% }
 -type delete_fleet_error() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_network() :: #{
+%%   <<"Ipv4CidrBlockAssociations">> => list(secondary_network_ipv4_cidr_block_association()),
+%%   <<"OwnerId">> => string(),
+%%   <<"SecondaryNetworkArn">> => string(),
+%%   <<"SecondaryNetworkId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any())
+%% }
+-type secondary_network() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template() :: #{
@@ -19429,6 +19673,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_host_reservations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secondary_subnet_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"SecondarySubnetId">> := string()
+%% }
+-type delete_secondary_subnet_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_transit_gateway_policy_table_request() :: #{
@@ -21269,6 +21521,15 @@
 -type create_fleet_error() :: #{binary() => any()}.
 
 %% Example:
+%% secondary_subnet_ipv4_cidr_block_association() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"CidrBlock">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type secondary_subnet_ipv4_cidr_block_association() :: #{binary() => any()}.
+
+%% Example:
 %% delete_client_vpn_endpoint_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean()
@@ -21285,6 +21546,16 @@
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type create_local_gateway_route_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_secondary_interfaces_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecondaryInterfaceIds">> => list(string())
+%% }
+-type describe_secondary_interfaces_request() :: #{binary() => any()}.
 
 %% Example:
 %% price_schedule_specification() :: #{
@@ -21350,6 +21621,18 @@
 -type load_permission_modifications() :: #{binary() => any()}.
 
 %% Example:
+%% instance_secondary_interface_specification_request() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"InterfaceType">> => list(any()),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"PrivateIpAddressCount">> => integer(),
+%%   <<"PrivateIpAddresses">> => list(instance_secondary_interface_private_ip_address_request()),
+%%   <<"SecondarySubnetId">> => string()
+%% }
+-type instance_secondary_interface_specification_request() :: #{binary() => any()}.
+
+%% Example:
 %% interruption_info() :: #{
 %%   <<"InterruptionType">> => list(any()),
 %%   <<"SourceCapacityReservationId">> => string()
@@ -21372,6 +21655,22 @@
 %%   <<"TargetInstanceCount">> => integer()
 %% }
 -type interruptible_capacity_allocation() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secondary_subnet_result() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"SecondarySubnet">> => secondary_subnet()
+%% }
+-type delete_secondary_subnet_result() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_network_ipv4_cidr_block_association() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"CidrBlock">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type secondary_network_ipv4_cidr_block_association() :: #{binary() => any()}.
 
 %% Example:
 %% subnet_ip_prefixes() :: #{
@@ -21722,6 +22021,17 @@
 %%   <<"TrafficMirrorTargetId">> := string()
 %% }
 -type delete_traffic_mirror_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_secondary_interface_attachment() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"AttachmentId">> => string(),
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type instance_secondary_interface_attachment() :: #{binary() => any()}.
 
 %% Example:
 %% create_coip_cidr_result() :: #{
@@ -25739,6 +26049,48 @@ create_route_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRouteTable">>, Input, Options).
 
+%% @doc Creates an Amazon secondary network.
+%%
+%% The allowed size for a secondary network CIDR block is between /28 netmask
+%% (16 IP addresses) and /12 netmask (1,048,576 IP addresses).
+-spec create_secondary_network(aws_client:aws_client(), create_secondary_network_request()) ->
+    {ok, create_secondary_network_result(), tuple()} |
+    {error, any()}.
+create_secondary_network(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_secondary_network(Client, Input, []).
+
+-spec create_secondary_network(aws_client:aws_client(), create_secondary_network_request(), proplists:proplist()) ->
+    {ok, create_secondary_network_result(), tuple()} |
+    {error, any()}.
+create_secondary_network(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSecondaryNetwork">>, Input, Options).
+
+%% @doc Creates a secondary subnet in a secondary network.
+%%
+%% A secondary subnet CIDR block must not overlap with the CIDR block of an
+%% existing secondary subnet in the secondary network. After you create a
+%% secondary subnet, you can't change its CIDR block.
+%%
+%% The allowed size for a secondary subnet CIDR block is between /28 netmask
+%% (16 IP addresses) and /12 netmask (1,048,576 IP addresses). Amazon
+%% reserves the first four IP addresses and the last IP address in each
+%% secondary subnet for internal use.
+-spec create_secondary_subnet(aws_client:aws_client(), create_secondary_subnet_request()) ->
+    {ok, create_secondary_subnet_result(), tuple()} |
+    {error, any()}.
+create_secondary_subnet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_secondary_subnet(Client, Input, []).
+
+-spec create_secondary_subnet(aws_client:aws_client(), create_secondary_subnet_request(), proplists:proplist()) ->
+    {ok, create_secondary_subnet_result(), tuple()} |
+    {error, any()}.
+create_secondary_subnet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSecondarySubnet">>, Input, Options).
+
 %% @doc Creates a security group.
 %%
 %% A security group acts as a virtual firewall for your instance to control
@@ -27881,6 +28233,42 @@ delete_route_table(Client, Input)
 delete_route_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRouteTable">>, Input, Options).
+
+%% @doc Deletes a secondary network.
+%%
+%% You must delete all secondary subnets in the secondary network before you
+%% can delete the secondary network.
+-spec delete_secondary_network(aws_client:aws_client(), delete_secondary_network_request()) ->
+    {ok, delete_secondary_network_result(), tuple()} |
+    {error, any()}.
+delete_secondary_network(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_secondary_network(Client, Input, []).
+
+-spec delete_secondary_network(aws_client:aws_client(), delete_secondary_network_request(), proplists:proplist()) ->
+    {ok, delete_secondary_network_result(), tuple()} |
+    {error, any()}.
+delete_secondary_network(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSecondaryNetwork">>, Input, Options).
+
+%% @doc Deletes a secondary subnet.
+%%
+%% A secondary subnet must not contain any secondary interfaces prior to
+%% deletion.
+-spec delete_secondary_subnet(aws_client:aws_client(), delete_secondary_subnet_request()) ->
+    {ok, delete_secondary_subnet_result(), tuple()} |
+    {error, any()}.
+delete_secondary_subnet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_secondary_subnet(Client, Input, []).
+
+-spec delete_secondary_subnet(aws_client:aws_client(), delete_secondary_subnet_request(), proplists:proplist()) ->
+    {ok, delete_secondary_subnet_result(), tuple()} |
+    {error, any()}.
+delete_secondary_subnet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSecondarySubnet">>, Input, Options).
 
 %% @doc Deletes a security group.
 %%
@@ -31633,6 +32021,51 @@ describe_scheduled_instances(Client, Input)
 describe_scheduled_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledInstances">>, Input, Options).
+
+%% @doc Describes one or more of your secondary interfaces.
+-spec describe_secondary_interfaces(aws_client:aws_client(), describe_secondary_interfaces_request()) ->
+    {ok, describe_secondary_interfaces_result(), tuple()} |
+    {error, any()}.
+describe_secondary_interfaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_secondary_interfaces(Client, Input, []).
+
+-spec describe_secondary_interfaces(aws_client:aws_client(), describe_secondary_interfaces_request(), proplists:proplist()) ->
+    {ok, describe_secondary_interfaces_result(), tuple()} |
+    {error, any()}.
+describe_secondary_interfaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecondaryInterfaces">>, Input, Options).
+
+%% @doc Describes one or more secondary networks.
+-spec describe_secondary_networks(aws_client:aws_client(), describe_secondary_networks_request()) ->
+    {ok, describe_secondary_networks_result(), tuple()} |
+    {error, any()}.
+describe_secondary_networks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_secondary_networks(Client, Input, []).
+
+-spec describe_secondary_networks(aws_client:aws_client(), describe_secondary_networks_request(), proplists:proplist()) ->
+    {ok, describe_secondary_networks_result(), tuple()} |
+    {error, any()}.
+describe_secondary_networks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecondaryNetworks">>, Input, Options).
+
+%% @doc Describes one or more of your secondary subnets.
+-spec describe_secondary_subnets(aws_client:aws_client(), describe_secondary_subnets_request()) ->
+    {ok, describe_secondary_subnets_result(), tuple()} |
+    {error, any()}.
+describe_secondary_subnets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_secondary_subnets(Client, Input, []).
+
+-spec describe_secondary_subnets(aws_client:aws_client(), describe_secondary_subnets_request(), proplists:proplist()) ->
+    {ok, describe_secondary_subnets_result(), tuple()} |
+    {error, any()}.
+describe_secondary_subnets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecondarySubnets">>, Input, Options).
 
 %% @doc Describes the VPCs on the other side of a VPC peering or Transit
 %% Gateway connection that are referencing the security groups you've

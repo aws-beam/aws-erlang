@@ -465,6 +465,7 @@
 %% Example:
 %% start_loader_job_input() :: #{
 %%   <<"dependencies">> => list([string()]()),
+%%   <<"edgeOnlyLoad">> => [boolean()],
 %%   <<"failOnError">> => [boolean()],
 %%   <<"format">> := list(any()),
 %%   <<"iamRoleArn">> := [string()],

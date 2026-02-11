@@ -814,6 +814,8 @@
          update_test_case/5,
          update_traffic_distribution/3,
          update_traffic_distribution/4,
+         update_user_config/4,
+         update_user_config/5,
          update_user_hierarchy/4,
          update_user_hierarchy/5,
          update_user_hierarchy_group_name/4,
@@ -1381,6 +1383,14 @@
 %%   <<"CampaignId">> => string()
 %% }
 -type campaign() :: #{binary() => any()}.
+
+
+%% Example:
+%% persistent_connection_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"PersistentConnection">> => boolean()
+%% }
+-type persistent_connection_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2320,6 +2330,15 @@
 
 
 %% Example:
+%% after_contact_work_config_per_channel() :: #{
+%%   <<"AfterContactWorkConfig">> => after_contact_work_config(),
+%%   <<"AgentFirstCallbackAfterContactWorkConfig">> => after_contact_work_config(),
+%%   <<"Channel">> => list(any())
+%% }
+-type after_contact_work_config_per_channel() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
@@ -2702,16 +2721,21 @@
 
 %% Example:
 %% user_search_summary() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
 %%   <<"Arn">> => string(),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
 %%   <<"DirectoryUserId">> => string(),
 %%   <<"HierarchyGroupId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IdentityInfo">> => user_identity_info_lite(),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
 %%   <<"PhoneConfig">> => user_phone_config(),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
 %%   <<"RoutingProfileId">> => string(),
 %%   <<"SecurityProfileIds">> => list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Username">> => string()
+%%   <<"Username">> => string(),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
 %% }
 -type user_search_summary() :: #{binary() => any()}.
 
@@ -3026,6 +3050,15 @@
 %% }
 -type contact_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% phone_number_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneType">> => list(any())
+%% }
+-type phone_number_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_hierarchy_group_request() :: #{}
 -type delete_user_hierarchy_group_request() :: #{}.
@@ -3232,6 +3265,13 @@
 %% Example:
 %% delete_view_version_request() :: #{}
 -type delete_view_version_request() :: #{}.
+
+
+%% Example:
+%% after_contact_work_config() :: #{
+%%   <<"AfterContactWorkTimeLimit">> => integer()
+%% }
+-type after_contact_work_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5485,6 +5525,14 @@
 %% Example:
 %% start_contact_recording_response() :: #{}
 -type start_contact_recording_response() :: #{}.
+
+
+%% Example:
+%% voice_enhancement_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"VoiceEnhancementMode">> => list(any())
+%% }
+-type voice_enhancement_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8596,18 +8644,23 @@
 
 %% Example:
 %% user() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
 %%   <<"Arn">> => string(),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
 %%   <<"DirectoryUserId">> => string(),
 %%   <<"HierarchyGroupId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IdentityInfo">> => user_identity_info(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
 %%   <<"PhoneConfig">> => user_phone_config(),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
 %%   <<"RoutingProfileId">> => string(),
 %%   <<"SecurityProfileIds">> => list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Username">> => string()
+%%   <<"Username">> => string(),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
 %% }
 -type user() :: #{binary() => any()}.
 
@@ -8739,6 +8792,15 @@
 %%   <<"Name">> => string()
 %% }
 -type predefined_attribute_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_accept_config() :: #{
+%%   <<"AgentFirstCallbackAutoAccept">> => boolean(),
+%%   <<"AutoAccept">> => boolean(),
+%%   <<"Channel">> => list(any())
+%% }
+-type auto_accept_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10717,6 +10779,17 @@
 
 
 %% Example:
+%% update_user_config_request() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
+%% }
+-type update_user_config_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% suspend_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"ContactRecordingType">> => list(any()),
@@ -10728,15 +10801,20 @@
 
 %% Example:
 %% create_user_request() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
 %%   <<"DirectoryUserId">> => string(),
 %%   <<"HierarchyGroupId">> => string(),
 %%   <<"IdentityInfo">> => user_identity_info(),
 %%   <<"Password">> => string(),
-%%   <<"PhoneConfig">> := user_phone_config(),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
+%%   <<"PhoneConfig">> => user_phone_config(),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
 %%   <<"RoutingProfileId">> := string(),
 %%   <<"SecurityProfileIds">> := list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Username">> := string()
+%%   <<"Username">> := string(),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
 %% }
 -type create_user_request() :: #{binary() => any()}.
 
@@ -13513,6 +13591,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type update_user_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    conditional_operation_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type update_user_hierarchy_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -16174,6 +16260,25 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %% `FirstName' and `LastName' are required if you are using Amazon
 %% Connect or SAML for
 %% identity management.
+%%
+%% Fields in `PhoneConfig' cannot be set simultaneously with their
+%% corresponding channel-specific configuration parameters. Specifically:
+%%
+%% `PhoneConfig.AutoAccept' conflicts with `AutoAcceptConfigs'
+%%
+%% `PhoneConfig.AfterContactWorkTimeLimit' conflicts with
+%% `AfterContactWorkConfigs'
+%%
+%% `PhoneConfig.PhoneType' and `PhoneConfig.PhoneNumber' conflict
+%% with `PhoneNumberConfigs'
+%%
+%% `PhoneConfig.PersistentConnection' conflicts with
+%% `PersistentConnectionConfigs'
+%%
+%% We recommend using channel-specific parameters such as
+%% `AutoAcceptConfigs', `AfterContactWorkConfigs',
+%% `PhoneNumberConfigs', `PersistentConnectionConfigs', and
+%% `VoiceEnhancementConfigs' for per-channel configuration.
 %%
 %% For information about how to create users using the Amazon Connect admin
 %% website, see Add Users:
@@ -28132,6 +28237,46 @@ update_traffic_distribution(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the configuration settings for the specified user, including
+%% per-channel auto-accept and after contact work (ACW) timeout settings.
+%%
+%% This operation replaces the UpdateUserPhoneConfig API. While
+%% UpdateUserPhoneConfig applies the same ACW timeout to all channels,
+%% UpdateUserConfig allows you to set different auto-accept and ACW timeout
+%% values for each channel type.
+-spec update_user_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_user_config_errors(), tuple()}.
+update_user_config(Client, InstanceId, UserId, Input) ->
+    update_user_config(Client, InstanceId, UserId, Input, []).
+
+-spec update_user_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_user_config_errors(), tuple()}.
+update_user_config(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Assigns the specified hierarchy group to the specified user.
 -spec update_user_hierarchy(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_hierarchy_request()) ->
     {ok, undefined, tuple()} |
@@ -28281,6 +28426,14 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone configuration settings for the specified user.
+%%
+%% We recommend using the UpdateUserConfig:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserConfig.html
+%% API, which supports additional functionality that is not available in the
+%% UpdateUserPhoneConfig API, such as voice enhancement settings and
+%% per-channel configuration for auto-accept and After Contact Work (ACW)
+%% timeouts. In comparison, the UpdateUserPhoneConfig API will always set the
+%% same ACW timeouts to all channels the user handles.
 -spec update_user_phone_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_phone_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
