@@ -203,6 +203,14 @@
 
 
 %% Example:
+%% iceberg_partition_spec() :: #{
+%%   <<"fields">> => list(iceberg_partition_field()),
+%%   <<"specId">> => [integer()]
+%% }
+-type iceberg_partition_spec() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_table_metadata_location_request() :: #{
 %%   <<"metadataLocation">> := string(),
 %%   <<"versionToken">> := string()
@@ -347,6 +355,14 @@
 %%   <<"tableBucketARN">> => string()
 %% }
 -type get_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_sort_order() :: #{
+%%   <<"fields">> => list(iceberg_sort_field()),
+%%   <<"orderId">> => [integer()]
+%% }
+-type iceberg_sort_order() :: #{binary() => any()}.
 
 
 %% Example:
@@ -546,8 +562,10 @@
 
 %% Example:
 %% iceberg_metadata() :: #{
+%%   <<"partitionSpec">> => iceberg_partition_spec(),
 %%   <<"properties">> => map(),
-%%   <<"schema">> => iceberg_schema()
+%%   <<"schema">> => iceberg_schema(),
+%%   <<"writeOrder">> => iceberg_sort_order()
 %% }
 -type iceberg_metadata() :: #{binary() => any()}.
 
@@ -670,6 +688,16 @@
 %% }
 -type managed_table_information() :: #{binary() => any()}.
 
+
+%% Example:
+%% iceberg_sort_field() :: #{
+%%   <<"direction">> => list(any()),
+%%   <<"nullOrder">> => list(any()),
+%%   <<"sourceId">> => [integer()],
+%%   <<"transform">> => [string()]
+%% }
+-type iceberg_sort_field() :: #{binary() => any()}.
+
 %% Example:
 %% get_table_metadata_location_request() :: #{}
 -type get_table_metadata_location_request() :: #{}.
@@ -691,6 +719,16 @@
 %% Example:
 %% delete_table_bucket_metrics_configuration_request() :: #{}
 -type delete_table_bucket_metrics_configuration_request() :: #{}.
+
+
+%% Example:
+%% iceberg_partition_field() :: #{
+%%   <<"fieldId">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"sourceId">> => [integer()],
+%%   <<"transform">> => [string()]
+%% }
+-type iceberg_partition_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -770,6 +808,7 @@
 
 %% Example:
 %% schema_field() :: #{
+%%   <<"id">> => [integer()],
 %%   <<"name">> => [string()],
 %%   <<"required">> => [boolean()],
 %%   <<"type">> => [string()]

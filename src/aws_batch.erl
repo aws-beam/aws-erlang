@@ -438,6 +438,14 @@
 
 
 %% Example:
+%% service_job_capacity_usage_summary() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type service_job_capacity_usage_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_environment_order() :: #{
 %%   <<"order">> => integer(),
 %%   <<"serviceEnvironment">> => string()
@@ -566,6 +574,14 @@
 
 
 %% Example:
+%% fairshare_capacity_utilization() :: #{
+%%   <<"capacityUsage">> => list(fairshare_capacity_usage()),
+%%   <<"shareIdentifier">> => string()
+%% }
+-type fairshare_capacity_utilization() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_compute_environment_request() :: #{
 %%   <<"computeEnvironmentName">> := string(),
 %%   <<"computeResources">> => compute_resource(),
@@ -658,8 +674,17 @@
 
 
 %% Example:
+%% job_capacity_usage_summary() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type job_capacity_usage_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_summary() :: #{
 %%   <<"arrayProperties">> => array_properties_summary(),
+%%   <<"capacityUsage">> => list(job_capacity_usage_summary()),
 %%   <<"container">> => container_summary(),
 %%   <<"createdAt">> => float(),
 %%   <<"jobArn">> => string(),
@@ -667,6 +692,8 @@
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"nodeProperties">> => node_properties_summary(),
+%%   <<"scheduledAt">> => float(),
+%%   <<"shareIdentifier">> => string(),
 %%   <<"startedAt">> => float(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
@@ -781,6 +808,14 @@
 
 
 %% Example:
+%% service_job_capacity_usage_detail() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type service_job_capacity_usage_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_resource_id() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"value">> => string()
@@ -836,6 +871,14 @@
 %%   <<"type">> := list(any())
 %% }
 -type register_job_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_utilization_detail() :: #{
+%%   <<"activeShareCount">> => float(),
+%%   <<"topCapacityUtilization">> => list(fairshare_capacity_utilization())
+%% }
+-type fairshare_utilization_detail() :: #{binary() => any()}.
 
 %% Example:
 %% delete_scheduling_policy_response() :: #{}
@@ -1034,6 +1077,15 @@
 
 
 %% Example:
+%% queue_snapshot_utilization_detail() :: #{
+%%   <<"fairshareUtilization">> => fairshare_utilization_detail(),
+%%   <<"lastUpdatedAt">> => float(),
+%%   <<"totalCapacityUsage">> => list(queue_snapshot_capacity_usage())
+%% }
+-type queue_snapshot_utilization_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_summary() :: #{
 %%   <<"exitCode">> => integer(),
 %%   <<"reason">> => string()
@@ -1113,7 +1165,8 @@
 
 %% Example:
 %% get_job_queue_snapshot_response() :: #{
-%%   <<"frontOfQueue">> => front_of_queue_detail()
+%%   <<"frontOfQueue">> => front_of_queue_detail(),
+%%   <<"queueUtilization">> => queue_snapshot_utilization_detail()
 %% }
 -type get_job_queue_snapshot_response() :: #{binary() => any()}.
 
@@ -1475,6 +1528,14 @@
 %% }
 -type delete_job_queue_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% fairshare_capacity_usage() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type fairshare_capacity_usage() :: #{binary() => any()}.
+
 %% Example:
 %% terminate_job_response() :: #{}
 -type terminate_job_response() :: #{}.
@@ -1491,6 +1552,7 @@
 %% Example:
 %% describe_service_job_response() :: #{
 %%   <<"attempts">> => list(service_job_attempt_detail()),
+%%   <<"capacityUsage">> => list(service_job_capacity_usage_detail()),
 %%   <<"createdAt">> => float(),
 %%   <<"isTerminated">> => boolean(),
 %%   <<"jobArn">> => string(),
@@ -1499,6 +1561,7 @@
 %%   <<"jobQueue">> => string(),
 %%   <<"latestAttempt">> => latest_service_job_attempt(),
 %%   <<"retryStrategy">> => service_job_retry_strategy(),
+%%   <<"scheduledAt">> => float(),
 %%   <<"schedulingPriority">> => integer(),
 %%   <<"serviceJobType">> => list(any()),
 %%   <<"serviceRequestPayload">> => string(),
@@ -1767,6 +1830,14 @@
 
 
 %% Example:
+%% queue_snapshot_capacity_usage() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type queue_snapshot_capacity_usage() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecs_properties_detail() :: #{
 %%   <<"taskProperties">> => list(ecs_task_details())
 %% }
@@ -1775,11 +1846,13 @@
 
 %% Example:
 %% service_job_summary() :: #{
+%%   <<"capacityUsage">> => list(service_job_capacity_usage_summary()),
 %%   <<"createdAt">> => float(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"latestAttempt">> => latest_service_job_attempt(),
+%%   <<"scheduledAt">> => float(),
 %%   <<"serviceJobType">> => list(any()),
 %%   <<"shareIdentifier">> => string(),
 %%   <<"startedAt">> => float(),
@@ -2958,7 +3031,9 @@ describe_service_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides a list of the first 100 `RUNNABLE' jobs associated to a
-%% single job queue.
+%% single job
+%% queue and includes capacity utilization, including total usage and
+%% breakdown by share for fairshare scheduling job queues.
 -spec get_job_queue_snapshot(aws_client:aws_client(), get_job_queue_snapshot_request()) ->
     {ok, get_job_queue_snapshot_response(), tuple()} |
     {error, any()} |
@@ -3035,10 +3110,6 @@ list_consumable_resources(Client, Input0, Options0) ->
 %% A multi-node parallel job ID to return a list of nodes for that job
 %%
 %% An array job ID to return a list of the children for that job
-%%
-%% You can filter the results by job status with the `jobStatus'
-%% parameter. If you
-%% don't specify a status, only `RUNNING' jobs are returned.
 -spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |

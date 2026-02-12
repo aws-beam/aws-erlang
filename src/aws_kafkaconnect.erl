@@ -284,6 +284,7 @@
 
 %% Example:
 %% auto_scaling_update() :: #{
+%%   <<"maxAutoscalingTaskCount">> => integer(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"mcuCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
@@ -378,6 +379,7 @@
 
 %% Example:
 %% auto_scaling_description() :: #{
+%%   <<"maxAutoscalingTaskCount">> => integer(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"mcuCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
@@ -512,6 +514,7 @@
 
 %% Example:
 %% auto_scaling() :: #{
+%%   <<"maxAutoscalingTaskCount">> => integer(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"mcuCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
