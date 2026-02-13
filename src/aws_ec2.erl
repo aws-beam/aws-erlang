@@ -3789,10 +3789,11 @@
 
 %% Example:
 %% modify_instance_cpu_options_request() :: #{
-%%   <<"CoreCount">> := integer(),
+%%   <<"CoreCount">> => integer(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceId">> := string(),
-%%   <<"ThreadsPerCore">> := integer()
+%%   <<"NestedVirtualization">> => list(any()),
+%%   <<"ThreadsPerCore">> => integer()
 %% }
 -type modify_instance_cpu_options_request() :: #{binary() => any()}.
 
@@ -4779,6 +4780,7 @@
 %% launch_template_cpu_options_request() :: #{
 %%   <<"AmdSevSnp">> => list(any()),
 %%   <<"CoreCount">> => integer(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type launch_template_cpu_options_request() :: #{binary() => any()}.
@@ -5913,6 +5915,7 @@
 %% cpu_options_request() :: #{
 %%   <<"AmdSevSnp">> => list(any()),
 %%   <<"CoreCount">> => integer(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cpu_options_request() :: #{binary() => any()}.
@@ -8088,6 +8091,7 @@
 %% launch_template_cpu_options() :: #{
 %%   <<"AmdSevSnp">> => list(any()),
 %%   <<"CoreCount">> => integer(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type launch_template_cpu_options() :: #{binary() => any()}.
@@ -11255,6 +11259,7 @@
 %% cpu_options() :: #{
 %%   <<"AmdSevSnp">> => list(any()),
 %%   <<"CoreCount">> => integer(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cpu_options() :: #{binary() => any()}.
@@ -11755,6 +11760,7 @@
 %% modify_instance_cpu_options_result() :: #{
 %%   <<"CoreCount">> => integer(),
 %%   <<"InstanceId">> => string(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type modify_instance_cpu_options_result() :: #{binary() => any()}.
