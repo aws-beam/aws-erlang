@@ -4090,7 +4090,8 @@
 
 %% Example:
 %% cluster_orchestrator() :: #{
-%%   <<"Eks">> => cluster_orchestrator_eks_config()
+%%   <<"Eks">> => cluster_orchestrator_eks_config(),
+%%   <<"Slurm">> => cluster_orchestrator_slurm_config()
 %% }
 -type cluster_orchestrator() :: #{binary() => any()}.
 
@@ -4484,6 +4485,7 @@
 %%   <<"InstanceGroupsToDelete">> => list(string()),
 %%   <<"NodeProvisioningMode">> => list(any()),
 %%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
 %%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()
 %% }
@@ -4699,6 +4701,13 @@
 %%   <<"ProvisioningParameters">> => list(provisioning_parameter())
 %% }
 -type service_catalog_provisioning_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_slurm_config_details() :: #{
+%%   <<"NodeType">> => list(any()),
+%%   <<"PartitionNames">> => list(string())
+%% }
+-type cluster_slurm_config_details() :: #{binary() => any()}.
 
 %% Example:
 %% iam_identity() :: #{
@@ -8482,6 +8491,12 @@
 -type describe_workteam_response() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_orchestrator_slurm_config() :: #{
+%%   <<"SlurmConfigStrategy">> => list(any())
+%% }
+-type cluster_orchestrator_slurm_config() :: #{binary() => any()}.
+
+%% Example:
 %% start_mlflow_tracking_server_response() :: #{
 %%   <<"TrackingServerArn">> => string()
 %% }
@@ -11237,6 +11252,13 @@
 -type callback_step_metadata() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_slurm_config() :: #{
+%%   <<"NodeType">> => list(any()),
+%%   <<"PartitionNames">> => list(string())
+%% }
+-type cluster_slurm_config() :: #{binary() => any()}.
+
+%% Example:
 %% inference_component_container_specification() :: #{
 %%   <<"ArtifactUrl">> => string(),
 %%   <<"Environment">> => map(),
@@ -11463,6 +11485,7 @@
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"SlurmConfig">> => cluster_slurm_config(),
 %%   <<"ThreadsPerCore">> => integer(),
 %%   <<"TrainingPlanArn">> => string()
 %% }
@@ -12216,6 +12239,14 @@
 %%   <<"TargetVersion">> := integer()
 %% }
 -type update_cluster_scheduler_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_fsx_lustre_config() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"MountName">> => string(),
+%%   <<"MountPath">> => string()
+%% }
+-type cluster_fsx_lustre_config() :: #{binary() => any()}.
 
 %% Example:
 %% update_workteam_response() :: #{
@@ -13106,6 +13137,13 @@
 -type create_device_fleet_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_fsx_open_zfs_config() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"MountPath">> => string()
+%% }
+-type cluster_fsx_open_zfs_config() :: #{binary() => any()}.
+
+%% Example:
 %% delete_inference_component_input() :: #{
 %%   <<"InferenceComponentName">> := string()
 %% }
@@ -13183,6 +13221,7 @@
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"SlurmConfig">> => cluster_slurm_config_details(),
 %%   <<"SoftwareUpdateStatus">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"TargetCount">> => integer(),

@@ -125,6 +125,8 @@
          create_instance/3,
          create_integration_association/3,
          create_integration_association/4,
+         create_notification/3,
+         create_notification/4,
          create_participant/2,
          create_participant/3,
          create_persistent_contact_association/4,
@@ -199,6 +201,8 @@
          delete_instance/4,
          delete_integration_association/4,
          delete_integration_association/5,
+         delete_notification/4,
+         delete_notification/5,
          delete_predefined_attribute/4,
          delete_predefined_attribute/5,
          delete_prompt/4,
@@ -287,6 +291,9 @@
          describe_instance_storage_config/4,
          describe_instance_storage_config/6,
          describe_instance_storage_config/7,
+         describe_notification/3,
+         describe_notification/5,
+         describe_notification/6,
          describe_phone_number/2,
          describe_phone_number/4,
          describe_phone_number/5,
@@ -505,6 +512,9 @@
          list_lex_bots/2,
          list_lex_bots/4,
          list_lex_bots/5,
+         list_notifications/2,
+         list_notifications/4,
+         list_notifications/5,
          list_phone_numbers/2,
          list_phone_numbers/4,
          list_phone_numbers/5,
@@ -581,6 +591,9 @@
          list_user_hierarchy_groups/2,
          list_user_hierarchy_groups/4,
          list_user_hierarchy_groups/5,
+         list_user_notifications/3,
+         list_user_notifications/5,
+         list_user_notifications/6,
          list_user_proficiencies/3,
          list_user_proficiencies/5,
          list_user_proficiencies/6,
@@ -638,6 +651,8 @@
          search_hours_of_operation_overrides/3,
          search_hours_of_operations/2,
          search_hours_of_operations/3,
+         search_notifications/2,
+         search_notifications/3,
          search_predefined_attributes/2,
          search_predefined_attributes/3,
          search_prompts/2,
@@ -766,6 +781,8 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_notification_content/4,
+         update_notification_content/5,
          update_participant_authentication/2,
          update_participant_authentication/3,
          update_participant_role_config/4,
@@ -824,6 +841,8 @@
          update_user_hierarchy_structure/4,
          update_user_identity_info/4,
          update_user_identity_info/5,
+         update_user_notification_status/5,
+         update_user_notification_status/6,
          update_user_phone_config/4,
          update_user_phone_config/5,
          update_user_proficiencies/4,
@@ -1282,6 +1301,14 @@
 %% }
 -type primary_value_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_user_notifications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserNotifications">> => list(user_notification_summary())
+%% }
+-type list_user_notifications_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_test_case_response() :: #{}
 -type delete_test_case_response() :: #{}.
@@ -1468,6 +1495,15 @@
 %%   <<"Steps">> => list(routing_criteria_input_step())
 %% }
 -type routing_criteria_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_notifications_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Notifications">> => list(notification_search_summary())
+%% }
+-type search_notifications_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1809,6 +1845,14 @@
 
 
 %% Example:
+%% list_notifications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationSummaryList">> => list(notification())
+%% }
+-type list_notifications_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% font_family() :: #{
 %%   <<"Default">> => list(any())
 %% }
@@ -2133,6 +2177,17 @@
 %% }
 -type search_resource_tags_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% search_notifications_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => notification_search_criteria(),
+%%   <<"SearchFilter">> => notification_search_filter()
+%% }
+-type search_notifications_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_address_response() :: #{}
 -type delete_email_address_response() :: #{}.
@@ -2360,6 +2415,21 @@
 %%   <<"UserHierarchyGroups">> => list(hierarchy_group())
 %% }
 -type search_user_hierarchy_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_notification_summary() :: #{
+%%   <<"Content">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"NotificationId">> => string(),
+%%   <<"NotificationStatus">> => list(any()),
+%%   <<"Priority">> => list(any()),
+%%   <<"RecipientId">> => string(),
+%%   <<"Source">> => list(any())
+%% }
+-type user_notification_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3289,6 +3359,15 @@
 %% }
 -type persistent_chat() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_user_notification_status_request() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> := list(any())
+%% }
+-type update_user_notification_status_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_schedule_response() :: #{}
 -type update_contact_schedule_response() :: #{}.
@@ -3644,6 +3723,14 @@
 %%   <<"PublishStatus">> => list(any())
 %% }
 -type list_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notification_response() :: #{
+%%   <<"NotificationArn">> => string(),
+%%   <<"NotificationId">> => string()
+%% }
+-type create_notification_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4958,6 +5045,13 @@
 
 
 %% Example:
+%% describe_notification_response() :: #{
+%%   <<"Notification">> => notification()
+%% }
+-type describe_notification_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% disassociate_bot_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"LexBot">> => lex_bot(),
@@ -5277,6 +5371,10 @@
 %% }
 -type view_version_summary() :: #{binary() => any()}.
 
+%% Example:
+%% describe_notification_request() :: #{}
+-type describe_notification_request() :: #{}.
+
 
 %% Example:
 %% numeric_question_property_value_automation() :: #{
@@ -5390,6 +5488,14 @@
 %%   <<"StringCondition">> => filter_v2_string_condition()
 %% }
 -type filter_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notifications_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6796,6 +6902,10 @@
 %% }
 -type dismiss_user_contact_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_notification_content_response() :: #{}
+-type update_notification_content_response() :: #{}.
+
 
 %% Example:
 %% search_data_tables_request() :: #{
@@ -7135,6 +7245,13 @@
 
 
 %% Example:
+%% notification_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type notification_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_hierarchy_group_search_criteria() :: #{
 %%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
 %%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
@@ -7211,6 +7328,15 @@
 
 
 %% Example:
+%% notification_search_criteria() :: #{
+%%   <<"AndConditions">> => list(notification_search_criteria()),
+%%   <<"OrConditions">> => list(notification_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type notification_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_security_profile_applications_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -7269,6 +7395,23 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type workspace() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Recipients">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type notification_search_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8138,6 +8281,10 @@
 %% }
 -type evaluation_answer_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_notification_response() :: #{}
+-type delete_notification_response() :: #{}.
+
 
 %% Example:
 %% workspace_search_criteria() :: #{
@@ -8527,6 +8674,13 @@
 %%   <<"ClientToken">> => string()
 %% }
 -type disassociate_security_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notification_content_request() :: #{
+%%   <<"Content">> := map()
+%% }
+-type update_notification_content_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9091,6 +9245,10 @@
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_user_notification_status_response() :: #{}
+-type update_user_notification_status_response() :: #{}.
+
 
 %% Example:
 %% list_evaluation_forms_response() :: #{
@@ -9276,6 +9434,22 @@
 %%   <<"ResourceType">> := list(any())
 %% }
 -type associate_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Recipients">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type notification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9714,6 +9888,10 @@
 %% }
 -type associate_queue_quick_connects_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_notification_request() :: #{}
+-type delete_notification_request() :: #{}.
+
 
 %% Example:
 %% tag_search_condition() :: #{
@@ -10108,6 +10286,19 @@
 %% Example:
 %% associate_flow_response() :: #{}
 -type associate_flow_response() :: #{}.
+
+
+%% Example:
+%% create_notification_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := map(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"PredefinedNotificationId">> => string(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Recipients">> := list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type create_notification_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10829,6 +11020,14 @@
 
 
 %% Example:
+%% list_user_notifications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_notifications_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_content() :: #{
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"Description">> => string(),
@@ -11345,6 +11544,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type create_notification_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type create_participant_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -11660,6 +11868,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type delete_notification_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type delete_predefined_attribute_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -11924,6 +12140,14 @@
 -type describe_instance_storage_config_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_notification_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -12524,6 +12748,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type list_notifications_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_phone_numbers_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -12704,6 +12936,14 @@
 -type list_user_hierarchy_groups_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_user_notifications_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -12896,6 +13136,14 @@
 -type search_hours_of_operations_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_notifications_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -13406,6 +13654,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type update_notification_content_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type update_participant_authentication_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -13625,6 +13881,14 @@
 -type update_user_identity_info_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_notification_status_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -15659,6 +15923,44 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new notification to be delivered to specified recipients.
+%%
+%% Notifications can include localized content with embedded links, and an
+%% optional expiration time. Recipients can be specified as individual user
+%% ARNs or instance ARNs to target all users in an instance.
+-spec create_notification(aws_client:aws_client(), binary() | list(), create_notification_request()) ->
+    {ok, create_notification_response(), tuple()} |
+    {error, any()} |
+    {error, create_notification_errors(), tuple()}.
+create_notification(Client, InstanceId, Input) ->
+    create_notification(Client, InstanceId, Input, []).
+
+-spec create_notification(aws_client:aws_client(), binary() | list(), create_notification_request(), proplists:proplist()) ->
+    {ok, create_notification_response(), tuple()} |
+    {error, any()} |
+    {error, create_notification_errors(), tuple()}.
+create_notification(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/notifications/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a new participant into an on-going chat contact or webRTC call.
 %%
 %% For more information, see Customize chat flow experiences by
@@ -17144,6 +17446,43 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a notification.
+%%
+%% Once deleted, the notification is no longer visible to all users and
+%% cannot be managed through the Admin Website or APIs.
+-spec delete_notification(aws_client:aws_client(), binary() | list(), binary() | list(), delete_notification_request()) ->
+    {ok, delete_notification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_notification_errors(), tuple()}.
+delete_notification(Client, InstanceId, NotificationId, Input) ->
+    delete_notification(Client, InstanceId, NotificationId, Input, []).
+
+-spec delete_notification(aws_client:aws_client(), binary() | list(), binary() | list(), delete_notification_request(), proplists:proplist()) ->
+    {ok, delete_notification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_notification_errors(), tuple()}.
+delete_notification(Client, InstanceId, NotificationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/notifications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(NotificationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a predefined attribute from the specified Amazon Connect
 %% instance.
 -spec delete_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), delete_predefined_attribute_request()) ->
@@ -18587,6 +18926,44 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
         {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific notification,
+%% including its content, priority, recipients, and metadata.
+-spec describe_notification(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_notification_response(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_errors(), tuple()}.
+describe_notification(Client, InstanceId, NotificationId)
+  when is_map(Client) ->
+    describe_notification(Client, InstanceId, NotificationId, #{}, #{}).
+
+-spec describe_notification(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_notification_response(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_errors(), tuple()}.
+describe_notification(Client, InstanceId, NotificationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_notification(Client, InstanceId, NotificationId, QueryMap, HeadersMap, []).
+
+-spec describe_notification(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_notification_response(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_errors(), tuple()}.
+describe_notification(Client, InstanceId, NotificationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/notifications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(NotificationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -22247,6 +22624,49 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of all notifications in the Amazon Connect
+%% instance.
+-spec list_notifications(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
+list_notifications(Client, InstanceId)
+  when is_map(Client) ->
+    list_notifications(Client, InstanceId, #{}, #{}).
+
+-spec list_notifications(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
+list_notifications(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_notifications(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_notifications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
+list_notifications(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/notifications/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the phone numbers for the specified Amazon
 %% Connect instance.
 %%
@@ -23493,6 +23913,49 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of notifications for a specific user,
+%% including the notification status for that user.
+-spec list_user_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_user_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_notifications_errors(), tuple()}.
+list_user_notifications(Client, InstanceId, UserId)
+  when is_map(Client) ->
+    list_user_notifications(Client, InstanceId, UserId, #{}, #{}).
+
+-spec list_user_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_user_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_notifications_errors(), tuple()}.
+list_user_notifications(Client, InstanceId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_user_notifications(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
+
+-spec list_user_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_user_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_notifications_errors(), tuple()}.
+list_user_notifications(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/notifications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists proficiencies associated with a user.
 -spec list_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
@@ -24512,6 +24975,44 @@ search_hours_of_operations(Client, Input) ->
 search_hours_of_operations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-hours-of-operations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for notifications based on specified criteria and filters.
+%%
+%% Returns a paginated list of notifications matching the search parameters,
+%% ordered by descending creation time. Supports filtering by content and
+%% tags.
+-spec search_notifications(aws_client:aws_client(), search_notifications_request()) ->
+    {ok, search_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, search_notifications_errors(), tuple()}.
+search_notifications(Client, Input) ->
+    search_notifications(Client, Input, []).
+
+-spec search_notifications(aws_client:aws_client(), search_notifications_request(), proplists:proplist()) ->
+    {ok, search_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, search_notifications_errors(), tuple()}.
+search_notifications(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-notifications"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -27251,6 +27752,42 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the localized content of an existing notification.
+%%
+%% This operation applies to all users for whom the notification was sent.
+-spec update_notification_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_notification_content_request()) ->
+    {ok, update_notification_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_notification_content_errors(), tuple()}.
+update_notification_content(Client, InstanceId, NotificationId, Input) ->
+    update_notification_content(Client, InstanceId, NotificationId, Input, []).
+
+-spec update_notification_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_notification_content_request(), proplists:proplist()) ->
+    {ok, update_notification_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_notification_content_errors(), tuple()}.
+update_notification_content(Client, InstanceId, NotificationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/notifications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(NotificationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Instructs Amazon Connect to resume the authentication process.
 %%
 %% The subsequent actions depend on the request
@@ -28416,6 +28953,48 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of a notification for a specific user, such as
+%% marking it as read or hidden.
+%%
+%% Users can only update notification status for notifications that have been
+%% sent to them. READ status deprioritizes the notification and greys it out,
+%% while HIDDEN status removes it from the notification widget.
+-spec update_user_notification_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_notification_status_request()) ->
+    {ok, update_user_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_notification_status_errors(), tuple()}.
+update_user_notification_status(Client, InstanceId, NotificationId, UserId, Input) ->
+    update_user_notification_status(Client, InstanceId, NotificationId, UserId, Input, []).
+
+-spec update_user_notification_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_notification_status_request(), proplists:proplist()) ->
+    {ok, update_user_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_notification_status_errors(), tuple()}.
+update_user_notification_status(Client, InstanceId, NotificationId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/notifications/", aws_util:encode_uri(NotificationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-last-modified-region">>, <<"LastModifiedRegion">>},
+                       {<<"x-amz-last-modified-time">>, <<"LastModifiedTime">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

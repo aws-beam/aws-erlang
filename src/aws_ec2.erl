@@ -3226,6 +3226,7 @@
 
 %% Example:
 %% availability_zone() :: #{
+%%   <<"Geography">> => list(availability_zone_geography()),
 %%   <<"GroupLongName">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"Messages">> => list(availability_zone_message()),
@@ -3235,6 +3236,7 @@
 %%   <<"ParentZoneName">> => string(),
 %%   <<"RegionName">> => string(),
 %%   <<"State">> => list(any()),
+%%   <<"SubGeography">> => list(availability_zone_sub_geography()),
 %%   <<"ZoneId">> => string(),
 %%   <<"ZoneName">> => string(),
 %%   <<"ZoneType">> => string()
@@ -4799,6 +4801,12 @@
 %%   <<"InstanceEventWindowId">> := string()
 %% }
 -type delete_instance_event_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_geography() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone_geography() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_block_extension() :: #{
@@ -7341,6 +7349,12 @@
 -type cancel_spot_fleet_requests_error() :: #{binary() => any()}.
 
 %% Example:
+%% availability_zone_sub_geography() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone_sub_geography() :: #{binary() => any()}.
+
+%% Example:
 %% describe_capacity_reservations_result() :: #{
 %%   <<"CapacityReservations">> => list(capacity_reservation()),
 %%   <<"NextToken">> => string()
@@ -9106,6 +9120,7 @@
 %% Example:
 %% region() :: #{
 %%   <<"Endpoint">> => string(),
+%%   <<"Geography">> => list(region_geography()),
 %%   <<"OptInStatus">> => string(),
 %%   <<"RegionName">> => string()
 %% }
@@ -10831,6 +10846,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_prefix_list_resolver_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% region_geography() :: #{
+%%   <<"Name">> => string()
+%% }
+-type region_geography() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_metering_policy_result() :: #{
