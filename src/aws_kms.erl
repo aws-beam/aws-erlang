@@ -448,8 +448,9 @@
 
 %% Example:
 %% decrypt_request() :: #{
-%%   <<"CiphertextBlob">> := binary(),
+%%   <<"CiphertextBlob">> => binary(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"DryRunModifiers">> => list(list(any())()),
 %%   <<"EncryptionAlgorithm">> => list(any()),
 %%   <<"EncryptionContext">> => map(),
 %%   <<"GrantTokens">> => list(string()),
@@ -737,11 +738,12 @@
 
 %% Example:
 %% re_encrypt_request() :: #{
-%%   <<"CiphertextBlob">> := binary(),
+%%   <<"CiphertextBlob">> => binary(),
 %%   <<"DestinationEncryptionAlgorithm">> => list(any()),
 %%   <<"DestinationEncryptionContext">> => map(),
 %%   <<"DestinationKeyId">> := string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"DryRunModifiers">> => list(list(any())()),
 %%   <<"GrantTokens">> => list(string()),
 %%   <<"SourceEncryptionAlgorithm">> => list(any()),
 %%   <<"SourceEncryptionContext">> => map(),
@@ -2556,7 +2558,6 @@ create_grant(Client, Input, Options)
 %% HMAC codes for messages up to 4096 bytes.
 %%
 %% Multi-Region primary keys
-%% Imported key material
 %%
 %% To create a multi-Region primary key in the local Amazon Web Services
 %% Region,
@@ -2587,6 +2588,8 @@ create_grant(Client, Input, Options)
 %% multi-Region keys, see Multi-Region keys in KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 %% in the Key Management Service Developer Guide.
+%%
+%% Imported key material
 %%
 %% To import your own key material into a KMS key, begin by creating a KMS
 %% key with no
@@ -5906,7 +5909,7 @@ revoke_grant(Client, Input, Options)
 %% will automatically
 %% rotate, as scheduled, on April 14, 2024 and every 730 days thereafter.
 %%
-%% You can perform on-demand key rotation a maximum of 10
+%% You can perform on-demand key rotation a maximum of 25
 %% times per KMS key. You can use the KMS console to view the number of
 %% remaining on-demand rotations available for a KMS key.
 %%

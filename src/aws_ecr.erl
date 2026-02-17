@@ -2975,6 +2975,9 @@ initiate_layer_upload(Client, Input, Options)
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
 
 %% @doc Lists the artifacts associated with a specified subject image.
+%%
+%% The IAM principal invoking this operation must have the
+%% `ecr:BatchGetImage' permission.
 -spec list_image_referrers(aws_client:aws_client(), list_image_referrers_request()) ->
     {ok, list_image_referrers_response(), tuple()} |
     {error, any()} |

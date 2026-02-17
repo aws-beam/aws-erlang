@@ -26076,7 +26076,7 @@ create_route_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRouteTable">>, Input, Options).
 
-%% @doc Creates an Amazon secondary network.
+%% @doc Creates a secondary network.
 %%
 %% The allowed size for a secondary network CIDR block is between /28 netmask
 %% (16 IP addresses) and /12 netmask (1,048,576 IP addresses).

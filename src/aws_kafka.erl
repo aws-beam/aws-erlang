@@ -217,6 +217,13 @@
 
 
 %% Example:
+%% serverless_connectivity_info() :: #{
+%%   <<"NetworkType">> => list(any())
+%% }
+-type serverless_connectivity_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% compatible_kafka_version() :: #{
 %%   <<"SourceVersion">> => string(),
 %%   <<"TargetVersions">> => list(string())
@@ -915,6 +922,7 @@
 
 %% Example:
 %% connectivity_info() :: #{
+%%   <<"NetworkType">> => list(any()),
 %%   <<"PublicAccess">> => public_access(),
 %%   <<"VpcConnectivity">> => vpc_connectivity()
 %% }
@@ -1077,12 +1085,16 @@
 %% Example:
 %% get_bootstrap_brokers_response() :: #{
 %%   <<"BootstrapBrokerString">> => string(),
+%%   <<"BootstrapBrokerStringIpv6">> => string(),
 %%   <<"BootstrapBrokerStringPublicSaslIam">> => string(),
 %%   <<"BootstrapBrokerStringPublicSaslScram">> => string(),
 %%   <<"BootstrapBrokerStringPublicTls">> => string(),
 %%   <<"BootstrapBrokerStringSaslIam">> => string(),
+%%   <<"BootstrapBrokerStringSaslIamIpv6">> => string(),
 %%   <<"BootstrapBrokerStringSaslScram">> => string(),
+%%   <<"BootstrapBrokerStringSaslScramIpv6">> => string(),
 %%   <<"BootstrapBrokerStringTls">> => string(),
+%%   <<"BootstrapBrokerStringTlsIpv6">> => string(),
 %%   <<"BootstrapBrokerStringVpcConnectivitySaslIam">> => string(),
 %%   <<"BootstrapBrokerStringVpcConnectivitySaslScram">> => string(),
 %%   <<"BootstrapBrokerStringVpcConnectivityTls">> => string()
@@ -2026,6 +2038,8 @@
 
 %% Example:
 %% cluster_operation_v2_serverless() :: #{
+%%   <<"SourceClusterInfo">> => serverless_connectivity_info(),
+%%   <<"TargetClusterInfo">> => serverless_connectivity_info(),
 %%   <<"VpcConnectionInfo">> => vpc_connection_info_serverless()
 %% }
 -type cluster_operation_v2_serverless() :: #{binary() => any()}.
@@ -2051,6 +2065,7 @@
 %% Example:
 %% serverless() :: #{
 %%   <<"ClientAuthentication">> => serverless_client_authentication(),
+%%   <<"ConnectivityInfo">> => serverless_connectivity_info(),
 %%   <<"VpcConfigs">> => list(vpc_config())
 %% }
 -type serverless() :: #{binary() => any()}.
