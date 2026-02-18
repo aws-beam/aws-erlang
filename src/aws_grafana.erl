@@ -2,22 +2,17 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Managed Grafana is a fully managed and secure data
-%% visualization service that
-%% you can use to instantly query, correlate, and visualize operational
-%% metrics, logs, and
-%% traces from multiple sources.
+%% visualization service that you can use to instantly query, correlate, and
+%% visualize operational metrics, logs, and traces from multiple sources.
 %%
-%% Amazon Managed Grafana makes it easy to deploy, operate, and
-%% scale Grafana, a widely deployed data visualization tool that is popular
-%% for its
+%% Amazon Managed Grafana makes it easy to deploy, operate, and scale
+%% Grafana, a widely deployed data visualization tool that is popular for its
 %% extensible data support.
 %%
 %% With Amazon Managed Grafana, you create logically isolated Grafana servers
-%% called
-%% workspaces. In a workspace, you can create Grafana dashboards
-%% and visualizations to analyze your metrics, logs, and traces without
-%% having to build,
-%% package, or deploy any hardware to run Grafana servers.
+%% called workspaces. In a workspace, you can create Grafana dashboards and
+%% visualizations to analyze your metrics, logs, and traces without having to
+%% build, package, or deploy any hardware to run Grafana servers.
 -module(aws_grafana).
 
 -export([associate_license/4,
@@ -454,6 +449,7 @@
 %%   <<"grafanaToken">> => string(),
 %%   <<"grafanaVersion">> => string(),
 %%   <<"id">> => string(),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"licenseExpiration">> => [non_neg_integer()],
 %%   <<"licenseType">> => string(),
 %%   <<"modified">> => [non_neg_integer()],
@@ -710,6 +706,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"configuration">> => string(),
 %%   <<"grafanaVersion">> => string(),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"networkAccessControl">> => network_access_configuration(),
 %%   <<"organizationRoleName">> => string(),
 %%   <<"permissionType">> := string(),
@@ -920,12 +917,10 @@
 
 %% @doc Assigns a Grafana Enterprise license to a workspace.
 %%
-%% To upgrade, you must use
-%% `ENTERPRISE' for the `licenseType', and pass in a valid
-%% Grafana Labs token for the `grafanaToken'. Upgrading to Grafana
-%% Enterprise
-%% incurs additional fees. For more information, see Upgrade a
-%% workspace to Grafana Enterprise:
+%% To upgrade, you must use `ENTERPRISE' for the `licenseType', and
+%% pass in a valid Grafana Labs token for the `grafanaToken'. Upgrading
+%% to Grafana Enterprise incurs additional fees. For more information, see
+%% Upgrade a workspace to Grafana Enterprise:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html.
 -spec associate_license(aws_client:aws_client(), binary() | list(), binary() | list(), associate_license_request()) ->
     {ok, associate_license_response(), tuple()} |
@@ -964,14 +959,12 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 
 %% @doc Creates a workspace.
 %%
-%% In a workspace, you can create Grafana
-%% dashboards and visualizations to analyze your metrics, logs, and traces.
-%% You don't have
-%% to build, package, or deploy any hardware to run the Grafana server.
+%% In a workspace, you can create Grafana dashboards and visualizations to
+%% analyze your metrics, logs, and traces. You don't have to build,
+%% package, or deploy any hardware to run the Grafana server.
 %%
 %% Don't use `CreateWorkspace' to modify an existing workspace.
-%% Instead, use
-%% UpdateWorkspace:
+%% Instead, use UpdateWorkspace:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspace.html.
 -spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
@@ -1008,14 +1001,13 @@ create_workspace(Client, Input0, Options0) ->
 
 %% @doc Creates a Grafana API key for the workspace.
 %%
-%% This key can be used to authenticate
-%% requests sent to the workspace's HTTP API. See
+%% This key can be used to authenticate requests sent to the workspace's
+%% HTTP API. See
 %% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
 %%
 %% In workspaces compatible with Grafana version 9 or above, use workspace
-%% service
-%% accounts instead of API keys. API keys will be removed in a future
+%% service accounts instead of API keys. API keys will be removed in a future
 %% release.
 -spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request()) ->
     {ok, create_workspace_api_key_response(), tuple()} |
@@ -1052,22 +1044,18 @@ create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Creates a service account for the workspace.
 %%
-%% A service account can be used to call
-%% Grafana HTTP APIs, and run automated workloads. After creating the service
-%% account with
-%% the correct `GrafanaRole' for your use case, use
+%% A service account can be used to call Grafana HTTP APIs, and run automated
+%% workloads. After creating the service account with the correct
+%% `GrafanaRole' for your use case, use
 %% `CreateWorkspaceServiceAccountToken' to create a token that can be
-%% used to
-%% authenticate and authorize Grafana HTTP API calls.
+%% used to authenticate and authorize Grafana HTTP API calls.
 %%
 %% You can only create service accounts for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 %%
 %% For more information about service accounts, see Service accounts:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html
-%% in
-%% the Amazon Managed Grafana User Guide.
+%% in the Amazon Managed Grafana User Guide.
 %%
 %% For more information about the Grafana HTTP APIs, see Using Grafana HTTP
 %% APIs:
@@ -1107,27 +1095,21 @@ create_workspace_service_account(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a token that can be used to authenticate and authorize
-%% Grafana HTTP API
-%% operations for the given workspace service
-%% account:
+%% Grafana HTTP API operations for the given workspace service account:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html.
 %%
-%% The service account acts as a user for the API operations, and
-%% defines the permissions that are used by the API.
+%% The service account acts as a user for the API operations, and defines the
+%% permissions that are used by the API.
 %%
 %% When you create the service account token, you will receive a key that is
-%% used
-%% when calling Grafana APIs. Do not lose this key, as it will not be
-%% retrievable
-%% again.
+%% used when calling Grafana APIs. Do not lose this key, as it will not be
+%% retrievable again.
 %%
 %% If you do lose the key, you can delete the token and recreate it to
-%% receive a
-%% new key. This will disable the initial key.
+%% receive a new key. This will disable the initial key.
 %%
 %% Service accounts are only available for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 -spec create_workspace_service_account_token(aws_client:aws_client(), binary() | list(), binary() | list(), create_workspace_service_account_token_request()) ->
     {ok, create_workspace_service_account_token_response(), tuple()} |
     {error, any()} |
@@ -1198,8 +1180,7 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc Deletes a Grafana API key for the workspace.
 %%
 %% In workspaces compatible with Grafana version 9 or above, use workspace
-%% service
-%% accounts instead of API keys. API keys will be removed in a future
+%% service accounts instead of API keys. API keys will be removed in a future
 %% release.
 -spec delete_workspace_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_api_key_request()) ->
     {ok, delete_workspace_api_key_response(), tuple()} |
@@ -1237,14 +1218,11 @@ delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
 %% @doc Deletes a workspace service account from the workspace.
 %%
 %% This will delete any tokens created for the service account, as well. If
-%% the tokens
-%% are currently in use, the will fail to authenticate / authorize after they
-%% are
-%% deleted.
+%% the tokens are currently in use, the will fail to authenticate / authorize
+%% after they are deleted.
 %%
 %% Service accounts are only available for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 -spec delete_workspace_service_account(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_service_account_request()) ->
     {ok, delete_workspace_service_account_response(), tuple()} |
     {error, any()} |
@@ -1281,14 +1259,11 @@ delete_workspace_service_account(Client, ServiceAccountId, WorkspaceId, Input0, 
 %% @doc Deletes a token for the workspace service account.
 %%
 %% This will disable the key associated with the token. If any automation is
-%% currently
-%% using the key, it will no longer be authenticated or authorized to perform
-%% actions with
-%% the Grafana HTTP APIs.
+%% currently using the key, it will no longer be authenticated or authorized
+%% to perform actions with the Grafana HTTP APIs.
 %%
 %% Service accounts are only available for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 -spec delete_workspace_service_account_token(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_workspace_service_account_token_request()) ->
     {ok, delete_workspace_service_account_token_response(), tuple()} |
     {error, any()} |
@@ -1360,8 +1335,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays information about the authentication methods used in one
-%% Amazon Managed Grafana
-%% workspace.
+%% Amazon Managed Grafana workspace.
 -spec describe_workspace_authentication(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_authentication_response(), tuple()} |
     {error, any()} |
@@ -1472,12 +1446,11 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% @doc Lists the users and groups who have the Grafana `Admin' and
 %% `Editor' roles in this workspace.
 %%
-%% If you use this operation without
-%% specifying `userId' or `groupId', the operation returns the roles
-%% of all users and groups. If you specify a `userId' or a `groupId',
-%% only the roles for that user or group are returned. If you do this, you
-%% can specify only
-%% one `userId' or one `groupId'.
+%% If you use this operation without specifying `userId' or
+%% `groupId', the operation returns the roles of all users and groups. If
+%% you specify a `userId' or a `groupId', only the roles for that
+%% user or group are returned. If you do this, you can specify only one
+%% `userId' or one `groupId'.
 -spec list_permissions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
@@ -1523,12 +1496,10 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `ListTagsForResource' operation returns the tags that are
-%% associated
-%% with the Amazon Managed Service for Grafana resource specified by the
-%% `resourceArn'.
+%% associated with the Amazon Managed Service for Grafana resource specified
+%% by the `resourceArn'.
 %%
-%% Currently, the only resource that can be tagged is a
-%% workspace.
+%% Currently, the only resource that can be tagged is a workspace.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1567,10 +1538,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists available versions of Grafana.
 %%
-%% These are available when calling
-%% `CreateWorkspace'. Optionally, include a workspace to list the
-%% versions
-%% to which it can be upgraded.
+%% These are available when calling `CreateWorkspace'. Optionally,
+%% include a workspace to list the versions to which it can be upgraded.
 -spec list_versions(aws_client:aws_client()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
@@ -1616,12 +1585,10 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of tokens for a workspace service account.
 %%
 %% This does not return the key for each token. You cannot access keys after
-%% they
-%% are created. To create a new key, delete the token and recreate it.
+%% they are created. To create a new key, delete the token and recreate it.
 %%
 %% Service accounts are only available for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 -spec list_workspace_service_account_tokens(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_workspace_service_account_tokens_response(), tuple()} |
     {error, any()} |
@@ -1666,8 +1633,7 @@ list_workspace_service_account_tokens(Client, ServiceAccountId, WorkspaceId, Que
 %% @doc Returns a list of service accounts for a workspace.
 %%
 %% Service accounts are only available for workspaces that are compatible
-%% with Grafana
-%% version 9 and above.
+%% with Grafana version 9 and above.
 -spec list_workspace_service_accounts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_workspace_service_accounts_response(), tuple()} |
     {error, any()} |
@@ -1710,11 +1676,10 @@ list_workspace_service_accounts(Client, WorkspaceId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Amazon Managed Grafana workspaces in the account,
-%% with some information
-%% about each workspace.
+%% with some information about each workspace.
 %%
 %% For more complete information about one workspace, use DescribeWorkspace:
-%% https://docs.aws.amazon.com/AAMG/latest/APIReference/API_DescribeWorkspace.html.
+%% https://docs.aws.amazon.com/grafana/latest/APIReference/API_DescribeWorkspace.html.
 -spec list_workspaces(aws_client:aws_client()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
@@ -1757,18 +1722,14 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `TagResource' operation associates tags with an Amazon
-%% Managed Grafana
-%% resource.
+%% Managed Grafana resource.
 %%
 %% Currently, the only resource that can be tagged is workspaces.
 %%
 %% If you specify a new tag key for the resource, this tag is appended to the
-%% list of
-%% tags associated with the resource. If you specify a tag key that is
-%% already associated
-%% with the resource, the new tag value that you specify replaces the
-%% previous value for
-%% that tag.
+%% list of tags associated with the resource. If you specify a tag key that
+%% is already associated with the resource, the new tag value that you
+%% specify replaces the previous value for that tag.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1803,8 +1764,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `UntagResource' operation removes the association of the tag
-%% with the
-%% Amazon Managed Grafana resource.
+%% with the Amazon Managed Grafana resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1876,13 +1836,11 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Modifies an existing Amazon Managed Grafana workspace.
 %%
-%% If you use this operation and omit
-%% any optional parameters, the existing values of those parameters are not
-%% changed.
+%% If you use this operation and omit any optional parameters, the existing
+%% values of those parameters are not changed.
 %%
 %% To modify the user authentication methods that the workspace uses, such as
-%% SAML or
-%% IAM Identity Center, use UpdateWorkspaceAuthentication:
+%% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspaceAuthentication.html.
 %%
 %% To modify which users in the workspace have the `Admin' and
@@ -1922,17 +1880,14 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to define the identity provider (IdP) that this
-%% workspace
-%% authenticates users from, using SAML.
+%% workspace authenticates users from, using SAML.
 %%
-%% You can also map SAML assertion attributes to
-%% workspace user information and define which groups in the assertion
-%% attribute are to
-%% have the `Admin' and `Editor' roles in the workspace.
+%% You can also map SAML assertion attributes to workspace user information
+%% and define which groups in the assertion attribute are to have the
+%% `Admin' and `Editor' roles in the workspace.
 %%
 %% Changes to the authentication method for a workspace may take a few
-%% minutes to
-%% take effect.
+%% minutes to take effect.
 -spec update_workspace_authentication(aws_client:aws_client(), binary() | list(), update_workspace_authentication_request()) ->
     {ok, update_workspace_authentication_response(), tuple()} |
     {error, any()} |

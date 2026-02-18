@@ -612,6 +612,7 @@
 %%   <<"SourceDBClusterSnapshotArn">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"StorageThroughput">> => integer(),
 %%   <<"StorageType">> => string(),
 %%   <<"TagList">> => list(tag()),
@@ -1879,6 +1880,7 @@
 %%   <<"MaxAllocatedStorage">> => integer(),
 %%   <<"ReadReplicaSourceDBClusterIdentifier">> => string(),
 %%   <<"ActivityStreamEngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()),
 %%   <<"DBSystemId">> => string(),
 %%   <<"MultiAZ">> => boolean(),
@@ -2734,6 +2736,7 @@
 %%   <<"GlobalClusterResourceId">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"TagList">> => list(tag())
 %% }
 -type global_cluster() :: #{binary() => any()}.
@@ -3173,6 +3176,7 @@
 %%   <<"TdeCredentialArn">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"Status">> => string(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"DBSystemId">> => string()
 %% }
 -type db_snapshot() :: #{binary() => any()}.
@@ -4204,6 +4208,7 @@
 %%   <<"AwsBackupRecoveryPointArn">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"ReadReplicaIdentifiers">> => list(string()),
 %%   <<"DBSystemId">> => string(),
 %%   <<"MultiAZ">> => boolean(),
@@ -4834,6 +4839,7 @@
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"Status">> => string(),
 %%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication())
 %% }
 -type db_instance_automated_backup() :: #{binary() => any()}.
@@ -5520,6 +5526,7 @@
 %%   <<"RestoreWindow">> => restore_window(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"StorageThroughput">> => integer(),
 %%   <<"StorageType">> => string(),
 %%   <<"TagList">> => list(tag()),
