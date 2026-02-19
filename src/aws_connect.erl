@@ -15925,9 +15925,9 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates a new notification to be delivered to specified recipients.
 %%
-%% Notifications can include localized content with embedded links, and an
-%% optional expiration time. Recipients can be specified as individual user
-%% ARNs or instance ARNs to target all users in an instance.
+%% Notifications can include localized content with links, and an optional
+%% expiration time. Recipients can be specified as individual user ARNs or
+%% instance ARNs to target all users in an instance.
 -spec create_notification(aws_client:aws_client(), binary() | list(), create_notification_request()) ->
     {ok, create_notification_response(), tuple()} |
     {error, any()} |

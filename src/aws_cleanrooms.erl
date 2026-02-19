@@ -1145,6 +1145,7 @@
 
 %% Example:
 %% athena_table_reference() :: #{
+%%   <<"catalogName">> => string(),
 %%   <<"databaseName">> => string(),
 %%   <<"outputLocation">> => string(),
 %%   <<"region">> => list(any()),
@@ -2960,7 +2961,7 @@
 %% protected_query_s3_output_configuration() :: #{
 %%   <<"bucket">> => [string()],
 %%   <<"keyPrefix">> => string(),
-%%   <<"resultFormat">> => string(),
+%%   <<"resultFormat">> => list(any()),
 %%   <<"singleFileOutput">> => [boolean()]
 %% }
 -type protected_query_s3_output_configuration() :: #{binary() => any()}.
