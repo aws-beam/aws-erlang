@@ -216,7 +216,8 @@
 %%   <<"CertificateAuthorityArn">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"MobileDeviceManagement">> => list(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type create_connector_request() :: #{binary() => any()}.
 
@@ -421,7 +422,7 @@
 %% include the challenge password as part of their certificate request to
 %% Connector for SCEP. To retrieve the connector Amazon Resource Names (ARNs)
 %% for the connectors in your account, call ListConnectors:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_ListConnectors.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_ListConnectors.html.
 %%
 %% To create additional challenge passwords for the connector, call
 %% `CreateChallenge' again. We recommend frequently rotating your
@@ -502,7 +503,7 @@ create_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified Challenge:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_Challenge.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_Challenge.html.
 -spec delete_challenge(aws_client:aws_client(), binary() | list(), delete_challenge_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -537,7 +538,7 @@ delete_challenge(Client, ChallengeArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified Connector:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_Connector.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_Connector.html.
 %%
 %% This operation also deletes any challenges associated with the connector.
 -spec delete_connector(aws_client:aws_client(), binary() | list(), delete_connector_request()) ->
@@ -574,7 +575,7 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the metadata for the specified Challenge:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_Challenge.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_Challenge.html.
 -spec get_challenge_metadata(aws_client:aws_client(), binary() | list()) ->
     {ok, get_challenge_metadata_response(), tuple()} |
     {error, any()} |
@@ -612,7 +613,7 @@ get_challenge_metadata(Client, ChallengeArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the challenge password for the specified Challenge:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_Challenge.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_Challenge.html.
 -spec get_challenge_password(aws_client:aws_client(), binary() | list()) ->
     {ok, get_challenge_password_response(), tuple()} |
     {error, any()} |
@@ -650,7 +651,7 @@ get_challenge_password(Client, ChallengeArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about the specified Connector:
-%% https://docs.aws.amazon.com/C4SCEP_API/pca-connector-scep/latest/APIReference/API_Connector.html.
+%% https://docs.aws.amazon.com/pca-connector-scep/latest/APIReference/API_Connector.html.
 %%
 %% Calling this action returns important details about the connector, such as
 %% the public SCEP URL where your clients can request certificates.
@@ -777,14 +778,11 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the tags associated with the specified resource.
 %%
-%% Tags are key-value pairs that
-%% you can use to categorize and manage your resources, for purposes like
-%% billing. For
-%% example, you might set the tag key to &quot;customer&quot; and the value
-%% to the customer name or ID.
-%% You can specify one or more tags to add to each Amazon Web Services
-%% resource, up to 50 tags for a
-%% resource.
+%% Tags are key-value pairs that you can use to categorize and manage your
+%% resources, for purposes like billing. For example, you might set the tag
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |

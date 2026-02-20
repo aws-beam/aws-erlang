@@ -330,6 +330,7 @@
 %%   <<"description">> => string(),
 %%   <<"height">> => integer(),
 %%   <<"horizontalOffset">> => [integer()],
+%%   <<"id">> => string(),
 %%   <<"title">> => string(),
 %%   <<"width">> => integer()
 %% }
