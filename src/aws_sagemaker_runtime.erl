@@ -41,10 +41,12 @@
 %%   <<"Accept">> => string(),
 %%   <<"ContentType">> => string(),
 %%   <<"CustomAttributes">> => string(),
+%%   <<"Filename">> => string(),
 %%   <<"InferenceId">> => string(),
 %%   <<"InputLocation">> := string(),
 %%   <<"InvocationTimeoutSeconds">> => integer(),
-%%   <<"RequestTTLSeconds">> => integer()
+%%   <<"RequestTTLSeconds">> => integer(),
+%%   <<"S3OutputPathExtension">> => string()
 %% }
 -type invoke_endpoint_async_input() :: #{binary() => any()}.
 
@@ -332,10 +334,12 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
                        {<<"X-Amzn-SageMaker-Content-Type">>, <<"ContentType">>},
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Filename">>, <<"Filename">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
                        {<<"X-Amzn-SageMaker-InputLocation">>, <<"InputLocation">>},
                        {<<"X-Amzn-SageMaker-InvocationTimeoutSeconds">>, <<"InvocationTimeoutSeconds">>},
-                       {<<"X-Amzn-SageMaker-RequestTTLSeconds">>, <<"RequestTTLSeconds">>}
+                       {<<"X-Amzn-SageMaker-RequestTTLSeconds">>, <<"RequestTTLSeconds">>},
+                       {<<"X-Amzn-SageMaker-S3OutputPathExtension">>, <<"S3OutputPathExtension">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

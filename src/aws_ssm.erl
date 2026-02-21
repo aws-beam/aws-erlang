@@ -1395,6 +1395,7 @@
 %% Example:
 %% association_version_info() :: #{
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
 %%   <<"AssociationId">> => string(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
@@ -1633,6 +1634,7 @@
 
 %% Example:
 %% create_association_batch_request() :: #{
+%%   <<"AssociationDispatchAssumeRole">> => string(),
 %%   <<"Entries">> := list(create_association_batch_request_entry())
 %% }
 -type create_association_batch_request() :: #{binary() => any()}.
@@ -3704,6 +3706,7 @@
 %% create_association_request() :: #{
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AutomationTargetParameterName">> => string(),
 %%   <<"CalendarNames">> => list(string()),
@@ -5121,6 +5124,7 @@
 %% update_association_request() :: #{
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
 %%   <<"AssociationId">> := string(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
@@ -5391,6 +5395,7 @@
 %% association_description() :: #{
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
 %%   <<"AssociationId">> => string(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
@@ -8796,11 +8801,9 @@ list_compliance_summaries(Client, Input, Options)
     request(Client, <<"ListComplianceSummaries">>, Input, Options).
 
 %% @doc
-%% Amazon Web Services Systems Manager Change Manager will no longer be open
-%% to new
-%% customers starting November 7, 2025.
+%% Amazon Web Services Systems Manager Change Manager is no longer open to
+%% new customers.
 %%
-%% If you would like to use Change Manager, sign up prior to that date.
 %% Existing customers can
 %% continue to use the service as normal. For more information, see
 %% Amazon Web Services Systems Manager Change Manager availability change:
@@ -9520,11 +9523,9 @@ start_automation_execution(Client, Input, Options)
     request(Client, <<"StartAutomationExecution">>, Input, Options).
 
 %% @doc
-%% Amazon Web Services Systems Manager Change Manager will no longer be open
-%% to new
-%% customers starting November 7, 2025.
+%% Amazon Web Services Systems Manager Change Manager is no longer open to
+%% new customers.
 %%
-%% If you would like to use Change Manager, sign up prior to that date.
 %% Existing customers can
 %% continue to use the service as normal. For more information, see
 %% Amazon Web Services Systems Manager Change Manager availability change:
@@ -9780,11 +9781,9 @@ update_document_default_version(Client, Input, Options)
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
 
 %% @doc
-%% Amazon Web Services Systems Manager Change Manager will no longer be open
-%% to new
-%% customers starting November 7, 2025.
+%% Amazon Web Services Systems Manager Change Manager is no longer open to
+%% new customers.
 %%
-%% If you would like to use Change Manager, sign up prior to that date.
 %% Existing customers can
 %% continue to use the service as normal. For more information, see
 %% Amazon Web Services Systems Manager Change Manager availability change:

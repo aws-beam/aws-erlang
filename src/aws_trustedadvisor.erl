@@ -69,9 +69,12 @@
 %% }
 -type list_checks_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_recommendation_request() :: #{}
--type get_recommendation_request() :: #{}.
+%% get_recommendation_request() :: #{
+%%   <<"language">> => list(any())
+%% }
+-type get_recommendation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -113,6 +116,7 @@
 %% Example:
 %% recommendation_resources_aggregates() :: #{
 %%   <<"errorCount">> => [float()],
+%%   <<"excludedCount">> => [float()],
 %%   <<"okCount">> => [float()],
 %%   <<"warningCount">> => [float()]
 %% }
@@ -159,6 +163,7 @@
 %%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
 %%   <<"source">> => list(any()),
 %%   <<"status">> => list(any()),
+%%   <<"statusReason">> => list(any()),
 %%   <<"type">> => list(any()),
 %%   <<"updateReason">> => string(),
 %%   <<"updateReasonCode">> => list(any()),
@@ -239,6 +244,7 @@
 %% Example:
 %% list_recommendation_resources_request() :: #{
 %%   <<"exclusionStatus">> => list(any()),
+%%   <<"language">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"regionCode">> => [string()],
@@ -342,6 +348,7 @@
 %%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
 %%   <<"source">> => list(any()),
 %%   <<"status">> => list(any()),
+%%   <<"statusReason">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type recommendation_summary() :: #{binary() => any()}.
@@ -443,6 +450,7 @@
 %%   <<"awsService">> => string(),
 %%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
 %%   <<"checkIdentifier">> => string(),
+%%   <<"language">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"pillar">> => list(any()),
@@ -532,8 +540,15 @@
 %% API
 %%====================================================================
 
-%% @doc Update one or more exclusion status for a list of recommendation
-%% resources
+%% @doc Update one or more exclusion statuses for a list of recommendation
+%% resources.
+%%
+%% This API supports up to 25 unique recommendation resource ARNs per
+%% request. This API currently doesn't support prioritized recommendation
+%% resources. This API updates global recommendations, eliminating the need
+%% to call the API in each AWS Region. After submitting an exclusion update,
+%% note that it might take a few minutes for the changes to be reflected in
+%% the system.
 -spec batch_update_recommendation_resource_exclusion(aws_client:aws_client(), batch_update_recommendation_resource_exclusion_request()) ->
     {ok, batch_update_recommendation_resource_exclusion_response(), tuple()} |
     {error, any()} |
@@ -570,8 +585,9 @@ batch_update_recommendation_resource_exclusion(Client, Input0, Options0) ->
 %% @doc Get a specific recommendation within an AWS Organizations
 %% organization.
 %%
-%% This API supports only prioritized
-%% recommendations.
+%% This API supports only prioritized recommendations and provides global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec get_organization_recommendation(aws_client:aws_client(), binary() | list()) ->
     {ok, get_organization_recommendation_response(), tuple()} |
     {error, any()} |
@@ -608,7 +624,10 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier, Qu
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a specific Recommendation
+%% @doc Get a specific Recommendation.
+%%
+%% This API provides global recommendations, eliminating the need to call the
+%% API in each AWS Region.
 -spec get_recommendation(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
@@ -641,11 +660,18 @@ get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, Optio
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List a filterable set of Checks
+%% @doc List a filterable set of Checks.
+%%
+%% This API provides global recommendations, eliminating the need to call the
+%% API in each AWS Region.
 -spec list_checks(aws_client:aws_client()) ->
     {ok, list_checks_response(), tuple()} |
     {error, any()} |
@@ -694,8 +720,9 @@ list_checks(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the accounts that own the resources for an organization
 %% aggregate recommendation.
 %%
-%% This API only
-%% supports prioritized recommendations.
+%% This API only supports prioritized recommendations and provides global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_organization_recommendation_accounts_response(), tuple()} |
     {error, any()} |
@@ -740,8 +767,9 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
 
 %% @doc List Resources of a Recommendation within an Organization.
 %%
-%% This API only supports prioritized
-%% recommendations.
+%% This API only supports prioritized recommendations and provides global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_organization_recommendation_resources_response(), tuple()} |
     {error, any()} |
@@ -789,8 +817,9 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
 
 %% @doc List a filterable set of Recommendations within an Organization.
 %%
-%% This API only supports prioritized
-%% recommendations.
+%% This API only supports prioritized recommendations and provides global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec list_organization_recommendations(aws_client:aws_client()) ->
     {ok, list_organization_recommendations_response(), tuple()} |
     {error, any()} |
@@ -840,7 +869,10 @@ list_organization_recommendations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List Resources of a Recommendation
+%% @doc List Resources of a Recommendation.
+%%
+%% This API provides global recommendations, eliminating the need to call the
+%% API in each AWS Region.
 -spec list_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recommendation_resources_response(), tuple()} |
     {error, any()} |
@@ -876,6 +908,7 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
     Query0_ =
       [
         {<<"exclusionStatus">>, maps:get(<<"exclusionStatus">>, QueryMap, undefined)},
+        {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"regionCode">>, maps:get(<<"regionCode">>, QueryMap, undefined)},
@@ -885,7 +918,10 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List a filterable set of Recommendations
+%% @doc List a filterable set of Recommendations.
+%%
+%% This API provides global recommendations, eliminating the need to call the
+%% API in each AWS Region.
 -spec list_recommendations(aws_client:aws_client()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
@@ -924,6 +960,7 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
         {<<"awsService">>, maps:get(<<"awsService">>, QueryMap, undefined)},
         {<<"beforeLastUpdatedAt">>, maps:get(<<"beforeLastUpdatedAt">>, QueryMap, undefined)},
         {<<"checkIdentifier">>, maps:get(<<"checkIdentifier">>, QueryMap, undefined)},
+        {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"pillar">>, maps:get(<<"pillar">>, QueryMap, undefined)},
@@ -937,8 +974,9 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Update the lifecycle of a Recommendation within an Organization.
 %%
-%% This API only supports prioritized
-%% recommendations.
+%% This API only supports prioritized recommendations and updates global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec update_organization_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_organization_recommendation_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -974,7 +1012,9 @@ update_organization_recommendation_lifecycle(Client, OrganizationRecommendationI
 
 %% @doc Update the lifecyle of a Recommendation.
 %%
-%% This API only supports prioritized recommendations.
+%% This API only supports prioritized recommendations and updates global
+%% priority recommendations, eliminating the need to call the API in each AWS
+%% Region.
 -spec update_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_recommendation_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
