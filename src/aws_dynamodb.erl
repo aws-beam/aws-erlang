@@ -2109,6 +2109,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
 %%   <<"GlobalTableWitnessUpdates">> => list(global_table_witness_group_update()),
 %%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
@@ -3921,7 +3922,8 @@ list_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContributorInsights">>, Input, Options).
 
-%% @doc Lists completed exports within the past 90 days.
+%% @doc Lists completed exports within the past 90 days, in reverse
+%% alphanumeric order of `ExportArn'.
 -spec list_exports(aws_client:aws_client(), list_exports_input()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()} |
@@ -4065,6 +4067,10 @@ list_tags_of_resource(Client, Input, Options)
 %% record must contain that attribute, the `attribute_not_exists'
 %% function
 %% will only succeed if no matching item exists.
+%%
+%% To determine whether `PutItem' overwrote an existing item, use
+%% `ReturnValues' set to `ALL_OLD'. If the response includes
+%% the `Attributes' element, an existing item was overwritten.
 %%
 %% For more information about `PutItem', see Working with
 %% Items:

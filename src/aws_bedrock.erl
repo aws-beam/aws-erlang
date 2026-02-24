@@ -909,6 +909,7 @@
 
 %% Example:
 %% get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{
+%%   <<"assetId">> => string(),
 %%   <<"assetType">> := list(any())
 %% }
 -type get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{binary() => any()}.
@@ -1018,6 +1019,14 @@
 %% Example:
 %% stop_evaluation_job_request() :: #{}
 -type stop_evaluation_job_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_annotated_chunk() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"pageNumber">> => [integer()]
+%% }
+-type automated_reasoning_policy_annotated_chunk() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1556,6 +1565,14 @@
 %% }
 -type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% automated_reasoning_policy_annotated_line() :: #{
+%%   <<"lineNumber">> => [integer()],
+%%   <<"lineText">> => string()
+%% }
+-type automated_reasoning_policy_annotated_line() :: #{binary() => any()}.
+
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
@@ -1823,6 +1840,17 @@
 %%   <<"scenarioExpression">> => string()
 %% }
 -type automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_source_document() :: #{
+%%   <<"document">> => binary(),
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentHash">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_source_document() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2308,6 +2336,13 @@
 
 
 %% Example:
+%% automated_reasoning_policy_statement_location() :: #{
+%%   <<"lines">> => list([integer()]())
+%% }
+-type automated_reasoning_policy_statement_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% legal_term() :: #{
 %%   <<"url">> => [string()]
 %% }
@@ -2459,6 +2494,14 @@
 
 
 %% Example:
+%% automated_reasoning_policy_statement_reference() :: #{
+%%   <<"documentId">> => string(),
+%%   <<"statementId">> => string()
+%% }
+-type automated_reasoning_policy_statement_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_word_config() :: #{
 %%   <<"inputAction">> => list(any()),
 %%   <<"inputEnabled">> => [boolean()],
@@ -2508,6 +2551,17 @@
 %%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
 %% }
 -type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_rule_report() :: #{
+%%   <<"accuracyJustification">> => string(),
+%%   <<"accuracyScore">> => float(),
+%%   <<"groundingJustifications">> => list(string()),
+%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
+%%   <<"rule">> => string()
+%% }
+-type automated_reasoning_policy_rule_report() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2767,6 +2821,17 @@
 
 
 %% Example:
+%% automated_reasoning_policy_report_source_document() :: #{
+%%   <<"atomicStatements">> => list(automated_reasoning_policy_atomic_statement()),
+%%   <<"documentContent">> => list(automated_reasoning_policy_annotated_chunk()),
+%%   <<"documentHash">> => string(),
+%%   <<"documentId">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_report_source_document() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_imported_model_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"customModelUnits">> => custom_model_units(),
@@ -2917,6 +2982,17 @@
 %%   <<"wordsConfig">> => list(guardrail_word_config())
 %% }
 -type guardrail_word_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_fidelity_report() :: #{
+%%   <<"accuracyScore">> => float(),
+%%   <<"coverageScore">> => float(),
+%%   <<"documentSources">> => list(automated_reasoning_policy_report_source_document()),
+%%   <<"ruleReports">> => map(),
+%%   <<"variableReports">> => map()
+%% }
+-type automated_reasoning_policy_fidelity_report() :: #{binary() => any()}.
 
 %% Example:
 %% export_automated_reasoning_policy_version_request() :: #{}
@@ -3110,6 +3186,15 @@
 %%   <<"policyArn">> => string()
 %% }
 -type start_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_result_asset_manifest_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetType">> => list(any())
+%% }
+-type automated_reasoning_policy_build_result_asset_manifest_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3441,6 +3526,15 @@
 
 
 %% Example:
+%% automated_reasoning_policy_atomic_statement() :: #{
+%%   <<"id">> => string(),
+%%   <<"location">> => automated_reasoning_policy_statement_location(),
+%%   <<"text">> => string()
+%% }
+-type automated_reasoning_policy_atomic_statement() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_regex() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"description">> => [string()],
@@ -3541,6 +3635,13 @@
 %%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
 %% }
 -type register_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_result_asset_manifest() :: #{
+%%   <<"entries">> => list(automated_reasoning_policy_build_result_asset_manifest_entry())
+%% }
+-type automated_reasoning_policy_build_result_asset_manifest() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3742,6 +3843,17 @@
 %% Example:
 %% delete_marketplace_model_endpoint_request() :: #{}
 -type delete_marketplace_model_endpoint_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_variable_report() :: #{
+%%   <<"accuracyJustification">> => string(),
+%%   <<"accuracyScore">> => float(),
+%%   <<"groundingJustifications">> => list(string()),
+%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
+%%   <<"policyVariable">> => string()
+%% }
+-type automated_reasoning_policy_variable_report() :: #{binary() => any()}.
 
 %% Example:
 %% delete_foundation_model_agreement_response() :: #{}
@@ -6109,6 +6221,7 @@ get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflo
 
     Query0_ =
       [
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
         {<<"assetType">>, AssetType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

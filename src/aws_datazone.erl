@@ -1089,6 +1089,13 @@
 
 
 %% Example:
+%% workflows_mwaa_properties_input() :: #{
+%%   <<"mwaaEnvironmentName">> => [string()]
+%% }
+-type workflows_mwaa_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% glue_connection() :: #{
 %%   <<"athenaProperties">> => map(),
 %%   <<"authenticationConfiguration">> => authentication_configuration(),
@@ -2872,6 +2879,10 @@
 %% get_account_pool_input() :: #{}
 -type get_account_pool_input() :: #{}.
 
+%% Example:
+%% workflows_serverless_properties_input() :: #{}
+-type workflows_serverless_properties_input() :: #{}.
+
 
 %% Example:
 %% list_entity_owners_input() :: #{
@@ -3211,6 +3222,10 @@
 %%   <<"userProfileId">> => [string()]
 %% }
 -type get_iam_portal_login_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% workflows_serverless_properties_output() :: #{}
+-type workflows_serverless_properties_output() :: #{}.
 
 
 %% Example:
@@ -5296,6 +5311,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_domain_units_for_parent_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflows_mwaa_properties_output() :: #{
+%%   <<"mwaaEnvironmentName">> => [string()]
+%% }
+-type workflows_mwaa_properties_output() :: #{binary() => any()}.
 
 
 %% Example:

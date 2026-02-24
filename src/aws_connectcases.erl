@@ -2188,8 +2188,6 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 
 %% @doc Deletes a field from a cases template.
 %%
-%% You can delete up to 100 fields per domain.
-%%
 %% After a field is deleted:
 %%
 %% You can still retrieve the field by calling `BatchGetField'.

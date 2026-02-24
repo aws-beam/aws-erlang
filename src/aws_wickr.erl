@@ -115,6 +115,9 @@
          get_oidc_info/2,
          get_oidc_info/4,
          get_oidc_info/5,
+         get_opentdf_config/2,
+         get_opentdf_config/4,
+         get_opentdf_config/5,
          get_security_group/3,
          get_security_group/5,
          get_security_group/6,
@@ -152,6 +155,8 @@
          register_oidc_config/4,
          register_oidc_config_test/3,
          register_oidc_config_test/4,
+         register_opentdf_config/3,
+         register_opentdf_config/4,
          update_bot/4,
          update_bot/5,
          update_data_retention/3,
@@ -213,6 +218,16 @@
 %%   <<"networkId">> => string()
 %% }
 -type delete_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_opentdf_config_response() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"provider">> => string()
+%% }
+-type register_opentdf_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_network_settings_request() :: #{}
@@ -511,6 +526,7 @@
 %% network_settings() :: #{
 %%   <<"dataRetention">> => [boolean()],
 %%   <<"enableClientMetrics">> => [boolean()],
+%%   <<"enableTrustedDataFormat">> => [boolean()],
 %%   <<"readReceiptConfig">> => read_receipt_config()
 %% }
 -type network_settings() :: #{binary() => any()}.
@@ -599,6 +615,16 @@
 %%   <<"type">> => string()
 %% }
 -type basic_device_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_opentdf_config_response() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"provider">> => string()
+%% }
+-type get_opentdf_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -712,6 +738,7 @@
 
 %% Example:
 %% validation_error() :: #{
+%%   <<"message">> => string(),
 %%   <<"reasons">> => list(error_detail())
 %% }
 -type validation_error() :: #{binary() => any()}.
@@ -899,6 +926,10 @@
 %% get_bots_count_request() :: #{}
 -type get_bots_count_request() :: #{}.
 
+%% Example:
+%% get_opentdf_config_request() :: #{}
+-type get_opentdf_config_request() :: #{}.
+
 
 %% Example:
 %% get_network_response() :: #{
@@ -920,6 +951,17 @@
 %%   <<"message">> => string()
 %% }
 -type update_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_opentdf_config_request() :: #{
+%%   <<"clientId">> := string(),
+%%   <<"clientSecret">> := string(),
+%%   <<"domain">> := string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"provider">> := string()
+%% }
+-type register_opentdf_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1494,6 +1536,15 @@
     unauthorized_error() | 
     forbidden_error().
 
+-type get_opentdf_config_errors() ::
+    rate_limit_error() | 
+    internal_server_error() | 
+    resource_not_found_error() | 
+    validation_error() | 
+    bad_request_error() | 
+    unauthorized_error() | 
+    forbidden_error().
+
 -type get_security_group_errors() ::
     rate_limit_error() | 
     internal_server_error() | 
@@ -1602,6 +1653,15 @@
     forbidden_error().
 
 -type register_oidc_config_test_errors() ::
+    rate_limit_error() | 
+    internal_server_error() | 
+    resource_not_found_error() | 
+    validation_error() | 
+    bad_request_error() | 
+    unauthorized_error() | 
+    forbidden_error().
+
+-type register_opentdf_config_errors() ::
     rate_limit_error() | 
     internal_server_error() | 
     resource_not_found_error() | 
@@ -2539,6 +2599,43 @@ get_oidc_info(Client, NetworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the OpenTDF integration configuration for a Wickr network.
+-spec get_opentdf_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_opentdf_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_opentdf_config_errors(), tuple()}.
+get_opentdf_config(Client, NetworkId)
+  when is_map(Client) ->
+    get_opentdf_config(Client, NetworkId, #{}, #{}).
+
+-spec get_opentdf_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_opentdf_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_opentdf_config_errors(), tuple()}.
+get_opentdf_config(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_opentdf_config(Client, NetworkId, QueryMap, HeadersMap, []).
+
+-spec get_opentdf_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_opentdf_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_opentdf_config_errors(), tuple()}.
+get_opentdf_config(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/tdf"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed information about a specific security group in a
 %% Wickr network, including its settings, member counts, and configuration.
 -spec get_security_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -3117,6 +3214,43 @@ register_oidc_config_test(Client, NetworkId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers and saves OpenTDF configuration for a Wickr network,
+%% enabling attribute-based access control for Wickr through an OpenTDF
+%% provider.
+-spec register_opentdf_config(aws_client:aws_client(), binary() | list(), register_opentdf_config_request()) ->
+    {ok, register_opentdf_config_response(), tuple()} |
+    {error, any()} |
+    {error, register_opentdf_config_errors(), tuple()}.
+register_opentdf_config(Client, NetworkId, Input) ->
+    register_opentdf_config(Client, NetworkId, Input, []).
+
+-spec register_opentdf_config(aws_client:aws_client(), binary() | list(), register_opentdf_config_request(), proplists:proplist()) ->
+    {ok, register_opentdf_config_response(), tuple()} |
+    {error, any()} |
+    {error, register_opentdf_config_errors(), tuple()}.
+register_opentdf_config(Client, NetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/tdf"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"dryRun">>, <<"dryRun">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the properties of an existing bot in a Wickr network.
