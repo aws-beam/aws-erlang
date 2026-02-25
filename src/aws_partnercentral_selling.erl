@@ -760,6 +760,13 @@
 -type lead_context() :: #{binary() => any()}.
 
 %% Example:
+%% target_close_date_filter() :: #{
+%%   <<"AfterTargetCloseDate">> => string(),
+%%   <<"BeforeTargetCloseDate">> => string()
+%% }
+-type target_close_date_filter() :: #{binary() => any()}.
+
+%% Example:
 %% aws_product_insights() :: #{
 %%   <<"AwsProducts">> => list(aws_product_details()),
 %%   <<"CurrencyCode">> => list(any()),
@@ -812,7 +819,8 @@
 %%   <<"LifeCycleStage">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => opportunity_sort()
+%%   <<"Sort">> => opportunity_sort(),
+%%   <<"TargetCloseDate">> => target_close_date_filter()
 %% }
 -type list_opportunities_request() :: #{binary() => any()}.
 

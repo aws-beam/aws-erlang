@@ -30,7 +30,9 @@
 %% health.
 -module(aws_cloudwatch).
 
--export([delete_alarms/2,
+-export([delete_alarm_mute_rule/2,
+         delete_alarm_mute_rule/3,
+         delete_alarms/2,
          delete_alarms/3,
          delete_anomaly_detector/2,
          delete_anomaly_detector/3,
@@ -60,6 +62,8 @@
          enable_alarm_actions/3,
          enable_insight_rules/2,
          enable_insight_rules/3,
+         get_alarm_mute_rule/2,
+         get_alarm_mute_rule/3,
          get_dashboard/2,
          get_dashboard/3,
          get_insight_rule_report/2,
@@ -72,6 +76,8 @@
          get_metric_stream/3,
          get_metric_widget_image/2,
          get_metric_widget_image/3,
+         list_alarm_mute_rules/2,
+         list_alarm_mute_rules/3,
          list_dashboards/2,
          list_dashboards/3,
          list_managed_insight_rules/2,
@@ -82,6 +88,8 @@
          list_metrics/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_alarm_mute_rule/2,
+         put_alarm_mute_rule/3,
          put_anomaly_detector/2,
          put_anomaly_detector/3,
          put_composite_alarm/2,
@@ -179,6 +187,18 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type put_insight_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_alarm_mute_rule_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExpireDate">> => non_neg_integer(),
+%%   <<"MuteTargets">> => mute_targets(),
+%%   <<"Name">> := string(),
+%%   <<"Rule">> := rule(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type put_alarm_mute_rule_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_composite_alarm_input() :: #{
@@ -315,6 +335,16 @@
 -type list_managed_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
+%% alarm_mute_rule_summary() :: #{
+%%   <<"AlarmMuteRuleArn">> => string(),
+%%   <<"ExpireDate">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"MuteType">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type alarm_mute_rule_summary() :: #{binary() => any()}.
+
+%% Example:
 %% list_metrics_input() :: #{
 %%   <<"Dimensions">> => list(dimension_filter()),
 %%   <<"IncludeLinkedAccounts">> => boolean(),
@@ -376,6 +406,12 @@
 %%   <<"Failures">> => list(partial_failure())
 %% }
 -type put_managed_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% mute_targets() :: #{
+%%   <<"AlarmNames">> => list(string())
+%% }
+-type mute_targets() :: #{binary() => any()}.
 
 %% Example:
 %% list_dashboards_input() :: #{
@@ -564,6 +600,15 @@
 -type put_metric_alarm_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_alarm_mute_rules_input() :: #{
+%%   <<"AlarmName">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_alarm_mute_rules_input() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -654,6 +699,21 @@
 -type insight_rule_contributor_datapoint() :: #{binary() => any()}.
 
 %% Example:
+%% get_alarm_mute_rule_output() :: #{
+%%   <<"AlarmMuteRuleArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpireDate">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"MuteTargets">> => mute_targets(),
+%%   <<"MuteType">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rule">> => rule(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_alarm_mute_rule_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_anomaly_detectors_input() :: #{
 %%   <<"AnomalyDetectorTypes">> => list(list(any())()),
 %%   <<"Dimensions">> => list(dimension()),
@@ -704,6 +764,12 @@
 %%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"Schedule">> => schedule()
+%% }
+-type rule() :: #{binary() => any()}.
 
 %% Example:
 %% list_metrics_output() :: #{
@@ -757,6 +823,14 @@
 %%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration())
 %% }
 -type get_metric_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% schedule() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"Timezone">> => string()
+%% }
+-type schedule() :: #{binary() => any()}.
 
 %% Example:
 %% describe_alarms_for_metric_input() :: #{
@@ -873,6 +947,12 @@
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_alarm_mute_rule_input() :: #{
+%%   <<"AlarmMuteRuleName">> := string()
+%% }
+-type get_alarm_mute_rule_input() :: #{binary() => any()}.
+
+%% Example:
 %% insight_rule() :: #{
 %%   <<"ApplyOnTransformedLogs">> => boolean(),
 %%   <<"Definition">> => string(),
@@ -907,6 +987,13 @@
 
 %% }
 -type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_alarm_mute_rules_output() :: #{
+%%   <<"AlarmMuteRuleSummaries">> => list(alarm_mute_rule_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alarm_mute_rules_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_metric_data_input() :: #{
@@ -1114,6 +1201,12 @@
 -type describe_insight_rules_input() :: #{binary() => any()}.
 
 %% Example:
+%% delete_alarm_mute_rule_input() :: #{
+%%   <<"AlarmMuteRuleName">> := string()
+%% }
+-type delete_alarm_mute_rule_input() :: #{binary() => any()}.
+
+%% Example:
 %% entity_metric_data() :: #{
 %%   <<"Entity">> => entity(),
 %%   <<"MetricData">> => list(metric_datum())
@@ -1208,6 +1301,9 @@
     invalid_parameter_value_exception() | 
     missing_required_parameter_exception().
 
+-type get_alarm_mute_rule_errors() ::
+    resource_not_found_exception().
+
 -type get_dashboard_errors() ::
     internal_service_fault() | 
     invalid_parameter_value_exception() | 
@@ -1234,6 +1330,10 @@
     invalid_parameter_combination_exception() | 
     missing_required_parameter_exception().
 
+-type list_alarm_mute_rules_errors() ::
+    invalid_next_token() | 
+    resource_not_found_exception().
+
 -type list_dashboards_errors() ::
     internal_service_fault() | 
     invalid_parameter_value_exception().
@@ -1257,6 +1357,9 @@
     internal_service_fault() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception().
+
+-type put_alarm_mute_rule_errors() ::
+    limit_exceeded_fault().
 
 -type put_anomaly_detector_errors() ::
     internal_service_fault() | 
@@ -1329,6 +1432,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Deletes a specific alarm mute rule.
+%%
+%% When you delete a mute rule, any alarms that are currently being muted by
+%% that rule are immediately unmuted. If those alarms are in an ALARM state,
+%% their configured actions will trigger.
+%%
+%% This operation is idempotent. If you delete a mute rule that does not
+%% exist, the operation succeeds without returning an error.
+%%
+%% Permissions
+%%
+%% To delete a mute rule, you need the `cloudwatch:DeleteAlarmMuteRule'
+%% permission on the alarm mute rule resource.
+-spec delete_alarm_mute_rule(aws_client:aws_client(), delete_alarm_mute_rule_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_alarm_mute_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_alarm_mute_rule(Client, Input, []).
+
+-spec delete_alarm_mute_rule(aws_client:aws_client(), delete_alarm_mute_rule_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_alarm_mute_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAlarmMuteRule">>, Input, Options).
 
 %% @doc Deletes the specified alarms.
 %%
@@ -1690,6 +1820,42 @@ enable_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableInsightRules">>, Input, Options).
 
+%% @doc Retrieves details for a specific alarm mute rule.
+%%
+%% This operation returns complete information about the mute rule, including
+%% its configuration, status, targeted alarms, and metadata.
+%%
+%% The returned status indicates the current state of the mute rule:
+%%
+%% SCHEDULED: The mute rule is configured and will become active in the
+%% future
+%%
+%% ACTIVE: The mute rule is currently muting alarm actions
+%%
+%% EXPIRED: The mute rule has passed its expiration date and will no longer
+%% become active
+%%
+%% Permissions
+%%
+%% To retrieve details for a mute rule, you need the
+%% `cloudwatch:GetAlarmMuteRule' permission on the alarm mute rule
+%% resource.
+-spec get_alarm_mute_rule(aws_client:aws_client(), get_alarm_mute_rule_input()) ->
+    {ok, get_alarm_mute_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_alarm_mute_rule_errors(), tuple()}.
+get_alarm_mute_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_alarm_mute_rule(Client, Input, []).
+
+-spec get_alarm_mute_rule(aws_client:aws_client(), get_alarm_mute_rule_input(), proplists:proplist()) ->
+    {ok, get_alarm_mute_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_alarm_mute_rule_errors(), tuple()}.
+get_alarm_mute_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAlarmMuteRule">>, Input, Options).
+
 %% @doc Displays the details of the dashboard that you specify.
 %%
 %% To copy an existing dashboard, use `GetDashboard', and then use the
@@ -2023,6 +2189,37 @@ get_metric_widget_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricWidgetImage">>, Input, Options).
 
+%% @doc Lists alarm mute rules in your Amazon Web Services account and
+%% region.
+%%
+%% You can filter the results by alarm name to find all mute rules targeting
+%% a specific alarm, or by status to find rules that are scheduled, active,
+%% or expired.
+%%
+%% This operation supports pagination for accounts with many mute rules. Use
+%% the `MaxRecords' and `NextToken' parameters to retrieve results in
+%% multiple calls.
+%%
+%% Permissions
+%%
+%% To list mute rules, you need the `cloudwatch:ListAlarmMuteRules'
+%% permission.
+-spec list_alarm_mute_rules(aws_client:aws_client(), list_alarm_mute_rules_input()) ->
+    {ok, list_alarm_mute_rules_output(), tuple()} |
+    {error, any()} |
+    {error, list_alarm_mute_rules_errors(), tuple()}.
+list_alarm_mute_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_alarm_mute_rules(Client, Input, []).
+
+-spec list_alarm_mute_rules(aws_client:aws_client(), list_alarm_mute_rules_input(), proplists:proplist()) ->
+    {ok, list_alarm_mute_rules_output(), tuple()} |
+    {error, any()} |
+    {error, list_alarm_mute_rules_errors(), tuple()}.
+list_alarm_mute_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAlarmMuteRules">>, Input, Options).
+
 %% @doc Returns a list of the dashboards for your account.
 %%
 %% If you include
@@ -2155,6 +2352,58 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Creates or updates an alarm mute rule.
+%%
+%% Alarm mute rules automatically mute alarm actions during predefined time
+%% windows. When a mute rule is active, targeted alarms continue to evaluate
+%% metrics and transition between states, but their configured actions (such
+%% as Amazon SNS notifications or Auto Scaling actions) are muted.
+%%
+%% You can create mute rules with recurring schedules using `cron'
+%% expressions or one-time mute windows using `at' expressions. Each mute
+%% rule can target up to 100 specific alarms by name.
+%%
+%% If you specify a rule name that already exists, this operation updates the
+%% existing rule with the new configuration.
+%%
+%% Permissions
+%%
+%% To create or update a mute rule, you must have the
+%% `cloudwatch:PutAlarmMuteRule' permission on two types of resources:
+%% the alarm mute rule resource itself, and each alarm that the rule targets.
+%%
+%% For example, If you want to allow a user to create mute rules that target
+%% only specific alarms named &quot;WebServerCPUAlarm&quot; and
+%% &quot;DatabaseConnectionAlarm&quot;, you would create an IAM policy with
+%% one statement granting `cloudwatch:PutAlarmMuteRule' on the alarm mute
+%% rule resource
+%% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute:*'), and another
+%% statement granting `cloudwatch:PutAlarmMuteRule' on the targeted alarm
+%% resources
+%% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm'
+%% and
+%% `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm').
+%%
+%% You can also use IAM policy conditions to allow targeting alarms based on
+%% resource tags. For example, you can restrict users to create/update mute
+%% rules to only target alarms that have a specific tag key-value pair, such
+%% as `Team=TeamA'.
+-spec put_alarm_mute_rule(aws_client:aws_client(), put_alarm_mute_rule_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_alarm_mute_rule_errors(), tuple()}.
+put_alarm_mute_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_alarm_mute_rule(Client, Input, []).
+
+-spec put_alarm_mute_rule(aws_client:aws_client(), put_alarm_mute_rule_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_alarm_mute_rule_errors(), tuple()}.
+put_alarm_mute_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAlarmMuteRule">>, Input, Options).
 
 %% @doc Creates an anomaly detection model for a CloudWatch metric.
 %%

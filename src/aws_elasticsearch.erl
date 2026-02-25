@@ -2702,7 +2702,12 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

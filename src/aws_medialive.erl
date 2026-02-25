@@ -621,6 +621,13 @@
 
 
 %% Example:
+%% describe_inference_settings() :: #{
+%%   <<"FeedArn">> => string()
+%% }
+-type describe_inference_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZones">> => list(string()),
@@ -696,6 +703,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -976,6 +984,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -2329,6 +2338,7 @@
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -2375,6 +2385,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -2788,6 +2799,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -3102,6 +3114,7 @@
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"InferenceSettings">> => inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => linked_channel_settings(),
@@ -3674,6 +3687,7 @@
 %%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"InferenceSettings">> => inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => linked_channel_settings(),
@@ -4812,6 +4826,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -4868,6 +4883,7 @@
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
@@ -5236,6 +5252,13 @@
 %% Example:
 %% reject_input_device_transfer_request() :: #{}
 -type reject_input_device_transfer_request() :: #{}.
+
+
+%% Example:
+%% inference_settings() :: #{
+%%   <<"FeedArn">> => string()
+%% }
+-type inference_settings() :: #{binary() => any()}.
 
 
 %% Example:

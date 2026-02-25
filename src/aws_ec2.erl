@@ -11736,6 +11736,7 @@
 %%   <<"HttpEndpoint">> => list(any()),
 %%   <<"HttpPutResponseHopLimit">> => integer(),
 %%   <<"HttpTokens">> => list(any()),
+%%   <<"HttpTokensEnforced">> => list(any()),
 %%   <<"InstanceMetadataTags">> => list(any())
 %% }
 -type modify_instance_metadata_defaults_request() :: #{binary() => any()}.
@@ -21328,6 +21329,7 @@
 %%   <<"HttpEndpoint">> => list(any()),
 %%   <<"HttpPutResponseHopLimit">> => integer(),
 %%   <<"HttpTokens">> => list(any()),
+%%   <<"HttpTokensEnforced">> => list(any()),
 %%   <<"InstanceMetadataTags">> => list(any()),
 %%   <<"ManagedBy">> => list(any()),
 %%   <<"ManagedExceptionMessage">> => string()

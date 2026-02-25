@@ -363,6 +363,13 @@
 
 
 %% Example:
+%% log_group_name_configuration() :: #{
+%%   <<"LogGroupNamePattern">> => string()
+%% }
+-type log_group_name_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% advanced_event_selector() :: #{
 %%   <<"FieldSelectors">> => list(advanced_field_selector()),
 %%   <<"Name">> => [string()]
@@ -405,7 +412,8 @@
 %%   <<"ResourceIdentifier">> => string(),
 %%   <<"ResourceTags">> => map(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"TelemetryConfigurationState">> => map()
+%%   <<"TelemetryConfigurationState">> => map(),
+%%   <<"TelemetrySourceType">> => list(any())
 %% }
 -type telemetry_configuration() :: #{binary() => any()}.
 
@@ -485,6 +493,7 @@
 %% Example:
 %% destination_logs_configuration() :: #{
 %%   <<"BackupConfiguration">> => logs_backup_configuration(),
+%%   <<"LogGroupNameConfiguration">> => log_group_name_configuration(),
 %%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
 %% }
 -type destination_logs_configuration() :: #{binary() => any()}.
@@ -2659,8 +2668,8 @@ update_centralization_rule_for_organization(Client, Input0, Options0) ->
 %% (Windows only), OAuth2 credentials (`client_id', `client_secret')
 %%
 %% Okta Sources (SSO, Auth0) Updatable: All Amazon Web Services Secrets
-%% Manager attributes, `domain', `range' (SSO only), OAuth2
-%% credentials (`client_id', `client_secret')
+%% Manager attributes, `domain', `range', OAuth2 credentials
+%% (`client_id', `client_secret')
 %%
 %% Palo Alto Networks Updatable: All Amazon Web Services Secrets Manager
 %% attributes, `hostname', basic authentication credentials
