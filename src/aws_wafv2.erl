@@ -126,6 +126,8 @@
          get_rule_group/3,
          get_sampled_requests/2,
          get_sampled_requests/3,
+         get_top_path_statistics_by_traffic/2,
+         get_top_path_statistics_by_traffic/3,
          get_web_acl/2,
          get_web_acl/3,
          get_web_acl_for_resource/2,
@@ -520,6 +522,15 @@
 -type regex_pattern_set_reference_statement() :: #{binary() => any()}.
 
 %% Example:
+%% get_top_path_statistics_by_traffic_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"PathStatistics">> => list(path_statistics()),
+%%   <<"TopCategories">> => list(path_statistics()),
+%%   <<"TotalRequestCount">> => float()
+%% }
+-type get_top_path_statistics_by_traffic_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_ip_set_response() :: #{
 %%   <<"NextLockToken">> => string()
 %% }
@@ -825,6 +836,14 @@
 -type put_logging_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% bot_statistics() :: #{
+%%   <<"BotName">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float()
+%% }
+-type bot_statistics() :: #{binary() => any()}.
+
+%% Example:
 %% challenge_action() :: #{
 %%   <<"CustomRequestHandling">> => custom_request_handling()
 %% }
@@ -1066,6 +1085,14 @@
 %%   <<"Block">> => block_action()
 %% }
 -type default_action() :: #{binary() => any()}.
+
+%% Example:
+%% filter_source() :: #{
+%%   <<"BotCategory">> => string(),
+%%   <<"BotName">> => string(),
+%%   <<"BotOrganization">> => string()
+%% }
+-type filter_source() :: #{binary() => any()}.
 
 %% Example:
 %% get_logging_configuration_response() :: #{
@@ -1725,6 +1752,21 @@
 -type ip_set_summary() :: #{binary() => any()}.
 
 %% Example:
+%% get_top_path_statistics_by_traffic_request() :: #{
+%%   <<"BotCategory">> => string(),
+%%   <<"BotName">> => string(),
+%%   <<"BotOrganization">> => string(),
+%%   <<"Limit">> := integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"NumberOfTopTrafficBotsPerPath">> := integer(),
+%%   <<"Scope">> := list(any()),
+%%   <<"TimeWindow">> := time_window(),
+%%   <<"UriPathPrefix">> => string(),
+%%   <<"WebAclArn">> := string()
+%% }
+-type get_top_path_statistics_by_traffic_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_regex_pattern_set_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
@@ -1800,6 +1842,16 @@
 %%   <<"NextWebACLLockToken">> => string()
 %% }
 -type delete_firewall_manager_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% path_statistics() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float(),
+%%   <<"Source">> => filter_source(),
+%%   <<"TopBots">> => list(bot_statistics())
+%% }
+-type path_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% label_name_condition() :: #{
@@ -2474,6 +2526,13 @@
 -type get_sampled_requests_errors() ::
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_top_path_statistics_by_traffic_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception() | 
     w_a_f_nonexistent_item_exception().
 
 -type get_web_acl_errors() ::
@@ -3401,6 +3460,31 @@ get_sampled_requests(Client, Input)
 get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
+
+%% @doc Retrieves aggregated statistics about the top URI paths accessed by
+%% bot traffic for a specified web ACL and time window.
+%%
+%% You can use this operation to analyze which paths on your web application
+%% receive the most bot traffic and identify the specific bots accessing
+%% those paths.
+%% The operation supports filtering by bot category, organization, or name,
+%% and allows you to drill down into specific path prefixes to view detailed
+%% URI-level statistics.
+-spec get_top_path_statistics_by_traffic(aws_client:aws_client(), get_top_path_statistics_by_traffic_request()) ->
+    {ok, get_top_path_statistics_by_traffic_response(), tuple()} |
+    {error, any()} |
+    {error, get_top_path_statistics_by_traffic_errors(), tuple()}.
+get_top_path_statistics_by_traffic(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_top_path_statistics_by_traffic(Client, Input, []).
+
+-spec get_top_path_statistics_by_traffic(aws_client:aws_client(), get_top_path_statistics_by_traffic_request(), proplists:proplist()) ->
+    {ok, get_top_path_statistics_by_traffic_response(), tuple()} |
+    {error, any()} |
+    {error, get_top_path_statistics_by_traffic_errors(), tuple()}.
+get_top_path_statistics_by_traffic(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTopPathStatisticsByTraffic">>, Input, Options).
 
 %% @doc Retrieves the specified `WebACL'.
 -spec get_web_acl(aws_client:aws_client(), get_web_acl_request()) ->

@@ -4822,7 +4822,8 @@
 %%   <<"CurrencyCode">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => string(),
-%%   <<"UpfrontFee">> => string()
+%%   <<"UpfrontFee">> => string(),
+%%   <<"ZoneType">> => string()
 %% }
 -type capacity_block_extension() :: #{binary() => any()}.
 
@@ -11390,7 +11391,8 @@
 %%   <<"Tenancy">> => list(any()),
 %%   <<"UltraserverCount">> => integer(),
 %%   <<"UltraserverType">> => string(),
-%%   <<"UpfrontFee">> => string()
+%%   <<"UpfrontFee">> => string(),
+%%   <<"ZoneType">> => string()
 %% }
 -type capacity_block_offering() :: #{binary() => any()}.
 
@@ -12556,7 +12558,8 @@
 %%   <<"InstanceType">> => string(),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"Tenancy">> => list(any()),
-%%   <<"UpfrontFee">> => string()
+%%   <<"UpfrontFee">> => string(),
+%%   <<"ZoneType">> => string()
 %% }
 -type capacity_block_extension_offering() :: #{binary() => any()}.
 
@@ -18148,6 +18151,7 @@
 
 %% Example:
 %% describe_capacity_block_offerings_request() :: #{
+%%   <<"AllAvailabilityZones">> => boolean(),
 %%   <<"CapacityDurationHours">> := integer(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDateRange">> => non_neg_integer(),

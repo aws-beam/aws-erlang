@@ -1202,6 +1202,7 @@
 
 %% Example:
 %% global_cluster() :: #{
+%%   <<"DatabaseName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -1211,7 +1212,8 @@
 %%   <<"GlobalClusterMembers">> => list(global_cluster_member()),
 %%   <<"GlobalClusterResourceId">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"StorageEncrypted">> => boolean()
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"TagList">> => list(tag())
 %% }
 -type global_cluster() :: #{binary() => any()}.
 
@@ -1551,12 +1553,14 @@
 
 %% Example:
 %% create_global_cluster_message() :: #{
+%%   <<"DatabaseName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"GlobalClusterIdentifier">> := string(),
 %%   <<"SourceDBClusterIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean()
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_global_cluster_message() :: #{binary() => any()}.
 
@@ -2577,7 +2581,10 @@
     subscription_not_found_fault().
 
 -type modify_global_cluster_errors() ::
+    invalid_db_instance_state_fault() | 
+    global_cluster_already_exists_fault() | 
     global_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
     invalid_global_cluster_state_fault().
 
 -type promote_read_replica_db_cluster_errors() ::
