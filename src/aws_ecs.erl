@@ -1522,6 +1522,13 @@
 -type put_cluster_capacity_providers_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_request() :: #{
+%%   <<"reservationGroupArn">> => string(),
+%%   <<"reservationPreference">> => list(any())
+%% }
+-type capacity_reservation_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag())
 %% }
@@ -1865,6 +1872,7 @@
 
 %% Example:
 %% instance_launch_template_update() :: #{
+%%   <<"capacityReservations">> => capacity_reservation_request(),
 %%   <<"ec2InstanceProfileArn">> => string(),
 %%   <<"instanceRequirements">> => instance_requirements_request(),
 %%   <<"monitoring">> => list(any()),
@@ -2707,6 +2715,7 @@
 %% Example:
 %% instance_launch_template() :: #{
 %%   <<"capacityOptionType">> => list(any()),
+%%   <<"capacityReservations">> => capacity_reservation_request(),
 %%   <<"ec2InstanceProfileArn">> => string(),
 %%   <<"fipsEnabled">> => boolean(),
 %%   <<"instanceRequirements">> => instance_requirements_request(),

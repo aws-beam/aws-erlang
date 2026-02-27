@@ -33,6 +33,7 @@
 %%   <<"CustomerIdentifier">> => string(),
 %%   <<"Dimension">> => string(),
 %%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"LicenseArn">> => string(),
 %%   <<"ProductCode">> => string(),
 %%   <<"Value">> => entitlement_value()
 %% }
@@ -93,15 +94,8 @@
 %% @doc GetEntitlements retrieves entitlement values for a given product.
 %%
 %% The results can be
-%% filtered based on customer identifier, AWS account ID, or product
-%% dimensions.
-%%
-%% The `CustomerIdentifier' parameter is on path for deprecation. Use
-%% `CustomerAWSAccountID' instead.
-%%
-%% These parameters are mutually exclusive. You can't specify both
-%% `CustomerIdentifier' and `CustomerAWSAccountID' in the same
-%% request.
+%% filtered based on customer identifier, AWS account ID, license ARN, or
+%% product dimensions.
 -spec get_entitlements(aws_client:aws_client(), get_entitlements_request()) ->
     {ok, get_entitlements_result(), tuple()} |
     {error, any()} |

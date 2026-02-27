@@ -1,19 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Security Hub provides you with a comprehensive view of your security
-%% state in Amazon Web Services and helps
+%% @doc Security Hub CSPM provides you with a comprehensive view of your
+%% security state in Amazon Web Services and helps
 %% you assess your Amazon Web Services environment against security industry
 %% standards and best practices.
 %%
-%% Security Hub collects security data across Amazon Web Services accounts,
-%% Amazon Web Services services, and
+%% Security Hub CSPM collects security data across Amazon Web Services
+%% accounts, Amazon Web Services services, and
 %% supported third-party products and helps you analyze your security trends
 %% and identify the highest priority security
 %% issues.
 %%
 %% To help you manage the security state of your organization, Security Hub
-%% supports multiple security standards.
+%% CSPM supports multiple security standards.
 %% These include the Amazon Web Services Foundational Security Best Practices
 %% (FSBP) standard developed by Amazon Web Services,
 %% and external compliance frameworks such as the Center for Internet
@@ -21,55 +21,55 @@
 %% Security Standard (PCI DSS), and the National Institute of Standards and
 %% Technology (NIST). Each standard includes
 %% several security controls, each of which represents a security best
-%% practice. Security Hub runs checks against
+%% practice. Security Hub CSPM runs checks against
 %% security controls and generates control findings to help you assess your
 %% compliance against security best practices.
 %%
-%% In addition to generating control findings, Security Hub also receives
-%% findings from other Amazon Web Services services,
+%% In addition to generating control findings, Security Hub CSPM also
+%% receives findings from other Amazon Web Services services,
 %% such as Amazon GuardDuty and Amazon Inspector, and
 %% supported third-party products. This gives you a single pane of glass into
 %% a variety of security-related issues. You
-%% can also send Security Hub findings to other Amazon Web Services services
-%% and supported third-party products.
+%% can also send Security Hub CSPM findings to other Amazon Web Services
+%% services and supported third-party products.
 %%
-%% Security Hub offers automation features that help you triage and remediate
-%% security issues. For example,
+%% Security Hub CSPM offers automation features that help you triage and
+%% remediate security issues. For example,
 %% you can use automation rules to automatically update critical findings
 %% when a security check fails. You can also leverage the integration with
 %% Amazon EventBridge to trigger automatic responses to specific findings.
 %%
-%% This guide, the Security Hub API Reference, provides
-%% information about the Security Hub API. This includes supported resources,
-%% HTTP methods, parameters,
-%% and schemas. If you're new to Security Hub, you might find it helpful
-%% to also review the
-%% Security Hub User Guide
+%% This guide, the Security Hub CSPM API Reference, provides
+%% information about the Security Hub CSPM API. This includes supported
+%% resources, HTTP methods, parameters,
+%% and schemas. If you're new to Security Hub CSPM, you might find it
+%% helpful to also review the
+%% Security Hub CSPM User Guide
 %% :
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html.
 %% The
 %% user guide explains key concepts and provides procedures
-%% that demonstrate how to use Security Hub features. It also provides
+%% that demonstrate how to use Security Hub CSPM features. It also provides
 %% information about topics such as
-%% integrating Security Hub with other Amazon Web Services services.
+%% integrating Security Hub CSPM with other Amazon Web Services services.
 %%
-%% In addition to interacting with Security Hub by making calls to the
-%% Security Hub API, you can
+%% In addition to interacting with Security Hub CSPM by making calls to the
+%% Security Hub CSPM API, you can
 %% use a current version of an Amazon Web Services command line tool or SDK.
 %% Amazon Web Services provides tools
 %% and SDKs that consist of libraries and sample code for various languages
 %% and platforms, such as PowerShell,
 %% Java, Go, Python, C++, and .NET. These tools and SDKs provide convenient,
 %% programmatic access to
-%% Security Hub and other Amazon Web Services services . They also handle
-%% tasks such as signing requests,
+%% Security Hub CSPM and other Amazon Web Services services . They also
+%% handle tasks such as signing requests,
 %% managing errors, and retrying requests automatically. For information
 %% about installing and using the Amazon Web Services tools
 %% and SDKs, see Tools to Build on Amazon Web Services:
 %% http://aws.amazon.com/developer/tools/.
 %%
 %% With the exception of operations that are related to central
-%% configuration, Security Hub API requests are executed only in
+%% configuration, Security Hub CSPM API requests are executed only in
 %% the Amazon Web Services Region that is currently active or in the specific
 %% Amazon Web Services Region that you specify in your request. Any
 %% configuration or settings change
@@ -77,14 +77,14 @@
 %% the same change in
 %% other Regions, call the same API operation in each Region in which you
 %% want to apply the change. When you use central configuration,
-%% API requests for enabling Security Hub, standards, and controls are
+%% API requests for enabling Security Hub CSPM, standards, and controls are
 %% executed in the home Region and all linked Regions. For a list of
 %% central configuration operations, see the Central configuration
 %% terms and concepts:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts
-%% section of the Security Hub User Guide.
+%% section of the Security Hub CSPM User Guide.
 %%
-%% The following throttling limits apply to Security Hub API operations.
+%% The following throttling limits apply to Security Hub CSPM API operations.
 %%
 %% `BatchEnableStandards' - `RateLimit' of 1 request per
 %% second. `BurstLimit' of 1 request per second.
@@ -8992,6 +8992,7 @@
 %%   <<"CompanyName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IntegrationV2Types">> => list(list(any())()),
+%%   <<"MarketplaceProductId">> => string(),
 %%   <<"MarketplaceUrl">> => string(),
 %%   <<"ProductV2Name">> => string()
 %% }
@@ -10593,16 +10594,16 @@
 %%====================================================================
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
 %% Accepts the invitation to be a member account and be monitored by the
-%% Security Hub administrator
+%% Security Hub CSPM administrator
 %% account that the invitation was sent from.
 %%
 %% This operation is only used by member accounts that are not added through
@@ -10648,8 +10649,8 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 %%
 %% Instead, use `AcceptAdministratorInvitation'.
 %%
-%% The Security Hub console continues to use `AcceptInvitation'. It will
-%% eventually change to use `AcceptAdministratorInvitation'. Any IAM
+%% The Security Hub CSPM console continues to use `AcceptInvitation'. It
+%% will eventually change to use `AcceptAdministratorInvitation'. Any IAM
 %% policies that specifically control access to this function must continue
 %% to use `AcceptInvitation'. You should also add
 %% `AcceptAdministratorInvitation' to your policies to ensure that the
@@ -10657,7 +10658,7 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 %% `AcceptAdministratorInvitation'.
 %%
 %% Accepts the invitation to be a member account and be monitored by the
-%% Security Hub administrator
+%% Security Hub CSPM administrator
 %% account that the invitation was sent from.
 %%
 %% This operation is only used by member accounts that are not added through
@@ -10739,7 +10740,7 @@ batch_delete_automation_rules(Client, Input0, Options0) ->
 %%
 %% For more information, see Security Standards:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
-%% section of the Security Hub User
+%% section of the Security Hub CSPM User
 %% Guide.
 -spec batch_disable_standards(aws_client:aws_client(), batch_disable_standards_request()) ->
     {ok, batch_disable_standards_response(), tuple()} |
@@ -10782,7 +10783,7 @@ batch_disable_standards(Client, Input0, Options0) ->
 %%
 %% For more information, see the Security Standards:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
-%% section of the Security Hub User Guide.
+%% section of the Security Hub CSPM User Guide.
 -spec batch_enable_standards(aws_client:aws_client(), batch_enable_standards_request()) ->
     {ok, batch_enable_standards_response(), tuple()} |
     {error, any()} |
@@ -10854,11 +10855,11 @@ batch_get_automation_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% Returns associations between an Security Hub configuration and a batch of
-%% target accounts, organizational units, or the root.
+%% Returns associations between an Security Hub CSPM configuration and a
+%% batch of target accounts, organizational units, or the root.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region. A configuration
+%% Only the Security Hub CSPM delegated administrator can invoke this
+%% operation from the home Region. A configuration
 %% can refer to a configuration policy or to a self-managed configuration.
 -spec batch_get_configuration_policy_associations(aws_client:aws_client(), batch_get_configuration_policy_associations_request()) ->
     {ok, batch_get_configuration_policy_associations_response(), tuple()} |
@@ -10970,11 +10971,11 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Imports security findings generated by a finding provider into
-%% Security Hub.
+%% Security Hub CSPM.
 %%
 %% This action is requested by the finding provider to import its findings
 %% into
-%% Security Hub.
+%% Security Hub CSPM.
 %%
 %% `BatchImportFindings' must be called by one of the following:
 %%
@@ -10989,8 +10990,8 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 %% from needs to be the same as the `AwsAccountId' attribute for the
 %% finding.
 %%
-%% An Amazon Web Services account that Security Hub has allow-listed for an
-%% official partner
+%% An Amazon Web Services account that Security Hub CSPM has allow-listed for
+%% an official partner
 %% integration. In this case, you can call `BatchImportFindings' from the
 %% allow-listed
 %% account and send findings from different customer accounts in the same
@@ -11002,8 +11003,8 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 %%
 %% After a finding is created, `BatchImportFindings' cannot be used to
 %% update
-%% the following finding fields and objects, which Security Hub customers use
-%% to manage their
+%% the following finding fields and objects, which Security Hub CSPM
+%% customers use to manage their
 %% investigation workflow.
 %%
 %% `Note'
@@ -11100,7 +11101,7 @@ batch_update_automation_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% Used by Security Hub customers to update information about their
+%% Used by Security Hub CSPM customers to update information about their
 %% investigation into one or more findings.
 %%
 %% Requested by administrator accounts or member accounts.
@@ -11130,8 +11131,8 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 %%
 %% If you use this operation to update a finding, your updates don’t affect
 %% the value for the `UpdatedAt' field of the finding.
-%% Also note that it can take several minutes for Security Hub to process
-%% your request and update each finding specified in the request.
+%% Also note that it can take several minutes for Security Hub CSPM to
+%% process your request and update each finding specified in the request.
 %%
 %% You can configure IAM policies to restrict access to fields and field
 %% values.
@@ -11139,7 +11140,7 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 %% findings or change the finding severity.
 %% For more information see Configuring access to BatchUpdateFindings:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 -spec batch_update_findings(aws_client:aws_client(), batch_update_findings_request()) ->
     {ok, batch_update_findings_response(), tuple()} |
     {error, any()} |
@@ -11257,10 +11258,10 @@ batch_update_standards_control_associations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a custom action target in Security Hub.
+%% @doc Creates a custom action target in Security Hub CSPM.
 %%
-%% You can use custom actions on findings and insights in Security Hub to
-%% trigger target actions
+%% You can use custom actions on findings and insights in Security Hub CSPM
+%% to trigger target actions
 %% in Amazon CloudWatch Events.
 -spec create_action_target(aws_client:aws_client(), create_action_target_request()) ->
     {ok, create_action_target_response(), tuple()} |
@@ -11401,7 +11402,7 @@ create_automation_rule_v2(Client, Input0, Options0) ->
 %% @doc
 %% Creates a configuration policy with the defined configuration.
 %%
-%% Only the Security Hub delegated administrator
+%% Only the Security Hub CSPM delegated administrator
 %% can invoke this operation from the home Region.
 -spec create_configuration_policy(aws_client:aws_client(), create_configuration_policy_request()) ->
     {ok, create_configuration_policy_response(), tuple()} |
@@ -11477,9 +11478,9 @@ create_connector_v2(Client, Input0, Options0) ->
 %% from the home Region only.
 %%
 %% For information about how cross-Region aggregation works, see
-%% Understanding cross-Region aggregation in Security Hub:
+%% Understanding cross-Region aggregation in Security Hub CSPM:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 -spec create_finding_aggregator(aws_client:aws_client(), create_finding_aggregator_request()) ->
     {ok, create_finding_aggregator_response(), tuple()} |
     {error, any()} |
@@ -11513,7 +11514,7 @@ create_finding_aggregator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a custom insight in Security Hub.
+%% @doc Creates a custom insight in Security Hub CSPM.
 %%
 %% An insight is a consolidation of findings that relate
 %% to a security issue that requires attention or remediation.
@@ -11553,8 +11554,8 @@ create_insight(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a member association in Security Hub between the specified
-%% accounts and the account
+%% @doc Creates a member association in Security Hub CSPM between the
+%% specified accounts and the account
 %% used to make the request, which is the administrator account.
 %%
 %% If you are integrated with
@@ -11569,13 +11570,13 @@ create_insight(Client, Input0, Options0) ->
 %% only used
 %% in the following cases:
 %%
-%% Security Hub is not configured to automatically add new organization
+%% Security Hub CSPM is not configured to automatically add new organization
 %% accounts.
 %%
-%% The account was disassociated or deleted in Security Hub.
+%% The account was disassociated or deleted in Security Hub CSPM.
 %%
-%% This action can only be used by an account that has Security Hub enabled.
-%% To enable Security Hub, you
+%% This action can only be used by an account that has Security Hub CSPM
+%% enabled. To enable Security Hub CSPM, you
 %% can use the `EnableSecurityHub' operation.
 %%
 %% For accounts that are not organization members, you create the account
@@ -11583,22 +11584,22 @@ create_insight(Client, Input0, Options0) ->
 %% then send an invitation to the member account. To send the invitation, you
 %% use the
 %% `InviteMembers' operation. If the account owner accepts
-%% the invitation, the account becomes a member account in Security Hub.
+%% the invitation, the account becomes a member account in Security Hub CSPM.
 %%
 %% Accounts that are managed using Organizations don't receive an
 %% invitation. They
-%% automatically become a member account in Security Hub.
+%% automatically become a member account in Security Hub CSPM.
 %%
-%% If the organization account does not have Security Hub enabled, then
-%% Security Hub and the default standards are automatically enabled. Note
-%% that Security Hub cannot be enabled automatically for the organization
-%% management account. The organization management account must enable
-%% Security Hub before the administrator account enables it as a member
-%% account.
+%% If the organization account does not have Security Hub CSPM enabled, then
+%% Security Hub CSPM and the default standards are automatically enabled.
+%% Note that Security Hub CSPM cannot be enabled automatically for the
+%% organization management account. The organization management account must
+%% enable Security Hub CSPM before the administrator account enables it as a
+%% member account.
 %%
-%% For organization accounts that already have Security Hub enabled, Security
-%% Hub does not make any other changes to those accounts. It does not change
-%% their enabled standards or controls.
+%% For organization accounts that already have Security Hub CSPM enabled,
+%% Security Hub CSPM does not make any other changes to those accounts. It
+%% does not change their enabled standards or controls.
 %%
 %% A permissions policy is added that permits the administrator account to
 %% view the findings
@@ -11676,15 +11677,15 @@ create_ticket_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
-%% Declines invitations to become a Security Hub member account.
+%% Declines invitations to become a Security Hub CSPM member account.
 %%
 %% A prospective member account uses this operation to decline an invitation
 %% to become a member.
@@ -11725,7 +11726,7 @@ decline_invitations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a custom action target from Security Hub.
+%% @doc Deletes a custom action target from Security Hub CSPM.
 %%
 %% Deleting a custom action target does not affect any findings or insights
 %% that were
@@ -11834,7 +11835,8 @@ delete_automation_rule_v2(Client, Identifier, Input0, Options0) ->
 %% @doc
 %% Deletes a configuration policy.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
+%% Only the Security Hub CSPM delegated administrator can invoke this
+%% operation
 %% from the home Region. For the deletion to succeed, you must first
 %% disassociate a configuration policy from target accounts,
 %% organizational units, or the root by invoking the
@@ -11985,17 +11987,17 @@ delete_insight(Client, InsightArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
-%% Deletes invitations to become a Security Hub member account.
+%% Deletes invitations to become a Security Hub CSPM member account.
 %%
-%% A Security Hub administrator account can use this operation to delete
+%% A Security Hub CSPM administrator account can use this operation to delete
 %% invitations sent to one or more prospective member accounts.
 %%
 %% This operation is only used to delete invitations that are sent to
@@ -12035,7 +12037,7 @@ delete_invitations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified member accounts from Security Hub.
+%% @doc Deletes the specified member accounts from Security Hub CSPM.
 %%
 %% You can invoke this API only to delete accounts that became members
 %% through invitation. You can't invoke this
@@ -12073,8 +12075,8 @@ delete_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the custom action targets in Security Hub in your
-%% account.
+%% @doc Returns a list of the custom action targets in Security Hub CSPM in
+%% your account.
 -spec describe_action_targets(aws_client:aws_client(), describe_action_targets_request()) ->
     {ok, describe_action_targets_response(), tuple()} |
     {error, any()} |
@@ -12109,7 +12111,7 @@ describe_action_targets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about the Hub resource in your account, including the
-%% `HubArn' and the time when you enabled Security Hub.
+%% `HubArn' and the time when you enabled Security Hub CSPM.
 -spec describe_hub(aws_client:aws_client()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
@@ -12151,10 +12153,10 @@ describe_hub(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the way your organization is configured in
-%% Security Hub.
+%% Security Hub CSPM.
 %%
 %% Only the
-%% Security Hub administrator account can invoke this operation.
+%% Security Hub CSPM administrator account can invoke this operation.
 -spec describe_organization_configuration(aws_client:aws_client()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
@@ -12191,7 +12193,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about product integrations in Security Hub.
+%% @doc Returns information about product integrations in Security Hub CSPM.
 %%
 %% You can optionally provide an integration ARN. If you provide an
 %% integration ARN, then
@@ -12321,7 +12323,7 @@ describe_security_hub_v2(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the available standards in Security Hub.
+%% @doc Returns a list of the available standards in Security Hub CSPM.
 %%
 %% For each standard, the results include the standard ARN, the name, and a
 %% description.
@@ -12415,10 +12417,12 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Disables the integration of the specified product with Security Hub.
+%% @doc Disables the integration of the specified product with Security Hub
+%% CSPM.
 %%
 %% After the integration is
-%% disabled, findings from that product are no longer sent to Security Hub.
+%% disabled, findings from that product are no longer sent to Security Hub
+%% CSPM.
 -spec disable_import_findings_for_product(aws_client:aws_client(), binary() | list(), disable_import_findings_for_product_request()) ->
     {ok, disable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
@@ -12452,7 +12456,7 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disables a Security Hub administrator account.
+%% @doc Disables a Security Hub CSPM administrator account.
 %%
 %% Can only be called by the organization
 %% management account.
@@ -12489,18 +12493,18 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disables Security Hub in your account only in the current Amazon Web
-%% Services Region.
+%% @doc Disables Security Hub CSPM in your account only in the current Amazon
+%% Web Services Region.
 %%
-%% To disable Security Hub in all
+%% To disable Security Hub CSPM in all
 %% Regions, you must submit one request per Region where you have enabled
-%% Security Hub.
+%% Security Hub CSPM.
 %%
-%% You can't disable Security Hub in an account that is currently the
-%% Security Hub administrator.
+%% You can't disable Security Hub CSPM in an account that is currently
+%% the Security Hub CSPM administrator.
 %%
-%% When you disable Security Hub, your existing findings and insights and any
-%% Security Hub configuration
+%% When you disable Security Hub CSPM, your existing findings and insights
+%% and any Security Hub CSPM configuration
 %% settings are deleted after 90 days and cannot be recovered. Any standards
 %% that were enabled
 %% are disabled, and your administrator and member account associations are
@@ -12508,7 +12512,7 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %%
 %% If you want to save your existing findings, you must export them before
 %% you disable
-%% Security Hub.
+%% Security Hub CSPM.
 -spec disable_security_hub(aws_client:aws_client(), disable_security_hub_request()) ->
     {ok, disable_security_hub_response(), tuple()} |
     {error, any()} |
@@ -12577,7 +12581,7 @@ disable_security_hub_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the current Security Hub member account from the
+%% @doc Disassociates the current Security Hub CSPM member account from the
 %% associated administrator
 %% account.
 %%
@@ -12622,7 +12626,7 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %%
 %% Instead, use `DisassociateFromAdministratorAccount'.
 %%
-%% The Security Hub console continues to use
+%% The Security Hub CSPM console continues to use
 %% `DisassociateFromMasterAccount'. It will eventually change to use
 %% `DisassociateFromAdministratorAccount'. Any IAM policies that
 %% specifically control access to this function must continue to use
@@ -12631,8 +12635,8 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %% the correct permissions are in place after the console begins to use
 %% `DisassociateFromAdministratorAccount'.
 %%
-%% Disassociates the current Security Hub member account from the associated
-%% administrator
+%% Disassociates the current Security Hub CSPM member account from the
+%% associated administrator
 %% account.
 %%
 %% This operation is only used by accounts that are not part of an
@@ -12711,14 +12715,14 @@ disassociate_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables the integration of a partner product with Security Hub.
+%% @doc Enables the integration of a partner product with Security Hub CSPM.
 %%
 %% Integrated products send
-%% findings to Security Hub.
+%% findings to Security Hub CSPM.
 %%
 %% When you enable a product integration, a permissions policy that grants
 %% permission for
-%% the product to send findings to Security Hub is applied.
+%% the product to send findings to Security Hub CSPM is applied.
 -spec enable_import_findings_for_product(aws_client:aws_client(), enable_import_findings_for_product_request()) ->
     {ok, enable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
@@ -12752,7 +12756,7 @@ enable_import_findings_for_product(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Designates the Security Hub administrator account for an
+%% @doc Designates the Security Hub CSPM administrator account for an
 %% organization.
 %%
 %% Can only be called by
@@ -12790,16 +12794,16 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables Security Hub for your account in the current Region or the
-%% Region you specify in the
+%% @doc Enables Security Hub CSPM for your account in the current Region or
+%% the Region you specify in the
 %% request.
 %%
-%% When you enable Security Hub, you grant to Security Hub the permissions
-%% necessary to gather findings
-%% from other services that are integrated with Security Hub.
+%% When you enable Security Hub CSPM, you grant to Security Hub CSPM the
+%% permissions necessary to gather findings
+%% from other services that are integrated with Security Hub CSPM.
 %%
-%% When you use the `EnableSecurityHub' operation to enable Security Hub,
-%% you also
+%% When you use the `EnableSecurityHub' operation to enable Security Hub
+%% CSPM, you also
 %% automatically enable the following standards:
 %%
 %% Center for Internet Security (CIS) Amazon Web Services Foundations
@@ -12812,13 +12816,13 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% To opt out of automatically enabled standards, set
 %% `EnableDefaultStandards' to `false'.
 %%
-%% After you enable Security Hub, to enable a standard, use the
+%% After you enable Security Hub CSPM, to enable a standard, use the
 %% `BatchEnableStandards' operation. To disable a standard, use the
 %% `BatchDisableStandards' operation.
 %%
 %% To learn more, see the setup information:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 -spec enable_security_hub(aws_client:aws_client(), enable_security_hub_request()) ->
     {ok, enable_security_hub_response(), tuple()} |
     {error, any()} |
@@ -12887,8 +12891,8 @@ enable_security_hub_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provides the details for the Security Hub administrator account for
-%% the current member account.
+%% @doc Provides the details for the Security Hub CSPM administrator account
+%% for the current member account.
 %%
 %% Can be used by both member accounts that are managed using Organizations
 %% and accounts that were
@@ -13006,7 +13010,7 @@ get_automation_rule_v2(Client, Identifier, QueryMap, HeadersMap, Options0)
 %% @doc
 %% Provides information about a configuration policy.
 %%
-%% Only the Security Hub delegated administrator can invoke
+%% Only the Security Hub CSPM delegated administrator can invoke
 %% this operation from the home Region.
 -spec get_configuration_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_policy_response(), tuple()} |
@@ -13050,7 +13054,7 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
 %%
 %% The
 %% configuration can be a configuration policy or self-managed behavior. Only
-%% the Security Hub delegated administrator can
+%% the Security Hub CSPM delegated administrator can
 %% invoke this operation from the home Region.
 -spec get_configuration_policy_association(aws_client:aws_client(), get_configuration_policy_association_request()) ->
     {ok, get_configuration_policy_association_response(), tuple()} |
@@ -13200,7 +13204,7 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% Returns the history of a Security Hub finding.
+%% Returns the history of a Security Hub CSPM finding.
 %%
 %% The history includes changes made to any fields in
 %% the Amazon Web Services Security Finding Format (ASFF) except top-level
@@ -13402,7 +13406,7 @@ get_findings_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the results of the Security Hub insight specified by the
+%% @doc Lists the results of the Security Hub CSPM insight specified by the
 %% insight ARN.
 -spec get_insight_results(aws_client:aws_client(), binary() | list()) ->
     {ok, get_insight_results_response(), tuple()} |
@@ -13475,16 +13479,16 @@ get_insights(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
-%% Returns the count of all Security Hub membership invitations that were
-%% sent to the
+%% Returns the count of all Security Hub CSPM membership invitations that
+%% were sent to the
 %% calling member account, not including the currently accepted invitation.
 -spec get_invitations_count(aws_client:aws_client()) ->
     {ok, get_invitations_count_response(), tuple()} |
@@ -13526,15 +13530,16 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Instead, use `GetAdministratorAccount'.
 %%
-%% The Security Hub console continues to use `GetMasterAccount'. It will
-%% eventually change to use `GetAdministratorAccount'. Any IAM policies
-%% that specifically control access to this function must continue to use
-%% `GetMasterAccount'. You should also add `GetAdministratorAccount'
-%% to your policies to ensure that the correct permissions are in place after
-%% the console begins to use `GetAdministratorAccount'.
+%% The Security Hub CSPM console continues to use `GetMasterAccount'. It
+%% will eventually change to use `GetAdministratorAccount'. Any IAM
+%% policies that specifically control access to this function must continue
+%% to use `GetMasterAccount'. You should also add
+%% `GetAdministratorAccount' to your policies to ensure that the correct
+%% permissions are in place after the console begins to use
+%% `GetAdministratorAccount'.
 %%
-%% Provides the details for the Security Hub administrator account for the
-%% current member account.
+%% Provides the details for the Security Hub CSPM administrator account for
+%% the current member account.
 %%
 %% Can be used by both member accounts that are managed using Organizations
 %% and accounts that were
@@ -13575,12 +13580,12 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the details for the Security Hub member accounts for the
+%% @doc Returns the details for the Security Hub CSPM member accounts for the
 %% specified account IDs.
 %%
-%% An administrator account can be either the delegated Security Hub
+%% An administrator account can be either the delegated Security Hub CSPM
 %% administrator account for an
-%% organization or an administrator account that enabled Security Hub
+%% organization or an administrator account that enabled Security Hub CSPM
 %% manually.
 %%
 %% The results include both member accounts that are managed using
@@ -13771,16 +13776,16 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
 %% Invites other Amazon Web Services accounts to become member accounts for
-%% the Security Hub administrator account that
+%% the Security Hub CSPM administrator account that
 %% the invitation is sent from.
 %%
 %% This operation is only used to invite accounts that don't belong to an
@@ -13788,10 +13793,11 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap,
 %% Organization accounts don't receive invitations.
 %%
 %% Before you can use this action to invite a member, you must first use the
-%% `CreateMembers' action to create the member account in Security Hub.
+%% `CreateMembers' action to create the member account in Security Hub
+%% CSPM.
 %%
-%% When the account owner enables Security Hub and accepts the invitation to
-%% become a member
+%% When the account owner enables Security Hub CSPM and accepts the
+%% invitation to become a member
 %% account, the administrator account can view the findings generated in the
 %% member account.
 -spec invite_members(aws_client:aws_client(), invite_members_request()) ->
@@ -13956,7 +13962,7 @@ list_automation_rules_v2(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% Lists the configuration policies that the Security Hub delegated
+%% Lists the configuration policies that the Security Hub CSPM delegated
 %% administrator has created for your
 %% organization.
 %%
@@ -14008,8 +14014,8 @@ list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
 %% policies and self-managed behavior.
 %%
 %% Only the
-%% Security Hub delegated administrator can invoke this operation from the
-%% home Region.
+%% Security Hub CSPM delegated administrator can invoke this operation from
+%% the home Region.
 -spec list_configuration_policy_associations(aws_client:aws_client(), list_configuration_policy_associations_request()) ->
     {ok, list_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
@@ -14090,7 +14096,7 @@ list_connectors_v2(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all findings-generating solutions (products) that you are
 %% subscribed to receive
-%% findings from in Security Hub.
+%% findings from in Security Hub CSPM.
 -spec list_enabled_products_for_import(aws_client:aws_client()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
@@ -14179,15 +14185,15 @@ list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% We recommend using Organizations instead of Security Hub invitations to
-%% manage your member accounts.
+%% We recommend using Organizations instead of Security Hub CSPM invitations
+%% to manage your member accounts.
 %%
-%% For information, see Managing Security Hub administrator and member
+%% For information, see Managing Security Hub CSPM administrator and member
 %% accounts with Organizations:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html
-%% in the Security Hub User Guide.
+%% in the Security Hub CSPM User Guide.
 %%
-%% Lists all Security Hub membership invitations that were sent to the
+%% Lists all Security Hub CSPM membership invitations that were sent to the
 %% calling account.
 %%
 %% Only accounts that are managed by invitation can use this operation.
@@ -14235,7 +14241,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current Security Hub
-%% administrator
+%% CSPM administrator
 %% account.
 %%
 %% The results include both member accounts that belong to an organization
@@ -14283,7 +14289,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Security Hub administrator accounts.
+%% @doc Lists the Security Hub CSPM administrator accounts.
 %%
 %% Can only be called by the organization
 %% management account.
@@ -14500,7 +14506,7 @@ register_connector_v2(Client, Input0, Options0) ->
 %%
 %% The target can be
 %% associated with a configuration policy or self-managed behavior. Only the
-%% Security Hub delegated administrator can
+%% Security Hub CSPM delegated administrator can
 %% invoke this operation from the home Region.
 -spec start_configuration_policy_association(aws_client:aws_client(), start_configuration_policy_association_request()) ->
     {ok, start_configuration_policy_association_response(), tuple()} |
@@ -14545,7 +14551,7 @@ start_configuration_policy_association(Client, Input0, Options0) ->
 %% configuration to inherit, the target retains its settings but becomes a
 %% self-managed account. A target can be disassociated from
 %% a configuration policy or self-managed behavior. Only the Security Hub
-%% delegated administrator can invoke this
+%% CSPM delegated administrator can invoke this
 %% operation from the home Region.
 -spec start_configuration_policy_disassociation(aws_client:aws_client(), start_configuration_policy_disassociation_request()) ->
     {ok, start_configuration_policy_disassociation_response(), tuple()} |
@@ -14650,7 +14656,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name and description of a custom action target in
-%% Security Hub.
+%% Security Hub CSPM.
 -spec update_action_target(aws_client:aws_client(), binary() | list(), update_action_target_request()) ->
     {ok, update_action_target_response(), tuple()} |
     {error, any()} |
@@ -14755,7 +14761,7 @@ update_automation_rule_v2(Client, Identifier, Input0, Options0) ->
 %% @doc
 %% Updates a configuration policy.
 %%
-%% Only the Security Hub delegated
+%% Only the Security Hub CSPM delegated
 %% administrator can invoke this operation from the home Region.
 -spec update_configuration_policy(aws_client:aws_client(), binary() | list(), update_configuration_policy_request()) ->
     {ok, update_configuration_policy_response(), tuple()} |
@@ -14874,7 +14880,7 @@ update_finding_aggregator(Client, Input0, Options0) ->
 %% the `BatchUpdateFindings' operation.
 %%
 %% The `UpdateFindings' operation updates the `Note' and
-%% `RecordState' of the Security Hub aggregated
+%% `RecordState' of the Security Hub CSPM aggregated
 %% findings that the filter attributes specify. Any member account that can
 %% view the finding
 %% can also see the update to the finding.
@@ -14882,7 +14888,7 @@ update_finding_aggregator(Client, Input0, Options0) ->
 %% Finding updates made with `UpdateFindings' aren't persisted if the
 %% same finding is later updated by the
 %% finding provider through the `BatchImportFindings' operation. In
-%% addition, Security Hub doesn't
+%% addition, Security Hub CSPM doesn't
 %% record updates made with `UpdateFindings' in the finding history.
 -spec update_findings(aws_client:aws_client(), update_findings_request()) ->
     {ok, update_findings_response(), tuple()} |
@@ -14917,8 +14923,8 @@ update_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Security Hub insight identified by the specified insight
-%% ARN.
+%% @doc Updates the Security Hub CSPM insight identified by the specified
+%% insight ARN.
 -spec update_insight(aws_client:aws_client(), binary() | list(), update_insight_request()) ->
     {ok, update_insight_response(), tuple()} |
     {error, any()} |
@@ -14952,10 +14958,10 @@ update_insight(Client, InsightArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of your organization in Security Hub.
+%% @doc Updates the configuration of your organization in Security Hub CSPM.
 %%
 %% Only the
-%% Security Hub administrator account can invoke this operation.
+%% Security Hub CSPM administrator account can invoke this operation.
 -spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
@@ -15024,7 +15030,7 @@ update_security_control(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates configuration options for Security Hub.
+%% @doc Updates configuration options for Security Hub CSPM.
 -spec update_security_hub_configuration(aws_client:aws_client(), update_security_hub_configuration_request()) ->
     {ok, update_security_hub_configuration_response(), tuple()} |
     {error, any()} |

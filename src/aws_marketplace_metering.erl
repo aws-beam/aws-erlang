@@ -57,7 +57,8 @@
 %%
 %% Resolves the registration token that the buyer submits through the browser
 %% during the registration process. Obtains a `CustomerIdentifier' along
-%% with the `CustomerAWSAccountId' and `ProductCode'.
+%% with the `CustomerAWSAccountId', `ProductCode', and
+%% `LicenseArn'.
 %%
 %% Called from: SaaS application during the registration process
 %%
@@ -138,7 +139,7 @@
 
 %% Example:
 %% batch_meter_usage_request() :: #{
-%%   <<"ProductCode">> := string(),
+%%   <<"ProductCode">> => string(),
 %%   <<"UsageRecords">> := list(usage_record())
 %% }
 -type batch_meter_usage_request() :: #{binary() => any()}.
@@ -197,6 +198,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_endpoint_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_license_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_license_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_product_code_exception() :: #{
@@ -289,6 +296,7 @@
 %% resolve_customer_result() :: #{
 %%   <<"CustomerAWSAccountId">> => string(),
 %%   <<"CustomerIdentifier">> => string(),
+%%   <<"LicenseArn">> => string(),
 %%   <<"ProductCode">> => string()
 %% }
 -type resolve_customer_result() :: #{binary() => any()}.
@@ -324,6 +332,7 @@
 %%   <<"CustomerAWSAccountId">> => string(),
 %%   <<"CustomerIdentifier">> => string(),
 %%   <<"Dimension">> => string(),
+%%   <<"LicenseArn">> => string(),
 %%   <<"Quantity">> => integer(),
 %%   <<"Timestamp">> => non_neg_integer(),
 %%   <<"UsageAllocations">> => list(usage_allocation())
@@ -345,6 +354,7 @@
     invalid_usage_allocations_exception() | 
     invalid_tag_exception() | 
     invalid_product_code_exception() | 
+    invalid_license_exception() | 
     invalid_customer_identifier_exception() | 
     internal_service_error_exception() | 
     disabled_api_exception().
@@ -384,15 +394,16 @@
 %%====================================================================
 
 %% @doc
+%% Amazon Web Services Marketplace is introducing Concurrent Agreements,
+%% enabling buyers to make multiple purchases per Amazon Web Services
+%% account.
 %%
-%% The `CustomerIdentifier' and `CustomerAWSAccountID' are mutually
-%% exclusive parameters.
-%%
-%% You must use one or the other, but not both in the same API request.
-%% For new implementations, we recommend using the
-%% `CustomerAWSAccountID'. Your current integration will continue to
-%% work. When updating your implementation, consider migrating to
-%% `CustomerAWSAccountID' for improved integration.
+%% Starting June 1, 2026, new SaaS products must use
+%% `CustomerAWSAccountId' (instead of `CustomerIdentifier'),
+%% `LicenseArn' (instead of `ProductCode') to support this feature.
+%% Existing integrations will continue to work. Review the new integration
+%% for Concurrent Agreements here:
+%% https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements.
 %%
 %% To post metering records for customers, SaaS applications call
 %% `BatchMeterUsage', which is used for metering SaaS flexible
@@ -612,7 +623,7 @@ register_usage(Client, Input, Options)
 %% submits a registration token through their browser. The registration token
 %% is resolved
 %% through this API to obtain a `CustomerIdentifier' along with the
-%% `CustomerAWSAccountId' and `ProductCode'.
+%% `CustomerAWSAccountId', `ProductCode', and `LicenseArn'.
 %%
 %% To successfully resolve the token, the API must be called from the account
 %% that was used to publish the SaaS

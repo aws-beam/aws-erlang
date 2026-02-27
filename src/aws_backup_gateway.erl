@@ -92,6 +92,7 @@
 
 %% Example:
 %% gateway_details() :: #{
+%%   <<"DeprecationDate">> => non_neg_integer(),
 %%   <<"GatewayArn">> => string(),
 %%   <<"GatewayDisplayName">> => string(),
 %%   <<"GatewayType">> => string(),
@@ -99,6 +100,7 @@
 %%   <<"LastSeenTime">> => non_neg_integer(),
 %%   <<"MaintenanceStartTime">> => maintenance_start_time(),
 %%   <<"NextUpdateAvailabilityTime">> => non_neg_integer(),
+%%   <<"SoftwareVersion">> => string(),
 %%   <<"VpcEndpoint">> => string()
 %% }
 -type gateway_details() :: #{binary() => any()}.
@@ -808,8 +810,8 @@ get_hypervisor(Client, Input, Options)
 %%
 %% A hypervisor property mapping displays the relationship of entity
 %% properties
-%% available from the on-premises hypervisor to the properties available in
-%% Amazon Web Services.
+%% available from the hypervisor to the properties available in Amazon Web
+%% Services.
 -spec get_hypervisor_property_mappings(aws_client:aws_client(), get_hypervisor_property_mappings_input()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
@@ -955,8 +957,8 @@ put_bandwidth_rate_limit_schedule(Client, Input, Options)
 %%
 %% A hypervisor property mapping displays the relationship of entity
 %% properties
-%% available from the on-premises hypervisor to the properties available in
-%% Amazon Web Services.
+%% available from the hypervisor to the properties available in Amazon Web
+%% Services.
 -spec put_hypervisor_property_mappings(aws_client:aws_client(), put_hypervisor_property_mappings_input()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
