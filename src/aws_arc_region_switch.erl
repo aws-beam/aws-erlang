@@ -509,6 +509,7 @@
 %%   <<"nextToken">> => [string()],
 %%   <<"plan">> => plan(),
 %%   <<"planArn">> => string(),
+%%   <<"recoveryExecutionId">> => [string()],
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"stepStates">> => list(step_state()),
 %%   <<"updatedAt">> => [non_neg_integer()],
@@ -642,6 +643,7 @@
 %%   <<"executionState">> => list(any()),
 %%   <<"mode">> => list(any()),
 %%   <<"planArn">> => string(),
+%%   <<"recoveryExecutionId">> => [string()],
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"version">> => [string()]
@@ -655,6 +657,7 @@
 %%   <<"latestVersion">> => [string()],
 %%   <<"mode">> => list(any()),
 %%   <<"planArn">> := string(),
+%%   <<"recoveryExecutionId">> => string(),
 %%   <<"targetRegion">> := [string()]
 %% }
 -type start_plan_execution_request() :: #{binary() => any()}.
@@ -774,6 +777,15 @@
 -type update_plan_execution_request() :: #{binary() => any()}.
 
 %% Example:
+%% rds_create_cross_region_replica_configuration() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"dbInstanceArnMap">> => map(),
+%%   <<"externalId">> => [string()],
+%%   <<"timeoutMinutes">> => [integer()]
+%% }
+-type rds_create_cross_region_replica_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% abbreviated_plan() :: #{
 %%   <<"activePlanExecution">> => string(),
 %%   <<"arn">> => string(),
@@ -795,6 +807,15 @@
 
 %% }
 -type approve_plan_execution_step_response() :: #{binary() => any()}.
+
+%% Example:
+%% rds_promote_read_replica_configuration() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"dbInstanceArnMap">> => map(),
+%%   <<"externalId">> => [string()],
+%%   <<"timeoutMinutes">> => [integer()]
+%% }
+-type rds_promote_read_replica_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% custom_action_lambda_configuration() :: #{

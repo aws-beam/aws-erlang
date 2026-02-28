@@ -1221,6 +1221,7 @@
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
+%%   <<"scalingPolicy">> => compute_scaling_policy(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map(),
@@ -1838,6 +1839,13 @@
 
 
 %% Example:
+%% compute_scaling_policy() :: #{
+%%   <<"minScaleDownDelayMinutes">> => integer()
+%% }
+-type compute_scaling_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecs_properties_detail() :: #{
 %%   <<"taskProperties">> => list(ecs_task_details())
 %% }
@@ -1953,6 +1961,7 @@
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
+%%   <<"scalingPolicy">> => compute_scaling_policy(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"spotIamFleetRole">> => string(),
 %%   <<"subnets">> => list(string()),

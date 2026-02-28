@@ -330,6 +330,7 @@
 %%   <<"MaxAvailableProfileObjectCount">> => integer(),
 %%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
+%%   <<"SourcePriority">> => integer(),
 %%   <<"Tags">> => map()
 %% }
 -type list_profile_object_type_item() :: #{binary() => any()}.
@@ -408,6 +409,7 @@
 %%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourcePriority">> => integer(),
 %%   <<"Tags">> => map(),
 %%   <<"TemplateId">> => string()
 %% }
@@ -615,6 +617,7 @@
 %%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourcePriority">> => integer(),
 %%   <<"Tags">> => map(),
 %%   <<"TemplateId">> => string()
 %% }
@@ -2574,6 +2577,7 @@
 %%   <<"Keys">> => map(),
 %%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourcePriority">> => integer(),
 %%   <<"Tags">> => map(),
 %%   <<"TemplateId">> => string()
 %% }

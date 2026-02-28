@@ -248,6 +248,7 @@
 %%   <<"permissionArns">> => list(string()),
 %%   <<"principals">> => list(string()),
 %%   <<"resourceArns">> => list(string()),
+%%   <<"resourceShareConfiguration">> => resource_share_configuration(),
 %%   <<"sources">> => list(string()),
 %%   <<"tags">> => list(tag())
 %% }
@@ -405,6 +406,13 @@
 %%   <<"message">> => string()
 %% }
 -type permission_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_share_configuration() :: #{
+%%   <<"retainSharingOnAccountLeaveOrganization">> => boolean()
+%% }
+-type resource_share_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -666,6 +674,7 @@
 %%   <<"name">> => string(),
 %%   <<"owningAccountId">> => string(),
 %%   <<"resourceShareArn">> => string(),
+%%   <<"resourceShareConfiguration">> => resource_share_configuration(),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string(),
 %%   <<"tags">> => list(tag())

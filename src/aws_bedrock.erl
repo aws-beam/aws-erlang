@@ -1467,6 +1467,7 @@
 %%   <<"inputDataConfig">> := list(),
 %%   <<"jobName">> := string(),
 %%   <<"modelId">> := string(),
+%%   <<"modelInvocationType">> => list(any()),
 %%   <<"outputDataConfig">> := list(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => list(tag()),
@@ -2534,6 +2535,10 @@
 
 %% Example:
 %% foundation_model_lifecycle() :: #{
+%%   <<"endOfLifeTime">> => non_neg_integer(),
+%%   <<"legacyTime">> => non_neg_integer(),
+%%   <<"publicExtendedAccessTime">> => non_neg_integer(),
+%%   <<"startOfLifeTime">> => non_neg_integer(),
 %%   <<"status">> => list(any())
 %% }
 -type foundation_model_lifecycle() :: #{binary() => any()}.
@@ -3600,6 +3605,7 @@
 %%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"message">> => string(),
 %%   <<"modelId">> => string(),
+%%   <<"modelInvocationType">> => list(any()),
 %%   <<"outputDataConfig">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -3871,6 +3877,7 @@
 %%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"message">> => string(),
 %%   <<"modelId">> => string(),
+%%   <<"modelInvocationType">> => list(any()),
 %%   <<"outputDataConfig">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),

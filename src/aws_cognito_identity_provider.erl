@@ -62,6 +62,8 @@
 
 -export([add_custom_attributes/2,
          add_custom_attributes/3,
+         add_user_pool_client_secret/2,
+         add_user_pool_client_secret/3,
          admin_add_user_to_group/2,
          admin_add_user_to_group/3,
          admin_confirm_sign_up/2,
@@ -162,6 +164,8 @@
          delete_user_pool/3,
          delete_user_pool_client/2,
          delete_user_pool_client/3,
+         delete_user_pool_client_secret/2,
+         delete_user_pool_client_secret/3,
          delete_user_pool_domain/2,
          delete_user_pool_domain/3,
          delete_web_authn_credential/2,
@@ -232,6 +236,8 @@
          list_terms/3,
          list_user_import_jobs/2,
          list_user_import_jobs/3,
+         list_user_pool_client_secrets/2,
+         list_user_pool_client_secrets/3,
          list_user_pool_clients/2,
          list_user_pool_clients/3,
          list_user_pools/2,
@@ -1142,6 +1148,13 @@
 -type admin_get_user_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_user_pool_client_secrets_response() :: #{
+%%   <<"ClientSecrets">> => list(client_secret_descriptor_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_pool_client_secrets_response() :: #{binary() => any()}.
+
+%% Example:
 %% confirm_device_request() :: #{
 %%   <<"AccessToken">> := string(),
 %%   <<"DeviceKey">> := string(),
@@ -1174,6 +1187,14 @@
 %%   <<"TermsName">> => string()
 %% }
 -type terms_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_client_secret_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecretId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_client_secret_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_group_request() :: #{
@@ -1212,6 +1233,14 @@
 %%   <<"Username">> := string()
 %% }
 -type admin_update_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_client_secrets_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_client_secrets_request() :: #{binary() => any()}.
 
 %% Example:
 %% admin_enable_user_response() :: #{
@@ -1274,6 +1303,12 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type get_identity_provider_by_identifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_client_secret_response() :: #{
+
+%% }
+-type delete_user_pool_client_secret_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_set_user_mfa_preference_response() :: #{
@@ -1590,6 +1625,14 @@
 -type create_user_pool_client_response() :: #{binary() => any()}.
 
 %% Example:
+%% client_secret_descriptor_type() :: #{
+%%   <<"ClientSecretCreateDate">> => non_neg_integer(),
+%%   <<"ClientSecretId">> => string(),
+%%   <<"ClientSecretValue">> => string()
+%% }
+-type client_secret_descriptor_type() :: #{binary() => any()}.
+
+%% Example:
 %% get_tokens_from_refresh_token_request() :: #{
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
@@ -1676,6 +1719,7 @@
 %%   <<"AuthSessionValidity">> => integer(),
 %%   <<"CallbackURLs">> => list(string()),
 %%   <<"ClientName">> := string(),
+%%   <<"ClientSecret">> => string(),
 %%   <<"DefaultRedirectURI">> => string(),
 %%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
 %%   <<"EnableTokenRevocation">> => boolean(),
@@ -2039,6 +2083,12 @@
 -type initiate_auth_response() :: #{binary() => any()}.
 
 %% Example:
+%% add_user_pool_client_secret_response() :: #{
+%%   <<"ClientSecretDescriptor">> => client_secret_descriptor_type()
+%% }
+-type add_user_pool_client_secret_response() :: #{binary() => any()}.
+
+%% Example:
 %% web_authn_credential_description() :: #{
 %%   <<"AuthenticatorAttachment">> => string(),
 %%   <<"AuthenticatorTransports">> => list(string()),
@@ -2144,6 +2194,12 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type delete_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% user_lambda_validation_exception() :: #{
@@ -2311,6 +2367,12 @@
 
 %% }
 -type confirm_forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% log_configuration_type() :: #{
@@ -2492,6 +2554,14 @@
 %%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
 %% }
 -type resend_confirmation_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_user_pool_client_secret_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type add_user_pool_client_secret_request() :: #{binary() => any()}.
 
 %% Example:
 %% admin_reset_user_password_request() :: #{
@@ -3168,6 +3238,14 @@
     too_many_requests_exception() | 
     user_import_in_progress_exception().
 
+-type add_user_pool_client_secret_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type admin_add_user_to_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -3473,6 +3551,7 @@
     not_authorized_exception() | 
     web_authn_credential_not_supported_exception() | 
     web_authn_client_mismatch_exception() | 
+    password_reset_required_exception() | 
     too_many_requests_exception() | 
     web_authn_relying_party_mismatch_exception() | 
     forbidden_exception() | 
@@ -3695,6 +3774,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type delete_user_pool_client_secret_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type delete_user_pool_domain_errors() ::
     internal_error_exception() | 
     concurrent_modification_exception() | 
@@ -3707,6 +3793,7 @@
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    password_reset_required_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -4007,6 +4094,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type list_user_pool_client_secrets_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type list_user_pool_clients_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -4039,6 +4133,7 @@
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    password_reset_required_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
 
@@ -4182,6 +4277,7 @@
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     web_authn_configuration_missing_exception() | 
+    password_reset_required_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
 
@@ -4393,6 +4489,27 @@ add_custom_attributes(Client, Input)
 add_custom_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomAttributes">>, Input, Options).
+
+%% @doc Creates a new client secret for an existing confidential user pool
+%% app client.
+%%
+%% Supports up to 2 active secrets per app client for zero-downtime
+%% credential rotation workflows.
+-spec add_user_pool_client_secret(aws_client:aws_client(), add_user_pool_client_secret_request()) ->
+    {ok, add_user_pool_client_secret_response(), tuple()} |
+    {error, any()} |
+    {error, add_user_pool_client_secret_errors(), tuple()}.
+add_user_pool_client_secret(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_user_pool_client_secret(Client, Input, []).
+
+-spec add_user_pool_client_secret(aws_client:aws_client(), add_user_pool_client_secret_request(), proplists:proplist()) ->
+    {ok, add_user_pool_client_secret_response(), tuple()} |
+    {error, any()} |
+    {error, add_user_pool_client_secret_errors(), tuple()}.
+add_user_pool_client_secret(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddUserPoolClientSecret">>, Input, Options).
 
 %% @doc Adds a user to a group.
 %%
@@ -6626,6 +6743,25 @@ delete_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolClient">>, Input, Options).
 
+%% @doc Deletes a specific client secret from a user pool app client.
+%%
+%% You cannot delete the last remaining secret for an app client.
+-spec delete_user_pool_client_secret(aws_client:aws_client(), delete_user_pool_client_secret_request()) ->
+    {ok, delete_user_pool_client_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_pool_client_secret_errors(), tuple()}.
+delete_user_pool_client_secret(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_user_pool_client_secret(Client, Input, []).
+
+-spec delete_user_pool_client_secret(aws_client:aws_client(), delete_user_pool_client_secret_request(), proplists:proplist()) ->
+    {ok, delete_user_pool_client_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_pool_client_secret_errors(), tuple()}.
+delete_user_pool_client_secret(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteUserPoolClientSecret">>, Input, Options).
+
 %% @doc Given a user pool ID and domain identifier, deletes a user pool
 %% domain.
 %%
@@ -7866,6 +8002,29 @@ list_user_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserImportJobs">>, Input, Options).
 
+%% @doc Lists all client secrets associated with a user pool app client.
+%%
+%% Returns metadata about the secrets. The response does not include
+%% pagination tokens as there are only 2 secrets at any given time and we
+%% return both with every ListUserPoolClientSecrets call. For security
+%% reasons, the response never reveals the actual secret value in
+%% ClientSecretValue.
+-spec list_user_pool_client_secrets(aws_client:aws_client(), list_user_pool_client_secrets_request()) ->
+    {ok, list_user_pool_client_secrets_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_pool_client_secrets_errors(), tuple()}.
+list_user_pool_client_secrets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_user_pool_client_secrets(Client, Input, []).
+
+-spec list_user_pool_client_secrets(aws_client:aws_client(), list_user_pool_client_secrets_request(), proplists:proplist()) ->
+    {ok, list_user_pool_client_secrets_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_pool_client_secrets_errors(), tuple()}.
+list_user_pool_client_secrets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUserPoolClientSecrets">>, Input, Options).
+
 %% @doc Given a user pool ID, lists app clients.
 %%
 %% App clients are sets of rules for the access
@@ -7937,6 +8096,12 @@ list_user_pools(Client, Input, Options)
 %% @doc Given a user pool ID, returns a list of users and their basic details
 %% in a user
 %% pool.
+%%
+%% This operation is eventually consistent. You might experience a delay
+%% before results
+%% are up-to-date. To validate the existence or configuration of an
+%% individual user, use
+%% `AdminGetUser'.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -9036,8 +9201,8 @@ update_user_attributes(Client, Input, Options)
 %% your user
 %% pool, modified to include the changes that you want to make.
 %%
-%% If you don't provide a value for an attribute, Amazon Cognito sets it
-%% to its default value.
+%% With the exception of `UserPoolTier', if you don't provide a value
+%% for an attribute, Amazon Cognito sets it to its default value.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers

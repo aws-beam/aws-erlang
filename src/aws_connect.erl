@@ -2126,6 +2126,8 @@
 %% evaluation_review_metadata() :: #{
 %%   <<"CreatedBy">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"RequestedBy">> => string(),
+%%   <<"RequestedTime">> => non_neg_integer(),
 %%   <<"ReviewId">> => string(),
 %%   <<"ReviewRequestComments">> => list(evaluation_review_request_comment())
 %% }
@@ -24651,9 +24653,7 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 %% to resource (create, update or
 %% delete). If you don't see updated information for recently changed
 %% contact evaluations, try calling the API again
-%% in a few seconds. Contact Evaluations may not be fully backfilled with
-%% historical data in all regions yet, however
-%% all recently created Contact Evaluations should be available for search.
+%% in a few seconds.
 %%
 %% Endpoints: See Amazon Connect endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.

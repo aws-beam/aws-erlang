@@ -1573,6 +1573,7 @@
 %%   <<"odbNetworkId">> := string(),
 %%   <<"peerNetworkCidrsToBeAdded">> => list(string()),
 %%   <<"peerNetworkId">> := string(),
+%%   <<"peerNetworkRouteTableIds">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type create_odb_peering_connection_input() :: #{binary() => any()}.
