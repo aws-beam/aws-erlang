@@ -391,6 +391,14 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% resold_unified_operations() :: #{
+%%   <<"chargeAccountId">> => string(),
+%%   <<"coverage">> => list(any()),
+%%   <<"tamLocation">> => [string()]
+%% }
+-type resold_unified_operations() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag())
 %% }
@@ -588,12 +596,6 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type revoke_service_period_type_sort() :: #{binary() => any()}.
-
-%% Example:
-%% resold_business() :: #{
-%%   <<"coverage">> => list(any())
-%% }
--type resold_business() :: #{binary() => any()}.
 
 %% Example:
 %% accept_channel_handshake_response() :: #{

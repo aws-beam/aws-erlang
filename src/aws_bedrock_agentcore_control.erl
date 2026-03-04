@@ -399,6 +399,7 @@
 %% update_policy_engine_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyEngineArn">> => string(),
 %%   <<"policyEngineId">> => string(),
@@ -707,6 +708,7 @@
 %% get_policy_engine_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyEngineArn">> => string(),
 %%   <<"policyEngineId">> => string(),
@@ -1252,6 +1254,13 @@
 
 
 %% Example:
+%% runtime_metadata_configuration() :: #{
+%%   <<"requireMMDSV2">> => [boolean()]
+%% }
+-type runtime_metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_runtime_endpoint_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -1283,6 +1292,7 @@
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
@@ -1415,6 +1425,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_workload_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_details() :: #{
+%%   <<"policyGenerationAssetId">> => string(),
+%%   <<"policyGenerationId">> => string()
+%% }
+-type policy_generation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1763,8 +1781,8 @@
 
 %% Example:
 %% update_policy_request() :: #{
-%%   <<"definition">> := list(),
-%%   <<"description">> => string(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => updated_description(),
 %%   <<"validationMode">> => list(any())
 %% }
 -type update_policy_request() :: #{binary() => any()}.
@@ -2276,6 +2294,7 @@
 %%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
@@ -2408,6 +2427,7 @@
 %% create_policy_engine_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyEngineArn">> => string(),
 %%   <<"policyEngineId">> => string(),
@@ -2502,7 +2522,9 @@
 %% create_policy_engine_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"name">> := string()
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_policy_engine_request() :: #{binary() => any()}.
 
@@ -2654,6 +2676,7 @@
 %% delete_policy_engine_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyEngineArn">> => string(),
 %%   <<"policyEngineId">> => string(),
@@ -2866,6 +2889,7 @@
 %% policy_engine() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyEngineArn">> => string(),
 %%   <<"policyEngineId">> => string(),
@@ -3143,13 +3167,20 @@
 
 %% Example:
 %% update_policy_engine_request() :: #{
-%%   <<"description">> => string()
+%%   <<"description">> => updated_description()
 %% }
 -type update_policy_engine_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_gateway_request() :: #{}
 -type get_gateway_request() :: #{}.
+
+
+%% Example:
+%% updated_description() :: #{
+%%   <<"optionalValue">> => string()
+%% }
+-type updated_description() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6972,7 +7003,7 @@ update_policy(Client, PolicyEngineId, PolicyId, Input) ->
     {error, any()} |
     {error, update_policy_errors(), tuple()}.
 update_policy(Client, PolicyEngineId, PolicyId, Input0, Options0) ->
-    Method = put,
+    Method = patch,
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policies/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -7011,7 +7042,7 @@ update_policy_engine(Client, PolicyEngineId, Input) ->
     {error, any()} |
     {error, update_policy_engine_errors(), tuple()}.
 update_policy_engine(Client, PolicyEngineId, Input0, Options0) ->
-    Method = put,
+    Method = patch,
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),

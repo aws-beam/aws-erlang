@@ -360,6 +360,8 @@
          put_data_export_configuration/4,
          put_environment_blueprint_configuration/4,
          put_environment_blueprint_configuration/5,
+         query_graph/3,
+         query_graph/4,
          reject_predictions/4,
          reject_predictions/5,
          reject_subscription_request/4,
@@ -433,6 +435,27 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% lineage_node_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"downstreamLineageNodeIds">> => list(string()),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"upstreamLineageNodeIds">> => list(string())
+%% }
+-type lineage_node_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4006,6 +4029,15 @@
 
 
 %% Example:
+%% entity_pattern() :: #{
+%%   <<"entityType">> => list(any()),
+%%   <<"filters">> => list(),
+%%   <<"identifier">> => [string()]
+%% }
+-type entity_pattern() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_product_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -5762,6 +5794,15 @@
 
 
 %% Example:
+%% relation_pattern() :: #{
+%%   <<"maxPathLength">> => [integer()],
+%%   <<"relationDirection">> => list(any()),
+%%   <<"relationType">> => list(any())
+%% }
+-type relation_pattern() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_subscription_grant_status_input() :: #{
 %%   <<"failureCause">> => failure_cause(),
 %%   <<"status">> := list(any()),
@@ -5853,6 +5894,13 @@
 
 
 %% Example:
+%% additional_attributes() :: #{
+%%   <<"formNames">> => list(string())
+%% }
+-type additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_scope() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"errorMessage">> => [string()],
@@ -5922,6 +5970,16 @@
 %%   <<"shortDescription">> => string()
 %% }
 -type detailed_glossary_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_graph_input() :: #{
+%%   <<"additionalAttributes">> => additional_attributes(),
+%%   <<"match">> := list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type query_graph_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6508,6 +6566,14 @@
 %%   <<"locationRegistrationRole">> => string()
 %% }
 -type lake_formation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_graph_output() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type query_graph_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7688,6 +7754,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type query_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type reject_predictions_errors() ::
     throttling_exception() | 
@@ -13772,6 +13844,42 @@ put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Queries entities in the graph store.
+-spec query_graph(aws_client:aws_client(), binary() | list(), query_graph_input()) ->
+    {ok, query_graph_output(), tuple()} |
+    {error, any()} |
+    {error, query_graph_errors(), tuple()}.
+query_graph(Client, DomainIdentifier, Input) ->
+    query_graph(Client, DomainIdentifier, Input, []).
+
+-spec query_graph(aws_client:aws_client(), binary() | list(), query_graph_input(), proplists:proplist()) ->
+    {ok, query_graph_output(), tuple()} |
+    {error, any()} |
+    {error, query_graph_errors(), tuple()}.
+query_graph(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/graph/query"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects automatically generated business-friendly metadata for your
