@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Quick Suite API Reference
+%% @doc Amazon Quick API Reference
 %%
 %% Amazon Quick Sight is a fully managed, serverless business intelligence
 %% service for the
@@ -14045,6 +14045,7 @@
 %%   <<"ShareIntercomAction">> => list(any()),
 %%   <<"Space">> => list(any()),
 %%   <<"PublishWithoutApproval">> => list(any()),
+%%   <<"BuildCalculatedFieldWithQ">> => list(any()),
 %%   <<"CreateAndUpdatePagerDutyAction">> => list(any()),
 %%   <<"UseServiceNowAction">> => list(any()),
 %%   <<"CreateAndUpdateIntercomAction">> => list(any()),
@@ -14090,6 +14091,7 @@
 %%   <<"UseMondayAction">> => list(any()),
 %%   <<"ShareFactSetAction">> => list(any()),
 %%   <<"Dashboard">> => list(any()),
+%%   <<"Extension">> => list(any()),
 %%   <<"ShareAsanaAction">> => list(any()),
 %%   <<"SmartsheetAction">> => list(any()),
 %%   <<"ShareBambooHRAction">> => list(any()),
@@ -14099,10 +14101,12 @@
 %%   <<"ShareSalesforceAction">> => list(any()),
 %%   <<"CreateAndUpdateComprehendAction">> => list(any()),
 %%   <<"AmazonSThreeAction">> => list(any()),
+%%   <<"Topic">> => list(any()),
 %%   <<"UseBoxAgentAction">> => list(any()),
 %%   <<"NewRelicAction">> => list(any()),
 %%   <<"CreateAndUpdateSmartsheetAction">> => list(any()),
 %%   <<"SAPBusinessPartnerAction">> => list(any()),
+%%   <<"CreateDashboardExecutiveSummaryWithQ">> => list(any()),
 %%   <<"Action">> => list(any()),
 %%   <<"CreateAndUpdateNotionAction">> => list(any()),
 %%   <<"CreateAndUpdateHubspotAction">> => list(any()),
@@ -14119,6 +14123,7 @@
 %%   <<"AsanaAction">> => list(any()),
 %%   <<"UseJiraAction">> => list(any()),
 %%   <<"GithubAction">> => list(any()),
+%%   <<"ApproveFlowShareRequests">> => list(any()),
 %%   <<"UseBedrockModels">> => list(any()),
 %%   <<"ExportToPdf">> => list(any()),
 %%   <<"CreateAndUpdateDashboardEmailReports">> => list(any()),
@@ -14135,6 +14140,7 @@
 %%   <<"CreateAndUpdateGoogleCalendarAction">> => list(any()),
 %%   <<"ShareOneDriveAction">> => list(any()),
 %%   <<"UseAsanaAction">> => list(any()),
+%%   <<"EditVisualWithQ">> => list(any()),
 %%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
 %%   <<"ShareSAPProductMasterDataAction">> => list(any()),
 %%   <<"SlackAction">> => list(any()),
@@ -20627,7 +20633,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the self-upgrade configuration for a Quick Suite account.
+%% @doc Describes the self-upgrade configuration for a Quick account.
 -spec describe_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_self_upgrade_configuration_response(), tuple()} |
     {error, any()} |
@@ -21171,7 +21177,7 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates an embed URL that you can use to embed an Amazon Quick
-%% Suite dashboard or
+%% dashboard or
 %% visual in your website, without having to register any reader users.
 %%
 %% Before you use this
@@ -21194,16 +21200,16 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %% session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon Quick Suite.
+%% Amazon Quick.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon Quick Suite User Guide.
+%% the Amazon Quick User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
+%% demo of the ways you can customize embedding, visit the Amazon Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
@@ -21240,12 +21246,12 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates an embed URL that you can use to embed an Amazon Quick
-%% Suite experience
+%% experience
 %% in your website.
 %%
 %% This action can be used for any type of user registered in an Amazon Quick
-%% Suite account. Before you use this action, make sure that you have
-%% configured the relevant Amazon Quick Suite resource and permissions.
+%% account. Before you use this action, make sure that you have
+%% configured the relevant Amazon Quick resource and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
@@ -21264,16 +21270,16 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% (maximum). The default session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon Quick Suite.
+%% Amazon Quick.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon Quick Suite User Guide.
+%% the Amazon Quick User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
+%% demo of the ways you can customize embedding, visit the Amazon Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
@@ -21389,7 +21395,7 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% They are valid for 5 minutes after you run this command.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Quick Suite.
+%% Quick.
 %%
 %% The resulting user session is valid for 15 minutes (default) up to 10
 %% hours
@@ -21399,12 +21405,12 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% For more information, see Embedding Analytics
 %% Using GetDashboardEmbedUrl:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
-%% in the Amazon Quick Suite User
+%% in the Amazon Quick User
 %% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
+%% demo of the ways you can customize embedding, visit the Amazon Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -21653,13 +21659,13 @@ get_identity_context(Client, AwsAccountId, Input0, Options0) ->
 %% ''' API operation to add a new user with a custom
 %% permission profile attached. For more information, see the following
 %% sections in the
-%% Amazon Quick Suite User Guide:
+%% Amazon Quick User Guide:
 %%
 %% Embedding
 %% Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
-%% Customizing Access to the Amazon Quick Suite Console:
+%% Customizing Access to the Amazon Quick Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
 -spec get_session_embed_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_session_embed_url_response(), tuple()} |
@@ -22712,7 +22718,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all self-upgrade requests for a Quick Suite account.
+%% @doc Lists all self-upgrade requests for a Quick account.
 -spec list_self_upgrades(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_self_upgrades_response(), tuple()} |
     {error, any()} |
@@ -23300,11 +23306,11 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% to ensure that an end user is authenticated and receives the embed URL
 %% that is specific to that user. The IAM Identity Center application that
 %% the user has logged into needs to have trusted Identity Propagation
-%% enabled for Quick Suite:
+%% enabled for Quick:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-using-customermanagedapps-specify-trusted-apps.html
 %% with the scope value set to `quicksight:read'. Before you use this
-%% action, make sure that you have configured the relevant Quick Suite
-%% resource and permissions.
+%% action, make sure that you have configured the relevant Quick resource and
+%% permissions.
 %%
 %% We recommend enabling the `QSearchStatus' API to unlock the full
 %% potential of `PredictQnA'. When `QSearchStatus' is enabled, it
@@ -23752,7 +23758,7 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for any Q topic that exists in an Quick Suite account.
+%% @doc Searches for any Q topic that exists in an Quick account.
 -spec search_topics(aws_client:aws_client(), binary() | list(), search_topics_request()) ->
     {ok, search_topics_response(), tuple()} |
     {error, any()} |
@@ -24494,10 +24500,10 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Quick Suite application with a token exchange grant.
+%% @doc Updates an Quick application with a token exchange grant.
 %%
-%% This operation only supports Quick Suite applications that are registered
-%% with IAM Identity Center.
+%% This operation only supports Quick applications that are registered with
+%% IAM Identity Center.
 -spec update_application_with_token_exchange_grant(aws_client:aws_client(), binary() | list(), update_application_with_token_exchange_grant_request()) ->
     {ok, update_application_with_token_exchange_grant_response(), tuple()} |
     {error, any()} |
@@ -25342,7 +25348,7 @@ update_key_registration(Client, AwsAccountId, Input0, Options0) ->
 %% public
 %% sharing permissions to an administrative user in the Identity and Access
 %% Management (IAM) console. For more information on using IAM with Amazon
-%% Quick Sight, see Using Quick Suite with IAM:
+%% Quick Sight, see Using Quick with IAM:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
 %% in the Amazon Quick Sight
 %% User Guide.
@@ -25549,7 +25555,7 @@ update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a self-upgrade request for a Quick Suite user by approving,
+%% @doc Updates a self-upgrade request for a Quick user by approving,
 %% denying, or verifying the request.
 -spec update_self_upgrade(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_request()) ->
     {ok, update_self_upgrade_response(), tuple()} |
@@ -25584,7 +25590,7 @@ update_self_upgrade(Client, AwsAccountId, Namespace, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the self-upgrade configuration for a Quick Suite account.
+%% @doc Updates the self-upgrade configuration for a Quick account.
 -spec update_self_upgrade_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_self_upgrade_configuration_request()) ->
     {ok, update_self_upgrade_configuration_response(), tuple()} |
     {error, any()} |

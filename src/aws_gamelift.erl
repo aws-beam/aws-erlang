@@ -217,6 +217,8 @@
          get_game_session_log_url/3,
          get_instance_access/2,
          get_instance_access/3,
+         get_player_connection_details/2,
+         get_player_connection_details/3,
          list_aliases/2,
          list_aliases/3,
          list_builds/2,
@@ -324,6 +326,12 @@
 -type update_game_server_input() :: #{binary() => any()}.
 
 %% Example:
+%% player_gateway_configuration() :: #{
+%%   <<"GameServerIpProtocolSupported">> => list(any())
+%% }
+-type player_gateway_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_fleet_status_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -381,6 +389,7 @@
 %%   <<"GameSessionArn">> => string(),
 %%   <<"IpAddress">> => string(),
 %%   <<"MatchedPlayerSessions">> => list(matched_player_session()),
+%%   <<"PlayerGatewayStatus">> => list(any()),
 %%   <<"Port">> => integer()
 %% }
 -type game_session_connection_info() :: #{binary() => any()}.
@@ -418,6 +427,7 @@
 %% Example:
 %% container_fleet_location_attributes() :: #{
 %%   <<"Location">> => string(),
+%%   <<"PlayerGatewayStatus">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type container_fleet_location_attributes() :: #{binary() => any()}.
@@ -1153,6 +1163,7 @@
 %% Example:
 %% location_state() :: #{
 %%   <<"Location">> => string(),
+%%   <<"PlayerGatewayStatus">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type location_state() :: #{binary() => any()}.
@@ -1333,6 +1344,15 @@
 %%   <<"ScriptId">> := string()
 %% }
 -type describe_script_input() :: #{binary() => any()}.
+
+%% Example:
+%% player_connection_detail() :: #{
+%%   <<"Endpoints">> => list(player_connection_endpoint()),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"PlayerGatewayToken">> => string(),
+%%   <<"PlayerId">> => string()
+%% }
+-type player_connection_detail() :: #{binary() => any()}.
 
 %% Example:
 %% search_game_sessions_input() :: #{
@@ -1891,6 +1911,8 @@
 %%   <<"Name">> => string(),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"OperatingSystem">> => list(any()),
+%%   <<"PlayerGatewayConfiguration">> => player_gateway_configuration(),
+%%   <<"PlayerGatewayMode">> => list(any()),
 %%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy(),
 %%   <<"ScriptArn">> => string(),
 %%   <<"ScriptId">> => string(),
@@ -2064,6 +2086,8 @@
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PeerVpcAwsAccountId">> => string(),
 %%   <<"PeerVpcId">> => string(),
+%%   <<"PlayerGatewayConfiguration">> => player_gateway_configuration(),
+%%   <<"PlayerGatewayMode">> => list(any()),
 %%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy(),
 %%   <<"RuntimeConfiguration">> => runtime_configuration(),
 %%   <<"ScriptId">> => string(),
@@ -2543,6 +2567,7 @@
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PerInstanceContainerGroupDefinitionArn">> => string(),
 %%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
+%%   <<"PlayerGatewayMode">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type container_fleet() :: #{binary() => any()}.
@@ -2695,6 +2720,13 @@
 %%   <<"TargetValue">> => float()
 %% }
 -type target_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_player_connection_details_output() :: #{
+%%   <<"GameSessionId">> => string(),
+%%   <<"PlayerConnectionDetails">> => list(player_connection_detail())
+%% }
+-type get_player_connection_details_output() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template_specification() :: #{
@@ -2918,6 +2950,7 @@
 %%   <<"MetricGroups">> => list(string()),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
+%%   <<"PlayerGatewayMode">> => list(any()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_container_fleet_input() :: #{binary() => any()}.
@@ -2956,6 +2989,7 @@
 %%   <<"MaximumPlayerSessionCount">> => integer(),
 %%   <<"PlacedPlayerSessions">> => list(placed_player_session()),
 %%   <<"PlacementId">> => string(),
+%%   <<"PlayerGatewayStatus">> => list(any()),
 %%   <<"PlayerLatencies">> => list(player_latency()),
 %%   <<"Port">> => integer(),
 %%   <<"PriorityConfigurationOverride">> => priority_configuration_override(),
@@ -2980,6 +3014,7 @@
 %%   <<"MatchmakerData">> => string(),
 %%   <<"MaximumPlayerSessionCount">> => integer(),
 %%   <<"Name">> => string(),
+%%   <<"PlayerGatewayStatus">> => list(any()),
 %%   <<"PlayerSessionCreationPolicy">> => list(any()),
 %%   <<"Port">> => integer(),
 %%   <<"Status">> => list(any()),
@@ -2995,10 +3030,24 @@
 -type update_game_session_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_player_connection_details_input() :: #{
+%%   <<"GameSessionId">> := string(),
+%%   <<"PlayerIds">> := list(string())
+%% }
+-type get_player_connection_details_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_container_fleet_output() :: #{
 %%   <<"ContainerFleet">> => container_fleet()
 %% }
 -type update_container_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% player_connection_endpoint() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type player_connection_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% list_builds_output() :: #{
@@ -3579,6 +3628,15 @@
     unauthorized_exception().
 
 -type get_instance_access_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_player_connection_details_errors() ::
+    limit_exceeded_exception() | 
+    invalid_game_session_status_exception() | 
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -6212,7 +6270,7 @@ describe_ec2_instance_limits(Client, Input, Options)
     request(Client, <<"DescribeEC2InstanceLimits">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Anywhere, Container
+%% This API works with the following fleet types: EC2, Anywhere
 %%
 %% Retrieves core fleet-wide properties for fleets in an Amazon Web Services
 %% Region.
@@ -6861,7 +6919,12 @@ describe_game_session_details(Client, Input, Options)
 %% receive notifications from FlexMatch or
 %% queues. Continuously polling with `DescribeGameSessionPlacement'
 %% should only
-%% be used for games in development with low game session usage.
+%% be used for games in development with low game session usage. For a
+%% reference
+%% implementation of event-based game session placement tracking, see
+%% Event-based game session placement guidance:
+%% https://github.com/amazon-gamelift/amazon-gamelift-toolkit/tree/main/event-based-session-placement
+%% in the Amazon GameLift Toolkit.
 -spec describe_game_session_placement(aws_client:aws_client(), describe_game_session_placement_input()) ->
     {ok, describe_game_session_placement_output(), tuple()} |
     {error, any()} |
@@ -6982,7 +7045,7 @@ describe_game_sessions(Client, Input, Options)
     request(Client, <<"DescribeGameSessions">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2
+%% This API works with the following fleet types:EC2, Container
 %%
 %% Retrieves information about the EC2 instances in an Amazon GameLift
 %% Servers managed fleet, including
@@ -7614,6 +7677,51 @@ get_instance_access(Client, Input)
 get_instance_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceAccess">>, Input, Options).
+
+%% @doc
+%% This API works with the following fleet types: EC2 (server SDK 5.x or
+%% later), Container
+%%
+%% Retrieves connection details for game clients to connect to game sessions.
+%%
+%% Player gateway benefits: DDoS protection with negligible impact to
+%% latency.
+%%
+%% To enable player gateway on your fleet, set `PlayerGatewayMode' to
+%% `ENABLED' or `REQUIRED' when calling
+%% CreateFleet:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateFleet.html
+%% or
+%% CreateContainerFleet:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateContainerFleet.html.
+%%
+%% How to use: After creating a game session and adding players, call this
+%% operation with the game session ID and player IDs. When player gateway is
+%% enabled, the response includes connection endpoints and player gateway
+%% tokens that your game clients can use to connect to the game session
+%% through player gateway. To learn more about player gateway integration,
+%% see DDoS protection with Amazon GameLift Servers player gateway:
+%% https://docs.aws.amazon.com/gameliftservers/latest/developerguide/ddos-protection-intro.html.
+%%
+%% When player gateway is disabled or in locations where player gateway is
+%% not supported, this operation returns game server connection information
+%% without player gateway tokens, so that your game clients directly connect
+%% to the game server endpoint.
+-spec get_player_connection_details(aws_client:aws_client(), get_player_connection_details_input()) ->
+    {ok, get_player_connection_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_player_connection_details_errors(), tuple()}.
+get_player_connection_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_player_connection_details(Client, Input, []).
+
+-spec get_player_connection_details(aws_client:aws_client(), get_player_connection_details_input(), proplists:proplist()) ->
+    {ok, get_player_connection_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_player_connection_details_errors(), tuple()}.
+get_player_connection_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPlayerConnectionDetails">>, Input, Options).
 
 %% @doc
 %% This API works with the following fleet types: EC2, Anywhere, Container
@@ -8562,6 +8670,11 @@ resume_game_server_group(Client, Input, Options)
 %% for game sessions by properties. Property keys containing periods cannot
 %% be searched and will be filtered out from search results due to search
 %% index limitations.
+%%
+%% If you use SearchGameSessions API, there is a limit of 500 game property
+%% keys across all game sessions and all fleets per region. If the limit is
+%% exceeded, there will potentially be game session entries missing from
+%% SearchGameSessions API results.
 %%
 %% maximumSessions -- Maximum number of player
 %% sessions allowed for a game session.

@@ -533,6 +533,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_input(),
 %%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"DomainName">> := string(),
 %%   <<"EBSOptions">> => ebs_options(),
@@ -849,6 +850,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options(),
 %%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EBSOptions">> => ebs_options(),
@@ -1003,6 +1005,7 @@
 %%   <<"AutoTuneOptions">> => auto_tune_options_status(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"CognitoOptions">> => cognito_options_status(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options_status(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options_status(),
 %%   <<"EBSOptions">> => ebs_options_status(),
 %%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config_status(),
@@ -1247,6 +1250,13 @@
 
 
 %% Example:
+%% deployment_strategy_options() :: #{
+%%   <<"DeploymentStrategy">> => list(any())
+%% }
+-type deployment_strategy_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% advanced_security_options_status() :: #{
 %%   <<"Options">> => advanced_security_options(),
 %%   <<"Status">> => option_status()
@@ -1322,6 +1332,14 @@
 
 
 %% Example:
+%% deployment_strategy_options_status() :: #{
+%%   <<"Options">> => deployment_strategy_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type deployment_strategy_options_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% auto_tune_options() :: #{
 %%   <<"DesiredState">> => list(any()),
 %%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
@@ -1341,6 +1359,7 @@
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"Created">> => boolean(),
 %%   <<"Deleted">> => boolean(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"DomainId">> => string(),
 %%   <<"DomainName">> => string(),

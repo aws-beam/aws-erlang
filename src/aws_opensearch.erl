@@ -665,6 +665,7 @@
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"ClusterConfig">> => cluster_config_status(),
 %%   <<"CognitoOptions">> => cognito_options_status(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options_status(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options_status(),
 %%   <<"EBSOptions">> => ebs_options_status(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
@@ -1140,6 +1141,7 @@
 %%   <<"AutoTuneOptions">> => auto_tune_options_input(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"DomainName">> := string(),
 %%   <<"EBSOptions">> => ebs_options(),
@@ -1297,6 +1299,7 @@
 %%   <<"AutoTuneOptions">> => auto_tune_options(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"DryRunMode">> => list(any()),
@@ -1755,6 +1758,7 @@
 %%   <<"Processing">> => boolean(),
 %%   <<"UpgradeProcessing">> => boolean(),
 %%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"SnapshotOptions">> => snapshot_options(),
 %%   <<"LogPublishingOptions">> => map(),
 %%   <<"ARN">> => string(),
@@ -2095,6 +2099,13 @@
 
 
 %% Example:
+%% deployment_strategy_options() :: #{
+%%   <<"DeploymentStrategy">> => list(any())
+%% }
+-type deployment_strategy_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% advanced_security_options_status() :: #{
 %%   <<"Options">> => advanced_security_options(),
 %%   <<"Status">> => option_status()
@@ -2225,6 +2236,14 @@
 %%   <<"SubjectKey">> => string()
 %% }
 -type j_w_t_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_options_status() :: #{
+%%   <<"Options">> => deployment_strategy_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type deployment_strategy_options_status() :: #{binary() => any()}.
 
 
 %% Example:

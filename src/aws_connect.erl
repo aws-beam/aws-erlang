@@ -59,6 +59,8 @@
          associate_lex_bot/4,
          associate_phone_number_contact_flow/3,
          associate_phone_number_contact_flow/4,
+         associate_queue_email_addresses/4,
+         associate_queue_email_addresses/5,
          associate_queue_quick_connects/4,
          associate_queue_quick_connects/5,
          associate_routing_profile_queues/4,
@@ -362,6 +364,8 @@
          disassociate_lex_bot/4,
          disassociate_phone_number_contact_flow/3,
          disassociate_phone_number_contact_flow/4,
+         disassociate_queue_email_addresses/4,
+         disassociate_queue_email_addresses/5,
          disassociate_queue_quick_connects/4,
          disassociate_queue_quick_connects/5,
          disassociate_routing_profile_queues/4,
@@ -526,6 +530,9 @@
          list_prompts/2,
          list_prompts/4,
          list_prompts/5,
+         list_queue_email_addresses/3,
+         list_queue_email_addresses/5,
+         list_queue_email_addresses/6,
          list_queue_quick_connects/3,
          list_queue_quick_connects/5,
          list_queue_quick_connects/6,
@@ -3334,6 +3341,15 @@
 %% }
 -type data_table_attribute() :: #{binary() => any()}.
 
+
+%% Example:
+%% email_address_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefaultOutboundEmail">> => boolean()
+%% }
+-type email_address_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_version_request() :: #{}
 -type delete_view_version_request() :: #{}.
@@ -4548,6 +4564,14 @@
 %% Example:
 %% delete_routing_profile_request() :: #{}
 -type delete_routing_profile_request() :: #{}.
+
+
+%% Example:
+%% disassociate_queue_email_addresses_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EmailAddressesId">> := list(string())
+%% }
+-type disassociate_queue_email_addresses_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5838,6 +5862,16 @@
 %% }
 -type quick_connect_search_filter() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_queue_email_addresses_response() :: #{
+%%   <<"EmailAddressMetadataList">> => list(email_address_summary()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queue_email_addresses_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_workspace_request() :: #{}
 -type describe_workspace_request() :: #{}.
@@ -6145,6 +6179,14 @@
 
 
 %% Example:
+%% associate_queue_email_addresses_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EmailAddressesConfig">> := list(email_address_config())
+%% }
+-type associate_queue_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% observation_summary() :: #{
 %%   <<"ObservationsFailed">> => integer(),
 %%   <<"ObservationsPassed">> => integer(),
@@ -6383,6 +6425,7 @@
 %% Example:
 %% create_queue_request() :: #{
 %%   <<"Description">> => string(),
+%%   <<"EmailAddressesConfig">> => list(email_address_config()),
 %%   <<"HoursOfOperationId">> := string(),
 %%   <<"MaxContacts">> => integer(),
 %%   <<"Name">> := string(),
@@ -7654,6 +7697,14 @@
 
 
 %% Example:
+%% list_queue_email_addresses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queue_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_view_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Content">> := view_input_content(),
@@ -8827,6 +8878,13 @@
 %%   <<"Name">> => string()
 %% }
 -type update_contact_flow_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_config() :: #{
+%%   <<"EmailAddressId">> => string()
+%% }
+-type email_address_config() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vocabulary_request() :: #{}
@@ -11255,6 +11313,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type associate_queue_email_addresses_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type associate_queue_quick_connects_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -12342,6 +12409,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type disassociate_queue_email_addresses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type disassociate_queue_quick_connects_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -12782,6 +12857,14 @@
 -type list_prompts_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_queue_email_addresses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -14584,6 +14667,63 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a set of email addresses with a queue to enable agents to
+%% select different &quot;From&quot; (system) email addresses when replying
+%% to inbound email contacts or initiating outbound email contacts.
+%%
+%% This allows agents to handle email contacts across different brands and
+%% business units within the same queue.
+%%
+%% Important things to know
+%%
+%% You can associate up to 49 additional email addresses with a single queue,
+%% plus 1 default outbound email address, for a total of 50.
+%%
+%% The email addresses must already exist in the Amazon Connect instance
+%% before they can be associated with a queue.
+%%
+%% Agents will be able to select from these associated email addresses when
+%% handling email contacts in the queue.
+%%
+%% For inbound email contacts, agents can select from email addresses
+%% associated with the queue where the contact was accepted.
+%%
+%% For outbound email contacts, agents can select from email addresses
+%% associated with their default outbound queue configured in their routing
+%% profile.
+-spec associate_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), associate_queue_email_addresses_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_queue_email_addresses_errors(), tuple()}.
+associate_queue_email_addresses(Client, InstanceId, QueueId, Input) ->
+    associate_queue_email_addresses(Client, InstanceId, QueueId, Input, []).
+
+-spec associate_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), associate_queue_email_addresses_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_queue_email_addresses_errors(), tuple()}.
+associate_queue_email_addresses(Client, InstanceId, QueueId, Input0, Options0) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-email-addresses"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20108,6 +20248,55 @@ disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes the association between a set of email addresses and a queue.
+%%
+%% After disassociation, agents will no longer be able to select these email
+%% addresses as &quot;From&quot; addresses when replying to inbound email
+%% contacts or initiating outbound email contacts in this queue.
+%%
+%% Important things to know
+%%
+%% Agents will no longer see these email addresses in their &quot;From&quot;
+%% address selection options for this queue.
+%%
+%% The email addresses themselves are not deleted from the instance, only
+%% their availability for agent selection in this queue is removed.
+%%
+%% Changes take effect immediately and will affect the agent experience in
+%% the Contact Control Panel (CCP).
+-spec disassociate_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_email_addresses_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_queue_email_addresses_errors(), tuple()}.
+disassociate_queue_email_addresses(Client, InstanceId, QueueId, Input) ->
+    disassociate_queue_email_addresses(Client, InstanceId, QueueId, Input, []).
+
+-spec disassociate_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_email_addresses_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_queue_email_addresses_errors(), tuple()}.
+disassociate_queue_email_addresses(Client, InstanceId, QueueId, Input0, Options0) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-email-addresses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a set of quick connects from a queue.
 -spec disassociate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
@@ -22882,6 +23071,68 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap)
 list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all email addresses that are currently associated with a
+%% specific queue, providing details about which &quot;From&quot; email
+%% addresses agents can select when handling email contacts.
+%%
+%% This helps administrators manage agent email address options and
+%% understand the available choices for different brands and business units.
+%%
+%% Important things to know
+%%
+%% The response includes metadata about each email address available for
+%% agent selection, including whether it's configured as the default
+%% outbound email.
+%%
+%% Agents can select from these email addresses when replying to inbound
+%% contacts or initiating outbound contacts in this queue.
+%%
+%% The list includes both explicitly associated email addresses and any
+%% default outbound email address configured for the queue.
+%%
+%% Results are paginated to handle queues with many associated email
+%% addresses (up to 50 per queue).
+-spec list_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_queue_email_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_email_addresses_errors(), tuple()}.
+list_queue_email_addresses(Client, InstanceId, QueueId)
+  when is_map(Client) ->
+    list_queue_email_addresses(Client, InstanceId, QueueId, #{}, #{}).
+
+-spec list_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_queue_email_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_email_addresses_errors(), tuple()}.
+list_queue_email_addresses(Client, InstanceId, QueueId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queue_email_addresses(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
+
+-spec list_queue_email_addresses(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_queue_email_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_email_addresses_errors(), tuple()}.
+list_queue_email_addresses(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/email-addresses"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
