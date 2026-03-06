@@ -69,6 +69,8 @@
          list_tags_for_resource/5,
          start_active_approval_team_deletion/3,
          start_active_approval_team_deletion/4,
+         start_approval_team_baseline/3,
+         start_approval_team_baseline/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -164,6 +166,13 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_approval_team_baseline_request() :: #{
+%%   <<"ApproverIds">> => list(string())
+%% }
+-type start_approval_team_baseline_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_version_request() :: #{}
@@ -311,6 +320,13 @@
 
 
 %% Example:
+%% start_approval_team_baseline_response() :: #{
+%%   <<"BaselineSessionArn">> => string()
+%% }
+-type start_approval_team_baseline_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% identity_source_for_list() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"IdentitySourceArn">> => string(),
@@ -370,7 +386,10 @@
 %% Example:
 %% get_approval_team_response_approver() :: #{
 %%   <<"ApproverId">> => string(),
+%%   <<"LastActivity">> => list(any()),
+%%   <<"LastActivityTime">> => non_neg_integer(),
 %%   <<"MfaMethods">> => list(mfa_method()),
+%%   <<"PendingBaselineSessionArn">> => string(),
 %%   <<"PrimaryIdentityId">> => string(),
 %%   <<"PrimaryIdentitySourceArn">> => string(),
 %%   <<"PrimaryIdentityStatus">> => list(any()),
@@ -811,6 +830,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type start_approval_team_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -1509,6 +1535,41 @@ start_active_approval_team_deletion(Client, Arn, Input) ->
 start_active_approval_team_deletion(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/approval-teams/", aws_util:encode_uri(Arn), "?Delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a baseline session for specified approvers on an `ACTIVE'
+%% approval team.
+-spec start_approval_team_baseline(aws_client:aws_client(), binary() | list(), start_approval_team_baseline_request()) ->
+    {ok, start_approval_team_baseline_response(), tuple()} |
+    {error, any()} |
+    {error, start_approval_team_baseline_errors(), tuple()}.
+start_approval_team_baseline(Client, Arn, Input) ->
+    start_approval_team_baseline(Client, Arn, Input, []).
+
+-spec start_approval_team_baseline(aws_client:aws_client(), binary() | list(), start_approval_team_baseline_request(), proplists:proplist()) ->
+    {ok, start_approval_team_baseline_response(), tuple()} |
+    {error, any()} |
+    {error, start_approval_team_baseline_errors(), tuple()}.
+start_approval_team_baseline(Client, Arn, Input0, Options0) ->
+    Method = post,
+    Path = ["/approval-teams/", aws_util:encode_uri(Arn), "/baseline"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

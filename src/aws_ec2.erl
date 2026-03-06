@@ -8595,6 +8595,13 @@
 -type describe_addresses_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_allocation_metadata_entry() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type capacity_allocation_metadata_entry() :: #{binary() => any()}.
+
+%% Example:
 %% outpost_lag() :: #{
 %%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()),
 %%   <<"OutpostArn">> => string(),
@@ -13591,6 +13598,7 @@
 
 %% Example:
 %% capacity_allocation() :: #{
+%%   <<"AllocationMetadata">> => list(capacity_allocation_metadata_entry()),
 %%   <<"AllocationType">> => list(any()),
 %%   <<"Count">> => integer()
 %% }
