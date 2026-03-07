@@ -1868,9 +1868,6 @@ remove_stream_group_locations(Client, Identifier, Input0, Options0) ->
 %% GameLift Streams terminates the stream session. This value is specified by
 %% `ConnectionTimeoutSeconds' in the `StartStreamSession' parameters.
 %%
-%% Idle timeout: A stream session will be terminated if no user input has
-%% been received for 60 minutes.
-%%
 %% Maximum session length: A stream session will be terminated after this
 %% amount of time has elapsed since it started, regardless of any existing
 %% client connections. This value is specified by `SessionLengthSeconds'

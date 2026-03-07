@@ -4637,6 +4637,13 @@
 
 
 %% Example:
+%% chat_entry_point_parameters() :: #{
+%%   <<"FlowId">> => string()
+%% }
+-type chat_entry_point_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% disassociate_analytics_data_set_request() :: #{
 %%   <<"DataSetId">> := string(),
 %%   <<"TargetAccountId">> => string()
@@ -8185,6 +8192,7 @@
 
 %% Example:
 %% test_case_entry_point() :: #{
+%%   <<"ChatEntryPointParameters">> => chat_entry_point_parameters(),
 %%   <<"Type">> => list(any()),
 %%   <<"VoiceCallEntryPointParameters">> => voice_call_entry_point_parameters()
 %% }

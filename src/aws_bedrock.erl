@@ -1143,6 +1143,7 @@
 %%   <<"guardrailId">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"inputTags">> => list(any()),
+%%   <<"modelEnforcement">> => model_enforcement(),
 %%   <<"owner">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => [string()]
@@ -1645,6 +1646,14 @@
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_enforcement() :: #{
+%%   <<"excludedModels">> => list(string()),
+%%   <<"includedModels">> => list(string())
+%% }
+-type model_enforcement() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3767,7 +3776,8 @@
 %% account_enforced_guardrail_inference_input_configuration() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
-%%   <<"inputTags">> => list(any())
+%%   <<"inputTags">> => list(any()),
+%%   <<"modelEnforcement">> => model_enforcement()
 %% }
 -type account_enforced_guardrail_inference_input_configuration() :: #{binary() => any()}.
 
@@ -4138,7 +4148,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    resource_in_use_exception().
 
 -type delete_imported_model_errors() ::
     throttling_exception() | 

@@ -1488,6 +1488,7 @@
 
 %% Example:
 %% update_farm_request() :: #{
+%%   <<"costScaleFactor">> => float(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string()
 %% }
@@ -1752,6 +1753,7 @@
 
 %% Example:
 %% get_farm_response() :: #{
+%%   <<"costScaleFactor">> => float(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -3024,6 +3026,7 @@
 %% Example:
 %% create_farm_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"costScaleFactor">> => float(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"kmsKeyArn">> => string(),

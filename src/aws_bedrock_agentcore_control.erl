@@ -434,6 +434,7 @@
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"memoryStrategies">> => list(list()),
 %%   <<"name">> := string(),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
 %%   <<"tags">> => map()
 %% }
 -type create_memory_input() :: #{binary() => any()}.
@@ -522,6 +523,13 @@
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
 %% }
 -type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_delivery_resources() :: #{
+%%   <<"resources">> => list(list())
+%% }
+-type stream_delivery_resources() :: #{binary() => any()}.
 
 
 %% Example:
@@ -969,6 +977,14 @@
 
 
 %% Example:
+%% kinesis_resource() :: #{
+%%   <<"contentConfigurations">> => list(content_configuration()),
+%%   <<"dataStreamArn">> => string()
+%% }
+-type kinesis_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% semantic_override_consolidation_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -1104,7 +1120,8 @@
 %%   <<"description">> => string(),
 %%   <<"eventExpiryDuration">> => [integer()],
 %%   <<"memoryExecutionRoleArn">> => string(),
-%%   <<"memoryStrategies">> => modify_memory_strategies()
+%%   <<"memoryStrategies">> => modify_memory_strategies(),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources()
 %% }
 -type update_memory_input() :: #{binary() => any()}.
 
@@ -1550,6 +1567,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_configuration() :: #{
+%%   <<"level">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type content_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2921,6 +2946,7 @@
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"strategies">> => list(memory_strategy()),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type memory() :: #{binary() => any()}.
