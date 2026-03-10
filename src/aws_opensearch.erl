@@ -1095,6 +1095,7 @@
 
 %% Example:
 %% get_direct_query_data_source_response() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
 %%   <<"DataSourceArn">> => string(),
 %%   <<"DataSourceName">> => string(),
 %%   <<"DataSourceType">> => list(),
@@ -2473,6 +2474,7 @@
 
 %% Example:
 %% add_direct_query_data_source_request() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
 %%   <<"DataSourceName">> := string(),
 %%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
@@ -2501,6 +2503,7 @@
 
 %% Example:
 %% update_direct_query_data_source_request() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
 %%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
 %%   <<"OpenSearchArns">> := list(string())
@@ -2601,7 +2604,8 @@
 %% Example:
 %% data_source() :: #{
 %%   <<"dataSourceArn">> => string(),
-%%   <<"dataSourceDescription">> => string()
+%%   <<"dataSourceDescription">> => string(),
+%%   <<"iamRoleForDataSourceArn">> => string()
 %% }
 -type data_source() :: #{binary() => any()}.
 
@@ -3407,6 +3411,7 @@
     disabled_operation_exception().
 
 -type update_direct_query_data_source_errors() ::
+    limit_exceeded_exception() | 
     base_exception() | 
     validation_exception() | 
     internal_exception() | 

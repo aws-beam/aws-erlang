@@ -4804,8 +4804,8 @@ create_service_linked_role(Client, Input, Options)
 %% each supported
 %% service per user.
 %%
-%% You can create service-specific credentials for Amazon Bedrock, CodeCommit
-%% and Amazon Keyspaces (for Apache Cassandra).
+%% You can create service-specific credentials for Amazon Bedrock, Amazon
+%% CloudWatch Logs, CodeCommit and Amazon Keyspaces (for Apache Cassandra).
 %%
 %% You can reset the password to a new service-generated value by calling
 %% ResetServiceSpecificCredential:
