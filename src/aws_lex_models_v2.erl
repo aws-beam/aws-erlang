@@ -43,6 +43,8 @@
          delete_bot/4,
          delete_bot_alias/4,
          delete_bot_alias/5,
+         delete_bot_analyzer_recommendation/4,
+         delete_bot_analyzer_recommendation/5,
          delete_bot_locale/5,
          delete_bot_locale/6,
          delete_bot_replica/4,
@@ -75,6 +77,8 @@
          describe_bot_alias/3,
          describe_bot_alias/5,
          describe_bot_alias/6,
+         describe_bot_analyzer_recommendation/4,
+         describe_bot_analyzer_recommendation/5,
          describe_bot_locale/4,
          describe_bot_locale/6,
          describe_bot_locale/7,
@@ -134,6 +138,8 @@
          list_bot_alias_replicas/5,
          list_bot_aliases/3,
          list_bot_aliases/4,
+         list_bot_analyzer_history/3,
+         list_bot_analyzer_history/4,
          list_bot_locales/4,
          list_bot_locales/5,
          list_bot_recommendations/5,
@@ -193,6 +199,8 @@
          list_utterance_metrics/4,
          search_associated_transcripts/6,
          search_associated_transcripts/7,
+         start_bot_analyzer/3,
+         start_bot_analyzer/4,
          start_bot_recommendation/5,
          start_bot_recommendation/6,
          start_bot_resource_generation/5,
@@ -203,6 +211,8 @@
          start_test_execution/4,
          start_test_set_generation/2,
          start_test_set_generation/3,
+         stop_bot_analyzer/4,
+         stop_bot_analyzer/5,
          stop_bot_recommendation/6,
          stop_bot_recommendation/7,
          tag_resource/3,
@@ -433,6 +443,15 @@
 %%   <<"slotResolutionResults">> => list(slot_resolution_test_result_item())
 %% }
 -type intent_level_slot_resolution_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue_location() :: #{
+%%   <<"botLocale">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"slotId">> => string()
+%% }
+-type issue_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -838,6 +857,17 @@
 
 
 %% Example:
+%% stop_bot_analyzer_response() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type stop_bot_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% analytics_utterance_attribute() :: #{
 %%   <<"name">> => list(any())
 %% }
@@ -1021,6 +1051,23 @@
 %%   <<"startTimeoutMs">> => integer()
 %% }
 -type text_input_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bot_analyzer_recommendation_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_bot_analyzer_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_analyzer_history_summary() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer()
+%% }
+-type bot_analyzer_history_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1884,6 +1931,15 @@
 
 
 %% Example:
+%% start_bot_analyzer_request() :: #{
+%%   <<"analysisScope">> := list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type start_bot_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_session_analytics_data_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
@@ -1974,6 +2030,16 @@
 
 
 %% Example:
+%% list_bot_analyzer_history_request() :: #{
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_analyzer_history_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_slots_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
@@ -2025,6 +2091,17 @@
 %%   <<"localeId">> => string()
 %% }
 -type test_set_discrepancy_report_bot_alias_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_analyzer_history_response() :: #{
+%%   <<"botAnalyzerHistoryList">> => list(bot_analyzer_history_summary()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_analyzer_history_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2569,6 +2646,19 @@
 
 
 %% Example:
+%% describe_bot_analyzer_recommendation_response() :: #{
+%%   <<"botAnalyzerRecommendationList">> => list(bot_analyzer_recommendation()),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_bot_analyzer_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_bot_version_replicas_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -2833,6 +2923,10 @@
 %% }
 -type bot_version_replica_sort_by() :: #{binary() => any()}.
 
+%% Example:
+%% delete_bot_analyzer_recommendation_request() :: #{}
+-type delete_bot_analyzer_recommendation_request() :: #{}.
+
 
 %% Example:
 %% list_aggregated_utterances_response() :: #{
@@ -2902,6 +2996,18 @@
 %%   <<"revisionId">> => string()
 %% }
 -type update_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_analyzer_response() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string()
+%% }
+-type start_bot_analyzer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3695,6 +3801,10 @@
 %% }
 -type intent_sort_by() :: #{binary() => any()}.
 
+%% Example:
+%% delete_bot_analyzer_recommendation_response() :: #{}
+-type delete_bot_analyzer_recommendation_response() :: #{}.
+
 
 %% Example:
 %% describe_bot_locale_response() :: #{
@@ -3874,6 +3984,16 @@
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
 -type list_utterance_analytics_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_analyzer_recommendation() :: #{
+%%   <<"issueDescription">> => string(),
+%%   <<"issueLocation">> => issue_location(),
+%%   <<"priority">> => list(any()),
+%%   <<"proposedFix">> => string()
+%% }
+-type bot_analyzer_recommendation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4674,6 +4794,10 @@
 %% }
 -type d_t_m_f_specification() :: #{binary() => any()}.
 
+%% Example:
+%% stop_bot_analyzer_request() :: #{}
+-type stop_bot_analyzer_request() :: #{}.
+
 
 %% Example:
 %% message() :: #{
@@ -4846,6 +4970,12 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type delete_bot_analyzer_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_bot_locale_errors() ::
     precondition_failed_exception() | 
     throttling_exception() | 
@@ -4953,6 +5083,12 @@
     validation_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_analyzer_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type describe_bot_locale_errors() ::
@@ -5094,6 +5230,12 @@
     validation_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception().
+
+-type list_bot_analyzer_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_bot_locales_errors() ::
     throttling_exception() | 
@@ -5279,6 +5421,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type start_bot_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_bot_recommendation_errors() ::
     precondition_failed_exception() | 
     throttling_exception() | 
@@ -5319,6 +5468,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type stop_bot_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type stop_bot_recommendation_errors() ::
     precondition_failed_exception() | 
@@ -6189,6 +6344,48 @@ delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Permanently deletes the recommendations and analysis results for a
+%% specific bot analysis request.
+%%
+%% This operation is provided for GDPR compliance and cannot be undone.
+%%
+%% After deletion, the analysis results cannot be retrieved. The analysis
+%% request ID will still appear in the history list, but attempting to
+%% describe the recommendations will return a
+%% `ResourceNotFoundException'.
+-spec delete_bot_analyzer_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_analyzer_recommendation_request()) ->
+    {ok, delete_bot_analyzer_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_bot_analyzer_recommendation_errors(), tuple()}.
+delete_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input) ->
+    delete_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input, []).
+
+-spec delete_bot_analyzer_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_analyzer_recommendation_request(), proplists:proplist()) ->
+    {ok, delete_bot_analyzer_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_bot_analyzer_recommendation_errors(), tuple()}.
+delete_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botanalyzer/", aws_util:encode_uri(BotAnalyzerRequestId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes a locale from a bot.
 %%
 %% When you delete a locale, all intents, slots, and slot types defined
@@ -6757,6 +6954,48 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the analysis results and recommendations for bot
+%% optimization.
+%%
+%% The analysis must be in `Available' status before recommendations can
+%% be retrieved.
+%%
+%% Recommendations are returned with pagination support. Each recommendation
+%% includes the issue location, priority level, detailed description, and
+%% proposed fix.
+-spec describe_bot_analyzer_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), describe_bot_analyzer_recommendation_request()) ->
+    {ok, describe_bot_analyzer_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_bot_analyzer_recommendation_errors(), tuple()}.
+describe_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input) ->
+    describe_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input, []).
+
+-spec describe_bot_analyzer_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), describe_bot_analyzer_recommendation_request(), proplists:proplist()) ->
+    {ok, describe_bot_analyzer_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_bot_analyzer_recommendation_errors(), tuple()}.
+describe_bot_analyzer_recommendation(Client, BotAnalyzerRequestId, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botanalyzer/describe/", aws_util:encode_uri(BotAnalyzerRequestId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the settings that a bot has for a specific locale.
 -spec describe_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -7544,6 +7783,46 @@ list_bot_aliases(Client, BotId, Input) ->
 list_bot_aliases(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of historical bot analysis executions for a specific
+%% bot.
+%%
+%% You can filter the results by locale and bot version.
+%%
+%% The history includes all analysis executions regardless of their status,
+%% allowing you to track past analyses and their outcomes.
+-spec list_bot_analyzer_history(aws_client:aws_client(), binary() | list(), list_bot_analyzer_history_request()) ->
+    {ok, list_bot_analyzer_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_bot_analyzer_history_errors(), tuple()}.
+list_bot_analyzer_history(Client, BotId, Input) ->
+    list_bot_analyzer_history(Client, BotId, Input, []).
+
+-spec list_bot_analyzer_history(aws_client:aws_client(), binary() | list(), list_bot_analyzer_history_request(), proplists:proplist()) ->
+    {ok, list_bot_analyzer_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_bot_analyzer_history_errors(), tuple()}.
+list_bot_analyzer_history(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botanalyzer/history"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8759,6 +9038,46 @@ search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, Lo
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Initiates an asynchronous analysis of your bot configuration using
+%% AI-powered analysis to identify potential issues and recommend
+%% improvements based on AWS best practices.
+%%
+%% The analysis examines your bot's configuration, including intents,
+%% utterances, slots, and conversation flows, to provide actionable
+%% recommendations for optimization.
+-spec start_bot_analyzer(aws_client:aws_client(), binary() | list(), start_bot_analyzer_request()) ->
+    {ok, start_bot_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, start_bot_analyzer_errors(), tuple()}.
+start_bot_analyzer(Client, BotId, Input) ->
+    start_bot_analyzer(Client, BotId, Input, []).
+
+-spec start_bot_analyzer(aws_client:aws_client(), binary() | list(), start_bot_analyzer_request(), proplists:proplist()) ->
+    {ok, start_bot_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, start_bot_analyzer_errors(), tuple()}.
+start_bot_analyzer(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botanalyzer"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Use this to provide your transcript data, and to start the bot
 %% recommendation process.
 -spec start_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request()) ->
@@ -8922,6 +9241,43 @@ start_test_set_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/testsetgenerations"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an ongoing bot analysis execution.
+%%
+%% Once stopped, the analysis cannot be resumed and no recommendations will
+%% be generated.
+-spec stop_bot_analyzer(aws_client:aws_client(), binary() | list(), binary() | list(), stop_bot_analyzer_request()) ->
+    {ok, stop_bot_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, stop_bot_analyzer_errors(), tuple()}.
+stop_bot_analyzer(Client, BotAnalyzerRequestId, BotId, Input) ->
+    stop_bot_analyzer(Client, BotAnalyzerRequestId, BotId, Input, []).
+
+-spec stop_bot_analyzer(aws_client:aws_client(), binary() | list(), binary() | list(), stop_bot_analyzer_request(), proplists:proplist()) ->
+    {ok, stop_bot_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, stop_bot_analyzer_errors(), tuple()}.
+stop_bot_analyzer(Client, BotAnalyzerRequestId, BotId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botanalyzer/", aws_util:encode_uri(BotAnalyzerRequestId), "/stop"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

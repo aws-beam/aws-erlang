@@ -259,6 +259,13 @@
 
 
 %% Example:
+%% compound_condition() :: #{
+%%   <<"conditions">> => list(list())
+%% }
+-type compound_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_summary() :: #{
 %%   <<"domainArn">> => string(),
 %%   <<"domainId">> => string(),
