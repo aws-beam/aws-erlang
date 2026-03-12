@@ -412,6 +412,8 @@
          describe_training_job/3,
          describe_training_plan/2,
          describe_training_plan/3,
+         describe_training_plan_extension_history/2,
+         describe_training_plan_extension_history/3,
          describe_transform_job/2,
          describe_transform_job/3,
          describe_trial/2,
@@ -432,6 +434,8 @@
          disassociate_trial_component/3,
          enable_sagemaker_servicecatalog_portfolio/2,
          enable_sagemaker_servicecatalog_portfolio/3,
+         extend_training_plan/2,
+         extend_training_plan/3,
          get_device_fleet_report/2,
          get_device_fleet_report/3,
          get_lineage_group_policy/2,
@@ -781,6 +785,12 @@
 %%   <<"VpcOnlyTrustedAccounts">> => list(string())
 %% }
 -type docker_settings() :: #{binary() => any()}.
+
+%% Example:
+%% extend_training_plan_request() :: #{
+%%   <<"TrainingPlanExtensionOfferingId">> := string()
+%% }
+-type extend_training_plan_request() :: #{binary() => any()}.
 
 %% Example:
 %% available_upgrade() :: #{
@@ -1884,6 +1894,7 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"StartTimeAfter">> => non_neg_integer(),
 %%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TrainingPlanArn">> => string(),
 %%   <<"UltraServerCount">> => integer(),
 %%   <<"UltraServerType">> => string()
 %% }
@@ -3240,6 +3251,7 @@
 
 %% Example:
 %% search_training_plan_offerings_response() :: #{
+%%   <<"TrainingPlanExtensionOfferings">> => list(training_plan_extension_offering()),
 %%   <<"TrainingPlanOfferings">> => list(training_plan_offering())
 %% }
 -type search_training_plan_offerings_response() :: #{binary() => any()}.
@@ -7246,6 +7258,12 @@
 -type remote_debug_config_for_update() :: #{binary() => any()}.
 
 %% Example:
+%% extend_training_plan_response() :: #{
+%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
+%% }
+-type extend_training_plan_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_user_profiles_request() :: #{
 %%   <<"DomainIdEquals">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -8792,6 +8810,18 @@
 %%   <<"Parquet">> => monitoring_parquet_dataset_format()
 %% }
 -type monitoring_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_extension_offering() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"TrainingPlanExtensionOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_extension_offering() :: #{binary() => any()}.
 
 %% Example:
 %% training_job_summary() :: #{
@@ -10903,6 +10933,22 @@
 -type shadow_mode_config() :: #{binary() => any()}.
 
 %% Example:
+%% training_plan_extension() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"ExtendedAt">> => non_neg_integer(),
+%%   <<"PaymentStatus">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"TrainingPlanExtensionOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_extension() :: #{binary() => any()}.
+
+%% Example:
 %% get_lineage_group_policy_request() :: #{
 %%   <<"LineageGroupName">> := string()
 %% }
@@ -11163,6 +11209,14 @@
 %%   <<"TrackingServerName">> := string()
 %% }
 -type describe_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_extension_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanArn">> := string()
+%% }
+-type describe_training_plan_extension_history_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_flow_definition_response() :: #{
@@ -13018,6 +13072,13 @@
 -type list_tags_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_training_plan_extension_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
+%% }
+-type describe_training_plan_extension_history_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_pipeline_parameters_for_execution_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PipelineParameters">> => list(parameter())
@@ -13369,6 +13430,8 @@
 %%   <<"DurationHours">> => float(),
 %%   <<"DurationMinutes">> => float(),
 %%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExtensionEndTime">> => non_neg_integer(),
+%%   <<"ExtensionStartTime">> => non_neg_integer(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"ReservedCapacityType">> => list(any()),
@@ -14378,6 +14441,9 @@
 -type describe_training_plan_errors() ::
     resource_not_found().
 
+-type describe_training_plan_extension_history_errors() ::
+    resource_not_found().
+
 -type describe_transform_job_errors() ::
     resource_not_found().
 
@@ -14395,6 +14461,9 @@
     resource_not_found().
 
 -type disassociate_trial_component_errors() ::
+    resource_not_found().
+
+-type extend_training_plan_errors() ::
     resource_not_found().
 
 -type get_lineage_group_policy_errors() ::
@@ -19388,6 +19457,26 @@ describe_training_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrainingPlan">>, Input, Options).
 
+%% @doc Retrieves the extension history for a specified training plan.
+%%
+%% The response includes details about each extension, such as the offering
+%% ID, start and end dates, status, payment status, and cost information.
+-spec describe_training_plan_extension_history(aws_client:aws_client(), describe_training_plan_extension_history_request()) ->
+    {ok, describe_training_plan_extension_history_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_plan_extension_history_errors(), tuple()}.
+describe_training_plan_extension_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_training_plan_extension_history(Client, Input, []).
+
+-spec describe_training_plan_extension_history(aws_client:aws_client(), describe_training_plan_extension_history_request(), proplists:proplist()) ->
+    {ok, describe_training_plan_extension_history_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_plan_extension_history_errors(), tuple()}.
+describe_training_plan_extension_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrainingPlanExtensionHistory">>, Input, Options).
+
 %% @doc Returns information about a transform job.
 -spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request()) ->
     {ok, describe_transform_job_response(), tuple()} |
@@ -19585,6 +19674,37 @@ enable_sagemaker_servicecatalog_portfolio(Client, Input)
 enable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSagemakerServicecatalogPortfolio">>, Input, Options).
+
+%% @doc Extends an existing training plan by purchasing an extension
+%% offering.
+%%
+%% This allows you to add additional compute capacity time to your training
+%% plan without creating a new plan or reconfiguring your workloads.
+%%
+%% To find available extension offerings, use the `
+%% SearchTrainingPlanOfferings:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SearchTrainingPlanOfferings.html
+%% ' API with the `TrainingPlanArn' parameter.
+%%
+%% To view the history of extensions for a training plan, use the `
+%% DescribeTrainingPlanExtensionHistory:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingPlanExtensionHistory.html
+%% ' API.
+-spec extend_training_plan(aws_client:aws_client(), extend_training_plan_request()) ->
+    {ok, extend_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, extend_training_plan_errors(), tuple()}.
+extend_training_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    extend_training_plan(Client, Input, []).
+
+-spec extend_training_plan(aws_client:aws_client(), extend_training_plan_request(), proplists:proplist()) ->
+    {ok, extend_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, extend_training_plan_errors(), tuple()}.
+extend_training_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExtendTrainingPlan">>, Input, Options).
 
 %% @doc Describes a fleet.
 -spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request()) ->

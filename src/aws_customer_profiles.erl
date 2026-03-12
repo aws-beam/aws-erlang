@@ -47,6 +47,8 @@
          create_profile/4,
          create_recommender/4,
          create_recommender/5,
+         create_recommender_filter/4,
+         create_recommender_filter/5,
          create_segment_definition/4,
          create_segment_definition/5,
          create_segment_estimate/3,
@@ -79,6 +81,8 @@
          delete_profile_object_type/5,
          delete_recommender/4,
          delete_recommender/5,
+         delete_recommender_filter/4,
+         delete_recommender_filter/5,
          delete_segment_definition/4,
          delete_segment_definition/5,
          delete_workflow/4,
@@ -132,6 +136,9 @@
          get_recommender/3,
          get_recommender/5,
          get_recommender/6,
+         get_recommender_filter/3,
+         get_recommender_filter/5,
+         get_recommender_filter/6,
          get_segment_definition/3,
          get_segment_definition/5,
          get_segment_definition/6,
@@ -205,6 +212,9 @@
          list_profile_object_types/5,
          list_profile_objects/3,
          list_profile_objects/4,
+         list_recommender_filters/2,
+         list_recommender_filters/4,
+         list_recommender_filters/5,
          list_recommender_recipes/1,
          list_recommender_recipes/3,
          list_recommender_recipes/4,
@@ -743,6 +753,15 @@
 
 
 %% Example:
+%% create_recommender_filter_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecommenderFilterExpression">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_object_type_attribute_statistics_stats() :: #{
 %%   <<"Average">> => float(),
 %%   <<"Maximum">> => float(),
@@ -913,6 +932,19 @@
 
 
 %% Example:
+%% get_recommender_filter_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"RecommenderFilterExpression">> => string(),
+%%   <<"RecommenderFilterName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_recommender_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% profile_type_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
 %%   <<"Values">> => list(list(any())())
@@ -973,7 +1005,8 @@
 %% Example:
 %% event_parameters() :: #{
 %%   <<"EventType">> => string(),
-%%   <<"EventValueThreshold">> => float()
+%%   <<"EventValueThreshold">> => float(),
+%%   <<"EventWeight">> => float()
 %% }
 -type event_parameters() :: #{binary() => any()}.
 
@@ -1195,6 +1228,13 @@
 %% Example:
 %% get_upload_job_path_request() :: #{}
 -type get_upload_job_path_request() :: #{}.
+
+
+%% Example:
+%% metadata_config() :: #{
+%%   <<"MetadataColumns">> => list(string())
+%% }
+-type metadata_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1449,9 +1489,13 @@
 
 %% Example:
 %% get_profile_recommendations_request() :: #{
+%%   <<"CandidateIds">> => list(string()),
 %%   <<"Context">> => map(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"RecommenderName">> := string()
+%%   <<"MetadataConfig">> => metadata_config(),
+%%   <<"RecommenderFilters">> => list(recommender_filter()),
+%%   <<"RecommenderName">> := string(),
+%%   <<"RecommenderPromotionalFilters">> => list(recommender_promotional_filter())
 %% }
 -type get_profile_recommendations_request() :: #{binary() => any()}.
 
@@ -1655,6 +1699,10 @@
 %%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error())
 %% }
 -type batch_get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_filter_request() :: #{}
+-type delete_recommender_filter_request() :: #{}.
 
 
 %% Example:
@@ -2014,6 +2062,14 @@
 
 
 %% Example:
+%% recommender_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => map()
+%% }
+-type recommender_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_integration_request() :: #{
 %%   <<"Uri">> := string()
 %% }
@@ -2132,6 +2188,14 @@
 
 
 %% Example:
+%% list_recommender_filters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_filters_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_profile_objects_item() :: #{
 %%   <<"Object">> => string(),
 %%   <<"ObjectTypeName">> => string(),
@@ -2205,6 +2269,13 @@
 
 
 %% Example:
+%% delete_recommender_filter_response() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type delete_recommender_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter_attribute_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
 %%   <<"Values">> => list(string())
@@ -2270,6 +2341,19 @@
 %% Example:
 %% get_profile_object_type_request() :: #{}
 -type get_profile_object_type_request() :: #{}.
+
+
+%% Example:
+%% recommender_filter_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"RecommenderFilterExpression">> => string(),
+%%   <<"RecommenderFilterName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type recommender_filter_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2455,6 +2539,13 @@
 
 
 %% Example:
+%% inference_config() :: #{
+%%   <<"MinProvisionedTPS">> => integer()
+%% }
+-type inference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_profiles_response() :: #{
 %%   <<"Items">> => list(profile()),
 %%   <<"NextToken">> => string()
@@ -2531,6 +2622,14 @@
 
 
 %% Example:
+%% list_recommender_filters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderFilters">> => list(recommender_filter_summary())
+%% }
+-type list_recommender_filters_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% upload_job_item() :: #{
 %%   <<"CompletedAt">> => non_neg_integer(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -2587,6 +2686,7 @@
 %% Example:
 %% recommender_config() :: #{
 %%   <<"EventsConfig">> => events_config(),
+%%   <<"InferenceConfig">> => inference_config(),
 %%   <<"TrainingFrequency">> => integer()
 %% }
 -type recommender_config() :: #{binary() => any()}.
@@ -2766,6 +2866,16 @@
 %%   <<"SourceLastUpdatedTimestampFormat">> => string()
 %% }
 -type detected_profile_object_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_promotional_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PercentPromotedItems">> => integer(),
+%%   <<"PromotionName">> => string(),
+%%   <<"Values">> => map()
+%% }
+-type recommender_promotional_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3012,6 +3122,10 @@
 %% }
 -type list_profile_object_type_templates_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_recommender_filter_request() :: #{}
+-type get_recommender_filter_request() :: #{}.
+
 
 %% Example:
 %% delete_profile_object_type_response() :: #{
@@ -3185,6 +3299,14 @@
 
 
 %% Example:
+%% create_recommender_filter_response() :: #{
+%%   <<"RecommenderFilterArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_calculated_attribute_definition_response() :: #{
 %%   <<"AttributeDetails">> => attribute_details(),
 %%   <<"CalculatedAttributeName">> => string(),
@@ -3348,6 +3470,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_recommender_filter_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_segment_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3454,6 +3583,13 @@
     resource_not_found_exception().
 
 -type delete_recommender_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_recommender_filter_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3594,6 +3730,13 @@
     resource_not_found_exception().
 
 -type get_recommender_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recommender_filter_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3776,6 +3919,13 @@
     resource_not_found_exception().
 
 -type list_profile_objects_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_recommender_filters_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -4402,6 +4552,43 @@ create_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a recommender filter.
+%%
+%% A recommender filter specifies which items to include or exclude from
+%% recommendations.
+-spec create_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_filter_request()) ->
+    {ok, create_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_filter_errors(), tuple()}.
+create_recommender_filter(Client, DomainName, RecommenderFilterName, Input) ->
+    create_recommender_filter(Client, DomainName, RecommenderFilterName, Input, []).
+
+-spec create_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_filter_request(), proplists:proplist()) ->
+    {ok, create_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_filter_errors(), tuple()}.
+create_recommender_filter(Client, DomainName, RecommenderFilterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters/", aws_util:encode_uri(RecommenderFilterName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a segment definition associated to the given domain.
 -spec create_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_definition_request()) ->
     {ok, create_segment_definition_response(), tuple()} |
@@ -4952,6 +5139,40 @@ delete_recommender(Client, DomainName, RecommenderName, Input) ->
 delete_recommender(Client, DomainName, RecommenderName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommenders/", aws_util:encode_uri(RecommenderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a recommender filter from a domain.
+-spec delete_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_filter_request()) ->
+    {ok, delete_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_filter_errors(), tuple()}.
+delete_recommender_filter(Client, DomainName, RecommenderFilterName, Input) ->
+    delete_recommender_filter(Client, DomainName, RecommenderFilterName, Input, []).
+
+-spec delete_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_filter_request(), proplists:proplist()) ->
+    {ok, delete_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_filter_errors(), tuple()}.
+delete_recommender_filter(Client, DomainName, RecommenderFilterName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters/", aws_util:encode_uri(RecommenderFilterName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5808,6 +6029,44 @@ get_recommender(Client, DomainName, RecommenderName, QueryMap, HeadersMap, Optio
         {<<"training-metrics-count">>, maps:get(<<"training-metrics-count">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific recommender filter in a
+%% domain.
+-spec get_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_filter_errors(), tuple()}.
+get_recommender_filter(Client, DomainName, RecommenderFilterName)
+  when is_map(Client) ->
+    get_recommender_filter(Client, DomainName, RecommenderFilterName, #{}, #{}).
+
+-spec get_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_filter_errors(), tuple()}.
+get_recommender_filter(Client, DomainName, RecommenderFilterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommender_filter(Client, DomainName, RecommenderFilterName, QueryMap, HeadersMap, []).
+
+-spec get_recommender_filter(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommender_filter_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_filter_errors(), tuple()}.
+get_recommender_filter(Client, DomainName, RecommenderFilterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters/", aws_util:encode_uri(RecommenderFilterName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6863,6 +7122,48 @@ list_profile_objects(Client, DomainName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of recommender filters in the specified domain.
+-spec list_recommender_filters(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommender_filters_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_filters_errors(), tuple()}.
+list_recommender_filters(Client, DomainName)
+  when is_map(Client) ->
+    list_recommender_filters(Client, DomainName, #{}, #{}).
+
+-spec list_recommender_filters(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommender_filters_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_filters_errors(), tuple()}.
+list_recommender_filters(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommender_filters(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_recommender_filters(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommender_filters_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_filters_errors(), tuple()}.
+list_recommender_filters(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of available recommender recipes that can be used to
 %% create recommenders.
