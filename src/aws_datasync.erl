@@ -269,10 +269,13 @@
 
 %% Example:
 %% describe_location_fsx_windows_response() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
 %%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"User">> => string()
 %% }
@@ -343,6 +346,8 @@
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
 %%   <<"KerberosPrincipal">> => string(),
@@ -675,6 +680,8 @@
 
 %% Example:
 %% fsx_update_protocol_smb() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
 %%   <<"MountOptions">> => smb_mount_options(),
 %%   <<"Password">> => string(),
@@ -981,9 +988,11 @@
 
 %% Example:
 %% create_location_fsx_windows_request() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
 %%   <<"FsxFilesystemArn">> := string(),
-%%   <<"Password">> := string(),
+%%   <<"Password">> => string(),
 %%   <<"SecurityGroupArns">> := list(string()),
 %%   <<"Subdirectory">> => string(),
 %%   <<"Tags">> => list(tag_list_entry()),
@@ -1097,6 +1106,8 @@
 %%   <<"AgentArns">> := list(string()),
 %%   <<"AuthenticationType">> := list(any()),
 %%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
 %%   <<"KerberosPrincipal">> => string(),
@@ -1185,6 +1196,8 @@
 
 %% Example:
 %% update_location_fsx_windows_request() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
 %%   <<"LocationArn">> := string(),
 %%   <<"Password">> => string(),
@@ -1219,7 +1232,10 @@
 
 %% Example:
 %% fsx_protocol_smb() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
 %%   <<"MountOptions">> => smb_mount_options(),
 %%   <<"Password">> => string(),
 %%   <<"User">> => string()
@@ -1326,11 +1342,14 @@
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"KerberosPrincipal">> => string(),
 %%   <<"KmsKeyProviderUri">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
 %%   <<"NameNodes">> => list(hdfs_name_node()),
 %%   <<"QopConfiguration">> => qop_configuration(),
 %%   <<"ReplicationFactor">> => integer(),

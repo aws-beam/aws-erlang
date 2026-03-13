@@ -2655,6 +2655,7 @@
 %% Example:
 %% create_bucket_request() :: #{
 %%   <<"ACL">> => list(any()),
+%%   <<"BucketNamespace">> => list(any()),
 %%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
 %%   <<"GrantFullControl">> => string(),
 %%   <<"GrantRead">> => string(),
@@ -4189,12 +4190,15 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% the
 %% `s3express:CreateSession'
 %% permission in
-%% the `Action' element of a policy to read the object. By default, the
-%% session is
-%% in the `ReadWrite' mode. If you want to restrict the access, you can
-%% explicitly
-%% set the `s3express:SessionMode' condition key to `ReadOnly' on the
-%% copy source bucket.
+%% the `Action' element of a policy to read the object. If no session
+%% mode is specified,
+%% the session will be created with the maximum allowable privilege,
+%% attempting `ReadWrite'
+%% first, then `ReadOnly' if `ReadWrite' is not permitted. If you
+%% want to explicitly
+%% restrict the access to be read-only, you can set the
+%% `s3express:SessionMode' condition key to
+%% `ReadOnly' on the copy source bucket.
 %%
 %% If the copy destination is a directory bucket, you must have the
 %% `s3express:CreateSession'
@@ -4433,6 +4437,24 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html
 %% in the Amazon S3 User Guide.
 %%
+%% General purpose buckets exist in a global namespace, which means that each
+%% bucket name must be unique
+%% across all Amazon Web Services accounts in all the Amazon Web Services
+%% Regions within a partition. A partition is a grouping of
+%% Regions. Amazon Web Services currently has four partitions: `aws'
+%% (Standard Regions), `aws-cn'
+%% (China Regions), `aws-us-gov' (Amazon Web Services GovCloud (US)), and
+%% `aws-eusc'
+%% (European Sovereign Cloud). When you create a general purpose bucket, you
+%% can choose to create a bucket in
+%% the shared global namespace or you can choose to create a bucket in your
+%% account regional namespace.
+%% Your account regional namespace is a subdivision of the global namespace
+%% that only your account can
+%% create buckets in. For more information on account regional namespaces,
+%% see Namespaces for general purpose buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html.
+%%
 %% General purpose buckets - If you send your
 %% `CreateBucket' request to the `s3.amazonaws.com' global endpoint,
 %% the
@@ -4607,6 +4629,7 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-bucket-namespace">>, <<"BucketNamespace">>},
                        {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
                        {<<"x-amz-grant-read">>, <<"GrantRead">>},
                        {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
@@ -6621,14 +6644,6 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %% Deletes tags from the general purpose bucket if attribute based access
 %% control (ABAC) is not enabled for the bucket. When you enable ABAC for a
 %% general purpose bucket:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
-%% you can no longer use this operation for that bucket and must use
-%% UntagResource:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html
-%% instead.
-%%
-%% if ABAC is not enabled for the bucket. When you enable ABAC for a general
-%% purpose bucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
 %% you can no longer use this operation for that bucket and must use
 %% UntagResource:
@@ -9025,14 +9040,6 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% Returns the tag set associated with the general purpose bucket.
 %%
-%% if ABAC is not enabled for the bucket. When you enable ABAC for a general
-%% purpose bucket:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html,
-%% you can no longer use this operation for that bucket and must use
-%% ListTagsForResource:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListTagsForResource.html
-%% instead.
-%%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetBucketTagging'
 %% action. By default, the bucket owner has this permission and can grant
@@ -10442,11 +10449,15 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% `s3express:CreateSession'
 %% permission in the
-%% `Action' element of a policy. By default, the session is in the
-%% `ReadWrite' mode. If you want to restrict the access, you can
-%% explicitly set the
-%% `s3express:SessionMode' condition key to `ReadOnly' on the
-%% bucket.
+%% `Action' element of a policy. If no session mode is specified, the
+%% session will be
+%% created with the maximum allowable privilege, attempting `ReadWrite'
+%% first,
+%% then `ReadOnly' if `ReadWrite' is not permitted. If you want to
+%% explicitly
+%% restrict the access to be read-only, you can set the
+%% `s3express:SessionMode' condition key to
+%% `ReadOnly' on the bucket.
 %%
 %% For more information about example bucket policies, see Example
 %% bucket policies for S3 Express One Zone:
@@ -16766,12 +16777,15 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% the
 %% `s3express:CreateSession'
 %% permission in
-%% the `Action' element of a policy to read the object. By default, the
-%% session is
-%% in the `ReadWrite' mode. If you want to restrict the access, you can
-%% explicitly
-%% set the `s3express:SessionMode' condition key to `ReadOnly' on the
-%% copy source bucket.
+%% the `Action' element of a policy to read the object. If no session
+%% mode is specified,
+%% the session will be created with the maximum allowable privilege,
+%% attempting
+%% `ReadWrite' first, then `ReadOnly' if `ReadWrite' is not
+%% permitted.
+%% If you want to explicitly restrict the access to be read-only, you can set
+%% the `s3express:SessionMode'
+%% condition key to `ReadOnly' on the copy source bucket.
 %%
 %% If the copy destination is a directory bucket, you must have the
 %% `s3express:CreateSession'
