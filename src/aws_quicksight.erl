@@ -14144,6 +14144,7 @@
 %%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
 %%   <<"ShareSAPProductMasterDataAction">> => list(any()),
 %%   <<"SlackAction">> => list(any()),
+%%   <<"ManageSharedFolders">> => list(any()),
 %%   <<"UseFactSetAction">> => list(any()),
 %%   <<"CreateAndUpdateSlackAction">> => list(any()),
 %%   <<"CreateAndUpdateMCPAction">> => list(any()),

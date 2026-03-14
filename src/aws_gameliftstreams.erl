@@ -248,7 +248,8 @@
 %%   <<"LocationName">> => string(),
 %%   <<"MaximumCapacity">> => integer(),
 %%   <<"OnDemandCapacity">> => integer(),
-%%   <<"TargetIdleCapacity">> => integer()
+%%   <<"TargetIdleCapacity">> => integer(),
+%%   <<"VpcTransitConfiguration">> => vpc_transit_configuration()
 %% }
 -type location_configuration() :: #{binary() => any()}.
 
@@ -258,12 +259,14 @@
 %%   <<"AllocatedCapacity">> => integer(),
 %%   <<"AlwaysOnCapacity">> => integer(),
 %%   <<"IdleCapacity">> => integer(),
+%%   <<"InternalVpcIpv4CidrBlock">> => string(),
 %%   <<"LocationName">> => string(),
 %%   <<"MaximumCapacity">> => integer(),
 %%   <<"OnDemandCapacity">> => integer(),
 %%   <<"RequestedCapacity">> => integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"TargetIdleCapacity">> => integer()
+%%   <<"TargetIdleCapacity">> => integer(),
+%%   <<"VpcTransitConfiguration">> => vpc_transit_configuration_response()
 %% }
 -type location_state() :: #{binary() => any()}.
 
@@ -479,6 +482,14 @@
 
 
 %% Example:
+%% vpc_transit_configuration() :: #{
+%%   <<"Ipv4CidrBlocks">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_transit_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -571,6 +582,16 @@
 %%   <<"LocationConfigurations">> := list(location_configuration())
 %% }
 -type add_stream_group_locations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_transit_configuration_response() :: #{
+%%   <<"Ipv4CidrBlocks">> => list(string()),
+%%   <<"TransitGatewayId">> => [string()],
+%%   <<"TransitGatewayResourceShareArn">> => [string()],
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_transit_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1867,6 +1888,9 @@ remove_stream_group_locations(Client, Identifier, Input0, Options0) ->
 %% from a stream session. If no client connects before the timeout, Amazon
 %% GameLift Streams terminates the stream session. This value is specified by
 %% `ConnectionTimeoutSeconds' in the `StartStreamSession' parameters.
+%%
+%% Idle timeout: A stream session will be terminated if no user input has
+%% been received for 60 minutes.
 %%
 %% Maximum session length: A stream session will be terminated after this
 %% amount of time has elapsed since it started, regardless of any existing

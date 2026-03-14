@@ -4497,9 +4497,11 @@
 
 %% Example:
 %% batch_get_partition_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"PartitionsToGet">> := list(partition_value_list()),
+%%   <<"QuerySessionContext">> => query_session_context(),
 %%   <<"TableName">> := string()
 %% }
 -type batch_get_partition_request() :: #{binary() => any()}.

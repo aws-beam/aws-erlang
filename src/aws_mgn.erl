@@ -20,6 +20,8 @@
          create_connector/3,
          create_launch_configuration_template/2,
          create_launch_configuration_template/3,
+         create_network_migration_definition/2,
+         create_network_migration_definition/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
          create_wave/2,
@@ -32,6 +34,8 @@
          delete_job/3,
          delete_launch_configuration_template/2,
          delete_launch_configuration_template/3,
+         delete_network_migration_definition/2,
+         delete_network_migration_definition/3,
          delete_replication_configuration_template/2,
          delete_replication_configuration_template/3,
          delete_source_server/2,
@@ -63,6 +67,10 @@
          finalize_cutover/3,
          get_launch_configuration/2,
          get_launch_configuration/3,
+         get_network_migration_definition/2,
+         get_network_migration_definition/3,
+         get_network_migration_mapper_segment_construct/2,
+         get_network_migration_mapper_segment_construct/3,
          get_replication_configuration/2,
          get_replication_configuration/3,
          initialize_service/2,
@@ -77,10 +85,36 @@
          list_exports/3,
          list_import_errors/2,
          list_import_errors/3,
+         list_import_file_enrichments/2,
+         list_import_file_enrichments/3,
          list_imports/2,
          list_imports/3,
          list_managed_accounts/2,
          list_managed_accounts/3,
+         list_network_migration_analyses/2,
+         list_network_migration_analyses/3,
+         list_network_migration_analysis_results/2,
+         list_network_migration_analysis_results/3,
+         list_network_migration_code_generation_segments/2,
+         list_network_migration_code_generation_segments/3,
+         list_network_migration_code_generations/2,
+         list_network_migration_code_generations/3,
+         list_network_migration_definitions/2,
+         list_network_migration_definitions/3,
+         list_network_migration_deployed_stacks/2,
+         list_network_migration_deployed_stacks/3,
+         list_network_migration_deployments/2,
+         list_network_migration_deployments/3,
+         list_network_migration_executions/2,
+         list_network_migration_executions/3,
+         list_network_migration_mapper_segment_constructs/2,
+         list_network_migration_mapper_segment_constructs/3,
+         list_network_migration_mapper_segments/2,
+         list_network_migration_mapper_segments/3,
+         list_network_migration_mapping_updates/2,
+         list_network_migration_mapping_updates/3,
+         list_network_migration_mappings/2,
+         list_network_migration_mappings/3,
          list_source_server_actions/2,
          list_source_server_actions/3,
          list_tags_for_resource/2,
@@ -112,6 +146,18 @@
          start_export/3,
          start_import/2,
          start_import/3,
+         start_import_file_enrichment/2,
+         start_import_file_enrichment/3,
+         start_network_migration_analysis/2,
+         start_network_migration_analysis/3,
+         start_network_migration_code_generation/2,
+         start_network_migration_code_generation/3,
+         start_network_migration_deployment/2,
+         start_network_migration_deployment/3,
+         start_network_migration_mapping/2,
+         start_network_migration_mapping/3,
+         start_network_migration_mapping_update/2,
+         start_network_migration_mapping_update/3,
          start_replication/2,
          start_replication/3,
          start_test/2,
@@ -136,6 +182,10 @@
          update_launch_configuration/3,
          update_launch_configuration_template/2,
          update_launch_configuration_template/3,
+         update_network_migration_definition/2,
+         update_network_migration_definition/3,
+         update_network_migration_mapper_segment/2,
+         update_network_migration_mapper_segment/3,
          update_replication_configuration/2,
          update_replication_configuration/3,
          update_replication_configuration_template/2,
@@ -152,10 +202,28 @@
 
 
 %% Example:
+%% list_network_migration_deployer_job_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_deployer_job_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_cutover_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type start_cutover_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_request() :: #{
+%%   <<"filters">> => list_network_migration_code_generations_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -173,6 +241,21 @@
 %%   <<"state">> => string()
 %% }
 -type change_server_life_cycle_state_source_server_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_code_generation_segment() :: #{
+%%   <<"artifacts">> => list(network_migration_code_generation_artifact()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"logicalID">> => string(),
+%%   <<"mapperSegmentID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"segmentID">> => string(),
+%%   <<"segmentType">> => string()
+%% }
+-type network_migration_code_generation_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -198,6 +281,41 @@
 
 
 %% Example:
+%% get_network_migration_mapper_segment_construct_response() :: #{
+%%   <<"construct">> => network_migration_mapper_segment_construct()
+%% }
+-type get_network_migration_mapper_segment_construct_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_analysis_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
+%% }
+-type start_network_migration_analysis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapping_updates_request() :: #{
+%%   <<"filters">> => list_network_migration_mapping_updates_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapping_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_segment() :: #{
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> => string(),
+%%   <<"targetAccount">> => string()
+%% }
+-type start_network_migration_mapping_update_segment() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_vcenter_clients_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -210,6 +328,15 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"securityGroupMappingStrategy">> => string()
+%% }
+-type start_network_migration_mapping_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -226,10 +353,37 @@
 
 
 %% Example:
+%% target_network_update() :: #{
+%%   <<"inboundCidr">> => string(),
+%%   <<"inspectionCidr">> => string(),
+%%   <<"outboundCidr">> => string(),
+%%   <<"topology">> => string()
+%% }
+-type target_network_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_migration_mapper_segment_construct_request() :: #{
+%%   <<"constructID">> := string(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"segmentID">> := string()
+%% }
+-type get_network_migration_mapper_segment_construct_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_exports_request_filters() :: #{
 %%   <<"exportIDs">> => list(string())
 %% }
 -type list_exports_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_operation() :: #{
+%%   <<"properties">> => map()
+%% }
+-type update_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -238,6 +392,13 @@
 %%   <<"applicationID">> := string()
 %% }
 -type unarchive_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_code_generations_filters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -257,6 +418,13 @@
 
 
 %% Example:
+%% list_network_migration_analyses_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_analyses_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_source_server_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"connectorAction">> => source_server_connector_action(),
@@ -271,6 +439,14 @@
 %%   <<"waveID">> := string()
 %% }
 -type archive_wave_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segment_constructs_response() :: #{
+%%   <<"items">> => list(network_migration_mapper_segment_construct()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segment_constructs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,6 +523,15 @@
 
 
 %% Example:
+%% list_import_file_enrichments_request() :: #{
+%%   <<"filters">> => list_import_file_enrichments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_enrichments_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_replication_configuration_template_request() :: #{
 %%   <<"arn">> => string(),
 %%   <<"associateDefaultSecurityGroup">> => [boolean()],
@@ -367,6 +552,32 @@
 %%   <<"useFipsEndpoint">> => [boolean()]
 %% }
 -type update_replication_configuration_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_s3_configuration_update() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string()
+%% }
+-type target_s3_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_definition() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceConfigurations">> => list(source_configuration()),
+%%   <<"tags">> => map(),
+%%   <<"targetDeployment">> => string(),
+%%   <<"targetNetwork">> => target_network(),
+%%   <<"targetS3Configuration">> => target_s3_configuration(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type network_migration_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,6 +613,59 @@
 
 
 %% Example:
+%% list_network_migration_mapper_segments_response() :: #{
+%%   <<"items">> => list(network_migration_mapper_segment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_file_enrichment_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_import_file_enrichment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mappings_request() :: #{
+%%   <<"filters">> => list_network_migration_mappings_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segments_filters() :: #{
+%%   <<"segmentIDs">> => list(string())
+%% }
+-type list_network_migration_mapper_segments_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_mapping_update_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_mapping_update_job_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generation_segments_filters() :: #{
+%%   <<"segmentIDs">> => list(string())
+%% }
+-type list_network_migration_code_generation_segments_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_interface() :: #{
 %%   <<"ips">> => list(string()),
 %%   <<"isPrimary">> => [boolean()],
@@ -415,6 +679,15 @@
 %%   <<"apiCallDateTime">> => string()
 %% }
 -type life_cycle_last_test_finalized() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_failed_resource_details() :: #{
+%%   <<"logicalID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string()
+%% }
+-type network_migration_failed_resource_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,6 +717,32 @@
 
 
 %% Example:
+%% import_file_enrichment() :: #{
+%%   <<"checksum">> => checksum(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"s3BucketTarget">> => enrichment_target_s3_configuration(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type import_file_enrichment() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_analysis_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_analysis_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_source_server_action_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"actionID">> := string(),
@@ -462,11 +761,60 @@
 
 
 %% Example:
+%% list_network_migration_executions_request() :: #{
+%%   <<"filters">> => list_network_migration_execution_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_enrichments_response() :: #{
+%%   <<"items">> => list(import_file_enrichment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_enrichments_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% source_server_connector_action() :: #{
 %%   <<"connectorArn">> => string(),
 %%   <<"credentialsSecretArn">> => string()
 %% }
 -type source_server_connector_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"constructType">> => string(),
+%%   <<"operation">> => list(),
+%%   <<"segmentID">> => string()
+%% }
+-type start_network_migration_mapping_update_construct() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_deployer_job_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_deployer_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_migration_definition_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceConfigurations">> => list(source_configuration()),
+%%   <<"targetDeployment">> => string(),
+%%   <<"targetNetwork">> => target_network_update(),
+%%   <<"targetS3Configuration">> => target_s3_configuration_update()
+%% }
+-type update_network_migration_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,6 +824,27 @@
 %%   <<"waveIDs">> => list(string())
 %% }
 -type list_applications_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_definition_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceEnvironment">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type network_migration_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_request() :: #{
+%%   <<"filters">> => list_network_migration_definitions_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_definitions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -504,6 +873,14 @@
 %%   <<"jobID">> => string()
 %% }
 -type launched_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_response() :: #{
+%%   <<"items">> => list(network_migration_definition_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -604,6 +981,17 @@
 
 
 %% Example:
+%% list_network_migration_mapper_segments_request() :: #{
+%%   <<"filters">> => list_network_migration_mapper_segments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_replication_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"sourceServerID">> := string()
@@ -626,6 +1014,20 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_source_server_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_mapper_segment_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"constructType">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"logicalID">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type network_migration_mapper_segment_construct() :: #{binary() => any()}.
 
 
 %% Example:
@@ -673,10 +1075,32 @@
 
 
 %% Example:
+%% network_migration_analysis_result() :: #{
+%%   <<"analysisResult">> => [string()],
+%%   <<"analyzerType">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"source">> => network_migration_analysis_result_source(),
+%%   <<"status">> => string(),
+%%   <<"target">> => network_migration_analysis_result_target()
+%% }
+-type network_migration_analysis_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% licensing() :: #{
 %%   <<"osByol">> => [boolean()]
 %% }
 -type licensing() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_execution_request_filters() :: #{
+%%   <<"networkMigrationExecutionIDs">> => list(string()),
+%%   <<"networkMigrationExecutionStatuses">> => list(string())
+%% }
+-type list_network_migration_execution_request_filters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -701,6 +1125,25 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_imports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_network() :: #{
+%%   <<"inboundCidr">> => string(),
+%%   <<"inspectionCidr">> => string(),
+%%   <<"outboundCidr">> => string(),
+%%   <<"topology">> => string()
+%% }
+-type target_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_code_generation_request() :: #{
+%%   <<"codeGenerationOutputFormatTypes">> => list(string()),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
+%% }
+-type start_network_migration_code_generation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -780,6 +1223,14 @@
 
 
 %% Example:
+%% list_network_migration_mapper_segment_constructs_filters() :: #{
+%%   <<"constructIDs">> => list(string()),
+%%   <<"constructTypes">> => list(string())
+%% }
+-type list_network_migration_mapper_segment_constructs_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% life_cycle_last_test_initiated() :: #{
 %%   <<"apiCallDateTime">> => string(),
 %%   <<"jobID">> => string()
@@ -853,6 +1304,27 @@
 
 
 %% Example:
+%% list_network_migration_analyses_response() :: #{
+%%   <<"items">> => list(network_migration_analysis_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analyses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_mapping_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_mapping_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_replication_error() :: #{
 %%   <<"error">> => string(),
 %%   <<"rawError">> => string()
@@ -898,6 +1370,28 @@
 
 
 %% Example:
+%% network_migration_execution() :: #{
+%%   <<"activity">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"stage">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type network_migration_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_analysis_result_source() :: #{
+%%   <<"subnetID">> => string(),
+%%   <<"vpcID">> => string()
+%% }
+-type network_migration_analysis_result_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_wave_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"waveID">> := string()
@@ -927,6 +1421,13 @@
 
 
 %% Example:
+%% start_network_migration_mapping_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_wave_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"description">> => string(),
@@ -951,6 +1452,24 @@
 
 
 %% Example:
+%% start_import_file_enrichment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ipAssignmentStrategy">> => string(),
+%%   <<"s3BucketSource">> := enrichment_source_s3_configuration(),
+%%   <<"s3BucketTarget">> := enrichment_target_s3_configuration()
+%% }
+-type start_import_file_enrichment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployer_job_response() :: #{
+%%   <<"items">> => list(network_migration_deployer_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployer_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% c_p_u() :: #{
 %%   <<"cores">> => float(),
 %%   <<"modelName">> => string()
@@ -967,6 +1486,13 @@
 
 
 %% Example:
+%% list_network_migration_mappings_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_mappings_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% application() :: #{
 %%   <<"applicationAggregatedStatus">> => application_aggregated_status(),
 %%   <<"applicationID">> => string(),
@@ -980,6 +1506,14 @@
 %%   <<"waveID">> => string()
 %% }
 -type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_analysis_result_target() :: #{
+%%   <<"subnetID">> => string(),
+%%   <<"vpcID">> => string()
+%% }
+-type network_migration_analysis_result_target() :: #{binary() => any()}.
 
 %% Example:
 %% initialize_service_request() :: #{}
@@ -1019,6 +1553,13 @@
 
 
 %% Example:
+%% start_network_migration_mapping_update_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_mapping_update_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -1040,6 +1581,14 @@
 %%   <<"accountId">> => string()
 %% }
 -type managed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"sourceEnvironment">> => string(),
+%%   <<"sourceS3Configuration">> => source_s3_configuration()
+%% }
+-type source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1067,6 +1616,13 @@
 
 
 %% Example:
+%% start_network_migration_analysis_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
@@ -1086,6 +1642,14 @@
 
 
 %% Example:
+%% list_network_migration_mapping_updates_response() :: #{
+%%   <<"items">> => list(network_migration_mapping_update_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapping_updates_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_source_servers_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"applicationID">> := string(),
@@ -1102,12 +1666,29 @@
 
 
 %% Example:
+%% list_network_migration_deployed_stacks_response() :: #{
+%%   <<"items">> => list(network_migration_deployed_stack_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployed_stacks_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% terminate_target_instances_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type terminate_target_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type source_s3_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1171,6 +1752,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_vcenter_clients_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_executions_response() :: #{
+%%   <<"items">> => list(network_migration_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_response() :: #{
+%%   <<"items">> => list(network_migration_code_generation_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1283,6 +1880,14 @@
 
 
 %% Example:
+%% checksum() :: #{
+%%   <<"encryptionAlgorithm">> => string(),
+%%   <<"hash">> => string()
+%% }
+-type checksum() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_import_errors_request() :: #{
 %%   <<"importID">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -1310,6 +1915,19 @@
 
 
 %% Example:
+%% network_migration_deployer_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_deployer_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% import_task_summary_applications() :: #{
 %%   <<"createdCount">> => float(),
 %%   <<"modifiedCount">> => float()
@@ -1326,12 +1944,48 @@
 
 
 %% Example:
+%% create_network_migration_definition_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceConfigurations">> => list(source_configuration()),
+%%   <<"tags">> => map(),
+%%   <<"targetDeployment">> => string(),
+%%   <<"targetNetwork">> := target_network(),
+%%   <<"targetS3Configuration">> := target_s3_configuration()
+%% }
+-type create_network_migration_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generation_segments_request() :: #{
+%%   <<"filters">> => list_network_migration_code_generation_segments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generation_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% life_cycle_last_test() :: #{
 %%   <<"finalized">> => life_cycle_last_test_finalized(),
 %%   <<"initiated">> => life_cycle_last_test_initiated(),
 %%   <<"reverted">> => life_cycle_last_test_reverted()
 %% }
 -type life_cycle_last_test() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analysis_results_request() :: #{
+%%   <<"filters">> => list_network_migration_analysis_results_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analysis_results_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1353,12 +2007,43 @@
 
 
 %% Example:
+%% network_migration_mapper_segment() :: #{
+%%   <<"checksum">> => checksum(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"logicalID">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"outputS3Configuration">> => s3_configuration(),
+%%   <<"referencedSegments">> => list(string()),
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> => string(),
+%%   <<"segmentType">> => string(),
+%%   <<"targetAccount">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type network_migration_mapper_segment() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_export_errors_request() :: #{
 %%   <<"exportID">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_export_errors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployed_stacks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployed_stacks_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,6 +2070,13 @@
 %%   <<"launchConfigurationTemplateID">> := string()
 %% }
 -type remove_template_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapping_updates_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_mapping_updates_filters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1522,11 +2214,29 @@
 
 
 %% Example:
+%% list_network_migration_analysis_results_filters() :: #{
+%%   <<"vpcIDs">> => list(string())
+%% }
+-type list_network_migration_analysis_results_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% import_task_summary_servers() :: #{
 %%   <<"createdCount">> => float(),
 %%   <<"modifiedCount">> => float()
 %% }
 -type import_task_summary_servers() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployments_request() :: #{
+%%   <<"filters">> => list_network_migration_deployer_job_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployments_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1537,6 +2247,22 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_migration_definition_response() :: #{}
+-type delete_network_migration_definition_response() :: #{}.
+
+
+%% Example:
+%% list_network_migration_mapper_segment_constructs_request() :: #{
+%%   <<"filters">> => list_network_migration_mapper_segment_constructs_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"segmentID">> := string()
+%% }
+-type list_network_migration_mapper_segment_constructs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1572,6 +2298,29 @@
 
 
 %% Example:
+%% enrichment_source_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type enrichment_source_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_code_generation_job_details() :: #{
+%%   <<"codeGenerationOutputFormatStatusDetailsMap">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_code_generation_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_imports_request() :: #{
 %%   <<"filters">> => list_imports_request_filters(),
 %%   <<"maxResults">> => integer(),
@@ -1581,10 +2330,39 @@
 
 
 %% Example:
+%% s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_imports_request_filters() :: #{
 %%   <<"importIDs">> => list(string())
 %% }
 -type list_imports_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mappings_response() :: #{
+%%   <<"items">> => list(network_migration_mapping_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_deployed_stack_details() :: #{
+%%   <<"failedResources">> => list(network_migration_failed_resource_details()),
+%%   <<"segmentID">> => string(),
+%%   <<"stackLogicalID">> => string(),
+%%   <<"stackPhysicalID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"targetAccount">> => string()
+%% }
+-type network_migration_deployed_stack_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1693,6 +2471,17 @@
 
 
 %% Example:
+%% list_network_migration_analyses_request() :: #{
+%%   <<"filters">> => list_network_migration_analyses_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analyses_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_connector_request() :: #{
 %%   <<"connectorID">> := string()
 %% }
@@ -1720,6 +2509,21 @@
 
 
 %% Example:
+%% list_network_migration_analysis_results_response() :: #{
+%%   <<"items">> => list(network_migration_analysis_result()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analysis_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_migration_definition_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string()
+%% }
+-type get_network_migration_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% wave_aggregated_status() :: #{
 %%   <<"healthStatus">> => string(),
 %%   <<"lastUpdateDateTime">> => string(),
@@ -1739,11 +2543,53 @@
 
 
 %% Example:
+%% network_migration_code_generation_artifact() :: #{
+%%   <<"artifactID">> => string(),
+%%   <<"artifactSubType">> => string(),
+%%   <<"artifactType">> => string(),
+%%   <<"checksum">> => checksum(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logicalID">> => string(),
+%%   <<"outputS3Configuration">> => s3_configuration()
+%% }
+-type network_migration_code_generation_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_request() :: #{
+%%   <<"constructs">> => list(start_network_migration_mapping_update_construct()),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"segments">> => list(start_network_migration_mapping_update_segment())
+%% }
+-type start_network_migration_mapping_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_migration_mapper_segment_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> := string()
+%% }
+-type update_network_migration_mapper_segment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_waves_response() :: #{
 %%   <<"items">> => list(wave()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_waves_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% enrichment_target_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type enrichment_target_s3_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1770,6 +2616,13 @@
 %%   <<"sourceServerID">> := string()
 %% }
 -type finalize_cutover_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_code_generation_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_code_generation_response() :: #{binary() => any()}.
 
 %% Example:
 %% associate_source_servers_response() :: #{}
@@ -1840,6 +2693,21 @@
 
 
 %% Example:
+%% target_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string()
+%% }
+-type target_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_request_filters() :: #{
+%%   <<"networkMigrationDefinitionIDs">> => list(string())
+%% }
+-type list_network_migration_definitions_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_import_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"s3BucketSource">> => s3_bucket_source(),
@@ -1887,12 +2755,27 @@
 
 
 %% Example:
+%% start_network_migration_deployment_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
+%% }
+-type start_network_migration_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_cutover_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type start_cutover_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_network_migration_definition_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string()
+%% }
+-type delete_network_migration_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1912,6 +2795,14 @@
 
 
 %% Example:
+%% list_network_migration_code_generation_segments_response() :: #{
+%%   <<"items">> => list(network_migration_code_generation_segment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generation_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_application_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"applicationID">> := string()
@@ -1928,10 +2819,25 @@
 
 
 %% Example:
+%% code_generation_output_format_status_details() :: #{
+%%   <<"status">> => string(),
+%%   <<"statusDetailList">> => string()
+%% }
+-type code_generation_output_format_status_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_launch_configuration_template_request() :: #{
 %%   <<"launchConfigurationTemplateID">> := string()
 %% }
 -type delete_launch_configuration_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_enrichments_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_import_file_enrichments_filters() :: #{binary() => any()}.
 
 -type archive_application_errors() ::
     uninitialized_account_exception() | 
@@ -1977,6 +2883,10 @@
     access_denied_exception() | 
     uninitialized_account_exception().
 
+-type create_network_migration_definition_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception().
+
 -type create_replication_configuration_template_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2004,6 +2914,11 @@
 
 -type delete_launch_configuration_template_errors() ::
     uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_network_migration_definition_errors() ::
+    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2079,6 +2994,15 @@
     uninitialized_account_exception() | 
     resource_not_found_exception().
 
+-type get_network_migration_definition_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_network_migration_mapper_segment_construct_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_replication_configuration_errors() ::
     uninitialized_account_exception() | 
     resource_not_found_exception().
@@ -2105,6 +3029,9 @@
     validation_exception() | 
     uninitialized_account_exception().
 
+-type list_import_file_enrichments_errors() ::
+    validation_exception().
+
 -type list_imports_errors() ::
     validation_exception() | 
     uninitialized_account_exception().
@@ -2112,6 +3039,73 @@
 -type list_managed_accounts_errors() ::
     validation_exception() | 
     uninitialized_account_exception().
+
+-type list_network_migration_analyses_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_analysis_results_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_code_generation_segments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_code_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_definitions_errors() ::
+    access_denied_exception().
+
+-type list_network_migration_deployed_stacks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_executions_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_mapper_segment_constructs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_mapper_segments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_mapping_updates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_network_migration_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type list_source_server_actions_errors() ::
     uninitialized_account_exception() | 
@@ -2194,6 +3188,53 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_import_file_enrichment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_network_migration_analysis_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_network_migration_code_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_network_migration_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_network_migration_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_network_migration_mapping_update_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_replication_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -2262,6 +3303,16 @@
     validation_exception() | 
     access_denied_exception() | 
     uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type update_network_migration_definition_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_network_migration_mapper_segment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception().
 
 -type update_replication_configuration_errors() ::
@@ -2574,6 +3625,41 @@ create_launch_configuration_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new network migration definition that specifies the source
+%% and target network configuration for a migration.
+-spec create_network_migration_definition(aws_client:aws_client(), create_network_migration_definition_request()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, create_network_migration_definition_errors(), tuple()}.
+create_network_migration_definition(Client, Input) ->
+    create_network_migration_definition(Client, Input, []).
+
+-spec create_network_migration_definition(aws_client:aws_client(), create_network_migration_definition_request(), proplists:proplist()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, create_network_migration_definition_errors(), tuple()}.
+create_network_migration_definition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/CreateNetworkMigrationDefinition"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new ReplicationConfigurationTemplate.
 -spec create_replication_configuration_template(aws_client:aws_client(), create_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
@@ -2759,6 +3845,43 @@ delete_launch_configuration_template(Client, Input) ->
 delete_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLaunchConfigurationTemplate"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a network migration definition.
+%%
+%% This operation removes the migration definition and all associated
+%% metadata.
+-spec delete_network_migration_definition(aws_client:aws_client(), delete_network_migration_definition_request()) ->
+    {ok, delete_network_migration_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_migration_definition_errors(), tuple()}.
+delete_network_migration_definition(Client, Input) ->
+    delete_network_migration_definition(Client, Input, []).
+
+-spec delete_network_migration_definition(aws_client:aws_client(), delete_network_migration_definition_request(), proplists:proplist()) ->
+    {ok, delete_network_migration_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_migration_definition_errors(), tuple()}.
+delete_network_migration_definition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/DeleteNetworkMigrationDefinition"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3332,6 +4455,76 @@ get_launch_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of a network migration definition including
+%% source and target configurations.
+-spec get_network_migration_definition(aws_client:aws_client(), get_network_migration_definition_request()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, get_network_migration_definition_errors(), tuple()}.
+get_network_migration_definition(Client, Input) ->
+    get_network_migration_definition(Client, Input, []).
+
+-spec get_network_migration_definition(aws_client:aws_client(), get_network_migration_definition_request(), proplists:proplist()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, get_network_migration_definition_errors(), tuple()}.
+get_network_migration_definition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/GetNetworkMigrationDefinition"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific construct within a
+%% mapper segment, including its properties and configuration data.
+-spec get_network_migration_mapper_segment_construct(aws_client:aws_client(), get_network_migration_mapper_segment_construct_request()) ->
+    {ok, get_network_migration_mapper_segment_construct_response(), tuple()} |
+    {error, any()} |
+    {error, get_network_migration_mapper_segment_construct_errors(), tuple()}.
+get_network_migration_mapper_segment_construct(Client, Input) ->
+    get_network_migration_mapper_segment_construct(Client, Input, []).
+
+-spec get_network_migration_mapper_segment_construct(aws_client:aws_client(), get_network_migration_mapper_segment_construct_request(), proplists:proplist()) ->
+    {ok, get_network_migration_mapper_segment_construct_response(), tuple()} |
+    {error, any()} |
+    {error, get_network_migration_mapper_segment_construct_errors(), tuple()}.
+get_network_migration_mapper_segment_construct(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/GetNetworkMigrationMapperSegmentConstruct"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all ReplicationConfigurations, filtered by Source Server ID.
 -spec get_replication_configuration(aws_client:aws_client(), get_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
@@ -3570,6 +4763,40 @@ list_import_errors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists import file enrichment jobs with optional filtering by job IDs.
+-spec list_import_file_enrichments(aws_client:aws_client(), list_import_file_enrichments_request()) ->
+    {ok, list_import_file_enrichments_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_file_enrichments_errors(), tuple()}.
+list_import_file_enrichments(Client, Input) ->
+    list_import_file_enrichments(Client, Input, []).
+
+-spec list_import_file_enrichments(aws_client:aws_client(), list_import_file_enrichments_request(), proplists:proplist()) ->
+    {ok, list_import_file_enrichments_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_file_enrichments_errors(), tuple()}.
+list_import_file_enrichments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListImportFileEnrichments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List imports.
 -spec list_imports(aws_client:aws_client(), list_imports_request()) ->
     {ok, list_imports_response(), tuple()} |
@@ -3619,6 +4846,426 @@ list_managed_accounts(Client, Input) ->
 list_managed_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListManagedAccounts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists network migration analysis jobs for a specified execution.
+%%
+%% Returns information about analysis job status and results.
+-spec list_network_migration_analyses(aws_client:aws_client(), list_network_migration_analyses_request()) ->
+    {ok, list_network_migration_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_analyses_errors(), tuple()}.
+list_network_migration_analyses(Client, Input) ->
+    list_network_migration_analyses(Client, Input, []).
+
+-spec list_network_migration_analyses(aws_client:aws_client(), list_network_migration_analyses_request(), proplists:proplist()) ->
+    {ok, list_network_migration_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_analyses_errors(), tuple()}.
+list_network_migration_analyses(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationAnalyses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the results of network migration analyses, showing connectivity
+%% and compatibility findings for migrated resources.
+-spec list_network_migration_analysis_results(aws_client:aws_client(), list_network_migration_analysis_results_request()) ->
+    {ok, list_network_migration_analysis_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_analysis_results_errors(), tuple()}.
+list_network_migration_analysis_results(Client, Input) ->
+    list_network_migration_analysis_results(Client, Input, []).
+
+-spec list_network_migration_analysis_results(aws_client:aws_client(), list_network_migration_analysis_results_request(), proplists:proplist()) ->
+    {ok, list_network_migration_analysis_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_analysis_results_errors(), tuple()}.
+list_network_migration_analysis_results(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationAnalysisResults"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists code generation segments, which represent individual
+%% infrastructure components generated as code templates.
+-spec list_network_migration_code_generation_segments(aws_client:aws_client(), list_network_migration_code_generation_segments_request()) ->
+    {ok, list_network_migration_code_generation_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_code_generation_segments_errors(), tuple()}.
+list_network_migration_code_generation_segments(Client, Input) ->
+    list_network_migration_code_generation_segments(Client, Input, []).
+
+-spec list_network_migration_code_generation_segments(aws_client:aws_client(), list_network_migration_code_generation_segments_request(), proplists:proplist()) ->
+    {ok, list_network_migration_code_generation_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_code_generation_segments_errors(), tuple()}.
+list_network_migration_code_generation_segments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationCodeGenerationSegments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists network migration code generation jobs, which convert network
+%% mappings into infrastructure-as-code templates.
+-spec list_network_migration_code_generations(aws_client:aws_client(), list_network_migration_code_generations_request()) ->
+    {ok, list_network_migration_code_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_code_generations_errors(), tuple()}.
+list_network_migration_code_generations(Client, Input) ->
+    list_network_migration_code_generations(Client, Input, []).
+
+-spec list_network_migration_code_generations(aws_client:aws_client(), list_network_migration_code_generations_request(), proplists:proplist()) ->
+    {ok, list_network_migration_code_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_code_generations_errors(), tuple()}.
+list_network_migration_code_generations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationCodeGenerations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all network migration definitions in the account, with optional
+%% filtering.
+-spec list_network_migration_definitions(aws_client:aws_client(), list_network_migration_definitions_request()) ->
+    {ok, list_network_migration_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_definitions_errors(), tuple()}.
+list_network_migration_definitions(Client, Input) ->
+    list_network_migration_definitions(Client, Input, []).
+
+-spec list_network_migration_definitions(aws_client:aws_client(), list_network_migration_definitions_request(), proplists:proplist()) ->
+    {ok, list_network_migration_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_definitions_errors(), tuple()}.
+list_network_migration_definitions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationDefinitions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists CloudFormation stacks that have been deployed as part of the
+%% network migration.
+-spec list_network_migration_deployed_stacks(aws_client:aws_client(), list_network_migration_deployed_stacks_request()) ->
+    {ok, list_network_migration_deployed_stacks_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_deployed_stacks_errors(), tuple()}.
+list_network_migration_deployed_stacks(Client, Input) ->
+    list_network_migration_deployed_stacks(Client, Input, []).
+
+-spec list_network_migration_deployed_stacks(aws_client:aws_client(), list_network_migration_deployed_stacks_request(), proplists:proplist()) ->
+    {ok, list_network_migration_deployed_stacks_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_deployed_stacks_errors(), tuple()}.
+list_network_migration_deployed_stacks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationDeployedStacks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists network migration deployment jobs and their current status.
+-spec list_network_migration_deployments(aws_client:aws_client(), list_network_migration_deployments_request()) ->
+    {ok, list_network_migration_deployer_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_deployments_errors(), tuple()}.
+list_network_migration_deployments(Client, Input) ->
+    list_network_migration_deployments(Client, Input, []).
+
+-spec list_network_migration_deployments(aws_client:aws_client(), list_network_migration_deployments_request(), proplists:proplist()) ->
+    {ok, list_network_migration_deployer_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_deployments_errors(), tuple()}.
+list_network_migration_deployments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationDeployments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists network migration execution instances for a given definition,
+%% showing the status and progress of each execution.
+-spec list_network_migration_executions(aws_client:aws_client(), list_network_migration_executions_request()) ->
+    {ok, list_network_migration_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_executions_errors(), tuple()}.
+list_network_migration_executions(Client, Input) ->
+    list_network_migration_executions(Client, Input, []).
+
+-spec list_network_migration_executions(aws_client:aws_client(), list_network_migration_executions_request(), proplists:proplist()) ->
+    {ok, list_network_migration_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_executions_errors(), tuple()}.
+list_network_migration_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationExecutions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists constructs within a mapper segment, representing individual
+%% infrastructure components like VPCs, subnets, or security groups.
+-spec list_network_migration_mapper_segment_constructs(aws_client:aws_client(), list_network_migration_mapper_segment_constructs_request()) ->
+    {ok, list_network_migration_mapper_segment_constructs_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapper_segment_constructs_errors(), tuple()}.
+list_network_migration_mapper_segment_constructs(Client, Input) ->
+    list_network_migration_mapper_segment_constructs(Client, Input, []).
+
+-spec list_network_migration_mapper_segment_constructs(aws_client:aws_client(), list_network_migration_mapper_segment_constructs_request(), proplists:proplist()) ->
+    {ok, list_network_migration_mapper_segment_constructs_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapper_segment_constructs_errors(), tuple()}.
+list_network_migration_mapper_segment_constructs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationMapperSegmentConstructs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists mapper segments, which represent logical groupings of network
+%% resources to be migrated together.
+-spec list_network_migration_mapper_segments(aws_client:aws_client(), list_network_migration_mapper_segments_request()) ->
+    {ok, list_network_migration_mapper_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapper_segments_errors(), tuple()}.
+list_network_migration_mapper_segments(Client, Input) ->
+    list_network_migration_mapper_segments(Client, Input, []).
+
+-spec list_network_migration_mapper_segments(aws_client:aws_client(), list_network_migration_mapper_segments_request(), proplists:proplist()) ->
+    {ok, list_network_migration_mapper_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapper_segments_errors(), tuple()}.
+list_network_migration_mapper_segments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationMapperSegments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists mapping update jobs, which apply customer modifications to the
+%% generated network mappings.
+-spec list_network_migration_mapping_updates(aws_client:aws_client(), list_network_migration_mapping_updates_request()) ->
+    {ok, list_network_migration_mapping_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapping_updates_errors(), tuple()}.
+list_network_migration_mapping_updates(Client, Input) ->
+    list_network_migration_mapping_updates(Client, Input, []).
+
+-spec list_network_migration_mapping_updates(aws_client:aws_client(), list_network_migration_mapping_updates_request(), proplists:proplist()) ->
+    {ok, list_network_migration_mapping_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mapping_updates_errors(), tuple()}.
+list_network_migration_mapping_updates(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationMappingUpdates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists network migration mapping jobs, which analyze and create
+%% relationships between source and target network resources.
+-spec list_network_migration_mappings(aws_client:aws_client(), list_network_migration_mappings_request()) ->
+    {ok, list_network_migration_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mappings_errors(), tuple()}.
+list_network_migration_mappings(Client, Input) ->
+    list_network_migration_mappings(Client, Input, []).
+
+-spec list_network_migration_mappings(aws_client:aws_client(), list_network_migration_mappings_request(), proplists:proplist()) ->
+    {ok, list_network_migration_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_mappings_errors(), tuple()}.
+list_network_migration_mappings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationMappings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4165,6 +5812,217 @@ start_import(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts an import file enrichment job to process and enrich network
+%% migration import files with additional metadata and IP assignment
+%% strategies.
+-spec start_import_file_enrichment(aws_client:aws_client(), start_import_file_enrichment_request()) ->
+    {ok, start_import_file_enrichment_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_file_enrichment_errors(), tuple()}.
+start_import_file_enrichment(Client, Input) ->
+    start_import_file_enrichment(Client, Input, []).
+
+-spec start_import_file_enrichment(aws_client:aws_client(), start_import_file_enrichment_request(), proplists:proplist()) ->
+    {ok, start_import_file_enrichment_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_file_enrichment_errors(), tuple()}.
+start_import_file_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartImportFileEnrichment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a network migration analysis job to evaluate connectivity and
+%% compatibility of the migration mappings.
+-spec start_network_migration_analysis(aws_client:aws_client(), start_network_migration_analysis_request()) ->
+    {ok, start_network_migration_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_analysis_errors(), tuple()}.
+start_network_migration_analysis(Client, Input) ->
+    start_network_migration_analysis(Client, Input, []).
+
+-spec start_network_migration_analysis(aws_client:aws_client(), start_network_migration_analysis_request(), proplists:proplist()) ->
+    {ok, start_network_migration_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_analysis_errors(), tuple()}.
+start_network_migration_analysis(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartNetworkMigrationAnalysis"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a code generation job to convert network migration mappings
+%% into infrastructure-as-code templates.
+-spec start_network_migration_code_generation(aws_client:aws_client(), start_network_migration_code_generation_request()) ->
+    {ok, start_network_migration_code_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_code_generation_errors(), tuple()}.
+start_network_migration_code_generation(Client, Input) ->
+    start_network_migration_code_generation(Client, Input, []).
+
+-spec start_network_migration_code_generation(aws_client:aws_client(), start_network_migration_code_generation_request(), proplists:proplist()) ->
+    {ok, start_network_migration_code_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_code_generation_errors(), tuple()}.
+start_network_migration_code_generation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartNetworkMigrationCodeGeneration"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a deployment job to create the target network infrastructure
+%% based on the generated code templates.
+-spec start_network_migration_deployment(aws_client:aws_client(), start_network_migration_deployment_request()) ->
+    {ok, start_network_migration_deployer_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_deployment_errors(), tuple()}.
+start_network_migration_deployment(Client, Input) ->
+    start_network_migration_deployment(Client, Input, []).
+
+-spec start_network_migration_deployment(aws_client:aws_client(), start_network_migration_deployment_request(), proplists:proplist()) ->
+    {ok, start_network_migration_deployer_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_deployment_errors(), tuple()}.
+start_network_migration_deployment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartNetworkMigrationDeployment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the network migration mapping process for a given network
+%% migration execution.
+-spec start_network_migration_mapping(aws_client:aws_client(), start_network_migration_mapping_request()) ->
+    {ok, start_network_migration_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_mapping_errors(), tuple()}.
+start_network_migration_mapping(Client, Input) ->
+    start_network_migration_mapping(Client, Input, []).
+
+-spec start_network_migration_mapping(aws_client:aws_client(), start_network_migration_mapping_request(), proplists:proplist()) ->
+    {ok, start_network_migration_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_mapping_errors(), tuple()}.
+start_network_migration_mapping(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartNetworkMigrationMapping"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a job to apply customer modifications to network migration
+%% mappings, such as changing properties.
+-spec start_network_migration_mapping_update(aws_client:aws_client(), start_network_migration_mapping_update_request()) ->
+    {ok, start_network_migration_mapping_update_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_mapping_update_errors(), tuple()}.
+start_network_migration_mapping_update(Client, Input) ->
+    start_network_migration_mapping_update(Client, Input, []).
+
+-spec start_network_migration_mapping_update(aws_client:aws_client(), start_network_migration_mapping_update_request(), proplists:proplist()) ->
+    {ok, start_network_migration_mapping_update_response(), tuple()} |
+    {error, any()} |
+    {error, start_network_migration_mapping_update_errors(), tuple()}.
+start_network_migration_mapping_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/StartNetworkMigrationMappingUpdate"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Start replication for source server irrespective of its replication
 %% type.
 -spec start_replication(aws_client:aws_client(), start_replication_request()) ->
@@ -4571,6 +6429,76 @@ update_launch_configuration_template(Client, Input) ->
 update_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLaunchConfigurationTemplate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing network migration definition with new source or
+%% target configurations.
+-spec update_network_migration_definition(aws_client:aws_client(), update_network_migration_definition_request()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, update_network_migration_definition_errors(), tuple()}.
+update_network_migration_definition(Client, Input) ->
+    update_network_migration_definition(Client, Input, []).
+
+-spec update_network_migration_definition(aws_client:aws_client(), update_network_migration_definition_request(), proplists:proplist()) ->
+    {ok, network_migration_definition(), tuple()} |
+    {error, any()} |
+    {error, update_network_migration_definition_errors(), tuple()}.
+update_network_migration_definition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/UpdateNetworkMigrationDefinition"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a mapper segment's configuration, such as changing its
+%% scope tags.
+-spec update_network_migration_mapper_segment(aws_client:aws_client(), update_network_migration_mapper_segment_request()) ->
+    {ok, network_migration_mapper_segment(), tuple()} |
+    {error, any()} |
+    {error, update_network_migration_mapper_segment_errors(), tuple()}.
+update_network_migration_mapper_segment(Client, Input) ->
+    update_network_migration_mapper_segment(Client, Input, []).
+
+-spec update_network_migration_mapper_segment(aws_client:aws_client(), update_network_migration_mapper_segment_request(), proplists:proplist()) ->
+    {ok, network_migration_mapper_segment(), tuple()} |
+    {error, any()} |
+    {error, update_network_migration_mapper_segment_errors(), tuple()}.
+update_network_migration_mapper_segment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/UpdateNetworkMigrationMapperSegment"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
