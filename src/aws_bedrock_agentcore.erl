@@ -50,6 +50,8 @@
          get_workload_access_token_for_user_id/3,
          invoke_agent_runtime/3,
          invoke_agent_runtime/4,
+         invoke_agent_runtime_command/3,
+         invoke_agent_runtime_command/4,
          invoke_code_interpreter/3,
          invoke_code_interpreter/4,
          list_actors/3,
@@ -237,6 +239,22 @@
 
 
 %% Example:
+%% invoke_agent_runtime_command_request_body() :: #{
+%%   <<"command">> => [string()],
+%%   <<"timeout">> => [integer()]
+%% }
+-type invoke_agent_runtime_command_request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_stop_event() :: #{
+%%   <<"exitCode">> => [integer()],
+%%   <<"status">> => list(any())
+%% }
+-type content_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_record_create_input() :: #{
 %%   <<"content">> => list(),
 %%   <<"memoryStrategyId">> => string(),
@@ -285,6 +303,20 @@
 %%   <<"right">> => list()
 %% }
 -type event_metadata_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_command_response() :: #{
+%%   <<"baggage">> => [string()],
+%%   <<"contentType">> => [string()],
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer(),
+%%   <<"stream">> => list(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_command_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,6 +492,10 @@
 %%   <<"extractionJob">> := extraction_job()
 %% }
 -type start_memory_extraction_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% content_start_event() :: #{}
+-type content_start_event() :: #{}.
 
 
 %% Example:
@@ -702,6 +738,22 @@
 
 
 %% Example:
+%% invoke_agent_runtime_command_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"accountId">> => [string()],
+%%   <<"baggage">> => [string()],
+%%   <<"body">> := invoke_agent_runtime_command_request_body(),
+%%   <<"contentType">> => string(),
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_command_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_input_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -725,6 +777,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type browser_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_chunk() :: #{
+%%   <<"contentDelta">> => content_delta_event(),
+%%   <<"contentStart">> => content_start_event(),
+%%   <<"contentStop">> => content_stop_event()
+%% }
+-type response_chunk() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1132,6 +1193,14 @@
 
 
 %% Example:
+%% content_delta_event() :: #{
+%%   <<"stderr">> => [string()],
+%%   <<"stdout">> => [string()]
+%% }
+-type content_delta_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_session_stream() :: #{
 %%   <<"automationStream">> => automation_stream(),
 %%   <<"liveViewStream">> => live_view_stream()
@@ -1393,6 +1462,15 @@
     unauthorized_exception().
 
 -type invoke_agent_runtime_errors() ::
+    runtime_client_error() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type invoke_agent_runtime_command_errors() ::
     runtime_client_error() | 
     throttling_exception() | 
     validation_exception() | 
@@ -2290,9 +2368,11 @@ get_workload_access_token_for_user_id(Client, Input0, Options0) ->
 %% @doc Sends a request to an agent or tool hosted in an Amazon Bedrock
 %% AgentCore Runtime and receives responses in real-time.
 %%
-%% To invoke an agent you must specify the AgentCore Runtime ARN and provide
-%% a payload containing your request. You can optionally specify a qualifier
-%% to target a specific version or endpoint of the agent.
+%% To invoke an agent, you can specify either the AgentCore Runtime ARN or
+%% the agent ID with an account ID, and provide a payload containing your
+%% request. When you use the agent ID instead of the full ARN, you don't
+%% need to URL-encode the identifier. You can optionally specify a qualifier
+%% to target a specific endpoint of the agent.
 %%
 %% This operation supports streaming responses, allowing you to receive
 %% partial responses as they become available. We recommend using pagination
@@ -2366,6 +2446,74 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
             {<<"Content-Type">>, <<"contentType">>},
             {<<"Mcp-Protocol-Version">>, <<"mcpProtocolVersion">>},
             {<<"Mcp-Session-Id">>, <<"mcpSessionId">>},
+            {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
+            {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+            {<<"traceparent">>, <<"traceParent">>},
+            {<<"tracestate">>, <<"traceState">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Executes a command in a runtime session container.
+%%
+%% Returns streaming output with contentStart, contentDelta, and contentStop
+%% events.
+-spec invoke_agent_runtime_command(aws_client:aws_client(), binary() | list(), invoke_agent_runtime_command_request()) ->
+    {ok, invoke_agent_runtime_command_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_agent_runtime_command_errors(), tuple()}.
+invoke_agent_runtime_command(Client, AgentRuntimeArn, Input) ->
+    invoke_agent_runtime_command(Client, AgentRuntimeArn, Input, []).
+
+-spec invoke_agent_runtime_command(aws_client:aws_client(), binary() | list(), invoke_agent_runtime_command_request(), proplists:proplist()) ->
+    {ok, invoke_agent_runtime_command_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_agent_runtime_command_errors(), tuple()}.
+invoke_agent_runtime_command(Client, AgentRuntimeArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeArn), "/commands"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"Accept">>, <<"accept">>},
+                       {<<"baggage">>, <<"baggage">>},
+                       {<<"Content-Type">>, <<"contentType">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>},
+                       {<<"tracestate">>, <<"traceState">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"accountId">>, <<"accountId">>},
+                     {<<"qualifier">>, <<"qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"baggage">>, <<"baggage">>},
+            {<<"Content-Type">>, <<"contentType">>},
             {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
             {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
             {<<"traceparent">>, <<"traceParent">>},
