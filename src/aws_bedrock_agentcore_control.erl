@@ -303,6 +303,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"strategyId">> => string(),
@@ -444,6 +445,7 @@
 %% summary_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type summary_memory_strategy_input() :: #{binary() => any()}.
@@ -805,6 +807,7 @@
 %% semantic_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type semantic_memory_strategy_input() :: #{binary() => any()}.
@@ -848,6 +851,7 @@
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type custom_memory_strategy_input() :: #{binary() => any()}.
@@ -857,6 +861,7 @@
 %% episodic_override_reflection_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()],
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_override_reflection_configuration_input() :: #{binary() => any()}.
@@ -879,6 +884,7 @@
 
 %% Example:
 %% episodic_reflection_configuration() :: #{
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_configuration() :: #{binary() => any()}.
@@ -1264,6 +1270,7 @@
 %% episodic_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
 %%   <<"reflectionConfiguration">> => episodic_reflection_configuration_input()
 %% }
@@ -1479,6 +1486,7 @@
 
 %% Example:
 %% episodic_reflection_configuration_input() :: #{
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_configuration_input() :: #{binary() => any()}.
@@ -1530,6 +1538,7 @@
 %% episodic_reflection_override() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()],
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_override() :: #{binary() => any()}.
@@ -2170,6 +2179,7 @@
 %% user_preference_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type user_preference_memory_strategy_input() :: #{binary() => any()}.
@@ -2255,6 +2265,7 @@
 %%   <<"configuration">> => modify_strategy_configuration(),
 %%   <<"description">> => string(),
 %%   <<"memoryStrategyId">> => [string()],
+%%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type modify_memory_strategy_input() :: #{binary() => any()}.

@@ -5450,6 +5450,7 @@
 %%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
 %%   <<"Description">> => string(),
 %%   <<"FederatedCatalog">> => federated_catalog(),
+%%   <<"OverwriteChildResourcePermissionsWithDefault">> => list(any()),
 %%   <<"Parameters">> => map(),
 %%   <<"TargetRedshiftCatalog">> => target_redshift_catalog()
 %% }

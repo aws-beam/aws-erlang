@@ -487,7 +487,8 @@
 
 %% Example:
 %% monitoring_configuration() :: #{
-%%   <<"CloudWatchLogConfiguration">> => cloud_watch_log_configuration()
+%%   <<"CloudWatchLogConfiguration">> => cloud_watch_log_configuration(),
+%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
 %% }
 -type monitoring_configuration() :: #{binary() => any()}.
 
@@ -818,6 +819,12 @@
 %%   <<"StudioId">> => string()
 %% }
 -type list_studio_session_mappings_input() :: #{binary() => any()}.
+
+%% Example:
+%% s3_logging_configuration() :: #{
+%%   <<"LogTypeUploadPolicy">> => map()
+%% }
+-type s3_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% ebs_volume() :: #{
