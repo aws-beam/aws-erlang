@@ -13772,6 +13772,7 @@
 %% Example:
 %% network_info() :: #{
 %%   <<"BandwidthWeightings">> => list(list(any())()),
+%%   <<"ConnectionTrackingConfiguration">> => default_connection_tracking_configuration(),
 %%   <<"DefaultNetworkCardIndex">> => integer(),
 %%   <<"EfaInfo">> => efa_info(),
 %%   <<"EfaSupported">> => boolean(),
@@ -22676,6 +22677,14 @@
 %%   <<"Type">> => list(any())
 %% }
 -type client_vpn_authentication() :: #{binary() => any()}.
+
+%% Example:
+%% default_connection_tracking_configuration() :: #{
+%%   <<"DefaultTcpEstablishedTimeout">> => integer(),
+%%   <<"DefaultUdpStreamTimeout">> => integer(),
+%%   <<"DefaultUdpTimeout">> => integer()
+%% }
+-type default_connection_tracking_configuration() :: #{binary() => any()}.
 
 
 
