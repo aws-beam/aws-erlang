@@ -30,6 +30,8 @@
          list_speech_synthesis_tasks/4,
          put_lexicon/3,
          put_lexicon/4,
+         start_speech_synthesis_stream/2,
+         start_speech_synthesis_stream/3,
          start_speech_synthesis_task/2,
          start_speech_synthesis_task/3,
          synthesize_speech/2,
@@ -70,6 +72,15 @@
 
 
 %% Example:
+%% text_event() :: #{
+%%   <<"FlushStreamConfiguration">> => flush_stream_configuration(),
+%%   <<"Text">> => string(),
+%%   <<"TextType">> => list(any())
+%% }
+-type text_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% max_lexicons_number_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -98,10 +109,24 @@
 
 
 %% Example:
+%% flush_stream_configuration() :: #{
+%%   <<"Force">> => boolean()
+%% }
+-type flush_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_event() :: #{
+%%   <<"AudioChunk">> => binary()
+%% }
+-type audio_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -204,6 +229,13 @@
 
 
 %% Example:
+%% start_speech_synthesis_stream_output() :: #{
+%%   <<"EventStream">> => list()
+%% }
+-type start_speech_synthesis_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_speech_synthesis_task_output() :: #{
 %%   <<"SynthesisTask">> => synthesis_task()
 %% }
@@ -215,6 +247,19 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_s3_bucket_exception() :: #{binary() => any()}.
+
+%% Example:
+%% close_stream_event() :: #{}
+-type close_stream_event() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => list(any()),
+%%   <<"serviceCode">> => list(any())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -234,6 +279,27 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speech_synthesis_stream_input() :: #{
+%%   <<"ActionStream">> => list(),
+%%   <<"Engine">> := list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LexiconNames">> => list(string()),
+%%   <<"OutputFormat">> := list(any()),
+%%   <<"SampleRate">> => string(),
+%%   <<"VoiceId">> := list(any())
+%% }
+-type start_speech_synthesis_stream_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -293,6 +359,15 @@
 
 
 %% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_sns_topic_arn_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -309,6 +384,21 @@
 %% Example:
 %% put_lexicon_output() :: #{}
 -type put_lexicon_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_closed_event() :: #{
+%%   <<"RequestCharacters">> => integer()
+%% }
+-type stream_closed_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -373,6 +463,14 @@
 %% }
 -type synthesis_task_not_found_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% throttling_reason() :: #{
+%%   <<"reason">> => string(),
+%%   <<"resource">> => string()
+%% }
+-type throttling_reason() :: #{binary() => any()}.
+
 %% Example:
 %% get_speech_synthesis_task_input() :: #{}
 -type get_speech_synthesis_task_input() :: #{}.
@@ -421,6 +519,12 @@
     service_failure_exception() | 
     lexicon_size_exceeded_exception() | 
     max_lexicons_number_exceeded_exception().
+
+-type start_speech_synthesis_stream_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    service_failure_exception().
 
 -type start_speech_synthesis_task_errors() ::
     text_length_exceeded_exception() | 
@@ -766,6 +870,58 @@ put_lexicon(Client, Name, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Synthesizes UTF-8 input, plain text, or SSML over a bidirectional
+%% streaming connection.
+%%
+%% Specify synthesis parameters in HTTP/2 headers, send text incrementally as
+%% events on the input stream,
+%% and receive synthesized audio as it becomes available.
+%%
+%% This operation serves as a bidirectional counterpart to
+%% `SynthesizeSpeech':
+%%
+%% SynthesizeSpeech:
+%% https://docs.aws.amazon.com/polly/latest/API/API_SynthesizeSpeech.html
+-spec start_speech_synthesis_stream(aws_client:aws_client(), start_speech_synthesis_stream_input()) ->
+    {ok, start_speech_synthesis_stream_output(), tuple()} |
+    {error, any()} |
+    {error, start_speech_synthesis_stream_errors(), tuple()}.
+start_speech_synthesis_stream(Client, Input) ->
+    start_speech_synthesis_stream(Client, Input, []).
+
+-spec start_speech_synthesis_stream(aws_client:aws_client(), start_speech_synthesis_stream_input(), proplists:proplist()) ->
+    {ok, start_speech_synthesis_stream_output(), tuple()} |
+    {error, any()} |
+    {error, start_speech_synthesis_stream_errors(), tuple()}.
+start_speech_synthesis_stream(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/synthesisStream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amzn-Engine">>, <<"Engine">>},
+                       {<<"x-amzn-LanguageCode">>, <<"LanguageCode">>},
+                       {<<"x-amzn-LexiconNames">>, <<"LexiconNames">>},
+                       {<<"x-amzn-OutputFormat">>, <<"OutputFormat">>},
+                       {<<"x-amzn-SampleRate">>, <<"SampleRate">>},
+                       {<<"x-amzn-VoiceId">>, <<"VoiceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

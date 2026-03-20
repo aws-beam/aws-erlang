@@ -100,6 +100,14 @@
 
 
 %% Example:
+%% browser_enterprise_policy() :: #{
+%%   <<"location">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type browser_enterprise_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% conversational() :: #{
 %%   <<"content">> => list(),
 %%   <<"role">> => list(any())
@@ -517,7 +525,9 @@
 
 %% Example:
 %% start_browser_session_request() :: #{
+%%   <<"certificates">> => list(certificate()),
 %%   <<"clientToken">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
 %%   <<"extensions">> => list(browser_extension()),
 %%   <<"name">> => string(),
 %%   <<"profileConfiguration">> => browser_profile_configuration(),
@@ -648,6 +658,7 @@
 
 %% Example:
 %% start_code_interpreter_session_request() :: #{
+%%   <<"certificates">> => list(certificate()),
 %%   <<"clientToken">> => string(),
 %%   <<"name">> => string(),
 %%   <<"sessionTimeoutSeconds">> => integer(),
@@ -909,6 +920,13 @@
 
 
 %% Example:
+%% certificate() :: #{
+%%   <<"location">> => list()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
 %% event() :: #{
 %%   <<"actorId">> => string(),
 %%   <<"branch">> => branch(),
@@ -990,6 +1008,13 @@
 
 
 %% Example:
+%% secrets_manager_location() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secrets_manager_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_agent_runtime_request() :: #{
 %%   <<"accept">> => string(),
 %%   <<"accountId">> => [string()],
@@ -1020,7 +1045,9 @@
 %% Example:
 %% get_browser_session_response() :: #{
 %%   <<"browserIdentifier">> => [string()],
+%%   <<"certificates">> => list(certificate()),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
 %%   <<"extensions">> => list(browser_extension()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -1115,6 +1142,7 @@
 
 %% Example:
 %% get_code_interpreter_session_response() :: #{
+%%   <<"certificates">> => list(certificate()),
 %%   <<"codeInterpreterIdentifier">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"name">> => string(),

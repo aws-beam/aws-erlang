@@ -4593,6 +4593,7 @@
 %%   <<"LaunchTemplateConfigs">> := list(fleet_launch_template_config_request()),
 %%   <<"OnDemandOptions">> => on_demand_options_request(),
 %%   <<"ReplaceUnhealthyInstances">> => boolean(),
+%%   <<"ReservedCapacityOptions">> => reserved_capacity_options_request(),
 %%   <<"SpotOptions">> => spot_options_request(),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TargetCapacitySpecification">> := target_capacity_specification_request(),
@@ -16916,6 +16917,7 @@
 %%   <<"LaunchTemplateConfigs">> => list(fleet_launch_template_config()),
 %%   <<"OnDemandOptions">> => on_demand_options(),
 %%   <<"ReplaceUnhealthyInstances">> => boolean(),
+%%   <<"ReservedCapacityOptions">> => reserved_capacity_options(),
 %%   <<"SpotOptions">> => spot_options(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TargetCapacitySpecification">> => target_capacity_specification(),
@@ -21134,6 +21136,12 @@
 -type capacity_reservation_fleet() :: #{binary() => any()}.
 
 %% Example:
+%% reserved_capacity_options_request() :: #{
+%%   <<"ReservationTypes">> => list(list(any())())
+%% }
+-type reserved_capacity_options_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_ipam_discovered_accounts_result() :: #{
 %%   <<"IpamDiscoveredAccounts">> => list(ipam_discovered_account()),
 %%   <<"NextToken">> => string()
@@ -22677,6 +22685,12 @@
 %%   <<"Type">> => list(any())
 %% }
 -type client_vpn_authentication() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_options() :: #{
+%%   <<"ReservationTypes">> => list(list(any())())
+%% }
+-type reserved_capacity_options() :: #{binary() => any()}.
 
 %% Example:
 %% default_connection_tracking_configuration() :: #{

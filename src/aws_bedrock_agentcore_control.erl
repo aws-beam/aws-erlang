@@ -215,6 +215,14 @@
 
 
 %% Example:
+%% browser_enterprise_policy() :: #{
+%%   <<"location">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type browser_enterprise_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_gateway_request() :: #{
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> := list(any()),
@@ -1066,8 +1074,10 @@
 %%   <<"browserArn">> => string(),
 %%   <<"browserId">> => string(),
 %%   <<"browserSigning">> => browser_signing_config_output(),
+%%   <<"certificates">> => list(certificate()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -1370,8 +1380,10 @@
 %% Example:
 %% create_browser_request() :: #{
 %%   <<"browserSigning">> => browser_signing_config_input(),
+%%   <<"certificates">> => list(certificate()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"networkConfiguration">> := browser_network_configuration(),
@@ -1684,6 +1696,7 @@
 
 %% Example:
 %% get_code_interpreter_response() :: #{
+%%   <<"certificates">> => list(certificate()),
 %%   <<"codeInterpreterArn">> => string(),
 %%   <<"codeInterpreterId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2225,6 +2238,13 @@
 
 
 %% Example:
+%% certificate() :: #{
+%%   <<"location">> => list()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
 %% sampling_config() :: #{
 %%   <<"samplingPercentage">> => float()
 %% }
@@ -2233,6 +2253,7 @@
 
 %% Example:
 %% create_code_interpreter_request() :: #{
+%%   <<"certificates">> => list(certificate()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
@@ -2606,6 +2627,13 @@
 %%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
 %% }
 -type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_location() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secrets_manager_location() :: #{binary() => any()}.
 
 
 %% Example:

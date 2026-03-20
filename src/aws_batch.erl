@@ -34,6 +34,8 @@
          create_consumable_resource/3,
          create_job_queue/2,
          create_job_queue/3,
+         create_quota_share/2,
+         create_quota_share/3,
          create_scheduling_policy/2,
          create_scheduling_policy/3,
          create_service_environment/2,
@@ -44,6 +46,8 @@
          delete_consumable_resource/3,
          delete_job_queue/2,
          delete_job_queue/3,
+         delete_quota_share/2,
+         delete_quota_share/3,
          delete_scheduling_policy/2,
          delete_scheduling_policy/3,
          delete_service_environment/2,
@@ -60,6 +64,8 @@
          describe_job_queues/3,
          describe_jobs/2,
          describe_jobs/3,
+         describe_quota_share/2,
+         describe_quota_share/3,
          describe_scheduling_policies/2,
          describe_scheduling_policies/3,
          describe_service_environments/2,
@@ -74,6 +80,8 @@
          list_jobs/3,
          list_jobs_by_consumable_resource/2,
          list_jobs_by_consumable_resource/3,
+         list_quota_shares/2,
+         list_quota_shares/3,
          list_scheduling_policies/2,
          list_scheduling_policies/3,
          list_service_jobs/2,
@@ -101,10 +109,14 @@
          update_consumable_resource/3,
          update_job_queue/2,
          update_job_queue/3,
+         update_quota_share/2,
+         update_quota_share/3,
          update_scheduling_policy/2,
          update_scheduling_policy/3,
          update_service_environment/2,
-         update_service_environment/3]).
+         update_service_environment/3,
+         update_service_job/2,
+         update_service_job/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -139,6 +151,13 @@
 %%   <<"reason">> := string()
 %% }
 -type cancel_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_preemption_configuration() :: #{
+%%   <<"inSharePreemption">> => list(any())
+%% }
+-type quota_share_preemption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -268,11 +287,26 @@
 
 
 %% Example:
+%% quota_share_capacity_utilization() :: #{
+%%   <<"capacityUsage">> => list(quota_share_capacity_usage()),
+%%   <<"quotaShareName">> => string()
+%% }
+-type quota_share_capacity_utilization() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_container_environment_variable() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => string()
 %% }
 -type eks_container_environment_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_policy() :: #{
+%%   <<"idleResourceAssignmentStrategy">> => list(any())
+%% }
+-type quota_share_policy() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -300,6 +334,15 @@
 
 
 %% Example:
+%% update_service_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type update_service_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_timeout() :: #{
 %%   <<"attemptDurationSeconds">> => integer()
 %% }
@@ -311,6 +354,7 @@
 %%   <<"arn">> => string(),
 %%   <<"fairsharePolicy">> => fairshare_policy(),
 %%   <<"name">> => string(),
+%%   <<"quotaSharePolicy">> => quota_share_policy(),
 %%   <<"tags">> => map()
 %% }
 -type scheduling_policy_detail() :: #{binary() => any()}.
@@ -327,6 +371,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quota_share_response() :: #{
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string()
+%% }
+-type update_quota_share_response() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_service_job_response() :: #{}
@@ -364,6 +416,7 @@
 %% create_scheduling_policy_request() :: #{
 %%   <<"fairsharePolicy">> => fairshare_policy(),
 %%   <<"name">> := string(),
+%%   <<"quotaSharePolicy">> => quota_share_policy(),
 %%   <<"tags">> => map()
 %% }
 -type create_scheduling_policy_request() :: #{binary() => any()}.
@@ -399,6 +452,15 @@
 %%   <<"privateIpv4Address">> => string()
 %% }
 -type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quota_shares_request() :: #{
+%%   <<"jobQueue">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_quota_shares_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -642,6 +704,14 @@
 
 
 %% Example:
+%% front_of_quota_share_job_summary() :: #{
+%%   <<"earliestTimeAtPosition">> => float(),
+%%   <<"jobArn">> => string()
+%% }
+-type front_of_quota_share_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_properties_override() :: #{
 %%   <<"podProperties">> => eks_pod_properties_override()
 %% }
@@ -653,6 +723,20 @@
 %%   <<"attemptDurationSeconds">> => integer()
 %% }
 -type service_job_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_detail() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type quota_share_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -718,6 +802,14 @@
 
 
 %% Example:
+%% front_of_quota_shares_detail() :: #{
+%%   <<"lastUpdatedAt">> => float(),
+%%   <<"quotaShares">> => map()
+%% }
+-type front_of_quota_shares_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecs_task_properties() :: #{
 %%   <<"containers">> => list(task_container_properties()),
 %%   <<"enableExecuteCommand">> => boolean(),
@@ -739,6 +831,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"jobName">> := string(),
 %%   <<"jobQueue">> := string(),
+%%   <<"preemptionConfiguration">> => service_job_preemption_configuration(),
+%%   <<"quotaShareName">> => string(),
 %%   <<"retryStrategy">> => service_job_retry_strategy(),
 %%   <<"schedulingPriority">> => integer(),
 %%   <<"serviceJobType">> := list(any()),
@@ -985,6 +1079,14 @@
 
 
 %% Example:
+%% service_job_preemption_summary() :: #{
+%%   <<"preemptedAttemptCount">> => integer(),
+%%   <<"recentPreemptedAttempts">> => list(service_job_preempted_attempt())
+%% }
+-type service_job_preemption_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% secret() :: #{
 %%   <<"name">> => string(),
 %%   <<"valueFrom">> => string()
@@ -1080,6 +1182,7 @@
 %% queue_snapshot_utilization_detail() :: #{
 %%   <<"fairshareUtilization">> => fairshare_utilization_detail(),
 %%   <<"lastUpdatedAt">> => float(),
+%%   <<"quotaShareUtilization">> => quota_share_utilization_detail(),
 %%   <<"totalCapacityUsage">> => list(queue_snapshot_capacity_usage())
 %% }
 -type queue_snapshot_utilization_detail() :: #{binary() => any()}.
@@ -1139,6 +1242,10 @@
 %% }
 -type eks_properties() :: #{binary() => any()}.
 
+%% Example:
+%% delete_quota_share_response() :: #{}
+-type delete_quota_share_response() :: #{}.
+
 
 %% Example:
 %% eks_attempt_detail() :: #{
@@ -1156,6 +1263,21 @@
 
 
 %% Example:
+%% describe_quota_share_response() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type describe_quota_share_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_secret() :: #{
 %%   <<"optional">> => boolean(),
 %%   <<"secretName">> => string()
@@ -1166,9 +1288,23 @@
 %% Example:
 %% get_job_queue_snapshot_response() :: #{
 %%   <<"frontOfQueue">> => front_of_queue_detail(),
+%%   <<"frontOfQuotaShares">> => front_of_quota_shares_detail(),
 %%   <<"queueUtilization">> => queue_snapshot_utilization_detail()
 %% }
 -type get_job_queue_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quota_share_request() :: #{
+%%   <<"capacityLimits">> := list(quota_share_capacity_limit()),
+%%   <<"jobQueue">> := string(),
+%%   <<"preemptionConfiguration">> := quota_share_preemption_configuration(),
+%%   <<"quotaShareName">> := string(),
+%%   <<"resourceSharingConfiguration">> := quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_quota_share_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1189,7 +1325,8 @@
 %% Example:
 %% update_scheduling_policy_request() :: #{
 %%   <<"arn">> := string(),
-%%   <<"fairsharePolicy">> => fairshare_policy()
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"quotaSharePolicy">> => quota_share_policy()
 %% }
 -type update_scheduling_policy_request() :: #{binary() => any()}.
 
@@ -1205,6 +1342,13 @@
 %%   <<"tags">> => map()
 %% }
 -type service_environment_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_utilization_detail() :: #{
+%%   <<"topCapacityUtilization">> => list(quota_share_capacity_utilization())
+%% }
+-type quota_share_utilization_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1252,11 +1396,27 @@
 
 
 %% Example:
+%% update_service_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"schedulingPriority">> := integer()
+%% }
+-type update_service_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% e_f_s_authorization_config() :: #{
 %%   <<"accessPointId">> => string(),
 %%   <<"iam">> => list(any())
 %% }
 -type e_f_s_authorization_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_capacity_usage() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type quota_share_capacity_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1286,6 +1446,16 @@
 %%   <<"lastUpdatedAt">> => float()
 %% }
 -type front_of_queue_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_preempted_attempt() :: #{
+%%   <<"serviceResourceId">> => service_resource_id(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type service_job_preempted_attempt() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1353,6 +1523,13 @@
 
 
 %% Example:
+%% service_job_preemption_configuration() :: #{
+%%   <<"preemptionRetriesBeforeTermination">> => integer()
+%% }
+-type service_job_preemption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% scheduling_policy_listing_detail() :: #{
 %%   <<"arn">> => string()
 %% }
@@ -1371,6 +1548,14 @@
 %% Example:
 %% delete_consumable_resource_response() :: #{}
 -type delete_consumable_resource_response() :: #{}.
+
+
+%% Example:
+%% quota_share_resource_sharing_configuration() :: #{
+%%   <<"borrowLimit">> => integer(),
+%%   <<"strategy">> => list(any())
+%% }
+-type quota_share_resource_sharing_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1486,10 +1671,25 @@
 
 
 %% Example:
+%% create_quota_share_response() :: #{
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string()
+%% }
+-type create_quota_share_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_jobs_response() :: #{
 %%   <<"jobs">> => list(job_detail())
 %% }
 -type describe_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_quota_share_request() :: #{
+%%   <<"quotaShareArn">> := string()
+%% }
+-type delete_quota_share_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1537,6 +1737,14 @@
 %% }
 -type fairshare_capacity_usage() :: #{binary() => any()}.
 
+
+%% Example:
+%% quota_share_capacity_limit() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"maxCapacity">> => integer()
+%% }
+-type quota_share_capacity_limit() :: #{binary() => any()}.
+
 %% Example:
 %% terminate_job_response() :: #{}
 -type terminate_job_response() :: #{}.
@@ -1561,6 +1769,9 @@
 %%   <<"jobName">> => string(),
 %%   <<"jobQueue">> => string(),
 %%   <<"latestAttempt">> => latest_service_job_attempt(),
+%%   <<"preemptionConfiguration">> => service_job_preemption_configuration(),
+%%   <<"preemptionSummary">> => service_job_preemption_summary(),
+%%   <<"quotaShareName">> => string(),
 %%   <<"retryStrategy">> => service_job_retry_strategy(),
 %%   <<"scheduledAt">> => float(),
 %%   <<"schedulingPriority">> => integer(),
@@ -1860,6 +2071,7 @@
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"latestAttempt">> => latest_service_job_attempt(),
+%%   <<"quotaShareName">> => string(),
 %%   <<"scheduledAt">> => float(),
 %%   <<"serviceJobType">> => list(any()),
 %%   <<"shareIdentifier">> => string(),
@@ -1912,6 +2124,13 @@
 %% }
 -type describe_consumable_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% describe_quota_share_request() :: #{
+%%   <<"quotaShareArn">> := string()
+%% }
+-type describe_quota_share_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_job_response() :: #{}
 -type cancel_job_response() :: #{}.
@@ -1919,6 +2138,17 @@
 %% Example:
 %% update_scheduling_policy_response() :: #{}
 -type update_scheduling_policy_response() :: #{}.
+
+
+%% Example:
+%% update_quota_share_request() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> := string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any())
+%% }
+-type update_quota_share_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1945,6 +2175,14 @@
 %%   <<"state">> => list(any())
 %% }
 -type job_state_time_limit_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quota_shares_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"quotaShares">> => list(quota_share_detail())
+%% }
+-type list_quota_shares_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2087,6 +2325,10 @@
     server_exception() | 
     client_exception().
 
+-type create_quota_share_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type create_scheduling_policy_errors() ::
     server_exception() | 
     client_exception().
@@ -2104,6 +2346,10 @@
     client_exception().
 
 -type delete_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_quota_share_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2139,6 +2385,10 @@
     server_exception() | 
     client_exception().
 
+-type describe_quota_share_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type describe_scheduling_policies_errors() ::
     server_exception() | 
     client_exception().
@@ -2164,6 +2414,10 @@
     client_exception().
 
 -type list_jobs_by_consumable_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_quota_shares_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2219,11 +2473,19 @@
     server_exception() | 
     client_exception().
 
+-type update_quota_share_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type update_scheduling_policy_errors() ::
     server_exception() | 
     client_exception().
 
 -type update_service_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_service_job_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2452,6 +2714,43 @@ create_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Batch quota share.
+%%
+%% Each quota share operates as a virtual queue with a configured compute
+%% capacity, resource sharing strategy, and borrow limits.
+-spec create_quota_share(aws_client:aws_client(), create_quota_share_request()) ->
+    {ok, create_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, create_quota_share_errors(), tuple()}.
+create_quota_share(Client, Input) ->
+    create_quota_share(Client, Input, []).
+
+-spec create_quota_share(aws_client:aws_client(), create_quota_share_request(), proplists:proplist()) ->
+    {ok, create_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, create_quota_share_errors(), tuple()}.
+create_quota_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/createquotashare"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Batch scheduling policy.
 -spec create_scheduling_policy(aws_client:aws_client(), create_scheduling_policy_request()) ->
     {ok, create_scheduling_policy_response(), tuple()} |
@@ -2606,9 +2905,7 @@ delete_consumable_resource(Client, Input0, Options0) ->
 %% You must first disable submissions for a queue with the
 %% `UpdateJobQueue' operation. All jobs in the queue are eventually
 %% terminated
-%% when you delete a job queue. The jobs are terminated at a rate of about 16
-%% jobs each
-%% second.
+%% when you delete a job queue.
 %%
 %% It's not necessary to disassociate compute environments from a queue
 %% before submitting a
@@ -2627,6 +2924,46 @@ delete_job_queue(Client, Input) ->
 delete_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified quota share.
+%%
+%% You must first disable submissions for the share by
+%% updating the state to `DISABLED' using the `UpdateQuotaShare'
+%% operation.
+%% All jobs in the share are eventually terminated when you delete a quota
+%% share.
+-spec delete_quota_share(aws_client:aws_client(), delete_quota_share_request()) ->
+    {ok, delete_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, delete_quota_share_errors(), tuple()}.
+delete_quota_share(Client, Input) ->
+    delete_quota_share(Client, Input, []).
+
+-spec delete_quota_share(aws_client:aws_client(), delete_quota_share_request(), proplists:proplist()) ->
+    {ok, delete_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, delete_quota_share_errors(), tuple()}.
+delete_quota_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/deletequotashare"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2937,6 +3274,40 @@ describe_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a description of the specified quota share.
+-spec describe_quota_share(aws_client:aws_client(), describe_quota_share_request()) ->
+    {ok, describe_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, describe_quota_share_errors(), tuple()}.
+describe_quota_share(Client, Input) ->
+    describe_quota_share(Client, Input, []).
+
+-spec describe_quota_share(aws_client:aws_client(), describe_quota_share_request(), proplists:proplist()) ->
+    {ok, describe_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, describe_quota_share_errors(), tuple()}.
+describe_quota_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/describequotashare"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Describes one or more of your scheduling policies.
 -spec describe_scheduling_policies(aws_client:aws_client(), describe_scheduling_policies_request()) ->
     {ok, describe_scheduling_policies_response(), tuple()} |
@@ -3039,10 +3410,17 @@ describe_service_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provides a list of the first 100 `RUNNABLE' jobs associated to a
-%% single job
-%% queue and includes capacity utilization, including total usage and
-%% breakdown by share for fairshare scheduling job queues.
+%% @doc Provides a snapshot of job queue state, including ordering of
+%% `RUNNABLE' jobs, as well as capacity utilization for already
+%% dispatched jobs.
+%%
+%% The first 100 `RUNNABLE' jobs in the job queue are listed in order of
+%% dispatch. For job queues with an attached
+%% quota-share policy, the first `RUNNABLE' job in each quota share is
+%% also listed. Capacity utilization for the job queue is provided, as well
+%% as
+%% break downs by share for job queues with attached fair-share or
+%% quota-share scheduling policies.
 -spec get_job_queue_snapshot(aws_client:aws_client(), get_job_queue_snapshot_request()) ->
     {ok, get_job_queue_snapshot_response(), tuple()} |
     {error, any()} |
@@ -3168,6 +3546,40 @@ list_jobs_by_consumable_resource(Client, Input) ->
 list_jobs_by_consumable_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listjobsbyconsumableresource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of Batch quota shares associated with a job queue.
+-spec list_quota_shares(aws_client:aws_client(), list_quota_shares_request()) ->
+    {ok, list_quota_shares_response(), tuple()} |
+    {error, any()} |
+    {error, list_quota_shares_errors(), tuple()}.
+list_quota_shares(Client, Input) ->
+    list_quota_shares(Client, Input, []).
+
+-spec list_quota_shares(aws_client:aws_client(), list_quota_shares_request(), proplists:proplist()) ->
+    {ok, list_quota_shares_response(), tuple()} |
+    {error, any()} |
+    {error, list_quota_shares_errors(), tuple()}.
+list_quota_shares(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/listquotashares"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3680,6 +4092,40 @@ update_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a quota share.
+-spec update_quota_share(aws_client:aws_client(), update_quota_share_request()) ->
+    {ok, update_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, update_quota_share_errors(), tuple()}.
+update_quota_share(Client, Input) ->
+    update_quota_share(Client, Input, []).
+
+-spec update_quota_share(aws_client:aws_client(), update_quota_share_request(), proplists:proplist()) ->
+    {ok, update_quota_share_response(), tuple()} |
+    {error, any()} |
+    {error, update_quota_share_errors(), tuple()}.
+update_quota_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/updatequotashare"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a scheduling policy.
 -spec update_scheduling_policy(aws_client:aws_client(), update_scheduling_policy_request()) ->
     {ok, update_scheduling_policy_response(), tuple()} |
@@ -3733,6 +4179,41 @@ update_service_environment(Client, Input) ->
 update_service_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updateserviceenvironment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the priority of a specified service job in an Batch job
+%% queue.
+-spec update_service_job(aws_client:aws_client(), update_service_job_request()) ->
+    {ok, update_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_job_errors(), tuple()}.
+update_service_job(Client, Input) ->
+    update_service_job(Client, Input, []).
+
+-spec update_service_job(aws_client:aws_client(), update_service_job_request(), proplists:proplist()) ->
+    {ok, update_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_job_errors(), tuple()}.
+update_service_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/updateservicejob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

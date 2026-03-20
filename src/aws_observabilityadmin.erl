@@ -294,6 +294,7 @@
 
 %% Example:
 %% source_logs_configuration() :: #{
+%%   <<"DataSourceSelectionCriteria">> => string(),
 %%   <<"EncryptedLogGroupStrategy">> => list(any()),
 %%   <<"LogGroupSelectionCriteria">> => string()
 %% }
