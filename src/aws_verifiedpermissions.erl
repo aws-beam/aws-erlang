@@ -81,6 +81,8 @@
          create_policy/3,
          create_policy_store/2,
          create_policy_store/3,
+         create_policy_store_alias/2,
+         create_policy_store_alias/3,
          create_policy_template/2,
          create_policy_template/3,
          delete_identity_source/2,
@@ -89,6 +91,8 @@
          delete_policy/3,
          delete_policy_store/2,
          delete_policy_store/3,
+         delete_policy_store_alias/2,
+         delete_policy_store_alias/3,
          delete_policy_template/2,
          delete_policy_template/3,
          get_identity_source/2,
@@ -97,6 +101,8 @@
          get_policy/3,
          get_policy_store/2,
          get_policy_store/3,
+         get_policy_store_alias/2,
+         get_policy_store_alias/3,
          get_policy_template/2,
          get_policy_template/3,
          get_schema/2,
@@ -109,6 +115,8 @@
          list_identity_sources/3,
          list_policies/2,
          list_policies/3,
+         list_policy_store_aliases/2,
+         list_policy_store_aliases/3,
          list_policy_stores/2,
          list_policy_stores/3,
          list_policy_templates/2,
@@ -240,6 +248,16 @@
 -type template_linked_policy_definition() :: #{binary() => any()}.
 
 %% Example:
+%% policy_store_alias_item() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type policy_store_alias_item() :: #{binary() => any()}.
+
+%% Example:
 %% open_id_connect_access_token_configuration() :: #{
 %%   <<"audiences">> => list(string()),
 %%   <<"principalIdClaim">> => string()
@@ -292,6 +310,7 @@
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"policyTemplateId">> => string()
 %% }
@@ -313,6 +332,12 @@
 -type batch_get_policy_input() :: #{binary() => any()}.
 
 %% Example:
+%% policy_store_alias_filter() :: #{
+%%   <<"policyStoreId">> => string()
+%% }
+-type policy_store_alias_filter() :: #{binary() => any()}.
+
+%% Example:
 %% batch_is_authorized_with_token_output_item() :: #{
 %%   <<"decision">> => list(any()),
 %%   <<"determiningPolicies">> => list(determining_policy_item()),
@@ -328,6 +353,7 @@
 %%   <<"definition">> => list(),
 %%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"policyType">> => list(any()),
@@ -335,6 +361,12 @@
 %%   <<"resource">> => entity_identifier()
 %% }
 -type policy_item() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_alias_output() :: #{
+
+%% }
+-type delete_policy_store_alias_output() :: #{binary() => any()}.
 
 %% Example:
 %% cognito_group_configuration_detail() :: #{
@@ -368,6 +400,12 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string()
+%% }
+-type get_policy_store_alias_input() :: #{binary() => any()}.
 
 %% Example:
 %% kms_encryption_state() :: #{
@@ -412,6 +450,7 @@
 %% Example:
 %% update_policy_input() :: #{
 %%   <<"definition">> => list(),
+%%   <<"name">> => string(),
 %%   <<"policyId">> := string(),
 %%   <<"policyStoreId">> := string()
 %% }
@@ -571,6 +610,13 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type create_policy_store_alias_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_open_id_connect_configuration() :: #{
 %%   <<"entityIdPrefix">> => string(),
 %%   <<"groupConfiguration">> => update_open_id_connect_group_configuration(),
@@ -636,6 +682,16 @@
 %%   <<"tags">> => [boolean()]
 %% }
 -type get_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_alias_output() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type get_policy_store_alias_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_schema_input() :: #{
@@ -745,6 +801,7 @@
 %% create_policy_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"definition">> := list(),
+%%   <<"name">> => string(),
 %%   <<"policyStoreId">> := string()
 %% }
 -type create_policy_input() :: #{binary() => any()}.
@@ -782,6 +839,7 @@
 %% Example:
 %% update_policy_template_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"name">> => string(),
 %%   <<"policyStoreId">> := string(),
 %%   <<"policyTemplateId">> := string(),
 %%   <<"statement">> := string()
@@ -801,10 +859,18 @@
 %% create_policy_template_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"name">> => string(),
 %%   <<"policyStoreId">> := string(),
 %%   <<"statement">> := string()
 %% }
 -type create_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_store_aliases_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreAliases">> => list(policy_store_alias_item())
+%% }
+-type list_policy_store_aliases_output() :: #{binary() => any()}.
 
 %% Example:
 %% cognito_group_configuration_item() :: #{
@@ -902,6 +968,7 @@
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"policyTemplateId">> => string(),
 %%   <<"statement">> => string()
@@ -993,6 +1060,12 @@
 -type identity_source_item() :: #{binary() => any()}.
 
 %% Example:
+%% delete_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string()
+%% }
+-type delete_policy_store_alias_input() :: #{binary() => any()}.
+
+%% Example:
 %% open_id_connect_group_configuration() :: #{
 %%   <<"groupClaim">> => string(),
 %%   <<"groupEntityType">> => string()
@@ -1031,6 +1104,14 @@
 -type batch_is_authorized_output_item() :: #{binary() => any()}.
 
 %% Example:
+%% list_policy_store_aliases_input() :: #{
+%%   <<"filter">> => policy_store_alias_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_store_aliases_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_policy_output() :: #{
 %%   <<"actions">> => list(action_identifier()),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -1059,6 +1140,15 @@
 -type static_policy_definition_detail() :: #{binary() => any()}.
 
 %% Example:
+%% create_policy_store_alias_output() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_policy_store_alias_output() :: #{binary() => any()}.
+
+%% Example:
 %% delete_policy_output() :: #{
 
 %% }
@@ -1078,6 +1168,7 @@
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"definition">> => list(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"policyType">> => list(any())
@@ -1131,6 +1222,7 @@
 %%   <<"definition">> => list(),
 %%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
 %%   <<"policyType">> => list(any()),
@@ -1159,6 +1251,11 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_policy_store_alias_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_policy_template_errors() ::
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
@@ -1175,6 +1272,9 @@
 -type delete_policy_store_errors() ::
     invalid_state_exception().
 
+-type delete_policy_store_alias_errors() ::
+    invalid_state_exception().
+
 -type delete_policy_template_errors() ::
     resource_not_found_exception() | 
     conflict_exception().
@@ -1186,6 +1286,9 @@
     resource_not_found_exception().
 
 -type get_policy_store_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_store_alias_errors() ::
     resource_not_found_exception().
 
 -type get_policy_template_errors() ::
@@ -1473,6 +1576,37 @@ create_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyStore">>, Input, Options).
 
+%% @doc Creates a policy store alias for the specified policy store.
+%%
+%% A policy store alias is an alternative identifier that you can use to
+%% reference a policy store in API operations.
+%%
+%% This operation is idempotent. If multiple CreatePolicyStoreAlias requests
+%% are made where the `aliasName' and `policyStoreId' fields are the
+%% same between the requests, subsequent requests will be ignored. For each
+%% duplicate CreatePolicyStoreAlias request, a Success response will be
+%% returned and a new policy store alias will not be created.
+%%
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
+-spec create_policy_store_alias(aws_client:aws_client(), create_policy_store_alias_input()) ->
+    {ok, create_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_store_alias_errors(), tuple()}.
+create_policy_store_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_policy_store_alias(Client, Input, []).
+
+-spec create_policy_store_alias(aws_client:aws_client(), create_policy_store_alias_input(), proplists:proplist()) ->
+    {ok, create_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_store_alias_errors(), tuple()}.
+create_policy_store_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePolicyStoreAlias">>, Input, Options).
+
 %% @doc Creates a policy template.
 %%
 %% A template can use placeholders for the principal and resource. A template
@@ -1569,6 +1703,33 @@ delete_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyStore">>, Input, Options).
 
+%% @doc Deletes the specified policy store alias.
+%%
+%% This operation is idempotent. If you specify a policy store alias that
+%% does not exist, the request response will still return a successful HTTP
+%% 200 status code.
+%%
+%% When a policy store alias is deleted, it enters the `PendingDeletion'
+%% state. When a policy store alias is in the `PendingDeletion' state,
+%% new policy store aliases cannot be created with the same name. If the
+%% policy store alias is used in an API that has a `policyStoreId' field,
+%% the operation will fail with a `ResourceNotFound' exception.
+-spec delete_policy_store_alias(aws_client:aws_client(), delete_policy_store_alias_input()) ->
+    {ok, delete_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_store_alias_errors(), tuple()}.
+delete_policy_store_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_policy_store_alias(Client, Input, []).
+
+-spec delete_policy_store_alias(aws_client:aws_client(), delete_policy_store_alias_input(), proplists:proplist()) ->
+    {ok, delete_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_store_alias_errors(), tuple()}.
+delete_policy_store_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePolicyStoreAlias">>, Input, Options).
+
 %% @doc Deletes the specified policy template from the policy store.
 %%
 %% This operation also deletes any policies that were created from the
@@ -1641,6 +1802,23 @@ get_policy_store(Client, Input)
 get_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyStore">>, Input, Options).
+
+%% @doc Retrieves details about the specified policy store alias.
+-spec get_policy_store_alias(aws_client:aws_client(), get_policy_store_alias_input()) ->
+    {ok, get_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_store_alias_errors(), tuple()}.
+get_policy_store_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_policy_store_alias(Client, Input, []).
+
+-spec get_policy_store_alias(aws_client:aws_client(), get_policy_store_alias_input(), proplists:proplist()) ->
+    {ok, get_policy_store_alias_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_store_alias_errors(), tuple()}.
+get_policy_store_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPolicyStoreAlias">>, Input, Options).
 
 %% @doc Retrieve the details for the specified policy template in the
 %% specified policy store.
@@ -1771,6 +1949,22 @@ list_policies(Client, Input)
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
+
+%% @doc Returns a paginated list of all policy store aliases in the calling
+%% Amazon Web Services account.
+-spec list_policy_store_aliases(aws_client:aws_client(), list_policy_store_aliases_input()) ->
+    {ok, list_policy_store_aliases_output(), tuple()} |
+    {error, any()}.
+list_policy_store_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_policy_store_aliases(Client, Input, []).
+
+-spec list_policy_store_aliases(aws_client:aws_client(), list_policy_store_aliases_input(), proplists:proplist()) ->
+    {ok, list_policy_store_aliases_output(), tuple()} |
+    {error, any()}.
+list_policy_store_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPolicyStoreAliases">>, Input, Options).
 
 %% @doc Returns a paginated list of all policy stores in the calling Amazon
 %% Web Services account.

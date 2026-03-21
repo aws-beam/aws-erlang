@@ -1848,6 +1848,7 @@
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
 %%   <<"RegionName">> => string(),
+%%   <<"ReplicaArn">> => string(),
 %%   <<"ReplicaInaccessibleDateTime">> => non_neg_integer(),
 %%   <<"ReplicaStatus">> => list(any()),
 %%   <<"ReplicaStatusDescription">> => string(),

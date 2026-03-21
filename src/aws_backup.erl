@@ -4762,12 +4762,12 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes whether the Amazon Web Services account is opted in to
-%% cross-account backup.
+%% @doc Describes whether the Amazon Web Services account has enabled
+%% different cross-account management options, including cross-account
+%% backup, multi-party approval, and delegated administrator.
 %%
 %% Returns an error if the account is not a member of an Organizations
-%% organization.
-%% Example: `describe-global-settings --region us-west-2'
+%% organization. Example: `describe-global-settings --region us-west-2'
 -spec describe_global_settings(aws_client:aws_client()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
@@ -7820,12 +7820,13 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates whether the Amazon Web Services account is opted in to
-%% cross-account backup.
+%% @doc Updates whether the Amazon Web Services account has enabled different
+%% cross-account management options, including cross-account backup,
+%% multi-party approval, and delegated administrator.
 %%
 %% Returns an error if the account is not an Organizations management
-%% account. Use the
-%% `DescribeGlobalSettings' API to determine the current settings.
+%% account. Use the `DescribeGlobalSettings' API to determine the current
+%% settings.
 -spec update_global_settings(aws_client:aws_client(), update_global_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

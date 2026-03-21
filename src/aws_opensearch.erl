@@ -2139,6 +2139,14 @@
 
 
 %% Example:
+%% prometheus_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"WorkspaceArn">> => string()
+%% }
+-type prometheus_direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domains_for_package_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2478,7 +2486,7 @@
 %%   <<"DataSourceName">> := string(),
 %%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
-%%   <<"OpenSearchArns">> := list(string()),
+%%   <<"OpenSearchArns">> => list(string()),
 %%   <<"TagList">> => list(tag())
 %% }
 -type add_direct_query_data_source_request() :: #{binary() => any()}.
@@ -2506,7 +2514,7 @@
 %%   <<"DataSourceAccessPolicy">> => string(),
 %%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
-%%   <<"OpenSearchArns">> := list(string())
+%%   <<"OpenSearchArns">> => list(string())
 %% }
 -type update_direct_query_data_source_request() :: #{binary() => any()}.
 
