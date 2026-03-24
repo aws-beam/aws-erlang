@@ -401,6 +401,7 @@
 
 %% Example:
 %% ec2_configuration() :: #{
+%%   <<"batchImageStatus">> => string(),
 %%   <<"imageIdOverride">> => string(),
 %%   <<"imageKubernetesVersion">> => string(),
 %%   <<"imageType">> => string()

@@ -24,6 +24,8 @@
          cancel_annotation_import_job/4,
          cancel_run/3,
          cancel_run/4,
+         cancel_run_batch/2,
+         cancel_run_batch/3,
          cancel_variant_import_job/3,
          cancel_variant_import_job/4,
          complete_multipart_read_set_upload/4,
@@ -54,12 +56,16 @@
          delete_annotation_store/4,
          delete_annotation_store_versions/3,
          delete_annotation_store_versions/4,
+         delete_batch/3,
+         delete_batch/4,
          delete_reference/4,
          delete_reference/5,
          delete_reference_store/3,
          delete_reference_store/4,
          delete_run/3,
          delete_run/4,
+         delete_run_batch/2,
+         delete_run_batch/3,
          delete_run_cache/3,
          delete_run_cache/4,
          delete_run_group/3,
@@ -85,6 +91,9 @@
          get_annotation_store_version/3,
          get_annotation_store_version/5,
          get_annotation_store_version/6,
+         get_batch/2,
+         get_batch/4,
+         get_batch/5,
          get_read_set/4,
          get_read_set/6,
          get_read_set/7,
@@ -151,6 +160,9 @@
          list_annotation_store_versions/4,
          list_annotation_stores/2,
          list_annotation_stores/3,
+         list_batch/1,
+         list_batch/3,
+         list_batch/4,
          list_multipart_read_set_uploads/3,
          list_multipart_read_set_uploads/4,
          list_read_set_activation_jobs/3,
@@ -181,6 +193,9 @@
          list_runs/1,
          list_runs/3,
          list_runs/4,
+         list_runs_in_batch/2,
+         list_runs_in_batch/4,
+         list_runs_in_batch/5,
          list_sequence_stores/2,
          list_sequence_stores/3,
          list_shares/2,
@@ -212,6 +227,8 @@
          start_reference_import_job/4,
          start_run/2,
          start_run/3,
+         start_run_batch/2,
+         start_run_batch/3,
          start_variant_import_job/2,
          start_variant_import_job/3,
          tag_resource/3,
@@ -407,6 +424,17 @@
 
 
 %% Example:
+%% start_run_batch_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
+%% }
+-type start_run_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_sequence_store_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
@@ -461,6 +489,19 @@
 %%   <<"export">> => list(string())
 %% }
 -type get_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_setting() :: #{
+%%   <<"name">> => string(),
+%%   <<"outputBucketOwnerId">> => string(),
+%%   <<"outputUri">> => string(),
+%%   <<"parameters">> => any(),
+%%   <<"priority">> => [integer()],
+%%   <<"runSettingId">> => string(),
+%%   <<"runTags">> => map()
+%% }
+-type inline_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -790,6 +831,19 @@
 
 
 %% Example:
+%% submission_summary() :: #{
+%%   <<"failedCancelSubmissionCount">> => [integer()],
+%%   <<"failedDeleteSubmissionCount">> => [integer()],
+%%   <<"failedStartSubmissionCount">> => [integer()],
+%%   <<"pendingStartSubmissionCount">> => [integer()],
+%%   <<"successfulCancelSubmissionCount">> => [integer()],
+%%   <<"successfulDeleteSubmissionCount">> => [integer()],
+%%   <<"successfulStartSubmissionCount">> => [integer()]
+%% }
+-type submission_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% upload_read_set_part_response() :: #{
 %%   <<"checksum">> => [string()]
 %% }
@@ -862,6 +916,30 @@
 %% Example:
 %% delete_run_group_request() :: #{}
 -type delete_run_group_request() :: #{}.
+
+
+%% Example:
+%% default_run_setting() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheId">> => string(),
+%%   <<"logLevel">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputBucketOwnerId">> => string(),
+%%   <<"outputUri">> => string(),
+%%   <<"parameters">> => any(),
+%%   <<"priority">> => [integer()],
+%%   <<"retentionMode">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"runTags">> => map(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowOwnerId">> => string(),
+%%   <<"workflowType">> => string(),
+%%   <<"workflowVersionName">> => string()
+%% }
+-type default_run_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -964,8 +1042,16 @@
 
 
 %% Example:
+%% cancel_run_batch_request() :: #{
+%%   <<"batchId">> := string()
+%% }
+-type cancel_run_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% run_list_item() :: #{
 %%   <<"arn">> => string(),
+%%   <<"batchId">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1157,6 +1243,20 @@
 
 
 %% Example:
+%% run_summary() :: #{
+%%   <<"cancelledRunCount">> => [integer()],
+%%   <<"completedRunCount">> => [integer()],
+%%   <<"deletedRunCount">> => [integer()],
+%%   <<"failedRunCount">> => [integer()],
+%%   <<"pendingRunCount">> => [integer()],
+%%   <<"runningRunCount">> => [integer()],
+%%   <<"startingRunCount">> => [integer()],
+%%   <<"stoppingRunCount">> => [integer()]
+%% }
+-type run_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_read_set_metadata_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationJobId">> => string(),
@@ -1220,6 +1320,18 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type get_annotation_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_runs_in_batch_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"runs">> => list(run_batch_list_item())
+%% }
+-type list_runs_in_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_request() :: #{}
+-type delete_batch_request() :: #{}.
 
 
 %% Example:
@@ -1372,6 +1484,27 @@
 %%   <<"updatedBefore">> => [non_neg_integer()]
 %% }
 -type sequence_store_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_batch_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"defaultRunSetting">> => default_run_setting(),
+%%   <<"failedTime">> => non_neg_integer(),
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"processedTime">> => non_neg_integer(),
+%%   <<"runSummary">> => run_summary(),
+%%   <<"status">> => string(),
+%%   <<"submissionSummary">> => submission_summary(),
+%%   <<"submittedTime">> => non_neg_integer(),
+%%   <<"tags">> => map(),
+%%   <<"totalRuns">> => [integer()],
+%%   <<"uuid">> => string()
+%% }
+-type get_batch_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1725,6 +1858,10 @@
 %% }
 -type read_set_files() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_run_batch_response() :: #{}
+-type cancel_run_batch_response() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1815,6 +1952,17 @@
 %% Example:
 %% get_run_cache_request() :: #{}
 -type get_run_cache_request() :: #{}.
+
+
+%% Example:
+%% list_runs_in_batch_request() :: #{
+%%   <<"maxItems">> => [integer()],
+%%   <<"runId">> => [string()],
+%%   <<"runSettingId">> => [string()],
+%%   <<"startingToken">> => string(),
+%%   <<"submissionStatus">> => string()
+%% }
+-type list_runs_in_batch_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1911,6 +2059,18 @@
 
 
 %% Example:
+%% batch_list_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"totalRuns">> => [integer()],
+%%   <<"workflowId">> => string()
+%% }
+-type batch_list_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_workflow_versions_response() :: #{
 %%   <<"items">> => list(workflow_version_list_item()),
 %%   <<"nextToken">> => string()
@@ -1927,6 +2087,13 @@
 %%   <<"description">> => string()
 %% }
 -type update_annotation_store_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_run_batch_request() :: #{
+%%   <<"batchId">> := string()
+%% }
+-type delete_run_batch_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2216,6 +2383,17 @@
 
 
 %% Example:
+%% list_batch_request() :: #{
+%%   <<"maxItems">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"startingToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -2258,6 +2436,10 @@
 %%   <<"jobId">> => string()
 %% }
 -type start_annotation_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_run_batch_response() :: #{}
+-type delete_run_batch_response() :: #{}.
 
 
 %% Example:
@@ -2466,6 +2648,10 @@
 -type update_workflow_version_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_batch_request() :: #{}
+-type get_batch_request() :: #{}.
+
+%% Example:
 %% get_share_request() :: #{}
 -type get_share_request() :: #{}.
 
@@ -2507,6 +2693,14 @@
 %%   <<"parts">> => list(read_set_upload_part_list_item())
 %% }
 -type list_read_set_upload_parts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_response() :: #{
+%%   <<"items">> => list(batch_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_reference_store_response() :: #{}
@@ -2623,6 +2817,7 @@
 %%   <<"tags">> => map(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"priority">> => [integer()],
+%%   <<"batchId">> => string(),
 %%   <<"retentionMode">> => string(),
 %%   <<"logLevel">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
@@ -2706,6 +2901,7 @@
 
 %% Example:
 %% list_runs_request() :: #{
+%%   <<"batchId">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"name">> => string(),
 %%   <<"runGroupId">> => string(),
@@ -2731,6 +2927,19 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type get_variant_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_batch_list_item() :: #{
+%%   <<"runArn">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"runInternalUuid">> => string(),
+%%   <<"runSettingId">> => string(),
+%%   <<"submissionFailureMessage">> => string(),
+%%   <<"submissionFailureReason">> => string(),
+%%   <<"submissionStatus">> => string()
+%% }
+-type run_batch_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% delete_share_request() :: #{}
@@ -2770,6 +2979,17 @@
 %%   <<"versionName">> => string()
 %% }
 -type get_annotation_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_run_batch_request() :: #{
+%%   <<"batchName">> => string(),
+%%   <<"batchRunSettings">> := list(),
+%%   <<"defaultRunSetting">> := default_run_setting(),
+%%   <<"requestId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_run_batch_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2900,6 +3120,16 @@
     resource_not_found_exception().
 
 -type cancel_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type cancel_run_batch_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3044,6 +3274,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type delete_reference_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3063,6 +3303,16 @@
     request_timeout_exception().
 
 -type delete_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type delete_run_batch_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3167,6 +3417,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type get_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
 
 -type get_read_set_errors() ::
     range_not_satisfiable_exception() | 
@@ -3365,6 +3623,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    request_timeout_exception().
+
 -type list_multipart_read_set_uploads_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3471,6 +3736,16 @@
     request_timeout_exception().
 
 -type list_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type list_runs_in_batch_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3594,6 +3869,16 @@
     request_timeout_exception().
 
 -type start_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type start_run_batch_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3830,12 +4115,11 @@ batch_delete_read_set(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Cancels an annotation import job.
@@ -3910,13 +4194,56 @@ cancel_run(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% @doc Cancels all runs within a specified batch.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% This operation prevents not-yet-submitted runs from starting and submits
+%% `CancelRun' requests for runs that have already started.
+%%
+%% Cancel is only allowed on batches in `PENDING', `SUBMITTING', or
+%% `INPROGRESS' state. Cancel operations are non-atomic and may be
+%% partially successful. Use `GetBatch' to review
+%% `successfulCancelSubmissionCount' and
+%% `failedCancelSubmissionCount' in the `submissionSummary'. Only one
+%% cancel or delete operation per batch is allowed at a time.
+-spec cancel_run_batch(aws_client:aws_client(), cancel_run_batch_request()) ->
+    {ok, cancel_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_run_batch_errors(), tuple()}.
+cancel_run_batch(Client, Input) ->
+    cancel_run_batch(Client, Input, []).
+
+-spec cancel_run_batch(aws_client:aws_client(), cancel_run_batch_request(), proplists:proplist()) ->
+    {ok, cancel_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_run_batch_errors(), tuple()}.
+cancel_run_batch(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runBatch/cancel"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Amazon Web Services HealthOmics variant stores and annotation stores
+%% are no longer open to new customers.
+%%
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Cancels a variant import job.
@@ -3998,12 +4325,11 @@ complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Creates an annotation store.
@@ -4367,12 +4693,11 @@ create_share(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Creates a variant store.
@@ -4532,12 +4857,11 @@ create_workflow_version(Client, WorkflowId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Deletes an annotation store.
@@ -4608,6 +4932,49 @@ delete_annotation_store_versions(Client, Name, Input0, Options0) ->
                      {<<"force">>, <<"force">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a run batch resource and its associated metadata.
+%%
+%% This operation does not delete the individual workflow runs. To delete the
+%% runs, call `DeleteRunBatch' before calling `DeleteBatch'.
+%%
+%% `DeleteBatch' requires the batch to be in a terminal state:
+%% `PROCESSED', `FAILED', `CANCELLED', or `RUNS_DELETED'.
+%% After `DeleteBatch' completes, the batch metadata is no longer
+%% accessible. You cannot call `GetBatch', `ListRunsInBatch',
+%% `DeleteRunBatch', or `CancelRunBatch' on a deleted batch.
+-spec delete_batch(aws_client:aws_client(), binary() | list(), delete_batch_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_batch_errors(), tuple()}.
+delete_batch(Client, BatchId, Input) ->
+    delete_batch(Client, BatchId, Input, []).
+
+-spec delete_batch(aws_client:aws_client(), binary() | list(), delete_batch_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_batch_errors(), tuple()}.
+delete_batch(Client, BatchId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/runBatch/", aws_util:encode_uri(BatchId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a reference genome and returns a response with no body if the
@@ -4726,6 +5093,49 @@ delete_run(Client, Id, Input) ->
 delete_run(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/run/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the individual workflow runs within a batch.
+%%
+%% This operation is separate from `DeleteBatch', which removes the batch
+%% metadata.
+%%
+%% Delete is only allowed on batches in `PROCESSED' or `CANCELLED'
+%% state. Delete operations are non-atomic and may be partially successful.
+%% Use `GetBatch' to review `successfulDeleteSubmissionCount' and
+%% `failedDeleteSubmissionCount' in the `submissionSummary'. Only one
+%% cancel or delete operation per batch is allowed at a time.
+-spec delete_run_batch(aws_client:aws_client(), delete_run_batch_request()) ->
+    {ok, delete_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, delete_run_batch_errors(), tuple()}.
+delete_run_batch(Client, Input) ->
+    delete_run_batch(Client, Input, []).
+
+-spec delete_run_batch(aws_client:aws_client(), delete_run_batch_request(), proplists:proplist()) ->
+    {ok, delete_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, delete_run_batch_errors(), tuple()}.
+delete_run_batch(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runBatch/delete"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4951,12 +5361,11 @@ delete_share(Client, ShareId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Deletes a variant store.
@@ -5081,12 +5490,11 @@ delete_workflow_version(Client, VersionName, WorkflowId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Gets information about an annotation import job.
@@ -5127,12 +5535,11 @@ get_annotation_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Gets information about an annotation store.
@@ -5196,6 +5603,44 @@ get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap)
 get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/annotationStore/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details and current status for a specific run batch,
+%% including submission progress and run execution counts.
+-spec get_batch(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_errors(), tuple()}.
+get_batch(Client, BatchId)
+  when is_map(Client) ->
+    get_batch(Client, BatchId, #{}, #{}).
+
+-spec get_batch(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_errors(), tuple()}.
+get_batch(Client, BatchId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_batch(Client, BatchId, QueryMap, HeadersMap, []).
+
+-spec get_batch(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_errors(), tuple()}.
+get_batch(Client, BatchId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runBatch/", aws_util:encode_uri(BatchId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5860,12 +6305,11 @@ get_share(Client, ShareId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Gets information about a variant import job.
@@ -5906,12 +6350,11 @@ get_variant_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Gets information about a variant store.
@@ -6050,12 +6493,11 @@ get_workflow_version(Client, VersionName, WorkflowId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Retrieves a list of annotation import jobs.
@@ -6131,12 +6573,11 @@ list_annotation_store_versions(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Retrieves a list of annotation stores.
@@ -6174,6 +6615,54 @@ list_annotation_stores(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of run batches in your account, with optional
+%% filtering by status, name, or run group.
+%%
+%% Results are paginated. Only one filter per call is supported.
+-spec list_batch(aws_client:aws_client()) ->
+    {ok, list_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_errors(), tuple()}.
+list_batch(Client)
+  when is_map(Client) ->
+    list_batch(Client, #{}, #{}).
+
+-spec list_batch(aws_client:aws_client(), map(), map()) ->
+    {ok, list_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_errors(), tuple()}.
+list_batch(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_batch(Client, QueryMap, HeadersMap, []).
+
+-spec list_batch(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_errors(), tuple()}.
+list_batch(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runBatch"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"runGroupId">>, maps:get(<<"runGroupId">>, QueryMap, undefined)},
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists in-progress multipart read set uploads for a sequence store and
 %% returns it in a JSON formatted output.
@@ -6703,11 +7192,62 @@ list_runs(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"batchId">>, maps:get(<<"batchId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"runGroupId">>, maps:get(<<"runGroupId">>, QueryMap, undefined)},
         {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of individual workflow runs within a
+%% specific batch.
+%%
+%% Use this operation to map each `runSettingId' to its
+%% HealthOmics-generated `runId', and to check the submission status of
+%% each run. Only one filter per call is supported.
+-spec list_runs_in_batch(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_runs_in_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_runs_in_batch_errors(), tuple()}.
+list_runs_in_batch(Client, BatchId)
+  when is_map(Client) ->
+    list_runs_in_batch(Client, BatchId, #{}, #{}).
+
+-spec list_runs_in_batch(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_runs_in_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_runs_in_batch_errors(), tuple()}.
+list_runs_in_batch(Client, BatchId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_runs_in_batch(Client, BatchId, QueryMap, HeadersMap, []).
+
+-spec list_runs_in_batch(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_runs_in_batch_response(), tuple()} |
+    {error, any()} |
+    {error, list_runs_in_batch_errors(), tuple()}.
+list_runs_in_batch(Client, BatchId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runBatch/", aws_util:encode_uri(BatchId), "/run"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"runId">>, maps:get(<<"runId">>, QueryMap, undefined)},
+        {<<"runSettingId">>, maps:get(<<"runSettingId">>, QueryMap, undefined)},
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
+        {<<"submissionStatus">>, maps:get(<<"submissionStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6830,12 +7370,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Retrieves a list of variant import jobs.
@@ -6875,12 +7414,11 @@ list_variant_import_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Retrieves a list of variant stores.
@@ -7053,12 +7591,11 @@ put_s3_access_policy(Client, S3AccessPointArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Starts an annotation import job.
@@ -7355,13 +7892,57 @@ start_run(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% @doc Starts a batch of workflow runs.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% You can group up to 100,000 runs into a single batch that share a common
+%% configuration defined in `defaultRunSetting'. Per-run overrides can be
+%% provided either inline via `inlineSettings' (up to 100 runs) or via a
+%% JSON file stored in Amazon S3 via `s3UriSettings' (up to 100,000
+%% runs).
+%%
+%% `StartRunBatch' validates common fields synchronously and returns
+%% immediately with a batch ID and status `PENDING'. Runs are submitted
+%% gradually and asynchronously at a rate governed by your `StartRun'
+%% throughput quota.
+-spec start_run_batch(aws_client:aws_client(), start_run_batch_request()) ->
+    {ok, start_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, start_run_batch_errors(), tuple()}.
+start_run_batch(Client, Input) ->
+    start_run_batch(Client, Input, []).
+
+-spec start_run_batch(aws_client:aws_client(), start_run_batch_request(), proplists:proplist()) ->
+    {ok, start_run_batch_response(), tuple()} |
+    {error, any()} |
+    {error, start_run_batch_errors(), tuple()}.
+start_run_batch(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runBatch"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Amazon Web Services HealthOmics variant stores and annotation stores
+%% are no longer open to new customers.
+%%
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Starts a variant import job.
@@ -7468,12 +8049,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Updates an annotation store.
@@ -7674,12 +8254,11 @@ update_sequence_store(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon Web Services HealthOmics variant stores and annotation stores
-%% will no longer be open to new customers starting November 7, 2025.
+%% are no longer open to new customers.
 %%
-%% If you would like to use variant stores or annotation stores, sign up
-%% prior to that date. Existing customers can continue to use the service as
-%% normal. For more information, see Amazon Web Services HealthOmics variant
-%% store and annotation store availability change:
+%% Existing customers can continue to use the service as normal. For more
+%% information, see Amazon Web Services HealthOmics variant store and
+%% annotation store availability change:
 %% https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html.
 %%
 %% Updates a variant store.

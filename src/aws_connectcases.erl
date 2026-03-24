@@ -101,6 +101,8 @@
          update_field/5,
          update_layout/4,
          update_layout/5,
+         update_related_item/5,
+         update_related_item/6,
          update_template/4,
          update_template/5]).
 
@@ -699,6 +701,14 @@
 
 
 %% Example:
+%% comment_update_content() :: #{
+%%   <<"body">> => string(),
+%%   <<"contentType">> => string()
+%% }
+-type comment_update_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_layout_response() :: #{
 %%   <<"layoutArn">> := string(),
 %%   <<"layoutId">> := string()
@@ -767,6 +777,20 @@
 %%   <<"tags">> => map()
 %% }
 -type get_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_related_item_response() :: #{
+%%   <<"associationTime">> => non_neg_integer(),
+%%   <<"content">> => list(),
+%%   <<"createdBy">> => list(),
+%%   <<"lastUpdatedUser">> => list(),
+%%   <<"relatedItemArn">> => string(),
+%%   <<"relatedItemId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type update_related_item_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -960,6 +984,14 @@
 
 
 %% Example:
+%% update_related_item_request() :: #{
+%%   <<"content">> := list(),
+%%   <<"performedBy">> => list()
+%% }
+-type update_related_item_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_option() :: #{
 %%   <<"active">> => [boolean()],
 %%   <<"name">> => string(),
@@ -1019,6 +1051,13 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% custom_update_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_update_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1591,6 +1630,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_related_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_template_errors() ::
     throttling_exception() | 
@@ -3324,6 +3370,68 @@ update_layout(Client, DomainId, LayoutId, Input) ->
 update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the content of a related item associated with a case.
+%%
+%% The following related item types are supported:
+%%
+%% Comment - Update the text content of an existing comment
+%%
+%% Custom - Update the fields of a custom related item. You can add, modify,
+%% and remove fields from a custom related item. There's a quota for the
+%% number of fields allowed in a Custom type related item. See Amazon Connect
+%% Cases quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
+%%
+%% Important things to know
+%%
+%% When updating a Custom related item, all existing and new fields, and
+%% their associated values should be included in the request. Fields not
+%% included as part of this request will be removed.
+%%
+%% If you provide a value for `performedBy.userArn' you must also have
+%% DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the ARN of the user that you provide.
+%%
+%% System case fields:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html#system-case-fields
+%% cannot be used in a custom related item.
+%%
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec update_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_related_item_request()) ->
+    {ok, update_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, update_related_item_errors(), tuple()}.
+update_related_item(Client, CaseId, DomainId, RelatedItemId, Input) ->
+    update_related_item(Client, CaseId, DomainId, RelatedItemId, Input, []).
+
+-spec update_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_related_item_request(), proplists:proplist()) ->
+    {ok, update_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, update_related_item_errors(), tuple()}.
+update_related_item(Client, CaseId, DomainId, RelatedItemId, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items/", aws_util:encode_uri(RelatedItemId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

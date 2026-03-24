@@ -518,7 +518,8 @@
 %%   <<"protocol">> => list(any()),
 %%   <<"resourceType">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"supportCode">> => string()
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
 -type contact_method() :: #{binary() => any()}.
 
@@ -1605,7 +1606,8 @@
 %% Example:
 %% create_contact_method_request() :: #{
 %%   <<"contactEndpoint">> := string(),
-%%   <<"protocol">> := list(any())
+%%   <<"protocol">> := list(any()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_contact_method_request() :: #{binary() => any()}.
 
