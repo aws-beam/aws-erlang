@@ -482,6 +482,7 @@
 %% Example:
 %% list_browser_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_profiles_request() :: #{binary() => any()}.
@@ -1252,6 +1253,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
@@ -1325,6 +1327,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
 %%   <<"networkConfiguration">> := network_configuration(),
@@ -2349,6 +2352,7 @@
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"failureReason">> => [string()],
+%%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
@@ -2936,6 +2940,13 @@
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type code_interpreter_network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_storage_configuration() :: #{
+%%   <<"mountPath">> => string()
+%% }
+-type session_storage_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_browser_request() :: #{}

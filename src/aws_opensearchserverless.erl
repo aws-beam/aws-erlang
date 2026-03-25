@@ -1084,7 +1084,8 @@
 %% update_collection_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => [string()],
-%%   <<"id">> := string()
+%%   <<"id">> := string(),
+%%   <<"vectorOptions">> => vector_options()
 %% }
 -type update_collection_request() :: #{binary() => any()}.
 
@@ -1142,7 +1143,8 @@
 %%   <<"lastModifiedDate">> => [float()],
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
 %% }
 -type update_collection_detail() :: #{binary() => any()}.
 

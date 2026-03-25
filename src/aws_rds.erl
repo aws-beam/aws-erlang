@@ -388,6 +388,7 @@
 
 %% Example:
 %% restore_db_cluster_from_snapshot_message() :: #{
+%%   <<"EnableVPCNetworking">> => boolean(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
@@ -425,6 +426,7 @@
 %%   <<"BacktrackWindow">> => float(),
 %%   <<"NetworkType">> => string(),
 %%   <<"MonitoringInterval">> => integer(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
 %%   <<"DeletionProtection">> => boolean()
 %% }
 -type restore_db_cluster_from_snapshot_message() :: #{binary() => any()}.
@@ -1497,6 +1499,7 @@
 
 %% Example:
 %% restore_db_cluster_to_point_in_time_message() :: #{
+%%   <<"EnableVPCNetworking">> => boolean(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
@@ -1533,6 +1536,7 @@
 %%   <<"BacktrackWindow">> => float(),
 %%   <<"NetworkType">> => string(),
 %%   <<"MonitoringInterval">> => integer(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
 %%   <<"RestoreType">> => string(),
 %%   <<"DeletionProtection">> => boolean()
 %% }
@@ -3547,6 +3551,7 @@
 %%   <<"MonitoringInterval">> => integer(),
 %%   <<"CACertificateIdentifier">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
+%%   <<"WithExpressConfiguration">> => boolean(),
 %%   <<"EnableGlobalWriteForwarding">> => boolean(),
 %%   <<"DBSystemId">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
@@ -4133,6 +4138,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"ServerlessV2PlatformVersion">> => string(),
 %%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
+%%   <<"InternetAccessGatewayEnabled">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
 %%   <<"StorageThroughput">> => integer(),
@@ -4204,6 +4210,7 @@
 %%   <<"Capacity">> => integer(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"Status">> => string(),
+%%   <<"VPCNetworkingEnabled">> => boolean(),
 %%   <<"MonitoringInterval">> => integer(),
 %%   <<"AwsBackupRecoveryPointArn">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
@@ -7215,6 +7222,11 @@ create_custom_db_engine_version(Client, Input, Options)
 %% see Multi-AZ DB cluster deployments:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User Guide.
+%%
+%% You can use the `WithExpressConfiguration' parameter to create an
+%% Aurora DB Cluster with express configuration and create cluster in
+%% seconds. Express configuration provides a cluster with a writer instance
+%% and feature specific values set to all other input parameters of this API.
 -spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
@@ -10462,6 +10474,18 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% configuration. If you don't specify a security group, the new DB
 %% cluster is associated with the default security group.
 %%
+%% You can use the `EnableVPCNetworking' and
+%% `EnableInternetAccessGateway' parameters together to restore an Aurora
+%% PostgreSQL cluster without VPC networking and with internet-based
+%% connectivity. These two parameters must always be specified together. Set
+%% `EnableVPCNetworking' to `false' to disable the VPC network
+%% interface (ENI) for the cluster. `EnableInternetAccessGateway' enables
+%% internet-based connectivity through an internet access gateway. IAM
+%% database authentication is required and must be enabled using
+%% `EnableIAMDatabaseAuthentication'. Once the cluster is restored, you
+%% need to modify the DB cluster to update `MasterUserAuthenticationType'
+%% to `iam-db-auth'.
+%%
 %% This operation only restores the DB cluster, not the DB instances for that
 %% DB cluster. You must invoke the `CreateDBInstance' operation to create
 %% DB instances for the restored DB cluster, specifying the identifier of the
@@ -10504,6 +10528,18 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% `copy-on-write', the restore may occur in a different Availability
 %% Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB
 %% cluster depends on the AZs in the specified subnet group.
+%%
+%% You can use the `EnableVPCNetworking' and
+%% `EnableInternetAccessGateway' parameters together to restore an Aurora
+%% PostgreSQL cluster without VPC networking and with internet-based
+%% connectivity. These two parameters must always be specified together. Set
+%% `EnableVPCNetworking' to `false' to disable the VPC network
+%% interface (ENI) for the cluster. `EnableInternetAccessGateway' enables
+%% internet-based connectivity through an internet access gateway. IAM
+%% database authentication is required and must be enabled using
+%% `EnableIAMDatabaseAuthentication'. Once the cluster is restored, you
+%% need to modify the DB cluster to update `MasterUserAuthenticationType'
+%% to `iam-db-auth'.
 %%
 %% For Aurora, this operation only restores the DB cluster, not the DB
 %% instances for that DB cluster. You must invoke the `CreateDBInstance'

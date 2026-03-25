@@ -117,6 +117,13 @@
 -type accounting() :: #{binary() => any()}.
 
 %% Example:
+%% cgroup_custom_setting() :: #{
+%%   <<"parameterName">> => [string()],
+%%   <<"parameterValue">> => [string()]
+%% }
+-type cgroup_custom_setting() :: #{binary() => any()}.
+
+%% Example:
 %% slurm_rest_request() :: #{
 %%   <<"mode">> => list(any())
 %% }
@@ -137,9 +144,11 @@
 %% Example:
 %% update_cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => update_accounting_request(),
+%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
-%%   <<"slurmRest">> => update_slurm_rest_request()
+%%   <<"slurmRest">> => update_slurm_rest_request(),
+%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
 %% }
 -type update_cluster_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -212,10 +221,12 @@
 %% cluster_slurm_configuration() :: #{
 %%   <<"accounting">> => accounting(),
 %%   <<"authKey">> => slurm_auth_key(),
+%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
 %%   <<"jwtAuth">> => jwt_auth(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
-%%   <<"slurmRest">> => slurm_rest()
+%%   <<"slurmRest">> => slurm_rest(),
+%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
 %% }
 -type cluster_slurm_configuration() :: #{binary() => any()}.
 
@@ -549,9 +560,11 @@
 %% Example:
 %% cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => accounting_request(),
+%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
-%%   <<"slurmRest">> => slurm_rest_request()
+%%   <<"slurmRest">> => slurm_rest_request(),
+%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
 %% }
 -type cluster_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -600,6 +613,13 @@
 %%   <<"instanceType">> => [string()]
 %% }
 -type instance_config() :: #{binary() => any()}.
+
+%% Example:
+%% slurmdbd_custom_setting() :: #{
+%%   <<"parameterName">> => [string()],
+%%   <<"parameterValue">> => [string()]
+%% }
+-type slurmdbd_custom_setting() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
