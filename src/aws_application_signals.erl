@@ -263,6 +263,7 @@
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"EvaluationType">> => list(any()),
 %%   <<"KeyAttributes">> => map(),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricSourceType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"OperationName">> => string()
@@ -280,6 +281,7 @@
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()),
 %%   <<"MetricName">> => string(),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"OperationName">> => string(),
 %%   <<"PeriodSeconds">> => integer(),
@@ -304,6 +306,7 @@
 %%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MaxResults">> => integer(),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricSourceTypes">> => list(list(any())()),
 %%   <<"NextToken">> => string(),
 %%   <<"OperationName">> => string(),
@@ -433,6 +436,7 @@
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"OperationName">> => string()
 %% }
@@ -443,6 +447,8 @@
 %% request_based_service_level_indicator_metric_config() :: #{
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
 %%   <<"OperationName">> => string(),
@@ -522,6 +528,14 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_source() :: #{
+%%   <<"MetricSourceAttributes">> => map(),
+%%   <<"MetricSourceKeyAttributes">> => map()
+%% }
+-type metric_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,6 +740,7 @@
 %% request_based_service_level_indicator_metric() :: #{
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
+%%   <<"MetricSource">> => metric_source(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
 %%   <<"OperationName">> => string(),

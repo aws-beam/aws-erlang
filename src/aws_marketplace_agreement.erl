@@ -24,12 +24,20 @@
 %% their agreements.
 -module(aws_marketplace_agreement).
 
--export([describe_agreement/2,
+-export([cancel_agreement_payment_request/2,
+         cancel_agreement_payment_request/3,
+         describe_agreement/2,
          describe_agreement/3,
+         get_agreement_payment_request/2,
+         get_agreement_payment_request/3,
          get_agreement_terms/2,
          get_agreement_terms/3,
+         list_agreement_payment_requests/2,
+         list_agreement_payment_requests/3,
          search_agreements/2,
-         search_agreements/3]).
+         search_agreements/3,
+         send_agreement_payment_request/2,
+         send_agreement_payment_request/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -39,6 +47,29 @@
 %%   <<"enableAutoRenew">> => boolean()
 %% }
 -type renewal_term_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_payment_requests_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"partyType">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_agreement_payment_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"chargeAmount">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"termId">> := string()
+%% }
+-type send_agreement_payment_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_terms_output() :: #{
@@ -83,10 +114,33 @@
 -type renewal_term() :: #{binary() => any()}.
 
 %% Example:
+%% get_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"chargeId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
 %% acceptor() :: #{
 %%   <<"accountId">> => string()
 %% }
 -type acceptor() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string()
+%% }
+-type cancel_agreement_payment_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% document_item() :: #{
@@ -95,6 +149,19 @@
 %%   <<"version">> => string()
 %% }
 -type document_item() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type send_agreement_payment_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% agreement_view_summary() :: #{
@@ -109,6 +176,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type agreement_view_summary() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -141,6 +217,13 @@
 %%   <<"type">> => string()
 %% }
 -type usage_based_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_payment_requests_output() :: #{
+%%   <<"items">> => list(payment_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_payment_requests_output() :: #{binary() => any()}.
 
 %% Example:
 %% byol_pricing_term() :: #{
@@ -261,6 +344,20 @@
 -type search_agreements_input() :: #{binary() => any()}.
 
 %% Example:
+%% payment_request_summary() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"chargeId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"currencyCode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type payment_request_summary() :: #{binary() => any()}.
+
+%% Example:
 %% constraints() :: #{
 %%   <<"multipleDimensionSelection">> => string(),
 %%   <<"quantityConfiguration">> => string()
@@ -323,6 +420,13 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string()
+%% }
+-type get_agreement_payment_request_input() :: #{binary() => any()}.
+
+%% Example:
 %% free_trial_pricing_term() :: #{
 %%   <<"duration">> => string(),
 %%   <<"grants">> => list(grant_item()),
@@ -354,6 +458,20 @@
 -type rate_card_item() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type cancel_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
 %% variable_payment_term_configuration() :: #{
 %%   <<"expirationDuration">> => string(),
 %%   <<"paymentRequestApprovalStrategy">> => list(any())
@@ -376,7 +494,22 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type cancel_agreement_payment_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type describe_agreement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agreement_payment_request_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -390,15 +523,54 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_agreement_payment_requests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type search_agreements_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
 
+-type send_agreement_payment_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Allows sellers (proposers) to cancel a payment request that is in
+%% `PENDING_APPROVAL' status.
+%%
+%% Once cancelled, the payment request transitions to `CANCELLED' status
+%% and can no longer be accepted or rejected by the buyer.
+%%
+%% Only payment requests in `PENDING_APPROVAL' status can be cancelled. A
+%% `ConflictException' is thrown if the payment request is in any other
+%% status.
+-spec cancel_agreement_payment_request(aws_client:aws_client(), cancel_agreement_payment_request_input()) ->
+    {ok, cancel_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_payment_request_errors(), tuple()}.
+cancel_agreement_payment_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_agreement_payment_request(Client, Input, []).
+
+-spec cancel_agreement_payment_request(aws_client:aws_client(), cancel_agreement_payment_request_input(), proplists:proplist()) ->
+    {ok, cancel_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_payment_request_errors(), tuple()}.
+cancel_agreement_payment_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelAgreementPaymentRequest">>, Input, Options).
 
 %% @doc Provides details about an agreement, such as the proposer, acceptor,
 %% start date, and end date.
@@ -417,6 +589,32 @@ describe_agreement(Client, Input)
 describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
+
+%% @doc Retrieves detailed information about a specific payment request.
+%%
+%% Both sellers (proposers) and buyers (acceptors) can use this operation to
+%% view payment requests associated with their agreements. The response
+%% includes the current status, charge details, timestamps, and the charge ID
+%% if the request has been approved.
+%%
+%% The calling identity must be either the acceptor or proposer of the
+%% payment request. A `ResourceNotFoundException' is returned if the
+%% payment request does not exist.
+-spec get_agreement_payment_request(aws_client:aws_client(), get_agreement_payment_request_input()) ->
+    {ok, get_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_payment_request_errors(), tuple()}.
+get_agreement_payment_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_payment_request(Client, Input, []).
+
+-spec get_agreement_payment_request(aws_client:aws_client(), get_agreement_payment_request_input(), proplists:proplist()) ->
+    {ok, get_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_payment_request_errors(), tuple()}.
+get_agreement_payment_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementPaymentRequest">>, Input, Options).
 
 %% @doc Obtains details about the terms in an agreement that you participated
 %% in as proposer or acceptor.
@@ -452,6 +650,32 @@ get_agreement_terms(Client, Input)
 get_agreement_terms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementTerms">>, Input, Options).
+
+%% @doc Lists payment requests available to you as a seller or buyer.
+%%
+%% Both sellers (proposers) and buyers (acceptors) can use this operation to
+%% find payment requests by specifying their party type and applying optional
+%% parameters.
+%%
+%% `PartyType' is a required parameter. A `ValidationException' is
+%% returned if `PartyType' is not provided. Pagination is supported
+%% through `maxResults' (1-50, default 50) and `nextToken'
+%% parameters.
+-spec list_agreement_payment_requests(aws_client:aws_client(), list_agreement_payment_requests_input()) ->
+    {ok, list_agreement_payment_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_payment_requests_errors(), tuple()}.
+list_agreement_payment_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreement_payment_requests(Client, Input, []).
+
+-spec list_agreement_payment_requests(aws_client:aws_client(), list_agreement_payment_requests_input(), proplists:proplist()) ->
+    {ok, list_agreement_payment_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_payment_requests_errors(), tuple()}.
+list_agreement_payment_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreementPaymentRequests">>, Input, Options).
 
 %% @doc Searches across all agreements that a proposer has in AWS
 %% Marketplace.
@@ -560,6 +784,33 @@ search_agreements(Client, Input)
 search_agreements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchAgreements">>, Input, Options).
+
+%% @doc Allows sellers (proposers) to submit a payment request to buyers
+%% (acceptors) for a specific charge amount for an agreement that includes a
+%% `VariablePaymentTerm'.
+%%
+%% The payment request is created in `PENDING_APPROVAL' status, at which
+%% point the buyer can accept or reject it.
+%%
+%% The agreement must be active and have a `VariablePaymentTerm' to
+%% support payment requests. The `chargeAmount' must not exceed the
+%% remaining available balance under the `VariablePaymentTerm'
+%% `maxTotalChargeAmount'.
+-spec send_agreement_payment_request(aws_client:aws_client(), send_agreement_payment_request_input()) ->
+    {ok, send_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, send_agreement_payment_request_errors(), tuple()}.
+send_agreement_payment_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_agreement_payment_request(Client, Input, []).
+
+-spec send_agreement_payment_request(aws_client:aws_client(), send_agreement_payment_request_input(), proplists:proplist()) ->
+    {ok, send_agreement_payment_request_output(), tuple()} |
+    {error, any()} |
+    {error, send_agreement_payment_request_errors(), tuple()}.
+send_agreement_payment_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendAgreementPaymentRequest">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
