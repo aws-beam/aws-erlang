@@ -198,6 +198,7 @@
 %% Example:
 %% s3_destination() :: #{
 %%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
 %%   <<"S3OutputConfigurations">> => s3_output_configurations(),
 %%   <<"S3Prefix">> => string(),
 %%   <<"S3Region">> => string()

@@ -1051,7 +1051,7 @@
 %%   <<"EndpointName">> := string(),
 %%   <<"InferenceComponentName">> := string(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config(),
-%%   <<"Specification">> := inference_component_specification(),
+%%   <<"Specification">> => inference_component_specification(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VariantName">> => string()
 %% }

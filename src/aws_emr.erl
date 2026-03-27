@@ -2006,6 +2006,7 @@
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"Instances">> := job_flow_instances_config(),
 %%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
+%%   <<"StepExecutionRoleArn">> => string(),
 %%   <<"Configurations">> => list(configuration()),
 %%   <<"AmiVersion">> => string(),
 %%   <<"JobFlowRole">> => string(),

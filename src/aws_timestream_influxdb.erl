@@ -140,6 +140,7 @@
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"failoverMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"port">> => integer()
 %% }
 -type update_db_cluster_input() :: #{binary() => any()}.
@@ -159,9 +160,12 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -192,6 +196,14 @@
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_configuration() :: #{
+%%   <<"dedicatedCompactor">> => [boolean()],
+%%   <<"ingestQueryInstances">> => [integer()],
+%%   <<"queryOnlyInstances">> => [integer()]
+%% }
+-type cluster_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_db_instance_input() :: #{
@@ -260,9 +272,12 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -314,6 +329,7 @@
 %%   <<"deploymentType">> => list(any()),
 %%   <<"failoverMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> := string(),
 %%   <<"networkType">> => list(any()),
 %%   <<"organization">> => string(),
@@ -359,6 +375,7 @@
 %%   <<"deploymentType">> => list(any()),
 %%   <<"identifier">> := string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"port">> => integer()
 %% }
 -type update_db_instance_input() :: #{binary() => any()}.
@@ -380,6 +397,7 @@
 %% get_db_cluster_output() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
+%%   <<"clusterConfiguration">> => cluster_configuration(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
@@ -389,9 +407,12 @@
 %%   <<"failoverMode">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"readerEndpoint">> => [string()],
@@ -435,9 +456,12 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -527,9 +551,12 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -554,9 +581,12 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -610,6 +640,13 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_schedule() :: #{
+%%   <<"preferredMaintenanceWindow">> => string(),
+%%   <<"timezone">> => string()
+%% }
+-type maintenance_schedule() :: #{binary() => any()}.
 
 %% Example:
 %% s3_configuration() :: #{
@@ -718,6 +755,7 @@
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> := string(),
 %%   <<"networkType">> => list(any()),
 %%   <<"organization">> => string(),

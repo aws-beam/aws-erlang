@@ -647,6 +647,14 @@
 -type delete_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% query_parameter() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type query_parameter() :: #{binary() => any()}.
+
+%% Example:
 %% put_log_events_request() :: #{
 %%   <<"entity">> => entity(),
 %%   <<"logEvents">> := list(input_log_event()),
@@ -1905,6 +1913,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"logGroupNames">> => list(string()),
 %%   <<"name">> := string(),
+%%   <<"parameters">> => list(query_parameter()),
 %%   <<"queryDefinitionId">> => string(),
 %%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> := string()
@@ -2349,6 +2358,8 @@
 %% Example:
 %% s3_configuration() :: #{
 %%   <<"destinationIdentifier">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"ownerAccountId">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type s3_configuration() :: #{binary() => any()}.
@@ -2595,6 +2606,7 @@
 %%   <<"lastModified">> => float(),
 %%   <<"logGroupNames">> => list(string()),
 %%   <<"name">> => string(),
+%%   <<"parameters">> => list(query_parameter()),
 %%   <<"queryDefinitionId">> => string(),
 %%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> => string()
@@ -7377,7 +7389,7 @@ start_live_tail(Client, Input, Options)
 %% For a cross-account `StartQuery'
 %% operation, the query definition must be defined in the monitoring account.
 %%
-%% You can have up to 30 concurrent CloudWatch Logs insights queries,
+%% You can have up to 100 concurrent CloudWatch Logs insights queries,
 %% including queries
 %% that have been added to dashboards.
 -spec start_query(aws_client:aws_client(), start_query_request()) ->
