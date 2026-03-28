@@ -877,6 +877,14 @@
 
 
 %% Example:
+%% lambda_evaluator_config() :: #{
+%%   <<"lambdaArn">> => string(),
+%%   <<"lambdaTimeoutInSeconds">> => [integer()]
+%% }
+-type lambda_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_resource_policy_response() :: #{
 %%   <<"policy">> => string()
 %% }
@@ -4177,9 +4185,10 @@ create_code_interpreter(Client, Input0, Options0) ->
 
 %% @doc Creates a custom evaluator for agent quality assessment.
 %%
-%% Custom evaluators use LLM-as-a-Judge configurations with user-defined
-%% prompts, rating scales, and model settings to evaluate agent performance
-%% at tool call, trace, or session levels.
+%% Custom evaluators can use either LLM-as-a-Judge configurations with
+%% user-defined prompts, rating scales, and model settings, or code-based
+%% configurations with customer-managed Lambda functions to evaluate agent
+%% performance at tool call, trace, or session levels.
 -spec create_evaluator(aws_client:aws_client(), create_evaluator_request()) ->
     {ok, create_evaluator_response(), tuple()} |
     {error, any()} |

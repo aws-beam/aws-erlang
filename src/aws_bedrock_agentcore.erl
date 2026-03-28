@@ -423,6 +423,7 @@
 %%   <<"language">> => list(any()),
 %%   <<"path">> => string(),
 %%   <<"paths">> => list(string()),
+%%   <<"runtime">> => list(any()),
 %%   <<"taskId">> => string()
 %% }
 -type tool_arguments() :: #{binary() => any()}.

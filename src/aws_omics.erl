@@ -34,6 +34,8 @@
          create_annotation_store/3,
          create_annotation_store_version/3,
          create_annotation_store_version/4,
+         create_configuration/2,
+         create_configuration/3,
          create_multipart_read_set_upload/3,
          create_multipart_read_set_upload/4,
          create_reference_store/2,
@@ -58,6 +60,8 @@
          delete_annotation_store_versions/4,
          delete_batch/3,
          delete_batch/4,
+         delete_configuration/3,
+         delete_configuration/4,
          delete_reference/4,
          delete_reference/5,
          delete_reference_store/3,
@@ -94,6 +98,9 @@
          get_batch/2,
          get_batch/4,
          get_batch/5,
+         get_configuration/2,
+         get_configuration/4,
+         get_configuration/5,
          get_read_set/4,
          get_read_set/6,
          get_read_set/7,
@@ -163,6 +170,9 @@
          list_batch/1,
          list_batch/3,
          list_batch/4,
+         list_configurations/1,
+         list_configurations/3,
+         list_configurations/4,
          list_multipart_read_set_uploads/3,
          list_multipart_read_set_uploads/4,
          list_read_set_activation_jobs/3,
@@ -687,6 +697,10 @@
 %% }
 -type list_annotation_stores_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_configuration_request() :: #{}
+-type get_configuration_request() :: #{}.
+
 
 %% Example:
 %% delete_annotation_store_response() :: #{
@@ -781,6 +795,14 @@
 %%   <<"variantImportJobs">> => list(variant_import_job_item())
 %% }
 -type list_variant_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_response() :: #{
+%%   <<"items">> => list(configuration_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configurations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1225,6 +1247,21 @@
 
 
 %% Example:
+%% list_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string()
+%% }
+-type list_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_configurations_response() :: #{
+%%   <<"vpcConfig">> => vpc_config_response()
+%% }
+-type run_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_references_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"references">> => list(reference_list_item())
@@ -1467,6 +1504,20 @@
 
 
 %% Example:
+%% get_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"runConfigurations">> => run_configurations_response(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
+%% }
+-type get_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sequence_stores_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"sequenceStores">> => list(sequence_store_detail())
@@ -1590,6 +1641,10 @@
 %%   <<"versionOptions">> => list()
 %% }
 -type create_annotation_store_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_request() :: #{}
+-type delete_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1830,6 +1885,14 @@
 
 
 %% Example:
+%% vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_s3_access_policy_response() :: #{
 %%   <<"s3AccessPointArn">> => string(),
 %%   <<"storeId">> => string(),
@@ -1851,6 +1914,17 @@
 
 
 %% Example:
+%% create_configuration_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"requestId">> := string(),
+%%   <<"runConfigurations">> := run_configurations(),
+%%   <<"tags">> => map()
+%% }
+-type create_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% read_set_files() :: #{
 %%   <<"index">> => file_information(),
 %%   <<"source1">> => file_information(),
@@ -1868,6 +1942,15 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_details() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"uuid">> => string()
+%% }
+-type configuration_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2006,6 +2089,20 @@
 %%   <<"type">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"runConfigurations">> => run_configurations_response(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
+%% }
+-type create_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2437,6 +2534,17 @@
 %% }
 -type start_annotation_import_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% configuration_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type configuration_list_item() :: #{binary() => any()}.
+
 %% Example:
 %% delete_run_batch_response() :: #{}
 -type delete_run_batch_response() :: #{}.
@@ -2606,11 +2714,22 @@
 
 
 %% Example:
+%% vpc_config_response() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_run_request() :: #{
 %%   <<"cacheBehavior">> => string(),
 %%   <<"cacheId">> => string(),
+%%   <<"configurationName">> => string(),
 %%   <<"logLevel">> => string(),
 %%   <<"name">> => string(),
+%%   <<"networkingMode">> => string(),
 %%   <<"outputUri">> := string(),
 %%   <<"parameters">> => any(),
 %%   <<"priority">> => [integer()],
@@ -2806,11 +2925,14 @@
 %%   <<"status">> => string(),
 %%   <<"runOutputUri">> => string(),
 %%   <<"runGroupId">> => string(),
+%%   <<"networkingMode">> => string(),
 %%   <<"definition">> => string(),
 %%   <<"id">> => string(),
 %%   <<"cacheId">> => string(),
 %%   <<"storageType">> => string(),
+%%   <<"vpcConfig">> => vpc_config_response(),
 %%   <<"parameters">> => any(),
+%%   <<"configuration">> => configuration_details(),
 %%   <<"stopTime">> => non_neg_integer(),
 %%   <<"workflowVersionName">> => string(),
 %%   <<"resourceDigests">> => map(),
@@ -2890,7 +3012,9 @@
 %% Example:
 %% start_run_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"configuration">> => configuration_details(),
 %%   <<"id">> => string(),
+%%   <<"networkingMode">> => [string()],
 %%   <<"runOutputUri">> => string(),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
@@ -2909,6 +3033,13 @@
 %%   <<"status">> => string()
 %% }
 -type list_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_configurations() :: #{
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type run_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3174,6 +3305,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type create_multipart_read_set_upload_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3275,6 +3416,16 @@
     conflict_exception().
 
 -type delete_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type delete_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3424,6 +3575,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type get_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     request_timeout_exception().
 
 -type get_read_set_errors() ::
@@ -3628,6 +3789,16 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    request_timeout_exception().
+
+-type list_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     request_timeout_exception().
 
 -type list_multipart_read_set_uploads_errors() ::
@@ -4400,6 +4571,40 @@ create_annotation_store_version(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a new configuration.
+-spec create_configuration(aws_client:aws_client(), create_configuration_request()) ->
+    {ok, create_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_errors(), tuple()}.
+create_configuration(Client, Input) ->
+    create_configuration(Client, Input, []).
+
+-spec create_configuration(aws_client:aws_client(), create_configuration_request(), proplists:proplist()) ->
+    {ok, create_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_errors(), tuple()}.
+create_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a multipart read set upload for uploading partitioned
 %% source files into a sequence store.
 %%
@@ -4958,6 +5163,40 @@ delete_batch(Client, BatchId, Input) ->
 delete_batch(Client, BatchId, Input0, Options0) ->
     Method = delete,
     Path = ["/runBatch/", aws_util:encode_uri(BatchId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an existing configuration.
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configuration_errors(), tuple()}.
+delete_configuration(Client, Name, Input) ->
+    delete_configuration(Client, Name, Input, []).
+
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configuration_errors(), tuple()}.
+delete_configuration(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/configuration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5641,6 +5880,43 @@ get_batch(Client, BatchId, QueryMap, HeadersMap)
 get_batch(Client, BatchId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/runBatch/", aws_util:encode_uri(BatchId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve configuration details for specified name.
+-spec get_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, Name)
+  when is_map(Client) ->
+    get_configuration(Client, Name, #{}, #{}).
+
+-spec get_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration(Client, Name, QueryMap, HeadersMap, []).
+
+-spec get_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configuration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6659,6 +6935,48 @@ list_batch(Client, QueryMap, HeadersMap, Options0)
         {<<"runGroupId">>, maps:get(<<"runGroupId">>, QueryMap, undefined)},
         {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all configurations for the account.
+-spec list_configurations(aws_client:aws_client()) ->
+    {ok, list_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configurations_errors(), tuple()}.
+list_configurations(Client)
+  when is_map(Client) ->
+    list_configurations(Client, #{}, #{}).
+
+-spec list_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configurations_errors(), tuple()}.
+list_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configurations(Client, QueryMap, HeadersMap, []).
+
+-spec list_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configurations_errors(), tuple()}.
+list_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
