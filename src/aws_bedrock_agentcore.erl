@@ -131,6 +131,7 @@
 %%   <<"evaluatorId">> => string(),
 %%   <<"evaluatorName">> => string(),
 %%   <<"explanation">> => string(),
+%%   <<"ignoredReferenceInputFields">> => list(string()),
 %%   <<"label">> => [string()],
 %%   <<"tokenUsage">> => token_usage(),
 %%   <<"value">> => [float()]
@@ -554,6 +555,16 @@
 %%   <<"jobId">> => [string()]
 %% }
 -type start_memory_extraction_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_reference_input() :: #{
+%%   <<"assertions">> => list(list()),
+%%   <<"context">> => list(),
+%%   <<"expectedResponse">> => list(),
+%%   <<"expectedTrajectory">> => evaluation_expected_trajectory()
+%% }
+-type evaluation_reference_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1134,6 +1145,13 @@
 
 
 %% Example:
+%% evaluation_expected_trajectory() :: #{
+%%   <<"toolNames">> => list(string())
+%% }
+-type evaluation_expected_trajectory() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sessions_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"sessionSummaries">> => list(session_summary())
@@ -1201,6 +1219,7 @@
 %% Example:
 %% evaluate_request() :: #{
 %%   <<"evaluationInput">> := list(),
+%%   <<"evaluationReferenceInputs">> => list(evaluation_reference_input()),
 %%   <<"evaluationTarget">> => list()
 %% }
 -type evaluate_request() :: #{binary() => any()}.
@@ -2492,10 +2511,20 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
         Result
     end.
 
-%% @doc Executes a command in a runtime session container.
+%% @doc Executes a command in a runtime session container and streams the
+%% output back to the caller.
 %%
-%% Returns streaming output with contentStart, contentDelta, and contentStop
-%% events.
+%% This operation allows you to run shell commands within the agent runtime
+%% environment and receive real-time streaming responses including standard
+%% output and standard error.
+%%
+%% To invoke a command, you must specify the agent runtime ARN and a runtime
+%% session ID. The command execution supports streaming responses, allowing
+%% you to receive output as it becomes available through `contentStart',
+%% `contentDelta', and `contentStop' events.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:InvokeAgentRuntimeCommand' permission.
 -spec invoke_agent_runtime_command(aws_client:aws_client(), binary() | list(), invoke_agent_runtime_command_request()) ->
     {ok, invoke_agent_runtime_command_response(), tuple()} |
     {error, any()} |

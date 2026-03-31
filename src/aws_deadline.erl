@@ -831,6 +831,7 @@
 
 %% Example:
 %% customer_managed_fleet_configuration() :: #{
+%%   <<"autoScalingConfiguration">> => customer_managed_auto_scaling_configuration(),
 %%   <<"mode">> => list(any()),
 %%   <<"storageProfileId">> => string(),
 %%   <<"tagPropagationMode">> => list(any()),
@@ -849,6 +850,7 @@
 
 %% Example:
 %% service_managed_ec2_fleet_configuration() :: #{
+%%   <<"autoScalingConfiguration">> => service_managed_ec2_auto_scaling_configuration(),
 %%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
 %%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
 %%   <<"storageProfileId">> => string(),
@@ -2470,6 +2472,15 @@
 
 
 %% Example:
+%% customer_managed_auto_scaling_configuration() :: #{
+%%   <<"scaleOutWorkersPerMinute">> => integer(),
+%%   <<"standbyWorkerCount">> => integer(),
+%%   <<"workerIdleDurationSeconds">> => integer()
+%% }
+-type customer_managed_auto_scaling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_queue_fleet_association_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2590,6 +2601,15 @@
 %% Example:
 %% delete_limit_request() :: #{}
 -type delete_limit_request() :: #{}.
+
+
+%% Example:
+%% service_managed_ec2_auto_scaling_configuration() :: #{
+%%   <<"scaleOutWorkersPerMinute">> => integer(),
+%%   <<"standbyWorkerCount">> => integer(),
+%%   <<"workerIdleDurationSeconds">> => integer()
+%% }
+-type service_managed_ec2_auto_scaling_configuration() :: #{binary() => any()}.
 
 
 %% Example:

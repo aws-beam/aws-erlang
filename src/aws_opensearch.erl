@@ -86,6 +86,8 @@
          describe_dry_run_progress/5,
          describe_inbound_connections/2,
          describe_inbound_connections/3,
+         describe_insight_details/2,
+         describe_insight_details/3,
          describe_instance_type_limits/3,
          describe_instance_type_limits/5,
          describe_instance_type_limits/6,
@@ -153,6 +155,8 @@
          list_domains_for_package/2,
          list_domains_for_package/4,
          list_domains_for_package/5,
+         list_insights/2,
+         list_insights/3,
          list_instance_type_details/2,
          list_instance_type_details/4,
          list_instance_type_details/5,
@@ -214,6 +218,15 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% insight_field() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -311,6 +324,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_domain_auto_tunes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_request() :: #{
+%%   <<"Entity">> := insight_entity(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeRange">> => insight_time_range()
+%% }
+-type list_insights_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,6 +469,13 @@
 %%   <<"ChangeId">> => string()
 %% }
 -type describe_domain_change_progress_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_insight_details_response() :: #{
+%%   <<"Fields">> => list(insight_field())
+%% }
+-type describe_insight_details_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -681,6 +712,14 @@
 %%   <<"VPCOptions">> => vpc_derived_info_status()
 %% }
 -type domain_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_response() :: #{
+%%   <<"Insights">> => list(insight()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_insights_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1258,6 +1297,15 @@
 
 
 %% Example:
+%% describe_insight_details_request() :: #{
+%%   <<"Entity">> := insight_entity(),
+%%   <<"InsightId">> := string(),
+%%   <<"ShowHtmlContent">> => boolean()
+%% }
+-type describe_insight_details_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_upgrade_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UpgradeHistories">> => list(upgrade_history())
@@ -1694,6 +1742,14 @@
 
 
 %% Example:
+%% insight_entity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_entity() :: #{binary() => any()}.
+
+
+%% Example:
 %% advanced_security_options_input() :: #{
 %%   <<"AnonymousAuthEnabled">> => boolean(),
 %%   <<"Enabled">> => boolean(),
@@ -1807,6 +1863,14 @@
 %%   <<"UserPoolId">> => string()
 %% }
 -type cognito_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_time_range() :: #{
+%%   <<"From">> => float(),
+%%   <<"To">> => float()
+%% }
+-type insight_time_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2643,6 +2707,20 @@
 
 
 %% Example:
+%% insight() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"InsightId">> => string(),
+%%   <<"IsExperimental">> => boolean(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domain_maintenances_response() :: #{
 %%   <<"DomainMaintenances">> => list(domain_maintenance_details()),
 %%   <<"NextToken">> => string()
@@ -3142,6 +3220,14 @@
     invalid_pagination_token_exception() | 
     disabled_operation_exception().
 
+-type describe_insight_details_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type describe_instance_type_limits_errors() ::
     limit_exceeded_exception() | 
     base_exception() | 
@@ -3308,6 +3394,14 @@
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception().
+
+-type list_insights_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type list_instance_type_details_errors() ::
     base_exception() | 
@@ -4773,6 +4867,45 @@ describe_inbound_connections(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the details of an existing insight for an Amazon OpenSearch
+%% Service domain.
+%%
+%% Returns detailed fields associated with the specified insight, such as
+%% text descriptions
+%% and metric data.
+-spec describe_insight_details(aws_client:aws_client(), describe_insight_details_request()) ->
+    {ok, describe_insight_details_response(), tuple()} |
+    {error, any()} |
+    {error, describe_insight_details_errors(), tuple()}.
+describe_insight_details(Client, Input) ->
+    describe_insight_details(Client, Input, []).
+
+-spec describe_insight_details(aws_client:aws_client(), describe_insight_details_request(), proplists:proplist()) ->
+    {ok, describe_insight_details_response(), tuple()} |
+    {error, any()} |
+    {error, describe_insight_details_errors(), tuple()}.
+describe_insight_details(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/insight-details"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Describes the instance count, storage, and master node limits for a
 %% given OpenSearch
 %% or Elasticsearch version and instance type.
@@ -5781,6 +5914,45 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists insights for an Amazon OpenSearch Service domain or Amazon Web
+%% Services account.
+%%
+%% Returns a paginated list of insights based on the specified entity,
+%% filters, time range,
+%% and sort order.
+-spec list_insights(aws_client:aws_client(), list_insights_request()) ->
+    {ok, list_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_insights_errors(), tuple()}.
+list_insights(Client, Input) ->
+    list_insights(Client, Input, []).
+
+-spec list_insights(aws_client:aws_client(), list_insights_request(), proplists:proplist()) ->
+    {ok, list_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_insights_errors(), tuple()}.
+list_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/insights"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all instance types and available features for a given
 %% OpenSearch or

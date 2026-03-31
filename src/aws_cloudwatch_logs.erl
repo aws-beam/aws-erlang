@@ -70,6 +70,8 @@
          create_log_group/3,
          create_log_stream/2,
          create_log_stream/3,
+         create_lookup_table/2,
+         create_lookup_table/3,
          create_scheduled_query/2,
          create_scheduled_query/3,
          delete_account_policy/2,
@@ -96,6 +98,8 @@
          delete_log_group/3,
          delete_log_stream/2,
          delete_log_stream/3,
+         delete_lookup_table/2,
+         delete_lookup_table/3,
          delete_metric_filter/2,
          delete_metric_filter/3,
          delete_query_definition/2,
@@ -136,6 +140,8 @@
          describe_log_groups/3,
          describe_log_streams/2,
          describe_log_streams/3,
+         describe_lookup_tables/2,
+         describe_lookup_tables/3,
          describe_metric_filters/2,
          describe_metric_filters/3,
          describe_queries/2,
@@ -176,6 +182,8 @@
          get_log_object/3,
          get_log_record/2,
          get_log_record/3,
+         get_lookup_table/2,
+         get_lookup_table/3,
          get_query_results/2,
          get_query_results/3,
          get_scheduled_query/2,
@@ -264,6 +272,8 @@
          update_delivery_configuration/3,
          update_log_anomaly_detector/2,
          update_log_anomaly_detector/3,
+         update_lookup_table/2,
+         update_lookup_table/3,
          update_scheduled_query/2,
          update_scheduled_query/3]).
 
@@ -444,6 +454,16 @@
 -type account_policy() :: #{binary() => any()}.
 
 %% Example:
+%% create_lookup_table_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lookupTableName">> := string(),
+%%   <<"tableBody">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
 %% open_search_data_source() :: #{
 %%   <<"dataSourceName">> => string(),
 %%   <<"status">> => open_search_resource_status()
@@ -467,6 +487,14 @@
 %%   <<"to">> := float()
 %% }
 -type create_export_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lookup_tables_request() :: #{
+%%   <<"lookupTableNamePrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_lookup_tables_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_log_group_request() :: #{
@@ -599,6 +627,12 @@
 -type list_sources_for_s3_table_integration_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_lookup_table_request() :: #{
+%%   <<"lookupTableArn">> := string()
+%% }
+-type get_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
 %% type_converter_entry() :: #{
 %%   <<"key">> => string(),
 %%   <<"type">> => list(any())
@@ -680,6 +714,13 @@
 %%   <<"message">> => string()
 %% }
 -type data_already_accepted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lookup_tables_response() :: #{
+%%   <<"lookupTables">> => list(lookup_table()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_lookup_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_scheduled_query_response() :: #{
@@ -1265,6 +1306,12 @@
 -type live_tail_session_log_event() :: #{binary() => any()}.
 
 %% Example:
+%% delete_lookup_table_request() :: #{
+%%   <<"lookupTableArn">> := string()
+%% }
+-type delete_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
 %% aggregate_log_group_summary() :: #{
 %%   <<"groupingIdentifiers">> => list(grouping_identifier()),
 %%   <<"logGroupCount">> => integer()
@@ -1411,6 +1458,19 @@
 %%   <<"destinationResourceArn">> => string()
 %% }
 -type delivery_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_table() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string(),
+%%   <<"lookupTableName">> => string(),
+%%   <<"recordsCount">> => float(),
+%%   <<"sizeBytes">> => float(),
+%%   <<"tableFields">> => list(string())
+%% }
+-type lookup_table() :: #{binary() => any()}.
 
 %% Example:
 %% suppression_period() :: #{
@@ -1742,6 +1802,18 @@
 -type delete_account_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_lookup_table_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string(),
+%%   <<"lookupTableName">> => string(),
+%%   <<"sizeBytes">> => float(),
+%%   <<"tableBody">> => string()
+%% }
+-type get_lookup_table_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_log_groups_response() :: #{
 %%   <<"logGroups">> => list(log_group()),
 %%   <<"nextToken">> => string()
@@ -1935,6 +2007,13 @@
 -type export_task() :: #{binary() => any()}.
 
 %% Example:
+%% create_lookup_table_response() :: #{
+%%   <<"createdAt">> => float(),
+%%   <<"lookupTableArn">> => string()
+%% }
+-type create_lookup_table_response() :: #{binary() => any()}.
+
+%% Example:
 %% metric_transformation() :: #{
 %%   <<"defaultValue">> => float(),
 %%   <<"dimensions">> => map(),
@@ -2033,6 +2112,13 @@
 %%   <<"queryId">> => string()
 %% }
 -type start_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_lookup_table_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string()
+%% }
+-type update_lookup_table_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_log_object_response() :: #{
@@ -2363,6 +2449,15 @@
 %%   <<"roleArn">> => string()
 %% }
 -type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_lookup_table_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lookupTableArn">> := string(),
+%%   <<"tableBody">> := string()
+%% }
+-type update_lookup_table_request() :: #{binary() => any()}.
 
 %% Example:
 %% result_field() :: #{
@@ -2890,6 +2985,14 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type create_lookup_table_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception().
+
 -type create_scheduled_query_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2979,6 +3082,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type delete_lookup_table_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type delete_metric_filter_errors() ::
     invalid_parameter_exception() | 
@@ -3098,6 +3207,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type describe_lookup_tables_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
 -type describe_metric_filters_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -3209,6 +3324,12 @@
 -type get_log_record_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_lookup_table_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
 
@@ -3480,6 +3601,13 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type update_lookup_table_errors() ::
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type update_scheduled_query_errors() ::
     throttling_exception() | 
@@ -3981,6 +4109,32 @@ create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
 
+%% @doc Creates a lookup table by uploading CSV data.
+%%
+%% You can use lookup tables to enrich log
+%% data in CloudWatch Logs Insights queries with reference data such as user
+%% details, application
+%% names, or error descriptions.
+%%
+%% The table name must be unique within your account and Region. The CSV
+%% content must include
+%% a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
+-spec create_lookup_table(aws_client:aws_client(), create_lookup_table_request()) ->
+    {ok, create_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_lookup_table_errors(), tuple()}.
+create_lookup_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_lookup_table(Client, Input, []).
+
+-spec create_lookup_table(aws_client:aws_client(), create_lookup_table_request(), proplists:proplist()) ->
+    {ok, create_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_lookup_table_errors(), tuple()}.
+create_lookup_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLookupTable">>, Input, Options).
+
 %% @doc Creates a scheduled query that runs CloudWatch Logs Insights queries
 %% at regular intervals.
 %%
@@ -4335,6 +4489,29 @@ delete_log_stream(Client, Input)
 delete_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogStream">>, Input, Options).
+
+%% @doc Deletes a lookup table permanently.
+%%
+%% This operation cannot be undone.
+%%
+%% Queries that reference a deleted table will return an error. Before
+%% deleting a lookup
+%% table, review any saved queries or dashboards that may reference it.
+-spec delete_lookup_table(aws_client:aws_client(), delete_lookup_table_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_lookup_table_errors(), tuple()}.
+delete_lookup_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_lookup_table(Client, Input, []).
+
+-spec delete_lookup_table(aws_client:aws_client(), delete_lookup_table_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_lookup_table_errors(), tuple()}.
+delete_lookup_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLookupTable">>, Input, Options).
 
 %% @doc Deletes the specified metric filter.
 -spec delete_metric_filter(aws_client:aws_client(), delete_metric_filter_request()) ->
@@ -4839,6 +5016,27 @@ describe_log_streams(Client, Input)
 describe_log_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogStreams">>, Input, Options).
+
+%% @doc Retrieves metadata about lookup tables in your account.
+%%
+%% You can optionally filter the
+%% results by table name prefix. Results are sorted by table name in
+%% ascending order.
+-spec describe_lookup_tables(aws_client:aws_client(), describe_lookup_tables_request()) ->
+    {ok, describe_lookup_tables_response(), tuple()} |
+    {error, any()} |
+    {error, describe_lookup_tables_errors(), tuple()}.
+describe_lookup_tables(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_lookup_tables(Client, Input, []).
+
+-spec describe_lookup_tables(aws_client:aws_client(), describe_lookup_tables_request(), proplists:proplist()) ->
+    {ok, describe_lookup_tables_response(), tuple()} |
+    {error, any()} |
+    {error, describe_lookup_tables_errors(), tuple()}.
+describe_lookup_tables(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLookupTables">>, Input, Options).
 
 %% @doc Lists the specified metric filters.
 %%
@@ -5477,6 +5675,23 @@ get_log_record(Client, Input)
 get_log_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogRecord">>, Input, Options).
+
+%% @doc Retrieves the full content of a lookup table, including the CSV data.
+-spec get_lookup_table(aws_client:aws_client(), get_lookup_table_request()) ->
+    {ok, get_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, get_lookup_table_errors(), tuple()}.
+get_lookup_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_lookup_table(Client, Input, []).
+
+-spec get_lookup_table(aws_client:aws_client(), get_lookup_table_request(), proplists:proplist()) ->
+    {ok, get_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, get_lookup_table_errors(), tuple()}.
+get_lookup_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLookupTable">>, Input, Options).
 
 %% @doc Returns the results from the specified query.
 %%
@@ -7698,6 +7913,30 @@ update_log_anomaly_detector(Client, Input)
 update_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).
+
+%% @doc Updates an existing lookup table by replacing all of its CSV content.
+%%
+%% After the update
+%% completes, queries that use this table will use the new data.
+%%
+%% This is a full replacement operation. All existing content is replaced
+%% with the new CSV
+%% data.
+-spec update_lookup_table(aws_client:aws_client(), update_lookup_table_request()) ->
+    {ok, update_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, update_lookup_table_errors(), tuple()}.
+update_lookup_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_lookup_table(Client, Input, []).
+
+-spec update_lookup_table(aws_client:aws_client(), update_lookup_table_request(), proplists:proplist()) ->
+    {ok, update_lookup_table_response(), tuple()} |
+    {error, any()} |
+    {error, update_lookup_table_errors(), tuple()}.
+update_lookup_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLookupTable">>, Input, Options).
 
 %% @doc Updates an existing scheduled query with new configuration.
 %%

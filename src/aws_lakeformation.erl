@@ -3332,6 +3332,10 @@ get_table_objects(Client, Input0, Options0) ->
 %% data location and
 %% the caller's authorized access level.
 %%
+%% `GetDataAccess' is logged in CloudTrail whenever a principal requests
+%% temporary data location credentials to access data in a data lake location
+%% that is registered with Lake Formation.
+%%
 %% The API operation returns an error in the following scenarios:
 %%
 %% The data location is not registered with Lake Formation.

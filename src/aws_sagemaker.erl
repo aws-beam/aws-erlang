@@ -2560,6 +2560,14 @@
 -type training_image_config() :: #{binary() => any()}.
 
 %% Example:
+%% production_variant_managed_instance_scaling_scale_in_policy() :: #{
+%%   <<"CooldownInMinutes">> => integer(),
+%%   <<"MaximumStepSize">> => integer(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type production_variant_managed_instance_scaling_scale_in_policy() :: #{binary() => any()}.
+
+%% Example:
 %% delete_mlflow_tracking_server_response() :: #{
 %%   <<"TrackingServerArn">> => string()
 %% }
@@ -4964,6 +4972,13 @@
 %%   <<"ModelPackageName">> := string()
 %% }
 -type delete_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_availability_zone_balance() :: #{
+%%   <<"EnforcementMode">> => list(any()),
+%%   <<"MaxImbalance">> => integer()
+%% }
+-type inference_component_availability_zone_balance() :: #{binary() => any()}.
 
 %% Example:
 %% model_package() :: #{
@@ -8500,6 +8515,7 @@
 %%   <<"Container">> => inference_component_container_specification_summary(),
 %%   <<"DataCacheConfig">> => inference_component_data_cache_config_summary(),
 %%   <<"ModelName">> => string(),
+%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()
 %% }
 -type inference_component_specification_summary() :: #{binary() => any()}.
@@ -11046,6 +11062,13 @@
 -type list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% inference_component_scheduling_config() :: #{
+%%   <<"AvailabilityZoneBalance">> => inference_component_availability_zone_balance(),
+%%   <<"PlacementStrategy">> => list(any())
+%% }
+-type inference_component_scheduling_config() :: #{binary() => any()}.
+
+%% Example:
 %% create_code_repository_input() :: #{
 %%   <<"CodeRepositoryName">> := string(),
 %%   <<"GitConfig">> := git_config(),
@@ -12693,6 +12716,7 @@
 %%   <<"Container">> => inference_component_container_specification(),
 %%   <<"DataCacheConfig">> => inference_component_data_cache_config(),
 %%   <<"ModelName">> => string(),
+%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()
 %% }
 -type inference_component_specification() :: #{binary() => any()}.
@@ -12805,6 +12829,7 @@
 %% production_variant_managed_instance_scaling() :: #{
 %%   <<"MaxInstanceCount">> => integer(),
 %%   <<"MinInstanceCount">> => integer(),
+%%   <<"ScaleInPolicy">> => production_variant_managed_instance_scaling_scale_in_policy(),
 %%   <<"Status">> => list(any())
 %% }
 -type production_variant_managed_instance_scaling() :: #{binary() => any()}.

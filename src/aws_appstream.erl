@@ -414,6 +414,7 @@
 %% create_stack_request() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings(),
+%%   <<"ContentRedirection">> => content_redirection(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"EmbedHostDomains">> => list(string()),
@@ -776,6 +777,14 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% url_redirection_config() :: #{
+%%   <<"AllowedUrls">> => list(string()),
+%%   <<"DeniedUrls">> => list(string()),
+%%   <<"Enabled">> => boolean()
+%% }
+-type url_redirection_config() :: #{binary() => any()}.
+
+%% Example:
 %% delete_app_block_builder_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -862,6 +871,7 @@
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings_response(),
 %%   <<"Arn">> => string(),
+%%   <<"ContentRedirection">> => content_redirection(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
@@ -1820,6 +1830,12 @@
 %%   <<"UserId">> => string()
 %% }
 -type describe_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% content_redirection() :: #{
+%%   <<"HostToClient">> => url_redirection_config()
+%% }
+-type content_redirection() :: #{binary() => any()}.
 
 %% Example:
 %% create_usage_report_subscription_result() :: #{

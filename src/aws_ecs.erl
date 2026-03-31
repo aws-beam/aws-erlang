@@ -1876,6 +1876,7 @@
 %%   <<"ec2InstanceProfileArn">> => string(),
 %%   <<"instanceMetadataTagsPropagation">> => boolean(),
 %%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
 %%   <<"monitoring">> => list(any()),
 %%   <<"networkConfiguration">> => managed_instances_network_configuration(),
 %%   <<"storageConfiguration">> => managed_instances_storage_configuration()
@@ -2110,6 +2111,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_local_storage_configuration() :: #{
+%%   <<"useLocalStorage">> => boolean()
+%% }
+-type managed_instances_local_storage_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% missing_version_exception() :: #{
@@ -2721,6 +2728,7 @@
 %%   <<"fipsEnabled">> => boolean(),
 %%   <<"instanceMetadataTagsPropagation">> => boolean(),
 %%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
 %%   <<"monitoring">> => list(any()),
 %%   <<"networkConfiguration">> => managed_instances_network_configuration(),
 %%   <<"storageConfiguration">> => managed_instances_storage_configuration()
