@@ -801,6 +801,7 @@
 %%   <<"JoinedMethod">> => list(any()),
 %%   <<"JoinedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"Paths">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
@@ -1250,7 +1251,8 @@
 %% organizational_unit() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string()
 %% }
 -type organizational_unit() :: #{binary() => any()}.
 

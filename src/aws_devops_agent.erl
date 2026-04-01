@@ -40,16 +40,12 @@
          describe_private_connection/2,
          describe_private_connection/4,
          describe_private_connection/5,
-         describe_support_level/4,
-         describe_support_level/5,
          disable_operator_app/3,
          disable_operator_app/4,
          disassociate_service/4,
          disassociate_service/5,
          enable_operator_app/3,
          enable_operator_app/4,
-         end_chat_for_case/4,
-         end_chat_for_case/5,
          get_account_usage/1,
          get_account_usage/3,
          get_account_usage/4,
@@ -71,8 +67,6 @@
          get_service/2,
          get_service/4,
          get_service/5,
-         initiate_chat_for_case/4,
-         initiate_chat_for_case/5,
          list_agent_spaces/2,
          list_agent_spaces/3,
          list_associations/3,
@@ -135,6 +129,7 @@
 %% get_account_usage_output() :: #{
 %%   <<"monthlyAccountEvaluationHours">> => usage_metric(),
 %%   <<"monthlyAccountInvestigationHours">> => usage_metric(),
+%%   <<"monthlyAccountOnDemandHours">> => usage_metric(),
 %%   <<"monthlyAccountSystemLearningHours">> => usage_metric(),
 %%   <<"usagePeriodEndTime">> => non_neg_integer(),
 %%   <<"usagePeriodStartTime">> => non_neg_integer()
@@ -389,14 +384,6 @@
 
 
 %% Example:
-%% m_s_teams_transmission_target() :: #{
-%%   <<"opsOncallTarget">> => m_s_teams_channel(),
-%%   <<"opsSRETarget">> => m_s_teams_channel()
-%% }
--type m_s_teams_transmission_target() :: #{binary() => any()}.
-
-
-%% Example:
 %% datadog_service_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
@@ -447,13 +434,6 @@
 %%   <<"name">> => [string()]
 %% }
 -type grafana_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_chat_for_case_request() :: #{
-%%   <<"clientToken">> => [string()]
-%% }
--type initiate_chat_for_case_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -596,15 +576,6 @@
 
 
 %% Example:
-%% m_c_p_server_sig_v4_authorization_config() :: #{
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"service">> => [string()]
-%% }
--type m_c_p_server_sig_v4_authorization_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% goal() :: #{
 %%   <<"agentSpaceArn">> => [string()],
 %%   <<"content">> => goal_content(),
@@ -670,15 +641,6 @@
 %%   <<"tokenType">> => list(any())
 %% }
 -type registered_git_lab_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_support_level_response() :: #{
-%%   <<"activeSubscription">> => [boolean()],
-%%   <<"mosaicSupportLevel">> => support_level(),
-%%   <<"supportLevel">> => support_level()
-%% }
--type describe_support_level_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -786,13 +748,6 @@
 %%   <<"opsSRETarget">> => slack_channel()
 %% }
 -type slack_transmission_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_chat_for_case_response() :: #{
-%%   <<"chatParticipantConnection">> => chat_participant_connection()
-%% }
--type initiate_chat_for_case_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -906,18 +861,6 @@
 %%   <<"tokenValue">> => string()
 %% }
 -type git_lab_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_m_c_p_server_sig_v4_details() :: #{
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"service">> => [string()]
-%% }
--type registered_m_c_p_server_sig_v4_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1042,15 +985,6 @@
 %% }
 -type recommendation() :: #{binary() => any()}.
 
-
-%% Example:
-%% m_s_teams_configuration() :: #{
-%%   <<"teamId">> => string(),
-%%   <<"teamName">> => [string()],
-%%   <<"transmissionTarget">> => m_s_teams_transmission_target()
-%% }
--type m_s_teams_configuration() :: #{binary() => any()}.
-
 %% Example:
 %% get_agent_space_input() :: #{}
 -type get_agent_space_input() :: #{}.
@@ -1096,10 +1030,6 @@
 %% Example:
 %% delete_agent_space_input() :: #{}
 -type delete_agent_space_input() :: #{}.
-
-%% Example:
-%% describe_support_level_request() :: #{}
--type describe_support_level_request() :: #{}.
 
 
 %% Example:
@@ -1246,16 +1176,6 @@
 
 
 %% Example:
-%% m_c_p_server_sig_v4_service_details() :: #{
-%%   <<"authorizationConfig">> => m_c_p_server_sig_v4_authorization_config(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type m_c_p_server_sig_v4_service_details() :: #{binary() => any()}.
-
-
-%% Example:
 %% user_reference() :: #{
 %%   <<"userId">> => [string()],
 %%   <<"userType">> => list(any())
@@ -1369,15 +1289,6 @@
 
 
 %% Example:
-%% end_chat_for_case_response() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"executionId">> => [string()],
-%%   <<"isDisconnected">> => [boolean()]
-%% }
--type end_chat_for_case_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% m_c_p_server_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
@@ -1457,14 +1368,6 @@
 
 
 %% Example:
-%% m_s_teams_channel() :: #{
-%%   <<"channelId">> => string(),
-%%   <<"channelName">> => [string()]
-%% }
--type m_s_teams_channel() :: #{binary() => any()}.
-
-
-%% Example:
 %% recommendation_content() :: #{
 %%   <<"spec">> => [string()],
 %%   <<"summary">> => [string()]
@@ -1478,15 +1381,6 @@
 %%   <<"records">> => list(journal_record())
 %% }
 -type list_journal_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% end_chat_for_case_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"reason">> => [string()],
-%%   <<"requester">> => [string()]
-%% }
--type end_chat_for_case_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1546,15 +1440,6 @@
 
 
 %% Example:
-%% chat_participant_connection() :: #{
-%%   <<"initialContactId">> => [string()],
-%%   <<"participantId">> => [string()],
-%%   <<"participantToken">> => [string()]
-%% }
--type chat_participant_connection() :: #{binary() => any()}.
-
-
-%% Example:
 %% registered_azure_dev_ops_service_details() :: #{
 %%   <<"organizationName">> => [string()]
 %% }
@@ -1608,14 +1493,6 @@
 %%   <<"channelName">> => [string()]
 %% }
 -type slack_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% support_level() :: #{
-%%   <<"code">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type support_level() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1881,13 +1758,6 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
--type describe_support_level_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
 -type disable_operator_app_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1905,13 +1775,6 @@
     validation_exception() | 
     internal_server_exception() | 
     identity_center_service_exception().
-
--type end_chat_for_case_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
 
 -type get_account_usage_errors() ::
     throttling_exception() | 
@@ -1957,14 +1820,6 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
-
--type initiate_chat_for_case_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
 
 -type list_agent_spaces_errors() ::
     throttling_exception() | 
@@ -2132,8 +1987,6 @@
 %%====================================================================
 
 %% @doc Authorize Ingestion Hub subscription operation.
-%%
-%% Looks to see if the derived accountId from FAS has an AgentSpace.
 -spec allow_vended_log_delivery_for_resource(aws_client:aws_client(), allow_vended_log_delivery_for_resource_input()) ->
     {ok, allow_vended_log_delivery_for_resource_output(), tuple()} |
     {error, any()}.
@@ -2486,40 +2339,6 @@ describe_private_connection(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe the support level of a CloudSmith customer account.
--spec describe_support_level(aws_client:aws_client(), binary() | list(), binary() | list(), describe_support_level_request()) ->
-    {ok, describe_support_level_response(), tuple()} |
-    {error, any()} |
-    {error, describe_support_level_errors(), tuple()}.
-describe_support_level(Client, AgentSpaceId, TaskId, Input) ->
-    describe_support_level(Client, AgentSpaceId, TaskId, Input, []).
-
--spec describe_support_level(aws_client:aws_client(), binary() | list(), binary() | list(), describe_support_level_request(), proplists:proplist()) ->
-    {ok, describe_support_level_response(), tuple()} |
-    {error, any()} |
-    {error, describe_support_level_errors(), tuple()}.
-describe_support_level(Client, AgentSpaceId, TaskId, Input0, Options0) ->
-    Method = post,
-    Path = ["/support/agent-space/", aws_util:encode_uri(AgentSpaceId), "/tasks/", aws_util:encode_uri(TaskId), "/supportLevel"],
-    SuccessStatusCode = 201,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
 %% @doc Disable the Operator App for the specified AgentSpace
 -spec disable_operator_app(aws_client:aws_client(), binary() | list(), disable_operator_app_input()) ->
     {ok, undefined, tuple()} |
@@ -2608,40 +2427,6 @@ enable_operator_app(Client, AgentSpaceId, Input) ->
 enable_operator_app(Client, AgentSpaceId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/agentspaces/", aws_util:encode_uri(AgentSpaceId), "/operator"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc End a chat session for a support case in the specified agent space
--spec end_chat_for_case(aws_client:aws_client(), binary() | list(), binary() | list(), end_chat_for_case_request()) ->
-    {ok, end_chat_for_case_response(), tuple()} |
-    {error, any()} |
-    {error, end_chat_for_case_errors(), tuple()}.
-end_chat_for_case(Client, AgentSpaceId, TaskId, Input) ->
-    end_chat_for_case(Client, AgentSpaceId, TaskId, Input, []).
-
--spec end_chat_for_case(aws_client:aws_client(), binary() | list(), binary() | list(), end_chat_for_case_request(), proplists:proplist()) ->
-    {ok, end_chat_for_case_response(), tuple()} |
-    {error, any()} |
-    {error, end_chat_for_case_errors(), tuple()}.
-end_chat_for_case(Client, AgentSpaceId, TaskId, Input0, Options0) ->
-    Method = post,
-    Path = ["/support/agent-space/", aws_util:encode_uri(AgentSpaceId), "/tasks/", aws_util:encode_uri(TaskId), "/end-chat-for-case"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2925,40 +2710,6 @@ get_service(Client, ServiceId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Initiate a chat for support case in the specified agent space
--spec initiate_chat_for_case(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_chat_for_case_request()) ->
-    {ok, initiate_chat_for_case_response(), tuple()} |
-    {error, any()} |
-    {error, initiate_chat_for_case_errors(), tuple()}.
-initiate_chat_for_case(Client, AgentSpaceId, TaskId, Input) ->
-    initiate_chat_for_case(Client, AgentSpaceId, TaskId, Input, []).
-
--spec initiate_chat_for_case(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_chat_for_case_request(), proplists:proplist()) ->
-    {ok, initiate_chat_for_case_response(), tuple()} |
-    {error, any()} |
-    {error, initiate_chat_for_case_errors(), tuple()}.
-initiate_chat_for_case(Client, AgentSpaceId, TaskId, Input0, Options0) ->
-    Method = post,
-    Path = ["/support/agent-space/", aws_util:encode_uri(AgentSpaceId), "/tasks/", aws_util:encode_uri(TaskId), "/chats"],
-    SuccessStatusCode = 201,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all AgentSpaces with optional pagination.
 -spec list_agent_spaces(aws_client:aws_client(), list_agent_spaces_input()) ->

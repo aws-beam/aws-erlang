@@ -2,42 +2,29 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Data Exchange is a service that makes it easy for AWS customers
-%% to exchange data in
-%% the cloud.
+%% to exchange data in the cloud.
 %%
 %% You can use the AWS Data Exchange APIs to create, update, manage, and
-%% access
-%% file-based data set in the AWS Cloud.
+%% access file-based data set in the AWS Cloud.
 %%
 %% As a subscriber, you can view and access the data sets that you have an
-%% entitlement to
-%% through a subscription. You can use the APIs to download or copy your
-%% entitled data sets to
-%% Amazon Simple Storage Service (Amazon S3) for use across a variety of AWS
-%% analytics and
-%% machine learning services.
+%% entitlement to through a subscription. You can use the APIs to download or
+%% copy your entitled data sets to Amazon Simple Storage Service (Amazon S3)
+%% for use across a variety of AWS analytics and machine learning services.
 %%
 %% As a provider, you can create and manage your data sets that you would
-%% like to publish
-%% to a product. Being able to package and provide your data sets into
-%% products requires a few
-%% steps to determine eligibility. For more information, visit the AWS Data
-%% Exchange
-%% User Guide.
+%% like to publish to a product. Being able to package and provide your data
+%% sets into products requires a few steps to determine eligibility. For more
+%% information, visit the AWS Data Exchange User Guide.
 %%
 %% A data set is a collection of data that can be changed or updated over
-%% time. Data sets
-%% can be updated using revisions, which represent a new version or
-%% incremental change to a
-%% data set. A revision contains one or more assets. An asset in AWS Data
-%% Exchange is a piece
-%% of data that can be stored as an Amazon S3 object, Redshift datashare, API
-%% Gateway API, AWS
+%% time. Data sets can be updated using revisions, which represent a new
+%% version or incremental change to a data set. A revision contains one or
+%% more assets. An asset in AWS Data Exchange is a piece of data that can be
+%% stored as an Amazon S3 object, Redshift datashare, API Gateway API, AWS
 %% Lake Formation data permission, or Amazon S3 data access. The asset can be
-%% a structured
-%% data file, an image file, or some other data file. Jobs are asynchronous
-%% import or export
-%% operations used to create or copy assets.
+%% a structured data file, an image file, or some other data file. Jobs are
+%% asynchronous import or export operations used to create or copy assets.
 -module(aws_dataexchange).
 
 -export([accept_data_grant/3,
@@ -281,6 +268,7 @@
 %% Example:
 %% create_job_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AssetConfiguration">> => asset_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
 %%   <<"Errors">> => list(job_error()),
@@ -451,6 +439,7 @@
 
 %% Example:
 %% create_job_request() :: #{
+%%   <<"AssetConfiguration">> => asset_configuration(),
 %%   <<"Details">> := request_details(),
 %%   <<"Type">> := string()
 %% }
@@ -516,6 +505,13 @@
 %%   <<"Table">> => string()
 %% }
 -type lake_formation_tag_policy_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_configuration() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type asset_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -697,6 +693,14 @@
 
 
 %% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_set_request() :: #{
 %%   <<"AssetType">> := string(),
 %%   <<"Description">> := string(),
@@ -856,6 +860,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RevisionId">> => string(),
 %%   <<"SourceId">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_asset_response() :: #{binary() => any()}.
@@ -1105,6 +1110,7 @@
 %% Example:
 %% get_job_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AssetConfiguration">> => asset_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
 %%   <<"Errors">> => list(job_error()),
@@ -1318,6 +1324,7 @@
 %% Example:
 %% job_entry() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AssetConfiguration">> => asset_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
 %%   <<"Errors">> => list(job_error()),
@@ -1756,8 +1763,7 @@ accept_data_grant(Client, DataGrantArn, Input0, Options0) ->
 
 %% @doc This operation cancels a job.
 %%
-%% Jobs can be cancelled only when they are in the WAITING
-%% state.
+%% Jobs can be cancelled only when they are in the WAITING state.
 -spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2433,8 +2439,7 @@ list_data_grants(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists a data set's revisions sorted by CreatedAt
-%% in descending
-%% order.
+%% in descending order.
 -spec list_data_set_revisions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
@@ -2478,9 +2483,8 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation lists your data sets.
 %%
-%% When listing by origin OWNED, results are sorted by
-%% CreatedAt in descending order. When listing by origin ENTITLED, there is
-%% no order.
+%% When listing by origin OWNED, results are sorted by CreatedAt in
+%% descending order. When listing by origin ENTITLED, there is no order.
 -spec list_data_sets(aws_client:aws_client()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
@@ -2655,8 +2659,7 @@ list_received_data_grants(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists a revision's assets sorted alphabetically in
-%% descending
-%% order.
+%% descending order.
 -spec list_revision_assets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
@@ -2768,8 +2771,7 @@ revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
 
 %% @doc This operation invokes an API Gateway API asset.
 %%
-%% The request is proxied to the
-%% provider’s API Gateway API.
+%% The request is proxied to the provider’s API Gateway API.
 -spec send_api_asset(aws_client:aws_client(), send_api_asset_request()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |

@@ -168,6 +168,9 @@
          describe_asset_bundle_import_job/3,
          describe_asset_bundle_import_job/5,
          describe_asset_bundle_import_job/6,
+         describe_automation_job/5,
+         describe_automation_job/7,
+         describe_automation_job/8,
          describe_brand/3,
          describe_brand/5,
          describe_brand/6,
@@ -461,6 +464,8 @@
          start_asset_bundle_export_job/4,
          start_asset_bundle_import_job/3,
          start_asset_bundle_import_job/4,
+         start_automation_job/5,
+         start_automation_job/6,
          start_dashboard_snapshot_job/4,
          start_dashboard_snapshot_job/5,
          start_dashboard_snapshot_job_schedule/5,
@@ -1044,6 +1049,13 @@
 
 
 %% Example:
+%% start_automation_job_request() :: #{
+%%   <<"InputPayload">> => string()
+%% }
+-type start_automation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% topic_search_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
@@ -1507,6 +1519,15 @@
 
 
 %% Example:
+%% o_auth_client_credentials() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type o_auth_client_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% numerical_aggregation_function() :: #{
 %%   <<"PercentileAggregation">> => percentile_aggregation(),
 %%   <<"SimpleNumericalAggregation">> => list(any())
@@ -1960,7 +1981,8 @@
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()),
 %%   <<"Sheets">> => list(sheet_definition()),
-%%   <<"StaticFiles">> => list(static_file())
+%%   <<"StaticFiles">> => list(static_file()),
+%%   <<"TooltipSheets">> => list(tooltip_sheet_definition())
 %% }
 -type dashboard_version_definition() :: #{binary() => any()}.
 
@@ -2317,6 +2339,7 @@
 %% tooltip_options() :: #{
 %%   <<"FieldBasedTooltip">> => field_based_tooltip(),
 %%   <<"SelectedTooltipType">> => list(any()),
+%%   <<"SheetTooltip">> => sheet_tooltip(),
 %%   <<"TooltipVisibility">> => list(any())
 %% }
 -type tooltip_options() :: #{binary() => any()}.
@@ -4158,7 +4181,8 @@
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
 %%   <<"Sheets">> => list(sheet_definition()),
-%%   <<"StaticFiles">> => list(static_file())
+%%   <<"StaticFiles">> => list(static_file()),
+%%   <<"TooltipSheets">> => list(tooltip_sheet_definition())
 %% }
 -type template_version_definition() :: #{binary() => any()}.
 
@@ -4829,7 +4853,8 @@
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
 %%   <<"Sheets">> => list(sheet_definition()),
-%%   <<"StaticFiles">> => list(static_file())
+%%   <<"StaticFiles">> => list(static_file()),
+%%   <<"TooltipSheets">> => list(tooltip_sheet_definition())
 %% }
 -type analysis_definition() :: #{binary() => any()}.
 
@@ -4890,7 +4915,8 @@
 
 %% Example:
 %% table_inline_visualization() :: #{
-%%   <<"DataBars">> => data_bars_options()
+%%   <<"DataBars">> => data_bars_options(),
+%%   <<"Sparklines">> => sparklines_options()
 %% }
 -type table_inline_visualization() :: #{binary() => any()}.
 
@@ -5552,6 +5578,18 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type minimum_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% tooltip_sheet_definition() :: #{
+%%   <<"Images">> => list(sheet_image()),
+%%   <<"Layouts">> => list(layout()),
+%%   <<"Name">> => string(),
+%%   <<"SheetId">> => string(),
+%%   <<"TextBoxes">> => list(sheet_text_box()),
+%%   <<"Visuals">> => list(visual())
+%% }
+-type tooltip_sheet_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8038,6 +8076,7 @@
 %%   <<"CopySourceArn">> => string(),
 %%   <<"CredentialPair">> => credential_pair(),
 %%   <<"KeyPairCredentials">> => key_pair_credentials(),
+%%   <<"OAuthClientCredentials">> => o_auth_client_credentials(),
 %%   <<"SecretArn">> => string(),
 %%   <<"WebProxyCredentials">> => web_proxy_credentials()
 %% }
@@ -9658,6 +9697,16 @@
 
 
 %% Example:
+%% start_automation_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type start_automation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% donut_center_options() :: #{
 %%   <<"LabelVisibility">> => list(any())
 %% }
@@ -10089,9 +10138,25 @@
 %%   <<"SortConfiguration">> => table_sort_configuration(),
 %%   <<"TableInlineVisualizations">> => list(table_inline_visualization()),
 %%   <<"TableOptions">> => table_options(),
+%%   <<"Tooltip">> => tooltip_options(),
 %%   <<"TotalOptions">> => total_options()
 %% }
 -type table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sparklines_options() :: #{
+%%   <<"AllPointsMarker">> => line_chart_marker_style_settings(),
+%%   <<"FieldId">> => string(),
+%%   <<"LineColor">> => string(),
+%%   <<"LineInterpolation">> => list(any()),
+%%   <<"MaxValueMarker">> => line_chart_marker_style_settings(),
+%%   <<"MinValueMarker">> => line_chart_marker_style_settings(),
+%%   <<"VisualType">> => list(any()),
+%%   <<"XAxisField">> => dimension_field(),
+%%   <<"YAxisBehavior">> => list(any())
+%% }
+-type sparklines_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10887,6 +10952,20 @@
 
 
 %% Example:
+%% describe_automation_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndedAt">> => [non_neg_integer()],
+%%   <<"InputPayload">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"OutputPayload">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"StartedAt">> => [non_neg_integer()]
+%% }
+-type describe_automation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% decal_settings() :: #{
 %%   <<"DecalColor">> => string(),
 %%   <<"DecalPatternType">> => list(any()),
@@ -11058,6 +11137,13 @@
 %%   <<"VpcConnectionProperties">> => vpc_connection_properties()
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_tooltip() :: #{
+%%   <<"SheetId">> => string()
+%% }
+-type sheet_tooltip() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12178,6 +12264,14 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type describe_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_automation_job_request() :: #{
+%%   <<"IncludeInputPayload">> => boolean(),
+%%   <<"IncludeOutputPayload">> => boolean()
+%% }
+-type describe_automation_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13327,6 +13421,7 @@
 %%   <<"PaginatedReportOptions">> => pivot_table_paginated_report_options(),
 %%   <<"SortConfiguration">> => pivot_table_sort_configuration(),
 %%   <<"TableOptions">> => pivot_table_options(),
+%%   <<"Tooltip">> => tooltip_options(),
 %%   <<"TotalOptions">> => pivot_table_total_options()
 %% }
 -type pivot_table_configuration() :: #{binary() => any()}.
@@ -14004,6 +14099,7 @@
 %%   <<"ShareNotionAction">> => list(any()),
 %%   <<"UseGithubAction">> => list(any()),
 %%   <<"CreateAndUpdateTextractAction">> => list(any()),
+%%   <<"ShareSpaces">> => list(any()),
 %%   <<"AddOrRunAnomalyDetectionForAnalyses">> => list(any()),
 %%   <<"CreateAndUpdateSAPBillOfMaterialAction">> => list(any()),
 %%   <<"ShareMSExchangeAction">> => list(any()),
@@ -14023,6 +14119,7 @@
 %%   <<"PrintReports">> => list(any()),
 %%   <<"CreateAndUpdateServiceNowAction">> => list(any()),
 %%   <<"ZendeskAction">> => list(any()),
+%%   <<"CreateSpaces">> => list(any()),
 %%   <<"CreateAndUpdateJiraAction">> => list(any()),
 %%   <<"UseOpenAPIAction">> => list(any()),
 %%   <<"UseSAPPhysicalInventoryAction">> => list(any()),
@@ -14090,6 +14187,7 @@
 %%   <<"CreateAndUpdateLinearAction">> => list(any()),
 %%   <<"UseMondayAction">> => list(any()),
 %%   <<"ShareFactSetAction">> => list(any()),
+%%   <<"ShareChatAgents">> => list(any()),
 %%   <<"Dashboard">> => list(any()),
 %%   <<"Extension">> => list(any()),
 %%   <<"ShareAsanaAction">> => list(any()),
@@ -15154,6 +15252,13 @@
     resource_not_found_exception() | 
     unsupported_user_edition_exception().
 
+-type describe_automation_job_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_brand_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16018,6 +16123,14 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     unsupported_user_edition_exception().
+
+-type start_automation_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
 
 -type start_dashboard_snapshot_job_errors() ::
     limit_exceeded_exception() | 
@@ -19391,6 +19504,49 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the status and details of a specified automation job,
+%% including its status and outputs.
+-spec describe_automation_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_automation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_automation_job_errors(), tuple()}.
+describe_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, JobId)
+  when is_map(Client) ->
+    describe_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, JobId, #{}, #{}).
+
+-spec describe_automation_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_automation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_automation_job_errors(), tuple()}.
+describe_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, JobId, QueryMap, HeadersMap, []).
+
+-spec describe_automation_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_automation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_automation_job_errors(), tuple()}.
+describe_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/automation-groups/", aws_util:encode_uri(AutomationGroupId), "/automations/", aws_util:encode_uri(AutomationId), "/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeInputPayload">>, maps:get(<<"includeInputPayload">>, QueryMap, undefined)},
+        {<<"includeOutputPayload">>, maps:get(<<"includeOutputPayload">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -23874,6 +24030,42 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
 start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a new job for a specified automation.
+%%
+%% The job runs the automation with the provided input payload.
+-spec start_automation_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_automation_job_request()) ->
+    {ok, start_automation_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_automation_job_errors(), tuple()}.
+start_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, Input) ->
+    start_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, Input, []).
+
+-spec start_automation_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_automation_job_request(), proplists:proplist()) ->
+    {ok, start_automation_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_automation_job_errors(), tuple()}.
+start_automation_job(Client, AutomationGroupId, AutomationId, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/automation-groups/", aws_util:encode_uri(AutomationGroupId), "/automations/", aws_util:encode_uri(AutomationId), "/jobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

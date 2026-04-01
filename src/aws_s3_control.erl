@@ -1498,6 +1498,7 @@
 %% Example:
 %% get_data_access_request() :: #{
 %%   <<"AccountId">> := string(),
+%%   <<"AuditContext">> => string(),
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"Permission">> := list(any()),
 %%   <<"Privilege">> => list(any()),
@@ -6164,6 +6165,7 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 
     Query0_ =
       [
+        {<<"auditContext">>, maps:get(<<"auditContext">>, QueryMap, undefined)},
         {<<"durationSeconds">>, maps:get(<<"durationSeconds">>, QueryMap, undefined)},
         {<<"permission">>, Permission},
         {<<"privilege">>, maps:get(<<"privilege">>, QueryMap, undefined)},

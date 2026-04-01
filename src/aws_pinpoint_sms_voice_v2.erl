@@ -57,12 +57,16 @@
          create_configuration_set/3,
          create_event_destination/2,
          create_event_destination/3,
+         create_notify_configuration/2,
+         create_notify_configuration/3,
          create_opt_out_list/2,
          create_opt_out_list/3,
          create_pool/2,
          create_pool/3,
          create_protect_configuration/2,
          create_protect_configuration/3,
+         create_rcs_agent/2,
+         create_rcs_agent/3,
          create_registration/2,
          create_registration/3,
          create_registration_association/2,
@@ -87,6 +91,10 @@
          delete_keyword/3,
          delete_media_message_spend_limit_override/2,
          delete_media_message_spend_limit_override/3,
+         delete_notify_configuration/2,
+         delete_notify_configuration/3,
+         delete_notify_message_spend_limit_override/2,
+         delete_notify_message_spend_limit_override/3,
          delete_opt_out_list/2,
          delete_opt_out_list/3,
          delete_opted_out_number/2,
@@ -97,6 +105,8 @@
          delete_protect_configuration/3,
          delete_protect_configuration_rule_set_number_override/2,
          delete_protect_configuration_rule_set_number_override/3,
+         delete_rcs_agent/2,
+         delete_rcs_agent/3,
          delete_registration/2,
          delete_registration/3,
          delete_registration_attachment/2,
@@ -119,6 +129,10 @@
          describe_configuration_sets/3,
          describe_keywords/2,
          describe_keywords/3,
+         describe_notify_configurations/2,
+         describe_notify_configurations/3,
+         describe_notify_templates/2,
+         describe_notify_templates/3,
          describe_opt_out_lists/2,
          describe_opt_out_lists/3,
          describe_opted_out_numbers/2,
@@ -129,6 +143,10 @@
          describe_pools/3,
          describe_protect_configurations/2,
          describe_protect_configurations/3,
+         describe_rcs_agent_country_launch_status/2,
+         describe_rcs_agent_country_launch_status/3,
+         describe_rcs_agents/2,
+         describe_rcs_agents/3,
          describe_registration_attachments/2,
          describe_registration_attachments/3,
          describe_registration_field_definitions/2,
@@ -159,6 +177,8 @@
          get_protect_configuration_country_rule_set/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         list_notify_countries/2,
+         list_notify_countries/3,
          list_pool_origination_identities/2,
          list_pool_origination_identities/3,
          list_protect_configuration_rule_set_number_overrides/2,
@@ -191,6 +211,10 @@
          send_destination_number_verification_code/3,
          send_media_message/2,
          send_media_message/3,
+         send_notify_text_message/2,
+         send_notify_text_message/3,
+         send_notify_voice_message/2,
+         send_notify_voice_message/3,
          send_text_message/2,
          send_text_message/3,
          send_voice_message/2,
@@ -205,6 +229,8 @@
          set_default_sender_id/3,
          set_media_message_spend_limit_override/2,
          set_media_message_spend_limit_override/3,
+         set_notify_message_spend_limit_override/2,
+         set_notify_message_spend_limit_override/3,
          set_text_message_spend_limit_override/2,
          set_text_message_spend_limit_override/3,
          set_voice_message_spend_limit_override/2,
@@ -217,6 +243,8 @@
          untag_resource/3,
          update_event_destination/2,
          update_event_destination/3,
+         update_notify_configuration/2,
+         update_notify_configuration/3,
          update_phone_number/2,
          update_phone_number/3,
          update_pool/2,
@@ -225,6 +253,8 @@
          update_protect_configuration/3,
          update_protect_configuration_country_rule_set/2,
          update_protect_configuration_country_rule_set/3,
+         update_rcs_agent/2,
+         update_rcs_agent/3,
          update_sender_id/2,
          update_sender_id/3,
          verify_destination_number/2,
@@ -239,6 +269,13 @@
 %%   <<"SpendLimits">> => list(spend_limit())
 %% }
 -type describe_spend_limits_result() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_agent_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type rcs_agent_filter() :: #{binary() => any()}.
 
 %% Example:
 %% update_phone_number_result() :: #{
@@ -331,6 +368,21 @@
 -type create_registration_attachment_result() :: #{binary() => any()}.
 
 %% Example:
+%% update_rcs_agent_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"RcsAgentArn">> => [string()],
+%%   <<"RcsAgentId">> => [string()],
+%%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
+%%   <<"Status">> => string(),
+%%   <<"TwoWayChannelArn">> => string(),
+%%   <<"TwoWayChannelRole">> => string(),
+%%   <<"TwoWayEnabled">> => [boolean()]
+%% }
+-type update_rcs_agent_result() :: #{binary() => any()}.
+
+%% Example:
 %% request_sender_id_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
@@ -413,6 +465,7 @@
 %% verified_destination_number_information() :: #{
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"RcsAgentId">> => [string()],
 %%   <<"Status">> => string(),
 %%   <<"VerifiedDestinationNumberArn">> => [string()],
 %%   <<"VerifiedDestinationNumberId">> => [string()]
@@ -507,6 +560,15 @@
 %%   <<"Values">> => list(string())
 %% }
 -type verified_destination_number_filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_rcs_agent_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_rcs_agent_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_registration_association_request() :: #{
@@ -713,11 +775,53 @@
 -type delete_protect_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_notify_message_spend_limit_override_request() :: #{
+
+%% }
+-type delete_notify_message_spend_limit_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% testing_agent_information() :: #{
+%%   <<"RegistrationId">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"TestingAgentId">> => [string()]
+%% }
+-type testing_agent_information() :: #{binary() => any()}.
+
+%% Example:
+%% country_launch_status_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type country_launch_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% template_variable_metadata() :: #{
+%%   <<"DefaultValue">> => [string()],
+%%   <<"Description">> => [string()],
+%%   <<"MaxLength">> => [integer()],
+%%   <<"MaxValue">> => [integer()],
+%%   <<"MinValue">> => [integer()],
+%%   <<"Pattern">> => [string()],
+%%   <<"Required">> => [boolean()],
+%%   <<"Sample">> => [string()],
+%%   <<"Source">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type template_variable_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% delete_event_destination_request() :: #{
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"EventDestinationName">> := string()
 %% }
 -type delete_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rcs_agent_request() :: #{
+%%   <<"RcsAgentId">> := string()
+%% }
+-type delete_rcs_agent_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_protect_configuration_result() :: #{
@@ -756,6 +860,20 @@
 -type release_phone_number_request() :: #{binary() => any()}.
 
 %% Example:
+%% send_notify_text_message_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"DryRun">> => [boolean()],
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
+%%   <<"NotifyConfigurationId">> := string(),
+%%   <<"TemplateId">> => string(),
+%%   <<"TemplateVariables">> := map(),
+%%   <<"TimeToLive">> => integer()
+%% }
+-type send_notify_text_message_request() :: #{binary() => any()}.
+
+%% Example:
 %% release_sender_id_result() :: #{
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageTypes">> => list(string()),
@@ -766,6 +884,28 @@
 %%   <<"SenderIdArn">> => [string()]
 %% }
 -type release_sender_id_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_notify_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"DisplayName">> := string(),
+%%   <<"EnabledChannels">> := list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"PoolId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UseCase">> := string()
+%% }
+-type create_notify_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_notify_voice_message_result() :: #{
+%%   <<"MessageId">> => [string()],
+%%   <<"ResolvedMessageBody">> => [string()],
+%%   <<"TemplateId">> => string()
+%% }
+-type send_notify_voice_message_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_sender_id_request() :: #{
@@ -801,10 +941,24 @@
 -type set_text_message_spend_limit_override_result() :: #{binary() => any()}.
 
 %% Example:
+%% list_notify_countries_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotifyCountries">> => list(notify_country_information())
+%% }
+-type list_notify_countries_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notify_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotifyConfigurations">> => list(notify_configuration_information())
+%% }
+-type describe_notify_configurations_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_pool_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
-%%   <<"IsoCountryCode">> := string(),
+%%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> := string(),
 %%   <<"OriginationIdentity">> := string(),
 %%   <<"Tags">> => list(tag())
@@ -892,6 +1046,12 @@
 -type create_registration_version_result() :: #{binary() => any()}.
 
 %% Example:
+%% set_notify_message_spend_limit_override_request() :: #{
+%%   <<"MonthlyLimit">> := float()
+%% }
+-type set_notify_message_spend_limit_override_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_text_message_spend_limit_override_request() :: #{
 
 %% }
@@ -910,6 +1070,7 @@
 %% registration_attachments_information() :: #{
 %%   <<"AttachmentStatus">> => string(),
 %%   <<"AttachmentUploadErrorReason">> => string(),
+%%   <<"AttachmentUrl">> => [string()],
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"RegistrationAttachmentArn">> => [string()],
 %%   <<"RegistrationAttachmentId">> => [string()]
@@ -947,6 +1108,23 @@
 -type create_event_destination_request() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_agent_information() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"PoolId">> => [string()],
+%%   <<"RcsAgentArn">> => [string()],
+%%   <<"RcsAgentId">> => [string()],
+%%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
+%%   <<"Status">> => string(),
+%%   <<"TestingAgent">> => testing_agent_information(),
+%%   <<"TwoWayChannelArn">> => string(),
+%%   <<"TwoWayChannelRole">> => string(),
+%%   <<"TwoWayEnabled">> => [boolean()]
+%% }
+-type rcs_agent_information() :: #{binary() => any()}.
+
+%% Example:
 %% describe_registrations_request() :: #{
 %%   <<"Filters">> => list(registration_filter()),
 %%   <<"MaxResults">> => integer(),
@@ -973,6 +1151,18 @@
 %%   <<"ProtectConfigurationId">> := string()
 %% }
 -type put_protect_configuration_rule_set_number_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rcs_agent_request() :: #{
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"RcsAgentId">> := string(),
+%%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
+%%   <<"TwoWayChannelArn">> => string(),
+%%   <<"TwoWayChannelRole">> => string(),
+%%   <<"TwoWayEnabled">> => [boolean()]
+%% }
+-type update_rcs_agent_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_event_destination_request() :: #{
@@ -1017,6 +1207,15 @@
 %%   <<"MonthlyLimit">> => float()
 %% }
 -type set_voice_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notify_templates_request() :: #{
+%%   <<"Filters">> => list(notify_template_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TemplateIds">> => list(string())
+%% }
+-type describe_notify_templates_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_protect_configuration_request() :: #{
@@ -1157,11 +1356,62 @@
 -type delete_registration_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_notify_configuration_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"DisplayName">> => string(),
+%%   <<"EnabledChannels">> => list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"NotifyConfigurationArn">> => string(),
+%%   <<"NotifyConfigurationId">> => string(),
+%%   <<"PoolId">> => [string()],
+%%   <<"RejectionReason">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Tier">> => string(),
+%%   <<"TierUpgradeStatus">> => string(),
+%%   <<"UseCase">> => string()
+%% }
+-type create_notify_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% notify_template_information() :: #{
+%%   <<"Channels">> => list(string()),
+%%   <<"Content">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"LanguageCode">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SupportedCountries">> => list(string()),
+%%   <<"SupportedVoiceIds">> => list(string()),
+%%   <<"TemplateId">> => string(),
+%%   <<"TemplateType">> => string(),
+%%   <<"TierAccess">> => list(string()),
+%%   <<"Variables">> => map(),
+%%   <<"Version">> => integer()
+%% }
+-type notify_template_information() :: #{binary() => any()}.
+
+%% Example:
+%% carrier_status_information() :: #{
+%%   <<"CarrierName">> => [string()],
+%%   <<"Status">> => string()
+%% }
+-type carrier_status_information() :: #{binary() => any()}.
+
+%% Example:
 %% sender_id_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string())
 %% }
 -type sender_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% notify_configuration_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type notify_configuration_filter() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_destination_result() :: #{
@@ -1216,11 +1466,40 @@
 -type associate_origination_identity_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_rcs_agent_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"RcsAgentArn">> => [string()],
+%%   <<"RcsAgentId">> => [string()],
+%%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
+%%   <<"Status">> => string(),
+%%   <<"TwoWayChannelArn">> => string(),
+%%   <<"TwoWayChannelRole">> => string(),
+%%   <<"TwoWayEnabled">> => [boolean()]
+%% }
+-type delete_rcs_agent_result() :: #{binary() => any()}.
+
+%% Example:
 %% set_default_message_feedback_enabled_request() :: #{
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"MessageFeedbackEnabled">> := [boolean()]
 %% }
 -type set_default_message_feedback_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_notify_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type set_notify_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% send_notify_text_message_result() :: #{
+%%   <<"MessageId">> => [string()],
+%%   <<"ResolvedMessageBody">> => [string()],
+%%   <<"TemplateId">> => string()
+%% }
+-type send_notify_text_message_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_opted_out_numbers_result() :: #{
@@ -1254,6 +1533,15 @@
 -type phone_number_filter() :: #{binary() => any()}.
 
 %% Example:
+%% describe_rcs_agent_country_launch_status_result() :: #{
+%%   <<"CountryLaunchStatus">> => list(country_launch_status_information()),
+%%   <<"NextToken">> => string(),
+%%   <<"RcsAgentArn">> => [string()],
+%%   <<"RcsAgentId">> => [string()]
+%% }
+-type describe_rcs_agent_country_launch_status_result() :: #{binary() => any()}.
+
+%% Example:
 %% list_pool_origination_identities_request() :: #{
 %%   <<"Filters">> => list(pool_origination_identities_filter()),
 %%   <<"MaxResults">> => integer(),
@@ -1275,6 +1563,16 @@
 %%   <<"RegistrationType">> => string()
 %% }
 -type registration_information() :: #{binary() => any()}.
+
+%% Example:
+%% country_launch_status_information() :: #{
+%%   <<"CarrierStatus">> => list(carrier_status_information()),
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"RcsPlatformId">> => [string()],
+%%   <<"RegistrationId">> => [string()],
+%%   <<"Status">> => string()
+%% }
+-type country_launch_status_information() :: #{binary() => any()}.
 
 %% Example:
 %% send_media_message_result() :: #{
@@ -1304,6 +1602,25 @@
 %%   <<"Values">> => list(string())
 %% }
 -type keyword_filter() :: #{binary() => any()}.
+
+%% Example:
+%% update_notify_configuration_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"DisplayName">> => string(),
+%%   <<"EnabledChannels">> => list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"NotifyConfigurationArn">> => string(),
+%%   <<"NotifyConfigurationId">> => string(),
+%%   <<"PoolId">> => [string()],
+%%   <<"RejectionReason">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tier">> => string(),
+%%   <<"TierUpgradeStatus">> => string(),
+%%   <<"UseCase">> => string()
+%% }
+-type update_notify_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_registration_version_request() :: #{
@@ -1529,6 +1846,33 @@
 -type opted_out_filter() :: #{binary() => any()}.
 
 %% Example:
+%% update_notify_configuration_request() :: #{
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"EnabledChannels">> => list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"NotifyConfigurationId">> := string(),
+%%   <<"PoolId">> => string()
+%% }
+-type update_notify_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_notify_countries_request() :: #{
+%%   <<"Channels">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tier">> => string(),
+%%   <<"UseCases">> => list(string())
+%% }
+-type list_notify_countries_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notify_configuration_request() :: #{
+%%   <<"NotifyConfigurationId">> := string()
+%% }
+-type delete_notify_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% send_destination_number_verification_code_result() :: #{
 %%   <<"MessageId">> => [string()]
 %% }
@@ -1606,6 +1950,17 @@
 -type discard_registration_version_result() :: #{binary() => any()}.
 
 %% Example:
+%% notify_country_information() :: #{
+%%   <<"CountryName">> => [string()],
+%%   <<"CustomerOwnedIdentityRequired">> => [boolean()],
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"SupportedChannels">> => list(string()),
+%%   <<"SupportedTiers">> => list(string()),
+%%   <<"SupportedUseCases">> => list(string())
+%% }
+-type notify_country_information() :: #{binary() => any()}.
+
+%% Example:
 %% list_registration_associations_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationArn">> => [string()],
@@ -1660,6 +2015,15 @@
 %%   <<"MessageId">> => [string()]
 %% }
 -type send_text_message_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notify_configurations_request() :: #{
+%%   <<"Filters">> => list(notify_configuration_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NotifyConfigurationIds">> => list(string())
+%% }
+-type describe_notify_configurations_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registration_attachment_request() :: #{
@@ -1822,6 +2186,25 @@
 -type delete_verified_destination_number_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_notify_configuration_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"DisplayName">> => string(),
+%%   <<"EnabledChannels">> => list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"NotifyConfigurationArn">> => string(),
+%%   <<"NotifyConfigurationId">> => string(),
+%%   <<"PoolId">> => [string()],
+%%   <<"RejectionReason">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tier">> => string(),
+%%   <<"TierUpgradeStatus">> => string(),
+%%   <<"UseCase">> => string()
+%% }
+-type delete_notify_configuration_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_registration_attachments_request() :: #{
 %%   <<"Filters">> => list(registration_attachment_filter()),
 %%   <<"MaxResults">> => integer(),
@@ -1858,6 +2241,13 @@
 -type describe_account_limits_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_notify_templates_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotifyTemplates">> => list(notify_template_information())
+%% }
+-type describe_notify_templates_result() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
@@ -1882,9 +2272,24 @@
 -type put_keyword_result() :: #{binary() => any()}.
 
 %% Example:
+%% send_notify_voice_message_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"DryRun">> => [boolean()],
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
+%%   <<"NotifyConfigurationId">> := string(),
+%%   <<"TemplateId">> => string(),
+%%   <<"TemplateVariables">> := map(),
+%%   <<"TimeToLive">> => integer(),
+%%   <<"VoiceId">> => string()
+%% }
+-type send_notify_voice_message_request() :: #{binary() => any()}.
+
+%% Example:
 %% associate_origination_identity_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"IsoCountryCode">> := string(),
+%%   <<"IsoCountryCode">> => string(),
 %%   <<"OriginationIdentity">> := string(),
 %%   <<"PoolId">> := string()
 %% }
@@ -1916,7 +2321,7 @@
 %% Example:
 %% disassociate_origination_identity_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"IsoCountryCode">> := string(),
+%%   <<"IsoCountryCode">> => string(),
 %%   <<"OriginationIdentity">> := string(),
 %%   <<"PoolId">> := string()
 %% }
@@ -1940,9 +2345,20 @@
 %% create_verified_destination_number_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"RcsAgentId">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_verified_destination_number_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rcs_agents_request() :: #{
+%%   <<"Filters">> => list(rcs_agent_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"RcsAgentIds">> => list(string())
+%% }
+-type describe_rcs_agents_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_phone_numbers_request() :: #{
@@ -1997,6 +2413,19 @@
 -type describe_registration_type_definitions_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_notify_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type delete_notify_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rcs_agents_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RcsAgents">> => list(rcs_agent_information())
+%% }
+-type describe_rcs_agents_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_phone_numbers_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PhoneNumbers">> => list(phone_number_information())
@@ -2038,6 +2467,13 @@
 
 %% }
 -type delete_account_default_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_template_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type notify_template_filter() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_request() :: #{
@@ -2140,6 +2576,16 @@
 -type registration_field_value_information() :: #{binary() => any()}.
 
 %% Example:
+%% describe_rcs_agent_country_launch_status_request() :: #{
+%%   <<"Filters">> => list(country_launch_status_filter()),
+%%   <<"IsoCountryCodes">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RcsAgentId">> := string()
+%% }
+-type describe_rcs_agent_country_launch_status_request() :: #{binary() => any()}.
+
+%% Example:
 %% protect_configuration_information() :: #{
 %%   <<"AccountDefault">> => [boolean()],
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
@@ -2219,6 +2665,25 @@
 -type origination_identity_metadata() :: #{binary() => any()}.
 
 %% Example:
+%% notify_configuration_information() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultTemplateId">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"DisplayName">> => string(),
+%%   <<"EnabledChannels">> => list(string()),
+%%   <<"EnabledCountries">> => list(string()),
+%%   <<"NotifyConfigurationArn">> => string(),
+%%   <<"NotifyConfigurationId">> => string(),
+%%   <<"PoolId">> => [string()],
+%%   <<"RejectionReason">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tier">> => string(),
+%%   <<"TierUpgradeStatus">> => string(),
+%%   <<"UseCase">> => string()
+%% }
+-type notify_configuration_information() :: #{binary() => any()}.
+
+%% Example:
 %% set_default_message_type_result() :: #{
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
@@ -2289,6 +2754,7 @@
 %% create_verified_destination_number_result() :: #{
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"RcsAgentId">> => [string()],
 %%   <<"Status">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VerifiedDestinationNumberArn">> => [string()],
@@ -2352,6 +2818,22 @@
 %%   <<"ProtectConfigurationId">> => string()
 %% }
 -type delete_protect_configuration_rule_set_number_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_rcs_agent_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"OptOutListName">> => string(),
+%%   <<"RcsAgentArn">> => [string()],
+%%   <<"RcsAgentId">> => [string()],
+%%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TwoWayChannelArn">> => string(),
+%%   <<"TwoWayChannelRole">> => string(),
+%%   <<"TwoWayEnabled">> => [boolean()]
+%% }
+-type create_rcs_agent_result() :: #{binary() => any()}.
 
 %% Example:
 %% opt_out_list_information() :: #{
@@ -2438,6 +2920,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_notify_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_opt_out_list_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2461,6 +2952,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_rcs_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_registration_errors() ::
@@ -2503,6 +3003,7 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_account_default_protect_configuration_errors() ::
@@ -2554,6 +3055,20 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type delete_notify_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_notify_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type delete_opt_out_list_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2592,6 +3107,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_rcs_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_registration_errors() ::
     throttling_exception() | 
@@ -2670,6 +3193,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_notify_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_notify_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_opt_out_lists_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2699,6 +3236,20 @@
     resource_not_found_exception().
 
 -type describe_protect_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_rcs_agent_country_launch_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_rcs_agents_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2809,6 +3360,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_notify_countries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_pool_origination_identities_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2866,6 +3423,7 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type put_registration_field_value_errors() ::
@@ -2934,6 +3492,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type send_notify_text_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type send_notify_voice_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type send_text_message_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2986,6 +3562,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type set_notify_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type set_text_message_spend_limit_override_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3029,6 +3611,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_notify_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_phone_number_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3058,6 +3648,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_rcs_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_sender_id_errors() ::
     throttling_exception() | 
@@ -3201,6 +3799,27 @@ create_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventDestination">>, Input, Options).
 
+%% @doc Creates a new notify configuration for managed messaging.
+%%
+%% A notify configuration defines the settings for sending templated
+%% messages, including the display name, use case, enabled channels, and
+%% enabled countries.
+-spec create_notify_configuration(aws_client:aws_client(), create_notify_configuration_request()) ->
+    {ok, create_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_notify_configuration_errors(), tuple()}.
+create_notify_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_notify_configuration(Client, Input, []).
+
+-spec create_notify_configuration(aws_client:aws_client(), create_notify_configuration_request(), proplists:proplist()) ->
+    {ok, create_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_notify_configuration_errors(), tuple()}.
+create_notify_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateNotifyConfiguration">>, Input, Options).
+
 %% @doc Creates a new opt-out list.
 %%
 %% If the opt-out list name already exists, an error is returned.
@@ -3281,6 +3900,27 @@ create_protect_configuration(Client, Input)
 create_protect_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProtectConfiguration">>, Input, Options).
+
+%% @doc Creates a new RCS agent for sending rich messages through the RCS
+%% channel.
+%%
+%% The RCS agent serves as an origination identity for sending RCS messages
+%% to your recipients.
+-spec create_rcs_agent(aws_client:aws_client(), create_rcs_agent_request()) ->
+    {ok, create_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, create_rcs_agent_errors(), tuple()}.
+create_rcs_agent(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_rcs_agent(Client, Input, []).
+
+-spec create_rcs_agent(aws_client:aws_client(), create_rcs_agent_request(), proplists:proplist()) ->
+    {ok, create_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, create_rcs_agent_errors(), tuple()}.
+create_rcs_agent(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRcsAgent">>, Input, Options).
 
 %% @doc Creates a new registration based on the RegistrationType field.
 -spec create_registration(aws_client:aws_client(), create_registration_request()) ->
@@ -3539,6 +4179,49 @@ delete_media_message_spend_limit_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMediaMessageSpendLimitOverride">>, Input, Options).
 
+%% @doc Deletes an existing notify configuration.
+%%
+%% If deletion protection is enabled, an error is returned.
+-spec delete_notify_configuration(aws_client:aws_client(), delete_notify_configuration_request()) ->
+    {ok, delete_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notify_configuration_errors(), tuple()}.
+delete_notify_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_notify_configuration(Client, Input, []).
+
+-spec delete_notify_configuration(aws_client:aws_client(), delete_notify_configuration_request(), proplists:proplist()) ->
+    {ok, delete_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notify_configuration_errors(), tuple()}.
+delete_notify_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNotifyConfiguration">>, Input, Options).
+
+%% @doc Deletes an account-level monthly spending limit override for sending
+%% notify messages.
+%%
+%% Deleting a spend limit override will set the `EnforcedLimit' to equal
+%% the `MaxLimit', which is controlled by Amazon Web Services. For more
+%% information on spend limits (quotas) see Quotas :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
+%% End User Messaging SMS User Guide.
+-spec delete_notify_message_spend_limit_override(aws_client:aws_client(), delete_notify_message_spend_limit_override_request()) ->
+    {ok, delete_notify_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notify_message_spend_limit_override_errors(), tuple()}.
+delete_notify_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_notify_message_spend_limit_override(Client, Input, []).
+
+-spec delete_notify_message_spend_limit_override(aws_client:aws_client(), delete_notify_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, delete_notify_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notify_message_spend_limit_override_errors(), tuple()}.
+delete_notify_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNotifyMessageSpendLimitOverride">>, Input, Options).
+
 %% @doc Deletes an existing opt-out list.
 %%
 %% All opted out phone numbers in the opt-out list are deleted.
@@ -3648,6 +4331,25 @@ delete_protect_configuration_rule_set_number_override(Client, Input)
 delete_protect_configuration_rule_set_number_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtectConfigurationRuleSetNumberOverride">>, Input, Options).
+
+%% @doc Deletes an existing RCS agent.
+%%
+%% If deletion protection is enabled, an error is returned.
+-spec delete_rcs_agent(aws_client:aws_client(), delete_rcs_agent_request()) ->
+    {ok, delete_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, delete_rcs_agent_errors(), tuple()}.
+delete_rcs_agent(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_rcs_agent(Client, Input, []).
+
+-spec delete_rcs_agent(aws_client:aws_client(), delete_rcs_agent_request(), proplists:proplist()) ->
+    {ok, delete_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, delete_rcs_agent_errors(), tuple()}.
+delete_rcs_agent(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRcsAgent">>, Input, Options).
 
 %% @doc Permanently delete an existing registration from your account.
 -spec delete_registration(aws_client:aws_client(), delete_registration_request()) ->
@@ -3891,6 +4593,59 @@ describe_keywords(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKeywords">>, Input, Options).
 
+%% @doc Describes the specified notify configurations or all notify
+%% configurations in your account.
+%%
+%% If you specify notify configuration IDs, the output includes information
+%% for only the specified notify configurations. If you specify filters, the
+%% output includes information for only those notify configurations that meet
+%% the filter criteria. If you don't specify notify configuration IDs or
+%% filters, the output includes information for all notify configurations.
+%%
+%% If you specify a notify configuration ID that isn't valid, an error is
+%% returned.
+-spec describe_notify_configurations(aws_client:aws_client(), describe_notify_configurations_request()) ->
+    {ok, describe_notify_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notify_configurations_errors(), tuple()}.
+describe_notify_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_notify_configurations(Client, Input, []).
+
+-spec describe_notify_configurations(aws_client:aws_client(), describe_notify_configurations_request(), proplists:proplist()) ->
+    {ok, describe_notify_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notify_configurations_errors(), tuple()}.
+describe_notify_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeNotifyConfigurations">>, Input, Options).
+
+%% @doc Describes the specified notify templates or all notify templates in
+%% your account.
+%%
+%% If you specify template IDs, the output includes information for only the
+%% specified notify templates. If you specify filters, the output includes
+%% information for only those notify templates that meet the filter criteria.
+%% If you don't specify template IDs or filters, the output includes
+%% information for all notify templates.
+%%
+%% If you specify a template ID that isn't valid, an error is returned.
+-spec describe_notify_templates(aws_client:aws_client(), describe_notify_templates_request()) ->
+    {ok, describe_notify_templates_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notify_templates_errors(), tuple()}.
+describe_notify_templates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_notify_templates(Client, Input, []).
+
+-spec describe_notify_templates(aws_client:aws_client(), describe_notify_templates_request(), proplists:proplist()) ->
+    {ok, describe_notify_templates_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notify_templates_errors(), tuple()}.
+describe_notify_templates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeNotifyTemplates">>, Input, Options).
+
 %% @doc Describes the specified opt-out list or all opt-out lists in your
 %% account.
 %%
@@ -4020,6 +4775,48 @@ describe_protect_configurations(Client, Input)
 describe_protect_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProtectConfigurations">>, Input, Options).
+
+%% @doc Retrieves the per-country launch status of an RCS agent, including
+%% carrier-level details for each country.
+-spec describe_rcs_agent_country_launch_status(aws_client:aws_client(), describe_rcs_agent_country_launch_status_request()) ->
+    {ok, describe_rcs_agent_country_launch_status_result(), tuple()} |
+    {error, any()} |
+    {error, describe_rcs_agent_country_launch_status_errors(), tuple()}.
+describe_rcs_agent_country_launch_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_rcs_agent_country_launch_status(Client, Input, []).
+
+-spec describe_rcs_agent_country_launch_status(aws_client:aws_client(), describe_rcs_agent_country_launch_status_request(), proplists:proplist()) ->
+    {ok, describe_rcs_agent_country_launch_status_result(), tuple()} |
+    {error, any()} |
+    {error, describe_rcs_agent_country_launch_status_errors(), tuple()}.
+describe_rcs_agent_country_launch_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRcsAgentCountryLaunchStatus">>, Input, Options).
+
+%% @doc Retrieves the specified RCS agents or all RCS agents associated with
+%% your Amazon Web Services account.
+%%
+%% If you specify RCS agent IDs, the output includes information for only the
+%% specified RCS agents. If you specify filters, the output includes
+%% information for only those RCS agents that meet the filter criteria. If
+%% you don't specify RCS agent IDs or filters, the output includes
+%% information for all RCS agents.
+-spec describe_rcs_agents(aws_client:aws_client(), describe_rcs_agents_request()) ->
+    {ok, describe_rcs_agents_result(), tuple()} |
+    {error, any()} |
+    {error, describe_rcs_agents_errors(), tuple()}.
+describe_rcs_agents(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_rcs_agents(Client, Input, []).
+
+-spec describe_rcs_agents(aws_client:aws_client(), describe_rcs_agents_request(), proplists:proplist()) ->
+    {ok, describe_rcs_agents_result(), tuple()} |
+    {error, any()} |
+    {error, describe_rcs_agents_errors(), tuple()}.
+describe_rcs_agents(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRcsAgents">>, Input, Options).
 
 %% @doc Retrieves the specified registration attachments or all registration
 %% attachments associated with your Amazon Web Services account.
@@ -4310,6 +5107,25 @@ get_resource_policy(Client, Input)
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc Lists countries that support notify messaging.
+%%
+%% You can optionally filter by channel, use case, or tier.
+-spec list_notify_countries(aws_client:aws_client(), list_notify_countries_request()) ->
+    {ok, list_notify_countries_result(), tuple()} |
+    {error, any()} |
+    {error, list_notify_countries_errors(), tuple()}.
+list_notify_countries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_notify_countries(Client, Input, []).
+
+-spec list_notify_countries(aws_client:aws_client(), list_notify_countries_request(), proplists:proplist()) ->
+    {ok, list_notify_countries_result(), tuple()} |
+    {error, any()} |
+    {error, list_notify_countries_errors(), tuple()}.
+list_notify_countries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNotifyCountries">>, Input, Options).
 
 %% @doc Lists all associated origination identities in your pool.
 %%
@@ -4632,6 +5448,42 @@ send_media_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMediaMessage">>, Input, Options).
 
+%% @doc Sends a templated text message through a notify configuration to a
+%% recipient's phone number.
+-spec send_notify_text_message(aws_client:aws_client(), send_notify_text_message_request()) ->
+    {ok, send_notify_text_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_notify_text_message_errors(), tuple()}.
+send_notify_text_message(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_notify_text_message(Client, Input, []).
+
+-spec send_notify_text_message(aws_client:aws_client(), send_notify_text_message_request(), proplists:proplist()) ->
+    {ok, send_notify_text_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_notify_text_message_errors(), tuple()}.
+send_notify_text_message(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendNotifyTextMessage">>, Input, Options).
+
+%% @doc Sends a templated voice message through a notify configuration to a
+%% recipient's phone number.
+-spec send_notify_voice_message(aws_client:aws_client(), send_notify_voice_message_request()) ->
+    {ok, send_notify_voice_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_notify_voice_message_errors(), tuple()}.
+send_notify_voice_message(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_notify_voice_message(Client, Input, []).
+
+-spec send_notify_voice_message(aws_client:aws_client(), send_notify_voice_message_request(), proplists:proplist()) ->
+    {ok, send_notify_voice_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_notify_voice_message_errors(), tuple()}.
+send_notify_voice_message(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendNotifyVoiceMessage">>, Input, Options).
+
 %% @doc Creates a new text message and sends it to a recipient's phone
 %% number.
 %%
@@ -4786,6 +5638,27 @@ set_media_message_spend_limit_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetMediaMessageSpendLimitOverride">>, Input, Options).
 
+%% @doc Sets an account level monthly spend limit override for sending notify
+%% messages.
+%%
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
+-spec set_notify_message_spend_limit_override(aws_client:aws_client(), set_notify_message_spend_limit_override_request()) ->
+    {ok, set_notify_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_notify_message_spend_limit_override_errors(), tuple()}.
+set_notify_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_notify_message_spend_limit_override(Client, Input, []).
+
+-spec set_notify_message_spend_limit_override(aws_client:aws_client(), set_notify_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, set_notify_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_notify_message_spend_limit_override_errors(), tuple()}.
+set_notify_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetNotifyMessageSpendLimitOverride">>, Input, Options).
+
 %% @doc Sets an account level monthly spend limit override for sending text
 %% messages.
 %%
@@ -4915,6 +5788,26 @@ update_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEventDestination">>, Input, Options).
 
+%% @doc Updates an existing notify configuration.
+%%
+%% You can update the default template, pool association, enabled channels,
+%% enabled countries, and deletion protection settings.
+-spec update_notify_configuration(aws_client:aws_client(), update_notify_configuration_request()) ->
+    {ok, update_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_notify_configuration_errors(), tuple()}.
+update_notify_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_notify_configuration(Client, Input, []).
+
+-spec update_notify_configuration(aws_client:aws_client(), update_notify_configuration_request(), proplists:proplist()) ->
+    {ok, update_notify_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_notify_configuration_errors(), tuple()}.
+update_notify_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateNotifyConfiguration">>, Input, Options).
+
 %% @doc Updates the configuration of an existing origination phone number.
 %%
 %% You can update the opt-out list, enable or disable two-way messaging,
@@ -4998,6 +5891,26 @@ update_protect_configuration_country_rule_set(Client, Input)
 update_protect_configuration_country_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProtectConfigurationCountryRuleSet">>, Input, Options).
+
+%% @doc Updates the configuration of an existing RCS agent.
+%%
+%% You can update the opt-out list, deletion protection, two-way messaging
+%% settings, and self-managed opt-outs configuration.
+-spec update_rcs_agent(aws_client:aws_client(), update_rcs_agent_request()) ->
+    {ok, update_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, update_rcs_agent_errors(), tuple()}.
+update_rcs_agent(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_rcs_agent(Client, Input, []).
+
+-spec update_rcs_agent(aws_client:aws_client(), update_rcs_agent_request(), proplists:proplist()) ->
+    {ok, update_rcs_agent_result(), tuple()} |
+    {error, any()} |
+    {error, update_rcs_agent_errors(), tuple()}.
+update_rcs_agent(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRcsAgent">>, Input, Options).
 
 %% @doc Updates the configuration of an existing sender ID.
 -spec update_sender_id(aws_client:aws_client(), update_sender_id_request()) ->

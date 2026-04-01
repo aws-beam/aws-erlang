@@ -61,6 +61,8 @@
          delete_package/4,
          delete_vpc_endpoint/3,
          delete_vpc_endpoint/4,
+         deregister_capability/4,
+         deregister_capability/5,
          describe_domain/2,
          describe_domain/4,
          describe_domain/5,
@@ -110,6 +112,9 @@
          get_application/2,
          get_application/4,
          get_application/5,
+         get_capability/3,
+         get_capability/5,
+         get_capability/6,
          get_compatible_versions/1,
          get_compatible_versions/3,
          get_compatible_versions/4,
@@ -185,6 +190,8 @@
          purchase_reserved_instance_offering/3,
          put_default_application_setting/2,
          put_default_application_setting/3,
+         register_capability/3,
+         register_capability/4,
          reject_inbound_connection/3,
          reject_inbound_connection/4,
          remove_tags/2,
@@ -300,6 +307,16 @@
 %%   <<"UseOffPeakWindow">> => boolean()
 %% }
 -type auto_tune_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_capability_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"capabilityConfig">> => list(),
+%%   <<"capabilityName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type register_capability_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -440,6 +457,13 @@
 %%   <<"TagList">> => list(tag())
 %% }
 -type direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_capability_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type deregister_capability_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -679,6 +703,17 @@
 
 
 %% Example:
+%% get_capability_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"capabilityConfig">> => list(),
+%%   <<"capabilityName">> => string(),
+%%   <<"failures">> => list(capability_failure()),
+%%   <<"status">> => list(any())
+%% }
+-type get_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% saml_idp() :: #{
 %%   <<"EntityId">> => string(),
 %%   <<"MetadataContent">> => string()
@@ -858,6 +893,14 @@
 
 
 %% Example:
+%% register_capability_request() :: #{
+%%   <<"capabilityConfig">> := list(),
+%%   <<"capabilityName">> := string()
+%% }
+-type register_capability_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% additional_limit() :: #{
 %%   <<"LimitName">> => string(),
 %%   <<"LimitValues">> => list(string())
@@ -987,6 +1030,10 @@
 %%   <<"Status">> => option_status()
 %% }
 -type cognito_options_status() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_config() :: #{}
+-type a_i_config() :: #{}.
 
 
 %% Example:
@@ -1215,6 +1262,10 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+%% Example:
+%% deregister_capability_request() :: #{}
+-type deregister_capability_request() :: #{}.
+
 
 %% Example:
 %% s3_vectors_engine() :: #{
@@ -1286,6 +1337,13 @@
 %%   <<"DryRun">> => boolean()
 %% }
 -type cancel_domain_config_change_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1403,6 +1461,14 @@
 %%   <<"Endpoint">> => string()
 %% }
 -type connection_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_failure() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type capability_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2876,6 +2942,10 @@
 %% }
 -type update_direct_query_data_source_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_capability_request() :: #{}
+-type get_capability_request() :: #{}.
+
 
 %% Example:
 %% associate_package_response() :: #{
@@ -3165,6 +3235,14 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type deregister_capability_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
 -type describe_domain_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -3283,6 +3361,13 @@
 
 -type get_application_errors() ::
     base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_capability_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
@@ -3465,6 +3550,15 @@
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception().
+
+-type register_capability_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type reject_inbound_connection_errors() ::
     resource_not_found_exception() | 
@@ -4492,6 +4586,42 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deregisters a capability from an OpenSearch UI application.
+%%
+%% This operation removes the capability and its associated configuration.
+-spec deregister_capability(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_capability_request()) ->
+    {ok, deregister_capability_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_capability_errors(), tuple()}.
+deregister_capability(Client, ApplicationId, CapabilityName, Input) ->
+    deregister_capability(Client, ApplicationId, CapabilityName, Input, []).
+
+-spec deregister_capability(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_capability_request(), proplists:proplist()) ->
+    {ok, deregister_capability_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_capability_errors(), tuple()}.
+deregister_capability(Client, ApplicationId, CapabilityName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(ApplicationId), "/capability/deregister/", aws_util:encode_uri(CapabilityName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Describes the domain configuration for the specified Amazon
 %% OpenSearch Service domain,
 %% including the domain ID, domain service endpoint, and domain ARN.
@@ -5264,6 +5394,44 @@ get_application(Client, Id, QueryMap, HeadersMap)
 get_application(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a registered capability for an OpenSearch
+%% UI application, including its configuration and current status.
+-spec get_capability(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_capability_response(), tuple()} |
+    {error, any()} |
+    {error, get_capability_errors(), tuple()}.
+get_capability(Client, ApplicationId, CapabilityName)
+  when is_map(Client) ->
+    get_capability(Client, ApplicationId, CapabilityName, #{}, #{}).
+
+-spec get_capability(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_capability_response(), tuple()} |
+    {error, any()} |
+    {error, get_capability_errors(), tuple()}.
+get_capability(Client, ApplicationId, CapabilityName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_capability(Client, ApplicationId, CapabilityName, QueryMap, HeadersMap, []).
+
+-spec get_capability(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_capability_response(), tuple()} |
+    {error, any()} |
+    {error, get_capability_errors(), tuple()}.
+get_capability(Client, ApplicationId, CapabilityName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(ApplicationId), "/capability/", aws_util:encode_uri(CapabilityName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6376,6 +6544,46 @@ put_default_application_setting(Client, Input) ->
 put_default_application_setting(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/defaultApplicationSetting"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a capability for an OpenSearch UI application.
+%%
+%% Use this operation to enable specific capabilities, such as AI features,
+%% for a given application. The capability configuration defines the type and
+%% settings of the capability to register. For more information about the AI
+%% features, see Agentic AI for OpenSearch UI:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application-ai-assistant.html.
+-spec register_capability(aws_client:aws_client(), binary() | list(), register_capability_request()) ->
+    {ok, register_capability_response(), tuple()} |
+    {error, any()} |
+    {error, register_capability_errors(), tuple()}.
+register_capability(Client, ApplicationId, Input) ->
+    register_capability(Client, ApplicationId, Input, []).
+
+-spec register_capability(aws_client:aws_client(), binary() | list(), register_capability_request(), proplists:proplist()) ->
+    {ok, register_capability_response(), tuple()} |
+    {error, any()} |
+    {error, register_capability_errors(), tuple()}.
+register_capability(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(ApplicationId), "/capability/register"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

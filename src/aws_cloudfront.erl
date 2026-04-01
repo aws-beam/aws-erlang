@@ -2997,7 +2997,8 @@
 %% Example:
 %% update_anycast_ip_list_request() :: #{
 %%   <<"IfMatch">> := string(),
-%%   <<"IpAddressType">> => list(any())
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config())
 %% }
 -type update_anycast_ip_list_request() :: #{binary() => any()}.
 

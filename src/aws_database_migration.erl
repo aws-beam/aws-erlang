@@ -1570,9 +1570,11 @@
 %% ibm_db2_luw_data_provider_settings() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
+%%   <<"EncryptionAlgorithm">> => integer(),
 %%   <<"Port">> => integer(),
 %%   <<"S3AccessRoleArn">> => string(),
 %%   <<"S3Path">> => string(),
+%%   <<"SecurityMechanism">> => integer(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }

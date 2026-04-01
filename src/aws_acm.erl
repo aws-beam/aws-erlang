@@ -40,6 +40,8 @@
          resend_validation_email/3,
          revoke_certificate/2,
          revoke_certificate/3,
+         search_certificates/2,
+         search_certificates/3,
          update_certificate_options/2,
          update_certificate_options/3]).
 
@@ -67,11 +69,28 @@
 -type request_in_progress_exception() :: #{binary() => any()}.
 
 %% Example:
+%% dns_name_filter() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dns_name_filter() :: #{binary() => any()}.
+
+%% Example:
 %% revoke_certificate_request() :: #{
 %%   <<"CertificateArn">> := string(),
 %%   <<"RevocationReason">> := list(any())
 %% }
 -type revoke_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_certificates_request() :: #{
+%%   <<"FilterStatement">> => list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type search_certificates_request() :: #{binary() => any()}.
 
 %% Example:
 %% resource_in_use_exception() :: #{
@@ -262,10 +281,45 @@
 -type describe_certificate_request() :: #{binary() => any()}.
 
 %% Example:
+%% other_name() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type other_name() :: #{binary() => any()}.
+
+%% Example:
+%% distinguished_name() :: #{
+%%   <<"CommonName">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CustomAttributes">> => list(custom_attribute()),
+%%   <<"DistinguishedNameQualifier">> => string(),
+%%   <<"DomainComponents">> => list(string()),
+%%   <<"GenerationQualifier">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"Initials">> => string(),
+%%   <<"Locality">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"OrganizationalUnit">> => string(),
+%%   <<"Pseudonym">> => string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Surname">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type distinguished_name() :: #{binary() => any()}.
+
+%% Example:
 %% request_certificate_response() :: #{
 %%   <<"CertificateArn">> => string()
 %% }
 -type request_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% common_name_filter() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type common_name_filter() :: #{binary() => any()}.
 
 %% Example:
 %% get_account_configuration_response() :: #{
@@ -299,6 +353,31 @@
 %%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% acm_certificate_metadata() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExportOption">> => list(any()),
+%%   <<"Exported">> => boolean(),
+%%   <<"ImportedAt">> => non_neg_integer(),
+%%   <<"InUse">> => boolean(),
+%%   <<"IssuedAt">> => non_neg_integer(),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"RenewalEligibility">> => list(any()),
+%%   <<"RenewalStatus">> => list(any()),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"ValidationMethod">> => list(any())
+%% }
+-type acm_certificate_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_range() :: #{
+%%   <<"End">> => non_neg_integer(),
+%%   <<"Start">> => non_neg_integer()
+%% }
+-type timestamp_range() :: #{binary() => any()}.
 
 %% Example:
 %% import_certificate_request() :: #{
@@ -342,9 +421,24 @@
 
 %% Example:
 %% throttling_exception() :: #{
-%%   <<"message">> => string()
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% x509_attributes() :: #{
+%%   <<"ExtendedKeyUsages">> => list(list(any())()),
+%%   <<"Issuer">> => distinguished_name(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyUsages">> => list(list(any())()),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Subject">> => distinguished_name(),
+%%   <<"SubjectAlternativeNames">> => list(list())
+%% }
+-type x509_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% filters() :: #{
@@ -396,6 +490,20 @@
 -type revoke_certificate_response() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_reason() :: #{
+%%   <<"reason">> => string(),
+%%   <<"resource">> => string()
+%% }
+-type throttling_reason() :: #{binary() => any()}.
+
+%% Example:
+%% custom_attribute() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_attribute() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_tag_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -407,6 +515,14 @@
 %%   <<"CertificateChain">> => string()
 %% }
 -type get_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_search_result() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateMetadata">> => list(),
+%%   <<"X509Attributes">> => x509_attributes()
+%% }
+-type certificate_search_result() :: #{binary() => any()}.
 
 %% Example:
 %% key_usage() :: #{
@@ -459,6 +575,13 @@
 %% }
 -type certificate_detail() :: #{binary() => any()}.
 
+%% Example:
+%% search_certificates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(certificate_search_result())
+%% }
+-type search_certificates_response() :: #{binary() => any()}.
+
 -type add_tags_to_certificate_errors() ::
     too_many_tags_exception() | 
     invalid_tag_exception() | 
@@ -481,6 +604,7 @@
     invalid_arn_exception().
 
 -type export_certificate_errors() ::
+    throttling_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     request_in_progress_exception().
@@ -500,6 +624,7 @@
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     invalid_arn_exception() | 
     tag_policy_exception().
 
@@ -553,6 +678,11 @@
     invalid_arn_exception() | 
     resource_in_use_exception().
 
+-type search_certificates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
 -type update_certificate_options_errors() ::
     limit_exceeded_exception() | 
     resource_not_found_exception() | 
@@ -601,15 +731,29 @@ add_tags_to_certificate(Client, Input, Options)
 
 %% @doc Deletes a certificate and its associated private key.
 %%
-%% If this action succeeds, the certificate no longer appears in the list
-%% that can be displayed by calling the `ListCertificates' action or be
-%% retrieved by calling the `GetCertificate' action. The certificate will
-%% not be available for use by Amazon Web Services services integrated with
-%% ACM.
+%% If this action succeeds, the certificate is not available for use by
+%% Amazon Web Services services integrated with ACM. Deleting a certificate
+%% is eventually consistent. The may be a short delay before the certificate
+%% no longer appears in the list that can be displayed by calling the
+%% `ListCertificates' action or be retrieved by calling the
+%% `GetCertificate' action.
 %%
 %% You cannot delete an ACM certificate that is being used by another Amazon
-%% Web Services service. To delete a certificate that is in use, the
-%% certificate association must first be removed.
+%% Web Services service. To delete a certificate that is in use, you must
+%% first remove the certificate association using the console or the CLI for
+%% the associated service.
+%%
+%% Deleting a certificate issued by a private certificate authority (CA) has
+%% no effect on the CA. You will continue to be charged for the CA until it
+%% is deleted. For more information, see Deleting Your Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html in
+%% the Private Certificate Authority User Guide.
+%%
+%% Deleting a certificate issued by a private certificate authority (CA) has
+%% no effect on the CA. You will continue to be charged for the CA until it
+%% is deleted. For more information, see Deleting your private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html in
+%% the Amazon Web Services Private Certificate Authority User Guide.
 -spec delete_certificate(aws_client:aws_client(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -648,7 +792,7 @@ describe_certificate(Client, Input, Options)
     request(Client, <<"DescribeCertificate">>, Input, Options).
 
 %% @doc Exports a private certificate issued by a private certificate
-%% authority (CA) or public certificate for use anywhere.
+%% authority (CA) or a public certificate for use anywhere.
 %%
 %% The exported file contains the certificate, the certificate chain, and the
 %% encrypted private key associated with the public key that is embedded in
@@ -660,6 +804,8 @@ describe_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/acm/latest/userguide/export-private.html and
 %% Export a public certificate:
 %% https://docs.aws.amazon.com/acm/latest/userguide/export-public-certificate.
+%%
+%% ACM public certificates created prior to June 17, 2025 cannot be exported.
 -spec export_certificate(aws_client:aws_client(), export_certificate_request()) ->
     {ok, export_certificate_response(), tuple()} |
     {error, any()} |
@@ -891,9 +1037,9 @@ remove_tags_from_certificate(Client, Input, Options)
 %%
 %% In order to renew your Amazon Web Services Private CA certificates with
 %% ACM, you must first grant the ACM service principal permission to do so:
-%% https://docs.aws.amazon.com/privateca/latest/userguide/PcaPermissions.html.
+%% https://docs.aws.amazon.com/privateca/latest/userguide/assign-permissions.html#PcaPermissions.
 %% For more information, see Testing Managed Renewal:
-%% https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html in
+%% https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html in
 %% the ACM User Guide.
 -spec renew_certificate(aws_client:aws_client(), renew_certificate_request()) ->
     {ok, undefined, tuple()} |
@@ -983,6 +1129,9 @@ resend_validation_email(Client, Input, Options)
 %% @doc Revokes a public ACM certificate.
 %%
 %% You can only revoke certificates that have been previously exported.
+%%
+%% Once a certificate is revoked, you cannot reuse the certificate. Revoking
+%% a certificate is permanent.
 -spec revoke_certificate(aws_client:aws_client(), revoke_certificate_request()) ->
     {ok, revoke_certificate_response(), tuple()} |
     {error, any()} |
@@ -998,6 +1147,28 @@ revoke_certificate(Client, Input)
 revoke_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeCertificate">>, Input, Options).
+
+%% @doc Retrieves a list of certificates matching search criteria.
+%%
+%% You can filter certificates by X.509 attributes and ACM specific
+%% properties like certificate status, type and renewal eligibility. This
+%% operation provides more flexible filtering than `ListCertificates' by
+%% supporting complex filter statements.
+-spec search_certificates(aws_client:aws_client(), search_certificates_request()) ->
+    {ok, search_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, search_certificates_errors(), tuple()}.
+search_certificates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_certificates(Client, Input, []).
+
+-spec search_certificates(aws_client:aws_client(), search_certificates_request(), proplists:proplist()) ->
+    {ok, search_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, search_certificates_errors(), tuple()}.
+search_certificates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchCertificates">>, Input, Options).
 
 %% @doc Updates a certificate.
 %%

@@ -313,6 +313,7 @@
 %%   <<"IngressPointName">> => string(),
 %%   <<"RuleSetId">> => string(),
 %%   <<"StatusToUpdate">> => list(any()),
+%%   <<"TlsPolicy">> => list(any()),
 %%   <<"TrafficPolicyId">> => string()
 %% }
 -type update_ingress_point_request() :: #{binary() => any()}.
@@ -484,6 +485,16 @@
 -type metadata() :: #{binary() => any()}.
 
 %% Example:
+%% invoke_lambda_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"RetryTimeMinutes">> => integer(),
+%%   <<"RoleArn">> => string()
+%% }
+-type invoke_lambda_action() :: #{binary() => any()}.
+
+%% Example:
 %% list_traffic_policies_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TrafficPolicies">> => list(traffic_policy())
@@ -562,6 +573,7 @@
 %%   <<"NetworkConfiguration">> => list(),
 %%   <<"RuleSetId">> => string(),
 %%   <<"Status">> => list(any()),
+%%   <<"TlsPolicy">> => list(any()),
 %%   <<"TrafficPolicyId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -741,6 +753,12 @@
 %%   <<"TopicArn">> => string()
 %% }
 -type sns_action() :: #{binary() => any()}.
+
+%% Example:
+%% tls_auth_configuration() :: #{
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type tls_auth_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_archives_request() :: #{
@@ -1288,6 +1306,7 @@
 %%   <<"NetworkConfiguration">> => list(),
 %%   <<"RuleSetId">> := string(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"TlsPolicy">> => list(any()),
 %%   <<"TrafficPolicyId">> := string(),
 %%   <<"Type">> := list(any())
 %% }
@@ -1446,7 +1465,8 @@
 %% Example:
 %% ingress_point_auth_configuration() :: #{
 %%   <<"IngressPointPasswordConfiguration">> => ingress_point_password_configuration(),
-%%   <<"SecretArn">> => string()
+%%   <<"SecretArn">> => string(),
+%%   <<"TlsAuthConfiguration">> => tls_auth_configuration()
 %% }
 -type ingress_point_auth_configuration() :: #{binary() => any()}.
 
@@ -1471,6 +1491,7 @@
 
 %% Example:
 %% get_ingress_point_request() :: #{
+%%   <<"IncludeTrustStoreContents">> => list(any()),
 %%   <<"IngressPointId">> := string()
 %% }
 -type get_ingress_point_request() :: #{binary() => any()}.
@@ -1515,6 +1536,18 @@
 -type get_member_of_address_list_request() :: #{binary() => any()}.
 
 %% Example:
+%% bounce_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"DiagnosticMessage">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Sender">> => string(),
+%%   <<"SmtpReplyCode">> => string(),
+%%   <<"StatusCode">> => string()
+%% }
+-type bounce_action() :: #{binary() => any()}.
+
+%% Example:
 %% add_header_action() :: #{
 %%   <<"HeaderName">> => string(),
 %%   <<"HeaderValue">> => string()
@@ -1529,6 +1562,14 @@
 -type archive_filters() :: #{binary() => any()}.
 
 %% Example:
+%% trust_store() :: #{
+%%   <<"CAContent">> => string(),
+%%   <<"CrlContent">> => string(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type trust_store() :: #{binary() => any()}.
+
+%% Example:
 %% create_address_list_response() :: #{
 %%   <<"AddressListId">> => string()
 %% }
@@ -1541,6 +1582,7 @@
     conflict_exception().
 
 -type create_addon_subscription_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
@@ -1595,6 +1637,7 @@
 
 -type delete_address_list_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     conflict_exception().
 
@@ -1627,7 +1670,8 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_addon_instance_errors() ::
     validation_exception() | 
@@ -1764,7 +1808,8 @@
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_address_list_import_job_errors() ::
     throttling_exception() | 

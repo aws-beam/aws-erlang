@@ -24,18 +24,34 @@
 %% their agreements.
 -module(aws_marketplace_agreement).
 
--export([cancel_agreement_payment_request/2,
+-export([batch_create_billing_adjustment_request/2,
+         batch_create_billing_adjustment_request/3,
+         cancel_agreement_cancellation_request/2,
+         cancel_agreement_cancellation_request/3,
+         cancel_agreement_payment_request/2,
          cancel_agreement_payment_request/3,
          describe_agreement/2,
          describe_agreement/3,
+         get_agreement_cancellation_request/2,
+         get_agreement_cancellation_request/3,
          get_agreement_payment_request/2,
          get_agreement_payment_request/3,
          get_agreement_terms/2,
          get_agreement_terms/3,
+         get_billing_adjustment_request/2,
+         get_billing_adjustment_request/3,
+         list_agreement_cancellation_requests/2,
+         list_agreement_cancellation_requests/3,
+         list_agreement_invoice_line_items/2,
+         list_agreement_invoice_line_items/3,
          list_agreement_payment_requests/2,
          list_agreement_payment_requests/3,
+         list_billing_adjustment_requests/2,
+         list_billing_adjustment_requests/3,
          search_agreements/2,
          search_agreements/3,
+         send_agreement_cancellation_request/2,
+         send_agreement_cancellation_request/3,
          send_agreement_payment_request/2,
          send_agreement_payment_request/3]).
 
@@ -43,10 +59,51 @@
 
 
 %% Example:
+%% batch_create_billing_adjustment_error() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type batch_create_billing_adjustment_error() :: #{binary() => any()}.
+
+%% Example:
+%% pricing_currency_amount() :: #{
+%%   <<"amount">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"maxAdjustmentAmount">> => string()
+%% }
+-type pricing_currency_amount() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_invoice_line_item_group_summary() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"invoiceBillingPeriod">> => invoice_billing_period(),
+%%   <<"invoiceId">> => string(),
+%%   <<"invoiceType">> => list(any()),
+%%   <<"invoicingEntity">> => invoicing_entity(),
+%%   <<"issuedTime">> => non_neg_integer(),
+%%   <<"pricingCurrencyAmount">> => pricing_currency_amount()
+%% }
+-type agreement_invoice_line_item_group_summary() :: #{binary() => any()}.
+
+%% Example:
 %% renewal_term_configuration() :: #{
 %%   <<"enableAutoRenew">> => boolean()
 %% }
 -type renewal_term_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_billing_adjustment_requests_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_billing_adjustment_requests_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_agreement_payment_requests_input() :: #{
@@ -79,6 +136,25 @@
 -type get_agreement_terms_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_input() :: #{
+%%   <<"billingAdjustmentRequestEntries">> := list(batch_create_billing_adjustment_request_entry())
+%% }
+-type batch_create_billing_adjustment_request_input() :: #{binary() => any()}.
+
+%% Example:
 %% estimated_charges() :: #{
 %%   <<"agreementValue">> => string(),
 %%   <<"currencyCode">> => string()
@@ -98,6 +174,22 @@
 %%   <<"value">> => string()
 %% }
 -type selector() :: #{binary() => any()}.
+
+%% Example:
+%% get_billing_adjustment_request_output() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"adjustmentReasonCode">> => list(any()),
+%%   <<"agreementId">> => string(),
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"originalInvoiceId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_billing_adjustment_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% support_term() :: #{
@@ -136,6 +228,13 @@
 -type acceptor() :: #{binary() => any()}.
 
 %% Example:
+%% invoicing_entity() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"legalName">> => string()
+%% }
+-type invoicing_entity() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_agreement_payment_request_input() :: #{
 %%   <<"agreementId">> := string(),
 %%   <<"paymentRequestId">> := string()
@@ -149,6 +248,19 @@
 %%   <<"version">> => string()
 %% }
 -type document_item() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_cancellation_request_summary() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type agreement_cancellation_request_summary() :: #{binary() => any()}.
 
 %% Example:
 %% send_agreement_payment_request_output() :: #{
@@ -176,6 +288,19 @@
 %%   <<"status">> => list(any())
 %% }
 -type agreement_view_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type cancel_agreement_cancellation_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -247,11 +372,37 @@
 -type proposer() :: #{binary() => any()}.
 
 %% Example:
+%% get_billing_adjustment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"billingAdjustmentRequestId">> := string()
+%% }
+-type get_billing_adjustment_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string()
+%% }
+-type get_agreement_cancellation_request_input() :: #{binary() => any()}.
+
+%% Example:
 %% grant_item() :: #{
 %%   <<"dimensionKey">> => string(),
 %%   <<"maxQuantity">> => integer()
 %% }
 -type grant_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_entry() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"adjustmentReasonCode">> => list(any()),
+%%   <<"agreementId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"originalInvoiceId">> => string()
+%% }
+-type batch_create_billing_adjustment_request_entry() :: #{binary() => any()}.
 
 %% Example:
 %% legal_term() :: #{
@@ -261,11 +412,25 @@
 -type legal_term() :: #{binary() => any()}.
 
 %% Example:
+%% batch_create_billing_adjustment_item() :: #{
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_create_billing_adjustment_item() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_output() :: #{
+%%   <<"errors">> => list(batch_create_billing_adjustment_error()),
+%%   <<"items">> => list(batch_create_billing_adjustment_item())
+%% }
+-type batch_create_billing_adjustment_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% payment_schedule_term() :: #{
@@ -295,6 +460,13 @@
 %%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_invoice_line_items_output() :: #{
+%%   <<"agreementInvoiceLineItemGroupSummaries">> => list(agreement_invoice_line_item_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_invoice_line_items_output() :: #{binary() => any()}.
 
 %% Example:
 %% sort() :: #{
@@ -334,6 +506,21 @@
 -type fixed_upfront_pricing_term() :: #{binary() => any()}.
 
 %% Example:
+%% billing_adjustment_summary() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"originalInvoiceId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type billing_adjustment_summary() :: #{binary() => any()}.
+
+%% Example:
 %% search_agreements_input() :: #{
 %%   <<"catalog">> => string(),
 %%   <<"filters">> => list(filter()),
@@ -358,6 +545,27 @@
 -type payment_request_summary() :: #{binary() => any()}.
 
 %% Example:
+%% send_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type send_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_cancellation_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> := list(any())
+%% }
+-type send_agreement_cancellation_request_input() :: #{binary() => any()}.
+
+%% Example:
 %% constraints() :: #{
 %%   <<"multipleDimensionSelection">> => string(),
 %%   <<"quantityConfiguration">> => string()
@@ -370,6 +578,13 @@
 %%   <<"requestId">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_cancellation_requests_output() :: #{
+%%   <<"items">> => list(agreement_cancellation_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_cancellation_requests_output() :: #{binary() => any()}.
 
 %% Example:
 %% configurable_upfront_rate_card_item() :: #{
@@ -420,6 +635,13 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_billing_adjustment_requests_output() :: #{
+%%   <<"items">> => list(billing_adjustment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_billing_adjustment_requests_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_agreement_payment_request_input() :: #{
 %%   <<"agreementId">> := string(),
 %%   <<"paymentRequestId">> := string()
@@ -451,11 +673,52 @@
 -type validity_term() :: #{binary() => any()}.
 
 %% Example:
+%% list_agreement_invoice_line_items_input() :: #{
+%%   <<"afterIssuedTime">> => non_neg_integer(),
+%%   <<"agreementId">> := string(),
+%%   <<"beforeIssuedTime">> => non_neg_integer(),
+%%   <<"groupBy">> := list(any()),
+%%   <<"invoiceBillingPeriod">> => invoice_billing_period(),
+%%   <<"invoiceId">> => string(),
+%%   <<"invoiceType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_invoice_line_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string(),
+%%   <<"cancellationReason">> := string()
+%% }
+-type cancel_agreement_cancellation_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_billing_period() :: #{
+%%   <<"month">> => [integer()],
+%%   <<"year">> => [integer()]
+%% }
+-type invoice_billing_period() :: #{binary() => any()}.
+
+%% Example:
 %% rate_card_item() :: #{
 %%   <<"dimensionKey">> => string(),
 %%   <<"price">> => string()
 %% }
 -type rate_card_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_cancellation_requests_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"partyType">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_agreement_cancellation_requests_input() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_agreement_payment_request_output() :: #{
@@ -494,6 +757,21 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type batch_create_billing_adjustment_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type cancel_agreement_cancellation_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type cancel_agreement_payment_request_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -503,6 +781,13 @@
     conflict_exception().
 
 -type describe_agreement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agreement_cancellation_request_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -523,7 +808,33 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_billing_adjustment_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agreement_cancellation_requests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_agreement_invoice_line_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_agreement_payment_requests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_billing_adjustment_requests_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -534,6 +845,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type send_agreement_cancellation_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type send_agreement_payment_request_errors() ::
     throttling_exception() | 
@@ -546,6 +865,57 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Allows sellers (proposers) to submit billing adjustment requests for
+%% one or more invoices within an agreement.
+%%
+%% Each entry in the batch specifies an invoice and the adjustment amount.
+%% The operation returns successfully created adjustment request IDs and any
+%% errors for entries that failed validation.
+%%
+%% Each entry requires a unique `clientToken' for idempotency. A
+%% `ValidationException' is returned if the adjustment amount exceeds the
+%% maximum refundable amount for the invoice.
+-spec batch_create_billing_adjustment_request(aws_client:aws_client(), batch_create_billing_adjustment_request_input()) ->
+    {ok, batch_create_billing_adjustment_request_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_billing_adjustment_request_errors(), tuple()}.
+batch_create_billing_adjustment_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_create_billing_adjustment_request(Client, Input, []).
+
+-spec batch_create_billing_adjustment_request(aws_client:aws_client(), batch_create_billing_adjustment_request_input(), proplists:proplist()) ->
+    {ok, batch_create_billing_adjustment_request_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_billing_adjustment_request_errors(), tuple()}.
+batch_create_billing_adjustment_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchCreateBillingAdjustmentRequest">>, Input, Options).
+
+%% @doc Allows sellers (proposers) to withdraw an existing agreement
+%% cancellation request that is in a pending state.
+%%
+%% Once cancelled, the cancellation request transitions to `CANCELLED'
+%% status and can no longer be approved or rejected by the buyer.
+%%
+%% Only cancellation requests in `PENDING_APPROVAL' status can be
+%% cancelled. A `ConflictException' is thrown if the cancellation request
+%% is in any other status.
+-spec cancel_agreement_cancellation_request(aws_client:aws_client(), cancel_agreement_cancellation_request_input()) ->
+    {ok, cancel_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_cancellation_request_errors(), tuple()}.
+cancel_agreement_cancellation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_agreement_cancellation_request(Client, Input, []).
+
+-spec cancel_agreement_cancellation_request(aws_client:aws_client(), cancel_agreement_cancellation_request_input(), proplists:proplist()) ->
+    {ok, cancel_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_cancellation_request_errors(), tuple()}.
+cancel_agreement_cancellation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelAgreementCancellationRequest">>, Input, Options).
 
 %% @doc Allows sellers (proposers) to cancel a payment request that is in
 %% `PENDING_APPROVAL' status.
@@ -589,6 +959,31 @@ describe_agreement(Client, Input)
 describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
+
+%% @doc Retrieves detailed information about a specific agreement
+%% cancellation request.
+%%
+%% Both sellers (proposers) and buyers (acceptors) can use this operation to
+%% view cancellation requests associated with their agreements.
+%%
+%% The calling identity must be either the acceptor or proposer of the
+%% agreement. A `ResourceNotFoundException' is returned if the
+%% cancellation request does not exist.
+-spec get_agreement_cancellation_request(aws_client:aws_client(), get_agreement_cancellation_request_input()) ->
+    {ok, get_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_cancellation_request_errors(), tuple()}.
+get_agreement_cancellation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_cancellation_request(Client, Input, []).
+
+-spec get_agreement_cancellation_request(aws_client:aws_client(), get_agreement_cancellation_request_input(), proplists:proplist()) ->
+    {ok, get_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_cancellation_request_errors(), tuple()}.
+get_agreement_cancellation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementCancellationRequest">>, Input, Options).
 
 %% @doc Retrieves detailed information about a specific payment request.
 %%
@@ -651,6 +1046,82 @@ get_agreement_terms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementTerms">>, Input, Options).
 
+%% @doc Retrieves detailed information about a specific billing adjustment
+%% request.
+%%
+%% Sellers (proposers) can use this operation to view the status and details
+%% of a billing adjustment request they submitted.
+%%
+%% A `ResourceNotFoundException' is returned if the billing adjustment
+%% request does not exist or the caller does not have permission to access
+%% it.
+-spec get_billing_adjustment_request(aws_client:aws_client(), get_billing_adjustment_request_input()) ->
+    {ok, get_billing_adjustment_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_billing_adjustment_request_errors(), tuple()}.
+get_billing_adjustment_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_billing_adjustment_request(Client, Input, []).
+
+-spec get_billing_adjustment_request(aws_client:aws_client(), get_billing_adjustment_request_input(), proplists:proplist()) ->
+    {ok, get_billing_adjustment_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_billing_adjustment_request_errors(), tuple()}.
+get_billing_adjustment_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBillingAdjustmentRequest">>, Input, Options).
+
+%% @doc Lists agreement cancellation requests available to you as a seller or
+%% buyer.
+%%
+%% Both sellers (proposers) and buyers (acceptors) can use this operation to
+%% find cancellation requests by specifying their party type and applying
+%% optional filters.
+%%
+%% `PartyType' is a required parameter. A `ValidationException' is
+%% returned if `PartyType' is not provided. Pagination is supported
+%% through `maxResults' (1-50, default 20) and `nextToken'
+%% parameters.
+-spec list_agreement_cancellation_requests(aws_client:aws_client(), list_agreement_cancellation_requests_input()) ->
+    {ok, list_agreement_cancellation_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_cancellation_requests_errors(), tuple()}.
+list_agreement_cancellation_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreement_cancellation_requests(Client, Input, []).
+
+-spec list_agreement_cancellation_requests(aws_client:aws_client(), list_agreement_cancellation_requests_input(), proplists:proplist()) ->
+    {ok, list_agreement_cancellation_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_cancellation_requests_errors(), tuple()}.
+list_agreement_cancellation_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreementCancellationRequests">>, Input, Options).
+
+%% @doc Allows sellers (proposers) to retrieve aggregated billing data from
+%% AWS Marketplace agreements using flexible grouping.
+%%
+%% Supports invoice-level aggregation with filtering by billing period,
+%% invoice type, and issued date.
+%%
+%% The `groupBy' parameter is required and currently supports only
+%% `INVOICE_ID' as a value. The `agreementId' parameter is required.
+-spec list_agreement_invoice_line_items(aws_client:aws_client(), list_agreement_invoice_line_items_input()) ->
+    {ok, list_agreement_invoice_line_items_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_invoice_line_items_errors(), tuple()}.
+list_agreement_invoice_line_items(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreement_invoice_line_items(Client, Input, []).
+
+-spec list_agreement_invoice_line_items(aws_client:aws_client(), list_agreement_invoice_line_items_input(), proplists:proplist()) ->
+    {ok, list_agreement_invoice_line_items_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_invoice_line_items_errors(), tuple()}.
+list_agreement_invoice_line_items(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreementInvoiceLineItems">>, Input, Options).
+
 %% @doc Lists payment requests available to you as a seller or buyer.
 %%
 %% Both sellers (proposers) and buyers (acceptors) can use this operation to
@@ -676,6 +1147,29 @@ list_agreement_payment_requests(Client, Input)
 list_agreement_payment_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgreementPaymentRequests">>, Input, Options).
+
+%% @doc Lists billing adjustment requests for a specific agreement.
+%%
+%% Sellers (proposers) can use this operation to view all billing adjustment
+%% requests associated with an agreement.
+%%
+%% Pagination is supported through `maxResults' and `nextToken'
+%% parameters.
+-spec list_billing_adjustment_requests(aws_client:aws_client(), list_billing_adjustment_requests_input()) ->
+    {ok, list_billing_adjustment_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_billing_adjustment_requests_errors(), tuple()}.
+list_billing_adjustment_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_billing_adjustment_requests(Client, Input, []).
+
+-spec list_billing_adjustment_requests(aws_client:aws_client(), list_billing_adjustment_requests_input(), proplists:proplist()) ->
+    {ok, list_billing_adjustment_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_billing_adjustment_requests_errors(), tuple()}.
+list_billing_adjustment_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBillingAdjustmentRequests">>, Input, Options).
 
 %% @doc Searches across all agreements that a proposer has in AWS
 %% Marketplace.
@@ -784,6 +1278,27 @@ search_agreements(Client, Input)
 search_agreements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchAgreements">>, Input, Options).
+
+%% @doc Allows sellers (proposers) to submit a cancellation request for an
+%% active agreement.
+%%
+%% The cancellation request is created in `PENDING_APPROVAL' status, at
+%% which point the buyer can review it.
+-spec send_agreement_cancellation_request(aws_client:aws_client(), send_agreement_cancellation_request_input()) ->
+    {ok, send_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, send_agreement_cancellation_request_errors(), tuple()}.
+send_agreement_cancellation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_agreement_cancellation_request(Client, Input, []).
+
+-spec send_agreement_cancellation_request(aws_client:aws_client(), send_agreement_cancellation_request_input(), proplists:proplist()) ->
+    {ok, send_agreement_cancellation_request_output(), tuple()} |
+    {error, any()} |
+    {error, send_agreement_cancellation_request_errors(), tuple()}.
+send_agreement_cancellation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendAgreementCancellationRequest">>, Input, Options).
 
 %% @doc Allows sellers (proposers) to submit a payment request to buyers
 %% (acceptors) for a specific charge amount for an agreement that includes a

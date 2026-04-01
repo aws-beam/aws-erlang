@@ -211,6 +211,16 @@
 
 
 %% Example:
+%% iceberg_schema_v2() :: #{
+%%   <<"fields">> => list(schema_v2_field()),
+%%   <<"identifierFieldIds">> => list([integer()]()),
+%%   <<"schemaId">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type iceberg_schema_v2() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_table_metadata_location_request() :: #{
 %%   <<"metadataLocation">> := string(),
 %%   <<"versionToken">> := string()
@@ -565,6 +575,7 @@
 %%   <<"partitionSpec">> => iceberg_partition_spec(),
 %%   <<"properties">> => map(),
 %%   <<"schema">> => iceberg_schema(),
+%%   <<"schemaV2">> => iceberg_schema_v2(),
 %%   <<"writeOrder">> => iceberg_sort_order()
 %% }
 -type iceberg_metadata() :: #{binary() => any()}.
@@ -583,6 +594,17 @@
 %%   <<"tables">> => list(table_summary())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_v2_field() :: #{
+%%   <<"doc">> => [string()],
+%%   <<"id">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => [any()]
+%% }
+-type schema_v2_field() :: #{binary() => any()}.
 
 
 %% Example:
