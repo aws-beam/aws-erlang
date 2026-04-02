@@ -1971,7 +1971,7 @@
 %%   <<"Key">> => string(),
 %%   <<"OptimizeRoutingFor">> => string(),
 %%   <<"Origins">> := list(route_matrix_origin()),
-%%   <<"RoutingBoundary">> := route_matrix_boundary(),
+%%   <<"RoutingBoundary">> => route_matrix_boundary(),
 %%   <<"Traffic">> => route_matrix_traffic_options(),
 %%   <<"TravelMode">> => string(),
 %%   <<"TravelModeOptions">> => route_matrix_travel_mode_options()
@@ -2041,8 +2041,32 @@
 %% API
 %%====================================================================
 
-%% @doc Use the `CalculateIsolines' action to find service areas that can
-%% be reached in a given threshold of time, distance.
+%% @doc Calculates areas that can be reached within specified time or
+%% distance thresholds from a given point.
+%%
+%% For example, you can use this operation to determine the area within a
+%% 30-minute drive of a store location, find neighborhoods within walking
+%% distance of a school, or identify delivery zones based on drive time.
+%%
+%% Isolines (also known as isochrones for time-based calculations) are useful
+%% for various applications including:
+%%
+%% Service area visualization - Show customers the area you can serve within
+%% promised delivery times
+%%
+%% Site selection - Analyze potential business locations based on population
+%% within travel distance
+%%
+%% Site selection - Determine areas that can be reached within specified
+%% response times
+%%
+%% Route preferences such as avoiding toll roads or ferries are treated as
+%% preferences rather than absolute restrictions. If a viable route cannot be
+%% calculated while honoring all preferences, some may be ignored.
+%%
+%% For more information, see Calculate isolines:
+%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-isolines.html
+%% in the Amazon Location Service Developer Guide.
 -spec calculate_isolines(aws_client:aws_client(), calculate_isolines_request()) ->
     {ok, calculate_isolines_response(), tuple()} |
     {error, any()} |
@@ -2099,6 +2123,10 @@ calculate_isolines(Client, Input0, Options0) ->
 %% Each row corresponds to one entry in Origins. Each entry in the row
 %% corresponds to the route from that entry in Origins to an entry in
 %% Destinations positions.
+%%
+%% For more information, see Calculate route matrix:
+%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html
+%% in the Amazon Location Service Developer Guide.
 -spec calculate_route_matrix(aws_client:aws_client(), calculate_route_matrix_request()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
@@ -2151,6 +2179,10 @@ calculate_route_matrix(Client, Input0, Options0) ->
 
 %% @doc `CalculateRoutes' computes routes given the following required
 %% parameters: `Origin' and `Destination'.
+%%
+%% For more information, see Calculate routes:
+%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-routes.html
+%% in the Amazon Location Service Developer Guide.
 -spec calculate_routes(aws_client:aws_client(), calculate_routes_request()) ->
     {ok, calculate_routes_response(), tuple()} |
     {error, any()} |
@@ -2205,6 +2237,10 @@ calculate_routes(Client, Input0, Options0) ->
 %% between a set of waypoints to minimize either the travel time or the
 %% distance travelled during the journey, based on road network restrictions
 %% and the traffic pattern data.
+%%
+%% For more information, see Optimize waypoints:
+%% https://docs.aws.amazon.com/location/latest/developerguide/actions-optimize-waypoints.html
+%% in the Amazon Location Service Developer Guide.
 -spec optimize_waypoints(aws_client:aws_client(), optimize_waypoints_request()) ->
     {ok, optimize_waypoints_response(), tuple()} |
     {error, any()} |
@@ -2256,6 +2292,10 @@ optimize_waypoints(Client, Input0, Options0) ->
     end.
 
 %% @doc `SnapToRoads' matches GPS trace to roads most likely traveled on.
+%%
+%% For more information, see Snap to Roads:
+%% https://docs.aws.amazon.com/location/latest/developerguide/snap-to-roads.html
+%% in the Amazon Location Service Developer Guide.
 -spec snap_to_roads(aws_client:aws_client(), snap_to_roads_request()) ->
     {ok, snap_to_roads_response(), tuple()} |
     {error, any()} |

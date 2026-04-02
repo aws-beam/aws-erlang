@@ -156,6 +156,13 @@
 
 
 %% Example:
+%% not_acceptable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type not_acceptable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_image_set_versions_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
@@ -280,6 +287,7 @@
 %% Example:
 %% update_image_set_metadata_request() :: #{
 %%   <<"force">> => [boolean()],
+%%   <<"includeStudyImageSets">> => [boolean()],
 %%   <<"latestVersionId">> := string(),
 %%   <<"updateImageSetMetadataUpdates">> := list()
 %% }
@@ -531,6 +539,13 @@
 
 
 %% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_image_set_metadata_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"datastoreId">> => string(),
@@ -662,12 +677,14 @@
     resource_not_found_exception().
 
 -type get_image_frame_errors() ::
+    bad_request_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    not_acceptable_exception().
 
 -type get_image_set_errors() ::
     throttling_exception() | 
@@ -1458,6 +1475,7 @@ update_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"force">>, <<"force">>},
+                     {<<"includeStudyImageSets">>, <<"includeStudyImageSets">>},
                      {<<"latestVersion">>, <<"latestVersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),

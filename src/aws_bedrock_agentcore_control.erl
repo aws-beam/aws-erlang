@@ -704,6 +704,14 @@
 
 
 %% Example:
+%% iam_credential_provider() :: #{
+%%   <<"region">> => [string()],
+%%   <<"service">> => [string()]
+%% }
+-type iam_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
 %% decryption_failure() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -916,6 +924,8 @@
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1126,6 +1136,7 @@
 %%   <<"description">> => string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> := string(),
+%%   <<"privateEndpoint">> => list(),
 %%   <<"targetConfiguration">> := list()
 %% }
 -type create_gateway_target_request() :: #{binary() => any()}.
@@ -1167,6 +1178,8 @@
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1421,6 +1434,8 @@
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1804,6 +1819,15 @@
 %%   <<"modelId">> => [string()]
 %% }
 -type episodic_override_extraction_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_resource_details() :: #{
+%%   <<"domain">> => string(),
+%%   <<"resourceAssociationArn">> => string(),
+%%   <<"resourceGatewayArn">> => string()
+%% }
+-type managed_resource_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2339,6 +2363,8 @@
 %%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -2713,6 +2739,18 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_online_evaluation_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_lattice_resource() :: #{
+%%   <<"endpointIpAddressType">> => list(any()),
+%%   <<"routingDomain">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type managed_lattice_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3109,6 +3147,7 @@
 %%   <<"description">> => string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> := string(),
+%%   <<"privateEndpoint">> => list(),
 %%   <<"targetConfiguration">> := list()
 %% }
 -type update_gateway_target_request() :: #{binary() => any()}.

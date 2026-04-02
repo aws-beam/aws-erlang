@@ -939,6 +939,13 @@
 
 
 %% Example:
+%% session_filter() :: #{
+%%   <<"eventFilter">> => list(any())
+%% }
+-type session_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% event() :: #{
 %%   <<"actorId">> => string(),
 %%   <<"branch">> => branch(),
@@ -1322,6 +1329,7 @@
 
 %% Example:
 %% list_sessions_input() :: #{
+%%   <<"filter">> => session_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }

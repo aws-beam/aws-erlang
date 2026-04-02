@@ -28,6 +28,8 @@
          create_capacity_provider/3,
          create_cluster/2,
          create_cluster/3,
+         create_daemon/2,
+         create_daemon/3,
          create_express_gateway_service/2,
          create_express_gateway_service/3,
          create_service/2,
@@ -42,6 +44,10 @@
          delete_capacity_provider/3,
          delete_cluster/2,
          delete_cluster/3,
+         delete_daemon/2,
+         delete_daemon/3,
+         delete_daemon_task_definition/2,
+         delete_daemon_task_definition/3,
          delete_express_gateway_service/2,
          delete_express_gateway_service/3,
          delete_service/2,
@@ -60,6 +66,14 @@
          describe_clusters/3,
          describe_container_instances/2,
          describe_container_instances/3,
+         describe_daemon/2,
+         describe_daemon/3,
+         describe_daemon_deployments/2,
+         describe_daemon_deployments/3,
+         describe_daemon_revisions/2,
+         describe_daemon_revisions/3,
+         describe_daemon_task_definition/2,
+         describe_daemon_task_definition/3,
          describe_express_gateway_service/2,
          describe_express_gateway_service/3,
          describe_service_deployments/2,
@@ -88,6 +102,12 @@
          list_clusters/3,
          list_container_instances/2,
          list_container_instances/3,
+         list_daemon_deployments/2,
+         list_daemon_deployments/3,
+         list_daemon_task_definitions/2,
+         list_daemon_task_definitions/3,
+         list_daemons/2,
+         list_daemons/3,
          list_service_deployments/2,
          list_service_deployments/3,
          list_services/2,
@@ -112,6 +132,8 @@
          put_cluster_capacity_providers/3,
          register_container_instance/2,
          register_container_instance/3,
+         register_daemon_task_definition/2,
+         register_daemon_task_definition/3,
          register_task_definition/2,
          register_task_definition/3,
          run_task/2,
@@ -142,6 +164,8 @@
          update_container_agent/3,
          update_container_instances_state/2,
          update_container_instances_state/3,
+         update_daemon/2,
+         update_daemon/3,
          update_express_gateway_service/2,
          update_express_gateway_service/3,
          update_service/2,
@@ -226,6 +250,13 @@
 %%   <<"failures">> => list(failure())
 %% }
 -type update_container_instances_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_deployments_response() :: #{
+%%   <<"daemonDeployments">> => list(daemon_deployment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemon_deployments_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_service_deployments_request() :: #{
@@ -391,6 +422,12 @@
 -type service_deployment_circuit_breaker() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type daemon_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% inference_accelerator() :: #{
 %%   <<"deviceName">> => string(),
 %%   <<"deviceType">> => string()
@@ -405,6 +442,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type managed_metric_alarm() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_circuit_breaker() :: #{
+%%   <<"failureCount">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"threshold">> => integer()
+%% }
+-type daemon_circuit_breaker() :: #{binary() => any()}.
 
 %% Example:
 %% run_task_response() :: #{
@@ -521,6 +566,14 @@
 -type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"triggeredAlarmNames">> => list(string())
+%% }
+-type daemon_deployment_alarms() :: #{binary() => any()}.
+
+%% Example:
 %% task_override() :: #{
 %%   <<"containerOverrides">> => list(container_override()),
 %%   <<"cpu">> => string(),
@@ -559,6 +612,13 @@
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_task_definitions_response() :: #{
+%%   <<"daemonTaskDefinitions">> => list(daemon_task_definition_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemon_task_definitions_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_account_setting_default_request() :: #{
@@ -689,6 +749,14 @@
 -type update_task_set_request() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_revision_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capacityProviders">> => list(daemon_capacity_provider()),
+%%   <<"totalRunningCount">> => integer()
+%% }
+-type daemon_revision_detail() :: #{binary() => any()}.
+
+%% Example:
 %% service_deployment_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -728,6 +796,15 @@
 %%   <<"runningTaskCount">> => integer()
 %% }
 -type service_revision_summary() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment_revision_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capacityProviders">> => list(daemon_deployment_capacity_provider()),
+%%   <<"totalDrainingInstanceCount">> => integer(),
+%%   <<"totalRunningInstanceCount">> => integer()
+%% }
+-type daemon_deployment_revision_detail() :: #{binary() => any()}.
 
 %% Example:
 %% target_not_connected_exception() :: #{
@@ -796,11 +873,24 @@
 -type host_entry() :: #{binary() => any()}.
 
 %% Example:
+%% list_daemons_response() :: #{
+%%   <<"daemonSummariesList">> => list(daemon_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemons_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_express_gateway_service_request() :: #{
 %%   <<"include">> => list(list(any())()),
 %%   <<"serviceArn">> := string()
 %% }
 -type describe_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_deployments_request() :: #{
+%%   <<"daemonDeploymentArns">> := list(string())
+%% }
+-type describe_daemon_deployments_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_task_definitions_request() :: #{
@@ -811,6 +901,21 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_daemon_task_definition_request() :: #{
+%%   <<"daemonTaskDefinition">> := string()
+%% }
+-type delete_daemon_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_rollback() :: #{
+%%   <<"reason">> => string(),
+%%   <<"rollbackCapacityProviders">> => list(string()),
+%%   <<"rollbackTargetDaemonRevisionArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer()
+%% }
+-type daemon_rollback() :: #{binary() => any()}.
 
 %% Example:
 %% service_deployment_brief() :: #{
@@ -834,6 +939,13 @@
 -type task_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_alarm_configuration() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"enable">> => boolean()
+%% }
+-type daemon_alarm_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% managed_agent_state_change() :: #{
 %%   <<"containerName">> => string(),
 %%   <<"managedAgentName">> => list(any()),
@@ -854,6 +966,12 @@
 %%   <<"taskSet">> => task_set()
 %% }
 -type delete_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_response() :: #{
+%%   <<"daemon">> => daemon_detail()
+%% }
+-type describe_daemon_response() :: #{binary() => any()}.
 
 %% Example:
 %% express_gateway_service_status() :: #{
@@ -937,6 +1055,26 @@
 -type managed_agent() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_detail() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentRevisions">> => list(daemon_revision_detail()),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type daemon_detail() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment_configuration() :: #{
+%%   <<"alarms">> => daemon_alarm_configuration(),
+%%   <<"bakeTimeInMinutes">> => integer(),
+%%   <<"drainPercent">> => float()
+%% }
+-type daemon_deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% cluster_configuration() :: #{
 %%   <<"executeCommandConfiguration">> => execute_command_configuration(),
 %%   <<"managedStorageConfiguration">> => managed_storage_configuration()
@@ -998,6 +1136,20 @@
 -type describe_services_response() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_revision() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"containerImages">> => list(daemon_container_image()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"daemonRevisionArn">> => string(),
+%%   <<"daemonTaskDefinitionArn">> => string(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type daemon_revision() :: #{binary() => any()}.
+
+%% Example:
 %% task_managed_ebs_volume_termination_policy() :: #{
 %%   <<"deleteOnTermination">> => boolean()
 %% }
@@ -1010,10 +1162,23 @@
 -type deregister_task_definition_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinition">> => daemon_task_definition()
+%% }
+-type describe_daemon_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_express_gateway_service_request() :: #{
 %%   <<"serviceArn">> := string()
 %% }
 -type delete_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_capacity_provider() :: #{
+%%   <<"arn">> => string(),
+%%   <<"runningCount">> => integer()
+%% }
+-type daemon_capacity_provider() :: #{binary() => any()}.
 
 %% Example:
 %% namespace_not_found_exception() :: #{
@@ -1026,6 +1191,15 @@
 %%   <<"message">> => string()
 %% }
 -type unsupported_feature_exception() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type daemon_summary() :: #{binary() => any()}.
 
 %% Example:
 %% deployment_configuration() :: #{
@@ -1081,6 +1255,26 @@
 -type service_connect_access_log_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% list_daemon_task_definitions_request() :: #{
+%%   <<"family">> => string(),
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"revision">> => list(any()),
+%%   <<"sort">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_daemon_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_container_image() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"image">> => string(),
+%%   <<"imageDigest">> => string()
+%% }
+-type daemon_container_image() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"capacityProviders">> => list(string()),
 %%   <<"clusterName">> => string(),
@@ -1125,6 +1319,15 @@
 -type service_connect_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_linux_parameters() :: #{
+%%   <<"capabilities">> => kernel_capabilities(),
+%%   <<"devices">> => list(device()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"tmpfs">> => list(tmpfs())
+%% }
+-type daemon_linux_parameters() :: #{binary() => any()}.
+
+%% Example:
 %% client_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1152,6 +1355,18 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_daemon_request() :: #{
+%%   <<"capacityProviderArns">> := list(string()),
+%%   <<"daemonArn">> := string(),
+%%   <<"daemonTaskDefinitionArn">> := string(),
+%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type update_daemon_request() :: #{binary() => any()}.
 
 %% Example:
 %% container_definition() :: #{
@@ -1234,6 +1449,15 @@
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_daemon_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_daemon_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_task_definitions_response() :: #{
@@ -1321,6 +1545,21 @@
 %%   <<"status">> => string()
 %% }
 -type attachment_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment_summary() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"daemonDeploymentArn">> => string(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"targetDaemonRevisionArn">> => string()
+%% }
+-type daemon_deployment_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_services_response() :: #{
@@ -1507,6 +1746,13 @@
 -type container_state_change() :: #{binary() => any()}.
 
 %% Example:
+%% describe_daemon_deployments_response() :: #{
+%%   <<"daemonDeployments">> => list(daemon_deployment()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_daemon_deployments_response() :: #{binary() => any()}.
+
+%% Example:
 %% secret() :: #{
 %%   <<"name">> => string(),
 %%   <<"valueFrom">> => string()
@@ -1633,6 +1879,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type managed_log_group() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_volume() :: #{
+%%   <<"host">> => host_volume_properties(),
+%%   <<"name">> => string()
+%% }
+-type daemon_volume() :: #{binary() => any()}.
 
 %% Example:
 %% update_managed_instances_provider_configuration() :: #{
@@ -1769,6 +2022,7 @@
 %%   <<"compatibilities">> => list(list(any())()),
 %%   <<"containerDefinitions">> => list(container_definition()),
 %%   <<"cpu">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
 %%   <<"deregisteredAt">> => non_neg_integer(),
 %%   <<"enableFaultInjection">> => boolean(),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
@@ -1800,6 +2054,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_container_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_daemon_request() :: #{
+%%   <<"daemonArn">> := string()
+%% }
+-type delete_daemon_request() :: #{binary() => any()}.
 
 %% Example:
 %% network_bandwidth_gbps_request() :: #{
@@ -1843,6 +2103,19 @@
 -type update_service_request() :: #{binary() => any()}.
 
 %% Example:
+%% register_daemon_task_definition_request() :: #{
+%%   <<"containerDefinitions">> := list(daemon_container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> := string(),
+%%   <<"memory">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(daemon_volume())
+%% }
+-type register_daemon_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
 %% ebs_tag_specification() :: #{
 %%   <<"propagateTags">> => list(any()),
 %%   <<"resourceType">> => list(any()),
@@ -1869,6 +2142,16 @@
 %%   <<"telemetryEndpoint">> => string()
 %% }
 -type discover_poll_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_task_definition_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type daemon_task_definition_summary() :: #{binary() => any()}.
 
 %% Example:
 %% instance_launch_template_update() :: #{
@@ -1915,6 +2198,16 @@
 %%   <<"capacityProvider">> => capacity_provider()
 %% }
 -type update_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_deployments_request() :: #{
+%%   <<"createdAt">> => created_at(),
+%%   <<"daemonArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_daemon_deployments_request() :: #{binary() => any()}.
 
 %% Example:
 %% platform_unknown_exception() :: #{
@@ -2002,6 +2295,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_task_definition_families_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemons_request() :: #{
+%%   <<"capacityProviderArns">> => list(string()),
+%%   <<"clusterArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemons_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cluster_request() :: #{
@@ -2119,6 +2421,12 @@
 -type managed_instances_local_storage_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% register_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinitionArn">> => string()
+%% }
+-type register_daemon_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
 %% missing_version_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2135,6 +2443,16 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_daemon_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_daemon_response() :: #{binary() => any()}.
 
 %% Example:
 %% register_task_definition_request() :: #{
@@ -2184,6 +2502,14 @@
 -type auto_scaling_group_provider() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_deployment_capacity_provider() :: #{
+%%   <<"arn">> => string(),
+%%   <<"drainingInstanceCount">> => integer(),
+%%   <<"runningInstanceCount">> => integer()
+%% }
+-type daemon_deployment_capacity_provider() :: #{binary() => any()}.
+
+%% Example:
 %% e_c_s_express_gateway_service() :: #{
 %%   <<"activeConfigurations">> => list(express_gateway_service_configuration()),
 %%   <<"cluster">> => string(),
@@ -2216,11 +2542,32 @@
 -type port_mapping() :: #{binary() => any()}.
 
 %% Example:
+%% create_daemon_request() :: #{
+%%   <<"capacityProviderArns">> := list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"clusterArn">> => string(),
+%%   <<"daemonName">> := string(),
+%%   <<"daemonTaskDefinitionArn">> := string(),
+%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_daemon_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_clusters_response() :: #{
 %%   <<"clusters">> => list(cluster()),
 %%   <<"failures">> => list(failure())
 %% }
 -type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_request() :: #{
+%%   <<"daemonArn">> := string()
+%% }
+-type describe_daemon_request() :: #{binary() => any()}.
 
 %% Example:
 %% advanced_configuration() :: #{
@@ -2312,6 +2659,24 @@
 %%   <<"service">> := string()
 %% }
 -type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_task_definition() :: #{
+%%   <<"containerDefinitions">> => list(daemon_container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"daemonTaskDefinitionArn">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> => string(),
+%%   <<"memory">> => string(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"revision">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(daemon_volume())
+%% }
+-type daemon_task_definition() :: #{binary() => any()}.
 
 %% Example:
 %% linux_parameters() :: #{
@@ -2436,6 +2801,7 @@
 %% list_tasks_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"containerInstance">> => string(),
+%%   <<"daemonName">> => string(),
 %%   <<"desiredStatus">> => list(any()),
 %%   <<"family">> => string(),
 %%   <<"launchType">> => list(any()),
@@ -2460,6 +2826,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_capacity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinitionArn">> => string()
+%% }
+-type delete_daemon_task_definition_response() :: #{binary() => any()}.
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -2501,6 +2873,12 @@
 %%   <<"testTrafficRules">> => service_connect_test_traffic_rules()
 %% }
 -type service_connect_client_alias() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_task_definition_request() :: #{
+%%   <<"daemonTaskDefinition">> := string()
+%% }
+-type describe_daemon_task_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% aws_vpc_configuration() :: #{
@@ -2650,6 +3028,12 @@
 -type managed_security_group() :: #{binary() => any()}.
 
 %% Example:
+%% daemon_not_active_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type daemon_not_active_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_attributes_request() :: #{
 %%   <<"attributeName">> => string(),
 %%   <<"attributeValue">> => string(),
@@ -2659,6 +3043,13 @@
 %%   <<"targetType">> := list(any())
 %% }
 -type list_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_revisions_response() :: #{
+%%   <<"daemonRevisions">> => list(daemon_revision()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_daemon_revisions_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_response() :: #{
@@ -2693,6 +3084,40 @@
 %%   <<"min">> => float()
 %% }
 -type total_local_storage_g_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_container_definition() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"cpu">> => integer(),
+%%   <<"dependsOn">> => list(container_dependency()),
+%%   <<"entryPoint">> => list(string()),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"environmentFiles">> => list(environment_file()),
+%%   <<"essential">> => boolean(),
+%%   <<"firelensConfiguration">> => firelens_configuration(),
+%%   <<"healthCheck">> => health_check(),
+%%   <<"image">> => string(),
+%%   <<"interactive">> => boolean(),
+%%   <<"linuxParameters">> => daemon_linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"memory">> => integer(),
+%%   <<"memoryReservation">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()),
+%%   <<"name">> => string(),
+%%   <<"privileged">> => boolean(),
+%%   <<"pseudoTerminal">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"restartPolicy">> => container_restart_policy(),
+%%   <<"secrets">> => list(secret()),
+%%   <<"startTimeout">> => integer(),
+%%   <<"stopTimeout">> => integer(),
+%%   <<"systemControls">> => list(system_control()),
+%%   <<"ulimits">> => list(ulimit()),
+%%   <<"user">> => string(),
+%%   <<"workingDirectory">> => string()
+%% }
+-type daemon_container_definition() :: #{binary() => any()}.
 
 %% Example:
 %% submit_attachment_state_changes_request() :: #{
@@ -2837,6 +3262,12 @@
 -type stop_service_deployment_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_daemon_revisions_request() :: #{
+%%   <<"daemonRevisionArns">> := list(string())
+%% }
+-type describe_daemon_revisions_request() :: #{binary() => any()}.
+
+%% Example:
 %% service_connect_tls_certificate_authority() :: #{
 %%   <<"awsPcaAuthorityArn">> => string()
 %% }
@@ -2861,6 +3292,25 @@
 %%   <<"value">> => string()
 %% }
 -type resource_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment() :: #{
+%%   <<"alarms">> => daemon_deployment_alarms(),
+%%   <<"circuitBreaker">> => daemon_circuit_breaker(),
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonDeploymentArn">> => string(),
+%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"rollback">> => daemon_rollback(),
+%%   <<"sourceDaemonRevisions">> => list(daemon_deployment_revision_detail()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"targetDaemonRevision">> => daemon_deployment_revision_detail()
+%% }
+-type daemon_deployment() :: #{binary() => any()}.
 
 %% Example:
 %% firelens_configuration() :: #{
@@ -2888,6 +3338,16 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type updated_express_gateway_service() :: #{binary() => any()}.
+
+%% Example:
+%% delete_daemon_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_daemon_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_primary_task_set_response() :: #{
@@ -3062,6 +3522,15 @@
     client_exception() | 
     namespace_not_found_exception().
 
+-type create_daemon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
 -type create_express_gateway_service_errors() ::
     server_exception() | 
     platform_task_definition_incompatibility_exception() | 
@@ -3123,6 +3592,22 @@
     client_exception() | 
     cluster_not_found_exception() | 
     update_in_progress_exception().
+
+-type delete_daemon_errors() ::
+    daemon_not_active_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception() | 
+    daemon_not_found_exception().
+
+-type delete_daemon_task_definition_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
 
 -type delete_express_gateway_service_errors() ::
     server_exception() | 
@@ -3186,6 +3671,37 @@
     invalid_parameter_exception() | 
     client_exception() | 
     cluster_not_found_exception().
+
+-type describe_daemon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception() | 
+    daemon_not_found_exception().
+
+-type describe_daemon_deployments_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type describe_daemon_revisions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type describe_daemon_task_definition_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
 
 -type describe_express_gateway_service_errors() ::
     server_exception() | 
@@ -3282,6 +3798,28 @@
     client_exception() | 
     cluster_not_found_exception().
 
+-type list_daemon_deployments_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type list_daemon_task_definitions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
+
+-type list_daemons_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
 -type list_service_deployments_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -3352,6 +3890,13 @@
 -type register_container_instance_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    client_exception().
+
+-type register_daemon_task_definition_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type register_task_definition_errors() ::
@@ -3458,6 +4003,17 @@
     invalid_parameter_exception() | 
     client_exception() | 
     cluster_not_found_exception().
+
+-type update_daemon_errors() ::
+    daemon_not_active_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception() | 
+    daemon_not_found_exception().
 
 -type update_express_gateway_service_errors() ::
     server_exception() | 
@@ -3571,6 +4127,38 @@ create_cluster(Client, Input)
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
+
+%% @doc Creates a new daemon in the specified cluster and capacity providers.
+%%
+%% A daemon deploys cross-cutting software agents such as security
+%% monitoring, telemetry, and logging independently across your Amazon ECS
+%% infrastructure.
+%%
+%% Amazon ECS deploys exactly one daemon task on each container instance of
+%% the specified capacity providers. When a container instance registers with
+%% the cluster, Amazon ECS automatically starts daemon tasks. Amazon ECS
+%% starts a daemon task before scheduling other tasks.
+%%
+%% Daemons are essential for instance health - if a daemon task stops, Amazon
+%% ECS automatically drains and replaces that container instance.
+%%
+%% ECS Managed Daemons is only supported for Amazon ECS Managed Instances
+%% Capacity Providers.
+-spec create_daemon(aws_client:aws_client(), create_daemon_request()) ->
+    {ok, create_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, create_daemon_errors(), tuple()}.
+create_daemon(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_daemon(Client, Input, []).
+
+-spec create_daemon(aws_client:aws_client(), create_daemon_request(), proplists:proplist()) ->
+    {ok, create_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, create_daemon_errors(), tuple()}.
+create_daemon(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDaemon">>, Input, Options).
 
 %% @doc Creates an Express service that simplifies deploying containerized
 %% web applications on Amazon ECS with managed Amazon Web Services
@@ -3949,6 +4537,55 @@ delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
+%% @doc Deletes the specified daemon.
+%%
+%% The daemon must be in an `ACTIVE' state to be deleted. Deleting a
+%% daemon stops all running daemon tasks on the associated container
+%% instances. Amazon ECS drains existing container instances and provisions
+%% new instances without the deleted daemon. Amazon ECS automatically
+%% launches replacement tasks for your Amazon ECS services.
+%%
+%% ECS Managed Daemons is only supported for Amazon ECS Managed Instances
+%% Capacity Providers.
+-spec delete_daemon(aws_client:aws_client(), delete_daemon_request()) ->
+    {ok, delete_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, delete_daemon_errors(), tuple()}.
+delete_daemon(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_daemon(Client, Input, []).
+
+-spec delete_daemon(aws_client:aws_client(), delete_daemon_request(), proplists:proplist()) ->
+    {ok, delete_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, delete_daemon_errors(), tuple()}.
+delete_daemon(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDaemon">>, Input, Options).
+
+%% @doc Deletes the specified daemon task definition.
+%%
+%% After a daemon task definition is deleted, no new daemons can be created
+%% using this definition. Existing daemons that reference the deleted daemon
+%% task definition continue to run.
+%%
+%% A daemon task definition must be in an `ACTIVE' state to be deleted.
+-spec delete_daemon_task_definition(aws_client:aws_client(), delete_daemon_task_definition_request()) ->
+    {ok, delete_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_daemon_task_definition_errors(), tuple()}.
+delete_daemon_task_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_daemon_task_definition(Client, Input, []).
+
+-spec delete_daemon_task_definition(aws_client:aws_client(), delete_daemon_task_definition_request(), proplists:proplist()) ->
+    {ok, delete_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_daemon_task_definition_errors(), tuple()}.
+delete_daemon_task_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDaemonTaskDefinition">>, Input, Options).
+
 %% @doc Deletes an Express service and removes all associated Amazon Web
 %% Services resources.
 %%
@@ -4218,6 +4855,88 @@ describe_container_instances(Client, Input)
 describe_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
+
+%% @doc Describes the specified daemon.
+-spec describe_daemon(aws_client:aws_client(), describe_daemon_request()) ->
+    {ok, describe_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_errors(), tuple()}.
+describe_daemon(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_daemon(Client, Input, []).
+
+-spec describe_daemon(aws_client:aws_client(), describe_daemon_request(), proplists:proplist()) ->
+    {ok, describe_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_errors(), tuple()}.
+describe_daemon(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDaemon">>, Input, Options).
+
+%% @doc Describes one or more of your daemon deployments.
+%%
+%% A daemon deployment orchestrates the progressive rollout of daemon task
+%% updates across container instances managed by the daemon's capacity
+%% providers. Each deployment includes circuit breaker and alarm-based
+%% rollback capabilities.
+-spec describe_daemon_deployments(aws_client:aws_client(), describe_daemon_deployments_request()) ->
+    {ok, describe_daemon_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_deployments_errors(), tuple()}.
+describe_daemon_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_daemon_deployments(Client, Input, []).
+
+-spec describe_daemon_deployments(aws_client:aws_client(), describe_daemon_deployments_request(), proplists:proplist()) ->
+    {ok, describe_daemon_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_deployments_errors(), tuple()}.
+describe_daemon_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDaemonDeployments">>, Input, Options).
+
+%% @doc Describes one or more of your daemon revisions.
+%%
+%% A daemon revision is a snapshot of a daemon's configuration at the
+%% time a deployment was initiated. It captures the daemon task definition,
+%% container images, tag propagation, and execute command settings. Daemon
+%% revisions are immutable.
+-spec describe_daemon_revisions(aws_client:aws_client(), describe_daemon_revisions_request()) ->
+    {ok, describe_daemon_revisions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_revisions_errors(), tuple()}.
+describe_daemon_revisions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_daemon_revisions(Client, Input, []).
+
+-spec describe_daemon_revisions(aws_client:aws_client(), describe_daemon_revisions_request(), proplists:proplist()) ->
+    {ok, describe_daemon_revisions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_revisions_errors(), tuple()}.
+describe_daemon_revisions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDaemonRevisions">>, Input, Options).
+
+%% @doc Describes a daemon task definition.
+%%
+%% You can specify a `family' and `revision' to find information
+%% about a specific daemon task definition, or you can simply specify the
+%% family to find the latest `ACTIVE' revision in that family.
+-spec describe_daemon_task_definition(aws_client:aws_client(), describe_daemon_task_definition_request()) ->
+    {ok, describe_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_task_definition_errors(), tuple()}.
+describe_daemon_task_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_daemon_task_definition(Client, Input, []).
+
+-spec describe_daemon_task_definition(aws_client:aws_client(), describe_daemon_task_definition_request(), proplists:proplist()) ->
+    {ok, describe_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_daemon_task_definition_errors(), tuple()}.
+describe_daemon_task_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDaemonTaskDefinition">>, Input, Options).
 
 %% @doc Retrieves detailed information about an Express service, including
 %% current status, configuration, managed infrastructure, and service
@@ -4527,6 +5246,65 @@ list_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerInstances">>, Input, Options).
 
+%% @doc Returns a list of daemon deployments for a specified daemon.
+%%
+%% You can filter the results by status or creation time.
+-spec list_daemon_deployments(aws_client:aws_client(), list_daemon_deployments_request()) ->
+    {ok, list_daemon_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemon_deployments_errors(), tuple()}.
+list_daemon_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_daemon_deployments(Client, Input, []).
+
+-spec list_daemon_deployments(aws_client:aws_client(), list_daemon_deployments_request(), proplists:proplist()) ->
+    {ok, list_daemon_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemon_deployments_errors(), tuple()}.
+list_daemon_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDaemonDeployments">>, Input, Options).
+
+%% @doc Returns a list of daemon task definitions that are registered to your
+%% account.
+%%
+%% You can filter the results by family name, status, or both to find daemon
+%% task definitions that match your criteria.
+-spec list_daemon_task_definitions(aws_client:aws_client(), list_daemon_task_definitions_request()) ->
+    {ok, list_daemon_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemon_task_definitions_errors(), tuple()}.
+list_daemon_task_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_daemon_task_definitions(Client, Input, []).
+
+-spec list_daemon_task_definitions(aws_client:aws_client(), list_daemon_task_definitions_request(), proplists:proplist()) ->
+    {ok, list_daemon_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemon_task_definitions_errors(), tuple()}.
+list_daemon_task_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDaemonTaskDefinitions">>, Input, Options).
+
+%% @doc Returns a list of daemons.
+%%
+%% You can filter the results by cluster or capacity provider.
+-spec list_daemons(aws_client:aws_client(), list_daemons_request()) ->
+    {ok, list_daemons_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemons_errors(), tuple()}.
+list_daemons(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_daemons(Client, Input, []).
+
+-spec list_daemons(aws_client:aws_client(), list_daemons_request(), proplists:proplist()) ->
+    {ok, list_daemons_response(), tuple()} |
+    {error, any()} |
+    {error, list_daemons_errors(), tuple()}.
+list_daemons(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDaemons">>, Input, Options).
+
 %% @doc This operation lists all the service deployments that meet the
 %% specified filter criteria.
 %%
@@ -4815,6 +5593,39 @@ register_container_instance(Client, Input)
 register_container_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterContainerInstance">>, Input, Options).
+
+%% @doc Registers a new daemon task definition from the supplied `family'
+%% and `containerDefinitions'.
+%%
+%% Optionally, you can add data volumes to your containers with the
+%% `volumes' parameter. For more information, see Daemon task
+%% definitions:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/daemon-task-definitions.html
+%% in the Amazon Elastic Container Service Developer Guide.
+%%
+%% A daemon task definition is a template that describes the containers that
+%% form a daemon. Daemons deploy cross-cutting software agents such as
+%% security monitoring, telemetry, and logging across your Amazon ECS
+%% infrastructure.
+%%
+%% Each time you call `RegisterDaemonTaskDefinition', a new revision of
+%% the daemon task definition is created. You can't modify a revision
+%% after you register it.
+-spec register_daemon_task_definition(aws_client:aws_client(), register_daemon_task_definition_request()) ->
+    {ok, register_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, register_daemon_task_definition_errors(), tuple()}.
+register_daemon_task_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_daemon_task_definition(Client, Input, []).
+
+-spec register_daemon_task_definition(aws_client:aws_client(), register_daemon_task_definition_request(), proplists:proplist()) ->
+    {ok, register_daemon_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, register_daemon_task_definition_errors(), tuple()}.
+register_daemon_task_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterDaemonTaskDefinition">>, Input, Options).
 
 %% @doc Registers a new task definition from the supplied `family' and
 %% `containerDefinitions'.
@@ -5306,6 +6117,41 @@ update_container_instances_state(Client, Input)
 update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
+
+%% @doc Updates the specified daemon.
+%%
+%% When you update a daemon, a new deployment is triggered that progressively
+%% rolls out the changes to the container instances associated with the
+%% daemon's capacity providers. For more information, see Daemon
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/daemon-deployments.html
+%% in the Amazon Elastic Container Service Developer Guide.
+%%
+%% Amazon ECS drains existing container instances and provisions new
+%% instances with the updated daemon. Amazon ECS automatically launches
+%% replacement tasks for your services.
+%%
+%% Updating a daemon triggers a rolling deployment that drains and replaces
+%% container instances. Plan updates during maintenance windows to minimize
+%% impact on running services.
+%%
+%% ECS Managed Daemons is only supported for Amazon ECS Managed Instances
+%% Capacity Providers.
+-spec update_daemon(aws_client:aws_client(), update_daemon_request()) ->
+    {ok, update_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, update_daemon_errors(), tuple()}.
+update_daemon(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_daemon(Client, Input, []).
+
+-spec update_daemon(aws_client:aws_client(), update_daemon_request(), proplists:proplist()) ->
+    {ok, update_daemon_response(), tuple()} |
+    {error, any()} |
+    {error, update_daemon_errors(), tuple()}.
+update_daemon(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDaemon">>, Input, Options).
 
 %% @doc Updates an existing Express service configuration.
 %%

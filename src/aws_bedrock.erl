@@ -3607,6 +3607,7 @@
 %% model_invocation_job_summary() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorRecordCount">> => float(),
 %%   <<"inputDataConfig">> => list(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobExpirationTime">> => non_neg_integer(),
@@ -3616,10 +3617,13 @@
 %%   <<"modelId">> => string(),
 %%   <<"modelInvocationType">> => list(any()),
 %%   <<"outputDataConfig">> => list(),
+%%   <<"processedRecordCount">> => float(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"submitTime">> => non_neg_integer(),
+%%   <<"successRecordCount">> => float(),
 %%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"totalRecordCount">> => float(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type model_invocation_job_summary() :: #{binary() => any()}.
@@ -3880,6 +3884,7 @@
 %% get_model_invocation_job_response() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorRecordCount">> => float(),
 %%   <<"inputDataConfig">> => list(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobExpirationTime">> => non_neg_integer(),
@@ -3889,10 +3894,13 @@
 %%   <<"modelId">> => string(),
 %%   <<"modelInvocationType">> => list(any()),
 %%   <<"outputDataConfig">> => list(),
+%%   <<"processedRecordCount">> => float(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"submitTime">> => non_neg_integer(),
+%%   <<"successRecordCount">> => float(),
 %%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"totalRecordCount">> => float(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type get_model_invocation_job_response() :: #{binary() => any()}.
