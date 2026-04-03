@@ -986,7 +986,7 @@ autocomplete(Client, Input) ->
     {error, autocomplete_errors(), tuple()}.
 autocomplete(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/autocomplete"],
+    Path = ["/v2/autocomplete"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1048,7 +1048,7 @@ geocode(Client, Input) ->
     {error, geocode_errors(), tuple()}.
 geocode(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/geocode"],
+    Path = ["/v2/geocode"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1114,7 +1114,7 @@ get_place(Client, PlaceId, QueryMap, HeadersMap)
     {error, get_place_errors(), tuple()}.
 get_place(Client, PlaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/place/", aws_util:encode_uri(PlaceId), ""],
+    Path = ["/v2/place/", aws_util:encode_uri(PlaceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1177,7 +1177,7 @@ reverse_geocode(Client, Input) ->
     {error, reverse_geocode_errors(), tuple()}.
 reverse_geocode(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/reverse-geocode"],
+    Path = ["/v2/reverse-geocode"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1238,7 +1238,7 @@ search_nearby(Client, Input) ->
     {error, search_nearby_errors(), tuple()}.
 search_nearby(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/search-nearby"],
+    Path = ["/v2/search-nearby"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1296,7 +1296,7 @@ search_text(Client, Input) ->
     {error, search_text_errors(), tuple()}.
 search_text(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/search-text"],
+    Path = ["/v2/search-text"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1362,7 +1362,7 @@ suggest(Client, Input) ->
     {error, suggest_errors(), tuple()}.
 suggest(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/suggest"],
+    Path = ["/v2/suggest"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

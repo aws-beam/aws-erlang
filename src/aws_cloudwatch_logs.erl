@@ -1538,6 +1538,7 @@
 %% csv() :: #{
 %%   <<"columns">> => list(string()),
 %%   <<"delimiter">> => string(),
+%%   <<"destination">> => string(),
 %%   <<"quoteCharacter">> => string(),
 %%   <<"source">> => string()
 %% }

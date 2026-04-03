@@ -3000,6 +3000,7 @@
 
 %% Example:
 %% game_session() :: #{
+%%   <<"ComputeName">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CreatorId">> => string(),
 %%   <<"CurrentPlayerSessionCount">> => integer(),

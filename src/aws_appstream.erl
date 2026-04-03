@@ -155,6 +155,8 @@
          disassociate_fleet/3,
          disassociate_software_from_image_builder/2,
          disassociate_software_from_image_builder/3,
+         drain_session_instance/2,
+         drain_session_instance/3,
          enable_user/2,
          enable_user/3,
          expire_session/2,
@@ -339,6 +341,12 @@
 %%   <<"Entitlement">> => entitlement()
 %% }
 -type create_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% drain_session_instance_result() :: #{
+
+%% }
+-type drain_session_instance_result() :: #{binary() => any()}.
 
 %% Example:
 %% stop_app_block_builder_result() :: #{
@@ -926,6 +934,9 @@
 %%   <<"AvailableUserSessions">> => integer(),
 %%   <<"Desired">> => integer(),
 %%   <<"DesiredUserSessions">> => integer(),
+%%   <<"DrainModeActiveUserSessions">> => integer(),
+%%   <<"DrainModeUnusedUserSessions">> => integer(),
+%%   <<"Draining">> => integer(),
 %%   <<"InUse">> => integer(),
 %%   <<"Running">> => integer()
 %% }
@@ -1217,6 +1228,12 @@
 -type describe_directory_configs_request() :: #{binary() => any()}.
 
 %% Example:
+%% drain_session_instance_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type drain_session_instance_request() :: #{binary() => any()}.
+
+%% Example:
 %% storage_connector() :: #{
 %%   <<"ConnectorType">> => list(any()),
 %%   <<"Domains">> => list(string()),
@@ -1359,6 +1376,7 @@
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"FleetName">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"InstanceDrainStatus">> => list(any()),
 %%   <<"InstanceId">> => string(),
 %%   <<"MaxExpirationTime">> => non_neg_integer(),
 %%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
@@ -2557,6 +2575,11 @@
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_combination_exception().
+
+-type drain_session_instance_errors() ::
+    concurrent_modification_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
 
 -type enable_user_errors() ::
     invalid_account_status_exception() | 
@@ -3924,6 +3947,27 @@ disassociate_software_from_image_builder(Client, Input)
 disassociate_software_from_image_builder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSoftwareFromImageBuilder">>, Input, Options).
+
+%% @doc Drains the instance hosting the specified streaming session.
+%%
+%% The instance stops accepting new sessions while existing sessions continue
+%% uninterrupted. Once all sessions end, the instance is reclaimed and
+%% replaced. This only applies to multi-session fleets.
+-spec drain_session_instance(aws_client:aws_client(), drain_session_instance_request()) ->
+    {ok, drain_session_instance_result(), tuple()} |
+    {error, any()} |
+    {error, drain_session_instance_errors(), tuple()}.
+drain_session_instance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    drain_session_instance(Client, Input, []).
+
+-spec drain_session_instance(aws_client:aws_client(), drain_session_instance_request(), proplists:proplist()) ->
+    {ok, drain_session_instance_result(), tuple()} |
+    {error, any()} |
+    {error, drain_session_instance_errors(), tuple()}.
+drain_session_instance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DrainSessionInstance">>, Input, Options).
 
 %% @doc Enables a user in the user pool.
 %%

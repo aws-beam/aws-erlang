@@ -355,6 +355,14 @@
 
 
 %% Example:
+%% o_auth2_authorization_data() :: #{
+%%   <<"authorizationUrl">> => [string()],
+%%   <<"userId">> => [string()]
+%% }
+-type o_auth2_authorization_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_summary() :: #{
 %%   <<"browserArn">> => string(),
 %%   <<"browserId">> => string(),
@@ -917,6 +925,7 @@
 
 %% Example:
 %% get_gateway_target_response() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -1171,6 +1180,7 @@
 
 %% Example:
 %% create_gateway_target_response() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -1427,6 +1437,7 @@
 
 %% Example:
 %% update_gateway_target_response() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -2356,6 +2367,7 @@
 
 %% Example:
 %% gateway_target() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -2940,7 +2952,8 @@
 
 %% Example:
 %% mcp_server_target_configuration() :: #{
-%%   <<"endpoint">> => [string()]
+%%   <<"endpoint">> => [string()],
+%%   <<"mcpToolSchema">> => list()
 %% }
 -type mcp_server_target_configuration() :: #{binary() => any()}.
 
@@ -4849,6 +4862,11 @@ delete_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a gateway target.
+%%
+%% You cannot delete a target that is in a pending authorization state
+%% (`CREATE_PENDING_AUTH', `UPDATE_PENDING_AUTH', or
+%% `SYNCHRONIZE_PENDING_AUTH'). Wait for the authorization to complete or
+%% fail before deleting the target.
 -spec delete_gateway_target(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_target_request()) ->
     {ok, delete_gateway_target_response(), tuple()} |
     {error, any()} |
@@ -6681,7 +6699,17 @@ start_policy_generation(Client, PolicyEngineId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The gateway targets.
+%% @doc Synchronizes the gateway targets by fetching the latest tool
+%% definitions from the target endpoints.
+%%
+%% You cannot synchronize a target that is in a pending authorization state
+%% (`CREATE_PENDING_AUTH', `UPDATE_PENDING_AUTH', or
+%% `SYNCHRONIZE_PENDING_AUTH'). Wait for the authorization to complete or
+%% fail before synchronizing.
+%%
+%% You cannot synchronize a target that has a static tool schema
+%% (`mcpToolSchema') configured. Remove the static schema through an
+%% `UpdateGatewayTarget' call to enable dynamic tool synchronization.
 -spec synchronize_gateway_targets(aws_client:aws_client(), binary() | list(), synchronize_gateway_targets_request()) ->
     {ok, synchronize_gateway_targets_response(), tuple()} |
     {error, any()} |
@@ -6970,6 +6998,11 @@ update_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing gateway target.
+%%
+%% You cannot update a target that is in a pending authorization state
+%% (`CREATE_PENDING_AUTH', `UPDATE_PENDING_AUTH', or
+%% `SYNCHRONIZE_PENDING_AUTH'). Wait for the authorization to complete or
+%% fail before updating the target.
 -spec update_gateway_target(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_target_request()) ->
     {ok, update_gateway_target_response(), tuple()} |
     {error, any()} |

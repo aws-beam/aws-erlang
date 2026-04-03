@@ -10,22 +10,40 @@
          create_blueprint/3,
          create_blueprint_version/3,
          create_blueprint_version/4,
+         create_data_automation_library/2,
+         create_data_automation_library/3,
          create_data_automation_project/2,
          create_data_automation_project/3,
          delete_blueprint/3,
          delete_blueprint/4,
+         delete_data_automation_library/3,
+         delete_data_automation_library/4,
          delete_data_automation_project/3,
          delete_data_automation_project/4,
          get_blueprint/3,
          get_blueprint/4,
          get_blueprint_optimization_status/3,
          get_blueprint_optimization_status/4,
+         get_data_automation_library/3,
+         get_data_automation_library/4,
+         get_data_automation_library_entity/5,
+         get_data_automation_library_entity/6,
+         get_data_automation_library_ingestion_job/4,
+         get_data_automation_library_ingestion_job/5,
          get_data_automation_project/3,
          get_data_automation_project/4,
          invoke_blueprint_optimization_async/2,
          invoke_blueprint_optimization_async/3,
+         invoke_data_automation_library_ingestion_job/3,
+         invoke_data_automation_library_ingestion_job/4,
          list_blueprints/2,
          list_blueprints/3,
+         list_data_automation_libraries/2,
+         list_data_automation_libraries/3,
+         list_data_automation_library_entities/4,
+         list_data_automation_library_entities/5,
+         list_data_automation_library_ingestion_jobs/3,
+         list_data_automation_library_ingestion_jobs/4,
          list_data_automation_projects/2,
          list_data_automation_projects/3,
          list_tags_for_resource/2,
@@ -36,6 +54,8 @@
          untag_resource/3,
          update_blueprint/3,
          update_blueprint/4,
+         update_data_automation_library/3,
+         update_data_automation_library/4,
          update_data_automation_project/3,
          update_data_automation_project/4]).
 
@@ -112,6 +132,22 @@
 
 
 %% Example:
+%% update_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_entities_response() :: #{
+%%   <<"entities">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_entities_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% sensitive_data_configuration() :: #{
 %%   <<"detectionMode">> => list(any()),
 %%   <<"detectionScope">> => list(list(any())()),
@@ -167,6 +203,13 @@
 
 
 %% Example:
+%% data_automation_library_item() :: #{
+%%   <<"libraryArn">> => string()
+%% }
+-type data_automation_library_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% override_configuration() :: #{
 %%   <<"audio">> => audio_override_configuration(),
 %%   <<"document">> => document_override_configuration(),
@@ -187,6 +230,7 @@
 %% Example:
 %% update_data_automation_project_request() :: #{
 %%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"overrideConfiguration">> => override_configuration(),
 %%   <<"projectDescription">> => string(),
@@ -211,6 +255,7 @@
 %% Example:
 %% list_data_automation_projects_request() :: #{
 %%   <<"blueprintFilter">> => blueprint_filter(),
+%%   <<"libraryFilter">> => data_automation_library_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"projectStageFilter">> => list(any()),
@@ -279,6 +324,13 @@
 
 
 %% Example:
+%% invoke_data_automation_library_ingestion_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type invoke_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_automation_project_response() :: #{
 %%   <<"projectArn">> => string(),
 %%   <<"projectStage">> => list(any()),
@@ -318,10 +370,33 @@
 
 
 %% Example:
+%% delete_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_entities_info() :: #{
+%%   <<"entityIds">> => list(string())
+%% }
+-type delete_entities_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_extraction_granularity() :: #{
 %%   <<"types">> => list(list(any())())
 %% }
 -type document_extraction_granularity() :: #{binary() => any()}.
+
+
+%% Example:
+%% phrase() :: #{
+%%   <<"displayAsText">> => string(),
+%%   <<"text">> => string()
+%% }
+-type phrase() :: #{binary() => any()}.
 
 
 %% Example:
@@ -331,6 +406,13 @@
 %%   <<"targetStage">> := list(any())
 %% }
 -type copy_blueprint_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_filter() :: #{
+%%   <<"libraryArn">> => string()
+%% }
+-type data_automation_library_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -345,6 +427,10 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_automation_library_entity_request() :: #{}
+-type get_data_automation_library_entity_request() :: #{}.
 
 
 %% Example:
@@ -394,10 +480,24 @@
 
 
 %% Example:
+%% get_data_automation_library_response() :: #{
+%%   <<"library">> => data_automation_library()
+%% }
+-type get_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_output_additional_file_format() :: #{
 %%   <<"state">> => list(any())
 %% }
 -type document_output_additional_file_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_automation_library_entity_response() :: #{
+%%   <<"entity">> => list()
+%% }
+-type get_data_automation_library_entity_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -411,6 +511,7 @@
 %% create_data_automation_project_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"overrideConfiguration">> => override_configuration(),
 %%   <<"projectDescription">> => string(),
@@ -428,6 +529,15 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_libraries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectFilter">> => data_automation_project_filter()
+%% }
+-type list_data_automation_libraries_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,6 +562,14 @@
 %%   <<"types">> => list(list(any())())
 %% }
 -type audio_extraction_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_ingestion_jobs_response() :: #{
+%%   <<"jobs">> => list(data_automation_library_ingestion_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_ingestion_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -491,9 +609,25 @@
 
 
 %% Example:
+%% data_automation_library_configuration() :: #{
+%%   <<"libraries">> => list(data_automation_library_item())
+%% }
+-type data_automation_library_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_configuration() :: #{
+%%   <<"inlinePayload">> => list(),
+%%   <<"s3Object">> => s3_object()
+%% }
+-type input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_automation_project() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
 %%   <<"kmsEncryptionContext">> => map(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
@@ -507,6 +641,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type data_automation_project() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_automation_library_request() :: #{}
+-type delete_data_automation_library_request() :: #{}.
 
 
 %% Example:
@@ -538,6 +676,10 @@
 %% }
 -type create_blueprint_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_automation_library_request() :: #{}
+-type get_data_automation_library_request() :: #{}.
+
 
 %% Example:
 %% update_blueprint_request() :: #{
@@ -546,6 +688,24 @@
 %%   <<"schema">> := string()
 %% }
 -type update_blueprint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"eventBridgeConfiguration">> => event_bridge_configuration()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vocabulary_entity() :: #{
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"phrases">> => list(phrase())
+%% }
+-type vocabulary_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -569,6 +729,13 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_configuration() :: #{
+%%   <<"eventBridgeEnabled">> => [boolean()]
+%% }
+-type event_bridge_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,6 +768,13 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_configuration() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -644,6 +818,17 @@
 %%   <<"state">> => list(any())
 %% }
 -type modality_processing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_library_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"libraryDescription">> => string(),
+%%   <<"libraryName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_data_automation_library_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -691,6 +876,27 @@
 
 
 %% Example:
+%% invoke_data_automation_library_ingestion_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"entityType">> := list(any()),
+%%   <<"inputConfiguration">> := input_configuration(),
+%%   <<"notificationConfiguration">> => notification_configuration(),
+%%   <<"operationType">> := list(any()),
+%%   <<"outputConfiguration">> := output_configuration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type invoke_data_automation_library_ingestion_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_entities_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_entities_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_blueprint_optimization_status_response() :: #{
 %%   <<"errorMessage">> => [string()],
 %%   <<"errorType">> => [string()],
@@ -731,6 +937,16 @@
 
 
 %% Example:
+%% vocabulary_entity_info() :: #{
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"phrases">> => list(phrase())
+%% }
+-type vocabulary_entity_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_extraction_category() :: #{
 %%   <<"state">> => list(any()),
 %%   <<"types">> => list(list(any())())
@@ -746,11 +962,60 @@
 
 
 %% Example:
+%% entity_type_info() :: #{
+%%   <<"entityMetadata">> => string(),
+%%   <<"entityType">> => list(any())
+%% }
+-type entity_type_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_automation_project_filter() :: #{
 %%   <<"projectArn">> => string(),
 %%   <<"projectStage">> => list(any())
 %% }
 -type data_automation_project_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityTypes">> => list(entity_type_info()),
+%%   <<"kmsEncryptionContext">> => map(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"libraryArn">> => string(),
+%%   <<"libraryDescription">> => string(),
+%%   <<"libraryName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type data_automation_library() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_ingestion_job_summary() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityType">> => list(any()),
+%%   <<"jobArn">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_automation_library_ingestion_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_ingestion_job() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityType">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => [string()],
+%%   <<"jobArn">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"operationType">> => list(any()),
+%%   <<"outputConfiguration">> => output_configuration()
+%% }
+-type data_automation_library_ingestion_job() :: #{binary() => any()}.
 
 
 %% Example:
@@ -761,14 +1026,41 @@
 
 
 %% Example:
+%% get_data_automation_library_ingestion_job_response() :: #{
+%%   <<"job">> => data_automation_library_ingestion_job()
+%% }
+-type get_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_automation_project_request() :: #{
 %%   <<"projectStage">> => list(any())
 %% }
 -type get_data_automation_project_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_data_automation_library_ingestion_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_ingestion_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_automation_library_ingestion_job_request() :: #{}
+-type get_data_automation_library_ingestion_job_request() :: #{}.
+
 %% Example:
 %% delete_data_automation_project_request() :: #{}
 -type delete_data_automation_project_request() :: #{}.
+
+
+%% Example:
+%% update_data_automation_library_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"libraryDescription">> => string()
+%% }
+-type update_data_automation_library_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,11 +1101,47 @@
 
 
 %% Example:
+%% vocabulary_entity_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"numOfPhrases">> => [integer()]
+%% }
+-type vocabulary_entity_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_output_format() :: #{
 %%   <<"additionalFileFormat">> => document_output_additional_file_format(),
 %%   <<"textFormat">> => document_output_text_format()
 %% }
 -type document_output_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_libraries_response() :: #{
+%%   <<"libraries">> => list(data_automation_library_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_libraries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"libraryArn">> => string(),
+%%   <<"libraryName">> => string()
+%% }
+-type data_automation_library_summary() :: #{binary() => any()}.
 
 -type copy_blueprint_stage_errors() ::
     throttling_exception() | 
@@ -838,6 +1166,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type create_data_automation_library_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_data_automation_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -852,6 +1188,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_data_automation_library_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_data_automation_project_errors() ::
     throttling_exception() | 
@@ -874,6 +1218,27 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_data_automation_library_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_automation_library_entity_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_automation_library_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_automation_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -889,7 +1254,36 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type invoke_data_automation_library_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type list_blueprints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_automation_libraries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_data_automation_library_entities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_automation_library_ingestion_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -926,6 +1320,14 @@
     resource_not_found_exception().
 
 -type update_blueprint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_automation_library_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1049,6 +1451,40 @@ create_blueprint_version(Client, BlueprintArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Amazon Bedrock Data Automation Library
+-spec create_data_automation_library(aws_client:aws_client(), create_data_automation_library_request()) ->
+    {ok, create_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_automation_library_errors(), tuple()}.
+create_data_automation_library(Client, Input) ->
+    create_data_automation_library(Client, Input, []).
+
+-spec create_data_automation_library(aws_client:aws_client(), create_data_automation_library_request(), proplists:proplist()) ->
+    {ok, create_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_automation_library_errors(), tuple()}.
+create_data_automation_library(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-automation-libraries/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon Bedrock Data Automation Project
 -spec create_data_automation_project(aws_client:aws_client(), create_data_automation_project_request()) ->
     {ok, create_data_automation_project_response(), tuple()} |
@@ -1116,6 +1552,40 @@ delete_blueprint(Client, BlueprintArn, Input0, Options0) ->
                      {<<"blueprintVersion">>, <<"blueprintVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing Amazon Bedrock Data Automation Library
+-spec delete_data_automation_library(aws_client:aws_client(), binary() | list(), delete_data_automation_library_request()) ->
+    {ok, delete_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_automation_library_errors(), tuple()}.
+delete_data_automation_library(Client, LibraryArn, Input) ->
+    delete_data_automation_library(Client, LibraryArn, Input, []).
+
+-spec delete_data_automation_library(aws_client:aws_client(), binary() | list(), delete_data_automation_library_request(), proplists:proplist()) ->
+    {ok, delete_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_automation_library_errors(), tuple()}.
+delete_data_automation_library(Client, LibraryArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing Amazon Bedrock Data Automation Project
@@ -1220,6 +1690,108 @@ get_blueprint_optimization_status(Client, InvocationArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets an existing Amazon Bedrock Data Automation Library
+-spec get_data_automation_library(aws_client:aws_client(), binary() | list(), get_data_automation_library_request()) ->
+    {ok, get_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_errors(), tuple()}.
+get_data_automation_library(Client, LibraryArn, Input) ->
+    get_data_automation_library(Client, LibraryArn, Input, []).
+
+-spec get_data_automation_library(aws_client:aws_client(), binary() | list(), get_data_automation_library_request(), proplists:proplist()) ->
+    {ok, get_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_errors(), tuple()}.
+get_data_automation_library(Client, LibraryArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets an existing entity based on entity type from the library
+-spec get_data_automation_library_entity(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_data_automation_library_entity_request()) ->
+    {ok, get_data_automation_library_entity_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_entity_errors(), tuple()}.
+get_data_automation_library_entity(Client, EntityId, EntityType, LibraryArn, Input) ->
+    get_data_automation_library_entity(Client, EntityId, EntityType, LibraryArn, Input, []).
+
+-spec get_data_automation_library_entity(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_data_automation_library_entity_request(), proplists:proplist()) ->
+    {ok, get_data_automation_library_entity_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_entity_errors(), tuple()}.
+get_data_automation_library_entity(Client, EntityId, EntityType, LibraryArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/entityType/", aws_util:encode_uri(EntityType), "/entities/", aws_util:encode_uri(EntityId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc API used to get status of data automation library ingestion job
+-spec get_data_automation_library_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), get_data_automation_library_ingestion_job_request()) ->
+    {ok, get_data_automation_library_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_ingestion_job_errors(), tuple()}.
+get_data_automation_library_ingestion_job(Client, JobArn, LibraryArn, Input) ->
+    get_data_automation_library_ingestion_job(Client, JobArn, LibraryArn, Input, []).
+
+-spec get_data_automation_library_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), get_data_automation_library_ingestion_job_request(), proplists:proplist()) ->
+    {ok, get_data_automation_library_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_automation_library_ingestion_job_errors(), tuple()}.
+get_data_automation_library_ingestion_job(Client, JobArn, LibraryArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/library-ingestion-jobs/", aws_util:encode_uri(JobArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets an existing Amazon Bedrock Data Automation Project
 -spec get_data_automation_project(aws_client:aws_client(), binary() | list(), get_data_automation_project_request()) ->
     {ok, get_data_automation_project_response(), tuple()} |
@@ -1288,6 +1860,40 @@ invoke_blueprint_optimization_async(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Async API: Invoke data automation library ingestion job
+-spec invoke_data_automation_library_ingestion_job(aws_client:aws_client(), binary() | list(), invoke_data_automation_library_ingestion_job_request()) ->
+    {ok, invoke_data_automation_library_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_data_automation_library_ingestion_job_errors(), tuple()}.
+invoke_data_automation_library_ingestion_job(Client, LibraryArn, Input) ->
+    invoke_data_automation_library_ingestion_job(Client, LibraryArn, Input, []).
+
+-spec invoke_data_automation_library_ingestion_job(aws_client:aws_client(), binary() | list(), invoke_data_automation_library_ingestion_job_request(), proplists:proplist()) ->
+    {ok, invoke_data_automation_library_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_data_automation_library_ingestion_job_errors(), tuple()}.
+invoke_data_automation_library_ingestion_job(Client, LibraryArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/library-ingestion-jobs/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all existing Amazon Bedrock Data Automation Blueprints
 -spec list_blueprints(aws_client:aws_client(), list_blueprints_request()) ->
     {ok, list_blueprints_response(), tuple()} |
@@ -1303,6 +1909,108 @@ list_blueprints(Client, Input) ->
 list_blueprints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/blueprints/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all existing Amazon Bedrock Data Automation Libraries
+-spec list_data_automation_libraries(aws_client:aws_client(), list_data_automation_libraries_request()) ->
+    {ok, list_data_automation_libraries_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_libraries_errors(), tuple()}.
+list_data_automation_libraries(Client, Input) ->
+    list_data_automation_libraries(Client, Input, []).
+
+-spec list_data_automation_libraries(aws_client:aws_client(), list_data_automation_libraries_request(), proplists:proplist()) ->
+    {ok, list_data_automation_libraries_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_libraries_errors(), tuple()}.
+list_data_automation_libraries(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all stored entities in the library
+-spec list_data_automation_library_entities(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_automation_library_entities_request()) ->
+    {ok, list_data_automation_library_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_library_entities_errors(), tuple()}.
+list_data_automation_library_entities(Client, EntityType, LibraryArn, Input) ->
+    list_data_automation_library_entities(Client, EntityType, LibraryArn, Input, []).
+
+-spec list_data_automation_library_entities(aws_client:aws_client(), binary() | list(), binary() | list(), list_data_automation_library_entities_request(), proplists:proplist()) ->
+    {ok, list_data_automation_library_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_library_entities_errors(), tuple()}.
+list_data_automation_library_entities(Client, EntityType, LibraryArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/entityType/", aws_util:encode_uri(EntityType), "/entities/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all data automation library ingestion jobs
+-spec list_data_automation_library_ingestion_jobs(aws_client:aws_client(), binary() | list(), list_data_automation_library_ingestion_jobs_request()) ->
+    {ok, list_data_automation_library_ingestion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_library_ingestion_jobs_errors(), tuple()}.
+list_data_automation_library_ingestion_jobs(Client, LibraryArn, Input) ->
+    list_data_automation_library_ingestion_jobs(Client, LibraryArn, Input, []).
+
+-spec list_data_automation_library_ingestion_jobs(aws_client:aws_client(), binary() | list(), list_data_automation_library_ingestion_jobs_request(), proplists:proplist()) ->
+    {ok, list_data_automation_library_ingestion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_automation_library_ingestion_jobs_errors(), tuple()}.
+list_data_automation_library_ingestion_jobs(Client, LibraryArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/library-ingestion-jobs/"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1473,6 +2181,40 @@ update_blueprint(Client, BlueprintArn, Input) ->
 update_blueprint(Client, BlueprintArn, Input0, Options0) ->
     Method = put,
     Path = ["/blueprints/", aws_util:encode_uri(BlueprintArn), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Amazon Bedrock Data Automation Library
+-spec update_data_automation_library(aws_client:aws_client(), binary() | list(), update_data_automation_library_request()) ->
+    {ok, update_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_automation_library_errors(), tuple()}.
+update_data_automation_library(Client, LibraryArn, Input) ->
+    update_data_automation_library(Client, LibraryArn, Input, []).
+
+-spec update_data_automation_library(aws_client:aws_client(), binary() | list(), update_data_automation_library_request(), proplists:proplist()) ->
+    {ok, update_data_automation_library_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_automation_library_errors(), tuple()}.
+update_data_automation_library(Client, LibraryArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-automation-libraries/", aws_util:encode_uri(LibraryArn), "/"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -333,6 +333,10 @@
 %% }
 -type windows_user() :: #{binary() => any()}.
 
+%% Example:
+%% priority_fifo_scheduling_configuration() :: #{}
+-type priority_fifo_scheduling_configuration() :: #{}.
+
 
 %% Example:
 %% start_sessions_statistics_aggregation_response() :: #{
@@ -407,6 +411,7 @@
 %%   <<"queueId">> => string(),
 %%   <<"requiredFileSystemLocationNames">> => list(string()),
 %%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
@@ -639,6 +644,13 @@
 %% Example:
 %% disassociate_member_from_queue_response() :: #{}
 -type disassociate_member_from_queue_response() :: #{}.
+
+
+%% Example:
+%% priority_balanced_scheduling_configuration() :: #{
+%%   <<"renderingTaskBuffer">> => integer()
+%% }
+-type priority_balanced_scheduling_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -1164,7 +1176,8 @@
 %%   <<"jobRunAsUser">> => job_run_as_user(),
 %%   <<"requiredFileSystemLocationNamesToAdd">> => list(string()),
 %%   <<"requiredFileSystemLocationNamesToRemove">> => list(string()),
-%%   <<"roleArn">> => string()
+%%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list()
 %% }
 -type update_queue_request() :: #{binary() => any()}.
 
@@ -1380,6 +1393,10 @@
 %% Example:
 %% put_metered_product_request() :: #{}
 -type put_metered_product_request() :: #{}.
+
+%% Example:
+%% scheduling_max_priority_override_always_schedule_first() :: #{}
+-type scheduling_max_priority_override_always_schedule_first() :: #{}.
 
 %% Example:
 %% delete_storage_profile_response() :: #{}
@@ -2057,6 +2074,7 @@
 %%   <<"jobRunAsUser">> => job_run_as_user(),
 %%   <<"requiredFileSystemLocationNames">> => list(string()),
 %%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type create_queue_request() :: #{binary() => any()}.
@@ -3213,6 +3231,19 @@
 
 
 %% Example:
+%% weighted_balanced_scheduling_configuration() :: #{
+%%   <<"errorWeight">> => float(),
+%%   <<"maxPriorityOverride">> => list(),
+%%   <<"minPriorityOverride">> => list(),
+%%   <<"priorityWeight">> => float(),
+%%   <<"renderingTaskBuffer">> => integer(),
+%%   <<"renderingTaskWeight">> => float(),
+%%   <<"submissionTimeWeight">> => float()
+%% }
+-type weighted_balanced_scheduling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% monitor_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -3367,6 +3398,10 @@
 %%   <<"principalType">> => list(any())
 %% }
 -type fleet_member() :: #{binary() => any()}.
+
+%% Example:
+%% scheduling_min_priority_override_always_schedule_last() :: #{}
+-type scheduling_min_priority_override_always_schedule_last() :: #{}.
 
 -type associate_member_to_farm_errors() ::
     throttling_exception() | 

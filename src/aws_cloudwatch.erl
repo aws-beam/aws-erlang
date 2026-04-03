@@ -76,6 +76,8 @@
          get_metric_stream/3,
          get_metric_widget_image/2,
          get_metric_widget_image/3,
+         get_o_tel_enrichment/2,
+         get_o_tel_enrichment/3,
          list_alarm_mute_rules/2,
          list_alarm_mute_rules/3,
          list_dashboards/2,
@@ -110,8 +112,12 @@
          set_alarm_state/3,
          start_metric_streams/2,
          start_metric_streams/3,
+         start_o_tel_enrichment/2,
+         start_o_tel_enrichment/3,
          stop_metric_streams/2,
          stop_metric_streams/3,
+         stop_o_tel_enrichment/2,
+         stop_o_tel_enrichment/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -310,6 +316,12 @@
 -type put_metric_stream_output() :: #{binary() => any()}.
 
 %% Example:
+%% start_o_tel_enrichment_output() :: #{
+
+%% }
+-type start_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
 %% limit_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -412,6 +424,12 @@
 %%   <<"AlarmNames">> => list(string())
 %% }
 -type mute_targets() :: #{binary() => any()}.
+
+%% Example:
+%% start_o_tel_enrichment_input() :: #{
+
+%% }
+-type start_o_tel_enrichment_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_dashboards_input() :: #{
@@ -578,11 +596,13 @@
 %%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> := string(),
-%%   <<"ComparisonOperator">> := list(any()),
+%%   <<"ComparisonOperator">> => list(any()),
 %%   <<"DatapointsToAlarm">> => integer(),
 %%   <<"Dimensions">> => list(dimension()),
 %%   <<"EvaluateLowSampleCountPercentile">> => string(),
-%%   <<"EvaluationPeriods">> := integer(),
+%%   <<"EvaluationCriteria">> => list(),
+%%   <<"EvaluationInterval">> => integer(),
+%%   <<"EvaluationPeriods">> => integer(),
 %%   <<"ExtendedStatistic">> => string(),
 %%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),
@@ -598,6 +618,12 @@
 %%   <<"Unit">> => list(any())
 %% }
 -type put_metric_alarm_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_o_tel_enrichment_input() :: #{
+
+%% }
+-type stop_o_tel_enrichment_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_alarm_mute_rules_input() :: #{
@@ -616,6 +642,12 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% stop_o_tel_enrichment_output() :: #{
+
+%% }
+-type stop_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
 %% insight_rule_metric_datapoint() :: #{
 %%   <<"Average">> => float(),
 %%   <<"MaxContributorValue">> => float(),
@@ -627,6 +659,14 @@
 %%   <<"UniqueContributors">> => float()
 %% }
 -type insight_rule_metric_datapoint() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_prom_q_l_criteria() :: #{
+%%   <<"PendingPeriod">> => integer(),
+%%   <<"Query">> => string(),
+%%   <<"RecoveryPeriod">> => integer()
+%% }
+-type alarm_prom_q_l_criteria() :: #{binary() => any()}.
 
 %% Example:
 %% datapoint() :: #{
@@ -735,6 +775,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_format_fault() :: #{binary() => any()}.
+
+%% Example:
+%% get_o_tel_enrichment_input() :: #{
+
+%% }
+-type get_o_tel_enrichment_input() :: #{binary() => any()}.
 
 %% Example:
 %% insight_rule_contributor() :: #{
@@ -1065,6 +1111,8 @@
 %%   <<"DatapointsToAlarm">> => integer(),
 %%   <<"Dimensions">> => list(dimension()),
 %%   <<"EvaluateLowSampleCountPercentile">> => string(),
+%%   <<"EvaluationCriteria">> => list(),
+%%   <<"EvaluationInterval">> => integer(),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"EvaluationState">> => list(any()),
 %%   <<"ExtendedStatistic">> => string(),
@@ -1153,6 +1201,12 @@
 %%   <<"DashboardName">> := string()
 %% }
 -type put_dashboard_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_o_tel_enrichment_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type get_o_tel_enrichment_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_insight_rules_output() :: #{
@@ -2189,6 +2243,29 @@ get_metric_widget_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricWidgetImage">>, Input, Options).
 
+%% @doc Returns the current status of vended metric enrichment for the
+%% account, including
+%% whether CloudWatch vended metrics are enriched with resource ARN and
+%% resource tag
+%% labels and queryable using PromQL.
+%%
+%% For the list of supported resources, see
+%% Supported AWS infrastructure metrics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html.
+-spec get_o_tel_enrichment(aws_client:aws_client(), get_o_tel_enrichment_input()) ->
+    {ok, get_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+get_o_tel_enrichment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_o_tel_enrichment(Client, Input, []).
+
+-spec get_o_tel_enrichment(aws_client:aws_client(), get_o_tel_enrichment_input(), proplists:proplist()) ->
+    {ok, get_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+get_o_tel_enrichment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOTelEnrichment">>, Input, Options).
+
 %% @doc Lists alarm mute rules in your Amazon Web Services account and
 %% region.
 %%
@@ -2378,9 +2455,9 @@ list_tags_for_resource(Client, Input, Options)
 %% &quot;DatabaseConnectionAlarm&quot;, you would create an IAM policy with
 %% one statement granting `cloudwatch:PutAlarmMuteRule' on the alarm mute
 %% rule resource
-%% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute:*'), and another
-%% statement granting `cloudwatch:PutAlarmMuteRule' on the targeted alarm
-%% resources
+%% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute-rule:*'), and
+%% another statement granting `cloudwatch:PutAlarmMuteRule' on the
+%% targeted alarm resources
 %% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm'
 %% and
 %% `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm').
@@ -2632,7 +2709,8 @@ put_managed_insight_rules(Client, Input, Options)
 
 %% @doc Creates or updates an alarm and associates it with the specified
 %% metric, metric
-%% math expression, anomaly detection model, or Metrics Insights query.
+%% math expression, anomaly detection model, Metrics Insights query, or
+%% PromQL query.
 %%
 %% For more
 %% information about using a Metrics Insights query for an alarm, see Create
@@ -2643,7 +2721,9 @@ put_managed_insight_rules(Client, Input, Options)
 %%
 %% When this operation creates an alarm, the alarm state is immediately set
 %% to
-%% `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is set
+%% `INSUFFICIENT_DATA'. For PromQL alarms, the alarm state is instead
+%% immediately set to `OK'. The alarm is then evaluated and its state is
+%% set
 %% appropriately. Any actions associated with the new state are then
 %% executed.
 %%
@@ -2946,6 +3026,36 @@ start_metric_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetricStreams">>, Input, Options).
 
+%% @doc Enables enrichment and PromQL access for CloudWatch vended metrics
+%% for
+%% supported AWS resources:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
+%% in the account.
+%%
+%% Once enabled, metrics that
+%% contain a resource identifier dimension (for example, EC2
+%% `CPUUtilization' with an `InstanceId' dimension) are enriched
+%% with resource ARN and resource tag labels and become queryable using
+%% PromQL.
+%%
+%% Before calling this operation, you must enable resource tags on telemetry
+%% for
+%% your account. For more information, see Enable resource tags on telemetry:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/EnableResourceTagsOnTelemetry.html.
+-spec start_o_tel_enrichment(aws_client:aws_client(), start_o_tel_enrichment_input()) ->
+    {ok, start_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+start_o_tel_enrichment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_o_tel_enrichment(Client, Input, []).
+
+-spec start_o_tel_enrichment(aws_client:aws_client(), start_o_tel_enrichment_input(), proplists:proplist()) ->
+    {ok, start_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+start_o_tel_enrichment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartOTelEnrichment">>, Input, Options).
+
 %% @doc Stops the streaming of metrics for one or more of your metric
 %% streams.
 -spec stop_metric_streams(aws_client:aws_client(), stop_metric_streams_input()) ->
@@ -2963,6 +3073,30 @@ stop_metric_streams(Client, Input)
 stop_metric_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMetricStreams">>, Input, Options).
+
+%% @doc Disables enrichment and PromQL access for CloudWatch vended metrics
+%% for
+%% supported AWS resources:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
+%% in the account.
+%%
+%% After disabling, these metrics
+%% are no longer enriched with resource ARN and resource tag labels, and
+%% cannot be
+%% queried using PromQL.
+-spec stop_o_tel_enrichment(aws_client:aws_client(), stop_o_tel_enrichment_input()) ->
+    {ok, stop_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+stop_o_tel_enrichment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_o_tel_enrichment(Client, Input, []).
+
+-spec stop_o_tel_enrichment(aws_client:aws_client(), stop_o_tel_enrichment_input(), proplists:proplist()) ->
+    {ok, stop_o_tel_enrichment_output(), tuple()} |
+    {error, any()}.
+stop_o_tel_enrichment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopOTelEnrichment">>, Input, Options).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified
 %% CloudWatch resource.

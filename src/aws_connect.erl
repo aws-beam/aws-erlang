@@ -29000,6 +29000,11 @@ update_test_case(Client, InstanceId, TestCaseId, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
 %% in the Amazon Connect Administrator Guide.
+%%
+%% Important things to know
+%%
+%% Invoke the UpdateTrafficDistribution API in the region that should handle
+%% traffic.
 -spec update_traffic_distribution(aws_client:aws_client(), binary() | list(), update_traffic_distribution_request()) ->
     {ok, update_traffic_distribution_response(), tuple()} |
     {error, any()} |
