@@ -71,6 +71,8 @@
          delete_prompt_router/4,
          delete_provisioned_model_throughput/3,
          delete_provisioned_model_throughput/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          deregister_marketplace_model_endpoint/3,
          deregister_marketplace_model_endpoint/4,
          export_automated_reasoning_policy_version/2,
@@ -145,6 +147,9 @@
          get_provisioned_model_throughput/2,
          get_provisioned_model_throughput/4,
          get_provisioned_model_throughput/5,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          get_use_case_for_model_access/1,
          get_use_case_for_model_access/3,
          get_use_case_for_model_access/4,
@@ -214,6 +219,8 @@
          put_enforced_guardrail_configuration/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          put_use_case_for_model_access/2,
          put_use_case_for_model_access/3,
          register_marketplace_model_endpoint/3,
@@ -451,6 +458,10 @@
 %%   <<"jobArn">> => string()
 %% }
 -type create_model_invocation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
 
 
 %% Example:
@@ -1058,6 +1069,13 @@
 %% }
 -type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_custom_model_deployment_request() :: #{}
 -type get_custom_model_deployment_request() :: #{}.
@@ -1145,6 +1163,7 @@
 %%   <<"inputTags">> => list(any()),
 %%   <<"modelEnforcement">> => model_enforcement(),
 %%   <<"owner">> => string(),
+%%   <<"selectiveContentGuarding">> => selective_content_guarding(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => [string()]
 %% }
@@ -2469,6 +2488,10 @@
 %% }
 -type delete_automated_reasoning_policy_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% filter_attribute() :: #{
@@ -2755,6 +2778,14 @@
 %%   <<"customModelDeploymentArn">> => string()
 %% }
 -type update_custom_model_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"resourcePolicy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3326,6 +3357,14 @@
 
 
 %% Example:
+%% selective_content_guarding() :: #{
+%%   <<"messages">> => list(any()),
+%%   <<"system">> => list(any())
+%% }
+-type selective_content_guarding() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_prompt_routers_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"promptRouterSummaries">> => list(prompt_router_summary())
@@ -3363,6 +3402,13 @@
 %%   <<"topics">> => list(guardrail_topic())
 %% }
 -type guardrail_topic_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3509,6 +3555,10 @@
 %%   <<"naturalLanguage">> => string()
 %% }
 -type automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -3780,8 +3830,8 @@
 %% account_enforced_guardrail_inference_input_configuration() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
-%%   <<"inputTags">> => list(any()),
-%%   <<"modelEnforcement">> => model_enforcement()
+%%   <<"modelEnforcement">> => model_enforcement(),
+%%   <<"selectiveContentGuarding">> => selective_content_guarding()
 %% }
 -type account_enforced_guardrail_inference_input_configuration() :: #{binary() => any()}.
 
@@ -4202,6 +4252,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type deregister_marketplace_model_endpoint_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4376,6 +4433,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_use_case_for_model_access_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4532,6 +4596,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type put_use_case_for_model_access_errors() ::
     throttling_exception() | 
@@ -6012,6 +6083,40 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a previously created Bedrock resource policy.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deregisters an endpoint for a model from Amazon Bedrock Marketplace.
 %%
 %% This operation removes the endpoint's association with Amazon Bedrock
@@ -7012,6 +7117,43 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the resource policy document for a Bedrock resource
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8144,6 +8286,40 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging/modelinvocations"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a resource policy for a Bedrock resource.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input) ->
+    put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/resource-policy"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

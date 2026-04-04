@@ -1766,7 +1766,8 @@
 %% tool_specification() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => list(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"strict">> => [boolean()]
 %% }
 -type tool_specification() :: #{binary() => any()}.
 

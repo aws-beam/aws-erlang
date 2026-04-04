@@ -654,6 +654,7 @@
 %%   <<"monitoredResourceName">> := string(),
 %%   <<"notificationEnabled">> => boolean(),
 %%   <<"notificationTriggers">> => list(list(any())()),
+%%   <<"tags">> => list(tag()),
 %%   <<"threshold">> := float(),
 %%   <<"treatMissingData">> => list(any())
 %% }
@@ -1014,6 +1015,7 @@
 %%   <<"state">> => list(any()),
 %%   <<"statistic">> => list(any()),
 %%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag()),
 %%   <<"threshold">> => float(),
 %%   <<"treatMissingData">> => list(any()),
 %%   <<"unit">> => list(any())
@@ -5863,6 +5865,11 @@ create_cloud_formation_stack(Client, Input, Options)
 %% For more information,
 %% see Notifications in Amazon Lightsail:
 %% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.
+%%
+%% The `create contact method' operation supports tag-based access
+%% control via request
+%% tags. For more information, see the Lightsail Developer Guide:
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_contact_method(aws_client:aws_client(), create_contact_method_request()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
@@ -8684,6 +8691,11 @@ peer_vpc(Client, Input, Options)
 %% overwrites the previous configuration of the alarm. The alarm is then
 %% evaluated with the
 %% updated configuration.
+%%
+%% The `put alarm' operation supports tag-based access control via
+%% request
+%% tags. For more information, see the Lightsail Developer Guide:
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec put_alarm(aws_client:aws_client(), put_alarm_request()) ->
     {ok, put_alarm_result(), tuple()} |
     {error, any()} |

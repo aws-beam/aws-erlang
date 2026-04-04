@@ -2788,12 +2788,15 @@
 
 %% Example:
 %% query_info() :: #{
+%%   <<"bytesScanned">> => float(),
 %%   <<"createTime">> => float(),
 %%   <<"logGroupName">> => string(),
+%%   <<"queryDuration">> => float(),
 %%   <<"queryId">> => string(),
 %%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"userIdentity">> => string()
 %% }
 -type query_info() :: #{binary() => any()}.
 

@@ -1584,6 +1584,7 @@
 %% av1_color_space_settings() :: #{
 %%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
 %%   <<"Hdr10Settings">> => hdr10_settings(),
+%%   <<"Hlg2020Settings">> => hlg2020_settings(),
 %%   <<"Rec601Settings">> => rec601_settings(),
 %%   <<"Rec709Settings">> => rec709_settings()
 %% }
