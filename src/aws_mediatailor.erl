@@ -499,7 +499,8 @@
 %%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
 %%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string()
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
 %% }
 -type get_prefetch_schedule_response() :: #{binary() => any()}.
 
@@ -533,6 +534,7 @@
 %%   <<"ProgramName">> => string(),
 %%   <<"ScheduledStartTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"VodSourceName">> => string()
 %% }
 -type create_program_response() :: #{binary() => any()}.
@@ -647,7 +649,8 @@
 %%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
 %%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string()
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_prefetch_schedule_response() :: #{binary() => any()}.
 
@@ -794,7 +797,8 @@
 %%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
 %%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string()
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_prefetch_schedule_request() :: #{binary() => any()}.
 
@@ -879,6 +883,7 @@
 %%   <<"ProgramName">> => string(),
 %%   <<"ScheduledStartTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"VodSourceName">> => string()
 %% }
 -type describe_program_response() :: #{binary() => any()}.
@@ -926,6 +931,7 @@
 %%   <<"LiveSourceName">> => string(),
 %%   <<"ScheduleConfiguration">> := schedule_configuration(),
 %%   <<"SourceLocationName">> := string(),
+%%   <<"Tags">> => map(),
 %%   <<"VodSourceName">> => string()
 %% }
 -type create_program_request() :: #{binary() => any()}.
@@ -1175,6 +1181,7 @@
 %%   <<"ProgramName">> => string(),
 %%   <<"ScheduledStartTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"VodSourceName">> => string()
 %% }
 -type update_program_response() :: #{binary() => any()}.
@@ -1434,7 +1441,8 @@
 %%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
 %%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string()
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
 %% }
 -type prefetch_schedule() :: #{binary() => any()}.
 

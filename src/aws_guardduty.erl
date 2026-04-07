@@ -2,43 +2,31 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
-%% analyzes and processes
-%% the following foundational data sources - VPC flow logs, Amazon Web
-%% Services CloudTrail management event logs, CloudTrail S3 data event
-%% logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime activity
-%% belonging to container workloads, such
-%% as Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
-%% Amazon EC2 instances.
+%% analyzes and processes the following foundational data sources - VPC flow
+%% logs, Amazon Web Services CloudTrail management event logs, CloudTrail S3
+%% data event logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime
+%% activity belonging to container workloads, such as Amazon EKS, Amazon ECS
+%% (including Amazon Web Services Fargate), and Amazon EC2 instances.
 %%
-%% It uses threat intelligence
-%% feeds, such as lists of malicious IPs and domains, and machine learning to
-%% identify
-%% unexpected, potentially unauthorized, and malicious activity within your
-%% Amazon Web Services environment.
-%% This can include issues like escalations of privileges, uses of exposed
-%% credentials, or
-%% communication with malicious IPs, domains, or presence of malware on your
-%% Amazon EC2 instances
-%% and container workloads. For example, GuardDuty can detect compromised EC2
-%% instances and
-%% container workloads serving malware, or mining bitcoin.
+%% It uses threat intelligence feeds, such as lists of malicious IPs and
+%% domains, and machine learning to identify unexpected, potentially
+%% unauthorized, and malicious activity within your Amazon Web Services
+%% environment. This can include issues like escalations of privileges, uses
+%% of exposed credentials, or communication with malicious IPs, domains, or
+%% presence of malware on your Amazon EC2 instances and container workloads.
+%% For example, GuardDuty can detect compromised EC2 instances and container
+%% workloads serving malware, or mining bitcoin.
 %%
 %% GuardDuty also monitors Amazon Web Services account access behavior for
-%% signs of compromise, such as
-%% unauthorized infrastructure deployments like EC2 instances deployed in a
-%% Region that has never
-%% been used, or unusual API calls like a password policy change to reduce
-%% password strength.
+%% signs of compromise, such as unauthorized infrastructure deployments like
+%% EC2 instances deployed in a Region that has never been used, or unusual
+%% API calls like a password policy change to reduce password strength.
 %%
 %% GuardDuty informs you about the status of your Amazon Web Services
-%% environment by producing security
-%% findings that you can view in the GuardDuty console or through Amazon
-%% EventBridge. For more
-%% information, see the
-%% Amazon
-%% GuardDuty User Guide:
-%% https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html
-%% .
+%% environment by producing security findings that you can view in the
+%% GuardDuty console or through Amazon EventBridge. For more information, see
+%% the Amazon GuardDuty User Guide:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html .
 -module(aws_guardduty).
 
 -export([accept_administrator_invitation/3,
@@ -4297,8 +4285,7 @@
 %%====================================================================
 
 %% @doc Accepts the invitation to be a member account and get monitored by a
-%% GuardDuty
-%% administrator account that sent the invitation.
+%% GuardDuty administrator account that sent the invitation.
 -spec accept_administrator_invitation(aws_client:aws_client(), binary() | list(), accept_administrator_invitation_request()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
@@ -4371,8 +4358,7 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
 %% IDs.
 %%
 %% Only the administrator account can archive findings. Member accounts
-%% don't have
-%% permission to archive findings from their accounts.
+%% don't have permission to archive findings from their accounts.
 -spec archive_findings(aws_client:aws_client(), binary() | list(), archive_findings_request()) ->
     {ok, archive_findings_response(), tuple()} |
     {error, any()} |
@@ -4408,34 +4394,29 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a single GuardDuty detector.
 %%
-%% A detector is a resource that represents the
-%% GuardDuty service. To start using GuardDuty, you must create a detector in
-%% each Region where
-%% you enable the service. You can have only one detector per account per
-%% Region. All data
-%% sources are enabled in a new detector by default.
+%% A detector is a resource that represents the GuardDuty service. To start
+%% using GuardDuty, you must create a detector in each Region where you
+%% enable the service. You can have only one detector per account per Region.
+%% All data sources are enabled in a new detector by default.
 %%
-%% When you don't specify any `features', with an
-%% exception to `RUNTIME_MONITORING', all the optional features are
-%% enabled by default.
+%% When you don't specify any `features', with an exception to
+%% `RUNTIME_MONITORING', all the optional features are enabled by
+%% default.
 %%
 %% When you specify some of the `features', any feature that is not
-%% specified in the
-%% API call gets enabled by default, with an exception to
+%% specified in the API call gets enabled by default, with an exception to
 %% `RUNTIME_MONITORING'.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
-%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
-%% You can add only one of these two features because Runtime Monitoring
-%% already includes the
-%% threat detection for Amazon EKS resources. For more information, see
-%% Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec create_detector(aws_client:aws_client(), create_detector_request()) ->
     {ok, create_detector_response(), tuple()} |
@@ -4472,9 +4453,8 @@ create_detector(Client, Input0, Options0) ->
 
 %% @doc Creates a filter using the specified finding criteria.
 %%
-%% The maximum number of saved filters
-%% per Amazon Web Services account per Region is 100. For more information,
-%% see Quotas for GuardDuty:
+%% The maximum number of saved filters per Amazon Web Services account per
+%% Region is 100. For more information, see Quotas for GuardDuty:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html.
 -spec create_filter(aws_client:aws_client(), binary() | list(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
@@ -4512,12 +4492,10 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 %% @doc Creates a new IPSet, which is called a trusted IP list in the console
 %% user interface.
 %%
-%% An
-%% IPSet is a list of IP addresses that are trusted for secure communication
-%% with Amazon Web Services
-%% infrastructure and applications. GuardDuty doesn't generate findings
-%% for IP addresses that are
-%% included in IPSets. Only users from the administrator account can use this
+%% An IPSet is a list of IP addresses that are trusted for secure
+%% communication with Amazon Web Services infrastructure and applications.
+%% GuardDuty doesn't generate findings for IP addresses that are included
+%% in IPSets. Only users from the administrator account can use this
 %% operation.
 -spec create_ip_set(aws_client:aws_client(), binary() | list(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
@@ -4555,9 +4533,8 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% @doc Creates a new Malware Protection plan for the protected resource.
 %%
 %% When you create a Malware Protection plan, the Amazon Web Services service
-%% terms for GuardDuty Malware
-%% Protection apply. For more information, see Amazon Web Services service
-%% terms for GuardDuty Malware Protection:
+%% terms for GuardDuty Malware Protection apply. For more information, see
+%% Amazon Web Services service terms for GuardDuty Malware Protection:
 %% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
 -spec create_malware_protection_plan(aws_client:aws_client(), create_malware_protection_plan_request()) ->
     {ok, create_malware_protection_plan_response(), tuple()} |
@@ -4593,49 +4570,38 @@ create_malware_protection_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates member accounts of the current Amazon Web Services account by
-%% specifying a list of Amazon Web Services account
-%% IDs.
+%% specifying a list of Amazon Web Services account IDs.
 %%
 %% This step is a prerequisite for managing the associated member accounts
-%% either by
-%% invitation or through an organization.
+%% either by invitation or through an organization.
 %%
 %% As a delegated administrator, using `CreateMembers' will enable
-%% GuardDuty in
-%% the added member accounts, with the exception of the
+%% GuardDuty in the added member accounts, with the exception of the
 %% organization delegated administrator account. A delegated administrator
-%% must enable GuardDuty
-%% prior to being added as a member.
+%% must enable GuardDuty prior to being added as a member.
 %%
-%% When you use CreateMembers as an Organizations delegated
-%% administrator, GuardDuty applies your organization's auto-enable
-%% settings to the member
-%% accounts in this request, irrespective of the accounts being new or
-%% existing members. For
-%% more information about the existing auto-enable settings for your
-%% organization, see
-%% DescribeOrganizationConfiguration:
+%% When you use CreateMembers as an Organizations delegated administrator,
+%% GuardDuty applies your organization's auto-enable settings to the
+%% member accounts in this request, irrespective of the accounts being new or
+%% existing members. For more information about the existing auto-enable
+%% settings for your organization, see DescribeOrganizationConfiguration:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html.
 %%
 %% If you disassociate a member account that was added by invitation, the
-%% member account details
-%% obtained from this API, including the associated email addresses, will be
-%% retained.
-%% This is done so that the delegated administrator can invoke the
-%% InviteMembers:
+%% member account details obtained from this API, including the associated
+%% email addresses, will be retained. This is done so that the delegated
+%% administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% When the member accounts added through Organizations are later
-%% disassociated, you (administrator)
-%% can't invite them by calling the InviteMembers API. You can create an
-%% association with these
-%% member accounts again only by calling the CreateMembers API.
+%% disassociated, you (administrator) can't invite them by calling the
+%% InviteMembers API. You can create an association with these member
+%% accounts again only by calling the CreateMembers API.
 -spec create_members(aws_client:aws_client(), binary() | list(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
@@ -4672,8 +4638,8 @@ create_members(Client, DetectorId, Input0, Options0) ->
 %% @doc Creates a publishing destination where you can export your GuardDuty
 %% findings.
 %%
-%% Before you start exporting the
-%% findings, the destination resource must exist.
+%% Before you start exporting the findings, the destination resource must
+%% exist.
 -spec create_publishing_destination(aws_client:aws_client(), binary() | list(), create_publishing_destination_request()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
@@ -4710,10 +4676,8 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 %% @doc Generates sample findings of types specified by the list of finding
 %% types.
 %%
-%% If 'NULL' is
-%% specified for `findingTypes', the API generates sample findings of all
-%% supported
-%% finding types.
+%% If 'NULL' is specified for `findingTypes', the API generates
+%% sample findings of all supported finding types.
 -spec create_sample_findings(aws_client:aws_client(), binary() | list(), create_sample_findings_request()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
@@ -4749,13 +4713,11 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a new threat entity set.
 %%
-%% In a threat entity set, you can provide known malicious
-%% IP addresses and domains for your Amazon Web Services environment.
-%% GuardDuty generates findings based on the entries in the threat entity
-%% sets.
-%% Only users of the administrator account can manage entity sets, which
-%% automatically apply
-%% to member accounts.
+%% In a threat entity set, you can provide known malicious IP addresses and
+%% domains for your Amazon Web Services environment. GuardDuty generates
+%% findings based on the entries in the threat entity sets. Only users of the
+%% administrator account can manage entity sets, which automatically apply to
+%% member accounts.
 -spec create_threat_entity_set(aws_client:aws_client(), binary() | list(), create_threat_entity_set_request()) ->
     {ok, create_threat_entity_set_response(), tuple()} |
     {error, any()} |
@@ -4791,10 +4753,9 @@ create_threat_entity_set(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a new ThreatIntelSet.
 %%
-%% ThreatIntelSets consist of known malicious IP addresses.
-%% GuardDuty generates findings based on ThreatIntelSets. Only users of the
-%% administrator
-%% account can use this operation.
+%% ThreatIntelSets consist of known malicious IP addresses. GuardDuty
+%% generates findings based on ThreatIntelSets. Only users of the
+%% administrator account can use this operation.
 -spec create_threat_intel_set(aws_client:aws_client(), binary() | list(), create_threat_intel_set_request()) ->
     {ok, create_threat_intel_set_response(), tuple()} |
     {error, any()} |
@@ -4830,16 +4791,14 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a new trusted entity set.
 %%
-%% In the trusted entity set, you can provide IP addresses
-%% and domains that you believe are secure for communication in your Amazon
-%% Web Services environment. GuardDuty
-%% will not generate findings for the entries that are specified in a trusted
-%% entity set. At any
-%% given time, you can have only one trusted entity set.
+%% In the trusted entity set, you can provide IP addresses and domains that
+%% you believe are secure for communication in your Amazon Web Services
+%% environment. GuardDuty will not generate findings for the entries that are
+%% specified in a trusted entity set. At any given time, you can have only
+%% one trusted entity set.
 %%
 %% Only users of the administrator account can manage the entity sets, which
-%% automatically
-%% apply to member accounts.
+%% automatically apply to member accounts.
 -spec create_trusted_entity_set(aws_client:aws_client(), binary() | list(), create_trusted_entity_set_request()) ->
     {ok, create_trusted_entity_set_response(), tuple()} |
     {error, any()} |
@@ -4874,8 +4833,7 @@ create_trusted_entity_set(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Declines invitations sent to the current member account by Amazon Web
-%% Services accounts specified by
-%% their account IDs.
+%% Services accounts specified by their account IDs.
 -spec decline_invitations(aws_client:aws_client(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
@@ -4979,8 +4937,7 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes invitations sent to the current member account by Amazon Web
-%% Services accounts specified by
-%% their account IDs.
+%% Services accounts specified by their account IDs.
 -spec delete_invitations(aws_client:aws_client(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
@@ -5016,8 +4973,7 @@ delete_invitations(Client, Input0, Options0) ->
 
 %% @doc Deletes the IPSet specified by the `ipSetId'.
 %%
-%% IPSets are called trusted IP
-%% lists in the console user interface.
+%% IPSets are called trusted IP lists in the console user interface.
 -spec delete_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
@@ -5055,8 +5011,7 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 %% Protection plan resource.
 %%
 %% Use this API only when you no longer want to protect the resource
-%% associated with this
-%% Malware Protection plan ID.
+%% associated with this Malware Protection plan ID.
 -spec delete_malware_protection_plan(aws_client:aws_client(), binary() | list(), delete_malware_protection_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5091,14 +5046,11 @@ delete_malware_protection_plan(Client, MalwareProtectionPlanId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes GuardDuty member accounts (to the current GuardDuty
-%% administrator account)
-%% specified by the account IDs.
+%% administrator account) specified by the account IDs.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to
-%% `ALL', you'll receive an error if you attempt to disable GuardDuty
-%% for a member
-%% account in your organization.
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disable GuardDuty for a member account in your organization.
 -spec delete_members(aws_client:aws_client(), binary() | list(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
@@ -5273,14 +5225,12 @@ delete_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input0, Option
 
 %% @doc Returns a list of malware scans.
 %%
-%% Each member account can view the malware scans for their
-%% own accounts. An administrator can view the malware scans for all the
-%% member accounts.
+%% Each member account can view the malware scans for their own accounts. An
+%% administrator can view the malware scans for all the member accounts.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec describe_malware_scans(aws_client:aws_client(), binary() | list(), describe_malware_scans_request()) ->
     {ok, describe_malware_scans_response(), tuple()} |
@@ -5316,13 +5266,11 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the account selected as the delegated
-%% administrator for
-%% GuardDuty.
+%% administrator for GuardDuty.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec describe_organization_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
@@ -5366,8 +5314,7 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the publishing destination specified by the
-%% provided
-%% `destinationId'.
+%% provided `destinationId'.
 -spec describe_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
@@ -5404,11 +5351,10 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the existing GuardDuty delegated
-%% administrator of the organization.
+%% @doc Removes the existing GuardDuty delegated administrator of the
+%% organization.
 %%
-%% Only the organization's management account can run this
-%% API operation.
+%% Only the organization's management account can run this API operation.
 -spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
@@ -5445,26 +5391,21 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
 %%
-%% When you
-%% disassociate an invited member from a GuardDuty delegated administrator,
-%% the member account details
-%% obtained from the CreateMembers:
+%% When you disassociate an invited member from a GuardDuty delegated
+%% administrator, the member account details obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is
-%% done so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is done
+%% so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to
-%% `ALL', you'll receive an error if you attempt to disable GuardDuty
-%% in a member
-%% account.
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disable GuardDuty in a member account.
 -spec disassociate_from_administrator_account(aws_client:aws_client(), binary() | list(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
@@ -5501,18 +5442,15 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
 %%
-%% When you
-%% disassociate an invited member from a GuardDuty delegated administrator,
-%% the member account details
-%% obtained from the CreateMembers:
+%% When you disassociate an invited member from a GuardDuty delegated
+%% administrator, the member account details obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is
-%% done so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is done
+%% so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 -spec disassociate_from_master_account(aws_client:aws_client(), binary() | list(), disassociate_from_master_account_request()) ->
@@ -5549,49 +5487,40 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates GuardDuty member accounts (from the current
-%% administrator account) specified
-%% by the account IDs.
+%% administrator account) specified by the account IDs.
 %%
-%% When you
-%% disassociate an invited member from a GuardDuty delegated administrator,
-%% the member account details
-%% obtained from the CreateMembers:
+%% When you disassociate an invited member from a GuardDuty delegated
+%% administrator, the member account details obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is
-%% done so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is done
+%% so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to
-%% `ALL', you'll receive an error if you attempt to disassociate a
-%% member account
-%% before removing them from your organization.
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disassociate a member account before removing them from your
+%% organization.
 %%
 %% If you disassociate a member account that was added by invitation, the
-%% member account details
-%% obtained from this API, including the associated email addresses, will be
-%% retained.
-%% This is done so that the delegated administrator can invoke the
-%% InviteMembers:
+%% member account details obtained from this API, including the associated
+%% email addresses, will be retained. This is done so that the delegated
+%% administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% When the member accounts added through Organizations are later
-%% disassociated, you (administrator)
-%% can't invite them by calling the InviteMembers API. You can create an
-%% association with these
-%% member accounts again only by calling the CreateMembers API.
+%% disassociated, you (administrator) can't invite them by calling the
+%% InviteMembers API. You can create an association with these member
+%% accounts again only by calling the CreateMembers API.
 -spec disassociate_members(aws_client:aws_client(), binary() | list(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
@@ -5626,11 +5555,9 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates an Amazon Web Services account within the organization as
-%% your GuardDuty delegated
-%% administrator.
+%% your GuardDuty delegated administrator.
 %%
-%% Only the organization's management account can run this
-%% API operation.
+%% Only the organization's management account can run this API operation.
 -spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
@@ -5665,8 +5592,7 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides the details of the GuardDuty administrator account
-%% associated with the current
-%% GuardDuty member account.
+%% associated with the current GuardDuty member account.
 %%
 %% Based on the type of account that runs this API, the following list shows
 %% how the API behavior varies:
@@ -5675,12 +5601,11 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% success (`HTTP 200') but no content.
 %%
 %% When a member account runs this API, it will return the details of the
-%% GuardDuty administrator account that is associated
-%% with this calling member account.
+%% GuardDuty administrator account that is associated with this calling
+%% member account.
 %%
 %% When an individual account (not associated with an organization) runs this
-%% API, it will return success (`HTTP 200')
-%% but no content.
+%% API, it will return success (`HTTP 200') but no content.
 -spec get_administrator_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
@@ -5719,12 +5644,10 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves aggregated statistics for your account.
 %%
-%% If you are a GuardDuty administrator, you
-%% can retrieve the statistics for all the resources associated with the
-%% active member accounts
-%% in your organization who have enabled Runtime Monitoring and have the
-%% GuardDuty security agent running
-%% on their resources.
+%% If you are a GuardDuty administrator, you can retrieve the statistics for
+%% all the resources associated with the active member accounts in your
+%% organization who have enabled Runtime Monitoring and have the GuardDuty
+%% security agent running on their resources.
 -spec get_coverage_statistics(aws_client:aws_client(), binary() | list(), get_coverage_statistics_request()) ->
     {ok, get_coverage_statistics_response(), tuple()} |
     {error, any()} |
@@ -5762,8 +5685,7 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec get_detector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_detector_response(), tuple()} |
@@ -5874,14 +5796,13 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Lists GuardDuty findings statistics for the specified detector ID.
 %%
-%% You must provide either `findingStatisticTypes' or
-%% `groupBy' parameter, and not both. You can use the `maxResults'
-%% and `orderBy'
-%% parameters only when using `groupBy'.
+%% You must provide either `findingStatisticTypes' or `groupBy'
+%% parameter, and not both. You can use the `maxResults' and
+%% `orderBy' parameters only when using `groupBy'.
 %%
 %% There might be regional differences because some flags might not be
-%% available in all the Regions where GuardDuty
-%% is currently supported. For more information, see Regions and endpoints:
+%% available in all the Regions where GuardDuty is currently supported. For
+%% more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec get_findings_statistics(aws_client:aws_client(), binary() | list(), get_findings_statistics_request()) ->
     {ok, get_findings_statistics_response(), tuple()} |
@@ -5917,8 +5838,8 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the count of all GuardDuty membership invitations that were
-%% sent to the current
-%% member account except the currently accepted invitation.
+%% sent to the current member account except the currently accepted
+%% invitation.
 -spec get_invitations_count(aws_client:aws_client()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
@@ -5993,8 +5914,7 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the Malware Protection plan details associated with a
-%% Malware Protection
-%% plan ID.
+%% Malware Protection plan ID.
 -spec get_malware_protection_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, get_malware_protection_plan_response(), tuple()} |
     {error, any()} |
@@ -6033,14 +5953,13 @@ get_malware_protection_plan(Client, MalwareProtectionPlanId, QueryMap, HeadersMa
 
 %% @doc Retrieves the detailed information for a specific malware scan.
 %%
-%% Each member account can view the malware scan details for their
-%% own account. An administrator can view malware scan details for all
-%% accounts in the organization.
+%% Each member account can view the malware scan details for their own
+%% account. An administrator can view malware scan details for all accounts
+%% in the organization.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec get_malware_scan(aws_client:aws_client(), binary() | list()) ->
     {ok, get_malware_scan_response(), tuple()} |
@@ -6082,8 +6001,7 @@ get_malware_scan(Client, ScanId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec get_malware_scan_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
@@ -6122,8 +6040,7 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the details for the GuardDuty administrator account
-%% associated with the current
-%% GuardDuty member account.
+%% associated with the current GuardDuty member account.
 -spec get_master_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
@@ -6165,8 +6082,7 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec get_member_detectors(aws_client:aws_client(), binary() | list(), get_member_detectors_request()) ->
     {ok, get_member_detectors_response(), tuple()} |
@@ -6202,8 +6118,7 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves GuardDuty member accounts (of the current GuardDuty
-%% administrator account)
-%% specified by the account IDs.
+%% administrator account) specified by the account IDs.
 -spec get_members(aws_client:aws_client(), binary() | list(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
@@ -6237,14 +6152,14 @@ get_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves how many active member accounts have
-%% each feature enabled within GuardDuty.
+%% @doc Retrieves how many active member accounts have each feature enabled
+%% within GuardDuty.
 %%
 %% Only a delegated GuardDuty administrator of an organization can run this
 %% API.
 %%
-%% When you create a new organization, it might take up to 24
-%% hours to generate the statistics for the entire organization.
+%% When you create a new organization, it might take up to 24 hours to
+%% generate the statistics for the entire organization.
 -spec get_organization_statistics(aws_client:aws_client()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
@@ -6282,8 +6197,7 @@ get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the number of days left for each data source used in the
-%% free trial
-%% period.
+%% free trial period.
 -spec get_remaining_free_trial_days(aws_client:aws_client(), binary() | list(), get_remaining_free_trial_days_request()) ->
     {ok, get_remaining_free_trial_days_response(), tuple()} |
     {error, any()} |
@@ -6432,15 +6346,13 @@ get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon GuardDuty usage statistics over the last 30 days for the
-%% specified detector
-%% ID.
+%% specified detector ID.
 %%
 %% For newly enabled detectors or data sources, the cost returned will
-%% include only the usage
-%% so far under 30 days. This may differ from the cost metrics in the
-%% console, which project
-%% usage over 30 days to provide a monthly cost estimate. For more
-%% information, see Understanding How Usage Costs are Calculated:
+%% include only the usage so far under 30 days. This may differ from the cost
+%% metrics in the console, which project usage over 30 days to provide a
+%% monthly cost estimate. For more information, see Understanding How Usage
+%% Costs are Calculated:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations.
 -spec get_usage_statistics(aws_client:aws_client(), binary() | list(), get_usage_statistics_request()) ->
     {ok, get_usage_statistics_response(), tuple()} |
@@ -6476,63 +6388,52 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invites Amazon Web Services accounts to become members of an
-%% organization administered by the Amazon Web Services account
-%% that invokes this API.
+%% organization administered by the Amazon Web Services account that invokes
+%% this API.
 %%
 %% If you are using Amazon Web Services Organizations to manage your
-%% GuardDuty environment, this step is not
-%% needed. For more information, see Managing accounts with organizations:
+%% GuardDuty environment, this step is not needed. For more information, see
+%% Managing accounts with organizations:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html.
 %%
-%% To invite Amazon Web Services accounts, the first step is
-%% to ensure that GuardDuty has been enabled in the potential member
-%% accounts. You can now invoke this API
-%% to add accounts by invitation. The
-%% invited accounts can either accept or decline the invitation from their
-%% GuardDuty accounts. Each invited Amazon Web Services account can
-%% choose to accept the invitation from only one Amazon Web Services account.
-%% For more information, see
-%% Managing GuardDuty accounts
-%% by invitation:
+%% To invite Amazon Web Services accounts, the first step is to ensure that
+%% GuardDuty has been enabled in the potential member accounts. You can now
+%% invoke this API to add accounts by invitation. The invited accounts can
+%% either accept or decline the invitation from their GuardDuty accounts.
+%% Each invited Amazon Web Services account can choose to accept the
+%% invitation from only one Amazon Web Services account. For more
+%% information, see Managing GuardDuty accounts by invitation:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_invitations.html.
 %%
 %% After the invite has been accepted and you choose to disassociate a member
-%% account
-%% (by using DisassociateMembers:
+%% account (by using DisassociateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateMembers.html)
-%% from your account,
-%% the details of the member account obtained by invoking CreateMembers:
+%% from your account, the details of the member account obtained by invoking
+%% CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html,
-%% including the
-%% associated email addresses, will be retained.
-%% This is done so that you can invoke InviteMembers without the need to
-%% invoke
+%% including the associated email addresses, will be retained. This is done
+%% so that you can invoke InviteMembers without the need to invoke
 %% CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% again. To
-%% remove the details associated with a member account, you must also invoke
-%% DeleteMembers:
+%% again. To remove the details associated with a member account, you must
+%% also invoke DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html.
 %%
 %% If you disassociate a member account that was added by invitation, the
-%% member account details
-%% obtained from this API, including the associated email addresses, will be
-%% retained.
-%% This is done so that the delegated administrator can invoke the
-%% InviteMembers:
+%% member account details obtained from this API, including the associated
+%% email addresses, will be retained. This is done so that the delegated
+%% administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To
-%% remove the details associated with a member account, the delegated
-%% administrator must invoke the
-%% DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% When the member accounts added through Organizations are later
-%% disassociated, you (administrator)
-%% can't invite them by calling the InviteMembers API. You can create an
-%% association with these
-%% member accounts again only by calling the CreateMembers API.
+%% disassociated, you (administrator) can't invite them by calling the
+%% InviteMembers API. You can create an association with these member
+%% accounts again only by calling the CreateMembers API.
 -spec invite_members(aws_client:aws_client(), binary() | list(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
@@ -6568,13 +6469,11 @@ invite_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Lists coverage details for your GuardDuty account.
 %%
-%% If you're a GuardDuty administrator, you can
-%% retrieve all resources associated with the active member accounts in your
-%% organization.
+%% If you're a GuardDuty administrator, you can retrieve all resources
+%% associated with the active member accounts in your organization.
 %%
 %% Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent
-%% running on
-%% their resources.
+%% running on their resources.
 -spec list_coverage(aws_client:aws_client(), binary() | list(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
@@ -6696,8 +6595,8 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists GuardDuty findings for the specified detector ID.
 %%
 %% There might be regional differences because some flags might not be
-%% available in all the Regions where GuardDuty
-%% is currently supported. For more information, see Regions and endpoints:
+%% available in all the Regions where GuardDuty is currently supported. For
+%% more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec list_findings(aws_client:aws_client(), binary() | list(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
@@ -6733,8 +6632,7 @@ list_findings(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all GuardDuty membership invitations that were sent to the
-%% current Amazon Web Services
-%% account.
+%% current Amazon Web Services account.
 -spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
@@ -6779,10 +6677,8 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the IPSets of the GuardDuty service specified by the detector
 %% ID.
 %%
-%% If you use this
-%% operation from a member account, the IPSets returned are the IPSets from
-%% the associated
-%% administrator account.
+%% If you use this operation from a member account, the IPSets returned are
+%% the IPSets from the associated administrator account.
 -spec list_ip_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
@@ -6868,9 +6764,9 @@ list_malware_protection_plans(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of malware scans.
 %%
-%% Each member account can view the malware scans for their
-%% own accounts. An administrator can view the malware scans for all of its
-%% members' accounts.
+%% Each member account can view the malware scans for their own accounts. An
+%% administrator can view the malware scans for all of its members'
+%% accounts.
 -spec list_malware_scans(aws_client:aws_client(), list_malware_scans_request()) ->
     {ok, list_malware_scans_response(), tuple()} |
     {error, any()} |
@@ -6907,8 +6803,7 @@ list_malware_scans(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current GuardDuty
-%% administrator
-%% account.
+%% administrator account.
 -spec list_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
@@ -6953,8 +6848,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the accounts designated as GuardDuty delegated administrators.
 %%
-%% Only the organization's management account can run this
-%% API operation.
+%% Only the organization's management account can run this API operation.
 -spec list_organization_admin_accounts(aws_client:aws_client()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
@@ -6997,8 +6891,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified
-%% `detectorId'.
+%% specified `detectorId'.
 -spec list_publishing_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
@@ -7042,11 +6935,10 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists tags for a resource.
 %%
-%% Tagging is currently supported for detectors, finding filters,
-%% IP sets, threat intel sets, and publishing destination, with a limit of 50
-%% tags per resource.
-%% When invoked, this
-%% operation returns all assigned tags for a given resource.
+%% Tagging is currently supported for detectors, finding filters, IP sets,
+%% threat intel sets, and publishing destination, with a limit of 50 tags per
+%% resource. When invoked, this operation returns all assigned tags for a
+%% given resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -7086,10 +6978,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the threat entity sets associated with the specified GuardDuty
 %% detector ID.
 %%
-%% If you use this
-%% operation from a member account, the threat entity sets that are returned
-%% as a response, belong to the
-%% administrator account.
+%% If you use this operation from a member account, the threat entity sets
+%% that are returned as a response, belong to the administrator account.
 -spec list_threat_entity_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_threat_entity_sets_response(), tuple()} |
     {error, any()} |
@@ -7134,10 +7024,8 @@ list_threat_entity_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the ThreatIntelSets of the GuardDuty service specified by the
 %% detector ID.
 %%
-%% If you
-%% use this operation from a member account, the ThreatIntelSets associated
-%% with the
-%% administrator account are returned.
+%% If you use this operation from a member account, the ThreatIntelSets
+%% associated with the administrator account are returned.
 -spec list_threat_intel_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
@@ -7182,10 +7070,8 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the trusted entity sets associated with the specified GuardDuty
 %% detector ID.
 %%
-%% If you use this
-%% operation from a member account, the trusted entity sets that are returned
-%% as a response, belong to the
-%% administrator account.
+%% If you use this operation from a member account, the trusted entity sets
+%% that are returned as a response, belong to the administrator account.
 -spec list_trusted_entity_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_trusted_entity_sets_response(), tuple()} |
     {error, any()} |
@@ -7233,9 +7119,8 @@ list_trusted_entity_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% objects in S3 buckets that have Malware Protection for S3 enabled.
 %%
 %% When you use this API, the Amazon Web Services service terms for GuardDuty
-%% Malware
-%% Protection apply. For more information, see Amazon Web Services service
-%% terms for GuardDuty Malware Protection:
+%% Malware Protection apply. For more information, see Amazon Web Services
+%% service terms for GuardDuty Malware Protection:
 %% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
 -spec send_object_malware_scan(aws_client:aws_client(), send_object_malware_scan_request()) ->
     {ok, send_object_malware_scan_response(), tuple()} |
@@ -7274,20 +7159,18 @@ send_object_malware_scan(Client, Input0, Options0) ->
 %%
 %% Invoking this API will automatically create the Service-linked role:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
-%% in
-%% the corresponding account if the resourceArn belongs to an EC2 instance.
+%% in the corresponding account if the resourceArn belongs to an EC2
+%% instance.
 %%
 %% When the malware scan starts, you can use the associated scan ID to track
-%% the status of the scan. For more information,
-%% see ListMalwareScans:
+%% the status of the scan. For more information, see ListMalwareScans:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareScans.html
 %% and GetMalwareScan:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareScan.html.
 %%
 %% When you use this API, the Amazon Web Services service terms for GuardDuty
-%% Malware
-%% Protection apply. For more information, see Amazon Web Services service
-%% terms for GuardDuty Malware Protection:
+%% Malware Protection apply. For more information, see Amazon Web Services
+%% service terms for GuardDuty Malware Protection:
 %% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
 -spec start_malware_scan(aws_client:aws_client(), start_malware_scan_request()) ->
     {ok, start_malware_scan_response(), tuple()} |
@@ -7324,9 +7207,8 @@ start_malware_scan(Client, Input0, Options0) ->
 
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%
-%% Use this operation to
-%% restart monitoring of accounts that you stopped monitoring with the
-%% StopMonitoringMembers:
+%% Use this operation to restart monitoring of accounts that you stopped
+%% monitoring with the StopMonitoringMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html
 %% operation.
 -spec start_monitoring_members(aws_client:aws_client(), binary() | list(), start_monitoring_members_request()) ->
@@ -7364,15 +7246,12 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Stops GuardDuty monitoring for the specified member accounts.
 %%
-%% Use the
-%% `StartMonitoringMembers' operation to restart monitoring for those
-%% accounts.
+%% Use the `StartMonitoringMembers' operation to restart monitoring for
+%% those accounts.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to
-%% `ALL', you'll receive an error if you attempt to stop monitoring
-%% the member
-%% accounts in your organization.
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to stop monitoring the member accounts in your organization.
 -spec stop_monitoring_members(aws_client:aws_client(), binary() | list(), stop_monitoring_members_request()) ->
     {ok, stop_monitoring_members_response(), tuple()} |
     {error, any()} |
@@ -7511,18 +7390,16 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the GuardDuty detector specified by the detector ID.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
-%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
-%% You can add only one of these two features because Runtime Monitoring
-%% already includes the
-%% threat detection for Amazon EKS resources. For more information, see
-%% Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec update_detector(aws_client:aws_client(), binary() | list(), update_detector_request()) ->
     {ok, update_detector_response(), tuple()} |
@@ -7697,8 +7574,7 @@ update_malware_protection_plan(Client, MalwareProtectionPlanId, Input0, Options0
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec update_malware_scan_settings(aws_client:aws_client(), binary() | list(), update_malware_scan_settings_request()) ->
     {ok, update_malware_scan_settings_response(), tuple()} |
@@ -7735,18 +7611,16 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Contains information on member accounts to be updated.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
-%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
-%% You can add only one of these two features because Runtime Monitoring
-%% already includes the
-%% threat detection for Amazon EKS resources. For more information, see
-%% Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec update_member_detectors(aws_client:aws_client(), binary() | list(), update_member_detectors_request()) ->
     {ok, update_member_detectors_response(), tuple()} |
@@ -7784,22 +7658,19 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %% @doc Configures the delegated administrator account with the provided
 %% values.
 %%
-%% You must provide
-%% a value for either `autoEnableOrganizationMembers' or
+%% You must provide a value for either `autoEnableOrganizationMembers' or
 %% `autoEnable', but not both.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
-%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
-%% You can add only one of these two features because Runtime Monitoring
-%% already includes the
-%% threat detection for Amazon EKS resources. For more information, see
-%% Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more
-%% information, see Regions and endpoints:
+%% presently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 -spec update_organization_configuration(aws_client:aws_client(), binary() | list(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |

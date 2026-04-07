@@ -47,6 +47,8 @@
          apply_archive_rule/3,
          cancel_policy_generation/3,
          cancel_policy_generation/4,
+         cancel_policy_preview_job/3,
+         cancel_policy_preview_job/4,
          check_access_not_granted/2,
          check_access_not_granted/3,
          check_no_new_access/2,
@@ -59,10 +61,14 @@
          create_analyzer/3,
          create_archive_rule/3,
          create_archive_rule/4,
+         create_policy_preview_configuration/2,
+         create_policy_preview_configuration/3,
          delete_analyzer/3,
          delete_analyzer/4,
          delete_archive_rule/4,
          delete_archive_rule/5,
+         delete_policy_preview_configuration/2,
+         delete_policy_preview_configuration/3,
          generate_finding_recommendation/3,
          generate_finding_recommendation/4,
          get_access_preview/3,
@@ -91,6 +97,12 @@
          get_generated_policy/2,
          get_generated_policy/4,
          get_generated_policy/5,
+         get_policy_preview_configuration/1,
+         get_policy_preview_configuration/3,
+         get_policy_preview_configuration/4,
+         get_policy_preview_job/2,
+         get_policy_preview_job/4,
+         get_policy_preview_job/5,
          list_access_preview_findings/3,
          list_access_preview_findings/4,
          list_access_previews/2,
@@ -111,11 +123,16 @@
          list_policy_generations/1,
          list_policy_generations/3,
          list_policy_generations/4,
+         list_policy_preview_jobs/1,
+         list_policy_preview_jobs/3,
+         list_policy_preview_jobs/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          start_policy_generation/2,
          start_policy_generation/3,
+         start_policy_preview_job/2,
+         start_policy_preview_job/3,
          start_resource_scan/2,
          start_resource_scan/3,
          tag_resource/3,
@@ -382,6 +399,14 @@
 
 
 %% Example:
+%% list_policy_preview_jobs_response() :: #{
+%%   <<"analysisReports">> => list(policy_preview_analysis_report()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_preview_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_access_analysis_rule_criteria() :: #{
 %%   <<"accountIds">> => list([string()]()),
 %%   <<"resourceArns">> => list([string()]()),
@@ -465,6 +490,13 @@
 
 
 %% Example:
+%% start_policy_preview_job_response() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type start_policy_preview_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% check_no_new_access_request() :: #{
 %%   <<"existingPolicyDocument">> := string(),
 %%   <<"newPolicyDocument">> := string(),
@@ -488,6 +520,10 @@
 %% }
 -type delete_analyzer_request() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_policy_preview_job_response() :: #{}
+-type cancel_policy_preview_job_response() :: #{}.
+
 
 %% Example:
 %% list_analyzers_response() :: #{
@@ -495,6 +531,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_configuration() :: #{
+%%   <<"jobType">> => string(),
+%%   <<"policyDocumentsList">> => list([string()]()),
+%%   <<"targetId">> => string()
+%% }
+-type policy_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -523,6 +568,15 @@
 %% Example:
 %% cancel_policy_generation_response() :: #{}
 -type cancel_policy_generation_response() :: #{}.
+
+
+%% Example:
+%% policy_preview_job_parameters() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"policyConfigurations">> => list(policy_configuration()),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type policy_preview_job_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -618,6 +672,13 @@
 
 
 %% Example:
+%% create_policy_preview_configuration_response() :: #{
+%%   <<"status">> => string()
+%% }
+-type create_policy_preview_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -655,6 +716,18 @@
 
 
 %% Example:
+%% policy_preview_analysis_report() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"outputS3Uri">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"submittedAt">> => non_neg_integer()
+%% }
+-type policy_preview_analysis_report() :: #{binary() => any()}.
+
+
+%% Example:
 %% policy_generation_details() :: #{
 %%   <<"principalArn">> => string()
 %% }
@@ -666,6 +739,17 @@
 %%   <<"repositoryPolicy">> => string()
 %% }
 -type ecr_repository_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_preview_job_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"outputS3Uri">> := string(),
+%%   <<"policyConfigurations">> := list(policy_configuration()),
+%%   <<"startTime">> := non_neg_integer()
+%% }
+-type start_policy_preview_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -698,6 +782,31 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_policy_preview_configuration_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"scope">> => string()
+%% }
+-type create_policy_preview_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_preview_configuration_response() :: #{}
+-type delete_policy_preview_configuration_response() :: #{}.
+
+%% Example:
+%% cancel_policy_preview_job_request() :: #{}
+-type cancel_policy_preview_job_request() :: #{}.
+
+
+%% Example:
+%% list_policy_preview_jobs_request() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_preview_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -734,6 +843,16 @@
 %%   <<"resourceType">> => string()
 %% }
 -type analyzed_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_preview_configuration() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"scope">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_preview_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -912,6 +1031,17 @@
 
 
 %% Example:
+%% policy_preview_job_details() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"jobError">> => job_error(),
+%%   <<"jobStatus">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"submittedAt">> => non_neg_integer()
+%% }
+-type policy_preview_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% kms_key_configuration() :: #{
 %%   <<"grants">> => list(kms_grant_configuration()),
 %%   <<"keyPolicies">> => map()
@@ -948,6 +1078,13 @@
 
 
 %% Example:
+%% delete_policy_preview_configuration_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_policy_preview_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dynamodb_table_configuration() :: #{
 %%   <<"tablePolicy">> => string()
 %% }
@@ -960,6 +1097,16 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_preview_job_response() :: #{
+%%   <<"jobDetails">> => policy_preview_job_details(),
+%%   <<"jobId">> => string(),
+%%   <<"jobParameters">> => policy_preview_job_parameters(),
+%%   <<"outputS3Uri">> => string()
+%% }
+-type get_policy_preview_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1006,6 +1153,13 @@
 %%   <<"policyGenerationDetails">> := policy_generation_details()
 %% }
 -type start_policy_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_preview_configuration_response() :: #{
+%%   <<"policyPreviewConfigurations">> => list(policy_preview_configuration())
+%% }
+-type get_policy_preview_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1212,6 +1366,10 @@
 %% }
 -type access() :: #{binary() => any()}.
 
+%% Example:
+%% get_policy_preview_configuration_request() :: #{}
+-type get_policy_preview_configuration_request() :: #{}.
+
 
 %% Example:
 %% rds_db_snapshot_configuration() :: #{
@@ -1348,6 +1506,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_preview_job_request() :: #{}
+-type get_policy_preview_job_request() :: #{}.
 
 
 %% Example:
@@ -1498,6 +1660,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type cancel_policy_preview_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type check_access_not_granted_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1548,6 +1717,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_policy_preview_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_analyzer_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1556,6 +1733,13 @@
     resource_not_found_exception().
 
 -type delete_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_policy_preview_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1630,6 +1814,20 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type get_policy_preview_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_preview_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_access_preview_findings_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1684,6 +1882,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_policy_preview_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1692,6 +1896,14 @@
     resource_not_found_exception().
 
 -type start_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_policy_preview_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1802,6 +2014,42 @@ cancel_policy_generation(Client, JobId, Input) ->
 cancel_policy_generation(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an in-progress policy preview job.
+%%
+%% Jobs that are already completed, failed, or canceled cannot be canceled.
+-spec cancel_policy_preview_job(aws_client:aws_client(), binary() | list(), cancel_policy_preview_job_request()) ->
+    {ok, cancel_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_policy_preview_job_errors(), tuple()}.
+cancel_policy_preview_job(Client, JobId, Input) ->
+    cancel_policy_preview_job(Client, JobId, Input, []).
+
+-spec cancel_policy_preview_job(aws_client:aws_client(), binary() | list(), cancel_policy_preview_job_request(), proplists:proplist()) ->
+    {ok, cancel_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_policy_preview_job_errors(), tuple()}.
+cancel_policy_preview_job(Client, JobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/preview/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2043,6 +2291,43 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a policy preview configuration for your account.
+%%
+%% The configuration enables IAM Access Analyzer to collect and store
+%% CloudTrail authorization events needed for policy preview analysis.
+-spec create_policy_preview_configuration(aws_client:aws_client(), create_policy_preview_configuration_request()) ->
+    {ok, create_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_preview_configuration_errors(), tuple()}.
+create_policy_preview_configuration(Client, Input) ->
+    create_policy_preview_configuration(Client, Input, []).
+
+-spec create_policy_preview_configuration(aws_client:aws_client(), create_policy_preview_configuration_request(), proplists:proplist()) ->
+    {ok, create_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_policy_preview_configuration_errors(), tuple()}.
+create_policy_preview_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/preview-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified analyzer.
 %%
 %% When you delete an analyzer, IAM Access Analyzer is disabled for the
@@ -2098,6 +2383,44 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
 delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the policy preview configuration for your account.
+%%
+%% After deletion, IAM Access Analyzer will stop collecting CloudTrail
+%% authorization events for policy preview analysis.
+-spec delete_policy_preview_configuration(aws_client:aws_client(), delete_policy_preview_configuration_request()) ->
+    {ok, delete_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_preview_configuration_errors(), tuple()}.
+delete_policy_preview_configuration(Client, Input) ->
+    delete_policy_preview_configuration(Client, Input, []).
+
+-spec delete_policy_preview_configuration(aws_client:aws_client(), delete_policy_preview_configuration_request(), proplists:proplist()) ->
+    {ok, delete_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_preview_configuration_errors(), tuple()}.
+delete_policy_preview_configuration(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policy/preview-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2535,6 +2858,87 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the policy preview configuration for your account.
+-spec get_policy_preview_configuration(aws_client:aws_client()) ->
+    {ok, get_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_configuration_errors(), tuple()}.
+get_policy_preview_configuration(Client)
+  when is_map(Client) ->
+    get_policy_preview_configuration(Client, #{}, #{}).
+
+-spec get_policy_preview_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, get_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_configuration_errors(), tuple()}.
+get_policy_preview_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_preview_configuration(Client, QueryMap, HeadersMap, []).
+
+-spec get_policy_preview_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_preview_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_configuration_errors(), tuple()}.
+get_policy_preview_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/preview-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the metadata, parameters, and status for a policy preview
+%% job.
+%%
+%% Use this operation to monitor job progress and retrieve the Amazon S3
+%% location of the completed analysis report.
+%%
+%% Job data has a time-to-live (TTL) of 14 days and will be deleted after
+%% expiration.
+-spec get_policy_preview_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_job_errors(), tuple()}.
+get_policy_preview_job(Client, JobId)
+  when is_map(Client) ->
+    get_policy_preview_job(Client, JobId, #{}, #{}).
+
+-spec get_policy_preview_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_job_errors(), tuple()}.
+get_policy_preview_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_preview_job(Client, JobId, QueryMap, HeadersMap, []).
+
+-spec get_policy_preview_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_preview_job_errors(), tuple()}.
+get_policy_preview_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/preview/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of access preview findings generated by the
 %% specified access preview.
 -spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request()) ->
@@ -2867,6 +3271,52 @@ list_policy_generations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all policy preview jobs with optional filtering by job status
+%% or target ID.
+%%
+%% Results are paginated for efficient retrieval of large result sets.
+-spec list_policy_preview_jobs(aws_client:aws_client()) ->
+    {ok, list_policy_preview_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_preview_jobs_errors(), tuple()}.
+list_policy_preview_jobs(Client)
+  when is_map(Client) ->
+    list_policy_preview_jobs(Client, #{}, #{}).
+
+-spec list_policy_preview_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_policy_preview_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_preview_jobs_errors(), tuple()}.
+list_policy_preview_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_preview_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_policy_preview_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_preview_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_preview_jobs_errors(), tuple()}.
+list_policy_preview_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/preview"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filters">>, maps:get(<<"filters">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of tags applied to the specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -2919,6 +3369,48 @@ start_policy_generation(Client, Input) ->
 start_policy_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a policy preview analysis job to evaluate the impact of
+%% Service Control Policies (SCPs) before deployment.
+%%
+%% The analysis uses historical CloudTrail authorization events to identify
+%% potential access denials, helping you prevent service disruptions.
+%%
+%% The job analyzes CloudTrail events within a specified time window and
+%% generates a report identifying which events would be denied by the
+%% proposed policy. The report is stored in the specified Amazon S3 location.
+-spec start_policy_preview_job(aws_client:aws_client(), start_policy_preview_job_request()) ->
+    {ok, start_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_preview_job_errors(), tuple()}.
+start_policy_preview_job(Client, Input) ->
+    start_policy_preview_job(Client, Input, []).
+
+-spec start_policy_preview_job(aws_client:aws_client(), start_policy_preview_job_request(), proplists:proplist()) ->
+    {ok, start_policy_preview_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_preview_job_errors(), tuple()}.
+start_policy_preview_job(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/preview"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

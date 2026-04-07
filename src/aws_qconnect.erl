@@ -1408,6 +1408,7 @@
 %%   <<"assistantId">> => string(),
 %%   <<"attributes">> => span_attributes(),
 %%   <<"endTimestamp">> => [non_neg_integer()],
+%%   <<"originRequestId">> => string(),
 %%   <<"parentSpanId">> => string(),
 %%   <<"requestId">> => string(),
 %%   <<"sessionId">> => string(),
@@ -3061,6 +3062,7 @@
 %%   <<"message">> := message_input(),
 %%   <<"metadata">> => map(),
 %%   <<"orchestratorUseCase">> => string(),
+%%   <<"originRequestId">> => string(),
 %%   <<"type">> := string()
 %% }
 -type send_message_request() :: #{binary() => any()}.

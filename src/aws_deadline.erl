@@ -37,8 +37,24 @@
          assume_queue_role_for_worker/5,
          assume_queue_role_for_worker/7,
          assume_queue_role_for_worker/8,
+         batch_get_job/2,
+         batch_get_job/3,
          batch_get_job_entity/5,
          batch_get_job_entity/6,
+         batch_get_session/2,
+         batch_get_session/3,
+         batch_get_session_action/2,
+         batch_get_session_action/3,
+         batch_get_step/2,
+         batch_get_step/3,
+         batch_get_task/2,
+         batch_get_task/3,
+         batch_get_worker/2,
+         batch_get_worker/3,
+         batch_update_job/2,
+         batch_update_job/3,
+         batch_update_task/2,
+         batch_update_task/3,
          copy_job_template/5,
          copy_job_template/6,
          create_budget/3,
@@ -459,6 +475,17 @@
 
 
 %% Example:
+%% batch_get_task_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type batch_get_task_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_queues_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -605,6 +632,13 @@
 
 
 %% Example:
+%% batch_get_step_request() :: #{
+%%   <<"identifiers">> := list(batch_get_step_identifier())
+%% }
+-type batch_get_step_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% string_list_filter_expression() :: #{
 %%   <<"name">> => string(),
 %%   <<"operator">> => list(any()),
@@ -658,6 +692,13 @@
 
 
 %% Example:
+%% batch_get_job_request() :: #{
+%%   <<"identifiers">> := list(batch_get_job_identifier())
+%% }
+-type batch_get_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_queue_fleet_associations_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queueFleetAssociations">> => list(queue_fleet_association_summary())
@@ -671,6 +712,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sessions_for_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_job_response() :: #{
+%%   <<"errors">> => list(batch_get_job_error()),
+%%   <<"jobs">> => list(batch_get_job_item())
+%% }
+-type batch_get_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_limit_request() :: #{}
@@ -766,6 +815,24 @@
 %%   <<"min">> => integer()
 %% }
 -type v_cpu_count_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type batch_get_session_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"jobs">> := list(batch_update_job_item())
+%% }
+-type batch_update_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_limit_response() :: #{}
@@ -869,6 +936,13 @@
 %%   <<"vpcConfiguration">> => vpc_configuration()
 %% }
 -type service_managed_ec2_fleet_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_task_response() :: #{
+%%   <<"errors">> => list(batch_update_task_error())
+%% }
+-type batch_update_task_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1253,6 +1327,14 @@
 
 
 %% Example:
+%% batch_update_task_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tasks">> := list(batch_update_task_item())
+%% }
+-type batch_update_task_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_managed_ec2_instance_capabilities() :: #{
 %%   <<"acceleratorCapabilities">> => accelerator_capabilities(),
 %%   <<"allowedInstanceTypes">> => list(string()),
@@ -1441,6 +1523,33 @@
 
 
 %% Example:
+%% batch_get_step_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dependencyCounts">> => dependency_counts(),
+%%   <<"description">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameterSpace">> => parameter_space(),
+%%   <<"queueId">> => string(),
+%%   <<"requiredCapabilities">> => step_required_capabilities(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type batch_get_step_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_member() :: #{
 %%   <<"farmId">> => string(),
 %%   <<"identityStoreId">> => string(),
@@ -1523,6 +1632,23 @@
 
 
 %% Example:
+%% batch_update_job_item() :: #{
+%%   <<"description">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"queueId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any())
+%% }
+-type batch_update_job_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_jobs_request() :: #{
 %%   <<"filterExpressions">> => search_grouped_filter_expressions(),
 %%   <<"itemOffset">> := integer(),
@@ -1582,6 +1708,27 @@
 
 
 %% Example:
+%% batch_get_session_item() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"log">> => log_configuration(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetLifecycleStatus">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string(),
+%%   <<"workerLog">> => log_configuration()
+%% }
+-type batch_get_session_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% assigned_environment_enter_session_action_definition() :: #{
 %%   <<"environmentId">> => string()
 %% }
@@ -1619,6 +1766,18 @@
 %%   <<"selections">> => list(accelerator_selection())
 %% }
 -type accelerator_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_task_item() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type batch_update_task_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1730,6 +1889,13 @@
 
 
 %% Example:
+%% batch_get_task_request() :: #{
+%%   <<"identifiers">> := list(batch_get_task_identifier())
+%% }
+-type batch_get_task_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_metered_products_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1768,6 +1934,14 @@
 %%   <<"jobId">> => string()
 %% }
 -type job_details_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_step_response() :: #{
+%%   <<"errors">> => list(batch_get_step_error()),
+%%   <<"steps">> => list(batch_get_step_item())
+%% }
+-type batch_get_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1866,6 +2040,37 @@
 
 
 %% Example:
+%% batch_get_job_item() :: #{
+%%   <<"attachments">> => attachments(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"priority">> => integer(),
+%%   <<"queueId">> => string(),
+%%   <<"sourceJobId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"storageProfileId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type batch_get_job_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_queue_environment_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"priority">> => integer(),
@@ -1902,6 +2107,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_job_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type batch_get_job_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1983,6 +2197,27 @@
 
 
 %% Example:
+%% batch_get_session_action_item() :: #{
+%%   <<"acquiredLimits">> => list(acquired_limit()),
+%%   <<"definition">> => list(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()),
+%%   <<"processExitCode">> => integer(),
+%%   <<"progressMessage">> => string(),
+%%   <<"progressPercent">> => float(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActionId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"workerUpdatedAt">> => non_neg_integer()
+%% }
+-type batch_get_session_action_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sessions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -2045,6 +2280,18 @@
 %%   <<"environmentId">> => string()
 %% }
 -type environment_exit_session_action_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_step_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string()
+%% }
+-type batch_get_step_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2165,9 +2412,34 @@
 %% }
 -type list_farm_members_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_get_worker_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"workerId">> => string()
+%% }
+-type batch_get_worker_identifier() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_member_from_job_request() :: #{}
 -type disassociate_member_from_job_request() :: #{}.
+
+
+%% Example:
+%% batch_get_worker_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"log">> => log_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string()
+%% }
+-type batch_get_worker_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2178,6 +2450,26 @@
 %%   <<"stepId">> => string()
 %% }
 -type step_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_response() :: #{
+%%   <<"errors">> => list(batch_update_job_error())
+%% }
+-type batch_update_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_task_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type batch_update_task_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2221,10 +2513,27 @@
 
 
 %% Example:
+%% batch_get_session_action_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActionId">> => string()
+%% }
+-type batch_get_session_action_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_farm_response() :: #{
 %%   <<"farmId">> => string()
 %% }
 -type create_farm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_request() :: #{
+%%   <<"identifiers">> := list(batch_get_session_identifier())
+%% }
+-type batch_get_session_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2278,6 +2587,13 @@
 
 
 %% Example:
+%% batch_get_worker_request() :: #{
+%%   <<"identifiers">> := list(batch_get_worker_identifier())
+%% }
+-type batch_get_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% accelerator_total_memory_mi_b_range() :: #{
 %%   <<"max">> => integer(),
 %%   <<"min">> => integer()
@@ -2315,6 +2631,14 @@
 %%   <<"userIdentityId">> => string()
 %% }
 -type user_jobs_first() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_response() :: #{
+%%   <<"errors">> => list(batch_get_task_error()),
+%%   <<"tasks">> => list(batch_get_task_item())
+%% }
+-type batch_get_task_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_session_action_request() :: #{}
@@ -2490,6 +2814,24 @@
 
 
 %% Example:
+%% batch_get_session_action_request() :: #{
+%%   <<"identifiers">> := list(batch_get_session_action_identifier())
+%% }
+-type batch_get_session_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type batch_update_job_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% customer_managed_auto_scaling_configuration() :: #{
 %%   <<"scaleOutWorkersPerMinute">> => integer(),
 %%   <<"standbyWorkerCount">> => integer(),
@@ -2554,6 +2896,17 @@
 %%   <<"userId">> => string()
 %% }
 -type statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_worker_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"workerId">> => string()
+%% }
+-type batch_get_worker_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2734,6 +3087,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"identityCenterApplicationArn">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"monitorId">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"subdomain">> => string(),
@@ -2753,11 +3107,44 @@
 
 
 %% Example:
+%% batch_get_job_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type batch_get_job_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter_sort_expression() :: #{
 %%   <<"name">> => string(),
 %%   <<"sortOrder">> => list(any())
 %% }
 -type parameter_sort_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureRetryCount">> => integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"latestSessionActionId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queueId">> => string(),
+%%   <<"runStatus">> => list(any()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type batch_get_task_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2789,11 +3176,31 @@
 
 
 %% Example:
+%% batch_get_session_action_response() :: #{
+%%   <<"errors">> => list(batch_get_session_action_error()),
+%%   <<"sessionActions">> => list(batch_get_session_action_item())
+%% }
+-type batch_get_session_action_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_queues_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queues">> => list(queue_summary())
 %% }
 -type list_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type batch_get_session_error() :: #{binary() => any()}.
 
 %% Example:
 %% delete_queue_environment_response() :: #{}
@@ -2929,6 +3336,24 @@
 %% }
 -type job_search_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_get_step_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string()
+%% }
+-type batch_get_step_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_response() :: #{
+%%   <<"errors">> => list(batch_get_session_error()),
+%%   <<"sessions">> => list(batch_get_session_item())
+%% }
+-type batch_get_session_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_storage_profile_for_queue_request() :: #{}
 -type get_storage_profile_for_queue_request() :: #{}.
@@ -2973,6 +3398,18 @@
 %% get_queue_fleet_association_request() :: #{}
 -type get_queue_fleet_association_request() :: #{}.
 
+
+%% Example:
+%% batch_get_session_action_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActionId">> => string()
+%% }
+-type batch_get_session_action_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_license_endpoint_request() :: #{}
 -type delete_license_endpoint_request() :: #{}.
@@ -2992,6 +3429,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"identityCenterInstanceArn">> := string(),
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"roleArn">> := string(),
 %%   <<"subdomain">> := string(),
 %%   <<"tags">> => map()
@@ -3250,6 +3688,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"identityCenterApplicationArn">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"monitorId">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"subdomain">> => string(),
@@ -3315,6 +3754,14 @@
 
 
 %% Example:
+%% batch_get_worker_response() :: #{
+%%   <<"errors">> => list(batch_get_worker_error()),
+%%   <<"workers">> => list(batch_get_worker_item())
+%% }
+-type batch_get_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% farm_member() :: #{
 %%   <<"farmId">> => string(),
 %%   <<"identityStoreId">> => string(),
@@ -3360,6 +3807,19 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_farms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type batch_get_task_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3472,12 +3932,60 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type batch_get_job_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
 -type batch_get_job_entity_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
+
+-type batch_get_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_get_session_action_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_get_step_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_get_task_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_get_worker_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_update_job_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_update_task_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
 
 -type copy_job_template_errors() ::
     throttling_exception() | 
@@ -4552,6 +5060,47 @@ assume_queue_role_for_worker(Client, FarmId, FleetId, WorkerId, QueueId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves multiple jobs in a single request.
+%%
+%% This is a batch version of the `GetJob' API.
+%%
+%% The result of getting each job is reported individually in the response.
+%% Because the batch request can result in a combination of successful and
+%% unsuccessful actions, you should check for batch errors even when the call
+%% returns an HTTP status code of 200.
+-spec batch_get_job(aws_client:aws_client(), batch_get_job_request()) ->
+    {ok, batch_get_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_job_errors(), tuple()}.
+batch_get_job(Client, Input) ->
+    batch_get_job(Client, Input, []).
+
+-spec batch_get_job(aws_client:aws_client(), batch_get_job_request(), proplists:proplist()) ->
+    {ok, batch_get_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_job_errors(), tuple()}.
+batch_get_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get batched job details for a worker.
 -spec batch_get_job_entity(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_get_job_entity_request()) ->
     {ok, batch_get_job_entity_response(), tuple()} |
@@ -4577,6 +5126,303 @@ batch_get_job_entity(Client, FarmId, FleetId, WorkerId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple sessions in a single request.
+%%
+%% This is a batch version of the `GetSession' API.
+%%
+%% The result of getting each session is reported individually in the
+%% response. Because the batch request can result in a combination of
+%% successful and unsuccessful actions, you should check for batch errors
+%% even when the call returns an HTTP status code of 200.
+-spec batch_get_session(aws_client:aws_client(), batch_get_session_request()) ->
+    {ok, batch_get_session_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_session_errors(), tuple()}.
+batch_get_session(Client, Input) ->
+    batch_get_session(Client, Input, []).
+
+-spec batch_get_session(aws_client:aws_client(), batch_get_session_request(), proplists:proplist()) ->
+    {ok, batch_get_session_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_session_errors(), tuple()}.
+batch_get_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-session"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple session actions in a single request.
+%%
+%% This is a batch version of the `GetSessionAction' API.
+%%
+%% The result of getting each session action is reported individually in the
+%% response. Because the batch request can result in a combination of
+%% successful and unsuccessful actions, you should check for batch errors
+%% even when the call returns an HTTP status code of 200.
+-spec batch_get_session_action(aws_client:aws_client(), batch_get_session_action_request()) ->
+    {ok, batch_get_session_action_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_session_action_errors(), tuple()}.
+batch_get_session_action(Client, Input) ->
+    batch_get_session_action(Client, Input, []).
+
+-spec batch_get_session_action(aws_client:aws_client(), batch_get_session_action_request(), proplists:proplist()) ->
+    {ok, batch_get_session_action_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_session_action_errors(), tuple()}.
+batch_get_session_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-session-action"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple steps in a single request.
+%%
+%% This is a batch version of the `GetStep' API.
+%%
+%% The result of getting each step is reported individually in the response.
+%% Because the batch request can result in a combination of successful and
+%% unsuccessful actions, you should check for batch errors even when the call
+%% returns an HTTP status code of 200.
+-spec batch_get_step(aws_client:aws_client(), batch_get_step_request()) ->
+    {ok, batch_get_step_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_step_errors(), tuple()}.
+batch_get_step(Client, Input) ->
+    batch_get_step(Client, Input, []).
+
+-spec batch_get_step(aws_client:aws_client(), batch_get_step_request(), proplists:proplist()) ->
+    {ok, batch_get_step_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_step_errors(), tuple()}.
+batch_get_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-step"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple tasks in a single request.
+%%
+%% This is a batch version of the `GetTask' API.
+%%
+%% The result of getting each task is reported individually in the response.
+%% Because the batch request can result in a combination of successful and
+%% unsuccessful actions, you should check for batch errors even when the call
+%% returns an HTTP status code of 200.
+-spec batch_get_task(aws_client:aws_client(), batch_get_task_request()) ->
+    {ok, batch_get_task_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_task_errors(), tuple()}.
+batch_get_task(Client, Input) ->
+    batch_get_task(Client, Input, []).
+
+-spec batch_get_task(aws_client:aws_client(), batch_get_task_request(), proplists:proplist()) ->
+    {ok, batch_get_task_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_task_errors(), tuple()}.
+batch_get_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple workers in a single request.
+%%
+%% This is a batch version of the `GetWorker' API.
+%%
+%% The result of getting each worker is reported individually in the
+%% response. Because the batch request can result in a combination of
+%% successful and unsuccessful actions, you should check for batch errors
+%% even when the call returns an HTTP status code of 200.
+-spec batch_get_worker(aws_client:aws_client(), batch_get_worker_request()) ->
+    {ok, batch_get_worker_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_worker_errors(), tuple()}.
+batch_get_worker(Client, Input) ->
+    batch_get_worker(Client, Input, []).
+
+-spec batch_get_worker(aws_client:aws_client(), batch_get_worker_request(), proplists:proplist()) ->
+    {ok, batch_get_worker_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_worker_errors(), tuple()}.
+batch_get_worker(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/batch-get-worker"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates multiple jobs in a single request.
+%%
+%% This is a batch version of the `UpdateJob' API.
+%%
+%% The result of updating each job is reported individually in the response.
+%% Because the batch request can result in a combination of successful and
+%% unsuccessful actions, you should check for batch errors even when the call
+%% returns an HTTP status code of 200.
+%%
+%% When you change the status of a job to `ARCHIVED', the job can't
+%% be scheduled or archived.
+%%
+%% An archived job and its steps and tasks are deleted after 120 days. The
+%% job can't be recovered.
+-spec batch_update_job(aws_client:aws_client(), batch_update_job_request()) ->
+    {ok, batch_update_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_job_errors(), tuple()}.
+batch_update_job(Client, Input) ->
+    batch_update_job(Client, Input, []).
+
+-spec batch_update_job(aws_client:aws_client(), batch_update_job_request(), proplists:proplist()) ->
+    {ok, batch_update_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_job_errors(), tuple()}.
+batch_update_job(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/2023-10-12/batch-update-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Client-Token">>, <<"clientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates multiple tasks in a single request.
+%%
+%% This is a batch version of the `UpdateTask' API.
+%%
+%% The result of updating each task is reported individually in the response.
+%% Because the batch request can result in a combination of successful and
+%% unsuccessful actions, you should check for batch errors even when the call
+%% returns an HTTP status code of 200.
+-spec batch_update_task(aws_client:aws_client(), batch_update_task_request()) ->
+    {ok, batch_update_task_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_task_errors(), tuple()}.
+batch_update_task(Client, Input) ->
+    batch_update_task(Client, Input, []).
+
+-spec batch_update_task(aws_client:aws_client(), batch_update_task_request(), proplists:proplist()) ->
+    {ok, batch_update_task_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_task_errors(), tuple()}.
+batch_update_task(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/2023-10-12/batch-update-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Client-Token">>, <<"clientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

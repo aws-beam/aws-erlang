@@ -324,12 +324,15 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap,
         Result
     end.
 
-%% @doc `GetStaticMap' provides high-quality static map images with
-%% customizable options.
+%% @doc This operation is not supported in `ap-southeast-1' and
+%% `ap-southeast-5' regions for GrabMaps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/GrabMaps.html
+%% customers.
 %%
-%% You can modify the map's appearance and overlay additional
-%% information. It's an ideal solution for applications requiring
-%% tailored static map snapshots.
+%% `GetStaticMap' provides high-quality static map images with
+%% customizable options. You can modify the map's appearance and overlay
+%% additional information. It's an ideal solution for applications
+%% requiring tailored static map snapshots.
 %%
 %% For more information, see the following topics in the Amazon Location
 %% Service Developer Guide:
@@ -488,7 +491,7 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
 
 %% @doc `GetTile' returns a tile.
 %%
-%% Map tiles are used by clients to render a map. they're addressed using
+%% Map tiles are used by clients to render a map. They're addressed using
 %% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
 %%
 %% For more information, see Tiles:

@@ -138,6 +138,7 @@
 
 %% Example:
 %% fast_restore_rule() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
 %%   <<"AvailabilityZones">> => list(string()),
 %%   <<"Count">> => integer(),
 %%   <<"Interval">> => integer(),
