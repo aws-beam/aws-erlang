@@ -370,7 +370,8 @@
 %%   <<"tags">> => map(),
 %%   <<"taints">> => list(taint()),
 %%   <<"updateConfig">> => nodegroup_update_config(),
-%%   <<"version">> => string()
+%%   <<"version">> => string(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
 %% }
 -type create_nodegroup_request() :: #{binary() => any()}.
 
@@ -423,7 +424,8 @@
 %%   <<"nodeRepairConfig">> => node_repair_config(),
 %%   <<"scalingConfig">> => nodegroup_scaling_config(),
 %%   <<"taints">> => update_taints_payload(),
-%%   <<"updateConfig">> => nodegroup_update_config()
+%%   <<"updateConfig">> => nodegroup_update_config(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
 %% }
 -type update_nodegroup_config_request() :: #{binary() => any()}.
 
@@ -636,7 +638,8 @@
 %%   <<"tags">> => map(),
 %%   <<"taints">> => list(taint()),
 %%   <<"updateConfig">> => nodegroup_update_config(),
-%%   <<"version">> => string()
+%%   <<"version">> => string(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
 %% }
 -type nodegroup() :: #{binary() => any()}.
 
@@ -2341,6 +2344,17 @@
 %% Example:
 %% describe_eks_anywhere_subscription_request() :: #{}
 -type describe_eks_anywhere_subscription_request() :: #{}.
+
+
+%% Example:
+%% warm_pool_config() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"maxGroupPreparedCapacity">> => integer(),
+%%   <<"minSize">> => integer(),
+%%   <<"poolState">> => list(any()),
+%%   <<"reuseOnScaleIn">> => boolean()
+%% }
+-type warm_pool_config() :: #{binary() => any()}.
 
 %% Example:
 %% delete_access_entry_response() :: #{}

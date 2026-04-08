@@ -824,6 +824,7 @@
 
 %% Example:
 %% s3_properties_patch() :: #{
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
 %%   <<"s3AccessGrantLocationId">> => string(),
 %%   <<"s3Uri">> => string()
 %% }
@@ -1771,6 +1772,7 @@
 %% Example:
 %% update_connection_input() :: #{
 %%   <<"awsLocation">> => aws_location(),
+%%   <<"configurations">> => list(configuration()),
 %%   <<"description">> => string(),
 %%   <<"props">> => list()
 %% }
@@ -1981,6 +1983,7 @@
 
 %% Example:
 %% create_connection_output() :: #{
+%%   <<"configurations">> => list(configuration()),
 %%   <<"connectionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -2026,6 +2029,14 @@
 %%   <<"policyType">> := list(any())
 %% }
 -type list_policy_grants_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"classification">> => [string()],
+%%   <<"properties">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_lineage_event_input() :: #{}
@@ -3337,6 +3348,7 @@
 
 %% Example:
 %% get_connection_output() :: #{
+%%   <<"configurations">> => list(configuration()),
 %%   <<"connectionCredentials">> => connection_credentials(),
 %%   <<"connectionId">> => string(),
 %%   <<"description">> => string(),
@@ -3851,6 +3863,7 @@
 %% Example:
 %% s3_properties_output() :: #{
 %%   <<"errorMessage">> => [string()],
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
 %%   <<"s3AccessGrantLocationId">> => string(),
 %%   <<"s3Uri">> => string(),
 %%   <<"status">> => list(any())
@@ -3891,6 +3904,7 @@
 %% spark_glue_properties_input() :: #{
 %%   <<"additionalArgs">> => spark_glue_args(),
 %%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
 %%   <<"glueVersion">> => [string()],
 %%   <<"idleTimeout">> => [integer()],
 %%   <<"javaVirtualEnv">> => [string()],
@@ -5160,6 +5174,7 @@
 
 %% Example:
 %% connection_summary() :: #{
+%%   <<"configurations">> => list(configuration()),
 %%   <<"connectionId">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
@@ -5333,6 +5348,7 @@
 %% spark_glue_properties_output() :: #{
 %%   <<"additionalArgs">> => spark_glue_args(),
 %%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
 %%   <<"glueVersion">> => [string()],
 %%   <<"idleTimeout">> => [integer()],
 %%   <<"javaVirtualEnv">> => [string()],
@@ -5791,6 +5807,7 @@
 %%   <<"enableTrustedIdentityPropagation">> => [boolean()],
 %%   <<"glueConnection">> => glue_connection(),
 %%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
 %%   <<"host">> => [string()],
 %%   <<"port">> => [integer()],
 %%   <<"protocol">> => list(any()),
@@ -6066,6 +6083,7 @@
 %% create_connection_input() :: #{
 %%   <<"awsLocation">> => aws_location(),
 %%   <<"clientToken">> => [string()],
+%%   <<"configurations">> => list(configuration()),
 %%   <<"description">> => string(),
 %%   <<"enableTrustedIdentityPropagation">> => [boolean()],
 %%   <<"environmentIdentifier">> => string(),
@@ -6484,6 +6502,7 @@
 
 %% Example:
 %% update_connection_output() :: #{
+%%   <<"configurations">> => list(configuration()),
 %%   <<"connectionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -6584,6 +6603,7 @@
 
 %% Example:
 %% s3_properties_input() :: #{
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
 %%   <<"s3AccessGrantLocationId">> => string(),
 %%   <<"s3Uri">> => string()
 %% }

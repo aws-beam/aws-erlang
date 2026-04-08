@@ -52,6 +52,8 @@
          invoke_agent_runtime/4,
          invoke_agent_runtime_command/3,
          invoke_agent_runtime_command/4,
+         invoke_browser/3,
+         invoke_browser/4,
          invoke_code_interpreter/3,
          invoke_code_interpreter/4,
          list_actors/3,
@@ -163,6 +165,25 @@
 
 
 %% Example:
+%% mouse_drag_arguments() :: #{
+%%   <<"button">> => list(any()),
+%%   <<"endX">> => [integer()],
+%%   <<"endY">> => [integer()],
+%%   <<"startX">> => [integer()],
+%%   <<"startY">> => [integer()]
+%% }
+-type mouse_drag_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_press_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_press_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_create_memory_records_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"records">> := list(memory_record_create_input())
@@ -177,6 +198,14 @@
 %%   <<"sessionId">> => string()
 %% }
 -type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_scroll_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_scroll_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -253,6 +282,14 @@
 %%   <<"timeout">> => [integer()]
 %% }
 -type invoke_agent_runtime_command_request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_browser_request() :: #{
+%%   <<"action">> := list(),
+%%   <<"sessionId">> := string()
+%% }
+-type invoke_browser_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -378,6 +415,14 @@
 
 
 %% Example:
+%% mouse_click_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_click_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_browser_session_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"sessionId">> := string(),
@@ -397,6 +442,22 @@
 %%   <<"statusCode">> => integer()
 %% }
 -type stop_runtime_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_drag_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_drag_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_browser_response() :: #{
+%%   <<"result">> => list(),
+%%   <<"sessionId">> => string()
+%% }
+-type invoke_browser_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -503,6 +564,14 @@
 %% }
 -type start_memory_extraction_job_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% key_shortcut_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_shortcut_result() :: #{binary() => any()}.
+
 %% Example:
 %% content_start_event() :: #{}
 -type content_start_event() :: #{}.
@@ -583,6 +652,13 @@
 
 
 %% Example:
+%% screenshot_arguments() :: #{
+%%   <<"format">> => list(any())
+%% }
+-type screenshot_arguments() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -618,6 +694,14 @@
 %% }
 -type extraction_job_metadata() :: #{binary() => any()}.
 
+
+%% Example:
+%% mouse_move_arguments() :: #{
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_move_arguments() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_input() :: #{}
 -type get_event_input() :: #{}.
@@ -637,6 +721,13 @@
 %%   <<"eventMetadata">> => list(event_metadata_filter_expression())
 %% }
 -type filter_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_type_arguments() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type key_type_arguments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -696,6 +787,14 @@
 
 
 %% Example:
+%% mouse_move_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_move_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_record_summary() :: #{
 %%   <<"content">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -714,6 +813,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_type_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_type_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -826,6 +933,14 @@
 %%   <<"sessionId">> => string()
 %% }
 -type stop_browser_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_press_arguments() :: #{
+%%   <<"key">> => [string()],
+%%   <<"presses">> => [integer()]
+%% }
+-type key_press_arguments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -960,6 +1075,15 @@
 
 
 %% Example:
+%% screenshot_result() :: #{
+%%   <<"data">> => [binary()],
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type screenshot_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_events_input() :: #{
 %%   <<"filter">> => filter_input(),
 %%   <<"includePayloads">> => [boolean()],
@@ -1027,6 +1151,16 @@
 
 
 %% Example:
+%% mouse_click_arguments() :: #{
+%%   <<"button">> => list(any()),
+%%   <<"clickCount">> => [integer()],
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_click_arguments() :: #{binary() => any()}.
+
+
+%% Example:
 %% secrets_manager_location() :: #{
 %%   <<"secretArn">> => string()
 %% }
@@ -1081,6 +1215,13 @@
 %% }
 -type get_browser_session_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% key_shortcut_arguments() :: #{
+%%   <<"keys">> => list([string()]())
+%% }
+-type key_shortcut_arguments() :: #{binary() => any()}.
+
 %% Example:
 %% complete_resource_token_auth_response() :: #{}
 -type complete_resource_token_auth_response() :: #{}.
@@ -1124,6 +1265,16 @@
 %%   <<"location">> => list()
 %% }
 -type browser_extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_scroll_arguments() :: #{
+%%   <<"deltaX">> => [integer()],
+%%   <<"deltaY">> => [integer()],
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_scroll_arguments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1528,6 +1679,14 @@
 
 -type invoke_agent_runtime_command_errors() ::
     runtime_client_error() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type invoke_browser_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2597,6 +2756,79 @@ invoke_agent_runtime_command(Client, AgentRuntimeArn, Input0, Options0) ->
         Result
     end.
 
+%% @doc Invokes an operating system-level action on a browser session in
+%% Amazon Bedrock AgentCore.
+%%
+%% This operation provides direct OS-level control over browser sessions,
+%% enabling mouse actions, keyboard input, and screenshots that the
+%% WebSocket-based Chrome DevTools Protocol (CDP) cannot handle — such as
+%% interacting with print dialogs, context menus, and JavaScript alerts.
+%%
+%% You send a request with exactly one action in the `BrowserAction'
+%% union, and receive a corresponding result in the `BrowserActionResult'
+%% union.
+%%
+%% The following operations are related to `InvokeBrowser':
+%%
+%% StartBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StartBrowserSession.html
+%%
+%% GetBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_GetBrowserSession.html
+%%
+%% StopBrowserSession:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopBrowserSession.html
+-spec invoke_browser(aws_client:aws_client(), binary() | list(), invoke_browser_request()) ->
+    {ok, invoke_browser_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_browser_errors(), tuple()}.
+invoke_browser(Client, BrowserIdentifier, Input) ->
+    invoke_browser(Client, BrowserIdentifier, Input, []).
+
+-spec invoke_browser(aws_client:aws_client(), binary() | list(), invoke_browser_request(), proplists:proplist()) ->
+    {ok, invoke_browser_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_browser_errors(), tuple()}.
+invoke_browser(Client, BrowserIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/browsers/", aws_util:encode_uri(BrowserIdentifier), "/sessions/invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amzn-browser-session-id">>, <<"sessionId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-browser-session-id">>, <<"sessionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Executes code within an active code interpreter session in Amazon
 %% Bedrock AgentCore.
 %%
@@ -2943,6 +3175,8 @@ list_memory_records(Client, MemoryId, Input0, Options0) ->
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
+%% Empty sessions are automatically deleted after one day.
+%%
 %% To use this operation, you must have the
 %% `bedrock-agentcore:ListSessions' permission.
 -spec list_sessions(aws_client:aws_client(), binary() | list(), binary() | list(), list_sessions_input()) ->
@@ -3104,6 +3338,9 @@ save_browser_session_profile(Client, ProfileIdentifier, Input0, Options0) ->
 %%
 %% StopBrowserSession:
 %% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopBrowserSession.html
+%%
+%% InvokeBrowser:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_InvokeBrowser.html
 -spec start_browser_session(aws_client:aws_client(), binary() | list(), start_browser_session_request()) ->
     {ok, start_browser_session_response(), tuple()} |
     {error, any()} |

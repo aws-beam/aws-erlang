@@ -186,11 +186,13 @@
 %% Example:
 %% accept_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
@@ -228,6 +230,7 @@
 %% Example:
 %% get_inbound_external_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainName">> => string(),
 %%   <<"flowModules">> => list(module_configuration()),
@@ -247,6 +250,8 @@
 %%   <<"clientToken">> := [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
+%%   <<"gatewayType">> => list(any()),
+%%   <<"listenerConfig">> => listener_config(),
 %%   <<"managedEndpointConfiguration">> => list(),
 %%   <<"port">> := [integer()],
 %%   <<"protocol">> := list(any()),
@@ -294,12 +299,14 @@
 %% Example:
 %% create_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"customerProvidedId">> => [string()],
 %%   <<"direction">> => list(any()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
@@ -361,7 +368,8 @@
 %%   <<"httpResponderAllowed">> => [boolean()],
 %%   <<"logSettings">> := link_log_settings(),
 %%   <<"peerGatewayId">> := string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"timeoutInMillis">> => float()
 %% }
 -type create_link_request() :: #{binary() => any()}.
 
@@ -395,13 +403,16 @@
 %% Example:
 %% list_links_response_structure() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
+%%   <<"publicEndpoint">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -423,16 +434,19 @@
 %% Example:
 %% get_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
+%%   <<"httpResponderAllowed">> => [boolean()],
 %%   <<"linkId">> => string(),
 %%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
+%%   <<"timeoutInMillis">> => float(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_link_response() :: #{binary() => any()}.
@@ -448,10 +462,14 @@
 
 %% Example:
 %% get_outbound_external_link_response() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
 %%   <<"logSettings">> => link_log_settings(),
+%%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"publicEndpoint">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
@@ -474,8 +492,11 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
+%%   <<"externalInboundEndpoint">> => string(),
 %%   <<"gatewayId">> => string(),
+%%   <<"gatewayType">> => list(any()),
 %%   <<"inboundLinksCount">> => [integer()],
+%%   <<"listenerConfig">> => listener_config(),
 %%   <<"managedEndpointConfiguration">> => list(),
 %%   <<"port">> => [integer()],
 %%   <<"protocol">> => list(any()),
@@ -570,6 +591,7 @@
 %%   <<"clientToken">> := [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
+%%   <<"listenerConfig">> => listener_config(),
 %%   <<"managedEndpointConfiguration">> => list(),
 %%   <<"port">> := [integer()],
 %%   <<"protocol">> := list(any()),
@@ -619,11 +641,13 @@
 %% Example:
 %% reject_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
@@ -730,10 +754,19 @@
 
 %% Example:
 %% create_responder_gateway_response() :: #{
+%%   <<"externalInboundEndpoint">> => string(),
 %%   <<"gatewayId">> => string(),
+%%   <<"listenerConfig">> => listener_config(),
 %%   <<"status">> => list(any())
 %% }
 -type create_responder_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_config() :: #{
+%%   <<"protocols">> => list(list(any())())
+%% }
+-type listener_config() :: #{binary() => any()}.
 
 %% Example:
 %% get_link_request() :: #{}
@@ -743,7 +776,8 @@
 %% Example:
 %% accept_link_request() :: #{
 %%   <<"attributes">> => link_attributes(),
-%%   <<"logSettings">> := link_log_settings()
+%%   <<"logSettings">> := link_log_settings(),
+%%   <<"timeoutInMillis">> => float()
 %% }
 -type accept_link_request() :: #{binary() => any()}.
 
@@ -758,7 +792,8 @@
 
 %% Example:
 %% update_link_request() :: #{
-%%   <<"logSettings">> => link_log_settings()
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"timeoutInMillis">> => float()
 %% }
 -type update_link_request() :: #{binary() => any()}.
 

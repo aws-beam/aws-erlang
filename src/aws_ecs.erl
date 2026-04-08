@@ -2398,7 +2398,8 @@
 %%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
 %%   <<"fsxWindowsFileServerVolumeConfiguration">> => f_sx_windows_file_server_volume_configuration(),
 %%   <<"host">> => host_volume_properties(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
 %% }
 -type volume() :: #{binary() => any()}.
 
@@ -3043,6 +3044,15 @@
 %%   <<"targetType">> := list(any())
 %% }
 -type list_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_files_volume_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type s3_files_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_daemon_revisions_response() :: #{

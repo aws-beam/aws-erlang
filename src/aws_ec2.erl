@@ -1073,6 +1073,8 @@
          get_capacity_manager_metric_data/3,
          get_capacity_manager_metric_dimensions/2,
          get_capacity_manager_metric_dimensions/3,
+         get_capacity_manager_monitored_tag_keys/2,
+         get_capacity_manager_monitored_tag_keys/3,
          get_capacity_reservation_usage/2,
          get_capacity_reservation_usage/3,
          get_coip_pool_usage/2,
@@ -1513,6 +1515,8 @@
          unlock_snapshot/3,
          unmonitor_instances/2,
          unmonitor_instances/3,
+         update_capacity_manager_monitored_tag_keys/2,
+         update_capacity_manager_monitored_tag_keys/3,
          update_capacity_manager_organizations_access/2,
          update_capacity_manager_organizations_access/3,
          update_interruptible_capacity_reservation_allocation/2,
@@ -3556,6 +3560,16 @@
 %%   <<"VpcId">> := string()
 %% }
 -type create_vpc_peering_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_manager_monitored_tag_key() :: #{
+%%   <<"CapacityManagerProvided">> => boolean(),
+%%   <<"EarliestDatapointTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TagKey">> => string()
+%% }
+-type capacity_manager_monitored_tag_key() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_ipam_byoasn_request() :: #{
@@ -8286,6 +8300,14 @@
 -type ipam_address_history_record() :: #{binary() => any()}.
 
 %% Example:
+%% get_capacity_manager_monitored_tag_keys_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_capacity_manager_monitored_tag_keys_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_security_group_rules_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SecurityGroupRules">> => list(security_group_rule())
@@ -11827,6 +11849,12 @@
 %%   <<"VpnConnection">> => vpn_connection()
 %% }
 -type create_vpn_connection_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_manager_monitored_tag_keys_result() :: #{
+%%   <<"CapacityManagerTagKeys">> => list(capacity_manager_monitored_tag_key())
+%% }
+-type update_capacity_manager_monitored_tag_keys_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_addresses_attribute_result() :: #{
@@ -17443,6 +17471,13 @@
 -type elastic_inference_accelerator_association() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_manager_tag_dimension() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type capacity_manager_tag_dimension() :: #{binary() => any()}.
+
+%% Example:
 %% blob_attribute_value() :: #{
 %%   <<"Value">> => binary()
 %% }
@@ -20024,6 +20059,7 @@
 %% Example:
 %% capacity_manager_dimension() :: #{
 %%   <<"AccountId">> => string(),
+%%   <<"AccountName">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"InstanceFamily">> => string(),
 %%   <<"InstancePlatform">> => string(),
@@ -20039,6 +20075,7 @@
 %%   <<"ReservationType">> => list(any()),
 %%   <<"ReservationUnusedFinancialOwner">> => string(),
 %%   <<"ResourceRegion">> => string(),
+%%   <<"Tags">> => list(capacity_manager_tag_dimension()),
 %%   <<"Tenancy">> => list(any())
 %% }
 -type capacity_manager_dimension() :: #{binary() => any()}.
@@ -20186,6 +20223,13 @@
 %%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type release_hosts_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_monitored_tag_keys_result() :: #{
+%%   <<"CapacityManagerTagKeys">> => list(capacity_manager_monitored_tag_key()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_capacity_manager_monitored_tag_keys_result() :: #{binary() => any()}.
 
 %% Example:
 %% disk_info() :: #{
@@ -20755,6 +20799,15 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type bundle_task() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_manager_monitored_tag_keys_request() :: #{
+%%   <<"ActivateTagKeys">> => list(string()),
+%%   <<"ClientToken">> => string(),
+%%   <<"DeactivateTagKeys">> => list(string()),
+%%   <<"DryRun">> => boolean()
+%% }
+-type update_capacity_manager_monitored_tag_keys_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_network_interfaces_result() :: #{
@@ -35383,6 +35436,26 @@ get_capacity_manager_metric_dimensions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapacityManagerMetricDimensions">>, Input, Options).
 
+%% @doc
+%% Retrieves the tag keys that are currently being monitored by EC2 Capacity
+%% Manager.
+%%
+%% Monitored tag keys are included as dimensions in capacity metric data,
+%% enabling you to group and filter metrics by tag values.
+-spec get_capacity_manager_monitored_tag_keys(aws_client:aws_client(), get_capacity_manager_monitored_tag_keys_request()) ->
+    {ok, get_capacity_manager_monitored_tag_keys_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_monitored_tag_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_manager_monitored_tag_keys(Client, Input, []).
+
+-spec get_capacity_manager_monitored_tag_keys(aws_client:aws_client(), get_capacity_manager_monitored_tag_keys_request(), proplists:proplist()) ->
+    {ok, get_capacity_manager_monitored_tag_keys_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_monitored_tag_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityManagerMonitoredTagKeys">>, Input, Options).
+
 %% @doc Gets usage information about a Capacity Reservation.
 %%
 %% If the Capacity Reservation is
@@ -41074,6 +41147,25 @@ unmonitor_instances(Client, Input)
 unmonitor_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnmonitorInstances">>, Input, Options).
+
+%% @doc
+%% Activates or deactivates tag keys for monitoring by EC2 Capacity Manager.
+%%
+%% Activated tag keys are included as dimensions in capacity metric data,
+%% enabling you to group and filter metrics by tag values.
+-spec update_capacity_manager_monitored_tag_keys(aws_client:aws_client(), update_capacity_manager_monitored_tag_keys_request()) ->
+    {ok, update_capacity_manager_monitored_tag_keys_result(), tuple()} |
+    {error, any()}.
+update_capacity_manager_monitored_tag_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_capacity_manager_monitored_tag_keys(Client, Input, []).
+
+-spec update_capacity_manager_monitored_tag_keys(aws_client:aws_client(), update_capacity_manager_monitored_tag_keys_request(), proplists:proplist()) ->
+    {ok, update_capacity_manager_monitored_tag_keys_result(), tuple()} |
+    {error, any()}.
+update_capacity_manager_monitored_tag_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCapacityManagerMonitoredTagKeys">>, Input, Options).
 
 %% @doc
 %% Updates the Organizations access setting for EC2 Capacity Manager.

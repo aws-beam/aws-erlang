@@ -164,6 +164,7 @@
 
 %% Example:
 %% list_assets_input() :: #{
+%%   <<"AssetTypeFilter">> => list(list(any())()),
 %%   <<"HostIdFilter">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1950,6 +1951,7 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"AssetTypeFilter">>, maps:get(<<"AssetTypeFilter">>, QueryMap, undefined)},
         {<<"HostIdFilter">>, maps:get(<<"HostIdFilter">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},

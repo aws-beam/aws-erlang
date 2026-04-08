@@ -4962,7 +4962,8 @@
 %%   <<"HierarchyGroups">> => hierarchy_groups(),
 %%   <<"Id">> => string(),
 %%   <<"PreviewEndTimestamp">> => non_neg_integer(),
-%%   <<"StateTransitions">> => list(state_transition())
+%%   <<"StateTransitions">> => list(state_transition()),
+%%   <<"VoiceEnhancementMode">> => list(any())
 %% }
 -type agent_info() :: #{binary() => any()}.
 

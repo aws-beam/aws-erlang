@@ -1078,6 +1078,14 @@
 
 
 %% Example:
+%% s3_files_mount_connectivity_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_connectivity_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% snap_start_timeout_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -1826,6 +1834,14 @@
 %%   <<"NextMarker">> => string()
 %% }
 -type list_layer_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_mount_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2867,6 +2883,14 @@
 
 
 %% Example:
+%% s3_files_mount_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% concurrency() :: #{
 %%   <<"ReservedConcurrentExecutions">> => integer()
 %% }
@@ -3238,6 +3262,7 @@
 
 -type invoke_errors() ::
     snap_start_exception() | 
+    s3_files_mount_timeout_exception() | 
     resource_conflict_exception() | 
     resource_not_ready_exception() | 
     invalid_subnet_id_exception() | 
@@ -3254,6 +3279,7 @@
     invalid_zip_file_exception() | 
     kms_access_denied_exception() | 
     request_too_large_exception() | 
+    s3_files_mount_failure_exception() | 
     subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
@@ -3264,6 +3290,7 @@
     recursive_invocation_exception() | 
     serialized_request_entity_too_large_exception() | 
     snap_start_timeout_exception() | 
+    s3_files_mount_connectivity_exception() | 
     too_many_requests_exception() | 
     snap_start_not_ready_exception() | 
     ec2_access_denied_exception() | 
@@ -3280,6 +3307,7 @@
 
 -type invoke_with_response_stream_errors() ::
     snap_start_exception() | 
+    s3_files_mount_timeout_exception() | 
     resource_conflict_exception() | 
     resource_not_ready_exception() | 
     invalid_subnet_id_exception() | 
@@ -3296,6 +3324,7 @@
     invalid_zip_file_exception() | 
     kms_access_denied_exception() | 
     request_too_large_exception() | 
+    s3_files_mount_failure_exception() | 
     subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
@@ -3305,6 +3334,7 @@
     recursive_invocation_exception() | 
     serialized_request_entity_too_large_exception() | 
     snap_start_timeout_exception() | 
+    s3_files_mount_connectivity_exception() | 
     too_many_requests_exception() | 
     snap_start_not_ready_exception() | 
     ec2_access_denied_exception() | 
