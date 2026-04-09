@@ -581,6 +581,7 @@
 %% output_destination() :: #{
 %%   <<"Id">> => string(),
 %%   <<"LogicalInterfaceNames">> => list(string()),
+%%   <<"MediaConnectRouterSettings">> => list(media_connect_router_output_destination_settings()),
 %%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()),
 %%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
 %%   <<"Settings">> => list(output_destination_settings()),
@@ -835,6 +836,13 @@
 %%   <<"State">> => list(any())
 %% }
 -type describe_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_group_settings() :: #{
+%%   <<"AvailabilityZones">> => list(string())
+%% }
+-type media_connect_router_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2136,6 +2144,7 @@
 %%   <<"CmafIngestGroupSettings">> => cmaf_ingest_group_settings(),
 %%   <<"FrameCaptureGroupSettings">> => frame_capture_group_settings(),
 %%   <<"HlsGroupSettings">> => hls_group_settings(),
+%%   <<"MediaConnectRouterGroupSettings">> => media_connect_router_group_settings(),
 %%   <<"MediaPackageGroupSettings">> => media_package_group_settings(),
 %%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
 %%   <<"MultiplexGroupSettings">> => multiplex_group_settings(),
@@ -3404,6 +3413,13 @@
 
 
 %% Example:
+%% media_connect_router_container_settings() :: #{
+%%   <<"M2tsSettings">> => m2ts_settings()
+%% }
+-type media_connect_router_container_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% multicast_source() :: #{
 %%   <<"SourceIp">> => string(),
 %%   <<"Url">> => string()
@@ -3669,6 +3685,7 @@
 %%   <<"CmafIngestOutputSettings">> => cmaf_ingest_output_settings(),
 %%   <<"FrameCaptureOutputSettings">> => frame_capture_output_settings(),
 %%   <<"HlsOutputSettings">> => hls_output_settings(),
+%%   <<"MediaConnectRouterOutputSettings">> => media_connect_router_output_settings(),
 %%   <<"MediaPackageOutputSettings">> => media_package_output_settings(),
 %%   <<"MsSmoothOutputSettings">> => ms_smooth_output_settings(),
 %%   <<"MultiplexOutputSettings">> => multiplex_output_settings(),
@@ -3695,7 +3712,8 @@
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_update_settings(),
 %%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string()
+%%   <<"RoleArn">> => string(),
+%%   <<"SpecialRouterSettings">> => special_router_settings()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
 
@@ -4942,10 +4960,27 @@
 
 
 %% Example:
+%% media_connect_router_output_destination_settings() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type media_connect_router_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% pipeline_pause_state_settings() :: #{
 %%   <<"PipelineId">> => list(any())
 %% }
 -type pipeline_pause_state_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_settings() :: #{
+%%   <<"ConnectedRouterInputs">> => media_connect_router_output_connection_map(),
+%%   <<"ContainerSettings">> => media_connect_router_container_settings(),
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type media_connect_router_output_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5544,6 +5579,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplex_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_connection_map() :: #{
+%%   <<"Pipeline0">> => string(),
+%%   <<"Pipeline1">> => string()
+%% }
+-type media_connect_router_output_connection_map() :: #{binary() => any()}.
 
 
 %% Example:

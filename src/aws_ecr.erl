@@ -647,6 +647,12 @@
 -type lifecycle_policy_preview_filter() :: #{binary() => any()}.
 
 %% Example:
+%% unable_to_list_upstream_image_referrers_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_list_upstream_image_referrers_exception() :: #{binary() => any()}.
+
+%% Example:
 %% put_account_setting_request() :: #{
 %%   <<"name">> := string(),
 %%   <<"value">> := string()
@@ -2064,7 +2070,8 @@
     repository_not_found_exception() | 
     server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception().
+    invalid_parameter_exception() | 
+    unable_to_list_upstream_image_referrers_exception().
 
 -type list_images_errors() ::
     repository_not_found_exception() | 

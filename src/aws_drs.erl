@@ -123,6 +123,7 @@
 %% Example:
 %% update_failback_replication_configuration_request() :: #{
 %%   <<"bandwidthThrottling">> => float(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recoveryInstanceID">> := string(),
 %%   <<"usePrivateIP">> => [boolean()]
@@ -255,6 +256,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
@@ -300,6 +302,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
@@ -388,21 +391,22 @@
 
 %% Example:
 %% create_replication_configuration_template_request() :: #{
-%%   <<"associateDefaultSecurityGroup">> := [boolean()],
+%%   <<"associateDefaultSecurityGroup">> => [boolean()],
 %%   <<"autoReplicateNewDisks">> => [boolean()],
 %%   <<"bandwidthThrottling">> := float(),
-%%   <<"createPublicIP">> := [boolean()],
-%%   <<"dataPlaneRouting">> := string(),
-%%   <<"defaultLargeStagingDiskType">> := string(),
+%%   <<"createPublicIP">> => [boolean()],
+%%   <<"dataPlaneRouting">> => string(),
+%%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> := string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"pitPolicy">> := list(p_i_t_policy_rule()),
-%%   <<"replicationServerInstanceType">> := string(),
+%%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> := list(string()),
 %%   <<"stagingAreaSubnetId">> := string(),
 %%   <<"stagingAreaTags">> := map(),
 %%   <<"tags">> => map(),
-%%   <<"useDedicatedReplicationServer">> := [boolean()]
+%%   <<"useDedicatedReplicationServer">> => [boolean()]
 %% }
 -type create_replication_configuration_template_request() :: #{binary() => any()}.
 
@@ -663,6 +667,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
@@ -1149,6 +1154,7 @@
 %% Example:
 %% get_failback_replication_configuration_response() :: #{
 %%   <<"bandwidthThrottling">> => float(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recoveryInstanceID">> := string(),
 %%   <<"usePrivateIP">> => [boolean()]
@@ -1295,9 +1301,11 @@
 
 %% Example:
 %% job_log_event_data() :: #{
+%%   <<"attemptCount">> => float(),
 %%   <<"conversionProperties">> => conversion_properties(),
 %%   <<"conversionServerID">> => string(),
 %%   <<"eventResourceData">> => list(),
+%%   <<"maxAttemptsCount">> => float(),
 %%   <<"rawError">> => string(),
 %%   <<"sourceServerID">> => string(),
 %%   <<"targetInstanceID">> => string()
@@ -1359,6 +1367,7 @@
 %%   <<"defaultLargeStagingDiskType">> => string(),
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
 %%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
@@ -2889,12 +2898,11 @@ initialize_service(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of source servers on a staging account that are
-%% extensible, which means that:
-%% a.
+%% extensible, which means that: a.
 %%
-%% The source server is not already extended into this Account.
-%% b. The source server on the Account we’re reading from is not an extension
-%% of another source server.
+%% The source server is not already extended into this Account. b. The source
+%% server on the Account we’re reading from is not an extension of another
+%% source server.
 -spec list_extensible_source_servers(aws_client:aws_client(), list_extensible_source_servers_request()) ->
     {ok, list_extensible_source_servers_response(), tuple()} |
     {error, any()} |
@@ -3119,9 +3127,8 @@ retry_data_replication(Client, Input0, Options0) ->
 %% protected instances that originated in EC2.
 %%
 %% For recovery instances on target region - starts replication back to
-%% origin region.
-%% For failback instances on origin region - starts replication to target
-%% region to re-protect them.
+%% origin region. For failback instances on origin region - starts
+%% replication to target region to re-protect them.
 -spec reverse_replication(aws_client:aws_client(), reverse_replication_request()) ->
     {ok, reverse_replication_response(), tuple()} |
     {error, any()} |

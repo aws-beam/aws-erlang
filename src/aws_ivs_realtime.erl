@@ -198,6 +198,8 @@
 %%   <<"ingestProtocol">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"participantId">> => string(),
+%%   <<"redundantIngest">> => boolean(),
+%%   <<"redundantIngestCredentials">> => list(redundant_ingest_credential()),
 %%   <<"stageArn">> => string(),
 %%   <<"state">> => string(),
 %%   <<"streamKey">> => string(),
@@ -284,6 +286,7 @@
 %%   <<"browserName">> => string(),
 %%   <<"browserVersion">> => string(),
 %%   <<"firstJoinTime">> => non_neg_integer(),
+%%   <<"ingestConfigurationArn">> => string(),
 %%   <<"ispName">> => string(),
 %%   <<"osName">> => string(),
 %%   <<"osVersion">> => string(),
@@ -293,6 +296,7 @@
 %%   <<"recordingS3BucketName">> => string(),
 %%   <<"recordingS3Prefix">> => string(),
 %%   <<"recordingState">> => string(),
+%%   <<"redundantIngest">> => boolean(),
 %%   <<"replicationState">> => string(),
 %%   <<"replicationType">> => string(),
 %%   <<"sdkVersion">> => string(),
@@ -343,6 +347,7 @@
 %%   <<"ingestProtocol">> := list(any()),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"name">> => string(),
+%%   <<"redundantIngest">> => boolean(),
 %%   <<"stageArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"userId">> => string()
@@ -421,9 +426,11 @@
 %% Example:
 %% participant_summary() :: #{
 %%   <<"firstJoinTime">> => non_neg_integer(),
+%%   <<"ingestConfigurationArn">> => string(),
 %%   <<"participantId">> => string(),
 %%   <<"published">> => boolean(),
 %%   <<"recordingState">> => string(),
+%%   <<"redundantIngest">> => boolean(),
 %%   <<"replicationState">> => string(),
 %%   <<"replicationType">> => string(),
 %%   <<"sourceSessionId">> => string(),
@@ -501,6 +508,7 @@
 %% Example:
 %% update_ingest_configuration_request() :: #{
 %%   <<"arn">> := string(),
+%%   <<"redundantIngest">> => boolean(),
 %%   <<"stageArn">> => string()
 %% }
 -type update_ingest_configuration_request() :: #{binary() => any()}.
@@ -951,6 +959,7 @@
 %%   <<"ingestProtocol">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"participantId">> => string(),
+%%   <<"redundantIngest">> => boolean(),
 %%   <<"stageArn">> => string(),
 %%   <<"state">> => string(),
 %%   <<"userId">> => string()
@@ -1238,6 +1247,14 @@
 %%   <<"arn">> := string()
 %% }
 -type delete_storage_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% redundant_ingest_credential() :: #{
+%%   <<"participantId">> => string(),
+%%   <<"streamKey">> => string()
+%% }
+-type redundant_ingest_credential() :: #{binary() => any()}.
 
 
 %% Example:

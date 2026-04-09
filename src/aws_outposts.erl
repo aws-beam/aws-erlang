@@ -22,6 +22,8 @@
          create_order/3,
          create_outpost/2,
          create_outpost/3,
+         create_renewal/2,
+         create_renewal/3,
          create_site/2,
          create_site/3,
          delete_outpost/3,
@@ -52,6 +54,9 @@
          get_outpost_supported_instance_types/2,
          get_outpost_supported_instance_types/4,
          get_outpost_supported_instance_types/5,
+         get_renewal_pricing/2,
+         get_renewal_pricing/4,
+         get_renewal_pricing/5,
          get_site/2,
          get_site/4,
          get_site/5,
@@ -155,6 +160,17 @@
 
 
 %% Example:
+%% create_renewal_output() :: #{
+%%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"OutpostId">> => string(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"UpfrontPrice">> => float()
+%% }
+-type create_renewal_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_connection_response() :: #{
 %%   <<"ConnectionId">> => string(),
 %%   <<"UnderlayIpAddress">> => string()
@@ -217,6 +233,16 @@
 
 
 %% Example:
+%% create_renewal_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"OutpostIdentifier">> := string(),
+%%   <<"PaymentOption">> := list(any()),
+%%   <<"PaymentTerm">> := list(any())
+%% }
+-type create_renewal_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_outpost_supported_instance_types_output() :: #{
 %%   <<"InstanceTypes">> => list(instance_type_item()),
 %%   <<"NextToken">> => string()
@@ -230,6 +256,14 @@
 %%   <<"MacAddressList">> => list(string())
 %% }
 -type line_item_asset_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% pricing_option() :: #{
+%%   <<"PricingType">> => list(any()),
+%%   <<"SubscriptionPricingDetails">> => subscription_pricing_details()
+%% }
+-type pricing_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -333,6 +367,16 @@
 
 
 %% Example:
+%% subscription_pricing_details() :: #{
+%%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"UpfrontPrice">> => float()
+%% }
+-type subscription_pricing_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% rack_physical_properties() :: #{
 %%   <<"FiberOpticCableType">> => list(any()),
 %%   <<"MaximumSupportedWeightLbs">> => list(any()),
@@ -351,6 +395,8 @@
 %% get_outpost_billing_information_output() :: #{
 %%   <<"ContractEndDate">> => string(),
 %%   <<"NextToken">> => string(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"PaymentTerm">> => list(any()),
 %%   <<"Subscriptions">> => list(subscription())
 %% }
 -type get_outpost_billing_information_output() :: #{binary() => any()}.
@@ -414,6 +460,14 @@
 %%   <<"ValidateOnly">> => boolean()
 %% }
 -type start_outpost_decommission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_renewal_pricing_output() :: #{
+%%   <<"PricingOptions">> => list(pricing_option()),
+%%   <<"PricingResult">> => list(any())
+%% }
+-type get_renewal_pricing_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,6 +578,10 @@
 %%   <<"Status">> => list(any())
 %% }
 -type start_outpost_decommission_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_renewal_pricing_input() :: #{}
+-type get_renewal_pricing_input() :: #{}.
 
 
 %% Example:
@@ -1017,6 +1075,12 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_renewal_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type create_site_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1079,6 +1143,12 @@
     not_found_exception().
 
 -type get_outpost_supported_instance_types_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_renewal_pricing_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1328,6 +1398,40 @@ create_outpost(Client, Input) ->
 create_outpost(Client, Input0, Options0) ->
     Method = post,
     Path = ["/outposts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a renewal contract for the specified Outpost.
+-spec create_renewal(aws_client:aws_client(), create_renewal_input()) ->
+    {ok, create_renewal_output(), tuple()} |
+    {error, any()} |
+    {error, create_renewal_errors(), tuple()}.
+create_renewal(Client, Input) ->
+    create_renewal(Client, Input, []).
+
+-spec create_renewal(aws_client:aws_client(), create_renewal_input(), proplists:proplist()) ->
+    {ok, create_renewal_output(), tuple()} |
+    {error, any()} |
+    {error, create_renewal_errors(), tuple()}.
+create_renewal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/renewals"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1780,6 +1884,43 @@ get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, Header
         {<<"OrderId">>, maps:get(<<"OrderId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets all available renewal pricing options for the specified Outpost.
+-spec get_renewal_pricing(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_renewal_pricing_output(), tuple()} |
+    {error, any()} |
+    {error, get_renewal_pricing_errors(), tuple()}.
+get_renewal_pricing(Client, OutpostIdentifier)
+  when is_map(Client) ->
+    get_renewal_pricing(Client, OutpostIdentifier, #{}, #{}).
+
+-spec get_renewal_pricing(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_renewal_pricing_output(), tuple()} |
+    {error, any()} |
+    {error, get_renewal_pricing_errors(), tuple()}.
+get_renewal_pricing(Client, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_renewal_pricing(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_renewal_pricing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_renewal_pricing_output(), tuple()} |
+    {error, any()} |
+    {error, get_renewal_pricing_errors(), tuple()}.
+get_renewal_pricing(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outpost/", aws_util:encode_uri(OutpostIdentifier), "/renewal-pricing"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
