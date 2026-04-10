@@ -20,14 +20,24 @@
 
 -export([create_dashboard/2,
          create_dashboard/3,
+         create_scheduled_report/2,
+         create_scheduled_report/3,
          delete_dashboard/2,
          delete_dashboard/3,
+         delete_scheduled_report/2,
+         delete_scheduled_report/3,
+         execute_scheduled_report/2,
+         execute_scheduled_report/3,
          get_dashboard/2,
          get_dashboard/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         get_scheduled_report/2,
+         get_scheduled_report/3,
          list_dashboards/2,
          list_dashboards/3,
+         list_scheduled_reports/2,
+         list_scheduled_reports/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          tag_resource/2,
@@ -35,7 +45,9 @@
          untag_resource/2,
          untag_resource/3,
          update_dashboard/2,
-         update_dashboard/3]).
+         update_dashboard/3,
+         update_scheduled_report/2,
+         update_scheduled_report/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -63,7 +75,7 @@
 %% update_dashboard_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"description">> => string(),
-%%   <<"name">> => string(),
+%%   <<"name">> := string(),
 %%   <<"widgets">> => list(widget())
 %% }
 -type update_dashboard_request() :: #{binary() => any()}.
@@ -74,6 +86,14 @@
 %%   <<"resourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_report_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"scheduledReport">> := scheduled_report_input()
+%% }
+-type create_scheduled_report_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -115,6 +135,30 @@
 -type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% schedule_period() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type schedule_period() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_report() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dashboardArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"healthStatus">> => health_status(),
+%%   <<"lastExecutionAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"scheduleConfig">> => schedule_config(),
+%%   <<"scheduledReportExecutionRoleArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"widgetDateRangeOverride">> => date_time_range(),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type scheduled_report() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"resourceTagKeys">> := list(string())
@@ -137,10 +181,37 @@
 -type group_definition() :: #{binary() => any()}.
 
 %% Example:
+%% update_scheduled_report_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"clearWidgetDateRangeOverride">> => [boolean()],
+%%   <<"clearWidgetIds">> => [boolean()],
+%%   <<"dashboardArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scheduleConfig">> => schedule_config(),
+%%   <<"scheduledReportExecutionRoleArn">> => string(),
+%%   <<"widgetDateRangeOverride">> => date_time_range(),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type update_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_report_response() :: #{
+%%   <<"scheduledReport">> => scheduled_report()
+%% }
+-type get_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
 %% table_display_config_struct() :: #{
 
 %% }
 -type table_display_config_struct() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -161,6 +232,18 @@
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_report_input() :: #{
+%%   <<"dashboardArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scheduleConfig">> => schedule_config(),
+%%   <<"scheduledReportExecutionRoleArn">> => string(),
+%%   <<"widgetDateRangeOverride">> => date_time_range(),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type scheduled_report_input() :: #{binary() => any()}.
 
 %% Example:
 %% graph_display_config() :: #{
@@ -226,10 +309,35 @@
 -type get_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
+%% health_status() :: #{
+%%   <<"lastRefreshedAt">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReasons">> => list(list(any())())
+%% }
+-type health_status() :: #{binary() => any()}.
+
+%% Example:
 %% delete_dashboard_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_scheduled_report_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"dryRun">> => [boolean()]
+%% }
+-type execute_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_config() :: #{
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleExpressionTimeZone">> => string(),
+%%   <<"schedulePeriod">> => schedule_period(),
+%%   <<"state">> => list(any())
+%% }
+-type schedule_config() :: #{binary() => any()}.
 
 %% Example:
 %% delete_dashboard_response() :: #{
@@ -265,6 +373,12 @@
 -type cost_category_values() :: #{binary() => any()}.
 
 %% Example:
+%% update_scheduled_report_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type update_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -275,6 +389,19 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_report_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_reports_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledReports">> => list(scheduled_report_summary())
+%% }
+-type list_scheduled_reports_response() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -315,6 +442,26 @@
 -type create_dashboard_request() :: #{binary() => any()}.
 
 %% Example:
+%% execute_scheduled_report_response() :: #{
+%%   <<"executionTriggered">> => [boolean()],
+%%   <<"healthStatus">> => health_status()
+%% }
+-type execute_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_report_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduled_reports_request() :: #{binary() => any()}.
+
+%% Example:
 %% reservation_coverage_query() :: #{
 %%   <<"filter">> => expression(),
 %%   <<"granularity">> => list(any()),
@@ -337,11 +484,36 @@
 -type widget() :: #{binary() => any()}.
 
 %% Example:
+%% create_scheduled_report_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_report_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type delete_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_dashboards_response() :: #{
 %%   <<"dashboards">> => list(dashboard_reference()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_report_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dashboardArn">> => string(),
+%%   <<"healthStatus">> => health_status(),
+%%   <<"name">> => string(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleExpressionTimeZone">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type scheduled_report_summary() :: #{binary() => any()}.
 
 %% Example:
 %% cost_and_usage_query() :: #{
@@ -360,11 +532,34 @@
     internal_server_exception() | 
     service_quota_exceeded_exception().
 
+-type create_scheduled_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_dashboard_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type delete_scheduled_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type execute_scheduled_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_dashboard_errors() ::
     throttling_exception() | 
@@ -380,7 +575,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_scheduled_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_dashboards_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_scheduled_reports_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -411,6 +619,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_scheduled_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -436,6 +652,27 @@ create_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDashboard">>, Input, Options).
 
+%% @doc Creates a new scheduled report for a dashboard.
+%%
+%% A scheduled report automatically generates and delivers dashboard
+%% snapshots on a recurring schedule. Reports are delivered within 15 minutes
+%% of the scheduled delivery time.
+-spec create_scheduled_report(aws_client:aws_client(), create_scheduled_report_request()) ->
+    {ok, create_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduled_report_errors(), tuple()}.
+create_scheduled_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_scheduled_report(Client, Input, []).
+
+-spec create_scheduled_report(aws_client:aws_client(), create_scheduled_report_request(), proplists:proplist()) ->
+    {ok, create_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduled_report_errors(), tuple()}.
+create_scheduled_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateScheduledReport">>, Input, Options).
+
 %% @doc Deletes a specified dashboard.
 %%
 %% This action cannot be undone.
@@ -454,6 +691,51 @@ delete_dashboard(Client, Input)
 delete_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDashboard">>, Input, Options).
+
+%% @doc Deletes a specified scheduled report.
+%%
+%% This is an irreversible operation.
+-spec delete_scheduled_report(aws_client:aws_client(), delete_scheduled_report_request()) ->
+    {ok, delete_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_report_errors(), tuple()}.
+delete_scheduled_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_scheduled_report(Client, Input, []).
+
+-spec delete_scheduled_report(aws_client:aws_client(), delete_scheduled_report_request(), proplists:proplist()) ->
+    {ok, delete_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_report_errors(), tuple()}.
+delete_scheduled_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteScheduledReport">>, Input, Options).
+
+%% @doc Triggers an immediate execution of a scheduled report, outside of its
+%% regular schedule.
+%%
+%% The scheduled report must be in `ENABLED' state. Calling this
+%% operation on a `DISABLED' scheduled report returns a
+%% `ValidationException'.
+%%
+%% If a `clientToken' is provided, the service uses it for idempotency.
+%% Requests with the same client token will not trigger a new execution
+%% within the same minute.
+-spec execute_scheduled_report(aws_client:aws_client(), execute_scheduled_report_request()) ->
+    {ok, execute_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, execute_scheduled_report_errors(), tuple()}.
+execute_scheduled_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    execute_scheduled_report(Client, Input, []).
+
+-spec execute_scheduled_report(aws_client:aws_client(), execute_scheduled_report_request(), proplists:proplist()) ->
+    {ok, execute_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, execute_scheduled_report_errors(), tuple()}.
+execute_scheduled_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExecuteScheduledReport">>, Input, Options).
 
 %% @doc Retrieves the configuration and metadata of a specified dashboard,
 %% including its widgets and layout settings.
@@ -491,6 +773,24 @@ get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
+%% @doc Retrieves the configuration and metadata of a specified scheduled
+%% report.
+-spec get_scheduled_report(aws_client:aws_client(), get_scheduled_report_request()) ->
+    {ok, get_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_report_errors(), tuple()}.
+get_scheduled_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scheduled_report(Client, Input, []).
+
+-spec get_scheduled_report(aws_client:aws_client(), get_scheduled_report_request(), proplists:proplist()) ->
+    {ok, get_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_scheduled_report_errors(), tuple()}.
+get_scheduled_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScheduledReport">>, Input, Options).
+
 %% @doc Returns a list of all dashboards in your account.
 -spec list_dashboards(aws_client:aws_client(), list_dashboards_request()) ->
     {ok, list_dashboards_response(), tuple()} |
@@ -507,6 +807,23 @@ list_dashboards(Client, Input)
 list_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDashboards">>, Input, Options).
+
+%% @doc Returns a list of scheduled reports in your account.
+-spec list_scheduled_reports(aws_client:aws_client(), list_scheduled_reports_request()) ->
+    {ok, list_scheduled_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduled_reports_errors(), tuple()}.
+list_scheduled_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_scheduled_reports(Client, Input, []).
+
+-spec list_scheduled_reports(aws_client:aws_client(), list_scheduled_reports_request(), proplists:proplist()) ->
+    {ok, list_scheduled_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduled_reports_errors(), tuple()}.
+list_scheduled_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListScheduledReports">>, Input, Options).
 
 %% @doc Returns a list of all tags associated with a specified dashboard
 %% resource.
@@ -577,6 +894,27 @@ update_dashboard(Client, Input)
 update_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDashboard">>, Input, Options).
+
+%% @doc Updates an existing scheduled report's properties, including its
+%% name, description, schedule configuration, and widget settings.
+%%
+%% Only the parameters included in the request are updated; all other
+%% properties remain unchanged.
+-spec update_scheduled_report(aws_client:aws_client(), update_scheduled_report_request()) ->
+    {ok, update_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduled_report_errors(), tuple()}.
+update_scheduled_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_scheduled_report(Client, Input, []).
+
+-spec update_scheduled_report(aws_client:aws_client(), update_scheduled_report_request(), proplists:proplist()) ->
+    {ok, update_scheduled_report_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduled_report_errors(), tuple()}.
+update_scheduled_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateScheduledReport">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

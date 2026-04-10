@@ -74,6 +74,8 @@
          retrieve_memory_records/4,
          save_browser_session_profile/3,
          save_browser_session_profile/4,
+         search_registry_records/2,
+         search_registry_records/3,
          start_browser_session/3,
          start_browser_session/4,
          start_code_interpreter_session/3,
@@ -162,6 +164,13 @@
 %%   <<"streamStatus">> => list(any())
 %% }
 -type automation_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% a2a_descriptor() :: #{
+%%   <<"agentCard">> => agent_card_definition()
+%% }
+-type a2a_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -274,6 +283,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_browser_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_descriptor() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type custom_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -724,10 +740,34 @@
 
 
 %% Example:
+%% registry_record_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_type_arguments() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type key_type_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_registry_records_response() :: #{
+%%   <<"registryRecords">> => list(registry_record_summary())
+%% }
+-type search_registry_records_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -979,6 +1019,14 @@
 
 
 %% Example:
+%% tools_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"protocolVersion">> => string()
+%% }
+-type tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% save_browser_session_profile_response() :: #{
 %%   <<"browserIdentifier">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -1016,11 +1064,27 @@
 
 
 %% Example:
+%% server_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type server_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_workload_access_token_for_user_id_request() :: #{
 %%   <<"userId">> := string(),
 %%   <<"workloadName">> := string()
 %% }
 -type get_workload_access_token_for_user_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_descriptor() :: #{
+%%   <<"server">> => server_definition(),
+%%   <<"tools">> => tools_definition()
+%% }
+-type mcp_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1035,6 +1099,16 @@
 %%   <<"memoryRecord">> => memory_record()
 %% }
 -type get_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_registry_records_request() :: #{
+%%   <<"filters">> => any(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"registryIds">> := list(string()),
+%%   <<"searchQuery">> := [string()]
+%% }
+-type search_registry_records_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1091,6 +1165,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type skill_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1318,6 +1400,14 @@
 
 
 %% Example:
+%% agent_card_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_code_interpreter_session_response() :: #{
 %%   <<"certificates">> => list(certificate()),
 %%   <<"codeInterpreterIdentifier">> => [string()],
@@ -1375,6 +1465,13 @@
 
 
 %% Example:
+%% skill_md_definition() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluate_request() :: #{
 %%   <<"evaluationInput">> := list(),
 %%   <<"evaluationReferenceInputs">> => list(evaluation_reference_input()),
@@ -1422,6 +1519,16 @@
 
 
 %% Example:
+%% descriptors() :: #{
+%%   <<"a2a">> => a2a_descriptor(),
+%%   <<"agentSkills">> => agent_skills_descriptor(),
+%%   <<"custom">> => custom_descriptor(),
+%%   <<"mcp">> => mcp_descriptor()
+%% }
+-type descriptors() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_event_output() :: #{
 %%   <<"event">> => event()
 %% }
@@ -1453,6 +1560,14 @@
 %%   <<"streamUpdate">> := list()
 %% }
 -type update_browser_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_skills_descriptor() :: #{
+%%   <<"skillDefinition">> => skill_definition(),
+%%   <<"skillMd">> => skill_md_definition()
+%% }
+-type agent_skills_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1777,6 +1892,14 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type search_registry_records_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type start_browser_session_errors() ::
     throttling_exception() | 
@@ -3304,6 +3427,44 @@ save_browser_session_profile(Client, ProfileIdentifier, Input0, Options0) ->
                        {<<"traceparent">>, <<"traceParent">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for registry records using semantic, lexical, or hybrid
+%% queries.
+%%
+%% Returns metadata for matching records ordered by relevance within the
+%% specified registry.
+-spec search_registry_records(aws_client:aws_client(), search_registry_records_request()) ->
+    {ok, search_registry_records_response(), tuple()} |
+    {error, any()} |
+    {error, search_registry_records_errors(), tuple()}.
+search_registry_records(Client, Input) ->
+    search_registry_records(Client, Input, []).
+
+-spec search_registry_records(aws_client:aws_client(), search_registry_records_request(), proplists:proplist()) ->
+    {ok, search_registry_records_response(), tuple()} |
+    {error, any()} |
+    {error, search_registry_records_errors(), tuple()}.
+search_registry_records(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/registry-records/search"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
 
     CustomHeaders = [],
     Input2 = Input1,

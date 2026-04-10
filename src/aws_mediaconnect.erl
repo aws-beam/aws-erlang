@@ -2234,6 +2234,10 @@
 -type rtp_router_input_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% media_live_channel_router_input_stream_details() :: #{}
+-type media_live_channel_router_input_stream_details() :: #{}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
 
@@ -2758,6 +2762,16 @@
 %%   <<"Force">> => [boolean()]
 %% }
 -type deregister_gateway_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_live_channel_router_input_configuration() :: #{
+%%   <<"MediaLiveChannelArn">> => string(),
+%%   <<"MediaLiveChannelOutputName">> => [string()],
+%%   <<"MediaLivePipelineId">> => list(any()),
+%%   <<"SourceTransitDecryption">> => media_live_transit_encryption()
+%% }
+-type media_live_channel_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:

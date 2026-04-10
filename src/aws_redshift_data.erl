@@ -180,6 +180,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
+%%   <<"Parameters">> => list(sql_parameter()),
 %%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),

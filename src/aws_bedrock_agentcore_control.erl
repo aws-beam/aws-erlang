@@ -35,6 +35,10 @@
          create_policy/4,
          create_policy_engine/2,
          create_policy_engine/3,
+         create_registry/2,
+         create_registry/3,
+         create_registry_record/3,
+         create_registry_record/4,
          create_workload_identity/2,
          create_workload_identity/3,
          delete_agent_runtime/3,
@@ -65,6 +69,10 @@
          delete_policy/5,
          delete_policy_engine/3,
          delete_policy_engine/4,
+         delete_registry/3,
+         delete_registry/4,
+         delete_registry_record/4,
+         delete_registry_record/5,
          delete_resource_policy/3,
          delete_resource_policy/4,
          delete_workload_identity/2,
@@ -112,6 +120,12 @@
          get_policy_generation/3,
          get_policy_generation/5,
          get_policy_generation/6,
+         get_registry/2,
+         get_registry/4,
+         get_registry/5,
+         get_registry_record/3,
+         get_registry_record/5,
+         get_registry_record/6,
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
@@ -159,6 +173,12 @@
          list_policy_generations/2,
          list_policy_generations/4,
          list_policy_generations/5,
+         list_registries/1,
+         list_registries/3,
+         list_registries/4,
+         list_registry_records/2,
+         list_registry_records/4,
+         list_registry_records/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -170,6 +190,8 @@
          set_token_vault_cm_k/3,
          start_policy_generation/3,
          start_policy_generation/4,
+         submit_registry_record_for_approval/4,
+         submit_registry_record_for_approval/5,
          synchronize_gateway_targets/3,
          synchronize_gateway_targets/4,
          tag_resource/3,
@@ -198,6 +220,12 @@
          update_policy/5,
          update_policy_engine/3,
          update_policy_engine/4,
+         update_registry/3,
+         update_registry/4,
+         update_registry_record/4,
+         update_registry_record/5,
+         update_registry_record_status/4,
+         update_registry_record_status/5,
          update_workload_identity/2,
          update_workload_identity/3]).
 
@@ -288,10 +316,39 @@
 
 
 %% Example:
+%% create_registry_record_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> := list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> := string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any())
+%% }
+-type create_registry_record_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_based_trigger_input() :: #{
 %%   <<"idleSessionTimeout">> => [integer()]
 %% }
 -type time_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registry_records_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registryRecords">> => list(registry_record_summary())
+%% }
+-type list_registry_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_mcp_descriptor() :: #{
+%%   <<"optionalValue">> => updated_mcp_descriptor_fields()
+%% }
+-type updated_mcp_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -322,6 +379,13 @@
 
 
 %% Example:
+%% a2a_descriptor() :: #{
+%%   <<"agentCard">> => agent_card_definition()
+%% }
+-type a2a_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -348,6 +412,30 @@
 %%   <<"tokenEndpoint">> => string()
 %% }
 -type included_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_registry_record_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_registry_record_response() :: #{binary() => any()}.
+
+%% Example:
+%% submit_registry_record_for_approval_request() :: #{}
+-type submit_registry_record_for_approval_request() :: #{}.
 
 %% Example:
 %% delete_resource_policy_response() :: #{}
@@ -488,6 +576,20 @@
 
 
 %% Example:
+%% updated_descriptors() :: #{
+%%   <<"optionalValue">> => updated_descriptors_union()
+%% }
+-type updated_descriptors() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_descriptor() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type custom_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_browser_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
@@ -542,6 +644,15 @@
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
 %% }
 -type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_iam_credential_provider() :: #{
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => string()
+%% }
+-type registry_record_iam_credential_provider() :: #{binary() => any()}.
 
 
 %% Example:
@@ -600,6 +711,10 @@
 %% }
 -type get_oauth2_credential_provider_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_registry_request() :: #{}
+-type delete_registry_request() :: #{}.
+
 
 %% Example:
 %% update_online_evaluation_config_response() :: #{
@@ -626,6 +741,10 @@
 %%   <<"name">> := string()
 %% }
 -type get_workload_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_record_request() :: #{}
+-type get_registry_record_request() :: #{}.
 
 
 %% Example:
@@ -712,11 +831,30 @@
 
 
 %% Example:
+%% update_registry_record_status_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_registry_record_status_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% iam_credential_provider() :: #{
 %%   <<"region">> => [string()],
 %%   <<"service">> => [string()]
 %% }
 -type iam_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_registry_response() :: #{
+%%   <<"registryArn">> => string()
+%% }
+-type create_registry_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -737,6 +875,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type code_interpreter_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_request() :: #{}
+-type get_registry_request() :: #{}.
 
 
 %% Example:
@@ -804,6 +946,13 @@
 
 
 %% Example:
+%% updated_tools_definition() :: #{
+%%   <<"optionalValue">> => tools_definition()
+%% }
+-type updated_tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"definition">> := list(),
@@ -855,6 +1004,16 @@
 
 
 %% Example:
+%% registry_record_o_auth_credential_provider() :: #{
+%%   <<"customParameters">> => map(),
+%%   <<"grantType">> => list(any()),
+%%   <<"providerArn">> => string(),
+%%   <<"scopes">> => list([string()]())
+%% }
+-type registry_record_o_auth_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
 %% summary_consolidation_override() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -883,6 +1042,13 @@
 
 
 %% Example:
+%% updated_skill_md_definition() :: #{
+%%   <<"optionalValue">> => skill_md_definition()
+%% }
+-type updated_skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% episodic_override_reflection_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()],
@@ -898,6 +1064,13 @@
 %%   <<"lambdaTimeoutInSeconds">> => [integer()]
 %% }
 -type lambda_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_a2a_descriptor() :: #{
+%%   <<"optionalValue">> => a2a_descriptor()
+%% }
+-type updated_a2a_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -945,6 +1118,17 @@
 
 
 %% Example:
+%% submit_registry_record_for_approval_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type submit_registry_record_for_approval_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% episodic_override_configuration_input() :: #{
 %%   <<"consolidation">> => episodic_override_consolidation_configuration_input(),
 %%   <<"extraction">> => episodic_override_extraction_configuration_input(),
@@ -988,6 +1172,30 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type online_evaluation_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_request() :: #{
+%%   <<"approvalConfiguration">> => updated_approval_configuration(),
+%%   <<"authorizerConfiguration">> => updated_authorizer_configuration(),
+%%   <<"description">> => updated_description(),
+%%   <<"name">> => string()
+%% }
+-type update_registry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_record_request() :: #{
+%%   <<"description">> => updated_description(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => updated_descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"synchronizationConfiguration">> => updated_synchronization_configuration(),
+%%   <<"synchronizationType">> => updated_synchronization_type(),
+%%   <<"triggerSynchronization">> => [boolean()]
+%% }
+-type update_registry_record_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workload_identity_response() :: #{}
@@ -1179,6 +1387,13 @@
 
 
 %% Example:
+%% approval_configuration() :: #{
+%%   <<"autoApproval">> => [boolean()]
+%% }
+-type approval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_gateway_target_response() :: #{
 %%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -1221,6 +1436,14 @@
 %% Example:
 %% get_policy_engine_request() :: #{}
 -type get_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% updated_agent_skills_descriptor_fields() :: #{
+%%   <<"skillDefinition">> => updated_skill_definition(),
+%%   <<"skillMd">> => updated_skill_md_definition()
+%% }
+-type updated_agent_skills_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1397,6 +1620,14 @@
 
 
 %% Example:
+%% create_registry_record_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_registry_record_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_online_evaluation_config_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"dataSourceConfig">> := list(),
@@ -1552,6 +1783,22 @@
 
 
 %% Example:
+%% registry_record_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% included_oauth2_provider_config_output() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
@@ -1606,6 +1853,17 @@
 %%   <<"clientToken">> => string()
 %% }
 -type delete_code_interpreter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registry_records_request() :: #{
+%%   <<"descriptorType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_registry_records_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1882,6 +2140,13 @@
 
 
 %% Example:
+%% updated_server_definition() :: #{
+%%   <<"optionalValue">> => server_definition()
+%% }
+-type updated_server_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_policy_generations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1932,6 +2197,26 @@
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_record_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_registry_record_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2042,6 +2327,13 @@
 
 
 %% Example:
+%% updated_synchronization_type() :: #{
+%%   <<"optionalValue">> => list(any())
+%% }
+-type updated_synchronization_type() :: #{binary() => any()}.
+
+
+%% Example:
 %% salesforce_oauth2_provider_config_output() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
@@ -2138,6 +2430,14 @@
 
 
 %% Example:
+%% tools_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"protocolVersion">> => string()
+%% }
+-type tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% o_auth_credential_provider() :: #{
 %%   <<"customParameters">> => map(),
 %%   <<"defaultReturnUrl">> => string(),
@@ -2198,6 +2498,31 @@
 
 
 %% Example:
+%% server_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type server_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_response() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_browser_profile_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"profileArn">> => string(),
@@ -2232,6 +2557,14 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_api_key_credential_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_descriptor() :: #{
+%%   <<"server">> => server_definition(),
+%%   <<"tools">> => tools_definition()
+%% }
+-type mcp_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2270,6 +2603,13 @@
 %% Example:
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
+
+
+%% Example:
+%% updated_synchronization_configuration() :: #{
+%%   <<"optionalValue">> => synchronization_configuration()
+%% }
+-type updated_synchronization_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_generation_request() :: #{}
@@ -2413,11 +2753,25 @@
 
 
 %% Example:
+%% updated_custom_descriptor() :: #{
+%%   <<"optionalValue">> => custom_descriptor()
+%% }
+-type updated_custom_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_api_key_credential_provider_request() :: #{
 %%   <<"apiKey">> := string(),
 %%   <<"name">> := string()
 %% }
 -type update_api_key_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_agent_skills_descriptor() :: #{
+%%   <<"optionalValue">> => updated_agent_skills_descriptor_fields()
+%% }
+-type updated_agent_skills_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2441,6 +2795,14 @@
 %%   <<"networkModeConfig">> => vpc_config()
 %% }
 -type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type skill_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2472,6 +2834,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registries">> => list(registry_summary())
+%% }
+-type list_registries_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2570,6 +2940,14 @@
 
 
 %% Example:
+%% update_registry_record_status_request() :: #{
+%%   <<"status">> := list(any()),
+%%   <<"statusReason">> := [string()]
+%% }
+-type update_registry_record_status_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_evaluator_response() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -2635,6 +3013,15 @@
 %% }
 -type create_policy_engine_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_registries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_registries_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -2678,6 +3065,10 @@
 %% }
 -type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_registry_record_request() :: #{}
+-type delete_registry_record_request() :: #{}.
+
 
 %% Example:
 %% secrets_manager_location() :: #{
@@ -2687,10 +3078,25 @@
 
 
 %% Example:
+%% updated_skill_definition() :: #{
+%%   <<"optionalValue">> => skill_definition()
+%% }
+-type updated_skill_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_config() :: #{
 %%   <<"cloudWatchConfig">> => cloud_watch_output_config()
 %% }
 -type output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_mcp_descriptor_fields() :: #{
+%%   <<"server">> => updated_server_definition(),
+%%   <<"tools">> => updated_tools_definition()
+%% }
+-type updated_mcp_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2707,6 +3113,14 @@
 %%   <<"targetVersion">> => string()
 %% }
 -type agent_runtime_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_credential_provider_configuration() :: #{
+%%   <<"credentialProvider">> => list(),
+%%   <<"credentialProviderType">> => list(any())
+%% }
+-type registry_record_credential_provider_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2789,6 +3203,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_evaluators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_registry_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_registry_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2916,6 +3337,39 @@
 
 
 %% Example:
+%% create_registry_request() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_registry_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_record_response() :: #{}
+-type delete_registry_record_response() :: #{}.
+
+
+%% Example:
+%% get_registry_response() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_resource_policy_response() :: #{
 %%   <<"policy">> => string()
 %% }
@@ -2948,6 +3402,14 @@
 %%   <<"serverProtocol">> => list(any())
 %% }
 -type protocol_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_card_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type agent_card_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3007,6 +3469,13 @@
 %% }
 -type session_storage_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% updated_authorizer_configuration() :: #{
+%%   <<"optionalValue">> => list()
+%% }
+-type updated_authorizer_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_browser_request() :: #{}
 -type get_browser_request() :: #{}.
@@ -3032,6 +3501,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type policy_engine() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_md_definition() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type skill_md_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3111,6 +3587,16 @@
 
 
 %% Example:
+%% descriptors() :: #{
+%%   <<"a2a">> => a2a_descriptor(),
+%%   <<"agentSkills">> => agent_skills_descriptor(),
+%%   <<"custom">> => custom_descriptor(),
+%%   <<"mcp">> => mcp_descriptor()
+%% }
+-type descriptors() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_token_vault_request() :: #{
 %%   <<"tokenVaultId">> => string()
 %% }
@@ -3152,6 +3638,13 @@
 %%   <<"description">> => string()
 %% }
 -type update_agent_runtime_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_approval_configuration() :: #{
+%%   <<"optionalValue">> => approval_configuration()
+%% }
+-type updated_approval_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3200,6 +3693,14 @@
 
 
 %% Example:
+%% from_url_synchronization_configuration() :: #{
+%%   <<"credentialProviderConfigurations">> => list(registry_record_credential_provider_configuration()),
+%%   <<"url">> => string()
+%% }
+-type from_url_synchronization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_gateways_response() :: #{
 %%   <<"items">> => list(gateway_summary()),
 %%   <<"nextToken">> => string()
@@ -3213,6 +3714,29 @@
 %%   <<"s3Location">> => s3_location()
 %% }
 -type recording_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_skills_descriptor() :: #{
+%%   <<"skillDefinition">> => skill_definition(),
+%%   <<"skillMd">> => skill_md_definition()
+%% }
+-type agent_skills_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_summary() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type registry_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3278,6 +3802,16 @@
 
 
 %% Example:
+%% updated_descriptors_union() :: #{
+%%   <<"a2a">> => updated_a2a_descriptor(),
+%%   <<"agentSkills">> => updated_agent_skills_descriptor(),
+%%   <<"custom">> => updated_custom_descriptor(),
+%%   <<"mcp">> => updated_mcp_descriptor()
+%% }
+-type updated_descriptors_union() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_gateway_targets_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -3334,6 +3868,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_memories_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% synchronization_configuration() :: #{
+%%   <<"fromUrl">> => from_url_synchronization_configuration()
+%% }
+-type synchronization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3470,6 +4011,23 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_registry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_registry_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_workload_identity_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3583,6 +4141,22 @@
     conflict_exception().
 
 -type delete_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_registry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_registry_record_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3713,6 +4287,21 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type get_registry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_registry_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_resource_policy_errors() ::
     throttling_exception() | 
@@ -3848,6 +4437,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_registries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_registry_records_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3885,6 +4488,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type submit_registry_record_for_approval_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -4008,6 +4619,31 @@
     conflict_exception().
 
 -type update_policy_engine_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_registry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_registry_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_registry_record_status_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4547,6 +5183,87 @@ create_policy_engine(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new registry in your Amazon Web Services account.
+%%
+%% A registry serves as a centralized catalog for organizing and managing
+%% registry records, including MCP servers, A2A agents, agent skills, and
+%% custom resource types.
+%%
+%% If you specify `CUSTOM_JWT' as the `authorizerType', you must
+%% provide an `authorizerConfiguration'.
+-spec create_registry(aws_client:aws_client(), create_registry_request()) ->
+    {ok, create_registry_response(), tuple()} |
+    {error, any()} |
+    {error, create_registry_errors(), tuple()}.
+create_registry(Client, Input) ->
+    create_registry(Client, Input, []).
+
+-spec create_registry(aws_client:aws_client(), create_registry_request(), proplists:proplist()) ->
+    {ok, create_registry_response(), tuple()} |
+    {error, any()} |
+    {error, create_registry_errors(), tuple()}.
+create_registry(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/registries"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new registry record within the specified registry.
+%%
+%% A registry record represents an individual AI resource's metadata in
+%% the registry. This could be an MCP server (and associated tools), A2A
+%% agent, agent skill, or a custom resource with a custom schema.
+%%
+%% The record is processed asynchronously and returns HTTP 202 Accepted.
+-spec create_registry_record(aws_client:aws_client(), binary() | list(), create_registry_record_request()) ->
+    {ok, create_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, create_registry_record_errors(), tuple()}.
+create_registry_record(Client, RegistryId, Input) ->
+    create_registry_record(Client, RegistryId, Input, []).
+
+-spec create_registry_record(aws_client:aws_client(), binary() | list(), create_registry_record_request(), proplists:proplist()) ->
+    {ok, create_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, create_registry_record_errors(), tuple()}.
+create_registry_record(Client, RegistryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new workload identity.
 -spec create_workload_identity(aws_client:aws_client(), create_workload_identity_request()) ->
     {ok, create_workload_identity_response(), tuple()} |
@@ -5065,6 +5782,80 @@ delete_policy_engine(Client, PolicyEngineId, Input0, Options0) ->
     Method = delete,
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a registry.
+%%
+%% The registry must contain zero records before it can be deleted. This
+%% operation initiates the deletion process asynchronously.
+-spec delete_registry(aws_client:aws_client(), binary() | list(), delete_registry_request()) ->
+    {ok, delete_registry_response(), tuple()} |
+    {error, any()} |
+    {error, delete_registry_errors(), tuple()}.
+delete_registry(Client, RegistryId, Input) ->
+    delete_registry(Client, RegistryId, Input, []).
+
+-spec delete_registry(aws_client:aws_client(), binary() | list(), delete_registry_request(), proplists:proplist()) ->
+    {ok, delete_registry_response(), tuple()} |
+    {error, any()} |
+    {error, delete_registry_errors(), tuple()}.
+delete_registry(Client, RegistryId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a registry record.
+%%
+%% The record's status transitions to `DELETING' and the record is
+%% removed asynchronously.
+-spec delete_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), delete_registry_record_request()) ->
+    {ok, delete_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, delete_registry_record_errors(), tuple()}.
+delete_registry_record(Client, RecordId, RegistryId, Input) ->
+    delete_registry_record(Client, RecordId, RegistryId, Input, []).
+
+-spec delete_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), delete_registry_record_request(), proplists:proplist()) ->
+    {ok, delete_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, delete_registry_record_errors(), tuple()}.
+delete_registry_record(Client, RecordId, RegistryId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5718,6 +6509,80 @@ get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, Head
 get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations/", aws_util:encode_uri(PolicyGenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific registry.
+-spec get_registry(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_registry_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_errors(), tuple()}.
+get_registry(Client, RegistryId)
+  when is_map(Client) ->
+    get_registry(Client, RegistryId, #{}, #{}).
+
+-spec get_registry(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_registry_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_errors(), tuple()}.
+get_registry(Client, RegistryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_registry(Client, RegistryId, QueryMap, HeadersMap, []).
+
+-spec get_registry(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_registry_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_errors(), tuple()}.
+get_registry(Client, RegistryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific registry record.
+-spec get_registry_record(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_record_errors(), tuple()}.
+get_registry_record(Client, RecordId, RegistryId)
+  when is_map(Client) ->
+    get_registry_record(Client, RecordId, RegistryId, #{}, #{}).
+
+-spec get_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_record_errors(), tuple()}.
+get_registry_record(Client, RecordId, RegistryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_registry_record(Client, RecordId, RegistryId, QueryMap, HeadersMap, []).
+
+-spec get_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_registry_record_errors(), tuple()}.
+get_registry_record(Client, RecordId, RegistryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6505,6 +7370,101 @@ list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all registries in the account.
+%%
+%% You can optionally filter results by status using the `status'
+%% parameter.
+-spec list_registries(aws_client:aws_client()) ->
+    {ok, list_registries_response(), tuple()} |
+    {error, any()} |
+    {error, list_registries_errors(), tuple()}.
+list_registries(Client)
+  when is_map(Client) ->
+    list_registries(Client, #{}, #{}).
+
+-spec list_registries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_registries_response(), tuple()} |
+    {error, any()} |
+    {error, list_registries_errors(), tuple()}.
+list_registries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_registries(Client, QueryMap, HeadersMap, []).
+
+-spec list_registries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_registries_response(), tuple()} |
+    {error, any()} |
+    {error, list_registries_errors(), tuple()}.
+list_registries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/registries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists registry records within a registry.
+%%
+%% You can optionally filter results using the `name', `status', and
+%% `descriptorType' parameters. When multiple filters are specified, they
+%% are combined using AND logic.
+-spec list_registry_records(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_registry_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_registry_records_errors(), tuple()}.
+list_registry_records(Client, RegistryId)
+  when is_map(Client) ->
+    list_registry_records(Client, RegistryId, #{}, #{}).
+
+-spec list_registry_records(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_registry_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_registry_records_errors(), tuple()}.
+list_registry_records(Client, RegistryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_registry_records(Client, RegistryId, QueryMap, HeadersMap, []).
+
+-spec list_registry_records(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_registry_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_registry_records_errors(), tuple()}.
+list_registry_records(Client, RegistryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"descriptorType">>, maps:get(<<"descriptorType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags associated with the specified resource.
 %%
 %% This feature is currently available only for AgentCore Runtime, Browser,
@@ -6680,6 +7640,44 @@ start_policy_generation(Client, PolicyEngineId, Input) ->
 start_policy_generation(Client, PolicyEngineId, Input0, Options0) ->
     Method = post,
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits a registry record for approval.
+%%
+%% This transitions the record from `DRAFT' status to
+%% `PENDING_APPROVAL' status. If the registry has auto-approval enabled,
+%% the record is automatically approved.
+-spec submit_registry_record_for_approval(aws_client:aws_client(), binary() | list(), binary() | list(), submit_registry_record_for_approval_request()) ->
+    {ok, submit_registry_record_for_approval_response(), tuple()} |
+    {error, any()} |
+    {error, submit_registry_record_for_approval_errors(), tuple()}.
+submit_registry_record_for_approval(Client, RecordId, RegistryId, Input) ->
+    submit_registry_record_for_approval(Client, RecordId, RegistryId, Input, []).
+
+-spec submit_registry_record_for_approval(aws_client:aws_client(), binary() | list(), binary() | list(), submit_registry_record_for_approval_request(), proplists:proplist()) ->
+    {ok, submit_registry_record_for_approval_response(), tuple()} |
+    {error, any()} |
+    {error, submit_registry_record_for_approval_errors(), tuple()}.
+submit_registry_record_for_approval(Client, RecordId, RegistryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), "/submit-for-approval"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7201,6 +8199,117 @@ update_policy_engine(Client, PolicyEngineId, Input) ->
 update_policy_engine(Client, PolicyEngineId, Input0, Options0) ->
     Method = patch,
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing registry.
+%%
+%% This operation uses PATCH semantics, so you only need to specify the
+%% fields you want to change.
+-spec update_registry(aws_client:aws_client(), binary() | list(), update_registry_request()) ->
+    {ok, update_registry_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_errors(), tuple()}.
+update_registry(Client, RegistryId, Input) ->
+    update_registry(Client, RegistryId, Input, []).
+
+-spec update_registry(aws_client:aws_client(), binary() | list(), update_registry_request(), proplists:proplist()) ->
+    {ok, update_registry_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_errors(), tuple()}.
+update_registry(Client, RegistryId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing registry record.
+%%
+%% This operation uses PATCH semantics, so you only need to specify the
+%% fields you want to change. The update is processed asynchronously and
+%% returns HTTP 202 Accepted.
+-spec update_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), update_registry_record_request()) ->
+    {ok, update_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_record_errors(), tuple()}.
+update_registry_record(Client, RecordId, RegistryId, Input) ->
+    update_registry_record(Client, RecordId, RegistryId, Input, []).
+
+-spec update_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), update_registry_record_request(), proplists:proplist()) ->
+    {ok, update_registry_record_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_record_errors(), tuple()}.
+update_registry_record(Client, RecordId, RegistryId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of a registry record.
+%%
+%% Use this operation to approve, reject, or deprecate a registry record.
+-spec update_registry_record_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_registry_record_status_request()) ->
+    {ok, update_registry_record_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_record_status_errors(), tuple()}.
+update_registry_record_status(Client, RecordId, RegistryId, Input) ->
+    update_registry_record_status(Client, RecordId, RegistryId, Input, []).
+
+-spec update_registry_record_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_registry_record_status_request(), proplists:proplist()) ->
+    {ok, update_registry_record_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_registry_record_status_errors(), tuple()}.
+update_registry_record_status(Client, RecordId, RegistryId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), "/status"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
