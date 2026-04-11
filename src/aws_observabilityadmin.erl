@@ -153,7 +153,10 @@
 %% Example:
 %% get_telemetry_rule_output() :: #{
 %%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"HomeRegion">> => string(),
+%%   <<"IsReplicated">> => boolean(),
 %%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RegionStatuses">> => list(region_status()),
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleName">> => string(),
 %%   <<"TelemetryRule">> => telemetry_rule()
@@ -175,6 +178,14 @@
 
 
 %% Example:
+%% start_telemetry_evaluation_input() :: #{
+%%   <<"AllRegions">> => boolean(),
+%%   <<"Regions">> => list(string())
+%% }
+-type start_telemetry_evaluation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% test_telemetry_pipeline_output() :: #{
 %%   <<"Results">> => list(pipeline_output())
 %% }
@@ -191,6 +202,8 @@
 %% Example:
 %% get_telemetry_evaluation_status_for_organization_output() :: #{
 %%   <<"FailureReason">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"RegionStatuses">> => list(region_status()),
 %%   <<"Status">> => list(any())
 %% }
 -type get_telemetry_evaluation_status_for_organization_output() :: #{binary() => any()}.
@@ -236,6 +249,8 @@
 %% Example:
 %% get_telemetry_evaluation_status_output() :: #{
 %%   <<"FailureReason">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"RegionStatuses">> => list(region_status()),
 %%   <<"Status">> => list(any())
 %% }
 -type get_telemetry_evaluation_status_output() :: #{binary() => any()}.
@@ -390,7 +405,10 @@
 %% Example:
 %% get_telemetry_rule_for_organization_output() :: #{
 %%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"HomeRegion">> => string(),
+%%   <<"IsReplicated">> => boolean(),
 %%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RegionStatuses">> => list(region_status()),
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleName">> => string(),
 %%   <<"TelemetryRule">> => telemetry_rule()
@@ -525,6 +543,14 @@
 
 
 %% Example:
+%% start_telemetry_evaluation_for_organization_input() :: #{
+%%   <<"AllRegions">> => boolean(),
+%%   <<"Regions">> => list(string())
+%% }
+-type start_telemetry_evaluation_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption() :: #{
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"SseAlgorithm">> => list(any())
@@ -625,6 +651,16 @@
 %%   <<"LabelNameCondition">> => label_name_condition()
 %% }
 -type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_status() :: #{
+%%   <<"FailureReason">> => [string()],
+%%   <<"Region">> => string(),
+%%   <<"RuleArn">> => string(),
+%%   <<"Status">> => [string()]
+%% }
+-type region_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -884,7 +920,9 @@
 
 %% Example:
 %% telemetry_rule() :: #{
+%%   <<"AllRegions">> => boolean(),
 %%   <<"DestinationConfiguration">> => telemetry_destination_configuration(),
+%%   <<"Regions">> => list(string()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"Scope">> => [string()],
 %%   <<"SelectionCriteria">> => [string()],
@@ -2309,14 +2347,14 @@ start_telemetry_enrichment(Client, Input0, Options0) ->
 
 %% @doc This action begins onboarding the caller Amazon Web Services account
 %% to the telemetry config feature.
--spec start_telemetry_evaluation(aws_client:aws_client(), #{}) ->
+-spec start_telemetry_evaluation(aws_client:aws_client(), start_telemetry_evaluation_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_telemetry_evaluation_errors(), tuple()}.
 start_telemetry_evaluation(Client, Input) ->
     start_telemetry_evaluation(Client, Input, []).
 
--spec start_telemetry_evaluation(aws_client:aws_client(), #{}, proplists:proplist()) ->
+-spec start_telemetry_evaluation(aws_client:aws_client(), start_telemetry_evaluation_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_telemetry_evaluation_errors(), tuple()}.
@@ -2344,14 +2382,14 @@ start_telemetry_evaluation(Client, Input0, Options0) ->
 
 %% @doc This actions begins onboarding the organization and all member
 %% accounts to the telemetry config feature.
--spec start_telemetry_evaluation_for_organization(aws_client:aws_client(), #{}) ->
+-spec start_telemetry_evaluation_for_organization(aws_client:aws_client(), start_telemetry_evaluation_for_organization_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_telemetry_evaluation_for_organization_errors(), tuple()}.
 start_telemetry_evaluation_for_organization(Client, Input) ->
     start_telemetry_evaluation_for_organization(Client, Input, []).
 
--spec start_telemetry_evaluation_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+-spec start_telemetry_evaluation_for_organization(aws_client:aws_client(), start_telemetry_evaluation_for_organization_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_telemetry_evaluation_for_organization_errors(), tuple()}.

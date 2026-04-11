@@ -638,6 +638,8 @@
          send_pipeline_execution_step_failure/3,
          send_pipeline_execution_step_success/2,
          send_pipeline_execution_step_success/3,
+         start_cluster_health_check/2,
+         start_cluster_health_check/3,
          start_edge_deployment_stage/2,
          start_edge_deployment_stage/3,
          start_inference_experiment/2,
@@ -3154,9 +3156,11 @@
 
 %% Example:
 %% batch_add_cluster_nodes_error() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"FailedCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())()),
 %%   <<"Message">> => string()
 %% }
 -type batch_add_cluster_nodes_error() :: #{binary() => any()}.
@@ -4081,6 +4085,12 @@
 -type data_catalog_config() :: #{binary() => any()}.
 
 %% Example:
+%% start_cluster_health_check_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type start_cluster_health_check_response() :: #{binary() => any()}.
+
+%% Example:
 %% image_config() :: #{
 %%   <<"RepositoryAccessMode">> => list(any()),
 %%   <<"RepositoryAuthConfig">> => repository_auth_config()
@@ -4475,6 +4485,14 @@
 %%   <<"WorkteamArn">> := string()
 %% }
 -type list_labeling_jobs_for_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_type_detail() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cluster_instance_type_detail() :: #{binary() => any()}.
 
 %% Example:
 %% recommendation_job_vpc_config() :: #{
@@ -5279,6 +5297,13 @@
 %%   <<"Mode">> => list(any())
 %% }
 -type inference_execution_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_requirement_details() :: #{
+%%   <<"CurrentInstanceTypes">> => list(list(any())()),
+%%   <<"DesiredInstanceTypes">> => list(list(any())())
+%% }
+-type cluster_instance_requirement_details() :: #{binary() => any()}.
 
 %% Example:
 %% start_edge_deployment_stage_request() :: #{
@@ -8253,8 +8278,10 @@
 
 %% Example:
 %% add_cluster_node_specification() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"IncrementTargetCountBy">> => integer(),
-%%   <<"InstanceGroupName">> => string()
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())())
 %% }
 -type add_cluster_node_specification() :: #{binary() => any()}.
 
@@ -10317,6 +10344,13 @@
 -type model_card_export_job_summary() :: #{binary() => any()}.
 
 %% Example:
+%% start_cluster_health_check_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"DeepHealthCheckConfigurations">> := list(instance_group_health_check_configuration())
+%% }
+-type start_cluster_health_check_request() :: #{binary() => any()}.
+
+%% Example:
 %% model_package_validation_profile() :: #{
 %%   <<"ProfileName">> => string(),
 %%   <<"TransformJobDefinition">> => transform_job_definition()
@@ -10773,6 +10807,14 @@
 %%   <<"TrackingServerArn">> => string()
 %% }
 -type update_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_health_check_configuration() :: #{
+%%   <<"DeepHealthChecks">> => list(list(any())()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type instance_group_health_check_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_artifacts_request() :: #{
@@ -11448,6 +11490,12 @@
 -type query_filters() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_instance_requirements() :: #{
+%%   <<"InstanceTypes">> => list(list(any())())
+%% }
+-type cluster_instance_requirements() :: #{binary() => any()}.
+
+%% Example:
 %% delete_context_response() :: #{
 %%   <<"ContextArn">> => string()
 %% }
@@ -11560,6 +11608,7 @@
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceRequirements">> => cluster_instance_requirements(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"KubernetesConfig">> => cluster_kubernetes_config(),
@@ -11576,7 +11625,9 @@
 
 %% Example:
 %% node_addition_result() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())()),
 %%   <<"NodeLogicalId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
@@ -13305,8 +13356,10 @@
 %%   <<"DesiredImageId">> => string(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceRequirements">> => cluster_instance_requirement_details(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"InstanceTypeDetails">> => list(cluster_instance_type_detail()),
 %%   <<"KubernetesConfig">> => cluster_kubernetes_config_details(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"MinCount">> => integer(),
@@ -14605,6 +14658,9 @@
 -type send_pipeline_execution_step_success_errors() ::
     resource_limit_exceeded() | 
     conflict_exception() | 
+    resource_not_found().
+
+-type start_cluster_health_check_errors() ::
     resource_not_found().
 
 -type start_inference_experiment_errors() ::
@@ -21477,6 +21533,31 @@ send_pipeline_execution_step_success(Client, Input)
 send_pipeline_execution_step_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
+
+%% @doc Start deep health checks for a SageMaker HyperPod cluster.
+%%
+%% You can use DescribeClusterNode:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeClusterNode.html
+%% API to track progress of the deep health checks. The unhealthy nodes will
+%% be automatically rebooted or replaced. Please see Resilience-related
+%% Kubernetes labels by SageMaker HyperPod:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-eks-resiliency-node-labels.html
+%% for details.
+-spec start_cluster_health_check(aws_client:aws_client(), start_cluster_health_check_request()) ->
+    {ok, start_cluster_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, start_cluster_health_check_errors(), tuple()}.
+start_cluster_health_check(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_cluster_health_check(Client, Input, []).
+
+-spec start_cluster_health_check(aws_client:aws_client(), start_cluster_health_check_request(), proplists:proplist()) ->
+    {ok, start_cluster_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, start_cluster_health_check_errors(), tuple()}.
+start_cluster_health_check(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartClusterHealthCheck">>, Input, Options).
 
 %% @doc Starts a stage in an edge deployment plan.
 -spec start_edge_deployment_stage(aws_client:aws_client(), start_edge_deployment_stage_request()) ->

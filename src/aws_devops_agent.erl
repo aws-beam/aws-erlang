@@ -159,6 +159,13 @@
 
 
 %% Example:
+%% m_c_p_server_configuration() :: #{
+%%   <<"tools">> => list([string()]())
+%% }
+-type m_c_p_server_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% registered_grafana_server_details() :: #{
 %%   <<"authorizationMethod">> => list(any()),
 %%   <<"endpoint">> => [string()]
@@ -416,6 +423,10 @@
 %%   <<"state">> => list(any())
 %% }
 -type goal_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% m_c_p_server_splunk_configuration() :: #{}
+-type m_c_p_server_splunk_configuration() :: #{}.
 
 
 %% Example:
@@ -1223,6 +1234,10 @@
 %%   <<"instanceId">> => [string()]
 %% }
 -type service_now_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% m_c_p_server_datadog_configuration() :: #{}
+-type m_c_p_server_datadog_configuration() :: #{}.
 
 
 %% Example:

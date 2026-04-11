@@ -694,6 +694,20 @@
 
 
 %% Example:
+%% health_check_config() :: #{
+%%   <<"healthyThresholdCount">> => [integer()],
+%%   <<"intervalSeconds">> => [integer()],
+%%   <<"path">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"statusCodeMatcher">> => string(),
+%%   <<"timeoutMs">> => [integer()],
+%%   <<"unhealthyThresholdCount">> => [integer()]
+%% }
+-type health_check_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -719,6 +733,7 @@
 %% Example:
 %% auto_scaling_groups_configuration() :: #{
 %%   <<"autoScalingGroupNames">> => list(string()),
+%%   <<"healthCheckConfig">> => health_check_config(),
 %%   <<"roleArn">> => [string()]
 %% }
 -type auto_scaling_groups_configuration() :: #{binary() => any()}.

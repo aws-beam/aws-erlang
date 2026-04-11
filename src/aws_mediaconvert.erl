@@ -272,6 +272,7 @@
 %% container() :: #{
 %%   <<"Duration">> => float(),
 %%   <<"Format">> => list(any()),
+%%   <<"StartTimecode">> => string(),
 %%   <<"Tracks">> => list(track())
 %% }
 -type container() :: #{binary() => any()}.
@@ -958,6 +959,7 @@
 %%   <<"ImageInserter">> => image_inserter(),
 %%   <<"InputClippings">> => list(input_clipping()),
 %%   <<"InputScanType">> => list(any()),
+%%   <<"MultiViewSettings">> => list(multi_view_settings()),
 %%   <<"Position">> => rectangle(),
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"PsiControl">> => list(any()),
@@ -1207,6 +1209,7 @@
 %%   <<"ImageInserter">> => image_inserter(),
 %%   <<"InputClippings">> => list(input_clipping()),
 %%   <<"InputScanType">> => list(any()),
+%%   <<"MultiViewSettings">> => list(multi_view_settings()),
 %%   <<"Position">> => rectangle(),
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"PsiControl">> => list(any()),
@@ -2214,6 +2217,13 @@
 
 
 %% Example:
+%% multi_view_settings() :: #{
+%%   <<"Input">> => multi_view_input()
+%% }
+-type multi_view_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_job_template_response() :: #{
 %%   <<"JobTemplate">> => job_template()
 %% }
@@ -2356,6 +2366,13 @@
 %%   <<"SelectedOutputs">> => list(string())
 %% }
 -type ms_smooth_additional_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_view_input() :: #{
+%%   <<"FileInput">> => string()
+%% }
+-type multi_view_input() :: #{binary() => any()}.
 
 
 %% Example:

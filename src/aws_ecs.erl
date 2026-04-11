@@ -3521,6 +3521,7 @@
     limit_exceeded_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
     cluster_not_found_exception() | 
@@ -3529,6 +3530,7 @@
 -type create_cluster_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     namespace_not_found_exception().
 
@@ -3563,6 +3565,7 @@
     cluster_not_found_exception().
 
 -type create_task_set_errors() ::
+    limit_exceeded_exception() | 
     server_exception() | 
     platform_task_definition_incompatibility_exception() | 
     invalid_parameter_exception() | 
@@ -3578,25 +3581,32 @@
 -type delete_account_setting_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type delete_attributes_errors() ::
+    server_exception() | 
     target_not_found_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
     cluster_not_found_exception().
 
 -type delete_capacity_provider_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    cluster_not_found_exception() | 
+    update_in_progress_exception().
 
 -type delete_cluster_errors() ::
     cluster_contains_capacity_provider_exception() | 
     cluster_contains_services_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     cluster_contains_container_instances_exception() | 
     cluster_contains_tasks_exception() | 
     client_exception() | 
@@ -3632,6 +3642,7 @@
 -type delete_service_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     service_not_found_exception() | 
     cluster_not_found_exception().
@@ -3643,6 +3654,7 @@
     client_exception().
 
 -type delete_task_set_errors() ::
+    limit_exceeded_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -3656,17 +3668,20 @@
 -type deregister_container_instance_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
 -type deregister_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type describe_capacity_providers_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
     cluster_not_found_exception().
@@ -3674,11 +3689,13 @@
 -type describe_clusters_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type describe_container_instances_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
@@ -3743,12 +3760,14 @@
 -type describe_services_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
 -type describe_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type describe_task_sets_errors() ::
@@ -3764,11 +3783,14 @@
 -type describe_tasks_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
 -type discover_poll_endpoint_errors() ::
     server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type execute_command_errors() ::
@@ -3791,20 +3813,26 @@
 -type list_account_settings_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type list_attributes_errors() ::
+    server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
     cluster_not_found_exception().
 
 -type list_clusters_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type list_container_instances_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
@@ -3836,39 +3864,46 @@
     access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
-    service_not_found_exception().
+    service_not_found_exception() | 
+    cluster_not_found_exception().
 
 -type list_services_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
 -type list_services_by_namespace_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     namespace_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
 -type list_task_definition_families_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type list_task_definitions_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type list_tasks_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     service_not_found_exception() | 
     cluster_not_found_exception().
@@ -3876,22 +3911,28 @@
 -type put_account_setting_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type put_account_setting_default_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type put_attributes_errors() ::
+    server_exception() | 
     target_not_found_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
     cluster_not_found_exception() | 
     attribute_limit_exceeded_exception().
 
 -type put_cluster_capacity_providers_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception() | 
     resource_in_use_exception() | 
@@ -3900,7 +3941,9 @@
 -type register_container_instance_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    client_exception().
+    access_denied_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
 
 -type register_daemon_task_definition_errors() ::
     limit_exceeded_exception() | 
@@ -3910,8 +3953,10 @@
     client_exception().
 
 -type register_task_definition_errors() ::
+    limit_exceeded_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception().
 
 -type run_task_errors() ::
@@ -3929,8 +3974,10 @@
 -type start_task_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
+    namespace_not_found_exception() | 
     cluster_not_found_exception().
 
 -type stop_service_deployment_errors() ::
@@ -3945,6 +3992,7 @@
 -type stop_task_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
@@ -3952,22 +4000,28 @@
     server_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    cluster_not_found_exception().
 
 -type submit_container_state_change_errors() ::
     server_exception() | 
+    invalid_parameter_exception() | 
     access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    cluster_not_found_exception().
 
 -type submit_task_state_change_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    cluster_not_found_exception().
 
 -type tag_resource_errors() ::
+    limit_exceeded_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
     cluster_not_found_exception().
@@ -3975,6 +4029,7 @@
 -type untag_resource_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
     cluster_not_found_exception().
@@ -3982,6 +4037,7 @@
 -type update_capacity_provider_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     unsupported_feature_exception() | 
     cluster_not_found_exception().
@@ -3989,6 +4045,7 @@
 -type update_cluster_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     namespace_not_found_exception() | 
     cluster_not_found_exception().
@@ -3996,13 +4053,16 @@
 -type update_cluster_settings_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    cluster_not_found_exception() | 
+    update_in_progress_exception().
 
 -type update_container_agent_errors() ::
     server_exception() | 
     missing_version_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     no_update_available_exception() | 
     client_exception() | 
     cluster_not_found_exception() | 
@@ -4011,6 +4071,7 @@
 -type update_container_instances_state_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     client_exception() | 
     cluster_not_found_exception().
 
@@ -4069,6 +4130,7 @@
     cluster_not_found_exception().
 
 -type update_task_set_errors() ::
+    limit_exceeded_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
