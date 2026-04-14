@@ -932,6 +932,13 @@
 
 
 %% Example:
+%% segment_sort() :: #{
+%%   <<"Attributes">> => list(sort_attribute())
+%% }
+-type segment_sort() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_recommender_filter_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -1508,6 +1515,7 @@
 %%   <<"SegmentDefinitionArn">> => string(),
 %%   <<"SegmentDefinitionName">> => string(),
 %%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSort">> => segment_sort(),
 %%   <<"SegmentSqlQuery">> => string(),
 %%   <<"SegmentType">> => list(any()),
 %%   <<"Tags">> => map()
@@ -2575,6 +2583,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> := string(),
 %%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSort">> => segment_sort(),
 %%   <<"SegmentSqlQuery">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -3065,6 +3074,16 @@
 %% Example:
 %% get_segment_estimate_request() :: #{}
 -type get_segment_estimate_request() :: #{}.
+
+
+%% Example:
+%% sort_attribute() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sort_attribute() :: #{binary() => any()}.
 
 
 %% Example:

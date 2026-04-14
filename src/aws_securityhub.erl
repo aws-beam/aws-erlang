@@ -676,6 +676,14 @@
 
 
 %% Example:
+%% organizational_unit_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type organizational_unit_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_route53_hosted_zone_details() :: #{
 %%   <<"HostedZone">> => aws_route53_hosted_zone_object_details(),
 %%   <<"NameServers">> => list(string()),
@@ -1196,6 +1204,14 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_organization_scope() :: #{
+%%   <<"OrganizationId">> => string(),
+%%   <<"OrganizationalUnitId">> => string()
+%% }
+-type aws_organization_scope() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2366,6 +2382,13 @@
 %%   <<"Workflow">> => workflow_update()
 %% }
 -type automation_rules_finding_fields_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_scopes() :: #{
+%%   <<"AwsOrganizations">> => list(aws_organization_scope())
+%% }
+-type resource_scopes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4364,6 +4387,14 @@
 
 
 %% Example:
+%% organization_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type organization_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_dms_endpoint_details() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
@@ -5500,6 +5531,7 @@
 %%   <<"Filters">> => resources_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Scopes">> => resource_scopes(),
 %%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type get_resources_v2_request() :: #{binary() => any()}.
@@ -6143,6 +6175,7 @@
 %% get_finding_statistics_v2_request() :: #{
 %%   <<"GroupByRules">> := list(group_by_rule()),
 %%   <<"MaxStatisticResults">> => integer(),
+%%   <<"Scopes">> => finding_scopes(),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type get_finding_statistics_v2_request() :: #{binary() => any()}.
@@ -7025,6 +7058,13 @@
 
 
 %% Example:
+%% finding_scopes() :: #{
+%%   <<"AwsOrganizations">> => list(aws_organization_scope())
+%% }
+-type finding_scopes() :: #{binary() => any()}.
+
+
+%% Example:
 %% connector_summary() :: #{
 %%   <<"ConnectorArn">> => string(),
 %%   <<"ConnectorId">> => string(),
@@ -7436,6 +7476,7 @@
 %%   <<"Filters">> => ocsf_finding_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Scopes">> => finding_scopes(),
 %%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type get_findings_v2_request() :: #{binary() => any()}.
@@ -8105,6 +8146,7 @@
 %% get_resources_statistics_v2_request() :: #{
 %%   <<"GroupByRules">> := list(resource_group_by_rule()),
 %%   <<"MaxStatisticResults">> => integer(),
+%%   <<"Scopes">> => resource_scopes(),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type get_resources_statistics_v2_request() :: #{binary() => any()}.
@@ -10279,7 +10321,9 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    organization_not_found_exception() | 
+    conflict_exception() | 
+    organizational_unit_not_found_exception().
 
 -type get_findings_errors() ::
     limit_exceeded_exception() | 
@@ -10298,7 +10342,9 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    organization_not_found_exception() | 
+    conflict_exception() | 
+    organizational_unit_not_found_exception().
 
 -type get_insight_results_errors() ::
     limit_exceeded_exception() | 
@@ -10339,8 +10385,10 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    organizational_unit_not_found_exception().
 
 -type get_resources_trends_v2_errors() ::
     throttling_exception() | 
@@ -10353,8 +10401,10 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    organizational_unit_not_found_exception().
 
 -type get_security_control_definition_errors() ::
     limit_exceeded_exception() | 
@@ -11174,21 +11224,33 @@ batch_update_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used by customers to update information about their investigation
-%% into a finding.
+%% @doc Updates information about a customer's investigation into a
+%% finding.
 %%
-%% Requested by delegated administrator accounts or member accounts.
 %% Delegated administrator accounts can update findings for their account and
-%% their member accounts.
-%% Member accounts can update findings for their account.
-%% `BatchUpdateFindings' and `BatchUpdateFindingV2' both use
+%% their member accounts. Member accounts can update findings for their own
+%% account.
+%%
+%% `BatchUpdateFindings' and `BatchUpdateFindingsV2' both use
 %% `securityhub:BatchUpdateFindings' in the `Action' element of an
 %% IAM policy statement.
 %% You must have permission to perform the
 %% `securityhub:BatchUpdateFindings' action.
+%% You can configure IAM policies to restrict access to specific finding
+%% fields or field values by using the `securityhub:OCSFSyntaxPath/'
+%% condition key, where `' is one of the following supported fields:
+%% `SeverityId', `StatusId', or `Comment'.
+%%
+%% To prevent a user from updating a specific field, use a `Null'
+%% condition with `securityhub:OCSFSyntaxPath/' set to
+%% `&quot;false&quot;'.
+%% To prevent a user from setting a field to a specific value, use a
+%% `StringEquals' condition with `securityhub:OCSFSyntaxPath/' set to
+%% the disallowed value or list of values.
+%%
 %% Updates from `BatchUpdateFindingsV2' don't affect the value of
-%% f`inding_info.modified_time', `finding_info.modified_time_dt',
-%% `time', `time_dt for a finding'.
+%% `finding_info.modified_time', `finding_info.modified_time_dt',
+%% `time', or `time_dt' for a finding.
 -spec batch_update_findings_v2(aws_client:aws_client(), batch_update_findings_v2_request()) ->
     {ok, batch_update_findings_v2_response(), tuple()} |
     {error, any()} |
@@ -13255,9 +13317,16 @@ get_finding_history(Client, Input0, Options0) ->
 
 %% @doc Returns aggregated statistical data about findings.
 %%
-%% `GetFindingStatisticsV2' use `securityhub:GetAdhocInsightResults'
+%% You can use the `Scopes' parameter to define the data boundary for the
+%% query. Currently, `Scopes' supports `AwsOrganizations', which lets
+%% you aggregate findings from your entire organization or from specific
+%% organizational units. Only the delegated administrator account can use
+%% `Scopes'.
+%%
+%% `GetFindingStatisticsV2' uses `securityhub:GetAdhocInsightResults'
 %% in the `Action' element of an IAM policy statement.
-%% You must have permission to perform the `s' action.
+%% You must have permission to perform the
+%% `securityhub:GetAdhocInsightResults' action.
 -spec get_finding_statistics_v2(aws_client:aws_client(), get_finding_statistics_v2_request()) ->
     {ok, get_finding_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13366,7 +13435,18 @@ get_findings_trends_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Return a list of findings that match the specified criteria.
+%% @doc Returns a list of findings that match the specified criteria.
+%%
+%% You can use the `Scopes' parameter to define the data boundary for the
+%% query. Currently, `Scopes' supports `AwsOrganizations', which lets
+%% you retrieve findings from your entire organization or from specific
+%% organizational units. Only the delegated administrator account can use
+%% `Scopes'.
+%%
+%% You can use the `Filters' parameter to refine results based on finding
+%% attributes. You can use `Scopes' and `Filters' independently or
+%% together. When both are provided, `Scopes' narrows the data set first,
+%% and then `Filters' refines results within that scoped data set.
 %%
 %% `GetFindings' and `GetFindingsV2' both use
 %% `securityhub:GetFindings' in the `Action' element of an IAM policy
@@ -13626,6 +13706,12 @@ get_members(Client, Input0, Options0) ->
 
 %% @doc Retrieves statistical information about Amazon Web Services resources
 %% and their associated security findings.
+%%
+%% You can use the `Scopes' parameter to define the data boundary for the
+%% query. Currently, `Scopes' supports `AwsOrganizations', which lets
+%% you aggregate resources from your entire organization or from specific
+%% organizational units. Only the delegated administrator account can use
+%% `Scopes'.
 -spec get_resources_statistics_v2(aws_client:aws_client(), get_resources_statistics_v2_request()) ->
     {ok, get_resources_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13697,6 +13783,18 @@ get_resources_trends_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of resources.
+%%
+%% You can use the `Scopes' parameter to define the data boundary for the
+%% query. Currently, `Scopes' supports `AwsOrganizations', which lets
+%% you retrieve resources from your entire organization or from specific
+%% organizational units. Only the delegated administrator account can use
+%% `Scopes'.
+%%
+%% You can use the `Filters' parameter to refine results based on
+%% resource attributes. You can use `Scopes' and `Filters'
+%% independently or together. When both are provided, `Scopes' narrows
+%% the data set first, and then `Filters' refines results within that
+%% scoped data set.
 -spec get_resources_v2(aws_client:aws_client(), get_resources_v2_request()) ->
     {ok, get_resources_v2_response(), tuple()} |
     {error, any()} |

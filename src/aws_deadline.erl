@@ -138,6 +138,9 @@
          get_monitor/2,
          get_monitor/4,
          get_monitor/5,
+         get_monitor_settings/2,
+         get_monitor_settings/4,
+         get_monitor_settings/5,
          get_queue/3,
          get_queue/5,
          get_queue/6,
@@ -289,6 +292,8 @@
          update_limit/5,
          update_monitor/3,
          update_monitor/4,
+         update_monitor_settings/3,
+         update_monitor_settings/4,
          update_queue/4,
          update_queue/5,
          update_queue_environment/5,
@@ -1230,6 +1235,17 @@
 
 
 %% Example:
+%% update_monitor_settings_request() :: #{
+%%   <<"settings">> := map()
+%% }
+-type update_monitor_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_monitor_settings_request() :: #{}
+-type get_monitor_settings_request() :: #{}.
+
+
+%% Example:
 %% ec2_ebs_volume() :: #{
 %%   <<"iops">> => integer(),
 %%   <<"sizeGiB">> => integer(),
@@ -1647,6 +1663,10 @@
 %% }
 -type batch_update_job_item() :: #{binary() => any()}.
 
+%% Example:
+%% update_monitor_settings_response() :: #{}
+-type update_monitor_settings_response() :: #{}.
+
 
 %% Example:
 %% search_jobs_request() :: #{
@@ -1698,6 +1718,13 @@
 %%   <<"storageProfiles">> => list(storage_profile_summary())
 %% }
 -type list_storage_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_monitor_settings_response() :: #{
+%%   <<"settings">> => map()
+%% }
+-type get_monitor_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4268,6 +4295,13 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_monitor_settings_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_queue_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -4644,6 +4678,13 @@
     resource_not_found_exception().
 
 -type update_monitor_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_monitor_settings_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -6837,6 +6878,43 @@ get_monitor(Client, MonitorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the settings for a Deadline Cloud monitor.
+-spec get_monitor_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_monitor_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_settings_errors(), tuple()}.
+get_monitor_settings(Client, MonitorId)
+  when is_map(Client) ->
+    get_monitor_settings(Client, MonitorId, #{}, #{}).
+
+-spec get_monitor_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_monitor_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_settings_errors(), tuple()}.
+get_monitor_settings(Client, MonitorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_monitor_settings(Client, MonitorId, QueryMap, HeadersMap, []).
+
+-spec get_monitor_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_monitor_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_settings_errors(), tuple()}.
+get_monitor_settings(Client, MonitorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/monitors/", aws_util:encode_uri(MonitorId), "/settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a queue.
 -spec get_queue(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_queue_response(), tuple()} |
@@ -9004,6 +9082,43 @@ update_monitor(Client, MonitorId, Input) ->
 update_monitor(Client, MonitorId, Input0, Options0) ->
     Method = patch,
     Path = ["/2023-10-12/monitors/", aws_util:encode_uri(MonitorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the settings for a Deadline Cloud monitor.
+%%
+%% Keys present in the request are upserted; keys absent are left unchanged.
+%% Send an empty string value to delete a key.
+-spec update_monitor_settings(aws_client:aws_client(), binary() | list(), update_monitor_settings_request()) ->
+    {ok, update_monitor_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitor_settings_errors(), tuple()}.
+update_monitor_settings(Client, MonitorId, Input) ->
+    update_monitor_settings(Client, MonitorId, Input, []).
+
+-spec update_monitor_settings(aws_client:aws_client(), binary() | list(), update_monitor_settings_request(), proplists:proplist()) ->
+    {ok, update_monitor_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitor_settings_errors(), tuple()}.
+update_monitor_settings(Client, MonitorId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/2023-10-12/monitors/", aws_util:encode_uri(MonitorId), "/settings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

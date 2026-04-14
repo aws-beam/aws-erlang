@@ -1736,6 +1736,7 @@
 %% Example:
 %% s3_destination() :: #{
 %%   <<"bucketName">> => string(),
+%%   <<"expectedBucketOwner">> => string(),
 %%   <<"keyPrefix">> => string(),
 %%   <<"kmsKeyArn">> => string()
 %% }
