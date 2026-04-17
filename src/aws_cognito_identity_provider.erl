@@ -797,6 +797,7 @@
 
 %% Example:
 %% web_authn_configuration_type() :: #{
+%%   <<"FactorConfiguration">> => list(any()),
 %%   <<"RelyingPartyId">> => string(),
 %%   <<"UserVerification">> => list(any())
 %% }
@@ -2189,6 +2190,12 @@
 -type describe_user_pool_request() :: #{binary() => any()}.
 
 %% Example:
+%% web_authn_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type web_authn_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
 %% delete_user_pool_domain_request() :: #{
 %%   <<"Domain">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -3047,7 +3054,8 @@
 %%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
 %%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
 %%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
+%%   <<"Username">> := string(),
+%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
 %% }
 -type admin_set_user_mfa_preference_request() :: #{binary() => any()}.
 
@@ -3180,7 +3188,8 @@
 %%   <<"AccessToken">> := string(),
 %%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
 %%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
-%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type()
+%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
+%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
 %% }
 -type set_user_mfa_preference_request() :: #{binary() => any()}.
 

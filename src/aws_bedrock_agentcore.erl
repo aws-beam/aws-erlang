@@ -692,7 +692,8 @@
 %% list_memory_records_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"memoryStrategyId">> => string(),
-%%   <<"namespace">> := string(),
+%%   <<"namespace">> => string(),
+%%   <<"namespacePath">> => string(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_memory_records_input() :: #{binary() => any()}.
@@ -900,7 +901,8 @@
 %% Example:
 %% retrieve_memory_records_input() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"namespace">> := string(),
+%%   <<"namespace">> => string(),
+%%   <<"namespacePath">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"searchCriteria">> := search_criteria()
 %% }

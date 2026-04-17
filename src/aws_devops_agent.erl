@@ -19,9 +19,7 @@
 %% * Supporting applications in multicloud and hybrid environments.
 -module(aws_devops_agent).
 
--export([allow_vended_log_delivery_for_resource/2,
-         allow_vended_log_delivery_for_resource/3,
-         associate_service/3,
+-export([associate_service/3,
          associate_service/4,
          create_agent_space/2,
          create_agent_space/3,
@@ -73,9 +71,9 @@
          list_associations/4,
          list_backlog_tasks/3,
          list_backlog_tasks/4,
-         list_chats/3,
+         list_chats/2,
+         list_chats/4,
          list_chats/5,
-         list_chats/6,
          list_executions/3,
          list_executions/4,
          list_goals/3,
@@ -1058,7 +1056,7 @@
 
 %% Example:
 %% create_chat_request() :: #{
-%%   <<"userId">> := string(),
+%%   <<"userId">> => string(),
 %%   <<"userType">> => list(any())
 %% }
 -type create_chat_request() :: #{binary() => any()}.
@@ -1132,15 +1130,6 @@
 
 
 %% Example:
-%% allow_vended_log_delivery_for_resource_input() :: #{
-%%   <<"deliverySourceArn">> := [string()],
-%%   <<"logType">> => [string()],
-%%   <<"resourceArnBeingAuthorized">> := [string()]
-%% }
--type allow_vended_log_delivery_for_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% send_message_response_created_event() :: #{
 %%   <<"responseId">> => [string()],
 %%   <<"sequenceNumber">> => [integer()]
@@ -1152,7 +1141,7 @@
 %% list_chats_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type list_chats_request() :: #{binary() => any()}.
 
@@ -1270,13 +1259,6 @@
 %%   <<"tools">> => list([string()]())
 %% }
 -type m_c_p_server_grafana_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% allow_vended_log_delivery_for_resource_output() :: #{
-%%   <<"message">> => [string()]
-%% }
--type allow_vended_log_delivery_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1488,7 +1470,7 @@
 %%   <<"content">> := string(),
 %%   <<"context">> => send_message_context(),
 %%   <<"executionId">> := string(),
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type send_message_request() :: #{binary() => any()}.
 
@@ -2000,38 +1982,6 @@
 %%====================================================================
 %% API
 %%====================================================================
-
-%% @doc Authorize Ingestion Hub subscription operation.
--spec allow_vended_log_delivery_for_resource(aws_client:aws_client(), allow_vended_log_delivery_for_resource_input()) ->
-    {ok, allow_vended_log_delivery_for_resource_output(), tuple()} |
-    {error, any()}.
-allow_vended_log_delivery_for_resource(Client, Input) ->
-    allow_vended_log_delivery_for_resource(Client, Input, []).
-
--spec allow_vended_log_delivery_for_resource(aws_client:aws_client(), allow_vended_log_delivery_for_resource_input(), proplists:proplist()) ->
-    {ok, allow_vended_log_delivery_for_resource_output(), tuple()} |
-    {error, any()}.
-allow_vended_log_delivery_for_resource(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/allow-vended-log-delivery-for-resource"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a specific service association to an AgentSpace.
 %%
@@ -2835,27 +2785,27 @@ list_backlog_tasks(Client, AgentSpaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of the user's recent chat executions
--spec list_chats(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+-spec list_chats(aws_client:aws_client(), binary() | list()) ->
     {ok, list_chats_response(), tuple()} |
     {error, any()} |
     {error, list_chats_errors(), tuple()}.
-list_chats(Client, AgentSpaceId, UserId)
+list_chats(Client, AgentSpaceId)
   when is_map(Client) ->
-    list_chats(Client, AgentSpaceId, UserId, #{}, #{}).
+    list_chats(Client, AgentSpaceId, #{}, #{}).
 
--spec list_chats(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_chats(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_chats_response(), tuple()} |
     {error, any()} |
     {error, list_chats_errors(), tuple()}.
-list_chats(Client, AgentSpaceId, UserId, QueryMap, HeadersMap)
+list_chats(Client, AgentSpaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_chats(Client, AgentSpaceId, UserId, QueryMap, HeadersMap, []).
+    list_chats(Client, AgentSpaceId, QueryMap, HeadersMap, []).
 
--spec list_chats(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_chats(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_chats_response(), tuple()} |
     {error, any()} |
     {error, list_chats_errors(), tuple()}.
-list_chats(Client, AgentSpaceId, UserId, QueryMap, HeadersMap, Options0)
+list_chats(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/agent-space/", aws_util:encode_uri(AgentSpaceId), "/chat/list"],
     SuccessStatusCode = 200,
@@ -2871,7 +2821,7 @@ list_chats(Client, AgentSpaceId, UserId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"userId">>, UserId}
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

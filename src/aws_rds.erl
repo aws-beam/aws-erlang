@@ -252,6 +252,8 @@
          describe_reserved_db_instances/3,
          describe_reserved_db_instances_offerings/2,
          describe_reserved_db_instances_offerings/3,
+         describe_serverless_v2_platform_versions/2,
+         describe_serverless_v2_platform_versions/3,
          describe_source_regions/2,
          describe_source_regions/3,
          describe_tenant_databases/2,
@@ -627,6 +629,18 @@
 %%   <<"DBInstance">> => db_instance()
 %% }
 -type delete_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_serverless_v2_platform_versions_message() :: #{
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ServerlessV2PlatformVersion">> => string()
+%% }
+-type describe_serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% snapshot_quota_exceeded_fault() :: #{
@@ -1046,6 +1060,13 @@
 %%   <<"DBClusterIdentifier">> := string()
 %% }
 -type reboot_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_versions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ServerlessV2PlatformVersions">> => list(serverless_v2_platform_version_info())
+%% }
+-type serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% create_db_cluster_parameter_group_message() :: #{
@@ -3732,6 +3753,17 @@
 %%   <<"DBParameterGroup">> => db_parameter_group()
 %% }
 -type create_db_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_version_info() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
+%%   <<"ServerlessV2PlatformVersionDescription">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type serverless_v2_platform_version_info() :: #{binary() => any()}.
 
 %% Example:
 %% metric_query() :: #{
@@ -9176,6 +9208,22 @@ describe_reserved_db_instances_offerings(Client, Input)
 describe_reserved_db_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstancesOfferings">>, Input, Options).
+
+%% @doc Describes the properties of specific platform versions for Aurora
+%% Serverless v2.
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_serverless_v2_platform_versions(Client, Input, []).
+
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message(), proplists:proplist()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServerlessV2PlatformVersions">>, Input, Options).
 
 %% @doc Returns a list of the source Amazon Web Services Regions where the
 %% current Amazon Web Services Region can create a read replica, copy a DB

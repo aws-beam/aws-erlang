@@ -869,6 +869,8 @@
 %%   <<"domainId">> => string(),
 %%   <<"groupName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type update_group_profile_output() :: #{binary() => any()}.
@@ -1094,6 +1096,7 @@
 %%   <<"failureReasons">> => list(project_deletion_error()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
 %%   <<"projectStatus">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -1224,6 +1227,8 @@
 %%   <<"domainId">> => string(),
 %%   <<"groupName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type get_group_profile_output() :: #{binary() => any()}.
@@ -1809,6 +1814,8 @@
 %%   <<"domainId">> => string(),
 %%   <<"groupName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type group_profile_summary() :: #{binary() => any()}.
@@ -1906,6 +1913,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
 %%   <<"resourceTags">> => list(resource_tag()),
@@ -2223,6 +2231,7 @@
 
 %% Example:
 %% update_user_profile_input() :: #{
+%%   <<"sessionName">> => [string()],
 %%   <<"status">> := list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -2476,7 +2485,7 @@
 %% create_domain_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => [string()],
-%%   <<"domainExecutionRole">> := string(),
+%%   <<"domainExecutionRole">> => string(),
 %%   <<"domainVersion">> => list(any()),
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"name">> := [string()],
@@ -2671,6 +2680,7 @@
 
 %% Example:
 %% get_user_profile_input() :: #{
+%%   <<"sessionName">> => [string()],
 %%   <<"type">> => list(any())
 %% }
 -type get_user_profile_input() :: #{binary() => any()}.
@@ -2799,7 +2809,9 @@
 %% Example:
 %% iam_user_profile_details() :: #{
 %%   <<"arn">> => [string()],
-%%   <<"principalId">> => [string()]
+%%   <<"groupProfileId">> => [string()],
+%%   <<"principalId">> => [string()],
+%%   <<"sessionName">> => [string()]
 %% }
 -type iam_user_profile_details() :: #{binary() => any()}.
 
@@ -2853,6 +2865,7 @@
 %% Example:
 %% create_user_profile_input() :: #{
 %%   <<"clientToken">> => [string()],
+%%   <<"sessionName">> => [string()],
 %%   <<"userIdentifier">> := string(),
 %%   <<"userType">> => list(any())
 %% }
@@ -4416,7 +4429,10 @@
 %%   <<"description">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"glossaryTerms">> => list(string()),
+%%   <<"membershipAssignments">> => list(project_membership_assignment()),
 %%   <<"name">> := string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"projectExecutionRole">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"resourceTags">> => map(),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
@@ -4529,6 +4545,14 @@
 %%   <<"governedGlossaryTerms">> := list(string())
 %% }
 -type disassociate_governed_terms_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_membership_assignment() :: #{
+%%   <<"designation">> => list(any()),
+%%   <<"member">> => list()
+%% }
+-type project_membership_assignment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4915,6 +4939,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
 %%   <<"resourceTags">> => list(resource_tag()),
@@ -4956,7 +4981,8 @@
 %% Example:
 %% create_group_profile_input() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"groupIdentifier">> := string()
+%%   <<"groupIdentifier">> => string(),
+%%   <<"rolePrincipalArn">> => [string()]
 %% }
 -type create_group_profile_input() :: #{binary() => any()}.
 
@@ -5108,6 +5134,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"nextToken">> => string(),
+%%   <<"projectCategory">> => [string()],
 %%   <<"userIdentifier">> => [string()]
 %% }
 -type list_projects_input() :: #{binary() => any()}.
@@ -5446,6 +5473,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
 %%   <<"resourceTags">> => list(resource_tag()),
@@ -6468,6 +6496,8 @@
 %%   <<"domainId">> => string(),
 %%   <<"groupName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type create_group_profile_output() :: #{binary() => any()}.
@@ -12173,6 +12203,7 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap,
 
     Query0_ =
       [
+        {<<"sessionName">>, maps:get(<<"sessionName">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -13370,6 +13401,7 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectCategory">>, maps:get(<<"projectCategory">>, QueryMap, undefined)},
         {<<"userIdentifier">>, maps:get(<<"userIdentifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

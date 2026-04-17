@@ -799,6 +799,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MaximumConcurrentFeeds">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"PricingPlan">> => list(any()),
 %%   <<"ProgressingJobsCount">> => integer(),
@@ -826,6 +827,7 @@
 %% update_queue_request() :: #{
 %%   <<"ConcurrentJobs">> => integer(),
 %%   <<"Description">> => string(),
+%%   <<"MaximumConcurrentFeeds">> => integer(),
 %%   <<"ReservationPlanSettings">> => reservation_plan_settings(),
 %%   <<"Status">> => list(any())
 %% }
@@ -1519,6 +1521,14 @@
 
 
 %% Example:
+%% elemental_inference_feed() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FeedManagementState">> => list(any())
+%% }
+-type elemental_inference_feed() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_destination_settings() :: #{
 %%   <<"AccessControl">> => s3_destination_access_control(),
 %%   <<"Encryption">> => s3_encryption_settings(),
@@ -1705,6 +1715,7 @@
 %% create_queue_request() :: #{
 %%   <<"ConcurrentJobs">> => integer(),
 %%   <<"Description">> => string(),
+%%   <<"MaximumConcurrentFeeds">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"PricingPlan">> => list(any()),
 %%   <<"ReservationPlanSettings">> => reservation_plan_settings(),
@@ -2134,6 +2145,14 @@
 
 
 %% Example:
+%% elemental_inference_configuration() :: #{
+%%   <<"Features">> => list(list(any())()),
+%%   <<"Feeds">> => list(elemental_inference_feed())
+%% }
+-type elemental_inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% cmaf_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
 %%   <<"SelectedOutputs">> => list(string())
@@ -2420,6 +2439,7 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CurrentPhase">> => list(any()),
+%%   <<"ElementalInferenceConfiguration">> => elemental_inference_configuration(),
 %%   <<"ErrorCode">> => integer(),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"HopDestinations">> => list(hop_destination()),

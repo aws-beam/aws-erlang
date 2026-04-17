@@ -441,6 +441,7 @@
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings(),
 %%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"ContentRedirection">> => content_redirection(),
 %%   <<"DeleteStorageConnectors">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),

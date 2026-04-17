@@ -49,6 +49,8 @@
          create_recommender/5,
          create_recommender_filter/4,
          create_recommender_filter/5,
+         create_recommender_schema/4,
+         create_recommender_schema/5,
          create_segment_definition/4,
          create_segment_definition/5,
          create_segment_estimate/3,
@@ -83,6 +85,8 @@
          delete_recommender/5,
          delete_recommender_filter/4,
          delete_recommender_filter/5,
+         delete_recommender_schema/4,
+         delete_recommender_schema/5,
          delete_segment_definition/4,
          delete_segment_definition/5,
          delete_workflow/4,
@@ -139,6 +143,9 @@
          get_recommender_filter/3,
          get_recommender_filter/5,
          get_recommender_filter/6,
+         get_recommender_schema/3,
+         get_recommender_schema/5,
+         get_recommender_schema/6,
          get_segment_definition/3,
          get_segment_definition/5,
          get_segment_definition/6,
@@ -218,6 +225,9 @@
          list_recommender_recipes/1,
          list_recommender_recipes/3,
          list_recommender_recipes/4,
+         list_recommender_schemas/2,
+         list_recommender_schemas/4,
+         list_recommender_schemas/5,
          list_recommenders/2,
          list_recommenders/4,
          list_recommenders/5,
@@ -558,6 +568,14 @@
 %% }
 -type attribute_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_recommender_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderSchemas">> => list(recommender_schema_summary())
+%% }
+-type list_recommender_schemas_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_object_type_request() :: #{}
 -type delete_domain_object_type_request() :: #{}.
@@ -568,6 +586,15 @@
 %%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type())
 %% }
 -type detect_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_schema_field() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"TargetFieldName">> => string()
+%% }
+-type recommender_schema_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -639,6 +666,7 @@
 %%   <<"Description">> => string(),
 %%   <<"RecommenderConfig">> => recommender_config(),
 %%   <<"RecommenderRecipeName">> := list(any()),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_recommender_request() :: #{binary() => any()}.
@@ -736,6 +764,10 @@
 %% }
 -type list_account_integrations_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_recommender_schema_response() :: #{}
+-type delete_recommender_schema_response() :: #{}.
+
 
 %% Example:
 %% delete_event_trigger_response() :: #{
@@ -756,6 +788,7 @@
 %% create_recommender_filter_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"RecommenderFilterExpression">> := string(),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_recommender_filter_request() :: #{binary() => any()}.
@@ -901,6 +934,20 @@
 
 
 %% Example:
+%% recommender_schema_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Fields">> => map(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type recommender_schema_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommender_schema_request() :: #{}
+-type get_recommender_schema_request() :: #{}.
+
+
+%% Example:
 %% address_dimension() :: #{
 %%   <<"City">> => profile_dimension(),
 %%   <<"Country">> => profile_dimension(),
@@ -945,6 +992,7 @@
 %%   <<"FailureReason">> => [string()],
 %%   <<"RecommenderFilterExpression">> => string(),
 %%   <<"RecommenderFilterName">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -1016,6 +1064,14 @@
 %%   <<"EventWeight">> => float()
 %% }
 -type event_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_schema_request() :: #{
+%%   <<"Fields">> := map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_schema_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1324,6 +1380,7 @@
 %%   <<"RecipeName">> => list(any()),
 %%   <<"RecommenderConfig">> => recommender_config(),
 %%   <<"RecommenderName">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -1335,6 +1392,18 @@
 %%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
 %% }
 -type workflow_step_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_schema_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Fields">> => map(),
+%%   <<"RecommenderSchemaArn">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1678,6 +1747,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_rule_based_matches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_schema_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Fields">> => map(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_recommender_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2358,6 +2437,7 @@
 %%   <<"FailureReason">> => [string()],
 %%   <<"RecommenderFilterExpression">> => string(),
 %%   <<"RecommenderFilterName">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -2448,6 +2528,14 @@
 %% Example:
 %% get_segment_snapshot_request() :: #{}
 -type get_segment_snapshot_request() :: #{}.
+
+
+%% Example:
+%% list_recommender_schemas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_schemas_request() :: #{binary() => any()}.
 
 %% Example:
 %% stop_recommender_request() :: #{}
@@ -2695,6 +2783,7 @@
 %% Example:
 %% recommender_config() :: #{
 %%   <<"EventsConfig">> => events_config(),
+%%   <<"IncludedColumns">> => map(),
 %%   <<"InferenceConfig">> => inference_config(),
 %%   <<"TrainingFrequency">> => integer()
 %% }
@@ -2707,6 +2796,10 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type batch() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_schema_request() :: #{}
+-type delete_recommender_schema_request() :: #{}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -3178,6 +3271,7 @@
 %%   <<"RecommenderConfig">> => recommender_config(),
 %%   <<"RecommenderName">> => string(),
 %%   <<"RecommenderRecipeName">> => list(any()),
+%%   <<"RecommenderSchemaName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"TrainingMetrics">> => list(training_metrics())
@@ -3496,6 +3590,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_recommender_schema_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_segment_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3609,6 +3710,13 @@
     resource_not_found_exception().
 
 -type delete_recommender_filter_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_recommender_schema_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3756,6 +3864,13 @@
     resource_not_found_exception().
 
 -type get_recommender_filter_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recommender_schema_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3956,6 +4071,13 @@
     throttling_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_recommender_schemas_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_recommenders_errors() ::
     bad_request_exception() | 
@@ -4608,6 +4730,43 @@ create_recommender_filter(Client, DomainName, RecommenderFilterName, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a recommender schema.
+%%
+%% A recommender schema defines the set of data columns available for
+%% training recommenders and filters under a domain.
+-spec create_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_schema_request()) ->
+    {ok, create_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_schema_errors(), tuple()}.
+create_recommender_schema(Client, DomainName, RecommenderSchemaName, Input) ->
+    create_recommender_schema(Client, DomainName, RecommenderSchemaName, Input, []).
+
+-spec create_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), create_recommender_schema_request(), proplists:proplist()) ->
+    {ok, create_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommender_schema_errors(), tuple()}.
+create_recommender_schema(Client, DomainName, RecommenderSchemaName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-schemas/", aws_util:encode_uri(RecommenderSchemaName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a segment definition associated to the given domain.
 -spec create_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_definition_request()) ->
     {ok, create_segment_definition_response(), tuple()} |
@@ -5192,6 +5351,40 @@ delete_recommender_filter(Client, DomainName, RecommenderFilterName, Input) ->
 delete_recommender_filter(Client, DomainName, RecommenderFilterName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters/", aws_util:encode_uri(RecommenderFilterName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a recommender schema from a domain.
+-spec delete_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_schema_request()) ->
+    {ok, delete_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_schema_errors(), tuple()}.
+delete_recommender_schema(Client, DomainName, RecommenderSchemaName, Input) ->
+    delete_recommender_schema(Client, DomainName, RecommenderSchemaName, Input, []).
+
+-spec delete_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recommender_schema_request(), proplists:proplist()) ->
+    {ok, delete_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommender_schema_errors(), tuple()}.
+delete_recommender_schema(Client, DomainName, RecommenderSchemaName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-schemas/", aws_util:encode_uri(RecommenderSchemaName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6076,6 +6269,44 @@ get_recommender_filter(Client, DomainName, RecommenderFilterName, QueryMap, Head
 get_recommender_filter(Client, DomainName, RecommenderFilterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-filters/", aws_util:encode_uri(RecommenderFilterName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific recommender schema in a
+%% domain.
+-spec get_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_schema_errors(), tuple()}.
+get_recommender_schema(Client, DomainName, RecommenderSchemaName)
+  when is_map(Client) ->
+    get_recommender_schema(Client, DomainName, RecommenderSchemaName, #{}, #{}).
+
+-spec get_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_schema_errors(), tuple()}.
+get_recommender_schema(Client, DomainName, RecommenderSchemaName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommender_schema(Client, DomainName, RecommenderSchemaName, QueryMap, HeadersMap, []).
+
+-spec get_recommender_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommender_schema_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommender_schema_errors(), tuple()}.
+get_recommender_schema(Client, DomainName, RecommenderSchemaName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-schemas/", aws_util:encode_uri(RecommenderSchemaName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7209,6 +7440,48 @@ list_recommender_recipes(Client, QueryMap, HeadersMap)
 list_recommender_recipes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recommender-recipes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of recommender schemas in the specified domain.
+-spec list_recommender_schemas(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommender_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_schemas_errors(), tuple()}.
+list_recommender_schemas(Client, DomainName)
+  when is_map(Client) ->
+    list_recommender_schemas(Client, DomainName, #{}, #{}).
+
+-spec list_recommender_schemas(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommender_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_schemas_errors(), tuple()}.
+list_recommender_schemas(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommender_schemas(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_recommender_schemas(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommender_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommender_schemas_errors(), tuple()}.
+list_recommender_schemas(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommender-schemas"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
