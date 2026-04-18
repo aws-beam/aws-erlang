@@ -32,6 +32,9 @@
          describe_contact/2,
          describe_contact/4,
          describe_contact/5,
+         describe_contact_version/3,
+         describe_contact_version/5,
+         describe_contact_version/6,
          describe_ephemeris/2,
          describe_ephemeris/4,
          describe_ephemeris/5,
@@ -55,9 +58,15 @@
          get_satellite/2,
          get_satellite/4,
          get_satellite/5,
+         list_antennas/2,
+         list_antennas/4,
+         list_antennas/5,
          list_configs/1,
          list_configs/3,
          list_configs/4,
+         list_contact_versions/2,
+         list_contact_versions/4,
+         list_contact_versions/5,
          list_contacts/2,
          list_contacts/3,
          list_dataflow_endpoint_groups/1,
@@ -65,6 +74,9 @@
          list_dataflow_endpoint_groups/4,
          list_ephemerides/2,
          list_ephemerides/3,
+         list_ground_station_reservations/4,
+         list_ground_station_reservations/6,
+         list_ground_station_reservations/7,
          list_ground_stations/1,
          list_ground_stations/3,
          list_ground_stations/4,
@@ -89,6 +101,8 @@
          update_agent_status/4,
          update_config/4,
          update_config/5,
+         update_contact/3,
+         update_contact/4,
          update_ephemeris/3,
          update_ephemeris/4,
          update_mission_profile/3,
@@ -200,6 +214,26 @@
 
 
 %% Example:
+%% list_antennas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_antennas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ground_station_reservation_list_item() :: #{
+%%   <<"antennaName">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"groundStationId">> => string(),
+%%   <<"reservationDetails">> => list(),
+%%   <<"reservationType">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type ground_station_reservation_list_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% dataflow_endpoint_config() :: #{
 %%   <<"dataflowEndpointName">> => [string()],
 %%   <<"dataflowEndpointRegion">> => [string()]
@@ -265,6 +299,7 @@
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"tags">> => map(),
 %%   <<"trackingOverrides">> => tracking_overrides(),
+%%   <<"version">> => contact_version(),
 %%   <<"visibilityEndTime">> => [non_neg_integer()],
 %%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
@@ -327,6 +362,13 @@
 
 
 %% Example:
+%% tle_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
+%% }
+-type tle_program_track_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% spectrum_config() :: #{
 %%   <<"bandwidth">> => frequency_bandwidth(),
 %%   <<"centerFrequency">> => frequency(),
@@ -380,6 +422,20 @@
 %%   <<"status">> => list(any())
 %% }
 -type ephemeris_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_version() :: #{
+%%   <<"activated">> => [non_neg_integer()],
+%%   <<"created">> => [non_neg_integer()],
+%%   <<"failureCodes">> => list(list(any())()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"lastUpdated">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"superseded">> => [non_neg_integer()],
+%%   <<"versionId">> => integer()
+%% }
+-type contact_version() :: #{binary() => any()}.
 
 
 %% Example:
@@ -611,10 +667,25 @@
 
 
 %% Example:
+%% maintenance_reservation_details() :: #{
+%%   <<"maintenanceType">> => list(any())
+%% }
+-type maintenance_reservation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_station_reservations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationList">> => list(ground_station_reservation_list_item())
+%% }
+-type list_ground_station_reservations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -641,6 +712,21 @@
 
 
 %% Example:
+%% oem_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
+%% }
+-type oem_program_track_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_response() :: #{
+%%   <<"contactId">> => string(),
+%%   <<"versionId">> => integer()
+%% }
+-type update_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_data() :: #{
 %%   <<"contactId">> => string(),
 %%   <<"contactStatus">> => list(any()),
@@ -656,6 +742,7 @@
 %%   <<"satelliteArn">> => string(),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"tags">> => map(),
+%%   <<"version">> => contact_version(),
 %%   <<"visibilityEndTime">> => [non_neg_integer()],
 %%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
@@ -700,7 +787,8 @@
 
 %% Example:
 %% contact_id_response() :: #{
-%%   <<"contactId">> => string()
+%%   <<"contactId">> => string(),
+%%   <<"versionId">> => integer()
 %% }
 -type contact_id_response() :: #{binary() => any()}.
 
@@ -712,6 +800,31 @@
 %%   <<"taskId">> := string()
 %% }
 -type update_agent_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_contact_version_response() :: #{
+%%   <<"contactId">> => string(),
+%%   <<"contactStatus">> => list(any()),
+%%   <<"dataflowList">> => list(dataflow_detail()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"ephemeris">> => ephemeris_response_data(),
+%%   <<"errorMessage">> => [string()],
+%%   <<"groundStation">> => [string()],
+%%   <<"maximumElevation">> => elevation(),
+%%   <<"missionProfileArn">> => string(),
+%%   <<"postPassEndTime">> => [non_neg_integer()],
+%%   <<"prePassStartTime">> => [non_neg_integer()],
+%%   <<"region">> => [string()],
+%%   <<"satelliteArn">> => string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"tags">> => map(),
+%%   <<"trackingOverrides">> => tracking_overrides(),
+%%   <<"version">> => contact_version(),
+%%   <<"visibilityEndTime">> => [non_neg_integer()],
+%%   <<"visibilityStartTime">> => [non_neg_integer()]
+%% }
+-type describe_contact_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -776,6 +889,13 @@
 
 
 %% Example:
+%% contact_reservation_details() :: #{
+%%   <<"contactId">> => string()
+%% }
+-type contact_reservation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_minute_usage_response() :: #{
 %%   <<"estimatedMinutesRemaining">> => [integer()],
 %%   <<"isReservedMinutesCustomer">> => [boolean()],
@@ -815,6 +935,14 @@
 
 
 %% Example:
+%% list_contact_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contact_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% component_version() :: #{
 %%   <<"componentType">> => string(),
 %%   <<"versions">> => list(string())
@@ -850,6 +978,15 @@
 
 
 %% Example:
+%% antenna_list_item() :: #{
+%%   <<"antennaName">> => string(),
+%%   <<"groundStationName">> => string(),
+%%   <<"region">> => string()
+%% }
+-type antenna_list_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% kinesis_data_stream_data() :: #{
 %%   <<"kinesisDataStreamArn">> => string(),
 %%   <<"kinesisRoleArn">> => string()
@@ -874,6 +1011,14 @@
 %% Example:
 %% delete_ephemeris_request() :: #{}
 -type delete_ephemeris_request() :: #{}.
+
+
+%% Example:
+%% list_contact_versions_response() :: #{
+%%   <<"contactVersionsList">> => list(contact_version()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contact_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -958,6 +1103,15 @@
 
 
 %% Example:
+%% update_contact_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"satelliteArn">> => string(),
+%%   <<"trackingOverrides">> => tracking_overrides()
+%% }
+-type update_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_satellites_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"satellites">> => list(satellite_list_item())
@@ -979,6 +1133,14 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_antennas_response() :: #{
+%%   <<"antennaList">> => list(antenna_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_antennas_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1076,6 +1238,10 @@
 %% }
 -type az_el_ephemeris() :: #{binary() => any()}.
 
+%% Example:
+%% describe_contact_version_request() :: #{}
+-type describe_contact_version_request() :: #{}.
+
 
 %% Example:
 %% list_dataflow_endpoint_groups_request() :: #{
@@ -1144,6 +1310,17 @@
 %%   <<"publicIpAddresses">> => list(string())
 %% }
 -type discovery_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_station_reservations_request() :: #{
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reservationTypes">> => list(list(any())()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type list_ground_station_reservations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1310,6 +1487,11 @@
     resource_not_found_exception() | 
     dependency_exception().
 
+-type describe_contact_version_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
 -type describe_ephemeris_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
@@ -1350,7 +1532,16 @@
     resource_not_found_exception() | 
     dependency_exception().
 
+-type list_antennas_errors() ::
+    invalid_parameter_exception() | 
+    dependency_exception().
+
 -type list_configs_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_contact_versions_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
     dependency_exception().
@@ -1368,6 +1559,10 @@
 -type list_ephemerides_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_ground_station_reservations_errors() ::
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_ground_stations_errors() ::
@@ -1418,6 +1613,12 @@
 
 -type update_config_errors() ::
     invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type update_contact_errors() ::
+    invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
     dependency_exception().
 
@@ -1842,6 +2043,43 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a specific version of a contact.
+-spec describe_contact_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_contact_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_version_errors(), tuple()}.
+describe_contact_version(Client, ContactId, VersionId)
+  when is_map(Client) ->
+    describe_contact_version(Client, ContactId, VersionId, #{}, #{}).
+
+-spec describe_contact_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_contact_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_version_errors(), tuple()}.
+describe_contact_version(Client, ContactId, VersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_version(Client, ContactId, VersionId, QueryMap, HeadersMap, []).
+
+-spec describe_contact_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_contact_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_version_errors(), tuple()}.
+describe_contact_version(Client, ContactId, VersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact/", aws_util:encode_uri(ContactId), "/versions/", aws_util:encode_uri(VersionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieve information about an existing ephemeris.
 -spec describe_ephemeris(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ephemeris_response(), tuple()} |
@@ -2143,6 +2381,48 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of antennas at a specified ground station.
+-spec list_antennas(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_antennas_response(), tuple()} |
+    {error, any()} |
+    {error, list_antennas_errors(), tuple()}.
+list_antennas(Client, GroundStationId)
+  when is_map(Client) ->
+    list_antennas(Client, GroundStationId, #{}, #{}).
+
+-spec list_antennas(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_antennas_response(), tuple()} |
+    {error, any()} |
+    {error, list_antennas_errors(), tuple()}.
+list_antennas(Client, GroundStationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_antennas(Client, GroundStationId, QueryMap, HeadersMap, []).
+
+-spec list_antennas(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_antennas_response(), tuple()} |
+    {error, any()} |
+    {error, list_antennas_errors(), tuple()}.
+list_antennas(Client, GroundStationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/groundstation/", aws_util:encode_uri(GroundStationId), "/antenna"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of `Config' objects.
 -spec list_configs(aws_client:aws_client()) ->
     {ok, list_configs_response(), tuple()} |
@@ -2167,6 +2447,48 @@ list_configs(Client, QueryMap, HeadersMap)
 list_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of versions for a specified contact.
+-spec list_contact_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_contact_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_versions_errors(), tuple()}.
+list_contact_versions(Client, ContactId)
+  when is_map(Client) ->
+    list_contact_versions(Client, ContactId, #{}, #{}).
+
+-spec list_contact_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_contact_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_versions_errors(), tuple()}.
+list_contact_versions(Client, ContactId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_versions(Client, ContactId, QueryMap, HeadersMap, []).
+
+-spec list_contact_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contact_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_versions_errors(), tuple()}.
+list_contact_versions(Client, ContactId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact/", aws_util:encode_uri(ContactId), "/versions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2299,6 +2621,51 @@ list_ephemerides(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of reservations for a specified ground station.
+-spec list_ground_station_reservations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_ground_station_reservations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ground_station_reservations_errors(), tuple()}.
+list_ground_station_reservations(Client, GroundStationId, EndTime, StartTime)
+  when is_map(Client) ->
+    list_ground_station_reservations(Client, GroundStationId, EndTime, StartTime, #{}, #{}).
+
+-spec list_ground_station_reservations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_ground_station_reservations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ground_station_reservations_errors(), tuple()}.
+list_ground_station_reservations(Client, GroundStationId, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ground_station_reservations(Client, GroundStationId, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+-spec list_ground_station_reservations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_ground_station_reservations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ground_station_reservations_errors(), tuple()}.
+list_ground_station_reservations(Client, GroundStationId, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/groundstation/", aws_util:encode_uri(GroundStationId), "/reservation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTime">>, EndTime},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"reservationTypes">>, maps:get(<<"reservationTypes">>, QueryMap, undefined)},
+        {<<"startTime">>, StartTime}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of ground stations.
 -spec list_ground_stations(aws_client:aws_client()) ->
@@ -2659,6 +3026,40 @@ update_config(Client, ConfigId, ConfigType, Input) ->
 update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = put,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specific contact.
+-spec update_contact(aws_client:aws_client(), binary() | list(), update_contact_request()) ->
+    {ok, update_contact_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_errors(), tuple()}.
+update_contact(Client, ContactId, Input) ->
+    update_contact(Client, ContactId, Input, []).
+
+-spec update_contact(aws_client:aws_client(), binary() | list(), update_contact_request(), proplists:proplist()) ->
+    {ok, update_contact_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_errors(), tuple()}.
+update_contact(Client, ContactId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/", aws_util:encode_uri(ContactId), "/versions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

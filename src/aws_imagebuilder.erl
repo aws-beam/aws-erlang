@@ -1766,6 +1766,14 @@
 
 
 %% Example:
+%% register_image_options() :: #{
+%%   <<"secureBootEnabled">> => boolean(),
+%%   <<"uefiData">> => string()
+%% }
+-type register_image_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_image_policy_request() :: #{
 %%   <<"imageArn">> := string(),
 %%   <<"policy">> := string()
@@ -2649,9 +2657,11 @@
 %%   <<"name">> := string(),
 %%   <<"osVersion">> := string(),
 %%   <<"platform">> := string(),
+%%   <<"registerImageOptions">> => register_image_options(),
 %%   <<"semanticVersion">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"uri">> := string()
+%%   <<"uri">> := string(),
+%%   <<"windowsConfiguration">> => windows_configuration()
 %% }
 -type import_disk_image_request() :: #{binary() => any()}.
 
@@ -2786,6 +2796,13 @@
 %%   <<"terminateInstanceOnFailure">> => boolean()
 %% }
 -type infrastructure_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% windows_configuration() :: #{
+%%   <<"imageIndex">> => float()
+%% }
+-type windows_configuration() :: #{binary() => any()}.
 
 
 %% Example:

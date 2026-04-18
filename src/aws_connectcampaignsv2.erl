@@ -14,6 +14,8 @@
          delete_campaign_communication_limits/4,
          delete_campaign_communication_time/3,
          delete_campaign_communication_time/4,
+         delete_campaign_entry_limits/3,
+         delete_campaign_entry_limits/4,
          delete_connect_instance_config/3,
          delete_connect_instance_config/4,
          delete_connect_instance_integration/3,
@@ -73,6 +75,8 @@
          update_campaign_communication_limits/4,
          update_campaign_communication_time/3,
          update_campaign_communication_time/4,
+         update_campaign_entry_limits/3,
+         update_campaign_entry_limits/4,
          update_campaign_flow_association/3,
          update_campaign_flow_association/4,
          update_campaign_name/3,
@@ -141,6 +145,7 @@
 %%   <<"communicationTimeConfig">> => communication_time_config(),
 %%   <<"connectCampaignFlowArn">> => string(),
 %%   <<"connectInstanceId">> => string(),
+%%   <<"entryLimitsConfig">> => entry_limits_config(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"schedule">> => schedule(),
@@ -361,6 +366,14 @@
 %%   <<"id">> => string()
 %% }
 -type successful_profile_outbound_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% entry_limits_config() :: #{
+%%   <<"maxEntryCount">> => [integer()],
+%%   <<"minEntryInterval">> => string()
+%% }
+-type entry_limits_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +600,10 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+%% Example:
+%% delete_campaign_entry_limits_request() :: #{}
+-type delete_campaign_entry_limits_request() :: #{}.
+
 
 %% Example:
 %% schedule() :: #{
@@ -687,6 +704,7 @@
 %%   <<"communicationTimeConfig">> => communication_time_config(),
 %%   <<"connectCampaignFlowArn">> => string(),
 %%   <<"connectInstanceId">> := string(),
+%%   <<"entryLimitsConfig">> => entry_limits_config(),
 %%   <<"name">> := string(),
 %%   <<"schedule">> => schedule(),
 %%   <<"source">> => list(),
@@ -794,6 +812,13 @@
 
 
 %% Example:
+%% update_campaign_entry_limits_request() :: #{
+%%   <<"entryLimitsConfig">> := entry_limits_config()
+%% }
+-type update_campaign_entry_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% profile_outbound_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"expirationTime">> => non_neg_integer(),
@@ -891,6 +916,7 @@
 %%   <<"channelSubtypes">> => list(string()),
 %%   <<"connectCampaignFlowArn">> => string(),
 %%   <<"connectInstanceId">> => string(),
+%%   <<"entryLimitsConfig">> => entry_limits_config(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"schedule">> => schedule(),
@@ -964,6 +990,14 @@
     invalid_campaign_state_exception().
 
 -type delete_campaign_communication_time_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type delete_campaign_entry_limits_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1156,6 +1190,14 @@
     invalid_campaign_state_exception().
 
 -type update_campaign_communication_time_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type update_campaign_entry_limits_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1377,6 +1419,42 @@ delete_campaign_communication_time(Client, Id, Input0, Options0) ->
                      {<<"config">>, <<"config">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the entry limits config for a campaign.
+%%
+%% This API is idempotent.
+-spec delete_campaign_entry_limits(aws_client:aws_client(), binary() | list(), delete_campaign_entry_limits_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_campaign_entry_limits_errors(), tuple()}.
+delete_campaign_entry_limits(Client, Id, Input) ->
+    delete_campaign_entry_limits(Client, Id, Input, []).
+
+-spec delete_campaign_entry_limits(aws_client:aws_client(), binary() | list(), delete_campaign_entry_limits_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_campaign_entry_limits_errors(), tuple()}.
+delete_campaign_entry_limits(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/campaigns/", aws_util:encode_uri(Id), "/entry-limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a connect instance config from the specified AWS account.
@@ -2290,6 +2368,42 @@ update_campaign_communication_time(Client, Id, Input) ->
 update_campaign_communication_time(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/v2/campaigns/", aws_util:encode_uri(Id), "/communication-time"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the entry limits config for a campaign.
+%%
+%% This API is idempotent.
+-spec update_campaign_entry_limits(aws_client:aws_client(), binary() | list(), update_campaign_entry_limits_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_campaign_entry_limits_errors(), tuple()}.
+update_campaign_entry_limits(Client, Id, Input) ->
+    update_campaign_entry_limits(Client, Id, Input, []).
+
+-spec update_campaign_entry_limits(aws_client:aws_client(), binary() | list(), update_campaign_entry_limits_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_campaign_entry_limits_errors(), tuple()}.
+update_campaign_entry_limits(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/campaigns/", aws_util:encode_uri(Id), "/entry-limits"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

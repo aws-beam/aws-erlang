@@ -8579,10 +8579,10 @@
 
 %% Example:
 %% list_test_case_executions_request() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EndTime">> => float(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StartTime">> => float(),
 %%   <<"Status">> => list(any()),
 %%   <<"TestCaseId">> => string(),
 %%   <<"TestCaseName">> => string()

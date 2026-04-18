@@ -4089,7 +4089,7 @@ reboot_db_instance(Client, Input, Options)
 %%
 %% A secondary
 %% cluster becomes a normal standalone cluster with read-write capability
-%% instead of being read-only, and no longer receives data from a the
+%% instead of being read-only, and no longer receives data from the
 %% primary cluster.
 -spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |

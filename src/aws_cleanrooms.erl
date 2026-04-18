@@ -243,6 +243,7 @@
 %% Example:
 %% protected_job_worker_compute_configuration() :: #{
 %%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
 %%   <<"type">> => list(any())
 %% }
 -type protected_job_worker_compute_configuration() :: #{binary() => any()}.

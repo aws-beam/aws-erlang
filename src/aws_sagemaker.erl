@@ -1485,6 +1485,12 @@
 -type create_presigned_mlflow_tracking_server_url_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_network_interface() :: #{
+%%   <<"InterfaceType">> => list(any())
+%% }
+-type cluster_network_interface() :: #{binary() => any()}.
+
+%% Example:
 %% delete_mlflow_app_response() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -10719,6 +10725,12 @@
 -type list_spaces_response() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_network_interface_details() :: #{
+%%   <<"InterfaceType">> => list(any())
+%% }
+-type cluster_network_interface_details() :: #{binary() => any()}.
+
+%% Example:
 %% describe_pipeline_execution_response() :: #{
 %%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -11239,6 +11251,7 @@
 %% Example:
 %% cluster_life_cycle_config() :: #{
 %%   <<"OnCreate">> => string(),
+%%   <<"OnInitComplete">> => string(),
 %%   <<"SourceS3Uri">> => string()
 %% }
 -type cluster_life_cycle_config() :: #{binary() => any()}.
@@ -11614,6 +11627,7 @@
 %%   <<"KubernetesConfig">> => cluster_kubernetes_config(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"MinInstanceCount">> => integer(),
+%%   <<"NetworkInterface">> => cluster_network_interface(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
@@ -13363,6 +13377,7 @@
 %%   <<"KubernetesConfig">> => cluster_kubernetes_config_details(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"MinCount">> => integer(),
+%%   <<"NetworkInterface">> => cluster_network_interface_details(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
@@ -13664,6 +13679,7 @@
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"NetworkInterface">> => cluster_network_interface_details(),
 %%   <<"NodeLogicalId">> => string(),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"Placement">> => cluster_instance_placement(),

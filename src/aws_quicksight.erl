@@ -981,6 +981,7 @@
 %% Example:
 %% filter_list_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -2854,6 +2855,7 @@
 
 %% Example:
 %% athena_parameters() :: #{
+%%   <<"ConsumerAccountRoleArn">> => string(),
 %%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"RoleArn">> => string(),
 %%   <<"WorkGroup">> => string()
@@ -3170,6 +3172,13 @@
 %%   <<"CircleSymbolStyle">> => geospatial_circle_symbol_style()
 %% }
 -type geospatial_point_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_customization_summary_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type dashboard_customization_summary_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4043,6 +4052,14 @@
 %%   <<"VPCConnectionId">> := string()
 %% }
 -type create_vpc_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_sort_configuration() :: #{
+%%   <<"ControlColumnSort">> => aggregation_sort_configuration(),
+%%   <<"SelectableValuesSort">> => selectable_values_sort()
+%% }
+-type control_sort_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_flow_permissions_input() :: #{}
@@ -5007,6 +5024,7 @@
 %% Example:
 %% parameter_list_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SelectableValues">> => parameter_selectable_values(),
@@ -6104,6 +6122,7 @@
 %% registered_user_dashboard_feature_configurations() :: #{
 %%   <<"AmazonQInQuickSight">> => amazon_q_in_quick_sight_dashboard_configurations(),
 %%   <<"Bookmarks">> => bookmarks_configurations(),
+%%   <<"DashboardCustomizationSummary">> => dashboard_customization_summary_configurations(),
 %%   <<"RecentSnapshots">> => recent_snapshots_configurations(),
 %%   <<"Schedules">> => schedules_configurations(),
 %%   <<"SharedView">> => shared_view_configurations(),
@@ -6302,6 +6321,13 @@
 %%   <<"MapZoomMode">> => list(any())
 %% }
 -type geospatial_window_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% selectable_values_sort() :: #{
+%%   <<"Direction">> => list(any())
+%% }
+-type selectable_values_sort() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7315,6 +7341,7 @@
 %% parameter_drop_down_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SelectableValues">> => parameter_selectable_values(),
@@ -8458,6 +8485,7 @@
 %% Example:
 %% default_filter_drop_down_control_options() :: #{
 %%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
 %%   <<"Type">> => list(any())
@@ -8642,6 +8670,7 @@
 %% filter_drop_down_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -9300,6 +9329,13 @@
 
 
 %% Example:
+%% s3_tables_parameters() :: #{
+%%   <<"TableBucketArn">> => string()
+%% }
+-type s3_tables_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% generative_authoring_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
@@ -9498,6 +9534,7 @@
 
 %% Example:
 %% default_filter_list_control_options() :: #{
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
 %%   <<"Type">> => list(any())
@@ -9573,6 +9610,7 @@
 %% Example:
 %% registered_user_console_feature_configurations() :: #{
 %%   <<"AmazonQInQuickSight">> => amazon_q_in_quick_sight_console_configurations(),
+%%   <<"DashboardCustomizationSummary">> => dashboard_customization_summary_configurations(),
 %%   <<"RecentSnapshots">> => recent_snapshots_configurations(),
 %%   <<"Schedules">> => schedules_configurations(),
 %%   <<"SharedView">> => shared_view_configurations(),
@@ -14082,6 +14120,7 @@
 %%   <<"UseGoogleCalendarAction">> => list(any()),
 %%   <<"ShareSmartsheetAction">> => list(any()),
 %%   <<"CreateAndUpdateCanvaAgentAction">> => list(any()),
+%%   <<"GenerateAnalyses">> => list(any()),
 %%   <<"UseIntercomAction">> => list(any()),
 %%   <<"ShareSandPGMIAction">> => list(any()),
 %%   <<"PagerDutyAction">> => list(any()),
