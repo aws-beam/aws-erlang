@@ -17,6 +17,8 @@
          accept_capacity_reservation_billing_ownership/3,
          accept_reserved_instances_exchange_quote/2,
          accept_reserved_instances_exchange_quote/3,
+         accept_transit_gateway_client_vpn_attachment/2,
+         accept_transit_gateway_client_vpn_attachment/3,
          accept_transit_gateway_multicast_domain_associations/2,
          accept_transit_gateway_multicast_domain_associations/3,
          accept_transit_gateway_peering_attachment/2,
@@ -469,6 +471,8 @@
          delete_traffic_mirror_target/3,
          delete_transit_gateway/2,
          delete_transit_gateway/3,
+         delete_transit_gateway_client_vpn_attachment/2,
+         delete_transit_gateway_client_vpn_attachment/3,
          delete_transit_gateway_connect/2,
          delete_transit_gateway_connect/3,
          delete_transit_gateway_connect_peer/2,
@@ -1407,6 +1411,8 @@
          register_transit_gateway_multicast_group_sources/3,
          reject_capacity_reservation_billing_ownership/2,
          reject_capacity_reservation_billing_ownership/3,
+         reject_transit_gateway_client_vpn_attachment/2,
+         reject_transit_gateway_client_vpn_attachment/3,
          reject_transit_gateway_multicast_domain_associations/2,
          reject_transit_gateway_multicast_domain_associations/3,
          reject_transit_gateway_peering_attachment/2,
@@ -1856,6 +1862,7 @@
 %%   <<"Origin">> => string(),
 %%   <<"Status">> => client_vpn_route_status(),
 %%   <<"TargetSubnet">> => string(),
+%%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type client_vpn_route() :: #{binary() => any()}.
@@ -2856,6 +2863,14 @@
 -type describe_launch_template_versions_result() :: #{binary() => any()}.
 
 %% Example:
+%% transit_gateway_configuration_input_structure() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type transit_gateway_configuration_input_structure() :: #{binary() => any()}.
+
+%% Example:
 %% modify_transit_gateway_prefix_list_reference_request() :: #{
 %%   <<"Blackhole">> => boolean(),
 %%   <<"DryRun">> => boolean(),
@@ -3843,10 +3858,12 @@
 
 %% Example:
 %% associate_client_vpn_target_network_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SubnetId">> := string()
+%%   <<"SubnetId">> => string()
 %% }
 -type associate_client_vpn_target_network_request() :: #{binary() => any()}.
 
@@ -5977,6 +5994,15 @@
 %%   <<"Enforced">> => boolean()
 %% }
 -type client_route_enforcement_response_options() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_configuration_describe_endpoint_structure() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type transit_gateway_configuration_describe_endpoint_structure() :: #{binary() => any()}.
 
 %% Example:
 %% describe_placement_groups_result() :: #{
@@ -8723,6 +8749,12 @@
 -type create_vpc_result() :: #{binary() => any()}.
 
 %% Example:
+%% reject_transit_gateway_client_vpn_attachment_result() :: #{
+%%   <<"TransitGatewayClientVpnAttachment">> => transit_gateway_client_vpn_attachment()
+%% }
+-type reject_transit_gateway_client_vpn_attachment_result() :: #{binary() => any()}.
+
+%% Example:
 %% deprovision_ipam_pool_cidr_result() :: #{
 %%   <<"IpamPoolCidr">> => ipam_pool_cidr()
 %% }
@@ -8756,6 +8788,8 @@
 %% Example:
 %% target_network() :: #{
 %%   <<"AssociationId">> => string(),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClientVpnEndpointId">> => string(),
 %%   <<"SecurityGroups">> => list(string()),
 %%   <<"Status">> => association_status(),
@@ -9821,6 +9855,12 @@
 -type describe_image_usage_report_entries_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_transit_gateway_client_vpn_attachment_result() :: #{
+%%   <<"TransitGatewayClientVpnAttachment">> => transit_gateway_client_vpn_attachment()
+%% }
+-type delete_transit_gateway_client_vpn_attachment_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_security_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -10722,6 +10762,12 @@
 %%   <<"TargetResourceCount">> => integer()
 %% }
 -type fast_launch_snapshot_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% accept_transit_gateway_client_vpn_attachment_result() :: #{
+%%   <<"TransitGatewayClientVpnAttachment">> => transit_gateway_client_vpn_attachment()
+%% }
+-type accept_transit_gateway_client_vpn_attachment_result() :: #{binary() => any()}.
 
 %% Example:
 %% bundle_instance_request() :: #{
@@ -13389,6 +13435,13 @@
 -type service_type_detail() :: #{binary() => any()}.
 
 %% Example:
+%% delete_transit_gateway_client_vpn_attachment_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type delete_transit_gateway_client_vpn_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_transit_gateway_prefix_list_reference_result() :: #{
 %%   <<"TransitGatewayPrefixListReference">> => transit_gateway_prefix_list_reference()
 %% }
@@ -15118,7 +15171,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DestinationCidrBlock">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TargetVpcSubnetId">> := string()
+%%   <<"TargetVpcSubnetId">> => string()
 %% }
 -type create_client_vpn_route_request() :: #{binary() => any()}.
 
@@ -15159,6 +15212,7 @@
 %%   <<"ServerCertificateArn">> => string(),
 %%   <<"SessionTimeoutHours">> => integer(),
 %%   <<"SplitTunnel">> => boolean(),
+%%   <<"TransitGatewayConfiguration">> => transit_gateway_configuration_input_structure(),
 %%   <<"VpcId">> => string(),
 %%   <<"VpnPort">> => integer()
 %% }
@@ -15791,6 +15845,7 @@
 %%   <<"Status">> => client_vpn_endpoint_status(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TrafficIpAddressType">> => list(any()),
+%%   <<"TransitGatewayConfiguration">> => transit_gateway_configuration_describe_endpoint_structure(),
 %%   <<"TransportProtocol">> => list(any()),
 %%   <<"VpcId">> => string(),
 %%   <<"VpnPort">> => integer(),
@@ -17281,6 +17336,13 @@
 -type disable_vpc_classic_link_dns_support_result() :: #{binary() => any()}.
 
 %% Example:
+%% accept_transit_gateway_client_vpn_attachment_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type accept_transit_gateway_client_vpn_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% transit_gateway_metering_policy_rule() :: #{
 %%   <<"DestinationCidrBlock">> => string(),
 %%   <<"DestinationPortRange">> => string(),
@@ -18407,6 +18469,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_pool_allocations_result() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_client_vpn_attachment() :: #{
+%%   <<"ClientVpnEndpointId">> => string(),
+%%   <<"ClientVpnOwnerId">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type transit_gateway_client_vpn_attachment() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_multicast_deregistered_group_sources() :: #{
@@ -20433,6 +20506,13 @@
 -type address() :: #{binary() => any()}.
 
 %% Example:
+%% reject_transit_gateway_client_vpn_attachment_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type reject_transit_gateway_client_vpn_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_transit_gateway_vpc_attachment_result() :: #{
 %%   <<"TransitGatewayVpcAttachment">> => transit_gateway_vpc_attachment()
 %% }
@@ -21065,6 +21145,7 @@
 %%   <<"SplitTunnel">> => boolean(),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrafficIpAddressType">> => list(any()),
+%%   <<"TransitGatewayConfiguration">> => transit_gateway_configuration_input_structure(),
 %%   <<"TransportProtocol">> => list(any()),
 %%   <<"VpcId">> => string(),
 %%   <<"VpnPort">> => integer()
@@ -22814,6 +22895,25 @@ accept_reserved_instances_exchange_quote(Client, Input)
 accept_reserved_instances_exchange_quote(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptReservedInstancesExchangeQuote">>, Input, Options).
+
+%% @doc Accepts a Transit Gateway attachment request for a Client VPN
+%% endpoint.
+%%
+%% The Transit Gateway owner must accept the attachment request before the
+%% Client VPN endpoint can route traffic through the Transit Gateway.
+-spec accept_transit_gateway_client_vpn_attachment(aws_client:aws_client(), accept_transit_gateway_client_vpn_attachment_request()) ->
+    {ok, accept_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+accept_transit_gateway_client_vpn_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_transit_gateway_client_vpn_attachment(Client, Input, []).
+
+-spec accept_transit_gateway_client_vpn_attachment(aws_client:aws_client(), accept_transit_gateway_client_vpn_attachment_request(), proplists:proplist()) ->
+    {ok, accept_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+accept_transit_gateway_client_vpn_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptTransitGatewayClientVpnAttachment">>, Input, Options).
 
 %% @doc Accepts a request to associate subnets with a transit gateway
 %% multicast domain.
@@ -28600,6 +28700,24 @@ delete_transit_gateway(Client, Input)
 delete_transit_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTransitGateway">>, Input, Options).
+
+%% @doc Deletes a Transit Gateway attachment for a Client VPN endpoint.
+%%
+%% The Transit Gateway owner can delete the attachment to remove the
+%% association between the Client VPN endpoint and the Transit Gateway.
+-spec delete_transit_gateway_client_vpn_attachment(aws_client:aws_client(), delete_transit_gateway_client_vpn_attachment_request()) ->
+    {ok, delete_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_client_vpn_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_transit_gateway_client_vpn_attachment(Client, Input, []).
+
+-spec delete_transit_gateway_client_vpn_attachment(aws_client:aws_client(), delete_transit_gateway_client_vpn_attachment_request(), proplists:proplist()) ->
+    {ok, delete_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_client_vpn_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTransitGatewayClientVpnAttachment">>, Input, Options).
 
 %% @doc Deletes the specified Connect attachment.
 %%
@@ -39581,6 +39699,25 @@ reject_capacity_reservation_billing_ownership(Client, Input)
 reject_capacity_reservation_billing_ownership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectCapacityReservationBillingOwnership">>, Input, Options).
+
+%% @doc Rejects a Transit Gateway attachment request for a Client VPN
+%% endpoint.
+%%
+%% The Transit Gateway owner can reject the attachment request to prevent the
+%% Client VPN endpoint from routing traffic through the Transit Gateway.
+-spec reject_transit_gateway_client_vpn_attachment(aws_client:aws_client(), reject_transit_gateway_client_vpn_attachment_request()) ->
+    {ok, reject_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+reject_transit_gateway_client_vpn_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_transit_gateway_client_vpn_attachment(Client, Input, []).
+
+-spec reject_transit_gateway_client_vpn_attachment(aws_client:aws_client(), reject_transit_gateway_client_vpn_attachment_request(), proplists:proplist()) ->
+    {ok, reject_transit_gateway_client_vpn_attachment_result(), tuple()} |
+    {error, any()}.
+reject_transit_gateway_client_vpn_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectTransitGatewayClientVpnAttachment">>, Input, Options).
 
 %% @doc Rejects a request to associate cross-account subnets with a transit
 %% gateway multicast domain.

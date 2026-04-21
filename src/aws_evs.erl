@@ -14,12 +14,20 @@
 
 -export([associate_eip_to_vlan/2,
          associate_eip_to_vlan/3,
+         create_entitlement/2,
+         create_entitlement/3,
          create_environment/2,
          create_environment/3,
+         create_environment_connector/2,
+         create_environment_connector/3,
          create_environment_host/2,
          create_environment_host/3,
+         delete_entitlement/2,
+         delete_entitlement/3,
          delete_environment/2,
          delete_environment/3,
+         delete_environment_connector/2,
+         delete_environment_connector/3,
          delete_environment_host/2,
          delete_environment_host/3,
          disassociate_eip_from_vlan/2,
@@ -28,6 +36,8 @@
          get_environment/3,
          get_versions/2,
          get_versions/3,
+         list_environment_connectors/2,
+         list_environment_connectors/3,
          list_environment_hosts/2,
          list_environment_hosts/3,
          list_environment_vlans/2,
@@ -36,13 +46,48 @@
          list_environments/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_vm_entitlements/2,
+         list_vm_entitlements/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_environment_connector/2,
+         update_environment_connector/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% vm_entitlement() :: #{
+%%   <<"connectorId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"lastSyncedAt">> => [non_neg_integer()],
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => [non_neg_integer()],
+%%   <<"type">> => list(any()),
+%%   <<"vmId">> => string(),
+%%   <<"vmName">> => string()
+%% }
+-type vm_entitlement() :: #{binary() => any()}.
+
+%% Example:
+%% connector() :: #{
+%%   <<"applianceFqdn">> => string(),
+%%   <<"checks">> => list(connector_check()),
+%%   <<"connectorId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"environmentId">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"secretArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type connector() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -67,6 +112,14 @@
 %%   <<"vlanName">> := [string()]
 %% }
 -type associate_eip_to_vlan_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_connector_request() :: #{
+%%   <<"applianceFqdn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"secretIdentifier">> => string()
+%% }
+-type update_environment_connector_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_environment_hosts_response() :: #{
@@ -97,6 +150,15 @@
 %%   <<"placementGroupId">> => string()
 %% }
 -type host_info_for_create() :: #{binary() => any()}.
+
+%% Example:
+%% connector_check() :: #{
+%%   <<"impairedSince">> => [non_neg_integer()],
+%%   <<"lastCheckAttempt">> => [non_neg_integer()],
+%%   <<"result">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type connector_check() :: #{binary() => any()}.
 
 %% Example:
 %% delete_environment_host_response() :: #{
@@ -163,10 +225,32 @@
 -type initial_vlan_info() :: #{binary() => any()}.
 
 %% Example:
+%% list_environment_connectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_connectors_request() :: #{binary() => any()}.
+
+%% Example:
 %% tag_policy_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_connector_request() :: #{
+%%   <<"applianceFqdn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"secretIdentifier">> := string(),
+%%   <<"type">> := list(any())
+%% }
+-type create_environment_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entitlement_response() :: #{
+%%   <<"entitlements">> => list(vm_entitlement())
+%% }
+-type delete_entitlement_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_environment_response() :: #{
@@ -201,6 +285,12 @@
 %%   <<"vlan">> => vlan()
 %% }
 -type associate_eip_to_vlan_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_entitlement_response() :: #{
+%%   <<"entitlements">> => list(vm_entitlement())
+%% }
+-type create_entitlement_response() :: #{binary() => any()}.
 
 %% Example:
 %% instance_type_esx_versions_info() :: #{
@@ -261,6 +351,19 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_vm_entitlements_response() :: #{
+%%   <<"entitlements">> => list(vm_entitlement()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vm_entitlements_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_connector_response() :: #{
+%%   <<"connector">> => connector()
+%% }
+-type create_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
 %% secret() :: #{
 %%   <<"secretArn">> => [string()]
 %% }
@@ -317,6 +420,13 @@
 -type vcf_hostnames() :: #{binary() => any()}.
 
 %% Example:
+%% delete_environment_connector_response() :: #{
+%%   <<"connector">> => connector(),
+%%   <<"environmentSummary">> => environment_summary()
+%% }
+-type delete_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
 %% license_info() :: #{
 %%   <<"solutionKey">> => string(),
 %%   <<"vsanKey">> => string()
@@ -366,6 +476,19 @@
 -type delete_environment_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_environment_connector_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_environment_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_eip_from_vlan_request() :: #{
 %%   <<"associationId">> := string(),
 %%   <<"clientToken">> => string(),
@@ -388,6 +511,12 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_environment_connector_response() :: #{
+%%   <<"connector">> => connector()
+%% }
+-type update_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -402,6 +531,16 @@
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_entitlement_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
+%%   <<"environmentId">> := string(),
+%%   <<"vmIds">> := list(string())
+%% }
+-type delete_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
@@ -414,6 +553,23 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_environment_connectors_response() :: #{
+%%   <<"connectors">> => list(connector()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_connectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vm_entitlements_request() :: #{
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
+%%   <<"environmentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vm_entitlements_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_environment_request() :: #{
@@ -485,7 +641,22 @@
 %% }
 -type delete_environment_host_request() :: #{binary() => any()}.
 
+%% Example:
+%% create_entitlement_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
+%%   <<"environmentId">> := string(),
+%%   <<"vmIds">> := list(string())
+%% }
+-type create_entitlement_request() :: #{binary() => any()}.
+
 -type associate_eip_to_vlan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_entitlement_errors() ::
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
@@ -493,11 +664,26 @@
 -type create_environment_errors() ::
     validation_exception().
 
+-type create_environment_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type create_environment_host_errors() ::
     throttling_exception() | 
     validation_exception().
 
+-type delete_entitlement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type delete_environment_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_connector_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
 
@@ -518,6 +704,10 @@
     throttling_exception() | 
     internal_server_exception().
 
+-type list_environment_connectors_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type list_environment_hosts_errors() ::
     validation_exception() | 
     resource_not_found_exception().
@@ -532,6 +722,10 @@
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
+-type list_vm_entitlements_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
     service_quota_exceeded_exception() | 
@@ -541,6 +735,11 @@
 -type untag_resource_errors() ::
     resource_not_found_exception() | 
     tag_policy_exception().
+
+-type update_environment_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -564,6 +763,27 @@ associate_eip_to_vlan(Client, Input)
 associate_eip_to_vlan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateEipToVlan">>, Input, Options).
+
+%% @doc Creates a Windows Server License entitlement for virtual machines in
+%% an Amazon EVS environment using the provided vCenter Server connector.
+%%
+%% This is an asynchronous operation. Amazon EVS validates the specified
+%% virtual machines before starting usage tracking.
+-spec create_entitlement(aws_client:aws_client(), create_entitlement_request()) ->
+    {ok, create_entitlement_response(), tuple()} |
+    {error, any()} |
+    {error, create_entitlement_errors(), tuple()}.
+create_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_entitlement(Client, Input, []).
+
+-spec create_entitlement(aws_client:aws_client(), create_entitlement_request(), proplists:proplist()) ->
+    {ok, create_entitlement_response(), tuple()} |
+    {error, any()} |
+    {error, create_entitlement_errors(), tuple()}.
+create_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEntitlement">>, Input, Options).
 
 %% @doc Creates an Amazon EVS environment that runs VCF software, such as
 %% SDDC Manager, NSX Manager, and vCenter Server.
@@ -599,6 +819,27 @@ create_environment(Client, Input)
 create_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironment">>, Input, Options).
+
+%% @doc Creates a connector for an Amazon EVS environment.
+%%
+%% A connector establishes a connection to a VCF appliance, such as vCenter,
+%% using a fully qualified domain name and an Amazon Web Services Secrets
+%% Manager secret that stores the appliance credentials.
+-spec create_environment_connector(aws_client:aws_client(), create_environment_connector_request()) ->
+    {ok, create_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_connector_errors(), tuple()}.
+create_environment_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_environment_connector(Client, Input, []).
+
+-spec create_environment_connector(aws_client:aws_client(), create_environment_connector_request(), proplists:proplist()) ->
+    {ok, create_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_connector_errors(), tuple()}.
+create_environment_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEnvironmentConnector">>, Input, Options).
 
 %% @doc Creates an ESX host and adds it to an Amazon EVS environment.
 %%
@@ -637,6 +878,27 @@ create_environment_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentHost">>, Input, Options).
 
+%% @doc Deletes a Windows Server License entitlement for virtual machines in
+%% an Amazon EVS environment.
+%%
+%% Deleting an entitlement stops usage tracking for the specified virtual
+%% machines.
+-spec delete_entitlement(aws_client:aws_client(), delete_entitlement_request()) ->
+    {ok, delete_entitlement_response(), tuple()} |
+    {error, any()} |
+    {error, delete_entitlement_errors(), tuple()}.
+delete_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_entitlement(Client, Input, []).
+
+-spec delete_entitlement(aws_client:aws_client(), delete_entitlement_request(), proplists:proplist()) ->
+    {ok, delete_entitlement_response(), tuple()} |
+    {error, any()} |
+    {error, delete_entitlement_errors(), tuple()}.
+delete_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEntitlement">>, Input, Options).
+
 %% @doc Deletes an Amazon EVS environment.
 %%
 %% Amazon EVS environments will only be enabled for deletion once the hosts
@@ -662,6 +924,26 @@ delete_environment(Client, Input)
 delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
+
+%% @doc Deletes a connector from an Amazon EVS environment.
+%%
+%% Before deleting a connector, you must remove all entitlements that are
+%% associated with the same vCenter.
+-spec delete_environment_connector(aws_client:aws_client(), delete_environment_connector_request()) ->
+    {ok, delete_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_connector_errors(), tuple()}.
+delete_environment_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_environment_connector(Client, Input, []).
+
+-spec delete_environment_connector(aws_client:aws_client(), delete_environment_connector_request(), proplists:proplist()) ->
+    {ok, delete_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_connector_errors(), tuple()}.
+delete_environment_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEnvironmentConnector">>, Input, Options).
 
 %% @doc Deletes a host from an Amazon EVS environment.
 %%
@@ -741,6 +1023,26 @@ get_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVersions">>, Input, Options).
 
+%% @doc Lists the connectors within an environment.
+%%
+%% Returns the status of each connector and its applicable checks, among
+%% other connector details.
+-spec list_environment_connectors(aws_client:aws_client(), list_environment_connectors_request()) ->
+    {ok, list_environment_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_environment_connectors_errors(), tuple()}.
+list_environment_connectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_environment_connectors(Client, Input, []).
+
+-spec list_environment_connectors(aws_client:aws_client(), list_environment_connectors_request(), proplists:proplist()) ->
+    {ok, list_environment_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_environment_connectors_errors(), tuple()}.
+list_environment_connectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEnvironmentConnectors">>, Input, Options).
+
 %% @doc List the hosts within an environment.
 -spec list_environment_hosts(aws_client:aws_client(), list_environment_hosts_request()) ->
     {ok, list_environment_hosts_response(), tuple()} |
@@ -811,6 +1113,27 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Lists the Windows Server License entitlements for virtual machines in
+%% an Amazon EVS environment.
+%%
+%% Returns existing entitlements for virtual machines associated with the
+%% specified environment and connector.
+-spec list_vm_entitlements(aws_client:aws_client(), list_vm_entitlements_request()) ->
+    {ok, list_vm_entitlements_response(), tuple()} |
+    {error, any()} |
+    {error, list_vm_entitlements_errors(), tuple()}.
+list_vm_entitlements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_vm_entitlements(Client, Input, []).
+
+-spec list_vm_entitlements(aws_client:aws_client(), list_vm_entitlements_request(), proplists:proplist()) ->
+    {ok, list_vm_entitlements_response(), tuple()} |
+    {error, any()} |
+    {error, list_vm_entitlements_errors(), tuple()}.
+list_vm_entitlements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVmEntitlements">>, Input, Options).
+
 %% @doc Associates the specified tags to an Amazon EVS resource with the
 %% specified `resourceArn'.
 %%
@@ -853,6 +1176,28 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a connector for an Amazon EVS environment.
+%%
+%% You can update the Amazon Web Services Secrets Manager secret ARN or the
+%% appliance FQDN to reconfigure the connector metadata.
+%%
+%% You cannot update both the secret and the FQDN in the same request.
+-spec update_environment_connector(aws_client:aws_client(), update_environment_connector_request()) ->
+    {ok, update_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_environment_connector_errors(), tuple()}.
+update_environment_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_environment_connector(Client, Input, []).
+
+-spec update_environment_connector(aws_client:aws_client(), update_environment_connector_request(), proplists:proplist()) ->
+    {ok, update_environment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_environment_connector_errors(), tuple()}.
+update_environment_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEnvironmentConnector">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

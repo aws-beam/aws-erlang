@@ -250,6 +250,13 @@
 
 
 %% Example:
+%% kafka_cluster_client_authentication() :: #{
+%%   <<"SaslScram">> => kafka_cluster_sasl_scram_authentication()
+%% }
+-type kafka_cluster_client_authentication() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vpc_connection_response() :: #{
 %%   <<"Authentication">> => string(),
 %%   <<"ClientSubnets">> => list(string()),
@@ -395,6 +402,14 @@
 
 
 %% Example:
+%% replicator_cloud_watch_logs() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroup">> => string()
+%% }
+-type replicator_cloud_watch_logs() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_operation_v2_summary() :: #{
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterType">> => list(any()),
@@ -411,8 +426,11 @@
 %% update_replication_info_request() :: #{
 %%   <<"ConsumerGroupReplication">> => consumer_group_replication_update(),
 %%   <<"CurrentVersion">> := string(),
-%%   <<"SourceKafkaClusterArn">> := string(),
-%%   <<"TargetKafkaClusterArn">> := string(),
+%%   <<"LogDelivery">> => log_delivery(),
+%%   <<"SourceKafkaClusterArn">> => string(),
+%%   <<"SourceKafkaClusterId">> => string(),
+%%   <<"TargetKafkaClusterArn">> => string(),
+%%   <<"TargetKafkaClusterId">> => string(),
 %%   <<"TopicReplication">> => topic_replication_update()
 %% }
 -type update_replication_info_request() :: #{binary() => any()}.
@@ -484,6 +502,7 @@
 %% Example:
 %% kafka_cluster_summary() :: #{
 %%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
+%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
 %%   <<"KafkaClusterAlias">> => string()
 %% }
 -type kafka_cluster_summary() :: #{binary() => any()}.
@@ -733,6 +752,7 @@
 %% create_replicator_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"KafkaClusters">> := list(kafka_cluster()),
+%%   <<"LogDelivery">> => log_delivery(),
 %%   <<"ReplicationInfoList">> := list(replication_info()),
 %%   <<"ReplicatorName">> := string(),
 %%   <<"ServiceExecutionRoleArn">> := string(),
@@ -763,6 +783,7 @@
 
 %% Example:
 %% consumer_group_replication() :: #{
+%%   <<"ConsumerGroupOffsetSyncMode">> => list(any()),
 %%   <<"ConsumerGroupsToExclude">> => list(string()),
 %%   <<"ConsumerGroupsToReplicate">> => list(string()),
 %%   <<"DetectAndCopyNewConsumerGroups">> => boolean(),
@@ -798,6 +819,9 @@
 %% Example:
 %% kafka_cluster() :: #{
 %%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
+%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
+%%   <<"ClientAuthentication">> => kafka_cluster_client_authentication(),
+%%   <<"EncryptionInTransit">> => kafka_cluster_encryption_in_transit(),
 %%   <<"VpcConfig">> => kafka_cluster_client_vpc_config()
 %% }
 -type kafka_cluster() :: #{binary() => any()}.
@@ -1003,9 +1027,26 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% kafka_cluster_encryption_in_transit() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"RootCaCertificate">> => string()
+%% }
+-type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configuration_request() :: #{}
 -type delete_configuration_request() :: #{}.
+
+
+%% Example:
+%% replicator_s3() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type replicator_s3() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1051,6 +1092,14 @@
 %%   <<"VpcConnectionArn">> => string()
 %% }
 -type vpc_connection_info_serverless() :: #{binary() => any()}.
+
+
+%% Example:
+%% apache_kafka_cluster() :: #{
+%%   <<"ApacheKafkaClusterId">> => string(),
+%%   <<"BootstrapBrokerString">> => string()
+%% }
+-type apache_kafka_cluster() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1560,6 +1609,23 @@
 
 
 %% Example:
+%% replicator_log_delivery() :: #{
+%%   <<"CloudWatchLogs">> => replicator_cloud_watch_logs(),
+%%   <<"Firehose">> => replicator_firehose(),
+%%   <<"S3">> => replicator_s3()
+%% }
+-type replicator_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicator_firehose() :: #{
+%%   <<"DeliveryStream">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type replicator_firehose() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_broker_count_response() :: #{
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterOperationArn">> => string()
@@ -1670,6 +1736,13 @@
 
 
 %% Example:
+%% log_delivery() :: #{
+%%   <<"ReplicatorLogDelivery">> => replicator_log_delivery()
+%% }
+-type log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_topic_response() :: #{
 %%   <<"Status">> => list(any()),
 %%   <<"TopicArn">> => string(),
@@ -1695,11 +1768,20 @@
 
 
 %% Example:
+%% kafka_cluster_sasl_scram_authentication() :: #{
+%%   <<"Mechanism">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type kafka_cluster_sasl_scram_authentication() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_replicator_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CurrentVersion">> => string(),
 %%   <<"IsReplicatorReference">> => boolean(),
 %%   <<"KafkaClusters">> => list(kafka_cluster_description()),
+%%   <<"LogDelivery">> => log_delivery(),
 %%   <<"ReplicationInfoList">> => list(replication_info_description()),
 %%   <<"ReplicatorArn">> => string(),
 %%   <<"ReplicatorDescription">> => string(),
@@ -1724,6 +1806,9 @@
 %% Example:
 %% kafka_cluster_description() :: #{
 %%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
+%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
+%%   <<"ClientAuthentication">> => kafka_cluster_client_authentication(),
+%%   <<"EncryptionInTransit">> => kafka_cluster_encryption_in_transit(),
 %%   <<"KafkaClusterAlias">> => string(),
 %%   <<"VpcConfig">> => kafka_cluster_client_vpc_config()
 %% }
@@ -1977,8 +2062,10 @@
 %% replication_info() :: #{
 %%   <<"ConsumerGroupReplication">> => consumer_group_replication(),
 %%   <<"SourceKafkaClusterArn">> => string(),
+%%   <<"SourceKafkaClusterId">> => string(),
 %%   <<"TargetCompressionType">> => list(any()),
 %%   <<"TargetKafkaClusterArn">> => string(),
+%%   <<"TargetKafkaClusterId">> => string(),
 %%   <<"TopicReplication">> => topic_replication()
 %% }
 -type replication_info() :: #{binary() => any()}.

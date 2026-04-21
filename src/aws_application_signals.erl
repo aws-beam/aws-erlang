@@ -349,6 +349,7 @@
 %% Example:
 %% create_service_level_objective_input() :: #{
 %%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
+%%   <<"CreateRecommendedSlo">> => [boolean()],
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"Name">> := string(),

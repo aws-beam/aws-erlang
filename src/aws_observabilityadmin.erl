@@ -921,6 +921,7 @@
 %% Example:
 %% telemetry_rule() :: #{
 %%   <<"AllRegions">> => boolean(),
+%%   <<"AllowFieldUpdates">> => [boolean()],
 %%   <<"DestinationConfiguration">> => telemetry_destination_configuration(),
 %%   <<"Regions">> => list(string()),
 %%   <<"ResourceType">> => list(any()),

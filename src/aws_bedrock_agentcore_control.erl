@@ -3415,6 +3415,7 @@
 %% Example:
 %% mcp_server_target_configuration() :: #{
 %%   <<"endpoint">> => [string()],
+%%   <<"listingMode">> => list(any()),
 %%   <<"mcpToolSchema">> => list()
 %% }
 -type mcp_server_target_configuration() :: #{binary() => any()}.

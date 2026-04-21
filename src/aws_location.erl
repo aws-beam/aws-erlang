@@ -23,6 +23,8 @@
          calculate_route/4,
          calculate_route_matrix/3,
          calculate_route_matrix/4,
+         cancel_job/2,
+         cancel_job/3,
          create_geofence_collection/2,
          create_geofence_collection/3,
          create_key/2,
@@ -77,6 +79,9 @@
          get_geofence/3,
          get_geofence/5,
          get_geofence/6,
+         get_job/2,
+         get_job/4,
+         get_job/5,
          get_map_glyphs/4,
          get_map_glyphs/6,
          get_map_glyphs/7,
@@ -98,6 +103,8 @@
          list_geofence_collections/3,
          list_geofences/3,
          list_geofences/4,
+         list_jobs/2,
+         list_jobs/3,
          list_keys/2,
          list_keys/3,
          list_maps/2,
@@ -121,6 +128,8 @@
          search_place_index_for_suggestions/4,
          search_place_index_for_text/3,
          search_place_index_for_text/4,
+         start_job/2,
+         start_job/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -142,6 +151,13 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% cancel_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type cancel_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_device_position_request() :: #{}
@@ -232,6 +248,13 @@
 %%   <<"GeofenceId">> => string()
 %% }
 -type batch_put_geofence_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_action_options() :: #{
+%%   <<"ValidateAddress">> => validate_address_action_options()
+%% }
+-type job_action_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -360,6 +383,15 @@
 
 
 %% Example:
+%% list_jobs_request() :: #{
+%%   <<"Filter">> => jobs_filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_keys_response() :: #{
 %%   <<"Entries">> := list(list_keys_response_entry()),
 %%   <<"NextToken">> => string()
@@ -385,6 +417,16 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type list_route_calculators_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type start_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -429,6 +471,14 @@
 
 
 %% Example:
+%% list_jobs_response() :: #{
+%%   <<"Entries">> => list(list_jobs_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_key_request() :: #{
 %%   <<"ForceDelete">> => [boolean()]
 %% }
@@ -458,6 +508,25 @@
 %%   <<"Geometry">> := geofence_geometry()
 %% }
 -type put_geofence_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response_entry() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ActionOptions">> => job_action_options(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Error">> => job_error(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InputOptions">> => job_input_options(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputOptions">> => job_output_options(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type list_jobs_response_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -552,6 +621,13 @@
 %%   <<"Key">> => string()
 %% }
 -type get_map_sprites_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% jobs_filter() :: #{
+%%   <<"JobStatus">> => string()
+%% }
+-type jobs_filter() :: #{binary() => any()}.
 
 %% Example:
 %% delete_map_request() :: #{}
@@ -922,6 +998,21 @@
 %% }
 -type update_geofence_collection_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% validate_address_action_options() :: #{
+%%   <<"AdditionalFeatures">> => list(string())
+%% }
+-type validate_address_action_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_input_options() :: #{
+%%   <<"Format">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type job_input_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_geofence_collection_request() :: #{}
 -type delete_geofence_collection_request() :: #{}.
@@ -971,6 +1062,20 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type update_place_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"ActionOptions">> => job_action_options(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputOptions">> := job_input_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputOptions">> := job_output_options(),
+%%   <<"Tags">> => map()
+%% }
+-type start_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1236,6 +1341,26 @@
 
 
 %% Example:
+%% get_job_response() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ActionOptions">> => job_action_options(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Error">> => job_error(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InputOptions">> => job_input_options(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputOptions">> => job_output_options(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
@@ -1269,6 +1394,10 @@
 %%   <<"Place">> := place()
 %% }
 -type get_place_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
 
 
 %% Example:
@@ -1548,6 +1677,15 @@
 %% }
 -type geofence_geometry() :: #{binary() => any()}.
 
+
+%% Example:
+%% cancel_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type cancel_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_geofence_request() :: #{}
 -type get_geofence_request() :: #{}.
@@ -1678,6 +1816,14 @@
 
 
 %% Example:
+%% job_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Messages">> => list(string())
+%% }
+-type job_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_evaluate_geofences_error() :: #{
 %%   <<"DeviceId">> => string(),
 %%   <<"Error">> => batch_item_error(),
@@ -1777,6 +1923,14 @@
 
 
 %% Example:
+%% job_output_options() :: #{
+%%   <<"Format">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type job_output_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_device_position_history_request() :: #{
 %%   <<"DeviceIds">> := list(string())
 %% }
@@ -1846,6 +2000,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type cancel_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type create_geofence_collection_errors() ::
     throttling_exception() | 
@@ -2014,6 +2174,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_map_glyphs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2067,6 +2234,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_keys_errors() ::
     throttling_exception() | 
@@ -2140,6 +2313,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type start_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
@@ -2693,6 +2872,48 @@ calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
                      {<<"key">>, <<"Key">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc `CancelJob' cancels a job that is currently running or pending.
+%%
+%% If the job is already in a terminal state (`Completed', `Failed',
+%% or `Cancelled'), the operation returns successfully with the current
+%% status.
+%%
+%% For more information, see Job concepts:
+%% https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html
+%% in the Amazon Location Service Developer Guide.
+-spec cancel_job(aws_client:aws_client(), cancel_job_request()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
+cancel_job(Client, Input) ->
+    cancel_job(Client, Input, []).
+
+-spec cancel_job(aws_client:aws_client(), cancel_job_request(), proplists:proplist()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
+cancel_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata/v0/jobs/cancel-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a geofence collection, which manages and stores geofences.
@@ -3813,6 +4034,49 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc `GetJob' retrieves detailed information about a specific job,
+%% including its current status, configuration, and error information if the
+%% job failed.
+%%
+%% For more information, see Job concepts:
+%% https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html
+%% in the Amazon Location Service Developer Guide.
+-spec get_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_errors(), tuple()}.
+get_job(Client, JobId)
+  when is_map(Client) ->
+    get_job(Client, JobId, #{}, #{}).
+
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_errors(), tuple()}.
+get_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job(Client, JobId, QueryMap, HeadersMap, []).
+
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_errors(), tuple()}.
+get_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metadata/v0/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This operation is no longer current and may be deprecated in the
 %% future.
 %%
@@ -4328,6 +4592,45 @@ list_geofences(Client, CollectionName, Input) ->
 list_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/list-geofences"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc `ListJobs' retrieves a list of jobs with optional filtering and
+%% pagination support.
+%%
+%% For more information, see Job concepts:
+%% https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html
+%% in the Amazon Location Service Developer Guide.
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
+list_jobs(Client, Input) ->
+    list_jobs(Client, Input, []).
+
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
+list_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata/v0/jobs/list-jobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4902,6 +5205,47 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
                      {<<"key">>, <<"Key">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc `StartJob' starts a new asynchronous bulk processing job.
+%%
+%% You specify the input data location in Amazon S3, the action to perform,
+%% and the output location where results are written.
+%%
+%% For more information, see Job concepts:
+%% https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html
+%% in the Amazon Location Service Developer Guide.
+-spec start_job(aws_client:aws_client(), start_job_request()) ->
+    {ok, start_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_errors(), tuple()}.
+start_job(Client, Input) ->
+    start_job(Client, Input, []).
+
+-spec start_job(aws_client:aws_client(), start_job_request(), proplists:proplist()) ->
+    {ok, start_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_errors(), tuple()}.
+start_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata/v0/jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
