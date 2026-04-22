@@ -1402,6 +1402,7 @@
 
 %% Example:
 %% firewall_policy_response() :: #{
+%%   <<"ConsumedStatefulDomainCapacity">> => integer(),
 %%   <<"ConsumedStatefulRuleCapacity">> => integer(),
 %%   <<"ConsumedStatelessRuleCapacity">> => integer(),
 %%   <<"Description">> => string(),

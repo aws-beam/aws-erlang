@@ -30,6 +30,12 @@
          batch_reboot_cluster_nodes/3,
          batch_replace_cluster_nodes/2,
          batch_replace_cluster_nodes/3,
+         create_a_i_benchmark_job/2,
+         create_a_i_benchmark_job/3,
+         create_a_i_recommendation_job/2,
+         create_a_i_recommendation_job/3,
+         create_a_i_workload_config/2,
+         create_a_i_workload_config/3,
          create_action/2,
          create_action/3,
          create_algorithm/2,
@@ -166,6 +172,12 @@
          create_workforce/3,
          create_workteam/2,
          create_workteam/3,
+         delete_a_i_benchmark_job/2,
+         delete_a_i_benchmark_job/3,
+         delete_a_i_recommendation_job/2,
+         delete_a_i_recommendation_job/3,
+         delete_a_i_workload_config/2,
+         delete_a_i_workload_config/3,
          delete_action/2,
          delete_action/3,
          delete_algorithm/2,
@@ -284,6 +296,12 @@
          delete_workteam/3,
          deregister_devices/2,
          deregister_devices/3,
+         describe_a_i_benchmark_job/2,
+         describe_a_i_benchmark_job/3,
+         describe_a_i_recommendation_job/2,
+         describe_a_i_recommendation_job/3,
+         describe_a_i_workload_config/2,
+         describe_a_i_workload_config/3,
          describe_action/2,
          describe_action/3,
          describe_algorithm/2,
@@ -450,6 +468,12 @@
          get_search_suggestions/3,
          import_hub_content/2,
          import_hub_content/3,
+         list_a_i_benchmark_jobs/2,
+         list_a_i_benchmark_jobs/3,
+         list_a_i_recommendation_jobs/2,
+         list_a_i_recommendation_jobs/3,
+         list_a_i_workload_configs/2,
+         list_a_i_workload_configs/3,
          list_actions/2,
          list_actions/3,
          list_algorithms/2,
@@ -654,6 +678,10 @@
          start_pipeline_execution/3,
          start_session/2,
          start_session/3,
+         stop_a_i_benchmark_job/2,
+         stop_a_i_benchmark_job/3,
+         stop_a_i_recommendation_job/2,
+         stop_a_i_recommendation_job/3,
          stop_auto_ml_job/2,
          stop_auto_ml_job/3,
          stop_compilation_job/2,
@@ -820,6 +848,12 @@
 %%   <<"S3OutputPath">> => string()
 %% }
 -type auto_ml_output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
+%% }
+-type stop_a_i_recommendation_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_context_request() :: #{
@@ -1234,6 +1268,12 @@
 -type metric_data() :: #{binary() => any()}.
 
 %% Example:
+%% delete_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
+%% }
+-type delete_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_devices_request() :: #{
 %%   <<"DeviceFleetName">> => string(),
 %%   <<"LatestHeartbeatAfter">> => non_neg_integer(),
@@ -1562,6 +1602,12 @@
 -type list_model_explainability_job_definitions_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
+%% }
+-type describe_a_i_recommendation_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_app_image_config_response() :: #{
 %%   <<"AppImageConfigArn">> => string()
 %% }
@@ -1668,6 +1714,17 @@
 -type update_inference_component_output() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation() :: #{
+%%   <<"AIBenchmarkJobArn">> => string(),
+%%   <<"DeploymentConfiguration">> => a_i_recommendation_deployment_configuration(),
+%%   <<"ExpectedPerformance">> => list(a_i_recommendation_performance_metric()),
+%%   <<"ModelDetails">> => a_i_recommendation_model_details(),
+%%   <<"OptimizationDetails">> => list(a_i_recommendation_optimization_detail()),
+%%   <<"RecommendationDescription">> => string()
+%% }
+-type a_i_recommendation() :: #{binary() => any()}.
+
+%% Example:
 %% describe_app_image_config_response() :: #{
 %%   <<"AppImageConfigArn">> => string(),
 %%   <<"AppImageConfigName">> => string(),
@@ -1731,6 +1788,28 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type list_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string(),
+%%   <<"AIRecommendationJobName">> => string(),
+%%   <<"AIRecommendationJobStatus">> => list(any()),
+%%   <<"AIWorkloadConfigIdentifier">> => string(),
+%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
+%%   <<"ModelSource">> => list(),
+%%   <<"OptimizeModel">> => boolean(),
+%%   <<"OutputConfig">> => a_i_recommendation_output_result(),
+%%   <<"PerformanceTarget">> => a_i_recommendation_performance_target(),
+%%   <<"Recommendations">> => list(a_i_recommendation()),
+%%   <<"RoleArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_a_i_recommendation_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% git_config_for_update() :: #{
@@ -1825,6 +1904,13 @@
 %%   <<"Values">> => list(string())
 %% }
 -type categorical_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_recommendation_jobs_response() :: #{
+%%   <<"AIRecommendationJobs">> => list(a_i_recommendation_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_recommendation_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hub_content_response() :: #{
@@ -2174,6 +2260,16 @@
 -type list_partner_apps_response() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_job_summary() :: #{
+%%   <<"AIRecommendationJobArn">> => string(),
+%%   <<"AIRecommendationJobName">> => string(),
+%%   <<"AIRecommendationJobStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer()
+%% }
+-type a_i_recommendation_job_summary() :: #{binary() => any()}.
+
+%% Example:
 %% delete_processing_job_request() :: #{
 %%   <<"ProcessingJobName">> := string()
 %% }
@@ -2398,6 +2494,12 @@
 -type create_auto_ml_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% stop_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
+%% }
+-type stop_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% derived_information() :: #{
 %%   <<"DerivedDataInputConfig">> => string()
 %% }
@@ -2464,6 +2566,19 @@
 %%   <<"StatusEquals">> => list(any())
 %% }
 -type list_model_card_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_benchmark_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_a_i_benchmark_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% model_card_summary() :: #{
@@ -2877,6 +2992,12 @@
 -type scaling_policy_objective() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_workload_s3_data_source() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type a_i_workload_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
 %% model_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"ModelArn">> => string(),
@@ -2990,6 +3111,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_model_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string(),
+%%   <<"AIWorkloadConfigIdentifier">> := string(),
+%%   <<"BenchmarkTarget">> := list(),
+%%   <<"NetworkConfig">> => a_i_benchmark_network_config(),
+%%   <<"OutputConfig">> := a_i_benchmark_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_benchmark_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% inference_recommendations_job() :: #{
@@ -3288,6 +3421,12 @@
 -type create_experiment_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
+%% }
+-type create_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_endpoint_config_input() :: #{
 %%   <<"EndpointConfigName">> := string()
 %% }
@@ -3302,6 +3441,14 @@
 %%   <<"FlowDefinitionStatus">> => list(any())
 %% }
 -type flow_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_instance_detail() :: #{
+%%   <<"CopyCountPerInstance">> => integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type a_i_recommendation_instance_detail() :: #{binary() => any()}.
 
 %% Example:
 %% update_code_repository_input() :: #{
@@ -3413,6 +3560,12 @@
 %%   <<"TrialComponentArn">> => string()
 %% }
 -type create_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string()
+%% }
+-type delete_a_i_workload_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_compute_config() :: #{
@@ -4422,6 +4575,18 @@
 -type list_training_plans_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_a_i_workload_configs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_a_i_workload_configs_request() :: #{binary() => any()}.
+
+%% Example:
 %% model_metrics() :: #{
 %%   <<"Bias">> => bias(),
 %%   <<"Explainability">> => explainability(),
@@ -4436,6 +4601,13 @@
 %%   <<"NotebookInstanceLifecycleConfigs">> => list(notebook_instance_lifecycle_config_summary())
 %% }
 -type list_notebook_instance_lifecycle_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_output_config() :: #{
+%%   <<"ModelPackageGroupIdentifier">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_recommendation_output_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_compilation_job_response() :: #{
@@ -4467,6 +4639,12 @@
 -type stop_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% stop_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
+%% }
+-type stop_a_i_benchmark_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% associate_trial_component_response() :: #{
 %%   <<"TrialArn">> => string(),
 %%   <<"TrialComponentArn">> => string()
@@ -4478,6 +4656,12 @@
 %%   <<"NotebookInstanceName">> := string()
 %% }
 -type delete_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_inference_specification() :: #{
+%%   <<"Framework">> => list(any())
+%% }
+-type a_i_recommendation_inference_specification() :: #{binary() => any()}.
 
 %% Example:
 %% list_labeling_jobs_for_workteam_request() :: #{
@@ -4782,6 +4966,13 @@
 -type delete_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_compute_spec() :: #{
+%%   <<"CapacityReservationConfig">> => a_i_capacity_reservation_config(),
+%%   <<"InstanceTypes">> => list(list(any())())
+%% }
+-type a_i_recommendation_compute_spec() :: #{binary() => any()}.
+
+%% Example:
 %% delete_association_request() :: #{
 %%   <<"DestinationArn">> := string(),
 %%   <<"SourceArn">> := string()
@@ -4837,6 +5028,12 @@
 %%   <<"UserProfileName">> => string()
 %% }
 -type user_profile_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
+%% }
+-type delete_a_i_benchmark_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_quality_job_definition_request() :: #{
@@ -5399,6 +5596,12 @@
 -type output_parameter() :: #{binary() => any()}.
 
 %% Example:
+%% delete_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string()
+%% }
+-type delete_a_i_workload_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_hubs_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -5478,6 +5681,12 @@
 -type compilation_job_summary() :: #{binary() => any()}.
 
 %% Example:
+%% describe_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string()
+%% }
+-type describe_a_i_workload_config_request() :: #{binary() => any()}.
+
+%% Example:
 %% hyper_parameter_training_job_definition() :: #{
 %%   <<"AlgorithmSpecification">> => hyper_parameter_algorithm_specification(),
 %%   <<"CheckpointConfig">> => checkpoint_config(),
@@ -5546,6 +5755,15 @@
 %%   <<"ModelPackageGroupName">> := string()
 %% }
 -type delete_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string(),
+%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
+%%   <<"DatasetConfig">> => list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_workload_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_inference_recommendations_job_response() :: #{
@@ -6670,6 +6888,14 @@
 -type model_package_status_item() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_workload_config_summary() :: #{
+%%   <<"AIWorkloadConfigArn">> => string(),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer()
+%% }
+-type a_i_workload_config_summary() :: #{binary() => any()}.
+
+%% Example:
 %% describe_project_input() :: #{
 %%   <<"ProjectName">> := string()
 %% }
@@ -7074,6 +7300,12 @@
 -type batch_add_cluster_nodes_response() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_constraint() :: #{
+%%   <<"Metric">> => list(any())
+%% }
+-type a_i_recommendation_constraint() :: #{binary() => any()}.
+
+%% Example:
 %% code_repository() :: #{
 %%   <<"RepositoryUrl">> => string()
 %% }
@@ -7144,6 +7376,12 @@
 %%   <<"EndpointConfigName">> => string()
 %% }
 -type endpoint_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_performance_target() :: #{
+%%   <<"Constraints">> => list(a_i_recommendation_constraint())
+%% }
+-type a_i_recommendation_performance_target() :: #{binary() => any()}.
 
 %% Example:
 %% training_job_status_counters() :: #{
@@ -7509,6 +7747,12 @@
 -type monitoring_execution_summary() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_model_source_s3() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type a_i_model_source_s3() :: #{binary() => any()}.
+
+%% Example:
 %% continuous_parameter_range_specification() :: #{
 %%   <<"MaxValue">> => string(),
 %%   <<"MinValue">> => string()
@@ -7631,6 +7875,13 @@
 -type list_compilation_jobs_response() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_capacity_reservation_config() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"MlReservationArns">> => list(string())
+%% }
+-type a_i_capacity_reservation_config() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_experiment_config() :: #{
 %%   <<"ExperimentName">> => string(),
 %%   <<"TrialName">> => string()
@@ -7643,6 +7894,12 @@
 %%   <<"CandidateMetrics">> => list(metric_datum())
 %% }
 -type candidate_properties() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
+%% }
+-type delete_a_i_recommendation_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_algorithm_input() :: #{
@@ -7684,6 +7941,13 @@
 %%   <<"MaxParallelOfTests">> => integer()
 %% }
 -type recommendation_job_resource_limit() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_deployment_s3_channel() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type a_i_recommendation_deployment_s3_channel() :: #{binary() => any()}.
 
 %% Example:
 %% selective_execution_config() :: #{
@@ -7943,6 +8207,12 @@
 -type cluster_spot_options() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_benchmark_inference_component() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type a_i_benchmark_inference_component() :: #{binary() => any()}.
+
+%% Example:
 %% partner_app_config() :: #{
 %%   <<"AdminUsers">> => list(string()),
 %%   <<"Arguments">> => map(),
@@ -7979,6 +8249,12 @@
 -type optimization_output() :: #{binary() => any()}.
 
 %% Example:
+%% create_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
+%% }
+-type create_a_i_recommendation_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% profiler_rule_evaluation_status() :: #{
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"RuleConfigurationName">> => string(),
@@ -7987,6 +8263,13 @@
 %%   <<"StatusDetails">> => string()
 %% }
 -type profiler_rule_evaluation_status() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_optimization_detail() :: #{
+%%   <<"OptimizationConfig">> => map(),
+%%   <<"OptimizationType">> => list(any())
+%% }
+-type a_i_recommendation_optimization_detail() :: #{binary() => any()}.
 
 %% Example:
 %% update_space_response() :: #{
@@ -8032,6 +8315,12 @@
 %%   <<"Values">> => list(string())
 %% }
 -type categorical_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_workload_configs() :: #{
+%%   <<"WorkloadSpec">> => list()
+%% }
+-type a_i_workload_configs() :: #{binary() => any()}.
 
 %% Example:
 %% render_ui_template_request() :: #{
@@ -8097,6 +8386,21 @@
 %%   <<"UserProfileName">> := string()
 %% }
 -type create_presigned_domain_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string(),
+%%   <<"AIWorkloadConfigIdentifier">> := string(),
+%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
+%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
+%%   <<"ModelSource">> := list(),
+%%   <<"OptimizeModel">> => boolean(),
+%%   <<"OutputConfig">> := a_i_recommendation_output_config(),
+%%   <<"PerformanceTarget">> := a_i_recommendation_performance_target(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_recommendation_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% model_configuration() :: #{
@@ -8328,6 +8632,19 @@
 %%   <<"EnableInfraCheck">> => boolean()
 %% }
 -type infra_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_recommendation_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_a_i_recommendation_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% async_inference_client_config() :: #{
@@ -8720,6 +9037,13 @@
 -type list_workforces_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_a_i_benchmark_jobs_response() :: #{
+%%   <<"AIBenchmarkJobs">> => list(a_i_benchmark_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_benchmark_jobs_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_inference_experiment_response() :: #{
 %%   <<"InferenceExperimentArn">> => string()
 %% }
@@ -8992,6 +9316,13 @@
 -type additional_inference_specification_definition() :: #{binary() => any()}.
 
 %% Example:
+%% list_a_i_workload_configs_response() :: #{
+%%   <<"AIWorkloadConfigs">> => list(a_i_workload_config_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_workload_configs_response() :: #{binary() => any()}.
+
+%% Example:
 %% parallelism_configuration() :: #{
 %%   <<"MaxParallelExecutionSteps">> => integer()
 %% }
@@ -9186,6 +9517,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
+%% }
+-type delete_a_i_recommendation_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_card_export_job_request() :: #{
@@ -9433,6 +9770,24 @@
 -type objective_status_counters() :: #{binary() => any()}.
 
 %% Example:
+%% describe_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string(),
+%%   <<"AIBenchmarkJobName">> => string(),
+%%   <<"AIBenchmarkJobStatus">> => list(any()),
+%%   <<"AIWorkloadConfigIdentifier">> => string(),
+%%   <<"BenchmarkTarget">> => list(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"NetworkConfig">> => a_i_benchmark_network_config(),
+%%   <<"OutputConfig">> => a_i_benchmark_output_result(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% cfn_update_template_provider() :: #{
 %%   <<"Parameters">> => list(cfn_stack_update_parameter()),
 %%   <<"TemplateName">> => string(),
@@ -9578,6 +9933,13 @@
 %%   <<"Unlabeled">> => integer()
 %% }
 -type label_counters() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_output_result() :: #{
+%%   <<"CloudWatchLogs">> => list(a_i_cloud_watch_logs()),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_benchmark_output_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_session_response() :: #{
@@ -10104,6 +10466,12 @@
 %%   <<"UserSettings">> => user_settings()
 %% }
 -type create_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
+%% }
+-type stop_a_i_recommendation_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% processing_input() :: #{
@@ -10689,6 +11057,12 @@
 -type compute_quota_summary() :: #{binary() => any()}.
 
 %% Example:
+%% create_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string()
+%% }
+-type create_a_i_workload_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_mlflow_tracking_server_request() :: #{
 %%   <<"ArtifactStoreUri">> := string(),
 %%   <<"AutomaticModelRegistration">> => boolean(),
@@ -10795,6 +11169,17 @@
 %%   <<"Os">> => list(any())
 %% }
 -type target_platform() :: #{binary() => any()}.
+
+%% Example:
+%% describe_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string(),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetConfig">> => list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_a_i_workload_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_channel() :: #{
@@ -11206,6 +11591,13 @@
 -type update_pipeline_version_response() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_output_result() :: #{
+%%   <<"ModelPackageGroupIdentifier">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_recommendation_output_result() :: #{binary() => any()}.
+
+%% Example:
 %% update_workforce_response() :: #{
 %%   <<"Workforce">> => workforce()
 %% }
@@ -11332,6 +11724,12 @@
 %%   <<"SecurityConfig">> => auto_ml_security_config()
 %% }
 -type auto_ml_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_workload_data_source() :: #{
+%%   <<"S3DataSource">> => a_i_workload_s3_data_source()
+%% }
+-type a_i_workload_data_source() :: #{binary() => any()}.
 
 %% Example:
 %% e_f_s_file_system() :: #{
@@ -11475,6 +11873,14 @@
 %%   <<"S3OutputPath">> => string()
 %% }
 -type debug_hook_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_endpoint() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"InferenceComponents">> => list(a_i_benchmark_inference_component()),
+%%   <<"TargetContainerHostname">> => string()
+%% }
+-type a_i_benchmark_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint_performance() :: #{
@@ -11925,6 +12331,12 @@
 -type delete_model_quality_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_benchmark_output_config() :: #{
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_benchmark_output_config() :: #{binary() => any()}.
+
+%% Example:
 %% bedrock_provisioned_model_throughput_metadata() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -12349,6 +12761,23 @@
 -type describe_compute_quota_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
+%% }
+-type describe_a_i_benchmark_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_job_summary() :: #{
+%%   <<"AIBenchmarkJobArn">> => string(),
+%%   <<"AIBenchmarkJobName">> => string(),
+%%   <<"AIBenchmarkJobStatus">> => list(any()),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer()
+%% }
+-type a_i_benchmark_job_summary() :: #{binary() => any()}.
+
+%% Example:
 %% transform_input() :: #{
 %%   <<"CompressionType">> => list(any()),
 %%   <<"ContentType">> => string(),
@@ -12512,6 +12941,14 @@
 -type list_model_cards_response() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_model_details() :: #{
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"InstanceDetails">> => list(a_i_recommendation_instance_detail()),
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type a_i_recommendation_model_details() :: #{binary() => any()}.
+
+%% Example:
 %% update_context_response() :: #{
 %%   <<"ContextArn">> => string()
 %% }
@@ -12542,6 +12979,13 @@
 %%   <<"SnsTopicArn">> => string()
 %% }
 -type labeling_job_sns_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_workload_input_data_config() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"DataSource">> => a_i_workload_data_source()
+%% }
+-type a_i_workload_input_data_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_transform_jobs_response() :: #{
@@ -12590,7 +13034,14 @@
 -type edge() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_benchmark_network_config() :: #{
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type a_i_benchmark_network_config() :: #{binary() => any()}.
+
+%% Example:
 %% model_package_container_definition() :: #{
+%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
 %%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
 %%   <<"BaseModel">> => base_model(),
 %%   <<"ContainerHostname">> => string(),
@@ -13148,6 +13599,17 @@
 -type describe_model_package_output() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_recommendation_deployment_configuration() :: #{
+%%   <<"CopyCountPerInstance">> => integer(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"ImageUri">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"S3">> => list(a_i_recommendation_deployment_s3_channel())
+%% }
+-type a_i_recommendation_deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% mlflow_configuration() :: #{
 %%   <<"MlflowExperimentName">> => string(),
 %%   <<"MlflowResourceArn">> => string()
@@ -13181,6 +13643,15 @@
 %%   <<"S3KmsKeyId">> => string()
 %% }
 -type workspace_settings() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_performance_metric() :: #{
+%%   <<"Metric">> => string(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type a_i_recommendation_performance_metric() :: #{binary() => any()}.
 
 %% Example:
 %% space_code_editor_app_settings() :: #{
@@ -13509,6 +13980,13 @@
 %%   <<"Tier">> => string()
 %% }
 -type update_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_cloud_watch_logs() :: #{
+%%   <<"LogGroupArn">> => string(),
+%%   <<"LogStreamName">> => string()
+%% }
+-type a_i_cloud_watch_logs() :: #{binary() => any()}.
 
 %% Example:
 %% list_subscribed_workteams_response() :: #{
@@ -13985,6 +14463,20 @@
 -type batch_replace_cluster_nodes_errors() ::
     resource_not_found().
 
+-type create_a_i_benchmark_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_a_i_recommendation_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_a_i_workload_config_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
 -type create_action_errors() ::
     resource_limit_exceeded().
 
@@ -14221,6 +14713,16 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type delete_a_i_benchmark_job_errors() ::
+    resource_not_found().
+
+-type delete_a_i_recommendation_job_errors() ::
+    resource_not_found().
+
+-type delete_a_i_workload_config_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
 -type delete_action_errors() ::
     resource_not_found().
 
@@ -14378,6 +14880,15 @@
 
 -type delete_workteam_errors() ::
     resource_limit_exceeded().
+
+-type describe_a_i_benchmark_job_errors() ::
+    resource_not_found().
+
+-type describe_a_i_recommendation_job_errors() ::
+    resource_not_found().
+
+-type describe_a_i_workload_config_errors() ::
+    resource_not_found().
 
 -type describe_action_errors() ::
     resource_not_found().
@@ -14700,6 +15211,12 @@
 
 -type start_session_errors() ::
     resource_limit_exceeded() | 
+    resource_not_found().
+
+-type stop_a_i_benchmark_job_errors() ::
+    resource_not_found().
+
+-type stop_a_i_recommendation_job_errors() ::
     resource_not_found().
 
 -type stop_auto_ml_job_errors() ::
@@ -15186,6 +15703,69 @@ batch_replace_cluster_nodes(Client, Input)
 batch_replace_cluster_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchReplaceClusterNodes">>, Input, Options).
+
+%% @doc Creates a benchmark job that runs performance benchmarks against
+%% inference infrastructure using a predefined AI workload configuration.
+%%
+%% The benchmark job measures metrics such as latency, throughput, and cost
+%% for your generative AI inference endpoints.
+-spec create_a_i_benchmark_job(aws_client:aws_client(), create_a_i_benchmark_job_request()) ->
+    {ok, create_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_benchmark_job_errors(), tuple()}.
+create_a_i_benchmark_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_a_i_benchmark_job(Client, Input, []).
+
+-spec create_a_i_benchmark_job(aws_client:aws_client(), create_a_i_benchmark_job_request(), proplists:proplist()) ->
+    {ok, create_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_benchmark_job_errors(), tuple()}.
+create_a_i_benchmark_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAIBenchmarkJob">>, Input, Options).
+
+%% @doc Creates a recommendation job that generates intelligent optimization
+%% recommendations for generative AI inference deployments.
+%%
+%% The job analyzes your model, workload configuration, and performance
+%% targets to recommend optimal instance types, model optimization techniques
+%% (such as quantization and speculative decoding), and deployment
+%% configurations.
+-spec create_a_i_recommendation_job(aws_client:aws_client(), create_a_i_recommendation_job_request()) ->
+    {ok, create_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_recommendation_job_errors(), tuple()}.
+create_a_i_recommendation_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_a_i_recommendation_job(Client, Input, []).
+
+-spec create_a_i_recommendation_job(aws_client:aws_client(), create_a_i_recommendation_job_request(), proplists:proplist()) ->
+    {ok, create_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_recommendation_job_errors(), tuple()}.
+create_a_i_recommendation_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAIRecommendationJob">>, Input, Options).
+
+%% @doc Creates a reusable AI workload configuration that defines datasets,
+%% data sources, and benchmark tool settings for consistent performance
+%% testing of generative AI inference deployments on Amazon SageMaker AI.
+-spec create_a_i_workload_config(aws_client:aws_client(), create_a_i_workload_config_request()) ->
+    {ok, create_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_workload_config_errors(), tuple()}.
+create_a_i_workload_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_a_i_workload_config(Client, Input, []).
+
+-spec create_a_i_workload_config(aws_client:aws_client(), create_a_i_workload_config_request(), proplists:proplist()) ->
+    {ok, create_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_workload_config_errors(), tuple()}.
+create_a_i_workload_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAIWorkloadConfig">>, Input, Options).
 
 %% @doc Creates an action.
 %%
@@ -17276,6 +17856,60 @@ create_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkteam">>, Input, Options).
 
+%% @doc Deletes the specified AI benchmark job.
+-spec delete_a_i_benchmark_job(aws_client:aws_client(), delete_a_i_benchmark_job_request()) ->
+    {ok, delete_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_benchmark_job_errors(), tuple()}.
+delete_a_i_benchmark_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_a_i_benchmark_job(Client, Input, []).
+
+-spec delete_a_i_benchmark_job(aws_client:aws_client(), delete_a_i_benchmark_job_request(), proplists:proplist()) ->
+    {ok, delete_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_benchmark_job_errors(), tuple()}.
+delete_a_i_benchmark_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAIBenchmarkJob">>, Input, Options).
+
+%% @doc Deletes the specified AI recommendation job.
+-spec delete_a_i_recommendation_job(aws_client:aws_client(), delete_a_i_recommendation_job_request()) ->
+    {ok, delete_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_recommendation_job_errors(), tuple()}.
+delete_a_i_recommendation_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_a_i_recommendation_job(Client, Input, []).
+
+-spec delete_a_i_recommendation_job(aws_client:aws_client(), delete_a_i_recommendation_job_request(), proplists:proplist()) ->
+    {ok, delete_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_recommendation_job_errors(), tuple()}.
+delete_a_i_recommendation_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAIRecommendationJob">>, Input, Options).
+
+%% @doc Deletes the specified AI workload configuration.
+%%
+%% You cannot delete a configuration that is referenced by an active
+%% benchmark job.
+-spec delete_a_i_workload_config(aws_client:aws_client(), delete_a_i_workload_config_request()) ->
+    {ok, delete_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_workload_config_errors(), tuple()}.
+delete_a_i_workload_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_a_i_workload_config(Client, Input, []).
+
+-spec delete_a_i_workload_config(aws_client:aws_client(), delete_a_i_workload_config_request(), proplists:proplist()) ->
+    {ok, delete_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_workload_config_errors(), tuple()}.
+delete_a_i_workload_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAIWorkloadConfig">>, Input, Options).
+
 %% @doc Deletes an action.
 -spec delete_action(aws_client:aws_client(), delete_action_request()) ->
     {ok, delete_action_response(), tuple()} |
@@ -18423,6 +19057,61 @@ deregister_devices(Client, Input)
 deregister_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDevices">>, Input, Options).
+
+%% @doc Returns details of an AI benchmark job, including its status,
+%% configuration, target endpoint, and timing information.
+-spec describe_a_i_benchmark_job(aws_client:aws_client(), describe_a_i_benchmark_job_request()) ->
+    {ok, describe_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_benchmark_job_errors(), tuple()}.
+describe_a_i_benchmark_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_a_i_benchmark_job(Client, Input, []).
+
+-spec describe_a_i_benchmark_job(aws_client:aws_client(), describe_a_i_benchmark_job_request(), proplists:proplist()) ->
+    {ok, describe_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_benchmark_job_errors(), tuple()}.
+describe_a_i_benchmark_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAIBenchmarkJob">>, Input, Options).
+
+%% @doc Returns details of an AI recommendation job, including its status,
+%% model source, performance targets, optimization recommendations, and
+%% deployment configurations.
+-spec describe_a_i_recommendation_job(aws_client:aws_client(), describe_a_i_recommendation_job_request()) ->
+    {ok, describe_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_recommendation_job_errors(), tuple()}.
+describe_a_i_recommendation_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_a_i_recommendation_job(Client, Input, []).
+
+-spec describe_a_i_recommendation_job(aws_client:aws_client(), describe_a_i_recommendation_job_request(), proplists:proplist()) ->
+    {ok, describe_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_recommendation_job_errors(), tuple()}.
+describe_a_i_recommendation_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAIRecommendationJob">>, Input, Options).
+
+%% @doc Returns details of an AI workload configuration, including the
+%% dataset configuration, benchmark tool settings, tags, and creation time.
+-spec describe_a_i_workload_config(aws_client:aws_client(), describe_a_i_workload_config_request()) ->
+    {ok, describe_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_workload_config_errors(), tuple()}.
+describe_a_i_workload_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_a_i_workload_config(Client, Input, []).
+
+-spec describe_a_i_workload_config(aws_client:aws_client(), describe_a_i_workload_config_request(), proplists:proplist()) ->
+    {ok, describe_a_i_workload_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_a_i_workload_config_errors(), tuple()}.
+describe_a_i_workload_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAIWorkloadConfig">>, Input, Options).
 
 %% @doc Describes an action.
 -spec describe_action(aws_client:aws_client(), describe_action_request()) ->
@@ -19929,6 +20618,60 @@ import_hub_content(Client, Input)
 import_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportHubContent">>, Input, Options).
+
+%% @doc Returns a list of AI benchmark jobs in your account.
+%%
+%% You can filter the results by name, status, and creation time, and sort
+%% the results. The response is paginated.
+-spec list_a_i_benchmark_jobs(aws_client:aws_client(), list_a_i_benchmark_jobs_request()) ->
+    {ok, list_a_i_benchmark_jobs_response(), tuple()} |
+    {error, any()}.
+list_a_i_benchmark_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_a_i_benchmark_jobs(Client, Input, []).
+
+-spec list_a_i_benchmark_jobs(aws_client:aws_client(), list_a_i_benchmark_jobs_request(), proplists:proplist()) ->
+    {ok, list_a_i_benchmark_jobs_response(), tuple()} |
+    {error, any()}.
+list_a_i_benchmark_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAIBenchmarkJobs">>, Input, Options).
+
+%% @doc Returns a list of AI recommendation jobs in your account.
+%%
+%% You can filter the results by name, status, and creation time, and sort
+%% the results. The response is paginated.
+-spec list_a_i_recommendation_jobs(aws_client:aws_client(), list_a_i_recommendation_jobs_request()) ->
+    {ok, list_a_i_recommendation_jobs_response(), tuple()} |
+    {error, any()}.
+list_a_i_recommendation_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_a_i_recommendation_jobs(Client, Input, []).
+
+-spec list_a_i_recommendation_jobs(aws_client:aws_client(), list_a_i_recommendation_jobs_request(), proplists:proplist()) ->
+    {ok, list_a_i_recommendation_jobs_response(), tuple()} |
+    {error, any()}.
+list_a_i_recommendation_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAIRecommendationJobs">>, Input, Options).
+
+%% @doc Returns a list of AI workload configurations in your account.
+%%
+%% You can filter the results by name and creation time, and sort the
+%% results. The response is paginated.
+-spec list_a_i_workload_configs(aws_client:aws_client(), list_a_i_workload_configs_request()) ->
+    {ok, list_a_i_workload_configs_response(), tuple()} |
+    {error, any()}.
+list_a_i_workload_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_a_i_workload_configs(Client, Input, []).
+
+-spec list_a_i_workload_configs(aws_client:aws_client(), list_a_i_workload_configs_request(), proplists:proplist()) ->
+    {ok, list_a_i_workload_configs_response(), tuple()} |
+    {error, any()}.
+list_a_i_workload_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAIWorkloadConfigs">>, Input, Options).
 
 %% @doc Lists the actions in your account and their properties.
 -spec list_actions(aws_client:aws_client(), list_actions_request()) ->
@@ -21700,6 +22443,40 @@ start_session(Client, Input)
 start_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSession">>, Input, Options).
+
+%% @doc Stops a running AI benchmark job.
+-spec stop_a_i_benchmark_job(aws_client:aws_client(), stop_a_i_benchmark_job_request()) ->
+    {ok, stop_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_a_i_benchmark_job_errors(), tuple()}.
+stop_a_i_benchmark_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_a_i_benchmark_job(Client, Input, []).
+
+-spec stop_a_i_benchmark_job(aws_client:aws_client(), stop_a_i_benchmark_job_request(), proplists:proplist()) ->
+    {ok, stop_a_i_benchmark_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_a_i_benchmark_job_errors(), tuple()}.
+stop_a_i_benchmark_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAIBenchmarkJob">>, Input, Options).
+
+%% @doc Stops a running AI recommendation job.
+-spec stop_a_i_recommendation_job(aws_client:aws_client(), stop_a_i_recommendation_job_request()) ->
+    {ok, stop_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_a_i_recommendation_job_errors(), tuple()}.
+stop_a_i_recommendation_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_a_i_recommendation_job(Client, Input, []).
+
+-spec stop_a_i_recommendation_job(aws_client:aws_client(), stop_a_i_recommendation_job_request(), proplists:proplist()) ->
+    {ok, stop_a_i_recommendation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_a_i_recommendation_job_errors(), tuple()}.
+stop_a_i_recommendation_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAIRecommendationJob">>, Input, Options).
 
 %% @doc A method for forcing a running job to shut down.
 -spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request()) ->
