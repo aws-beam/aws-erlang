@@ -1,39 +1,32 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Introduction
+%% @doc Introduction
 %%
 %% The Amazon Interactive Video Service (IVS) API is REST compatible, using a
-%% standard HTTP
-%% API and an Amazon Web Services EventBridge event stream for responses.
+%% standard HTTP API and an Amazon Web Services EventBridge event stream for
+%% responses.
 %%
-%% JSON is used for both
-%% requests and responses, including errors.
+%% JSON is used for both requests and responses, including errors.
 %%
 %% The API is an Amazon Web Services regional service. For a list of
-%% supported regions and
-%% Amazon IVS HTTPS service endpoints, see the Amazon IVS page:
-%% https://docs.aws.amazon.com/general/latest/gr/ivs.html in the
+%% supported regions and Amazon IVS HTTPS service endpoints, see the Amazon
+%% IVS page: https://docs.aws.amazon.com/general/latest/gr/ivs.html in the
 %% Amazon Web Services General Reference.
 %%
 %% All API request parameters and URLs are case sensitive.
 %%
 %% For a summary of notable documentation changes in each release, see
-%% Document
-%% History:
+%% Document History:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/doc-history.html.
 %%
 %% Allowed Header Values
 %%
-%% ```
-%% Accept: ''' application/json
+%% ` Accept: ' application/json
 %%
-%% ```
-%% Accept-Encoding: ''' gzip, deflate
+%% ` Accept-Encoding: ' gzip, deflate
 %%
-%% ```
-%% Content-Type: '''application/json
+%% ` Content-Type: 'application/json
 %%
 %% Key Concepts
 %%
@@ -42,9 +35,8 @@
 %% stream.
 %%
 %% Stream key — An identifier assigned by Amazon IVS when you create a
-%% channel, which is then used to authorize streaming.
-%% Treat the stream key like a secret, since it allows anyone to stream to
-%% the channel.
+%% channel, which is then used to authorize streaming. Treat the stream key
+%% like a secret, since it allows anyone to stream to the channel.
 %%
 %% Playback key pair — Video playback may be restricted using
 %% playback-authorization tokens, which use public-key encryption. A playback
@@ -65,29 +57,25 @@
 %% Tagging
 %%
 %% A tag is a metadata label that you assign to an Amazon Web Services
-%% resource. A tag comprises a key and a value, both
-%% set by you. For example, you might set a tag as `topic:nature' to
-%% label a
-%% particular video category. See Best practices and strategies:
+%% resource. A tag comprises a key and a value, both set by you. For example,
+%% you might set a tag as `topic:nature' to label a particular video
+%% category. See Best practices and strategies:
 %% https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html
 %% in Tagging Amazon Web Services Resources and Tag Editor for details,
 %% including restrictions that apply to tags and &quot;Tag naming limits and
 %% requirements&quot;; Amazon IVS has no service-specific constraints beyond
-%% what is documented
-%% there.
+%% what is documented there.
 %%
 %% Tags can help you identify and organize your Amazon Web Services
-%% resources. For example,
-%% you can use the same tag for different resources to indicate that they are
-%% related. You can
-%% also use tags to manage access (see Access Tags:
+%% resources. For example, you can use the same tag for different resources
+%% to indicate that they are related. You can also use tags to manage access
+%% (see Access Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS API has these tag-related operations: `TagResource',
 %% `UntagResource', and `ListTagsForResource'. The following
 %% resources support tagging: Channels, Stream Keys, Playback Key Pairs, and
-%% Recording
-%% Configurations.
+%% Recording Configurations.
 %%
 %% At most 50 tags can be applied to a resource.
 %%
@@ -95,12 +83,12 @@
 %%
 %% Note the differences between these concepts:
 %%
-%% Authentication is about verifying identity. You need to be
-%% authenticated to sign Amazon IVS API requests.
+%% Authentication is about verifying identity. You need to be authenticated
+%% to sign Amazon IVS API requests.
 %%
 %% Authorization is about granting permissions. Your IAM roles need to have
-%% permissions for Amazon IVS API requests. In addition,
-%% authorization is needed to view Amazon IVS private channels:
+%% permissions for Amazon IVS API requests. In addition, authorization is
+%% needed to view Amazon IVS private channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
 %% (Private channels are channels that are enabled for &quot;playback
 %% authorization.&quot;)
@@ -108,39 +96,32 @@
 %% Authentication
 %%
 %% All Amazon IVS API requests must be authenticated with a signature. The
-%% Amazon Web Services
-%% Command-Line Interface (CLI) and Amazon IVS Player SDKs take care of
-%% signing the underlying
-%% API calls for you. However, if your application calls the Amazon IVS API
-%% directly, it’s your
+%% Amazon Web Services Command-Line Interface (CLI) and Amazon IVS Player
+%% SDKs take care of signing the underlying API calls for you. However, if
+%% your application calls the Amazon IVS API directly, it’s your
 %% responsibility to sign the requests.
 %%
 %% You generate a signature using valid Amazon Web Services credentials that
-%% have permission
-%% to perform the requested action. For example, you must sign PutMetadata
-%% requests with a
-%% signature generated from a user account that has the `ivs:PutMetadata'
-%% permission.
+%% have permission to perform the requested action. For example, you must
+%% sign PutMetadata requests with a signature generated from a user account
+%% that has the `ivs:PutMetadata' permission.
 %%
 %% For more information:
 %%
 %% Authentication and generating signatures — See Authenticating Requests
 %% (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
-%% in the Amazon Web Services
-%% General Reference.
+%% in the Amazon Web Services General Reference.
 %%
 %% Managing Amazon IVS permissions — See Identity and Access Management:
-%% https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html on
-%% the Security page of the Amazon IVS User Guide.
+%% https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html on the
+%% Security page of the Amazon IVS User Guide.
 %%
 %% Amazon Resource Names (ARNs)
 %%
 %% ARNs uniquely identify AWS resources. An ARN is required when you need to
-%% specify a
-%% resource unambiguously across all of AWS, such as in IAM policies and API
-%% calls. For more information, see Amazon
-%% Resource Names:
+%% specify a resource unambiguously across all of AWS, such as in IAM
+%% policies and API calls. For more information, see Amazon Resource Names:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the AWS General Reference.
 -module(aws_ivs).
@@ -151,6 +132,8 @@
          batch_get_stream_key/3,
          batch_start_viewer_session_revocation/2,
          batch_start_viewer_session_revocation/3,
+         create_ad_configuration/2,
+         create_ad_configuration/3,
          create_channel/2,
          create_channel/3,
          create_playback_restriction_policy/2,
@@ -159,6 +142,8 @@
          create_recording_configuration/3,
          create_stream_key/2,
          create_stream_key/3,
+         delete_ad_configuration/2,
+         delete_ad_configuration/3,
          delete_channel/2,
          delete_channel/3,
          delete_playback_key_pair/2,
@@ -169,6 +154,8 @@
          delete_recording_configuration/3,
          delete_stream_key/2,
          delete_stream_key/3,
+         get_ad_configuration/2,
+         get_ad_configuration/3,
          get_channel/2,
          get_channel/3,
          get_playback_key_pair/2,
@@ -185,6 +172,10 @@
          get_stream_session/3,
          import_playback_key_pair/2,
          import_playback_key_pair/3,
+         insert_ad_break/2,
+         insert_ad_break/3,
+         list_ad_configurations/2,
+         list_ad_configurations/3,
          list_channels/2,
          list_channels/3,
          list_playback_key_pairs/2,
@@ -279,6 +270,14 @@
 
 
 %% Example:
+%% list_ad_configurations_response() :: #{
+%%   <<"adConfigurations">> => list(ad_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ad_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% recording_configuration() :: #{
 %%   <<"arn">> => string(),
 %%   <<"destinationConfiguration">> => destination_configuration(),
@@ -347,11 +346,31 @@
 
 
 %% Example:
+%% ad_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type ad_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_stream_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"streamSessions">> := list(stream_session_summary())
 %% }
 -type list_stream_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type ad_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,6 +394,13 @@
 %%   <<"arn">> := string()
 %% }
 -type get_playback_restriction_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type create_ad_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -405,8 +431,15 @@
 
 %% Example:
 %% batch_get_channel_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
 %%   <<"channels">> => list(channel()),
-%%   <<"errors">> => list(batch_error())
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"errors">> => list(batch_error()),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type batch_get_channel_response() :: #{binary() => any()}.
 
@@ -423,6 +456,14 @@
 %%   <<"keyPair">> => playback_key_pair()
 %% }
 -type import_playback_key_pair_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ad_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ad_configurations_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_playback_key_pair_response() :: #{}
@@ -499,6 +540,13 @@
 
 
 %% Example:
+%% get_ad_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_ad_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% playback_key_pair() :: #{
 %%   <<"arn">> => string(),
 %%   <<"fingerprint">> => string(),
@@ -529,6 +577,7 @@
 
 %% Example:
 %% channel_summary() :: #{
+%%   <<"adConfigurationArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"insecureIngest">> => boolean(),
@@ -551,15 +600,38 @@
 
 
 %% Example:
+%% get_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type get_ad_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
 %% resource_not_found_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
@@ -589,7 +661,15 @@
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
@@ -638,6 +718,7 @@
 
 %% Example:
 %% create_channel_request() :: #{
+%%   <<"adConfigurationArn">> => string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
 %%   <<"insecureIngest">> => boolean(),
@@ -679,7 +760,15 @@
 
 
 %% Example:
+%% media_tailor_playback_configuration() :: #{
+%%   <<"playbackConfigurationArn">> => string()
+%% }
+-type media_tailor_playback_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_channel_request() :: #{
+%%   <<"adConfigurationArn">> => string(),
 %%   <<"arn">> := string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
@@ -701,7 +790,15 @@
 
 %% Example:
 %% stream_unavailable() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type stream_unavailable() :: #{binary() => any()}.
 
@@ -722,7 +819,15 @@
 
 %% Example:
 %% internal_server_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
@@ -760,7 +865,15 @@
 
 %% Example:
 %% access_denied_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
@@ -825,7 +938,15 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -859,7 +980,15 @@
 
 %% Example:
 %% throttling_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
@@ -874,6 +1003,7 @@
 
 %% Example:
 %% channel() :: #{
+%%   <<"adConfigurationArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
@@ -906,10 +1036,31 @@
 
 
 %% Example:
+%% insert_ad_break_response() :: #{
+%%   <<"adBreakId">> => string()
+%% }
+-type insert_ad_break_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_start_viewer_session_revocation_response() :: #{
-%%   <<"errors">> => list(batch_start_viewer_session_revocation_error())
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"errors">> => list(batch_start_viewer_session_revocation_error()),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type batch_start_viewer_session_revocation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_ad_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_ad_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -966,6 +1117,21 @@
 
 
 %% Example:
+%% service_unavailable() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type service_unavailable() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_channel_response() :: #{
 %%   <<"channel">> => channel()
 %% }
@@ -1012,6 +1178,7 @@
 
 %% Example:
 %% list_channels_request() :: #{
+%%   <<"filterByAdConfigurationArn">> => string(),
 %%   <<"filterByName">> => string(),
 %%   <<"filterByPlaybackRestrictionPolicyArn">> => string(),
 %%   <<"filterByRecordingConfigurationArn">> => string(),
@@ -1038,6 +1205,14 @@
 
 
 %% Example:
+%% insert_ad_break_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"durationSeconds">> := integer()
+%% }
+-type insert_ad_break_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% stream_key_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"channelArn">> => string(),
@@ -1052,6 +1227,14 @@
 %%   <<"passphrase">> => string()
 %% }
 -type srt() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ad_configuration_request() :: #{
+%%   <<"mediaTailorPlaybackConfigurations">> := list(media_tailor_playback_configuration()),
+%%   <<"name">> => string()
+%% }
+-type create_ad_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1075,7 +1258,15 @@
 
 %% Example:
 %% pending_verification() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type pending_verification() :: #{binary() => any()}.
 
@@ -1089,23 +1280,58 @@
 
 %% Example:
 %% batch_get_stream_key_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
 %%   <<"errors">> => list(batch_error()),
-%%   <<"streamKeys">> => list(stream_key())
+%%   <<"streamKeys">> => list(stream_key()),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type batch_get_stream_key_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% channel_not_broadcasting() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type channel_not_broadcasting() :: #{binary() => any()}.
+
+-type batch_get_channel_errors() ::
+    service_unavailable() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type batch_get_stream_key_errors() ::
+    service_unavailable() | 
+    validation_exception() | 
+    access_denied_exception().
 
 -type batch_start_viewer_session_revocation_errors() ::
     pending_verification() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
+
+-type create_ad_configuration_errors() ::
+    pending_verification() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_channel_errors() ::
     pending_verification() | 
@@ -1135,6 +1361,13 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
+
+-type delete_ad_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_channel_errors() ::
     pending_verification() | 
@@ -1167,6 +1400,12 @@
     pending_verification() | 
     validation_exception() | 
     access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_ad_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type get_channel_errors() ::
@@ -1213,6 +1452,20 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
+
+-type insert_ad_break_errors() ::
+    channel_not_broadcasting() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_ad_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_channels_errors() ::
     validation_exception() | 
@@ -1306,13 +1559,15 @@
 %% @doc Performs `GetChannel' on multiple ARNs simultaneously.
 -spec batch_get_channel(aws_client:aws_client(), batch_get_channel_request()) ->
     {ok, batch_get_channel_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, batch_get_channel_errors(), tuple()}.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
 
 -spec batch_get_channel(aws_client:aws_client(), batch_get_channel_request(), proplists:proplist()) ->
     {ok, batch_get_channel_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, batch_get_channel_errors(), tuple()}.
 batch_get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetChannel"],
@@ -1333,18 +1588,42 @@ batch_get_channel(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Performs `GetStreamKey' on multiple ARNs simultaneously.
 -spec batch_get_stream_key(aws_client:aws_client(), batch_get_stream_key_request()) ->
     {ok, batch_get_stream_key_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, batch_get_stream_key_errors(), tuple()}.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
 
 -spec batch_get_stream_key(aws_client:aws_client(), batch_get_stream_key_request(), proplists:proplist()) ->
     {ok, batch_get_stream_key_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, batch_get_stream_key_errors(), tuple()}.
 batch_get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetStreamKey"],
@@ -1365,11 +1644,32 @@ batch_get_stream_key(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Performs `StartViewerSessionRevocation' on multiple channel ARN
-%% and viewer
-%% ID pairs simultaneously.
+%% and viewer ID pairs simultaneously.
 -spec batch_start_viewer_session_revocation(aws_client:aws_client(), batch_start_viewer_session_revocation_request()) ->
     {ok, batch_start_viewer_session_revocation_response(), tuple()} |
     {error, any()} |
@@ -1384,6 +1684,63 @@ batch_start_viewer_session_revocation(Client, Input) ->
 batch_start_viewer_session_revocation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchStartViewerSessionRevocation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a new ad configuration to be used for server-side ad
+%% insertion.
+-spec create_ad_configuration(aws_client:aws_client(), create_ad_configuration_request()) ->
+    {ok, create_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_ad_configuration_errors(), tuple()}.
+create_ad_configuration(Client, Input) ->
+    create_ad_configuration(Client, Input, []).
+
+-spec create_ad_configuration(aws_client:aws_client(), create_ad_configuration_request(), proplists:proplist()) ->
+    {ok, create_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_ad_configuration_errors(), tuple()}.
+create_ad_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateAdConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1439,8 +1796,7 @@ create_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new playback restriction policy, for constraining playback
-%% by countries and/or
-%% origins.
+%% by countries and/or origins.
 -spec create_playback_restriction_policy(aws_client:aws_client(), create_playback_restriction_policy_request()) ->
     {ok, create_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
@@ -1477,21 +1833,17 @@ create_playback_restriction_policy(Client, Input0, Options0) ->
 %% @doc Creates a new recording configuration, used to enable recording to
 %% Amazon S3.
 %%
-%% Known issue: In the us-east-1 region, if you use the
-%% Amazon Web Services CLI to create a recording configuration, it returns
-%% success even if the
-%% S3 bucket is in a different region. In this case, the `state' of the
-%% recording
-%% configuration is `CREATE_FAILED' (instead of `ACTIVE'). (In other
-%% regions, the CLI correctly returns failure if the bucket is in a different
-%% region.)
+%% Known issue: In the us-east-1 region, if you use the Amazon Web Services
+%% CLI to create a recording configuration, it returns success even if the S3
+%% bucket is in a different region. In this case, the `state' of the
+%% recording configuration is `CREATE_FAILED' (instead of `ACTIVE').
+%% (In other regions, the CLI correctly returns failure if the bucket is in a
+%% different region.)
 %%
-%% Workaround: Ensure that your S3 bucket is in the same
-%% region as the recording configuration. If you create a recording
-%% configuration in a different
-%% region as your S3 bucket, delete that recording configuration and create a
-%% new one with an S3
-%% bucket from the correct region.
+%% Workaround: Ensure that your S3 bucket is in the same region as the
+%% recording configuration. If you create a recording configuration in a
+%% different region as your S3 bucket, delete that recording configuration
+%% and create a new one with an S3 bucket from the correct region.
 -spec create_recording_configuration(aws_client:aws_client(), create_recording_configuration_request()) ->
     {ok, create_recording_configuration_response(), tuple()} |
     {error, any()} |
@@ -1529,11 +1881,10 @@ create_recording_configuration(Client, Input0, Options0) ->
 %% channel ARN.
 %%
 %% Note that `CreateChannel' creates a stream key. If you subsequently
-%% use
-%% CreateStreamKey on the same channel, it will fail because a stream key
-%% already exists and
-%% there is a limit of 1 stream key per channel. To reset the stream key on a
-%% channel, use `DeleteStreamKey' and then CreateStreamKey.
+%% use CreateStreamKey on the same channel, it will fail because a stream key
+%% already exists and there is a limit of 1 stream key per channel. To reset
+%% the stream key on a channel, use `DeleteStreamKey' and then
+%% CreateStreamKey.
 -spec create_stream_key(aws_client:aws_client(), create_stream_key_request()) ->
     {ok, create_stream_key_response(), tuple()} |
     {error, any()} |
@@ -1567,14 +1918,47 @@ create_stream_key(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified ad configuration.
+-spec delete_ad_configuration(aws_client:aws_client(), delete_ad_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ad_configuration_errors(), tuple()}.
+delete_ad_configuration(Client, Input) ->
+    delete_ad_configuration(Client, Input, []).
+
+-spec delete_ad_configuration(aws_client:aws_client(), delete_ad_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ad_configuration_errors(), tuple()}.
+delete_ad_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteAdConfiguration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified channel and its associated stream keys.
 %%
 %% If you try to delete a live channel, you will get an error (409
-%% ConflictException). To
-%% delete a channel that is live, call `StopStream', wait for the Amazon
-%% EventBridge &quot;Stream End&quot; event (to verify that the stream's
-%% state is no longer Live), then
-%% call DeleteChannel. (See Using EventBridge with Amazon IVS:
+%% ConflictException). To delete a channel that is live, call
+%% `StopStream', wait for the Amazon EventBridge &quot;Stream End&quot;
+%% event (to verify that the stream's state is no longer Live), then call
+%% DeleteChannel. (See Using EventBridge with Amazon IVS:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html.)
 -spec delete_channel(aws_client:aws_client(), delete_channel_request()) ->
     {ok, undefined, tuple()} |
@@ -1611,10 +1995,8 @@ delete_channel(Client, Input0, Options0) ->
 
 %% @doc Deletes a specified authorization key pair.
 %%
-%% This invalidates future viewer tokens
-%% generated using the key pair’s `privateKey'. For more information, see
-%% Setting Up Private
-%% Channels:
+%% This invalidates future viewer tokens generated using the key pair’s
+%% `privateKey'. For more information, see Setting Up Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
 -spec delete_playback_key_pair(aws_client:aws_client(), delete_playback_key_pair_request()) ->
@@ -1687,12 +2069,10 @@ delete_playback_restriction_policy(Client, Input0, Options0) ->
 %% @doc Deletes the recording configuration for the specified ARN.
 %%
 %% If you try to delete a recording configuration that is associated with a
-%% channel, you will
-%% get an error (409 ConflictException). To avoid this, for all channels that
-%% reference the
-%% recording configuration, first use `UpdateChannel' to set the
-%% `recordingConfigurationArn' field to an empty string, then use
-%% DeleteRecordingConfiguration.
+%% channel, you will get an error (409 ConflictException). To avoid this, for
+%% all channels that reference the recording configuration, first use
+%% `UpdateChannel' to set the `recordingConfigurationArn' field to an
+%% empty string, then use DeleteRecordingConfiguration.
 -spec delete_recording_configuration(aws_client:aws_client(), delete_recording_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1727,8 +2107,7 @@ delete_recording_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the stream key for the specified ARN, so it can no longer be
-%% used to
-%% stream.
+%% used to stream.
 -spec delete_stream_key(aws_client:aws_client(), delete_stream_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1744,6 +2123,40 @@ delete_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStreamKey"],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the ad configuration represented by the specified ARN.
+-spec get_ad_configuration(aws_client:aws_client(), get_ad_configuration_request()) ->
+    {ok, get_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ad_configuration_errors(), tuple()}.
+get_ad_configuration(Client, Input) ->
+    get_ad_configuration(Client, Input, []).
+
+-spec get_ad_configuration(aws_client:aws_client(), get_ad_configuration_request(), proplists:proplist()) ->
+    {ok, get_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ad_configuration_errors(), tuple()}.
+get_ad_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetAdConfiguration"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1799,16 +2212,13 @@ get_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a specified playback authorization key pair and returns the
-%% `arn' and
-%% `fingerprint'.
+%% `arn' and `fingerprint'.
 %%
-%% The `privateKey' held by the caller can be used to
-%% generate viewer authorization tokens, to grant viewers access to private
-%% channels. For more
-%% information, see Setting Up Private Channels:
+%% The `privateKey' held by the caller can be used to generate viewer
+%% authorization tokens, to grant viewers access to private channels. For
+%% more information, see Setting Up Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
-%% the Amazon IVS User
-%% Guide.
+%% the Amazon IVS User Guide.
 -spec get_playback_key_pair(aws_client:aws_client(), get_playback_key_pair_request()) ->
     {ok, get_playback_key_pair_response(), tuple()} |
     {error, any()} |
@@ -2014,14 +2424,11 @@ get_stream_session(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Imports the public portion of a new key pair and returns its
-%% `arn' and
-%% `fingerprint'.
+%% `arn' and `fingerprint'.
 %%
-%% The `privateKey' can then be used to generate viewer
-%% authorization tokens, to grant viewers access to private channels. For
-%% more information, see
-%% Setting Up
-%% Private Channels:
+%% The `privateKey' can then be used to generate viewer authorization
+%% tokens, to grant viewers access to private channels. For more information,
+%% see Setting Up Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
 -spec import_playback_key_pair(aws_client:aws_client(), import_playback_key_pair_request()) ->
@@ -2057,14 +2464,90 @@ import_playback_key_pair(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets summary information about all channels in your account, in the
-%% Amazon Web Services
-%% region where the API request is processed.
+%% @doc Inserts an ad marker in the playlist for the specified channel and
+%% duration using the ad configuration associated with the channel.
 %%
-%% This list can be filtered to match a specified name
-%% or recording-configuration ARN. Filters are mutually exclusive and cannot
-%% be used together. If
-%% you try to use both filters, you will get an error (409
+%% Note: AWS Elemental MediaTailor (EMT), the service that handles ad
+%% requests, provides CloudWatch metrics to help you monitor the success or
+%% failure of each InsertAdBreak operation. See Monitoring AWS Elemental
+%% MediaTailor with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/monitoring-cloudwatch-metrics.html
+%% metrics in the AWS Elemental MediaTailor User Guide for details on
+%% available metrics.
+-spec insert_ad_break(aws_client:aws_client(), insert_ad_break_request()) ->
+    {ok, insert_ad_break_response(), tuple()} |
+    {error, any()} |
+    {error, insert_ad_break_errors(), tuple()}.
+insert_ad_break(Client, Input) ->
+    insert_ad_break(Client, Input, []).
+
+-spec insert_ad_break(aws_client:aws_client(), insert_ad_break_request(), proplists:proplist()) ->
+    {ok, insert_ad_break_response(), tuple()} |
+    {error, any()} |
+    {error, insert_ad_break_errors(), tuple()}.
+insert_ad_break(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/InsertAdBreak"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all ad configurations in your account,
+%% in the AWS region where the API request is processed.
+-spec list_ad_configurations(aws_client:aws_client(), list_ad_configurations_request()) ->
+    {ok, list_ad_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ad_configurations_errors(), tuple()}.
+list_ad_configurations(Client, Input) ->
+    list_ad_configurations(Client, Input, []).
+
+-spec list_ad_configurations(aws_client:aws_client(), list_ad_configurations_request(), proplists:proplist()) ->
+    {ok, list_ad_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ad_configurations_errors(), tuple()}.
+list_ad_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListAdConfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all channels in your account, in the
+%% Amazon Web Services region where the API request is processed.
+%%
+%% This list can be filtered to match a specified name or
+%% recording-configuration ARN. Filters are mutually exclusive and cannot be
+%% used together. If you try to use both filters, you will get an error (409
 %% ConflictException).
 -spec list_channels(aws_client:aws_client(), list_channels_request()) ->
     {ok, list_channels_response(), tuple()} |
@@ -2101,8 +2584,7 @@ list_channels(Client, Input0, Options0) ->
 
 %% @doc Gets summary information about playback key pairs.
 %%
-%% For more information, see Setting Up Private
-%% Channels:
+%% For more information, see Setting Up Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
 -spec list_playback_key_pairs(aws_client:aws_client(), list_playback_key_pairs_request()) ->
@@ -2173,8 +2655,8 @@ list_playback_restriction_policies(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all recording configurations in your
-%% account, in the
-%% Amazon Web Services region where the API request is processed.
+%% account, in the Amazon Web Services region where the API request is
+%% processed.
 -spec list_recording_configurations(aws_client:aws_client(), list_recording_configurations_request()) ->
     {ok, list_recording_configurations_response(), tuple()} |
     {error, any()} |
@@ -2243,8 +2725,8 @@ list_stream_keys(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a summary of current and previous streams for a specified
-%% channel in your account, in
-%% the AWS region where the API request is processed.
+%% channel in your account, in the AWS region where the API request is
+%% processed.
 -spec list_stream_sessions(aws_client:aws_client(), list_stream_sessions_request()) ->
     {ok, list_stream_sessions_response(), tuple()} |
     {error, any()} |
@@ -2279,8 +2761,7 @@ list_stream_sessions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about live streams in your account, in the
-%% Amazon Web Services
-%% region where the API request is processed.
+%% Amazon Web Services region where the API request is processed.
 -spec list_streams(aws_client:aws_client(), list_streams_request()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
@@ -2354,15 +2835,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Inserts metadata into the active stream of the specified channel.
 %%
-%% At most 5 requests per
-%% second per channel are allowed, each with a maximum 1 KB payload. (If 5
-%% TPS is not sufficient
-%% for your needs, we recommend batching your data into a single PutMetadata
-%% call.) At most 155
-%% requests per second per account are allowed. Also see Embedding Metadata
-%% within a Video Stream:
-%% https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html in
-%% the Amazon IVS User Guide.
+%% At most 5 requests per second per channel are allowed, each with a maximum
+%% 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend
+%% batching your data into a single PutMetadata call.) At most 155 requests
+%% per second per account are allowed. Also see Embedding Metadata within a
+%% Video Stream:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html in the
+%% Amazon IVS User Guide.
 -spec put_metadata(aws_client:aws_client(), put_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2397,15 +2876,11 @@ put_metadata(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the process of revoking the viewer session associated with a
-%% specified channel ARN
-%% and viewer ID.
+%% specified channel ARN and viewer ID.
 %%
 %% Optionally, you can provide a version to revoke viewer sessions less than
-%% and
-%% including that version. For instructions on associating a viewer ID with a
-%% viewer session, see
-%% Setting Up
-%% Private Channels:
+%% and including that version. For instructions on associating a viewer ID
+%% with a viewer session, see Setting Up Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
 -spec start_viewer_session_revocation(aws_client:aws_client(), start_viewer_session_revocation_request()) ->
     {ok, start_viewer_session_revocation_response(), tuple()} |
@@ -2442,15 +2917,12 @@ start_viewer_session_revocation(Client, Input0, Options0) ->
 
 %% @doc Disconnects the incoming RTMPS stream for the specified channel.
 %%
-%% Can be used in
-%% conjunction with `DeleteStreamKey' to prevent further streaming to a
-%% channel.
+%% Can be used in conjunction with `DeleteStreamKey' to prevent further
+%% streaming to a channel.
 %%
 %% Many streaming client-software libraries automatically reconnect a dropped
-%% RTMPS
-%% session, so to stop the stream permanently, you may want to first revoke
-%% the
-%% `streamKey' attached to the channel.
+%% RTMPS session, so to stop the stream permanently, you may want to first
+%% revoke the `streamKey' attached to the channel.
 -spec stop_stream(aws_client:aws_client(), stop_stream_request()) ->
     {ok, stop_stream_response(), tuple()} |
     {error, any()} |
@@ -2556,10 +3028,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a channel's configuration.
 %%
-%% Live channels cannot be updated. You must stop the
-%% ongoing stream, update the channel, and restart the stream for the changes
-%% to take
-%% effect.
+%% Live channels cannot be updated. You must stop the ongoing stream, update
+%% the channel, and restart the stream for the changes to take effect.
 -spec update_channel(aws_client:aws_client(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |

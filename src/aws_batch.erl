@@ -866,6 +866,8 @@
 %%   <<"repositoryCredentials">> => repository_credentials(),
 %%   <<"resourceRequirements">> => list(resource_requirement()),
 %%   <<"secrets">> => list(secret()),
+%%   <<"startTimeout">> => integer(),
+%%   <<"stopTimeout">> => integer(),
 %%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string()
 %% }
@@ -1588,7 +1590,8 @@
 %% volume() :: #{
 %%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
 %%   <<"host">> => host(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
 %% }
 -type volume() :: #{binary() => any()}.
 
@@ -1915,6 +1918,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_consumable_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_volume_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type s3_files_volume_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2305,6 +2318,8 @@
 %%   <<"repositoryCredentials">> => repository_credentials(),
 %%   <<"resourceRequirements">> => list(resource_requirement()),
 %%   <<"secrets">> => list(secret()),
+%%   <<"startTimeout">> => integer(),
+%%   <<"stopTimeout">> => integer(),
 %%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string()
 %% }

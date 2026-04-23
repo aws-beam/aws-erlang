@@ -443,9 +443,14 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"LastModified">> => non_neg_integer()
 %% }
@@ -484,10 +489,12 @@
 %%   <<"Expiration">> => string(),
 %%   <<"RequestToken">> := string(),
 %%   <<"ErrorCode">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
 %%   <<"Body">> => binary(),
 %%   <<"AcceptRanges">> => string(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"VersionId">> => string(),
@@ -495,6 +502,8 @@
 %%   <<"ContentLength">> => float(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"CacheControl">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"SSEKMSKeyId">> => string(),
 %%   <<"RequestRoute">> := string(),
@@ -507,6 +516,7 @@
 %%   <<"ReplicationStatus">> => list(any()),
 %%   <<"Expires">> => string(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"TagCount">> => integer(),
 %%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"Restore">> => string(),
@@ -664,8 +674,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
@@ -778,9 +793,11 @@
 %%   <<"ContentRange">> => string(),
 %%   <<"StorageClass">> => list(any()),
 %%   <<"Expiration">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
 %%   <<"AcceptRanges">> => string(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"VersionId">> => string(),
@@ -789,6 +806,8 @@
 %%   <<"WebsiteRedirectLocation">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"CacheControl">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"SSEKMSKeyId">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
@@ -798,6 +817,7 @@
 %%   <<"ReplicationStatus">> => list(any()),
 %%   <<"Expires">> => string(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"TagCount">> => integer(),
 %%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ArchiveStatus">> => list(any()),
@@ -960,8 +980,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"LastModified">> => non_neg_integer()
 %% }
@@ -1021,8 +1046,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ContentLength">> => float(),
 %%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
@@ -1122,9 +1152,14 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"Expiration">> => string(),
 %%   <<"RequestCharged">> => list(any()),
@@ -1365,18 +1400,22 @@
 %%   <<"StorageClass">> => list(any()),
 %%   <<"ContentMD5">> => string(),
 %%   <<"SSECustomerKey">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
 %%   <<"Body">> => binary(),
 %%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ACL">> => list(any()),
 %%   <<"WriteOffsetBytes">> => float(),
 %%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
 %%   <<"GrantRead">> => string(),
 %%   <<"ContentLength">> => float(),
 %%   <<"Tagging">> => string(),
 %%   <<"WebsiteRedirectLocation">> => string(),
 %%   <<"CacheControl">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
 %%   <<"GrantFullControl">> => string(),
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"SSEKMSKeyId">> => string(),
@@ -1388,6 +1427,7 @@
 %%   <<"GrantWriteACP">> => string(),
 %%   <<"Expires">> => string(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"IfMatch">> => string(),
 %%   <<"ContentEncoding">> => string(),
@@ -1971,8 +2011,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"PartNumber">> => integer()
 %% }
@@ -2187,10 +2232,12 @@
 %%   <<"ContentRange">> => string(),
 %%   <<"StorageClass">> => list(any()),
 %%   <<"Expiration">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
 %%   <<"Body">> => binary(),
 %%   <<"AcceptRanges">> => string(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"VersionId">> => string(),
@@ -2199,6 +2246,8 @@
 %%   <<"WebsiteRedirectLocation">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"CacheControl">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"SSEKMSKeyId">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
@@ -2208,6 +2257,7 @@
 %%   <<"ReplicationStatus">> => list(any()),
 %%   <<"Expires">> => string(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"TagCount">> => integer(),
 %%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"Restore">> => string(),
@@ -2279,9 +2329,14 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"Expiration">> => string(),
 %%   <<"Key">> => string(),
@@ -2446,9 +2501,14 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumType">> => list(any())
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string()
 %% }
 -type checksum() :: #{binary() => any()}.
 
@@ -2794,8 +2854,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"PartNumber">> => integer(),
@@ -2824,8 +2889,13 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"PartNumber">> => integer(),
 %%   <<"Size">> => float()
 %% }
@@ -3424,9 +3494,14 @@
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
 %%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"IfMatch">> => string(),
 %%   <<"IfNoneMatch">> => string(),
@@ -4027,9 +4102,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
                        {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
                        {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-None-Match">>, <<"IfNoneMatch">>},
@@ -5960,11 +6040,26 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc
-%% This operation is not supported for directory buckets.
+%% @doc Deletes an S3 Inventory configuration (identified by the inventory
+%% ID) from the bucket.
 %%
-%% Deletes an S3 Inventory configuration (identified by the inventory ID)
-%% from the bucket.
+%% Directory buckets - For directory buckets, you must make requests for this
+%% API operation to the Regional endpoint. These endpoints support path-style
+%% requests in the format
+%% ```
+%% https://s3express-control.region-code.amazonaws.com/bucket-name
+%% '''. Virtual-hosted-style requests aren't supported.
+%% For more information about endpoints in Availability Zones, see Regional
+%% and Zonal endpoints for directory buckets in Availability Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% in the
+%% Amazon S3 User Guide. For more information about endpoints in Local Zones,
+%% see Concepts for directory buckets in Local Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% Permissions
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:PutInventoryConfiguration' action. The bucket owner has this
@@ -5976,6 +6071,30 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 %% and Managing Access Permissions to Your Amazon S3
 %% Resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
+%%
+%% General purpose bucket permissions - The
+%% `s3:PutInventoryConfiguration' permission is required in a policy. For
+%% more information
+%% about general purpose buckets permissions, see Using Bucket Policies and
+%% User
+%% Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
+%%
+%% Directory bucket permissions - To grant access to
+%% this API operation, you must have the
+%% `s3express:PutInventoryConfiguration' permission in
+%% an IAM identity-based policy instead of a bucket policy.
+%% For more information about directory bucket policies and permissions, see
+%% Amazon Web Services Identity and Access Management (IAM) for S3 Express
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
+%%
+%% HTTP Host header syntax
+%%
+%% Directory buckets - The HTTP Host header syntax is
+%% `s3express-control.region-code.amazonaws.com'.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
 %% Inventory:
@@ -7940,22 +8059,62 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc
-%% This operation is not supported for directory buckets.
-%%
-%% Returns an S3 Inventory configuration (identified by the inventory
+%% @doc Returns an S3 Inventory configuration (identified by the inventory
 %% configuration ID) from the
 %% bucket.
 %%
+%% Directory buckets - For directory buckets, you must make requests for this
+%% API operation to the Regional endpoint. These endpoints support path-style
+%% requests in the format
+%% ```
+%% https://s3express-control.region-code.amazonaws.com/bucket-name
+%% '''. Virtual-hosted-style requests aren't supported.
+%% For more information about endpoints in Availability Zones, see Regional
+%% and Zonal endpoints for directory buckets in Availability Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% in the
+%% Amazon S3 User Guide. For more information about endpoints in Local Zones,
+%% see Concepts for directory buckets in Local Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% Permissions
+%%
 %% To use this operation, you must have permissions to perform the
 %% `s3:GetInventoryConfiguration' action. The bucket owner has this
-%% permission by default and
-%% can grant this permission to others. For more information about
-%% permissions, see Permissions Related to Bucket Subresource Operations:
+%% permission by default. The
+%% bucket owner can grant this permission to others. For more information
+%% about permissions, see Permissions Related to Bucket Subresource
+%% Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
 %% and Managing Access Permissions to Your Amazon S3
 %% Resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
+%%
+%% General purpose bucket permissions - The
+%% `s3:GetInventoryConfiguration' permission is required in a policy. For
+%% more information
+%% about general purpose buckets permissions, see Using Bucket Policies and
+%% User
+%% Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
+%%
+%% Directory bucket permissions - To grant access to
+%% this API operation, you must have the
+%% `s3express:GetInventoryConfiguration' permission in
+%% an IAM identity-based policy instead of a bucket policy.
+%% For more information about directory bucket policies and permissions, see
+%% Amazon Web Services Identity and Access Management (IAM) for S3 Express
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
+%%
+%% HTTP Host header syntax
+%%
+%% Directory buckets - The HTTP Host header syntax is
+%% `s3express-control.region-code.amazonaws.com'.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
 %% Inventory:
@@ -9600,6 +9759,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
             {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
             {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -9610,6 +9770,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"Content-Language">>, <<"ContentLanguage">>},
             {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
             {<<"ETag">>, <<"ETag">>},
@@ -9620,11 +9781,14 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
             {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
             {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
             {<<"Content-Length">>, <<"ContentLength">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
@@ -10878,6 +11042,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
             {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
             {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -10888,6 +11053,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"Content-Language">>, <<"ContentLanguage">>},
             {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
             {<<"ETag">>, <<"ETag">>},
@@ -10899,11 +11065,14 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
             {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
             {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
             {<<"Content-Length">>, <<"ContentLength">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
@@ -11098,11 +11267,9 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc
-%% This operation is not supported for directory buckets.
+%% @doc Returns a list of S3 Inventory configurations for the bucket.
 %%
-%% Returns a list of S3 Inventory configurations for the bucket. You can have
-%% up to 1,000 inventory
+%% You can have up to 1,000 inventory
 %% configurations per bucket.
 %%
 %% This action supports list pagination and does not return more than 100
@@ -11117,6 +11284,24 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %% of the list by passing
 %% the value in continuation-token in the request to `GET' the next page.
 %%
+%% Directory buckets - For directory buckets, you must make requests for this
+%% API operation to the Regional endpoint. These endpoints support path-style
+%% requests in the format
+%% ```
+%% https://s3express-control.region-code.amazonaws.com/bucket-name
+%% '''. Virtual-hosted-style requests aren't supported.
+%% For more information about endpoints in Availability Zones, see Regional
+%% and Zonal endpoints for directory buckets in Availability Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% in the
+%% Amazon S3 User Guide. For more information about endpoints in Local Zones,
+%% see Concepts for directory buckets in Local Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% Permissions
+%%
 %% To use this operation, you must have permissions to perform the
 %% `s3:GetInventoryConfiguration' action. The bucket owner has this
 %% permission by default. The
@@ -11127,6 +11312,30 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %% and Managing Access Permissions to Your Amazon S3
 %% Resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
+%%
+%% General purpose bucket permissions - The
+%% `s3:GetInventoryConfiguration' permission is required in a policy. For
+%% more information
+%% about general purpose buckets permissions, see Using Bucket Policies and
+%% User
+%% Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
+%%
+%% Directory bucket permissions - To grant access to
+%% this API operation, you must have the
+%% `s3express:GetInventoryConfiguration' permission in
+%% an IAM identity-based policy instead of a bucket policy.
+%% For more information about directory bucket policies and permissions, see
+%% Amazon Web Services Identity and Access Management (IAM) for S3 Express
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
+%%
+%% HTTP Host header syntax
+%%
+%% Directory buckets - The HTTP Host header syntax is
+%% `s3express-control.region-code.amazonaws.com'.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
 %% Inventory:
@@ -13156,13 +13365,11 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc
-%% This operation is not supported for directory buckets.
-%%
-%% This implementation of the `PUT' action adds an S3 Inventory
+%% @doc This implementation of the `PUT' action adds an S3 Inventory
 %% configuration (identified by
-%% the inventory ID) to the bucket. You can have up to 1,000 inventory
-%% configurations per bucket.
+%% the inventory ID) to the bucket.
+%%
+%% You can have up to 1,000 inventory configurations per bucket.
 %%
 %% Amazon S3 inventory generates inventories of the objects in the bucket on
 %% a daily or weekly basis, and
@@ -13191,6 +13398,22 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% Permissions for Amazon S3 Inventory and Storage Class Analysis:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9.
 %%
+%% Directory buckets - For directory buckets, you must make requests for this
+%% API operation to the Regional endpoint. These endpoints support path-style
+%% requests in the format
+%% ```
+%% https://s3express-control.region-code.amazonaws.com/bucket-name
+%% '''. Virtual-hosted-style requests aren't supported.
+%% For more information about endpoints in Availability Zones, see Regional
+%% and Zonal endpoints for directory buckets in Availability Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% in the
+%% Amazon S3 User Guide. For more information about endpoints in Local Zones,
+%% see Concepts for directory buckets in Local Zones:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
+%% in the
+%% Amazon S3 User Guide.
+%%
 %% Permissions
 %%
 %% To use this operation, you must have permission to perform the
@@ -13207,9 +13430,28 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% bucket can also access
 %% all object metadata fields that are available in the inventory report.
 %%
+%% General purpose bucket permissions - The
+%% `s3:PutInventoryConfiguration' permission is required in a policy. For
+%% more information
+%% about general purpose buckets permissions, see Using Bucket Policies and
+%% User
+%% Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
+%%
+%% Directory bucket permissions - To grant access to
+%% this API operation, you must have the
+%% `s3express:PutInventoryConfiguration' permission in
+%% an IAM identity-based policy instead of a bucket policy.
+%% For more information about directory bucket policies and permissions, see
+%% Amazon Web Services Identity and Access Management (IAM) for S3 Express
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
+%%
 %% To restrict access to an inventory report, see Restricting access to an
 %% Amazon S3 Inventory report:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-use-case-10
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-s3-inventory
 %% in the
 %% Amazon S3 User Guide. For more information about the metadata fields
 %% available
@@ -13223,6 +13465,11 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% Amazon S3:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
 %% in the Amazon S3 User Guide.
+%%
+%% HTTP Host header syntax
+%%
+%% Directory buckets - The HTTP Host header syntax is
+%% `s3express-control.region-code.amazonaws.com'.
 %%
 %% `PutBucketInventoryConfiguration' has the following special errors:
 %%
@@ -14823,6 +15070,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
+                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
                        {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -14833,6 +15081,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"Content-Language">>, <<"ContentLanguage">>},
                        {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"If-Match">>, <<"IfMatch">>},
@@ -14843,10 +15092,13 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
                        {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
                        {<<"x-amz-storage-class">>, <<"StorageClass">>},
                        {<<"x-amz-grant-read">>, <<"GrantRead">>},
+                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
                        {<<"Content-Length">>, <<"ContentLength">>},
                        {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
                        {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
@@ -14872,9 +15124,14 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
             {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
             {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
             {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
             {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
@@ -16774,8 +17031,13 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
                        {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
                        {<<"Content-Length">>, <<"ContentLength">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -16802,8 +17064,13 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
             {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
             {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
             {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
@@ -17247,6 +17514,7 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-request-token">>, <<"RequestToken">>},
                        {<<"x-amz-fwd-header-x-amz-restore">>, <<"Restore">>},
                        {<<"x-amz-request-route">>, <<"RequestRoute">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
                        {<<"x-amz-fwd-status">>, <<"StatusCode">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"x-amz-fwd-header-Content-Type">>, <<"ContentType">>},
@@ -17257,6 +17525,7 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-fwd-header-Content-Language">>, <<"ContentLanguage">>},
                        {<<"x-amz-fwd-header-x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
                        {<<"x-amz-fwd-header-Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-fwd-header-x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"x-amz-fwd-header-ETag">>, <<"ETag">>},
@@ -17268,10 +17537,13 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-fwd-header-x-amz-expiration">>, <<"Expiration">>},
                        {<<"x-amz-fwd-header-x-amz-replication-status">>, <<"ReplicationStatus">>},
                        {<<"x-amz-fwd-header-Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-md5">>, <<"ChecksumMD5">>},
                        {<<"x-amz-fwd-header-x-amz-storage-class">>, <<"StorageClass">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
                        {<<"x-amz-fwd-header-x-amz-missing-meta">>, <<"MissingMeta">>},
                        {<<"Content-Length">>, <<"ContentLength">>},
                        {<<"x-amz-fwd-header-x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
                        {<<"x-amz-fwd-header-Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"x-amz-fwd-header-x-amz-request-charged">>, <<"RequestCharged">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},

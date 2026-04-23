@@ -56,6 +56,8 @@
          invoke_browser/4,
          invoke_code_interpreter/3,
          invoke_code_interpreter/4,
+         invoke_harness/2,
+         invoke_harness/3,
          list_actors/3,
          list_actors/4,
          list_browser_sessions/3,
@@ -109,6 +111,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type browser_enterprise_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_remote_mcp_config() :: #{
+%%   <<"headers">> => map(),
+%%   <<"url">> => string()
+%% }
+-type harness_remote_mcp_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -368,6 +378,14 @@
 
 
 %% Example:
+%% harness_content_block_start_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()],
+%%   <<"start">> => list()
+%% }
+-type harness_content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_agent_runtime_command_response() :: #{
 %%   <<"baggage">> => [string()],
 %%   <<"contentType">> => [string()],
@@ -436,6 +454,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type mouse_click_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_gateway_config() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"outboundAuth">> => list()
+%% }
+-type harness_agent_core_gateway_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -556,11 +582,39 @@
 
 
 %% Example:
+%% harness_message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
+%% }
+-type harness_message() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_update_memory_records_output() :: #{
 %%   <<"failedRecords">> => list(memory_record_output()),
 %%   <<"successfulRecords">> => list(memory_record_output())
 %% }
 -type batch_update_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_result_block() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_result_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block_start() :: #{
+%%   <<"name">> => string(),
+%%   <<"serverName">> => [string()],
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_use_block_start() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +641,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type key_shortcut_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_inline_function_config() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => any()
+%% }
+-type harness_inline_function_config() :: #{binary() => any()}.
 
 %% Example:
 %% content_start_event() :: #{}
@@ -697,6 +759,17 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_token_usage() :: #{
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"cacheWriteInputTokens">> => [integer()],
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type harness_token_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -820,6 +893,14 @@
 
 
 %% Example:
+%% harness_tool_result_block_start() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string()
+%% }
+-type harness_tool_result_block_start() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_card_request() :: #{
 %%   <<"qualifier">> => [string()],
 %%   <<"runtimeSessionId">> => string()
@@ -833,6 +914,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type mouse_move_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_browser_config() :: #{
+%%   <<"browserArn">> => string()
+%% }
+-type harness_agent_core_browser_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -978,11 +1066,49 @@
 
 
 %% Example:
+%% harness_gemini_model_config() :: #{
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type harness_gemini_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_harness_request() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"allowedTools">> => list(string()),
+%%   <<"harnessArn">> := string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"messages">> := list(harness_message()),
+%%   <<"model">> => list(),
+%%   <<"runtimeSessionId">> := string(),
+%%   <<"skills">> => list(list()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool())
+%% }
+-type invoke_harness_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_press_arguments() :: #{
 %%   <<"key">> => [string()],
 %%   <<"presses">> => [integer()]
 %% }
 -type key_press_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_content_block_delta_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()],
+%%   <<"delta">> => list()
+%% }
+-type harness_content_block_delta_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -995,6 +1121,21 @@
 %%   <<"taskStatus">> => list(any())
 %% }
 -type tool_result_structured_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_metadata_event() :: #{
+%%   <<"metrics">> => harness_stream_metrics(),
+%%   <<"usage">> => harness_token_usage()
+%% }
+-type harness_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_content_block_stop_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()]
+%% }
+-type harness_content_block_stop_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1026,6 +1167,17 @@
 %%   <<"protocolVersion">> => string()
 %% }
 -type tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_credential_provider() :: #{
+%%   <<"customParameters">> => map(),
+%%   <<"defaultReturnUrl">> => string(),
+%%   <<"grantType">> => list(any()),
+%%   <<"providerArn">> => string(),
+%%   <<"scopes">> => list(string())
+%% }
+-type o_auth_credential_provider() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1090,6 +1242,15 @@
 
 
 %% Example:
+%% harness_tool() :: #{
+%%   <<"config">> => list(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1101,6 +1262,17 @@
 %%   <<"memoryRecord">> => memory_record()
 %% }
 -type get_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block() :: #{
+%%   <<"input">> => any(),
+%%   <<"name">> => string(),
+%%   <<"serverName">> => [string()],
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_use_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1178,6 +1350,13 @@
 
 
 %% Example:
+%% harness_message_stop_event() :: #{
+%%   <<"stopReason">> => list(any())
+%% }
+-type harness_message_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_record() :: #{
 %%   <<"content">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -1187,6 +1366,13 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type memory_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_message_start_event() :: #{
+%%   <<"role">> => list(any())
+%% }
+-type harness_message_start_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1200,6 +1386,14 @@
 %%   <<"sessionId">> => string()
 %% }
 -type create_event_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_reasoning_text_block() :: #{
+%%   <<"signature">> => [string()],
+%%   <<"text">> => [string()]
+%% }
+-type harness_reasoning_text_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1249,6 +1443,13 @@
 %%   <<"secretArn">> => string()
 %% }
 -type secrets_manager_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block_delta() :: #{
+%%   <<"input">> => string()
+%% }
+-type harness_tool_use_block_delta() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1330,6 +1531,16 @@
 
 
 %% Example:
+%% harness_bedrock_model_config() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_bedrock_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1349,6 +1560,17 @@
 %%   <<"location">> => list()
 %% }
 -type browser_extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_open_ai_model_config() :: #{
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_open_ai_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1423,6 +1645,13 @@
 
 
 %% Example:
+%% invoke_harness_response() :: #{
+%%   <<"stream">> => list()
+%% }
+-type invoke_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_actors_output() :: #{
 %%   <<"actorSummaries">> => list(actor_summary()),
 %%   <<"nextToken">> => string()
@@ -1471,6 +1700,13 @@
 %%   <<"inlineContent">> => string()
 %% }
 -type skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_stream_metrics() :: #{
+%%   <<"latencyMs">> => [float()]
+%% }
+-type harness_stream_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1585,6 +1821,13 @@
 %%   <<"memoryRecordId">> => string()
 %% }
 -type delete_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_code_interpreter_config() :: #{
+%%   <<"codeInterpreterArn">> => string()
+%% }
+-type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1819,6 +2062,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type invoke_harness_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_actors_errors() ::
     validation_exception() | 
@@ -3028,6 +3278,43 @@ invoke_code_interpreter(Client, CodeInterpreterIdentifier, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Operation to invoke a Harness.
+-spec invoke_harness(aws_client:aws_client(), invoke_harness_request()) ->
+    {ok, invoke_harness_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_harness_errors(), tuple()}.
+invoke_harness(Client, Input) ->
+    invoke_harness(Client, Input, []).
+
+-spec invoke_harness(aws_client:aws_client(), invoke_harness_request(), proplists:proplist()) ->
+    {ok, invoke_harness_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_harness_errors(), tuple()}.
+invoke_harness(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/harnesses/invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"harnessArn">>, <<"harnessArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all actors in an AgentCore Memory resource.
 %%

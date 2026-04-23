@@ -25,6 +25,8 @@
          create_gateway/3,
          create_gateway_target/3,
          create_gateway_target/4,
+         create_harness/2,
+         create_harness/3,
          create_memory/2,
          create_memory/3,
          create_oauth2_credential_provider/2,
@@ -59,6 +61,8 @@
          delete_gateway/4,
          delete_gateway_target/4,
          delete_gateway_target/5,
+         delete_harness/3,
+         delete_harness/4,
          delete_memory/3,
          delete_memory/4,
          delete_oauth2_credential_provider/2,
@@ -103,6 +107,9 @@
          get_gateway_target/3,
          get_gateway_target/5,
          get_gateway_target/6,
+         get_harness/2,
+         get_harness/4,
+         get_harness/5,
          get_memory/2,
          get_memory/4,
          get_memory/5,
@@ -155,6 +162,9 @@
          list_gateways/1,
          list_gateways/3,
          list_gateways/4,
+         list_harnesses/1,
+         list_harnesses/3,
+         list_harnesses/4,
          list_memories/2,
          list_memories/3,
          list_oauth2_credential_providers/2,
@@ -210,6 +220,8 @@
          update_gateway/4,
          update_gateway_target/4,
          update_gateway_target/5,
+         update_harness/3,
+         update_harness/4,
          update_memory/3,
          update_memory/4,
          update_oauth2_credential_provider/2,
@@ -248,6 +260,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type browser_enterprise_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_remote_mcp_config() :: #{
+%%   <<"headers">> => map(),
+%%   <<"url">> => string()
+%% }
+-type harness_remote_mcp_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -352,6 +372,16 @@
 
 
 %% Example:
+%% harness_agent_core_memory_configuration() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"arn">> => string(),
+%%   <<"messagesCount">> => [integer()],
+%%   <<"retrievalConfig">> => map()
+%% }
+-type harness_agent_core_memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_oauth2_credential_provider_response() :: #{
 %%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
@@ -390,6 +420,17 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_harness_request() :: #{}
+-type get_harness_request() :: #{}.
+
+
+%% Example:
+%% harness_sliding_window_configuration() :: #{
+%%   <<"messagesCount">> => [integer()]
+%% }
+-type harness_sliding_window_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,6 +530,13 @@
 %%   <<"runtime">> => list(any())
 %% }
 -type code_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type get_harness_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -813,6 +861,13 @@
 
 
 %% Example:
+%% create_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type create_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% lifecycle_configuration() :: #{
 %%   <<"idleRuntimeSessionTimeout">> => [integer()],
 %%   <<"maxLifetime">> => [integer()]
@@ -988,6 +1043,14 @@
 
 
 %% Example:
+%% harness_truncation_configuration() :: #{
+%%   <<"config">> => list(),
+%%   <<"strategy">> => list(any())
+%% }
+-type harness_truncation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_memory_input() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -1089,6 +1152,14 @@
 
 
 %% Example:
+%% harness_agent_core_gateway_config() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"outboundAuth">> => list()
+%% }
+-type harness_agent_core_gateway_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% episodic_reflection_configuration() :: #{
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -1182,6 +1253,15 @@
 %%   <<"name">> => string()
 %% }
 -type update_registry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_memory_retrieval_config() :: #{
+%%   <<"relevanceScore">> => [float()],
+%%   <<"strategyId">> => [string()],
+%%   <<"topK">> => [integer()]
+%% }
+-type harness_agent_core_memory_retrieval_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1297,6 +1377,34 @@
 
 
 %% Example:
+%% harness() :: #{
+%%   <<"allowedTools">> => list(string()),
+%%   <<"arn">> => string(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"environment">> => list(),
+%%   <<"environmentArtifact">> => list(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"harnessId">> => string(),
+%%   <<"harnessName">> => string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"memory">> => list(),
+%%   <<"model">> => list(),
+%%   <<"skills">> => list(list()),
+%%   <<"status">> => list(any()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool()),
+%%   <<"truncation">> => harness_truncation_configuration(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type harness() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_api_key_credential_provider_request() :: #{
 %%   <<"apiKey">> := string(),
 %%   <<"name">> := string(),
@@ -1368,6 +1476,30 @@
 
 
 %% Example:
+%% create_harness_request() :: #{
+%%   <<"allowedTools">> => list(string()),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"clientToken">> => string(),
+%%   <<"environment">> => list(),
+%%   <<"environmentArtifact">> => list(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"harnessName">> := string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"memory">> => list(),
+%%   <<"model">> => list(),
+%%   <<"skills">> => list(list()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool()),
+%%   <<"truncation">> => harness_truncation_configuration()
+%% }
+-type create_harness_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_memory_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -1384,6 +1516,13 @@
 %%   <<"name">> := string()
 %% }
 -type delete_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_harness_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1493,6 +1632,13 @@
 
 
 %% Example:
+%% updated_harness_memory_configuration() :: #{
+%%   <<"optionalValue">> => list()
+%% }
+-type updated_harness_memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_api_key_credential_provider_request() :: #{
 %%   <<"name">> := string()
 %% }
@@ -1544,6 +1690,18 @@
 
 
 %% Example:
+%% harness_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"harnessId">> => string(),
+%%   <<"harnessName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type harness_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_metadata_configuration() :: #{
 %%   <<"requireMMDSV2">> => [boolean()]
 %% }
@@ -1590,6 +1748,14 @@
 %%   <<"roleArn">> := string()
 %% }
 -type update_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_inline_function_config() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => any()
+%% }
+-type harness_inline_function_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1878,11 +2044,19 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"resourcePriority">> => integer(),
 %%   <<"status">> => list(any()),
 %%   <<"targetId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type update_harness_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1927,6 +2101,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_browser_config() :: #{
+%%   <<"browserArn">> => string()
+%% }
+-type harness_agent_core_browser_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2076,6 +2257,14 @@
 
 
 %% Example:
+%% list_harnesses_response() :: #{
+%%   <<"harnesses">> => list(harness_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harnesses_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% secret() :: #{
 %%   <<"secretArn">> => string()
 %% }
@@ -2220,6 +2409,18 @@
 
 
 %% Example:
+%% harness_gemini_model_config() :: #{
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type harness_gemini_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_online_evaluation_config_response() :: #{
 %%   <<"onlineEvaluationConfigArn">> => string(),
 %%   <<"onlineEvaluationConfigId">> => string(),
@@ -2353,6 +2554,13 @@
 %%   <<"oauth2ProviderConfigOutput">> => list()
 %% }
 -type update_oauth2_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type delete_harness_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2533,6 +2741,28 @@
 
 
 %% Example:
+%% update_harness_request() :: #{
+%%   <<"allowedTools">> => list(string()),
+%%   <<"authorizerConfiguration">> => updated_authorizer_configuration(),
+%%   <<"clientToken">> => string(),
+%%   <<"environment">> => list(),
+%%   <<"environmentArtifact">> => updated_harness_environment_artifact(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"memory">> => updated_harness_memory_configuration(),
+%%   <<"model">> => list(),
+%%   <<"skills">> => list(list()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool()),
+%%   <<"truncation">> => harness_truncation_configuration()
+%% }
+-type update_harness_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
@@ -2575,6 +2805,15 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type user_preference_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool() :: #{
+%%   <<"config">> => list(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2635,6 +2874,15 @@
 %%   <<"samplingPercentage">> => float()
 %% }
 -type sampling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_runtime_environment_request() :: #{
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"networkConfiguration">> => network_configuration()
+%% }
+-type harness_agent_core_runtime_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3260,6 +3508,16 @@
 
 
 %% Example:
+%% harness_bedrock_model_config() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_bedrock_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3281,6 +3539,17 @@
 %%   <<"supportedVersions">> => list(string())
 %% }
 -type m_c_p_gateway_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_open_ai_model_config() :: #{
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_open_ai_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3325,6 +3594,15 @@
 %%   <<"uri">> => string()
 %% }
 -type s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_summarization_configuration() :: #{
+%%   <<"preserveRecentMessages">> => [integer()],
+%%   <<"summarizationSystemPrompt">> => [string()],
+%%   <<"summaryRatio">> => [float()]
+%% }
+-type harness_summarization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3416,7 +3694,8 @@
 %% mcp_server_target_configuration() :: #{
 %%   <<"endpoint">> => [string()],
 %%   <<"listingMode">> => list(any()),
-%%   <<"mcpToolSchema">> => list()
+%%   <<"mcpToolSchema">> => list(),
+%%   <<"resourcePriority">> => integer()
 %% }
 -type mcp_server_target_configuration() :: #{binary() => any()}.
 
@@ -3702,11 +3981,31 @@
 
 
 %% Example:
+%% list_harnesses_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harnesses_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_gateways_response() :: #{
 %%   <<"items">> => list(gateway_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_runtime_environment() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeId">> => [string()],
+%%   <<"agentRuntimeName">> => [string()],
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"networkConfiguration">> => network_configuration()
+%% }
+-type harness_agent_core_runtime_environment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3749,6 +4048,20 @@
 %%   <<"name">> => string()
 %% }
 -type update_api_key_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_harness_environment_artifact() :: #{
+%%   <<"optionalValue">> => list()
+%% }
+-type updated_harness_environment_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_code_interpreter_config() :: #{
+%%   <<"codeInterpreterArn">> => string()
+%% }
+-type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3965,6 +4278,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_harness_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_memory_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -4109,6 +4430,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_harness_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_memory_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -4239,6 +4568,13 @@
     resource_not_found_exception().
 
 -type get_gateway_target_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_harness_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4385,6 +4721,12 @@
     internal_server_exception().
 
 -type list_gateways_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_harnesses_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4578,6 +4920,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_harness_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -4969,6 +5319,40 @@ create_gateway_target(Client, GatewayIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/targets/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Operation to create a Harness.
+-spec create_harness(aws_client:aws_client(), create_harness_request()) ->
+    {ok, create_harness_response(), tuple()} |
+    {error, any()} |
+    {error, create_harness_errors(), tuple()}.
+create_harness(Client, Input) ->
+    create_harness(Client, Input, []).
+
+-spec create_harness(aws_client:aws_client(), create_harness_request(), proplists:proplist()) ->
+    {ok, create_harness_response(), tuple()} |
+    {error, any()} |
+    {error, create_harness_errors(), tuple()}.
+create_harness(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/harnesses"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5616,6 +6000,41 @@ delete_gateway_target(Client, GatewayIdentifier, TargetId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Operation to delete a Harness.
+-spec delete_harness(aws_client:aws_client(), binary() | list(), delete_harness_request()) ->
+    {ok, delete_harness_response(), tuple()} |
+    {error, any()} |
+    {error, delete_harness_errors(), tuple()}.
+delete_harness(Client, HarnessId, Input) ->
+    delete_harness(Client, HarnessId, Input, []).
+
+-spec delete_harness(aws_client:aws_client(), binary() | list(), delete_harness_request(), proplists:proplist()) ->
+    {ok, delete_harness_response(), tuple()} |
+    {error, any()} |
+    {error, delete_harness_errors(), tuple()}.
+delete_harness(Client, HarnessId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/harnesses/", aws_util:encode_uri(HarnessId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Bedrock AgentCore Memory resource.
@@ -6270,6 +6689,43 @@ get_gateway_target(Client, GatewayIdentifier, TargetId, QueryMap, HeadersMap)
 get_gateway_target(Client, GatewayIdentifier, TargetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/targets/", aws_util:encode_uri(TargetId), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Operation to get a single Harness.
+-spec get_harness(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_harness_response(), tuple()} |
+    {error, any()} |
+    {error, get_harness_errors(), tuple()}.
+get_harness(Client, HarnessId)
+  when is_map(Client) ->
+    get_harness(Client, HarnessId, #{}, #{}).
+
+-spec get_harness(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_harness_response(), tuple()} |
+    {error, any()} |
+    {error, get_harness_errors(), tuple()}.
+get_harness(Client, HarnessId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_harness(Client, HarnessId, QueryMap, HeadersMap, []).
+
+-spec get_harness(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_harness_response(), tuple()} |
+    {error, any()} |
+    {error, get_harness_errors(), tuple()}.
+get_harness(Client, HarnessId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/harnesses/", aws_util:encode_uri(HarnessId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7060,6 +7516,48 @@ list_gateways(Client, QueryMap, HeadersMap)
 list_gateways(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gateways/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Operation to list Harnesses.
+-spec list_harnesses(aws_client:aws_client()) ->
+    {ok, list_harnesses_response(), tuple()} |
+    {error, any()} |
+    {error, list_harnesses_errors(), tuple()}.
+list_harnesses(Client)
+  when is_map(Client) ->
+    list_harnesses(Client, #{}, #{}).
+
+-spec list_harnesses(aws_client:aws_client(), map(), map()) ->
+    {ok, list_harnesses_response(), tuple()} |
+    {error, any()} |
+    {error, list_harnesses_errors(), tuple()}.
+list_harnesses(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_harnesses(Client, QueryMap, HeadersMap, []).
+
+-spec list_harnesses(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_harnesses_response(), tuple()} |
+    {error, any()} |
+    {error, list_harnesses_errors(), tuple()}.
+list_harnesses(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/harnesses"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8017,6 +8515,40 @@ update_gateway_target(Client, GatewayIdentifier, TargetId, Input0, Options0) ->
     Method = put,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/targets/", aws_util:encode_uri(TargetId), "/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Operation to update a Harness.
+-spec update_harness(aws_client:aws_client(), binary() | list(), update_harness_request()) ->
+    {ok, update_harness_response(), tuple()} |
+    {error, any()} |
+    {error, update_harness_errors(), tuple()}.
+update_harness(Client, HarnessId, Input) ->
+    update_harness(Client, HarnessId, Input, []).
+
+-spec update_harness(aws_client:aws_client(), binary() | list(), update_harness_request(), proplists:proplist()) ->
+    {ok, update_harness_response(), tuple()} |
+    {error, any()} |
+    {error, update_harness_errors(), tuple()}.
+update_harness(Client, HarnessId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/harnesses/", aws_util:encode_uri(HarnessId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

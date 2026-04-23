@@ -198,6 +198,8 @@
          remove_tags/3,
          revoke_vpc_endpoint_access/3,
          revoke_vpc_endpoint_access/4,
+         rollback_service_software_update/2,
+         rollback_service_software_update/3,
          start_domain_maintenance/3,
          start_domain_maintenance/4,
          start_service_software_update/2,
@@ -1037,6 +1039,16 @@
 
 
 %% Example:
+%% rollback_service_software_options() :: #{
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NewVersion">> => string(),
+%%   <<"RollbackAvailable">> => boolean()
+%% }
+-type rollback_service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_scheduled_actions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1505,6 +1517,13 @@
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type delete_inbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_service_software_update_response() :: #{
+%%   <<"RollbackServiceSoftwareOptions">> => rollback_service_software_options()
+%% }
+-type rollback_service_software_update_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2397,7 +2416,8 @@
 
 %% Example:
 %% software_update_options() :: #{
-%%   <<"AutoSoftwareUpdateEnabled">> => boolean()
+%%   <<"AutoSoftwareUpdateEnabled">> => boolean(),
+%%   <<"UseLatestServiceSoftwareForBlueGreen">> => boolean()
 %% }
 -type software_update_options() :: #{binary() => any()}.
 
@@ -2934,6 +2954,13 @@
 %%   <<"TLSSecurityPolicy">> => list(any())
 %% }
 -type domain_endpoint_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_service_software_update_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type rollback_service_software_update_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3570,6 +3597,13 @@
     internal_exception().
 
 -type revoke_vpc_endpoint_access_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type rollback_service_software_update_errors() ::
     base_exception() | 
     validation_exception() | 
     internal_exception() | 
@@ -6695,6 +6729,46 @@ revoke_vpc_endpoint_access(Client, DomainName, Input) ->
 revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Rolls back a service software update for a domain to the previous
+%% version.
+%%
+%% For more
+%% information, see Service
+%% software updates in Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
+-spec rollback_service_software_update(aws_client:aws_client(), rollback_service_software_update_request()) ->
+    {ok, rollback_service_software_update_response(), tuple()} |
+    {error, any()} |
+    {error, rollback_service_software_update_errors(), tuple()}.
+rollback_service_software_update(Client, Input) ->
+    rollback_service_software_update(Client, Input, []).
+
+-spec rollback_service_software_update(aws_client:aws_client(), rollback_service_software_update_request(), proplists:proplist()) ->
+    {ok, rollback_service_software_update_response(), tuple()} |
+    {error, any()} |
+    {error, rollback_service_software_update_errors(), tuple()}.
+rollback_service_software_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/rollback"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -40,6 +40,15 @@
          get_job_run/3,
          get_job_run/5,
          get_job_run/6,
+         get_resource_dashboard/4,
+         get_resource_dashboard/6,
+         get_resource_dashboard/7,
+         get_session/3,
+         get_session/5,
+         get_session/6,
+         get_session_endpoint/3,
+         get_session_endpoint/5,
+         get_session_endpoint/6,
          list_applications/1,
          list_applications/3,
          list_applications/4,
@@ -49,6 +58,9 @@
          list_job_runs/2,
          list_job_runs/4,
          list_job_runs/5,
+         list_sessions/2,
+         list_sessions/4,
+         list_sessions/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -56,10 +68,14 @@
          start_application/4,
          start_job_run/3,
          start_job_run/4,
+         start_session/3,
+         start_session/4,
          stop_application/3,
          stop_application/4,
          tag_resource/3,
          tag_resource/4,
+         terminate_session/4,
+         terminate_session/5,
          untag_resource/3,
          untag_resource/4,
          update_application/3,
@@ -101,11 +117,35 @@
 
 
 %% Example:
+%% session_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_monitoring_configuration() :: #{
 %%   <<"encryptionKeyArn">> => string(),
 %%   <<"logUri">> => string()
 %% }
 -type s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"session">> => session()
+%% }
+-type get_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -141,11 +181,34 @@
 
 
 %% Example:
+%% start_session_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => session_configuration_overrides(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"idleTimeoutMinutes">> => float(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% initial_capacity_config() :: #{
 %%   <<"workerConfiguration">> => worker_resource_config(),
 %%   <<"workerCount">> => float()
 %% }
 -type initial_capacity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_endpoint_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"authToken">> => string(),
+%%   <<"authTokenExpiresAt">> => non_neg_integer(),
+%%   <<"endpoint">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type get_session_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -218,6 +281,10 @@
 %%   <<"states">> => list(string())
 %% }
 -type list_job_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_request() :: #{}
+-type get_session_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -300,10 +367,21 @@
 
 
 %% Example:
+%% session_configuration_overrides() :: #{
+%%   <<"runtimeConfiguration">> => list(configuration())
+%% }
+-type session_configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
 %% auto_start_config() :: #{
 %%   <<"enabled">> => [boolean()]
 %% }
 -type auto_start_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
 
 
 %% Example:
@@ -320,6 +398,10 @@
 %% }
 -type worker_type_specification() :: #{binary() => any()}.
 
+%% Example:
+%% terminate_session_request() :: #{}
+-type terminate_session_request() :: #{}.
+
 
 %% Example:
 %% job_run_execution_iam_policy() :: #{
@@ -327,6 +409,22 @@
 %%   <<"policyArns">> => list(string())
 %% }
 -type job_run_execution_iam_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_session_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type terminate_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_summary())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,6 +565,17 @@
 
 
 %% Example:
+%% list_sessions_request() :: #{
+%%   <<"createdAtAfter">> => non_neg_integer(),
+%%   <<"createdAtBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(string())
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_application_response() :: #{
 %%   <<"applicationId">> := string(),
 %%   <<"arn">> := string(),
@@ -476,8 +585,36 @@
 
 
 %% Example:
+%% session() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"billedResourceUtilization">> => resource_utilization(),
+%%   <<"configurationOverrides">> => session_configuration_overrides(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idleSince">> => non_neg_integer(),
+%%   <<"idleTimeoutMinutes">> => float(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"totalExecutionDurationSeconds">> => [float()],
+%%   <<"totalResourceUtilization">> => total_resource_utilization(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type session() :: #{binary() => any()}.
+
+
+%% Example:
 %% interactive_configuration() :: #{
 %%   <<"livyEndpointEnabled">> => [boolean()],
+%%   <<"sessionEnabled">> => [boolean()],
 %%   <<"studioEnabled">> => [boolean()]
 %% }
 -type interactive_configuration() :: #{binary() => any()}.
@@ -595,9 +732,25 @@
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type start_session_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_application_response() :: #{}
 -type stop_application_response() :: #{}.
+
+
+%% Example:
+%% get_resource_dashboard_response() :: #{
+%%   <<"url">> => string()
+%% }
+-type get_resource_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -630,6 +783,14 @@
 %%   <<"userBackgroundSessionsEnabled">> => [boolean()]
 %% }
 -type identity_center_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_dashboard_request() :: #{
+%%   <<"resourceId">> := string(),
+%%   <<"resourceType">> := string()
+%% }
+-type get_resource_dashboard_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -754,6 +915,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_resource_dashboard_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_session_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_session_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_applications_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -766,6 +942,11 @@
 -type list_job_runs_errors() ::
     validation_exception() | 
     internal_server_exception().
+
+-type list_sessions_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
@@ -784,12 +965,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_session_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_application_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type terminate_session_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -1044,6 +1237,137 @@ get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a URL that you can use to access the application UIs for a
+%% specified resource, such as a session.
+%%
+%% For resources in a running state, the application UI is a live user
+%% interface such as the Spark web UI. For terminated resources, the
+%% application UI is a persistent application user interface such as the
+%% Spark History Server.
+%%
+%% The URL is valid for one hour after you generate it. To access the
+%% application UI after that hour elapses, you must invoke the API again to
+%% generate a new URL.
+-spec get_resource_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_resource_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_dashboard_errors(), tuple()}.
+get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType)
+  when is_map(Client) ->
+    get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType, #{}, #{}).
+
+-spec get_resource_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_resource_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_dashboard_errors(), tuple()}.
+get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType, QueryMap, HeadersMap, []).
+
+-spec get_resource_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_dashboard_errors(), tuple()}.
+get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dashboard"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceId">>, ResourceId},
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays detailed information about a session.
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, ApplicationId, SessionId)
+  when is_map(Client) ->
+    get_session(Client, ApplicationId, SessionId, #{}, #{}).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, ApplicationId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session(Client, ApplicationId, SessionId, QueryMap, HeadersMap, []).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, ApplicationId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/sessions/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the session endpoint URL and a time-limited authentication
+%% token for the specified session.
+%%
+%% Use the endpoint and token to connect a client to the session. Call this
+%% operation again when the authentication token expires to obtain a new
+%% token.
+-spec get_session_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, ApplicationId, SessionId)
+  when is_map(Client) ->
+    get_session_endpoint(Client, ApplicationId, SessionId, #{}, #{}).
+
+-spec get_session_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, ApplicationId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session_endpoint(Client, ApplicationId, SessionId, QueryMap, HeadersMap, []).
+
+-spec get_session_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, ApplicationId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/sessions/", aws_util:encode_uri(SessionId), "/endpoint"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists applications based on a set of parameters.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
@@ -1175,6 +1499,53 @@ list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists sessions for the specified application.
+%%
+%% You can filter sessions by state and creation time.
+-spec list_sessions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, ApplicationId)
+  when is_map(Client) ->
+    list_sessions(Client, ApplicationId, #{}, #{}).
+
+-spec list_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sessions(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/sessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"createdAtAfter">>, maps:get(<<"createdAtAfter">>, QueryMap, undefined)},
+        {<<"createdAtBefore">>, maps:get(<<"createdAtBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags assigned to the resources.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -1281,6 +1652,44 @@ start_job_run(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates and starts a new session on the specified application.
+%%
+%% The application must be in the `STARTED' state or have `AutoStart'
+%% enabled, and have interactive sessions enabled. This operation is
+%% supported for EMR release 7.13.0 and later.
+-spec start_session(aws_client:aws_client(), binary() | list(), start_session_request()) ->
+    {ok, start_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, ApplicationId, Input) ->
+    start_session(Client, ApplicationId, Input, []).
+
+-spec start_session(aws_client:aws_client(), binary() | list(), start_session_request(), proplists:proplist()) ->
+    {ok, start_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/sessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops a specified application and releases initial capacity if
 %% configured.
 %%
@@ -1341,6 +1750,45 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Terminates the specified session.
+%%
+%% After you terminate a session, it enters the `TERMINATING' state and
+%% then the `TERMINATED' state. You can still access the Spark History
+%% Server for a terminated session through the `GetResourceDashboard'
+%% operation.
+-spec terminate_session(aws_client:aws_client(), binary() | list(), binary() | list(), terminate_session_request()) ->
+    {ok, terminate_session_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_session_errors(), tuple()}.
+terminate_session(Client, ApplicationId, SessionId, Input) ->
+    terminate_session(Client, ApplicationId, SessionId, Input, []).
+
+-spec terminate_session(aws_client:aws_client(), binary() | list(), binary() | list(), terminate_session_request(), proplists:proplist()) ->
+    {ok, terminate_session_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_session_errors(), tuple()}.
+terminate_session(Client, ApplicationId, SessionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

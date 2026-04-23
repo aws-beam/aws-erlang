@@ -594,6 +594,7 @@
 
 %% Example:
 %% create_managed_instances_provider_configuration() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
 %%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template(),
@@ -1099,6 +1100,7 @@
 
 %% Example:
 %% managed_instances_provider() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
 %%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template(),
@@ -1793,6 +1795,7 @@
 %%   <<"lastStatusChange">> => non_neg_integer(),
 %%   <<"lastUpdated">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type instance_health_check_result() :: #{binary() => any()}.
@@ -1889,6 +1892,7 @@
 
 %% Example:
 %% update_managed_instances_provider_configuration() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
 %%   <<"infrastructureOptimization">> => infrastructure_optimization(),
 %%   <<"infrastructureRoleArn">> => string(),
 %%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
@@ -2414,6 +2418,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% auto_repair_configuration() :: #{
+%%   <<"actionsStatus">> => list(any())
+%% }
+-type auto_repair_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% managed_instances_local_storage_configuration() :: #{

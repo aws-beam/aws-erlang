@@ -2314,6 +2314,7 @@
 
 %% Example:
 %% get_position_estimate_request() :: #{
+%%   <<"AdvancedConfiguration">> => advanced_configuration(),
 %%   <<"CellTowers">> => cell_towers(),
 %%   <<"Gnss">> => gnss(),
 %%   <<"Ip">> => ip(),
@@ -2383,6 +2384,13 @@
 %% Example:
 %% disassociate_wireless_gateway_from_thing_response() :: #{}
 -type disassociate_wireless_gateway_from_thing_response() :: #{}.
+
+
+%% Example:
+%% advanced_configuration() :: #{
+%%   <<"WiFiCellular">> => wi_fi_cellular()
+%% }
+-type advanced_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2557,6 +2565,13 @@
 %%   <<"WcdmaNmr">> => list(wcdma_nmr_obj())
 %% }
 -type wcdma_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% wi_fi_cellular() :: #{
+%%   <<"ConfidencePercent">> => integer()
+%% }
+-type wi_fi_cellular() :: #{binary() => any()}.
 
 %% Example:
 %% get_wireless_gateway_firmware_information_request() :: #{}
