@@ -845,7 +845,8 @@
 %% Example:
 %% authorized_principal() :: #{
 %%   <<"Principal">> => string(),
-%%   <<"PrincipalType">> => list(any())
+%%   <<"PrincipalType">> => list(any()),
+%%   <<"ServiceOptions">> => service_options()
 %% }
 -type authorized_principal() :: #{binary() => any()}.
 
@@ -921,6 +922,7 @@
 %% identity_center_options_input() :: #{
 %%   <<"EnabledAPIAccess">> => boolean(),
 %%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"IdentityCenterInstanceRegion">> => string(),
 %%   <<"RolesKey">> => list(any()),
 %%   <<"SubjectKey">> => list(any())
 %% }
@@ -1800,6 +1802,13 @@
 %% }
 -type inbound_connection() :: #{binary() => any()}.
 
+
+%% Example:
+%% service_options() :: #{
+%%   <<"SupportedRegions">> => list(string())
+%% }
+-type service_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_response() :: #{}
 -type delete_application_response() :: #{}.
@@ -1884,6 +1893,7 @@
 %%   <<"EnabledAPIAccess">> => boolean(),
 %%   <<"IdentityCenterApplicationARN">> => string(),
 %%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"IdentityCenterInstanceRegion">> => string(),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"RolesKey">> => list(any()),
 %%   <<"SubjectKey">> => list(any())
@@ -2322,7 +2332,8 @@
 %% Example:
 %% authorize_vpc_endpoint_access_request() :: #{
 %%   <<"Account">> => string(),
-%%   <<"Service">> => list(any())
+%%   <<"Service">> => list(any()),
+%%   <<"ServiceOptions">> => service_options()
 %% }
 -type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
 
@@ -2547,7 +2558,8 @@
 %% Example:
 %% revoke_vpc_endpoint_access_request() :: #{
 %%   <<"Account">> => string(),
-%%   <<"Service">> => list(any())
+%%   <<"Service">> => list(any()),
+%%   <<"ServiceOptions">> => service_options()
 %% }
 -type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
 

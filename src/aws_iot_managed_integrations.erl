@@ -298,7 +298,8 @@
 %%   <<"ClaimCertificatePrivateKey">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> => list(any())
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
 -type create_provisioning_profile_response() :: #{binary() => any()}.
 
@@ -1444,7 +1445,8 @@
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> => list(any())
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
 -type provisioning_profile_summary() :: #{binary() => any()}.
 
@@ -2079,6 +2081,7 @@
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type get_provisioning_profile_response() :: #{binary() => any()}.
@@ -2284,6 +2287,7 @@
     internal_server_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type deregister_account_association_errors() ::
@@ -3119,10 +3123,10 @@ create_ota_task_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a provisioning profile for a device to execute the
-%% provisioning flows using a provisioning template.
+%% @doc Create a provisioning profile for executing device provisioning
+%% flows.
 %%
-%% The provisioning template is a document that defines the set of resources
+%% The provisioning profile is a document that defines the set of resources
 %% and policies applied to a device during the provisioning process.
 -spec create_provisioning_profile(aws_client:aws_client(), create_provisioning_profile_request()) ->
     {ok, create_provisioning_profile_response(), tuple()} |
@@ -4296,7 +4300,7 @@ get_ota_task_configuration(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a provisioning profile by template name.
+%% @doc Get details of a provisioning profile.
 -spec get_provisioning_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_provisioning_profile_response(), tuple()} |
     {error, any()} |

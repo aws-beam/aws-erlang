@@ -1894,6 +1894,13 @@
 
 
 %% Example:
+%% lakehouse_properties_input() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_self_grant_status_output() :: #{
 %%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
 %% }
@@ -5187,6 +5194,13 @@
 
 
 %% Example:
+%% lakehouse_properties_output() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% subscribed_asset_listing() :: #{
 %%   <<"assetScope">> => asset_scope(),
 %%   <<"entityId">> => string(),
@@ -6406,6 +6420,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type create_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lakehouse_properties_patch() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:
