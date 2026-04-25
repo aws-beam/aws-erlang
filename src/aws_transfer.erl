@@ -1037,6 +1037,7 @@
 
 %% Example:
 %% update_web_app_vpc_config() :: #{
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"SubnetIds">> => list(string())
 %% }
 -type update_web_app_vpc_config() :: #{binary() => any()}.
@@ -1447,6 +1448,7 @@
 
 %% Example:
 %% web_app_vpc_config() :: #{
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()

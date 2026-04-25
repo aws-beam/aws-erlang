@@ -387,7 +387,8 @@
 %%   <<"clientSecretArn">> => secret(),
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list()
+%%   <<"oauth2ProviderConfigOutput">> => list(),
+%%   <<"status">> => list(any())
 %% }
 -type create_oauth2_credential_provider_response() :: #{binary() => any()}.
 
@@ -2122,7 +2123,9 @@
 %% custom_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
-%%   <<"oauthDiscovery">> => list()
+%%   <<"oauthDiscovery">> => list(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
 -type custom_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -2165,7 +2168,9 @@
 %% Example:
 %% custom_oauth2_provider_config_output() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
+%%   <<"oauthDiscovery">> => list(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
 -type custom_oauth2_provider_config_output() :: #{binary() => any()}.
 
@@ -2437,6 +2442,14 @@
 
 
 %% Example:
+%% private_endpoint_override() :: #{
+%%   <<"domain">> => string(),
+%%   <<"privateEndpoint">> => list()
+%% }
+-type private_endpoint_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_policy_generation_assets_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"policyGenerationAssets">> => list(policy_generation_asset())
@@ -2551,7 +2564,8 @@
 %%   <<"credentialProviderVendor">> => list(any()),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list()
+%%   <<"oauth2ProviderConfigOutput">> => list(),
+%%   <<"status">> => list(any())
 %% }
 -type update_oauth2_credential_provider_response() :: #{binary() => any()}.
 
@@ -3141,9 +3155,11 @@
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list()
+%%   <<"oauth2ProviderConfigOutput">> => list(),
+%%   <<"status">> => list(any())
 %% }
 -type get_oauth2_credential_provider_response() :: #{binary() => any()}.
 
@@ -3281,7 +3297,9 @@
 %%   <<"allowedClients">> => list(string()),
 %%   <<"allowedScopes">> => list(string()),
 %%   <<"customClaims">> => list(custom_claim_validation_type()),
-%%   <<"discoveryUrl">> => string()
+%%   <<"discoveryUrl">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
 -type custom_j_w_t_authorizer_configuration() :: #{binary() => any()}.
 
@@ -3413,18 +3431,6 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_online_evaluation_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_lattice_resource() :: #{
-%%   <<"endpointIpAddressType">> => list(any()),
-%%   <<"routingDomain">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type managed_lattice_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3989,6 +3995,18 @@
 
 
 %% Example:
+%% managed_vpc_resource() :: #{
+%%   <<"endpointIpAddressType">> => list(any()),
+%%   <<"routingDomain">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type managed_vpc_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_gateways_response() :: #{
 %%   <<"items">> => list(gateway_summary()),
 %%   <<"nextToken">> => string()
@@ -4452,6 +4470,7 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type delete_online_evaluation_config_errors() ::

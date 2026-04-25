@@ -248,6 +248,9 @@
          describe_agent_status/3,
          describe_agent_status/5,
          describe_agent_status/6,
+         describe_attached_files_configuration/3,
+         describe_attached_files_configuration/5,
+         describe_attached_files_configuration/6,
          describe_authentication_profile/3,
          describe_authentication_profile/5,
          describe_authentication_profile/6,
@@ -440,6 +443,9 @@
          list_associated_contacts/3,
          list_associated_contacts/5,
          list_associated_contacts/6,
+         list_attached_files_configurations/2,
+         list_attached_files_configurations/4,
+         list_attached_files_configurations/5,
          list_authentication_profiles/2,
          list_authentication_profiles/4,
          list_authentication_profiles/5,
@@ -746,6 +752,8 @@
          untag_resource/4,
          update_agent_status/4,
          update_agent_status/5,
+         update_attached_files_configuration/4,
+         update_attached_files_configuration/5,
          update_authentication_profile/4,
          update_authentication_profile/5,
          update_contact/4,
@@ -1452,6 +1460,17 @@
 
 
 %% Example:
+%% update_attached_files_configuration_response() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type update_attached_files_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_users_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
@@ -1576,6 +1595,13 @@
 %%   <<"TargetListType">> => list(any())
 %% }
 -type list_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_configuration() :: #{
+%%   <<"AllowedExtensions">> => list(allowed_extension())
+%% }
+-type extension_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1720,6 +1746,10 @@
 %%   <<"SecurityProfiles">> := list(security_profile_item())
 %% }
 -type disassociate_security_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attached_files_configuration_request() :: #{}
+-type describe_attached_files_configuration_request() :: #{}.
 
 
 %% Example:
@@ -3025,6 +3055,17 @@
 
 
 %% Example:
+%% attached_files_configuration() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type attached_files_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_outbound_voice_contact_response() :: #{
 %%   <<"ContactId">> => string()
 %% }
@@ -3668,6 +3709,16 @@
 %%   <<"ParticipantRole">> => list(any())
 %% }
 -type participant_details_to_add() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_files_configuration_summary() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type attached_files_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5227,6 +5278,14 @@
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type security_profiles_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attached_files_configuration_request() :: #{
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type update_attached_files_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7406,6 +7465,14 @@
 
 
 %% Example:
+%% list_attached_files_configurations_response() :: #{
+%%   <<"AttachedFilesConfigurations">> => list(attached_files_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attached_files_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_flow_module_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
@@ -8192,6 +8259,14 @@
 
 
 %% Example:
+%% list_attached_files_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attached_files_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% test_case_entry_point() :: #{
 %%   <<"ChatEntryPointParameters">> => chat_entry_point_parameters(),
 %%   <<"Type">> => list(any()),
@@ -8712,6 +8787,13 @@
 %%   <<"Name">> => string()
 %% }
 -type hierarchy_level_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_extension() :: #{
+%%   <<"Extension">> => string()
+%% }
+-type allowed_extension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10769,6 +10851,13 @@
 
 
 %% Example:
+%% describe_attached_files_configuration_response() :: #{
+%%   <<"AttachedFilesConfiguration">> => attached_files_configuration()
+%% }
+-type describe_attached_files_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_rule_response() :: #{
 %%   <<"Rule">> => rule()
 %% }
@@ -12115,6 +12204,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type describe_attached_files_configuration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type describe_authentication_profile_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -12642,6 +12738,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_attached_files_configurations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -13568,6 +13671,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_attached_files_configuration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -18411,6 +18521,48 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes the attached files configuration for the specified Amazon
+%% Connect instance and attachment scope.
+%%
+%% If a custom configuration exists for the specified attachment scope, the
+%% custom configuration is returned. If no custom configuration exists, the
+%% default configuration values for that attachment scope are returned.
+-spec describe_attached_files_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_attached_files_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attached_files_configuration_errors(), tuple()}.
+describe_attached_files_configuration(Client, AttachmentScope, InstanceId)
+  when is_map(Client) ->
+    describe_attached_files_configuration(Client, AttachmentScope, InstanceId, #{}, #{}).
+
+-spec describe_attached_files_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_attached_files_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attached_files_configuration_errors(), tuple()}.
+describe_attached_files_configuration(Client, AttachmentScope, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_attached_files_configuration(Client, AttachmentScope, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_attached_files_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_attached_files_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attached_files_configuration_errors(), tuple()}.
+describe_attached_files_configuration(Client, AttachmentScope, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/attached-files-configurations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AttachmentScope), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -21613,6 +21765,53 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
     Query0_ =
       [
         {<<"contactId">>, ContactId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides summary information about the attached files configurations
+%% for the specified Amazon Connect instance.
+%%
+%% This API returns effective configurations (custom overrides or defaults)
+%% for each attachment scope. If no custom configuration exists for a scope,
+%% the default configuration values are returned.
+-spec list_attached_files_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_attached_files_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attached_files_configurations_errors(), tuple()}.
+list_attached_files_configurations(Client, InstanceId)
+  when is_map(Client) ->
+    list_attached_files_configurations(Client, InstanceId, #{}, #{}).
+
+-spec list_attached_files_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_attached_files_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attached_files_configurations_errors(), tuple()}.
+list_attached_files_configurations(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attached_files_configurations(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_attached_files_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attached_files_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attached_files_configurations_errors(), tuple()}.
+list_attached_files_configurations(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/attached-files-configurations/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -27156,6 +27355,45 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input) ->
 update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the attached files configuration for the specified Amazon
+%% Connect instance and attachment scope.
+%%
+%% If no instance-specific configuration exists, this operation creates one.
+%% Partial updates are supported—only specified fields are updated, while
+%% unspecified fields retain their current values.
+-spec update_attached_files_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_attached_files_configuration_request()) ->
+    {ok, update_attached_files_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_attached_files_configuration_errors(), tuple()}.
+update_attached_files_configuration(Client, AttachmentScope, InstanceId, Input) ->
+    update_attached_files_configuration(Client, AttachmentScope, InstanceId, Input, []).
+
+-spec update_attached_files_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_attached_files_configuration_request(), proplists:proplist()) ->
+    {ok, update_attached_files_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_attached_files_configuration_errors(), tuple()}.
+update_attached_files_configuration(Client, AttachmentScope, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/attached-files-configurations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AttachmentScope), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

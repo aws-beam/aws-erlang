@@ -575,6 +575,7 @@
 %% Example:
 %% get_query_results_response() :: #{
 %%   <<"encryptionKey">> => string(),
+%%   <<"nextToken">> => string(),
 %%   <<"queryLanguage">> => list(any()),
 %%   <<"results">> => list(list(result_field())()),
 %%   <<"statistics">> => query_statistics(),
@@ -745,6 +746,8 @@
 
 %% Example:
 %% get_query_results_request() :: #{
+%%   <<"maxItems">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"queryId">> := string()
 %% }
 -type get_query_results_request() :: #{binary() => any()}.
