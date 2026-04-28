@@ -381,6 +381,8 @@
 
 %% Example:
 %% update_operation() :: #{
+%%   <<"excluded">> => [boolean()],
+%%   <<"name">> => string(),
 %%   <<"properties">> => map()
 %% }
 -type update_operation() :: #{binary() => any()}.
@@ -1022,6 +1024,7 @@
 %%   <<"constructType">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"excluded">> => [boolean()],
 %%   <<"logicalID">> => string(),
 %%   <<"name">> => string(),
 %%   <<"properties">> => map(),
@@ -1292,6 +1295,10 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+%% Example:
+%% delete_operation() :: #{}
+-type delete_operation() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -1367,6 +1374,13 @@
 %%   <<"ssmDocuments">> => list(ssm_document())
 %% }
 -type post_launch_actions() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_operation() :: #{
+%%   <<"mergeConstructs">> => list(merge_construct())
+%% }
+-type merge_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1829,6 +1843,14 @@
 
 
 %% Example:
+%% merge_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"segmentID">> => string()
+%% }
+-type merge_construct() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_launch_configuration_templates_response() :: #{
 %%   <<"items">> => list(launch_configuration_template()),
 %%   <<"nextToken">> => string()
@@ -2214,6 +2236,13 @@
 
 
 %% Example:
+%% split_construct() :: #{
+%%   <<"cidrBlock">> => string()
+%% }
+-type split_construct() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_network_migration_analysis_results_filters() :: #{
 %%   <<"vpcIDs">> => list(string())
 %% }
@@ -2343,6 +2372,13 @@
 %%   <<"importIDs">> => list(string())
 %% }
 -type list_imports_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% split_operation() :: #{
+%%   <<"splitConstructs">> => list(split_construct())
+%% }
+-type split_operation() :: #{binary() => any()}.
 
 
 %% Example:

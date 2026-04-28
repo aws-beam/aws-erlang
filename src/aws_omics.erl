@@ -944,8 +944,10 @@
 %% default_run_setting() :: #{
 %%   <<"cacheBehavior">> => string(),
 %%   <<"cacheId">> => string(),
+%%   <<"configurationName">> => string(),
 %%   <<"logLevel">> => string(),
 %%   <<"name">> => string(),
+%%   <<"networkingMode">> => string(),
 %%   <<"outputBucketOwnerId">> => string(),
 %%   <<"outputUri">> => string(),
 %%   <<"parameters">> => any(),
@@ -8219,9 +8221,10 @@ start_run(Client, Input0, Options0) ->
 %% runs).
 %%
 %% `StartRunBatch' validates common fields synchronously and returns
-%% immediately with a batch ID and status `PENDING'. Runs are submitted
-%% gradually and asynchronously at a rate governed by your `StartRun'
-%% throughput quota.
+%% immediately with a batch ID and status `CREATING'. The batch
+%% transitions to `PENDING' once initial setup completes. Runs are then
+%% submitted gradually and asynchronously at a rate governed by your
+%% `StartRun' throughput quota.
 -spec start_run_batch(aws_client:aws_client(), start_run_batch_request()) ->
     {ok, start_run_batch_response(), tuple()} |
     {error, any()} |

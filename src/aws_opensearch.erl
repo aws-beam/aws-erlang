@@ -1061,6 +1061,7 @@
 %% Example:
 %% j_w_t_options_input() :: #{
 %%   <<"Enabled">> => boolean(),
+%%   <<"JwksUrl">> => string(),
 %%   <<"PublicKey">> => string(),
 %%   <<"RolesKey">> => string(),
 %%   <<"SubjectKey">> => string()
@@ -2400,6 +2401,7 @@
 %% Example:
 %% j_w_t_options_output() :: #{
 %%   <<"Enabled">> => boolean(),
+%%   <<"JwksUrl">> => string(),
 %%   <<"PublicKey">> => string(),
 %%   <<"RolesKey">> => string(),
 %%   <<"SubjectKey">> => string()

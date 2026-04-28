@@ -1232,7 +1232,8 @@
 %% Example:
 %% create_ad_configuration_request() :: #{
 %%   <<"mediaTailorPlaybackConfigurations">> := list(media_tailor_playback_configuration()),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
 %% }
 -type create_ad_configuration_request() :: #{binary() => any()}.
 

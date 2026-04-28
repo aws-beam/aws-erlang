@@ -259,6 +259,7 @@
 %% Example:
 %% service_level_objective_summary() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
 %%   <<"CreatedTime">> => [non_neg_integer()],
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"EvaluationType">> => list(any()),
@@ -277,6 +278,7 @@
 
 %% Example:
 %% service_level_indicator_metric_config() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()),
@@ -348,6 +350,7 @@
 
 %% Example:
 %% create_service_level_objective_input() :: #{
+%%   <<"AutoInvestigationEnabled">> => [boolean()],
 %%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"CreateRecommendedSlo">> => [boolean()],
 %%   <<"Description">> => string(),
@@ -384,6 +387,7 @@
 %% Example:
 %% service_level_objective() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AutoInvestigationEnabled">> => [boolean()],
 %%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"CreatedTime">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
@@ -434,6 +438,7 @@
 
 %% Example:
 %% service_level_indicator_metric() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()),
@@ -446,6 +451,7 @@
 
 %% Example:
 %% request_based_service_level_indicator_metric_config() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricName">> => string(),
@@ -456,6 +462,14 @@
 %%   <<"TotalRequestCountMetric">> => list(metric_data_query())
 %% }
 -type request_based_service_level_indicator_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% selection_config() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type selection_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -617,6 +631,14 @@
 
 
 %% Example:
+%% composite_sli_config() :: #{
+%%   <<"Components">> => list(list()),
+%%   <<"SelectionConfig">> => selection_config()
+%% }
+-type composite_sli_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_dependent() :: #{
 %%   <<"DependentKeyAttributes">> => map(),
 %%   <<"DependentOperationName">> => string(),
@@ -739,6 +761,7 @@
 
 %% Example:
 %% request_based_service_level_indicator_metric() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricSource">> => metric_source(),
@@ -762,6 +785,7 @@
 
 %% Example:
 %% update_service_level_objective_input() :: #{
+%%   <<"AutoInvestigationEnabled">> => [boolean()],
 %%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),

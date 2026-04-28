@@ -3339,6 +3339,7 @@
 
 %% Example:
 %% get_table_versions_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -7025,6 +7026,7 @@
 
 %% Example:
 %% get_table_version_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string(),
@@ -8134,6 +8136,7 @@
 
 %% Example:
 %% get_partitions_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"ExcludeColumnSchema">> => boolean(),
@@ -8503,6 +8506,7 @@
 
 %% Example:
 %% get_partition_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"PartitionValues">> := list(string()),

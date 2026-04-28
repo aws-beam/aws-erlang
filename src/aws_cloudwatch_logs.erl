@@ -2308,6 +2308,7 @@
 %%   <<"createdTimeStamp">> => float(),
 %%   <<"dataSource">> => data_source(),
 %%   <<"identifier">> => string(),
+%%   <<"parentSourceIdentifier">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string()
 %% }
