@@ -694,6 +694,13 @@
 
 
 %% Example:
+%% cache_tag_config() :: #{
+%%   <<"HeaderName">> => string()
+%% }
+-type cache_tag_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_invalidations_in_progress() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2404,6 +2411,7 @@
 %%   <<"Aliases">> => aliases(),
 %%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
+%%   <<"CacheTagConfig">> => cache_tag_config(),
 %%   <<"CallerReference">> => string(),
 %%   <<"Comment">> => string(),
 %%   <<"ConnectionFunctionAssociation">> => connection_function_association(),

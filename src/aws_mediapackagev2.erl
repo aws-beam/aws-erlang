@@ -168,7 +168,8 @@
 %%   <<"OriginEndpointName">> := string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type create_origin_endpoint_request() :: #{binary() => any()}.
 
@@ -262,7 +263,8 @@
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type create_origin_endpoint_response() :: #{binary() => any()}.
 
@@ -276,6 +278,7 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
 %%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type create_hls_manifest_configuration() :: #{binary() => any()}.
@@ -299,6 +302,7 @@
 %%   <<"SegmentTemplateFormat">> => list(any()),
 %%   <<"SubtitleConfiguration">> => dash_subtitle_configuration(),
 %%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
+%%   <<"UriPathType">> => list(any()),
 %%   <<"UtcTiming">> => dash_utc_timing()
 %% }
 -type create_dash_manifest_configuration() :: #{binary() => any()}.
@@ -324,7 +328,8 @@
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
 %%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
 %%   <<"Segment">> => segment(),
-%%   <<"StartoverWindowSeconds">> => [integer()]
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type update_origin_endpoint_request() :: #{binary() => any()}.
 
@@ -395,6 +400,7 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
 %%   <<"Url">> => [string()],
 %%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
@@ -410,6 +416,7 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
 %%   <<"Url">> => [string()],
 %%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
@@ -716,6 +723,7 @@
 %%   <<"SegmentTemplateFormat">> => list(any()),
 %%   <<"SubtitleConfiguration">> => dash_subtitle_configuration(),
 %%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
+%%   <<"UriPathType">> => list(any()),
 %%   <<"Url">> => [string()],
 %%   <<"UtcTiming">> => dash_utc_timing()
 %% }
@@ -792,7 +800,8 @@
 
 %% Example:
 %% scte_dash() :: #{
-%%   <<"AdMarkerDash">> => list(any())
+%%   <<"AdMarkerDash">> => list(any()),
+%%   <<"ScteInManifests">> => list(any())
 %% }
 -type scte_dash() :: #{binary() => any()}.
 
@@ -830,7 +839,8 @@
 
 %% Example:
 %% scte_hls() :: #{
-%%   <<"AdMarkerHls">> => list(any())
+%%   <<"AdMarkerHls">> => list(any()),
+%%   <<"ScteInManifests">> => list(any())
 %% }
 -type scte_hls() :: #{binary() => any()}.
 
@@ -925,6 +935,7 @@
 
 %% Example:
 %% scte() :: #{
+%%   <<"CustomAdTypes">> => list(list(any())()),
 %%   <<"ScteFilter">> => list(list(any())()),
 %%   <<"ScteInSegments">> => list(any())
 %% }
@@ -1019,7 +1030,8 @@
 %%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"MssManifests">> => list(list_mss_manifest_configuration()),
-%%   <<"OriginEndpointName">> => string()
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type origin_endpoint_list_configuration() :: #{binary() => any()}.
 
@@ -1061,6 +1073,7 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
 %%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
@@ -1107,7 +1120,8 @@
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type update_origin_endpoint_response() :: #{binary() => any()}.
 
@@ -1166,7 +1180,8 @@
 %%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
 %% }
 -type get_origin_endpoint_response() :: #{binary() => any()}.
 

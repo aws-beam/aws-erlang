@@ -327,7 +327,8 @@
 %% get_account_information_response() :: #{
 %%   <<"AccountCreatedDate">> => non_neg_integer(),
 %%   <<"AccountId">> => string(),
-%%   <<"AccountName">> => string()
+%%   <<"AccountName">> => string(),
+%%   <<"AccountState">> => string()
 %% }
 -type get_account_information_response() :: #{binary() => any()}.
 
@@ -591,7 +592,8 @@ enable_region(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified account including its
-%% account name, account ID, and account creation date and time.
+%% account name, account ID, account creation date and time, and account
+%% state.
 %%
 %% To use this API, an IAM user or role must have the
 %% `account:GetAccountInformation' IAM permission.

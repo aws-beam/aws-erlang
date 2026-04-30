@@ -19,10 +19,14 @@
          create_browser_profile/3,
          create_code_interpreter/2,
          create_code_interpreter/3,
+         create_configuration_bundle/2,
+         create_configuration_bundle/3,
          create_evaluator/2,
          create_evaluator/3,
          create_gateway/2,
          create_gateway/3,
+         create_gateway_rule/3,
+         create_gateway_rule/4,
          create_gateway_target/3,
          create_gateway_target/4,
          create_harness/2,
@@ -55,10 +59,14 @@
          delete_browser_profile/4,
          delete_code_interpreter/3,
          delete_code_interpreter/4,
+         delete_configuration_bundle/3,
+         delete_configuration_bundle/4,
          delete_evaluator/3,
          delete_evaluator/4,
          delete_gateway/3,
          delete_gateway/4,
+         delete_gateway_rule/4,
+         delete_gateway_rule/5,
          delete_gateway_target/4,
          delete_gateway_target/5,
          delete_harness/3,
@@ -98,12 +106,21 @@
          get_code_interpreter/2,
          get_code_interpreter/4,
          get_code_interpreter/5,
+         get_configuration_bundle/2,
+         get_configuration_bundle/4,
+         get_configuration_bundle/5,
+         get_configuration_bundle_version/3,
+         get_configuration_bundle_version/5,
+         get_configuration_bundle_version/6,
          get_evaluator/2,
          get_evaluator/4,
          get_evaluator/5,
          get_gateway/2,
          get_gateway/4,
          get_gateway/5,
+         get_gateway_rule/3,
+         get_gateway_rule/5,
+         get_gateway_rule/6,
          get_gateway_target/3,
          get_gateway_target/5,
          get_gateway_target/6,
@@ -154,8 +171,15 @@
          list_browsers/3,
          list_code_interpreters/2,
          list_code_interpreters/3,
+         list_configuration_bundle_versions/3,
+         list_configuration_bundle_versions/4,
+         list_configuration_bundles/2,
+         list_configuration_bundles/3,
          list_evaluators/2,
          list_evaluators/3,
+         list_gateway_rules/2,
+         list_gateway_rules/4,
+         list_gateway_rules/5,
          list_gateway_targets/2,
          list_gateway_targets/4,
          list_gateway_targets/5,
@@ -214,10 +238,14 @@
          update_agent_runtime_endpoint/5,
          update_api_key_credential_provider/2,
          update_api_key_credential_provider/3,
+         update_configuration_bundle/3,
+         update_configuration_bundle/4,
          update_evaluator/3,
          update_evaluator/4,
          update_gateway/3,
          update_gateway/4,
+         update_gateway_rule/4,
+         update_gateway_rule/5,
          update_gateway_target/4,
          update_gateway_target/5,
          update_harness/3,
@@ -281,7 +309,7 @@
 %%   <<"name">> := string(),
 %%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
-%%   <<"protocolType">> := list(any()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"roleArn">> := string()
 %% }
 -type update_gateway_request() :: #{binary() => any()}.
@@ -292,6 +320,14 @@
 %%   <<"arn">> => string()
 %% }
 -type lambda_interceptor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_principal() :: #{
+%%   <<"arn">> => string(),
+%%   <<"operator">> => list(any())
+%% }
+-type iam_principal() :: #{binary() => any()}.
 
 
 %% Example:
@@ -379,6 +415,10 @@
 %%   <<"retrievalConfig">> => map()
 %% }
 -type harness_agent_core_memory_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_bundle_request() :: #{}
+-type delete_configuration_bundle_request() :: #{}.
 
 
 %% Example:
@@ -493,6 +533,14 @@
 
 
 %% Example:
+%% configuration_bundle_reference() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => [string()]
+%% }
+-type configuration_bundle_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_summary() :: #{
 %%   <<"browserArn">> => string(),
 %%   <<"browserId">> => string(),
@@ -522,6 +570,22 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type memory_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_rule_detail() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_rule_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -611,9 +675,12 @@
 %% }
 -type kms_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_evaluator_request() :: #{}
--type get_evaluator_request() :: #{}.
+%% get_evaluator_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_evaluator_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -656,6 +723,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_paths() :: #{
+%%   <<"anyOf">> => list(string())
+%% }
+-type match_paths() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -801,6 +875,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"evaluatorConfig">> => list(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> => list(any())
 %% }
 -type update_evaluator_request() :: #{binary() => any()}.
@@ -866,6 +941,13 @@
 %%   <<"harness">> => harness()
 %% }
 -type create_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_route() :: #{
+%%   <<"trafficSplit">> => list(target_traffic_split_entry())
+%% }
+-type weighted_route() :: #{binary() => any()}.
 
 
 %% Example:
@@ -935,6 +1017,16 @@
 %% Example:
 %% get_registry_request() :: #{}
 -type get_registry_request() :: #{}.
+
+
+%% Example:
+%% update_gateway_rule_request() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"description">> => string(),
+%%   <<"priority">> => integer()
+%% }
+-type update_gateway_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1180,6 +1272,7 @@
 %%   <<"name">> => string(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1337,6 +1430,17 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type delete_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_rule_request() :: #{
+%%   <<"actions">> := list(list()),
+%%   <<"clientToken">> => string(),
+%%   <<"conditions">> => list(list()),
+%%   <<"description">> => string(),
+%%   <<"priority">> := integer()
+%% }
+-type create_gateway_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1545,6 +1649,7 @@
 %%   <<"name">> => string(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1576,6 +1681,21 @@
 %% Example:
 %% get_policy_engine_request() :: #{}
 -type get_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"components">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type get_configuration_bundle_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1630,6 +1750,28 @@
 %% Example:
 %% delete_evaluator_request() :: #{}
 -type delete_evaluator_request() :: #{}.
+
+
+%% Example:
+%% update_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"components">> => map(),
+%%   <<"createdBy">> => version_created_by_source(),
+%%   <<"description">> => string(),
+%%   <<"parentVersionIds">> => list(string())
+%% }
+-type update_configuration_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_created_by_source() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type version_created_by_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1700,6 +1842,21 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type harness_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_rule_response() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block()
+%% }
+-type create_gateway_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1780,6 +1937,16 @@
 
 
 %% Example:
+%% version_lineage_metadata() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"createdBy">> => version_created_by_source(),
+%%   <<"parentVersionIds">> => list(string())
+%% }
+-type version_lineage_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttled_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -1792,6 +1959,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_registry_record_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_gateway_rule_response() :: #{
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_gateway_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1845,6 +2020,7 @@
 %%   <<"name">> => string(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -1950,6 +2126,17 @@
 
 
 %% Example:
+%% target_traffic_split_entry() :: #{
+%%   <<"description">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"targetName">> => string(),
+%%   <<"weight">> => [integer()]
+%% }
+-type target_traffic_split_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% registry_record_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -2005,6 +2192,14 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_target_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"qualifier">> => string()
+%% }
+-type runtime_target_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2112,6 +2307,17 @@
 
 
 %% Example:
+%% traffic_split_entry() :: #{
+%%   <<"configurationBundle">> => configuration_bundle_reference(),
+%%   <<"description">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"weight">> => [integer()]
+%% }
+-type traffic_split_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% workload_identity_type() :: #{
 %%   <<"name">> => string(),
 %%   <<"workloadIdentityArn">> => string()
@@ -2163,6 +2369,16 @@
 %% Example:
 %% get_agent_runtime_endpoint_request() :: #{}
 -type get_agent_runtime_endpoint_request() :: #{}.
+
+
+%% Example:
+%% configuration_bundle_summary() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"description">> => string()
+%% }
+-type configuration_bundle_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2379,6 +2595,14 @@
 
 
 %% Example:
+%% list_gateway_rules_response() :: #{
+%%   <<"gatewayRules">> => list(gateway_rule_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% token_based_trigger() :: #{
 %%   <<"tokenCount">> => [integer()]
 %% }
@@ -2411,6 +2635,10 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type update_registry_record_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_rule_request() :: #{}
+-type get_gateway_rule_request() :: #{}.
 
 
 %% Example:
@@ -2495,6 +2723,16 @@
 %%   <<"policyGenerations">> => list(policy_generation())
 %% }
 -type list_policy_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type update_configuration_bundle_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2679,10 +2917,37 @@
 
 
 %% Example:
+%% update_gateway_rule_response() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_gateway_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
 -type update_memory_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_version_summary() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"versionCreatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type configuration_bundle_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2853,6 +3118,21 @@
 %% }
 -type list_browsers_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_configuration_bundle_version_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"components">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"versionCreatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type get_configuration_bundle_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
@@ -2952,7 +3232,7 @@
 %%   <<"name">> := string(),
 %%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
 %%   <<"protocolConfiguration">> => list(),
-%%   <<"protocolType">> := list(any()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -2979,6 +3259,7 @@
 %%   <<"name">> => string(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
 %%   <<"targetConfiguration">> => list(),
@@ -3045,6 +3326,14 @@
 
 
 %% Example:
+%% list_configuration_bundles_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundles_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_browser_profile_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -3072,6 +3361,14 @@
 %%   <<"messageCount">> => [integer()]
 %% }
 -type message_based_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundle_versions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(configuration_bundle_version_summary())
+%% }
+-type list_configuration_bundle_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3219,6 +3516,7 @@
 %%   <<"evaluatorConfig">> => list(),
 %%   <<"evaluatorId">> => string(),
 %%   <<"evaluatorName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> => list(any()),
 %%   <<"lockedForModification">> => [boolean()],
 %%   <<"status">> => list(any()),
@@ -3434,6 +3732,13 @@
 
 
 %% Example:
+%% component_configuration() :: #{
+%%   <<"configuration">> => [any()]
+%% }
+-type component_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_evaluator_response() :: #{
 %%   <<"evaluatorArn">> => string(),
 %%   <<"evaluatorId">> => string(),
@@ -3503,6 +3808,22 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% get_gateway_rule_response() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_gateway_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3578,6 +3899,10 @@
 %% }
 -type api_key_credential_provider_item() :: #{binary() => any()}.
 
+%% Example:
+%% delete_gateway_rule_request() :: #{}
+-type delete_gateway_rule_request() :: #{}.
+
 
 %% Example:
 %% list_oauth2_credential_providers_request() :: #{
@@ -3585,6 +3910,21 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_oauth2_credential_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_override() :: #{
+%%   <<"trafficSplit">> => list(traffic_split_entry())
+%% }
+-type weighted_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_configuration_bundle_response() :: #{
+%%   <<"bundleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_configuration_bundle_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3601,6 +3941,10 @@
 %% }
 -type s3_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% get_configuration_bundle_version_request() :: #{}
+-type get_configuration_bundle_version_request() :: #{}.
+
 
 %% Example:
 %% harness_summarization_configuration() :: #{
@@ -3609,6 +3953,15 @@
 %%   <<"summaryRatio">> => [float()]
 %% }
 -type harness_summarization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundle_versions_request() :: #{
+%%   <<"filter">> => version_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundle_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3661,6 +4014,13 @@
 
 
 %% Example:
+%% match_principals() :: #{
+%%   <<"anyOf">> => list(list())
+%% }
+-type match_principals() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_runtime() :: #{
 %%   <<"agentRuntimeArn">> => string(),
 %%   <<"agentRuntimeId">> => string(),
@@ -3682,6 +4042,14 @@
 
 
 %% Example:
+%% list_gateway_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% protocol_configuration() :: #{
 %%   <<"serverProtocol">> => list(any())
 %% }
@@ -3694,6 +4062,15 @@
 %%   <<"schemaVersion">> => string()
 %% }
 -type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_filter() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"createdByName">> => [string()],
+%%   <<"latestPerBranch">> => [boolean()]
+%% }
+-type version_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3775,6 +4152,13 @@
 
 
 %% Example:
+%% system_managed_block() :: #{
+%%   <<"managedBy">> => [string()]
+%% }
+-type system_managed_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% policy_engine() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -3794,6 +4178,13 @@
 %%   <<"inlineContent">> => string()
 %% }
 -type skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_route() :: #{
+%%   <<"targetName">> => string()
+%% }
+-type static_route() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3857,6 +4248,16 @@
 
 
 %% Example:
+%% create_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type create_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agent_runtime_endpoints_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -3911,6 +4312,7 @@
 %%   <<"description">> => string(),
 %%   <<"evaluatorConfig">> := list(),
 %%   <<"evaluatorName">> := string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> := list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -4076,6 +4478,27 @@
 
 
 %% Example:
+%% get_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string()
+%% }
+-type get_configuration_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"bundleName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"components">> := map(),
+%%   <<"createdBy">> => version_created_by_source(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_configuration_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_agent_core_code_interpreter_config() :: #{
 %%   <<"codeInterpreterArn">> => string()
 %% }
@@ -4090,6 +4513,7 @@
 %%   <<"evaluatorId">> => string(),
 %%   <<"evaluatorName">> => string(),
 %%   <<"evaluatorType">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> => list(any()),
 %%   <<"lockedForModification">> => [boolean()],
 %%   <<"status">> => list(any()),
@@ -4112,6 +4536,14 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_api_key_credential_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundles_response() :: #{
+%%   <<"bundles">> => list(configuration_bundle_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundles_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4183,6 +4615,14 @@
 %%   <<"optionalValue">> => string()
 %% }
 -type updated_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_override() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => [string()]
+%% }
+-type static_override() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4271,6 +4711,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_configuration_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4285,6 +4733,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_gateway_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_gateway_target_errors() ::
@@ -4424,6 +4881,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_configuration_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4433,6 +4898,14 @@
     conflict_exception().
 
 -type delete_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_gateway_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4572,6 +5045,20 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type get_configuration_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configuration_bundle_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4580,6 +5067,13 @@
     resource_not_found_exception().
 
 -type get_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_gateway_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4727,11 +5221,31 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_configuration_bundle_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_configuration_bundles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_evaluators_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_gateway_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_gateway_targets_errors() ::
     throttling_exception() | 
@@ -4915,6 +5429,14 @@
     decryption_failure() | 
     unauthorized_exception().
 
+-type update_configuration_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4930,6 +5452,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_gateway_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -5241,6 +5771,43 @@ create_code_interpreter(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new configuration bundle resource.
+%%
+%% A configuration bundle stores versioned component configurations for agent
+%% evaluation workflows.
+-spec create_configuration_bundle(aws_client:aws_client(), create_configuration_bundle_request()) ->
+    {ok, create_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_bundle_errors(), tuple()}.
+create_configuration_bundle(Client, Input) ->
+    create_configuration_bundle(Client, Input, []).
+
+-spec create_configuration_bundle(aws_client:aws_client(), create_configuration_bundle_request(), proplists:proplist()) ->
+    {ok, create_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_bundle_errors(), tuple()}.
+create_configuration_bundle(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration-bundles/create"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a custom evaluator for agent quality assessment.
 %%
 %% Custom evaluators can use either LLM-as-a-Judge configurations with
@@ -5301,6 +5868,44 @@ create_gateway(Client, Input) ->
 create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/gateways/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a rule for a gateway.
+%%
+%% Rules define conditions and actions that control how requests are routed
+%% and processed through the gateway, including principal-based access
+%% control and path-based routing.
+-spec create_gateway_rule(aws_client:aws_client(), binary() | list(), create_gateway_rule_request()) ->
+    {ok, create_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_rule_errors(), tuple()}.
+create_gateway_rule(Client, GatewayIdentifier, Input) ->
+    create_gateway_rule(Client, GatewayIdentifier, Input, []).
+
+-spec create_gateway_rule(aws_client:aws_client(), binary() | list(), create_gateway_rule_request(), proplists:proplist()) ->
+    {ok, create_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_rule_errors(), tuple()}.
+create_gateway_rule(Client, GatewayIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rules"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5911,6 +6516,40 @@ delete_code_interpreter(Client, CodeInterpreterId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a configuration bundle and all of its versions.
+-spec delete_configuration_bundle(aws_client:aws_client(), binary() | list(), delete_configuration_bundle_request()) ->
+    {ok, delete_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, delete_configuration_bundle_errors(), tuple()}.
+delete_configuration_bundle(Client, BundleId, Input) ->
+    delete_configuration_bundle(Client, BundleId, Input, []).
+
+-spec delete_configuration_bundle(aws_client:aws_client(), binary() | list(), delete_configuration_bundle_request(), proplists:proplist()) ->
+    {ok, delete_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, delete_configuration_bundle_errors(), tuple()}.
+delete_configuration_bundle(Client, BundleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a custom evaluator.
 %%
 %% Builtin evaluators cannot be deleted. The evaluator must not be referenced
@@ -5963,6 +6602,40 @@ delete_gateway(Client, GatewayIdentifier, Input) ->
 delete_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a gateway rule.
+-spec delete_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_rule_request()) ->
+    {ok, delete_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_rule_errors(), tuple()}.
+delete_gateway_rule(Client, GatewayIdentifier, RuleId, Input) ->
+    delete_gateway_rule(Client, GatewayIdentifier, RuleId, Input, []).
+
+-spec delete_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_rule_request(), proplists:proplist()) ->
+    {ok, delete_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_rule_errors(), tuple()}.
+delete_gateway_rule(Client, GatewayIdentifier, RuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rules/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6607,6 +7280,89 @@ get_code_interpreter(Client, CodeInterpreterId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the latest version of a configuration bundle.
+%%
+%% By default, returns the latest version on the mainline branch. Use
+%% `GetConfigurationBundleVersion' to retrieve a specific historical
+%% version.
+-spec get_configuration_bundle(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_errors(), tuple()}.
+get_configuration_bundle(Client, BundleId)
+  when is_map(Client) ->
+    get_configuration_bundle(Client, BundleId, #{}, #{}).
+
+-spec get_configuration_bundle(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_errors(), tuple()}.
+get_configuration_bundle(Client, BundleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_bundle(Client, BundleId, QueryMap, HeadersMap, []).
+
+-spec get_configuration_bundle(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_errors(), tuple()}.
+get_configuration_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"branchName">>, maps:get(<<"branchName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a specific version of a configuration bundle by its version
+%% identifier.
+-spec get_configuration_bundle_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_configuration_bundle_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_version_errors(), tuple()}.
+get_configuration_bundle_version(Client, BundleId, VersionId)
+  when is_map(Client) ->
+    get_configuration_bundle_version(Client, BundleId, VersionId, #{}, #{}).
+
+-spec get_configuration_bundle_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_configuration_bundle_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_version_errors(), tuple()}.
+get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersMap, []).
+
+-spec get_configuration_bundle_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configuration_bundle_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_bundle_version_errors(), tuple()}.
+get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), "/versions/", aws_util:encode_uri(VersionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed information about an evaluator, including its
 %% configuration, status, and metadata.
 %%
@@ -6643,7 +7399,11 @@ get_evaluator(Client, EvaluatorId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"includedData">>, maps:get(<<"includedData">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6671,6 +7431,43 @@ get_gateway(Client, GatewayIdentifier, QueryMap, HeadersMap)
 get_gateway(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific gateway rule.
+-spec get_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rule_errors(), tuple()}.
+get_gateway_rule(Client, GatewayIdentifier, RuleId)
+  when is_map(Client) ->
+    get_gateway_rule(Client, GatewayIdentifier, RuleId, #{}, #{}).
+
+-spec get_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rule_errors(), tuple()}.
+get_gateway_rule(Client, GatewayIdentifier, RuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_gateway_rule(Client, GatewayIdentifier, RuleId, QueryMap, HeadersMap, []).
+
+-spec get_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rule_errors(), tuple()}.
+get_gateway_rule(Client, GatewayIdentifier, RuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rules/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7432,6 +8229,79 @@ list_code_interpreters(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all versions of a configuration bundle, with optional filtering
+%% by branch name or creation source.
+-spec list_configuration_bundle_versions(aws_client:aws_client(), binary() | list(), list_configuration_bundle_versions_request()) ->
+    {ok, list_configuration_bundle_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_bundle_versions_errors(), tuple()}.
+list_configuration_bundle_versions(Client, BundleId, Input) ->
+    list_configuration_bundle_versions(Client, BundleId, Input, []).
+
+-spec list_configuration_bundle_versions(aws_client:aws_client(), binary() | list(), list_configuration_bundle_versions_request(), proplists:proplist()) ->
+    {ok, list_configuration_bundle_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_bundle_versions_errors(), tuple()}.
+list_configuration_bundle_versions(Client, BundleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all configuration bundles in the account.
+-spec list_configuration_bundles(aws_client:aws_client(), list_configuration_bundles_request()) ->
+    {ok, list_configuration_bundles_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_bundles_errors(), tuple()}.
+list_configuration_bundles(Client, Input) ->
+    list_configuration_bundles(Client, Input, []).
+
+-spec list_configuration_bundles(aws_client:aws_client(), list_configuration_bundles_request(), proplists:proplist()) ->
+    {ok, list_configuration_bundles_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_bundles_errors(), tuple()}.
+list_configuration_bundles(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration-bundles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all available evaluators, including both builtin evaluators
 %% provided by the service and custom evaluators created by the user.
 -spec list_evaluators(aws_client:aws_client(), list_evaluators_request()) ->
@@ -7468,6 +8338,48 @@ list_evaluators(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all rules for a gateway.
+-spec list_gateway_rules(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_gateway_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rules_errors(), tuple()}.
+list_gateway_rules(Client, GatewayIdentifier)
+  when is_map(Client) ->
+    list_gateway_rules(Client, GatewayIdentifier, #{}, #{}).
+
+-spec list_gateway_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_gateway_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rules_errors(), tuple()}.
+list_gateway_rules(Client, GatewayIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateway_rules(Client, GatewayIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_gateway_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_gateway_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rules_errors(), tuple()}.
+list_gateway_rules(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all targets for a specific gateway.
 -spec list_gateway_targets(aws_client:aws_client(), binary() | list()) ->
@@ -8441,6 +9353,43 @@ update_api_key_credential_provider(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a configuration bundle by creating a new version with the
+%% specified changes.
+%%
+%% Each update creates a new version in the version history.
+-spec update_configuration_bundle(aws_client:aws_client(), binary() | list(), update_configuration_bundle_request()) ->
+    {ok, update_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_bundle_errors(), tuple()}.
+update_configuration_bundle(Client, BundleId, Input) ->
+    update_configuration_bundle(Client, BundleId, Input, []).
+
+-spec update_configuration_bundle(aws_client:aws_client(), binary() | list(), update_configuration_bundle_request(), proplists:proplist()) ->
+    {ok, update_configuration_bundle_response(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_bundle_errors(), tuple()}.
+update_configuration_bundle(Client, BundleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a custom evaluator's configuration, description, or
 %% evaluation level.
 %%
@@ -8494,6 +9443,41 @@ update_gateway(Client, GatewayIdentifier, Input) ->
 update_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a gateway rule's priority, conditions, actions, or
+%% description.
+-spec update_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_rule_request()) ->
+    {ok, update_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_rule_errors(), tuple()}.
+update_gateway_rule(Client, GatewayIdentifier, RuleId, Input) ->
+    update_gateway_rule(Client, GatewayIdentifier, RuleId, Input, []).
+
+-spec update_gateway_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_rule_request(), proplists:proplist()) ->
+    {ok, update_gateway_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_rule_errors(), tuple()}.
+update_gateway_rule(Client, GatewayIdentifier, RuleId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rules/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

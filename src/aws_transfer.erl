@@ -3476,7 +3476,7 @@ send_workflow_step_state(Client, Input, Options)
 %% the items contained in the remote directory or not. If your
 %% `Truncated' output value is true, you can increase the value provided
 %% in the optional `max-items' input attribute to be able to list more
-%% items (up to the maximum allowed list size of 10,000 items).
+%% items (up to the maximum allowed list size of 200,000 items).
 -spec start_directory_listing(aws_client:aws_client(), start_directory_listing_request()) ->
     {ok, start_directory_listing_response(), tuple()} |
     {error, any()} |

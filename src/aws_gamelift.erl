@@ -155,6 +155,8 @@
          describe_container_fleet/3,
          describe_container_group_definition/2,
          describe_container_group_definition/3,
+         describe_container_group_port_mappings/2,
+         describe_container_group_port_mappings/3,
          describe_ec2_instance_limits/2,
          describe_ec2_instance_limits/3,
          describe_fleet_attributes/2,
@@ -1220,6 +1222,14 @@
 -type describe_matchmaking_configurations_input() :: #{binary() => any()}.
 
 %% Example:
+%% container_port_mapping() :: #{
+%%   <<"ConnectionPort">> => integer(),
+%%   <<"ContainerPort">> => integer(),
+%%   <<"Protocol">> => list(any())
+%% }
+-type container_port_mapping() :: #{binary() => any()}.
+
+%% Example:
 %% register_game_server_output() :: #{
 %%   <<"GameServer">> => game_server()
 %% }
@@ -1853,6 +1863,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% container_group_port_mapping() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"ContainerPortMappings">> => list(container_port_mapping()),
+%%   <<"ContainerRuntimeId">> => string()
+%% }
+-type container_group_port_mapping() :: #{binary() => any()}.
 
 %% Example:
 %% list_aliases_input() :: #{
@@ -2545,6 +2563,16 @@
 -type list_locations_input() :: #{binary() => any()}.
 
 %% Example:
+%% describe_container_group_port_mappings_input() :: #{
+%%   <<"ComputeName">> => string(),
+%%   <<"ContainerGroupType">> := list(any()),
+%%   <<"ContainerName">> => string(),
+%%   <<"FleetId">> := string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type describe_container_group_port_mappings_input() :: #{binary() => any()}.
+
+%% Example:
 %% container_fleet() :: #{
 %%   <<"BillingType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -2741,6 +2769,18 @@
 %%   <<"GameServer">> => game_server()
 %% }
 -type claim_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_group_port_mappings_output() :: #{
+%%   <<"ComputeName">> => string(),
+%%   <<"ContainerGroupDefinitionArn">> => string(),
+%%   <<"ContainerGroupPortMappings">> => list(container_group_port_mapping()),
+%%   <<"ContainerGroupType">> => list(any()),
+%%   <<"FleetId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type describe_container_group_port_mappings_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scaling_policies_input() :: #{
@@ -3430,6 +3470,14 @@
     unauthorized_exception().
 
 -type describe_container_group_definition_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_container_group_port_mappings_errors() ::
+    limit_exceeded_exception() | 
     unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
@@ -6188,6 +6236,69 @@ describe_container_group_definition(Client, Input, Options)
     request(Client, <<"DescribeContainerGroupDefinition">>, Input, Options).
 
 %% @doc
+%% This API works with the following fleet types: Container
+%%
+%% Retrieves the port mappings for a container group running on a container
+%% fleet.
+%%
+%% Port
+%% mappings show how container ports are mapped to connection ports on the
+%% fleet instance.
+%% Use this operation to find the connection port for a specific container on
+%% a fleet
+%% instance.
+%%
+%% Request options
+%%
+%% Get port mappings for a game server container group. Provide the fleet ID,
+%% set `ContainerGroupType' to `GAME_SERVER', and specify the
+%% `ComputeName' for the game server container group.
+%%
+%% Get port mappings for a per-instance container group. Provide the fleet
+%% ID,
+%% set `ContainerGroupType' to `PER_INSTANCE', and specify the
+%% `InstanceId' for the instance.
+%%
+%% Optionally filter results to a single container by providing a
+%% `ContainerName'.
+%%
+%% Results
+%%
+%% This operation returns the fleet ID, location, container group definition
+%% ARN, container group type, compute name (for game server container
+%% groups), instance ID,
+%% and a list of `ContainerGroupPortMapping' objects. Each object
+%% contains the
+%% container name, runtime ID, and a list of port mappings that show how
+%% container ports map
+%% to connection ports on the instance.
+%%
+%% Learn more
+%%
+%% Connect to
+%% containers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-remote-access.html
+%%
+%% Create a
+%% container group definition:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-create-groups.html
+-spec describe_container_group_port_mappings(aws_client:aws_client(), describe_container_group_port_mappings_input()) ->
+    {ok, describe_container_group_port_mappings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_container_group_port_mappings_errors(), tuple()}.
+describe_container_group_port_mappings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_container_group_port_mappings(Client, Input, []).
+
+-spec describe_container_group_port_mappings(aws_client:aws_client(), describe_container_group_port_mappings_input(), proplists:proplist()) ->
+    {ok, describe_container_group_port_mappings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_container_group_port_mappings_errors(), tuple()}.
+describe_container_group_port_mappings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContainerGroupPortMappings">>, Input, Options).
+
+%% @doc
 %% This API works with the following fleet types: EC2
 %%
 %% Retrieves the instance limits and current utilization for an Amazon Web
@@ -6212,25 +6323,30 @@ describe_container_group_definition(Client, Input, Options)
 %% an Amazon Web Services
 %% Region (either explicitly or as your default settings). To get the limit
 %% for a remote
-%% location, you must also specify the location. For example, the following
-%% requests all
+%% location, you must also specify the location. To learn more about how
+%% Amazon GameLift Servers handles
+%% locations, see Amazon GameLift Servers service
+%% locations:
+%% https://docs.aws.amazon.com/gameliftservers/latest/developerguide/gamelift-regions.html.
+%% For example, the following requests all
 %% return different results:
 %%
 %% Request specifies the Region `ap-northeast-1' with no location. The
-%% result is limits and usage data on all instance types that are deployed in
-%% `us-east-2', by all of the fleets that reside in
+%% result is limits and usage data on all of the fleets that reside in
+%% `ap-northeast-1', for all instance types that are deployed in
 %% `ap-northeast-1'.
 %%
-%% Request specifies the Region `us-east-1' with location
-%% `ca-central-1'. The result is limits and usage data on all
-%% instance types that are deployed in `ca-central-1', by all of the
-%% fleets that reside in `us-east-2'. These limits do not affect fleets
-%% in any other Regions that deploy instances to `ca-central-1'.
+%% Request specifies the Region `ap-northeast-1' with location
+%% `us-west-2'. The result is limits and usage data on all of the
+%% fleets that reside in `ap-northeast-1', for all instance types
+%% that are deployed in `us-west-2'.
 %%
-%% Request specifies the Region `eu-west-1' with location
-%% `ca-central-1'. The result is limits and usage data on all
-%% instance types that are deployed in `ca-central-1', by all of the
-%% fleets that reside in `eu-west-1'.
+%% Request specifies the Region `us-east-1' with location
+%% `ap-northeast-1'. The result is limits and usage data on all of
+%% the fleets that reside in `us-east-1', for all instance types
+%% that are deployed in `ap-northeast-1'. These limits do not affect
+%% fleets in any other Regions that deploy instances to
+%% `ap-northeast-1'.
 %%
 %% This operation can be used in the following ways:
 %%
@@ -8635,9 +8751,9 @@ resume_game_server_group(Client, Input, Options)
 %% following game session attributes. For game session search examples, see
 %% the Examples section of this topic.
 %%
-%% gameSessionId -- A unique identifier for the game session. You can use
-%% either a
-%% `GameSessionId' or `GameSessionArn' value.
+%% gameSessionId -- An identifier for the game session that is unique across
+%% all regions. You must use the
+%% full ARN value.
 %%
 %% gameSessionName -- Name assigned to a game
 %% session. Game session names do not need to be unique to a game session.

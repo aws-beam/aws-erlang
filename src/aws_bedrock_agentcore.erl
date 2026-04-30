@@ -15,17 +15,31 @@
          batch_update_memory_records/4,
          complete_resource_token_auth/2,
          complete_resource_token_auth/3,
+         create_a_b_test/2,
+         create_a_b_test/3,
          create_event/3,
          create_event/4,
+         delete_a_b_test/3,
+         delete_a_b_test/4,
+         delete_batch_evaluation/3,
+         delete_batch_evaluation/4,
          delete_event/6,
          delete_event/7,
          delete_memory_record/4,
          delete_memory_record/5,
+         delete_recommendation/3,
+         delete_recommendation/4,
          evaluate/3,
          evaluate/4,
+         get_a_b_test/2,
+         get_a_b_test/4,
+         get_a_b_test/5,
          get_agent_card/2,
          get_agent_card/4,
          get_agent_card/5,
+         get_batch_evaluation/2,
+         get_batch_evaluation/4,
+         get_batch_evaluation/5,
          get_browser_session/3,
          get_browser_session/5,
          get_browser_session/6,
@@ -38,6 +52,9 @@
          get_memory_record/3,
          get_memory_record/5,
          get_memory_record/6,
+         get_recommendation/2,
+         get_recommendation/4,
+         get_recommendation/5,
          get_resource_api_key/2,
          get_resource_api_key/3,
          get_resource_oauth2_token/2,
@@ -58,8 +75,14 @@
          invoke_code_interpreter/4,
          invoke_harness/2,
          invoke_harness/3,
+         list_a_b_tests/1,
+         list_a_b_tests/3,
+         list_a_b_tests/4,
          list_actors/3,
          list_actors/4,
+         list_batch_evaluations/1,
+         list_batch_evaluations/3,
+         list_batch_evaluations/4,
          list_browser_sessions/3,
          list_browser_sessions/4,
          list_code_interpreter_sessions/3,
@@ -70,6 +93,9 @@
          list_memory_extraction_jobs/4,
          list_memory_records/3,
          list_memory_records/4,
+         list_recommendations/1,
+         list_recommendations/3,
+         list_recommendations/4,
          list_sessions/4,
          list_sessions/5,
          retrieve_memory_records/3,
@@ -78,18 +104,26 @@
          save_browser_session_profile/4,
          search_registry_records/2,
          search_registry_records/3,
+         start_batch_evaluation/2,
+         start_batch_evaluation/3,
          start_browser_session/3,
          start_browser_session/4,
          start_code_interpreter_session/3,
          start_code_interpreter_session/4,
          start_memory_extraction_job/3,
          start_memory_extraction_job/4,
+         start_recommendation/2,
+         start_recommendation/3,
+         stop_batch_evaluation/3,
+         stop_batch_evaluation/4,
          stop_browser_session/3,
          stop_browser_session/4,
          stop_code_interpreter_session/3,
          stop_code_interpreter_session/4,
          stop_runtime_session/3,
          stop_runtime_session/4,
+         update_a_b_test/3,
+         update_a_b_test/4,
          update_browser_stream/3,
          update_browser_stream/4]).
 
@@ -114,6 +148,14 @@
 
 
 %% Example:
+%% tool_description_output() :: #{
+%%   <<"recommendedToolDescription">> => string(),
+%%   <<"toolName">> => string()
+%% }
+-type tool_description_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_remote_mcp_config() :: #{
 %%   <<"headers">> => map(),
 %%   <<"url">> => string()
@@ -134,6 +176,13 @@
 %%   <<"streamEndpoint">> => string()
 %% }
 -type live_view_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_evaluator_reference() :: #{
+%%   <<"evaluatorArn">> => string()
+%% }
+-type recommendation_evaluator_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -193,6 +242,10 @@
 %% }
 -type mouse_drag_arguments() :: #{binary() => any()}.
 
+%% Example:
+%% stop_batch_evaluation_request() :: #{}
+-type stop_batch_evaluation_request() :: #{}.
+
 
 %% Example:
 %% key_press_result() :: #{
@@ -211,6 +264,21 @@
 
 
 %% Example:
+%% ground_truth_turn() :: #{
+%%   <<"expectedResponse">> => list(),
+%%   <<"input">> => list()
+%% }
+-type ground_truth_turn() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_evaluation_config() :: #{
+%%   <<"evaluators">> => list(recommendation_evaluator_reference())
+%% }
+-type recommendation_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% session_summary() :: #{
 %%   <<"actorId">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -225,6 +293,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type mouse_scroll_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_ground_truth() :: #{
+%%   <<"assertions">> => list(list()),
+%%   <<"expectedTrajectory">> => evaluation_expected_trajectory(),
+%%   <<"turns">> => list(ground_truth_turn())
+%% }
+-type inline_ground_truth() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,6 +349,14 @@
 
 
 %% Example:
+%% per_variant_online_evaluation_config() :: #{
+%%   <<"name">> => string(),
+%%   <<"onlineEvaluationConfigArn">> => string()
+%% }
+-type per_variant_online_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% retryable_conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -316,6 +401,14 @@
 %%   <<"sessionId">> := string()
 %% }
 -type invoke_browser_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_output_config() :: #{
+%%   <<"logGroupName">> => [string()],
+%%   <<"logStreamName">> => [string()]
+%% }
+-type cloud_watch_output_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -386,6 +479,13 @@
 
 
 %% Example:
+%% evaluator_statistics() :: #{
+%%   <<"averageScore">> => [float()]
+%% }
+-type evaluator_statistics() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_agent_runtime_command_response() :: #{
 %%   <<"baggage">> => [string()],
 %%   <<"contentType">> => [string()],
@@ -410,6 +510,17 @@
 
 
 %% Example:
+%% update_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_resource_api_key_request() :: #{
 %%   <<"resourceCredentialProviderName">> := string(),
 %%   <<"workloadIdentityToken">> := string()
@@ -430,11 +541,24 @@
 
 
 %% Example:
+%% control_stats() :: #{
+%%   <<"mean">> => [float()],
+%%   <<"sampleSize">> => [integer()],
+%%   <<"variantName">> => [string()]
+%% }
+-type control_stats() :: #{binary() => any()}.
+
+
+%% Example:
 %% complete_resource_token_auth_request() :: #{
 %%   <<"sessionUri">> := string(),
 %%   <<"userIdentifier">> := list()
 %% }
 -type complete_resource_token_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_request() :: #{}
+-type get_recommendation_request() :: #{}.
 
 
 %% Example:
@@ -457,11 +581,42 @@
 
 
 %% Example:
+%% create_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_evaluations_response() :: #{
+%%   <<"batchEvaluations">> => list(batch_evaluation_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_batch_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_agent_core_gateway_config() :: #{
 %%   <<"gatewayArn">> => string(),
 %%   <<"outboundAuth">> => list()
 %% }
 -type harness_agent_core_gateway_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_trace_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"logGroupArns">> => list([string()]()),
+%%   <<"rule">> => cloud_watch_logs_rule(),
+%%   <<"serviceNames">> => list(string()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type cloud_watch_logs_trace_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -484,6 +639,14 @@
 %%   <<"statusCode">> => integer()
 %% }
 -type stop_runtime_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_configuration() :: #{
+%%   <<"configurationBundle">> => configuration_bundle_ref(),
+%%   <<"target">> => target_ref()
+%% }
+-type variant_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -510,11 +673,23 @@
 
 
 %% Example:
+%% tool_description_input() :: #{
+%%   <<"toolDescription">> => list(),
+%%   <<"toolName">> => string()
+%% }
+-type tool_description_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_memory_extraction_jobs_output() :: #{
 %%   <<"jobs">> => list(extraction_job_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_memory_extraction_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_b_test_request() :: #{}
+-type delete_a_b_test_request() :: #{}.
 
 
 %% Example:
@@ -590,6 +765,15 @@
 
 
 %% Example:
+%% delete_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_update_memory_records_output() :: #{
 %%   <<"failedRecords">> => list(memory_record_output()),
 %%   <<"successfulRecords">> => list(memory_record_output())
@@ -636,11 +820,35 @@
 
 
 %% Example:
+%% session_filter_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type session_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_filter_config() :: #{
+%%   <<"sessionIds">> => list([string()]()),
+%%   <<"timeRange">> => session_filter_config()
+%% }
+-type cloud_watch_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_shortcut_result() :: #{
 %%   <<"error">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type key_shortcut_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recommendation_response() :: #{
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_recommendation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -670,6 +878,14 @@
 %%   <<"streams">> => browser_session_stream()
 %% }
 -type start_browser_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_result_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type recommendation_result_configuration_bundle() :: #{binary() => any()}.
 
 
 %% Example:
@@ -712,6 +928,21 @@
 %%   <<"expectedTrajectory">> => evaluation_expected_trajectory()
 %% }
 -type evaluation_reference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_b_test_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"enableOnCreate">> => [boolean()],
+%%   <<"evaluationConfig">> := list(),
+%%   <<"gatewayArn">> := string(),
+%%   <<"gatewayFilter">> => gateway_filter(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"variants">> := list(variant())
+%% }
+-type create_a_b_test_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,6 +993,17 @@
 
 
 %% Example:
+%% start_recommendation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"recommendationConfig">> := list(),
+%%   <<"type">> := list(any())
+%% }
+-type start_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_token_usage() :: #{
 %%   <<"cacheReadInputTokens">> => [integer()],
 %%   <<"cacheWriteInputTokens">> => [integer()],
@@ -798,6 +1040,20 @@
 
 
 %% Example:
+%% update_a_b_test_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluationConfig">> => list(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"gatewayFilter">> => gateway_filter(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"variants">> => list(variant())
+%% }
+-type update_a_b_test_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_workload_access_token_for_j_w_t_request() :: #{
 %%   <<"userToken">> := string(),
 %%   <<"workloadName">> := string()
@@ -811,6 +1067,35 @@
 %%   <<"eventMetadata">> => list(event_metadata_filter_expression())
 %% }
 -type filter_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_recommendation_result() :: #{
+%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"tools">> => list(tool_description_output())
+%% }
+-type tool_description_recommendation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_b_test_summary() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type a_b_test_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommendation_request() :: #{}
+-type delete_recommendation_request() :: #{}.
 
 
 %% Example:
@@ -828,6 +1113,24 @@
 %%   <<"version">> => string()
 %% }
 -type registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluator_metric() :: #{
+%%   <<"controlStats">> => control_stats(),
+%%   <<"evaluatorArn">> => [string()],
+%%   <<"variantResults">> => list(variant_result())
+%% }
+-type evaluator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_filter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type cloud_watch_logs_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -964,6 +1267,16 @@
 
 
 %% Example:
+%% stop_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_metadata() :: #{
 %%   <<"eventId">> => [string()],
 %%   <<"messageIndex">> => [integer()]
@@ -1021,10 +1334,25 @@
 
 
 %% Example:
+%% gateway_filter() :: #{
+%%   <<"targetPaths">> => list(string())
+%% }
+-type gateway_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_code_interpreter_session_request() :: #{
 %%   <<"sessionId">> := string()
 %% }
 -type get_code_interpreter_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_tool_entry() :: #{
+%%   <<"toolDescriptionJsonPath">> => [string()],
+%%   <<"toolName">> => string()
+%% }
+-type configuration_bundle_tool_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1124,6 +1452,40 @@
 
 
 %% Example:
+%% cloud_watch_logs_source() :: #{
+%%   <<"filterConfig">> => cloud_watch_filter_config(),
+%%   <<"logGroupNames">> => list([string()]()),
+%%   <<"serviceNames">> => list([string()]())
+%% }
+-type cloud_watch_logs_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"currentRunId">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"errorDetails">> => list([string()]()),
+%%   <<"evaluationConfig">> => list(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayFilter">> => gateway_filter(),
+%%   <<"maxDurationExpiresAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"results">> => a_b_test_results(),
+%%   <<"roleArn">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => [non_neg_integer()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"variants">> => list(variant())
+%% }
+-type get_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_metadata_event() :: #{
 %%   <<"metrics">> => harness_stream_metrics(),
 %%   <<"usage">> => harness_token_usage()
@@ -1152,6 +1514,23 @@
 %%   <<"secretArn">> => string()
 %% }
 -type basic_auth() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_b_tests_response() :: #{
+%%   <<"abTests">> => list(a_b_test_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_a_b_tests_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_prompt_recommendation_config() :: #{
+%%   <<"agentTraces">> => list(),
+%%   <<"evaluationConfig">> => recommendation_evaluation_config(),
+%%   <<"systemPrompt">> => list()
+%% }
+-type system_prompt_recommendation_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1232,6 +1611,10 @@
 %% }
 -type get_workload_access_token_for_user_id_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_batch_evaluation_request() :: #{}
+-type delete_batch_evaluation_request() :: #{}.
+
 
 %% Example:
 %% mcp_descriptor() :: #{
@@ -1255,6 +1638,14 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_ref() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => string()
+%% }
+-type configuration_bundle_ref() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1299,6 +1690,17 @@
 %%   <<"location">> => list()
 %% }
 -type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_evaluation_request() :: #{}
+-type get_batch_evaluation_request() :: #{}.
+
+
+%% Example:
+%% tool_description_text_input() :: #{
+%%   <<"tools">> => list(tool_description_input())
+%% }
+-type tool_description_text_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1389,11 +1791,39 @@
 
 
 %% Example:
+%% confidence_interval() :: #{
+%%   <<"lower">> => [float()],
+%%   <<"upper">> => [float()]
+%% }
+-type confidence_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_evaluations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_batch_evaluations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_reasoning_text_block() :: #{
 %%   <<"signature">> => [string()],
 %%   <<"text">> => [string()]
 %% }
 -type harness_reasoning_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_batch_evaluation_request() :: #{
+%%   <<"batchEvaluationName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"dataSourceConfig">> := list(),
+%%   <<"description">> => string(),
+%%   <<"evaluationMetadata">> => list(),
+%%   <<"evaluators">> => list(evaluator())
+%% }
+-type start_batch_evaluation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1450,6 +1880,23 @@
 %%   <<"input">> => string()
 %% }
 -type harness_tool_use_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_metadata_shape() :: #{
+%%   <<"groundTruth">> => list(),
+%%   <<"metadata">> => map(),
+%%   <<"sessionId">> => [string()],
+%%   <<"testScenarioId">> => [string()]
+%% }
+-type session_metadata_shape() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluator() :: #{
+%%   <<"evaluatorId">> => string()
+%% }
+-type evaluator() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1541,6 +1988,20 @@
 
 
 %% Example:
+%% variant_result() :: #{
+%%   <<"absoluteChange">> => [float()],
+%%   <<"confidenceInterval">> => confidence_interval(),
+%%   <<"isSignificant">> => [boolean()],
+%%   <<"mean">> => [float()],
+%%   <<"pValue">> => [float()],
+%%   <<"percentChange">> => [float()],
+%%   <<"sampleSize">> => [integer()],
+%%   <<"variantName">> => [string()]
+%% }
+-type variant_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1584,12 +2045,37 @@
 
 
 %% Example:
+%% system_prompt_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"systemPromptJsonPath">> => [string()],
+%%   <<"versionId">> => string()
+%% }
+-type system_prompt_configuration_bundle() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_code_interpreter_session_response() :: #{
 %%   <<"codeInterpreterIdentifier">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"sessionId">> => string()
 %% }
 -type stop_code_interpreter_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_rule() :: #{
+%%   <<"filters">> => list(cloud_watch_logs_filter())
+%% }
+-type cloud_watch_logs_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1609,6 +2095,39 @@
 
 
 %% Example:
+%% system_prompt_recommendation_result() :: #{
+%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"recommendedSystemPrompt">> => string()
+%% }
+-type system_prompt_recommendation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"batchEvaluationName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"outputConfig">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type start_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"tools">> => list(configuration_bundle_tool_entry()),
+%%   <<"versionId">> => string()
+%% }
+-type tool_description_configuration_bundle() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_expected_trajectory() :: #{
 %%   <<"toolNames">> => list(string())
 %% }
@@ -1624,11 +2143,31 @@
 
 
 %% Example:
+%% evaluation_job_results() :: #{
+%%   <<"evaluatorSummaries">> => list(evaluator_summary()),
+%%   <<"numberOfSessionsCompleted">> => [integer()],
+%%   <<"numberOfSessionsFailed">> => [integer()],
+%%   <<"numberOfSessionsIgnored">> => [integer()],
+%%   <<"numberOfSessionsInProgress">> => [integer()],
+%%   <<"totalNumberOfSessions">> => [integer()]
+%% }
+-type evaluation_job_results() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_card_definition() :: #{
 %%   <<"inlineContent">> => string(),
 %%   <<"schemaVersion">> => string()
 %% }
 -type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_b_tests_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_a_b_tests_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1664,6 +2203,20 @@
 %%   <<"workloadAccessToken">> => string()
 %% }
 -type get_workload_access_token_for_user_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type recommendation_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_input() :: #{}
@@ -1734,6 +2287,14 @@
 
 
 %% Example:
+%% list_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_delta_event() :: #{
 %%   <<"stderr">> => [string()],
 %%   <<"stdout">> => [string()]
@@ -1801,6 +2362,50 @@
 
 
 %% Example:
+%% batch_evaluation_summary() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"batchEvaluationName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"errorDetails">> => list([string()]()),
+%%   <<"evaluationResults">> => evaluation_job_results(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_evaluation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_a_b_test_request() :: #{}
+-type get_a_b_test_request() :: #{}.
+
+
+%% Example:
+%% get_recommendation_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"recommendationConfig">> => list(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationResult">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_recommendation_config() :: #{
+%%   <<"agentTraces">> => list(),
+%%   <<"toolDescription">> => list()
+%% }
+-type tool_description_recommendation_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_skills_descriptor() :: #{
 %%   <<"skillDefinition">> => skill_definition(),
 %%   <<"skillMd">> => skill_md_definition()
@@ -1824,10 +2429,26 @@
 
 
 %% Example:
+%% target_ref() :: #{
+%%   <<"name">> => string()
+%% }
+-type target_ref() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_agent_core_code_interpreter_config() :: #{
 %%   <<"codeInterpreterArn">> => string()
 %% }
 -type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant() :: #{
+%%   <<"name">> => string(),
+%%   <<"variantConfiguration">> => variant_configuration(),
+%%   <<"weight">> => [integer()]
+%% }
+-type variant() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1836,6 +2457,16 @@
 %%   <<"successfulRecords">> => list(memory_record_output())
 %% }
 -type batch_delete_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluator_summary() :: #{
+%%   <<"evaluatorId">> => [string()],
+%%   <<"statistics">> => evaluator_statistics(),
+%%   <<"totalEvaluated">> => [integer()],
+%%   <<"totalFailed">> => [integer()]
+%% }
+-type evaluator_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1857,6 +2488,33 @@
 
 
 %% Example:
+%% list_recommendations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"batchEvaluationName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataSourceConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"errorDetails">> => list([string()]()),
+%%   <<"evaluationResults">> => evaluation_job_results(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"outputConfig">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_profile_configuration() :: #{
 %%   <<"profileIdentifier">> => string()
 %% }
@@ -1864,10 +2522,33 @@
 
 
 %% Example:
+%% start_recommendation_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"recommendationConfig">> => list(),
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type start_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% extraction_job() :: #{
 %%   <<"jobId">> => [string()]
 %% }
 -type extraction_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_b_test_results() :: #{
+%%   <<"analysisTimestamp">> => [non_neg_integer()],
+%%   <<"evaluatorMetrics">> => list(evaluator_metric())
+%% }
+-type a_b_test_results() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1908,6 +2589,15 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type create_a_b_test_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 -type create_event_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1917,6 +2607,24 @@
     resource_not_found_exception() | 
     throttled_exception() | 
     retryable_conflict_exception().
+
+-type delete_a_b_test_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type delete_batch_evaluation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_event_errors() ::
     validation_exception() | 
@@ -1936,6 +2644,14 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type delete_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type evaluate_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1947,6 +2663,14 @@
     unauthorized_exception() | 
     duplicate_id_exception().
 
+-type get_a_b_test_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
 -type get_agent_card_errors() ::
     runtime_client_error() | 
     throttling_exception() | 
@@ -1955,6 +2679,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
+
+-type get_batch_evaluation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_browser_session_errors() ::
     throttling_exception() | 
@@ -1987,6 +2719,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type get_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_resource_api_key_errors() ::
     throttling_exception() | 
@@ -2070,6 +2809,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_a_b_tests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
+
 -type list_actors_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2078,6 +2824,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type list_batch_evaluations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
 
 -type list_browser_sessions_errors() ::
     throttling_exception() | 
@@ -2119,6 +2872,12 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_sessions_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2153,6 +2912,15 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type start_batch_evaluation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 -type start_browser_session_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2179,6 +2947,23 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type start_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type stop_batch_evaluation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 -type stop_browser_session_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2199,6 +2984,16 @@
 
 -type stop_runtime_session_errors() ::
     runtime_client_error() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type update_a_b_test_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2361,6 +3156,44 @@ complete_resource_token_auth(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an A/B test for comparing agent configurations.
+%%
+%% A/B tests split traffic between a control variant and a treatment variant
+%% through a gateway, then evaluate performance using online evaluation
+%% configurations to determine which variant performs better.
+-spec create_a_b_test(aws_client:aws_client(), create_a_b_test_request()) ->
+    {ok, create_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_b_test_errors(), tuple()}.
+create_a_b_test(Client, Input) ->
+    create_a_b_test(Client, Input, []).
+
+-spec create_a_b_test(aws_client:aws_client(), create_a_b_test_request(), proplists:proplist()) ->
+    {ok, create_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_b_test_errors(), tuple()}.
+create_a_b_test(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ab-tests"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an event in an AgentCore Memory resource.
 %%
 %% Events represent interactions or activities that occur within a session
@@ -2385,6 +3218,74 @@ create_event(Client, MemoryId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/events"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an A/B test and its associated gateway rules.
+-spec delete_a_b_test(aws_client:aws_client(), binary() | list(), delete_a_b_test_request()) ->
+    {ok, delete_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_b_test_errors(), tuple()}.
+delete_a_b_test(Client, AbTestId, Input) ->
+    delete_a_b_test(Client, AbTestId, Input, []).
+
+-spec delete_a_b_test(aws_client:aws_client(), binary() | list(), delete_a_b_test_request(), proplists:proplist()) ->
+    {ok, delete_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_b_test_errors(), tuple()}.
+delete_a_b_test(Client, AbTestId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/ab-tests/", aws_util:encode_uri(AbTestId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a batch evaluation and its associated results.
+-spec delete_batch_evaluation(aws_client:aws_client(), binary() | list(), delete_batch_evaluation_request()) ->
+    {ok, delete_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_batch_evaluation_errors(), tuple()}.
+delete_batch_evaluation(Client, BatchEvaluationId, Input) ->
+    delete_batch_evaluation(Client, BatchEvaluationId, Input, []).
+
+-spec delete_batch_evaluation(aws_client:aws_client(), binary() | list(), delete_batch_evaluation_request(), proplists:proplist()) ->
+    {ok, delete_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_batch_evaluation_errors(), tuple()}.
+delete_batch_evaluation(Client, BatchEvaluationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/evaluations/batch-evaluate/", aws_util:encode_uri(BatchEvaluationId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2481,6 +3382,40 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a recommendation and its associated results.
+-spec delete_recommendation(aws_client:aws_client(), binary() | list(), delete_recommendation_request()) ->
+    {ok, delete_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommendation_errors(), tuple()}.
+delete_recommendation(Client, RecommendationId, Input) ->
+    delete_recommendation(Client, RecommendationId, Input, []).
+
+-spec delete_recommendation(aws_client:aws_client(), binary() | list(), delete_recommendation_request(), proplists:proplist()) ->
+    {ok, delete_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommendation_errors(), tuple()}.
+delete_recommendation(Client, RecommendationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/recommendations/", aws_util:encode_uri(RecommendationId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Performs on-demand evaluation of agent traces using a specified
 %% evaluator.
 %%
@@ -2518,6 +3453,44 @@ evaluate(Client, EvaluatorId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about an A/B test, including its
+%% configuration, status, and statistical results.
+-spec get_a_b_test(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_b_test_errors(), tuple()}.
+get_a_b_test(Client, AbTestId)
+  when is_map(Client) ->
+    get_a_b_test(Client, AbTestId, #{}, #{}).
+
+-spec get_a_b_test(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_b_test_errors(), tuple()}.
+get_a_b_test(Client, AbTestId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_a_b_test(Client, AbTestId, QueryMap, HeadersMap, []).
+
+-spec get_a_b_test(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_b_test_errors(), tuple()}.
+get_a_b_test(Client, AbTestId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ab-tests/", aws_util:encode_uri(AbTestId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the A2A agent card associated with an AgentCore Runtime
 %% agent.
@@ -2580,6 +3553,44 @@ get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, Options0)
       Result ->
         Result
     end.
+
+%% @doc Retrieves detailed information about a batch evaluation, including
+%% its status, configuration, results, and any error details.
+-spec get_batch_evaluation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_evaluation_errors(), tuple()}.
+get_batch_evaluation(Client, BatchEvaluationId)
+  when is_map(Client) ->
+    get_batch_evaluation(Client, BatchEvaluationId, #{}, #{}).
+
+-spec get_batch_evaluation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_evaluation_errors(), tuple()}.
+get_batch_evaluation(Client, BatchEvaluationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_batch_evaluation(Client, BatchEvaluationId, QueryMap, HeadersMap, []).
+
+-spec get_batch_evaluation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_evaluation_errors(), tuple()}.
+get_batch_evaluation(Client, BatchEvaluationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluations/batch-evaluate/", aws_util:encode_uri(BatchEvaluationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves detailed information about a specific browser session in
 %% Amazon Bedrock AgentCore.
@@ -2769,6 +3780,44 @@ get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap)
 get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecord/", aws_util:encode_uri(MemoryRecordId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a recommendation, including its
+%% configuration, status, and results.
+-spec get_recommendation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
+get_recommendation(Client, RecommendationId)
+  when is_map(Client) ->
+    get_recommendation(Client, RecommendationId, #{}, #{}).
+
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
+get_recommendation(Client, RecommendationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommendation(Client, RecommendationId, QueryMap, HeadersMap, []).
+
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
+get_recommendation(Client, RecommendationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/recommendations/", aws_util:encode_uri(RecommendationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3316,6 +4365,48 @@ invoke_harness(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all A/B tests in the account.
+-spec list_a_b_tests(aws_client:aws_client()) ->
+    {ok, list_a_b_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_b_tests_errors(), tuple()}.
+list_a_b_tests(Client)
+  when is_map(Client) ->
+    list_a_b_tests(Client, #{}, #{}).
+
+-spec list_a_b_tests(aws_client:aws_client(), map(), map()) ->
+    {ok, list_a_b_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_b_tests_errors(), tuple()}.
+list_a_b_tests(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_b_tests(Client, QueryMap, HeadersMap, []).
+
+-spec list_a_b_tests(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_b_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_b_tests_errors(), tuple()}.
+list_a_b_tests(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ab-tests"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all actors in an AgentCore Memory resource.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
@@ -3355,6 +4446,49 @@ list_actors(Client, MemoryId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all batch evaluations in the account, providing summary
+%% information about each evaluation's status and configuration.
+-spec list_batch_evaluations(aws_client:aws_client()) ->
+    {ok, list_batch_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_evaluations_errors(), tuple()}.
+list_batch_evaluations(Client)
+  when is_map(Client) ->
+    list_batch_evaluations(Client, #{}, #{}).
+
+-spec list_batch_evaluations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_batch_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_evaluations_errors(), tuple()}.
+list_batch_evaluations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_batch_evaluations(Client, QueryMap, HeadersMap, []).
+
+-spec list_batch_evaluations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_batch_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_evaluations_errors(), tuple()}.
+list_batch_evaluations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluations/batch-evaluate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of browser sessions in Amazon Bedrock AgentCore that
 %% match the specified criteria.
@@ -3581,6 +4715,50 @@ list_memory_records(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all recommendations in the account, with optional filtering by
+%% status.
+-spec list_recommendations(aws_client:aws_client()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
+list_recommendations(Client)
+  when is_map(Client) ->
+    list_recommendations(Client, #{}, #{}).
+
+-spec list_recommendations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
+list_recommendations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommendations(Client, QueryMap, HeadersMap, []).
+
+-spec list_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
+list_recommendations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists sessions in an AgentCore Memory resource based on specified
 %% criteria.
 %%
@@ -3763,6 +4941,45 @@ search_registry_records(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a batch evaluation job that evaluates agent performance across
+%% multiple sessions.
+%%
+%% Batch evaluations pull agent traces from CloudWatch Logs or an existing
+%% online evaluation configuration and run specified evaluators and insights
+%% against them.
+-spec start_batch_evaluation(aws_client:aws_client(), start_batch_evaluation_request()) ->
+    {ok, start_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, start_batch_evaluation_errors(), tuple()}.
+start_batch_evaluation(Client, Input) ->
+    start_batch_evaluation(Client, Input, []).
+
+-spec start_batch_evaluation(aws_client:aws_client(), start_batch_evaluation_request(), proplists:proplist()) ->
+    {ok, start_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, start_batch_evaluation_errors(), tuple()}.
+start_batch_evaluation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluations/batch-evaluate"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates and initializes a browser session in Amazon Bedrock
 %% AgentCore.
 %%
@@ -3908,6 +5125,78 @@ start_memory_extraction_job(Client, MemoryId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/extractionJobs/start"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a recommendation job that analyzes agent traces and generates
+%% optimization suggestions for system prompts or tool descriptions to
+%% improve agent performance.
+-spec start_recommendation(aws_client:aws_client(), start_recommendation_request()) ->
+    {ok, start_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, start_recommendation_errors(), tuple()}.
+start_recommendation(Client, Input) ->
+    start_recommendation(Client, Input, []).
+
+-spec start_recommendation(aws_client:aws_client(), start_recommendation_request(), proplists:proplist()) ->
+    {ok, start_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, start_recommendation_errors(), tuple()}.
+start_recommendation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/recommendations"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running batch evaluation.
+%%
+%% Sessions that have already been evaluated retain their results.
+-spec stop_batch_evaluation(aws_client:aws_client(), binary() | list(), stop_batch_evaluation_request()) ->
+    {ok, stop_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, stop_batch_evaluation_errors(), tuple()}.
+stop_batch_evaluation(Client, BatchEvaluationId, Input) ->
+    stop_batch_evaluation(Client, BatchEvaluationId, Input, []).
+
+-spec stop_batch_evaluation(aws_client:aws_client(), binary() | list(), stop_batch_evaluation_request(), proplists:proplist()) ->
+    {ok, stop_batch_evaluation_response(), tuple()} |
+    {error, any()} |
+    {error, stop_batch_evaluation_errors(), tuple()}.
+stop_batch_evaluation(Client, BatchEvaluationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluations/batch-evaluate/", aws_util:encode_uri(BatchEvaluationId), "/stop"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4087,6 +5376,41 @@ stop_runtime_session(Client, AgentRuntimeArn, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Updates an A/B test's configuration, including variants, traffic
+%% allocation, evaluation settings, or execution status.
+-spec update_a_b_test(aws_client:aws_client(), binary() | list(), update_a_b_test_request()) ->
+    {ok, update_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_b_test_errors(), tuple()}.
+update_a_b_test(Client, AbTestId, Input) ->
+    update_a_b_test(Client, AbTestId, Input, []).
+
+-spec update_a_b_test(aws_client:aws_client(), binary() | list(), update_a_b_test_request(), proplists:proplist()) ->
+    {ok, update_a_b_test_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_b_test_errors(), tuple()}.
+update_a_b_test(Client, AbTestId, Input0, Options0) ->
+    Method = put,
+    Path = ["/ab-tests/", aws_util:encode_uri(AbTestId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a browser stream.
 %%
