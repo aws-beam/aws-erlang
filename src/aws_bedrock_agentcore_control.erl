@@ -438,6 +438,7 @@
 %%   <<"configuration">> => strategy_configuration(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
@@ -649,6 +650,7 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionKeyArn">> => string(),
 %%   <<"eventExpiryDuration">> := [integer()],
+%%   <<"indexedKeys">> => list(indexed_key()),
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"memoryStrategies">> => list(list()),
 %%   <<"name">> := string(),
@@ -661,6 +663,7 @@
 %% Example:
 %% summary_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -834,6 +837,14 @@
 %% }
 -type get_oauth2_credential_provider_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% indexed_key() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type indexed_key() :: #{binary() => any()}.
+
 %% Example:
 %% delete_registry_request() :: #{}
 -type delete_registry_request() :: #{}.
@@ -864,6 +875,14 @@
 %%   <<"name">> := string()
 %% }
 -type get_workload_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_list_validation() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"maxItems">> => [integer()]
+%% }
+-type string_list_validation() :: #{binary() => any()}.
 
 %% Example:
 %% get_registry_record_request() :: #{}
@@ -908,6 +927,13 @@
 %%   <<"stage">> => [string()]
 %% }
 -type api_gateway_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_validation() :: #{
+%%   <<"allowedValues">> => list(string())
+%% }
+-type string_validation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1128,6 +1154,7 @@
 %% Example:
 %% semantic_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -1190,6 +1217,7 @@
 %% custom_memory_strategy_input() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -1207,6 +1235,7 @@
 %% Example:
 %% episodic_override_reflection_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"modelId">> => [string()],
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -1254,6 +1283,7 @@
 
 %% Example:
 %% episodic_reflection_configuration() :: #{
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
@@ -1606,6 +1636,7 @@
 
 %% Example:
 %% update_memory_input() :: #{
+%%   <<"addIndexedKeys">> => list(indexed_key()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"eventExpiryDuration">> => [integer()],
@@ -1824,6 +1855,7 @@
 %% Example:
 %% episodic_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
@@ -1962,6 +1994,15 @@
 
 
 %% Example:
+%% llm_extraction_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"llmExtractionInstruction">> => string(),
+%%   <<"validation">> => list()
+%% }
+-type llm_extraction_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_gateway_rule_response() :: #{
 %%   <<"ruleId">> => string(),
 %%   <<"status">> => list(any())
@@ -2066,6 +2107,14 @@
 
 
 %% Example:
+%% on_behalf_of_token_exchange_config_type() :: #{
+%%   <<"grantType">> => list(any()),
+%%   <<"tokenExchangeGrantTypeConfig">> => token_exchange_grant_type_config_type()
+%% }
+-type on_behalf_of_token_exchange_config_type() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_workload_identity_request() :: #{
 %%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
 %%   <<"name">> := string(),
@@ -2109,6 +2158,7 @@
 
 %% Example:
 %% episodic_reflection_configuration_input() :: #{
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
@@ -2187,6 +2237,7 @@
 %% Example:
 %% episodic_reflection_override() :: #{
 %%   <<"appendToPrompt">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"modelId">> => [string()],
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -2327,9 +2378,11 @@
 
 %% Example:
 %% custom_oauth2_provider_config_input() :: #{
+%%   <<"clientAuthenticationMethod">> => list(any()),
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
 %%   <<"oauthDiscovery">> => list(),
+%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
@@ -2383,8 +2436,10 @@
 
 %% Example:
 %% custom_oauth2_provider_config_output() :: #{
+%%   <<"clientAuthenticationMethod">> => list(any()),
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list(),
+%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
 %%   <<"privateEndpoint">> => list(),
 %%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
@@ -3079,11 +3134,19 @@
 %% Example:
 %% user_preference_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type user_preference_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_schema() :: #{
+%%   <<"metadataSchema">> => list(metadata_schema_entry())
+%% }
+-type memory_record_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3213,6 +3276,7 @@
 %% modify_memory_strategy_input() :: #{
 %%   <<"configuration">> => modify_strategy_configuration(),
 %%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"memoryStrategyId">> => [string()],
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
@@ -4104,6 +4168,23 @@
 
 
 %% Example:
+%% metadata_schema_entry() :: #{
+%%   <<"extractionConfig">> => list(),
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_schema_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_exchange_grant_type_config_type() :: #{
+%%   <<"actorTokenContent">> => list(any()),
+%%   <<"actorTokenScopes">> => list(string())
+%% }
+-type token_exchange_grant_type_config_type() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_preference_consolidation_override() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -4204,6 +4285,7 @@
 %%   <<"eventExpiryDuration">> => [integer()],
 %%   <<"failureReason">> => [string()],
 %%   <<"id">> => string(),
+%%   <<"indexedKeys">> => list(indexed_key()),
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
@@ -4212,6 +4294,14 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type memory() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_validation() :: #{
+%%   <<"maxValue">> => [float()],
+%%   <<"minValue">> => [float()]
+%% }
+-type number_validation() :: #{binary() => any()}.
 
 
 %% Example:

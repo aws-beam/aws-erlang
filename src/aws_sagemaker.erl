@@ -1088,6 +1088,7 @@
 %%   <<"InferenceComponentName">> := string(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config(),
 %%   <<"Specification">> => inference_component_specification(),
+%%   <<"Specifications">> => list(inference_component_specification()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VariantName">> => string()
 %% }
@@ -1148,7 +1149,8 @@
 %% Example:
 %% inference_component_runtime_config_summary() :: #{
 %%   <<"CurrentCopyCount">> => integer(),
-%%   <<"DesiredCopyCount">> => integer()
+%%   <<"DesiredCopyCount">> => integer(),
+%%   <<"PlacementStatus">> => list(inference_component_placement_status())
 %% }
 -type inference_component_runtime_config_summary() :: #{binary() => any()}.
 
@@ -1220,6 +1222,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config_summary(),
 %%   <<"Specification">> => inference_component_specification_summary(),
+%%   <<"Specifications">> => list(inference_component_specification_summary()),
 %%   <<"VariantName">> => string()
 %% }
 -type describe_inference_component_output() :: #{binary() => any()}.
@@ -2397,6 +2400,13 @@
 %%   <<"FeatureGroupName">> => string()
 %% }
 -type processing_feature_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_placement_status() :: #{
+%%   <<"CurrentCopyCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type inference_component_placement_status() :: #{binary() => any()}.
 
 %% Example:
 %% pipeline_version_summary() :: #{
@@ -4815,6 +4825,7 @@
 %%   <<"DesiredInstanceCount">> => integer(),
 %%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
 %%   <<"DesiredWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool_summary()),
 %%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
 %%   <<"RoutingConfig">> => production_variant_routing_config(),
 %%   <<"VariantName">> => string(),
@@ -5028,6 +5039,14 @@
 %%   <<"UserProfileName">> => string()
 %% }
 -type user_profile_details() :: #{binary() => any()}.
+
+%% Example:
+%% instance_pool() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ModelNameOverride">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type instance_pool() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_i_benchmark_job_request() :: #{
@@ -7164,12 +7183,14 @@
 %%   <<"InferenceAmiVersion">> => list(any()),
 %%   <<"InitialInstanceCount">> => integer(),
 %%   <<"InitialVariantWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
 %%   <<"ModelDataDownloadTimeoutInSeconds">> => integer(),
 %%   <<"ModelName">> => string(),
 %%   <<"RoutingConfig">> => production_variant_routing_config(),
 %%   <<"ServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"VariantInstanceProvisionTimeoutInSeconds">> => integer(),
 %%   <<"VariantName">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
@@ -8864,6 +8885,7 @@
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification_summary(),
 %%   <<"DataCacheConfig">> => inference_component_data_cache_config_summary(),
+%%   <<"InstanceType">> => list(any()),
 %%   <<"ModelName">> => string(),
 %%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()
@@ -9451,6 +9473,7 @@
 %%   <<"DesiredInstanceCount">> => integer(),
 %%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
 %%   <<"DesiredWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool_summary()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
 %%   <<"RoutingConfig">> => production_variant_routing_config(),
@@ -10694,6 +10717,13 @@
 -type list_models_input() :: #{binary() => any()}.
 
 %% Example:
+%% instance_pool_summary() :: #{
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type instance_pool_summary() :: #{binary() => any()}.
+
+%% Example:
 %% transform_job_definition() :: #{
 %%   <<"BatchStrategy">> => list(any()),
 %%   <<"Environment">> => map(),
@@ -11861,7 +11891,8 @@
 %%   <<"DeploymentConfig">> => inference_component_deployment_config(),
 %%   <<"InferenceComponentName">> := string(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config(),
-%%   <<"Specification">> => inference_component_specification()
+%%   <<"Specification">> => inference_component_specification(),
+%%   <<"Specifications">> => list(inference_component_specification())
 %% }
 -type update_inference_component_input() :: #{binary() => any()}.
 
@@ -13231,6 +13262,7 @@
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification(),
 %%   <<"DataCacheConfig">> => inference_component_data_cache_config(),
+%%   <<"InstanceType">> => list(any()),
 %%   <<"ModelName">> => string(),
 %%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()

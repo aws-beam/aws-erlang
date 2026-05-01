@@ -1528,8 +1528,9 @@
 
 %% Example:
 %% update_connectivity_request() :: #{
-%%   <<"ConnectivityInfo">> := connectivity_info(),
-%%   <<"CurrentVersion">> := string()
+%%   <<"ConnectivityInfo">> => connectivity_info(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"ZookeeperAccess">> => zookeeper_access()
 %% }
 -type update_connectivity_request() :: #{binary() => any()}.
 
@@ -1725,6 +1726,13 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% zookeeper_access() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type zookeeper_access() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1939,7 +1947,8 @@
 %%   <<"NumberOfBrokerNodes">> => integer(),
 %%   <<"OpenMonitoring">> => open_monitoring(),
 %%   <<"Rebalancing">> => rebalancing(),
-%%   <<"StorageMode">> => list(any())
+%%   <<"StorageMode">> => list(any()),
+%%   <<"ZookeeperAccess">> => zookeeper_access()
 %% }
 -type mutable_cluster_info() :: #{binary() => any()}.
 

@@ -869,6 +869,7 @@
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"CreatedFrom">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IdentityStoreArn">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"PortalOptions">> => portal_options(),
@@ -1059,7 +1060,9 @@
 
 %% Example:
 %% create_application_response() :: #{
-%%   <<"ApplicationArn">> => string()
+%%   <<"ApplicationArn">> => string(),
+%%   <<"IdentityStoreArn">> => string(),
+%%   <<"InstanceArn">> => string()
 %% }
 -type create_application_response() :: #{binary() => any()}.
 
@@ -1663,6 +1666,7 @@
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"CreatedFrom">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IdentityStoreArn">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"PortalOptions">> => portal_options(),

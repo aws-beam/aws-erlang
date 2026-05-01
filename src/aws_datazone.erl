@@ -226,6 +226,9 @@
          get_metadata_generation_run/3,
          get_metadata_generation_run/5,
          get_metadata_generation_run/6,
+         get_notebook_run/3,
+         get_notebook_run/5,
+         get_notebook_run/6,
          get_project/3,
          get_project/5,
          get_project/6,
@@ -316,6 +319,9 @@
          list_metadata_generation_runs/2,
          list_metadata_generation_runs/4,
          list_metadata_generation_runs/5,
+         list_notebook_runs/3,
+         list_notebook_runs/5,
+         list_notebook_runs/6,
          list_notifications/3,
          list_notifications/5,
          list_notifications/6,
@@ -386,6 +392,10 @@
          start_data_source_run/5,
          start_metadata_generation_run/3,
          start_metadata_generation_run/4,
+         start_notebook_run/3,
+         start_notebook_run/4,
+         stop_notebook_run/4,
+         stop_notebook_run/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -996,6 +1006,16 @@
 
 
 %% Example:
+%% network_config() :: #{
+%%   <<"networkAccessType">> => list(any()),
+%%   <<"securityGroupIds">> => list([string()]()),
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcId">> => [string()]
+%% }
+-type network_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_account_pool_output() :: #{
 %%   <<"accountSource">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -1339,6 +1359,10 @@
 -type create_data_product_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_notebook_run_input() :: #{}
+-type get_notebook_run_input() :: #{}.
+
+%% Example:
 %% associate_governed_terms_output() :: #{}
 -type associate_governed_terms_output() :: #{}.
 
@@ -1357,6 +1381,25 @@
 %%   <<"status">> => list(any())
 %% }
 -type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_run_summary() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type notebook_run_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2543,6 +2586,19 @@
 %% }
 -type list_time_series_data_points_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_notebook_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"notebookIdentifier">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"scheduleIdentifier">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_notebook_runs_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_subscription_request_details_input() :: #{}
 -type get_subscription_request_details_input() :: #{}.
@@ -2878,6 +2934,14 @@
 %% }
 -type create_user_profile_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% package_config() :: #{
+%%   <<"packageManager">> => list(any()),
+%%   <<"packageSpecification">> => [string()]
+%% }
+-type package_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_blueprint_configuration_input() :: #{}
 -type delete_environment_blueprint_configuration_input() :: #{}.
@@ -3064,6 +3128,14 @@
 %%   <<"skipDeletionCheck">> => [boolean()]
 %% }
 -type delete_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_config() :: #{
+%%   <<"imageVersion">> => [string()],
+%%   <<"packageConfig">> => package_config()
+%% }
+-type environment_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3258,6 +3330,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type create_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_source() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type trigger_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3516,6 +3596,13 @@
 
 
 %% Example:
+%% notebook_run_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_run_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% reject_subscription_request_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -3558,6 +3645,22 @@
 %%   <<"type">> => [string()]
 %% }
 -type configurable_environment_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_run_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookIdentifier">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleIdentifier">> => string(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source()
+%% }
+-type start_notebook_run_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3744,6 +3847,13 @@
 %%   <<"trackingAssets">> => map()
 %% }
 -type sage_maker_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_notebook_run_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type stop_notebook_run_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_asset_filter_input() :: #{}
@@ -4779,6 +4889,14 @@
 
 
 %% Example:
+%% storage_config() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"projectS3Path">> => string()
+%% }
+-type storage_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% physical_connection_requirements() :: #{
 %%   <<"availabilityZone">> => [string()],
 %%   <<"securityGroupIdList">> => list([string()]()),
@@ -4978,6 +5096,13 @@
 
 
 %% Example:
+%% timeout_config() :: #{
+%%   <<"runTimeoutInMinutes">> => [integer()]
+%% }
+-type timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% in_expression() :: #{
 %%   <<"columnName">> => [string()],
 %%   <<"values">> => list([string()]())
@@ -5062,6 +5187,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type data_source_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_config() :: #{
+%%   <<"environmentVersion">> => [string()],
+%%   <<"instanceType">> => string()
+%% }
+-type compute_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5191,6 +5324,34 @@
 %%   <<"revision">> => string()
 %% }
 -type accept_predictions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_notebook_run_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_run_error(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"storageConfiguration">> => storage_config(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_notebook_run_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5398,6 +5559,14 @@
 %%   <<"workerType">> => [string()]
 %% }
 -type spark_glue_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebook_runs_output() :: #{
+%%   <<"items">> => list(notebook_run_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_notebook_runs_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5991,6 +6160,34 @@
 
 
 %% Example:
+%% start_notebook_run_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_run_error(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"storageConfiguration">> => storage_config(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type start_notebook_run_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_types_for_rule() :: #{
 %%   <<"selectionMode">> => list(any()),
 %%   <<"specificAssetTypes">> => list(string())
@@ -6189,6 +6386,16 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_project_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_notebook_run_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_notebook_run_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6522,6 +6729,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_group_profile_output() :: #{binary() => any()}.
+
+%% Example:
+%% cell_information() :: #{}
+-type cell_information() :: #{}.
 
 %% Example:
 %% delete_project_profile_output() :: #{}
@@ -7512,6 +7723,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_notebook_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -7720,6 +7938,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_notebook_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_notifications_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -7920,6 +8144,23 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_notebook_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_notebook_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -11876,6 +12117,43 @@ get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the details of a notebook run in an Amazon DataZone domain.
+-spec get_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_run_errors(), tuple()}.
+get_notebook_run(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_notebook_run(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_run_errors(), tuple()}.
+get_notebook_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_notebook_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_run_errors(), tuple()}.
+get_notebook_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-runs/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a project in Amazon DataZone.
 -spec get_project(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_project_output(), tuple()} |
@@ -13204,6 +13482,53 @@ list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists notebook runs in an Amazon DataZone domain.
+-spec list_notebook_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_notebook_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebook_runs_errors(), tuple()}.
+list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier)
+  when is_map(Client) ->
+    list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier, #{}, #{}).
+
+-spec list_notebook_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_notebook_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebook_runs_errors(), tuple()}.
+list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_notebook_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_notebook_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebook_runs_errors(), tuple()}.
+list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"notebookIdentifier">>, maps:get(<<"notebookIdentifier">>, QueryMap, undefined)},
+        {<<"owningProjectIdentifier">>, OwningProjectIdentifier},
+        {<<"scheduleIdentifier">>, maps:get(<<"scheduleIdentifier">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all Amazon DataZone notifications.
 -spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_notifications_output(), tuple()} |
@@ -14487,6 +14812,78 @@ start_metadata_generation_run(Client, DomainIdentifier, Input) ->
 start_metadata_generation_run(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/metadata-generation-runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a notebook run in an Amazon DataZone domain.
+%%
+%% A notebook run represents the execution of a Amazon DataZone notebook
+%% within a project. You can configure compute, network, timeout, and
+%% environment settings for the run.
+-spec start_notebook_run(aws_client:aws_client(), binary() | list(), start_notebook_run_input()) ->
+    {ok, start_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_run_errors(), tuple()}.
+start_notebook_run(Client, DomainIdentifier, Input) ->
+    start_notebook_run(Client, DomainIdentifier, Input, []).
+
+-spec start_notebook_run(aws_client:aws_client(), binary() | list(), start_notebook_run_input(), proplists:proplist()) ->
+    {ok, start_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_run_errors(), tuple()}.
+start_notebook_run(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-runs"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running notebook run in an Amazon DataZone domain.
+-spec stop_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list(), stop_notebook_run_input()) ->
+    {ok, stop_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, stop_notebook_run_errors(), tuple()}.
+stop_notebook_run(Client, DomainIdentifier, Identifier, Input) ->
+    stop_notebook_run(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec stop_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list(), stop_notebook_run_input(), proplists:proplist()) ->
+    {ok, stop_notebook_run_output(), tuple()} |
+    {error, any()} |
+    {error, stop_notebook_run_errors(), tuple()}.
+stop_notebook_run(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-runs/", aws_util:encode_uri(Identifier), "/stop"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

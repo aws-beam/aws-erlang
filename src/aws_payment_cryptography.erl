@@ -35,6 +35,8 @@
 
 -export([add_key_replication_regions/2,
          add_key_replication_regions/3,
+         associate_mpa_team/2,
+         associate_mpa_team/3,
          create_alias/2,
          create_alias/3,
          create_key/2,
@@ -43,8 +45,12 @@
          delete_alias/3,
          delete_key/2,
          delete_key/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          disable_default_key_replication_regions/2,
          disable_default_key_replication_regions/3,
+         disassociate_mpa_team/2,
+         disassociate_mpa_team/3,
          enable_default_key_replication_regions/2,
          enable_default_key_replication_regions/3,
          export_key/2,
@@ -57,12 +63,16 @@
          get_default_key_replication_regions/3,
          get_key/2,
          get_key/3,
+         get_mpa_team_association/2,
+         get_mpa_team_association/3,
          get_parameters_for_export/2,
          get_parameters_for_export/3,
          get_parameters_for_import/2,
          get_parameters_for_import/3,
          get_public_key_certificate/2,
          get_public_key_certificate/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          import_key/2,
          import_key/3,
          list_aliases/2,
@@ -71,6 +81,8 @@
          list_keys/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          remove_key_replication_regions/2,
          remove_key_replication_regions/3,
          restore_key/2,
@@ -109,6 +121,14 @@
 -type get_alias_input() :: #{binary() => any()}.
 
 %% Example:
+%% associate_mpa_team_input() :: #{
+%%   <<"Action">> := string(),
+%%   <<"MpaTeamArn">> := string(),
+%%   <<"RequesterComment">> => string()
+%% }
+-type associate_mpa_team_input() :: #{binary() => any()}.
+
+%% Example:
 %% disable_default_key_replication_regions_input() :: #{
 %%   <<"ReplicationRegions">> := list(string())
 %% }
@@ -143,6 +163,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_keys_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% key_summary() :: #{
@@ -189,6 +216,7 @@
 %%   <<"KeyCheckValueAlgorithm">> => string(),
 %%   <<"KeyMaterial">> := list(),
 %%   <<"ReplicationRegions">> => list(string()),
+%%   <<"RequesterComment">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_key_input() :: #{binary() => any()}.
@@ -233,6 +261,13 @@
 -type list_aliases_output() :: #{binary() => any()}.
 
 %% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
 %% restore_key_input() :: #{
 %%   <<"KeyIdentifier">> := string()
 %% }
@@ -266,6 +301,18 @@
 %%   <<"Key">> => key()
 %% }
 -type start_key_usage_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_mpa_team_association_input() :: #{
+%%   <<"Action">> := string()
+%% }
+-type get_mpa_team_association_input() :: #{binary() => any()}.
 
 %% Example:
 %% enable_default_key_replication_regions_output() :: #{
@@ -367,6 +414,13 @@
 -type add_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
 %% add_key_replication_regions_input() :: #{
 %%   <<"KeyIdentifier">> := string(),
 %%   <<"ReplicationRegions">> := list(string())
@@ -407,6 +461,13 @@
 -type get_certificate_signing_request_input() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_mpa_team_input() :: #{
+%%   <<"Action">> := string(),
+%%   <<"RequesterComment">> => string()
+%% }
+-type disassociate_mpa_team_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_alias_input() :: #{
 %%   <<"AliasName">> := string(),
 %%   <<"KeyArn">> => string()
@@ -424,6 +485,12 @@
 %%   <<"Message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_mpa_team_association_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% }
+-type get_mpa_team_association_output() :: #{binary() => any()}.
 
 %% Example:
 %% start_key_usage_input() :: #{
@@ -496,6 +563,21 @@
 -type export_key_input() :: #{binary() => any()}.
 
 %% Example:
+%% delete_resource_policy_output() :: #{
+
+%% }
+-type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% mpa_status() :: #{
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type mpa_status() :: #{binary() => any()}.
+
+%% Example:
 %% get_certificate_signing_request_output() :: #{
 %%   <<"CertificateSigningRequest">> => string()
 %% }
@@ -546,11 +628,26 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% mpa_team_association() :: #{
+%%   <<"Action">> => string(),
+%%   <<"AssociationState">> => string(),
+%%   <<"MpaStatus">> => mpa_status(),
+%%   <<"MpaTeamArn">> => string()
+%% }
+-type mpa_team_association() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
 %% export_tr34_key_block() :: #{
@@ -627,6 +724,7 @@
 %%   <<"KeyCheckValueAlgorithm">> => string(),
 %%   <<"KeyOrigin">> => string(),
 %%   <<"KeyState">> => string(),
+%%   <<"MpaStatus">> => mpa_status(),
 %%   <<"MultiRegionKeyType">> => string(),
 %%   <<"PrimaryRegion">> => string(),
 %%   <<"ReplicationStatus">> => map(),
@@ -635,6 +733,12 @@
 %%   <<"UsingDefaultReplicationRegions">> => [boolean()]
 %% }
 -type key() :: #{binary() => any()}.
+
+%% Example:
+%% associate_mpa_team_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% }
+-type associate_mpa_team_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_keys_output() :: #{
@@ -662,6 +766,12 @@
 %%   <<"ReplicationRegions">> := list(string())
 %% }
 -type enable_default_key_replication_regions_input() :: #{binary() => any()}.
+
+%% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
 
 %% Example:
 %% delete_alias_output() :: #{
@@ -706,6 +816,12 @@
 -type root_certificate_public_key() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_mpa_team_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% }
+-type disassociate_mpa_team_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_key_output() :: #{
 %%   <<"Key">> => key()
 %% }
@@ -738,6 +854,16 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_mpa_team_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
@@ -780,11 +906,30 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type disable_default_key_replication_regions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_mpa_team_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
@@ -840,6 +985,16 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type get_mpa_team_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_parameters_for_export_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -861,6 +1016,14 @@
     conflict_exception().
 
 -type get_public_key_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -901,6 +1064,17 @@
     internal_server_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    public_policy_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type remove_key_replication_regions_errors() ::
     throttling_exception() | 
@@ -989,8 +1163,10 @@
 %% multiple regions in a single operation, and the key will be available for
 %% use in those regions once replication is complete.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1017,6 +1193,39 @@ add_key_replication_regions(Client, Input)
 add_key_replication_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddKeyReplicationRegions">>, Input, Options).
+
+%% @doc Associates a Multi-Party Approval (MPA) team with a protected
+%% operation.
+%%
+%% For more information, see Multi-Party Approval:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/mpa.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% DisassociateMpaTeam:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisassociateMpaTeam.html
+%%
+%% GetMpaTeamAssociation:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetMpaTeamAssociation.html
+-spec associate_mpa_team(aws_client:aws_client(), associate_mpa_team_input()) ->
+    {ok, associate_mpa_team_output(), tuple()} |
+    {error, any()} |
+    {error, associate_mpa_team_errors(), tuple()}.
+associate_mpa_team(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_mpa_team(Client, Input, []).
+
+-spec associate_mpa_team(aws_client:aws_client(), associate_mpa_team_input(), proplists:proplist()) ->
+    {ok, associate_mpa_team_output(), tuple()} |
+    {error, any()} |
+    {error, associate_mpa_team_errors(), tuple()}.
+associate_mpa_team(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateMpaTeam">>, Input, Options).
 
 %% @doc Creates an alias, or a friendly name, for an Amazon Web Services
 %% Payment Cryptography key.
@@ -1213,8 +1422,10 @@ delete_alias(Client, Input, Options)
 %% aren't sure, consider deactivating it instead by calling StopKeyUsage:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1241,6 +1452,35 @@ delete_key(Client, Input)
 delete_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKey">>, Input, Options).
+
+%% @doc Removes the resource-based policy attached to an Amazon Web Services
+%% Payment Cryptography key.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% PutResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_PutResourcePolicy.html
+%%
+%% GetResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetResourcePolicy.html
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
+    {ok, delete_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input(), proplists:proplist()) ->
+    {ok, delete_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Disables Multi-Region key replication:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html
@@ -1283,6 +1523,35 @@ disable_default_key_replication_regions(Client, Input)
 disable_default_key_replication_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDefaultKeyReplicationRegions">>, Input, Options).
+
+%% @doc Removes the association between a Multi-Party Approval (MPA) team and
+%% a protected operation.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% AssociateMpaTeam:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AssociateMpaTeam.html
+%%
+%% GetMpaTeamAssociation:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetMpaTeamAssociation.html
+-spec disassociate_mpa_team(aws_client:aws_client(), disassociate_mpa_team_input()) ->
+    {ok, disassociate_mpa_team_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_mpa_team_errors(), tuple()}.
+disassociate_mpa_team(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_mpa_team(Client, Input, []).
+
+-spec disassociate_mpa_team(aws_client:aws_client(), disassociate_mpa_team_input(), proplists:proplist()) ->
+    {ok, disassociate_mpa_team_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_mpa_team_errors(), tuple()}.
+disassociate_mpa_team(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateMpaTeam">>, Input, Options).
 
 %% @doc Enables Multi-Region key replication:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html
@@ -1520,8 +1789,10 @@ enable_default_key_replication_regions(Client, Input, Options)
 %% Cryptography returns the working key as a TR-31 WrappedKeyBlock, where the
 %% wrapping key is the ECDH derived key.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1641,8 +1912,10 @@ get_default_key_replication_regions(Client, Input, Options)
 %% Returns key metadata including attributes, state, and timestamps, but does
 %% not return the actual cryptographic key material.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1669,6 +1942,35 @@ get_key(Client, Input)
 get_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKey">>, Input, Options).
+
+%% @doc Returns the Multi-Party Approval (MPA) team association for a
+%% protected operation.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% AssociateMpaTeam:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AssociateMpaTeam.html
+%%
+%% DisassociateMpaTeam:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisassociateMpaTeam.html
+-spec get_mpa_team_association(aws_client:aws_client(), get_mpa_team_association_input()) ->
+    {ok, get_mpa_team_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_mpa_team_association_errors(), tuple()}.
+get_mpa_team_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mpa_team_association(Client, Input, []).
+
+-spec get_mpa_team_association(aws_client:aws_client(), get_mpa_team_association_input(), proplists:proplist()) ->
+    {ok, get_mpa_team_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_mpa_team_association_errors(), tuple()}.
+get_mpa_team_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMpaTeamAssociation">>, Input, Options).
 
 %% @doc Gets the export token and the signing key certificate to initiate a
 %% TR-34 key export from Amazon Web Services Payment Cryptography.
@@ -1761,8 +2063,10 @@ get_parameters_for_import(Client, Input, Options)
 %% certificate to allow others to encrypt messages and verify signatures
 %% outside of Amazon Web Services Payment Cryptography
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 -spec get_public_key_certificate(aws_client:aws_client(), get_public_key_certificate_input()) ->
     {ok, get_public_key_certificate_output(), tuple()} |
     {error, any()} |
@@ -1778,6 +2082,35 @@ get_public_key_certificate(Client, Input)
 get_public_key_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPublicKeyCertificate">>, Input, Options).
+
+%% @doc Returns the resource-based policy attached to an Amazon Web Services
+%% Payment Cryptography key.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% PutResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_PutResourcePolicy.html
+%%
+%% DeleteResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Imports symmetric keys and public key certificates in PEM format
 %% (base64 encoded) into Amazon Web Services Payment Cryptography.
@@ -1969,8 +2302,10 @@ get_public_key_certificate(Client, Input, Options)
 %% `CertificateAuthorityPublicKeyIdentifier': The `keyARN' of the CA
 %% that signed the public key certificate of the receiving ECC key pair.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2092,8 +2427,10 @@ list_keys(Client, Input, Options)
 %% receive a response with no NextToken (or an empty or null value), that
 %% means there are no more tags to get.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2118,6 +2455,43 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Attaches or replaces a resource-based policy on an Amazon Web
+%% Services Payment Cryptography key.
+%%
+%% A resource-based policy can grant cross-account access to your key.
+%%
+%% If the policy would grant public access, the request fails with a
+%% `PublicPolicyException'.
+%%
+%% To remove a resource-based policy from a key, use DeleteResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% GetResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetResourcePolicy.html
+%%
+%% DeleteResourcePolicy:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
+    {ok, put_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input(), proplists:proplist()) ->
+    {ok, put_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
+
 %% @doc Removes Replication Regions from an existing Amazon Web Services
 %% Payment Cryptography key, disabling the key's availability for
 %% cryptographic operations in the specified Amazon Web Services Regions.
@@ -2132,8 +2506,10 @@ list_tags_for_resource(Client, Input, Options)
 %% the key in the regions you're removing before performing this
 %% operation.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2168,8 +2544,10 @@ remove_key_replication_regions(Client, Input, Options)
 %% is `CREATE_COMPLETE', and the value for `deletePendingTimestamp'
 %% is removed.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2201,8 +2579,11 @@ restore_key(Client, Input, Options)
 %% it active for cryptographic operations within Amazon Web Services Payment
 %% Cryptography
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access.
+%%
+%% For more information, see Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2233,8 +2614,10 @@ start_key_usage(Client, Input, Options)
 %% StartKeyUsage:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2273,8 +2656,10 @@ stop_key_usage(Client, Input, Options)
 %% CreateKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -2304,8 +2689,10 @@ tag_resource(Client, Input, Options)
 %% Tagging or untagging an Amazon Web Services Payment Cryptography key can
 %% allow or deny permission to the key.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%

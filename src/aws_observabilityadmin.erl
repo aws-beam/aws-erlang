@@ -277,6 +277,7 @@
 %%   <<"DestinationType">> => list(any()),
 %%   <<"ELBLoadBalancerLoggingParameters">> => e_lb_load_balancer_logging_parameters(),
 %%   <<"LogDeliveryParameters">> => log_delivery_parameters(),
+%%   <<"MskMonitoringParameters">> => msk_monitoring_parameters(),
 %%   <<"RetentionInDays">> => integer(),
 %%   <<"VPCFlowLogParameters">> => vpc_flow_log_parameters(),
 %%   <<"WAFLoggingParameters">> => w_a_f_logging_parameters()
@@ -473,6 +474,13 @@
 %%   <<"ResourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% msk_monitoring_parameters() :: #{
+%%   <<"EnhancedMonitoring">> => list(any())
+%% }
+-type msk_monitoring_parameters() :: #{binary() => any()}.
 
 
 %% Example:

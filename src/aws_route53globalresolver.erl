@@ -1141,7 +1141,8 @@
 %%   <<"description">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string()
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string())
 %% }
 -type update_global_resolver_input() :: #{binary() => any()}.
 
@@ -1540,7 +1541,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_dns_view_errors() ::
     throttling_exception() | 
