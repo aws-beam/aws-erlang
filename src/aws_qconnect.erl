@@ -994,6 +994,7 @@
 %%   <<"usageOutputTokens">> => [integer()],
 %%   <<"errorType">> => string(),
 %%   <<"promptName">> => string(),
+%%   <<"timeToFirstTokenMs">> => [integer()],
 %%   <<"aiAgentId">> => string(),
 %%   <<"promptId">> => string(),
 %%   <<"contactId">> => string(),
@@ -1191,6 +1192,13 @@
 %% Example:
 %% delete_message_template_response() :: #{}
 -type delete_message_template_response() :: #{}.
+
+
+%% Example:
+%% span_reasoning_value() :: #{
+%%   <<"value">> => string()
+%% }
+-type span_reasoning_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1416,7 +1424,8 @@
 %%   <<"spanName">> => string(),
 %%   <<"spanType">> => string(),
 %%   <<"startTimestamp">> => [non_neg_integer()],
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"statusDescription">> => string()
 %% }
 -type span() :: #{binary() => any()}.
 

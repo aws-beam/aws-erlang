@@ -1194,6 +1194,7 @@
 %%   <<"limit">> => integer(),
 %%   <<"logGroupClass">> => list(any()),
 %%   <<"logGroupNamePattern">> => string(),
+%%   <<"logGroupTags">> => list(tag_filter()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_log_groups_request() :: #{binary() => any()}.
@@ -2621,6 +2622,13 @@
 %%   <<"message">> => string()
 %% }
 -type internal_streaming_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type tag_filter() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_export_task_request() :: #{
@@ -5929,15 +5937,11 @@ list_log_anomaly_detectors(Client, Input, Options)
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 %%
-%% You can optionally filter the list by log group class, by using regular
-%% expressions in
-%% your request to match strings in the log group names, by using the
-%% fieldIndexes parameter to
-%% filter log groups based on which field indexes are configured, by using
-%% the dataSources
-%% parameter to filter log groups by data source types, and by using the
-%% fieldIndexNames
-%% parameter to filter by specific field index names.
+%% You can optionally filter the results by log group class, log group name
+%% pattern,
+%% field indexes, data sources, field index names, or log group tags. If you
+%% specify more than
+%% one filter type, the results include log groups that satisfy all filters.
 %%
 %% This operation is paginated. By default, your first use of this operation
 %% returns 50
@@ -7583,7 +7587,9 @@ start_live_tail(Client, Input, Options)
 %% based on
 %% log group name prefix, account ID, and log class, or select data sources
 %% using
-%% dataSource syntax in LogsQL, PPL, and SQL.
+%% dataSource syntax in LogsQL, PPL, and SQL. In LogsQL, the `SOURCE'
+%% command
+%% also supports filtering by log group tags.
 %%
 %% For more information about the `SOURCE' command, see SOURCE:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-Source.html.

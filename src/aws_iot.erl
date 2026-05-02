@@ -5008,6 +5008,7 @@
 
 %% Example:
 %% batch_config() :: #{
+%%   <<"batchAcrossTopics">> => boolean(),
 %%   <<"maxBatchOpenMs">> => integer(),
 %%   <<"maxBatchSize">> => integer(),
 %%   <<"maxBatchSizeBytes">> => integer()

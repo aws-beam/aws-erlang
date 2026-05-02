@@ -580,6 +580,7 @@
 
 %% Example:
 %% rule_condition_properties() :: #{
+%%   <<"matchingConfig">> => matching_config(),
 %%   <<"rules">> => list(rule_condition())
 %% }
 -type rule_condition_properties() :: #{binary() => any()}.
@@ -1213,6 +1214,13 @@
 %%   <<"record">> := map()
 %% }
 -type get_match_id_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_config() :: #{
+%%   <<"enableTransitiveMatching">> => [boolean()]
+%% }
+-type matching_config() :: #{binary() => any()}.
 
 
 %% Example:

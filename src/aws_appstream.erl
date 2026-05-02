@@ -421,6 +421,7 @@
 %% Example:
 %% create_stack_request() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config(),
 %%   <<"ApplicationSettings">> => application_settings(),
 %%   <<"ContentRedirection">> => content_redirection(),
 %%   <<"Description">> => string(),
@@ -439,6 +440,7 @@
 %% Example:
 %% update_stack_request() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config_for_update(),
 %%   <<"ApplicationSettings">> => application_settings(),
 %%   <<"AttributesToDelete">> => list(list(any())()),
 %%   <<"ContentRedirection">> => content_redirection(),
@@ -878,6 +880,7 @@
 %% Example:
 %% stack() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config(),
 %%   <<"ApplicationSettings">> => application_settings_response(),
 %%   <<"Arn">> => string(),
 %%   <<"ContentRedirection">> => content_redirection(),
@@ -1263,6 +1266,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% agent_access_setting() :: #{
+%%   <<"AgentAction">> => list(any()),
+%%   <<"Permission">> => list(any())
+%% }
+-type agent_access_setting() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1857,6 +1867,16 @@
 -type content_redirection() :: #{binary() => any()}.
 
 %% Example:
+%% agent_access_config_for_update() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting())
+%% }
+-type agent_access_config_for_update() :: #{binary() => any()}.
+
+%% Example:
 %% create_usage_report_subscription_result() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"Schedule">> => list(any())
@@ -2044,6 +2064,16 @@
 %%   <<"UserId">> => string()
 %% }
 -type admin_app_license_usage_record() :: #{binary() => any()}.
+
+%% Example:
+%% agent_access_config() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting())
+%% }
+-type agent_access_config() :: #{binary() => any()}.
 
 %% Example:
 %% update_image_permissions_result() :: #{

@@ -883,6 +883,7 @@
 %% Example:
 %% filter_date_time_picker_control() :: #{
 %%   <<"CommitMode">> => list(any()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SourceFilterId">> => string(),
@@ -982,6 +983,7 @@
 %% filter_list_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -1261,6 +1263,14 @@
 %%   <<"TagNames">> => list(list(any())())
 %% }
 -type untag_column_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_title_font_configuration() :: #{
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"TextAlignment">> => list(any())
+%% }
+-type control_title_font_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1657,6 +1667,7 @@
 
 %% Example:
 %% parameter_text_area_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"Delimiter">> => string(),
 %%   <<"DisplayOptions">> => text_area_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
@@ -2960,6 +2971,7 @@
 
 %% Example:
 %% parameter_text_field_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => text_field_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SourceParameterName">> => string(),
@@ -3437,6 +3449,7 @@
 
 %% Example:
 %% filter_slider_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => slider_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"MaximumValue">> => float(),
@@ -5025,6 +5038,7 @@
 %% parameter_list_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SelectableValues">> => parameter_selectable_values(),
@@ -5772,6 +5786,7 @@
 %% Example:
 %% filter_relative_date_time_control() :: #{
 %%   <<"CommitMode">> => list(any()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => relative_date_time_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SourceFilterId">> => string(),
@@ -7023,6 +7038,7 @@
 
 %% Example:
 %% parameter_date_time_picker_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SourceParameterName">> => string(),
@@ -7169,6 +7185,7 @@
 
 %% Example:
 %% parameter_slider_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => slider_control_display_options(),
 %%   <<"MaximumValue">> => float(),
 %%   <<"MinimumValue">> => float(),
@@ -7342,6 +7359,7 @@
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"CommitMode">> => list(any()),
 %%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SelectableValues">> => parameter_selectable_values(),
@@ -7621,6 +7639,7 @@
 %% Example:
 %% default_filter_control_configuration() :: #{
 %%   <<"ControlOptions">> => default_filter_control_options(),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"Title">> => string()
 %% }
 -type default_filter_control_configuration() :: #{binary() => any()}.
@@ -7929,6 +7948,7 @@
 
 %% Example:
 %% filter_text_field_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => text_field_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SourceFilterId">> => string(),
@@ -8124,6 +8144,14 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type describe_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_title_format_text() :: #{
+%%   <<"PlainText">> => string(),
+%%   <<"RichText">> => string()
+%% }
+-type control_title_format_text() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8671,6 +8699,7 @@
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"CommitMode">> => list(any()),
 %%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -9642,6 +9671,7 @@
 
 %% Example:
 %% o_auth_parameters() :: #{
+%%   <<"IdentityProviderCACertificatesBundleS3Uri">> => string(),
 %%   <<"IdentityProviderResourceUri">> => string(),
 %%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
 %%   <<"OAuthScope">> => string(),
@@ -12537,6 +12567,7 @@
 %% typography() :: #{
 %%   <<"AxisLabelFontConfiguration">> => font_configuration(),
 %%   <<"AxisTitleFontConfiguration">> => font_configuration(),
+%%   <<"ControlTitleFontConfiguration">> => control_title_font_configuration(),
 %%   <<"DataLabelFontConfiguration">> => font_configuration(),
 %%   <<"FontFamilies">> => list(font()),
 %%   <<"LegendTitleFontConfiguration">> => font_configuration(),
@@ -12561,6 +12592,7 @@
 
 %% Example:
 %% get_identity_context_request() :: #{
+%%   <<"ContextRegion">> => string(),
 %%   <<"Namespace">> => string(),
 %%   <<"SessionExpiresAt">> => [non_neg_integer()],
 %%   <<"UserIdentifier">> := list()
@@ -12922,6 +12954,7 @@
 
 %% Example:
 %% filter_text_area_control() :: #{
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
 %%   <<"Delimiter">> => string(),
 %%   <<"DisplayOptions">> => text_area_control_display_options(),
 %%   <<"FilterControlId">> => string(),
@@ -14118,6 +14151,7 @@
 %%   <<"IncludeContentInScheduledReportsEmail">> => list(any()),
 %%   <<"UseSalesforceAction">> => list(any()),
 %%   <<"UseGoogleCalendarAction">> => list(any()),
+%%   <<"Story">> => list(any()),
 %%   <<"ShareSmartsheetAction">> => list(any()),
 %%   <<"CreateAndUpdateCanvaAgentAction">> => list(any()),
 %%   <<"GenerateAnalyses">> => list(any()),
@@ -14300,6 +14334,7 @@
 %%   <<"MSTeamsAction">> => list(any()),
 %%   <<"CreateAndUpdateMSExchangeAction">> => list(any()),
 %%   <<"ShareNewRelicAction">> => list(any()),
+%%   <<"Scenario">> => list(any()),
 %%   <<"ExportToCsv">> => list(any()),
 %%   <<"UseAgentWebSearch">> => list(any()),
 %%   <<"ShareOpenAPIAction">> => list(any()),

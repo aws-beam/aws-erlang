@@ -1198,7 +1198,8 @@
 %% Example:
 %% put_dashboard_input() :: #{
 %%   <<"DashboardBody">> := string(),
-%%   <<"DashboardName">> := string()
+%%   <<"DashboardName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_dashboard_input() :: #{binary() => any()}.
 
@@ -1315,8 +1316,7 @@
 -type delete_dashboards_errors() ::
     internal_service_fault() | 
     invalid_parameter_value_exception() | 
-    conflict_exception() | 
-    dashboard_not_found_error().
+    conflict_exception().
 
 -type delete_insight_rules_errors() ::
     invalid_parameter_value_exception() | 
@@ -1593,7 +1593,9 @@ delete_anomaly_detector(Client, Input, Options)
 %% @doc Deletes all dashboards that you specify.
 %%
 %% You can specify up to 100 dashboards to
-%% delete. If there is an error during this call, no dashboards are deleted.
+%% delete. If there is an error during this call, the operation attempts to
+%% delete as many
+%% dashboards as possible.
 -spec delete_dashboards(aws_client:aws_client(), delete_dashboards_input()) ->
     {ok, delete_dashboards_output(), tuple()} |
     {error, any()} |
@@ -2250,7 +2252,7 @@ get_metric_widget_image(Client, Input, Options)
 %% labels and queryable using PromQL.
 %%
 %% For the list of supported resources, see
-%% Supported AWS infrastructure metrics:
+%% Supported Amazon Web Services infrastructure metrics:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html.
 -spec get_o_tel_enrichment(aws_client:aws_client(), get_o_tel_enrichment_input()) ->
     {ok, get_o_tel_enrichment_output(), tuple()} |
@@ -2412,8 +2414,8 @@ list_metrics(Client, Input, Options)
 
 %% @doc Displays the tags associated with a CloudWatch resource.
 %%
-%% Currently, alarms and
-%% Contributor Insights rules support tagging.
+%% Currently, alarms,
+%% dashboards, metric streams and Contributor Insights rules support tagging.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -3028,7 +3030,7 @@ start_metric_streams(Client, Input, Options)
 
 %% @doc Enables enrichment and PromQL access for CloudWatch vended metrics
 %% for
-%% supported AWS resources:
+%% supported Amazon Web Services resources:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
 %% in the account.
 %%
@@ -3076,7 +3078,7 @@ stop_metric_streams(Client, Input, Options)
 
 %% @doc Disables enrichment and PromQL access for CloudWatch vended metrics
 %% for
-%% supported AWS resources:
+%% supported Amazon Web Services resources:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
 %% in the account.
 %%
@@ -3101,9 +3103,9 @@ stop_o_tel_enrichment(Client, Input, Options)
 %% @doc Assigns one or more tags (key-value pairs) to the specified
 %% CloudWatch resource.
 %%
-%% Currently, the only CloudWatch resources that can be tagged are alarms and
-%% Contributor
-%% Insights rules.
+%% Currently, the only CloudWatch resources that can be tagged are alarms,
+%% dashboards,
+%% metric streams and Contributor Insights rules.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to
@@ -3143,6 +3145,9 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
+%%
+%% Currently, alarms, dashboards,
+%% metric streams and Contributor Insights rules support tagging.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
