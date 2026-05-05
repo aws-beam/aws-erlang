@@ -316,6 +316,13 @@
 
 
 %% Example:
+%% streaming_configuration() :: #{
+%%   <<"enableResponseStreaming">> => [boolean()]
+%% }
+-type streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% lambda_interceptor_configuration() :: #{
 %%   <<"arn">> => string()
 %% }
@@ -1652,6 +1659,13 @@
 %%   <<"name">> := string()
 %% }
 -type delete_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_configuration() :: #{
+%%   <<"sessionTimeoutInSeconds">> => [integer()]
+%% }
+-type session_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3927,6 +3941,8 @@
 %% m_c_p_gateway_configuration() :: #{
 %%   <<"instructions">> => string(),
 %%   <<"searchType">> => list(any()),
+%%   <<"sessionConfiguration">> => session_configuration(),
+%%   <<"streamingConfiguration">> => streaming_configuration(),
 %%   <<"supportedVersions">> => list(string())
 %% }
 -type m_c_p_gateway_configuration() :: #{binary() => any()}.

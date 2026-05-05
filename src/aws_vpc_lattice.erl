@@ -286,7 +286,7 @@
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type get_resource_configuration_response() :: #{binary() => any()}.
 
@@ -405,8 +405,11 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"managedBy">> => [string()],
 %%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
+%%   <<"serviceManaged">> => [boolean()],
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
@@ -517,7 +520,7 @@
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type update_resource_configuration_response() :: #{binary() => any()}.
 
@@ -607,6 +610,7 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"name">> := string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"subnetIds">> => list(string()),
 %%   <<"tags">> => map(),
@@ -783,6 +787,7 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list(string()),
@@ -840,7 +845,7 @@
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type resource_configuration_summary() :: #{binary() => any()}.
 
@@ -952,6 +957,7 @@
 %%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list(string()),
@@ -1553,7 +1559,7 @@
 %%   <<"resourceConfigurationGroupIdentifier">> => string(),
 %%   <<"resourceGatewayIdentifier">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"type">> := string()
+%%   <<"type">> := list(any())
 %% }
 -type create_resource_configuration_request() :: #{binary() => any()}.
 
@@ -1972,7 +1978,7 @@
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type create_resource_configuration_response() :: #{binary() => any()}.
 

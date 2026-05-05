@@ -1,7 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Security Agent service documentation.
+%% @doc AWS Security Agent is a frontier agent that proactively secures your
+%% applications throughout the development lifecycle.
+%%
+%% It conducts automated security reviews tailored to your organizational
+%% requirements and delivers context-aware penetration testing on demand. By
+%% continuously validating security from design to deployment, AWS Security
+%% Agent helps prevent vulnerabilities early across all your environments.
+%% Key capabilities include design security review for architecture
+%% documents, code security review for pull requests in connected
+%% repositories, and on-demand penetration testing that discovers, validates,
+%% and remediates security vulnerabilities through tailored multi-step attack
+%% scenarios. For more information, see the AWS Security Agent User Guide:
+%% https://docs.aws.amazon.com/securityagent/latest/userguide/what-is.html.
 -module(aws_securityagent).
 
 -export([add_artifact/2,
@@ -1088,6 +1100,7 @@
 %%   <<"targetDomainId">> => string(),
 %%   <<"verificationDetails">> => verification_details(),
 %%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
 %%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
 -type update_target_domain_output() :: #{binary() => any()}.
@@ -1251,6 +1264,7 @@
 %%   <<"targetDomainId">> => string(),
 %%   <<"verificationDetails">> => verification_details(),
 %%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
 %%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
 -type create_target_domain_output() :: #{binary() => any()}.
@@ -1397,6 +1411,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"targetDomainId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"verificationStatusReason">> => [string()],
 %%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
 -type verify_target_domain_output() :: #{binary() => any()}.
@@ -1567,6 +1582,7 @@
 %%   <<"targetDomainId">> => string(),
 %%   <<"verificationDetails">> => verification_details(),
 %%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
 %%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
 -type target_domain() :: #{binary() => any()}.
@@ -1646,6 +1662,7 @@
 
 -type list_integrations_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -1662,7 +1679,10 @@
 %% API
 %%====================================================================
 
-%% @doc Adds an Artifact for the given agent space
+%% @doc Uploads an artifact to an agent space.
+%%
+%% Artifacts provide additional context for security testing, such as
+%% architecture diagrams, API specifications, or configuration files.
 -spec add_artifact(aws_client:aws_client(), add_artifact_input()) ->
     {ok, add_artifact_output(), tuple()} |
     {error, any()} |
@@ -1696,7 +1716,7 @@ add_artifact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes multiple pentests in a single request
+%% @doc Deletes one or more pentests from an agent space.
 -spec batch_delete_pentests(aws_client:aws_client(), batch_delete_pentests_input()) ->
     {ok, batch_delete_pentests_output(), tuple()} |
     {error, any()}.
@@ -1728,7 +1748,7 @@ batch_delete_pentests(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple agent spaces in a single request
+%% @doc Retrieves information about one or more agent spaces.
 -spec batch_get_agent_spaces(aws_client:aws_client(), batch_get_agent_spaces_input()) ->
     {ok, batch_get_agent_spaces_output(), tuple()} |
     {error, any()}.
@@ -1760,7 +1780,7 @@ batch_get_agent_spaces(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieve the list of artifact metadata for the given agent space
+%% @doc Retrieves metadata for one or more artifacts in an agent space.
 -spec batch_get_artifact_metadata(aws_client:aws_client(), batch_get_artifact_metadata_input()) ->
     {ok, batch_get_artifact_metadata_output(), tuple()} |
     {error, any()} |
@@ -1794,7 +1814,8 @@ batch_get_artifact_metadata(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple findings in a single request
+%% @doc Retrieves information about one or more security findings in an agent
+%% space.
 -spec batch_get_findings(aws_client:aws_client(), batch_get_findings_input()) ->
     {ok, batch_get_findings_output(), tuple()} |
     {error, any()}.
@@ -1826,7 +1847,7 @@ batch_get_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple tasks for a pentest job in a single request
+%% @doc Retrieves information about one or more tasks within a pentest job.
 -spec batch_get_pentest_job_tasks(aws_client:aws_client(), batch_get_pentest_job_tasks_input()) ->
     {ok, batch_get_pentest_job_tasks_output(), tuple()} |
     {error, any()}.
@@ -1858,7 +1879,8 @@ batch_get_pentest_job_tasks(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple pentest jobs in a single request
+%% @doc Retrieves information about one or more pentest jobs in an agent
+%% space.
 -spec batch_get_pentest_jobs(aws_client:aws_client(), batch_get_pentest_jobs_input()) ->
     {ok, batch_get_pentest_jobs_output(), tuple()} |
     {error, any()}.
@@ -1890,7 +1912,7 @@ batch_get_pentest_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple pentests in a single request
+%% @doc Retrieves information about one or more pentests in an agent space.
 -spec batch_get_pentests(aws_client:aws_client(), batch_get_pentests_input()) ->
     {ok, batch_get_pentests_output(), tuple()} |
     {error, any()}.
@@ -1922,7 +1944,7 @@ batch_get_pentests(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves multiple target domains in a single request
+%% @doc Retrieves information about one or more target domains.
 -spec batch_get_target_domains(aws_client:aws_client(), batch_get_target_domains_input()) ->
     {ok, batch_get_target_domains_output(), tuple()} |
     {error, any()}.
@@ -1954,7 +1976,10 @@ batch_get_target_domains(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an agent space record
+%% @doc Creates a new agent space.
+%%
+%% An agent space is a dedicated workspace for securing a specific
+%% application.
 -spec create_agent_space(aws_client:aws_client(), create_agent_space_input()) ->
     {ok, create_agent_space_output(), tuple()} |
     {error, any()}.
@@ -1986,7 +2011,10 @@ create_agent_space(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new application
+%% @doc Creates a new application.
+%%
+%% An application is the top-level organizational unit that supports IAM
+%% Identity Center integration.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()}.
@@ -2018,8 +2046,8 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates the Integration of the Security Agent App with an external
-%% Provider
+%% @doc Creates a new integration with a third-party provider, such as
+%% GitHub, for code review and remediation.
 -spec create_integration(aws_client:aws_client(), create_integration_input()) ->
     {ok, create_integration_output(), tuple()} |
     {error, any()} |
@@ -2053,7 +2081,8 @@ create_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a single member to an agent space with specified role
+%% @doc Creates a new membership, granting a user access to an agent space
+%% within an application.
 -spec create_membership(aws_client:aws_client(), create_membership_request()) ->
     {ok, create_membership_response(), tuple()} |
     {error, any()}.
@@ -2085,7 +2114,10 @@ create_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new pentest configuration
+%% @doc Creates a new pentest configuration in an agent space.
+%%
+%% A pentest defines the security test parameters, including target assets,
+%% risk type exclusions, and logging configuration.
 -spec create_pentest(aws_client:aws_client(), create_pentest_input()) ->
     {ok, create_pentest_output(), tuple()} |
     {error, any()}.
@@ -2117,7 +2149,10 @@ create_pentest(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a target domain record
+%% @doc Creates a new target domain for penetration testing.
+%%
+%% A target domain is a web domain that must be registered and verified
+%% before it can be tested.
 -spec create_target_domain(aws_client:aws_client(), create_target_domain_input()) ->
     {ok, create_target_domain_output(), tuple()} |
     {error, any()}.
@@ -2149,7 +2184,8 @@ create_target_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an agent space record
+%% @doc Deletes an agent space and all of its associated resources, including
+%% pentests, findings, and artifacts.
 -spec delete_agent_space(aws_client:aws_client(), delete_agent_space_input()) ->
     {ok, delete_agent_space_output(), tuple()} |
     {error, any()}.
@@ -2181,7 +2217,8 @@ delete_agent_space(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an application
+%% @doc Deletes an application and its associated configuration, including
+%% IAM Identity Center settings.
 -spec delete_application(aws_client:aws_client(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -2213,7 +2250,7 @@ delete_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an Artifact from the given agent space
+%% @doc Deletes an artifact from an agent space.
 -spec delete_artifact(aws_client:aws_client(), delete_artifact_input()) ->
     {ok, delete_artifact_output(), tuple()} |
     {error, any()} |
@@ -2247,8 +2284,7 @@ delete_artifact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Integration of the Security Agent App with an external
-%% Provider
+%% @doc Deletes an integration with a third-party provider.
 -spec delete_integration(aws_client:aws_client(), delete_integration_input()) ->
     {ok, delete_integration_output(), tuple()} |
     {error, any()} |
@@ -2282,7 +2318,7 @@ delete_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a single member associated to an agent space
+%% @doc Deletes a membership, revoking a user's access to an agent space.
 -spec delete_membership(aws_client:aws_client(), delete_membership_request()) ->
     {ok, delete_membership_response(), tuple()} |
     {error, any()}.
@@ -2314,7 +2350,9 @@ delete_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a target domain record
+%% @doc Deletes a target domain registration.
+%%
+%% After deletion, the domain can no longer be used for penetration testing.
 -spec delete_target_domain(aws_client:aws_client(), delete_target_domain_input()) ->
     {ok, delete_target_domain_output(), tuple()} |
     {error, any()}.
@@ -2346,7 +2384,7 @@ delete_target_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves application details by application ID
+%% @doc Retrieves information about an application.
 -spec get_application(aws_client:aws_client(), get_application_request()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()}.
@@ -2378,7 +2416,7 @@ get_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieve an Artifact for the given agent space
+%% @doc Retrieves an artifact from an agent space.
 -spec get_artifact(aws_client:aws_client(), get_artifact_input()) ->
     {ok, get_artifact_output(), tuple()} |
     {error, any()} |
@@ -2412,7 +2450,7 @@ get_artifact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets Integration metadata from the provided id
+%% @doc Retrieves information about an integration.
 -spec get_integration(aws_client:aws_client(), get_integration_input()) ->
     {ok, get_integration_output(), tuple()} |
     {error, any()} |
@@ -2446,8 +2484,10 @@ get_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates the registration of Security Agent App for an external
-%% Provider
+%% @doc Initiates the OAuth registration flow with a third-party provider.
+%%
+%% Returns a redirect URL and CSRF state token for completing the
+%% authorization.
 -spec initiate_provider_registration(aws_client:aws_client(), initiate_provider_registration_input()) ->
     {ok, initiate_provider_registration_output(), tuple()} |
     {error, any()} |
@@ -2481,7 +2521,7 @@ initiate_provider_registration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists agent spaces
+%% @doc Returns a paginated list of agent space summaries in your account.
 -spec list_agent_spaces(aws_client:aws_client(), list_agent_spaces_input()) ->
     {ok, list_agent_spaces_output(), tuple()} |
     {error, any()}.
@@ -2513,7 +2553,7 @@ list_agent_spaces(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all applications in the account
+%% @doc Returns a paginated list of application summaries in your account.
 -spec list_applications(aws_client:aws_client(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()}.
@@ -2545,7 +2585,8 @@ list_applications(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the artifacts for the associated agent space
+%% @doc Returns a paginated list of artifact summaries for the specified
+%% agent space.
 -spec list_artifacts(aws_client:aws_client(), list_artifacts_input()) ->
     {ok, list_artifacts_output(), tuple()} |
     {error, any()} |
@@ -2579,8 +2620,8 @@ list_artifacts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists discovered endpoints associated with a pentest job with
-%% optional URI prefix filtering
+%% @doc Returns a paginated list of endpoints discovered during a pentest job
+%% execution.
 -spec list_discovered_endpoints(aws_client:aws_client(), list_discovered_endpoints_input()) ->
     {ok, list_discovered_endpoints_output(), tuple()} |
     {error, any()}.
@@ -2612,10 +2653,7 @@ list_discovered_endpoints(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists findings with filtering and pagination support.
-%%
-%% When filters are applied, the actual number of results returned may be
-%% less than the specified limit
+%% @doc Lists the security findings for a pentest job.
 -spec list_findings(aws_client:aws_client(), list_findings_input()) ->
     {ok, list_findings_output(), tuple()} |
     {error, any()}.
@@ -2647,7 +2685,8 @@ list_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the integrated resources for an agent space
+%% @doc Lists the integrated resources for an agent space, optionally
+%% filtered by integration or resource type.
 -spec list_integrated_resources(aws_client:aws_client(), list_integrated_resources_input()) ->
     {ok, list_integrated_resources_output(), tuple()} |
     {error, any()} |
@@ -2681,7 +2720,8 @@ list_integrated_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the Integrations associated with the user's account
+%% @doc Lists the integrations in your account, optionally filtered by
+%% provider or provider type.
 -spec list_integrations(aws_client:aws_client(), list_integrations_input()) ->
     {ok, list_integrations_output(), tuple()} |
     {error, any()} |
@@ -2715,8 +2755,8 @@ list_integrations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all members associated to an agent space with pagination
-%% support
+%% @doc Returns a paginated list of membership summaries for the specified
+%% agent space within an application.
 -spec list_memberships(aws_client:aws_client(), list_memberships_request()) ->
     {ok, list_memberships_response(), tuple()} |
     {error, any()}.
@@ -2748,7 +2788,8 @@ list_memberships(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists tasks associated with a specific pentest job
+%% @doc Returns a paginated list of task summaries for the specified pentest
+%% job, optionally filtered by step name or category.
 -spec list_pentest_job_tasks(aws_client:aws_client(), list_pentest_job_tasks_input()) ->
     {ok, list_pentest_job_tasks_output(), tuple()} |
     {error, any()}.
@@ -2780,7 +2821,8 @@ list_pentest_job_tasks(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists pentest jobs associated with a pentest
+%% @doc Returns a paginated list of pentest job summaries for the specified
+%% pentest configuration.
 -spec list_pentest_jobs_for_pentest(aws_client:aws_client(), list_pentest_jobs_for_pentest_input()) ->
     {ok, list_pentest_jobs_for_pentest_output(), tuple()} |
     {error, any()}.
@@ -2812,7 +2854,8 @@ list_pentest_jobs_for_pentest(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists pentests with optional filtering by status
+%% @doc Returns a paginated list of pentest summaries for the specified agent
+%% space.
 -spec list_pentests(aws_client:aws_client(), list_pentests_input()) ->
     {ok, list_pentests_output(), tuple()} |
     {error, any()}.
@@ -2844,7 +2887,7 @@ list_pentests(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists tags for a Security Agent resource
+%% @doc Returns the tags associated with the specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()}.
@@ -2878,7 +2921,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists target domains
+%% @doc Returns a paginated list of target domain summaries in your account.
 -spec list_target_domains(aws_client:aws_client(), list_target_domains_input()) ->
     {ok, list_target_domains_output(), tuple()} |
     {error, any()}.
@@ -2910,7 +2953,10 @@ list_target_domains(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts code remediation for the specified findings
+%% @doc Initiates code remediation for one or more security findings.
+%%
+%% This creates pull requests in integrated repositories to fix the
+%% identified vulnerabilities.
 -spec start_code_remediation(aws_client:aws_client(), start_code_remediation_input()) ->
     {ok, start_code_remediation_output(), tuple()} |
     {error, any()}.
@@ -2942,7 +2988,9 @@ start_code_remediation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates the execution of a pentest
+%% @doc Starts a new pentest job for a pentest configuration.
+%%
+%% The job executes the security tests defined in the pentest.
 -spec start_pentest_job(aws_client:aws_client(), start_pentest_job_input()) ->
     {ok, start_pentest_job_output(), tuple()} |
     {error, any()}.
@@ -2974,7 +3022,10 @@ start_pentest_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops the execution of a running pentest
+%% @doc Stops a running pentest job.
+%%
+%% The job transitions to a stopping state and then to stopped after cleanup
+%% completes.
 -spec stop_pentest_job(aws_client:aws_client(), stop_pentest_job_input()) ->
     {ok, stop_pentest_job_output(), tuple()} |
     {error, any()}.
@@ -3006,7 +3057,7 @@ stop_pentest_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a Security Agent resource
+%% @doc Adds tags to a resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()}.
@@ -3038,7 +3089,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from a Security Agent resource
+%% @doc Removes tags from a resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()}.
@@ -3071,7 +3122,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an agent space record
+%% @doc Updates the configuration of an existing agent space, including its
+%% name, description, AWS resources, target domains, and code review
+%% settings.
 -spec update_agent_space(aws_client:aws_client(), update_agent_space_input()) ->
     {ok, update_agent_space_output(), tuple()} |
     {error, any()}.
@@ -3103,7 +3156,8 @@ update_agent_space(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates application configuration
+%% @doc Updates the configuration of an existing application, including the
+%% IAM role and default KMS key.
 -spec update_application(aws_client:aws_client(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()}.
@@ -3135,7 +3189,7 @@ update_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing security finding with new details or status
+%% @doc Updates the status or risk level of a security finding.
 -spec update_finding(aws_client:aws_client(), update_finding_input()) ->
     {ok, update_finding_output(), tuple()} |
     {error, any()}.
@@ -3167,7 +3221,8 @@ update_finding(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the integrated resources for an agent space
+%% @doc Updates the integrated resources for an agent space, including their
+%% capabilities.
 -spec update_integrated_resources(aws_client:aws_client(), update_integrated_resources_input()) ->
     {ok, update_integrated_resources_output(), tuple()} |
     {error, any()} |
@@ -3201,7 +3256,7 @@ update_integrated_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing pentest with new configuration or settings
+%% @doc Updates an existing pentest configuration.
 -spec update_pentest(aws_client:aws_client(), update_pentest_input()) ->
     {ok, update_pentest_output(), tuple()} |
     {error, any()}.
@@ -3233,7 +3288,7 @@ update_pentest(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a target domain record
+%% @doc Updates the verification method for a target domain.
 -spec update_target_domain(aws_client:aws_client(), update_target_domain_input()) ->
     {ok, update_target_domain_output(), tuple()} |
     {error, any()}.
@@ -3265,7 +3320,10 @@ update_target_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Verifies ownership for a registered target domain
+%% @doc Initiates verification of a target domain.
+%%
+%% This checks whether the domain ownership verification token has been
+%% properly configured.
 -spec verify_target_domain(aws_client:aws_client(), verify_target_domain_input()) ->
     {ok, verify_target_domain_output(), tuple()} |
     {error, any()}.

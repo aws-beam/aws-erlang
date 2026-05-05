@@ -3520,6 +3520,13 @@
 
 
 %% Example:
+%% media_connect_router_output_connection() :: #{
+%%   <<"RouterInputArn">> => string()
+%% }
+-type media_connect_router_output_connection() :: #{binary() => any()}.
+
+
+%% Example:
 %% nielsen_c_b_e_t() :: #{
 %%   <<"CbetCheckDigitString">> => string(),
 %%   <<"CbetStepaside">> => list(any()),
@@ -5203,6 +5210,7 @@
 %%   <<"ActiveMotionGraphicsActionName">> => string(),
 %%   <<"ActiveMotionGraphicsUri">> => string(),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"MediaConnectRouterOutputConnectionMap">> => map(),
 %%   <<"PipelineId">> => string()
 %% }
 -type pipeline_detail() :: #{binary() => any()}.

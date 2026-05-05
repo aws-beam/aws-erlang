@@ -1134,8 +1134,10 @@
 %%   <<"allowedSuffixPathFields">> => list(string()),
 %%   <<"defaultDeliveryConfigValues">> => configuration_template_delivery_config_values(),
 %%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"deliverySourceConfiguration">> => list(delivery_source_configuration_schema()),
 %%   <<"logType">> => string(),
 %%   <<"resourceType">> => string(),
+%%   <<"s3TablesIntegration">> => s3_tables_integration(),
 %%   <<"service">> => string()
 %% }
 -type configuration_template() :: #{binary() => any()}.
@@ -1220,6 +1222,17 @@
 %%   <<"importId">> => string()
 %% }
 -type create_import_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_source_configuration_schema() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"keyName">> => string(),
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"supportedValues">> => list(string()),
+%%   <<"valueType">> => list(any())
+%% }
+-type delivery_source_configuration_schema() :: #{binary() => any()}.
 
 %% Example:
 %% describe_query_definitions_response() :: #{
@@ -1618,6 +1631,7 @@
 
 %% Example:
 %% put_delivery_source_request() :: #{
+%%   <<"deliverySourceConfiguration">> => map(),
 %%   <<"logType">> := string(),
 %%   <<"name">> := string(),
 %%   <<"resourceArn">> := string(),
@@ -2473,6 +2487,13 @@
 -type result_field() :: #{binary() => any()}.
 
 %% Example:
+%% s3_tables_integration() :: #{
+%%   <<"datasourceName">> => string(),
+%%   <<"datasourceType">> => string()
+%% }
+-type s3_tables_integration() :: #{binary() => any()}.
+
+%% Example:
 %% put_resource_policy_response() :: #{
 %%   <<"resourcePolicy">> => resource_policy(),
 %%   <<"revisionId">> => string()
@@ -2553,10 +2574,13 @@
 %% Example:
 %% delivery_source() :: #{
 %%   <<"arn">> => string(),
+%%   <<"deliverySourceConfiguration">> => map(),
 %%   <<"logType">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resourceArns">> => list(string()),
 %%   <<"service">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => list(any()),
 %%   <<"tags">> => map()
 %% }
 -type delivery_source() :: #{binary() => any()}.

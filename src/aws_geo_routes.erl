@@ -118,7 +118,7 @@
 %% snap_to_roads_request() :: #{
 %%   <<"Key">> => string(),
 %%   <<"SnapRadius">> => float(),
-%%   <<"SnappedGeometryFormat">> => string(),
+%%   <<"SnappedGeometryFormat">> => list(any()),
 %%   <<"TracePoints">> := list(road_snap_trace_point()),
 %%   <<"TravelMode">> => string(),
 %%   <<"TravelModeOptions">> => road_snap_travel_mode_options()
@@ -291,7 +291,7 @@
 
 %% Example:
 %% waypoint_optimization_access_hours_entry() :: #{
-%%   <<"DayOfWeek">> => string(),
+%%   <<"DayOfWeek">> => list(any()),
 %%   <<"TimeOfDay">> => string()
 %% }
 -type waypoint_optimization_access_hours_entry() :: #{binary() => any()}.
@@ -328,7 +328,7 @@
 
 %% Example:
 %% waypoint_optimization_clustering_options() :: #{
-%%   <<"Algorithm">> => string(),
+%%   <<"Algorithm">> => list(any()),
 %%   <<"DrivingDistanceOptions">> => waypoint_optimization_driving_distance_options()
 %% }
 -type waypoint_optimization_clustering_options() :: #{binary() => any()}.
@@ -398,7 +398,7 @@
 %%   <<"Notices">> => list(road_snap_notice()),
 %%   <<"PricingBucket">> => [string()],
 %%   <<"SnappedGeometry">> => road_snap_snapped_geometry(),
-%%   <<"SnappedGeometryFormat">> => string(),
+%%   <<"SnappedGeometryFormat">> => list(any()),
 %%   <<"SnappedTracePoints">> => list(road_snap_snapped_trace_point())
 %% }
 -type snap_to_roads_response() :: #{binary() => any()}.
@@ -563,7 +563,7 @@
 %%   <<"DepartureTime">> => string(),
 %%   <<"Destination">> => list([float()]()),
 %%   <<"DestinationOptions">> => isoline_destination_options(),
-%%   <<"IsolineGeometryFormat">> => string(),
+%%   <<"IsolineGeometryFormat">> => list(any()),
 %%   <<"IsolineGranularity">> => isoline_granularity_options(),
 %%   <<"Key">> => string(),
 %%   <<"OptimizeIsolineFor">> => string(),
@@ -1321,11 +1321,11 @@
 %%   <<"DestinationOptions">> => route_destination_options(),
 %%   <<"Driver">> => route_driver_options(),
 %%   <<"Exclude">> => route_exclusion_options(),
-%%   <<"InstructionsMeasurementSystem">> => string(),
+%%   <<"InstructionsMeasurementSystem">> => list(any()),
 %%   <<"Key">> => string(),
 %%   <<"Languages">> => list(string()),
 %%   <<"LegAdditionalFeatures">> => list(string()),
-%%   <<"LegGeometryFormat">> => string(),
+%%   <<"LegGeometryFormat">> => list(any()),
 %%   <<"MaxAlternatives">> => [integer()],
 %%   <<"OptimizeRoutingFor">> => string(),
 %%   <<"Origin">> := list([float()]()),
@@ -1527,7 +1527,7 @@
 %% validation_exception() :: #{
 %%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
-%%   <<"Reason">> => string()
+%%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -1853,7 +1853,7 @@
 %% calculate_isolines_response() :: #{
 %%   <<"ArrivalTime">> => string(),
 %%   <<"DepartureTime">> => string(),
-%%   <<"IsolineGeometryFormat">> => string(),
+%%   <<"IsolineGeometryFormat">> => list(any()),
 %%   <<"Isolines">> => list(isoline()),
 %%   <<"PricingBucket">> => [string()],
 %%   <<"SnappedDestination">> => list([float()]()),
@@ -1889,7 +1889,7 @@
 
 %% Example:
 %% calculate_routes_response() :: #{
-%%   <<"LegGeometryFormat">> => string(),
+%%   <<"LegGeometryFormat">> => list(any()),
 %%   <<"Notices">> => list(route_response_notice()),
 %%   <<"PricingBucket">> => [string()],
 %%   <<"Routes">> => list(route())

@@ -16215,7 +16215,7 @@
 
 %% Example:
 %% modify_managed_resource_visibility_request() :: #{
-%%   <<"DefaultVisibility">> => list(any()),
+%%   <<"DefaultVisibility">> := list(any()),
 %%   <<"DryRun">> => boolean()
 %% }
 -type modify_managed_resource_visibility_request() :: #{binary() => any()}.
@@ -18495,6 +18495,7 @@
 %%   <<"LocalIpv6NetworkCidr">> => string(),
 %%   <<"RemoteIpv4NetworkCidr">> => string(),
 %%   <<"RemoteIpv6NetworkCidr">> => string(),
+%%   <<"TunnelBandwidth">> => list(any()),
 %%   <<"VpnConnectionId">> := string()
 %% }
 -type modify_vpn_connection_options_request() :: #{binary() => any()}.
