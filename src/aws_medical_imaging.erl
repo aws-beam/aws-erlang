@@ -79,6 +79,7 @@
 %% start_d_i_c_o_m_import_job_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"dataAccessRoleArn">> := string(),
+%%   <<"importConfiguration">> => list(),
 %%   <<"inputOwnerAccountId">> => string(),
 %%   <<"inputS3Uri">> := string(),
 %%   <<"jobName">> => string(),
@@ -163,6 +164,15 @@
 
 
 %% Example:
+%% dicom_metadata_mapping() :: #{
+%%   <<"metadataFilePath">> => string(),
+%%   <<"seriesInstanceUID">> => string(),
+%%   <<"studyInstanceUID">> => string()
+%% }
+-type dicom_metadata_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_image_set_versions_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
@@ -212,6 +222,13 @@
 %%   <<"imageFrameId">> => string()
 %% }
 -type image_frame_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% dicom_json_metadata_import_configuration() :: #{
+%%   <<"dicomMetadataMappings">> => list(dicom_metadata_mapping())
+%% }
+-type dicom_json_metadata_import_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,6 +364,7 @@
 %%   <<"dataAccessRoleArn">> => string(),
 %%   <<"datastoreId">> => string(),
 %%   <<"endedAt">> => non_neg_integer(),
+%%   <<"importConfiguration">> => list(),
 %%   <<"inputS3Uri">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
@@ -1339,9 +1357,11 @@ search_image_sets(Client, DatastoreId, Input0, Options0) ->
 
 %% @doc Start importing bulk data into an `ACTIVE' data store.
 %%
-%% The import job imports DICOM P10 files found in the S3 prefix specified by
-%% the `inputS3Uri' parameter. The import job stores processing results
-%% in the file specified by the `outputS3Uri' parameter.
+%% The import job imports DICOM P10 files or enhances existing DICOM files
+%% with JSON metadata. The `importConfiguration' parameter specifies the
+%% import type. The data is found in the S3 prefix specified by the
+%% `inputS3Uri' parameter. The import job stores processing results in
+%% the file specified by the `outputS3Uri' parameter.
 -spec start_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), start_d_i_c_o_m_import_job_request()) ->
     {ok, start_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |

@@ -37,6 +37,8 @@
          delete_channel/4,
          delete_channel_policy/3,
          delete_channel_policy/4,
+         delete_function/3,
+         delete_function/4,
          delete_live_source/4,
          delete_live_source/5,
          delete_playback_configuration/3,
@@ -70,6 +72,9 @@
          get_channel_schedule/2,
          get_channel_schedule/4,
          get_channel_schedule/5,
+         get_function/2,
+         get_function/4,
+         get_function/5,
          get_playback_configuration/2,
          get_playback_configuration/4,
          get_playback_configuration/5,
@@ -82,6 +87,9 @@
          list_channels/1,
          list_channels/3,
          list_channels/4,
+         list_functions/1,
+         list_functions/3,
+         list_functions/4,
          list_live_sources/2,
          list_live_sources/4,
          list_live_sources/5,
@@ -101,6 +109,8 @@
          list_vod_sources/5,
          put_channel_policy/3,
          put_channel_policy/4,
+         put_function/3,
+         put_function/4,
          put_playback_configuration/2,
          put_playback_configuration/3,
          start_channel/3,
@@ -159,6 +169,16 @@
 %% }
 -type response_output_item() :: #{binary() => any()}.
 
+
+%% Example:
+%% sequential_executor_configuration() :: #{
+%%   <<"FunctionList">> => list(function_ref()),
+%%   <<"Output">> => map(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"TimeoutMilliseconds">> => integer()
+%% }
+-type sequential_executor_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% put_channel_policy_response() :: #{}
 -type put_channel_policy_response() :: #{}.
@@ -175,6 +195,18 @@
 %%   <<"VodSourceName">> => string()
 %% }
 -type vod_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_request() :: #{
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionType">> := list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type put_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -255,6 +287,14 @@
 %% }
 -type configure_logs_for_channel_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_functions_response() :: #{
+%%   <<"Items">> => list(function()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_functions_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_playback_configuration_request() :: #{}
 -type delete_playback_configuration_request() :: #{}.
@@ -278,6 +318,7 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),
 %%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
@@ -410,6 +451,20 @@
 %%   <<"TrafficShapingType">> => list(any())
 %% }
 -type recurring_retrieval() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionId">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type get_function_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +642,10 @@
 -type start_channel_request() :: #{}.
 
 %% Example:
+%% get_function_request() :: #{}
+-type get_function_request() :: #{}.
+
+%% Example:
 %% get_playback_configuration_request() :: #{}
 -type get_playback_configuration_request() :: #{}.
 
@@ -655,6 +714,10 @@
 -type create_prefetch_schedule_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_function_request() :: #{}
+-type delete_function_request() :: #{}.
+
+%% Example:
 %% delete_channel_policy_response() :: #{}
 -type delete_channel_policy_response() :: #{}.
 
@@ -714,6 +777,10 @@
 %% }
 -type live_source() :: #{binary() => any()}.
 
+%% Example:
+%% delete_function_response() :: #{}
+-type delete_function_response() :: #{}.
+
 
 %% Example:
 %% schedule_entry() :: #{
@@ -743,6 +810,28 @@
 %%   <<"TimeShiftConfiguration">> => time_shift_configuration()
 %% }
 -type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mediatailor_function() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionId">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type mediatailor_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_ref() :: #{
+%%   <<"FunctionId">> => string(),
+%%   <<"RunCondition">> => string()
+%% }
+-type function_ref() :: #{binary() => any()}.
 
 %% Example:
 %% describe_source_location_request() :: #{}
@@ -784,6 +873,20 @@
 
 
 %% Example:
+%% put_function_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionId">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type put_function_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_channels_response() :: #{
 %%   <<"Items">> => list(channel()),
 %%   <<"NextToken">> => string()
@@ -817,7 +920,8 @@
 
 %% Example:
 %% manifest_service_interaction_log() :: #{
-%%   <<"ExcludeEventTypes">> => list(list(any())())
+%%   <<"ExcludeEventTypes">> => list(list(any())()),
+%%   <<"PublishOptInEventTypes">> => list(list(any())())
 %% }
 -type manifest_service_interaction_log() :: #{binary() => any()}.
 
@@ -899,6 +1003,14 @@
 %%   <<"TimeSignalMessage">> => time_signal_message()
 %% }
 -type ad_break() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_functions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -992,6 +1104,7 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),
 %%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
@@ -1155,6 +1268,7 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration_for_put(),
+%%   <<"FunctionMapping">> => map(),
 %%   <<"InsertionMode">> => list(any()),
 %%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
 %%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
@@ -1304,6 +1418,7 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),
 %%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
@@ -1353,6 +1468,14 @@
 %%   <<"SecretsManagerAccessTokenConfiguration">> => secrets_manager_access_token_configuration()
 %% }
 -type access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_output_configuration() :: #{
+%%   <<"Output">> => map(),
+%%   <<"Runtime">> => list(any())
+%% }
+-type custom_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1465,6 +1588,19 @@
 %% Example:
 %% describe_live_source_request() :: #{}
 -type describe_live_source_request() :: #{}.
+
+
+%% Example:
+%% http_request_configuration() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"MethodType">> => list(any()),
+%%   <<"Output">> => map(),
+%%   <<"RequestTimeoutMilliseconds">> => integer(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type http_request_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1815,6 +1951,45 @@ delete_channel_policy(Client, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/policy"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a function.
+%%
+%% MediaTailor prevents deletion of a function that is still referenced by a
+%% playback configuration or by another function. Remove all references
+%% before deleting. For more information about functions, see Working with
+%% functions:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions.html
+%% in the MediaTailor User Guide.
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
+    {ok, delete_function_response(), tuple()} |
+    {error, any()}.
+delete_function(Client, FunctionId, Input) ->
+    delete_function(Client, FunctionId, Input, []).
+
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+    {ok, delete_function_response(), tuple()} |
+    {error, any()}.
+delete_function(Client, FunctionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/function/", aws_util:encode_uri(FunctionId), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2305,6 +2480,44 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the configuration and metadata for a function.
+%%
+%% For more information about functions, see Working with functions:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions.html
+%% in the MediaTailor User Guide.
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()}.
+get_function(Client, FunctionId)
+  when is_map(Client) ->
+    get_function(Client, FunctionId, #{}, #{}).
+
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()}.
+get_function(Client, FunctionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function(Client, FunctionId, QueryMap, HeadersMap, []).
+
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()}.
+get_function(Client, FunctionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/function/", aws_util:encode_uri(FunctionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a playback configuration.
 %%
 %% For information about MediaTailor configurations, see Working with
@@ -2459,6 +2672,50 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all functions associated with your AWS account in the
+%% current Region.
+%%
+%% For more information about functions, see Working with functions:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions.html
+%% in the MediaTailor User Guide.
+-spec list_functions(aws_client:aws_client()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()}.
+list_functions(Client)
+  when is_map(Client) ->
+    list_functions(Client, #{}, #{}).
+
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()}.
+list_functions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions(Client, QueryMap, HeadersMap, []).
+
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()}.
+list_functions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/functions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2720,6 +2977,44 @@ put_channel_policy(Client, ChannelName, Input) ->
 put_channel_policy(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or updates a function.
+%%
+%% A function defines reusable logic that MediaTailor executes at lifecycle
+%% hooks during ad insertion. For more information about functions, see
+%% Working with functions:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions.html
+%% in the MediaTailor User Guide.
+-spec put_function(aws_client:aws_client(), binary() | list(), put_function_request()) ->
+    {ok, put_function_response(), tuple()} |
+    {error, any()}.
+put_function(Client, FunctionId, Input) ->
+    put_function(Client, FunctionId, Input, []).
+
+-spec put_function(aws_client:aws_client(), binary() | list(), put_function_request(), proplists:proplist()) ->
+    {ok, put_function_response(), tuple()} |
+    {error, any()}.
+put_function(Client, FunctionId, Input0, Options0) ->
+    Method = put,
+    Path = ["/function/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

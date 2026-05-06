@@ -3427,7 +3427,8 @@
 %% create_key_value_store_request() :: #{
 %%   <<"Comment">> => string(),
 %%   <<"ImportSource">> => import_source(),
-%%   <<"Name">> := string()
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
 %% }
 -type create_key_value_store_request() :: #{binary() => any()}.
 
@@ -5002,7 +5003,8 @@
 %% create_function_request() :: #{
 %%   <<"FunctionCode">> := binary(),
 %%   <<"FunctionConfig">> := function_config(),
-%%   <<"Name">> := string()
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
 %% }
 -type create_function_request() :: #{binary() => any()}.
 

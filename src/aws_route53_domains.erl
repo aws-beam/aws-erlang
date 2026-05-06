@@ -374,7 +374,7 @@
 %%   <<"AutoRenew">> => boolean(),
 %%   <<"BillingContact">> => contact_detail(),
 %%   <<"DomainName">> := string(),
-%%   <<"DurationInYears">> := integer(),
+%%   <<"DurationInYears">> => integer(),
 %%   <<"IdnLangCode">> => string(),
 %%   <<"Nameservers">> => list(nameserver()),
 %%   <<"PrivacyProtectAdminContact">> => boolean(),
@@ -557,6 +557,13 @@
 %%   <<"OperationId">> => string()
 %% }
 -type update_domain_contact_privacy_response() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_d_in_maintenance() :: #{
+%%   <<"message">> => string(),
+%%   <<"tld">> => string()
+%% }
+-type t_l_d_in_maintenance() :: #{binary() => any()}.
 
 %% Example:
 %% associate_delegation_signer_to_domain_request() :: #{
@@ -783,10 +790,12 @@
     invalid_input().
 
 -type check_domain_availability_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     invalid_input().
 
 -type check_domain_transferability_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     invalid_input().
 
@@ -841,6 +850,7 @@
     invalid_input().
 
 -type get_domain_suggestions_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     invalid_input().
 
@@ -863,6 +873,7 @@
     invalid_input().
 
 -type push_domain_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     operation_limit_exceeded() | 
     invalid_input().
@@ -888,14 +899,17 @@
     invalid_input().
 
 -type resend_contact_reachability_email_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     operation_limit_exceeded() | 
     invalid_input().
 
 -type resend_operation_authorization_errors() ::
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type retrieve_domain_auth_code_errors() ::
+    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
     invalid_input().
 
@@ -1115,7 +1129,8 @@ check_domain_transferability(Client, Input, Options)
 %% to the
 %% registrant contact. The email will come from
 %% `noreply@domainnameverification.net' or
-%% `noreply@registrar.amazon.com'.
+%% `noreply@emailverification.info' or
+%% `noreply@registrar.amazon'.
 -spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |

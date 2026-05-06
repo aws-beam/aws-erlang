@@ -693,6 +693,7 @@
 %% Example:
 %% vpc_derived_info() :: #{
 %%   <<"AvailabilityZones">> => list(string()),
+%%   <<"EgressEnabled">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string()),
 %%   <<"VPCId">> => string()
@@ -2575,6 +2576,7 @@
 
 %% Example:
 %% vpc_options() :: #{
+%%   <<"EgressEnabled">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string())
 %% }
