@@ -2439,6 +2439,14 @@
 
 
 %% Example:
+%% s3_files_access_point_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type s3_files_access_point_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% configuration_bundle_summary() :: #{
 %%   <<"bundleArn">> => string(),
 %%   <<"bundleId">> => string(),
@@ -3807,6 +3815,14 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_online_evaluation_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_access_point_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type efs_access_point_configuration() :: #{binary() => any()}.
 
 
 %% Example:

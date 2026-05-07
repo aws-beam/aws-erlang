@@ -11,7 +11,8 @@
 %%
 %% Endpoints
 %%
-%% `api.airflow.{region}.amazonaws.com' - This endpoint is used for
+%% `api.airflow.{region}.amazonaws.com' (use
+%% `api.airflow.{region}.api.aws' for IPv6) - This endpoint is used for
 %% environment management.
 %%
 %% CreateEnvironment:
@@ -38,7 +39,8 @@
 %% UpdateEnvironment:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_UpdateEnvironment.html
 %%
-%% `env.airflow.{region}.amazonaws.com' - This endpoint is used to
+%% `env.airflow.{region}.amazonaws.com' (use
+%% `env.airflow.{region}.api.aws' for IPv6) - This endpoint is used to
 %% operate the Airflow environment.
 %%
 %% CreateCliToken:
@@ -336,6 +338,13 @@
 
 
 %% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_rest_api_request() :: #{
 %%   <<"Body">> => any(),
 %%   <<"Method">> := string(),
@@ -475,7 +484,8 @@
 
 -type create_environment_errors() ::
     validation_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    service_unavailable_exception().
 
 -type create_web_login_token_errors() ::
     validation_exception() | 
@@ -486,6 +496,7 @@
 -type delete_environment_errors() ::
     validation_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception().
 
 -type get_environment_errors() ::
@@ -527,6 +538,7 @@
 -type update_environment_errors() ::
     validation_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception().
 
 %%====================================================================
@@ -718,8 +730,7 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
 %% @doc Invokes the Apache Airflow REST API on the webserver with the
 %% specified inputs.
 %%
-%% To
-%% learn more, see Using the Apache Airflow REST API:
+%% To learn more, see Using the Apache Airflow REST API:
 %% https://docs.aws.amazon.com/mwaa/latest/userguide/access-mwaa-apache-airflow-rest-api.html
 -spec invoke_rest_api(aws_client:aws_client(), binary() | list(), invoke_rest_api_request()) ->
     {ok, invoke_rest_api_response(), tuple()} |
@@ -837,8 +848,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Internal only.
+%% @doc Internal only.
 %%
 %% Publishes environment health metrics to Amazon CloudWatch.
 -spec publish_metrics(aws_client:aws_client(), binary() | list(), publish_metrics_input()) ->

@@ -316,6 +316,7 @@
 
 %% Example:
 %% bot_locale_import_specification() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
@@ -3808,6 +3809,7 @@
 
 %% Example:
 %% describe_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"botId">> => string(),
 %%   <<"botLocaleHistoryEvents">> => list(bot_locale_history_event()),
 %%   <<"botLocaleStatus">> => list(any()),
@@ -4227,6 +4229,7 @@
 
 %% Example:
 %% create_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"botId">> => string(),
 %%   <<"botLocaleStatus">> => list(any()),
 %%   <<"botVersion">> => string(),
@@ -4257,6 +4260,7 @@
 
 %% Example:
 %% update_bot_locale_request() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"description">> => string(),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"nluIntentConfidenceThreshold">> := float(),
@@ -4364,6 +4368,17 @@
 
 
 %% Example:
+%% audio_filler_settings() :: #{
+%%   <<"audioType">> => list(any()),
+%%   <<"enabled">> => boolean(),
+%%   <<"minimumPlayDurationInMilliseconds">> => integer(),
+%%   <<"responseDeliveryDelayInMilliseconds">> => integer(),
+%%   <<"startDelayInMilliseconds">> => integer()
+%% }
+-type audio_filler_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_export_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"exportId">> => string(),
@@ -4446,6 +4461,7 @@
 
 %% Example:
 %% update_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"botId">> => string(),
 %%   <<"botLocaleStatus">> => list(any()),
 %%   <<"botVersion">> => string(),
@@ -4708,6 +4724,7 @@
 
 %% Example:
 %% create_bot_locale_request() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
 %%   <<"description">> => string(),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"localeId">> := string(),

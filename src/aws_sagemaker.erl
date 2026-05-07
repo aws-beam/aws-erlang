@@ -8174,6 +8174,7 @@
 
 %% Example:
 %% cluster_node_summary() :: #{
+%%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
@@ -13872,6 +13873,7 @@
 %%   <<"CurrentImageId">> => string(),
 %%   <<"DesiredImageId">> => string(),
 %%   <<"ExecutionRole">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceRequirements">> => cluster_instance_requirement_details(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
@@ -14180,6 +14182,7 @@
 %%   <<"CapacityType">> => list(any()),
 %%   <<"CurrentImageId">> => string(),
 %%   <<"DesiredImageId">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),

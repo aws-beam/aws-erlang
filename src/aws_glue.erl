@@ -3468,6 +3468,7 @@
 %% Example:
 %% data_quality_ruleset_evaluation_run_filter() :: #{
 %%   <<"DataSource">> => data_source(),
+%%   <<"RulesetName">> => string(),
 %%   <<"StartedAfter">> => non_neg_integer(),
 %%   <<"StartedBefore">> => non_neg_integer()
 %% }
@@ -7262,6 +7263,7 @@
 %% data_quality_evaluation_run_additional_run_options() :: #{
 %%   <<"CloudWatchMetricsEnabled">> => boolean(),
 %%   <<"CompositeRuleEvaluationMethod">> => list(any()),
+%%   <<"CustomLogGroupPrefix">> => string(),
 %%   <<"ResultsS3Prefix">> => string()
 %% }
 -type data_quality_evaluation_run_additional_run_options() :: #{binary() => any()}.

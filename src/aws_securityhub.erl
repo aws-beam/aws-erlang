@@ -218,6 +218,8 @@
          enable_security_hub/3,
          enable_security_hub_v2/2,
          enable_security_hub_v2/3,
+         generate_recommended_policy_v2/3,
+         generate_recommended_policy_v2/4,
          get_administrator_account/1,
          get_administrator_account/3,
          get_administrator_account/4,
@@ -263,6 +265,9 @@
          get_master_account/4,
          get_members/2,
          get_members/3,
+         get_recommended_policy_v2/2,
+         get_recommended_policy_v2/4,
+         get_recommended_policy_v2/5,
          get_resources_statistics_v2/2,
          get_resources_statistics_v2/3,
          get_resources_trends_v2/2,
@@ -2200,6 +2205,18 @@
 
 
 %% Example:
+%% get_recommended_policy_v2_response() :: #{
+%%   <<"Error">> => recommendation_error(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationSteps">> => list(list()),
+%%   <<"RecommendationType">> => list(any()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_recommended_policy_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_iam_user_policy() :: #{
 %%   <<"PolicyName">> => string()
 %% }
@@ -3675,6 +3692,10 @@
 %% }
 -type occurrences() :: #{binary() => any()}.
 
+%% Example:
+%% generate_recommended_policy_v2_response() :: #{}
+-type generate_recommended_policy_v2_response() :: #{}.
+
 
 %% Example:
 %% aws_waf_regional_rule_details() :: #{
@@ -4244,6 +4265,17 @@
 %%   <<"AccountIds">> := list(string())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_permissions_recommendation_step() :: #{
+%%   <<"ExistingPolicy">> => string(),
+%%   <<"ExistingPolicyId">> => string(),
+%%   <<"PolicyUpdatedAt">> => non_neg_integer(),
+%%   <<"RecommendedAction">> => string(),
+%%   <<"RecommendedPolicy">> => string()
+%% }
+-type unused_permissions_recommendation_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5307,9 +5339,25 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_log_configuration_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% recommendation_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type recommendation_error() :: #{binary() => any()}.
+
 %% Example:
 %% disable_import_findings_for_product_request() :: #{}
 -type disable_import_findings_for_product_request() :: #{}.
+
+
+%% Example:
+%% get_recommended_policy_v2_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_recommended_policy_v2_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_organization_configuration_response() :: #{}
@@ -8227,6 +8275,10 @@
 -type aws_s3_bucket_object_lock_configuration_rule_details() :: #{binary() => any()}.
 
 %% Example:
+%% generate_recommended_policy_v2_request() :: #{}
+-type generate_recommended_policy_v2_request() :: #{}.
+
+%% Example:
 %% get_aggregator_v2_request() :: #{}
 -type get_aggregator_v2_request() :: #{}.
 
@@ -8596,6 +8648,7 @@
 
 %% Example:
 %% date_range() :: #{
+%%   <<"Comparison">> => list(any()),
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => integer()
 %% }
@@ -10249,6 +10302,14 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type generate_recommended_policy_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
 -type get_administrator_account_errors() ::
     limit_exceeded_exception() | 
     internal_exception() | 
@@ -10379,6 +10440,14 @@
     invalid_input_exception() | 
     resource_not_found_exception() | 
     invalid_access_exception().
+
+-type get_recommended_policy_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
 
 -type get_resources_statistics_v2_errors() ::
     throttling_exception() | 
@@ -12953,6 +13022,44 @@ enable_security_hub_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Begins the recommended policy generation to remediate a Security Hub
+%% finding.
+%%
+%% `GenerateRecommendedPolicyV2' only supports findings for unused
+%% permissions.
+-spec generate_recommended_policy_v2(aws_client:aws_client(), binary() | list(), generate_recommended_policy_v2_request()) ->
+    {ok, generate_recommended_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, generate_recommended_policy_v2_errors(), tuple()}.
+generate_recommended_policy_v2(Client, MetadataUid, Input) ->
+    generate_recommended_policy_v2(Client, MetadataUid, Input, []).
+
+-spec generate_recommended_policy_v2(aws_client:aws_client(), binary() | list(), generate_recommended_policy_v2_request(), proplists:proplist()) ->
+    {ok, generate_recommended_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, generate_recommended_policy_v2_errors(), tuple()}.
+generate_recommended_policy_v2(Client, MetadataUid, Input0, Options0) ->
+    Method = post,
+    Path = ["/recommendedPolicyV2/", aws_util:encode_uri(MetadataUid), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides the details for the Security Hub CSPM administrator account
 %% for the current member account.
 %%
@@ -13703,6 +13810,51 @@ get_members(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the recommended policy to remediate a Security Hub finding.
+%%
+%% `GetRecommendedPolicyV2' only supports findings for unused
+%% permissions.
+-spec get_recommended_policy_v2(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_recommended_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommended_policy_v2_errors(), tuple()}.
+get_recommended_policy_v2(Client, MetadataUid)
+  when is_map(Client) ->
+    get_recommended_policy_v2(Client, MetadataUid, #{}, #{}).
+
+-spec get_recommended_policy_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_recommended_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommended_policy_v2_errors(), tuple()}.
+get_recommended_policy_v2(Client, MetadataUid, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommended_policy_v2(Client, MetadataUid, QueryMap, HeadersMap, []).
+
+-spec get_recommended_policy_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommended_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommended_policy_v2_errors(), tuple()}.
+get_recommended_policy_v2(Client, MetadataUid, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/recommendedPolicyV2/", aws_util:encode_uri(MetadataUid), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves statistical information about Amazon Web Services resources
 %% and their associated security findings.
