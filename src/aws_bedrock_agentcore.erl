@@ -19,6 +19,10 @@
          create_a_b_test/3,
          create_event/3,
          create_event/4,
+         create_payment_instrument/2,
+         create_payment_instrument/3,
+         create_payment_session/2,
+         create_payment_session/3,
          delete_a_b_test/3,
          delete_a_b_test/4,
          delete_batch_evaluation/3,
@@ -27,6 +31,10 @@
          delete_event/7,
          delete_memory_record/4,
          delete_memory_record/5,
+         delete_payment_instrument/2,
+         delete_payment_instrument/3,
+         delete_payment_session/2,
+         delete_payment_session/3,
          delete_recommendation/3,
          delete_recommendation/4,
          evaluate/3,
@@ -52,6 +60,12 @@
          get_memory_record/3,
          get_memory_record/5,
          get_memory_record/6,
+         get_payment_instrument/2,
+         get_payment_instrument/3,
+         get_payment_instrument_balance/2,
+         get_payment_instrument_balance/3,
+         get_payment_session/2,
+         get_payment_session/3,
          get_recommendation/2,
          get_recommendation/4,
          get_recommendation/5,
@@ -59,6 +73,8 @@
          get_resource_api_key/3,
          get_resource_oauth2_token/2,
          get_resource_oauth2_token/3,
+         get_resource_payment_token/2,
+         get_resource_payment_token/3,
          get_workload_access_token/2,
          get_workload_access_token/3,
          get_workload_access_token_for_j_w_t/2,
@@ -93,11 +109,17 @@
          list_memory_extraction_jobs/4,
          list_memory_records/3,
          list_memory_records/4,
+         list_payment_instruments/2,
+         list_payment_instruments/3,
+         list_payment_sessions/2,
+         list_payment_sessions/3,
          list_recommendations/1,
          list_recommendations/3,
          list_recommendations/4,
          list_sessions/4,
          list_sessions/5,
+         process_payment/2,
+         process_payment/3,
          retrieve_memory_records/3,
          retrieve_memory_records/4,
          save_browser_session_profile/3,
@@ -132,6 +154,20 @@
 
 
 %% Example:
+%% payment_session() :: #{
+%%   <<"availableLimits">> => available_limits(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiryTimeInMinutes">> => [integer()],
+%%   <<"limits">> => session_limits(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentSessionId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type payment_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% branch() :: #{
 %%   <<"name">> => string(),
 %%   <<"rootEventId">> => string()
@@ -161,6 +197,19 @@
 %%   <<"url">> => string()
 %% }
 -type harness_remote_mcp_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_instrument_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"paymentConnectorId">> := string(),
+%%   <<"paymentInstrumentDetails">> := list(),
+%%   <<"paymentInstrumentType">> := list(any()),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type create_payment_instrument_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,6 +461,14 @@
 
 
 %% Example:
+%% list_payment_instruments_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"paymentInstruments">> => list(payment_instrument_summary())
+%% }
+-type list_payment_instruments_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_stop_event() :: #{
 %%   <<"exitCode">> => [integer()],
 %%   <<"status">> => list(any())
@@ -636,6 +693,14 @@
 
 
 %% Example:
+%% linked_account_developer_jwt() :: #{
+%%   <<"kid">> => string(),
+%%   <<"sub">> => [string()]
+%% }
+-type linked_account_developer_jwt() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_runtime_session_response() :: #{
 %%   <<"runtimeSessionId">> => string(),
 %%   <<"statusCode">> => integer()
@@ -652,6 +717,16 @@
 
 
 %% Example:
+%% get_payment_session_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% mouse_drag_result() :: #{
 %%   <<"error">> => [string()],
 %%   <<"status">> => list(any())
@@ -665,6 +740,13 @@
 %%   <<"sessionId">> => string()
 %% }
 -type invoke_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_instrument_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_instrument_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,12 +808,34 @@
 
 
 %% Example:
+%% coinbase_cdp_token_response_output() :: #{
+%%   <<"bearerToken">> => string(),
+%%   <<"walletAuthToken">> => string()
+%% }
+-type coinbase_cdp_token_response_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_memory_extraction_jobs_input() :: #{
 %%   <<"filter">> => extraction_job_filter_input(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
 %% }
 -type list_memory_extraction_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_instrument_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"paymentInstrumentType">> => list(any()),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type payment_instrument_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -759,6 +863,20 @@
 
 
 %% Example:
+%% process_payment_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"paymentInput">> := list(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"paymentType">> := list(any()),
+%%   <<"userId">> => string()
+%% }
+-type process_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_message() :: #{
 %%   <<"content">> => list(list()),
 %%   <<"role">> => list(any())
@@ -781,6 +899,15 @@
 %%   <<"successfulRecords">> => list(memory_record_output())
 %% }
 -type batch_update_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_payment_token_request() :: #{
+%%   <<"paymentTokenRequest">> := list(),
+%%   <<"resourceCredentialProviderName">> := string(),
+%%   <<"workloadIdentityToken">> := string()
+%% }
+-type get_resource_payment_token_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -863,6 +990,13 @@
 %% Example:
 %% content_start_event() :: #{}
 -type content_start_event() :: #{}.
+
+
+%% Example:
+%% get_payment_session_response() :: #{
+%%   <<"paymentSession">> => payment_session()
+%% }
+-type get_payment_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -998,6 +1132,14 @@
 
 
 %% Example:
+%% amount() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type amount() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_recommendation_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -1038,6 +1180,14 @@
 %%   <<"y">> => [integer()]
 %% }
 -type mouse_move_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_balance_response() :: #{
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"tokenBalance">> => token_balance()
+%% }
+-type get_payment_instrument_balance_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_input() :: #{}
@@ -1097,6 +1247,16 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type a_b_test_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_token_response_output() :: #{
+%%   <<"appId">> => string(),
+%%   <<"authorizationSignature">> => string(),
+%%   <<"basicAuthToken">> => string(),
+%%   <<"requestExpiry">> => [float()]
+%% }
+-type stripe_privy_token_response_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_recommendation_request() :: #{}
@@ -1253,6 +1413,13 @@
 
 
 %% Example:
+%% create_payment_session_response() :: #{
+%%   <<"paymentSession">> => payment_session()
+%% }
+-type create_payment_session_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_type_result() :: #{
 %%   <<"error">> => [string()],
 %%   <<"status">> => list(any())
@@ -1302,6 +1469,19 @@
 %%   <<"successfulRecords">> => list(memory_record_output())
 %% }
 -type batch_create_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_balance_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"chain">> := list(any()),
+%%   <<"paymentConnectorId">> := string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"token">> := list(any()),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_instrument_balance_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1358,6 +1538,16 @@
 %%   <<"toolName">> => string()
 %% }
 -type configuration_bundle_tool_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_token_request_input() :: #{
+%%   <<"includeAuthorizationSignature">> => [boolean()],
+%%   <<"requestBody">> => string(),
+%%   <<"requestHost">> => string(),
+%%   <<"requestPath">> => string()
+%% }
+-type stripe_privy_token_request_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1512,6 +1702,16 @@
 %%   <<"versionId">> => [string()]
 %% }
 -type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_authentication() :: #{
+%%   <<"emailAddress">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sub">> => [string()],
+%%   <<"username">> => [string()]
+%% }
+-type o_auth2_authentication() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1682,6 +1882,14 @@
 
 
 %% Example:
+%% list_payment_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentSessions">> => list(payment_session_summary())
+%% }
+-type list_payment_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_runtime_session_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"qualifier">> => [string()],
@@ -1706,6 +1914,13 @@
 %%   <<"tools">> => list(tool_description_input())
 %% }
 -type tool_description_text_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_payment_token_response() :: #{
+%%   <<"paymentTokenResponse">> => list()
+%% }
+-type get_resource_payment_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1820,6 +2035,16 @@
 
 
 %% Example:
+%% delete_payment_instrument_request() :: #{
+%%   <<"paymentConnectorId">> := string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type delete_payment_instrument_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_batch_evaluation_request() :: #{
 %%   <<"batchEvaluationName">> := string(),
 %%   <<"clientToken">> => string(),
@@ -1829,6 +2054,15 @@
 %%   <<"evaluators">> => list(evaluator())
 %% }
 -type start_batch_evaluation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_session_request() :: #{
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type delete_payment_session_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1895,6 +2129,16 @@
 %%   <<"testScenarioId">> => [string()]
 %% }
 -type session_metadata_shape() :: #{binary() => any()}.
+
+
+%% Example:
+%% embedded_crypto_wallet() :: #{
+%%   <<"linkedAccounts">> => list(list()),
+%%   <<"network">> => list(any()),
+%%   <<"redirectUrl">> => [string()],
+%%   <<"walletAddress">> => [string()]
+%% }
+-type embedded_crypto_wallet() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2014,6 +2258,17 @@
 
 
 %% Example:
+%% token_balance() :: #{
+%%   <<"amount">> => [string()],
+%%   <<"chain">> => list(any()),
+%%   <<"decimals">> => [integer()],
+%%   <<"network">> => list(any()),
+%%   <<"token">> => list(any())
+%% }
+-type token_balance() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_browser_sessions_response() :: #{
 %%   <<"items">> => list(browser_session_summary()),
 %%   <<"nextToken">> => string()
@@ -2059,6 +2314,14 @@
 
 
 %% Example:
+%% crypto_x402_payment_input() :: #{
+%%   <<"payload">> => any(),
+%%   <<"version">> => [string()]
+%% }
+-type crypto_x402_payment_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_code_interpreter_session_response() :: #{
 %%   <<"codeInterpreterIdentifier">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -2081,6 +2344,17 @@
 %%   <<"filters">> => list(cloud_watch_logs_filter())
 %% }
 -type cloud_watch_logs_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_token_request_input() :: #{
+%%   <<"includeWalletAuthToken">> => [boolean()],
+%%   <<"requestBody">> => string(),
+%%   <<"requestHost">> => string(),
+%%   <<"requestMethod">> => list(any()),
+%%   <<"requestPath">> => string()
+%% }
+-type coinbase_cdp_token_request_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2196,6 +2470,13 @@
 
 
 %% Example:
+%% get_payment_instrument_response() :: #{
+%%   <<"paymentInstrument">> => payment_instrument()
+%% }
+-type get_payment_instrument_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_actors_output() :: #{
 %%   <<"actorSummaries">> => list(actor_summary()),
 %%   <<"nextToken">> => string()
@@ -2208,6 +2489,18 @@
 %%   <<"workloadAccessToken">> => string()
 %% }
 -type get_workload_access_token_for_user_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_instruments_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type list_payment_instruments_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2226,6 +2519,13 @@
 %% Example:
 %% delete_event_input() :: #{}
 -type delete_event_input() :: #{}.
+
+
+%% Example:
+%% linked_account_email() :: #{
+%%   <<"emailAddress">> => string()
+%% }
+-type linked_account_email() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2261,6 +2561,17 @@
 
 
 %% Example:
+%% get_payment_instrument_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_instrument_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_stream_metrics() :: #{
 %%   <<"latencyMs">> => [float()]
 %% }
@@ -2281,6 +2592,21 @@
 %%   <<"apiKey">> => string()
 %% }
 -type get_resource_api_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% process_payment_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentOutput">> => list(),
+%%   <<"paymentSessionId">> => string(),
+%%   <<"paymentType">> => list(any()),
+%%   <<"processPaymentId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type process_payment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2340,6 +2666,14 @@
 
 
 %% Example:
+%% available_limits() :: #{
+%%   <<"availableSpendAmount">> => amount(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type available_limits() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_criteria() :: #{
 %%   <<"memoryStrategyId">> => string(),
 %%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
@@ -2347,6 +2681,29 @@
 %%   <<"topK">> => [integer()]
 %% }
 -type search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_session_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"expiryTimeInMinutes">> := [integer()],
+%%   <<"limits">> => session_limits(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type create_payment_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_sessions_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type list_payment_sessions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2364,6 +2721,13 @@
 %%   <<"streamUpdate">> := list()
 %% }
 -type update_browser_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_session_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2411,6 +2775,13 @@
 
 
 %% Example:
+%% linked_account_sms() :: #{
+%%   <<"phoneNumber">> => string()
+%% }
+-type linked_account_sms() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_skills_descriptor() :: #{
 %%   <<"skillDefinition">> => skill_definition(),
 %%   <<"skillMd">> => skill_md_definition()
@@ -2434,6 +2805,14 @@
 
 
 %% Example:
+%% crypto_x402_payment_output() :: #{
+%%   <<"payload">> => any(),
+%%   <<"version">> => [string()]
+%% }
+-type crypto_x402_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% target_ref() :: #{
 %%   <<"name">> => string()
 %% }
@@ -2445,6 +2824,13 @@
 %%   <<"codeInterpreterArn">> => string()
 %% }
 -type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_instrument_response() :: #{
+%%   <<"paymentInstrument">> => payment_instrument()
+%% }
+-type create_payment_instrument_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2481,6 +2867,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sessions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_limits() :: #{
+%%   <<"maxSpendAmount">> => amount()
+%% }
+-type session_limits() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2542,6 +2935,21 @@
 
 
 %% Example:
+%% payment_instrument() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentInstrumentDetails">> => list(),
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"paymentInstrumentType">> => list(any()),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type payment_instrument() :: #{binary() => any()}.
+
+
+%% Example:
 %% extraction_job() :: #{
 %%   <<"jobId">> => [string()]
 %% }
@@ -2554,6 +2962,18 @@
 %%   <<"evaluatorMetrics">> => list(evaluator_metric())
 %% }
 -type a_b_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_session_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiryTimeInMinutes">> => [integer()],
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentSessionId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type payment_session_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2613,6 +3033,22 @@
     throttled_exception() | 
     retryable_conflict_exception().
 
+-type create_payment_instrument_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_payment_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_a_b_test_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2648,6 +3084,20 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type delete_payment_instrument_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_payment_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_recommendation_errors() ::
     throttling_exception() | 
@@ -2725,6 +3175,27 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type get_payment_instrument_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_payment_instrument_balance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_payment_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_recommendation_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2741,6 +3212,14 @@
     unauthorized_exception().
 
 -type get_resource_oauth2_token_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type get_resource_payment_token_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2877,6 +3356,18 @@
     resource_not_found_exception() | 
     throttled_exception().
 
+-type list_payment_instruments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_payment_sessions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_recommendations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2891,6 +3382,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type process_payment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type retrieve_memory_records_errors() ::
     validation_exception() | 
@@ -3241,6 +3740,80 @@ create_event(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a new payment instrument for a connector
+-spec create_payment_instrument(aws_client:aws_client(), create_payment_instrument_request()) ->
+    {ok, create_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_instrument_errors(), tuple()}.
+create_payment_instrument(Client, Input) ->
+    create_payment_instrument(Client, Input, []).
+
+-spec create_payment_instrument(aws_client:aws_client(), create_payment_instrument_request(), proplists:proplist()) ->
+    {ok, create_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_instrument_errors(), tuple()}.
+create_payment_instrument(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/createPaymentInstrument"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a new payment manager session
+-spec create_payment_session(aws_client:aws_client(), create_payment_session_request()) ->
+    {ok, create_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_session_errors(), tuple()}.
+create_payment_session(Client, Input) ->
+    create_payment_session(Client, Input, []).
+
+-spec create_payment_session(aws_client:aws_client(), create_payment_session_request(), proplists:proplist()) ->
+    {ok, create_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_session_errors(), tuple()}.
+create_payment_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/createPaymentSession"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an A/B test and its associated gateway rules.
 -spec delete_a_b_test(aws_client:aws_client(), binary() | list(), delete_a_b_test_request()) ->
     {ok, delete_a_b_test_response(), tuple()} |
@@ -3378,6 +3951,125 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a payment instrument
+%%
+%% Marks a payment instrument as deleted by updating its status to DELETED.
+%%
+%% This is a soft delete
+%% operation that preserves the record in the database for audit and
+%% compliance purposes. The record
+%% remains queryable for audit purposes but is excluded from normal list and
+%% get operations.
+%%
+%% Deleting an already-deleted or non-existent instrument returns
+%% ResourceNotFoundException (404).
+%%
+%% Authorization: The caller must own the instrument (accountId, userId, and
+%% paymentManagerId must match).
+%% If authorization fails, a 403 Forbidden error is returned.
+%%
+%% Timestamp Management: The updatedAt timestamp is set to the current time,
+%% while createdAt is preserved.
+%% The version field is incremented for optimistic locking.
+%%
+%% Errors:
+%% - ResourceNotFoundException: The instrument does not exist or is already
+%% deleted
+%% - AccessDeniedException: The caller is not authorized to delete this
+%% instrument
+%% - ValidationException: Required fields are missing or invalid
+%% - InternalServerException: An unexpected server error occurred
+-spec delete_payment_instrument(aws_client:aws_client(), delete_payment_instrument_request()) ->
+    {ok, delete_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_instrument_errors(), tuple()}.
+delete_payment_instrument(Client, Input) ->
+    delete_payment_instrument(Client, Input, []).
+
+-spec delete_payment_instrument(aws_client:aws_client(), delete_payment_instrument_request(), proplists:proplist()) ->
+    {ok, delete_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_instrument_errors(), tuple()}.
+delete_payment_instrument(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/deletePaymentInstrument"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a payment manager session
+%%
+%% Permanently removes a payment session record from the database.
+%%
+%% This is a hard delete operation
+%% that removes the session completely.
+%%
+%% Deleting a non-existent or already-deleted session returns
+%% ResourceNotFoundException (404).
+%%
+%% Authorization: The caller must own the session (accountId, userId, and
+%% paymentManagerId must match).
+%% If authorization fails, a 403 Forbidden error is returned.
+%%
+%% Errors:
+%% - ResourceNotFoundException: The session does not exist or has already
+%% been deleted
+%% - AccessDeniedException: The caller is not authorized to delete this
+%% session
+%% - ValidationException: Required fields are missing or invalid
+%% - InternalServerException: An unexpected server error occurred
+-spec delete_payment_session(aws_client:aws_client(), delete_payment_session_request()) ->
+    {ok, delete_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_session_errors(), tuple()}.
+delete_payment_session(Client, Input) ->
+    delete_payment_session(Client, Input, []).
+
+-spec delete_payment_session(aws_client:aws_client(), delete_payment_session_request(), proplists:proplist()) ->
+    {ok, delete_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_session_errors(), tuple()}.
+delete_payment_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/deletePaymentSession"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -3798,6 +4490,117 @@ get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get a payment instrument by ID
+-spec get_payment_instrument(aws_client:aws_client(), get_payment_instrument_request()) ->
+    {ok, get_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_instrument_errors(), tuple()}.
+get_payment_instrument(Client, Input) ->
+    get_payment_instrument(Client, Input, []).
+
+-spec get_payment_instrument(aws_client:aws_client(), get_payment_instrument_request(), proplists:proplist()) ->
+    {ok, get_payment_instrument_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_instrument_errors(), tuple()}.
+get_payment_instrument(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/getPaymentInstrument"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get the balance of a payment instrument
+-spec get_payment_instrument_balance(aws_client:aws_client(), get_payment_instrument_balance_request()) ->
+    {ok, get_payment_instrument_balance_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_instrument_balance_errors(), tuple()}.
+get_payment_instrument_balance(Client, Input) ->
+    get_payment_instrument_balance(Client, Input, []).
+
+-spec get_payment_instrument_balance(aws_client:aws_client(), get_payment_instrument_balance_request(), proplists:proplist()) ->
+    {ok, get_payment_instrument_balance_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_instrument_balance_errors(), tuple()}.
+get_payment_instrument_balance(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/getPaymentInstrumentBalance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get a payment session
+-spec get_payment_session(aws_client:aws_client(), get_payment_session_request()) ->
+    {ok, get_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_session_errors(), tuple()}.
+get_payment_session(Client, Input) ->
+    get_payment_session(Client, Input, []).
+
+-spec get_payment_session(aws_client:aws_client(), get_payment_session_request(), proplists:proplist()) ->
+    {ok, get_payment_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_session_errors(), tuple()}.
+get_payment_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/getPaymentSession"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed information about a recommendation, including its
 %% configuration, status, and results.
 -spec get_recommendation(aws_client:aws_client(), binary() | list()) ->
@@ -3885,6 +4688,41 @@ get_resource_oauth2_token(Client, Input) ->
 get_resource_oauth2_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/oauth2/token"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates authentication tokens for payment providers that use
+%% vendor-specific authentication mechanisms.
+-spec get_resource_payment_token(aws_client:aws_client(), get_resource_payment_token_request()) ->
+    {ok, get_resource_payment_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_payment_token_errors(), tuple()}.
+get_resource_payment_token(Client, Input) ->
+    get_resource_payment_token(Client, Input, []).
+
+-spec get_resource_payment_token(aws_client:aws_client(), get_resource_payment_token_request(), proplists:proplist()) ->
+    {ok, get_resource_payment_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_payment_token_errors(), tuple()}.
+get_resource_payment_token(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/payment/token"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4720,6 +5558,80 @@ list_memory_records(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List payment instruments for a manager
+-spec list_payment_instruments(aws_client:aws_client(), list_payment_instruments_request()) ->
+    {ok, list_payment_instruments_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_instruments_errors(), tuple()}.
+list_payment_instruments(Client, Input) ->
+    list_payment_instruments(Client, Input, []).
+
+-spec list_payment_instruments(aws_client:aws_client(), list_payment_instruments_request(), proplists:proplist()) ->
+    {ok, list_payment_instruments_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_instruments_errors(), tuple()}.
+list_payment_instruments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/listPaymentInstruments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List payment manager sessions
+-spec list_payment_sessions(aws_client:aws_client(), list_payment_sessions_request()) ->
+    {ok, list_payment_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_sessions_errors(), tuple()}.
+list_payment_sessions(Client, Input) ->
+    list_payment_sessions(Client, Input, []).
+
+-spec list_payment_sessions(aws_client:aws_client(), list_payment_sessions_request(), proplists:proplist()) ->
+    {ok, list_payment_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_sessions_errors(), tuple()}.
+list_payment_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/listPaymentSessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all recommendations in the account, with optional filtering by
 %% status.
 -spec list_recommendations(aws_client:aws_client()) ->
@@ -4798,6 +5710,43 @@ list_sessions(Client, ActorId, MemoryId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Process a payment transaction
+-spec process_payment(aws_client:aws_client(), process_payment_request()) ->
+    {ok, process_payment_response(), tuple()} |
+    {error, any()} |
+    {error, process_payment_errors(), tuple()}.
+process_payment(Client, Input) ->
+    process_payment(Client, Input, []).
+
+-spec process_payment(aws_client:aws_client(), process_payment_request(), proplists:proplist()) ->
+    {ok, process_payment_response(), tuple()} |
+    {error, any()} |
+    {error, process_payment_errors(), tuple()}.
+process_payment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/processPayment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-Agent-Name">>, <<"agentName">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Payments-User-Id">>, <<"userId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

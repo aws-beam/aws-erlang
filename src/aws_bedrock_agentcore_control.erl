@@ -37,6 +37,12 @@
          create_oauth2_credential_provider/3,
          create_online_evaluation_config/2,
          create_online_evaluation_config/3,
+         create_payment_connector/3,
+         create_payment_connector/4,
+         create_payment_credential_provider/2,
+         create_payment_credential_provider/3,
+         create_payment_manager/2,
+         create_payment_manager/3,
          create_policy/3,
          create_policy/4,
          create_policy_engine/2,
@@ -77,6 +83,12 @@
          delete_oauth2_credential_provider/3,
          delete_online_evaluation_config/3,
          delete_online_evaluation_config/4,
+         delete_payment_connector/4,
+         delete_payment_connector/5,
+         delete_payment_credential_provider/2,
+         delete_payment_credential_provider/3,
+         delete_payment_manager/3,
+         delete_payment_manager/4,
          delete_policy/4,
          delete_policy/5,
          delete_policy_engine/3,
@@ -135,6 +147,14 @@
          get_online_evaluation_config/2,
          get_online_evaluation_config/4,
          get_online_evaluation_config/5,
+         get_payment_connector/3,
+         get_payment_connector/5,
+         get_payment_connector/6,
+         get_payment_credential_provider/2,
+         get_payment_credential_provider/3,
+         get_payment_manager/2,
+         get_payment_manager/4,
+         get_payment_manager/5,
          get_policy/3,
          get_policy/5,
          get_policy/6,
@@ -195,6 +215,12 @@
          list_oauth2_credential_providers/3,
          list_online_evaluation_configs/2,
          list_online_evaluation_configs/3,
+         list_payment_connectors/3,
+         list_payment_connectors/4,
+         list_payment_credential_providers/2,
+         list_payment_credential_providers/3,
+         list_payment_managers/2,
+         list_payment_managers/3,
          list_policies/2,
          list_policies/4,
          list_policies/5,
@@ -256,6 +282,12 @@
          update_oauth2_credential_provider/3,
          update_online_evaluation_config/3,
          update_online_evaluation_config/4,
+         update_payment_connector/4,
+         update_payment_connector/5,
+         update_payment_credential_provider/2,
+         update_payment_credential_provider/3,
+         update_payment_manager/3,
+         update_payment_manager/4,
          update_policy/4,
          update_policy/5,
          update_policy_engine/3,
@@ -316,6 +348,17 @@
 
 
 %% Example:
+%% update_payment_manager_request() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% streaming_configuration() :: #{
 %%   <<"enableResponseStreaming">> => [boolean()]
 %% }
@@ -364,6 +407,19 @@
 
 
 %% Example:
+%% create_payment_manager_request() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_agent_runtime_endpoint_request() :: #{
 %%   <<"agentRuntimeVersion">> => string(),
 %%   <<"clientToken">> => string(),
@@ -400,6 +456,17 @@
 
 
 %% Example:
+%% payment_credential_provider_item() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type payment_credential_provider_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_registry_records_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"registryRecords">> => list(registry_record_summary())
@@ -415,6 +482,16 @@
 
 
 %% Example:
+%% stripe_privy_configuration_input() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appSecret">> => string(),
+%%   <<"authorizationId">> => string(),
+%%   <<"authorizationPrivateKey">> => string()
+%% }
+-type stripe_privy_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_agent_core_memory_configuration() :: #{
 %%   <<"actorId">> => [string()],
 %%   <<"arn">> => string(),
@@ -426,6 +503,14 @@
 %% Example:
 %% delete_configuration_bundle_request() :: #{}
 -type delete_configuration_bundle_request() :: #{}.
+
+
+%% Example:
+%% list_payment_connectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_payment_connectors_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -469,6 +554,20 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_payment_manager_response() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type update_payment_manager_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_harness_request() :: #{}
@@ -679,6 +778,15 @@
 
 
 %% Example:
+%% update_payment_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"providerConfigurationInput">> := list()
+%% }
+-type update_payment_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% kms_configuration() :: #{
 %%   <<"keyType">> => list(any()),
 %%   <<"kmsKeyArn">> => string()
@@ -714,6 +822,10 @@
 %% }
 -type custom_descriptor() :: #{binary() => any()}.
 
+%% Example:
+%% delete_payment_credential_provider_response() :: #{}
+-type delete_payment_credential_provider_response() :: #{}.
+
 
 %% Example:
 %% list_browser_profiles_request() :: #{
@@ -722,6 +834,24 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_manager_response() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type get_payment_manager_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -977,6 +1107,13 @@
 
 
 %% Example:
+%% delete_payment_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_payment_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% weighted_route() :: #{
 %%   <<"trafficSplit">> => list(target_traffic_split_entry())
 %% }
@@ -1101,6 +1238,17 @@
 %%   <<"message">> => [string()]
 %% }
 -type encryption_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_connector_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialProviderConfigurations">> := list(list()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := list(any())
+%% }
+-type create_payment_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1337,6 +1485,16 @@
 %%   <<"reflection">> => episodic_override_reflection_configuration_input()
 %% }
 -type episodic_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_configuration_output() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appSecretArn">> => secret(),
+%%   <<"authorizationId">> => string(),
+%%   <<"authorizationPrivateKeyArn">> => secret()
+%% }
+-type stripe_privy_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1640,6 +1798,10 @@
 %% }
 -type create_harness_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_payment_manager_request() :: #{}
+-type get_payment_manager_request() :: #{}.
+
 
 %% Example:
 %% update_memory_input() :: #{
@@ -1659,6 +1821,17 @@
 %%   <<"name">> := string()
 %% }
 -type delete_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_connector_summary() :: #{
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type payment_connector_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1752,6 +1925,16 @@
 
 
 %% Example:
+%% create_payment_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"providerConfigurationInput">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_payment_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_online_evaluation_configs_response() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"onlineEvaluationConfigs">> => list(online_evaluation_config_summary())
@@ -1772,6 +1955,13 @@
 %% Example:
 %% get_gateway_target_request() :: #{}
 -type get_gateway_target_request() :: #{}.
+
+
+%% Example:
+%% delete_payment_connector_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_payment_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1850,6 +2040,19 @@
 %%   <<"tags">> => map()
 %% }
 -type create_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_connector_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type create_payment_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2121,6 +2324,16 @@
 
 
 %% Example:
+%% update_payment_connector_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"description">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type update_payment_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% on_behalf_of_token_exchange_config_type() :: #{
 %%   <<"grantType">> => list(any()),
 %%   <<"tokenExchangeGrantTypeConfig">> => token_exchange_grant_type_config_type()
@@ -2143,6 +2356,15 @@
 %%   <<"policyGenerationId">> => string()
 %% }
 -type policy_generation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_configuration_input() :: #{
+%%   <<"apiKeyId">> => string(),
+%%   <<"apiKeySecret">> => string(),
+%%   <<"walletSecret">> => string()
+%% }
+-type coinbase_cdp_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2347,6 +2569,14 @@
 
 
 %% Example:
+%% delete_payment_manager_response() :: #{
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_manager_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% oauth2_credential_provider_item() :: #{
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
@@ -2362,6 +2592,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_credential_provider_configuration() :: #{
+%%   <<"credentialProviderArn">> => string()
+%% }
+-type payment_credential_provider_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2432,6 +2669,19 @@
 %%   <<"workloadIdentityArn">> => string()
 %% }
 -type get_workload_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_credential_provider_response() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"providerConfigurationOutput">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type get_payment_credential_provider_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_agent_runtime_endpoint_request() :: #{}
@@ -2506,11 +2756,26 @@
 
 
 %% Example:
+%% delete_payment_manager_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_config() :: #{
 %%   <<"securityGroups">> => list(string()),
 %%   <<"subnets">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_credential_providers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_payment_credential_providers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2986,6 +3251,18 @@
 
 
 %% Example:
+%% update_payment_credential_provider_response() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"providerConfigurationOutput">> => list()
+%% }
+-type update_payment_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% slack_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string()
@@ -3188,6 +3465,19 @@
 
 
 %% Example:
+%% update_payment_connector_response() :: #{
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type update_payment_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% microsoft_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
@@ -3246,6 +3536,14 @@
 %%   <<"location">> => list()
 %% }
 -type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_credential_providers_response() :: #{
+%%   <<"credentialProviders">> => list(payment_credential_provider_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_payment_credential_providers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3394,6 +3692,22 @@
 %%   <<"name">> := string()
 %% }
 -type update_api_key_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_manager_response() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type create_payment_manager_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3676,6 +3990,14 @@
 
 
 %% Example:
+%% delete_payment_connector_response() :: #{
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_j_w_t_authorizer_configuration() :: #{
 %%   <<"allowedAudience">> => list(string()),
 %%   <<"allowedClients">> => list(string()),
@@ -3840,6 +4162,25 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type update_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_credential_provider_response() :: #{
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"providerConfigurationOutput">> => list()
+%% }
+-type create_payment_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_configuration_output() :: #{
+%%   <<"apiKeyId">> => string(),
+%%   <<"apiKeySecretArn">> => secret(),
+%%   <<"walletSecretArn">> => secret()
+%% }
+-type coinbase_cdp_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4070,6 +4411,13 @@
 
 
 %% Example:
+%% get_payment_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_payment_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_registry_request() :: #{
 %%   <<"approvalConfiguration">> => approval_configuration(),
 %%   <<"authorizerConfiguration">> => list(),
@@ -4130,6 +4478,20 @@
 
 
 %% Example:
+%% get_payment_connector_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type get_payment_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invocation_configuration() :: #{
 %%   <<"payloadDeliveryBucketName">> => [string()],
 %%   <<"topicArn">> => string()
@@ -4185,6 +4547,14 @@
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type google_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_connectors_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentConnectors">> => list(payment_connector_summary())
+%% }
+-type list_payment_connectors_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_request() :: #{}
@@ -4385,6 +4755,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_runtime_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_payment_connector_request() :: #{}
+-type get_payment_connector_request() :: #{}.
 
 
 %% Example:
@@ -4628,6 +5002,21 @@
 
 
 %% Example:
+%% payment_manager_summary() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type payment_manager_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluator_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -4666,6 +5055,22 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_configuration_bundles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_managers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentManagers">> => list(payment_manager_summary())
+%% }
+-type list_payment_managers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_managers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_payment_managers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4913,6 +5318,36 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_payment_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_payment_credential_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    encryption_failure() | 
+    decryption_failure() | 
+    unauthorized_exception().
+
+-type create_payment_manager_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5076,6 +5511,28 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_payment_connector_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_payment_credential_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type delete_payment_manager_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5233,6 +5690,29 @@
     unauthorized_exception().
 
 -type get_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_payment_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_payment_credential_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    decryption_failure() | 
+    unauthorized_exception().
+
+-type get_payment_manager_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5403,6 +5883,26 @@
     unauthorized_exception().
 
 -type list_online_evaluation_configs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_payment_connectors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_payment_credential_providers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type list_payment_managers_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5624,6 +6124,36 @@
     unauthorized_exception().
 
 -type update_online_evaluation_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_payment_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_payment_credential_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    encryption_failure() | 
+    decryption_failure() | 
+    unauthorized_exception().
+
+-type update_payment_manager_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6205,6 +6735,120 @@ create_online_evaluation_config(Client, Input) ->
 create_online_evaluation_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/online-evaluation-configs/create"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new payment connector for a payment manager.
+%%
+%% A payment connector integrates with a supported payment provider to enable
+%% payment processing capabilities.
+-spec create_payment_connector(aws_client:aws_client(), binary() | list(), create_payment_connector_request()) ->
+    {ok, create_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_connector_errors(), tuple()}.
+create_payment_connector(Client, PaymentManagerId, Input) ->
+    create_payment_connector(Client, PaymentManagerId, Input, []).
+
+-spec create_payment_connector(aws_client:aws_client(), binary() | list(), create_payment_connector_request(), proplists:proplist()) ->
+    {ok, create_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_connector_errors(), tuple()}.
+create_payment_connector(Client, PaymentManagerId, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new payment credential provider for storing authentication
+%% credentials used by payment connectors to communicate with external
+%% payment providers.
+-spec create_payment_credential_provider(aws_client:aws_client(), create_payment_credential_provider_request()) ->
+    {ok, create_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_credential_provider_errors(), tuple()}.
+create_payment_credential_provider(Client, Input) ->
+    create_payment_credential_provider(Client, Input, []).
+
+-spec create_payment_credential_provider(aws_client:aws_client(), create_payment_credential_provider_request(), proplists:proplist()) ->
+    {ok, create_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_credential_provider_errors(), tuple()}.
+create_payment_credential_provider(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/CreatePaymentCredentialProvider"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new payment manager in your Amazon Web Services account.
+%%
+%% A payment manager serves as the top-level resource for managing payment
+%% processing capabilities, including payment connectors that integrate with
+%% supported payment providers.
+%%
+%% If you specify `CUSTOM_JWT' as the `authorizerType', you must
+%% provide an `authorizerConfiguration'.
+-spec create_payment_manager(aws_client:aws_client(), create_payment_manager_request()) ->
+    {ok, create_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_manager_errors(), tuple()}.
+create_payment_manager(Client, Input) ->
+    create_payment_manager(Client, Input, []).
+
+-spec create_payment_manager(aws_client:aws_client(), create_payment_manager_request(), proplists:proplist()) ->
+    {ok, create_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, create_payment_manager_errors(), tuple()}.
+create_payment_manager(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/managers"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6953,6 +7597,115 @@ delete_online_evaluation_config(Client, OnlineEvaluationConfigId, Input0, Option
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a payment connector.
+-spec delete_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_payment_connector_request()) ->
+    {ok, delete_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_connector_errors(), tuple()}.
+delete_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input) ->
+    delete_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input, []).
+
+-spec delete_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_payment_connector_request(), proplists:proplist()) ->
+    {ok, delete_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_connector_errors(), tuple()}.
+delete_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors/", aws_util:encode_uri(PaymentConnectorId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a payment credential provider and its associated stored
+%% credentials.
+-spec delete_payment_credential_provider(aws_client:aws_client(), delete_payment_credential_provider_request()) ->
+    {ok, delete_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_credential_provider_errors(), tuple()}.
+delete_payment_credential_provider(Client, Input) ->
+    delete_payment_credential_provider(Client, Input, []).
+
+-spec delete_payment_credential_provider(aws_client:aws_client(), delete_payment_credential_provider_request(), proplists:proplist()) ->
+    {ok, delete_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_credential_provider_errors(), tuple()}.
+delete_payment_credential_provider(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/DeletePaymentCredentialProvider"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a payment manager.
+%%
+%% All payment connectors associated with the payment manager must be deleted
+%% before the payment manager can be deleted. This operation initiates the
+%% deletion process asynchronously.
+-spec delete_payment_manager(aws_client:aws_client(), binary() | list(), delete_payment_manager_request()) ->
+    {ok, delete_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_manager_errors(), tuple()}.
+delete_payment_manager(Client, PaymentManagerId, Input) ->
+    delete_payment_manager(Client, PaymentManagerId, Input, []).
+
+-spec delete_payment_manager(aws_client:aws_client(), binary() | list(), delete_payment_manager_request(), proplists:proplist()) ->
+    {ok, delete_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, delete_payment_manager_errors(), tuple()}.
+delete_payment_manager(Client, PaymentManagerId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing policy from the AgentCore Policy system.
@@ -7778,6 +8531,114 @@ get_online_evaluation_config(Client, OnlineEvaluationConfigId, QueryMap, Headers
 get_online_evaluation_config(Client, OnlineEvaluationConfigId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/online-evaluation-configs/", aws_util:encode_uri(OnlineEvaluationConfigId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific payment connector.
+-spec get_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_connector_errors(), tuple()}.
+get_payment_connector(Client, PaymentConnectorId, PaymentManagerId)
+  when is_map(Client) ->
+    get_payment_connector(Client, PaymentConnectorId, PaymentManagerId, #{}, #{}).
+
+-spec get_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_connector_errors(), tuple()}.
+get_payment_connector(Client, PaymentConnectorId, PaymentManagerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_payment_connector(Client, PaymentConnectorId, PaymentManagerId, QueryMap, HeadersMap, []).
+
+-spec get_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_connector_errors(), tuple()}.
+get_payment_connector(Client, PaymentConnectorId, PaymentManagerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors/", aws_util:encode_uri(PaymentConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific payment credential provider.
+-spec get_payment_credential_provider(aws_client:aws_client(), get_payment_credential_provider_request()) ->
+    {ok, get_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_credential_provider_errors(), tuple()}.
+get_payment_credential_provider(Client, Input) ->
+    get_payment_credential_provider(Client, Input, []).
+
+-spec get_payment_credential_provider(aws_client:aws_client(), get_payment_credential_provider_request(), proplists:proplist()) ->
+    {ok, get_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_credential_provider_errors(), tuple()}.
+get_payment_credential_provider(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/GetPaymentCredentialProvider"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific payment manager.
+-spec get_payment_manager(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_manager_errors(), tuple()}.
+get_payment_manager(Client, PaymentManagerId)
+  when is_map(Client) ->
+    get_payment_manager(Client, PaymentManagerId, #{}, #{}).
+
+-spec get_payment_manager(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_manager_errors(), tuple()}.
+get_payment_manager(Client, PaymentManagerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_payment_manager(Client, PaymentManagerId, QueryMap, HeadersMap, []).
+
+-spec get_payment_manager(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, get_payment_manager_errors(), tuple()}.
+get_payment_manager(Client, PaymentManagerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8714,6 +9575,112 @@ list_online_evaluation_configs(Client, Input) ->
 list_online_evaluation_configs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/online-evaluation-configs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all payment connectors for a specified payment manager.
+-spec list_payment_connectors(aws_client:aws_client(), binary() | list(), list_payment_connectors_request()) ->
+    {ok, list_payment_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_connectors_errors(), tuple()}.
+list_payment_connectors(Client, PaymentManagerId, Input) ->
+    list_payment_connectors(Client, PaymentManagerId, Input, []).
+
+-spec list_payment_connectors(aws_client:aws_client(), binary() | list(), list_payment_connectors_request(), proplists:proplist()) ->
+    {ok, list_payment_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_connectors_errors(), tuple()}.
+list_payment_connectors(Client, PaymentManagerId, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors-list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all payment credential providers in the account.
+-spec list_payment_credential_providers(aws_client:aws_client(), list_payment_credential_providers_request()) ->
+    {ok, list_payment_credential_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_credential_providers_errors(), tuple()}.
+list_payment_credential_providers(Client, Input) ->
+    list_payment_credential_providers(Client, Input, []).
+
+-spec list_payment_credential_providers(aws_client:aws_client(), list_payment_credential_providers_request(), proplists:proplist()) ->
+    {ok, list_payment_credential_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_credential_providers_errors(), tuple()}.
+list_payment_credential_providers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/ListPaymentCredentialProviders"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all payment managers in the account.
+-spec list_payment_managers(aws_client:aws_client(), list_payment_managers_request()) ->
+    {ok, list_payment_managers_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_managers_errors(), tuple()}.
+list_payment_managers(Client, Input) ->
+    list_payment_managers(Client, Input, []).
+
+-spec list_payment_managers(aws_client:aws_client(), list_payment_managers_request(), proplists:proplist()) ->
+    {ok, list_payment_managers_response(), tuple()} |
+    {error, any()} |
+    {error, list_payment_managers_errors(), tuple()}.
+list_payment_managers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/managers-list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9778,6 +10745,115 @@ update_online_evaluation_config(Client, OnlineEvaluationConfigId, Input) ->
 update_online_evaluation_config(Client, OnlineEvaluationConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/online-evaluation-configs/", aws_util:encode_uri(OnlineEvaluationConfigId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing payment connector.
+%%
+%% This operation uses PATCH semantics, so you only need to specify the
+%% fields you want to change.
+-spec update_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_payment_connector_request()) ->
+    {ok, update_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_connector_errors(), tuple()}.
+update_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input) ->
+    update_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input, []).
+
+-spec update_payment_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_payment_connector_request(), proplists:proplist()) ->
+    {ok, update_payment_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_connector_errors(), tuple()}.
+update_payment_connector(Client, PaymentConnectorId, PaymentManagerId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors/", aws_util:encode_uri(PaymentConnectorId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing payment credential provider with new
+%% authentication credentials.
+-spec update_payment_credential_provider(aws_client:aws_client(), update_payment_credential_provider_request()) ->
+    {ok, update_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_credential_provider_errors(), tuple()}.
+update_payment_credential_provider(Client, Input) ->
+    update_payment_credential_provider(Client, Input, []).
+
+-spec update_payment_credential_provider(aws_client:aws_client(), update_payment_credential_provider_request(), proplists:proplist()) ->
+    {ok, update_payment_credential_provider_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_credential_provider_errors(), tuple()}.
+update_payment_credential_provider(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/UpdatePaymentCredentialProvider"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing payment manager.
+%%
+%% This operation uses PATCH semantics, so you only need to specify the
+%% fields you want to change.
+-spec update_payment_manager(aws_client:aws_client(), binary() | list(), update_payment_manager_request()) ->
+    {ok, update_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_manager_errors(), tuple()}.
+update_payment_manager(Client, PaymentManagerId, Input) ->
+    update_payment_manager(Client, PaymentManagerId, Input, []).
+
+-spec update_payment_manager(aws_client:aws_client(), binary() | list(), update_payment_manager_request(), proplists:proplist()) ->
+    {ok, update_payment_manager_response(), tuple()} |
+    {error, any()} |
+    {error, update_payment_manager_errors(), tuple()}.
+update_payment_manager(Client, PaymentManagerId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

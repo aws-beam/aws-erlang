@@ -648,7 +648,9 @@
 %% create_resolver_endpoint_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
 %%   <<"Direction">> := list(any()),
+%%   <<"Dns64Enabled">> => boolean(),
 %%   <<"IpAddresses">> := list(ip_address_request()),
+%%   <<"Ipv6InternetAccessEnabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"PreferredInstanceType">> => string(),
@@ -981,9 +983,11 @@
 %%   <<"CreationTime">> => string(),
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"Direction">> => list(any()),
+%%   <<"Dns64Enabled">> => boolean(),
 %%   <<"HostVPCId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IpAddressCount">> => integer(),
+%%   <<"Ipv6InternetAccessEnabled">> => boolean(),
 %%   <<"ModificationTime">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OutpostArn">> => string(),
@@ -1279,6 +1283,8 @@
 
 %% Example:
 %% update_resolver_endpoint_request() :: #{
+%%   <<"Dns64Enabled">> => boolean(),
+%%   <<"Ipv6InternetAccessEnabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointId">> := string(),
@@ -1711,6 +1717,7 @@
 -type delete_resolver_rule_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_error_exception() | 
     resource_in_use_exception().
@@ -1742,6 +1749,7 @@
 -type disassociate_resolver_rule_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_error_exception().
 

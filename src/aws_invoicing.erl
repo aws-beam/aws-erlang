@@ -168,6 +168,7 @@
 
 %% Example:
 %% entity() :: #{
+%%   <<"BillingEntity">> => list(any()),
 %%   <<"InvoicingEntity">> => string()
 %% }
 -type entity() :: #{binary() => any()}.
@@ -239,6 +240,7 @@
 %% invoice_summaries_filter() :: #{
 %%   <<"BillingPeriod">> => billing_period(),
 %%   <<"InvoicingEntity">> => string(),
+%%   <<"ReceiverRole">> => list(any()),
 %%   <<"TimeInterval">> => date_interval()
 %% }
 -type invoice_summaries_filter() :: #{binary() => any()}.
@@ -348,15 +350,23 @@
 %% invoice_summary() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"BaseCurrencyAmount">> => invoice_currency_amount(),
+%%   <<"BillSourceAccounts">> => list(string()),
+%%   <<"BillSourceAccountsTotalCount">> => [integer()],
+%%   <<"BillType">> => list(any()),
 %%   <<"BillingPeriod">> => billing_period(),
+%%   <<"CommercialInvoiceId">> => string(),
 %%   <<"DueDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryStatus">> => list(any()),
 %%   <<"Entity">> => entity(),
+%%   <<"InvoiceFrequency">> => list(any()),
 %%   <<"InvoiceId">> => string(),
 %%   <<"InvoiceType">> => list(any()),
 %%   <<"IssuedDate">> => [non_neg_integer()],
 %%   <<"OriginalInvoiceId">> => string(),
 %%   <<"PaymentCurrencyAmount">> => invoice_currency_amount(),
 %%   <<"PurchaseOrderNumber">> => string(),
+%%   <<"ReceiverRole">> => list(any()),
+%%   <<"TaxAuthorityStatus">> => list(any()),
 %%   <<"TaxCurrencyAmount">> => invoice_currency_amount()
 %% }
 -type invoice_summary() :: #{binary() => any()}.
@@ -581,6 +591,8 @@
 
 %% Example:
 %% supplemental_document() :: #{
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentType">> => list(any()),
 %%   <<"DocumentUrl">> => string(),
 %%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()]
 %% }
@@ -895,11 +907,15 @@ create_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInvoiceUnit">>, Input, Options).
 
-%% @doc Creates a procurement portal preference configuration for e-invoice
-%% delivery and purchase order retrieval.
+%% @doc This feature API is subject to changing at any time.
 %%
-%% This preference defines how invoices are delivered to a procurement portal
-%% and how purchase orders are retrieved.
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Creates a procurement portal preference configuration for e-invoice
+%% delivery and purchase order retrieval. This preference defines how
+%% invoices are delivered to a procurement portal and how purchase orders are
+%% retrieved.
 -spec create_procurement_portal_preference(aws_client:aws_client(), create_procurement_portal_preference_request()) ->
     {ok, create_procurement_portal_preference_response(), tuple()} |
     {error, any()} |
@@ -933,10 +949,14 @@ delete_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInvoiceUnit">>, Input, Options).
 
-%% @doc Deletes an existing procurement portal preference.
+%% @doc This feature API is subject to changing at any time.
 %%
-%% This action cannot be undone. Active e-invoice delivery and PO retrieval
-%% configurations will be terminated.
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Deletes an existing procurement portal preference. This action cannot be
+%% undone. Active e-invoice delivery and PO retrieval configurations will be
+%% terminated.
 -spec delete_procurement_portal_preference(aws_client:aws_client(), delete_procurement_portal_preference_request()) ->
     {ok, delete_procurement_portal_preference_response(), tuple()} |
     {error, any()} |
@@ -995,7 +1015,12 @@ get_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInvoiceUnit">>, Input, Options).
 
-%% @doc Retrieves the details of a specific procurement portal preference
+%% @doc This feature API is subject to changing at any time.
+%%
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Retrieves the details of a specific procurement portal preference
 %% configuration.
 -spec get_procurement_portal_preference(aws_client:aws_client(), get_procurement_portal_preference_request()) ->
     {ok, get_procurement_portal_preference_response(), tuple()} |
@@ -1049,8 +1074,13 @@ list_invoice_units(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInvoiceUnits">>, Input, Options).
 
-%% @doc Retrieves a list of procurement portal preferences associated with
-%% the Amazon Web Services account.
+%% @doc This feature API is subject to changing at any time.
+%%
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Retrieves a list of procurement portal preferences associated with the
+%% Amazon Web Services account.
 -spec list_procurement_portal_preferences(aws_client:aws_client(), list_procurement_portal_preferences_request()) ->
     {ok, list_procurement_portal_preferences_response(), tuple()} |
     {error, any()} |
@@ -1084,10 +1114,14 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Updates an existing procurement portal preference configuration.
+%% @doc This feature API is subject to changing at any time.
 %%
-%% This operation can modify settings for e-invoice delivery and purchase
-%% order retrieval.
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Updates an existing procurement portal preference configuration. This
+%% operation can modify settings for e-invoice delivery and purchase order
+%% retrieval.
 -spec put_procurement_portal_preference(aws_client:aws_client(), put_procurement_portal_preference_request()) ->
     {ok, put_procurement_portal_preference_response(), tuple()} |
     {error, any()} |
@@ -1156,7 +1190,12 @@ update_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInvoiceUnit">>, Input, Options).
 
-%% @doc Updates the status of a procurement portal preference, including the
+%% @doc This feature API is subject to changing at any time.
+%%
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Updates the status of a procurement portal preference, including the
 %% activation state of e-invoice delivery and purchase order retrieval
 %% features.
 -spec update_procurement_portal_preference_status(aws_client:aws_client(), update_procurement_portal_preference_status_request()) ->

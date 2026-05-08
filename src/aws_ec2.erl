@@ -15969,6 +15969,7 @@
 %%   <<"ProcessorInfo">> => processor_info(),
 %%   <<"RebootMigrationSupport">> => list(any()),
 %%   <<"SupportedBootModes">> => list(list(any())()),
+%%   <<"SupportedInRegion">> => boolean(),
 %%   <<"SupportedRootDeviceTypes">> => list(list(any())()),
 %%   <<"SupportedUsageClasses">> => list(list(any())()),
 %%   <<"SupportedVirtualizationTypes">> => list(list(any())()),
@@ -21115,6 +21116,7 @@
 %% describe_instance_types_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
+%%   <<"IncludeUnsupportedInRegion">> => boolean(),
 %%   <<"InstanceTypes">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -31114,7 +31116,11 @@ describe_instance_type_offerings(Client, Input, Options)
 %% @doc Describes the specified instance types.
 %%
 %% By default, all instance types for the current
-%% Region are described. Alternatively, you can filter the results.
+%% Region are described. Alternatively, you can filter the results. To
+%% include instance types
+%% that are not supported in the current Region, set
+%% `IncludeUnsupportedInRegion'
+%% to `true'.
 -spec describe_instance_types(aws_client:aws_client(), describe_instance_types_request()) ->
     {ok, describe_instance_types_result(), tuple()} |
     {error, any()}.
