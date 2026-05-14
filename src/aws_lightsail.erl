@@ -2791,6 +2791,7 @@
 
 %% Example:
 %% input_origin() :: #{
+%%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocolPolicy">> => list(any()),
 %%   <<"regionName">> => list(any()),
@@ -2931,6 +2932,7 @@
 
 %% Example:
 %% origin() :: #{
+%%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocolPolicy">> => list(any()),
 %%   <<"regionName">> => list(any()),

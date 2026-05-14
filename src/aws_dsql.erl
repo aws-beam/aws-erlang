@@ -16,22 +16,32 @@
 
 -export([create_cluster/2,
          create_cluster/3,
+         create_stream/3,
+         create_stream/4,
          delete_cluster/3,
          delete_cluster/4,
          delete_cluster_policy/3,
          delete_cluster_policy/4,
+         delete_stream/4,
+         delete_stream/5,
          get_cluster/2,
          get_cluster/4,
          get_cluster/5,
          get_cluster_policy/2,
          get_cluster_policy/4,
          get_cluster_policy/5,
+         get_stream/3,
+         get_stream/5,
+         get_stream/6,
          get_vpc_endpoint_service_name/2,
          get_vpc_endpoint_service_name/4,
          get_vpc_endpoint_service_name/5,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
+         list_streams/2,
+         list_streams/4,
+         list_streams/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -59,6 +69,14 @@
 
 
 %% Example:
+%% status_reason() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type status_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_cluster_policy_output() :: #{
 %%   <<"policy">> => string(),
 %%   <<"policyVersion">> => string()
@@ -78,9 +96,40 @@
 %% }
 -type create_cluster_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_stream_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"format">> => list(any()),
+%%   <<"ordering">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"streamIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetDefinition">> => list()
+%% }
+-type get_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_stream_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_stream_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_cluster_input() :: #{}
 -type get_cluster_input() :: #{}.
+
+
+%% Example:
+%% kinesis_target_definition() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"streamArn">> => string()
+%% }
+-type kinesis_target_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -96,6 +145,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_clusters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streams">> => list(stream_summary())
+%% }
+-type list_streams_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -190,6 +247,10 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+%% Example:
+%% get_stream_input() :: #{}
+-type get_stream_input() :: #{}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
@@ -235,6 +296,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_streams_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -293,6 +362,28 @@
 
 
 %% Example:
+%% stream_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"streamIdentifier">> => string()
+%% }
+-type stream_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"ordering">> := list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targetDefinition">> := list()
+%% }
+-type create_stream_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption_details() :: #{
 %%   <<"encryptionStatus">> => list(any()),
 %%   <<"encryptionType">> => list(any()),
@@ -315,9 +406,33 @@
 %% }
 -type put_cluster_policy_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_stream_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"format">> => list(any()),
+%%   <<"ordering">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"streamIdentifier">> => string()
+%% }
+-type create_stream_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_vpc_endpoint_service_name_input() :: #{}
 -type get_vpc_endpoint_service_name_input() :: #{}.
+
+
+%% Example:
+%% delete_stream_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"streamIdentifier">> => string()
+%% }
+-type delete_stream_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_cluster_policy_input() :: #{}
@@ -326,6 +441,12 @@
 -type create_cluster_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_stream_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_cluster_errors() ::
@@ -337,11 +458,18 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_stream_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_cluster_errors() ::
     resource_not_found_exception().
 
 -type get_cluster_policy_errors() ::
     validation_exception() | 
+    resource_not_found_exception().
+
+-type get_stream_errors() ::
     resource_not_found_exception().
 
 -type get_vpc_endpoint_service_name_errors() ::
@@ -351,6 +479,9 @@
     resource_not_found_exception().
 
 -type list_clusters_errors() ::
+    resource_not_found_exception().
+
+-type list_streams_errors() ::
     resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -457,6 +588,60 @@ create_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new change data capture (CDC) stream for a cluster.
+%%
+%% The stream captures database changes and delivers them to the specified
+%% target destination.
+%%
+%% Required permissions
+%%
+%% dsql:CreateStream Permission to create a new stream.
+%%
+%% Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id'
+%%
+%% iam:PassRole Permission to pass the IAM role specified in the target
+%% definition to the service.
+%%
+%% Resources: ARN of the IAM role specified in
+%% `targetDefinition.kinesis.roleArn'
+%%
+%% kms:Decrypt Required when the cluster uses a customer managed KMS key
+%% (CMK). Permission to decrypt data using the cluster's CMK.
+%%
+%% Resources: ARN of the KMS key used by the cluster
+-spec create_stream(aws_client:aws_client(), binary() | list(), create_stream_input()) ->
+    {ok, create_stream_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_errors(), tuple()}.
+create_stream(Client, ClusterIdentifier, Input) ->
+    create_stream(Client, ClusterIdentifier, Input, []).
+
+-spec create_stream(aws_client:aws_client(), binary() | list(), create_stream_input(), proplists:proplist()) ->
+    {ok, create_stream_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_errors(), tuple()}.
+create_stream(Client, ClusterIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/stream/", aws_util:encode_uri(ClusterIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a cluster in Amazon Aurora DSQL.
 -spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_input()) ->
     {ok, delete_cluster_output(), tuple()} |
@@ -527,6 +712,41 @@ delete_cluster_policy(Client, Identifier, Input0, Options0) ->
     QueryMapping = [
                      {<<"client-token">>, <<"clientToken">>},
                      {<<"expected-policy-version">>, <<"expectedPolicyVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a stream from a cluster.
+-spec delete_stream(aws_client:aws_client(), binary() | list(), binary() | list(), delete_stream_input()) ->
+    {ok, delete_stream_output(), tuple()} |
+    {error, any()} |
+    {error, delete_stream_errors(), tuple()}.
+delete_stream(Client, ClusterIdentifier, StreamIdentifier, Input) ->
+    delete_stream(Client, ClusterIdentifier, StreamIdentifier, Input, []).
+
+-spec delete_stream(aws_client:aws_client(), binary() | list(), binary() | list(), delete_stream_input(), proplists:proplist()) ->
+    {ok, delete_stream_output(), tuple()} |
+    {error, any()} |
+    {error, delete_stream_errors(), tuple()}.
+delete_stream(Client, ClusterIdentifier, StreamIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/stream/", aws_util:encode_uri(ClusterIdentifier), "/", aws_util:encode_uri(StreamIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"client-token">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -607,6 +827,43 @@ get_cluster_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a stream.
+-spec get_stream(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_stream_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_errors(), tuple()}.
+get_stream(Client, ClusterIdentifier, StreamIdentifier)
+  when is_map(Client) ->
+    get_stream(Client, ClusterIdentifier, StreamIdentifier, #{}, #{}).
+
+-spec get_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_stream_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_errors(), tuple()}.
+get_stream(Client, ClusterIdentifier, StreamIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stream(Client, ClusterIdentifier, StreamIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_stream_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_errors(), tuple()}.
+get_stream(Client, ClusterIdentifier, StreamIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/stream/", aws_util:encode_uri(ClusterIdentifier), "/", aws_util:encode_uri(StreamIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the VPC endpoint service name.
 -spec get_vpc_endpoint_service_name(aws_client:aws_client(), binary() | list()) ->
     {ok, get_vpc_endpoint_service_name_output(), tuple()} |
@@ -668,6 +925,48 @@ list_clusters(Client, QueryMap, HeadersMap)
 list_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a list of streams for a cluster.
+-spec list_streams(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_streams_output(), tuple()} |
+    {error, any()} |
+    {error, list_streams_errors(), tuple()}.
+list_streams(Client, ClusterIdentifier)
+  when is_map(Client) ->
+    list_streams(Client, ClusterIdentifier, #{}, #{}).
+
+-spec list_streams(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_streams_output(), tuple()} |
+    {error, any()} |
+    {error, list_streams_errors(), tuple()}.
+list_streams(Client, ClusterIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_streams(Client, ClusterIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_streams(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_streams_output(), tuple()} |
+    {error, any()} |
+    {error, list_streams_errors(), tuple()}.
+list_streams(Client, ClusterIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/stream/", aws_util:encode_uri(ClusterIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

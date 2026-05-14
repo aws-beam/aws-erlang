@@ -532,6 +532,7 @@
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_input(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
@@ -778,6 +779,15 @@
 
 
 %% Example:
+%% automated_snapshot_pause_request_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type automated_snapshot_pause_request_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_upgrade_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UpgradeHistories">> => list(upgrade_history())
@@ -849,6 +859,7 @@
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
@@ -1003,6 +1014,7 @@
 %%   <<"AdvancedOptions">> => advanced_options_status(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_status(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options_status(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"CognitoOptions">> => cognito_options_status(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options_status(),
@@ -1026,6 +1038,14 @@
 %%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_snapshot_pause_options_status() :: #{
+%%   <<"Options">> => automated_snapshot_pause_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type automated_snapshot_pause_options_status() :: #{binary() => any()}.
 
 %% Example:
 %% dissociate_package_request() :: #{}
@@ -1236,6 +1256,16 @@
 %% }
 -type upgrade_elasticsearch_domain_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% automated_snapshot_pause_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type automated_snapshot_pause_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_elasticsearch_domain_config_request() :: #{}
 -type describe_elasticsearch_domain_config_request() :: #{}.
@@ -1355,6 +1385,7 @@
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_output(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"Created">> => boolean(),

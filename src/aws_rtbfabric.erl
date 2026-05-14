@@ -20,10 +20,14 @@
 
 -export([accept_link/4,
          accept_link/5,
+         associate_certificate/3,
+         associate_certificate/4,
          create_inbound_external_link/3,
          create_inbound_external_link/4,
          create_link/3,
          create_link/4,
+         create_link_routing_rule/4,
+         create_link_routing_rule/5,
          create_outbound_external_link/3,
          create_outbound_external_link/4,
          create_requester_gateway/2,
@@ -34,18 +38,28 @@
          delete_inbound_external_link/5,
          delete_link/4,
          delete_link/5,
+         delete_link_routing_rule/5,
+         delete_link_routing_rule/6,
          delete_outbound_external_link/4,
          delete_outbound_external_link/5,
          delete_requester_gateway/3,
          delete_requester_gateway/4,
          delete_responder_gateway/3,
          delete_responder_gateway/4,
+         disassociate_certificate/3,
+         disassociate_certificate/4,
+         get_certificate_association/3,
+         get_certificate_association/5,
+         get_certificate_association/6,
          get_inbound_external_link/3,
          get_inbound_external_link/5,
          get_inbound_external_link/6,
          get_link/3,
          get_link/5,
          get_link/6,
+         get_link_routing_rule/4,
+         get_link_routing_rule/6,
+         get_link_routing_rule/7,
          get_outbound_external_link/3,
          get_outbound_external_link/5,
          get_outbound_external_link/6,
@@ -55,6 +69,12 @@
          get_responder_gateway/2,
          get_responder_gateway/4,
          get_responder_gateway/5,
+         list_certificate_associations/2,
+         list_certificate_associations/4,
+         list_certificate_associations/5,
+         list_link_routing_rules/3,
+         list_link_routing_rules/5,
+         list_link_routing_rules/6,
          list_links/2,
          list_links/4,
          list_links/5,
@@ -77,6 +97,8 @@
          update_link/5,
          update_link_module_flow/4,
          update_link_module_flow/5,
+         update_link_routing_rule/5,
+         update_link_routing_rule/6,
          update_requester_gateway/3,
          update_requester_gateway/4,
          update_responder_gateway/3,
@@ -109,6 +131,14 @@
 
 
 %% Example:
+%% list_certificate_associations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_certificate_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_link_response() :: #{
 %%   <<"linkId">> => string(),
 %%   <<"status">> => list(any())
@@ -121,6 +151,16 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_association_summary() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"associatedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type certificate_association_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_requester_gateway_request() :: #{}
@@ -135,6 +175,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_inbound_external_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_link_routing_rule_response() :: #{
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_link_routing_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -228,6 +276,14 @@
 
 
 %% Example:
+%% list_link_routing_rules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_link_routing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_inbound_external_link_response() :: #{
 %%   <<"attributes">> => link_attributes(),
 %%   <<"connectivityType">> => list(any()),
@@ -243,6 +299,17 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_inbound_external_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_certificate_association_response() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"associatedAt">> => [non_neg_integer()],
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_certificate_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -335,11 +402,36 @@
 
 
 %% Example:
+%% get_certificate_association_request() :: #{
+%%   <<"acmCertificateArn">> := string()
+%% }
+-type get_certificate_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_link_routing_rule_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_link_routing_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_links_response() :: #{
 %%   <<"links">> => list(list_links_response_structure()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_certificate_response() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type associate_certificate_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -349,6 +441,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_requester_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_string_key_value_pair() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type query_string_key_value_pair() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,6 +494,33 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_routing_rule_summary() :: #{
+%%   <<"conditions">> => rule_condition(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type link_routing_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_link_routing_rule_response() :: #{
+%%   <<"conditions">> => rule_condition(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_link_routing_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% reject_link_request() :: #{}
@@ -532,6 +659,16 @@
 
 
 %% Example:
+%% create_link_routing_rule_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"conditions">> := rule_condition(),
+%%   <<"priority">> := integer(),
+%%   <<"tags">> => map()
+%% }
+-type create_link_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% no_bid_action() :: #{
 %%   <<"noBidReasonCode">> => [integer()]
 %% }
@@ -553,6 +690,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_requester_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_certificate_request() :: #{
+%%   <<"acmCertificateArn">> := string()
+%% }
+-type disassociate_certificate_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +731,23 @@
 
 
 %% Example:
+%% associate_certificate_request() :: #{
+%%   <<"acmCertificateArn">> := string(),
+%%   <<"clientToken">> := [string()]
+%% }
+-type associate_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_link_routing_rule_response() :: #{
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_link_routing_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_responder_gateway_request() :: #{
 %%   <<"clientToken">> := [string()],
 %%   <<"description">> => [string()],
@@ -605,6 +766,10 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_link_routing_rule_request() :: #{}
+-type delete_link_routing_rule_request() :: #{}.
 
 
 %% Example:
@@ -676,6 +841,27 @@
 
 
 %% Example:
+%% disassociate_certificate_response() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type disassociate_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_condition() :: #{
+%%   <<"hostHeader">> => [string()],
+%%   <<"hostHeaderWildcard">> => [string()],
+%%   <<"pathExact">> => [string()],
+%%   <<"pathPrefix">> => [string()],
+%%   <<"queryStringEquals">> => query_string_key_value_pair(),
+%%   <<"queryStringExists">> => [string()]
+%% }
+-type rule_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% link_log_settings() :: #{
 %%   <<"applicationLogs">> => link_application_log_configuration()
 %% }
@@ -705,6 +891,14 @@
 %%   <<"unhealthyThresholdCount">> => [integer()]
 %% }
 -type health_check_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificate_associations_response() :: #{
+%%   <<"certificateAssociations">> => list(certificate_association_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_certificate_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -768,6 +962,14 @@
 
 
 %% Example:
+%% update_link_routing_rule_request() :: #{
+%%   <<"conditions">> := rule_condition(),
+%%   <<"priority">> := integer()
+%% }
+-type update_link_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_responder_gateway_response() :: #{
 %%   <<"externalInboundEndpoint">> => string(),
 %%   <<"gatewayId">> => string(),
@@ -783,6 +985,14 @@
 %% }
 -type listener_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_link_routing_rules_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"rules">> => list(link_routing_rule_summary())
+%% }
+-type list_link_routing_rules_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_link_request() :: #{}
 -type get_link_request() :: #{}.
@@ -795,6 +1005,10 @@
 %%   <<"timeoutInMillis">> => float()
 %% }
 -type accept_link_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_link_routing_rule_request() :: #{}
+-type get_link_routing_rule_request() :: #{}.
 
 
 %% Example:
@@ -820,6 +1034,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type associate_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_inbound_external_link_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -838,13 +1061,23 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_link_routing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_outbound_external_link_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_requester_gateway_errors() ::
     throttling_exception() | 
@@ -878,6 +1111,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_link_routing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_outbound_external_link_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -891,9 +1132,27 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_responder_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_certificate_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -915,6 +1174,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_link_routing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_outbound_external_link_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -930,6 +1196,20 @@
     resource_not_found_exception().
 
 -type get_responder_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_certificate_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_link_routing_rules_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -997,6 +1277,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_link_routing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_requester_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1036,6 +1324,40 @@ accept_link(Client, GatewayId, LinkId, Input) ->
 accept_link(Client, GatewayId, LinkId, Input0, Options0) ->
     Method = post,
     Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/accept"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an ACM certificate with a responder gateway.
+-spec associate_certificate(aws_client:aws_client(), binary() | list(), associate_certificate_request()) ->
+    {ok, associate_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, associate_certificate_errors(), tuple()}.
+associate_certificate(Client, GatewayId, Input) ->
+    associate_certificate(Client, GatewayId, Input, []).
+
+-spec associate_certificate(aws_client:aws_client(), binary() | list(), associate_certificate_request(), proplists:proplist()) ->
+    {ok, associate_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, associate_certificate_errors(), tuple()}.
+associate_certificate(Client, GatewayId, Input0, Options0) ->
+    Method = post,
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/certificate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1107,6 +1429,44 @@ create_link(Client, GatewayId, Input) ->
 create_link(Client, GatewayId, Input0, Options0) ->
     Method = post,
     Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/create-link"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a routing rule for a link.
+%%
+%% Routing rules use priority-based evaluation where lower priority numbers
+%% are evaluated first. Each rule specifies conditions that must all match
+%% for the rule to apply.
+-spec create_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_link_routing_rule_request()) ->
+    {ok, create_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_link_routing_rule_errors(), tuple()}.
+create_link_routing_rule(Client, GatewayId, LinkId, Input) ->
+    create_link_routing_rule(Client, GatewayId, LinkId, Input, []).
+
+-spec create_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_link_routing_rule_request(), proplists:proplist()) ->
+    {ok, create_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_link_routing_rule_errors(), tuple()}.
+create_link_routing_rule(Client, GatewayId, LinkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/routing-rule"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1301,6 +1661,40 @@ delete_link(Client, GatewayId, LinkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a routing rule from a link.
+-spec delete_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_link_routing_rule_request()) ->
+    {ok, delete_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_link_routing_rule_errors(), tuple()}.
+delete_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input) ->
+    delete_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input, []).
+
+-spec delete_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_link_routing_rule_request(), proplists:proplist()) ->
+    {ok, delete_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_link_routing_rule_errors(), tuple()}.
+delete_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/routing-rule/", aws_util:encode_uri(RuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an outbound external link.
 -spec delete_outbound_external_link(aws_client:aws_client(), binary() | list(), binary() | list(), delete_outbound_external_link_request()) ->
     {ok, delete_outbound_external_link_response(), tuple()} |
@@ -1403,6 +1797,83 @@ delete_responder_gateway(Client, GatewayId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a certificate association from a responder gateway.
+-spec disassociate_certificate(aws_client:aws_client(), binary() | list(), disassociate_certificate_request()) ->
+    {ok, disassociate_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_certificate_errors(), tuple()}.
+disassociate_certificate(Client, GatewayId, Input) ->
+    disassociate_certificate(Client, GatewayId, Input, []).
+
+-spec disassociate_certificate(aws_client:aws_client(), binary() | list(), disassociate_certificate_request(), proplists:proplist()) ->
+    {ok, disassociate_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_certificate_errors(), tuple()}.
+disassociate_certificate(Client, GatewayId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/certificate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"acmCertificateArn">>, <<"acmCertificateArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a certificate association with a responder
+%% gateway.
+-spec get_certificate_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_certificate_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_association_errors(), tuple()}.
+get_certificate_association(Client, GatewayId, AcmCertificateArn)
+  when is_map(Client) ->
+    get_certificate_association(Client, GatewayId, AcmCertificateArn, #{}, #{}).
+
+-spec get_certificate_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_certificate_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_association_errors(), tuple()}.
+get_certificate_association(Client, GatewayId, AcmCertificateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_certificate_association(Client, GatewayId, AcmCertificateArn, QueryMap, HeadersMap, []).
+
+-spec get_certificate_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_certificate_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_association_errors(), tuple()}.
+get_certificate_association(Client, GatewayId, AcmCertificateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/certificate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"acmCertificateArn">>, AcmCertificateArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about an inbound external link.
 -spec get_inbound_external_link(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_inbound_external_link_response(), tuple()} |
@@ -1467,6 +1938,43 @@ get_link(Client, GatewayId, LinkId, QueryMap, HeadersMap)
 get_link(Client, GatewayId, LinkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a routing rule for a link.
+-spec get_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_link_routing_rule_errors(), tuple()}.
+get_link_routing_rule(Client, GatewayId, LinkId, RuleId)
+  when is_map(Client) ->
+    get_link_routing_rule(Client, GatewayId, LinkId, RuleId, #{}, #{}).
+
+-spec get_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_link_routing_rule_errors(), tuple()}.
+get_link_routing_rule(Client, GatewayId, LinkId, RuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_link_routing_rule(Client, GatewayId, LinkId, RuleId, QueryMap, HeadersMap, []).
+
+-spec get_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_link_routing_rule_errors(), tuple()}.
+get_link_routing_rule(Client, GatewayId, LinkId, RuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/routing-rule/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1588,6 +2096,90 @@ get_responder_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the certificate associations for a responder gateway.
+-spec list_certificate_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_certificate_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_associations_errors(), tuple()}.
+list_certificate_associations(Client, GatewayId)
+  when is_map(Client) ->
+    list_certificate_associations(Client, GatewayId, #{}, #{}).
+
+-spec list_certificate_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_certificate_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_associations_errors(), tuple()}.
+list_certificate_associations(Client, GatewayId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_certificate_associations(Client, GatewayId, QueryMap, HeadersMap, []).
+
+-spec list_certificate_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_certificate_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_associations_errors(), tuple()}.
+list_certificate_associations(Client, GatewayId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/certificates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the routing rules for a link.
+-spec list_link_routing_rules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_link_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_link_routing_rules_errors(), tuple()}.
+list_link_routing_rules(Client, GatewayId, LinkId)
+  when is_map(Client) ->
+    list_link_routing_rules(Client, GatewayId, LinkId, #{}, #{}).
+
+-spec list_link_routing_rules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_link_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_link_routing_rules_errors(), tuple()}.
+list_link_routing_rules(Client, GatewayId, LinkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_link_routing_rules(Client, GatewayId, LinkId, QueryMap, HeadersMap, []).
+
+-spec list_link_routing_rules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_link_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_link_routing_rules_errors(), tuple()}.
+list_link_routing_rules(Client, GatewayId, LinkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/routing-rules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1914,6 +2506,40 @@ update_link_module_flow(Client, GatewayId, LinkId, Input) ->
 update_link_module_flow(Client, GatewayId, LinkId, Input0, Options0) ->
     Method = post,
     Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/module-flow"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a routing rule for a link.
+-spec update_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_link_routing_rule_request()) ->
+    {ok, update_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_link_routing_rule_errors(), tuple()}.
+update_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input) ->
+    update_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input, []).
+
+-spec update_link_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_link_routing_rule_request(), proplists:proplist()) ->
+    {ok, update_link_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_link_routing_rule_errors(), tuple()}.
+update_link_routing_rule(Client, GatewayId, LinkId, RuleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/responder-gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/routing-rule/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

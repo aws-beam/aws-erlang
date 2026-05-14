@@ -731,6 +731,7 @@
 %%   <<"AdvancedOptions">> => advanced_options_status(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_status(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options_status(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"ClusterConfig">> => cluster_config_status(),
 %%   <<"CognitoOptions">> => cognito_options_status(),
@@ -1242,6 +1243,7 @@
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_input(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
@@ -1371,6 +1373,15 @@
 
 
 %% Example:
+%% automated_snapshot_pause_request_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type automated_snapshot_pause_request_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_insight_details_request() :: #{
 %%   <<"Entity">> := insight_entity(),
 %%   <<"InsightId">> := string(),
@@ -1420,6 +1431,7 @@
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
@@ -1795,6 +1807,14 @@
 
 
 %% Example:
+%% automated_snapshot_pause_options_status() :: #{
+%%   <<"Options">> => automated_snapshot_pause_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type automated_snapshot_pause_options_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% inbound_connection() :: #{
 %%   <<"ConnectionId">> => string(),
 %%   <<"ConnectionMode">> => list(any()),
@@ -1930,6 +1950,7 @@
 %%   <<"SoftwareUpdateOptions">> => software_update_options(),
 %%   <<"VPCOptions">> => vpc_derived_info(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options(),
 %%   <<"AccessPolicies">> => string(),
 %%   <<"EBSOptions">> => ebs_options(),
 %%   <<"Endpoint">> => string(),
@@ -2229,6 +2250,16 @@
 %% Example:
 %% describe_domain_request() :: #{}
 -type describe_domain_request() :: #{}.
+
+
+%% Example:
+%% automated_snapshot_pause_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type automated_snapshot_pause_options() :: #{binary() => any()}.
 
 
 %% Example:

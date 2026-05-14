@@ -281,7 +281,8 @@
 %% Example:
 %% local_time_zone_config() :: #{
 %%   <<"defaultTimeZone">> => string(),
-%%   <<"localTimeZoneDetection">> => list(string())
+%%   <<"localTimeZoneDetection">> => list(string()),
+%%   <<"localTimeZoneDetectionScope">> => string()
 %% }
 -type local_time_zone_config() :: #{binary() => any()}.
 

@@ -83,9 +83,9 @@
          get_linked_whats_app_business_account_phone_number/5,
          get_whats_app_message_media/2,
          get_whats_app_message_media/3,
-         get_whats_app_message_template/3,
+         get_whats_app_message_template/2,
+         get_whats_app_message_template/4,
          get_whats_app_message_template/5,
-         get_whats_app_message_template/6,
          list_linked_whats_app_business_accounts/1,
          list_linked_whats_app_business_accounts/3,
          list_linked_whats_app_business_accounts/4,
@@ -130,6 +130,7 @@
 
 %% Example:
 %% associate_whats_app_business_account_output() :: #{
+%%   <<"linkedWhatsAppBusinessAccountId">> => string(),
 %%   <<"signupCallbackResult">> => whats_app_signup_callback_result(),
 %%   <<"statusCode">> => [integer()]
 %% }
@@ -155,10 +156,12 @@
 %% update_whats_app_message_template_input() :: #{
 %%   <<"ctaUrlLinkTrackingOptedOut">> => boolean(),
 %%   <<"id">> := string(),
-%%   <<"metaTemplateId">> := string(),
+%%   <<"metaTemplateId">> => string(),
 %%   <<"parameterFormat">> => string(),
 %%   <<"templateCategory">> => string(),
-%%   <<"templateComponents">> => binary()
+%%   <<"templateComponents">> => binary(),
+%%   <<"templateLanguageCode">> => string(),
+%%   <<"templateName">> => string()
 %% }
 -type update_whats_app_message_template_input() :: #{binary() => any()}.
 
@@ -215,7 +218,9 @@
 %% Example:
 %% get_whats_app_message_template_input() :: #{
 %%   <<"id">> := string(),
-%%   <<"metaTemplateId">> := string()
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateLanguageCode">> => string(),
+%%   <<"templateName">> => string()
 %% }
 -type get_whats_app_message_template_input() :: #{binary() => any()}.
 
@@ -233,6 +238,7 @@
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
+%%   <<"marketingMessagesOnboardingStatus">> => string(),
 %%   <<"registrationStatus">> => list(any()),
 %%   <<"wabaId">> => string(),
 %%   <<"wabaName">> => string()
@@ -347,6 +353,7 @@
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
+%%   <<"marketingMessagesOnboardingStatus">> => string(),
 %%   <<"phoneNumbers">> => list(whats_app_phone_number_summary()),
 %%   <<"registrationStatus">> => list(any()),
 %%   <<"wabaId">> => string(),
@@ -1242,27 +1249,27 @@ get_whats_app_message_media(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specific WhatsApp message template.
--spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_whats_app_message_template_output(), tuple()} |
     {error, any()} |
     {error, get_whats_app_message_template_errors(), tuple()}.
-get_whats_app_message_template(Client, Id, MetaTemplateId)
+get_whats_app_message_template(Client, Id)
   when is_map(Client) ->
-    get_whats_app_message_template(Client, Id, MetaTemplateId, #{}, #{}).
+    get_whats_app_message_template(Client, Id, #{}, #{}).
 
--spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_whats_app_message_template_output(), tuple()} |
     {error, any()} |
     {error, get_whats_app_message_template_errors(), tuple()}.
-get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap)
+get_whats_app_message_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap, []).
+    get_whats_app_message_template(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_whats_app_message_template_output(), tuple()} |
     {error, any()} |
     {error, get_whats_app_message_template_errors(), tuple()}.
-get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap, Options0)
+get_whats_app_message_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/whatsapp/template"],
     SuccessStatusCode = 200,
@@ -1277,7 +1284,9 @@ get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap,
     Query0_ =
       [
         {<<"id">>, Id},
-        {<<"metaTemplateId">>, MetaTemplateId}
+        {<<"metaTemplateId">>, maps:get(<<"metaTemplateId">>, QueryMap, undefined)},
+        {<<"templateLanguageCode">>, maps:get(<<"templateLanguageCode">>, QueryMap, undefined)},
+        {<<"templateName">>, maps:get(<<"templateName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

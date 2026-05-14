@@ -1392,7 +1392,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_pricing_plan_errors() ::
     throttling_exception() | 

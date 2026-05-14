@@ -19179,7 +19179,6 @@
 %% volume_modification() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ModificationState">> => list(any()),
-%%   <<"Operator">> => operator_response(),
 %%   <<"OriginalIops">> => integer(),
 %%   <<"OriginalMultiAttachEnabled">> => boolean(),
 %%   <<"OriginalSize">> => integer(),

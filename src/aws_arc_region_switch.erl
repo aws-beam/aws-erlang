@@ -273,6 +273,14 @@
 -type list_route53_health_checks_request() :: #{binary() => any()}.
 
 %% Example:
+%% event_source_mapping() :: #{
+%%   <<"arn">> => string(),
+%%   <<"crossAccountRole">> => string(),
+%%   <<"externalId">> => [string()]
+%% }
+-type event_source_mapping() :: #{binary() => any()}.
+
+%% Example:
 %% associated_alarm() :: #{
 %%   <<"alarmType">> => list(any()),
 %%   <<"crossAccountRole">> => string(),
@@ -651,6 +659,15 @@
 -type abbreviated_execution() :: #{binary() => any()}.
 
 %% Example:
+%% lambda_event_source_mapping_configuration() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"regionEventSourceMappings">> => map(),
+%%   <<"timeoutMinutes">> => [integer()],
+%%   <<"ungraceful">> => lambda_event_source_mapping_ungraceful()
+%% }
+-type lambda_event_source_mapping_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% start_plan_execution_request() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"comment">> => string(),
@@ -816,6 +833,12 @@
 %%   <<"timeoutMinutes">> => [integer()]
 %% }
 -type rds_promote_read_replica_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_event_source_mapping_ungraceful() :: #{
+%%   <<"behavior">> => list(any())
+%% }
+-type lambda_event_source_mapping_ungraceful() :: #{binary() => any()}.
 
 %% Example:
 %% custom_action_lambda_configuration() :: #{

@@ -8059,6 +8059,10 @@ reset_cluster_parameter_group(Client, Input, Options)
 %%
 %% dc2.8xlarge
 %%
+%% rg.xlarge
+%%
+%% rg.4xlarge
+%%
 %% ra3.large
 %%
 %% ra3.xlplus

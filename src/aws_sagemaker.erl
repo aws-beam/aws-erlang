@@ -1491,6 +1491,7 @@
 %%   <<"CapacityReservation">> => capacity_reservation(),
 %%   <<"CustomerEni">> => [string()],
 %%   <<"FailureMessage">> => [string()],
+%%   <<"InstanceRequirementsEniConfigurations">> => list(instance_requirements_eni_configuration()),
 %%   <<"LcsExecutionState">> => [string()],
 %%   <<"NodeLogicalId">> => string()
 %% }
@@ -2071,6 +2072,7 @@
 %% describe_model_package_group_output() :: #{
 %%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ManagedConfiguration">> => managed_configuration(),
 %%   <<"ModelPackageGroupArn">> => string(),
 %%   <<"ModelPackageGroupDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
@@ -7803,6 +7805,7 @@
 %%   <<"Description">> => [string()],
 %%   <<"EventDetails">> => event_details(),
 %%   <<"EventId">> => string(),
+%%   <<"EventLevel">> => list(any()),
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
@@ -7949,6 +7952,13 @@
 %%   <<"S3DataSource">> => s3_model_data_source()
 %% }
 -type additional_model_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% instance_requirements_eni_configuration() :: #{
+%%   <<"AdditionalEnis">> => additional_enis(),
+%%   <<"CustomerEni">> => [string()]
+%% }
+-type instance_requirements_eni_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% start_inference_experiment_response() :: #{
@@ -8530,6 +8540,7 @@
 %%   <<"ClusterName">> => string(),
 %%   <<"Description">> => [string()],
 %%   <<"EventId">> => string(),
+%%   <<"EventLevel">> => list(any()),
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
@@ -8602,6 +8613,7 @@
 
 %% Example:
 %% create_model_package_group_input() :: #{
+%%   <<"ManagedConfiguration">> => managed_configuration(),
 %%   <<"ModelPackageGroupDescription">> => string(),
 %%   <<"ModelPackageGroupName">> := string(),
 %%   <<"Tags">> => list(tag())
@@ -8763,6 +8775,7 @@
 %%   <<"Domain">> => string(),
 %%   <<"DriftCheckBaselines">> => drift_check_baselines(),
 %%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ManagedStorageType">> => list(any()),
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),
@@ -9884,6 +9897,7 @@
 %% Example:
 %% model_package_group_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ManagedConfiguration">> => managed_configuration(),
 %%   <<"ModelPackageGroupArn">> => string(),
 %%   <<"ModelPackageGroupDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
@@ -11016,6 +11030,7 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"VpcConfig">> => vpc_config(),
 %%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
+%%   <<"WarmPoolStatus">> => warm_pool_status(),
 %%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
 %%   <<"RetryStrategy">> => retry_strategy(),
 %%   <<"ModelArtifacts">> => model_artifacts(),
@@ -11839,7 +11854,8 @@
 %%   <<"LifecycleConfigArn">> => string(),
 %%   <<"SageMakerImageArn">> => string(),
 %%   <<"SageMakerImageVersionAlias">> => string(),
-%%   <<"SageMakerImageVersionArn">> => string()
+%%   <<"SageMakerImageVersionArn">> => string(),
+%%   <<"TrainingPlanArn">> => string()
 %% }
 -type resource_spec() :: #{binary() => any()}.
 
@@ -12567,6 +12583,7 @@
 
 %% Example:
 %% studio_web_portal_settings() :: #{
+%%   <<"ExecutionRoleSessionNameMode">> => list(any()),
 %%   <<"HiddenAppTypes">> => list(list(any())()),
 %%   <<"HiddenInstanceTypes">> => list(list(any())()),
 %%   <<"HiddenMlTools">> => list(list(any())()),
@@ -12958,6 +12975,12 @@
 %%   <<"TrainingJobArn">> => string()
 %% }
 -type create_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_configuration() :: #{
+%%   <<"ManagedStorageType">> => list(any())
+%% }
+-type managed_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_model_bias_job_definition_request() :: #{
@@ -13608,6 +13631,7 @@
 %%   <<"InferenceSpecification">> => inference_specification(),
 %%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ManagedStorageType">> => list(any()),
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),

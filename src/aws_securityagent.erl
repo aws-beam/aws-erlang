@@ -18,12 +18,20 @@
 
 -export([add_artifact/2,
          add_artifact/3,
+         batch_delete_code_reviews/2,
+         batch_delete_code_reviews/3,
          batch_delete_pentests/2,
          batch_delete_pentests/3,
          batch_get_agent_spaces/2,
          batch_get_agent_spaces/3,
          batch_get_artifact_metadata/2,
          batch_get_artifact_metadata/3,
+         batch_get_code_review_job_tasks/2,
+         batch_get_code_review_job_tasks/3,
+         batch_get_code_review_jobs/2,
+         batch_get_code_review_jobs/3,
+         batch_get_code_reviews/2,
+         batch_get_code_reviews/3,
          batch_get_findings/2,
          batch_get_findings/3,
          batch_get_pentest_job_tasks/2,
@@ -38,6 +46,8 @@
          create_agent_space/3,
          create_application/2,
          create_application/3,
+         create_code_review/2,
+         create_code_review/3,
          create_integration/2,
          create_integration/3,
          create_membership/2,
@@ -72,6 +82,12 @@
          list_applications/3,
          list_artifacts/2,
          list_artifacts/3,
+         list_code_review_job_tasks/2,
+         list_code_review_job_tasks/3,
+         list_code_review_jobs_for_code_review/2,
+         list_code_review_jobs_for_code_review/3,
+         list_code_reviews/2,
+         list_code_reviews/3,
          list_discovered_endpoints/2,
          list_discovered_endpoints/3,
          list_findings/2,
@@ -95,8 +111,12 @@
          list_target_domains/3,
          start_code_remediation/2,
          start_code_remediation/3,
+         start_code_review_job/2,
+         start_code_review_job/3,
          start_pentest_job/2,
          start_pentest_job/3,
+         stop_code_review_job/2,
+         stop_code_review_job/3,
          stop_pentest_job/2,
          stop_pentest_job/3,
          tag_resource/3,
@@ -107,6 +127,8 @@
          update_agent_space/3,
          update_application/2,
          update_application/3,
+         update_code_review/2,
+         update_code_review/3,
          update_finding/2,
          update_finding/3,
          update_integrated_resources/2,
@@ -213,6 +235,28 @@
 
 
 %% Example:
+%% list_code_review_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"categoryName">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stepName">> => list(any())
+%% }
+-type list_code_review_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_review_jobs_for_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_jobs_for_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_space_summary() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -242,6 +286,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_location() :: #{
+%%   <<"filePath">> => [string()],
+%%   <<"label">> => [string()],
+%%   <<"lineEnd">> => [integer()],
+%%   <<"lineStart">> => [integer()]
+%% }
+-type code_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,6 +334,14 @@
 
 
 %% Example:
+%% batch_get_code_review_jobs_output() :: #{
+%%   <<"codeReviewJobs">> => list(code_review_job()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_review_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_metadata() :: #{
 %%   <<"email">> => string(),
 %%   <<"username">> => [string()]
@@ -288,11 +350,32 @@
 
 
 %% Example:
+%% update_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> := [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type update_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_artifact_input() :: #{
 %%   <<"agentSpaceId">> := string(),
 %%   <<"artifactId">> := string()
 %% }
 -type delete_artifact_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_reviews_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewIds">> := list([string()]())
+%% }
+-type batch_get_code_reviews_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -306,6 +389,8 @@
 %% Example:
 %% finding_summary() :: #{
 %%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
 %%   <<"confidence">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"findingId">> => [string()],
@@ -350,6 +435,21 @@
 
 
 %% Example:
+%% code_review() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_discovered_endpoints_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"maxResults">> => integer(),
@@ -382,6 +482,21 @@
 %%   <<"verificationStatus">> => list(any())
 %% }
 -type target_domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_code_review_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -469,6 +584,14 @@
 
 
 %% Example:
+%% batch_delete_code_reviews_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewIds">> := list([string()]())
+%% }
+-type batch_delete_code_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_pentest_jobs_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"pentestJobIds">> := list([string()]())
@@ -483,6 +606,14 @@
 %%   <<"verificationMethod">> := list(any())
 %% }
 -type create_target_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_code_review_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> := [string()]
+%% }
+-type stop_code_review_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -504,11 +635,28 @@
 
 
 %% Example:
+%% list_code_reviews_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_target_domains_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"targetDomainSummaries">> => list(target_domain_summary())
 %% }
 -type list_target_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_code_reviews_output() :: #{
+%%   <<"deleted">> => list([string()]()),
+%%   <<"failed">> => list(delete_code_review_failure())
+%% }
+-type batch_delete_code_reviews_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -589,6 +737,14 @@
 
 
 %% Example:
+%% batch_get_code_review_job_tasks_output() :: #{
+%%   <<"codeReviewJobTasks">> => list(code_review_job_task()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_review_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integrated_resources_input() :: #{
 %%   <<"agentSpaceId">> := string(),
 %%   <<"integrationId">> => string(),
@@ -607,6 +763,21 @@
 
 
 %% Example:
+%% update_code_review_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_space() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"awsResources">> => aws_resources(),
@@ -619,6 +790,19 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type agent_space() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_review_job_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type start_code_review_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -647,6 +831,26 @@
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type update_pentest_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_review_failure() :: #{
+%%   <<"codeReviewId">> => [string()],
+%%   <<"reason">> => [string()]
+%% }
+-type delete_code_review_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> := assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> := [string()]
+%% }
+-type create_code_review_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -742,7 +946,10 @@
 %% finding() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"attackScript">> => [string()],
+%%   <<"codeLocations">> => list(code_location()),
 %%   <<"codeRemediationTask">> => code_remediation_task(),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
 %%   <<"confidence">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
@@ -771,6 +978,14 @@
 
 
 %% Example:
+%% batch_get_code_review_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobTaskIds">> := list([string()]())
+%% }
+-type batch_get_code_review_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_finding_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"findingId">> := [string()],
@@ -793,11 +1008,12 @@
 %% Example:
 %% list_findings_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> => [string()],
 %%   <<"confidence">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => [string()],
 %%   <<"nextToken">> => string(),
-%%   <<"pentestJobId">> := [string()],
+%%   <<"pentestJobId">> => [string()],
 %%   <<"riskLevel">> => list(any()),
 %%   <<"riskType">> => [string()],
 %%   <<"status">> => list(any())
@@ -911,6 +1127,18 @@
 
 
 %% Example:
+%% list_code_review_job_tasks_output() :: #{
+%%   <<"codeReviewJobTaskSummaries">> => list(code_review_job_task_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_job_tasks_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_code_review_job_output() :: #{}
+-type stop_code_review_job_output() :: #{}.
+
+
+%% Example:
 %% source_code_repository() :: #{
 %%   <<"s3Location">> => [string()]
 %% }
@@ -945,6 +1173,17 @@
 
 
 %% Example:
+%% code_review_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% add_artifact_input() :: #{
 %%   <<"agentSpaceId">> := string(),
 %%   <<"artifactContent">> := [binary()],
@@ -974,6 +1213,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_reviews_output() :: #{
+%%   <<"codeReviews">> => list(code_review()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_reviews_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1154,6 +1401,14 @@
 
 
 %% Example:
+%% start_code_review_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewId">> := [string()]
+%% }
+-type start_code_review_job_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% pentest_job_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"pentestId">> => [string()],
@@ -1168,8 +1423,9 @@
 %% Example:
 %% start_code_remediation_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> => [string()],
 %%   <<"findingIds">> := list([string()]()),
-%%   <<"pentestJobId">> := [string()]
+%%   <<"pentestJobId">> => [string()]
 %% }
 -type start_code_remediation_input() :: #{binary() => any()}.
 
@@ -1218,6 +1474,21 @@
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
 
+
+%% Example:
+%% code_review_job_task_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"riskType">> => list(any()),
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job_task_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
@@ -1232,12 +1503,42 @@
 
 
 %% Example:
+%% list_code_review_jobs_for_code_review_output() :: #{
+%%   <<"codeReviewJobSummaries">> => list(code_review_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_jobs_for_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job() :: #{
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"documents">> => list(document_info()),
+%%   <<"errorInformation">> => error_information(),
+%%   <<"executionContext">> => list(execution_context()),
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"overview">> => [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"status">> => list(any()),
+%%   <<"steps">> => list(step()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1377,6 +1678,14 @@
 
 
 %% Example:
+%% list_code_reviews_output() :: #{
+%%   <<"codeReviewSummaries">> => list(code_review_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_reviews_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_resources() :: #{
 %%   <<"iamRoles">> => list(string()),
 %%   <<"lambdaFunctionArns">> => list(string()),
@@ -1402,6 +1711,18 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_artifacts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job_summary() :: #{
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1467,6 +1788,14 @@
 %%   <<"taskIds">> := list([string()]())
 %% }
 -type batch_get_pentest_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_review_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobIds">> := list([string()]())
+%% }
+-type batch_get_code_review_jobs_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1558,6 +1887,24 @@
 %%   <<"provider">> := list(any())
 %% }
 -type initiate_provider_registration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job_task() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"categories">> => list(category()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"logsLocation">> => log_location(),
+%%   <<"riskType">> => list(any()),
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job_task() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1716,6 +2063,38 @@ add_artifact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes one or more code reviews from an agent space.
+-spec batch_delete_code_reviews(aws_client:aws_client(), batch_delete_code_reviews_input()) ->
+    {ok, batch_delete_code_reviews_output(), tuple()} |
+    {error, any()}.
+batch_delete_code_reviews(Client, Input) ->
+    batch_delete_code_reviews(Client, Input, []).
+
+-spec batch_delete_code_reviews(aws_client:aws_client(), batch_delete_code_reviews_input(), proplists:proplist()) ->
+    {ok, batch_delete_code_reviews_output(), tuple()} |
+    {error, any()}.
+batch_delete_code_reviews(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchDeleteCodeReviews"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes one or more pentests from an agent space.
 -spec batch_delete_pentests(aws_client:aws_client(), batch_delete_pentests_input()) ->
     {ok, batch_delete_pentests_output(), tuple()} |
@@ -1795,6 +2174,105 @@ batch_get_artifact_metadata(Client, Input) ->
 batch_get_artifact_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetArtifactMetadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more tasks within a code review
+%% job.
+-spec batch_get_code_review_job_tasks(aws_client:aws_client(), batch_get_code_review_job_tasks_input()) ->
+    {ok, batch_get_code_review_job_tasks_output(), tuple()} |
+    {error, any()}.
+batch_get_code_review_job_tasks(Client, Input) ->
+    batch_get_code_review_job_tasks(Client, Input, []).
+
+-spec batch_get_code_review_job_tasks(aws_client:aws_client(), batch_get_code_review_job_tasks_input(), proplists:proplist()) ->
+    {ok, batch_get_code_review_job_tasks_output(), tuple()} |
+    {error, any()}.
+batch_get_code_review_job_tasks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetCodeReviewJobTasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more code review jobs in an agent
+%% space.
+-spec batch_get_code_review_jobs(aws_client:aws_client(), batch_get_code_review_jobs_input()) ->
+    {ok, batch_get_code_review_jobs_output(), tuple()} |
+    {error, any()}.
+batch_get_code_review_jobs(Client, Input) ->
+    batch_get_code_review_jobs(Client, Input, []).
+
+-spec batch_get_code_review_jobs(aws_client:aws_client(), batch_get_code_review_jobs_input(), proplists:proplist()) ->
+    {ok, batch_get_code_review_jobs_output(), tuple()} |
+    {error, any()}.
+batch_get_code_review_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetCodeReviewJobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more code reviews in an agent
+%% space.
+-spec batch_get_code_reviews(aws_client:aws_client(), batch_get_code_reviews_input()) ->
+    {ok, batch_get_code_reviews_output(), tuple()} |
+    {error, any()}.
+batch_get_code_reviews(Client, Input) ->
+    batch_get_code_reviews(Client, Input, []).
+
+-spec batch_get_code_reviews(aws_client:aws_client(), batch_get_code_reviews_input(), proplists:proplist()) ->
+    {ok, batch_get_code_reviews_output(), tuple()} |
+    {error, any()}.
+batch_get_code_reviews(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetCodeReviews"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2027,6 +2505,41 @@ create_application(Client, Input) ->
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateApplication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new code review configuration in an agent space.
+%%
+%% A code review defines the parameters for automated security-focused code
+%% analysis.
+-spec create_code_review(aws_client:aws_client(), create_code_review_input()) ->
+    {ok, create_code_review_output(), tuple()} |
+    {error, any()}.
+create_code_review(Client, Input) ->
+    create_code_review(Client, Input, []).
+
+-spec create_code_review(aws_client:aws_client(), create_code_review_input(), proplists:proplist()) ->
+    {ok, create_code_review_output(), tuple()} |
+    {error, any()}.
+create_code_review(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateCodeReview"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2620,6 +3133,105 @@ list_artifacts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a paginated list of task summaries for the specified code
+%% review job, optionally filtered by step name or category.
+-spec list_code_review_job_tasks(aws_client:aws_client(), list_code_review_job_tasks_input()) ->
+    {ok, list_code_review_job_tasks_output(), tuple()} |
+    {error, any()}.
+list_code_review_job_tasks(Client, Input) ->
+    list_code_review_job_tasks(Client, Input, []).
+
+-spec list_code_review_job_tasks(aws_client:aws_client(), list_code_review_job_tasks_input(), proplists:proplist()) ->
+    {ok, list_code_review_job_tasks_output(), tuple()} |
+    {error, any()}.
+list_code_review_job_tasks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListCodeReviewJobTasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of code review job summaries for the
+%% specified code review configuration.
+-spec list_code_review_jobs_for_code_review(aws_client:aws_client(), list_code_review_jobs_for_code_review_input()) ->
+    {ok, list_code_review_jobs_for_code_review_output(), tuple()} |
+    {error, any()}.
+list_code_review_jobs_for_code_review(Client, Input) ->
+    list_code_review_jobs_for_code_review(Client, Input, []).
+
+-spec list_code_review_jobs_for_code_review(aws_client:aws_client(), list_code_review_jobs_for_code_review_input(), proplists:proplist()) ->
+    {ok, list_code_review_jobs_for_code_review_output(), tuple()} |
+    {error, any()}.
+list_code_review_jobs_for_code_review(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListCodeReviewJobsForCodeReview"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of code review summaries for the specified
+%% agent space.
+-spec list_code_reviews(aws_client:aws_client(), list_code_reviews_input()) ->
+    {ok, list_code_reviews_output(), tuple()} |
+    {error, any()}.
+list_code_reviews(Client, Input) ->
+    list_code_reviews(Client, Input, []).
+
+-spec list_code_reviews(aws_client:aws_client(), list_code_reviews_input(), proplists:proplist()) ->
+    {ok, list_code_reviews_output(), tuple()} |
+    {error, any()}.
+list_code_reviews(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListCodeReviews"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a paginated list of endpoints discovered during a pentest job
 %% execution.
 -spec list_discovered_endpoints(aws_client:aws_client(), list_discovered_endpoints_input()) ->
@@ -2988,6 +3600,41 @@ start_code_remediation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a new code review job for a code review configuration.
+%%
+%% The job executes the security-focused code analysis defined in the code
+%% review.
+-spec start_code_review_job(aws_client:aws_client(), start_code_review_job_input()) ->
+    {ok, start_code_review_job_output(), tuple()} |
+    {error, any()}.
+start_code_review_job(Client, Input) ->
+    start_code_review_job(Client, Input, []).
+
+-spec start_code_review_job(aws_client:aws_client(), start_code_review_job_input(), proplists:proplist()) ->
+    {ok, start_code_review_job_output(), tuple()} |
+    {error, any()}.
+start_code_review_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartCodeReviewJob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts a new pentest job for a pentest configuration.
 %%
 %% The job executes the security tests defined in the pentest.
@@ -3003,6 +3650,41 @@ start_pentest_job(Client, Input) ->
 start_pentest_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartPentestJob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running code review job.
+%%
+%% The job transitions to a stopping state and then to stopped after cleanup
+%% completes.
+-spec stop_code_review_job(aws_client:aws_client(), stop_code_review_job_input()) ->
+    {ok, stop_code_review_job_output(), tuple()} |
+    {error, any()}.
+stop_code_review_job(Client, Input) ->
+    stop_code_review_job(Client, Input, []).
+
+-spec stop_code_review_job(aws_client:aws_client(), stop_code_review_job_input(), proplists:proplist()) ->
+    {ok, stop_code_review_job_output(), tuple()} |
+    {error, any()}.
+stop_code_review_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopCodeReviewJob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3170,6 +3852,38 @@ update_application(Client, Input) ->
 update_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateApplication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing code review configuration.
+-spec update_code_review(aws_client:aws_client(), update_code_review_input()) ->
+    {ok, update_code_review_output(), tuple()} |
+    {error, any()}.
+update_code_review(Client, Input) ->
+    update_code_review(Client, Input, []).
+
+-spec update_code_review(aws_client:aws_client(), update_code_review_input(), proplists:proplist()) ->
+    {ok, update_code_review_output(), tuple()} |
+    {error, any()}.
+update_code_review(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateCodeReview"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

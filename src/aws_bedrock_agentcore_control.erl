@@ -161,9 +161,18 @@
          get_policy_engine/2,
          get_policy_engine/4,
          get_policy_engine/5,
+         get_policy_engine_summary/2,
+         get_policy_engine_summary/4,
+         get_policy_engine_summary/5,
          get_policy_generation/3,
          get_policy_generation/5,
          get_policy_generation/6,
+         get_policy_generation_summary/3,
+         get_policy_generation_summary/5,
+         get_policy_generation_summary/6,
+         get_policy_summary/3,
+         get_policy_summary/5,
+         get_policy_summary/6,
          get_registry/2,
          get_registry/4,
          get_registry/5,
@@ -224,15 +233,24 @@
          list_policies/2,
          list_policies/4,
          list_policies/5,
+         list_policy_engine_summaries/1,
+         list_policy_engine_summaries/3,
+         list_policy_engine_summaries/4,
          list_policy_engines/1,
          list_policy_engines/3,
          list_policy_engines/4,
          list_policy_generation_assets/3,
          list_policy_generation_assets/5,
          list_policy_generation_assets/6,
+         list_policy_generation_summaries/2,
+         list_policy_generation_summaries/4,
+         list_policy_generation_summaries/5,
          list_policy_generations/2,
          list_policy_generations/4,
          list_policy_generations/5,
+         list_policy_summaries/2,
+         list_policy_summaries/4,
+         list_policy_summaries/5,
          list_registries/1,
          list_registries/3,
          list_registries/4,
@@ -500,6 +518,14 @@
 %% }
 -type harness_agent_core_memory_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_policy_generation_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generation_summaries_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configuration_bundle_request() :: #{}
 -type delete_configuration_bundle_request() :: #{}.
@@ -764,6 +790,19 @@
 %%   <<"tags">> => map()
 %% }
 -type create_memory_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_summary_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1509,6 +1548,10 @@
 %% }
 -type update_online_evaluation_config_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_policy_generation_summary_request() :: #{}
+-type get_policy_generation_summary_request() :: #{}.
+
 
 %% Example:
 %% delete_evaluator_response() :: #{
@@ -1609,6 +1652,15 @@
 %%   <<"modelId">> => [string()]
 %% }
 -type semantic_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceScope">> => string()
+%% }
+-type list_policy_summaries_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1839,6 +1891,21 @@
 %%   <<"sessionTimeoutInSeconds">> => [integer()]
 %% }
 -type session_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_generation_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2309,6 +2376,10 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+%% Example:
+%% get_policy_engine_summary_request() :: #{}
+-type get_policy_engine_summary_request() :: #{}.
+
 
 %% Example:
 %% create_online_evaluation_config_response() :: #{
@@ -2764,6 +2835,7 @@
 
 %% Example:
 %% vpc_config() :: #{
+%%   <<"requireServiceS3Endpoint">> => [boolean()],
 %%   <<"securityGroups">> => list(string()),
 %%   <<"subnets">> => list(string())
 %% }
@@ -3456,6 +3528,10 @@
 %% }
 -type harness_tool() :: #{binary() => any()}.
 
+%% Example:
+%% get_policy_summary_request() :: #{}
+-type get_policy_summary_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -3511,6 +3587,14 @@
 %% Example:
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
+
+
+%% Example:
+%% list_policy_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy_summary())
+%% }
+-type list_policy_summaries_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3901,6 +3985,21 @@
 
 
 %% Example:
+%% get_policy_generation_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_generation_summary_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_registry_record_status_request() :: #{
 %%   <<"status">> := list(any()),
 %%   <<"statusReason">> := [string()]
@@ -3951,6 +4050,19 @@
 
 
 %% Example:
+%% policy_engine_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_engine_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_signing_config_output() :: #{
 %%   <<"enabled">> => [boolean()]
 %% }
@@ -3978,6 +4090,7 @@
 
 %% Example:
 %% list_registries_request() :: #{
+%%   <<"authorizerType">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => list(any())
@@ -4246,6 +4359,14 @@
 
 
 %% Example:
+%% list_policy_engine_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_engine_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_gateway_rule_response() :: #{
 %%   <<"actions">> => list(list()),
 %%   <<"conditions">> => list(list()),
@@ -4354,6 +4475,19 @@
 %%   <<"trafficSplit">> => list(traffic_split_entry())
 %% }
 -type weighted_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4475,6 +4609,19 @@
 %%   <<"status">> => list(any())
 %% }
 -type agent_runtime() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_engine_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_engine_summary_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4654,6 +4801,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type policy_engine() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> => list(policy_generation_summary())
+%% }
+-type list_policy_generation_summaries_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4930,6 +5085,14 @@
 %%   <<"s3Location">> => s3_location()
 %% }
 -type recording_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engine_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyEngines">> => list(policy_engine_summary())
+%% }
+-type list_policy_engine_summaries_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5733,7 +5896,28 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_policy_engine_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_generation_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_summary_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5915,6 +6099,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_policy_engine_summaries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_policy_engines_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5928,7 +6118,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_policy_generation_summaries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_policy_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_policy_summaries_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -8736,6 +8940,51 @@ get_policy_engine(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a metadata-only summary of a specific policy engine without
+%% decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status,
+%% timestamps, and the encryption key ARN, but does not include the
+%% description or status reasons. Because this operation does not require
+%% access to the customer's KMS key, it is suitable for resource
+%% discovery, inventory, and integration scenarios where only metadata is
+%% needed.
+-spec get_policy_engine_summary(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_engine_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_summary_errors(), tuple()}.
+get_policy_engine_summary(Client, PolicyEngineId)
+  when is_map(Client) ->
+    get_policy_engine_summary(Client, PolicyEngineId, #{}, #{}).
+
+-spec get_policy_engine_summary(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_engine_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_summary_errors(), tuple()}.
+get_policy_engine_summary(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_engine_summary(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec get_policy_engine_summary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_engine_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_engine_summary_errors(), tuple()}.
+get_policy_engine_summary(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engine-summaries/", aws_util:encode_uri(PolicyEngineId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a policy generation request within the
 %% AgentCore Policy system.
 %%
@@ -8765,6 +9014,94 @@ get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, Head
 get_policy_generation(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generations/", aws_util:encode_uri(PolicyGenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a metadata-only summary of a specific policy generation
+%% request without decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status,
+%% timestamps, and findings, but does not include status reasons. Because
+%% this operation does not require access to the customer's KMS key, it
+%% is suitable for resource discovery, inventory, and integration scenarios
+%% where only metadata is needed.
+-spec get_policy_generation_summary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_policy_generation_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_summary_errors(), tuple()}.
+get_policy_generation_summary(Client, PolicyEngineId, PolicyGenerationId)
+  when is_map(Client) ->
+    get_policy_generation_summary(Client, PolicyEngineId, PolicyGenerationId, #{}, #{}).
+
+-spec get_policy_generation_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_policy_generation_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_summary_errors(), tuple()}.
+get_policy_generation_summary(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_generation_summary(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, []).
+
+-spec get_policy_generation_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_generation_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_generation_summary_errors(), tuple()}.
+get_policy_generation_summary(Client, PolicyEngineId, PolicyGenerationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generation-summaries/", aws_util:encode_uri(PolicyGenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a metadata-only summary of a specific policy without
+%% decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status, and
+%% timestamps, but does not include the policy definition, description, or
+%% status reasons. Because this operation does not require access to the
+%% customer's KMS key, it is suitable for resource discovery, inventory,
+%% and integration scenarios where only metadata is needed.
+-spec get_policy_summary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_policy_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_summary_errors(), tuple()}.
+get_policy_summary(Client, PolicyEngineId, PolicyId)
+  when is_map(Client) ->
+    get_policy_summary(Client, PolicyEngineId, PolicyId, #{}, #{}).
+
+-spec get_policy_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_policy_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_summary_errors(), tuple()}.
+get_policy_summary(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_summary(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap, []).
+
+-spec get_policy_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_summary_errors(), tuple()}.
+get_policy_summary(Client, PolicyEngineId, PolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-summaries/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9749,6 +10086,55 @@ list_policies(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of metadata-only policy engine summaries
+%% without decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status, and
+%% timestamps for each policy engine, but does not include descriptions or
+%% status reasons. Because this operation does not require access to the
+%% customer's KMS key, it is suitable for resource discovery, inventory,
+%% and integration scenarios where only metadata is needed.
+-spec list_policy_engine_summaries(aws_client:aws_client()) ->
+    {ok, list_policy_engine_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engine_summaries_errors(), tuple()}.
+list_policy_engine_summaries(Client)
+  when is_map(Client) ->
+    list_policy_engine_summaries(Client, #{}, #{}).
+
+-spec list_policy_engine_summaries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_policy_engine_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engine_summaries_errors(), tuple()}.
+list_policy_engine_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_engine_summaries(Client, QueryMap, HeadersMap, []).
+
+-spec list_policy_engine_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_engine_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_engine_summaries_errors(), tuple()}.
+list_policy_engine_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engine-summaries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of policy engines within the AgentCore Policy
 %% system.
 %%
@@ -9843,6 +10229,55 @@ list_policy_generation_assets(Client, PolicyEngineId, PolicyGenerationId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of metadata-only policy generation
+%% summaries within a policy engine without decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status,
+%% timestamps, and findings for each policy generation, but does not include
+%% status reasons. Because this operation does not require access to the
+%% customer's KMS key, it is suitable for resource discovery, inventory,
+%% and integration scenarios where only metadata is needed.
+-spec list_policy_generation_summaries(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_policy_generation_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_summaries_errors(), tuple()}.
+list_policy_generation_summaries(Client, PolicyEngineId)
+  when is_map(Client) ->
+    list_policy_generation_summaries(Client, PolicyEngineId, #{}, #{}).
+
+-spec list_policy_generation_summaries(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_policy_generation_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_summaries_errors(), tuple()}.
+list_policy_generation_summaries(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_generation_summaries(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec list_policy_generation_summaries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_generation_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generation_summaries_errors(), tuple()}.
+list_policy_generation_summaries(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-generation-summaries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of policy generation requests within the AgentCore
 %% Policy system.
 %%
@@ -9889,10 +10324,61 @@ list_policy_generations(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of metadata-only policy summaries within a
+%% policy engine without decrypting customer content.
+%%
+%% This lightweight read operation returns resource identifiers, status, and
+%% timestamps for each policy, but does not include policy definitions,
+%% descriptions, or status reasons. Because this operation does not require
+%% access to the customer's KMS key, it is suitable for resource
+%% discovery, inventory, and integration scenarios where only metadata is
+%% needed.
+-spec list_policy_summaries(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_policy_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_summaries_errors(), tuple()}.
+list_policy_summaries(Client, PolicyEngineId)
+  when is_map(Client) ->
+    list_policy_summaries(Client, PolicyEngineId, #{}, #{}).
+
+-spec list_policy_summaries(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_policy_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_summaries_errors(), tuple()}.
+list_policy_summaries(Client, PolicyEngineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_summaries(Client, PolicyEngineId, QueryMap, HeadersMap, []).
+
+-spec list_policy_summaries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_summaries_errors(), tuple()}.
+list_policy_summaries(Client, PolicyEngineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy-engines/", aws_util:encode_uri(PolicyEngineId), "/policy-summaries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetResourceScope">>, maps:get(<<"targetResourceScope">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all registries in the account.
 %%
 %% You can optionally filter results by status using the `status'
-%% parameter.
+%% parameter, or by authorizer type using the `authorizerType' parameter.
 -spec list_registries(aws_client:aws_client()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
@@ -9927,6 +10413,7 @@ list_registries(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"authorizerType">>, maps:get(<<"authorizerType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
