@@ -72,6 +72,8 @@
          create_group_profile/4,
          create_listing_change_set/3,
          create_listing_change_set/4,
+         create_notebook/3,
+         create_notebook/4,
          create_project/3,
          create_project/4,
          create_project_membership/4,
@@ -126,6 +128,8 @@
          delete_glossary_term/5,
          delete_listing/4,
          delete_listing/5,
+         delete_notebook/4,
+         delete_notebook/5,
          delete_project/4,
          delete_project/5,
          delete_project_membership/4,
@@ -226,6 +230,12 @@
          get_metadata_generation_run/3,
          get_metadata_generation_run/5,
          get_metadata_generation_run/6,
+         get_notebook/3,
+         get_notebook/5,
+         get_notebook/6,
+         get_notebook_export/3,
+         get_notebook_export/5,
+         get_notebook_export/6,
          get_notebook_run/3,
          get_notebook_run/5,
          get_notebook_run/6,
@@ -322,6 +332,9 @@
          list_notebook_runs/3,
          list_notebook_runs/5,
          list_notebook_runs/6,
+         list_notebooks/3,
+         list_notebooks/5,
+         list_notebooks/6,
          list_notifications/3,
          list_notifications/5,
          list_notifications/6,
@@ -392,6 +405,10 @@
          start_data_source_run/5,
          start_metadata_generation_run/3,
          start_metadata_generation_run/4,
+         start_notebook_export/3,
+         start_notebook_export/4,
+         start_notebook_import/3,
+         start_notebook_import/4,
          start_notebook_run/3,
          start_notebook_run/4,
          stop_notebook_run/4,
@@ -426,6 +443,8 @@
          update_glossary_term/5,
          update_group_profile/4,
          update_group_profile/5,
+         update_notebook/4,
+         update_notebook/5,
          update_project/4,
          update_project/5,
          update_project_profile/4,
@@ -887,6 +906,23 @@
 
 
 %% Example:
+%% get_notebook_export_output() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"error">> => notebook_export_error(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"outputLocation">> => list(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_notebook_export_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_job_runs_output() :: #{
 %%   <<"items">> => list(job_run_summary()),
 %%   <<"nextToken">> => string()
@@ -1016,6 +1052,31 @@
 
 
 %% Example:
+%% update_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_notebook_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_account_pool_output() :: #{
 %%   <<"accountSource">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -1124,6 +1185,31 @@
 
 
 %% Example:
+%% get_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_notebook_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% environment_resolved_account() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"regionName">> => string(),
@@ -1141,6 +1227,22 @@
 %%   <<"mwaaEnvironmentName">> => [string()]
 %% }
 -type workflows_mwaa_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type notebook_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1674,6 +1776,10 @@
 %% }
 -type single_sign_on() :: #{binary() => any()}.
 
+%% Example:
+%% get_notebook_input() :: #{}
+-type get_notebook_input() :: #{}.
+
 
 %% Example:
 %% create_asset_output() :: #{
@@ -1838,10 +1944,29 @@
 
 
 %% Example:
+%% notebook_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_environment_profile_policy_grant_detail() :: #{
 %%   <<"domainUnitId">> => string()
 %% }
 -type create_environment_profile_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notebook_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"parameters">> => map()
+%% }
+-type create_notebook_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2586,6 +2711,10 @@
 %% }
 -type list_time_series_data_points_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_notebook_output() :: #{}
+-type delete_notebook_output() :: #{}.
+
 
 %% Example:
 %% list_notebook_runs_input() :: #{
@@ -2911,6 +3040,13 @@
 %% Example:
 %% get_subscription_grant_input() :: #{}
 -type get_subscription_grant_input() :: #{}.
+
+
+%% Example:
+%% notebook_export_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_export_error() :: #{binary() => any()}.
 
 %% Example:
 %% delete_rule_output() :: #{}
@@ -3589,6 +3725,20 @@
 
 
 %% Example:
+%% start_notebook_export_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_notebook_export_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_source_run_lineage_summary() :: #{
 %%   <<"importStatus">> => list(any())
 %% }
@@ -3636,6 +3786,31 @@
 %%   <<"subject">> => [string()]
 %% }
 -type topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_notebook_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3774,6 +3949,18 @@
 %%   <<"lambdaFunctionArn">> => string()
 %% }
 -type custom_account_pool_handler() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebooks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_notebooks_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3950,6 +4137,20 @@
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
 %% }
 -type glue_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notebook_input() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any())
+%% }
+-type update_notebook_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4329,6 +4530,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type create_asset_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5758,6 +5966,17 @@
 
 
 %% Example:
+%% start_notebook_import_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"sourceLocation">> := list()
+%% }
+-type start_notebook_import_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_lineage_event_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -5793,6 +6012,10 @@
 %%   <<"runId">> => [string()]
 %% }
 -type open_lineage_run_event_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_input() :: #{}
+-type delete_notebook_input() :: #{}.
 
 %% Example:
 %% get_glossary_term_input() :: #{}
@@ -6291,6 +6514,16 @@
 
 
 %% Example:
+%% start_notebook_export_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"fileFormat">> := list(any()),
+%%   <<"notebookIdentifier">> := string(),
+%%   <<"owningProjectIdentifier">> := string()
+%% }
+-type start_notebook_export_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_project_from_project_profile_policy_grant_detail() :: #{
 %%   <<"includeChildDomainUnits">> => [boolean()],
 %%   <<"projectProfiles">> => list([string()]())
@@ -6649,6 +6882,18 @@
 
 
 %% Example:
+%% list_notebooks_output() :: #{
+%%   <<"items">> => list(notebook_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_notebooks_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_export_input() :: #{}
+-type get_notebook_export_input() :: #{}.
+
+
+%% Example:
 %% domain_unit_group_properties() :: #{
 %%   <<"groupId">> => [string()]
 %% }
@@ -6778,6 +7023,21 @@
 %%   <<"type">> => list(any())
 %% }
 -type update_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_import_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"sourceLocation">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type start_notebook_import_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7243,6 +7503,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_notebook_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -7451,6 +7720,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_notebook_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_project_errors() ::
@@ -7723,6 +7999,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_notebook_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_notebook_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_notebook_run_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -7944,6 +8234,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_notebooks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_notifications_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -8147,6 +8443,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_notebook_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_notebook_import_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_notebook_run_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -8280,6 +8594,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_notebook_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_project_errors() ::
     throttling_exception() | 
@@ -9583,6 +9905,45 @@ create_listing_change_set(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a notebook:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
+%%
+%% A notebook is a collaborative document within a project that contains code
+%% cells for interactive computing.
+-spec create_notebook(aws_client:aws_client(), binary() | list(), create_notebook_input()) ->
+    {ok, create_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_errors(), tuple()}.
+create_notebook(Client, DomainIdentifier, Input) ->
+    create_notebook(Client, DomainIdentifier, Input, []).
+
+-spec create_notebook(aws_client:aws_client(), binary() | list(), create_notebook_input(), proplists:proplist()) ->
+    {ok, create_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_errors(), tuple()}.
+create_notebook(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebooks"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon DataZone project.
 -spec create_project(aws_client:aws_client(), binary() | list(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
@@ -10582,6 +10943,42 @@ delete_listing(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/listings/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a notebook:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
+-spec delete_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), delete_notebook_input()) ->
+    {ok, delete_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, delete_notebook_errors(), tuple()}.
+delete_notebook(Client, DomainIdentifier, Identifier, Input) ->
+    delete_notebook(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), delete_notebook_input(), proplists:proplist()) ->
+    {ok, delete_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, delete_notebook_errors(), tuple()}.
+delete_notebook(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebooks/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -12117,7 +12514,86 @@ get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the details of a notebook run in an Amazon DataZone domain.
+%% @doc Gets the details of a notebook:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
+-spec get_notebook(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_errors(), tuple()}.
+get_notebook(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_notebook(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_errors(), tuple()}.
+get_notebook(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_notebook(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_errors(), tuple()}.
+get_notebook(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebooks/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a notebook export in Amazon SageMaker Unified
+%% Studio.
+-spec get_notebook_export(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_notebook_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_export_errors(), tuple()}.
+get_notebook_export(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_notebook_export(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_notebook_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_notebook_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_export_errors(), tuple()}.
+get_notebook_export(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_notebook_export(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_notebook_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_notebook_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_notebook_export_errors(), tuple()}.
+get_notebook_export(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-exports/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a notebook run:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
 -spec get_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_notebook_run_output(), tuple()} |
     {error, any()} |
@@ -13482,7 +13958,9 @@ list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists notebook runs in an Amazon DataZone domain.
+%% @doc Lists notebook runs:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
 -spec list_notebook_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_notebook_runs_output(), tuple()} |
     {error, any()} |
@@ -13522,6 +14000,54 @@ list_notebook_runs(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, 
         {<<"notebookIdentifier">>, maps:get(<<"notebookIdentifier">>, QueryMap, undefined)},
         {<<"owningProjectIdentifier">>, OwningProjectIdentifier},
         {<<"scheduleIdentifier">>, maps:get(<<"scheduleIdentifier">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists notebooks:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
+-spec list_notebooks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_notebooks_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebooks_errors(), tuple()}.
+list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier)
+  when is_map(Client) ->
+    list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier, #{}, #{}).
+
+-spec list_notebooks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_notebooks_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebooks_errors(), tuple()}.
+list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_notebooks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_notebooks_output(), tuple()} |
+    {error, any()} |
+    {error, list_notebooks_errors(), tuple()}.
+list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebooks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owningProjectIdentifier">>, OwningProjectIdentifier},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
@@ -14831,9 +15357,84 @@ start_metadata_generation_run(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a notebook run in an Amazon DataZone domain.
+%% @doc Starts a notebook export in Amazon SageMaker Unified Studio.
 %%
-%% A notebook run represents the execution of a Amazon DataZone notebook
+%% This operation exports a notebook to a specified file format and stores
+%% the output in Amazon Simple Storage Service.
+-spec start_notebook_export(aws_client:aws_client(), binary() | list(), start_notebook_export_input()) ->
+    {ok, start_notebook_export_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_export_errors(), tuple()}.
+start_notebook_export(Client, DomainIdentifier, Input) ->
+    start_notebook_export(Client, DomainIdentifier, Input, []).
+
+-spec start_notebook_export(aws_client:aws_client(), binary() | list(), start_notebook_export_input(), proplists:proplist()) ->
+    {ok, start_notebook_export_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_export_errors(), tuple()}.
+start_notebook_export(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-exports"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a notebook import in Amazon SageMaker Unified Studio.
+%%
+%% This operation imports a notebook from an Amazon Simple Storage Service
+%% location into a project.
+-spec start_notebook_import(aws_client:aws_client(), binary() | list(), start_notebook_import_input()) ->
+    {ok, start_notebook_import_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_import_errors(), tuple()}.
+start_notebook_import(Client, DomainIdentifier, Input) ->
+    start_notebook_import(Client, DomainIdentifier, Input, []).
+
+-spec start_notebook_import(aws_client:aws_client(), binary() | list(), start_notebook_import_input(), proplists:proplist()) ->
+    {ok, start_notebook_import_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_import_errors(), tuple()}.
+start_notebook_import(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-imports"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a notebook run in Amazon SageMaker Unified Studio.
+%%
+%% A notebook run represents the execution of an Amazon SageMaker notebook:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
 %% within a project. You can configure compute, network, timeout, and
 %% environment settings for the run.
 -spec start_notebook_run(aws_client:aws_client(), binary() | list(), start_notebook_run_input()) ->
@@ -14869,7 +15470,9 @@ start_notebook_run(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a running notebook run in an Amazon DataZone domain.
+%% @doc Stops a running notebook run:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
 -spec stop_notebook_run(aws_client:aws_client(), binary() | list(), binary() | list(), stop_notebook_run_input()) ->
     {ok, stop_notebook_run_output(), tuple()} |
     {error, any()} |
@@ -15429,6 +16032,42 @@ update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input) ->
 update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/group-profiles/", aws_util:encode_uri(GroupIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a notebook:
+%% https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/notebooks.html
+%% in Amazon SageMaker Unified Studio.
+-spec update_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), update_notebook_input()) ->
+    {ok, update_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_errors(), tuple()}.
+update_notebook(Client, DomainIdentifier, Identifier, Input) ->
+    update_notebook(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_notebook(aws_client:aws_client(), binary() | list(), binary() | list(), update_notebook_input(), proplists:proplist()) ->
+    {ok, update_notebook_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_errors(), tuple()}.
+update_notebook(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebooks/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

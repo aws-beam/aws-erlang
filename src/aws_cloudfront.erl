@@ -1696,8 +1696,9 @@
 
 %% Example:
 %% update_trust_store_request() :: #{
-%%   <<"CaCertificatesBundleSource">> := list(),
-%%   <<"IfMatch">> := string()
+%%   <<"CaCertificatesBundleSource">> => list(),
+%%   <<"IfMatch">> := string(),
+%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
 %% }
 -type update_trust_store_request() :: #{binary() => any()}.
 
@@ -2463,7 +2464,8 @@
 %% create_trust_store_request() :: #{
 %%   <<"CaCertificatesBundleSource">> := list(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
+%%   <<"Tags">> => tags(),
+%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
 %% }
 -type create_trust_store_request() :: #{binary() => any()}.
 
@@ -5812,7 +5814,8 @@
 %%   <<"Name">> => string(),
 %%   <<"NumberOfCaCertificates">> => integer(),
 %%   <<"Reason">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
 %% }
 -type trust_store() :: #{binary() => any()}.
 
@@ -15597,7 +15600,8 @@ update_trust_store(Client, Id, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"If-Match">>, <<"IfMatch">>}
+                       {<<"If-Match">>, <<"IfMatch">>},
+                       {<<"UseClientCertificateOCSPEndpoint">>, <<"UseClientCertificateOCSPEndpoint">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

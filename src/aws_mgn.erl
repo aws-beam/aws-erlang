@@ -252,6 +252,7 @@
 %%   <<"mapperSegmentID">> => string(),
 %%   <<"networkMigrationDefinitionID">> => string(),
 %%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"referencedSegments">> => list(string()),
 %%   <<"segmentID">> => string(),
 %%   <<"segmentType">> => string()
 %% }

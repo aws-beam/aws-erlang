@@ -5,10 +5,14 @@
 %% and evaluating Amazon Bedrock models.
 -module(aws_bedrock).
 
--export([batch_delete_evaluation_job/2,
+-export([batch_delete_advanced_prompt_optimization_job/2,
+         batch_delete_advanced_prompt_optimization_job/3,
+         batch_delete_evaluation_job/2,
          batch_delete_evaluation_job/3,
          cancel_automated_reasoning_policy_build_workflow/4,
          cancel_automated_reasoning_policy_build_workflow/5,
+         create_advanced_prompt_optimization_job/2,
+         create_advanced_prompt_optimization_job/3,
          create_automated_reasoning_policy/2,
          create_automated_reasoning_policy/3,
          create_automated_reasoning_policy_test_case/3,
@@ -78,6 +82,9 @@
          export_automated_reasoning_policy_version/2,
          export_automated_reasoning_policy_version/4,
          export_automated_reasoning_policy_version/5,
+         get_advanced_prompt_optimization_job/2,
+         get_advanced_prompt_optimization_job/4,
+         get_advanced_prompt_optimization_job/5,
          get_automated_reasoning_policy/2,
          get_automated_reasoning_policy/4,
          get_automated_reasoning_policy/5,
@@ -153,6 +160,9 @@
          get_use_case_for_model_access/1,
          get_use_case_for_model_access/3,
          get_use_case_for_model_access/4,
+         list_advanced_prompt_optimization_jobs/1,
+         list_advanced_prompt_optimization_jobs/3,
+         list_advanced_prompt_optimization_jobs/4,
          list_automated_reasoning_policies/1,
          list_automated_reasoning_policies/3,
          list_automated_reasoning_policies/4,
@@ -229,6 +239,8 @@
          start_automated_reasoning_policy_build_workflow/5,
          start_automated_reasoning_policy_test_workflow/4,
          start_automated_reasoning_policy_test_workflow/5,
+         stop_advanced_prompt_optimization_job/3,
+         stop_advanced_prompt_optimization_job/4,
          stop_evaluation_job/3,
          stop_evaluation_job/4,
          stop_model_customization_job/3,
@@ -624,6 +636,23 @@
 
 
 %% Example:
+%% get_advanced_prompt_optimization_job_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"inputConfig">> => advanced_prompt_optimization_input_config(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelConfigurations">> => list(model_configuration()),
+%%   <<"outputConfig">> => advanced_prompt_optimization_output_config()
+%% }
+-type get_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_guardrail_request() :: #{
 %%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
 %%   <<"blockedInputMessaging">> := string(),
@@ -745,6 +774,16 @@
 %%   <<"sourceType">> => list(any())
 %% }
 -type external_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1079,6 +1118,17 @@
 %% Example:
 %% get_custom_model_deployment_request() :: #{}
 -type get_custom_model_deployment_request() :: #{}.
+
+
+%% Example:
+%% advanced_prompt_optimization_job_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer()
+%% }
+-type advanced_prompt_optimization_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2264,6 +2314,10 @@
 %% }
 -type training_metrics() :: #{binary() => any()}.
 
+%% Example:
+%% get_advanced_prompt_optimization_job_request() :: #{}
+-type get_advanced_prompt_optimization_job_request() :: #{}.
+
 
 %% Example:
 %% r_f_t_config() :: #{
@@ -2494,6 +2548,15 @@
 
 
 %% Example:
+%% model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"modelId">> => string()
+%% }
+-type model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter_attribute() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => any()
@@ -2581,6 +2644,20 @@
 %%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
 %% }
 -type create_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_advanced_prompt_optimization_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"inputConfig">> := advanced_prompt_optimization_input_config(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"modelConfigurations">> := list(model_configuration()),
+%%   <<"outputConfig">> := advanced_prompt_optimization_output_config(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2787,6 +2864,10 @@
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
+%% Example:
+%% stop_advanced_prompt_optimization_job_request() :: #{}
+-type stop_advanced_prompt_optimization_job_request() :: #{}.
+
 
 %% Example:
 %% custom_metric_evaluator_model_config() :: #{
@@ -2895,6 +2976,14 @@
 %% get_model_invocation_job_request() :: #{}
 -type get_model_invocation_job_request() :: #{}.
 
+
+%% Example:
+%% list_advanced_prompt_optimization_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(advanced_prompt_optimization_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_advanced_prompt_optimization_jobs_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_automated_reasoning_policy_response() :: #{}
 -type delete_automated_reasoning_policy_response() :: #{}.
@@ -2902,6 +2991,13 @@
 %% Example:
 %% delete_automated_reasoning_policy_build_workflow_response() :: #{}
 -type delete_automated_reasoning_policy_build_workflow_response() :: #{}.
+
+
+%% Example:
+%% batch_delete_advanced_prompt_optimization_job_request() :: #{
+%%   <<"jobIdentifiers">> := list(string())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3218,6 +3314,14 @@
 
 
 %% Example:
+%% batch_delete_advanced_prompt_optimization_job_response() :: #{
+%%   <<"advancedPromptOptimizationJobs">> => list(batch_delete_advanced_prompt_optimization_job_item()),
+%%   <<"errors">> => list(batch_delete_advanced_prompt_optimization_job_error())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_model_units() :: #{
 %%   <<"customModelUnitsPerModelCopy">> => [integer()],
 %%   <<"customModelUnitsVersion">> => string()
@@ -3434,6 +3538,13 @@
 
 
 %% Example:
+%% create_advanced_prompt_optimization_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_reasoning_policy_delete_type_value() :: #{
 %%   <<"value">> => string()
 %% }
@@ -3631,6 +3742,13 @@
 %% }
 -type batch_delete_evaluation_job_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% advanced_prompt_optimization_input_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type advanced_prompt_optimization_input_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_automated_reasoning_policy_test_case_response() :: #{}
 -type delete_automated_reasoning_policy_test_case_response() :: #{}.
@@ -3784,6 +3902,14 @@
 
 
 %% Example:
+%% batch_delete_advanced_prompt_optimization_job_item() :: #{
+%%   <<"jobIdentifier">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_reasoning_policy_definition() :: #{
 %%   <<"rules">> => list(automated_reasoning_policy_definition_rule()),
 %%   <<"types">> => list(automated_reasoning_policy_definition_type()),
@@ -3852,10 +3978,23 @@
 
 
 %% Example:
+%% batch_delete_advanced_prompt_optimization_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"jobIdentifier">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_delete_advanced_prompt_optimization_job_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_foundation_model_response() :: #{
 %%   <<"modelDetails">> => foundation_model_details()
 %% }
 -type get_foundation_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_advanced_prompt_optimization_job_response() :: #{}
+-type stop_advanced_prompt_optimization_job_response() :: #{}.
 
 
 %% Example:
@@ -3910,6 +4049,13 @@
 %% }
 -type performance_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% advanced_prompt_optimization_output_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type advanced_prompt_optimization_output_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_marketplace_model_endpoint_request() :: #{}
 -type delete_marketplace_model_endpoint_request() :: #{}.
@@ -3928,6 +4074,16 @@
 %% Example:
 %% delete_foundation_model_agreement_response() :: #{}
 -type delete_foundation_model_agreement_response() :: #{}.
+
+
+%% Example:
+%% list_advanced_prompt_optimization_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_advanced_prompt_optimization_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3970,6 +4126,12 @@
 %% }
 -type s3_data_source() :: #{binary() => any()}.
 
+-type batch_delete_advanced_prompt_optimization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type batch_delete_evaluation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3984,6 +4146,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type create_advanced_prompt_optimization_job_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_automated_reasoning_policy_errors() ::
     too_many_tags_exception() | 
@@ -4274,6 +4446,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_advanced_prompt_optimization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_automated_reasoning_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4445,6 +4624,12 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_advanced_prompt_optimization_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_automated_reasoning_policies_errors() ::
     throttling_exception() | 
@@ -4636,6 +4821,14 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type stop_advanced_prompt_optimization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_evaluation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4737,6 +4930,40 @@
 %% API
 %%====================================================================
 
+%% @doc Batch delete the specified advanced prompt optimization jobs.
+-spec batch_delete_advanced_prompt_optimization_job(aws_client:aws_client(), batch_delete_advanced_prompt_optimization_job_request()) ->
+    {ok, batch_delete_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_advanced_prompt_optimization_job_errors(), tuple()}.
+batch_delete_advanced_prompt_optimization_job(Client, Input) ->
+    batch_delete_advanced_prompt_optimization_job(Client, Input, []).
+
+-spec batch_delete_advanced_prompt_optimization_job(aws_client:aws_client(), batch_delete_advanced_prompt_optimization_job_request(), proplists:proplist()) ->
+    {ok, batch_delete_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_advanced_prompt_optimization_job_errors(), tuple()}.
+batch_delete_advanced_prompt_optimization_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/advanced-prompt-optimization-job/batch-delete"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a batch of evaluation jobs.
 %%
 %% An evaluation job can only be deleted if it has following status
@@ -4794,6 +5021,40 @@ cancel_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, Policy
     Method = post,
     Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/cancel"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an asynchronous batch job for advanced prompt optimization.
+-spec create_advanced_prompt_optimization_job(aws_client:aws_client(), create_advanced_prompt_optimization_job_request()) ->
+    {ok, create_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_advanced_prompt_optimization_job_errors(), tuple()}.
+create_advanced_prompt_optimization_job(Client, Input) ->
+    create_advanced_prompt_optimization_job(Client, Input, []).
+
+-spec create_advanced_prompt_optimization_job(aws_client:aws_client(), create_advanced_prompt_optimization_job_request(), proplists:proplist()) ->
+    {ok, create_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_advanced_prompt_optimization_job_errors(), tuple()}.
+create_advanced_prompt_optimization_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/advanced-prompt-optimization-jobs"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -6195,6 +6456,44 @@ export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details and status of an advanced prompt optimization
+%% job.
+-spec get_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_advanced_prompt_optimization_job_errors(), tuple()}.
+get_advanced_prompt_optimization_job(Client, JobIdentifier)
+  when is_map(Client) ->
+    get_advanced_prompt_optimization_job(Client, JobIdentifier, #{}, #{}).
+
+-spec get_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_advanced_prompt_optimization_job_errors(), tuple()}.
+get_advanced_prompt_optimization_job(Client, JobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_advanced_prompt_optimization_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_advanced_prompt_optimization_job_errors(), tuple()}.
+get_advanced_prompt_optimization_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/advanced-prompt-optimization-jobs/", aws_util:encode_uri(JobIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves details about an Automated Reasoning policy or policy
 %% version.
 %%
@@ -7201,6 +7500,50 @@ get_use_case_for_model_access(Client, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all advanced prompt optimization jobs for the account.
+-spec list_advanced_prompt_optimization_jobs(aws_client:aws_client()) ->
+    {ok, list_advanced_prompt_optimization_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_advanced_prompt_optimization_jobs_errors(), tuple()}.
+list_advanced_prompt_optimization_jobs(Client)
+  when is_map(Client) ->
+    list_advanced_prompt_optimization_jobs(Client, #{}, #{}).
+
+-spec list_advanced_prompt_optimization_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_advanced_prompt_optimization_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_advanced_prompt_optimization_jobs_errors(), tuple()}.
+list_advanced_prompt_optimization_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_advanced_prompt_optimization_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_advanced_prompt_optimization_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_advanced_prompt_optimization_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_advanced_prompt_optimization_jobs_errors(), tuple()}.
+list_advanced_prompt_optimization_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/advanced-prompt-optimization-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -8465,6 +8808,40 @@ start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyAr
 start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
     Method = post,
     Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/test-workflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops an in-progress advanced prompt optimization job.
+-spec stop_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list(), stop_advanced_prompt_optimization_job_request()) ->
+    {ok, stop_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_advanced_prompt_optimization_job_errors(), tuple()}.
+stop_advanced_prompt_optimization_job(Client, JobIdentifier, Input) ->
+    stop_advanced_prompt_optimization_job(Client, JobIdentifier, Input, []).
+
+-spec stop_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list(), stop_advanced_prompt_optimization_job_request(), proplists:proplist()) ->
+    {ok, stop_advanced_prompt_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_advanced_prompt_optimization_job_errors(), tuple()}.
+stop_advanced_prompt_optimization_job(Client, JobIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/advanced-prompt-optimization-jobs/", aws_util:encode_uri(JobIdentifier), "/stop"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

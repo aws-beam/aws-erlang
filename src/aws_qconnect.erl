@@ -192,6 +192,9 @@
          list_messages/3,
          list_messages/5,
          list_messages/6,
+         list_models/2,
+         list_models/4,
+         list_models/5,
          list_quick_responses/2,
          list_quick_responses/4,
          list_quick_responses/5,
@@ -313,6 +316,16 @@
 %% }
 -type suggested_message_data_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_models_request() :: #{
+%%   <<"aiPromptType">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelLifecycle">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_models_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_a_i_agent_version_response() :: #{}
 -type delete_a_i_agent_version_response() :: #{}.
@@ -341,6 +354,14 @@
 %%   <<"origin">> => string()
 %% }
 -type list_a_i_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_models_response() :: #{
+%%   <<"modelSummaries">> => list(model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_models_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,6 +622,20 @@
 %%   <<"values">> => list(string())
 %% }
 -type quick_response_filter_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"crossRegionStatus">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"endOfLifeTimestamp">> => [non_neg_integer()],
+%%   <<"legacyTimestamp">> => [non_neg_integer()],
+%%   <<"modelId">> => string(),
+%%   <<"modelLifecycle">> => string(),
+%%   <<"supportedAIPromptTypes">> => list(string()),
+%%   <<"supportsPromptCaching">> => [boolean()]
+%% }
+-type model_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4094,6 +4129,14 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type list_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 -type list_quick_responses_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -6755,6 +6798,54 @@ list_messages(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
       [
         {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the models available to an Amazon Q in Connect assistant in the
+%% assistant's Amazon Web Services Region.
+%%
+%% The available models are determined by the region of the specified
+%% assistant.
+-spec list_models(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_models_errors(), tuple()}.
+list_models(Client, AssistantId)
+  when is_map(Client) ->
+    list_models(Client, AssistantId, #{}, #{}).
+
+-spec list_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_models_errors(), tuple()}.
+list_models(Client, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_models(Client, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_models_errors(), tuple()}.
+list_models(Client, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"aiPromptType">>, maps:get(<<"aiPromptType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"modelLifecycle">>, maps:get(<<"modelLifecycle">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

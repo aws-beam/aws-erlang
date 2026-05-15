@@ -3515,6 +3515,7 @@
 
 %% Example:
 %% get_catalogs_request() :: #{
+%%   <<"HasDatabases">> => boolean(),
 %%   <<"IncludeRoot">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
