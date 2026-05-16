@@ -293,6 +293,7 @@
 %% Example:
 %% project_summary() :: #{
 %%   <<"DeliveryModels">> => list(list(any())()),
+%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
 %%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
 %% }
 -type project_summary() :: #{binary() => any()}.
@@ -439,6 +440,7 @@
 %% project_view() :: #{
 %%   <<"CustomerUseCase">> => [string()],
 %%   <<"DeliveryModels">> => list(list(any())()),
+%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
 %%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
 %%   <<"OtherSolutionDescription">> => string(),
 %%   <<"SalesActivities">> => list(list(any())())
@@ -742,6 +744,7 @@
 %%   <<"CustomerBusinessProblem">> => string(),
 %%   <<"CustomerUseCase">> => [string()],
 %%   <<"DeliveryModels">> => list(list(any())()),
+%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
 %%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
 %%   <<"OtherCompetitorNames">> => [string()],
 %%   <<"OtherSolutionDescription">> => string(),
@@ -1131,6 +1134,13 @@
 %%   <<"StateOrRegion">> => string()
 %% }
 -type address_summary() :: #{binary() => any()}.
+
+%% Example:
+%% expected_contract_duration() :: #{
+%%   <<"Term">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type expected_contract_duration() :: #{binary() => any()}.
 
 %% Example:
 %% reject_engagement_invitation_request() :: #{
