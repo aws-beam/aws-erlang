@@ -2168,6 +2168,15 @@
 
 
 %% Example:
+%% column_semantic_property() :: #{
+%%   <<"AdditionalNotes">> => additional_notes(),
+%%   <<"Description">> => column_description(),
+%%   <<"SemanticType">> => column_semantic_type()
+%% }
+-type column_semantic_property() :: #{binary() => any()}.
+
+
+%% Example:
 %% sheet_layout_element_maximization_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
@@ -3493,6 +3502,13 @@
 %%   <<"StaticValue">> => non_neg_integer()
 %% }
 -type data_set_date_filter_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_semantic_metadata() :: #{
+%%   <<"ColumnMetadata">> => list(shared_column_semantic_metadata())
+%% }
+-type table_semantic_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5385,6 +5401,13 @@
 
 
 %% Example:
+%% additional_notes() :: #{
+%%   <<"Text">> => string()
+%% }
+-type additional_notes() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_source_search_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
@@ -5887,6 +5910,13 @@
 
 
 %% Example:
+%% column_semantic_type() :: #{
+%%   <<"GeographicalRole">> => list(any())
+%% }
+-type column_semantic_type() :: #{binary() => any()}.
+
+
+%% Example:
 %% colors_configuration() :: #{
 %%   <<"CustomColors">> => list(custom_color())
 %% }
@@ -5906,6 +5936,7 @@
 
 %% Example:
 %% semantic_model_configuration() :: #{
+%%   <<"SemanticMetadata">> => list(data_set_semantic_metadata()),
 %%   <<"TableMap">> => map()
 %% }
 -type semantic_model_configuration() :: #{binary() => any()}.
@@ -8100,6 +8131,14 @@
 
 
 %% Example:
+%% inline_custom_instruction() :: #{
+%%   <<"InstructionText">> => string(),
+%%   <<"UploadedDocumentMetadata">> => uploaded_document_metadata()
+%% }
+-type inline_custom_instruction() :: #{binary() => any()}.
+
+
+%% Example:
 %% signup_response() :: #{
 %%   <<"IAMUser">> => boolean(),
 %%   <<"accountName">> => string(),
@@ -8840,6 +8879,13 @@
 
 
 %% Example:
+%% uploaded_document_metadata() :: #{
+%%   <<"Name">> => string()
+%% }
+-type uploaded_document_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_field_combo_series_item() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"FieldValue">> => string(),
@@ -8884,6 +8930,13 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type filter_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_semantic_description() :: #{
+%%   <<"Text">> => string()
+%% }
+-type data_set_semantic_description() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10559,6 +10612,14 @@
 
 
 %% Example:
+%% data_set_semantic_metadata() :: #{
+%%   <<"CustomInstructions">> => list(custom_instruction()),
+%%   <<"Description">> => data_set_semantic_description()
+%% }
+-type data_set_semantic_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% period_over_period_computation() :: #{
 %%   <<"ComputationId">> => string(),
 %%   <<"Name">> => string(),
@@ -10818,6 +10879,13 @@
 %%   <<"AuthenticationType">> => list(any())
 %% }
 -type auth_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_instruction() :: #{
+%%   <<"InlineCustomInstruction">> => inline_custom_instruction()
+%% }
+-type custom_instruction() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12693,6 +12761,14 @@
 
 
 %% Example:
+%% shared_column_semantic_metadata() :: #{
+%%   <<"ColumnNames">> => list(string()),
+%%   <<"ColumnProperties">> => list(column_semantic_property())
+%% }
+-type shared_column_semantic_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% font_size() :: #{
 %%   <<"Absolute">> => string(),
 %%   <<"Relative">> => list(any())
@@ -14053,7 +14129,8 @@
 %% semantic_table() :: #{
 %%   <<"Alias">> => string(),
 %%   <<"DestinationTableId">> => string(),
-%%   <<"RowLevelPermissionConfiguration">> => row_level_permission_configuration()
+%%   <<"RowLevelPermissionConfiguration">> => row_level_permission_configuration(),
+%%   <<"SemanticMetadata">> => table_semantic_metadata()
 %% }
 -type semantic_table() :: #{binary() => any()}.
 

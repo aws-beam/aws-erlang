@@ -59,10 +59,14 @@
          create_analyzer/3,
          create_archive_rule/3,
          create_archive_rule/4,
+         create_service_linked_analyzer/2,
+         create_service_linked_analyzer/3,
          delete_analyzer/3,
          delete_analyzer/4,
          delete_archive_rule/4,
          delete_archive_rule/5,
+         delete_service_linked_analyzer/3,
+         delete_service_linked_analyzer/4,
          generate_finding_recommendation/3,
          generate_finding_recommendation/4,
          get_access_preview/3,
@@ -896,6 +900,13 @@
 
 
 %% Example:
+%% delete_service_linked_analyzer_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_service_linked_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_finding_recommendation_request() :: #{
 %%   <<"analyzerArn">> := string(),
 %%   <<"maxResults">> => [integer()],
@@ -1206,6 +1217,16 @@
 
 
 %% Example:
+%% create_service_linked_analyzer_request() :: #{
+%%   <<"archiveRules">> => list(inline_archive_rule()),
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> => list(),
+%%   <<"type">> := string()
+%% }
+-type create_service_linked_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% access() :: #{
 %%   <<"actions">> => list(string()),
 %%   <<"resources">> => list(string())
@@ -1270,6 +1291,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"lastResourceAnalyzed">> => [string()],
 %%   <<"lastResourceAnalyzedAt">> => non_neg_integer(),
+%%   <<"managedBy">> => [string()],
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusReason">> => status_reason(),
@@ -1302,6 +1324,13 @@
 %%   <<"policyType">> := string()
 %% }
 -type check_access_not_granted_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_linked_analyzer_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_service_linked_analyzer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1548,6 +1577,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_service_linked_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_analyzer_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1561,6 +1598,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_service_linked_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type generate_finding_recommendation_errors() ::
     throttling_exception() | 
@@ -2043,6 +2088,48 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a service-linked analyzer managed by an Amazon Web Services
+%% service.
+%%
+%% This operation can only be invoked by authorized Amazon Web Services
+%% services. Direct customer invocation returns `AccessDeniedException'.
+%%
+%% Service-linked analyzers enable Amazon Web Services services to create and
+%% manage analyzers on behalf of customers. The lifecycle of these analyzers
+%% is managed by the calling service.
+-spec create_service_linked_analyzer(aws_client:aws_client(), create_service_linked_analyzer_request()) ->
+    {ok, create_service_linked_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_linked_analyzer_errors(), tuple()}.
+create_service_linked_analyzer(Client, Input) ->
+    create_service_linked_analyzer(Client, Input, []).
+
+-spec create_service_linked_analyzer(aws_client:aws_client(), create_service_linked_analyzer_request(), proplists:proplist()) ->
+    {ok, create_service_linked_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_linked_analyzer_errors(), tuple()}.
+create_service_linked_analyzer(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/service-linked-analyzer"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified analyzer.
 %%
 %% When you delete an analyzer, IAM Access Analyzer is disabled for the
@@ -2098,6 +2185,49 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
 delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a service-linked analyzer.
+%%
+%% This operation can be invoked by both authorized Amazon Web Services
+%% services and customers.
+%%
+%% When invoked by a customer, IAM Access Analyzer performs a callback to the
+%% managing service to verify whether the analyzer is still in use and can be
+%% deleted. If the service indicates the analyzer is still in use, the
+%% deletion is rejected with `ConflictException'.
+-spec delete_service_linked_analyzer(aws_client:aws_client(), binary() | list(), delete_service_linked_analyzer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_service_linked_analyzer_errors(), tuple()}.
+delete_service_linked_analyzer(Client, AnalyzerName, Input) ->
+    delete_service_linked_analyzer(Client, AnalyzerName, Input, []).
+
+-spec delete_service_linked_analyzer(aws_client:aws_client(), binary() | list(), delete_service_linked_analyzer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_service_linked_analyzer_errors(), tuple()}.
+delete_service_linked_analyzer(Client, AnalyzerName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/service-linked-analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

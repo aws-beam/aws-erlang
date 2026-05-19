@@ -3,32 +3,32 @@
 
 %% @doc
 %%
-%% Amazon Connect actions:
+%% Connect Customer actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html
 %%
-%% Amazon Connect data types:
+%% Connect Customer data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html
 %%
-%% Amazon Connect is a cloud-based contact center solution that you use to
+%% Connect Customer is a cloud-based contact center solution that you use to
 %% set up and manage a customer contact
 %% center and provide reliable customer engagement at any scale.
 %%
-%% Amazon Connect provides metrics and real-time reporting that enable you to
-%% optimize contact routing. You can
+%% Connect Customer provides metrics and real-time reporting that enable you
+%% to optimize contact routing. You can
 %% also resolve customer issues more efficiently by getting customers in
 %% touch with the appropriate agents.
 %%
-%% There are limits to the number of Amazon Connect resources that you can
+%% There are limits to the number of Connect Customer resources that you can
 %% create. There are also limits to the
 %% number of requests that you can make per second. For more information, see
-%% Amazon Connect Service Quotas:
+%% Connect Customer Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
 %% You can use an endpoint to connect programmatically to an Amazon Web
-%% Services service. For a list of Amazon Connect endpoints, see Amazon
-%% Connect
+%% Services service. For a list of Connect Customer endpoints, see Connect
+%% Customer
 %% Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
@@ -14183,7 +14183,7 @@
 %% API
 %%====================================================================
 
-%% @doc Activates an evaluation form in the specified Amazon Connect
+%% @doc Activates an evaluation form in the specified Connect Customer
 %% instance.
 %%
 %% After the evaluation form is
@@ -14221,7 +14221,7 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates the specified dataset for a Amazon Connect instance with
+%% @doc Associates the specified dataset for a Connect Customer instance with
 %% the target account.
 %%
 %% You can associate
@@ -14259,10 +14259,10 @@ associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Associates an approved origin to an Amazon Connect instance.
+%% Associates an approved origin to an Connect Customer instance.
 -spec associate_approved_origin(aws_client:aws_client(), binary() | list(), associate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -14296,10 +14296,10 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Allows the specified Amazon Connect instance to access the specified
+%% Allows the specified Connect Customer instance to access the specified
 %% Amazon Lex or Amazon Lex V2
 %% bot.
 -spec associate_bot(aws_client:aws_client(), binary() | list(), associate_bot_request()) ->
@@ -14369,12 +14369,12 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% The service quota Queues per routing profile per instance applies to
 %% manually assigned
-%% queues, too. For more information about this quota, see Amazon Connect
+%% queues, too. For more information about this quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec associate_contact_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_contact_with_user_request()) ->
     {ok, associate_contact_with_user_response(), tuple()} |
@@ -14411,7 +14411,7 @@ associate_contact_with_user(Client, ContactId, InstanceId, Input0, Options0) ->
 
 %% @doc Associates an existing vocabulary as the default.
 %%
-%% Contact Lens for Amazon Connect uses the vocabulary in post-call and
+%% Contact Lens for Connect Customer uses the vocabulary in post-call and
 %% real-time
 %% analysis sessions for the given language.
 -spec associate_default_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), associate_default_vocabulary_request()) ->
@@ -14448,7 +14448,7 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an email address alias with an existing email address in
-%% an Amazon Connect instance.
+%% an Connect Customer instance.
 %%
 %% This creates
 %% a forwarding relationship where emails sent to the alias email address are
@@ -14471,7 +14471,7 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 %%
 %% Brand management: Enable you to use familiar brand-specific email
 %% addresses
-%% that forward to the appropriate Amazon Connect instance email address.
+%% that forward to the appropriate Connect Customer instance email address.
 %%
 %% Important things to know
 %%
@@ -14498,15 +14498,15 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 %%
 %% The status of the forwarding configuration.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 %%
 %% Related operations
 %%
 %% DisassociateEmailAddressAlias:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateEmailAddressAlias.html:
-%% Removes the alias association between two email addresses in an Amazon
-%% Connect instance.
+%% Removes the alias association between two email addresses in an Connect
+%% Customer instance.
 %%
 %% DescribeEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
@@ -14634,7 +14634,7 @@ associate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input0, Op
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Associates a storage resource type for the first time. You can only
@@ -14681,10 +14681,10 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Allows the specified Amazon Connect instance to access the specified
+%% Allows the specified Connect Customer instance to access the specified
 %% Lambda function.
 -spec associate_lambda_function(aws_client:aws_client(), binary() | list(), associate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
@@ -14719,10 +14719,10 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Allows the specified Amazon Connect instance to access the specified
+%% Allows the specified Connect Customer instance to access the specified
 %% Amazon Lex V1 bot. This API
 %% only supports the association of Amazon Lex V1 bots.
 -spec associate_lex_bot(aws_client:aws_client(), binary() | list(), associate_lex_bot_request()) ->
@@ -14758,8 +14758,8 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a flow with a phone number claimed to your Amazon Connect
-%% instance.
+%% @doc Associates a flow with a phone number claimed to your Connect
+%% Customer instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
 %% calling this API using an instance in the Amazon Web Services Region where
@@ -14817,7 +14817,7 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
 %% You can associate up to 49 additional email addresses with a single queue,
 %% plus 1 default outbound email address, for a total of 50.
 %%
-%% The email addresses must already exist in the Amazon Connect instance
+%% The email addresses must already exist in the Connect Customer instance
 %% before they can be associated with a queue.
 %%
 %% Agents will be able to select from these associated email addresses when
@@ -14930,7 +14930,7 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Associates a security key to the instance.
@@ -15110,7 +15110,7 @@ associate_workspace(Client, InstanceId, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a list of analytics datasets for a given Amazon Connect
+%% @doc Associates a list of analytics datasets for a given Connect Customer
 %% instance to a target account.
 %%
 %% You can
@@ -15272,8 +15272,8 @@ batch_describe_data_table_value(Client, DataTableId, InstanceId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a list of analytics datasets associated with a given Amazon
-%% Connect instance.
+%% @doc Removes a list of analytics datasets associated with a given Connect
+%% Customer instance.
 %%
 %% You can disassociate
 %% multiple datasets in a single call.
@@ -15385,11 +15385,11 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% Only the Amazon Connect outbound campaigns service principal is allowed to
-%% assume a role in your account
+%% Only the Connect Customer outbound campaigns service principal is allowed
+%% to assume a role in your account
 %% and call this API.
 %%
-%% Allows you to create a batch of contacts in Amazon Connect. The outbound
+%% Allows you to create a batch of contacts in Connect Customer. The outbound
 %% campaigns capability ingests dial
 %% requests via the PutDialRequestBatch:
 %% https://docs.aws.amazon.com/connect-outbound/latest/APIReference/API_PutDialRequestBatch.html
@@ -15471,12 +15471,12 @@ batch_update_data_table_value(Client, DataTableId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Claims an available phone number to your Amazon Connect instance or
+%% @doc Claims an available phone number to your Connect Customer instance or
 %% traffic distribution group.
 %%
 %% You can call
-%% this API only in the same Amazon Web Services Region where the Amazon
-%% Connect instance or traffic distribution group was
+%% this API only in the same Amazon Web Services Region where the Connect
+%% Customer instance or traffic distribution group was
 %% created.
 %%
 %% For more information about how to use this operation, see Claim a phone
@@ -15485,7 +15485,7 @@ batch_update_data_table_value(Client, DataTableId, InstanceId, Input0, Options0)
 %% and Claim
 %% phone numbers to traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-numbers-traffic-distribution-groups.html
-%% in the Amazon Connect Administrator
+%% in the Connect Customer Administrator
 %% Guide.
 %%
 %% You can call the SearchAvailablePhoneNumbers:
@@ -15591,7 +15591,7 @@ complete_attached_file_upload(Client, FileId, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an agent status for the specified Amazon Connect instance.
+%% @doc Creates an agent status for the specified Connect Customer instance.
 -spec create_agent_status(aws_client:aws_client(), binary() | list(), create_agent_status_request()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
@@ -15682,9 +15682,9 @@ create_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a flow for the specified Amazon Connect instance.
+%% @doc Creates a flow for the specified Connect Customer instance.
 %%
-%% You can also create and update flows using the Amazon Connect
+%% You can also create and update flows using the Connect Customer
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 -spec create_contact_flow(aws_client:aws_client(), binary() | list(), create_contact_flow_request()) ->
@@ -15720,7 +15720,7 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a flow module for the specified Amazon Connect instance.
+%% @doc Creates a flow module for the specified Connect Customer instance.
 -spec create_contact_flow_module(aws_client:aws_client(), binary() | list(), create_contact_flow_module_request()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
     {error, any()} |
@@ -15947,13 +15947,13 @@ create_data_table_attribute(Client, DataTableId, InstanceId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create new email address in the specified Amazon Connect instance.
+%% @doc Create new email address in the specified Connect Customer instance.
 %%
 %% For more information about email
 %% addresses, see Create email
 %% addresses:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec create_email_address(aws_client:aws_client(), binary() | list(), create_email_address_request()) ->
     {ok, create_email_address_response(), tuple()} |
     {error, any()} |
@@ -15987,7 +15987,8 @@ create_email_address(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an evaluation form in the specified Amazon Connect instance.
+%% @doc Creates an evaluation form in the specified Connect Customer
+%% instance.
 %%
 %% The form can be used to define
 %% questions related to agent performance, and create sections to organize
@@ -16060,8 +16061,8 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an hours of operation override in an Amazon Connect hours of
-%% operation resource.
+%% @doc Creates an hours of operation override in an Connect Customer hours
+%% of operation resource.
 -spec create_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), create_hours_of_operation_override_request()) ->
     {ok, create_hours_of_operation_override_response(), tuple()} |
     {error, any()} |
@@ -16095,22 +16096,22 @@ create_hours_of_operation_override(Client, HoursOfOperationId, InstanceId, Input
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Initiates an Amazon Connect instance with all the supported channels
+%% Initiates an Connect Customer instance with all the supported channels
 %% enabled. It does not attach any
 %% storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon
 %% Kinesis. It also does not allow for any
-%% configurations on features, such as Contact Lens for Amazon Connect.
+%% configurations on features, such as Contact Lens for Connect Customer.
 %%
-%% For more information, see Create an Amazon Connect instance:
+%% For more information, see Create an Connect Customer instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instances.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
-%% Amazon Connect enforces a limit on the total number of instances that you
-%% can create or delete in 30 days.
+%% Connect Customer enforces a limit on the total number of instances that
+%% you can create or delete in 30 days.
 %% If you exceed this limit, you will get an error message indicating there
 %% has been an excessive number of attempts at creating or deleting
 %% instances.
@@ -16149,8 +16150,8 @@ create_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Web Services resource association with an Amazon
-%% Connect instance.
+%% @doc Creates an Amazon Web Services resource association with an Connect
+%% Customer instance.
 -spec create_integration_association(aws_client:aws_client(), binary() | list(), create_integration_association_request()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
@@ -16269,7 +16270,7 @@ create_participant(Client, Input0, Options0) ->
 %% Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html
 %% in
-%% the Amazon Connect Administrator Guide.
+%% the Connect Customer Administrator Guide.
 -spec create_persistent_contact_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_persistent_contact_association_request()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
@@ -16303,13 +16304,13 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new predefined attribute for the specified Amazon Connect
+%% @doc Creates a new predefined attribute for the specified Connect Customer
 %% instance.
 %%
 %% A predefined attribute
 %% is made up of a name and a value.
 %%
-%% For the predefined attributes per instance quota, see Amazon Connect
+%% For the predefined attributes per instance quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
@@ -16331,7 +16332,7 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 %% information, see Use contact segment attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
@@ -16372,7 +16373,7 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% maximum length, see
 %% Create prompts:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec create_prompt(aws_client:aws_client(), binary() | list(), create_prompt_request()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
@@ -16411,9 +16412,9 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %%
 %% For more
 %% information about push notifications, see Set up push notifications in
-%% Amazon Connect for mobile chat:
+%% Connect Customer for mobile chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-push-notifications-for-mobile-chat.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec create_push_notification_registration(aws_client:aws_client(), binary() | list(), create_push_notification_registration_request()) ->
     {ok, create_push_notification_registration_response(), tuple()} |
     {error, any()} |
@@ -16447,12 +16448,12 @@ create_push_notification_registration(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new queue for the specified Amazon Connect instance.
+%% @doc Creates a new queue for the specified Connect Customer instance.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
 %% created in the
-%% same Region as the Amazon Connect instance where you are calling this API,
-%% then you can use a
+%% same Region as the Connect Customer instance where you are calling this
+%% API, then you can use a
 %% full phone number ARN or a UUID for `OutboundCallerIdNumberId'.
 %% However, if the phone number is claimed
 %% to a traffic distribution group that is in one Region, and you are calling
@@ -16508,7 +16509,7 @@ create_queue(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a quick connect for the specified Amazon Connect instance.
+%% @doc Creates a quick connect for the specified Connect Customer instance.
 -spec create_quick_connect(aws_client:aws_client(), binary() | list(), create_quick_connect_request()) ->
     {ok, create_quick_connect_response(), tuple()} |
     {error, any()} |
@@ -16576,7 +16577,7 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a rule for the specified Amazon Connect instance.
+%% @doc Creates a rule for the specified Connect Customer instance.
 %%
 %% Use the Rules Function
 %% language:
@@ -16619,7 +16620,7 @@ create_rule(Client, InstanceId, Input0, Options0) ->
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -16657,7 +16658,8 @@ create_security_profile(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new task template in the specified Amazon Connect instance.
+%% @doc Creates a new task template in the specified Connect Customer
+%% instance.
 -spec create_task_template(aws_client:aws_client(), binary() | list(), create_task_template_request()) ->
     {ok, create_task_template_response(), tuple()} |
     {error, any()} |
@@ -16730,8 +16732,8 @@ create_test_case(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a traffic distribution group given an Amazon Connect instance
-%% that has been replicated.
+%% @doc Creates a traffic distribution group given an Connect Customer
+%% instance that has been replicated.
 %%
 %% The `SignInConfig' distribution is available only on a
 %% default `TrafficDistributionGroup' (see the `IsDefault' parameter
@@ -16747,7 +16749,7 @@ create_test_case(Client, InstanceId, Input0, Options0) ->
 %% up traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec create_traffic_distribution_group(aws_client:aws_client(), create_traffic_distribution_group_request()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
@@ -16815,13 +16817,13 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a user account for the specified Amazon Connect instance.
+%% @doc Creates a user account for the specified Connect Customer instance.
 %%
 %% Certain UserIdentityInfo:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html
 %% parameters are required in some situations. For example, `Email',
-%% `FirstName' and `LastName' are required if you are using Amazon
-%% Connect or SAML for
+%% `FirstName' and `LastName' are required if you are using Connect
+%% Customer or SAML for
 %% identity management.
 %%
 %% Fields in `PhoneConfig' cannot be set simultaneously with their
@@ -16843,10 +16845,10 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %% `PhoneNumberConfigs', `PersistentConnectionConfigs', and
 %% `VoiceEnhancementConfigs' for per-channel configuration.
 %%
-%% For information about how to create users using the Amazon Connect admin
+%% For information about how to create users using the Connect Customer admin
 %% website, see Add Users:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html
-%% in the Amazon Connect
+%% in the Connect Customer
 %% Administrator Guide.
 -spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
@@ -17002,12 +17004,12 @@ create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a custom vocabulary associated with your Amazon Connect
+%% @doc Creates a custom vocabulary associated with your Connect Customer
 %% instance.
 %%
 %% You can set a custom vocabulary to
-%% be your default vocabulary for a given language. Contact Lens for Amazon
-%% Connect uses the default vocabulary in post-call and real-time
+%% be your default vocabulary for a given language. Contact Lens for Connect
+%% Customer uses the default vocabulary in post-call and real-time
 %% contact analysis sessions for that language.
 -spec create_vocabulary(aws_client:aws_client(), binary() | list(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
@@ -17115,7 +17117,7 @@ create_workspace_page(Client, InstanceId, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deactivates an evaluation form in the specified Amazon Connect
+%% @doc Deactivates an evaluation form in the specified Connect Customer
 %% instance.
 %%
 %% After a form is deactivated, it is no longer
@@ -17191,7 +17193,7 @@ delete_attached_file(Client, FileId, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a contact evaluation in the specified Amazon Connect
+%% @doc Deletes a contact evaluation in the specified Connect Customer
 %% instance.
 -spec delete_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_evaluation_request()) ->
     {ok, undefined, tuple()} |
@@ -17226,7 +17228,7 @@ delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a flow for the specified Amazon Connect instance.
+%% @doc Deletes a flow for the specified Connect Customer instance.
 -spec delete_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_flow_request()) ->
     {ok, delete_contact_flow_response(), tuple()} |
     {error, any()} |
@@ -17476,7 +17478,7 @@ delete_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes email address from the specified Amazon Connect instance.
+%% @doc Deletes email address from the specified Connect Customer instance.
 -spec delete_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_address_request()) ->
     {ok, delete_email_address_response(), tuple()} |
     {error, any()} |
@@ -17510,7 +17512,8 @@ delete_email_address(Client, EmailAddressId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an evaluation form in the specified Amazon Connect instance.
+%% @doc Deletes an evaluation form in the specified Connect Customer
+%% instance.
 %%
 %% If the version property is provided, only the specified version of the
 %% evaluation form is deleted.
@@ -17584,8 +17587,8 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an hours of operation override in an Amazon Connect hours of
-%% operation resource.
+%% @doc Deletes an hours of operation override in an Connect Customer hours
+%% of operation resource.
 -spec delete_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hours_of_operation_override_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -17619,17 +17622,17 @@ delete_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationO
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Deletes the Amazon Connect instance. For more information, see Delete your
-%% Amazon Connect instance:
+%% Deletes the Connect Customer instance. For more information, see Delete
+%% your Connect Customer instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-connect-instance.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
-%% Amazon Connect enforces a limit on the total number of instances that you
-%% can create or delete in 30 days.
+%% Connect Customer enforces a limit on the total number of instances that
+%% you can create or delete in 30 days.
 %% If you exceed this limit, you will get an error message indicating there
 %% has been an excessive number of attempts at creating or deleting
 %% instances.
@@ -17669,8 +17672,8 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Web Services resource association from an Amazon
-%% Connect instance.
+%% @doc Deletes an Amazon Web Services resource association from an Connect
+%% Customer instance.
 %%
 %% The association must not
 %% have any use cases associated with it.
@@ -17744,7 +17747,7 @@ delete_notification(Client, InstanceId, NotificationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a predefined attribute from the specified Amazon Connect
+%% @doc Deletes a predefined attribute from the specified Connect Customer
 %% instance.
 -spec delete_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), delete_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
@@ -17895,9 +17898,9 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
 %% Remove deleted users so they don't appear to agents as transfer
 %% options.
 %%
-%% Avoid the disruption of other Amazon Connect processes, such as instance
+%% Avoid the disruption of other Connect Customer processes, such as instance
 %% replication and syncing if
-%% you're using Amazon Connect Global Resiliency:
+%% you're using Connect Customer Global Resiliency:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 -spec delete_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_connect_request()) ->
     {ok, undefined, tuple()} |
@@ -17966,7 +17969,7 @@ delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a rule for the specified Amazon Connect instance.
+%% @doc Deletes a rule for the specified Connect Customer instance.
 -spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -18112,7 +18115,7 @@ delete_test_case(Client, InstanceId, TestCaseId, Input0, Options0) ->
 %% Delete traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec delete_traffic_distribution_group(aws_client:aws_client(), binary() | list(), delete_traffic_distribution_group_request()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
@@ -18180,13 +18183,13 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a user account from the specified Amazon Connect instance.
+%% @doc Deletes a user account from the specified Connect Customer instance.
 %%
 %% For information about what happens to a user's data when their account
-%% is deleted, see Delete Users from Your Amazon Connect
+%% is deleted, see Delete Users from Your Connect Customer
 %% Instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
-%% the Amazon Connect Administrator Guide.
+%% the Connect Customer Administrator Guide.
 %%
 %% After calling DeleteUser, call DeleteQuickConnect:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteQuickConnect.html
@@ -18198,9 +18201,9 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% Remove deleted users so they don't appear to agents as transfer
 %% options.
 %%
-%% Avoid the disruption of other Amazon Connect processes, such as instance
+%% Avoid the disruption of other Connect Customer processes, such as instance
 %% replication and syncing if
-%% you're using Amazon Connect Global Resiliency:
+%% you're using Connect Customer Global Resiliency:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 -spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, undefined, tuple()} |
@@ -18521,8 +18524,8 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the attached files configuration for the specified Amazon
-%% Connect instance and attachment scope.
+%% @doc Describes the attached files configuration for the specified Connect
+%% Customer instance and attachment scope.
 %%
 %% If a custom configuration exists for the specified attachment scope, the
 %% custom configuration is returned. If no custom configuration exists, the
@@ -18563,7 +18566,7 @@ describe_attached_files_configuration(Client, AttachmentScope, InstanceId, Query
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% To
@@ -18606,7 +18609,7 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Describes the specified contact.
@@ -18638,12 +18641,12 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %% of MONITOR, QUEUE_TRANSFER,
 %% or CALLBACK
 %%
-%% Contact information remains available in Amazon Connect for 24 months from
-%% the
+%% Contact information remains available in Connect Customer for 24 months
+%% from the
 %% `InitiationTimestamp', and then it is deleted. Only contact
-%% information that is available in Amazon Connect is returned by this API.
+%% information that is available in Connect Customer is returned by this API.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
@@ -18681,7 +18684,7 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes a contact evaluation in the specified Amazon Connect
+%% @doc Describes a contact evaluation in the specified Connect Customer
 %% instance.
 -spec describe_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
@@ -18721,7 +18724,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 
 %% @doc Describes the specified flow.
 %%
-%% You can also create and update flows using the Amazon Connect
+%% You can also create and update flows using the Connect Customer
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
@@ -18943,7 +18946,7 @@ describe_data_table_attribute(Client, AttributeName, DataTableId, InstanceId, Qu
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe email address form the specified Amazon Connect instance.
+%% @doc Describe email address form the specified Connect Customer instance.
 -spec describe_email_address(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_email_address_response(), tuple()} |
     {error, any()} |
@@ -18980,7 +18983,7 @@ describe_email_address(Client, EmailAddressId, InstanceId, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an evaluation form in the specified Amazon Connect
+%% @doc Describes an evaluation form in the specified Connect Customer
 %% instance.
 %%
 %% If the version property is not
@@ -19099,7 +19102,7 @@ describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperatio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns the current state of the specified instance identifier. It tracks
@@ -19146,7 +19149,7 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Describes the specified instance attribute.
@@ -19186,7 +19189,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Retrieves the current storage configurations for the specified resource
@@ -19271,7 +19274,7 @@ describe_notification(Client, InstanceId, NotificationId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details and status of a phone number that’s claimed to your
-%% Amazon Connect instance or traffic distribution group.
+%% Connect Customer instance or traffic distribution group.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
 %% calling in the Amazon Web Services Region where the traffic distribution
@@ -19320,7 +19323,7 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes a predefined attribute for the specified Amazon Connect
+%% @doc Describes a predefined attribute for the specified Connect Customer
 %% instance.
 %%
 %% A predefined attribute
@@ -19339,11 +19342,11 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% For the predefined attributes per instance quota, see Amazon Connect
+%% For the predefined attributes per instance quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
@@ -19537,7 +19540,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes a rule for the specified Amazon Connect instance.
+%% @doc Describes a rule for the specified Connect Customer instance.
 -spec describe_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
@@ -19578,7 +19581,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -19700,7 +19703,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 
 %% @doc Describes the specified user.
 %%
-%% You can find the instance ID in the Amazon Connect
+%% You can find the instance ID in the Connect Customer
 %% console:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html
 %% (it’s the final part of the ARN). The console does not display the user
@@ -19779,7 +19782,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the hierarchy structure of the specified Amazon Connect
+%% @doc Describes the hierarchy structure of the specified Connect Customer
 %% instance.
 -spec describe_user_hierarchy_structure(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
@@ -19817,8 +19820,8 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the view for the specified Amazon Connect instance and view
-%% identifier.
+%% @doc Retrieves the view for the specified Connect Customer instance and
+%% view identifier.
 %%
 %% The view identifier can be supplied as a ViewId or ARN.
 %%
@@ -19826,8 +19829,8 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 %%
 %% The view identifier can contain an optional qualifier, for example,
 %% `:$SAVED', which
-%% is either an actual version number or an Amazon Connect managed qualifier
-%% `$SAVED | $LATEST'. If it is
+%% is either an actual version number or an Connect Customer managed
+%% qualifier `$SAVED | $LATEST'. If it is
 %% not supplied, then `$LATEST' is assumed for customer managed views and
 %% an error is returned if there is no
 %% published content available. Version 1 is assumed for Amazon Web Services
@@ -19943,7 +19946,7 @@ describe_workspace(Client, InstanceId, WorkspaceId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the dataset ID associated with a given Amazon Connect
+%% @doc Removes the dataset ID associated with a given Connect Customer
 %% instance.
 -spec disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), disassociate_analytics_data_set_request()) ->
     {ok, undefined, tuple()} |
@@ -19978,10 +19981,10 @@ disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
-%% Revokes access to integrated applications from Amazon Connect.
+%% Revokes access to integrated applications from Connect Customer.
 -spec disassociate_approved_origin(aws_client:aws_client(), binary() | list(), disassociate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -20017,7 +20020,7 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
@@ -20056,7 +20059,7 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the alias association between two email addresses in an
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% After
 %% disassociation, emails sent to the former alias email address are no
@@ -20104,7 +20107,7 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% The timestamp of when the disassociation occurred.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 %%
 %% Related operations
@@ -20112,7 +20115,7 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 %% AssociateEmailAddressAlias:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateEmailAddressAlias.html:
 %% Associates an email address alias with an existing email address in an
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% DescribeEmailAddress:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
@@ -20240,7 +20243,7 @@ disassociate_hours_of_operations(Client, HoursOfOperationId, InstanceId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Removes the storage type configurations for the specified resource type
@@ -20280,7 +20283,7 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Remove the Lambda function from the dropdown options available in the
@@ -20320,7 +20323,7 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
@@ -20362,7 +20365,7 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the flow association from a phone number claimed to your
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
 %% calling this API using an instance in the Amazon Web Services Region where
@@ -20530,7 +20533,7 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Deletes the specified security key.
@@ -20908,9 +20911,9 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %%
 %% For more information, see the Position in queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% metric in the Amazon Connect Administrator Guide.
+%% metric in the Connect Customer Administrator Guide.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec get_contact_metrics(aws_client:aws_client(), get_contact_metrics_request()) ->
     {ok, get_contact_metrics_response(), tuple()} |
@@ -20945,12 +20948,12 @@ get_contact_metrics(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the real-time metric data from the specified Amazon Connect
+%% @doc Gets the real-time metric data from the specified Connect Customer
 %% instance.
 %%
 %% For a description of each metric, see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
 %% metric values in the response:
@@ -21007,8 +21010,8 @@ get_current_metric_data(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the real-time active user data from the specified Amazon Connect
-%% instance.
+%% @doc Gets the real-time active user data from the specified Connect
+%% Customer instance.
 -spec get_current_user_data(aws_client:aws_client(), binary() | list(), get_current_user_data_request()) ->
     {ok, get_current_user_data_response(), tuple()} |
     {error, any()} |
@@ -21084,15 +21087,15 @@ get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Supports SAML sign-in for Amazon Connect.
+%% @doc Supports SAML sign-in for Connect Customer.
 %%
-%% Retrieves a token for federation. The token is for the Amazon Connect user
-%% which corresponds to the IAM credentials that were used to invoke this
-%% action.
+%% Retrieves a token for federation. The token is for the Connect Customer
+%% user which corresponds to the IAM credentials that were used to invoke
+%% this action.
 %%
-%% For more information about how SAML sign-in works in Amazon Connect, see
-%% Configure SAML with IAM for Amazon Connect
-%% in the Amazon Connect Administrator Guide.:
+%% For more information about how SAML sign-in works in Connect Customer, see
+%% Configure SAML with IAM for Connect Customer
+%% in the Connect Customer Administrator Guide.:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/configure-saml.html
 %%
 %% This API doesn't support root users. If you try to invoke
@@ -21100,7 +21103,7 @@ get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDa
 %% message similar to the following one appears:
 %%
 %% `Provided identity: Principal: (...). User: (...). cannot be used for
-%% federation with Amazon Connect'
+%% federation with Connect Customer'
 -spec get_federation_token(aws_client:aws_client(), binary() | list()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
@@ -21174,12 +21177,12 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets historical metric data from the specified Amazon Connect
+%% @doc Gets historical metric data from the specified Connect Customer
 %% instance.
 %%
 %% For a description of each historical metric, see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% We recommend using the GetMetricDataV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html
@@ -21225,7 +21228,7 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets metric data from the specified Amazon Connect instance.
+%% @doc Gets metric data from the specified Connect Customer instance.
 %%
 %% `GetMetricDataV2' offers more features than GetMetricData:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricData.html,
@@ -21240,7 +21243,7 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% `GetMetricDataV2' and
 %% `GetMetricData', see Metrics definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
 %% metric values in the response:
@@ -21336,8 +21339,8 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets details about a specific task template in the specified Amazon
-%% Connect instance.
+%% @doc Gets details about a specific task template in the specified Connect
+%% Customer instance.
 -spec get_task_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
@@ -21456,10 +21459,10 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Imports a claimed phone number from an external service, such as
 %% Amazon Web Services End User Messaging, into an
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% You can call this API only in the same Amazon Web Services Region where
-%% the Amazon Connect instance was created.
+%% the Connect Customer instance was created.
 %%
 %% Call the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
@@ -21596,7 +21599,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the association status of requested dataset ID for a given
-%% Amazon Connect instance.
+%% Connect Customer instance.
 -spec list_analytics_data_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
@@ -21640,7 +21643,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data lake datasets available to associate with for a given
-%% Amazon Connect instance.
+%% Connect Customer instance.
 -spec list_analytics_data_lake_data_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_lake_data_sets_response(), tuple()} |
     {error, any()} |
@@ -21682,7 +21685,7 @@ list_analytics_data_lake_data_sets(Client, InstanceId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of all approved origins associated with the
@@ -21773,7 +21776,7 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the attached files configurations
-%% for the specified Amazon Connect instance.
+%% for the specified Connect Customer instance.
 %%
 %% This API returns effective configurations (custom overrides or defaults)
 %% for each attachment scope. If no custom configuration exists for a scope,
@@ -21819,14 +21822,14 @@ list_attached_files_configurations(Client, InstanceId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% To
 %% request access to this API, contact Amazon Web Services Support.
 %%
 %% Provides summary information about the authentication profiles in a
-%% specified Amazon Connect
+%% specified Connect Customer
 %% instance.
 -spec list_authentication_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_authentication_profiles_response(), tuple()} |
@@ -21869,7 +21872,7 @@ list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% For the specified version of Amazon Lex, returns a paginated list of all
@@ -21967,7 +21970,7 @@ list_child_hours_of_operations(Client, HoursOfOperationId, InstanceId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists contact evaluations in the specified Amazon Connect instance.
+%% @doc Lists contact evaluations in the specified Connect Customer instance.
 -spec list_contact_evaluations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
@@ -22096,8 +22099,8 @@ list_contact_flow_module_versions(Client, ContactFlowModuleId, InstanceId, Query
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the flow modules for the specified Amazon
-%% Connect instance.
+%% @doc Provides information about the flow modules for the specified Connect
+%% Customer instance.
 -spec list_contact_flow_modules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
@@ -22140,7 +22143,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all the available versions for the specified Amazon Connect
+%% @doc Returns all the available versions for the specified Connect Customer
 %% instance and flow identifier.
 -spec list_contact_flow_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_contact_flow_versions_response(), tuple()} |
@@ -22183,16 +22186,16 @@ list_contact_flow_versions(Client, ContactFlowId, InstanceId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the flows for the specified Amazon Connect
-%% instance.
+%% @doc Provides information about the flows for the specified Connect
+%% Customer instance.
 %%
-%% You can also create and update flows using the Amazon Connect
+%% You can also create and update flows using the Connect Customer
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
 %% For more information about flows, see Flows:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html
-%% in the Amazon Connect
+%% in the Connect Customer
 %% Administrator Guide.
 -spec list_contact_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flows_response(), tuple()} |
@@ -22236,7 +22239,7 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% For the specified `referenceTypes', returns a list of references
@@ -22452,7 +22455,7 @@ list_data_tables(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the default vocabularies for the specified Amazon Connect
+%% @doc Lists the default vocabularies for the specified Connect Customer
 %% instance.
 -spec list_default_vocabularies(aws_client:aws_client(), binary() | list(), list_default_vocabularies_request()) ->
     {ok, list_default_vocabularies_response(), tuple()} |
@@ -22522,8 +22525,8 @@ list_entity_security_profiles(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists versions of an evaluation form in the specified Amazon Connect
-%% instance.
+%% @doc Lists versions of an evaluation form in the specified Connect
+%% Customer instance.
 -spec list_evaluation_form_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
@@ -22565,7 +22568,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists evaluation forms in the specified Amazon Connect instance.
+%% @doc Lists evaluation forms in the specified Connect Customer instance.
 -spec list_evaluation_forms(aws_client:aws_client(), binary() | list()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
@@ -22693,13 +22696,13 @@ list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% For more information about hours of operation, see Set the Hours of
 %% Operation for a Queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec list_hours_of_operations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
@@ -22741,7 +22744,7 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of all attribute types for the given instance.
@@ -22786,7 +22789,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of storage configs for the identified instance
@@ -22833,7 +22836,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Return a list of instances which are in active state, creation-in-progress
@@ -22883,7 +22886,7 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the Amazon Web Services resource
-%% associations for the specified Amazon Connect instance.
+%% associations for the specified Connect Customer instance.
 -spec list_integration_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
@@ -22927,7 +22930,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of all Lambda functions that display in the
@@ -22974,7 +22977,7 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of all the Amazon Lex V1 bots currently
@@ -23066,14 +23069,14 @@ list_notifications(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the phone numbers for the specified Amazon
-%% Connect instance.
+%% @doc Provides information about the phone numbers for the specified
+%% Connect Customer instance.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact
 %% Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% We recommend using ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
@@ -23135,7 +23138,7 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists phone numbers claimed to your Amazon Connect instance or
+%% @doc Lists phone numbers claimed to your Connect Customer instance or
 %% traffic distribution group.
 %%
 %% If the provided `TargetArn'
@@ -23146,7 +23149,7 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Your Contact
 %% Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% When given an instance ARN, `ListPhoneNumbersV2' returns only the
 %% phone numbers claimed to the
@@ -23188,7 +23191,7 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists predefined attributes for the specified Amazon Connect
+%% @doc Lists predefined attributes for the specified Connect Customer
 %% instance.
 %%
 %% A predefined attribute is
@@ -23207,11 +23210,11 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% For the predefined attributes per instance quota, see Amazon Connect
+%% For the predefined attributes per instance quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec list_predefined_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
@@ -23254,8 +23257,8 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the prompts for the specified Amazon
-%% Connect instance.
+%% @doc Provides information about the prompts for the specified Connect
+%% Customer instance.
 -spec list_prompts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
@@ -23401,8 +23404,8 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the queues for the specified Amazon
-%% Connect instance.
+%% @doc Provides information about the queues for the specified Connect
+%% Customer instance.
 %%
 %% If you do not specify a `QueueTypes' parameter, both standard and
 %% agent queues are returned. This might cause an unexpected truncation of
@@ -23412,7 +23415,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% For more information about queues, see Queues: Standard and Agent:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec list_queues(aws_client:aws_client(), binary() | list()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
@@ -23456,7 +23459,7 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the quick connects for the specified
-%% Amazon Connect instance.
+%% Connect Customer instance.
 -spec list_quick_connects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
@@ -23554,10 +23557,10 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
 %% invalid request exception will be thrown).
 %%
 %% For information about how manual contact assignment works in the agent
-%% workspace, see the Access the Worklist app in the Amazon Connect agent
+%% workspace, see the Access the Worklist app in the Connect Customer agent
 %% workspace:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/worklist-app.html in
-%% the Amazon Connect Administrator Guide.
+%% the Connect Customer Administrator Guide.
 %%
 %% Important things to know
 %%
@@ -23566,7 +23569,7 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
 %% ListRoutingProfileQueues API to list the auto assignment queues for the
 %% routing profile.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec list_routing_profile_manual_assignment_queues(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_routing_profile_manual_assignment_queues_response(), tuple()} |
@@ -23652,13 +23655,13 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the routing profiles for the
-%% specified Amazon Connect instance.
+%% specified Connect Customer instance.
 %%
 %% For more information about routing profiles, see Routing Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html
 %% and Create a Routing Profile:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec list_routing_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
@@ -23700,7 +23703,7 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all rules for the specified Amazon Connect instance.
+%% @doc List all rules for the specified Connect Customer instance.
 -spec list_rules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
@@ -23744,7 +23747,7 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Returns a paginated list of all security keys associated with the
@@ -23879,7 +23882,7 @@ list_security_profile_flow_modules(Client, InstanceId, SecurityProfileId, QueryM
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -23926,11 +23929,11 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the security profiles for the
-%% specified Amazon Connect instance.
+%% specified Connect Customer instance.
 %%
 %% For more information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -23978,11 +23981,11 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags for the specified resource.
 %%
-%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% For sample policies that use tags, see Connect Customer Identity-Based
 %% Policy
 %% Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -24019,7 +24022,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists task templates for the specified Amazon Connect instance.
+%% @doc Lists task templates for the specified Connect Customer instance.
 -spec list_task_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
@@ -24327,12 +24330,12 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the hierarchy groups for the
-%% specified Amazon Connect instance.
+%% specified Connect Customer instance.
 %%
 %% For more information about agent hierarchies, see Set Up Agent
 %% Hierarchies:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec list_user_hierarchy_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
@@ -24459,8 +24462,8 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides summary information about the users for the specified Amazon
-%% Connect instance.
+%% @doc Provides summary information about the users for the specified
+%% Connect Customer instance.
 -spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
@@ -24502,7 +24505,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all the available versions for the specified Amazon Connect
+%% @doc Returns all the available versions for the specified Connect Customer
 %% instance and view identifier.
 %%
 %% Results will be sorted from highest to lowest.
@@ -24785,7 +24788,7 @@ pause_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes the current status of a user or agent in Amazon Connect.
+%% @doc Changes the current status of a user or agent in Connect Customer.
 %%
 %% If the agent is currently handling a
 %% contact, this sets the agent's next status.
@@ -24795,7 +24798,7 @@ pause_contact(Client, Input0, Options0) ->
 %% and Set your
 %% next status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-next-status.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec put_user_status(aws_client:aws_client(), binary() | list(), binary() | list(), put_user_status_request()) ->
     {ok, put_user_status_response(), tuple()} |
     {error, any()} |
@@ -24829,14 +24832,14 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Releases a phone number previously claimed to an Amazon Connect
+%% @doc Releases a phone number previously claimed to an Connect Customer
 %% instance or traffic distribution group.
 %%
 %% You can call this API
 %% only in the Amazon Web Services Region where the number was claimed.
 %%
 %% To release phone numbers from a traffic distribution group, use the
-%% `ReleasePhoneNumber' API, not the Amazon Connect admin website.
+%% `ReleasePhoneNumber' API, not the Connect Customer admin website.
 %%
 %% After releasing a phone number, the phone number enters into a cooldown
 %% period for up to 180 days. It cannot be
@@ -24901,16 +24904,16 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Replicates an Amazon Connect instance in the specified Amazon Web
+%% @doc Replicates an Connect Customer instance in the specified Amazon Web
 %% Services Region and copies configuration
-%% information for Amazon Connect resources across Amazon Web Services
+%% information for Connect Customer resources across Amazon Web Services
 %% Regions.
 %%
-%% For more information about replicating an Amazon Connect instance, see
-%% Create a replica of your existing Amazon Connect
+%% For more information about replicating an Connect Customer instance, see
+%% Create a replica of your existing Connect Customer
 %% instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec replicate_instance(aws_client:aws_client(), binary() | list(), replicate_instance_request()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
@@ -25020,7 +25023,7 @@ resume_contact_recording(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches AgentStatuses in an Amazon Connect instance, with optional
+%% @doc Searches AgentStatuses in an Connect Customer instance, with optional
 %% filtering.
 -spec search_agent_statuses(aws_client:aws_client(), search_agent_statuses_request()) ->
     {ok, search_agent_statuses_response(), tuple()} |
@@ -25056,7 +25059,7 @@ search_agent_statuses(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for available phone numbers that you can claim to your
-%% Amazon Connect instance or traffic distribution group.
+%% Connect Customer instance or traffic distribution group.
 %%
 %% If the
 %% provided `TargetArn' is a traffic distribution group, you can call
@@ -25095,7 +25098,7 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches contact evaluations in an Amazon Connect instance, with
+%% @doc Searches contact evaluations in an Connect Customer instance, with
 %% optional filtering.
 %%
 %% Use cases
@@ -25114,7 +25117,7 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 %% contact evaluations, try calling the API again
 %% in a few seconds.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_contact_evaluations(aws_client:aws_client(), search_contact_evaluations_request()) ->
     {ok, search_contact_evaluations_response(), tuple()} |
@@ -25149,7 +25152,7 @@ search_contact_evaluations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches the flow modules in an Amazon Connect instance, with
+%% @doc Searches the flow modules in an Connect Customer instance, with
 %% optional filtering.
 -spec search_contact_flow_modules(aws_client:aws_client(), search_contact_flow_modules_request()) ->
     {ok, search_contact_flow_modules_response(), tuple()} |
@@ -25184,7 +25187,7 @@ search_contact_flow_modules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches the flows in an Amazon Connect instance, with optional
+%% @doc Searches the flows in an Connect Customer instance, with optional
 %% filtering.
 -spec search_contact_flows(aws_client:aws_client(), search_contact_flows_request()) ->
     {ok, search_contact_flows_response(), tuple()} |
@@ -25219,7 +25222,7 @@ search_contact_flows(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches contacts in an Amazon Connect instance.
+%% @doc Searches contacts in an Connect Customer instance.
 -spec search_contacts(aws_client:aws_client(), search_contacts_request()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()} |
@@ -25327,7 +25330,7 @@ search_email_addresses(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches evaluation forms in an Amazon Connect instance, with
+%% @doc Searches evaluation forms in an Connect Customer instance, with
 %% optional filtering.
 %%
 %% Use cases
@@ -25349,7 +25352,7 @@ search_email_addresses(Client, Input0, Options0) ->
 %% contact evaluations, try calling the API again
 %% in a few seconds.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_evaluation_forms(aws_client:aws_client(), search_evaluation_forms_request()) ->
     {ok, search_evaluation_forms_response(), tuple()} |
@@ -25418,7 +25421,7 @@ search_hours_of_operation_overrides(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches the hours of operation in an Amazon Connect instance, with
+%% @doc Searches the hours of operation in an Connect Customer instance, with
 %% optional filtering.
 -spec search_hours_of_operations(aws_client:aws_client(), search_hours_of_operations_request()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
@@ -25509,11 +25512,11 @@ search_notifications(Client, Input0, Options0) ->
 %% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% For the predefined attributes per instance quota, see Amazon Connect
+%% For the predefined attributes per instance quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
@@ -25548,7 +25551,7 @@ search_predefined_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches prompts in an Amazon Connect instance, with optional
+%% @doc Searches prompts in an Connect Customer instance, with optional
 %% filtering.
 -spec search_prompts(aws_client:aws_client(), search_prompts_request()) ->
     {ok, search_prompts_response(), tuple()} |
@@ -25583,7 +25586,7 @@ search_prompts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches queues in an Amazon Connect instance, with optional
+%% @doc Searches queues in an Connect Customer instance, with optional
 %% filtering.
 -spec search_queues(aws_client:aws_client(), search_queues_request()) ->
     {ok, search_queues_response(), tuple()} |
@@ -25618,8 +25621,8 @@ search_queues(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches quick connects in an Amazon Connect instance, with optional
-%% filtering.
+%% @doc Searches quick connects in an Connect Customer instance, with
+%% optional filtering.
 -spec search_quick_connects(aws_client:aws_client(), search_quick_connects_request()) ->
     {ok, search_quick_connects_response(), tuple()} |
     {error, any()} |
@@ -25653,7 +25656,7 @@ search_quick_connects(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches tags used in an Amazon Connect instance using optional
+%% @doc Searches tags used in an Connect Customer instance using optional
 %% search criteria.
 -spec search_resource_tags(aws_client:aws_client(), search_resource_tags_request()) ->
     {ok, search_resource_tags_response(), tuple()} |
@@ -25688,7 +25691,7 @@ search_resource_tags(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches routing profiles in an Amazon Connect instance, with
+%% @doc Searches routing profiles in an Connect Customer instance, with
 %% optional filtering.
 %%
 %% `SearchRoutingProfiles' does not populate LastModifiedRegion,
@@ -25730,12 +25733,12 @@ search_routing_profiles(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches security profiles in an Amazon Connect instance, with
+%% @doc Searches security profiles in an Connect Customer instance, with
 %% optional filtering.
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -25808,7 +25811,7 @@ search_test_cases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches UserHierarchyGroups in an Amazon Connect instance, with
+%% @doc Searches UserHierarchyGroups in an Connect Customer instance, with
 %% optional filtering.
 %%
 %% The UserHierarchyGroup with `&quot;LevelId&quot;: &quot;0&quot;' is
@@ -25847,7 +25850,7 @@ search_user_hierarchy_groups(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches users in an Amazon Connect instance, with optional
+%% @doc Searches users in an Connect Customer instance, with optional
 %% filtering.
 %%
 %% `AfterContactWorkTimeLimit' is returned in milliseconds.
@@ -25918,7 +25921,7 @@ search_views(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for vocabularies within a specific Amazon Connect instance
+%% @doc Searches for vocabularies within a specific Connect Customer instance
 %% using `State',
 %% `NameStartsWith', and `LanguageCode'.
 -spec search_vocabularies(aws_client:aws_client(), binary() | list(), search_vocabularies_request()) ->
@@ -26024,7 +26027,7 @@ search_workspaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Processes chat integration events from Amazon Web Services or
-%% external integrations to Amazon Connect.
+%% external integrations to Connect Customer.
 %%
 %% A chat
 %% integration event includes:
@@ -26078,12 +26081,12 @@ send_chat_integration_event(Client, Input0, Options0) ->
 
 %% @doc Send outbound email for outbound campaigns.
 %%
-%% For more information about outbound campaigns, see Set up Amazon Connect
+%% For more information about outbound campaigns, see Set up Connect Customer
 %% outbound campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-outbound-campaigns.html.
 %%
-%% Only the Amazon Connect outbound campaigns service principal is allowed to
-%% assume a role in your account
+%% Only the Connect Customer outbound campaigns service principal is allowed
+%% to assume a role in your account
 %% and call this API.
 -spec send_outbound_email(aws_client:aws_client(), binary() | list(), send_outbound_email_request()) ->
     {ok, send_outbound_email_response(), tuple()} |
@@ -26121,9 +26124,10 @@ send_outbound_email(Client, InstanceId, Input0, Options0) ->
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading your
 %% content.
 %%
-%% You may only use this API to upload attachments to an Amazon Connect Case:
+%% You may only use this API to upload attachments to an Connect Customer
+%% Case:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html
-%% or Amazon Connect Email:
+%% or Connect Customer Email:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html.
 -spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
     {ok, start_attached_file_upload_response(), tuple()} |
@@ -26164,7 +26168,7 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% Response of this API provides a token required to obtain
 %% credentials from the CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
-%% API in the Amazon Connect Participant Service.
+%% API in the Connect Customer Participant Service.
 %%
 %% When a new chat contact is successfully created, clients must subscribe to
 %% the participant’s connection for the
@@ -26189,14 +26193,14 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% support the ability to configure custom chat durations. For more
 %% information, contact Amazon Web Services Support.
 %%
-%% For more information about chat, see the following topics in the Amazon
-%% Connect
+%% For more information about chat, see the following topics in the Connect
+%% Customer
 %% Administrator Guide:
 %%
-%% Concepts: Web and mobile messaging capabilities in Amazon Connect:
+%% Concepts: Web and mobile messaging capabilities in Connect Customer:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html
 %%
-%% Amazon Connect Chat security best practices:
+%% Connect Customer Chat security best practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat
 -spec start_chat_contact(aws_client:aws_client(), start_chat_contact_request()) ->
     {ok, start_chat_contact_response(), tuple()} |
@@ -26231,8 +26235,8 @@ start_chat_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts an empty evaluation in the specified Amazon Connect instance,
-%% using the given evaluation form for the
+%% @doc Starts an empty evaluation in the specified Connect Customer
+%% instance, using the given evaluation form for the
 %% particular contact.
 %%
 %% The evaluation form version used for the contact evaluation corresponds to
@@ -26375,16 +26379,16 @@ start_contact_recording(Client, Input0, Options0) ->
 %% message streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
-%% For more information about chat, see the following topics in the Amazon
-%% Connect
+%% For more information about chat, see the following topics in the Connect
+%% Customer
 %% Administrator Guide:
 %%
-%% Concepts: Web and mobile messaging capabilities in Amazon Connect:
+%% Concepts: Web and mobile messaging capabilities in Connect Customer:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html
 %%
-%% Amazon Connect Chat security best practices:
+%% Connect Customer Chat security best practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat
 -spec start_contact_streaming(aws_client:aws_client(), start_contact_streaming_request()) ->
     {ok, start_contact_streaming_response(), tuple()} |
@@ -26476,9 +26480,9 @@ start_email_contact(Client, Input0, Options0) ->
 %% Flow
 %% Action.
 %%
-%% For more information about using SMS or WhatsApp in Amazon Connect, see
+%% For more information about using SMS or WhatsApp in Connect Customer, see
 %% the following topics in
-%% the Amazon Connect Administrator Guide:
+%% the Connect Customer Administrator Guide:
 %%
 %% Set up SMS
 %% messaging:
@@ -26579,16 +26583,16 @@ start_outbound_email_contact(Client, Input0, Options0) ->
 %%
 %% UK numbers with a 447 prefix are not allowed by default. Before you can
 %% dial these UK mobile numbers, you must
-%% submit a service quota increase request. For more information, see Amazon
-%% Connect Service Quotas:
+%% submit a service quota increase request. For more information, see Connect
+%% Customer Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
 %% `TrafficType' =
 %% `CAMPAIGN', you must submit a service quota increase request to the
-%% quota Amazon Connect campaigns:
+%% quota Connect Customer campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas.
 %%
 %% For Preview dialing mode, only the Amazon Connect outbound campaigns
@@ -26633,7 +26637,7 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 %% calling, and screen sharing
 %% capabilities:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec start_screen_sharing(aws_client:aws_client(), start_screen_sharing_request()) ->
     {ok, start_screen_sharing_response(), tuple()} |
     {error, any()} |
@@ -26669,10 +26673,10 @@ start_screen_sharing(Client, Input0, Options0) ->
 
 %% @doc Initiates a flow to start a new task contact.
 %%
-%% For more information about task contacts, see Concepts: Tasks in Amazon
-%% Connect: https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html
+%% For more information about task contacts, see Concepts: Tasks in Connect
+%% Customer: https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 %%
 %% When using `PreviousContactId' and `RelatedContactId' input
 %% parameters, note the
@@ -26708,17 +26712,17 @@ start_screen_sharing(Client, Input0, Options0) ->
 %% specified, or only the
 %% `TaskTemplateID' is specified but it does not have a flow configured,
 %% the request returns an error
-%% because Amazon Connect cannot identify the unique flow to run when the
+%% because Connect Customer cannot identify the unique flow to run when the
 %% task is created.
 %%
 %% A `ServiceQuotaExceededException' occurs when the number of open tasks
 %% exceeds the active tasks quota
 %% or there are already 12 tasks referencing the same
 %% `PreviousContactId'. For more information about service
-%% quotas for task contacts, see Amazon Connect service quotas:
+%% quotas for task contacts, see Connect Customer service quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -spec start_task_contact(aws_client:aws_client(), start_task_contact_request()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
@@ -26791,7 +26795,7 @@ start_test_case_execution(Client, InstanceId, TestCaseId, Input0, Options0) ->
 %%
 %% It performs the actions
 %% in the flow that are specified (in ContactFlowId) and present in the
-%% Amazon Connect instance (specified as
+%% Connect Customer instance (specified as
 %% InstanceId).
 -spec start_web_r_t_c_contact(aws_client:aws_client(), start_web_r_t_c_contact_request()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
@@ -27028,7 +27032,7 @@ stop_test_case_execution(Client, InstanceId, TestCaseExecutionId, TestCaseId, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Submits a contact evaluation in the specified Amazon Connect
+%% @doc Submits a contact evaluation in the specified Connect Customer
 %% instance.
 %%
 %% Answers included in the request are
@@ -27127,7 +27131,7 @@ suspend_contact_recording(Client, Input0, Options0) ->
 %%
 %% For more information about this API is used, see Set up granular billing
 %% for a detailed
-%% view of your Amazon Connect usage:
+%% view of your Connect Customer usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 -spec tag_contact(aws_client:aws_client(), tag_contact_request()) ->
     {ok, tag_contact_response(), tuple()} |
@@ -27167,14 +27171,14 @@ tag_contact(Client, Input0, Options0) ->
 %% Some of the supported resource types are agents, routing profiles, queues,
 %% quick connects, flows, agent
 %% statuses, hours of operation, phone numbers, security profiles, and task
-%% templates. For a complete list, see Tagging resources in Amazon Connect:
+%% templates. For a complete list, see Tagging resources in Connect Customer:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
-%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% For sample policies that use tags, see Connect Customer Identity-Based
 %% Policy
 %% Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -27269,7 +27273,7 @@ transfer_contact(Client, Input0, Options0) ->
 %%
 %% For more information about this API is used, see Set up granular billing
 %% for a detailed
-%% view of your Amazon Connect usage:
+%% view of your Connect Customer usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 -spec untag_contact(aws_client:aws_client(), binary() | list(), binary() | list(), untag_contact_request()) ->
     {ok, untag_contact_response(), tuple()} |
@@ -27374,8 +27378,8 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the attached files configuration for the specified Amazon
-%% Connect instance and attachment scope.
+%% @doc Updates the attached files configuration for the specified Connect
+%% Customer instance and attachment scope.
 %%
 %% If no instance-specific configuration exists, this operation creates one.
 %% Partial updates are supported—only specified fields are updated, while
@@ -27413,7 +27417,7 @@ update_attached_files_configuration(Client, AttachmentScope, InstanceId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% To
@@ -27453,7 +27457,7 @@ update_authentication_profile(Client, AuthenticationProfileId, InstanceId, Input
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Adds or updates user-defined contact information associated with the
@@ -27505,16 +27509,16 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 %% that the agent took during the call that display to the next agent that
 %% takes the call. You can also update
 %% attributes for a contact using data from your CRM application and save the
-%% data with the contact in Amazon Connect. You could also flag calls for
+%% data with the contact in Connect Customer. You could also flag calls for
 %% additional analysis, such as legal review or to identify abusive callers.
 %%
-%% Contact attributes are available in Amazon Connect for 24 months, and are
-%% then deleted. For information
+%% Contact attributes are available in Connect Customer for 24 months, and
+%% are then deleted. For information
 %% about contact record retention and the maximum size of the contact record
 %% attributes section, see Feature
 %% specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec update_contact_attributes(aws_client:aws_client(), update_contact_attributes_request()) ->
     {ok, update_contact_attributes_response(), tuple()} |
     {error, any()} |
@@ -27548,8 +27552,8 @@ update_contact_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates details about a contact evaluation in the specified Amazon
-%% Connect instance.
+%% @doc Updates details about a contact evaluation in the specified Connect
+%% Customer instance.
 %%
 %% A contact evaluation
 %% must be in draft state. Answers included in the request are merged with
@@ -27591,7 +27595,7 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 
 %% @doc Updates the specified flow.
 %%
-%% You can also create and update flows using the Amazon Connect
+%% You can also create and update flows using the Connect Customer
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
@@ -27702,7 +27706,7 @@ update_contact_flow_module_alias(Client, AliasId, ContactFlowModuleId, InstanceI
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates specified flow module for the specified Amazon Connect
+%% @doc Updates specified flow module for the specified Connect Customer
 %% instance.
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
@@ -27779,7 +27783,7 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 
 %% @doc The name of the flow.
 %%
-%% You can also create and update flows using the Amazon Connect
+%% You can also create and update flows using the Connect Customer
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 -spec update_contact_flow_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_name_request()) ->
@@ -28028,7 +28032,7 @@ update_data_table_primary_values(Client, DataTableId, InstanceId, Input0, Option
 %%
 %% For more information about email addresses, see Create email addresses:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
-%% in the Amazon Connect
+%% in the Connect Customer
 %% Administrator Guide.
 -spec update_email_address_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_address_metadata_request()) ->
     {ok, update_email_address_metadata_response(), tuple()} |
@@ -28064,7 +28068,7 @@ update_email_address_metadata(Client, EmailAddressId, InstanceId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates details about a specific evaluation form version in the
-%% specified Amazon Connect instance.
+%% specified Connect Customer instance.
 %%
 %% Question
 %% and section identifiers cannot be duplicated within the same evaluation
@@ -28174,7 +28178,7 @@ update_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationO
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Updates the value for the specified attribute type.
@@ -28211,7 +28215,7 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
+%% @doc This API is in preview release for Connect Customer and is subject to
 %% change.
 %%
 %% Updates an existing configuration for a resource type. This API is
@@ -28286,7 +28290,7 @@ update_notification_content(Client, InstanceId, NotificationId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Instructs Amazon Connect to resume the authentication process.
+%% @doc Instructs Connect Customer to resume the authentication process.
 %%
 %% The subsequent actions depend on the request
 %% body contents:
@@ -28385,9 +28389,10 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates your claimed phone number from its current Amazon Connect
-%% instance or traffic distribution group to another Amazon Connect instance
-%% or traffic distribution group in the same Amazon Web Services Region.
+%% @doc Updates your claimed phone number from its current Connect Customer
+%% instance or traffic distribution group to another Connect Customer
+%% instance or traffic distribution group in the same Amazon Web Services
+%% Region.
 %%
 %% After using this API, you must verify that the phone number is attached to
 %% the correct flow in the target
@@ -28473,13 +28478,13 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a predefined attribute for the specified Amazon Connect
+%% @doc Updates a predefined attribute for the specified Connect Customer
 %% instance.
 %%
 %% A predefined attribute is
 %% made up of a name and a value.
 %%
-%% For the predefined attributes per instance quota, see Amazon Connect
+%% For the predefined attributes per instance quota, see Connect Customer
 %% quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
 %%
@@ -28501,7 +28506,7 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 %% information, see Use contact segment attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
@@ -28680,8 +28685,8 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %%
 %% If the phone number is claimed to a traffic distribution group that was
 %% created in the
-%% same Region as the Amazon Connect instance where you are calling this API,
-%% then you can use a
+%% same Region as the Connect Customer instance where you are calling this
+%% API, then you can use a
 %% full phone number ARN or a UUID for `OutboundCallerIdNumberId'.
 %% However, if the phone number is claimed
 %% to a traffic distribution group that is in one Region, and you are calling
@@ -29053,7 +29058,7 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a rule for the specified Amazon Connect instance.
+%% @doc Updates a rule for the specified Connect Customer instance.
 %%
 %% Use the Rules Function
 %% language:
@@ -29096,7 +29101,7 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 %%
 %% For information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide. For a mapping of the API name
+%% in the Connect Customer Administrator Guide. For a mapping of the API name
 %% and user interface name of the security
 %% profile permissions, see List
 %% of security profile permissions:
@@ -29135,7 +29140,7 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates details about a specific task template in the specified
-%% Amazon Connect instance.
+%% Connect Customer instance.
 %%
 %% This operation does
 %% not support partial updates. Instead it does a full update of template
@@ -29238,7 +29243,7 @@ update_test_case(Client, InstanceId, TestCaseId, Input0, Options0) ->
 %% across Amazon Web Services Regions
 %% :
 %% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 %%
 %% Important things to know
 %%
@@ -29431,7 +29436,7 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %% reset the password through email. For more information, see Best Practices
 %% for Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec update_user_identity_info(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_identity_info_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -29652,7 +29657,7 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the view content of the given view identifier in the
-%% specified Amazon Connect instance.
+%% specified Connect Customer instance.
 %%
 %% It performs content validation if `Status' is set to `SAVED' and
 %% performs full content

@@ -843,7 +843,7 @@ create_environment_connector(Client, Input, Options)
 
 %% @doc Creates an ESX host and adds it to an Amazon EVS environment.
 %%
-%% Amazon EVS supports 4-16 hosts per environment.
+%% Amazon EVS supports 4-32 hosts per environment.
 %%
 %% This action can only be used after the Amazon EVS environment is deployed.
 %%

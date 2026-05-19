@@ -691,6 +691,8 @@
          describe_ipam_external_resource_verification_tokens/3,
          describe_ipam_policies/2,
          describe_ipam_policies/3,
+         describe_ipam_pool_allocations/2,
+         describe_ipam_pool_allocations/3,
          describe_ipam_pools/2,
          describe_ipam_pools/3,
          describe_ipam_prefix_list_resolver_targets/2,
@@ -1277,6 +1279,8 @@
          modify_ipam_policy_allocation_rules/3,
          modify_ipam_pool/2,
          modify_ipam_pool/3,
+         modify_ipam_pool_allocation/2,
+         modify_ipam_pool_allocation/3,
          modify_ipam_prefix_list_resolver/2,
          modify_ipam_prefix_list_resolver/3,
          modify_ipam_prefix_list_resolver_target/2,
@@ -1559,7 +1563,8 @@
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwner">> => string(),
 %%   <<"ResourceRegion">> => string(),
-%%   <<"ResourceType">> => list(any())
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipam_pool_allocation() :: #{binary() => any()}.
 
@@ -4977,6 +4982,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_paths_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_pool_allocation_result() :: #{
+%%   <<"IpamPoolAllocation">> => ipam_pool_allocation()
+%% }
+-type modify_ipam_pool_allocation_result() :: #{binary() => any()}.
 
 %% Example:
 %% restore_image_from_recycle_bin_result() :: #{
@@ -10209,7 +10220,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamPoolId">> := string(),
 %%   <<"NetmaskLength">> => integer(),
-%%   <<"PreviewNextCidr">> => boolean()
+%%   <<"PreviewNextCidr">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type allocate_ipam_pool_cidr_request() :: #{binary() => any()}.
 
@@ -16873,6 +16885,13 @@
 -type create_network_acl_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_pool_allocations_result() :: #{
+%%   <<"IpamPoolAllocations">> => list(ipam_pool_allocation()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_pool_allocations_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_ipv6_pools_result() :: #{
 %%   <<"Ipv6Pools">> => list(ipv6_pool()),
 %%   <<"NextToken">> => string()
@@ -18908,6 +18927,16 @@
 -type delete_instance_connect_endpoint_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_pool_allocations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPoolAllocationIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_pool_allocations_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_export_image_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ExportImageTaskIds">> => list(string()),
@@ -19179,6 +19208,7 @@
 %% volume_modification() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ModificationState">> => list(any()),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OriginalIops">> => integer(),
 %%   <<"OriginalMultiAttachEnabled">> => boolean(),
 %%   <<"OriginalSize">> => integer(),
@@ -20835,6 +20865,14 @@
 %%   <<"Status">> => list(any())
 %% }
 -type ebs_status_summary() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_pool_allocation_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPoolAllocationId">> := string()
+%% }
+-type modify_ipam_pool_allocation_request() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template_block_device_mapping_request() :: #{
@@ -31289,6 +31327,34 @@ describe_ipam_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpamPolicies">>, Input, Options).
 
+%% @doc Describes IPAM pool allocations.
+%%
+%% You can describe all allocations owned by you across all pools, or you can
+%% describe specific allocations by ID.
+%%
+%% If you specify `IpamPoolAllocationIds', the results include only the
+%% specified allocations. If you do not specify `IpamPoolAllocationIds',
+%% the results include all allocations owned by you. You can use
+%% `Filters' to narrow the results.
+%%
+%% This action returns only allocations directly owned by you. To view all
+%% allocations in a pool you own or that has been shared with you, including
+%% allocations owned by other accounts, use GetIpamPoolAllocations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPoolAllocations.html.
+-spec describe_ipam_pool_allocations(aws_client:aws_client(), describe_ipam_pool_allocations_request()) ->
+    {ok, describe_ipam_pool_allocations_result(), tuple()} |
+    {error, any()}.
+describe_ipam_pool_allocations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_pool_allocations(Client, Input, []).
+
+-spec describe_ipam_pool_allocations(aws_client:aws_client(), describe_ipam_pool_allocations_request(), proplists:proplist()) ->
+    {ok, describe_ipam_pool_allocations_result(), tuple()} |
+    {error, any()}.
+describe_ipam_pool_allocations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamPoolAllocations">>, Input, Options).
+
 %% @doc Get information about your IPAM pools.
 -spec describe_ipam_pools(aws_client:aws_client(), describe_ipam_pools_request()) ->
     {ok, describe_ipam_pools_result(), tuple()} |
@@ -38071,6 +38137,25 @@ modify_ipam_pool(Client, Input)
 modify_ipam_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIpamPool">>, Input, Options).
+
+%% @doc Modifies the description of an IPAM pool allocation.
+%%
+%% For more information, see Modify an IPAM pool allocation:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/modify-alloc-ipam.html in the
+%% Amazon VPC IPAM User Guide.
+-spec modify_ipam_pool_allocation(aws_client:aws_client(), modify_ipam_pool_allocation_request()) ->
+    {ok, modify_ipam_pool_allocation_result(), tuple()} |
+    {error, any()}.
+modify_ipam_pool_allocation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ipam_pool_allocation(Client, Input, []).
+
+-spec modify_ipam_pool_allocation(aws_client:aws_client(), modify_ipam_pool_allocation_request(), proplists:proplist()) ->
+    {ok, modify_ipam_pool_allocation_result(), tuple()} |
+    {error, any()}.
+modify_ipam_pool_allocation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpamPoolAllocation">>, Input, Options).
 
 %% @doc Modifies an IPAM prefix list resolver.
 %%

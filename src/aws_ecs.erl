@@ -24,7 +24,9 @@
 %% don't need to worry about scaling your management infrastructure.
 -module(aws_ecs).
 
--export([create_capacity_provider/2,
+-export([continue_service_deployment/2,
+         continue_service_deployment/3,
+         create_capacity_provider/2,
          create_capacity_provider/3,
          create_cluster/2,
          create_cluster/3,
@@ -257,6 +259,17 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_daemon_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_lifecycle_hook_detail() :: #{
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"hookId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"timeoutAction">> => list(any())
+%% }
+-type deployment_lifecycle_hook_detail() :: #{binary() => any()}.
 
 %% Example:
 %% list_service_deployments_request() :: #{
@@ -719,6 +732,12 @@
 %%   <<"discoveryName">> => string()
 %% }
 -type service_connect_service_resource() :: #{binary() => any()}.
+
+%% Example:
+%% continue_service_deployment_response() :: #{
+%%   <<"serviceDeploymentArn">> => string()
+%% }
+-type continue_service_deployment_response() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_not_found_exception() :: #{
@@ -1525,7 +1544,9 @@
 %%   <<"hookDetails">> => any(),
 %%   <<"hookTargetArn">> => string(),
 %%   <<"lifecycleStages">> => list(list(any())()),
-%%   <<"roleArn">> => string()
+%%   <<"roleArn">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"timeoutConfiguration">> => deployment_lifecycle_hook_timeout_configuration()
 %% }
 -type deployment_lifecycle_hook() :: #{binary() => any()}.
 
@@ -1819,6 +1840,7 @@
 %%   <<"deploymentCircuitBreaker">> => service_deployment_circuit_breaker(),
 %%   <<"deploymentConfiguration">> => deployment_configuration(),
 %%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"lifecycleHookDetails">> => list(deployment_lifecycle_hook_detail()),
 %%   <<"lifecycleStage">> => list(any()),
 %%   <<"rollback">> => rollback(),
 %%   <<"serviceArn">> => string(),
@@ -3153,6 +3175,14 @@
 -type create_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
+%% continue_service_deployment_request() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"hookId">> := string(),
+%%   <<"serviceDeploymentArn">> := string()
+%% }
+-type continue_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_account_setting_request() :: #{
 %%   <<"name">> := list(any()),
 %%   <<"principalArn">> => string()
@@ -3164,6 +3194,13 @@
 %%   <<"taskSet">> => task_set()
 %% }
 -type create_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_lifecycle_hook_timeout_configuration() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"timeoutInMinutes">> => integer()
+%% }
+-type deployment_lifecycle_hook_timeout_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% instance_launch_template() :: #{
@@ -3526,6 +3563,14 @@
 %%   <<"type">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
+-type continue_service_deployment_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_deployment_not_found_exception().
 
 -type create_capacity_provider_errors() ::
     limit_exceeded_exception() | 
@@ -4154,6 +4199,34 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Continues or rolls back an Amazon ECS service deployment that is
+%% paused at a lifecycle hook.
+%%
+%% When a service deployment reaches a lifecycle stage that has a `PAUSE'
+%% hook configured, the deployment pauses and waits for an explicit action.
+%% Use this API to either continue the deployment to the next stage or roll
+%% back to the previous service revision.
+%%
+%% To find the `hookId' of the paused hook, call
+%% DescribeServiceDeployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServiceDeployments.html
+%% and inspect the `lifecycleHookDetails' field.
+-spec continue_service_deployment(aws_client:aws_client(), continue_service_deployment_request()) ->
+    {ok, continue_service_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, continue_service_deployment_errors(), tuple()}.
+continue_service_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    continue_service_deployment(Client, Input, []).
+
+-spec continue_service_deployment(aws_client:aws_client(), continue_service_deployment_request(), proplists:proplist()) ->
+    {ok, continue_service_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, continue_service_deployment_errors(), tuple()}.
+continue_service_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ContinueServiceDeployment">>, Input, Options).
 
 %% @doc Creates a capacity provider.
 %%
