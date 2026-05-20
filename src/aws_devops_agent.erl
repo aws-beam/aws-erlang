@@ -1,22 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS DevOps Agent is a frontier agent that resolves and proactively
-%% prevents incidents, continuously improving
-%% reliability and performance.
+%% @doc AWS DevOps Agent is your always-available operations teammate.
 %%
-%% AWS DevOps Agent investigates incidents and identifies operational
-%% improvements as an
-%% experienced DevOps engineer.
-%%
-%% The agent works by:
-%%
-%% * Learning your resources and their relationships.
-%% * Working with your observability tools, runbooks, code repositories, and
-%% CI/CD pipelines.
-%% * Correlating telemetry, code, and deployment data to understand
-%% relationships between your application resources.
-%% * Supporting applications in multicloud and hybrid environments.
+%% It resolves and proactively prevents incidents, optimizes application
+%% reliability and performance, and handles on-demand SRE tasks across AWS,
+%% multicloud, and on-premises environments. AWS DevOps Agent investigates
+%% incidents as an experienced DevOps engineer would. It learns your
+%% applications and their relationships. It works with your observability
+%% tools, runbooks, code repositories, and CI/CD pipelines. The agent
+%% correlates telemetry, code, and deployment data across all of them.
 -module(aws_devops_agent).
 
 -export([associate_service/3,
@@ -585,6 +578,16 @@
 
 
 %% Example:
+%% m_c_p_server_sig_v4_authorization_config() :: #{
+%%   <<"customHeaders">> => map(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type m_c_p_server_sig_v4_authorization_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% goal() :: #{
 %%   <<"agentSpaceArn">> => [string()],
 %%   <<"content">> => goal_content(),
@@ -873,6 +876,19 @@
 
 
 %% Example:
+%% registered_m_c_p_server_sig_v4_details() :: #{
+%%   <<"customHeaders">> => map(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type registered_m_c_p_server_sig_v4_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_executions_response() :: #{
 %%   <<"executions">> => list(execution()),
 %%   <<"nextToken">> => [string()]
@@ -985,6 +1001,8 @@
 %%   <<"goalId">> => [string()],
 %%   <<"goalVersion">> => [float()],
 %%   <<"priority">> => list(any()),
+%%   <<"rankPosition">> => [integer()],
+%%   <<"rankedAt">> => non_neg_integer(),
 %%   <<"recommendationId">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"taskId">> => [string()],
@@ -1039,6 +1057,13 @@
 %% Example:
 %% delete_agent_space_input() :: #{}
 -type delete_agent_space_input() :: #{}.
+
+
+%% Example:
+%% m_c_p_server_sig_v4_configuration() :: #{
+%%   <<"tools">> => list([string()]())
+%% }
+-type m_c_p_server_sig_v4_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1173,6 +1198,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_sig_v4_service_details() :: #{
+%%   <<"authorizationConfig">> => m_c_p_server_sig_v4_authorization_config(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type m_c_p_server_sig_v4_service_details() :: #{binary() => any()}.
 
 
 %% Example:

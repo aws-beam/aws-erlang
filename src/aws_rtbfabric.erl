@@ -623,6 +623,7 @@
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayType">> => list(any()),
 %%   <<"inboundLinksCount">> => [integer()],
+%%   <<"linksRequestedCount">> => [integer()],
 %%   <<"listenerConfig">> => listener_config(),
 %%   <<"managedEndpointConfiguration">> => list(),
 %%   <<"port">> => [integer()],

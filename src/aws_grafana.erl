@@ -443,6 +443,7 @@
 %%   <<"authentication">> => authentication_summary(),
 %%   <<"created">> => [non_neg_integer()],
 %%   <<"dataSources">> => list(string()),
+%%   <<"degradedWorkspaceReason">> => string(),
 %%   <<"description">> => string(),
 %%   <<"endpoint">> => string(),
 %%   <<"freeTrialConsumed">> => [boolean()],

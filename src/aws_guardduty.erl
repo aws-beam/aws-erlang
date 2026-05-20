@@ -4713,9 +4713,9 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a new threat entity set.
 %%
-%% In a threat entity set, you can provide known malicious IP addresses and
-%% domains for your Amazon Web Services environment. GuardDuty generates
-%% findings based on the entries in the threat entity sets. Only users of the
+%% In a threat entity set, you can provide known malicious threat entities
+%% for your Amazon Web Services environment. GuardDuty generates findings
+%% based on the entries in the threat entity sets. Only users of the
 %% administrator account can manage entity sets, which automatically apply to
 %% member accounts.
 -spec create_threat_entity_set(aws_client:aws_client(), binary() | list(), create_threat_entity_set_request()) ->

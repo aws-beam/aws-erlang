@@ -3258,7 +3258,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    retryable_conflict_exception().
 
 -type invoke_agent_runtime_command_errors() ::
     runtime_client_error() | 
@@ -3495,6 +3496,7 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    retryable_conflict_exception() | 
     unauthorized_exception().
 
 -type update_a_b_test_errors() ::
@@ -3740,7 +3742,7 @@ create_event(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new payment instrument for a connector
+%% @doc Create a new payment instrument for a connector.
 -spec create_payment_instrument(aws_client:aws_client(), create_payment_instrument_request()) ->
     {ok, create_payment_instrument_response(), tuple()} |
     {error, any()} |
@@ -3777,7 +3779,7 @@ create_payment_instrument(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new payment manager session
+%% @doc Create a new payment session.
 -spec create_payment_session(aws_client:aws_client(), create_payment_session_request()) ->
     {ok, create_payment_session_response(), tuple()} |
     {error, any()} |
@@ -3960,34 +3962,10 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a payment instrument
+%% @doc Deletes a payment instrument.
 %%
-%% Marks a payment instrument as deleted by updating its status to DELETED.
-%%
-%% This is a soft delete
-%% operation that preserves the record in the database for audit and
-%% compliance purposes. The record
-%% remains queryable for audit purposes but is excluded from normal list and
-%% get operations.
-%%
-%% Deleting an already-deleted or non-existent instrument returns
-%% ResourceNotFoundException (404).
-%%
-%% Authorization: The caller must own the instrument (accountId, userId, and
-%% paymentManagerId must match).
-%% If authorization fails, a 403 Forbidden error is returned.
-%%
-%% Timestamp Management: The updatedAt timestamp is set to the current time,
-%% while createdAt is preserved.
-%% The version field is incremented for optimistic locking.
-%%
-%% Errors:
-%% - ResourceNotFoundException: The instrument does not exist or is already
-%% deleted
-%% - AccessDeniedException: The caller is not authorized to delete this
-%% instrument
-%% - ValidationException: Required fields are missing or invalid
-%% - InternalServerException: An unexpected server error occurred
+%% This is a soft delete operation that preserves the record for audit and
+%% compliance purposes.
 -spec delete_payment_instrument(aws_client:aws_client(), delete_payment_instrument_request()) ->
     {ok, delete_payment_instrument_response(), tuple()} |
     {error, any()} |
@@ -4023,27 +4001,9 @@ delete_payment_instrument(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a payment manager session
+%% @doc Deletes a payment session.
 %%
-%% Permanently removes a payment session record from the database.
-%%
-%% This is a hard delete operation
-%% that removes the session completely.
-%%
-%% Deleting a non-existent or already-deleted session returns
-%% ResourceNotFoundException (404).
-%%
-%% Authorization: The caller must own the session (accountId, userId, and
-%% paymentManagerId must match).
-%% If authorization fails, a 403 Forbidden error is returned.
-%%
-%% Errors:
-%% - ResourceNotFoundException: The session does not exist or has already
-%% been deleted
-%% - AccessDeniedException: The caller is not authorized to delete this
-%% session
-%% - ValidationException: Required fields are missing or invalid
-%% - InternalServerException: An unexpected server error occurred
+%% This permanently removes the payment session record.
 -spec delete_payment_session(aws_client:aws_client(), delete_payment_session_request()) ->
     {ok, delete_payment_session_response(), tuple()} |
     {error, any()} |
@@ -4490,7 +4450,7 @@ get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a payment instrument by ID
+%% @doc Get a payment instrument by ID.
 -spec get_payment_instrument(aws_client:aws_client(), get_payment_instrument_request()) ->
     {ok, get_payment_instrument_response(), tuple()} |
     {error, any()} |
@@ -4527,7 +4487,7 @@ get_payment_instrument(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the balance of a payment instrument
+%% @doc Get the balance of a payment instrument.
 -spec get_payment_instrument_balance(aws_client:aws_client(), get_payment_instrument_balance_request()) ->
     {ok, get_payment_instrument_balance_response(), tuple()} |
     {error, any()} |
@@ -4564,7 +4524,7 @@ get_payment_instrument_balance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get a payment session
+%% @doc Get a payment session.
 -spec get_payment_session(aws_client:aws_client(), get_payment_session_request()) ->
     {ok, get_payment_session_response(), tuple()} |
     {error, any()} |
@@ -5558,7 +5518,7 @@ list_memory_records(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List payment instruments for a manager
+%% @doc List payment instruments for a manager.
 -spec list_payment_instruments(aws_client:aws_client(), list_payment_instruments_request()) ->
     {ok, list_payment_instruments_response(), tuple()} |
     {error, any()} |
@@ -5595,7 +5555,7 @@ list_payment_instruments(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List payment manager sessions
+%% @doc List payment sessions.
 -spec list_payment_sessions(aws_client:aws_client(), list_payment_sessions_request()) ->
     {ok, list_payment_sessions_response(), tuple()} |
     {error, any()} |
@@ -5719,7 +5679,8 @@ list_sessions(Client, ActorId, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Process a payment transaction
+%% @doc Processes a payment using a payment instrument within a payment
+%% session.
 -spec process_payment(aws_client:aws_client(), process_payment_request()) ->
     {ok, process_payment_response(), tuple()} |
     {error, any()} |
