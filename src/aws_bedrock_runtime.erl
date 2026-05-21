@@ -519,6 +519,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"requestMetadata">> => string(),
 %%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
@@ -555,6 +556,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"requestMetadata">> => string(),
 %%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
@@ -1679,6 +1681,7 @@ invoke_model(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-Request-Metadata">>, <<"requestMetadata">>},
                        {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
@@ -1816,6 +1819,7 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-Request-Metadata">>, <<"requestMetadata">>},
                        {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],

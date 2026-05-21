@@ -24,6 +24,8 @@
          encrypt_data/4,
          generate_as2805_kek_validation/2,
          generate_as2805_kek_validation/3,
+         generate_auth_request_cryptogram/2,
+         generate_auth_request_cryptogram/3,
          generate_card_validation_data/2,
          generate_card_validation_data/3,
          generate_mac/2,
@@ -49,6 +51,15 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% generate_auth_request_cryptogram_output() :: #{
+%%   <<"AuthRequestCryptogram">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type generate_auth_request_cryptogram_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -225,6 +236,16 @@
 %%   <<"KeySerialNumber">> => string()
 %% }
 -type mac_algorithm_dukpt() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_auth_request_cryptogram_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MajorKeyDerivationMode">> := list(any()),
+%%   <<"SessionKeyDerivationAttributes">> := list(),
+%%   <<"TransactionData">> := string()
+%% }
+-type generate_auth_request_cryptogram_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -636,7 +657,8 @@
 
 %% Example:
 %% kek_validation_request() :: #{
-%%   <<"DeriveKeyAlgorithm">> => list(any())
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"RandomKeyMaxLength">> => list(any())
 %% }
 -type kek_validation_request() :: #{binary() => any()}.
 
@@ -853,6 +875,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type generate_auth_request_cryptogram_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type generate_card_validation_data_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -986,8 +1015,10 @@
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1087,8 +1118,10 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1134,9 +1167,10 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Establishes node-to-node initialization between payment processing
-%% nodes such as an acquirer, issuer or payment network using Australian
-%% Standard 2805 (AS2805).
+%% @doc Generates a `KekValidationRequest' or a
+%% `KekValidationResponse' for node-to-node initialization between
+%% payment processing nodes using Australian Standard 2805 (AS2805):
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/as2805.html.
 %%
 %% During node-to-node initialization, both communicating nodes must validate
 %% that they possess the correct Key Encrypting Keys (KEKs) before proceeding
@@ -1150,13 +1184,21 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %% operations.
 %%
-%% The node initiating communication can use
-%% `GenerateAS2805KekValidation' to generate a combined KEK validation
-%% request and KEK validation response to send to the partnering node for
-%% validation. When invoked, the API internally generates a random sending
-%% key encrypted under KEKs and provides a receiving key encrypted under KEKr
-%% as response. The initiating node sends the response returned by this API
-%% to its partner for validation.
+%% To use `GenerateAs2805KekValidation' to generate a KEK validation
+%% request, set `KekValidationType' to `KekValidationRequest'. This
+%% operation returns both `RandomKeySend' (KRs) and
+%% `RandomKeyReceive' (KRr) as response values. The partnering node
+%% receives the KRs, uses its KEKr to decrypt it, and generates a KRr which
+%% is an inverted value of KRs. The node receiving the KRr validates it
+%% against its own KRr generated during KEK validation request outside of
+%% Amazon Web Services Payment Cryptography.
+%%
+%% You can also use this operation to generate a KEK validation response, by
+%% setting `KekValidationType' to `KekValidationResponse' and
+%% providing the incoming KRs. This operation then calculates a KRr. To learn
+%% more about more about node-to-node initialization, see Validation of KEK:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/as2805.kekvalidation.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% For information about valid keys for this operation, see Understanding key
 %% attributes:
@@ -1165,8 +1207,10 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 -spec generate_as2805_kek_validation(aws_client:aws_client(), generate_as2805_kek_validation_input()) ->
     {ok, generate_as2805_kek_validation_output(), tuple()} |
     {error, any()} |
@@ -1181,6 +1225,76 @@ generate_as2805_kek_validation(Client, Input) ->
 generate_as2805_kek_validation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/as2805kekvalidation/generate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates an Authorization Request Cryptogram (ARQC) for an EMV chip
+%% payment card authorization.
+%%
+%% For more information, see Generate auth request cryptogram:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.generateauthrequestcryptogram.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% ARQC generation uses an Issuer Master Key (IMK) for application
+%% cryptograms (TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS) to derive a session key,
+%% which is then used to generate the cryptogram from the provided
+%% transaction data (when applicable). To use this operation, you must first
+%% create or import an IMK-AC key by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% or ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% The `KeyModesOfUse' should be set to `DeriveKey' for the IMK-AC
+%% encryption key.
+%%
+%% This operation is intended for development and testing scenarios only. It
+%% is not recommended to use this operation as a substitute for card-based
+%% cryptogram generation in production payment flows.
+%%
+%% For information about valid keys for this operation, see Understanding key
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
+%%
+%% Related operations:
+%%
+%% `VerifyAuthRequestCryptogram'
+-spec generate_auth_request_cryptogram(aws_client:aws_client(), generate_auth_request_cryptogram_input()) ->
+    {ok, generate_auth_request_cryptogram_output(), tuple()} |
+    {error, any()} |
+    {error, generate_auth_request_cryptogram_errors(), tuple()}.
+generate_auth_request_cryptogram(Client, Input) ->
+    generate_auth_request_cryptogram(Client, Input, []).
+
+-spec generate_auth_request_cryptogram(aws_client:aws_client(), generate_auth_request_cryptogram_input(), proplists:proplist()) ->
+    {ok, generate_auth_request_cryptogram_output(), tuple()} |
+    {error, any()} |
+    {error, generate_auth_request_cryptogram_errors(), tuple()}.
+generate_auth_request_cryptogram(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cryptogram/generate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1227,8 +1341,10 @@ generate_as2805_kek_validation(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1293,8 +1409,10 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1362,8 +1480,10 @@ generate_mac(Client, Input0, Options0) ->
 %% is important to understand that `EncryptData' using EMV keys and
 %% `GenerateMac' perform similar functions to this command.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1433,8 +1553,10 @@ generate_mac_emv_pin_change(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1511,8 +1633,10 @@ generate_pin_data(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1588,8 +1712,10 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1690,8 +1816,10 @@ translate_key_material(Client, Input0, Options0) ->
 %% 4 translation for PIN block built using legacy PAN length. That is, PAN is
 %% the right most 12 digits excluding the check digits.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1759,8 +1887,10 @@ translate_pin_data(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1825,8 +1955,10 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1883,8 +2015,10 @@ verify_card_validation_data(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%
@@ -1943,8 +2077,10 @@ verify_mac(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% Cross-account use: This operation can't be used across different
-%% Amazon Web Services accounts.
+%% Cross-account use: This operation supports cross-account use when the key
+%% has a resource-based policy that grants access. For more information, see
+%% Resource-based policies:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html.
 %%
 %% Related operations:
 %%

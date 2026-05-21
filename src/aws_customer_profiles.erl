@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Connect Customer Profiles
+%% @doc Connect Customer Customer Profiles
 %%
 %% Customer Profiles actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Customer_Profiles.html
@@ -9,20 +9,20 @@
 %% Customer Profiles data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Customer_Profiles.html
 %%
-%% Amazon Connect Customer Profiles is a unified customer profile for your
+%% Connect Customer Customer Profiles is a unified customer profile for your
 %% contact
 %% center that has pre-built connectors powered by AppFlow that make it easy
 %% to combine
 %% customer information from third party applications, such as Salesforce
 %% (CRM), ServiceNow
 %% (ITSM), and your enterprise resource planning (ERP), with contact history
-%% from your Amazon Connect contact center.
+%% from your Connect Customer contact center.
 %%
-%% For more information about the Amazon Connect Customer Profiles feature,
+%% For more information about the Connect Customer Customer Profiles feature,
 %% see Use Customer
 %% Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html
-%% in the Amazon Connect Administrator's Guide.
+%% in the Connect Customer Administrator's Guide.
 -module(aws_customer_profiles).
 
 -export([add_profile_key/3,
@@ -2783,6 +2783,7 @@
 %% Example:
 %% recommender_config() :: #{
 %%   <<"EventsConfig">> => events_config(),
+%%   <<"ExcludedColumns">> => map(),
 %%   <<"IncludedColumns">> => map(),
 %%   <<"InferenceConfig">> => inference_config(),
 %%   <<"TrainingFrequency">> => integer()
@@ -4404,9 +4405,9 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% You can create multiple
 %% domains, and each domain can have multiple third-party integrations.
 %%
-%% Each Amazon Connect instance can be associated with only one domain.
+%% Each Connect Customer instance can be associated with only one domain.
 %% Multiple
-%% Amazon Connect instances can be associated with one domain.
+%% Connect Customer instances can be associated with one domain.
 %%
 %% Use this API or UpdateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
@@ -4504,7 +4505,8 @@ create_domain_layout(Client, DomainName, LayoutDefinitionName, Input0, Options0)
 
 %% @doc Creates an event stream, which is a subscription to real-time events,
 %% such as when
-%% profiles are created and updated through Amazon Connect Customer Profiles.
+%% profiles are created and updated through Connect Customer Customer
+%% Profiles.
 %%
 %% Each event stream can be associated with only one Kinesis Data Stream
 %% destination in the
