@@ -375,7 +375,9 @@
 %% member_change_specification() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"memberAbilities">> => list(list(any())())
+%%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
+%%   <<"paymentConfiguration">> => payment_configuration()
 %% }
 -type member_change_specification() :: #{binary() => any()}.
 
@@ -515,6 +517,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"error">> => protected_job_error(),
 %%   <<"id">> => string(),
+%%   <<"jobComputePayerAccountId">> => string(),
 %%   <<"jobParameters">> => protected_job_parameters(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
@@ -579,6 +582,7 @@
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
+%%   <<"queryComputePayerAccountId">> => string(),
 %%   <<"receiverConfigurations">> => list(receiver_configuration()),
 %%   <<"status">> => string()
 %% }
@@ -999,6 +1003,15 @@
 
 
 %% Example:
+%% update_membership_payment_configuration() :: #{
+%%   <<"jobCompute">> => membership_job_compute_payment_config(),
+%%   <<"machineLearning">> => membership_ml_payment_config(),
+%%   <<"queryCompute">> => membership_query_compute_payment_config()
+%% }
+-type update_membership_payment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -1363,6 +1376,7 @@
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
+%%   <<"queryComputePayerAccountId">> => string(),
 %%   <<"result">> => protected_query_result(),
 %%   <<"resultConfiguration">> => protected_query_result_configuration(),
 %%   <<"sqlParameters">> => protected_query_s_q_l_parameters(),
@@ -1443,6 +1457,7 @@
 %% protected_job_summary() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
+%%   <<"jobComputePayerAccountId">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
 %%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()),
@@ -1537,6 +1552,7 @@
 %% Example:
 %% start_protected_job_input() :: #{
 %%   <<"computeConfiguration">> => list(),
+%%   <<"jobComputePayerAccountId">> => string(),
 %%   <<"jobParameters">> := protected_job_parameters(),
 %%   <<"resultConfiguration">> => protected_job_result_configuration_input(),
 %%   <<"type">> := list(any())
@@ -2635,6 +2651,7 @@
 %%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"jobLogStatus">> => list(any()),
+%%   <<"membershipPaymentConfiguration">> => update_membership_payment_configuration(),
 %%   <<"queryLogStatus">> => list(any())
 %% }
 -type update_membership_input() :: #{binary() => any()}.
@@ -2766,6 +2783,7 @@
 %% Example:
 %% start_protected_query_input() :: #{
 %%   <<"computeConfiguration">> => list(),
+%%   <<"queryComputePayerAccountId">> => string(),
 %%   <<"resultConfiguration">> => protected_query_result_configuration(),
 %%   <<"sqlParameters">> := protected_query_s_q_l_parameters(),
 %%   <<"type">> := string()

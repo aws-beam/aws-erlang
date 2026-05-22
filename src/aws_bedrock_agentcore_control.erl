@@ -7,7 +7,9 @@
 %% Services resources.
 -module(aws_bedrock_agentcore_control).
 
--export([create_agent_runtime/2,
+-export([add_dataset_examples/3,
+         add_dataset_examples/4,
+         create_agent_runtime/2,
          create_agent_runtime/3,
          create_agent_runtime_endpoint/3,
          create_agent_runtime_endpoint/4,
@@ -21,6 +23,10 @@
          create_code_interpreter/3,
          create_configuration_bundle/2,
          create_configuration_bundle/3,
+         create_dataset/2,
+         create_dataset/3,
+         create_dataset_version/3,
+         create_dataset_version/4,
          create_evaluator/2,
          create_evaluator/3,
          create_gateway/2,
@@ -67,6 +73,10 @@
          delete_code_interpreter/4,
          delete_configuration_bundle/3,
          delete_configuration_bundle/4,
+         delete_dataset/3,
+         delete_dataset/4,
+         delete_dataset_examples/3,
+         delete_dataset_examples/4,
          delete_evaluator/3,
          delete_evaluator/4,
          delete_gateway/3,
@@ -124,6 +134,9 @@
          get_configuration_bundle_version/3,
          get_configuration_bundle_version/5,
          get_configuration_bundle_version/6,
+         get_dataset/2,
+         get_dataset/4,
+         get_dataset/5,
          get_evaluator/2,
          get_evaluator/4,
          get_evaluator/5,
@@ -204,6 +217,15 @@
          list_configuration_bundle_versions/4,
          list_configuration_bundles/2,
          list_configuration_bundles/3,
+         list_dataset_examples/2,
+         list_dataset_examples/4,
+         list_dataset_examples/5,
+         list_dataset_versions/2,
+         list_dataset_versions/4,
+         list_dataset_versions/5,
+         list_datasets/1,
+         list_datasets/3,
+         list_datasets/4,
          list_evaluators/2,
          list_evaluators/3,
          list_gateway_rules/2,
@@ -284,6 +306,10 @@
          update_api_key_credential_provider/3,
          update_configuration_bundle/3,
          update_configuration_bundle/4,
+         update_dataset/3,
+         update_dataset/4,
+         update_dataset_examples/3,
+         update_dataset_examples/4,
          update_evaluator/3,
          update_evaluator/4,
          update_gateway/3,
@@ -695,6 +721,13 @@
 
 
 %% Example:
+%% s3_source() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -735,6 +768,17 @@
 %%   <<"harness">> => harness()
 %% }
 -type get_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -814,6 +858,15 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type summary_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1131,6 +1184,15 @@
 
 
 %% Example:
+%% list_dataset_examples_request() :: #{
+%%   <<"datasetVersion">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_examples_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% api_gateway_tool_filter() :: #{
 %%   <<"filterPath">> => [string()],
 %%   <<"methods">> => list(list(any())())
@@ -1372,12 +1434,28 @@
 
 
 %% Example:
+%% list_datasets_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_gateway_response() :: #{
 %%   <<"gatewayId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string())
 %% }
 -type delete_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_dataset_examples_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"source">> := list()
+%% }
+-type add_dataset_examples_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2137,6 +2215,24 @@
 
 
 %% Example:
+%% list_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"examples">> => list(any()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type create_dataset_version_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% episodic_memory_strategy_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
@@ -2158,6 +2254,16 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type harness_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2470,6 +2576,22 @@
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"draftStatus">> => list(any()),
+%%   <<"exampleCount">> => [float()],
+%%   <<"schemaType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type dataset_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2787,6 +2909,14 @@
 %%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
 -type custom_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_examples_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"exampleIds">> := list(string())
+%% }
+-type delete_dataset_examples_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3125,6 +3255,14 @@
 
 
 %% Example:
+%% update_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()]
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_configuration() :: #{
 %%   <<"containerUri">> => string()
 %% }
@@ -3147,6 +3285,17 @@
 %%   <<"versionId">> => string()
 %% }
 -type update_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_version_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_dataset_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3583,6 +3732,21 @@
 %%   <<"versionId">> => string()
 %% }
 -type get_configuration_bundle_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_examples_source() :: #{
+%%   <<"examples">> => list(any())
+%% }
+-type inline_examples_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_policy_request() :: #{}
@@ -4170,6 +4334,13 @@
 
 
 %% Example:
+%% get_dataset_request() :: #{
+%%   <<"datasetVersion">> => string()
+%% }
+-type get_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_config() :: #{
 %%   <<"cloudWatchConfig">> => cloud_watch_output_config()
 %% }
@@ -4327,6 +4498,28 @@
 
 
 %% Example:
+%% get_dataset_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"downloadUrl">> => string(),
+%%   <<"downloadUrlExpiresAt">> => [non_neg_integer()],
+%%   <<"draftStatus">> => list(any()),
+%%   <<"exampleCount">> => [float()],
+%%   <<"failureReason">> => [string()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"schemaType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_policy_engine_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -4364,6 +4557,27 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_policy_engine_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"schemaType">> := list(any()),
+%%   <<"source">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_examples_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"examples">> := list(any())
+%% }
+-type update_dataset_examples_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4511,6 +4725,15 @@
 %%   <<"uri">> => string()
 %% }
 -type s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_version_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetVersion">> => string(),
+%%   <<"exampleCount">> => [float()]
+%% }
+-type dataset_version_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_configuration_bundle_version_request() :: #{}
@@ -4761,6 +4984,21 @@
 %%   <<"mountPath">> => string()
 %% }
 -type session_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"datasetVersion">> => string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5144,6 +5382,14 @@
 
 
 %% Example:
+%% list_dataset_versions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(dataset_version_summary())
+%% }
+-type list_dataset_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_configuration_bundle_request() :: #{
 %%   <<"branchName">> => string(),
 %%   <<"bundleName">> := string(),
@@ -5197,6 +5443,17 @@
 
 
 %% Example:
+%% delete_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"deletedCount">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type delete_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_preference_override_consolidation_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -5229,6 +5486,18 @@
 
 
 %% Example:
+%% add_dataset_examples_response() :: #{
+%%   <<"addedCount">> => [float()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"exampleIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type add_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_payment_managers_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -5253,6 +5522,17 @@
 %% Example:
 %% delete_policy_engine_request() :: #{}
 -type delete_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% update_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedCount">> => [float()]
+%% }
+-type update_dataset_examples_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5347,6 +5627,15 @@
 %% }
 -type list_browsers_request() :: #{binary() => any()}.
 
+-type add_dataset_examples_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_agent_runtime_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5407,6 +5696,23 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_dataset_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_evaluator_errors() ::
@@ -5609,6 +5915,22 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_dataset_examples_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5800,6 +6122,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type get_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_evaluator_errors() ::
     throttling_exception() | 
@@ -6015,6 +6345,27 @@
     resource_not_found_exception().
 
 -type list_configuration_bundles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_dataset_examples_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_dataset_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_datasets_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6263,6 +6614,23 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_dataset_examples_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_evaluator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -6418,6 +6786,56 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds examples to the dataset's DRAFT.
+%%
+%% **Validation:** All examples are validated against the dataset's
+%% schemaType before any
+%% writes occur. If any example fails validation, the entire batch is
+%% rejected with
+%% ValidationException — no examples are written (all-or-nothing semantics).
+%%
+%% **Asynchronous:** Operates in-place on DRAFT. No version bump occurs.
+%% Use CreateDatasetVersion to publish DRAFT as a new numbered version.
+%%
+%% **State guard:** Returns ConflictException (DATASET_NOT_READY) if the
+%% dataset
+%% status is not in {DRAFT, ACTIVE}.
+%%
+%% **Request size limit:** Max 5 MB total request body. Max 1000 examples per
+%% call.
+-spec add_dataset_examples(aws_client:aws_client(), binary() | list(), add_dataset_examples_request()) ->
+    {ok, add_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, add_dataset_examples_errors(), tuple()}.
+add_dataset_examples(Client, DatasetId, Input) ->
+    add_dataset_examples(Client, DatasetId, Input, []).
+
+-spec add_dataset_examples(aws_client:aws_client(), binary() | list(), add_dataset_examples_request(), proplists:proplist()) ->
+    {ok, add_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, add_dataset_examples_errors(), tuple()}.
+add_dataset_examples(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples/add"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Bedrock AgentCore Runtime.
 -spec create_agent_runtime(aws_client:aws_client(), create_agent_runtime_request()) ->
@@ -6646,6 +7064,90 @@ create_configuration_bundle(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration-bundles/create"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Dataset resource asynchronously.
+%%
+%% Returns immediately with status CREATING. Poll GetDataset until
+%% status transitions to ACTIVE or CREATE_FAILED (with failureReason).
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, Input) ->
+    create_dataset(Client, Input, []).
+
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes the current DRAFT as a new numbered version.
+%%
+%% Snapshots the DRAFT examples as the next version (1, 2, 3, ...).
+%% The DRAFT is preserved and remains editable after publishing.
+%% Returns immediately with status UPDATING. Poll GetDataset until
+%% status transitions to ACTIVE (draftStatus=UNMODIFIED) or UPDATE_FAILED.
+%%
+%% **State guard:** Returns ConflictException (DATASET_NOT_READY) if status
+%% is in
+%% {CREATING, UPDATING, DELETING}, or DATASET_IN_FAILED_STATE if status is in
+%% {CREATE_FAILED, DELETE_FAILED}.
+%%
+%% **Quota:** MAX_VERSIONS_PER_DATASET applies to published versions only
+%% (not DRAFT).
+-spec create_dataset_version(aws_client:aws_client(), binary() | list(), create_dataset_version_request()) ->
+    {ok, create_dataset_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_version_errors(), tuple()}.
+create_dataset_version(Client, DatasetId, Input) ->
+    create_dataset_version(Client, DatasetId, Input, []).
+
+-spec create_dataset_version(aws_client:aws_client(), binary() | list(), create_dataset_version_request(), proplists:proplist()) ->
+    {ok, create_dataset_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_version_errors(), tuple()}.
+create_dataset_version(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/versions"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -7501,6 +8003,125 @@ delete_configuration_bundle(Client, BundleId, Input) ->
 delete_configuration_bundle(Client, BundleId, Input0, Options0) ->
     Method = delete,
     Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a dataset version or an entire dataset (all versions + name
+%% claim).
+%%
+%% Asynchronous 202.
+%%
+%% **State transitions:**
+%% - If `datasetVersion` is absent (full delete): status transitions to
+%% DELETING immediately.
+%% - If `datasetVersion` is provided (version-specific delete): status
+%% transitions to UPDATING.
+%%
+%% **State guard (full delete):** Returns ConflictException
+%% (DATASET_NOT_READY) if the
+%% dataset status is in {CREATING, UPDATING}. Deletion is allowed from
+%% ACTIVE, CREATE_FAILED,
+%% UPDATE_FAILED, and DELETE_FAILED states.
+%%
+%% **State guard (version-specific delete):** Returns ConflictException
+%% (DATASET_NOT_READY) if
+%% the dataset status is not in {ACTIVE, CREATE_FAILED, UPDATE_FAILED}.
+%%
+%% Fails with ConflictException (REFERENCED_BY_EVAL_JOB) if referenced by an
+%% active
+%% evaluation job (full delete only).
+%%
+%% If the delete workflow fails after retries, status is set to DELETE_FAILED
+%% (full delete)
+%% or UPDATE_FAILED (version-specific delete).
+%% Calling DeleteDataset on a DELETE_FAILED dataset re-triggers the delete
+%% workflow
+%% (idempotent retry path).
+%%
+%% **Version parameter:**
+%% - If `datasetVersion` is absent: deletes ALL versions and the Dataset
+%% record itself.
+%% - If `datasetVersion` is provided: deletes only that specific
+%% DatasetVersion.
+%% Returns ResourceNotFoundException if the specified version does not exist.
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, Input) ->
+    delete_dataset(Client, DatasetId, Input, []).
+
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"datasetVersion">>, <<"datasetVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes specific examples by ID from DRAFT.
+%%
+%% **Validation:** All example IDs are validated before any deletes occur. If
+%% any ID
+%% does not exist in DRAFT, the entire batch is rejected with
+%% ResourceNotFoundException —
+%% no examples are deleted (all-or-nothing semantics).
+%%
+%% **Asynchronous:** Operates in-place on DRAFT. No version bump occurs.
+%% Use CreateDatasetVersion to publish DRAFT as a new numbered version.
+%%
+%% **State guard:** Returns ConflictException (DATASET_NOT_READY) if the
+%% dataset
+%% status is not in {DRAFT, ACTIVE}.
+-spec delete_dataset_examples(aws_client:aws_client(), binary() | list(), delete_dataset_examples_request()) ->
+    {ok, delete_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_examples_errors(), tuple()}.
+delete_dataset_examples(Client, DatasetId, Input) ->
+    delete_dataset_examples(Client, DatasetId, Input, []).
+
+-spec delete_dataset_examples(aws_client:aws_client(), binary() | list(), delete_dataset_examples_request(), proplists:proplist()) ->
+    {ok, delete_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_examples_errors(), tuple()}.
+delete_dataset_examples(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples/delete"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8439,6 +9060,73 @@ get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersM
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves dataset metadata only.
+%%
+%% Use `?datasetVersion=DRAFT` or `?datasetVersion=N` to retrieve a specific
+%% version's metadata.
+%% If absent, defaults to DRAFT (the mutable working copy).
+%% Returns ResourceNotFoundException if the specified version is not found.
+%%
+%% **Initial state after CreateDataset:** When CreateDataset completes
+%% successfully
+%% (status transitions to ACTIVE), only a DRAFT working copy exists. No
+%% published
+%% versions exist until CreateDatasetVersion is called. At this point
+%% draftStatus is
+%% MODIFIED because the DRAFT has content that has never been published.
+%%
+%% **Default version behavior:** When `datasetVersion` is omitted, the
+%% operation
+%% returns the DRAFT working copy. To retrieve a specific published version,
+%% pass
+%% the version number as a string (e.g. `?datasetVersion=1`).
+%%
+%% **State guard:** Allowed for all statuses including DELETING. Returns the
+%% dataset
+%% record with its current status so callers can observe the deletion in
+%% progress.
+%%
+%% For paginated example IDs use ListDatasetExamples.
+-spec get_dataset(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId)
+  when is_map(Client) ->
+    get_dataset(Client, DatasetId, #{}, #{}).
+
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dataset(Client, DatasetId, QueryMap, HeadersMap, []).
+
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"datasetVersion">>, maps:get(<<"datasetVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -9621,6 +10309,153 @@ list_configuration_bundles(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns paginated examples from the dataset.
+%%
+%% **Version-pinned pagination:** The server embeds the resolved version in
+%% the `nextToken`.
+%% Once pagination begins, all subsequent pages are pinned to that version
+%% regardless of
+%% concurrent mutations or whether `datasetVersion` is passed on subsequent
+%% requests. The `datasetVersion`
+%% query parameter is only used for the first request (when `nextToken` is
+%% absent); if omitted,
+%% defaults to DRAFT.
+%%
+%% **State guard:** Allowed for all statuses including DELETING.
+-spec list_dataset_examples(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_examples_errors(), tuple()}.
+list_dataset_examples(Client, DatasetId)
+  when is_map(Client) ->
+    list_dataset_examples(Client, DatasetId, #{}, #{}).
+
+-spec list_dataset_examples(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_examples_errors(), tuple()}.
+list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap, []).
+
+-spec list_dataset_examples(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_examples_errors(), tuple()}.
+list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"datasetVersion">>, maps:get(<<"datasetVersion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all published versions of a dataset, sorted by version number
+%% descending
+%% (newest first).
+%%
+%% Does not include the DRAFT working copy.
+%%
+%% **State guard:** Allowed for all statuses including DELETING.
+-spec list_dataset_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dataset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_versions_errors(), tuple()}.
+list_dataset_versions(Client, DatasetId)
+  when is_map(Client) ->
+    list_dataset_versions(Client, DatasetId, #{}, #{}).
+
+-spec list_dataset_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_versions_errors(), tuple()}.
+list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap, []).
+
+-spec list_dataset_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_versions_errors(), tuple()}.
+list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all datasets in the caller's account, paginated.
+%%
+%% No presigned URLs in list results.
+-spec list_datasets(aws_client:aws_client()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client)
+  when is_map(Client) ->
+    list_datasets(Client, #{}, #{}).
+
+-spec list_datasets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, QueryMap, HeadersMap, []).
+
+-spec list_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available evaluators, including both builtin evaluators
 %% provided by the service and custom evaluators created by the user.
@@ -10948,6 +11783,102 @@ update_configuration_bundle(Client, BundleId, Input0, Options0) ->
     Method = put,
     Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a dataset's metadata.
+%%
+%% Synchronous operation.
+%% Only provided fields are updated; omitted fields remain unchanged.
+%%
+%% To modify dataset content, use AddDatasetExamples, UpdateDatasetExamples,
+%% or DeleteDatasetExamples.
+%%
+%% Cannot update: name, schemaType, kmsKeyArn (immutable after creation).
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
+update_dataset(Client, DatasetId, Input) ->
+    update_dataset(Client, DatasetId, Input, []).
+
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
+update_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = put,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates multiple existing examples in-place on DRAFT.
+%%
+%% **Validation:** All examples are validated against the dataset's
+%% schemaType before any
+%% writes occur. If any example fails validation, the entire batch is
+%% rejected with
+%% ValidationException — no examples are updated (all-or-nothing semantics).
+%%
+%% **Asynchronous:** Operates in-place on DRAFT. No version bump occurs.
+%% Use CreateDatasetVersion to publish DRAFT as a new numbered version.
+%%
+%% Fails with ResourceNotFoundException if any exampleId does not exist in
+%% DRAFT.
+%% To add new examples, use AddDatasetExamples instead.
+%%
+%% **State guard:** Returns ConflictException (DATASET_NOT_READY) if the
+%% dataset
+%% status is not in {DRAFT, ACTIVE}.
+%%
+%% **Request size limit:** Max 5 MB total request body. Max 1000 examples per
+%% call.
+-spec update_dataset_examples(aws_client:aws_client(), binary() | list(), update_dataset_examples_request()) ->
+    {ok, update_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_examples_errors(), tuple()}.
+update_dataset_examples(Client, DatasetId, Input) ->
+    update_dataset_examples(Client, DatasetId, Input, []).
+
+-spec update_dataset_examples(aws_client:aws_client(), binary() | list(), update_dataset_examples_request(), proplists:proplist()) ->
+    {ok, update_dataset_examples_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_examples_errors(), tuple()}.
+update_dataset_examples(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples/update"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

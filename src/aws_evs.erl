@@ -32,6 +32,8 @@
          delete_environment_host/3,
          disassociate_eip_from_vlan/2,
          disassociate_eip_from_vlan/3,
+         get_depot_url/2,
+         get_depot_url/3,
          get_environment/2,
          get_environment/3,
          get_versions/2,
@@ -482,6 +484,13 @@
 -type delete_environment_connector_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_depot_url_response() :: #{
+%%   <<"depotUrl">> => [string()],
+%%   <<"token">> => [string()]
+%% }
+-type get_depot_url_response() :: #{binary() => any()}.
+
+%% Example:
 %% error_detail() :: #{
 %%   <<"errorCode">> => [string()],
 %%   <<"errorMessage">> => [string()]
@@ -560,6 +569,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_connectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_depot_url_request() :: #{
+%%   <<"rotate">> => [boolean()]
+%% }
+-type get_depot_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_vm_entitlements_request() :: #{
@@ -692,6 +707,11 @@
     resource_not_found_exception().
 
 -type disassociate_eip_from_vlan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_depot_url_errors() ::
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
@@ -984,6 +1004,30 @@ disassociate_eip_from_vlan(Client, Input)
 disassociate_eip_from_vlan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateEipFromVlan">>, Input, Options).
+
+%% @doc Returns a URL and authentication token for accessing the Amazon EVS
+%% Custom Addon depot.
+%%
+%% Configure the depot URL as a download source in vSphere Lifecycle Manager
+%% (vLCM) to sync and install the Amazon EVS Custom Addon.
+%%
+%% The depot URL remains active until you rotate the authentication token by
+%% calling this action with `rotate' set to `true'.
+-spec get_depot_url(aws_client:aws_client(), get_depot_url_request()) ->
+    {ok, get_depot_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_depot_url_errors(), tuple()}.
+get_depot_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_depot_url(Client, Input, []).
+
+-spec get_depot_url(aws_client:aws_client(), get_depot_url_request(), proplists:proplist()) ->
+    {ok, get_depot_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_depot_url_errors(), tuple()}.
+get_depot_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDepotUrl">>, Input, Options).
 
 %% @doc Returns a description of the specified environment.
 -spec get_environment(aws_client:aws_client(), get_environment_request()) ->
