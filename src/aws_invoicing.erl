@@ -175,6 +175,7 @@
 
 %% Example:
 %% put_procurement_portal_preference_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Contacts">> := list(contact()),
 %%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
 %%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
@@ -328,6 +329,7 @@
 
 %% Example:
 %% delete_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"InvoiceUnitArn">> := string()
 %% }
 -type delete_invoice_unit_request() :: #{binary() => any()}.
@@ -418,6 +420,7 @@
 
 %% Example:
 %% update_procurement_portal_preference_status_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
 %%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
 %%   <<"ProcurementPortalPreferenceArn">> := string(),
@@ -478,6 +481,7 @@
 
 %% Example:
 %% delete_procurement_portal_preference_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ProcurementPortalPreferenceArn">> := string()
 %% }
 -type delete_procurement_portal_preference_request() :: #{binary() => any()}.
@@ -600,6 +604,7 @@
 
 %% Example:
 %% create_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InvoiceReceiver">> := string(),
 %%   <<"Name">> := string(),
@@ -611,6 +616,7 @@
 
 %% Example:
 %% update_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InvoiceUnitArn">> := string(),
 %%   <<"Rule">> => invoice_unit_rule(),

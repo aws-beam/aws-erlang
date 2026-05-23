@@ -62,6 +62,8 @@
          list_available_resource_dimensions/3,
          list_available_resource_metrics/2,
          list_available_resource_metrics/3,
+         list_performance_analysis_report_recommendations/2,
+         list_performance_analysis_report_recommendations/3,
          list_performance_analysis_reports/2,
          list_performance_analysis_reports/3,
          list_tags_for_resource/2,
@@ -81,6 +83,13 @@
 %%   <<"Value">> => string()
 %% }
 -type dimension_key_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_performance_analysis_report_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type list_performance_analysis_report_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_available_resource_dimensions_request() :: #{
@@ -222,7 +231,7 @@
 
 %% Example:
 %% create_performance_analysis_report_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
 %%   <<"Identifier">> := string(),
 %%   <<"ServiceType">> := list(any()),
 %%   <<"StartTime">> := non_neg_integer(),
@@ -261,6 +270,7 @@
 %% Example:
 %% recommendation() :: #{
 %%   <<"RecommendationDescription">> => string(),
+%%   <<"RecommendationDetails">> => string(),
 %%   <<"RecommendationId">> => string()
 %% }
 -type recommendation() :: #{binary() => any()}.
@@ -277,6 +287,17 @@
 %%   <<"Status">> => list(any())
 %% }
 -type analysis_report() :: #{binary() => any()}.
+
+%% Example:
+%% list_performance_analysis_report_recommendations_request() :: #{
+%%   <<"AnalysisReportId">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationIds">> => list(string()),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_performance_analysis_report_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_report_summary() :: #{
@@ -521,6 +542,11 @@
     invalid_argument_exception() | 
     not_authorized_exception().
 
+-type list_performance_analysis_report_recommendations_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
 -type list_performance_analysis_reports_errors() ::
     internal_service_error() | 
     invalid_argument_exception() | 
@@ -733,6 +759,23 @@ list_available_resource_metrics(Client, Input)
 list_available_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableResourceMetrics">>, Input, Options).
+
+%% @doc Retrieves recommendations for a performance analysis report.
+-spec list_performance_analysis_report_recommendations(aws_client:aws_client(), list_performance_analysis_report_recommendations_request()) ->
+    {ok, list_performance_analysis_report_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_performance_analysis_report_recommendations_errors(), tuple()}.
+list_performance_analysis_report_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_performance_analysis_report_recommendations(Client, Input, []).
+
+-spec list_performance_analysis_report_recommendations(aws_client:aws_client(), list_performance_analysis_report_recommendations_request(), proplists:proplist()) ->
+    {ok, list_performance_analysis_report_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_performance_analysis_report_recommendations_errors(), tuple()}.
+list_performance_analysis_report_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPerformanceAnalysisReportRecommendations">>, Input, Options).
 
 %% @doc Lists all the analysis reports created for the DB instance.
 %%

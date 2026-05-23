@@ -798,6 +798,15 @@
 
 
 %% Example:
+%% guardrail_policy_result() :: #{
+%%   <<"action">> => string(),
+%%   <<"details">> => string(),
+%%   <<"policyType">> => string()
+%% }
+-type guardrail_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% conversation_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => string()
@@ -1034,6 +1043,7 @@
 %%   <<"promptId">> => string(),
 %%   <<"contactId">> => string(),
 %%   <<"systemInstructions">> => list(list()),
+%%   <<"guardrailAssessments">> => list(span_guardrail_assessment()),
 %%   <<"initialContactId">> => string(),
 %%   <<"instanceArn">> => string(),
 %%   <<"requestModel">> => string(),
@@ -2354,6 +2364,17 @@
 %%   <<"kmsKeyId">> => string()
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_guardrail_assessment() :: #{
+%%   <<"action">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailName">> => string(),
+%%   <<"policies">> => list(guardrail_policy_result()),
+%%   <<"source">> => string()
+%% }
+-type span_guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:

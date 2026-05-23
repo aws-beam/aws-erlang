@@ -537,6 +537,14 @@
 
 
 %% Example:
+%% verification_script_env_var() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type verification_script_env_var() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_pentest_job_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"pentestJobId">> := [string()]
@@ -964,7 +972,8 @@
 %%   <<"riskType">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"taskId">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"verificationScript">> => verification_script()
 %% }
 -type finding() :: #{binary() => any()}.
 
@@ -1752,6 +1761,16 @@
 %%   <<"type">> => list(any())
 %% }
 -type artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_script() :: #{
+%%   <<"envVars">> => list(verification_script_env_var()),
+%%   <<"instructions">> => [string()],
+%%   <<"scriptType">> => [string()],
+%%   <<"scriptUrl">> => [string()]
+%% }
+-type verification_script() :: #{binary() => any()}.
 
 
 %% Example:

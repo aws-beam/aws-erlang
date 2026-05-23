@@ -4842,6 +4842,17 @@
 
 
 %% Example:
+%% vpc_properties_output() :: #{
+%%   <<"glueConnectionNames">> => list(string()),
+%%   <<"securityGroupId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% glossary_term_item_additional_attributes() :: #{
 %%   <<"matchRationale">> => list(list())
 %% }
@@ -4886,6 +4897,24 @@
 %%   <<"sensitive">> => [boolean()]
 %% }
 -type row_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_properties_input() :: #{
+%%   <<"securityGroupId">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_properties_patch() :: #{
+%%   <<"securityGroupId">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:
