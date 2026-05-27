@@ -30,6 +30,7 @@
 %% compliance_details() :: #{
 %%   <<"ComplianceStatus">> => boolean(),
 %%   <<"KeysWithNoncompliantValues">> => list(string()),
+%%   <<"MissingTagKeys">> => list(string()),
 %%   <<"NoncompliantKeys">> => list(string())
 %% }
 -type compliance_details() :: #{binary() => any()}.

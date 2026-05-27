@@ -817,7 +817,8 @@
 
 %% Example:
 %% scan_configuration_recovery_point() :: #{
-%%   <<"BackupVaultName">> => string()
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ContinuousScanDetails">> => scan_configuration_continuous_scan_details()
 %% }
 -type scan_configuration_recovery_point() :: #{binary() => any()}.
 
@@ -1423,6 +1424,14 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type member_features_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_scan_details() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type continuous_scan_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2467,6 +2476,14 @@
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type get_member_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_configuration_continuous_scan_details() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type scan_configuration_continuous_scan_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3835,7 +3852,8 @@
 
 %% Example:
 %% recovery_point() :: #{
-%%   <<"BackupVaultName">> => string()
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ContinuousScanDetails">> => continuous_scan_details()
 %% }
 -type recovery_point() :: #{binary() => any()}.
 

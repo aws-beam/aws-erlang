@@ -2502,6 +2502,7 @@
 
 %% Example:
 %% environment_blueprint_configuration_item() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()),
@@ -2511,6 +2512,7 @@
 %%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type environment_blueprint_configuration_item() :: #{binary() => any()}.
@@ -2915,6 +2917,7 @@
 
 %% Example:
 %% put_environment_blueprint_configuration_output() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()),
@@ -2924,6 +2927,7 @@
 %%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type put_environment_blueprint_configuration_output() :: #{binary() => any()}.
@@ -4958,6 +4962,7 @@
 
 %% Example:
 %% get_environment_blueprint_configuration_output() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()),
@@ -4967,6 +4972,7 @@
 %%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_environment_blueprint_configuration_output() :: #{binary() => any()}.
@@ -5340,6 +5346,17 @@
 
 
 %% Example:
+%% resource_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"identifier">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"region">> => string()
+%% }
+-type resource_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% in_expression() :: #{
 %%   <<"columnName">> => [string()],
 %%   <<"values">> => list([string()]())
@@ -5589,6 +5606,16 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type get_notebook_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"region">> => string()
+%% }
+-type put_resource_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7253,13 +7280,15 @@
 
 %% Example:
 %% put_environment_blueprint_configuration_input() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
 %%   <<"enabledRegions">> := list(string()),
 %%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"globalParameters">> => map(),
 %%   <<"manageAccessRoleArn">> => string(),
 %%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
-%%   <<"regionalParameters">> => map()
+%%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(put_resource_configuration())
 %% }
 -type put_environment_blueprint_configuration_input() :: #{binary() => any()}.
 

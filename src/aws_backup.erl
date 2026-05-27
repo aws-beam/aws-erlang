@@ -126,6 +126,9 @@
          get_legal_hold/2,
          get_legal_hold/4,
          get_legal_hold/5,
+         get_p_i_t_r_malware_scan_results/5,
+         get_p_i_t_r_malware_scan_results/7,
+         get_p_i_t_r_malware_scan_results/8,
          get_recovery_point_index_details/3,
          get_recovery_point_index_details/5,
          get_recovery_point_index_details/6,
@@ -909,6 +912,7 @@
 %% Example:
 %% start_scan_job_input() :: #{
 %%   <<"BackupVaultName">> := [string()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
 %%   <<"IamRoleArn">> := [string()],
 %%   <<"IdempotencyToken">> => [string()],
 %%   <<"MalwareScanner">> := list(any()),
@@ -928,6 +932,16 @@
 %%   <<"RecoveryPointArn">> => string()
 %% }
 -type update_recovery_point_index_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_p_i_t_r_malware_scan_results_input() :: #{
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"MalwareScanner">> := list(any()),
+%%   <<"RecoveryPointArn">> := [string()],
+%%   <<"ScanEndTime">> := [non_neg_integer()]
+%% }
+-type get_p_i_t_r_malware_scan_results_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1013,6 +1027,8 @@
 %%   <<"BackupVaultArn">> => [string()],
 %%   <<"BackupVaultName">> => [string()],
 %%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
+%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
 %%   <<"CreatedBy">> => scan_job_creator(),
 %%   <<"CreationDate">> => [non_neg_integer()],
 %%   <<"IamRoleArn">> => [string()],
@@ -1084,6 +1100,8 @@
 %%   <<"BackupVaultArn">> => [string()],
 %%   <<"BackupVaultName">> => [string()],
 %%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
+%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
 %%   <<"CreatedBy">> => scan_job_creator(),
 %%   <<"CreationDate">> => [non_neg_integer()],
 %%   <<"IamRoleArn">> => [string()],
@@ -1732,6 +1750,17 @@
 %%   <<"VaultNames">> => list(string())
 %% }
 -type recovery_point_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_p_i_t_r_malware_scan_results_output() :: #{
+%%   <<"LastScanJobTime">> => [non_neg_integer()],
+%%   <<"ScanEndTime">> => [non_neg_integer()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info()
+%% }
+-type get_p_i_t_r_malware_scan_results_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3262,6 +3291,12 @@
     missing_parameter_value_exception().
 
 -type get_legal_hold_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_p_i_t_r_malware_scan_results_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -5509,6 +5544,51 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the malware scan results for a specified point in time within
+%% a continuous (point-in-time recovery) backup.
+-spec get_p_i_t_r_malware_scan_results(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_p_i_t_r_malware_scan_results_output(), tuple()} |
+    {error, any()} |
+    {error, get_p_i_t_r_malware_scan_results_errors(), tuple()}.
+get_p_i_t_r_malware_scan_results(Client, BackupVaultName, MalwareScanner, RecoveryPointArn, ScanEndTime)
+  when is_map(Client) ->
+    get_p_i_t_r_malware_scan_results(Client, BackupVaultName, MalwareScanner, RecoveryPointArn, ScanEndTime, #{}, #{}).
+
+-spec get_p_i_t_r_malware_scan_results(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_p_i_t_r_malware_scan_results_output(), tuple()} |
+    {error, any()} |
+    {error, get_p_i_t_r_malware_scan_results_errors(), tuple()}.
+get_p_i_t_r_malware_scan_results(Client, BackupVaultName, MalwareScanner, RecoveryPointArn, ScanEndTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_p_i_t_r_malware_scan_results(Client, BackupVaultName, MalwareScanner, RecoveryPointArn, ScanEndTime, QueryMap, HeadersMap, []).
+
+-spec get_p_i_t_r_malware_scan_results(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_p_i_t_r_malware_scan_results_output(), tuple()} |
+    {error, any()} |
+    {error, get_p_i_t_r_malware_scan_results_errors(), tuple()}.
+get_p_i_t_r_malware_scan_results(Client, BackupVaultName, MalwareScanner, RecoveryPointArn, ScanEndTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scan/pitr-malware-scan-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"BackupVaultName">>, BackupVaultName},
+        {<<"MalwareScanner">>, MalwareScanner},
+        {<<"RecoveryPointArn">>, RecoveryPointArn},
+        {<<"ScanEndTime">>, ScanEndTime}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
