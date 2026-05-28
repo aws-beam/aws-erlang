@@ -897,6 +897,13 @@
 
 
 %% Example:
+%% document_custom_output_configuration() :: #{
+%%   <<"fallbackBlueprints">> => list(blueprint_item())
+%% }
+-type document_custom_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_blueprint_optimization_status_response() :: #{
 %%   <<"errorMessage">> => [string()],
 %%   <<"errorType">> => [string()],
@@ -1020,7 +1027,8 @@
 
 %% Example:
 %% custom_output_configuration() :: #{
-%%   <<"blueprints">> => list(blueprint_item())
+%%   <<"blueprints">> => list(blueprint_item()),
+%%   <<"document">> => document_custom_output_configuration()
 %% }
 -type custom_output_configuration() :: #{binary() => any()}.
 

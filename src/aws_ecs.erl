@@ -420,6 +420,7 @@
 %%   <<"name">> => string(),
 %%   <<"networkBindings">> => list(network_binding()),
 %%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"neuronDeviceIds">> => list(string()),
 %%   <<"reason">> => string(),
 %%   <<"runtimeId">> => string(),
 %%   <<"taskArn">> => string()

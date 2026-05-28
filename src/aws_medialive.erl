@@ -623,6 +623,7 @@
 
 %% Example:
 %% describe_inference_settings() :: #{
+%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
 %%   <<"FeedArn">> => string()
 %% }
 -type describe_inference_settings() :: #{binary() => any()}.
@@ -1186,6 +1187,7 @@
 %%   <<"EmbeddedSourceSettings">> => embedded_source_settings(),
 %%   <<"Scte20SourceSettings">> => scte20_source_settings(),
 %%   <<"Scte27SourceSettings">> => scte27_source_settings(),
+%%   <<"SmartSubtitleSourceSettings">> => smart_subtitle_source_settings(),
 %%   <<"TeletextSourceSettings">> => teletext_source_settings()
 %% }
 -type caption_selector_settings() :: #{binary() => any()}.
@@ -1736,6 +1738,14 @@
 %%   <<"TreatMissingData">> => list(any())
 %% }
 -type create_cloud_watch_alarm_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% smart_subtitle_source_settings() :: #{
+%%   <<"CaptionSynchronizationMode">> => list(any()),
+%%   <<"InferenceFeedOutput">> => string()
+%% }
+-type smart_subtitle_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4374,6 +4384,14 @@
 
 
 %% Example:
+%% audio_feed_input() :: #{
+%%   <<"AudioSelectorName">> => string(),
+%%   <<"FeedInput">> => string()
+%% }
+-type audio_feed_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_network_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AssociatedClusterIds">> => list(string()),
@@ -5300,6 +5318,7 @@
 
 %% Example:
 %% inference_settings() :: #{
+%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
 %%   <<"FeedArn">> => string()
 %% }
 -type inference_settings() :: #{binary() => any()}.

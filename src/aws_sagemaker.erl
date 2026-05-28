@@ -2000,6 +2000,13 @@
 -type search_training_plan_offerings_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_shared_environment_config() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"FSxLustreDeletionPolicy">> => list(any())
+%% }
+-type cluster_shared_environment_config() :: #{binary() => any()}.
+
+%% Example:
 %% s3_storage_config() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ResolvedOutputS3Uri">> => string(),
@@ -2058,6 +2065,7 @@
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config_output(),
 %%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -3209,6 +3217,12 @@
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type pipeline_execution() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_groups_config_output() :: #{
+%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config_details()
+%% }
+-type cluster_restricted_instance_groups_config_output() :: #{binary() => any()}.
 
 %% Example:
 %% f_sx_lustre_file_system() :: #{
@@ -4588,6 +4602,12 @@
 -type list_training_plans_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_restricted_instance_groups_config() :: #{
+%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config()
+%% }
+-type cluster_restricted_instance_groups_config() :: #{binary() => any()}.
+
+%% Example:
 %% list_a_i_workload_configs_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -4728,6 +4748,7 @@
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
 %%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
@@ -5940,6 +5961,7 @@
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
 %%   <<"VpcConfig">> => vpc_config()
@@ -11360,6 +11382,15 @@
 -type continuous_parameter_range() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_shared_environment_config_details() :: #{
+%%   <<"CurrentFSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"CurrentFSxLustreDeletionPolicy">> => list(any()),
+%%   <<"DesiredFSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"DesiredFSxLustreDeletionPolicy">> => list(any())
+%% }
+-type cluster_shared_environment_config_details() :: #{binary() => any()}.
+
+%% Example:
 %% describe_code_repository_output() :: #{
 %%   <<"CodeRepositoryArn">> => string(),
 %%   <<"CodeRepositoryName">> => string(),
@@ -12895,6 +12926,7 @@
 %% Example:
 %% reserved_capacity_summary() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DurationHours">> => float(),
 %%   <<"DurationMinutes">> => float(),
 %%   <<"EndTime">> => non_neg_integer(),

@@ -2163,6 +2163,19 @@
 %% and Enabling all features:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/manage-begin-all-features-standard-migration.html#manage-approve-all-features-invite
 %% in the Organizations User Guide.
+%%
+%% When a handshake is accepted, Organizations logs membership events in
+%% CloudTrail, available
+%% only in the management account's event history. If the account was
+%% standalone and joined
+%% a new organization, an `AccountJoinedOrganization' event is logged
+%% with
+%% `joinedMethod:Invited' and `joinedTime' fields. If the account
+%% departed one organization and joined another, both an
+%% `AccountDepartedOrganization' event with `departedMethod:Left'
+%% and `departedTime' and an `AccountJoinedOrganization' event with
+%% `joinedMethod:Invited' and `joinedTime' are logged in their
+%% respective management accounts.
 -spec accept_handshake(aws_client:aws_client(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
@@ -2335,6 +2348,13 @@ cancel_handshake(Client, Input, Options)
 %% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html
 %% in the
 %% Amazon Web Services GovCloud User Guide.
+%%
+%% After the permanent termination of the account after the 90-day waiting
+%% period,
+%% Organizations logs a membership event in CloudTrail. The event is an
+%% `AccountDepartedOrganization' event with
+%% `departedMethod:Cleaned' and `departedTime'. This event is
+%% available only in the management account's event history.
 -spec close_account(aws_client:aws_client(), close_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2374,6 +2394,13 @@ close_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration
 %% in the
 %% Organizations User Guide.
+%%
+%% Additionally, the `AccountJoinedOrganization' event is logged in
+%% CloudTrail and
+%% is available only in the management account's event history. This
+%% event includes
+%% `joinedMethod:Created' and `joinedTime' fields to provide context
+%% on how and when the account joined the organization.
 %%
 %% The user who calls the API to create an account must have the
 %% `organizations:CreateAccount' permission. If you enabled all features
@@ -2548,6 +2575,15 @@ create_account(Client, Input, Options)
 %% in the
 %% Organizations User Guide.
 %%
+%% Additionally, the `AccountJoinedOrganization' event is logged in
+%% CloudTrail and
+%% is available only in the management account's event history only for
+%% the linked
+%% commercial account. This event includes `joinedMethod:Created' and
+%% `joinedTime' fields to provide context on how and when the account
+%% joined
+%% the organization.
+%%
 %% When you call the `CreateGovCloudAccount' action, you create two
 %% accounts:
 %% a standalone account in the Amazon Web Services GovCloud (US) Region and
@@ -2667,6 +2703,12 @@ create_gov_cloud_account(Client, Input, Options)
 %% parameter to `CONSOLIDATED_BILLING', no policy types are enabled by
 %% default
 %% and you can't use organization policies.
+%%
+%% The `AccountJoinedOrganization' event is logged in CloudTrail and
+%% is available only in the management account's event history. This
+%% event includes
+%% `joinedMethod:Invited' and `joinedTime' fields to provide
+%% context on how and when the account joined the organization.
 -spec create_organization(aws_client:aws_client(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
@@ -2778,6 +2820,12 @@ decline_handshake(Client, Input, Options)
 %% You can delete an organization only by using credentials
 %% from the management account. The organization must be empty of member
 %% accounts.
+%%
+%% When an organization is deleted, Organizations logs a membership event in
+%% CloudTrail. The
+%% event is an `AccountDepartedOrganization' event with
+%% `departedMethod:Left' and `departedTime'. This event is available
+%% only in the management account's event history.
 -spec delete_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3519,6 +3567,12 @@ invite_organization_to_transfer_responsibility(Client, Input, Options)
 %% instead.
 %%
 %% You can only call from operation from a member account.
+%%
+%% When an account leaves an organization, Organizations logs a membership
+%% event in
+%% CloudTrail. The event is an `AccountDepartedOrganization' event with
+%% `departedMethod:Left' and `departedTime'. This event is available
+%% only in the management account's event history.
 %%
 %% The management account in an organization with all features enabled can
 %% set service control policies (SCPs) that can restrict what administrators
@@ -4284,6 +4338,13 @@ register_delegated_administrator(Client, Input, Options)
 %%
 %% You can only call this operation from the management account. Member
 %% accounts can remove themselves with `LeaveOrganization' instead.
+%%
+%% When an account is removed from an organization, Organizations logs a
+%% membership
+%% event in CloudTrail. The event is an
+%% `AccountDepartedOrganization' event with
+%% `departedMethod:Removed' and `departedTime'. This event is
+%% available only in the management account's event history.
 %%
 %% You can remove an account from your organization only if the account is
 %% configured with the information required to operate as a standalone
