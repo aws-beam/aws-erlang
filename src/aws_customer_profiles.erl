@@ -31,6 +31,8 @@
          batch_get_calculated_attribute_for_profile/5,
          batch_get_profile/3,
          batch_get_profile/4,
+         batch_put_profile_object/3,
+         batch_put_profile_object/4,
          create_calculated_attribute_definition/4,
          create_calculated_attribute_definition/5,
          create_domain/3,
@@ -437,11 +439,27 @@
 
 
 %% Example:
+%% batch_put_profile_object_response_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type batch_put_profile_object_response_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% date_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
 %%   <<"Values">> => list([string()]())
 %% }
 -type date_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_request_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Object">> => string()
+%% }
+-type batch_put_profile_object_request_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1780,6 +1798,14 @@
 
 
 %% Example:
+%% batch_put_profile_object_request() :: #{
+%%   <<"Items">> := list(batch_put_profile_object_request_item()),
+%%   <<"ObjectTypeName">> := string()
+%% }
+-type batch_put_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_calculated_attribute_for_profile_response() :: #{
 %%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()),
 %%   <<"ConditionOverrides">> => condition_overrides(),
@@ -2703,6 +2729,15 @@
 %% }
 -type batch_get_calculated_attribute_for_profile_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_put_profile_object_error_item() :: #{
+%%   <<"Code">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type batch_put_profile_object_error_item() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_stream_response() :: #{}
 -type delete_event_stream_response() :: #{}.
@@ -3140,6 +3175,14 @@
 
 
 %% Example:
+%% batch_put_profile_object_response() :: #{
+%%   <<"Failed">> => list(batch_put_profile_object_error_item()),
+%%   <<"Successful">> => list(batch_put_profile_object_response_item())
+%% }
+-type batch_put_profile_object_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% profile_attribute_values_response() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"DomainName">> => string(),
@@ -3522,6 +3565,13 @@
     resource_not_found_exception().
 
 -type batch_get_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_put_profile_object_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -4334,6 +4384,57 @@ batch_get_profile(Client, DomainName, Input) ->
 batch_get_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/batch-get-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds multiple profile objects to a domain of a given ObjectType in a
+%% single API call.
+%%
+%% When adding a specific profile object, like a Contact Record, an inferred
+%% profile can
+%% get created if it is not mapped to an existing profile. The resulting
+%% profile will only
+%% have a phone number populated in the standard ProfileObject. Any
+%% additional Contact Records
+%% with the same phone number will be mapped to the same inferred profile.
+%%
+%% When a ProfileObject is created and if a ProfileObjectType already exists
+%% for the
+%% ProfileObject, it will provide data to a standard profile depending on the
+%% ProfileObjectType definition.
+%%
+%% BatchPutProfileObject needs an ObjectType, which can be created using
+%% PutProfileObjectType.
+-spec batch_put_profile_object(aws_client:aws_client(), binary() | list(), batch_put_profile_object_request()) ->
+    {ok, batch_put_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_profile_object_errors(), tuple()}.
+batch_put_profile_object(Client, DomainName, Input) ->
+    batch_put_profile_object(Client, DomainName, Input, []).
+
+-spec batch_put_profile_object(aws_client:aws_client(), binary() | list(), batch_put_profile_object_request(), proplists:proplist()) ->
+    {ok, batch_put_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_profile_object_errors(), tuple()}.
+batch_put_profile_object(Client, DomainName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/batch-put-profile-object"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

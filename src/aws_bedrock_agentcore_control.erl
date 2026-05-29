@@ -1335,6 +1335,13 @@
 
 
 %% Example:
+%% harness_skill_s3_source() :: #{
+%%   <<"uri">> => string()
+%% }
+-type harness_skill_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption_failure() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -1551,6 +1558,15 @@
 %%   <<"outboundAuth">> => list()
 %% }
 -type harness_agent_core_gateway_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_source() :: #{
+%%   <<"auth">> => harness_skill_git_auth(),
+%%   <<"path">> => [string()],
+%%   <<"url">> => string()
+%% }
+-type harness_skill_git_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2894,6 +2910,7 @@
 %%   <<"bundleArn">> => string(),
 %%   <<"bundleId">> => string(),
 %%   <<"bundleName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string()
 %% }
 -type configuration_bundle_summary() :: #{binary() => any()}.
@@ -3243,6 +3260,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type policy_generation() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_auth() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"username">> => [string()]
+%% }
+-type harness_skill_git_auth() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4539,6 +4564,19 @@
 
 
 %% Example:
+%% harness_lite_llm_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_lite_llm_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -4606,6 +4644,8 @@
 
 %% Example:
 %% harness_bedrock_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
 %%   <<"maxTokens">> => integer(),
 %%   <<"modelId">> => string(),
 %%   <<"temperature">> => float(),
@@ -4642,6 +4682,8 @@
 
 %% Example:
 %% harness_open_ai_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
 %%   <<"apiKeyArn">> => string(),
 %%   <<"maxTokens">> => integer(),
 %%   <<"modelId">> => string(),

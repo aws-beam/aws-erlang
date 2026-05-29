@@ -28,6 +28,9 @@
          delete_connection/4,
          delete_thing_shadow/3,
          delete_thing_shadow/4,
+         get_connection/2,
+         get_connection/4,
+         get_connection/5,
          get_retained_message/2,
          get_retained_message/4,
          get_retained_message/5,
@@ -40,8 +43,13 @@
          list_retained_messages/1,
          list_retained_messages/3,
          list_retained_messages/4,
+         list_subscriptions/2,
+         list_subscriptions/4,
+         list_subscriptions/5,
          publish/3,
          publish/4,
+         send_direct_message/3,
+         send_direct_message/4,
          update_thing_shadow/3,
          update_thing_shadow/4]).
 
@@ -50,68 +58,10 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% get_connection_request() :: #{
+%%   <<"includeSocketInformation">> => boolean()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connection_request() :: #{
-%%   <<"cleanSession">> => boolean(),
-%%   <<"preventWillMessage">> => boolean()
-%% }
--type delete_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_thing_shadow_request() :: #{
-%%   <<"shadowName">> => string()
-%% }
--type delete_thing_shadow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_thing_shadow_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type delete_thing_shadow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_retained_message_request() :: #{}
--type get_retained_message_request() :: #{}.
-
-
-%% Example:
-%% get_retained_message_response() :: #{
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"payload">> => binary(),
-%%   <<"qos">> => integer(),
-%%   <<"topic">> => string(),
-%%   <<"userProperties">> => binary()
-%% }
--type get_retained_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_shadow_request() :: #{
-%%   <<"shadowName">> => string()
-%% }
--type get_thing_shadow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_shadow_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type get_thing_shadow_response() :: #{binary() => any()}.
+-type get_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -122,35 +72,62 @@
 
 
 %% Example:
-%% invalid_request_exception() :: #{
+%% subscription_summary() :: #{
+%%   <<"qos">> => integer(),
+%%   <<"topicFilter">> => string()
+%% }
+-type subscription_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_shadow_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type get_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_thing_shadow_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type update_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_named_shadows_for_thing_request() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pageSize">> => integer()
+%% retained_message_summary() :: #{
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"payloadSize">> => float(),
+%%   <<"qos">> => integer(),
+%%   <<"topic">> => string()
 %% }
--type list_named_shadows_for_thing_request() :: #{binary() => any()}.
+-type retained_message_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_named_shadows_for_thing_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(string()),
-%%   <<"timestamp">> => float()
+%% get_connection_response() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"clientId">> => string(),
+%%   <<"connected">> => boolean(),
+%%   <<"connectedSince">> => float(),
+%%   <<"disconnectReason">> => string(),
+%%   <<"disconnectedSince">> => float(),
+%%   <<"keepAliveDuration">> => integer(),
+%%   <<"sessionExpiry">> => float(),
+%%   <<"sourceIp">> => string(),
+%%   <<"sourcePort">> => integer(),
+%%   <<"targetIp">> => string(),
+%%   <<"targetPort">> => integer(),
+%%   <<"thingName">> => string(),
+%%   <<"vpcEndpointId">> => string()
 %% }
--type list_named_shadows_for_thing_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_retained_messages_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_retained_messages_request() :: #{binary() => any()}.
+-type get_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -159,6 +136,13 @@
 %%   <<"retainedTopics">> => list(retained_message_summary())
 %% }
 -type list_retained_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -184,10 +168,18 @@
 
 
 %% Example:
-%% request_entity_too_large_exception() :: #{
+%% list_named_shadows_for_thing_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_named_shadows_for_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type request_entity_too_large_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -198,13 +190,17 @@
 
 
 %% Example:
-%% retained_message_summary() :: #{
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"payloadSize">> => float(),
-%%   <<"qos">> => integer(),
-%%   <<"topic">> => string()
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type retained_message_summary() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_shadow_request() :: #{
+%%   <<"shadowName">> => string()
+%% }
+-type get_thing_shadow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,26 +209,49 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
-
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
+%% get_retained_message_request() :: #{}
+-type get_retained_message_request() :: #{}.
 
 
 %% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
+%% delete_thing_shadow_request() :: #{
+%%   <<"shadowName">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type delete_thing_shadow_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% unsupported_document_encoding_exception() :: #{
+%% get_retained_message_response() :: #{
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"payload">> => binary(),
+%%   <<"qos">> => integer(),
+%%   <<"topic">> => string(),
+%%   <<"userProperties">> => binary()
+%% }
+-type get_retained_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_entity_too_large_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type unsupported_document_encoding_exception() :: #{binary() => any()}.
+-type request_entity_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_direct_message_request() :: #{
+%%   <<"confirmation">> => boolean(),
+%%   <<"contentType">> => string(),
+%%   <<"correlationData">> => string(),
+%%   <<"payload">> => binary(),
+%%   <<"payloadFormatIndicator">> => list(any()),
+%%   <<"responseTopic">> => string(),
+%%   <<"timeout">> => integer(),
+%%   <<"topic">> := string(),
+%%   <<"userProperties">> => string()
+%% }
+-type send_direct_message_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -244,81 +263,175 @@
 
 
 %% Example:
-%% update_thing_shadow_response() :: #{
+%% list_retained_messages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_retained_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(subscription_summary())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type gateway_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_thing_shadow_response() :: #{
 %%   <<"payload">> => binary()
 %% }
--type update_thing_shadow_response() :: #{binary() => any()}.
+-type delete_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_request() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"preventWillMessage">> => boolean()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_direct_message_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"traceId">> => string()
+%% }
+-type send_direct_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_named_shadows_for_thing_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(string()),
+%%   <<"timestamp">> => float()
+%% }
+-type list_named_shadows_for_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_document_encoding_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_document_encoding_exception() :: #{binary() => any()}.
 
 -type delete_connection_errors() ::
     throttling_exception() | 
-    resource_not_found_exception() | 
     invalid_request_exception() | 
-    internal_failure_exception() | 
-    forbidden_exception().
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    internal_failure_exception().
 
 -type delete_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
-    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_connection_errors() ::
+    throttling_exception() | 
     invalid_request_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
     internal_failure_exception().
 
 -type get_retained_message_errors() ::
-    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     internal_failure_exception().
 
 -type get_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
-    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_named_shadows_for_thing_errors() ::
-    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_retained_messages_errors() ::
-    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    method_not_allowed_exception() | 
     invalid_request_exception() | 
+    method_not_allowed_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_subscriptions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
     internal_failure_exception().
 
 -type publish_errors() ::
-    unauthorized_exception() | 
     throttling_exception() | 
-    method_not_allowed_exception() | 
     invalid_request_exception() | 
+    method_not_allowed_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type send_direct_message_errors() ::
+    gateway_timeout_exception() | 
+    throttling_exception() | 
+    request_entity_too_large_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception() | 
     internal_failure_exception().
 
 -type update_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
-    unauthorized_exception() | 
     throttling_exception() | 
-    service_unavailable_exception() | 
     request_entity_too_large_exception() | 
-    method_not_allowed_exception() | 
+    service_unavailable_exception() | 
     invalid_request_exception() | 
-    internal_failure_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    method_not_allowed_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -329,6 +442,10 @@
 %%
 %% When you disconnect a client, Amazon Web Services IoT Core closes the
 %% client's network connection and optionally cleans the session state.
+%%
+%% Requires permission to access the DeleteConnection:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 -spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -406,6 +523,51 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves connection information for the specified MQTT client.
+%%
+%% Requires permission to access the GetConnection:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec get_connection(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_connection_response(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, ClientId)
+  when is_map(Client) ->
+    get_connection(Client, ClientId, #{}, #{}).
+
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_connection_response(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, ClientId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection(Client, ClientId, QueryMap, HeadersMap, []).
+
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connection_response(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, ClientId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connections/", aws_util:encode_uri(ClientId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeSocketInformation">>, maps:get(<<"includeSocketInformation">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of a single retained message for the specified
 %% topic.
@@ -617,6 +779,53 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of all subscriptions for MQTT clients with active
+%% sessions, including offline clients with persistent sessions.
+%%
+%% Requires permission to access the ListSubscriptions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec list_subscriptions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ClientId)
+  when is_map(Client) ->
+    list_subscriptions(Client, ClientId, #{}, #{}).
+
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ClientId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_subscriptions(Client, ClientId, QueryMap, HeadersMap, []).
+
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ClientId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connections/", aws_util:encode_uri(ClientId), "/subscriptions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Publishes an MQTT message.
 %%
 %% Requires permission to access the Publish:
@@ -669,6 +878,63 @@ publish(Client, Topic, Input0, Options0) ->
                      {<<"qos">>, <<"qos">>},
                      {<<"responseTopic">>, <<"responseTopic">>},
                      {<<"retain">>, <<"retain">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends an MQTT message directly to a specific client identified by its
+%% client ID.
+%%
+%% `SendDirectMessage' targets a single client ID. The receiving client
+%% does not
+%% need to subscribe to the topic, but the receiver's policy must allow
+%% `iot:Receive' on the specified topic.
+%%
+%% Requires permission to access the SendDirectMessage:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+%%
+%% For more information about messaging costs, see Amazon Web Services IoT
+%% Core
+%% pricing: http://aws.amazon.com/iot-core/pricing/.
+-spec send_direct_message(aws_client:aws_client(), binary() | list(), send_direct_message_request()) ->
+    {ok, send_direct_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_direct_message_errors(), tuple()}.
+send_direct_message(Client, ClientId, Input) ->
+    send_direct_message(Client, ClientId, Input, []).
+
+-spec send_direct_message(aws_client:aws_client(), binary() | list(), send_direct_message_request(), proplists:proplist()) ->
+    {ok, send_direct_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_direct_message_errors(), tuple()}.
+send_direct_message(Client, ClientId, Input0, Options0) ->
+    Method = post,
+    Path = ["/connections/", aws_util:encode_uri(ClientId), "/messages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-mqtt5-correlation-data">>, <<"correlationData">>},
+                       {<<"x-amz-mqtt5-payload-format-indicator">>, <<"payloadFormatIndicator">>},
+                       {<<"x-amz-mqtt5-user-properties">>, <<"userProperties">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"confirmation">>, <<"confirmation">>},
+                     {<<"contentType">>, <<"contentType">>},
+                     {<<"responseTopic">>, <<"responseTopic">>},
+                     {<<"timeout">>, <<"timeout">>},
+                     {<<"topic">>, <<"topic">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

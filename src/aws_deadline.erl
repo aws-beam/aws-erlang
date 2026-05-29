@@ -107,6 +107,8 @@
          delete_queue_limit_association/6,
          delete_storage_profile/4,
          delete_storage_profile/5,
+         delete_volume/5,
+         delete_volume/6,
          delete_worker/5,
          delete_worker/6,
          disassociate_member_from_farm/4,
@@ -174,6 +176,9 @@
          get_task/6,
          get_task/8,
          get_task/9,
+         get_volume/4,
+         get_volume/6,
+         get_volume/7,
          get_worker/4,
          get_worker/6,
          get_worker/7,
@@ -261,6 +266,9 @@
          list_tasks/5,
          list_tasks/7,
          list_tasks/8,
+         list_volumes/3,
+         list_volumes/5,
+         list_volumes/6,
          list_workers/3,
          list_workers/5,
          list_workers/6,
@@ -376,6 +384,26 @@
 %%   <<"values">> => list(string())
 %% }
 -type fleet_attribute_capability() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_volume_response() :: #{
+%%   <<"attachedWorkerId">> => string(),
+%%   <<"availabilityZoneId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"iops">> => integer(),
+%%   <<"lastAssignedAt">> => non_neg_integer(),
+%%   <<"lastReleasedAt">> => non_neg_integer(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"throughputMiB">> => integer(),
+%%   <<"volumeId">> => string(),
+%%   <<"volumeType">> => list(any())
+%% }
+-type get_volume_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -614,6 +642,10 @@
 %% }
 -type update_step_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_volume_request() :: #{}
+-type delete_volume_request() :: #{}.
+
 
 %% Example:
 %% list_session_actions_request() :: #{
@@ -627,6 +659,14 @@
 %% Example:
 %% delete_queue_fleet_association_request() :: #{}
 -type delete_queue_fleet_association_request() :: #{}.
+
+
+%% Example:
+%% list_volumes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"volumes">> => list(volume_summary())
+%% }
+-type list_volumes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -893,6 +933,10 @@
 %% }
 -type update_worker_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_volume_request() :: #{}
+-type get_volume_request() :: #{}.
+
 
 %% Example:
 %% search_workers_request() :: #{
@@ -937,6 +981,7 @@
 %%   <<"autoScalingConfiguration">> => service_managed_ec2_auto_scaling_configuration(),
 %%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
 %%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
+%%   <<"persistentVolumeConfiguration">> => persistent_volume_configuration(),
 %%   <<"storageProfileId">> => string(),
 %%   <<"vpcConfiguration">> => vpc_configuration()
 %% }
@@ -1364,6 +1409,19 @@
 %%   <<"vCpuCount">> => v_cpu_count_range()
 %% }
 -type service_managed_ec2_instance_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% volume_summary() :: #{
+%%   <<"attachedWorkerId">> => string(),
+%%   <<"availabilityZoneId">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"volumeId">> => string()
+%% }
+-type volume_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2154,6 +2212,17 @@
 
 
 %% Example:
+%% persistent_volume_configuration() :: #{
+%%   <<"iops">> => integer(),
+%%   <<"lastUsedTtlHours">> => integer(),
+%%   <<"mountPath">> => string(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"throughputMiB">> => integer()
+%% }
+-type persistent_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_queue_limit_associations_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queueLimitAssociations">> => list(queue_limit_association_summary())
@@ -2221,6 +2290,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_metered_products_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_volumes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_volumes_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2577,6 +2654,10 @@
 %%   <<"workerId">> => string()
 %% }
 -type get_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_response() :: #{}
+-type delete_volume_response() :: #{}.
 
 
 %% Example:
@@ -4208,6 +4289,14 @@
     validation_exception() | 
     access_denied_exception().
 
+-type delete_volume_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_worker_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -4373,6 +4462,13 @@
     resource_not_found_exception().
 
 -type get_task_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_volume_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -4569,6 +4665,13 @@
     resource_not_found_exception().
 
 -type list_tasks_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_volumes_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -6449,6 +6552,40 @@ delete_storage_profile(Client, FarmId, StorageProfileId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a persistent volume.
+-spec delete_volume(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_volume_request()) ->
+    {ok, delete_volume_response(), tuple()} |
+    {error, any()} |
+    {error, delete_volume_errors(), tuple()}.
+delete_volume(Client, FarmId, FleetId, VolumeId, Input) ->
+    delete_volume(Client, FarmId, FleetId, VolumeId, Input, []).
+
+-spec delete_volume(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_volume_request(), proplists:proplist()) ->
+    {ok, delete_volume_response(), tuple()} |
+    {error, any()} |
+    {error, delete_volume_errors(), tuple()}.
+delete_volume(Client, FarmId, FleetId, VolumeId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/fleets/", aws_util:encode_uri(FleetId), "/volumes/", aws_util:encode_uri(VolumeId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a worker.
 -spec delete_worker(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_worker_request()) ->
     {ok, delete_worker_response(), tuple()} |
@@ -7321,6 +7458,43 @@ get_task(Client, FarmId, JobId, QueueId, StepId, TaskId, QueryMap, HeadersMap)
 get_task(Client, FarmId, JobId, QueueId, StepId, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queues/", aws_util:encode_uri(QueueId), "/jobs/", aws_util:encode_uri(JobId), "/steps/", aws_util:encode_uri(StepId), "/tasks/", aws_util:encode_uri(TaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a persistent volume.
+-spec get_volume(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_volume_response(), tuple()} |
+    {error, any()} |
+    {error, get_volume_errors(), tuple()}.
+get_volume(Client, FarmId, FleetId, VolumeId)
+  when is_map(Client) ->
+    get_volume(Client, FarmId, FleetId, VolumeId, #{}, #{}).
+
+-spec get_volume(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_volume_response(), tuple()} |
+    {error, any()} |
+    {error, get_volume_errors(), tuple()}.
+get_volume(Client, FarmId, FleetId, VolumeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_volume(Client, FarmId, FleetId, VolumeId, QueryMap, HeadersMap, []).
+
+-spec get_volume(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_volume_response(), tuple()} |
+    {error, any()} |
+    {error, get_volume_errors(), tuple()}.
+get_volume(Client, FarmId, FleetId, VolumeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/fleets/", aws_util:encode_uri(FleetId), "/volumes/", aws_util:encode_uri(VolumeId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8539,6 +8713,48 @@ list_tasks(Client, FarmId, JobId, QueueId, StepId, QueryMap, HeadersMap)
 list_tasks(Client, FarmId, JobId, QueueId, StepId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queues/", aws_util:encode_uri(QueueId), "/jobs/", aws_util:encode_uri(JobId), "/steps/", aws_util:encode_uri(StepId), "/tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the persistent volumes in a fleet.
+-spec list_volumes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_volumes_response(), tuple()} |
+    {error, any()} |
+    {error, list_volumes_errors(), tuple()}.
+list_volumes(Client, FarmId, FleetId)
+  when is_map(Client) ->
+    list_volumes(Client, FarmId, FleetId, #{}, #{}).
+
+-spec list_volumes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_volumes_response(), tuple()} |
+    {error, any()} |
+    {error, list_volumes_errors(), tuple()}.
+list_volumes(Client, FarmId, FleetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_volumes(Client, FarmId, FleetId, QueryMap, HeadersMap, []).
+
+-spec list_volumes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_volumes_response(), tuple()} |
+    {error, any()} |
+    {error, list_volumes_errors(), tuple()}.
+list_volumes(Client, FarmId, FleetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/fleets/", aws_util:encode_uri(FleetId), "/volumes"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

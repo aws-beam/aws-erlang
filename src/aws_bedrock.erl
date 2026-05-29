@@ -3076,9 +3076,10 @@
 %% Example:
 %% create_custom_model_request() :: #{
 %%   <<"clientRequestToken">> => string(),
+%%   <<"customModelDataSource">> => list(),
 %%   <<"modelKmsKeyArn">> => string(),
 %%   <<"modelName">> := string(),
-%%   <<"modelSourceConfig">> := list(),
+%%   <<"modelSourceConfig">> => list(),
 %%   <<"modelTags">> => list(tag()),
 %%   <<"roleArn">> => string()
 %% }
@@ -3799,6 +3800,13 @@
 %% Example:
 %% deregister_marketplace_model_endpoint_request() :: #{}
 -type deregister_marketplace_model_endpoint_request() :: #{}.
+
+
+%% Example:
+%% model_package_arn_data_source() :: #{
+%%   <<"modelPackageArn">> => string()
+%% }
+-type model_package_arn_data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4930,7 +4938,7 @@
 %% API
 %%====================================================================
 
-%% @doc Batch delete the specified advanced prompt optimization jobs.
+%% @doc Deletes one or more advanced prompt optimization jobs.
 -spec batch_delete_advanced_prompt_optimization_job(aws_client:aws_client(), batch_delete_advanced_prompt_optimization_job_request()) ->
     {ok, batch_delete_advanced_prompt_optimization_job_response(), tuple()} |
     {error, any()} |
@@ -5039,7 +5047,10 @@ cancel_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, Policy
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an asynchronous batch job for advanced prompt optimization.
+%% @doc Creates an advanced prompt optimization job.
+%%
+%% The job optimizes your prompt templates for specific models using your
+%% evaluation dataset and criteria.
 -spec create_advanced_prompt_optimization_job(aws_client:aws_client(), create_advanced_prompt_optimization_job_request()) ->
     {ok, create_advanced_prompt_optimization_job_response(), tuple()} |
     {error, any()} |
@@ -5194,6 +5205,15 @@ create_automated_reasoning_policy_version(Client, PolicyArn, Input0, Options0) -
 %% @doc Creates a new custom model in Amazon Bedrock.
 %%
 %% After the model is active, you can use it for inference.
+%%
+%% You can provide the model data source in one of the following ways:
+%%
+%% `customModelDataSource' — Specify a SageMaker AI model package ARN.
+%% Amazon Bedrock resolves the model package to retrieve the model artifacts.
+%% This is the preferred method for new SageMaker AI training outputs.
+%%
+%% `modelSourceConfig' — Specify an Amazon S3 URI pointing to the
+%% Amazon-managed Amazon S3 bucket containing your model artifacts.
 %%
 %% To use the model for inference, you must purchase Provisioned Throughput
 %% for it. You can't use On-demand inference with these custom models.
@@ -6456,8 +6476,7 @@ export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the details and status of an advanced prompt optimization
-%% job.
+%% @doc Gets information about an advanced prompt optimization job.
 -spec get_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_advanced_prompt_optimization_job_response(), tuple()} |
     {error, any()} |
@@ -7503,7 +7522,7 @@ get_use_case_for_model_access(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all advanced prompt optimization jobs for the account.
+%% @doc Lists the advanced prompt optimization jobs in your account.
 -spec list_advanced_prompt_optimization_jobs(aws_client:aws_client()) ->
     {ok, list_advanced_prompt_optimization_jobs_response(), tuple()} |
     {error, any()} |
@@ -8827,7 +8846,7 @@ start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyAr
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops an in-progress advanced prompt optimization job.
+%% @doc Stops an advanced prompt optimization job that is in progress.
 -spec stop_advanced_prompt_optimization_job(aws_client:aws_client(), binary() | list(), stop_advanced_prompt_optimization_job_request()) ->
     {ok, stop_advanced_prompt_optimization_job_response(), tuple()} |
     {error, any()} |

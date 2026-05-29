@@ -1896,11 +1896,12 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"IamRoleArn">> := string(),
+%%   <<"IamRoleArn">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"RuntimeValidationConfig">> => runtime_validation_config(),
-%%   <<"SourceAmiId">> := string(),
-%%   <<"Tags">> => map()
+%%   <<"SourceAmiId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WorkspaceImageId">> => string()
 %% }
 -type create_imported_image_request() :: #{binary() => any()}.
 
@@ -2391,6 +2392,7 @@
     invalid_role_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_combination_exception() | 
     dry_run_operation_exception().
 
 -type create_stack_errors() ::

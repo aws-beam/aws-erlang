@@ -568,6 +568,13 @@
 
 
 %% Example:
+%% harness_skill_s3_source() :: #{
+%%   <<"uri">> => string()
+%% }
+-type harness_skill_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_a_b_test_response() :: #{
 %%   <<"abTestArn">> => string(),
 %%   <<"abTestId">> => string(),
@@ -676,6 +683,15 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type cloud_watch_logs_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_source() :: #{
+%%   <<"auth">> => harness_skill_git_auth(),
+%%   <<"path">> => [string()],
+%%   <<"url">> => string()
+%% }
+-type harness_skill_git_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1610,6 +1626,7 @@
 %%   <<"messages">> := list(harness_message()),
 %%   <<"model">> => list(),
 %%   <<"runtimeSessionId">> := string(),
+%%   <<"runtimeUserId">> => [string()],
 %%   <<"skills">> => list(list()),
 %%   <<"systemPrompt">> => list(list()),
 %%   <<"timeoutSeconds">> => [integer()],
@@ -1686,6 +1703,14 @@
 %%   <<"usage">> => harness_token_usage()
 %% }
 -type harness_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_auth() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"username">> => [string()]
+%% }
+-type harness_skill_git_auth() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2168,6 +2193,19 @@
 
 
 %% Example:
+%% harness_lite_llm_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_lite_llm_model_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -2228,6 +2266,8 @@
 
 %% Example:
 %% harness_bedrock_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
 %%   <<"maxTokens">> => integer(),
 %%   <<"modelId">> => string(),
 %%   <<"temperature">> => float(),
@@ -2285,6 +2325,8 @@
 
 %% Example:
 %% harness_open_ai_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
 %%   <<"apiKeyArn">> => string(),
 %%   <<"maxTokens">> => integer(),
 %%   <<"modelId">> => string(),
@@ -3288,6 +3330,7 @@
     conflict_exception().
 
 -type invoke_harness_errors() ::
+    runtime_client_error() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5155,7 +5198,8 @@ invoke_harness(Client, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>}
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-User-Id">>, <<"runtimeUserId">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

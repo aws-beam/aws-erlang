@@ -179,9 +179,11 @@
 %%   <<"Behavior">> => list(any()),
 %%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
+%%   <<"GovernedProviders">> => list(string()),
 %%   <<"GovernedResources">> => list(string()),
 %%   <<"Implementation">> => implementation_summary(),
 %%   <<"Name">> => [string()],
+%%   <<"ParameterRequirementSummary">> => list(any()),
 %%   <<"Severity">> => list(any())
 %% }
 -type control_summary() :: #{binary() => any()}.
@@ -297,6 +299,7 @@
 
 %% Example:
 %% control_filter() :: #{
+%%   <<"GovernedProviders">> => list(string()),
 %%   <<"Implementations">> => implementation_filter()
 %% }
 -type control_filter() :: #{binary() => any()}.
@@ -309,9 +312,11 @@
 %%   <<"Behavior">> => list(any()),
 %%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
+%%   <<"GovernedProviders">> => list(string()),
 %%   <<"GovernedResources">> => list(string()),
 %%   <<"Implementation">> => implementation_details(),
 %%   <<"Name">> => [string()],
+%%   <<"ParameterRequirementSummary">> => list(any()),
 %%   <<"Parameters">> => list(control_parameter()),
 %%   <<"RegionConfiguration">> => region_configuration(),
 %%   <<"Severity">> => list(any())
@@ -336,7 +341,8 @@
 
 %% Example:
 %% control_parameter() :: #{
-%%   <<"Name">> => [string()]
+%%   <<"Name">> => [string()],
+%%   <<"Requirement">> => list(any())
 %% }
 -type control_parameter() :: #{binary() => any()}.
 

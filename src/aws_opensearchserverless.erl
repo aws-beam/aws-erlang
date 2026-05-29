@@ -330,6 +330,7 @@
 %%   <<"collectionGroupName">> => string(),
 %%   <<"createdDate">> => [float()],
 %%   <<"dashboardEndpoint">> => [string()],
+%%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"failureCode">> => [string()],
 %%   <<"failureMessage">> => [string()],
@@ -364,6 +365,13 @@
 
 %% }
 -type delete_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% current_capacity() :: #{
+%%   <<"indexing">> => capacity_details(),
+%%   <<"search">> => capacity_details()
+%% }
+-type current_capacity() :: #{binary() => any()}.
 
 %% Example:
 %% list_lifecycle_policies_request() :: #{
@@ -418,6 +426,7 @@
 %%   <<"capacityLimits">> => collection_group_capacity_limits(),
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"standbyReplicas">> => string(),
@@ -446,6 +455,7 @@
 %%   <<"capacityLimits">> => collection_group_capacity_limits(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
 %%   <<"name">> := string(),
 %%   <<"standbyReplicas">> := string(),
 %%   <<"tags">> => list(tag())
@@ -470,6 +480,7 @@
 %%   <<"arn">> => [string()],
 %%   <<"capacityLimits">> => collection_group_capacity_limits(),
 %%   <<"createdDate">> => [float()],
+%%   <<"generation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"numberOfCollections">> => [integer()]
@@ -642,7 +653,9 @@
 %%   <<"arn">> => [string()],
 %%   <<"capacityLimits">> => collection_group_capacity_limits(),
 %%   <<"createdDate">> => [float()],
+%%   <<"currentCapacity">> => current_capacity(),
 %%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"numberOfCollections">> => [integer()],
@@ -741,6 +754,7 @@
 
 %% Example:
 %% delete_collection_detail() :: #{
+%%   <<"deletionProtection">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
@@ -751,6 +765,7 @@
 %% create_collection_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"collectionGroupName">> => string(),
+%%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"encryptionConfig">> => encryption_config(),
 %%   <<"name">> := string(),
@@ -1062,6 +1077,7 @@
 %%   <<"capacityLimits">> => collection_group_capacity_limits(),
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastModifiedDate">> => [float()],
 %%   <<"name">> => string()
@@ -1083,6 +1099,7 @@
 %% Example:
 %% update_collection_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"id">> := string(),
 %%   <<"vectorOptions">> => vector_options()
@@ -1103,6 +1120,13 @@
 %%   <<"createVpcEndpointDetail">> => create_vpc_endpoint_detail()
 %% }
 -type create_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_details() :: #{
+%%   <<"autoscalingStatus">> => string(),
+%%   <<"capacityInOcu">> => [float()]
+%% }
+-type capacity_details() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_vpc_endpoint_response() :: #{
@@ -1138,6 +1162,7 @@
 %% update_collection_detail() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"createdDate">> => [float()],
+%%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"lastModifiedDate">> => [float()],
@@ -1244,6 +1269,7 @@
 %%   <<"arn">> => [string()],
 %%   <<"collectionGroupName">> => string(),
 %%   <<"createdDate">> => [float()],
+%%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"kmsKeyArn">> => [string()],

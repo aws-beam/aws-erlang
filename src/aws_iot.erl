@@ -1362,10 +1362,19 @@
 
 %% Example:
 %% get_thing_connectivity_data_response() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"clientId">> => string(),
 %%   <<"connected">> => boolean(),
 %%   <<"disconnectReason">> => list(any()),
+%%   <<"keepAliveDuration">> => integer(),
+%%   <<"sessionExpiry">> => float(),
+%%   <<"sourceIp">> => string(),
+%%   <<"sourcePort">> => integer(),
+%%   <<"targetIp">> => string(),
+%%   <<"targetPort">> => integer(),
 %%   <<"thingName">> => string(),
-%%   <<"timestamp">> => non_neg_integer()
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"vpcEndpointId">> => string()
 %% }
 -type get_thing_connectivity_data_response() :: #{binary() => any()}.
 
@@ -2346,8 +2355,12 @@
 
 %% Example:
 %% thing_connectivity() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"clientId">> => string(),
 %%   <<"connected">> => boolean(),
 %%   <<"disconnectReason">> => string(),
+%%   <<"keepAliveDuration">> => integer(),
+%%   <<"sessionExpiry">> => float(),
 %%   <<"timestamp">> => float()
 %% }
 -type thing_connectivity() :: #{binary() => any()}.
@@ -2835,6 +2848,7 @@
 
 %% Example:
 %% indexing_filter() :: #{
+%%   <<"connectivity">> => connectivity_filter(),
 %%   <<"geoLocations">> => list(geo_location_target()),
 %%   <<"namedShadowNames">> => list(string())
 %% }
@@ -3158,6 +3172,13 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connectivity_filter() :: #{
+%%   <<"includeSocketInformation">> => list(list(any())())
+%% }
+-type connectivity_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5900,9 +5921,12 @@
 %% }
 -type get_behavior_model_training_summaries_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_thing_connectivity_data_request() :: #{}
--type get_thing_connectivity_data_request() :: #{}.
+%% get_thing_connectivity_data_request() :: #{
+%%   <<"includeSocketInformation">> => boolean()
+%% }
+-type get_thing_connectivity_data_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_provisioning_template_version_request() :: #{}

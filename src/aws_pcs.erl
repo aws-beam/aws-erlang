@@ -381,6 +381,7 @@
 
 %% Example:
 %% update_compute_node_group_slurm_configuration_request() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
@@ -436,6 +437,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration_request() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
@@ -508,6 +510,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type compute_node_group_slurm_configuration() :: #{binary() => any()}.
