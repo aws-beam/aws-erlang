@@ -529,8 +529,12 @@
 %% stripe_privy_configuration_input() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appSecret">> => string(),
+%%   <<"appSecretConfig">> => secret_reference(),
+%%   <<"appSecretSource">> => list(any()),
 %%   <<"authorizationId">> => string(),
-%%   <<"authorizationPrivateKey">> => string()
+%%   <<"authorizationPrivateKey">> => string(),
+%%   <<"authorizationPrivateKeyConfig">> => secret_reference(),
+%%   <<"authorizationPrivateKeySource">> => list(any())
 %% }
 -type stripe_privy_configuration_input() :: #{binary() => any()}.
 
@@ -569,6 +573,8 @@
 %% create_oauth2_credential_provider_response() :: #{
 %%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"oauth2ProviderConfigOutput">> => list(),
@@ -636,6 +642,8 @@
 %% Example:
 %% get_api_key_credential_provider_response() :: #{
 %%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
@@ -649,6 +657,8 @@
 %%   <<"authorizationEndpoint">> => string(),
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"issuer">> => string(),
 %%   <<"tokenEndpoint">> => string()
 %% }
@@ -810,6 +820,14 @@
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% secret_reference() :: #{
+%%   <<"jsonKey">> => string(),
+%%   <<"secretId">> => string()
+%% }
+-type secret_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1030,7 +1048,9 @@
 %% Example:
 %% salesforce_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type salesforce_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -1486,6 +1506,8 @@
 %% Example:
 %% create_api_key_credential_provider_response() :: #{
 %%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -1624,8 +1646,12 @@
 %% stripe_privy_configuration_output() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appSecretArn">> => secret(),
+%%   <<"appSecretJsonKey">> => string(),
+%%   <<"appSecretSource">> => list(any()),
 %%   <<"authorizationId">> => string(),
-%%   <<"authorizationPrivateKeyArn">> => secret()
+%%   <<"authorizationPrivateKeyArn">> => secret(),
+%%   <<"authorizationPrivateKeyJsonKey">> => string(),
+%%   <<"authorizationPrivateKeySource">> => list(any())
 %% }
 -type stripe_privy_configuration_output() :: #{binary() => any()}.
 
@@ -1852,7 +1878,9 @@
 
 %% Example:
 %% create_api_key_credential_provider_request() :: #{
-%%   <<"apiKey">> := string(),
+%%   <<"apiKey">> => string(),
+%%   <<"apiKeySecretConfig">> => secret_reference(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -2041,7 +2069,9 @@
 %% Example:
 %% github_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type github_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -2555,7 +2585,11 @@
 %% coinbase_cdp_configuration_input() :: #{
 %%   <<"apiKeyId">> => string(),
 %%   <<"apiKeySecret">> => string(),
-%%   <<"walletSecret">> => string()
+%%   <<"apiKeySecretConfig">> => secret_reference(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"walletSecret">> => string(),
+%%   <<"walletSecretConfig">> => secret_reference(),
+%%   <<"walletSecretSource">> => list(any())
 %% }
 -type coinbase_cdp_configuration_input() :: #{binary() => any()}.
 
@@ -2841,6 +2875,8 @@
 %%   <<"clientAuthenticationMethod">> => list(any()),
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"oauthDiscovery">> => list(),
 %%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
 %%   <<"privateEndpoint">> => list(),
@@ -3385,6 +3421,8 @@
 %% update_oauth2_credential_provider_response() :: #{
 %%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"credentialProviderVendor">> => list(any()),
@@ -3511,7 +3549,9 @@
 %% Example:
 %% slack_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type slack_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -3731,6 +3771,8 @@
 %% microsoft_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"tenantId">> => string()
 %% }
 -type microsoft_oauth2_provider_config_input() :: #{binary() => any()}.
@@ -3961,7 +4003,9 @@
 
 %% Example:
 %% update_api_key_credential_provider_request() :: #{
-%%   <<"apiKey">> := string(),
+%%   <<"apiKey">> => string(),
+%%   <<"apiKeySecretConfig">> => secret_reference(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"name">> := string()
 %% }
 -type update_api_key_credential_provider_request() :: #{binary() => any()}.
@@ -4122,6 +4166,8 @@
 %% get_oauth2_credential_provider_response() :: #{
 %%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"credentialProviderVendor">> => list(any()),
@@ -4487,7 +4533,11 @@
 %% coinbase_cdp_configuration_output() :: #{
 %%   <<"apiKeyId">> => string(),
 %%   <<"apiKeySecretArn">> => secret(),
-%%   <<"walletSecretArn">> => secret()
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"walletSecretArn">> => secret(),
+%%   <<"walletSecretJsonKey">> => string(),
+%%   <<"walletSecretSource">> => list(any())
 %% }
 -type coinbase_cdp_configuration_output() :: #{binary() => any()}.
 
@@ -4664,7 +4714,9 @@
 %% Example:
 %% atlassian_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type atlassian_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -5401,6 +5453,8 @@
 %% Example:
 %% update_api_key_credential_provider_response() :: #{
 %%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
@@ -5557,7 +5611,9 @@
 %% Example:
 %% google_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type google_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -5606,7 +5662,9 @@
 %% Example:
 %% linkedin_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
 -type linkedin_oauth2_provider_config_input() :: #{binary() => any()}.
 

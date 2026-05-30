@@ -6,8 +6,7 @@
 %% Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
 %% Aurora DB cluster.
 %%
-%% To run these
-%% statements, you use the RDS Data API (Data API).
+%% To run these statements, you use the RDS Data API (Data API).
 %%
 %% Data API is available with the following types of Aurora databases:
 %%
@@ -15,8 +14,7 @@
 %%
 %% Aurora MySQL - Serverless v2, provisioned, and Serverless v1
 %%
-%% For more information about the Data API, see
-%% Using RDS Data API:
+%% For more information about the Data API, see Using RDS Data API:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
 %% in the Amazon Aurora User Guide.
 -module(aws_rds_data).
@@ -148,7 +146,7 @@
 %% Example:
 %% sql_parameter() :: #{
 %%   <<"name">> => string(),
-%%   <<"typeHint">> => string(),
+%%   <<"typeHint">> => list(any()),
 %%   <<"value">> => list()
 %% }
 -type sql_parameter() :: #{binary() => any()}.
@@ -201,8 +199,8 @@
 
 %% Example:
 %% result_set_options() :: #{
-%%   <<"decimalReturnType">> => string(),
-%%   <<"longReturnType">> => string()
+%%   <<"decimalReturnType">> => list(any()),
+%%   <<"longReturnType">> => list(any())
 %% }
 -type result_set_options() :: #{binary() => any()}.
 
@@ -297,7 +295,7 @@
 %% execute_statement_request() :: #{
 %%   <<"continueAfterTimeout">> => boolean(),
 %%   <<"database">> => string(),
-%%   <<"formatRecordsAs">> => string(),
+%%   <<"formatRecordsAs">> => list(any()),
 %%   <<"includeResultMetadata">> => boolean(),
 %%   <<"parameters">> => list(sql_parameter()),
 %%   <<"resourceArn">> => string(),
@@ -445,24 +443,22 @@
 %% @doc Runs a batch SQL statement over an array of data.
 %%
 %% You can run bulk update and insert operations for multiple records using a
-%% DML
-%% statement with different parameter sets. Bulk operations can provide a
-%% significant
-%% performance improvement over individual insert and update operations.
+%% DML statement with different parameter sets. Bulk operations can provide a
+%% significant performance improvement over individual insert and update
+%% operations.
 %%
 %% If a call isn't part of a transaction because it doesn't include
-%% the `transactionID' parameter,
-%% changes that result from the call are committed automatically.
+%% the `transactionID' parameter, changes that result from the call are
+%% committed automatically.
 %%
 %% There isn't a fixed upper limit on the number of parameter sets.
-%% However, the maximum size of the HTTP request
-%% submitted through the Data API is 4 MiB. If the request exceeds this
-%% limit, the Data API returns an error and doesn't
-%% process the request. This 4-MiB limit includes the size of the HTTP
-%% headers and the JSON notation in the request. Thus, the
+%% However, the maximum size of the HTTP request submitted through the Data
+%% API is 4 MiB. If the request exceeds this limit, the Data API returns an
+%% error and doesn't process the request. This 4-MiB limit includes the
+%% size of the HTTP headers and the JSON notation in the request. Thus, the
 %% number of parameter sets that you can include depends on a combination of
-%% factors, such as the size of the SQL statement and
-%% the size of each parameter set.
+%% factors, such as the size of the SQL statement and the size of each
+%% parameter set.
 %%
 %% The response size limit is 1 MiB. If the call returns more than 1 MiB of
 %% response data, the call is terminated.
@@ -502,12 +498,11 @@ batch_execute_statement(Client, Input0, Options0) ->
 %% @doc Starts a SQL transaction.
 %%
 %% A transaction can run for a maximum of 24 hours. A transaction is
-%% terminated and rolled back automatically after 24
-%% hours.
+%% terminated and rolled back automatically after 24 hours.
 %%
 %% A transaction times out if no calls use its transaction ID in three
-%% minutes. If a transaction times out before it's
-%% committed, it's rolled back automatically.
+%% minutes. If a transaction times out before it's committed, it's
+%% rolled back automatically.
 %%
 %% For Aurora MySQL, DDL statements inside a transaction cause an implicit
 %% commit. We recommend that you run each MySQL DDL statement in a separate
@@ -546,8 +541,7 @@ begin_transaction(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Ends a SQL transaction started with the `BeginTransaction'
-%% operation and
-%% commits the changes.
+%% operation and commits the changes.
 -spec commit_transaction(aws_client:aws_client(), commit_transaction_request()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
@@ -584,9 +578,9 @@ commit_transaction(Client, Input0, Options0) ->
 %% @doc Runs one or more SQL statements.
 %%
 %% This operation isn't supported for Aurora Serverless v2 and
-%% provisioned DB clusters.
-%% For Aurora Serverless v1 DB clusters, the operation is deprecated.
-%% Use the `BatchExecuteStatement' or `ExecuteStatement' operation.
+%% provisioned DB clusters. For Aurora Serverless v1 DB clusters, the
+%% operation is deprecated. Use the `BatchExecuteStatement' or
+%% `ExecuteStatement' operation.
 -spec execute_sql(aws_client:aws_client(), execute_sql_request()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |
@@ -623,8 +617,7 @@ execute_sql(Client, Input0, Options0) ->
 %% @doc Runs a SQL statement against a database.
 %%
 %% If a call isn't part of a transaction because it doesn't include
-%% the
-%% `transactionID' parameter, changes that result from the call are
+%% the `transactionID' parameter, changes that result from the call are
 %% committed automatically.
 %%
 %% If the binary response data from the database is more than 1 MB, the call

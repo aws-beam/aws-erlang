@@ -59,6 +59,12 @@
          associate_resolver_query_log_config/3,
          associate_resolver_rule/2,
          associate_resolver_rule/3,
+         batch_create_firewall_rule/2,
+         batch_create_firewall_rule/3,
+         batch_delete_firewall_rule/2,
+         batch_delete_firewall_rule/3,
+         batch_update_firewall_rule/2,
+         batch_update_firewall_rule/3,
          create_firewall_domain_list/2,
          create_firewall_domain_list/3,
          create_firewall_rule/2,
@@ -137,6 +143,8 @@
          list_firewall_rule_group_associations/3,
          list_firewall_rule_groups/2,
          list_firewall_rule_groups/3,
+         list_firewall_rule_types/2,
+         list_firewall_rule_types/3,
          list_firewall_rules/2,
          list_firewall_rules/3,
          list_outpost_resolvers/2,
@@ -254,6 +262,14 @@
 -type associate_resolver_query_log_config_response() :: #{binary() => any()}.
 
 %% Example:
+%% batch_update_firewall_rule_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"FirewallRule">> => update_firewall_rule_entry(),
+%%   <<"Message">> => string()
+%% }
+-type batch_update_firewall_rule_error() :: #{binary() => any()}.
+
+%% Example:
 %% create_resolver_query_log_config_response() :: #{
 %%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
 %% }
@@ -264,6 +280,14 @@
 %%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
 %% }
 -type get_firewall_rule_group_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_type() :: #{
+%%   <<"DnsThreatProtection">> => dns_threat_protection_rule_type_config(),
+%%   <<"FirewallAdvancedContentCategory">> => firewall_advanced_content_category_config(),
+%%   <<"FirewallAdvancedThreatCategory">> => firewall_advanced_threat_category_config()
+%% }
+-type firewall_rule_type() :: #{binary() => any()}.
 
 %% Example:
 %% update_firewall_rule_request() :: #{
@@ -277,6 +301,7 @@
 %%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
 %%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
@@ -312,6 +337,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_firewall_rule_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"FirewallRule">> => create_firewall_rule_entry(),
+%%   <<"Message">> => string()
+%% }
+-type batch_create_firewall_rule_error() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -368,6 +401,14 @@
 -type update_firewall_rule_group_association_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_firewall_rule_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleType">> => string()
+%% }
+-type list_firewall_rule_types_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_resolver_dnssec_configs_request() :: #{
 %%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
@@ -421,6 +462,7 @@
 %%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
 %%   <<"Name">> := string(),
 %%   <<"Priority">> := integer(),
 %%   <<"Qtype">> => string()
@@ -430,10 +472,12 @@
 %% Example:
 %% firewall_domain_list() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
 %%   <<"CreationTime">> => string(),
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"DomainCount">> => integer(),
 %%   <<"Id">> => string(),
+%%   <<"ManagedListType">> => list(any()),
 %%   <<"ManagedOwnerName">> => string(),
 %%   <<"ModificationTime">> => string(),
 %%   <<"Name">> => string(),
@@ -490,6 +534,12 @@
 %%   <<"FirewallDomainList">> => firewall_domain_list()
 %% }
 -type delete_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_advanced_content_category_config() :: #{
+%%   <<"Category">> => string()
+%% }
+-type firewall_advanced_content_category_config() :: #{binary() => any()}.
 
 %% Example:
 %% delete_firewall_domain_list_request() :: #{
@@ -751,6 +801,26 @@
 -type list_resolver_endpoint_ip_addresses_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_firewall_rule_entry() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallDomainRedirectionAction">> => list(any()),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
+%% }
+-type update_firewall_rule_entry() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_resolver_endpoint_ip_address_response() :: #{
 %%   <<"ResolverEndpoint">> => resolver_endpoint()
 %% }
@@ -857,6 +927,12 @@
 -type resolver_rule() :: #{binary() => any()}.
 
 %% Example:
+%% firewall_advanced_threat_category_config() :: #{
+%%   <<"Category">> => string()
+%% }
+-type firewall_advanced_threat_category_config() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -911,11 +987,23 @@
 -type put_resolver_query_log_config_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% batch_create_firewall_rule_request() :: #{
+%%   <<"CreateFirewallRuleEntries">> := list(create_firewall_rule_entry())
+%% }
+-type batch_create_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_config_request() :: #{
 %%   <<"FirewallFailOpen">> := list(any()),
 %%   <<"ResourceId">> := string()
 %% }
 -type update_firewall_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_firewall_rule_request() :: #{
+%%   <<"DeleteFirewallRuleEntries">> := list(delete_firewall_rule_entry())
+%% }
+-type batch_delete_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_firewall_rule_group_association_request() :: #{
@@ -944,6 +1032,13 @@
 -type put_resolver_query_log_config_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_create_firewall_rule_response() :: #{
+%%   <<"CreateErrors">> => list(batch_create_firewall_rule_error()),
+%%   <<"CreatedFirewallRules">> => list(firewall_rule())
+%% }
+-type batch_create_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_outpost_resolver_response() :: #{
 %%   <<"OutpostResolver">> => outpost_resolver()
 %% }
@@ -963,6 +1058,7 @@
 %%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
 %%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"ModificationTime">> => string(),
 %%   <<"Name">> => string(),
@@ -1003,10 +1099,23 @@
 -type resolver_endpoint() :: #{binary() => any()}.
 
 %% Example:
+%% batch_update_firewall_rule_request() :: #{
+%%   <<"UpdateFirewallRuleEntries">> := list(update_firewall_rule_entry())
+%% }
+-type batch_update_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_resolver_rule_policy_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type get_resolver_rule_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_firewall_rule_response() :: #{
+%%   <<"UpdateErrors">> => list(batch_update_firewall_rule_error()),
+%%   <<"UpdatedFirewallRules">> => list(firewall_rule())
+%% }
+-type batch_update_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% import_firewall_domains_response() :: #{
@@ -1165,6 +1274,13 @@
 -type update_resolver_config_request() :: #{binary() => any()}.
 
 %% Example:
+%% dns_threat_protection_rule_type_config() :: #{
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dns_threat_protection_rule_type_config() :: #{binary() => any()}.
+
+%% Example:
 %% resource_exists_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceType">> => string()
@@ -1217,6 +1333,14 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_firewall_rule_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"FirewallRule">> => delete_firewall_rule_entry(),
+%%   <<"Message">> => string()
+%% }
+-type batch_delete_firewall_rule_error() :: #{binary() => any()}.
 
 %% Example:
 %% get_resolver_query_log_config_response() :: #{
@@ -1276,6 +1400,13 @@
 -type get_firewall_config_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_delete_firewall_rule_response() :: #{
+%%   <<"DeleteErrors">> => list(batch_delete_firewall_rule_error()),
+%%   <<"DeletedFirewallRules">> => list(firewall_rule())
+%% }
+-type batch_delete_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_resolver_rule_response() :: #{
 %%   <<"ResolverRule">> => resolver_rule()
 %% }
@@ -1328,6 +1459,15 @@
 %%   <<"ResolverEndpointId">> := string()
 %% }
 -type disassociate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_entry() :: #{
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Qtype">> => string()
+%% }
+-type delete_firewall_rule_entry() :: #{binary() => any()}.
 
 %% Example:
 %% target_address() :: #{
@@ -1392,12 +1532,30 @@
 %% Example:
 %% firewall_domain_list_metadata() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"ManagedListType">> => list(any()),
 %%   <<"ManagedOwnerName">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type firewall_domain_list_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_type_definition() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"RuleType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type firewall_rule_type_definition() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_types_response() :: #{
+%%   <<"FirewallRuleTypes">> => list(firewall_rule_type_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_resolver_query_log_config_policy_request() :: #{
@@ -1451,6 +1609,26 @@
 %%   <<"FirewallRuleGroupPolicy">> => string()
 %% }
 -type get_firewall_rule_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_rule_entry() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallDomainRedirectionAction">> => list(any()),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
+%% }
+-type create_firewall_rule_entry() :: #{binary() => any()}.
 
 %% Example:
 %% list_outpost_resolvers_response() :: #{
@@ -1607,6 +1785,27 @@
     resource_not_found_exception() | 
     internal_service_error_exception() | 
     resource_unavailable_exception().
+
+-type batch_create_firewall_rule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type batch_delete_firewall_rule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type batch_update_firewall_rule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
 
 -type create_firewall_domain_list_errors() ::
     limit_exceeded_exception() | 
@@ -1890,6 +2089,12 @@
     internal_service_error_exception().
 
 -type list_firewall_rule_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type list_firewall_rule_types_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2197,6 +2402,57 @@ associate_resolver_rule(Client, Input)
 associate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateResolverRule">>, Input, Options).
+
+%% @doc Creates multiple DNS Firewall rules in the specified rule group.
+-spec batch_create_firewall_rule(aws_client:aws_client(), batch_create_firewall_rule_request()) ->
+    {ok, batch_create_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_firewall_rule_errors(), tuple()}.
+batch_create_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_create_firewall_rule(Client, Input, []).
+
+-spec batch_create_firewall_rule(aws_client:aws_client(), batch_create_firewall_rule_request(), proplists:proplist()) ->
+    {ok, batch_create_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_firewall_rule_errors(), tuple()}.
+batch_create_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchCreateFirewallRule">>, Input, Options).
+
+%% @doc Deletes multiple DNS Firewall rules from the specified rule group.
+-spec batch_delete_firewall_rule(aws_client:aws_client(), batch_delete_firewall_rule_request()) ->
+    {ok, batch_delete_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_firewall_rule_errors(), tuple()}.
+batch_delete_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_delete_firewall_rule(Client, Input, []).
+
+-spec batch_delete_firewall_rule(aws_client:aws_client(), batch_delete_firewall_rule_request(), proplists:proplist()) ->
+    {ok, batch_delete_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_firewall_rule_errors(), tuple()}.
+batch_delete_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDeleteFirewallRule">>, Input, Options).
+
+%% @doc Updates multiple DNS Firewall rules in the specified rule group.
+-spec batch_update_firewall_rule(aws_client:aws_client(), batch_update_firewall_rule_request()) ->
+    {ok, batch_update_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_firewall_rule_errors(), tuple()}.
+batch_update_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_update_firewall_rule(Client, Input, []).
+
+-spec batch_update_firewall_rule(aws_client:aws_client(), batch_update_firewall_rule_request(), proplists:proplist()) ->
+    {ok, batch_update_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_firewall_rule_errors(), tuple()}.
+batch_update_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchUpdateFirewallRule">>, Input, Options).
 
 %% @doc Creates an empty firewall domain list for use in DNS Firewall rules.
 %%
@@ -3037,6 +3293,24 @@ list_firewall_rule_groups(Client, Input)
 list_firewall_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallRuleGroups">>, Input, Options).
+
+%% @doc Retrieves the available rule types that can be used in DNS Firewall
+%% rules.
+-spec list_firewall_rule_types(aws_client:aws_client(), list_firewall_rule_types_request()) ->
+    {ok, list_firewall_rule_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_rule_types_errors(), tuple()}.
+list_firewall_rule_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_rule_types(Client, Input, []).
+
+-spec list_firewall_rule_types(aws_client:aws_client(), list_firewall_rule_types_request(), proplists:proplist()) ->
+    {ok, list_firewall_rule_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_rule_types_errors(), tuple()}.
+list_firewall_rule_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallRuleTypes">>, Input, Options).
 
 %% @doc Retrieves the firewall rules that you have defined for the specified
 %% firewall rule group.

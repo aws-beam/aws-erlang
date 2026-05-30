@@ -2148,6 +2148,14 @@
 
 
 %% Example:
+%% automated_reasoning_policy_iterative_refinement_content() :: #{
+%%   <<"documents">> => list(automated_reasoning_policy_build_workflow_document()),
+%%   <<"feedback">> => string()
+%% }
+-type automated_reasoning_policy_iterative_refinement_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_provisioned_model_throughput_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"commitmentDuration">> => list(any()),

@@ -51,6 +51,8 @@
          create_ingestion/6,
          create_namespace/3,
          create_namespace/4,
+         create_o_auth_client_application/3,
+         create_o_auth_client_application/4,
          create_refresh_schedule/4,
          create_refresh_schedule/5,
          create_role_membership/6,
@@ -109,6 +111,8 @@
          delete_identity_propagation_config/5,
          delete_namespace/4,
          delete_namespace/5,
+         delete_o_auth_client_application/4,
+         delete_o_auth_client_application/5,
          delete_refresh_schedule/5,
          delete_refresh_schedule/6,
          delete_role_custom_permission/5,
@@ -249,6 +253,9 @@
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
+         describe_o_auth_client_application/3,
+         describe_o_auth_client_application/5,
+         describe_o_auth_client_application/6,
          describe_q_personalization_configuration/2,
          describe_q_personalization_configuration/4,
          describe_q_personalization_configuration/5,
@@ -386,6 +393,9 @@
          list_namespaces/2,
          list_namespaces/4,
          list_namespaces/5,
+         list_o_auth_client_applications/2,
+         list_o_auth_client_applications/4,
+         list_o_auth_client_applications/5,
          list_refresh_schedules/3,
          list_refresh_schedules/5,
          list_refresh_schedules/6,
@@ -534,6 +544,8 @@
          update_ip_restriction/4,
          update_key_registration/3,
          update_key_registration/4,
+         update_o_auth_client_application/4,
+         update_o_auth_client_application/5,
          update_public_sharing_settings/3,
          update_public_sharing_settings/4,
          update_q_personalization_configuration/3,
@@ -725,6 +737,10 @@
 %%   <<"TooltipTitleType">> => list(any())
 %% }
 -type field_based_tooltip() :: #{binary() => any()}.
+
+%% Example:
+%% delete_o_auth_client_application_request() :: #{}
+-type delete_o_auth_client_application_request() :: #{}.
 
 
 %% Example:
@@ -2006,6 +2022,14 @@
 %%   <<"User">> => user()
 %% }
 -type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_o_auth_client_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_o_auth_client_applications_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3449,6 +3473,17 @@
 
 
 %% Example:
+%% update_o_auth_client_application_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"OAuthClientApplicationId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type update_o_auth_client_application_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% global_table_border_options() :: #{
 %%   <<"SideSpecificBorder">> => table_side_border_options(),
 %%   <<"UniformBorder">> => table_border_options()
@@ -3675,6 +3710,16 @@
 
 
 %% Example:
+%% delete_o_auth_client_application_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"OAuthClientApplicationId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_o_auth_client_application_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_prep_simple_aggregation_function() :: #{
 %%   <<"FunctionType">> => list(any()),
 %%   <<"InputColumnName">> => string()
@@ -3745,6 +3790,23 @@
 %%   <<"ThemeVersionNumber">> => float()
 %% }
 -type theme_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_client_application() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSourceType">> => list(any()),
+%%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OAuthAuthorizationEndpointUrl">> => string(),
+%%   <<"OAuthClientApplicationId">> => string(),
+%%   <<"OAuthClientAuthenticationType">> => list(any()),
+%%   <<"OAuthScopes">> => string(),
+%%   <<"OAuthTokenEndpointUrl">> => string()
+%% }
+-type o_auth_client_application() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3988,6 +4050,20 @@
 %%   <<"Type">> => list(any())
 %% }
 -type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_client_application_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSourceType">> => list(any()),
+%%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OAuthClientApplicationId">> => string(),
+%%   <<"OAuthClientAuthenticationType">> => list(any())
+%% }
+-type o_auth_client_application_summary() :: #{binary() => any()}.
 
 %% Example:
 %% describe_action_connector_request() :: #{}
@@ -6090,6 +6166,10 @@
 -type subtotal_options() :: #{binary() => any()}.
 
 %% Example:
+%% describe_o_auth_client_application_request() :: #{}
+-type describe_o_auth_client_application_request() :: #{}.
+
+%% Example:
 %% describe_theme_permissions_request() :: #{}
 -type describe_theme_permissions_request() :: #{}.
 
@@ -7463,6 +7543,23 @@
 
 
 %% Example:
+%% create_o_auth_client_application_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecret">> := string(),
+%%   <<"DataSourceType">> => list(any()),
+%%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
+%%   <<"Name">> := string(),
+%%   <<"OAuthAuthorizationEndpointUrl">> => string(),
+%%   <<"OAuthClientApplicationId">> := string(),
+%%   <<"OAuthClientAuthenticationType">> := list(any()),
+%%   <<"OAuthScopes">> => string(),
+%%   <<"OAuthTokenEndpointUrl">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_o_auth_client_application_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% threshold_alerts_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
@@ -8206,6 +8303,20 @@
 %%   <<"CustomPermissionsName">> := string()
 %% }
 -type update_role_custom_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_o_auth_client_application_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"DataSourceType">> => list(any()),
+%%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
+%%   <<"Name">> := string(),
+%%   <<"OAuthAuthorizationEndpointUrl">> => string(),
+%%   <<"OAuthScopes">> => string(),
+%%   <<"OAuthTokenEndpointUrl">> => string()
+%% }
+-type update_o_auth_client_application_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9791,6 +9902,15 @@
 %%   <<"Top">> => string()
 %% }
 -type spacing() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_o_auth_client_application_response() :: #{
+%%   <<"OAuthClientApplication">> => o_auth_client_application(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_o_auth_client_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11684,6 +11804,16 @@
 %% Example:
 %% delete_brand_assignment_request() :: #{}
 -type delete_brand_assignment_request() :: #{}.
+
+
+%% Example:
+%% list_o_auth_client_applications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OAuthClientApplications">> => list(o_auth_client_application_summary()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_o_auth_client_applications_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13599,6 +13729,17 @@
 
 
 %% Example:
+%% create_o_auth_client_application_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"OAuthClientApplicationId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_o_auth_client_application_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% self_upgrade_request_detail() :: #{
 %%   <<"CreationTime">> => float(),
 %%   <<"OriginalRole">> => list(any()),
@@ -14957,6 +15098,16 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type create_o_auth_client_application_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type create_refresh_schedule_errors() ::
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
@@ -15212,6 +15363,14 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_o_auth_client_application_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type delete_refresh_schedule_errors() ::
@@ -15622,6 +15781,13 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type describe_o_auth_client_application_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_q_personalization_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16013,6 +16179,14 @@
     invalid_next_token_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_o_auth_client_applications_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type list_refresh_schedules_errors() ::
@@ -16575,6 +16749,15 @@
     throttling_exception() | 
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
+-type update_o_auth_client_application_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type update_public_sharing_settings_errors() ::
@@ -17556,6 +17739,40 @@ create_namespace(Client, AwsAccountId, Input) ->
 create_namespace(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an OAuthClientApplication.
+-spec create_o_auth_client_application(aws_client:aws_client(), binary() | list(), create_o_auth_client_application_request()) ->
+    {ok, create_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth_client_application_errors(), tuple()}.
+create_o_auth_client_application(Client, AwsAccountId, Input) ->
+    create_o_auth_client_application(Client, AwsAccountId, Input, []).
+
+-spec create_o_auth_client_application(aws_client:aws_client(), binary() | list(), create_o_auth_client_application_request(), proplists:proplist()) ->
+    {ok, create_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth_client_application_errors(), tuple()}.
+create_o_auth_client_application(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/oauth-client-applications"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -18680,6 +18897,40 @@ delete_namespace(Client, AwsAccountId, Namespace, Input) ->
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an OAuthClientApplication.
+-spec delete_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_o_auth_client_application_request()) ->
+    {ok, delete_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_o_auth_client_application_errors(), tuple()}.
+delete_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input) ->
+    delete_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input, []).
+
+-spec delete_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_o_auth_client_application_request(), proplists:proplist()) ->
+    {ok, delete_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_o_auth_client_application_errors(), tuple()}.
+delete_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/oauth-client-applications/", aws_util:encode_uri(OAuthClientApplicationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20785,6 +21036,43 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an OAuthClientApplication.
+-spec describe_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_o_auth_client_application_errors(), tuple()}.
+describe_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId)
+  when is_map(Client) ->
+    describe_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, #{}, #{}).
+
+-spec describe_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_o_auth_client_application_errors(), tuple()}.
+describe_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, QueryMap, HeadersMap, []).
+
+-spec describe_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_o_auth_client_application_errors(), tuple()}.
+describe_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/oauth-client-applications/", aws_util:encode_uri(OAuthClientApplicationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -22932,6 +23220,49 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all OAuthClientApplications in the current Amazon Web Services
+%% Region that belong to this Amazon Web Services account.
+-spec list_o_auth_client_applications(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_o_auth_client_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_o_auth_client_applications_errors(), tuple()}.
+list_o_auth_client_applications(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_o_auth_client_applications(Client, AwsAccountId, #{}, #{}).
+
+-spec list_o_auth_client_applications(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_o_auth_client_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_o_auth_client_applications_errors(), tuple()}.
+list_o_auth_client_applications(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_o_auth_client_applications(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_o_auth_client_applications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_o_auth_client_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_o_auth_client_applications_errors(), tuple()}.
+list_o_auth_client_applications(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/oauth-client-applications"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -25649,6 +25980,40 @@ update_key_registration(Client, AwsAccountId, Input) ->
 update_key_registration(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/key-registration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an OAuthClientApplication.
+-spec update_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), update_o_auth_client_application_request()) ->
+    {ok, update_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_o_auth_client_application_errors(), tuple()}.
+update_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input) ->
+    update_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input, []).
+
+-spec update_o_auth_client_application(aws_client:aws_client(), binary() | list(), binary() | list(), update_o_auth_client_application_request(), proplists:proplist()) ->
+    {ok, update_o_auth_client_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_o_auth_client_application_errors(), tuple()}.
+update_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/oauth-client-applications/", aws_util:encode_uri(OAuthClientApplicationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

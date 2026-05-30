@@ -241,6 +241,8 @@
          put_email_identity_mail_from_attributes/4,
          put_suppressed_destination/2,
          put_suppressed_destination/3,
+         put_tenant_suppression_attributes/2,
+         put_tenant_suppression_attributes/3,
          send_bulk_email/2,
          send_bulk_email/3,
          send_custom_verification_email/2,
@@ -372,9 +374,12 @@
 %% }
 -type list_deliverability_test_reports_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_suppressed_destination_request() :: #{}
--type get_suppressed_destination_request() :: #{}.
+%% get_suppressed_destination_request() :: #{
+%%   <<"TenantName">> => string()
+%% }
+-type get_suppressed_destination_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -443,6 +448,7 @@
 %% create_tenant_response() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"SendingStatus">> => list(any()),
+%%   <<"SuppressionAttributes">> => tenant_suppression_attributes(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TenantArn">> => string(),
 %%   <<"TenantId">> => string(),
@@ -960,7 +966,8 @@
 %% Example:
 %% put_suppressed_destination_request() :: #{
 %%   <<"EmailAddress">> := string(),
-%%   <<"Reason">> := list(any())
+%%   <<"Reason">> := list(any()),
+%%   <<"TenantName">> => string()
 %% }
 -type put_suppressed_destination_request() :: #{binary() => any()}.
 
@@ -1049,7 +1056,8 @@
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer(),
 %%   <<"Reasons">> => list(list(any())()),
-%%   <<"StartDate">> => non_neg_integer()
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"TenantName">> => string()
 %% }
 -type list_suppressed_destinations_request() :: #{binary() => any()}.
 
@@ -1081,6 +1089,7 @@
 %% Example:
 %% put_configuration_set_suppression_options_request() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"SuppressionScope">> => list(any()),
 %%   <<"ValidationOptions">> => suppression_validation_options()
 %% }
 -type put_configuration_set_suppression_options_request() :: #{binary() => any()}.
@@ -1214,6 +1223,7 @@
 %% tenant() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"SendingStatus">> => list(any()),
+%%   <<"SuppressionAttributes">> => tenant_suppression_attributes(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TenantArn">> => string(),
 %%   <<"TenantId">> => string(),
@@ -1338,9 +1348,12 @@
 %% get_message_insights_request() :: #{}
 -type get_message_insights_request() :: #{}.
 
+
 %% Example:
-%% delete_suppressed_destination_request() :: #{}
--type delete_suppressed_destination_request() :: #{}.
+%% delete_suppressed_destination_request() :: #{
+%%   <<"TenantName">> => string()
+%% }
+-type delete_suppressed_destination_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1900,7 +1913,8 @@
 %%   <<"Attributes">> => suppressed_destination_attributes(),
 %%   <<"EmailAddress">> => string(),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Reason">> => list(any())
+%%   <<"Reason">> => list(any()),
+%%   <<"TenantName">> => string()
 %% }
 -type suppressed_destination() :: #{binary() => any()}.
 
@@ -2153,6 +2167,7 @@
 %% Example:
 %% suppression_options() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"SuppressionScope">> => list(any()),
 %%   <<"ValidationOptions">> => suppression_validation_options()
 %% }
 -type suppression_options() :: #{binary() => any()}.
@@ -2174,6 +2189,15 @@
 %%   <<"Status">> => list(any())
 %% }
 -type status_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tenant_suppression_attributes_request() :: #{
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"SuppressionScope">> => list(any()),
+%%   <<"TenantName">> := string()
+%% }
+-type put_tenant_suppression_attributes_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -2362,6 +2386,14 @@
 %% }
 -type list_dedicated_ip_pools_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% tenant_suppression_attributes() :: #{
+%%   <<"SuppressedReasons">> => list(list(any())()),
+%%   <<"SuppressionScope">> => list(any())
+%% }
+-type tenant_suppression_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_set_request() :: #{}
 -type get_configuration_set_request() :: #{}.
@@ -2462,6 +2494,10 @@
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_tenant_suppression_attributes_response() :: #{}
+-type put_tenant_suppression_attributes_response() :: #{}.
 
 
 %% Example:
@@ -2655,6 +2691,7 @@
 
 %% Example:
 %% create_tenant_request() :: #{
+%%   <<"SuppressionAttributes">> => tenant_suppression_attributes(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TenantName">> := string()
 %% }
@@ -3268,6 +3305,7 @@
 
 -type list_suppressed_destinations_errors() ::
     bad_request_exception() | 
+    not_found_exception() | 
     invalid_next_token_exception() | 
     too_many_requests_exception().
 
@@ -3391,6 +3429,12 @@
 
 -type put_suppressed_destination_errors() ::
     bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_tenant_suppression_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
     too_many_requests_exception().
 
 -type send_bulk_email_errors() ::
@@ -4140,6 +4184,13 @@ create_multi_region_endpoint(Client, Input0, Options0) ->
 %% helps isolate and manage
 %% email sending for different customers or business units within your Amazon
 %% SES API v2 account.
+%%
+%% You can optionally specify `SuppressionAttributes' to configure
+%% tenant-level
+%% suppression at creation time. When tenant-level suppression is enabled,
+%% Amazon SES maintains a
+%% separate suppression list for the tenant instead of using the
+%% account-level suppression list.
 -spec create_tenant(aws_client:aws_client(), create_tenant_request()) ->
     {ok, create_tenant_response(), tuple()} |
     {error, any()} |
@@ -4607,7 +4658,13 @@ delete_multi_region_endpoint(Client, EndpointName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes an email address from the suppression list for your account.
+%% @doc Removes an email address from the suppression list for your account
+%% or for a specific
+%% tenant.
+%%
+%% To target a tenant's suppression list, specify the `TenantName'
+%% parameter. If you omit `TenantName', the address is removed from the
+%% account-level suppression list.
 -spec delete_suppressed_destination(aws_client:aws_client(), binary() | list(), delete_suppressed_destination_request()) ->
     {ok, delete_suppressed_destination_response(), tuple()} |
     {error, any()} |
@@ -4636,9 +4693,10 @@ delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"TenantName">>, <<"TenantName">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an existing tenant.
@@ -5452,7 +5510,7 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options
 %% part and text
 %% part) for the template you specify.
 %%
-%% You can execute this operation no more than once per second.
+%% You can execute this operation no more than 50 times per second.
 -spec get_email_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
@@ -5697,7 +5755,11 @@ get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType, Q
 
 %% @doc Retrieves information about a specific email address that's on
 %% the suppression list
-%% for your account.
+%% for your account or for a specific tenant.
+%%
+%% To target a tenant's suppression list,
+%% specify the `TenantName' parameter. If you omit `TenantName',
+%% the operation targets the account-level suppression list.
 -spec get_suppressed_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
@@ -5730,13 +5792,17 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"TenantName">>, maps:get(<<"TenantName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about a specific tenant, including the tenant's
 %% name, ID, ARN,
-%% creation timestamp, tags, and sending status.
+%% creation timestamp, tags, sending status, and suppression attributes.
 -spec get_tenant(aws_client:aws_client(), get_tenant_request()) ->
     {ok, get_tenant_response(), tuple()} |
     {error, any()} |
@@ -6430,7 +6496,11 @@ list_resource_tenants(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of email addresses that are on the suppression list
 %% for your
-%% account.
+%% account or for a specific tenant.
+%%
+%% To target a tenant's suppression list, specify the
+%% `TenantName' parameter. If you omit `TenantName', the operation
+%% targets the account-level suppression list.
 -spec list_suppressed_destinations(aws_client:aws_client()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
@@ -6469,7 +6539,8 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)},
         {<<"Reason">>, maps:get(<<"Reason">>, QueryMap, undefined)},
-        {<<"StartDate">>, maps:get(<<"StartDate">>, QueryMap, undefined)}
+        {<<"StartDate">>, maps:get(<<"StartDate">>, QueryMap, undefined)},
+        {<<"TenantName">>, maps:get(<<"TenantName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6926,7 +6997,13 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Specify the account suppression list preferences for a configuration
+%% @doc Specify the suppression list preferences for a configuration set.
+%%
+%% You can
+%% also use this operation to specify a `SuppressionScope' to override
+%% the
+%% suppression scope of the tenant or account for emails sent using this
+%% configuration
 %% set.
 -spec put_configuration_set_suppression_options(aws_client:aws_client(), binary() | list(), put_configuration_set_suppression_options_request()) ->
     {ok, put_configuration_set_suppression_options_response(), tuple()} |
@@ -7400,7 +7477,13 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds an email address to the suppression list for your account.
+%% @doc Adds an email address to the suppression list for your account or for
+%% a specific
+%% tenant.
+%%
+%% To target a tenant's suppression list, specify the `TenantName'
+%% parameter. If you omit `TenantName', the address is added to the
+%% account-level suppression list.
 -spec put_suppressed_destination(aws_client:aws_client(), put_suppressed_destination_request()) ->
     {ok, put_suppressed_destination_response(), tuple()} |
     {error, any()} |
@@ -7415,6 +7498,50 @@ put_suppressed_destination(Client, Input) ->
 put_suppressed_destination(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/suppression/addresses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Configure the suppression list preferences for a tenant.
+%%
+%% Use this operation to enable
+%% or disable tenant-level suppression, or to change the suppressed reasons
+%% for a tenant.
+%%
+%% When you set the suppression scope to `TENANT', Amazon SES maintains a
+%% separate
+%% suppression list for the tenant. When you set the scope to `ACCOUNT',
+%% the tenant
+%% uses the account-level suppression list.
+-spec put_tenant_suppression_attributes(aws_client:aws_client(), put_tenant_suppression_attributes_request()) ->
+    {ok, put_tenant_suppression_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, put_tenant_suppression_attributes_errors(), tuple()}.
+put_tenant_suppression_attributes(Client, Input) ->
+    put_tenant_suppression_attributes(Client, Input, []).
+
+-spec put_tenant_suppression_attributes(aws_client:aws_client(), put_tenant_suppression_attributes_request(), proplists:proplist()) ->
+    {ok, put_tenant_suppression_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, put_tenant_suppression_attributes_errors(), tuple()}.
+put_tenant_suppression_attributes(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenant/suppression"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
