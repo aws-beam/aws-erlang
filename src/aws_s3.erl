@@ -17591,9 +17591,11 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode, Bucket) ->
     Client1 = Client#{service => <<"s3">>},
-    Host = build_host(<<"s3">>, Client1, Bucket),
-    URL0 = build_url(Host, Path, Client1, Bucket),
-    URL = aws_request:add_query(URL0, Query),
+    DefaultHost = build_host(<<"s3">>, Client1, Bucket),
+    URL0 = build_url(DefaultHost, Path, Client1, Bucket),
+    PathBin = erlang:iolist_to_binary(Path),
+    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_AWS_S3">>),
+    URL = aws_request:add_query(URL1, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
                          , {<<"Content-Type">>, <<"text/xml">>}
                          ],
@@ -17684,7 +17686,6 @@ build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, undefined)
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>);
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
     aws_util:binary_join([Bucket, EndpointPrefix, Region, Endpoint], <<".">>).
-
 build_url(Host0, Path0, Client, Bucket) ->
     Proto = aws_client:proto(Client),
     %% Mocks are notoriously bad with host-style requests, just skip it and use path-style for anything local

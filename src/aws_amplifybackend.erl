@@ -2253,9 +2253,11 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"amplifybackend">>},
-    Host = build_host(<<"amplifybackend">>, Client1),
-    URL0 = build_url(Host, Path, Client1),
-    URL = aws_request:add_query(URL0, Query),
+    DefaultHost = build_host(<<"amplifybackend">>, Client1),
+    URL0 = build_url(DefaultHost, Path, Client1),
+    PathBin = erlang:iolist_to_binary(Path),
+    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_AWS_AMPLIFYBACKEND">>),
+    URL = aws_request:add_query(URL1, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
                          , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                          ],
@@ -2339,7 +2341,6 @@ build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
-
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),

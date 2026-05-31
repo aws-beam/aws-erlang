@@ -1964,8 +1964,8 @@ request(Client, Action, Input, Options) ->
 
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"route53domains">>},
-    Host = build_host(<<"route53domains">>, Client1),
-    URL = build_url(Host, Client1),
+    DefaultHost = build_host(<<"route53domains">>, Client1),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_ROUTE53_DOMAINS">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},

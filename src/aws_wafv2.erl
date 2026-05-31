@@ -4302,8 +4302,8 @@ request(Client, Action, Input, Options) ->
 
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"wafv2">>},
-    Host = build_host(<<"wafv2">>, Client1),
-    URL = build_url(Host, Client1),
+    DefaultHost = build_host(<<"wafv2">>, Client1),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_WAFV2">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
