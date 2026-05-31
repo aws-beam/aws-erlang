@@ -8128,9 +8128,9 @@ delete_configuration_bundle(Client, BundleId, Input0, Options0) ->
 %% Asynchronous 202.
 %%
 %% **State transitions:**
-%% - If `datasetVersion` is absent (full delete): status transitions to
+%% - If `datasetVersion' is absent (full delete): status transitions to
 %% DELETING immediately.
-%% - If `datasetVersion` is provided (version-specific delete): status
+%% - If `datasetVersion' is provided (version-specific delete): status
 %% transitions to UPDATING.
 %%
 %% **State guard (full delete):** Returns ConflictException
@@ -8155,9 +8155,9 @@ delete_configuration_bundle(Client, BundleId, Input0, Options0) ->
 %% (idempotent retry path).
 %%
 %% **Version parameter:**
-%% - If `datasetVersion` is absent: deletes ALL versions and the Dataset
+%% - If `datasetVersion' is absent: deletes ALL versions and the Dataset
 %% record itself.
-%% - If `datasetVersion` is provided: deletes only that specific
+%% - If `datasetVersion' is provided: deletes only that specific
 %% DatasetVersion.
 %% Returns ResourceNotFoundException if the specified version does not exist.
 -spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
@@ -9178,11 +9178,11 @@ get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersM
 %% draftStatus is
 %% MODIFIED because the DRAFT has content that has never been published.
 %%
-%% **Default version behavior:** When `datasetVersion` is omitted, the
+%% **Default version behavior:** When `datasetVersion' is omitted, the
 %% operation
 %% returns the DRAFT working copy. To retrieve a specific published version,
 %% pass
-%% the version number as a string (e.g. `?datasetVersion=1`).
+%% the version number as a string (e.g. `?datasetVersion=1').
 %%
 %% **State guard:** Allowed for all statuses including DELETING. Returns the
 %% dataset
@@ -10413,12 +10413,12 @@ list_configuration_bundles(Client, Input0, Options0) ->
 %% @doc Returns paginated examples from the dataset.
 %%
 %% **Version-pinned pagination:** The server embeds the resolved version in
-%% the `nextToken`.
+%% the `nextToken'.
 %% Once pagination begins, all subsequent pages are pinned to that version
 %% regardless of
-%% concurrent mutations or whether `datasetVersion` is passed on subsequent
-%% requests. The `datasetVersion`
-%% query parameter is only used for the first request (when `nextToken` is
+%% concurrent mutations or whether `datasetVersion' is passed on subsequent
+%% requests. The `datasetVersion'
+%% query parameter is only used for the first request (when `nextToken' is
 %% absent); if omitted,
 %% defaults to DRAFT.
 %%
