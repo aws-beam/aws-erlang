@@ -9096,9 +9096,11 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
-    Host = build_host(AccountId, <<"s3-control">>, Client1),
-    URL0 = build_url(Host, Path, Client1),
-    URL = aws_request:add_query(URL0, Query),
+    DefaultHost = build_host(AccountId, <<"s3-control">>, Client1),
+    URL0 = build_url(DefaultHost, Path, Client1),
+    PathBin = erlang:iolist_to_binary(Path),
+    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_AWS_S3_CONTROL">>),
+    URL = aws_request:add_query(URL1, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
                          , {<<"Content-Type">>, <<"text/xml">>}
                          ],
@@ -9185,7 +9187,6 @@ build_host(undefined, _EndpointPrefix, _Client) ->
 build_host(AccountId, EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([AccountId, EndpointPrefix, Region, Endpoint],
                          <<".">>).
-
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),
