@@ -8020,7 +8020,7 @@ request(Client, Action, Input, Options) ->
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"logs">>},
     DefaultHost = build_host(<<"logs">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_CLOUDWATCH_LOGS">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_CLOUDWATCH_LOGS">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},

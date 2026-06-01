@@ -2575,7 +2575,7 @@ request(Client, Action, Input, Options) ->
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"elasticbeanstalk">>},
     DefaultHost = build_host(<<"elasticbeanstalk">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_ELASTIC_BEANSTALK">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_ELASTIC_BEANSTALK">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}
