@@ -3411,7 +3411,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     DefaultHost = build_host(<<"api.mediatailor">>, Client1),
     URL0 = build_url(DefaultHost, Path, Client1),
     PathBin = erlang:iolist_to_binary(Path),
-    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_AWS_MEDIATAILOR">>),
+    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_MEDIATAILOR">>),
     URL = aws_request:add_query(URL1, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
                          , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}

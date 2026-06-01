@@ -10411,7 +10411,7 @@ do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"iam">>,
                       region => <<"us-east-1">>},
     DefaultHost = build_host(<<"iam">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_IAM">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_IAM">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}

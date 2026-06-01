@@ -957,7 +957,7 @@ request(Client, Action, Input, Options) ->
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"workspaces-instances">>},
     DefaultHost = build_host(<<"workspaces-instances">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_WORKSPACES_INSTANCES">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_WORKSPACES_INSTANCES">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},

@@ -1237,7 +1237,7 @@ request(Client, Action, Input, Options) ->
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"invoicing">>},
     DefaultHost = build_host(<<"invoicing">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_INVOICING">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_INVOICING">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},

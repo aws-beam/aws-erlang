@@ -2113,7 +2113,7 @@ request(Client, Action, Input, Options) ->
 do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"bcm-pricing-calculator">>},
     DefaultHost = build_host(<<"bcm-pricing-calculator">>, Client1),
-    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_AWS_BCM_PRICING_CALCULATOR">>),
+    {URL, Host} = aws_util:apply_endpoint_url_override(build_url(DefaultHost, Client1), DefaultHost, <<"/">>, <<"AWS_ENDPOINT_URL_BCM_PRICING_CALCULATOR">>),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},

@@ -6667,7 +6667,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     DefaultHost = build_host(<<"route53">>, Client1),
     URL0 = build_url(DefaultHost, Path, Client1),
     PathBin = erlang:iolist_to_binary(Path),
-    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_AWS_ROUTE53">>),
+    {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_ROUTE_53">>),
     URL = aws_request:add_query(URL1, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
                          , {<<"Content-Type">>, <<"text/xml">>}
