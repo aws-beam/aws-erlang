@@ -25,6 +25,8 @@
          create_account_subscription/4,
          create_action_connector/3,
          create_action_connector/4,
+         create_agent/3,
+         create_agent/4,
          create_analysis/4,
          create_analysis/5,
          create_brand/4,
@@ -37,6 +39,8 @@
          create_data_set/4,
          create_data_source/3,
          create_data_source/4,
+         create_flow/3,
+         create_flow/4,
          create_folder/4,
          create_folder/5,
          create_folder_membership/6,
@@ -57,6 +61,8 @@
          create_refresh_schedule/5,
          create_role_membership/6,
          create_role_membership/7,
+         create_space/3,
+         create_space/4,
          create_template/4,
          create_template/5,
          create_template_alias/5,
@@ -79,6 +85,8 @@
          delete_account_subscription/4,
          delete_action_connector/4,
          delete_action_connector/5,
+         delete_agent/4,
+         delete_agent/5,
          delete_analysis/4,
          delete_analysis/5,
          delete_brand/4,
@@ -97,6 +105,8 @@
          delete_data_source/5,
          delete_default_q_business_application/3,
          delete_default_q_business_application/4,
+         delete_flow/4,
+         delete_flow/5,
          delete_folder/4,
          delete_folder/5,
          delete_folder_membership/6,
@@ -119,6 +129,8 @@
          delete_role_custom_permission/6,
          delete_role_membership/6,
          delete_role_membership/7,
+         delete_space/4,
+         delete_space/5,
          delete_template/4,
          delete_template/5,
          delete_template_alias/5,
@@ -157,6 +169,12 @@
          describe_action_connector_permissions/3,
          describe_action_connector_permissions/5,
          describe_action_connector_permissions/6,
+         describe_agent/3,
+         describe_agent/5,
+         describe_agent/6,
+         describe_agent_permissions/3,
+         describe_agent_permissions/5,
+         describe_agent_permissions/6,
          describe_analysis/3,
          describe_analysis/5,
          describe_analysis/6,
@@ -223,6 +241,9 @@
          describe_default_q_business_application/2,
          describe_default_q_business_application/4,
          describe_default_q_business_application/5,
+         describe_flow/4,
+         describe_flow/6,
+         describe_flow/7,
          describe_folder/3,
          describe_folder/5,
          describe_folder/6,
@@ -271,6 +292,12 @@
          describe_self_upgrade_configuration/3,
          describe_self_upgrade_configuration/5,
          describe_self_upgrade_configuration/6,
+         describe_space/3,
+         describe_space/5,
+         describe_space/6,
+         describe_space_permissions/3,
+         describe_space_permissions/5,
+         describe_space_permissions/6,
          describe_template/3,
          describe_template/5,
          describe_template/6,
@@ -333,6 +360,9 @@
          list_action_connectors/2,
          list_action_connectors/4,
          list_action_connectors/5,
+         list_agents/2,
+         list_agents/4,
+         list_agents/5,
          list_analyses/2,
          list_analyses/4,
          list_analyses/5,
@@ -405,6 +435,12 @@
          list_self_upgrades/3,
          list_self_upgrades/5,
          list_self_upgrades/6,
+         list_space_resources/3,
+         list_space_resources/5,
+         list_space_resources/6,
+         list_spaces/2,
+         list_spaces/4,
+         list_spaces/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -454,6 +490,8 @@
          restore_analysis/5,
          search_action_connectors/3,
          search_action_connectors/4,
+         search_agents/3,
+         search_agents/4,
          search_analyses/3,
          search_analyses/4,
          search_dashboards/3,
@@ -468,6 +506,8 @@
          search_folders/4,
          search_groups/4,
          search_groups/5,
+         search_spaces/3,
+         search_spaces/4,
          search_topics/3,
          search_topics/4,
          start_asset_bundle_export_job/3,
@@ -494,6 +534,10 @@
          update_action_connector/5,
          update_action_connector_permissions/4,
          update_action_connector_permissions/5,
+         update_agent/4,
+         update_agent/5,
+         update_agent_permissions/4,
+         update_agent_permissions/5,
          update_analysis/4,
          update_analysis/5,
          update_analysis_permissions/4,
@@ -528,6 +572,8 @@
          update_data_source_permissions/5,
          update_default_q_business_application/3,
          update_default_q_business_application/4,
+         update_flow/4,
+         update_flow/5,
          update_flow_permissions/4,
          update_flow_permissions/5,
          update_folder/4,
@@ -562,6 +608,12 @@
          update_self_upgrade/5,
          update_self_upgrade_configuration/4,
          update_self_upgrade_configuration/5,
+         update_space/4,
+         update_space/5,
+         update_space_permissions/4,
+         update_space_permissions/5,
+         update_space_resources/4,
+         update_space_resources/5,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -706,6 +758,15 @@
 %% }
 -type growth_rate_computation() :: #{binary() => any()}.
 
+
+%% Example:
+%% custom_prompt_profile() :: #{
+%%   <<"ModelProfileId">> => string(),
+%%   <<"QbsAwsAccountId">> => string(),
+%%   <<"SubscriptionId">> => string()
+%% }
+-type custom_prompt_profile() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_snapshot_job_request() :: #{}
 -type describe_dashboard_snapshot_job_request() :: #{}.
@@ -813,6 +874,15 @@
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type image_menu_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agents_response() :: #{
+%%   <<"AgentSummaries">> => list(agent_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()]
+%% }
+-type search_agents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -942,6 +1012,16 @@
 %%   <<"StaticConfiguration">> => reference_line_static_data_configuration()
 %% }
 -type reference_line_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlowDefinition">> => any(),
+%%   <<"Name">> => string()
+%% }
+-type update_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1105,6 +1185,10 @@
 %%   <<"TemplateVersionNumber">> => float()
 %% }
 -type template_alias() :: #{binary() => any()}.
+
+%% Example:
+%% delete_space_request() :: #{}
+-type delete_space_request() :: #{}.
 
 
 %% Example:
@@ -1434,6 +1518,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_identity_propagation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_space_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type delete_space_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1896,6 +1989,14 @@
 
 
 %% Example:
+%% list_agents_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_ingestions_response() :: #{
 %%   <<"Ingestions">> => list(ingestion()),
 %%   <<"NextToken">> => string(),
@@ -1982,6 +2083,17 @@
 %% }
 -type spatial_static_file() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_flow_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlowDefinition">> := any(),
+%%   <<"Name">> := string(),
+%%   <<"Permissions">> => list(permission())
+%% }
+-type create_flow_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_ingestion_request() :: #{}
 -type cancel_ingestion_request() :: #{}.
@@ -1989,6 +2101,16 @@
 %% Example:
 %% delete_theme_alias_request() :: #{}
 -type delete_theme_alias_request() :: #{}.
+
+
+%% Example:
+%% update_space_permissions_response() :: #{
+%%   <<"permissions">> => list(resource_permission()),
+%%   <<"requestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type update_space_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2013,6 +2135,14 @@
 %%   <<"TooltipSheets">> => list(tooltip_sheet_definition())
 %% }
 -type dashboard_version_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_resource_operation() :: #{
+%%   <<"ResourceDetails">> => list(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type space_resource_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2373,6 +2503,16 @@
 
 
 %% Example:
+%% list_space_resources_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"SpaceResources">> => list(space_resource_summary()),
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type list_space_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_theme_override_parameters() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ThemeId">> => string()
@@ -2453,6 +2593,15 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_flows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agents_response() :: #{
+%%   <<"AgentSummaries">> => list(agent_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()]
+%% }
+-type list_agents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2562,6 +2711,22 @@
 %%   <<"Color">> => string()
 %% }
 -type geospatial_heatmap_data_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_request() :: #{
+%%   <<"ActionConnectors">> => list(string()),
+%%   <<"AgentId">> := string(),
+%%   <<"AgentLifecycle">> => list(any()),
+%%   <<"CustomPromptInput">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"IconId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Spaces">> => list(string()),
+%%   <<"StarterPrompts">> => list(string()),
+%%   <<"WelcomeMessage">> => string()
+%% }
+-type create_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2838,6 +3003,21 @@
 
 
 %% Example:
+%% custom_prompt_interface() :: #{
+%%   <<"CustomInstructions">> => string(),
+%%   <<"Identity">> => string(),
+%%   <<"ModelProfileId">> => string(),
+%%   <<"OutputStyle">> => string(),
+%%   <<"QbsAwsAccountId">> => string(),
+%%   <<"ResponseLength">> => string(),
+%%   <<"SubscriptionId">> => string(),
+%%   <<"Tone">> => string(),
+%%   <<"promptSummary">> => string()
+%% }
+-type custom_prompt_interface() :: #{binary() => any()}.
+
+
+%% Example:
 %% funnel_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
 %%   <<"CategorySort">> => list(field_sort_options())
@@ -3106,6 +3286,10 @@
 %% }
 -type start_asset_bundle_import_job_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_agent_permissions_request() :: #{}
+-type describe_agent_permissions_request() :: #{}.
+
 
 %% Example:
 %% sheet_layout_group() :: #{
@@ -3348,6 +3532,13 @@
 
 
 %% Example:
+%% describe_space_request() :: #{
+%%   <<"MaxContributors">> => integer()
+%% }
+-type describe_space_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% integer_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
 %%   <<"StaticValues">> => list(float())
@@ -3413,6 +3604,10 @@
 %%   <<"InitialDashboardId">> => string()
 %% }
 -type anonymous_user_dashboard_embedding_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_request() :: #{}
+-type delete_flow_request() :: #{}.
 
 
 %% Example:
@@ -3537,6 +3732,15 @@
 %%   <<"StaticValue">> => non_neg_integer()
 %% }
 -type data_set_date_filter_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_to_update_association() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()]
+%% }
+-type failed_to_update_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3720,6 +3924,14 @@
 
 
 %% Example:
+%% update_agent_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
+%% }
+-type update_agent_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_prep_simple_aggregation_function() :: #{
 %%   <<"FunctionType">> => list(any()),
 %%   <<"InputColumnName">> => string()
@@ -3890,6 +4102,15 @@
 %% }
 -type update_iam_policy_assignment_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% space_quicksight_search_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type space_quicksight_search_filter() :: #{binary() => any()}.
+
 %% Example:
 %% describe_namespace_request() :: #{}
 -type describe_namespace_request() :: #{}.
@@ -4017,6 +4238,16 @@
 
 
 %% Example:
+%% create_flow_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"FlowId">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type create_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% gauge_chart_options() :: #{
 %%   <<"Arc">> => arc_configuration(),
 %%   <<"ArcAxis">> => arc_axis_configuration(),
@@ -4029,6 +4260,14 @@
 %% Example:
 %% describe_topic_request() :: #{}
 -type describe_topic_request() :: #{}.
+
+
+%% Example:
+%% delete_flow_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type delete_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4147,6 +4386,21 @@
 
 
 %% Example:
+%% space_details() :: #{
+%%   <<"consumedSourceDocCount">> => integer(),
+%%   <<"consumedSourceSize">> => float(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"createdByArn">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resources">> => list(space_quick_sight_resource()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type space_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vpc_connection_request() :: #{
 %%   <<"DnsResolvers">> => list(string()),
 %%   <<"Name">> := string(),
@@ -4220,6 +4474,17 @@
 %%   <<"Status">> => list(any())
 %% }
 -type visual_customization_fields_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"SpaceSummaries">> => list(space_summary()),
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type search_spaces_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5036,6 +5301,22 @@
 
 
 %% Example:
+%% describe_agent_response() :: #{
+%%   <<"Agent">> => agent(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type describe_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_quick_sight_resource() :: #{
+%%   <<"resourceDetails">> => list(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type space_quick_sight_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_inline_visualization() :: #{
 %%   <<"DataBars">> => data_bars_options(),
 %%   <<"Sparklines">> => sparklines_options()
@@ -5378,6 +5659,17 @@
 
 
 %% Example:
+%% create_agent_response() :: #{
+%%   <<"AgentId">> => string(),
+%%   <<"AgentName">> => string(),
+%%   <<"AgentStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type create_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_sources_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -5627,6 +5919,15 @@
 
 
 %% Example:
+%% failed_space_resource_operation() :: #{
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"ResourceDetails">> => list(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type failed_space_resource_operation() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_folder_membership_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -5652,6 +5953,15 @@
 %% Example:
 %% describe_data_set_request() :: #{}
 -type describe_data_set_request() :: #{}.
+
+
+%% Example:
+%% agent_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type agent_search_filter() :: #{binary() => any()}.
 
 %% Example:
 %% delete_data_set_refresh_properties_request() :: #{}
@@ -5761,6 +6071,20 @@
 %%   <<"WebProxyPortNumber">> => integer()
 %% }
 -type web_crawler_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_response() :: #{
+%%   <<"AgentId">> => string(),
+%%   <<"AgentStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"FailedToAddActionConnectors">> => list(failed_to_update_association()),
+%%   <<"FailedToAddSpaces">> => list(failed_to_update_association()),
+%%   <<"FailedToRemoveActionConnectors">> => list(failed_to_update_association()),
+%%   <<"FailedToRemoveSpaces">> => list(failed_to_update_association()),
+%%   <<"RequestId">> => [string()]
+%% }
+-type update_agent_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5990,6 +6314,25 @@
 %%   <<"GeographicalRole">> => list(any())
 %% }
 -type column_semantic_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_space_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type create_space_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_space_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type describe_space_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6398,6 +6741,15 @@
 
 
 %% Example:
+%% create_space_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SpaceId">> := string()
+%% }
+-type create_space_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% filled_map_sort_configuration() :: #{
 %%   <<"CategorySort">> => list(field_sort_options())
 %% }
@@ -6661,6 +7013,14 @@
 
 
 %% Example:
+%% update_space_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
+%% }
+-type update_space_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% topic_template() :: #{
 %%   <<"Slots">> => list(slot()),
 %%   <<"TemplateType">> => string()
@@ -6879,6 +7239,16 @@
 
 
 %% Example:
+%% describe_agent_permissions_response() :: #{
+%%   <<"AgentId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()]
+%% }
+-type describe_agent_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_role_memberships_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -7036,6 +7406,13 @@
 %%   <<"VisualPalette">> => visual_palette()
 %% }
 -type radar_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_flow_request() :: #{
+%%   <<"PublishState">> := list(any())
+%% }
+-type describe_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7342,6 +7719,28 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_brand_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent() :: #{
+%%   <<"ActionConnectors">> => list(string()),
+%%   <<"AgentId">> => string(),
+%%   <<"AgentLifecycle">> => list(any()),
+%%   <<"AgentStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Creator">> => [string()],
+%%   <<"CustomPromptInterface">> => custom_prompt_interface(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"IconId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Spaces">> => list(string()),
+%%   <<"StarterPrompts">> => list(string()),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"WelcomeMessage">> => string()
+%% }
+-type agent() :: #{binary() => any()}.
 
 %% Example:
 %% describe_template_permissions_request() :: #{}
@@ -7973,6 +8372,13 @@
 
 
 %% Example:
+%% delete_agent_response() :: #{
+%%   <<"RequestId">> => [string()]
+%% }
+-type delete_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% bar_chart_configuration() :: #{
 %%   <<"BarsArrangement">> => list(any()),
 %%   <<"CategoryAxis">> => axis_display_options(),
@@ -7995,6 +8401,15 @@
 %%   <<"VisualPalette">> => visual_palette()
 %% }
 -type bar_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agents_request() :: #{
+%%   <<"Filters">> := list(agent_search_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type search_agents_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8119,6 +8534,15 @@
 %%   <<"SharedView">> => shared_view_configurations()
 %% }
 -type anonymous_user_dashboard_feature_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_space_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type update_space_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8629,6 +9053,10 @@
 %% }
 -type delete_user_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_agent_request() :: #{}
+-type describe_agent_request() :: #{}.
+
 
 %% Example:
 %% sheet_control_layout() :: #{
@@ -9068,6 +9496,17 @@
 
 
 %% Example:
+%% describe_space_response() :: #{
+%%   <<"Contributors">> => list(space_contributor()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Space">> => space_details(),
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type describe_space_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% geospatial_map_state() :: #{
 %%   <<"Bounds">> => geospatial_coordinate_bounds(),
 %%   <<"MapNavigation">> => list(any())
@@ -9150,6 +9589,10 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type sheet_image_tooltip_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_space_resources_request() :: #{}
+-type list_space_resources_request() :: #{}.
 
 
 %% Example:
@@ -9754,6 +10197,16 @@
 
 
 %% Example:
+%% space_resource_summary() :: #{
+%%   <<"ResourceDetails">> => list(),
+%%   <<"ResourceName">> => [string()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type space_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% topic_numeric_range_filter() :: #{
 %%   <<"Aggregation">> => list(any()),
 %%   <<"Constant">> => topic_range_filter_constant(),
@@ -10088,6 +10541,16 @@
 
 
 %% Example:
+%% update_space_resources_response() :: #{
+%%   <<"FailedResourceOperations">> => list(failed_space_resource_operation()),
+%%   <<"RequestId">> => [string()],
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type update_space_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_data_set_parameter_value_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -10247,6 +10710,14 @@
 %%   <<"Values">> => list(string())
 %% }
 -type parameter_selectable_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_space_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_space_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10664,6 +11135,22 @@
 
 
 %% Example:
+%% update_agent_request() :: #{
+%%   <<"ActionConnectorsToAdd">> => list(string()),
+%%   <<"ActionConnectorsToRemove">> => list(string()),
+%%   <<"CustomPromptInput">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"IconId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SpacesToAdd">> => list(string()),
+%%   <<"SpacesToRemove">> => list(string()),
+%%   <<"StarterPrompts">> => list(string()),
+%%   <<"WelcomeMessage">> => string()
+%% }
+-type update_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% theme_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -10806,6 +11293,16 @@
 
 
 %% Example:
+%% update_agent_permissions_response() :: #{
+%%   <<"AgentId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()]
+%% }
+-type update_agent_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_box_menu_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
@@ -10879,6 +11376,10 @@
 %% }
 -type calculated_measure_field() :: #{binary() => any()}.
 
+%% Example:
+%% delete_agent_request() :: #{}
+-type delete_agent_request() :: #{}.
+
 
 %% Example:
 %% category_filter() :: #{
@@ -10888,6 +11389,15 @@
 %%   <<"FilterId">> => string()
 %% }
 -type category_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_contributor() :: #{
+%%   <<"percentage">> => float(),
+%%   <<"rawFileSizeBytes">> => float(),
+%%   <<"userName">> => [string()]
+%% }
+-type space_contributor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11062,6 +11572,17 @@
 
 
 %% Example:
+%% list_spaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"SpaceSummaries">> => list(space_summary()),
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string()
+%% }
+-type list_spaces_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_set_string_filter_condition() :: #{
 %%   <<"ColumnName">> => string(),
 %%   <<"ComparisonFilterCondition">> => data_set_string_comparison_filter_condition(),
@@ -11205,6 +11726,15 @@
 %%   <<"Width">> => string()
 %% }
 -type border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spaces_request() :: #{
+%%   <<"Filters">> := list(space_quicksight_search_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_spaces_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12132,6 +12662,19 @@
 
 
 %% Example:
+%% agent_summary() :: #{
+%%   <<"AgentId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"IconId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type agent_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_vpc_connection_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityStatus">> => list(any()),
@@ -12729,6 +13272,16 @@
 
 
 %% Example:
+%% update_flow_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"FlowId">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_export_job_warning() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Message">> => string()
@@ -12823,6 +13376,17 @@
 %%   <<"TextFormat">> => text_conditional_format()
 %% }
 -type table_cell_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_prompt_input_parameters() :: #{
+%%   <<"CustomInstructions">> => string(),
+%%   <<"Identity">> => string(),
+%%   <<"OutputStyle">> => string(),
+%%   <<"ResponseLength">> => string(),
+%%   <<"Tone">> => string()
+%% }
+-type custom_prompt_input_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13188,6 +13752,14 @@
 
 
 %% Example:
+%% step_alias_mapping() :: #{
+%%   <<"StepAlias">> => [string()],
+%%   <<"StepId">> => string()
+%% }
+-type step_alias_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_set() :: #{
 %%   <<"Height32">> => image(),
 %%   <<"Height64">> => image(),
@@ -13400,6 +13972,15 @@
 
 
 %% Example:
+%% describe_flow_response() :: #{
+%%   <<"Flow">> => flow_detail(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type describe_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_theme_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
@@ -13422,6 +14003,14 @@
 %%   <<"HierarchyId">> => string()
 %% }
 -type date_time_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_space_resources_request() :: #{
+%%   <<"AddResources">> => list(space_resource_operation()),
+%%   <<"RemoveResources">> => list(space_resource_operation())
+%% }
+-type update_space_resources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14140,6 +14729,23 @@
 
 
 %% Example:
+%% flow_detail() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedBy">> => [string()],
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FlowDefinition">> => any(),
+%%   <<"FlowId">> => string(),
+%%   <<"LastUpdatedBy">> => [string()],
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishState">> => list(any()),
+%%   <<"StepAliases">> => list(step_alias_mapping())
+%% }
+-type flow_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_template_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
@@ -14332,6 +14938,23 @@
 %%   <<"SheetImageStaticFileSource">> => sheet_image_static_file_source()
 %% }
 -type sheet_image_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_summary() :: #{
+%%   <<"consumedSourceDocCount">> => integer(),
+%%   <<"consumedSourceSize">> => float(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"createdByArn">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourcesCount">> => integer(),
+%%   <<"spaceArn">> => string(),
+%%   <<"spaceId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type space_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14773,6 +15396,10 @@
 %% }
 -type asset_bundle_import_job_data_source_override_permissions() :: #{binary() => any()}.
 
+%% Example:
+%% describe_space_permissions_request() :: #{}
+-type describe_space_permissions_request() :: #{}.
+
 
 %% Example:
 %% default_new_sheet_configuration() :: #{
@@ -14814,6 +15441,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_quick_sight_q_search_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_spaces_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14964,6 +15599,16 @@
     conflict_exception() | 
     internal_failure_exception().
 
+-type create_agent_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type create_analysis_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -15025,6 +15670,16 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     customer_managed_key_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_flow_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type create_folder_errors() ::
@@ -15125,6 +15780,15 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_space_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type create_template_errors() ::
@@ -15231,6 +15895,14 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type delete_agent_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type delete_analysis_errors() ::
     throttling_exception() | 
     invalid_parameter_value_exception() | 
@@ -15300,6 +15972,14 @@
 -type delete_default_q_business_application_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_flow_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     internal_failure_exception().
@@ -15397,6 +16077,13 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_space_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type delete_template_errors() ::
@@ -15526,6 +16213,22 @@
     internal_failure_exception().
 
 -type describe_action_connector_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_agent_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_agent_permissions_errors() ::
+    precondition_not_met_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
@@ -15700,6 +16403,13 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type describe_flow_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_folder_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -15829,6 +16539,20 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_space_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_space_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type describe_template_errors() ::
@@ -16020,6 +16744,15 @@
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_agents_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
     internal_failure_exception().
 
 -type list_analyses_errors() ::
@@ -16219,6 +16952,20 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type list_space_resources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_spaces_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16370,6 +17117,14 @@
     invalid_parameter_value_exception() | 
     invalid_next_token_exception().
 
+-type search_agents_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
 -type search_analyses_errors() ::
     throttling_exception() | 
     invalid_parameter_value_exception() | 
@@ -16426,6 +17181,13 @@
     invalid_next_token_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type search_spaces_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type search_topics_errors() ::
@@ -16530,6 +17292,27 @@
     internal_failure_exception().
 
 -type update_action_connector_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_agent_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_agent_permissions_errors() ::
+    precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -16687,6 +17470,15 @@
     conflict_exception() | 
     internal_failure_exception().
 
+-type update_flow_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type update_flow_permissions_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16829,6 +17621,34 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_space_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_space_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_space_resources_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type update_template_errors() ::
@@ -17241,6 +18061,40 @@ create_action_connector(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an agent in Amazon QuickSight.
+-spec create_agent(aws_client:aws_client(), binary() | list(), create_agent_request()) ->
+    {ok, create_agent_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_errors(), tuple()}.
+create_agent(Client, AwsAccountId, Input) ->
+    create_agent(Client, AwsAccountId, Input, []).
+
+-spec create_agent(aws_client:aws_client(), binary() | list(), create_agent_request(), proplists:proplist()) ->
+    {ok, create_agent_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_errors(), tuple()}.
+create_agent(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an analysis in Amazon Quick Sight.
 %%
 %% Analyses can be created either from a template or from an
@@ -17449,6 +18303,45 @@ create_data_source(Client, AwsAccountId, Input) ->
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new flow in the specified Amazon Web Services account.
+%%
+%% Creates both a DRAFT and PUBLISHED (auto-published) version.
+%%
+%% This operation is idempotent. Supply a `ClientToken' to safely retry
+%% without creating duplicate resources.
+-spec create_flow(aws_client:aws_client(), binary() | list(), create_flow_request()) ->
+    {ok, create_flow_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_errors(), tuple()}.
+create_flow(Client, AwsAccountId, Input) ->
+    create_flow(Client, AwsAccountId, Input, []).
+
+-spec create_flow(aws_client:aws_client(), binary() | list(), create_flow_request(), proplists:proplist()) ->
+    {ok, create_flow_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_errors(), tuple()}.
+create_flow(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -17844,6 +18737,43 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input)
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Amazon QuickSight space.
+%%
+%% A space is a collection of resources that can be used to organize and
+%% manage QuickSight assets.
+-spec create_space(aws_client:aws_client(), binary() | list(), create_space_request()) ->
+    {ok, create_space_response(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
+create_space(Client, AwsAccountId, Input) ->
+    create_space(Client, AwsAccountId, Input, []).
+
+-spec create_space(aws_client:aws_client(), binary() | list(), create_space_request(), proplists:proplist()) ->
+    {ok, create_space_response(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
+create_space(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -18314,6 +19244,40 @@ delete_action_connector(Client, ActionConnectorId, AwsAccountId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an agent.
+-spec delete_agent(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_request()) ->
+    {ok, delete_agent_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_errors(), tuple()}.
+delete_agent(Client, AgentId, AwsAccountId, Input) ->
+    delete_agent(Client, AgentId, AwsAccountId, Input, []).
+
+-spec delete_agent(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_request(), proplists:proplist()) ->
+    {ok, delete_agent_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_errors(), tuple()}.
+delete_agent(Client, AgentId, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents/", aws_util:encode_uri(AgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an analysis from Amazon Quick Sight.
 %%
 %% You can optionally include a recovery window during
@@ -18664,6 +19628,43 @@ delete_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
                      {<<"namespace">>, <<"Namespace">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Permanently deletes a flow from the specified Amazon Web Services
+%% account.
+%%
+%% This operation cannot be undone.
+-spec delete_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_request()) ->
+    {ok, delete_flow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_errors(), tuple()}.
+delete_flow(Client, AwsAccountId, FlowId, Input) ->
+    delete_flow(Client, AwsAccountId, FlowId, Input, []).
+
+-spec delete_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_request(), proplists:proplist()) ->
+    {ok, delete_flow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_errors(), tuple()}.
+delete_flow(Client, AwsAccountId, FlowId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an empty folder.
@@ -19034,6 +20035,40 @@ delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon QuickSight space.
+-spec delete_space(aws_client:aws_client(), binary() | list(), binary() | list(), delete_space_request()) ->
+    {ok, delete_space_response(), tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
+delete_space(Client, AwsAccountId, SpaceId, Input) ->
+    delete_space(Client, AwsAccountId, SpaceId, Input, []).
+
+-spec delete_space(aws_client:aws_client(), binary() | list(), binary() | list(), delete_space_request(), proplists:proplist()) ->
+    {ok, delete_space_response(), tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
+delete_space(Client, AwsAccountId, SpaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -19693,6 +20728,80 @@ describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, Q
 describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an agent.
+-spec describe_agent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_agent_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_errors(), tuple()}.
+describe_agent(Client, AgentId, AwsAccountId)
+  when is_map(Client) ->
+    describe_agent(Client, AgentId, AwsAccountId, #{}, #{}).
+
+-spec describe_agent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_agent_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_errors(), tuple()}.
+describe_agent(Client, AgentId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_agent(Client, AgentId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_agent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_agent_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_errors(), tuple()}.
+describe_agent(Client, AgentId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents/", aws_util:encode_uri(AgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the resource permissions for an agent.
+-spec describe_agent_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_agent_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_permissions_errors(), tuple()}.
+describe_agent_permissions(Client, AgentId, AwsAccountId)
+  when is_map(Client) ->
+    describe_agent_permissions(Client, AgentId, AwsAccountId, #{}, #{}).
+
+-spec describe_agent_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_agent_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_permissions_errors(), tuple()}.
+describe_agent_permissions(Client, AgentId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_agent_permissions(Client, AgentId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_agent_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_agent_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_agent_permissions_errors(), tuple()}.
+describe_agent_permissions(Client, AgentId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents/", aws_util:encode_uri(AgentId), "/permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20652,6 +21761,48 @@ describe_default_q_business_application(Client, AwsAccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the full details of a flow for the latest version of the
+%% requested publish state.
+-spec describe_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_flow_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_errors(), tuple()}.
+describe_flow(Client, AwsAccountId, FlowId, PublishState)
+  when is_map(Client) ->
+    describe_flow(Client, AwsAccountId, FlowId, PublishState, #{}, #{}).
+
+-spec describe_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_flow_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_errors(), tuple()}.
+describe_flow(Client, AwsAccountId, FlowId, PublishState, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_flow(Client, AwsAccountId, FlowId, PublishState, QueryMap, HeadersMap, []).
+
+-spec describe_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_flow_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_errors(), tuple()}.
+describe_flow(Client, AwsAccountId, FlowId, PublishState, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"publish-state">>, PublishState}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a folder.
 -spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_response(), tuple()} |
@@ -21258,6 +22409,84 @@ describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, QueryMap, H
 describe_self_upgrade_configuration(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/self-upgrade-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an Amazon QuickSight space.
+-spec describe_space(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_space_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_errors(), tuple()}.
+describe_space(Client, AwsAccountId, SpaceId)
+  when is_map(Client) ->
+    describe_space(Client, AwsAccountId, SpaceId, #{}, #{}).
+
+-spec describe_space(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_space_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_errors(), tuple()}.
+describe_space(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_space(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, []).
+
+-spec describe_space(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_space_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_errors(), tuple()}.
+describe_space(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxContributors">>, maps:get(<<"maxContributors">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the permissions for an Amazon QuickSight space.
+-spec describe_space_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_space_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_permissions_errors(), tuple()}.
+describe_space_permissions(Client, AwsAccountId, SpaceId)
+  when is_map(Client) ->
+    describe_space_permissions(Client, AwsAccountId, SpaceId, #{}, #{}).
+
+-spec describe_space_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_space_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_permissions_errors(), tuple()}.
+describe_space_permissions(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_space_permissions(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, []).
+
+-spec describe_space_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_space_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_permissions_errors(), tuple()}.
+describe_space_permissions(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), "/permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -22356,6 +23585,48 @@ list_action_connectors(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all agents in an Amazon QuickSight account.
+-spec list_agents(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_agents_errors(), tuple()}.
+list_agents(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_agents(Client, AwsAccountId, #{}, #{}).
+
+-spec list_agents(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_agents_errors(), tuple()}.
+list_agents(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agents(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_agents(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_agents_errors(), tuple()}.
+list_agents(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists Amazon Quick Sight analyses that exist in the specified Amazon
 %% Web Services account.
 -spec list_analyses(aws_client:aws_client(), binary() | list()) ->
@@ -23404,6 +24675,85 @@ list_self_upgrades(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the resources in an Amazon QuickSight space.
+-spec list_space_resources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_space_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_space_resources_errors(), tuple()}.
+list_space_resources(Client, AwsAccountId, SpaceId)
+  when is_map(Client) ->
+    list_space_resources(Client, AwsAccountId, SpaceId, #{}, #{}).
+
+-spec list_space_resources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_space_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_space_resources_errors(), tuple()}.
+list_space_resources(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_space_resources(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, []).
+
+-spec list_space_resources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_space_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_space_resources_errors(), tuple()}.
+list_space_resources(Client, AwsAccountId, SpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), "/resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all Amazon QuickSight spaces in an Amazon Web Services account.
+-spec list_spaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_spaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
+list_spaces(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_spaces(Client, AwsAccountId, #{}, #{}).
+
+-spec list_spaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_spaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
+list_spaces(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_spaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_spaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_spaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
+list_spaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags assigned to a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -24149,6 +25499,42 @@ search_action_connectors(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for agents based on specified filters.
+-spec search_agents(aws_client:aws_client(), binary() | list(), search_agents_request()) ->
+    {ok, search_agents_response(), tuple()} |
+    {error, any()} |
+    {error, search_agents_errors(), tuple()}.
+search_agents(Client, AwsAccountId, Input) ->
+    search_agents(Client, AwsAccountId, Input, []).
+
+-spec search_agents(aws_client:aws_client(), binary() | list(), search_agents_request(), proplists:proplist()) ->
+    {ok, search_agents_response(), tuple()} |
+    {error, any()} |
+    {error, search_agents_errors(), tuple()}.
+search_agents(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/agents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for analyses that belong to the user specified in the
 %% filter.
 %%
@@ -24400,6 +25786,41 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
                      {<<"next-token">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for Amazon QuickSight spaces that match the specified
+%% filters.
+-spec search_spaces(aws_client:aws_client(), binary() | list(), search_spaces_request()) ->
+    {ok, search_spaces_response(), tuple()} |
+    {error, any()} |
+    {error, search_spaces_errors(), tuple()}.
+search_spaces(Client, AwsAccountId, Input) ->
+    search_spaces(Client, AwsAccountId, Input, []).
+
+-spec search_spaces(aws_client:aws_client(), binary() | list(), search_spaces_request(), proplists:proplist()) ->
+    {ok, search_spaces_response(), tuple()} |
+    {error, any()} |
+    {error, search_spaces_errors(), tuple()}.
+search_spaces(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/search/spaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for any Q topic that exists in an Quick account.
@@ -25112,6 +26533,74 @@ update_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, Inp
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing agent.
+-spec update_agent(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_request()) ->
+    {ok, update_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_errors(), tuple()}.
+update_agent(Client, AgentId, AwsAccountId, Input) ->
+    update_agent(Client, AgentId, AwsAccountId, Input, []).
+
+-spec update_agent(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_request(), proplists:proplist()) ->
+    {ok, update_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_errors(), tuple()}.
+update_agent(Client, AgentId, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents/", aws_util:encode_uri(AgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the resource permissions for an agent.
+-spec update_agent_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_permissions_request()) ->
+    {ok, update_agent_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_permissions_errors(), tuple()}.
+update_agent_permissions(Client, AgentId, AwsAccountId, Input) ->
+    update_agent_permissions(Client, AgentId, AwsAccountId, Input, []).
+
+-spec update_agent_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_permissions_request(), proplists:proplist()) ->
+    {ok, update_agent_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_permissions_errors(), tuple()}.
+update_agent_permissions(Client, AgentId, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/agents/", aws_util:encode_uri(AgentId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an analysis in Amazon Quick Sight
 -spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request()) ->
     {ok, update_analysis_response(), tuple()} |
@@ -25710,6 +27199,44 @@ update_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
                      {<<"namespace">>, <<"Namespace">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing flow.
+%%
+%% Supply only the fields you want to change. Updates both DRAFT and
+%% PUBLISHED versions. When `FlowDefinition' is provided, all existing
+%% steps are replaced with the new definition.
+-spec update_flow(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_request()) ->
+    {ok, update_flow_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_errors(), tuple()}.
+update_flow(Client, AwsAccountId, FlowId, Input) ->
+    update_flow(Client, AwsAccountId, FlowId, Input, []).
+
+-spec update_flow(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_request(), proplists:proplist()) ->
+    {ok, update_flow_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_errors(), tuple()}.
+update_flow(Client, AwsAccountId, FlowId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates permissions against principals on a flow.
@@ -26319,6 +27846,108 @@ update_self_upgrade_configuration(Client, AwsAccountId, Namespace, Input) ->
 update_self_upgrade_configuration(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/self-upgrade-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the metadata of an Amazon QuickSight space.
+-spec update_space(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_request()) ->
+    {ok, update_space_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
+update_space(Client, AwsAccountId, SpaceId, Input) ->
+    update_space(Client, AwsAccountId, SpaceId, Input, []).
+
+-spec update_space(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_request(), proplists:proplist()) ->
+    {ok, update_space_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
+update_space(Client, AwsAccountId, SpaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the permissions for an Amazon QuickSight space.
+-spec update_space_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_permissions_request()) ->
+    {ok, update_space_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_permissions_errors(), tuple()}.
+update_space_permissions(Client, AwsAccountId, SpaceId, Input) ->
+    update_space_permissions(Client, AwsAccountId, SpaceId, Input, []).
+
+-spec update_space_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_permissions_request(), proplists:proplist()) ->
+    {ok, update_space_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_permissions_errors(), tuple()}.
+update_space_permissions(Client, AwsAccountId, SpaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds or removes resources from an Amazon QuickSight space.
+-spec update_space_resources(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_resources_request()) ->
+    {ok, update_space_resources_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_resources_errors(), tuple()}.
+update_space_resources(Client, AwsAccountId, SpaceId, Input) ->
+    update_space_resources(Client, AwsAccountId, SpaceId, Input, []).
+
+-spec update_space_resources(aws_client:aws_client(), binary() | list(), binary() | list(), update_space_resources_request(), proplists:proplist()) ->
+    {ok, update_space_resources_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_resources_errors(), tuple()}.
+update_space_resources(Client, AwsAccountId, SpaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/spaces/", aws_util:encode_uri(SpaceId), "/resources"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

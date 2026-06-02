@@ -146,6 +146,8 @@
          create_user_pool_client/3,
          create_user_pool_domain/2,
          create_user_pool_domain/3,
+         create_user_pool_replica/2,
+         create_user_pool_replica/3,
          delete_group/2,
          delete_group/3,
          delete_identity_provider/2,
@@ -168,6 +170,8 @@
          delete_user_pool_client_secret/3,
          delete_user_pool_domain/2,
          delete_user_pool_domain/3,
+         delete_user_pool_replica/2,
+         delete_user_pool_replica/3,
          delete_web_authn_credential/2,
          delete_web_authn_credential/3,
          describe_identity_provider/2,
@@ -240,6 +244,8 @@
          list_user_pool_client_secrets/3,
          list_user_pool_clients/2,
          list_user_pool_clients/3,
+         list_user_pool_replicas/2,
+         list_user_pool_replicas/3,
          list_user_pools/2,
          list_user_pools/3,
          list_users/2,
@@ -300,6 +306,8 @@
          update_user_pool_client/3,
          update_user_pool_domain/2,
          update_user_pool_domain/3,
+         update_user_pool_replica/2,
+         update_user_pool_replica/3,
          verify_software_token/2,
          verify_software_token/3,
          verify_user_attribute/2,
@@ -311,7 +319,8 @@
 %% Example:
 %% create_user_pool_domain_response() :: #{
 %%   <<"CloudFrontDomain">> => string(),
-%%   <<"ManagedLoginVersion">> => integer()
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type()
 %% }
 -type create_user_pool_domain_response() :: #{binary() => any()}.
 
@@ -395,6 +404,13 @@
 -type set_user_mfa_preference_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_user_pool_replica_request() :: #{
+%%   <<"RegionName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_replica_request() :: #{binary() => any()}.
+
+%% Example:
 %% web_authn_challenge_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -418,6 +434,8 @@
 %%   <<"EmailConfiguration">> => email_configuration_type(),
 %%   <<"EmailVerificationMessage">> => string(),
 %%   <<"EmailVerificationSubject">> => string(),
+%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
+%%   <<"KeyConfiguration">> => key_configuration_type(),
 %%   <<"LambdaConfig">> => lambda_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"Policies">> => user_pool_policy_type(),
@@ -608,6 +626,7 @@
 %%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> := string(),
 %%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
 %%   <<"UserPoolId">> := string()
 %% }
 -type create_user_pool_domain_request() :: #{binary() => any()}.
@@ -635,7 +654,8 @@
 %% Example:
 %% update_user_pool_domain_response() :: #{
 %%   <<"CloudFrontDomain">> => string(),
-%%   <<"ManagedLoginVersion">> => integer()
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type()
 %% }
 -type update_user_pool_domain_response() :: #{binary() => any()}.
 
@@ -678,6 +698,12 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type admin_link_provider_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% issuer_configuration_type() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type issuer_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_attributes_request() :: #{
@@ -850,6 +876,13 @@
 -type list_users_in_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_user_pool_replicas_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_replicas_request() :: #{binary() => any()}.
+
+%% Example:
 %% user_type() :: #{
 %%   <<"Attributes">> => list(attribute_type()),
 %%   <<"Enabled">> => boolean(),
@@ -929,6 +962,7 @@
 %%   <<"LambdaConfig">> => lambda_config_type(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"ReplicaRegions">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type user_pool_description_type() :: #{binary() => any()}.
@@ -977,6 +1011,15 @@
 %%   <<"User">> => user_type()
 %% }
 -type admin_create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_replica_type() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolArn">> => string()
+%% }
+-type user_pool_replica_type() :: #{binary() => any()}.
 
 %% Example:
 %% web_authn_relying_party_mismatch_exception() :: #{
@@ -1175,6 +1218,7 @@
 %%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> := string(),
 %%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
 %%   <<"UserPoolId">> := string()
 %% }
 -type update_user_pool_domain_request() :: #{binary() => any()}.
@@ -1261,6 +1305,13 @@
 %%   <<"UserPoolId">> => string()
 %% }
 -type identity_provider_type() :: #{binary() => any()}.
+
+%% Example:
+%% key_configuration_type() :: #{
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type key_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_server_request() :: #{
@@ -1383,6 +1434,14 @@
 %%   <<"Certificate">> => string()
 %% }
 -type get_signing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_replica_request() :: #{
+%%   <<"RegionName">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"UserPoolTags">> => map()
+%% }
+-type create_user_pool_replica_request() :: #{binary() => any()}.
 
 %% Example:
 %% custom_email_lambda_version_config_type() :: #{
@@ -1660,6 +1719,8 @@
 %%   <<"EmailConfiguration">> => email_configuration_type(),
 %%   <<"EmailVerificationMessage">> => string(),
 %%   <<"EmailVerificationSubject">> => string(),
+%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
+%%   <<"KeyConfiguration">> => key_configuration_type(),
 %%   <<"LambdaConfig">> => lambda_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"Policies">> => user_pool_policy_type(),
@@ -2184,6 +2245,12 @@
 -type user_pool_add_ons_type() :: #{binary() => any()}.
 
 %% Example:
+%% routing_type() :: #{
+%%   <<"Failover">> => failover_type()
+%% }
+-type routing_type() :: #{binary() => any()}.
+
+%% Example:
 %% describe_user_pool_request() :: #{
 %%   <<"UserPoolId">> := string()
 %% }
@@ -2226,6 +2293,12 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type delete_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
+%% }
+-type update_user_pool_replica_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_user_import_jobs_request() :: #{
@@ -2392,6 +2465,12 @@
 -type log_configuration_type() :: #{binary() => any()}.
 
 %% Example:
+%% operation_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
 %% global_sign_out_response() :: #{
 
 %% }
@@ -2511,6 +2590,13 @@
 %%   <<"Username">> := string()
 %% }
 -type update_auth_event_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_replicas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolReplicas">> => list(user_pool_replica_type())
+%% }
+-type list_user_pool_replicas_response() :: #{binary() => any()}.
 
 %% Example:
 %% asset_type() :: #{
@@ -2669,6 +2755,12 @@
 -type stop_user_import_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
+%% }
+-type delete_user_pool_replica_response() :: #{binary() => any()}.
+
+%% Example:
 %% notify_configuration_type() :: #{
 %%   <<"BlockEmail">> => notify_email_type(),
 %%   <<"From">> => string(),
@@ -2685,6 +2777,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type admin_list_groups_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_replica_request() :: #{
+%%   <<"RegionName">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_user_pool_replica_request() :: #{binary() => any()}.
 
 %% Example:
 %% username_exists_exception() :: #{
@@ -2891,6 +2991,13 @@
 -type admin_initiate_auth_response() :: #{binary() => any()}.
 
 %% Example:
+%% failover_type() :: #{
+%%   <<"PrimaryRoute53HealthCheckId">> => string(),
+%%   <<"SecondaryRegion">> => string()
+%% }
+-type failover_type() :: #{binary() => any()}.
+
+%% Example:
 %% get_group_request() :: #{
 %%   <<"GroupName">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -2980,11 +3087,13 @@
 %% Example:
 %% user_pool_type() :: #{
 %%   <<"SchemaAttributes">> => list(schema_attribute_type()),
+%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
 %%   <<"Policies">> => user_pool_policy_type(),
 %%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
 %%   <<"CustomDomain">> => string(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"EstimatedNumberOfUsers">> => integer(),
+%%   <<"KeyConfiguration">> => key_configuration_type(),
 %%   <<"Id">> => string(),
 %%   <<"UserPoolTags">> => map(),
 %%   <<"EmailConfigurationFailure">> => string(),
@@ -3027,6 +3136,12 @@
 %%   <<"message">> => string()
 %% }
 -type precondition_not_met_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
+%% }
+-type create_user_pool_replica_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_delete_user_attributes_response() :: #{
@@ -3232,6 +3347,7 @@
 %%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> => string(),
 %%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"UserPoolId">> => string(),
@@ -3242,6 +3358,7 @@
 -type add_custom_attributes_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception() | 
@@ -3258,6 +3375,7 @@
 -type admin_add_user_to_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3268,6 +3386,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3285,6 +3404,7 @@
     code_delivery_failure_exception() | 
     username_exists_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3297,6 +3417,7 @@
 -type admin_delete_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3305,6 +3426,7 @@
 -type admin_delete_user_attributes_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3313,6 +3435,7 @@
 -type admin_disable_provider_for_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3322,6 +3445,7 @@
 -type admin_disable_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3330,6 +3454,7 @@
 -type admin_enable_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3338,6 +3463,7 @@
 -type admin_forget_device_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3347,6 +3473,7 @@
 -type admin_get_device_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -3355,6 +3482,7 @@
 -type admin_get_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3366,6 +3494,7 @@
     mfa_method_not_found_exception() | 
     invalid_sms_role_trust_relationship_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
@@ -3383,6 +3512,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3392,6 +3522,7 @@
 -type admin_list_devices_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -3400,6 +3531,7 @@
 -type admin_list_groups_for_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3408,6 +3540,7 @@
 -type admin_list_user_auth_events_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3417,6 +3550,7 @@
 -type admin_remove_user_from_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3428,6 +3562,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3445,6 +3580,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     software_token_mfa_not_found_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
@@ -3464,6 +3600,7 @@
 -type admin_set_user_mfa_preference_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -3474,6 +3611,7 @@
     internal_error_exception() | 
     invalid_password_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3483,6 +3621,7 @@
 -type admin_set_user_settings_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception().
@@ -3490,6 +3629,7 @@
 -type admin_update_auth_event_feedback_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3499,6 +3639,7 @@
 -type admin_update_device_status_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3510,6 +3651,7 @@
     internal_error_exception() | 
     invalid_sms_role_trust_relationship_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3523,6 +3665,7 @@
 -type admin_user_global_sign_out_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
@@ -3533,6 +3676,7 @@
     concurrent_modification_exception() | 
     software_token_mfa_not_found_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     forbidden_exception().
@@ -3542,6 +3686,7 @@
     invalid_password_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -3557,6 +3702,7 @@
     limit_exceeded_exception() | 
     web_authn_not_enabled_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     web_authn_credential_not_supported_exception() | 
     web_authn_client_mismatch_exception() | 
@@ -3572,6 +3718,7 @@
     invalid_password_exception() | 
     username_exists_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     invalid_lambda_response_exception() | 
@@ -3588,6 +3735,7 @@
     invalid_password_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     expired_code_exception() | 
@@ -3606,6 +3754,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     expired_code_exception() | 
@@ -3622,6 +3771,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     group_exists_exception() | 
     resource_not_found_exception() | 
@@ -3641,6 +3791,7 @@
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     managed_login_branding_exists_exception() | 
     resource_not_found_exception() | 
@@ -3650,6 +3801,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3660,6 +3812,7 @@
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3669,6 +3822,7 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3690,6 +3844,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     invalid_o_auth_flow_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -3702,13 +3857,26 @@
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     feature_unavailable_in_tier_exception() | 
     resource_not_found_exception().
 
+-type create_user_pool_replica_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    user_pool_tagging_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type delete_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3726,6 +3894,7 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3733,6 +3902,7 @@
 -type delete_resource_server_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3741,6 +3911,7 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3748,6 +3919,7 @@
 -type delete_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -3759,6 +3931,7 @@
 -type delete_user_attributes_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -3770,6 +3943,7 @@
 -type delete_user_pool_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception() | 
@@ -3779,6 +3953,7 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3794,13 +3969,23 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception().
+
+-type delete_user_pool_replica_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 -type delete_web_authn_credential_errors() ::
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     password_reset_required_exception() | 
     resource_not_found_exception() | 
@@ -3817,6 +4002,7 @@
 -type describe_managed_login_branding_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3824,6 +4010,7 @@
 -type describe_managed_login_branding_by_client_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3831,6 +4018,7 @@
 -type describe_resource_server_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3838,6 +4026,7 @@
 -type describe_risk_configuration_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -3846,6 +4035,7 @@
 -type describe_terms_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3853,6 +4043,7 @@
 -type describe_user_import_job_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3860,6 +4051,7 @@
 -type describe_user_pool_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_pool_tagging_exception() | 
     resource_not_found_exception() | 
@@ -3868,6 +4060,7 @@
 -type describe_user_pool_client_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3875,12 +4068,14 @@
 -type describe_user_pool_domain_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception().
 
 -type forget_device_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3897,6 +4092,7 @@
     code_delivery_failure_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3910,6 +4106,7 @@
 -type get_csv_header_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3917,6 +4114,7 @@
 -type get_device_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -3929,6 +4127,7 @@
 -type get_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3950,12 +4149,14 @@
 -type get_signing_certificate_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     resource_not_found_exception().
 
 -type get_tokens_from_refresh_token_errors() ::
     unexpected_lambda_exception() | 
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -3968,6 +4169,7 @@
 -type get_ui_customization_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3975,6 +4177,7 @@
 -type get_user_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -3990,6 +4193,7 @@
     code_delivery_failure_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -4005,6 +4209,7 @@
 -type get_user_auth_factors_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -4023,6 +4228,7 @@
 -type global_sign_out_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     password_reset_required_exception() | 
     resource_not_found_exception() | 
@@ -4035,6 +4241,7 @@
     internal_error_exception() | 
     invalid_sms_role_trust_relationship_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
@@ -4052,6 +4259,7 @@
 -type list_devices_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -4064,6 +4272,7 @@
 -type list_groups_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4078,6 +4287,7 @@
 -type list_resource_servers_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4085,6 +4295,7 @@
 -type list_tags_for_resource_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4092,6 +4303,7 @@
 -type list_terms_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4099,6 +4311,7 @@
 -type list_user_import_jobs_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4113,6 +4326,15 @@
 -type list_user_pool_clients_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_user_pool_replicas_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4126,6 +4348,7 @@
 -type list_users_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4133,6 +4356,7 @@
 -type list_users_in_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4141,6 +4365,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     password_reset_required_exception() | 
     too_many_requests_exception() | 
@@ -4153,6 +4378,7 @@
     code_delivery_failure_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -4171,6 +4397,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     software_token_mfa_not_found_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
@@ -4191,6 +4418,7 @@
 -type revoke_token_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
     unauthorized_exception() | 
@@ -4209,6 +4437,7 @@
     internal_error_exception() | 
     code_delivery_failure_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -4218,6 +4447,7 @@
 -type set_ui_customization_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4225,6 +4455,7 @@
 -type set_user_mfa_preference_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -4237,6 +4468,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     feature_unavailable_in_tier_exception() | 
     resource_not_found_exception() | 
@@ -4246,6 +4478,7 @@
 -type set_user_settings_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
     password_reset_required_exception() | 
@@ -4262,6 +4495,7 @@
     limit_exceeded_exception() | 
     username_exists_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
@@ -4275,6 +4509,7 @@
     internal_error_exception() | 
     precondition_not_met_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4284,6 +4519,7 @@
     limit_exceeded_exception() | 
     web_authn_not_enabled_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     web_authn_configuration_missing_exception() | 
     password_reset_required_exception() | 
@@ -4294,6 +4530,7 @@
     internal_error_exception() | 
     precondition_not_met_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4301,6 +4538,7 @@
 -type tag_resource_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4308,6 +4546,7 @@
 -type untag_resource_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4315,6 +4554,7 @@
 -type update_auth_event_feedback_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -4324,6 +4564,7 @@
 -type update_device_status_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -4336,6 +4577,7 @@
 -type update_group_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4353,6 +4595,7 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4360,6 +4603,7 @@
 -type update_resource_server_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4369,6 +4613,7 @@
     terms_exists_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -4379,6 +4624,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     code_delivery_failure_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_lambda_validation_exception() | 
     expired_code_exception() | 
@@ -4399,6 +4645,7 @@
     invalid_sms_role_trust_relationship_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     user_pool_tagging_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -4413,6 +4660,7 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     invalid_o_auth_flow_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -4424,8 +4672,17 @@
     internal_error_exception() | 
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     feature_unavailable_in_tier_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_user_pool_replica_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
@@ -4434,6 +4691,7 @@
     enable_software_token_mfa_exception() | 
     software_token_mfa_not_found_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     invalid_user_pool_configuration_exception() | 
     not_authorized_exception() | 
     user_not_found_exception() | 
@@ -4448,6 +4706,7 @@
     internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     expired_code_exception() | 
     user_not_found_exception() | 
@@ -6442,6 +6701,44 @@ create_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolDomain">>, Input, Options).
 
+%% @doc Creates a replica of an existing user pool in a specified Amazon Web
+%% Services Region.
+%%
+%% The replica
+%% enables multi-region replication for high availability and disaster
+%% recovery. To create
+%% a replica, you must have permissions to create user pools in the target
+%% Region.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_user_pool_replica(aws_client:aws_client(), create_user_pool_replica_request()) ->
+    {ok, create_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_pool_replica_errors(), tuple()}.
+create_user_pool_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_user_pool_replica(Client, Input, []).
+
+-spec create_user_pool_replica(aws_client:aws_client(), create_user_pool_replica_request(), proplists:proplist()) ->
+    {ok, create_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_pool_replica_errors(), tuple()}.
+create_user_pool_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUserPoolReplica">>, Input, Options).
+
 %% @doc Deletes a group from the specified user pool.
 %%
 %% When you delete a group, that group no
@@ -6793,6 +7090,40 @@ delete_user_pool_domain(Client, Input)
 delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
+
+%% @doc Deletes a secondary replica user pool.
+%%
+%% You can only delete replicas that are in the
+%% INACTIVE status. This operation must be called from the primary Region.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec delete_user_pool_replica(aws_client:aws_client(), delete_user_pool_replica_request()) ->
+    {ok, delete_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_pool_replica_errors(), tuple()}.
+delete_user_pool_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_user_pool_replica(Client, Input, []).
+
+-spec delete_user_pool_replica(aws_client:aws_client(), delete_user_pool_replica_request(), proplists:proplist()) ->
+    {ok, delete_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_pool_replica_errors(), tuple()}.
+delete_user_pool_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteUserPoolReplica">>, Input, Options).
 
 %% @doc Deletes a registered passkey, or WebAuthn, authenticator for the
 %% currently signed-in
@@ -8070,6 +8401,43 @@ list_user_pool_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPoolClients">>, Input, Options).
 
+%% @doc Lists all replicas for a user pool, including both primary and
+%% secondary replicas.
+%%
+%% We
+%% recommend using pagination to ensure that the operation returns quickly
+%% and
+%% successfully.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_user_pool_replicas(aws_client:aws_client(), list_user_pool_replicas_request()) ->
+    {ok, list_user_pool_replicas_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_pool_replicas_errors(), tuple()}.
+list_user_pool_replicas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_user_pool_replicas(Client, Input, []).
+
+-spec list_user_pool_replicas(aws_client:aws_client(), list_user_pool_replicas_request(), proplists:proplist()) ->
+    {ok, list_user_pool_replicas_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_pool_replicas_errors(), tuple()}.
+list_user_pool_replicas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUserPoolReplicas">>, Input, Options).
+
 %% @doc Lists user pools and their details in the current Amazon Web Services
 %% account.
 %%
@@ -8426,6 +8794,14 @@ set_log_delivery_configuration(Client, Input, Options)
 %% request. To activate this setting, your user pool must be on the
 %% Plus tier:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-plus.html.
+%%
+%% In secondary regions for user pools with multi-region replication, only
+%% the
+%% `SourceARN' and `From' attributes of
+%% `NotifyConfiguration' can be modified to configure region-specific SES
+%% integration. All other risk configuration settings must match the existing
+%% values to
+%% maintain consistency across replicas.
 -spec set_risk_configuration(aws_client:aws_client(), set_risk_configuration_request()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
@@ -9210,8 +9586,16 @@ update_user_attributes(Client, Input, Options)
 %% your user
 %% pool, modified to include the changes that you want to make.
 %%
-%% With the exception of `UserPoolTier', if you don't provide a value
-%% for an attribute, Amazon Cognito sets it to its default value.
+%% If you don't provide a value for an attribute, Amazon Cognito sets it
+%% to its default value.
+%%
+%% In secondary regions for user pools with multi-region replication,
+%% regional
+%% configurations for email, SMS, Lambda functions, and tags can be updated.
+%% Both global
+%% and regional settings must be provided as inputs, with global settings
+%% required to match
+%% existing values to maintain consistency across replicas.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers
@@ -9382,6 +9766,42 @@ update_user_pool_domain(Client, Input)
 update_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolDomain">>, Input, Options).
+
+%% @doc Updates replica-specific settings for a user pool replica.
+%%
+%% You can modify the status
+%% to activate or deactivate the replica. This request can be made in both
+%% primary and secondary
+%% regions of the user pool.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_user_pool_replica(aws_client:aws_client(), update_user_pool_replica_request()) ->
+    {ok, update_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_pool_replica_errors(), tuple()}.
+update_user_pool_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_user_pool_replica(Client, Input, []).
+
+-spec update_user_pool_replica(aws_client:aws_client(), update_user_pool_replica_request(), proplists:proplist()) ->
+    {ok, update_user_pool_replica_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_pool_replica_errors(), tuple()}.
+update_user_pool_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateUserPoolReplica">>, Input, Options).
 
 %% @doc Registers the current user's time-based one-time password (TOTP)
 %% authenticator
