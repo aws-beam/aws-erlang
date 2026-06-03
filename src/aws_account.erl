@@ -1051,8 +1051,12 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
                          ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
-        true ->
-          maps:get(<<"Body">>, Input, <<"">>);
+         true when is_list(Input) ->
+           proplists:get_value(<<"Body">>, Input, <<"">>);
+         true when Input =:= undefined ->
+           <<"">>;
+         true ->
+           maps:get(<<"Body">>, Input, <<"">>);
         false ->
           encode_payload(Input)
       end,
@@ -1129,6 +1133,7 @@ build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
+
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),
@@ -1140,3 +1145,4 @@ encode_payload(undefined) ->
   <<>>;
 encode_payload(Input) ->
   jsx:encode(Input).
+

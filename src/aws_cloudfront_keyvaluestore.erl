@@ -249,13 +249,15 @@ delete_key(Client, Key, KvsARN, Input) ->
     {error, delete_key_errors(), tuple()}.
 delete_key(Client, Key, KvsARN, Input0, Options0) ->
     Method = delete,
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), "/keys/", aws_util:encode_uri(Key, full), ""],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
                {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
+               {append_sha256_content_hash, false},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     HeadersMapping = [
@@ -310,12 +312,14 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap)
     {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), ""],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), ""],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     Headers = [],
@@ -363,12 +367,14 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap)
     {error, get_key_errors(), tuple()}.
 get_key(Client, Key, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), "/keys/", aws_util:encode_uri(Key, full), ""],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     Headers = [],
@@ -400,12 +406,14 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap)
     {error, list_keys_errors(), tuple()}.
 list_keys(Client, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys"],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), "/keys"],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     Headers = [],
@@ -434,13 +442,15 @@ put_key(Client, Key, KvsARN, Input) ->
     {error, put_key_errors(), tuple()}.
 put_key(Client, Key, KvsARN, Input0, Options0) ->
     Method = put,
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), "/keys/", aws_util:encode_uri(Key, full), ""],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
                {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
+               {append_sha256_content_hash, false},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     HeadersMapping = [
@@ -487,13 +497,15 @@ update_keys(Client, KvsARN, Input) ->
     {error, update_keys_errors(), tuple()}.
 update_keys(Client, KvsARN, Input0, Options0) ->
     Method = post,
-    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys"],
+    Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN, full), "/keys"],
     SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
                {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
+               {append_sha256_content_hash, false},
+               {account, get_account_id(KvsARN)},
+               {sign_with_v4a, true}
                | Options2],
 
     HeadersMapping = [
@@ -548,7 +560,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"cloudfront-keyvaluestore">>},
-    DefaultHost = build_host(<<"cloudfront-keyvaluestore">>, Client1),
+    DefaultHost = build_host(proplists:get_value(account, Options), <<"cloudfront-kvs">>, Client1),
     URL0 = build_url(DefaultHost, Path, Client1),
     PathBin = erlang:iolist_to_binary(Path),
     {URL1, Host} = aws_util:apply_endpoint_url_override(URL0, DefaultHost, PathBin, <<"AWS_ENDPOINT_URL_CLOUDFRONT_KEYVALUESTORE">>),
@@ -558,8 +570,12 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
                          ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
-        true ->
-          maps:get(<<"Body">>, Input, <<"">>);
+         true when is_list(Input) ->
+           proplists:get_value(<<"Body">>, Input, <<"">>);
+         true when Input =:= undefined ->
+           <<"">>;
+         true ->
+           maps:get(<<"Body">>, Input, <<"">>);
         false ->
           encode_payload(Input)
       end,
@@ -572,7 +588,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
-    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
+    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload, [{sign_with_v4a, true}, {uri_encode_path, false}]),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
@@ -630,12 +646,14 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
 handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
-build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+build_host(_AccountPrefix, _EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
-build_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_AccountPrefix, _EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+build_host(AccountPrefix, EndpointPrefix, #{region := <<"global">>, endpoint := Endpoint}) ->
+    aws_util:binary_join([AccountPrefix, EndpointPrefix, <<"global">>, Endpoint], <<".">>).
+
+
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),
@@ -647,3 +665,7 @@ encode_payload(undefined) ->
   <<>>;
 encode_payload(Input) ->
   jsx:encode(Input).
+
+get_account_id(Arn) ->
+  [<<"arn">>, <<"aws">>, <<"cloudfront">>, <<>>, AccountId, _Rest] = binary:split(Arn, <<":">>, [global]),
+  AccountId.
