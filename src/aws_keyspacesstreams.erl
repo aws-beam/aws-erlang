@@ -59,6 +59,7 @@
 %% Example:
 %% get_records_output() :: #{
 %%   <<"changeRecords">> => list(record()),
+%%   <<"iteratorDescription">> => iterator_description(),
 %%   <<"nextShardIterator">> => string()
 %% }
 -type get_records_output() :: #{binary() => any()}.
@@ -106,6 +107,12 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% iterator_description() :: #{
+%%   <<"iteratorPosition">> => list(any())
+%% }
+-type iterator_description() :: #{binary() => any()}.
 
 %% Example:
 %% keyspaces_cell() :: #{

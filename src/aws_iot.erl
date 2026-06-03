@@ -15409,6 +15409,12 @@ get_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the live connectivity status per device.
+%%
+%% If a device has never connected to IoT Core or was disconnected for more
+%% than 1 hour before fleet indexing's
+%% `thingConnectivityIndexingMode' was enabled, the response will have
+%% the `connected' field set to `false' with no additional session
+%% details.
 -spec get_thing_connectivity_data(aws_client:aws_client(), binary() | list(), get_thing_connectivity_data_request()) ->
     {ok, get_thing_connectivity_data_response(), tuple()} |
     {error, any()} |
@@ -19130,7 +19136,13 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The query search index.
+%% @doc Searches the specified index.
+%%
+%% If a device has never connected to IoT Core or was disconnected for more
+%% than 1 hour before fleet indexing's
+%% `thingConnectivityIndexingMode' was enabled, the `connectivity'
+%% object for this device in the response will have the `connected' field
+%% set to `false' with no additional session details.
 %%
 %% Requires permission to access the SearchIndex:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions

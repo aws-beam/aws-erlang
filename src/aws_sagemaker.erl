@@ -104,6 +104,8 @@
          create_inference_experiment/3,
          create_inference_recommendations_job/2,
          create_inference_recommendations_job/3,
+         create_job/2,
+         create_job/3,
          create_labeling_job/2,
          create_labeling_job/3,
          create_mlflow_app/2,
@@ -240,6 +242,8 @@
          delete_inference_component/3,
          delete_inference_experiment/2,
          delete_inference_experiment/3,
+         delete_job/2,
+         delete_job/3,
          delete_mlflow_app/2,
          delete_mlflow_app/3,
          delete_mlflow_tracking_server/2,
@@ -374,6 +378,10 @@
          describe_inference_experiment/3,
          describe_inference_recommendations_job/2,
          describe_inference_recommendations_job/3,
+         describe_job/2,
+         describe_job/3,
+         describe_job_schema_version/2,
+         describe_job_schema_version/3,
          describe_labeling_job/2,
          describe_labeling_job/3,
          describe_lineage_group/2,
@@ -552,6 +560,10 @@
          list_inference_recommendations_job_steps/3,
          list_inference_recommendations_jobs/2,
          list_inference_recommendations_jobs/3,
+         list_job_schema_versions/2,
+         list_job_schema_versions/3,
+         list_jobs/2,
+         list_jobs/3,
          list_labeling_jobs/2,
          list_labeling_jobs/3,
          list_labeling_jobs_for_workteam/2,
@@ -696,6 +708,8 @@
          stop_inference_experiment/3,
          stop_inference_recommendations_job/2,
          stop_inference_recommendations_job/3,
+         stop_job/2,
+         stop_job/3,
          stop_labeling_job/2,
          stop_labeling_job/3,
          stop_mlflow_tracking_server/2,
@@ -1654,6 +1668,25 @@
 -type create_model_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigDocument">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% trial_component_source() :: #{
 %%   <<"SourceArn">> => string(),
 %%   <<"SourceType">> => string()
@@ -1837,6 +1870,12 @@
 -type add_association_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_job_response() :: #{
+%%   <<"JobArn">> => string()
+%% }
+-type create_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_execution_step_metadata() :: #{
 %%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
 %%   <<"BedrockCustomModel">> => bedrock_custom_model_metadata(),
@@ -1851,6 +1890,7 @@
 %%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
 %%   <<"Fail">> => fail_step_metadata(),
 %%   <<"InferenceComponent">> => inference_component_metadata(),
+%%   <<"Job">> => job_step_metadata(),
 %%   <<"Lambda">> => lambda_step_metadata(),
 %%   <<"Lineage">> => lineage_metadata(),
 %%   <<"Model">> => model_step_metadata(),
@@ -2723,6 +2763,22 @@
 %%   <<"Weight">> => integer()
 %% }
 -type priority_class() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"JobCategory">> := list(any()),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% role_group_assignment() :: #{
@@ -3852,6 +3908,13 @@
 -type model_package_group() :: #{binary() => any()}.
 
 %% Example:
+%% stop_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type stop_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_artifact_response() :: #{
 %%   <<"ArtifactArn">> => string()
 %% }
@@ -3890,6 +3953,13 @@
 -type list_compute_quotas_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_jobs_response() :: #{
+%%   <<"JobSummaries">> => list(job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+%% Example:
 %% monitoring_statistics_resource() :: #{
 %%   <<"S3Uri">> => string()
 %% }
@@ -3923,6 +3993,17 @@
 %%   <<"TrainingJobName">> := string()
 %% }
 -type describe_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobConfigDocument">> := string(),
+%%   <<"JobConfigSchemaVersion">> := string(),
+%%   <<"JobName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_inference_component_runtime_config_output() :: #{
@@ -5399,6 +5480,13 @@
 -type suggestion_query() :: #{binary() => any()}.
 
 %% Example:
+%% describe_job_schema_version_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type describe_job_schema_version_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_human_task_uis_response() :: #{
 %%   <<"HumanTaskUiSummaries">> => list(human_task_ui_summary()),
 %%   <<"NextToken">> => string()
@@ -5537,6 +5625,19 @@
 %%   <<"Type">> => list(any())
 %% }
 -type hyper_parameter_specification() :: #{binary() => any()}.
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobName">> => string(),
+%%   <<"JobSecondaryStatus">> => list(any()),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type job_summary() :: #{binary() => any()}.
 
 %% Example:
 %% inference_execution_config() :: #{
@@ -6185,6 +6286,15 @@
 %%   <<"Filling">> => map()
 %% }
 -type time_series_transformations() :: #{binary() => any()}.
+
+%% Example:
+%% job_secondary_status_transition() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type job_secondary_status_transition() :: #{binary() => any()}.
 
 %% Example:
 %% describe_artifact_request() :: #{
@@ -7794,6 +7904,19 @@
 -type monitoring_execution_summary() :: #{binary() => any()}.
 
 %% Example:
+%% job_config_schema_version_summary() :: #{
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type job_config_schema_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% a_i_model_source_s3() :: #{
 %%   <<"S3Uri">> => string()
 %% }
@@ -8355,6 +8478,13 @@
 -type list_clusters_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_job_schema_versions_response() :: #{
+%%   <<"JobConfigSchemas">> => list(job_config_schema_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_schema_versions_response() :: #{binary() => any()}.
+
+%% Example:
 %% human_loop_activation_conditions_config() :: #{
 %%   <<"HumanLoopActivationConditions">> => string()
 %% }
@@ -8782,6 +8912,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_image_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_job_schema_versions_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_schema_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% warm_pool_status() :: #{
@@ -10833,6 +10971,13 @@
 -type hyper_parameter_tuning_job_objective() :: #{binary() => any()}.
 
 %% Example:
+%% delete_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_flow_definition_request() :: #{
 %%   <<"FlowDefinitionName">> := string()
 %% }
@@ -11785,6 +11930,12 @@
 -type subscribed_workteam() :: #{binary() => any()}.
 
 %% Example:
+%% job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% create_hub_request() :: #{
 %%   <<"HubDescription">> := string(),
 %%   <<"HubDisplayName">> => string(),
@@ -11917,6 +12068,14 @@
 %%   <<"ProcessingJobArn">> => string()
 %% }
 -type create_processing_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_schema_version_response() :: #{
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigSchema">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type describe_job_schema_version_response() :: #{binary() => any()}.
 
 %% Example:
 %% transform_job_step_metadata() :: #{
@@ -12957,6 +13116,12 @@
 -type text_classification_job_config() :: #{binary() => any()}.
 
 %% Example:
+%% stop_job_response() :: #{
+
+%% }
+-type stop_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_hub_content_response() :: #{
 %%   <<"HubArn">> => string(),
 %%   <<"HubContentArn">> => string()
@@ -13368,6 +13533,12 @@
 %%   <<"NotebookInstanceArn">> => string()
 %% }
 -type create_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_response() :: #{
+
+%% }
+-type delete_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_hyper_parameter_tuning_jobs_response() :: #{
@@ -14686,6 +14857,11 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
 -type create_labeling_job_errors() ::
     resource_limit_exceeded() | 
     resource_in_use().
@@ -14904,6 +15080,10 @@
     conflict_exception() | 
     resource_not_found().
 
+-type delete_job_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
 -type delete_mlflow_app_errors() ::
     resource_not_found().
 
@@ -15077,6 +15257,12 @@
 -type describe_inference_recommendations_job_errors() ::
     resource_not_found().
 
+-type describe_job_errors() ::
+    resource_not_found().
+
+-type describe_job_schema_version_errors() ::
+    resource_not_found().
+
 -type describe_labeling_job_errors() ::
     resource_not_found().
 
@@ -15212,6 +15398,9 @@
 -type list_inference_recommendations_job_steps_errors() ::
     resource_not_found().
 
+-type list_job_schema_versions_errors() ::
+    resource_not_found().
+
 -type list_labeling_jobs_for_workteam_errors() ::
     resource_not_found().
 
@@ -15327,6 +15516,9 @@
     resource_not_found().
 
 -type stop_inference_recommendations_job_errors() ::
+    resource_not_found().
+
+-type stop_job_errors() ::
     resource_not_found().
 
 -type stop_labeling_job_errors() ::
@@ -16910,6 +17102,53 @@ create_inference_recommendations_job(Client, Input)
 create_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceRecommendationsJob">>, Input, Options).
+
+%% @doc Creates a model customization job in Amazon SageMaker.
+%%
+%% A job runs a workload based on the job category and configuration you
+%% provide. You specify the job category, a schema-versioned configuration
+%% document, and an IAM role that grants Amazon SageMaker permission to
+%% access resources on your behalf.
+%%
+%% Use the `AgentRFT' category to fine-tune a model using multi-turn
+%% reinforcement learning with reward signals. Use the
+%% `AgentRFTEvaluation' category to evaluate a fine-tuned or base model
+%% by running multi-turn rollouts against a held-out prompt dataset and
+%% computing metrics such as pass@k and mean reward.
+%%
+%% Before creating a job, call `ListJobSchemaVersions' and
+%% `DescribeJobSchemaVersion' to retrieve the configuration schema for
+%% your job category. The `JobConfigDocument' must conform to the schema
+%% specified by `JobConfigSchemaVersion'.
+%%
+%% The following operations are related to `CreateJob':
+%%
+%% `DescribeJob'
+%%
+%% `ListJobs'
+%%
+%% `StopJob'
+%%
+%% `DeleteJob'
+%%
+%% `ListJobSchemaVersions'
+%%
+%% `DescribeJobSchemaVersion'
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
+    {ok, create_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
+create_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_job(Client, Input, []).
+
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
+    {ok, create_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
+create_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateJob">>, Input, Options).
 
 %% @doc Creates a job that uses workers to label the data objects in your
 %% input dataset.
@@ -18603,6 +18842,34 @@ delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
 
+%% @doc Deletes a job.
+%%
+%% This operation is idempotent. If the job is currently running, you must
+%% stop it before deleting it by calling `StopJob'.
+%%
+%% The following operations are related to `DeleteJob':
+%%
+%% `CreateJob'
+%%
+%% `StopJob'
+%%
+%% `DescribeJob'
+-spec delete_job(aws_client:aws_client(), delete_job_request()) ->
+    {ok, delete_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_errors(), tuple()}.
+delete_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_job(Client, Input, []).
+
+-spec delete_job(aws_client:aws_client(), delete_job_request(), proplists:proplist()) ->
+    {ok, delete_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_errors(), tuple()}.
+delete_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteJob">>, Input, Options).
+
 %% @doc Deletes an MLflow App.
 -spec delete_mlflow_app(aws_client:aws_client(), delete_mlflow_app_request()) ->
     {ok, delete_mlflow_app_response(), tuple()} |
@@ -19845,6 +20112,67 @@ describe_inference_recommendations_job(Client, Input)
 describe_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
+
+%% @doc Returns detailed information about a job, including its current
+%% status, secondary status, configuration, and timestamps.
+%%
+%% Use `SecondaryStatus' for granular progress tracking and
+%% `SecondaryStatusTransitions' to see the full history of status changes
+%% with timestamps.
+%%
+%% The following operations are related to `DescribeJob':
+%%
+%% `CreateJob'
+%%
+%% `ListJobs'
+%%
+%% `StopJob'
+%%
+%% `DeleteJob'
+-spec describe_job(aws_client:aws_client(), describe_job_request()) ->
+    {ok, describe_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_errors(), tuple()}.
+describe_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_job(Client, Input, []).
+
+-spec describe_job(aws_client:aws_client(), describe_job_request(), proplists:proplist()) ->
+    {ok, describe_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_errors(), tuple()}.
+describe_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeJob">>, Input, Options).
+
+%% @doc Returns the JSON schema for a specified job category and schema
+%% version.
+%%
+%% Use this schema to validate your `JobConfigDocument' before calling
+%% `CreateJob'. If you don't specify a schema version, the latest
+%% version is returned. The schema defines required fields, allowed values,
+%% and constraints for the job configuration.
+%%
+%% The following operations are related to `DescribeJobSchemaVersion':
+%%
+%% `ListJobSchemaVersions'
+%%
+%% `CreateJob'
+-spec describe_job_schema_version(aws_client:aws_client(), describe_job_schema_version_request()) ->
+    {ok, describe_job_schema_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_schema_version_errors(), tuple()}.
+describe_job_schema_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_job_schema_version(Client, Input, []).
+
+-spec describe_job_schema_version(aws_client:aws_client(), describe_job_schema_version_request(), proplists:proplist()) ->
+    {ok, describe_job_schema_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_schema_version_errors(), tuple()}.
+describe_job_schema_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeJobSchemaVersion">>, Input, Options).
 
 %% @doc Gets information about a labeling job.
 -spec describe_labeling_job(aws_client:aws_client(), describe_labeling_job_request()) ->
@@ -21406,6 +21734,58 @@ list_inference_recommendations_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceRecommendationsJobs">>, Input, Options).
 
+%% @doc Lists available configuration schema versions for a specified job
+%% category.
+%%
+%% Use the schema versions with `DescribeJobSchemaVersion' to retrieve
+%% the full schema document.
+%%
+%% The following operations are related to `ListJobSchemaVersions':
+%%
+%% `DescribeJobSchemaVersion'
+%%
+%% `CreateJob'
+-spec list_job_schema_versions(aws_client:aws_client(), list_job_schema_versions_request()) ->
+    {ok, list_job_schema_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_schema_versions_errors(), tuple()}.
+list_job_schema_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_job_schema_versions(Client, Input, []).
+
+-spec list_job_schema_versions(aws_client:aws_client(), list_job_schema_versions_request(), proplists:proplist()) ->
+    {ok, list_job_schema_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_schema_versions_errors(), tuple()}.
+list_job_schema_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListJobSchemaVersions">>, Input, Options).
+
+%% @doc Lists jobs in a specified category.
+%%
+%% You can filter results by creation time, last modified time, name, and
+%% status. Results are sorted by the field you specify in `SortBy'. Use
+%% pagination to retrieve large result sets efficiently.
+%%
+%% The following operations are related to `ListJobs':
+%%
+%% `CreateJob'
+%%
+%% `DescribeJob'
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()}.
+list_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_jobs(Client, Input, []).
+
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()}.
+list_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListJobs">>, Input, Options).
+
 %% @doc Gets a list of labeling jobs.
 -spec list_labeling_jobs(aws_client:aws_client(), list_labeling_jobs_request()) ->
     {ok, list_labeling_jobs_response(), tuple()} |
@@ -22702,6 +23082,36 @@ stop_inference_recommendations_job(Client, Input)
 stop_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceRecommendationsJob">>, Input, Options).
+
+%% @doc Stops a running job.
+%%
+%% When you call `StopJob', Amazon SageMaker sets the job status to
+%% `Stopping'. After the job stops, the status changes to `Stopped'.
+%% Partial results may be available in the output location if the job was in
+%% progress. To delete a stopped job, call `DeleteJob'.
+%%
+%% The following operations are related to `StopJob':
+%%
+%% `CreateJob'
+%%
+%% `DescribeJob'
+%%
+%% `DeleteJob'
+-spec stop_job(aws_client:aws_client(), stop_job_request()) ->
+    {ok, stop_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_job_errors(), tuple()}.
+stop_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_job(Client, Input, []).
+
+-spec stop_job(aws_client:aws_client(), stop_job_request(), proplists:proplist()) ->
+    {ok, stop_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_job_errors(), tuple()}.
+stop_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopJob">>, Input, Options).
 
 %% @doc Stops a running labeling job.
 %%

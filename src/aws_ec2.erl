@@ -180,6 +180,8 @@
          create_capacity_reservation/3,
          create_capacity_reservation_by_splitting/2,
          create_capacity_reservation_by_splitting/3,
+         create_capacity_reservation_cancellation_quote/2,
+         create_capacity_reservation_cancellation_quote/3,
          create_capacity_reservation_fleet/2,
          create_capacity_reservation_fleet/3,
          create_carrier_gateway/2,
@@ -616,6 +618,8 @@
          describe_capacity_manager_data_exports/3,
          describe_capacity_reservation_billing_requests/2,
          describe_capacity_reservation_billing_requests/3,
+         describe_capacity_reservation_cancellation_quotes/2,
+         describe_capacity_reservation_cancellation_quotes/3,
          describe_capacity_reservation_fleets/2,
          describe_capacity_reservation_fleets/3,
          describe_capacity_reservation_topology/2,
@@ -5302,6 +5306,13 @@
 %%   <<"UnusedReservationBillingOwnerId">> := string()
 %% }
 -type associate_capacity_reservation_billing_owner_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_configuration() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"ReservationState">> => string()
+%% }
+-type capacity_reservation_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_internet_gateways_request() :: #{
@@ -11908,6 +11919,15 @@
 -type replace_network_acl_entry_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_capacity_reservation_cancellation_quote_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_capacity_reservation_cancellation_quote_request() :: #{binary() => any()}.
+
+%% Example:
 %% instance_private_ip_address() :: #{
 %%   <<"Association">> => instance_network_interface_association(),
 %%   <<"Primary">> => boolean(),
@@ -14852,8 +14872,10 @@
 
 %% Example:
 %% cancel_capacity_reservation_request() :: #{
+%%   <<"ApplyCancellationCharges">> => list(any()),
 %%   <<"CapacityReservationId">> := string(),
-%%   <<"DryRun">> => boolean()
+%%   <<"DryRun">> => boolean(),
+%%   <<"QuoteId">> => string()
 %% }
 -type cancel_capacity_reservation_request() :: #{binary() => any()}.
 
@@ -15037,6 +15059,16 @@
 %%   <<"Status">> => list(any())
 %% }
 -type instance_network_interface_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_reservation_cancellation_quotes_request() :: #{
+%%   <<"CapacityReservationCancellationQuoteIds">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_reservation_cancellation_quotes_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_status_event() :: #{
@@ -16425,6 +16457,12 @@
 -type describe_network_interface_permissions_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_capacity_reservation_cancellation_quote_result() :: #{
+%%   <<"CapacityReservationCancellationQuote">> => capacity_reservation_cancellation_quote()
+%% }
+-type create_capacity_reservation_cancellation_quote_result() :: #{binary() => any()}.
+
+%% Example:
 %% client_vpn_endpoint_attribute_status() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
@@ -16689,6 +16727,16 @@
 %%   <<"Return">> => boolean()
 %% }
 -type delete_image_usage_report_result() :: #{binary() => any()}.
+
+%% Example:
+%% cancellation_terms() :: #{
+%%   <<"CancellationType">> => list(any()),
+%%   <<"ChargeCommitmentDurationHours">> => float(),
+%%   <<"ChargeEndDate">> => non_neg_integer(),
+%%   <<"CommittedInstanceCount">> => integer(),
+%%   <<"ReservationState">> => string()
+%% }
+-type cancellation_terms() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpcs_request() :: #{
@@ -19674,6 +19722,13 @@
 -type verified_access_sse_specification_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_reservation_cancellation_quotes_result() :: #{
+%%   <<"CapacityReservationCancellationQuotes">> => list(capacity_reservation_cancellation_quote()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_reservation_cancellation_quotes_result() :: #{binary() => any()}.
+
+%% Example:
 %% destination_options_request() :: #{
 %%   <<"FileFormat">> => list(any()),
 %%   <<"HiveCompatiblePartitions">> => boolean(),
@@ -22619,6 +22674,19 @@
 -type delete_placement_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_cancellation_quote() :: #{
+%%   <<"CancellationTerms">> => list(cancellation_terms()),
+%%   <<"CapacityReservationCancellationQuoteId">> => string(),
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"CurrentConfiguration">> => capacity_reservation_configuration(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"QuoteState">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type capacity_reservation_cancellation_quote() :: #{binary() => any()}.
+
+%% Example:
 %% instance_network_interface_specification() :: #{
 %%   <<"AssociateCarrierIpAddress">> => boolean(),
 %%   <<"AssociatePublicIpAddress">> => boolean(),
@@ -24217,10 +24285,16 @@ cancel_bundle_task(Client, Input, Options)
 %%
 %% `assessing'
 %%
+%% `scheduled'
+%%
 %% `active' and there is no commitment duration or the commitment
-%% duration has elapsed. You can't cancel a future-dated Capacity
-%% Reservation
-%% during the commitment duration.
+%% duration has elapsed.
+%%
+%% `active' during the commitment duration, if you provide a
+%% cancellation quote ID and accept the cancellation charges. Use
+%% `CreateCapacityReservationCancellationQuote' to generate a quote.
+%% The Capacity Reservation transitions to `cancelling' while charges
+%% are applied.
 %%
 %% You can't modify or cancel a Capacity Block. For more information, see
 %% Capacity Blocks for ML:
@@ -24779,6 +24853,28 @@ create_capacity_reservation_by_splitting(Client, Input)
 create_capacity_reservation_by_splitting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityReservationBySplitting">>, Input, Options).
+
+%% @doc Generates a cancellation quote for a future-dated Capacity
+%% Reservation that is
+%% within its commitment duration.
+%%
+%% The quote includes the cancellation terms and a quote ID
+%% that you can pass to the `CancelCapacityReservation' action.
+%% Cancellation
+%% quotes are valid for 24 hours.
+-spec create_capacity_reservation_cancellation_quote(aws_client:aws_client(), create_capacity_reservation_cancellation_quote_request()) ->
+    {ok, create_capacity_reservation_cancellation_quote_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_cancellation_quote(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_reservation_cancellation_quote(Client, Input, []).
+
+-spec create_capacity_reservation_cancellation_quote(aws_client:aws_client(), create_capacity_reservation_cancellation_quote_request(), proplists:proplist()) ->
+    {ok, create_capacity_reservation_cancellation_quote_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_cancellation_quote(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityReservationCancellationQuote">>, Input, Options).
 
 %% @doc Creates a Capacity Reservation Fleet.
 %%
@@ -29924,6 +30020,25 @@ describe_capacity_reservation_billing_requests(Client, Input)
 describe_capacity_reservation_billing_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityReservationBillingRequests">>, Input, Options).
+
+%% @doc Describes one or more Capacity Reservation cancellation quotes.
+%%
+%% The results describe
+%% only the quotes that you have previously generated by using the
+%% `CreateCapacityReservationCancellationQuote' action.
+-spec describe_capacity_reservation_cancellation_quotes(aws_client:aws_client(), describe_capacity_reservation_cancellation_quotes_request()) ->
+    {ok, describe_capacity_reservation_cancellation_quotes_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_cancellation_quotes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_reservation_cancellation_quotes(Client, Input, []).
+
+-spec describe_capacity_reservation_cancellation_quotes(aws_client:aws_client(), describe_capacity_reservation_cancellation_quotes_request(), proplists:proplist()) ->
+    {ok, describe_capacity_reservation_cancellation_quotes_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_cancellation_quotes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityReservationCancellationQuotes">>, Input, Options).
 
 %% @doc Describes one or more Capacity Reservation Fleets.
 -spec describe_capacity_reservation_fleets(aws_client:aws_client(), describe_capacity_reservation_fleets_request()) ->

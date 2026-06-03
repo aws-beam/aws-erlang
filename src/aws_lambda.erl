@@ -744,7 +744,8 @@
 
 %% Example:
 %% update_capacity_provider_request() :: #{
-%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config()
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"PropagateTags">> => propagate_tags()
 %% }
 -type update_capacity_provider_request() :: #{binary() => any()}.
 
@@ -2167,6 +2168,14 @@
 
 
 %% Example:
+%% propagate_tags() :: #{
+%%   <<"ExplicitTags">> => map(),
+%%   <<"Mode">> => list(any())
+%% }
+-type propagate_tags() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
@@ -2544,6 +2553,7 @@
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"LastModified">> => string(),
 %%   <<"PermissionsConfig">> => capacity_provider_permissions_config(),
+%%   <<"PropagateTags">> => propagate_tags(),
 %%   <<"State">> => list(any()),
 %%   <<"VpcConfig">> => capacity_provider_vpc_config()
 %% }
@@ -2581,6 +2591,7 @@
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"PermissionsConfig">> := capacity_provider_permissions_config(),
+%%   <<"PropagateTags">> => propagate_tags(),
 %%   <<"Tags">> => map(),
 %%   <<"VpcConfig">> := capacity_provider_vpc_config()
 %% }
