@@ -63,16 +63,22 @@
 
 -export([associate_whats_app_business_account/2,
          associate_whats_app_business_account/3,
+         create_whats_app_flow/2,
+         create_whats_app_flow/3,
          create_whats_app_message_template/2,
          create_whats_app_message_template/3,
          create_whats_app_message_template_from_library/2,
          create_whats_app_message_template_from_library/3,
          create_whats_app_message_template_media/2,
          create_whats_app_message_template_media/3,
+         delete_whats_app_flow/2,
+         delete_whats_app_flow/3,
          delete_whats_app_message_media/2,
          delete_whats_app_message_media/3,
          delete_whats_app_message_template/2,
          delete_whats_app_message_template/3,
+         deprecate_whats_app_flow/2,
+         deprecate_whats_app_flow/3,
          disassociate_whats_app_business_account/2,
          disassociate_whats_app_business_account/3,
          get_linked_whats_app_business_account/2,
@@ -81,6 +87,12 @@
          get_linked_whats_app_business_account_phone_number/2,
          get_linked_whats_app_business_account_phone_number/4,
          get_linked_whats_app_business_account_phone_number/5,
+         get_whats_app_flow/3,
+         get_whats_app_flow/5,
+         get_whats_app_flow/6,
+         get_whats_app_flow_preview/3,
+         get_whats_app_flow_preview/5,
+         get_whats_app_flow_preview/6,
          get_whats_app_message_media/2,
          get_whats_app_message_media/3,
          get_whats_app_message_template/2,
@@ -92,6 +104,12 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_whats_app_flow_assets/3,
+         list_whats_app_flow_assets/5,
+         list_whats_app_flow_assets/6,
+         list_whats_app_flows/2,
+         list_whats_app_flows/4,
+         list_whats_app_flows/5,
          list_whats_app_message_templates/2,
          list_whats_app_message_templates/4,
          list_whats_app_message_templates/5,
@@ -99,6 +117,8 @@
          list_whats_app_template_library/3,
          post_whats_app_message_media/2,
          post_whats_app_message_media/3,
+         publish_whats_app_flow/2,
+         publish_whats_app_flow/3,
          put_whats_app_business_account_event_destinations/2,
          put_whats_app_business_account_event_destinations/3,
          send_whats_app_message/2,
@@ -107,6 +127,10 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_whats_app_flow/2,
+         update_whats_app_flow/3,
+         update_whats_app_flow_assets/2,
+         update_whats_app_flow_assets/3,
          update_whats_app_message_template/2,
          update_whats_app_message_template/3]).
 
@@ -119,6 +143,15 @@
 %%   <<"account">> => linked_whats_app_business_account()
 %% }
 -type get_linked_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_whats_app_flow_assets_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"flowJson">> := binary(),
+%%   <<"id">> := string()
+%% }
+-type update_whats_app_flow_assets_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -135,6 +168,24 @@
 %%   <<"statusCode">> => [integer()]
 %% }
 -type associate_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_output() :: #{
+%%   <<"application">> => meta_flow_application_info(),
+%%   <<"categories">> => list(list(any())()),
+%%   <<"dataApiVersion">> => string(),
+%%   <<"endpointUri">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"flowName">> => string(),
+%%   <<"flowStatus">> => string(),
+%%   <<"healthStatus">> => meta_flow_health_status(),
+%%   <<"jsonVersion">> => string(),
+%%   <<"preview">> => meta_flow_preview_info(),
+%%   <<"validationErrors">> => list(string()),
+%%   <<"whatsAppBusinessAccount">> => meta_flow_whats_app_business_account_info()
+%% }
+-type get_whats_app_flow_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,11 +228,32 @@
 
 
 %% Example:
+%% create_whats_app_flow_input() :: #{
+%%   <<"categories">> := list(list(any())()),
+%%   <<"cloneFlowId">> => string(),
+%%   <<"flowJson">> => binary(),
+%%   <<"flowName">> := string(),
+%%   <<"id">> := string(),
+%%   <<"publish">> => [boolean()]
+%% }
+-type create_whats_app_flow_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% whats_app_signup_callback_result() :: #{
 %%   <<"associateInProgressToken">> => string(),
 %%   <<"linkedAccountsWithIncompleteSetup">> => map()
 %% }
 -type whats_app_signup_callback_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_health_entity() :: #{
+%%   <<"canSendMessage">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"id">> => [string()]
+%% }
+-type meta_flow_health_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -216,6 +288,29 @@
 
 
 %% Example:
+%% meta_flow_asset() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"downloadUrl">> => string(),
+%%   <<"name">> => string()
+%% }
+-type meta_flow_asset() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_whats_app_flow_output() :: #{}
+-type deprecate_whats_app_flow_output() :: #{}.
+
+
+%% Example:
+%% update_whats_app_flow_input() :: #{
+%%   <<"categories">> => list(list(any())()),
+%%   <<"flowId">> := string(),
+%%   <<"flowName">> => string(),
+%%   <<"id">> := string()
+%% }
+-type update_whats_app_flow_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_whats_app_message_template_input() :: #{
 %%   <<"id">> := string(),
 %%   <<"metaTemplateId">> => string(),
@@ -223,6 +318,15 @@
 %%   <<"templateName">> => string()
 %% }
 -type get_whats_app_message_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_application_info() :: #{
+%%   <<"id">> => string(),
+%%   <<"link">> => string(),
+%%   <<"name">> => string()
+%% }
+-type meta_flow_application_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -299,6 +403,14 @@
 %%   <<"templateStatus">> => [string()]
 %% }
 -type create_whats_app_message_template_from_library_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_preview_output() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"preview">> => meta_flow_preview_info()
+%% }
+-type get_whats_app_flow_preview_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_whats_app_message_template_output() :: #{}
@@ -397,6 +509,29 @@
 %%   <<"templateStatus">> => string()
 %% }
 -type template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type get_whats_app_flow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_whats_app_flow_assets_output() :: #{
+%%   <<"validationErrors">> => list(string())
+%% }
+-type update_whats_app_flow_assets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type publish_whats_app_flow_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -502,10 +637,29 @@
 
 
 %% Example:
+%% list_whats_app_flow_assets_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_flow_assets_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_output() :: #{
 %%   <<"statusCode">> => [integer()]
 %% }
 -type tag_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_preview_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string(),
+%%   <<"invalidate">> => [boolean()]
+%% }
+-type get_whats_app_flow_preview_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -529,10 +683,31 @@
 
 
 %% Example:
+%% list_whats_app_flows_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_flows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_whats_app_flow_assets_output() :: #{
+%%   <<"flowAssets">> => list(meta_flow_asset()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_flow_assets_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% publish_whats_app_flow_output() :: #{}
+-type publish_whats_app_flow_output() :: #{}.
 
 
 %% Example:
@@ -549,6 +724,25 @@
 %% Example:
 %% delete_whats_app_message_template_output() :: #{}
 -type delete_whats_app_message_template_output() :: #{}.
+
+
+%% Example:
+%% meta_flow_summary() :: #{
+%%   <<"flowCategories">> => list(list(any())()),
+%%   <<"flowId">> => string(),
+%%   <<"flowName">> => string(),
+%%   <<"flowStatus">> => string(),
+%%   <<"validationErrors">> => list(string())
+%% }
+-type meta_flow_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deprecate_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type deprecate_whats_app_flow_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -612,6 +806,10 @@
 %% }
 -type whats_app_phone_number_detail() :: #{binary() => any()}.
 
+%% Example:
+%% update_whats_app_flow_output() :: #{}
+-type update_whats_app_flow_output() :: #{}.
+
 
 %% Example:
 %% whats_app_phone_number_summary() :: #{
@@ -625,6 +823,10 @@
 %%   <<"qualityRating">> => string()
 %% }
 -type whats_app_phone_number_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_whats_app_flow_output() :: #{}
+-type delete_whats_app_flow_output() :: #{}.
 
 
 %% Example:
@@ -660,11 +862,30 @@
 
 
 %% Example:
+%% list_whats_app_flows_output() :: #{
+%%   <<"flows">> => list(meta_flow_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_flows_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_linked_whats_app_business_accounts_output() :: #{
 %%   <<"linkedAccounts">> => list(linked_whats_app_business_account_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_linked_whats_app_business_accounts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_whats_app_business_account_info() :: #{
+%%   <<"currency">> => string(),
+%%   <<"id">> => string(),
+%%   <<"messageTemplateNamespace">> => string(),
+%%   <<"name">> => string(),
+%%   <<"timezoneId">> => string()
+%% }
+-type meta_flow_whats_app_business_account_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -690,6 +911,22 @@
 %%   <<"templateUseCase">> => string()
 %% }
 -type meta_library_template_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type delete_whats_app_flow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_flow_output() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"validationErrors">> => list(string())
+%% }
+-type create_whats_app_flow_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,10 +963,34 @@
 %% }
 -type waba_setup_finalization() :: #{binary() => any()}.
 
+
+%% Example:
+%% meta_flow_health_status() :: #{
+%%   <<"canSendMessage">> => string(),
+%%   <<"entities">> => list(meta_flow_health_entity())
+%% }
+-type meta_flow_health_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_preview_info() :: #{
+%%   <<"expiresAt">> => string(),
+%%   <<"previewUrl">> => string()
+%% }
+-type meta_flow_preview_info() :: #{binary() => any()}.
+
 -type associate_whats_app_business_account_errors() ::
     limit_exceeded_exception() | 
     invalid_parameters_exception() | 
     throttled_request_exception() | 
+    dependency_exception().
+
+-type create_whats_app_flow_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type create_whats_app_message_template_errors() ::
@@ -737,6 +998,7 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type create_whats_app_message_template_from_library_errors() ::
@@ -744,6 +1006,7 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type create_whats_app_message_template_media_errors() ::
@@ -751,6 +1014,15 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type delete_whats_app_flow_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type delete_whats_app_message_media_errors() ::
@@ -766,6 +1038,15 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type deprecate_whats_app_flow_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type disassociate_whats_app_business_account_errors() ::
@@ -788,6 +1069,22 @@
     internal_service_exception() | 
     dependency_exception().
 
+-type get_whats_app_flow_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type get_whats_app_flow_preview_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
 -type get_whats_app_message_media_errors() ::
     invalid_parameters_exception() | 
     throttled_request_exception() | 
@@ -801,6 +1098,7 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type list_linked_whats_app_business_accounts_errors() ::
@@ -814,11 +1112,28 @@
     throttled_request_exception() | 
     internal_service_exception().
 
+-type list_whats_app_flow_assets_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type list_whats_app_flows_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
 -type list_whats_app_message_templates_errors() ::
     invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type list_whats_app_template_library_errors() ::
@@ -826,9 +1141,18 @@
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 -type post_whats_app_message_media_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type publish_whats_app_flow_errors() ::
     invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -858,11 +1182,28 @@
     throttled_request_exception() | 
     internal_service_exception().
 
+-type update_whats_app_flow_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type update_whats_app_flow_assets_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_by_meta_exception() | 
+    dependency_exception().
+
 -type update_whats_app_message_template_errors() ::
     invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception() | 
+    access_denied_by_meta_exception() | 
     dependency_exception().
 
 %%====================================================================
@@ -886,6 +1227,46 @@ associate_whats_app_business_account(Client, Input) ->
 associate_whats_app_business_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/whatsapp/signup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new WhatsApp Flow.
+%%
+%% Flows enable businesses to create rich, interactive forms and experiences
+%% that users can complete without leaving WhatsApp. The Flow is created in
+%% DRAFT status. If `publish'
+%% is set to `true' and a valid `flowJson' is provided, the Flow is
+%% published immediately.
+-spec create_whats_app_flow(aws_client:aws_client(), create_whats_app_flow_input()) ->
+    {ok, create_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_flow_errors(), tuple()}.
+create_whats_app_flow(Client, Input) ->
+    create_whats_app_flow(Client, Input, []).
+
+-spec create_whats_app_flow(aws_client:aws_client(), create_whats_app_flow_input(), proplists:proplist()) ->
+    {ok, create_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_flow_errors(), tuple()}.
+create_whats_app_flow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/flow/create"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1011,6 +1392,45 @@ create_whats_app_message_template_media(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a WhatsApp Flow permanently.
+%%
+%% Only Flows in DRAFT status can be deleted. Published or deprecated Flows
+%% cannot be deleted.
+-spec delete_whats_app_flow(aws_client:aws_client(), delete_whats_app_flow_input()) ->
+    {ok, delete_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, delete_whats_app_flow_errors(), tuple()}.
+delete_whats_app_flow(Client, Input) ->
+    delete_whats_app_flow(Client, Input, []).
+
+-spec delete_whats_app_flow(aws_client:aws_client(), delete_whats_app_flow_input(), proplists:proplist()) ->
+    {ok, delete_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, delete_whats_app_flow_errors(), tuple()}.
+delete_whats_app_flow(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/whatsapp/flow"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"flowId">>, <<"flowId">>},
+                     {<<"id">>, <<"id">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete a media object from the WhatsApp service.
 %%
 %% If the object is still in an Amazon S3 bucket you should delete it from
@@ -1086,6 +1506,43 @@ delete_whats_app_message_template(Client, Input0, Options0) ->
                      {<<"templateName">>, <<"templateName">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deprecates a published WhatsApp Flow, marking it as no longer
+%% recommended for use.
+%%
+%% The Flow must be in PUBLISHED status. This is an irreversible operation.
+-spec deprecate_whats_app_flow(aws_client:aws_client(), deprecate_whats_app_flow_input()) ->
+    {ok, deprecate_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, deprecate_whats_app_flow_errors(), tuple()}.
+deprecate_whats_app_flow(Client, Input) ->
+    deprecate_whats_app_flow(Client, Input, []).
+
+-spec deprecate_whats_app_flow(aws_client:aws_client(), deprecate_whats_app_flow_input(), proplists:proplist()) ->
+    {ok, deprecate_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, deprecate_whats_app_flow_errors(), tuple()}.
+deprecate_whats_app_flow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/flow/deprecate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociate a WhatsApp Business Account (WABA) from your Amazon Web
@@ -1202,6 +1659,96 @@ get_linked_whats_app_business_account_phone_number(Client, Id, QueryMap, Headers
     Query0_ =
       [
         {<<"id">>, Id}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the metadata and status of a WhatsApp Flow, including
+%% validation errors, preview information, and health status.
+-spec get_whats_app_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_errors(), tuple()}.
+get_whats_app_flow(Client, FlowId, Id)
+  when is_map(Client) ->
+    get_whats_app_flow(Client, FlowId, Id, #{}, #{}).
+
+-spec get_whats_app_flow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_errors(), tuple()}.
+get_whats_app_flow(Client, FlowId, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_whats_app_flow(Client, FlowId, Id, QueryMap, HeadersMap, []).
+
+-spec get_whats_app_flow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_errors(), tuple()}.
+get_whats_app_flow(Client, FlowId, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/flow"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"flowId">>, FlowId},
+        {<<"id">>, Id}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Generates a web preview URL for testing a WhatsApp Flow before
+%% publishing.
+%%
+%% Preview URLs expire in 30 days and can be shared with stakeholders for
+%% review.
+-spec get_whats_app_flow_preview(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_whats_app_flow_preview_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_preview_errors(), tuple()}.
+get_whats_app_flow_preview(Client, FlowId, Id)
+  when is_map(Client) ->
+    get_whats_app_flow_preview(Client, FlowId, Id, #{}, #{}).
+
+-spec get_whats_app_flow_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_whats_app_flow_preview_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_preview_errors(), tuple()}.
+get_whats_app_flow_preview(Client, FlowId, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_whats_app_flow_preview(Client, FlowId, Id, QueryMap, HeadersMap, []).
+
+-spec get_whats_app_flow_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_whats_app_flow_preview_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_flow_preview_errors(), tuple()}.
+get_whats_app_flow_preview(Client, FlowId, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/flow/preview"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"flowId">>, FlowId},
+        {<<"id">>, Id},
+        {<<"invalidate">>, maps:get(<<"invalidate">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1377,6 +1924,99 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the assets (Flow JSON definition) of a WhatsApp Flow with
+%% presigned download URLs.
+%%
+%% Download URLs are generated by Meta and expire after a short period.
+-spec list_whats_app_flow_assets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_whats_app_flow_assets_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flow_assets_errors(), tuple()}.
+list_whats_app_flow_assets(Client, FlowId, Id)
+  when is_map(Client) ->
+    list_whats_app_flow_assets(Client, FlowId, Id, #{}, #{}).
+
+-spec list_whats_app_flow_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_whats_app_flow_assets_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flow_assets_errors(), tuple()}.
+list_whats_app_flow_assets(Client, FlowId, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_whats_app_flow_assets(Client, FlowId, Id, QueryMap, HeadersMap, []).
+
+-spec list_whats_app_flow_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_whats_app_flow_assets_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flow_assets_errors(), tuple()}.
+list_whats_app_flow_assets(Client, FlowId, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/flow/assets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"flowId">>, FlowId},
+        {<<"id">>, Id},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all WhatsApp Flows for a WhatsApp Business Account.
+%%
+%% Returns summary information including Flow ID, name, status, and
+%% categories.
+-spec list_whats_app_flows(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_whats_app_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flows_errors(), tuple()}.
+list_whats_app_flows(Client, Id)
+  when is_map(Client) ->
+    list_whats_app_flows(Client, Id, #{}, #{}).
+
+-spec list_whats_app_flows(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_whats_app_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flows_errors(), tuple()}.
+list_whats_app_flows(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_whats_app_flows(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_whats_app_flows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_whats_app_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_flows_errors(), tuple()}.
+list_whats_app_flows(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/flow/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"id">>, Id},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists WhatsApp message templates for a specific WhatsApp Business
 %% Account.
 -spec list_whats_app_message_templates(aws_client:aws_client(), binary() | list()) ->
@@ -1482,6 +2122,44 @@ post_whats_app_message_media(Client, Input) ->
 post_whats_app_message_media(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/whatsapp/media"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes a WhatsApp Flow, making it available for use in template
+%% messages.
+%%
+%% The Flow must be in DRAFT status with valid Flow JSON that passes
+%% Meta's validation. This is an irreversible operation.
+-spec publish_whats_app_flow(aws_client:aws_client(), publish_whats_app_flow_input()) ->
+    {ok, publish_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, publish_whats_app_flow_errors(), tuple()}.
+publish_whats_app_flow(Client, Input) ->
+    publish_whats_app_flow(Client, Input, []).
+
+-spec publish_whats_app_flow(aws_client:aws_client(), publish_whats_app_flow_input(), proplists:proplist()) ->
+    {ok, publish_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, publish_whats_app_flow_errors(), tuple()}.
+publish_whats_app_flow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/flow/publish"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1634,6 +2312,83 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/untag-resource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the metadata of a WhatsApp Flow, such as its name or
+%% categories.
+%%
+%% This does not update the Flow JSON definition. Use
+%% UpdateWhatsAppFlowAssets:
+%% https://docs.aws.amazon.com/social-messaging/latest/APIReference/API_UpdateWhatsAppFlowAssets.html
+%% to update the Flow JSON.
+-spec update_whats_app_flow(aws_client:aws_client(), update_whats_app_flow_input()) ->
+    {ok, update_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_flow_errors(), tuple()}.
+update_whats_app_flow(Client, Input) ->
+    update_whats_app_flow(Client, Input, []).
+
+-spec update_whats_app_flow(aws_client:aws_client(), update_whats_app_flow_input(), proplists:proplist()) ->
+    {ok, update_whats_app_flow_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_flow_errors(), tuple()}.
+update_whats_app_flow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/flow/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the Flow JSON definition (assets) of a WhatsApp Flow.
+%%
+%% Updating a published Flow's assets reverts it to DRAFT status,
+%% requiring re-publishing.
+-spec update_whats_app_flow_assets(aws_client:aws_client(), update_whats_app_flow_assets_input()) ->
+    {ok, update_whats_app_flow_assets_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_flow_assets_errors(), tuple()}.
+update_whats_app_flow_assets(Client, Input) ->
+    update_whats_app_flow_assets(Client, Input, []).
+
+-spec update_whats_app_flow_assets(aws_client:aws_client(), update_whats_app_flow_assets_input(), proplists:proplist()) ->
+    {ok, update_whats_app_flow_assets_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_flow_assets_errors(), tuple()}.
+update_whats_app_flow_assets(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/flow/assets/update"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -2,21 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc
+%% Amazon Connect now refers to a portfolio of agentic solutions for business
+%% functions.
 %%
-%% Connect Customer actions:
+%% The
+%% legacy product is now called Amazon Connect Customer, or simply Customer.
+%% The legacy name
+%% is used interchangeably in this documentation.
+%%
+%% Connect Customer Customer actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html
 %%
-%% Connect Customer data types:
+%% Connect Customer Customer data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html
 %%
-%% Connect Customer is a cloud-based contact center solution that you use to
-%% set up and manage a customer contact
-%% center and provide reliable customer engagement at any scale.
+%% Connect Customer Customer engages customers at every touchpoint and
+%% creates deeper
+%% relationships with AI powered capabilities.
 %%
-%% Connect Customer provides metrics and real-time reporting that enable you
-%% to optimize contact routing. You can
-%% also resolve customer issues more efficiently by getting customers in
-%% touch with the appropriate agents.
+%% Build and manage customer communication experiences. Connect customers to
+%% agents, enable
+%% intelligent routing, and track performance in real-time.
 %%
 %% There are limits to the number of Connect Customer resources that you can
 %% create. There are also limits to the
@@ -6224,6 +6230,15 @@
 
 
 %% Example:
+%% contact_search_summary_ai_agent_info() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiAgentVersionId">> => string(),
+%%   <<"AiUseCase">> => list(any())
+%% }
+-type contact_search_summary_ai_agent_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_user_hierarchy_group_response() :: #{
 %%   <<"HierarchyGroupArn">> => string(),
 %%   <<"HierarchyGroupId">> => string()
@@ -8995,6 +9010,7 @@
 %% Example:
 %% contact_search_summary() :: #{
 %%   <<"AgentInfo">> => contact_search_summary_agent_info(),
+%%   <<"AiAgentInfo">> => list(contact_search_summary_ai_agent_info()),
 %%   <<"Arn">> => string(),
 %%   <<"Channel">> => list(any()),
 %%   <<"DisconnectTimestamp">> => non_neg_integer(),
@@ -10039,6 +10055,16 @@
 %% }
 -type associate_queue_quick_connects_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% ai_agent_search_criteria() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiUseCase">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type ai_agent_search_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% delete_notification_request() :: #{}
 -type delete_notification_request() :: #{}.
@@ -10282,6 +10308,7 @@
 %%   <<"AdditionalTimeRange">> => search_contacts_additional_time_range(),
 %%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
 %%   <<"AgentIds">> => list(string()),
+%%   <<"AiAgents">> => ai_agents_criteria(),
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"ContactAnalysis">> => contact_analysis(),
 %%   <<"ContactTags">> => control_plane_tag_filter(),
@@ -11104,6 +11131,13 @@
 %%   <<"TagSearchCondition">> => tag_search_condition()
 %% }
 -type resource_tags_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% ai_agents_criteria() :: #{
+%%   <<"Criteria">> => list(ai_agent_search_criteria())
+%% }
+-type ai_agents_criteria() :: #{binary() => any()}.
 
 
 %% Example:

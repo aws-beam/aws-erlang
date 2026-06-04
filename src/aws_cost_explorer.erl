@@ -1717,6 +1717,7 @@
 %%   <<"AccountScope">> => list(any()),
 %%   <<"AnalysisType">> => list(any()),
 %%   <<"LookBackTimePeriod">> => date_interval(),
+%%   <<"SavingsPlansTargetCoverage">> => integer(),
 %%   <<"SavingsPlansToAdd">> => list(savings_plans()),
 %%   <<"SavingsPlansToExclude">> => list(string())
 %% }

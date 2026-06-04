@@ -251,6 +251,15 @@
 
 
 %% Example:
+%% v_m_scanner_state() :: #{
+%%   <<"activated">> => [boolean()],
+%%   <<"activatedAt">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type v_m_scanner_state() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_delegated_admin_account_response() :: #{
 %%   <<"delegatedAdmin">> => delegated_admin()
 %% }
@@ -616,6 +625,7 @@
 
 %% Example:
 %% ec2_configuration() :: #{
+%%   <<"activateVMScanner">> => [boolean()],
 %%   <<"scanMode">> => string()
 %% }
 -type ec2_configuration() :: #{binary() => any()}.
@@ -634,7 +644,8 @@
 
 %% Example:
 %% ec2_configuration_state() :: #{
-%%   <<"scanModeState">> => ec2_scan_mode_state()
+%%   <<"scanModeState">> => ec2_scan_mode_state(),
+%%   <<"vmScannerState">> => v_m_scanner_state()
 %% }
 -type ec2_configuration_state() :: #{binary() => any()}.
 

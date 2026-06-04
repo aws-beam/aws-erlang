@@ -102,6 +102,12 @@
 -type lambda_ungraceful() :: #{binary() => any()}.
 
 %% Example:
+%% neptune_ungraceful() :: #{
+%%   <<"ungraceful">> => list(any())
+%% }
+-type neptune_ungraceful() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"tags">> := map()
@@ -376,6 +382,17 @@
 -type update_plan_execution_response() :: #{binary() => any()}.
 
 %% Example:
+%% aurora_serverless_scaling_configuration() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"externalId">> => [string()],
+%%   <<"globalClusterIdentifier">> => string(),
+%%   <<"regionDatabaseClusterArns">> => map(),
+%%   <<"targetPercent">> => [integer()],
+%%   <<"timeoutMinutes">> => [integer()]
+%% }
+-type aurora_serverless_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% kubernetes_scaling_resource() :: #{
 %%   <<"hpaName">> => [string()],
 %%   <<"name">> => [string()],
@@ -631,6 +648,17 @@
 -type get_plan_in_region_request() :: #{binary() => any()}.
 
 %% Example:
+%% aurora_provisioned_scaling_configuration() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"externalId">> => [string()],
+%%   <<"globalClusterIdentifier">> => string(),
+%%   <<"instanceArns">> => map(),
+%%   <<"regionDatabaseClusterArns">> => map(),
+%%   <<"timeoutMinutes">> => [integer()]
+%% }
+-type aurora_provisioned_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% step_state() :: #{
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -820,6 +848,18 @@
 -type abbreviated_plan() :: #{binary() => any()}.
 
 %% Example:
+%% neptune_global_database_configuration() :: #{
+%%   <<"behavior">> => list(any()),
+%%   <<"crossAccountRole">> => string(),
+%%   <<"externalId">> => [string()],
+%%   <<"globalClusterIdentifier">> => string(),
+%%   <<"regionDatabaseClusterArns">> => map(),
+%%   <<"timeoutMinutes">> => [integer()],
+%%   <<"ungraceful">> => neptune_ungraceful()
+%% }
+-type neptune_global_database_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% approve_plan_execution_step_response() :: #{
 
 %% }
@@ -911,7 +951,8 @@
 -type list_route53_health_checks_errors() ::
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    illegal_argument_exception().
 
 -type list_route53_health_checks_in_region_errors() ::
     access_denied_exception() | 
