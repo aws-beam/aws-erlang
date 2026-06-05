@@ -461,6 +461,7 @@
 %%   <<"EvaluationModes">> => list(evaluation_mode_configuration()),
 %%   <<"InputParameters">> => string(),
 %%   <<"MaximumExecutionFrequency">> => list(any()),
+%%   <<"RuleEvaluationVisibility">> => list(any()),
 %%   <<"Scope">> => scope(),
 %%   <<"Source">> => source()
 %% }
@@ -859,7 +860,8 @@
 
 %% Example:
 %% describe_config_rules_filters() :: #{
-%%   <<"EvaluationMode">> => list(any())
+%%   <<"EvaluationMode">> => list(any()),
+%%   <<"RuleEvaluationVisibility">> => list(any())
 %% }
 -type describe_config_rules_filters() :: #{binary() => any()}.
 
@@ -1854,6 +1856,7 @@
 %% scope() :: #{
 %%   <<"ComplianceResourceId">> => string(),
 %%   <<"ComplianceResourceTypes">> => list(string()),
+%%   <<"ServicePrincipals">> => list(string()),
 %%   <<"TagKey">> => string(),
 %%   <<"TagValue">> => string()
 %% }

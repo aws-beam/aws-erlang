@@ -9,16 +9,16 @@
 %% Participant Service data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html
 %%
-%% Amazon Connect is an easy-to-use omnichannel cloud contact center service
-%% that
+%% Connect Customer is an easy-to-use omnichannel cloud contact center
+%% service that
 %% enables companies of any size to deliver superior customer service at a
 %% lower cost.
 %%
-%% Amazon Connect communications capabilities make it easy for companies to
+%% Connect Customer communications capabilities make it easy for companies to
 %% deliver
 %% personalized interactions across communication channels, including chat.
 %%
-%% Use the Amazon Connect Participant Service to manage participants (for
+%% Use the Connect Customer Participant Service to manage participants (for
 %% example,
 %% agents, customers, and managers listening in), and to send messages and
 %% events within a
@@ -575,7 +575,7 @@ cancel_participant_authentication(Client, Input0, Options0) ->
 %% A conflict exception is thrown when an attachment
 %% with that identifier is already being uploaded.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -622,11 +622,11 @@ complete_attachment_upload(Client, Input0, Options0) ->
 
 %% @doc Creates the participant's connection.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
-%% For WebRTC security recommendations, see Amazon Connect WebRTC security
+%% For WebRTC security recommendations, see Connect Customer WebRTC security
 %% best practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-webrtc-security.
 %%
@@ -753,7 +753,7 @@ create_participant_connection(Client, Input0, Options0) ->
 
 %% @doc Retrieves the view for the specified view token.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 -spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -798,7 +798,7 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0
 
 %% @doc Disconnects a participant.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -848,7 +848,7 @@ disconnect_participant(Client, Input0, Options0) ->
 %% This is an
 %% asynchronous API for use with active contacts.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -902,7 +902,7 @@ get_attachment(Client, Input0, Options0) ->
 %% session for the
 %% AuthenticateCustomer flow block.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -962,7 +962,7 @@ get_authentication_url(Client, Input0, Options0) ->
 %% Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -1041,7 +1041,7 @@ get_transcript(Client, Input0, Options0) ->
 %% when a supervisor
 %% is barged-in will result in a conflict exception.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -1088,7 +1088,7 @@ send_event(Client, Input0, Options0) ->
 
 %% @doc Sends a message.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
@@ -1137,7 +1137,7 @@ send_message(Client, Input0, Options0) ->
 %% file directly to
 %% S3.
 %%
-%% For security recommendations, see Amazon Connect Chat security best
+%% For security recommendations, see Connect Customer Chat security best
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%

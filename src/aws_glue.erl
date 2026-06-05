@@ -224,6 +224,8 @@
          get_crawlers/3,
          get_custom_entity_type/2,
          get_custom_entity_type/3,
+         get_dashboard_url/2,
+         get_dashboard_url/3,
          get_data_catalog_encryption_settings/2,
          get_data_catalog_encryption_settings/3,
          get_data_quality_model/2,
@@ -306,6 +308,8 @@
          get_security_configurations/3,
          get_session/2,
          get_session/3,
+         get_session_endpoint/2,
+         get_session_endpoint/3,
          get_statement/2,
          get_statement/3,
          get_table/2,
@@ -643,6 +647,14 @@
 %%   <<"UpdateBehavior">> => list(any())
 %% }
 -type catalog_schema_change_policy() :: #{binary() => any()}.
+
+%% Example:
+%% get_dashboard_url_request() :: #{
+%%   <<"RequestOrigin">> => string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type get_dashboard_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% integration_config() :: #{
@@ -1573,6 +1585,12 @@
 -type get_workflow_runs_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_session_endpoint_response() :: #{
+%%   <<"SparkConnect">> => session_endpoint()
+%% }
+-type get_session_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_table_optimizer_response() :: #{
 
 %% }
@@ -2461,6 +2479,12 @@
 %%   <<"UserDefinedFunction">> => user_defined_function()
 %% }
 -type get_user_defined_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_catalog_response() :: #{
@@ -3764,6 +3788,7 @@
 %%   <<"RequestOrigin">> => string(),
 %%   <<"Role">> := string(),
 %%   <<"SecurityConfiguration">> => string(),
+%%   <<"SessionType">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Timeout">> => integer(),
 %%   <<"WorkerType">> => list(any())
@@ -4695,6 +4720,12 @@
 -type start_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
 
 %% Example:
+%% session_busy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type session_busy_exception() :: #{binary() => any()}.
+
+%% Example:
 %% workflow_graph() :: #{
 %%   <<"Edges">> => list(edge()),
 %%   <<"Nodes">> => list(node())
@@ -4739,6 +4770,12 @@
 %%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type dynamo_db_e_l_t_connector_source() :: #{binary() => any()}.
+
+%% Example:
+%% get_dashboard_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type get_dashboard_url_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_crawler_schedule_response() :: #{
@@ -5639,6 +5676,14 @@
 -type compute_environment_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% session_endpoint() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"Url">> => string()
+%% }
+-type session_endpoint() :: #{binary() => any()}.
+
+%% Example:
 %% update_csv_classifier_request() :: #{
 %%   <<"AllowSingleColumn">> => boolean(),
 %%   <<"ContainsHeader">> => list(any()),
@@ -5852,6 +5897,7 @@
 %%   <<"Progress">> => float(),
 %%   <<"Role">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
+%%   <<"SessionType">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"WorkerType">> => list(any())
 %% }
@@ -9715,6 +9761,7 @@
     operation_timeout_exception().
 
 -type create_session_errors() ::
+    operation_not_supported_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
@@ -10154,6 +10201,13 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_dashboard_url_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type get_data_catalog_encryption_settings_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -10422,6 +10476,15 @@
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_session_endpoint_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -10809,9 +10872,11 @@
     entity_not_found_exception().
 
 -type run_statement_errors() ::
+    operation_not_supported_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
+    session_busy_exception() | 
     resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
@@ -13364,6 +13429,24 @@ get_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomEntityType">>, Input, Options).
 
+%% @doc Retrieves the URL for the Spark monitoring dashboard for a Glue
+%% resource.
+-spec get_dashboard_url(aws_client:aws_client(), get_dashboard_url_request()) ->
+    {ok, get_dashboard_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_url_errors(), tuple()}.
+get_dashboard_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_dashboard_url(Client, Input, []).
+
+-spec get_dashboard_url(aws_client:aws_client(), get_dashboard_url_request(), proplists:proplist()) ->
+    {ok, get_dashboard_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_url_errors(), tuple()}.
+get_dashboard_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDashboardUrl">>, Input, Options).
+
 %% @doc Retrieves the security configuration for a specified catalog.
 -spec get_data_catalog_encryption_settings(aws_client:aws_client(), get_data_catalog_encryption_settings_request()) ->
     {ok, get_data_catalog_encryption_settings_response(), tuple()} |
@@ -14170,6 +14253,24 @@ get_session(Client, Input)
 get_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSession">>, Input, Options).
+
+%% @doc Returns the Spark Connect endpoint URL and authentication token for
+%% an interactive session.
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_request()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session_endpoint(Client, Input, []).
+
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_request(), proplists:proplist()) ->
+    {ok, get_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSessionEndpoint">>, Input, Options).
 
 %% @doc Retrieves the statement.
 -spec get_statement(aws_client:aws_client(), get_statement_request()) ->

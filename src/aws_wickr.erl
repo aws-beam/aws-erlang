@@ -62,6 +62,20 @@
 %% section that includes a brief discussion about HTTP status codes. We
 %% recommend looking there as part of your investigation when you get an
 %% error.
+%%
+%% Regional availability
+%%
+%% The Amazon Web Services Wickr API is available in several Amazon Web
+%% Services Regions and it provides an endpoint for each of these Regions.
+%% For a list of all the Regions and endpoints where the API is currently
+%% available, see Amazon Web Services Wickr endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/wickr.html in the Amazon Web
+%% Services General Reference Guide.
+%%
+%% Wickr API endpoints are region-specific and include a region code in the
+%% format: `https://admin.wickr.[regioncode].amazonaws.com'. For example,
+%% for the US East (N.Virginia) `us-east-1', the API endpoint is
+%% `https://admin.wickr.us-east-1.amazonaws.com'.
 -module(aws_wickr).
 
 -export([batch_create_user/3,
@@ -434,6 +448,16 @@
 
 
 %% Example:
+%% consent_popup_config() :: #{
+%%   <<"closeButtonLabel">> => string(),
+%%   <<"content">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"header">> => string()
+%% }
+-type consent_popup_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_user_response() :: #{
 %%   <<"firstName">> => string(),
 %%   <<"isAdmin">> => [boolean()],
@@ -524,6 +548,7 @@
 
 %% Example:
 %% network_settings() :: #{
+%%   <<"consentPopup">> => consent_popup_config(),
 %%   <<"dataRetention">> => [boolean()],
 %%   <<"enableClientMetrics">> => [boolean()],
 %%   <<"enableTrustedDataFormat">> => [boolean()],
@@ -1263,6 +1288,7 @@
 %%   <<"permittedWickrAwsNetworks">> => list(wickr_aws_networks()),
 %%   <<"enableRestrictedGlobalFederation">> => [boolean()],
 %%   <<"enableCrashReports">> => [boolean()],
+%%   <<"maxNonSsoSessionMinutes">> => [integer()],
 %%   <<"enableAtak">> => [boolean()],
 %%   <<"quickResponses">> => list(string()),
 %%   <<"permittedNetworks">> => list(string()),

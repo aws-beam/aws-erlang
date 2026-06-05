@@ -203,6 +203,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_ad_configuration/2,
+         update_ad_configuration/3,
          update_channel/2,
          update_channel/3,
          update_playback_restriction_policy/2,
@@ -353,6 +355,15 @@
 %%   <<"tags">> => map()
 %% }
 -type ad_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ad_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
+%%   <<"name">> => string()
+%% }
+-type update_ad_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -634,6 +645,13 @@
 %%   <<"xFrameOptions">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type update_ad_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1538,6 +1556,16 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_ad_configuration_errors() ::
+    pending_verification() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_channel_errors() ::
     pending_verification() | 
@@ -3025,6 +3053,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified ad configuration.
+-spec update_ad_configuration(aws_client:aws_client(), update_ad_configuration_request()) ->
+    {ok, update_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_ad_configuration_errors(), tuple()}.
+update_ad_configuration(Client, Input) ->
+    update_ad_configuration(Client, Input, []).
+
+-spec update_ad_configuration(aws_client:aws_client(), update_ad_configuration_request(), proplists:proplist()) ->
+    {ok, update_ad_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_ad_configuration_errors(), tuple()}.
+update_ad_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateAdConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a channel's configuration.

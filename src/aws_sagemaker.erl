@@ -1940,6 +1940,7 @@
 
 %% Example:
 %% describe_model_package_input() :: #{
+%%   <<"IncludedData">> => list(any()),
 %%   <<"ModelPackageName">> := string()
 %% }
 -type describe_model_package_input() :: #{binary() => any()}.
@@ -9827,6 +9828,7 @@
 
 %% Example:
 %% describe_model_card_request() :: #{
+%%   <<"IncludedData">> => list(any()),
 %%   <<"ModelCardName">> := string(),
 %%   <<"ModelCardVersion">> => integer()
 %% }
@@ -11363,6 +11365,25 @@
 %%   <<"UserProfileArn">> => string()
 %% }
 -type create_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigDocument">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type job() :: #{binary() => any()}.
 
 %% Example:
 %% attach_cluster_node_volume_request() :: #{
@@ -13625,6 +13646,7 @@
 %%   <<"FeatureGroup">> => feature_group(),
 %%   <<"FeatureMetadata">> => feature_metadata(),
 %%   <<"HyperParameterTuningJob">> => hyper_parameter_tuning_job_search_entity(),
+%%   <<"Job">> => job(),
 %%   <<"Model">> => model_dashboard_model(),
 %%   <<"ModelCard">> => model_card(),
 %%   <<"ModelPackage">> => model_package(),
@@ -20280,6 +20302,13 @@ describe_model_bias_job_definition(Client, Input, Options)
 
 %% @doc Describes the content, creation time, and security configuration of
 %% an Amazon SageMaker Model Card.
+%%
+%% To retrieve only metadata about a model card without requiring
+%% `kms:Decrypt' permission on the associated customer-managed Amazon Web
+%% Services KMS key, set `IncludedData' to `MetadataOnly'. The
+%% default is `AllData', which returns the full model card `Content'
+%% and requires `kms:Decrypt' permission when a customer-managed key is
+%% configured.
 -spec describe_model_card(aws_client:aws_client(), describe_model_card_request()) ->
     {ok, describe_model_card_response(), tuple()} |
     {error, any()} |
@@ -20337,7 +20366,11 @@ describe_model_explainability_job_definition(Client, Input, Options)
 %% If you provided a KMS Key ID when you created your model package, you will
 %% see the KMS Decrypt:
 %% https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html API
-%% call in your CloudTrail logs when you use this API.
+%% call in your CloudTrail logs when you use this API. To call this operation
+%% without requiring `kms:Decrypt' permission on the customer-managed
+%% key, set `IncludedData' to `MetadataOnly'; the response is
+%% returned with the embedded `ModelCard.ModelCardContent' field
+%% sanitized.
 %%
 %% To create models in SageMaker, buyers can subscribe to model packages
 %% listed on Amazon Web Services Marketplace.

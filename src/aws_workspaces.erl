@@ -3115,13 +3115,13 @@ create_account_link_invitation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountLinkInvitation">>, Input, Options).
 
-%% @doc Creates a client-add-in for Amazon Connect within a directory.
+%% @doc Creates a client-add-in for Connect Customer within a directory.
 %%
 %% You can create only
-%% one Amazon Connect client add-in within a directory.
+%% one Connect Customer client add-in within a directory.
 %%
-%% This client add-in allows WorkSpaces users to seamlessly connect to Amazon
-%% Connect.
+%% This client add-in allows WorkSpaces users to seamlessly connect to
+%% Connect Customer.
 -spec create_connect_client_add_in(aws_client:aws_client(), create_connect_client_add_in_request()) ->
     {ok, create_connect_client_add_in_result(), tuple()} |
     {error, any()} |
@@ -3411,8 +3411,8 @@ delete_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClientBranding">>, Input, Options).
 
-%% @doc Deletes a client-add-in for Amazon Connect that is configured within
-%% a
+%% @doc Deletes a client-add-in for Connect Customer that is configured
+%% within a
 %% directory.
 -spec delete_connect_client_add_in(aws_client:aws_client(), delete_connect_client_add_in_request()) ->
     {ok, delete_connect_client_add_in_result(), tuple()} |
@@ -3744,7 +3744,7 @@ describe_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClientProperties">>, Input, Options).
 
-%% @doc Retrieves a list of Amazon Connect client add-ins that have been
+%% @doc Retrieves a list of Connect Customer client add-ins that have been
 %% created.
 -spec describe_connect_client_add_ins(aws_client:aws_client(), describe_connect_client_add_ins_request()) ->
     {ok, describe_connect_client_add_ins_result(), tuple()} |
@@ -4868,10 +4868,10 @@ terminate_workspaces_pool_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspacesPoolSession">>, Input, Options).
 
-%% @doc Updates a Amazon Connect client add-in.
+%% @doc Updates a Connect Customer client add-in.
 %%
 %% Use this action to update the name and
-%% endpoint URL of a Amazon Connect client add-in.
+%% endpoint URL of a Connect Customer client add-in.
 -spec update_connect_client_add_in(aws_client:aws_client(), update_connect_client_add_in_request()) ->
     {ok, update_connect_client_add_in_result(), tuple()} |
     {error, any()} |

@@ -63,6 +63,10 @@
          get_on_cluster_app_ui_presigned_url/3,
          get_persistent_app_ui_presigned_url/2,
          get_persistent_app_ui_presigned_url/3,
+         get_session/2,
+         get_session/3,
+         get_session_endpoint/2,
+         get_session_endpoint/3,
          get_studio_session_mapping/2,
          get_studio_session_mapping/3,
          list_bootstrap_actions/2,
@@ -81,6 +85,8 @@
          list_release_labels/3,
          list_security_configurations/2,
          list_security_configurations/3,
+         list_sessions/2,
+         list_sessions/3,
          list_steps/2,
          list_steps/3,
          list_studio_session_mappings/2,
@@ -123,10 +129,14 @@
          set_visible_to_all_users/3,
          start_notebook_execution/2,
          start_notebook_execution/3,
+         start_session/2,
+         start_session/3,
          stop_notebook_execution/2,
          stop_notebook_execution/3,
          terminate_job_flows/2,
          terminate_job_flows/3,
+         terminate_session/2,
+         terminate_session/3,
          update_studio/2,
          update_studio/3,
          update_studio_session_mapping/2,
@@ -156,6 +166,16 @@
 %%   <<"Key">> => string()
 %% }
 -type output_notebook_s3_location_from_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_output() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type start_session_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_auto_termination_policy_input() :: #{
@@ -299,6 +319,13 @@
 -type simplified_application() :: #{binary() => any()}.
 
 %% Example:
+%% certificate_authority() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateData">> => string()
+%% }
+-type certificate_authority() :: #{binary() => any()}.
+
+%% Example:
 %% describe_step_output() :: #{
 %%   <<"Step">> => step()
 %% }
@@ -337,6 +364,13 @@
 %%   <<"StepConfig">> => step_config()
 %% }
 -type step_detail() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_session_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type terminate_session_input() :: #{binary() => any()}.
 
 %% Example:
 %% script_bootstrap_action_config() :: #{
@@ -399,6 +433,13 @@
 %%   <<"TimeoutDurationMinutes">> => integer()
 %% }
 -type spot_resizing_specification() :: #{binary() => any()}.
+
+%% Example:
+%% session_managed_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string()
+%% }
+-type session_managed_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% configuration() :: #{
@@ -471,6 +512,7 @@
 
 %% Example:
 %% add_tags_input() :: #{
+%%   <<"ClusterId">> => string(),
 %%   <<"ResourceId">> := string(),
 %%   <<"Tags">> := list(tag())
 %% }
@@ -484,6 +526,16 @@
 %%   <<"Properties">> => map()
 %% }
 -type hadoop_step_config() :: #{binary() => any()}.
+
+%% Example:
+%% session_cloud_watch_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type session_cloud_watch_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% monitoring_configuration() :: #{
@@ -602,6 +654,19 @@
 
 %% }
 -type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ClusterId">> := string(),
+%%   <<"EngineConfigurations">> => list(configuration()),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"SessionIdleTimeoutInMinutes">> => float(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_session_input() :: #{binary() => any()}.
 
 %% Example:
 %% instance_group_status() :: #{
@@ -834,6 +899,13 @@
 -type ebs_volume() :: #{binary() => any()}.
 
 %% Example:
+%% get_session_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_input() :: #{binary() => any()}.
+
+%% Example:
 %% describe_security_configuration_input() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -844,6 +916,7 @@
 %%   <<"Ec2InstanceAttributes">> => ec2_instance_attributes(),
 %%   <<"LogEncryptionKmsKeyId">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
+%%   <<"SessionEnabled">> => boolean(),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"MonitoringConfiguration">> => monitoring_configuration(),
@@ -1023,6 +1096,12 @@
 -type list_supported_instance_types_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_session_output() :: #{
+%%   <<"Session">> => session()
+%% }
+-type get_session_output() :: #{binary() => any()}.
+
+%% Example:
 %% instance_fleet_resizing_specifications() :: #{
 %%   <<"OnDemandResizeSpecification">> => on_demand_resizing_specification(),
 %%   <<"SpotResizeSpecification">> => spot_resizing_specification()
@@ -1159,6 +1238,31 @@
 %%   <<"InstancesToTerminate">> => list(string())
 %% }
 -type instance_resize_policy() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CertificateAuthority">> => certificate_authority(),
+%%   <<"ClusterId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"EngineConfigurations">> => list(configuration()),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IdleSince">> => non_neg_integer(),
+%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"ReleaseLabel">> => string(),
+%%   <<"ServerUrl">> => string(),
+%%   <<"SessionIdleTimeoutInMinutes">> => float(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type session() :: #{binary() => any()}.
 
 %% Example:
 %% get_studio_session_mapping_input() :: #{
@@ -1376,6 +1480,13 @@
 %%   <<"ReadyDateTime">> => non_neg_integer()
 %% }
 -type instance_timeline() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_endpoint_input() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_error() :: #{
@@ -1623,6 +1734,14 @@
 -type create_studio_input() :: #{binary() => any()}.
 
 %% Example:
+%% terminate_session_output() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type terminate_session_output() :: #{binary() => any()}.
+
+%% Example:
 %% job_flow_execution_status_detail() :: #{
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"EndDateTime">> => non_neg_integer(),
@@ -1718,6 +1837,13 @@
 %%   <<"InstanceResizePolicy">> => instance_resize_policy()
 %% }
 -type shrink_policy() :: #{binary() => any()}.
+
+%% Example:
+%% list_sessions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session())
+%% }
+-type list_sessions_output() :: #{binary() => any()}.
 
 %% Example:
 %% notebook_execution_summary() :: #{
@@ -1848,6 +1974,15 @@
 -type list_release_labels_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_session_endpoint_output() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"Endpoint">> => string()
+%% }
+-type get_session_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_cluster_input() :: #{
 %%   <<"ClusterId">> := string()
 %% }
@@ -1855,6 +1990,7 @@
 
 %% Example:
 %% remove_tags_input() :: #{
+%%   <<"ClusterId">> => string(),
 %%   <<"ResourceId">> := string(),
 %%   <<"TagKeys">> := list(string())
 %% }
@@ -1979,6 +2115,15 @@
 -type describe_persistent_app_ui_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_sessions_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SessionStates">> => list(list(any())())
+%% }
+-type list_sessions_input() :: #{binary() => any()}.
+
+%% Example:
 %% instance_type_specification() :: #{
 %%   <<"BidPrice">> => string(),
 %%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
@@ -1997,6 +2142,7 @@
 %%   <<"LogEncryptionKmsKeyId">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"SupportedProducts">> => list(string()),
+%%   <<"SessionEnabled">> => boolean(),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"MonitoringConfiguration">> => monitoring_configuration(),
 %%   <<"EbsRootVolumeIops">> => integer(),
@@ -2037,6 +2183,23 @@
 %%   <<"SecurityConfiguration">> := string()
 %% }
 -type create_security_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% session_monitoring_configuration() :: #{
+%%   <<"CloudWatchLoggingConfiguration">> => session_cloud_watch_logging_configuration(),
+%%   <<"ManagedLoggingConfiguration">> => session_managed_logging_configuration(),
+%%   <<"S3LoggingConfiguration">> => session_s3_logging_configuration()
+%% }
+-type session_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_s3_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogTypes">> => map(),
+%%   <<"LogUri">> => string()
+%% }
+-type session_s3_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% scaling_rule() :: #{
@@ -2140,6 +2303,14 @@
     internal_server_error() | 
     invalid_request_exception().
 
+-type get_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_session_endpoint_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
 -type get_studio_session_mapping_errors() ::
     internal_server_error() | 
     invalid_request_exception().
@@ -2173,6 +2344,10 @@
     invalid_request_exception().
 
 -type list_security_configurations_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_sessions_errors() ::
     internal_server_exception() | 
     invalid_request_exception().
 
@@ -2230,12 +2405,20 @@
     internal_server_exception() | 
     invalid_request_exception().
 
+-type start_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
 -type stop_notebook_execution_errors() ::
     internal_server_error() | 
     invalid_request_exception().
 
 -type terminate_job_flows_errors() ::
     internal_server_error().
+
+-type terminate_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
 
 -type update_studio_errors() ::
     internal_server_exception() | 
@@ -2811,6 +2994,44 @@ get_persistent_app_ui_presigned_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPersistentAppUIPresignedURL">>, Input, Options).
 
+%% @doc Returns detailed information about a session.
+-spec get_session(aws_client:aws_client(), get_session_input()) ->
+    {ok, get_session_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session(Client, Input, []).
+
+-spec get_session(aws_client:aws_client(), get_session_input(), proplists:proplist()) ->
+    {ok, get_session_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSession">>, Input, Options).
+
+%% @doc Returns the Spark Connect endpoint URL and a time-limited
+%% authentication token for the specified session.
+%%
+%% Use the endpoint and token to connect a PySpark client to the session.
+%% Call this operation again when the token expires to obtain a new one.
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_input()) ->
+    {ok, get_session_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session_endpoint(Client, Input, []).
+
+-spec get_session_endpoint(aws_client:aws_client(), get_session_endpoint_input(), proplists:proplist()) ->
+    {ok, get_session_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_endpoint_errors(), tuple()}.
+get_session_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSessionEndpoint">>, Input, Options).
+
 %% @doc Fetches mapping details for the specified Amazon EMR Studio and
 %% identity (user
 %% or group).
@@ -3002,6 +3223,26 @@ list_security_configurations(Client, Input)
 list_security_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
+
+%% @doc Lists the sessions on a cluster.
+%%
+%% You can filter the results by session state. Newer sessions are returned
+%% first.
+-spec list_sessions(aws_client:aws_client(), list_sessions_input()) ->
+    {ok, list_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sessions(Client, Input, []).
+
+-spec list_sessions(aws_client:aws_client(), list_sessions_input(), proplists:proplist()) ->
+    {ok, list_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSessions">>, Input, Options).
 
 %% @doc Provides a list of steps for the cluster in reverse order unless you
 %% specify
@@ -3558,6 +3799,28 @@ start_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartNotebookExecution">>, Input, Options).
 
+%% @doc Creates and starts a new Spark Connect session on the specified
+%% cluster.
+%%
+%% The cluster must be in the `RUNNING' or `WAITING' state and have
+%% sessions enabled. This operation is supported in Amazon EMR Spark 8.0.0
+%% and later.
+-spec start_session(aws_client:aws_client(), start_session_input()) ->
+    {ok, start_session_output(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_session(Client, Input, []).
+
+-spec start_session(aws_client:aws_client(), start_session_input(), proplists:proplist()) ->
+    {ok, start_session_output(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSession">>, Input, Options).
+
 %% @doc Stops a notebook execution.
 -spec stop_notebook_execution(aws_client:aws_client(), stop_notebook_execution_input()) ->
     {ok, undefined, tuple()} |
@@ -3606,6 +3869,26 @@ terminate_job_flows(Client, Input)
 terminate_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateJobFlows">>, Input, Options).
+
+%% @doc Terminates an active session.
+%%
+%% After you call this operation, the session enters the `TERMINATING'
+%% state and then transitions to `TERMINATED'.
+-spec terminate_session(aws_client:aws_client(), terminate_session_input()) ->
+    {ok, terminate_session_output(), tuple()} |
+    {error, any()} |
+    {error, terminate_session_errors(), tuple()}.
+terminate_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_session(Client, Input, []).
+
+-spec terminate_session(aws_client:aws_client(), terminate_session_input(), proplists:proplist()) ->
+    {ok, terminate_session_output(), tuple()} |
+    {error, any()} |
+    {error, terminate_session_errors(), tuple()}.
+terminate_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateSession">>, Input, Options).
 
 %% @doc Updates an Amazon EMR Studio configuration, including attributes such
 %% as name,
