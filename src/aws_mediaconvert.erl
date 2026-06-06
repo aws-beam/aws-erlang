@@ -1064,6 +1064,7 @@
 %%   <<"FragmentLength">> => integer(),
 %%   <<"ImageBasedTrickPlay">> => list(any()),
 %%   <<"ImageBasedTrickPlaySettings">> => cmaf_image_based_trick_play_settings(),
+%%   <<"ImageBasedTrickPlayVariants">> => list(cmaf_image_based_trick_play_variant()),
 %%   <<"ManifestCompression">> => list(any()),
 %%   <<"ManifestDurationFormat">> => list(any()),
 %%   <<"MinBufferTime">> => integer(),
@@ -1185,6 +1186,14 @@
 
 
 %% Example:
+%% content_light_level() :: #{
+%%   <<"MaxContentLightLevel">> => integer(),
+%%   <<"MaxFrameAverageLightLevel">> => integer()
+%% }
+-type content_light_level() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_overlay_input_clipping() :: #{
 %%   <<"EndTimecode">> => string(),
 %%   <<"StartTimecode">> => string()
@@ -1273,6 +1282,18 @@
 
 
 %% Example:
+%% hls_image_based_trick_play_variant() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
+%% }
+-type hls_image_based_trick_play_variant() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_group() :: #{
 %%   <<"AutomatedEncodingSettings">> => automated_encoding_settings(),
 %%   <<"CustomName">> => string(),
@@ -1346,6 +1367,18 @@
 
 
 %% Example:
+%% cmaf_image_based_trick_play_variant() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
+%% }
+-type cmaf_image_based_trick_play_variant() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_codec_settings() :: #{
 %%   <<"Av1Settings">> => av1_settings(),
 %%   <<"AvcIntraSettings">> => avc_intra_settings(),
@@ -1388,6 +1421,7 @@
 %%   <<"Channels">> => integer(),
 %%   <<"FrameRate">> => frame_rate(),
 %%   <<"LanguageCode">> => string(),
+%%   <<"ObjectCount">> => integer(),
 %%   <<"SampleRate">> => integer()
 %% }
 -type audio_properties() :: #{binary() => any()}.
@@ -1538,6 +1572,18 @@
 
 
 %% Example:
+%% dash_iso_image_based_trick_play_variant() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
+%% }
+-type dash_iso_image_based_trick_play_variant() :: #{binary() => any()}.
+
+
+%% Example:
 %% h265_settings() :: #{
 %%   <<"FlickerAdaptiveQuantization">> => list(any()),
 %%   <<"QvbrSettings">> => h265_qvbr_settings(),
@@ -1622,6 +1668,22 @@
 %%   <<"UpconvertSTLToTeletext">> => list(any())
 %% }
 -type file_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mastering_display_color_volume() :: #{
+%%   <<"BluePrimaryX">> => integer(),
+%%   <<"BluePrimaryY">> => integer(),
+%%   <<"GreenPrimaryX">> => integer(),
+%%   <<"GreenPrimaryY">> => integer(),
+%%   <<"MaxLuminance">> => float(),
+%%   <<"MinLuminance">> => float(),
+%%   <<"RedPrimaryX">> => integer(),
+%%   <<"RedPrimaryY">> => integer(),
+%%   <<"WhitePointX">> => integer(),
+%%   <<"WhitePointY">> => integer()
+%% }
+-type mastering_display_color_volume() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1844,38 +1906,39 @@
 
 %% Example:
 %% hls_group_settings() :: #{
-%%   <<"AdMarkers">> => list(list(any())()),
-%%   <<"AdditionalManifests">> => list(hls_additional_manifest()),
-%%   <<"AudioOnlyHeader">> => list(any()),
-%%   <<"BaseUrl">> => string(),
-%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()),
-%%   <<"CaptionLanguageSetting">> => list(any()),
-%%   <<"CaptionSegmentLengthControl">> => list(any()),
-%%   <<"ClientCache">> => list(any()),
-%%   <<"CodecSpecification">> => list(any()),
-%%   <<"Destination">> => string(),
-%%   <<"DestinationSettings">> => destination_settings(),
-%%   <<"DirectoryStructure">> => list(any()),
-%%   <<"Encryption">> => hls_encryption_settings(),
-%%   <<"ImageBasedTrickPlay">> => list(any()),
-%%   <<"ImageBasedTrickPlaySettings">> => hls_image_based_trick_play_settings(),
-%%   <<"ManifestCompression">> => list(any()),
-%%   <<"ManifestDurationFormat">> => list(any()),
-%%   <<"MinFinalSegmentLength">> => float(),
-%%   <<"MinSegmentLength">> => integer(),
-%%   <<"OutputSelection">> => list(any()),
-%%   <<"ProgramDateTime">> => list(any()),
-%%   <<"ProgramDateTimePeriod">> => integer(),
-%%   <<"ProgressiveWriteHlsManifest">> => list(any()),
-%%   <<"SegmentControl">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
 %%   <<"SegmentLengthControl">> => list(any()),
-%%   <<"SegmentsPerSubdirectory">> => integer(),
-%%   <<"StreamInfResolution">> => list(any()),
-%%   <<"TargetDurationCompatibilityMode">> => list(any()),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"AudioOnlyHeader">> => list(any()),
+%%   <<"ProgramDateTime">> => list(any()),
+%%   <<"MinFinalSegmentLength">> => float(),
+%%   <<"TimestampDeltaMilliseconds">> => integer(),
+%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()),
+%%   <<"ClientCache">> => list(any()),
+%%   <<"ProgramDateTimePeriod">> => integer(),
+%%   <<"ImageBasedTrickPlayVariants">> => list(hls_image_based_trick_play_variant()),
 %%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"TimestampDeltaMilliseconds">> => integer()
+%%   <<"StreamInfResolution">> => list(any()),
+%%   <<"SegmentsPerSubdirectory">> => integer(),
+%%   <<"DirectoryStructure">> => list(any()),
+%%   <<"CodecSpecification">> => list(any()),
+%%   <<"AdMarkers">> => list(list(any())()),
+%%   <<"CaptionSegmentLengthControl">> => list(any()),
+%%   <<"SegmentControl">> => list(any()),
+%%   <<"Encryption">> => hls_encryption_settings(),
+%%   <<"BaseUrl">> => string(),
+%%   <<"ProgressiveWriteHlsManifest">> => list(any()),
+%%   <<"TargetDurationCompatibilityMode">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"MinSegmentLength">> => integer(),
+%%   <<"ImageBasedTrickPlaySettings">> => hls_image_based_trick_play_settings(),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"DestinationSettings">> => destination_settings(),
+%%   <<"ManifestDurationFormat">> => list(any()),
+%%   <<"ManifestCompression">> => list(any()),
+%%   <<"ImageBasedTrickPlay">> => list(any()),
+%%   <<"CaptionLanguageSetting">> => list(any()),
+%%   <<"OutputSelection">> => list(any()),
+%%   <<"AdditionalManifests">> => list(hls_additional_manifest()),
+%%   <<"Destination">> => string()
 %% }
 -type hls_group_settings() :: #{binary() => any()}.
 
@@ -2070,8 +2133,10 @@
 %%   <<"CodecMetadata">> => codec_metadata(),
 %%   <<"ColorPrimaries">> => list(any()),
 %%   <<"FrameRate">> => frame_rate(),
+%%   <<"HdrMetadata">> => hdr_metadata(),
 %%   <<"Height">> => integer(),
 %%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"Rotation">> => integer(),
 %%   <<"TransferCharacteristics">> => list(any()),
 %%   <<"Width">> => integer()
 %% }
@@ -2090,6 +2155,14 @@
 
 
 %% Example:
+%% hdr_metadata() :: #{
+%%   <<"ContentLightLevel">> => content_light_level(),
+%%   <<"MasteringDisplayColorVolume">> => mastering_display_color_volume()
+%% }
+-type hdr_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% queue_transition() :: #{
 %%   <<"DestinationQueue">> => string(),
 %%   <<"SourceQueue">> => string(),
@@ -2104,10 +2177,12 @@
 %%   <<"ChromaSubsampling">> => string(),
 %%   <<"CodedFrameRate">> => frame_rate(),
 %%   <<"ColorPrimaries">> => list(any()),
+%%   <<"ContentLightLevel">> => content_light_level(),
 %%   <<"Height">> => integer(),
 %%   <<"Level">> => string(),
 %%   <<"MatrixCoefficients">> => list(any()),
 %%   <<"Profile">> => string(),
+%%   <<"Rotation">> => integer(),
 %%   <<"ScanType">> => string(),
 %%   <<"TransferCharacteristics">> => list(any()),
 %%   <<"Width">> => integer()
@@ -2544,7 +2619,7 @@
 
 %% Example:
 %% cmaf_encryption_settings() :: #{
-%%   <<"ClearLead">> => list(any()),
+%%   <<"ClearLeadSegments">> => integer(),
 %%   <<"ConstantInitializationVector">> => string(),
 %%   <<"EncryptionMethod">> => list(any()),
 %%   <<"InitializationVectorInManifest">> => list(any()),
@@ -2991,6 +3066,7 @@
 %%   <<"HbbtvCompliance">> => list(any()),
 %%   <<"ImageBasedTrickPlay">> => list(any()),
 %%   <<"ImageBasedTrickPlaySettings">> => dash_iso_image_based_trick_play_settings(),
+%%   <<"ImageBasedTrickPlayVariants">> => list(dash_iso_image_based_trick_play_variant()),
 %%   <<"MinBufferTime">> => integer(),
 %%   <<"MinFinalSegmentLength">> => float(),
 %%   <<"MpdManifestBandwidthType">> => list(any()),
@@ -4711,10 +4787,10 @@ start_jobs_query(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add tags to a MediaConvert queue, preset, or job template.
+%% @doc Add tags to a MediaConvert queue, preset, job, or job template.
 %%
 %% For information about tagging, see the User Guide at
-%% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+%% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -4748,10 +4824,10 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove tags from a MediaConvert queue, preset, or job template.
+%% @doc Remove tags from a MediaConvert queue, preset, job, or job template.
 %%
 %% For information about tagging, see the User Guide at
-%% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+%% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

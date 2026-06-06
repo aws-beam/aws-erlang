@@ -4719,6 +4719,7 @@
 
 %% Example:
 %% a_i_recommendation_output_config() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
 %%   <<"ModelPackageGroupIdentifier">> => string(),
 %%   <<"S3OutputLocation">> => string()
 %% }
@@ -7976,6 +7977,14 @@
 -type describe_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% a_i_mlflow_config() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string(),
+%%   <<"MlflowRunName">> => string()
+%% }
+-type a_i_mlflow_config() :: #{binary() => any()}.
+
+%% Example:
 %% model_quality_job_input() :: #{
 %%   <<"BatchTransformInput">> => batch_transform_input(),
 %%   <<"EndpointInput">> => endpoint_input(),
@@ -10140,6 +10149,7 @@
 %% Example:
 %% a_i_benchmark_output_result() :: #{
 %%   <<"CloudWatchLogs">> => list(a_i_cloud_watch_logs()),
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
 %%   <<"S3OutputLocation">> => string()
 %% }
 -type a_i_benchmark_output_result() :: #{binary() => any()}.
@@ -11838,6 +11848,7 @@
 
 %% Example:
 %% a_i_recommendation_output_result() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
 %%   <<"ModelPackageGroupIdentifier">> => string(),
 %%   <<"S3OutputLocation">> => string()
 %% }
@@ -12594,6 +12605,7 @@
 
 %% Example:
 %% a_i_benchmark_output_config() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
 %%   <<"S3OutputLocation">> => string()
 %% }
 -type a_i_benchmark_output_config() :: #{binary() => any()}.

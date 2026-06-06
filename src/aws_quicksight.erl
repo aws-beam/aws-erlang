@@ -15,6 +15,8 @@
 
 -export([batch_create_topic_reviewed_answer/4,
          batch_create_topic_reviewed_answer/5,
+         batch_delete_knowledge_base/3,
+         batch_delete_knowledge_base/4,
          batch_delete_topic_reviewed_answer/4,
          batch_delete_topic_reviewed_answer/5,
          cancel_ingestion/5,
@@ -119,6 +121,8 @@
          delete_iam_policy_assignment/6,
          delete_identity_propagation_config/4,
          delete_identity_propagation_config/5,
+         delete_knowledge_base/4,
+         delete_knowledge_base/5,
          delete_namespace/4,
          delete_namespace/5,
          delete_o_auth_client_application/4,
@@ -271,6 +275,12 @@
          describe_key_registration/2,
          describe_key_registration/4,
          describe_key_registration/5,
+         describe_knowledge_base/3,
+         describe_knowledge_base/5,
+         describe_knowledge_base/6,
+         describe_knowledge_base_permissions/3,
+         describe_knowledge_base_permissions/5,
+         describe_knowledge_base_permissions/6,
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
@@ -420,6 +430,9 @@
          list_ingestions/3,
          list_ingestions/5,
          list_ingestions/6,
+         list_knowledge_bases/2,
+         list_knowledge_bases/4,
+         list_knowledge_bases/5,
          list_namespaces/2,
          list_namespaces/4,
          list_namespaces/5,
@@ -477,6 +490,8 @@
          list_users/3,
          list_users/5,
          list_users/6,
+         list_users_index_capacity/3,
+         list_users_index_capacity/4,
          list_vpc_connections/2,
          list_vpc_connections/4,
          list_vpc_connections/5,
@@ -506,6 +521,8 @@
          search_folders/4,
          search_groups/4,
          search_groups/5,
+         search_knowledge_bases/3,
+         search_knowledge_bases/4,
          search_spaces/3,
          search_spaces/4,
          search_topics/3,
@@ -590,6 +607,8 @@
          update_ip_restriction/4,
          update_key_registration/3,
          update_key_registration/4,
+         update_knowledge_base_permissions/4,
+         update_knowledge_base_permissions/5,
          update_o_auth_client_application/4,
          update_o_auth_client_application/5,
          update_public_sharing_settings/3,
@@ -777,6 +796,14 @@
 %%   <<"RequestId">> => string()
 %% }
 -type delete_brand_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_configuration() :: #{
+%%   <<"eventEnabled">> => boolean(),
+%%   <<"templateConfiguration">> => kb_template_configuration()
+%% }
+-type knowledge_base_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1125,6 +1152,14 @@
 
 
 %% Example:
+%% batch_delete_knowledge_base_success() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseId">> => string()
+%% }
+-type batch_delete_knowledge_base_success() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_path_element() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string()
@@ -1176,6 +1211,15 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type data_stories_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_extraction_configuration() :: #{
+%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
+%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
+%% }
+-type media_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1690,6 +1734,18 @@
 %%   <<"Status">> => integer()
 %% }
 -type get_identity_context_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_index_capacity_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => [string()],
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_users_index_capacity_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_folder_request() :: #{}
@@ -2487,6 +2543,21 @@
 
 
 %% Example:
+%% user_index_capacity() :: #{
+%%   <<"email">> => [string()],
+%%   <<"kbCount">> => integer(),
+%%   <<"role">> => [string()],
+%%   <<"spaceCount">> => integer(),
+%%   <<"totalCapacityBytes">> => float(),
+%%   <<"totalKBCapacityBytes">> => float(),
+%%   <<"totalSpaceCapacityBytes">> => float(),
+%%   <<"userArn">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type user_index_capacity() :: #{binary() => any()}.
+
+
+%% Example:
 %% read_iam_connection_metadata() :: #{
 %%   <<"RoleArn">> => string(),
 %%   <<"SourceArn">> => string()
@@ -2510,6 +2581,15 @@
 %%   <<"spaceId">> => string()
 %% }
 -type list_space_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_knowledge_base_failure() :: #{
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"KnowledgeBaseId">> => string()
+%% }
+-type batch_delete_knowledge_base_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3497,6 +3577,14 @@
 
 
 %% Example:
+%% update_knowledge_base_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
+%% }
+-type update_knowledge_base_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dashboard_version() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -3900,6 +3988,14 @@
 
 
 %% Example:
+%% video_extraction_configuration() :: #{
+%%   <<"videoExtractionStatus">> => list(any()),
+%%   <<"videoExtractionType">> => list(any())
+%% }
+-type video_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% radar_chart_series_settings() :: #{
 %%   <<"AreaStyleSettings">> => radar_chart_area_style_settings()
 %% }
@@ -3953,6 +4049,16 @@
 %%   <<"VisibleRange">> => visible_range_options()
 %% }
 -type scroll_bar_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_knowledge_base_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_knowledge_base_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_custom_permissions_request() :: #{}
@@ -4540,6 +4646,17 @@
 %%   <<"TokenEndpoint">> => string()
 %% }
 -type read_client_credentials_grant_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_permissions_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_knowledge_base_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5309,6 +5426,13 @@
 
 
 %% Example:
+%% image_extraction_configuration() :: #{
+%%   <<"imageExtractionStatus">> => list(any())
+%% }
+-type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% space_quick_sight_resource() :: #{
 %%   <<"resourceDetails">> => list(),
 %%   <<"resourceType">> => list(any())
@@ -5354,6 +5478,13 @@
 %%   <<"Value">> => string()
 %% }
 -type dashboard_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_knowledge_base_request() :: #{
+%%   <<"KnowledgeBaseIds">> := list(string())
+%% }
+-type batch_delete_knowledge_base_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5638,6 +5769,15 @@
 %% }
 -type starburst_parameters() :: #{binary() => any()}.
 
+
+%% Example:
+%% describe_knowledge_base_response() :: #{
+%%   <<"KnowledgeBase">> => knowledge_base(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_knowledge_base_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_brand_published_version_request() :: #{}
 -type describe_brand_published_version_request() :: #{}.
@@ -5855,6 +5995,31 @@
 
 
 %% Example:
+%% knowledge_base() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DataSourceArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DocumentCount">> => float(),
+%%   <<"FirstCompletedIngestionSummary">> => knowledge_base_ingestion_summary(),
+%%   <<"FirstIncompleteIngestionSummary">> => knowledge_base_ingestion_summary(),
+%%   <<"IsEmailNotificationOptedForIngestionFailures">> => boolean(),
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseConfiguration">> => knowledge_base_configuration(),
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"KnowledgeBaseSizeBytes">> => float(),
+%%   <<"LatestIngestionSummary">> => knowledge_base_ingestion_summary(),
+%%   <<"MediaExtractionConfiguration">> => media_extraction_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"PrimaryOwnerArn">> => [string()],
+%%   <<"PrimaryOwnerUsername">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => [string()],
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type knowledge_base() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_dashboard_snapshot_job_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AwsAccountId">> => string(),
@@ -5885,6 +6050,13 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_extraction_configuration() :: #{
+%%   <<"audioExtractionStatus">> => list(any())
+%% }
+-type audio_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6060,6 +6232,24 @@
 
 
 %% Example:
+%% knowledge_base_summary() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DocumentCount">> => float(),
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"KnowledgeBaseSizeBytes">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"PrimaryOwnerArn">> => [string()],
+%%   <<"PrimaryOwnerUsername">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => [string()],
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type knowledge_base_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% web_crawler_parameters() :: #{
 %%   <<"LoginPageUrl">> => string(),
 %%   <<"PasswordButtonXpath">> => string(),
@@ -6117,6 +6307,14 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type numeric_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_knowledge_bases_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6617,6 +6815,10 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_data_set_override_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_knowledge_base_request() :: #{}
+-type describe_knowledge_base_request() :: #{}.
 
 
 %% Example:
@@ -7755,10 +7957,25 @@
 
 
 %% Example:
+%% user_name_or_email_filter() :: #{
+%%   <<"prefix">> => string()
+%% }
+-type user_name_or_email_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_key_registration_request() :: #{
 %%   <<"DefaultKeyOnly">> => boolean()
 %% }
 -type describe_key_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_sort_by() :: #{
+%%   <<"sortByField">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type knowledge_base_sort_by() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8303,6 +8520,10 @@
 %% }
 -type update_template_permissions_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_knowledge_base_request() :: #{}
+-type delete_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% update_account_settings_request() :: #{
@@ -8475,6 +8696,13 @@
 %%   <<"VisualMenuOption">> => visual_menu_option()
 %% }
 -type visual_interaction_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% kb_template_configuration() :: #{
+%%   <<"template">> => any()
+%% }
+-type kb_template_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_source_permissions_request() :: #{}
@@ -9624,6 +9852,15 @@
 %%   <<"ThemeArn">> => string()
 %% }
 -type analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_index_capacity_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"requestId">> => [string()],
+%%   <<"users">> => list(user_index_capacity())
+%% }
+-type list_users_index_capacity_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11067,6 +11304,10 @@
 %% }
 -type big_query_parameters() :: #{binary() => any()}.
 
+%% Example:
+%% describe_knowledge_base_permissions_request() :: #{}
+-type describe_knowledge_base_permissions_request() :: #{}.
+
 
 %% Example:
 %% start_dashboard_snapshot_job_response() :: #{
@@ -11290,6 +11531,14 @@
 %%   <<"VisualId">> => string()
 %% }
 -type waterfall_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_bytes_range_filter() :: #{
+%%   <<"maxBytes">> => float(),
+%%   <<"minBytes">> => float()
+%% }
+-type capacity_bytes_range_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11760,6 +12009,16 @@
 %%   <<"ElementValue">> => string()
 %% }
 -type decal_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_knowledge_base_response() :: #{
+%%   <<"Deleted">> => list(batch_delete_knowledge_base_success()),
+%%   <<"Errors">> => list(batch_delete_knowledge_base_failure()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type batch_delete_knowledge_base_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12721,6 +12980,16 @@
 
 
 %% Example:
+%% list_knowledge_bases_response() :: #{
+%%   <<"KnowledgeBaseSummaries">> => list(knowledge_base_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_vpc_connection_request() :: #{
 %%   <<"DnsResolvers">> => list(string()),
 %%   <<"Name">> := string(),
@@ -12865,6 +13134,16 @@
 %%   <<"Source">> => transform_operation_source()
 %% }
 -type rename_columns_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_ingestion_summary() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"IngestionId">> => string(),
+%%   <<"IngestionStatus">> => list(any()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type knowledge_base_ingestion_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13076,6 +13355,16 @@
 
 
 %% Example:
+%% search_knowledge_bases_request() :: #{
+%%   <<"Filters">> => list(knowledge_base_search_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => knowledge_base_sort_by()
+%% }
+-type search_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_automation_job_request() :: #{
 %%   <<"IncludeInputPayload">> => boolean(),
 %%   <<"IncludeOutputPayload">> => boolean()
@@ -13249,6 +13538,17 @@
 %%   <<"RowAlternateColorOptions">> => row_alternate_color_options()
 %% }
 -type table_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_knowledge_base_permissions_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_knowledge_base_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13749,6 +14049,15 @@
 %%   <<"Expression">> => string()
 %% }
 -type conditional_formatting_solid_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_search_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type knowledge_base_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14865,6 +15174,16 @@
 
 
 %% Example:
+%% search_knowledge_bases_response() :: #{
+%%   <<"KnowledgeBaseSummaries">> => list(knowledge_base_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type search_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% geospatial_solid_color() :: #{
 %%   <<"Color">> => string(),
 %%   <<"State">> => list(any())
@@ -15554,6 +15873,15 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type batch_delete_knowledge_base_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
 -type batch_delete_topic_reviewed_answer_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16036,6 +16364,17 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type delete_knowledge_base_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type delete_namespace_errors() ::
     precondition_not_met_exception() | 
     throttling_exception() | 
@@ -16483,6 +16822,26 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception().
 
+-type describe_knowledge_base_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_knowledge_base_permissions_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_namespace_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -16904,6 +17263,14 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type list_knowledge_bases_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
 -type list_namespaces_errors() ::
     precondition_not_met_exception() | 
     throttling_exception() | 
@@ -17066,6 +17433,14 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type list_users_index_capacity_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type list_vpc_connections_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -17181,6 +17556,15 @@
     invalid_next_token_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type search_knowledge_bases_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type search_spaces_errors() ::
@@ -17543,6 +17927,17 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception().
 
+-type update_knowledge_base_permissions_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type update_o_auth_client_application_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -17784,6 +18179,40 @@ batch_create_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input0, Option
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/batch-create-reviewed-answers"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one or more knowledge bases.
+-spec batch_delete_knowledge_base(aws_client:aws_client(), binary() | list(), batch_delete_knowledge_base_request()) ->
+    {ok, batch_delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_knowledge_base_errors(), tuple()}.
+batch_delete_knowledge_base(Client, AwsAccountId, Input) ->
+    batch_delete_knowledge_base(Client, AwsAccountId, Input, []).
+
+-spec batch_delete_knowledge_base(aws_client:aws_client(), binary() | list(), batch_delete_knowledge_base_request(), proplists:proplist()) ->
+    {ok, batch_delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_knowledge_base_errors(), tuple()}.
+batch_delete_knowledge_base(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/batch-delete"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -19859,6 +20288,40 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a knowledge base.
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_request()) ->
+    {ok, delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_errors(), tuple()}.
+delete_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, Input) ->
+    delete_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, Input, []).
+
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
+    {ok, delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_errors(), tuple()}.
+delete_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -22160,6 +22623,80 @@ describe_key_registration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
         {<<"default-key-only">>, maps:get(<<"default-key-only">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a knowledge base.
+-spec describe_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_errors(), tuple()}.
+describe_knowledge_base(Client, AwsAccountId, KnowledgeBaseId)
+  when is_map(Client) ->
+    describe_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, #{}, #{}).
+
+-spec describe_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_errors(), tuple()}.
+describe_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec describe_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_errors(), tuple()}.
+describe_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the resource permissions for a knowledge base.
+-spec describe_knowledge_base_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_knowledge_base_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_permissions_errors(), tuple()}.
+describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId)
+  when is_map(Client) ->
+    describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, #{}, #{}).
+
+-spec describe_knowledge_base_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_knowledge_base_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_permissions_errors(), tuple()}.
+describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec describe_knowledge_base_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_knowledge_base_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_permissions_errors(), tuple()}.
+describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -24465,6 +25002,48 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all knowledge bases in an Amazon QuickSight account.
+-spec list_knowledge_bases(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
+list_knowledge_bases(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_knowledge_bases(Client, AwsAccountId, #{}, #{}).
+
+-spec list_knowledge_bases(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
+list_knowledge_bases(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_knowledge_bases(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_knowledge_bases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
+list_knowledge_bases(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the namespaces for the specified Amazon Web Services account.
 %%
 %% This operation doesn't list deleted namespaces.
@@ -25248,6 +25827,40 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists per-user index capacity consumption for an account.
+-spec list_users_index_capacity(aws_client:aws_client(), binary() | list(), list_users_index_capacity_request()) ->
+    {ok, list_users_index_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_index_capacity_errors(), tuple()}.
+list_users_index_capacity(Client, AwsAccountId, Input) ->
+    list_users_index_capacity(Client, AwsAccountId, Input, []).
+
+-spec list_users_index_capacity(aws_client:aws_client(), binary() | list(), list_users_index_capacity_request(), proplists:proplist()) ->
+    {ok, list_users_index_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_index_capacity_errors(), tuple()}.
+list_users_index_capacity(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/quick-index/user-capacity"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all of the VPC connections in the current set Amazon Web
 %% Services Region of an
 %% Amazon Web Services account.
@@ -25786,6 +26399,40 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
                      {<<"next-token">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for a subset of knowledge bases based on specified filters.
+-spec search_knowledge_bases(aws_client:aws_client(), binary() | list(), search_knowledge_bases_request()) ->
+    {ok, search_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, search_knowledge_bases_errors(), tuple()}.
+search_knowledge_bases(Client, AwsAccountId, Input) ->
+    search_knowledge_bases(Client, AwsAccountId, Input, []).
+
+-spec search_knowledge_bases(aws_client:aws_client(), binary() | list(), search_knowledge_bases_request(), proplists:proplist()) ->
+    {ok, search_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, search_knowledge_bases_errors(), tuple()}.
+search_knowledge_bases(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/search/knowledge-bases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for Amazon QuickSight spaces that match the specified
@@ -27507,6 +28154,40 @@ update_key_registration(Client, AwsAccountId, Input) ->
 update_key_registration(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/key-registration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the resource permissions for a knowledge base.
+-spec update_knowledge_base_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_knowledge_base_permissions_request()) ->
+    {ok, update_knowledge_base_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_permissions_errors(), tuple()}.
+update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input) ->
+    update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input, []).
+
+-spec update_knowledge_base_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_knowledge_base_permissions_request(), proplists:proplist()) ->
+    {ok, update_knowledge_base_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_permissions_errors(), tuple()}.
+update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

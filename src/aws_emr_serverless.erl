@@ -101,6 +101,7 @@
 
 %% Example:
 %% image_configuration_input() :: #{
+%%   <<"applicationLevelDigestResolution">> => [boolean()],
 %%   <<"imageUri">> => string()
 %% }
 -type image_configuration_input() :: #{binary() => any()}.
@@ -226,6 +227,7 @@
 %%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
 %%   <<"executionRole">> => string(),
 %%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"imageConfiguration">> => image_configuration(),
 %%   <<"jobDriver">> => list(),
 %%   <<"jobRunId">> => string(),
 %%   <<"mode">> => string(),
@@ -240,7 +242,8 @@
 %%   <<"tags">> => map(),
 %%   <<"totalExecutionDurationSeconds">> => [integer()],
 %%   <<"totalResourceUtilization">> => total_resource_utilization(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"workerTypeSpecifications">> => map()
 %% }
 -type job_run() :: #{binary() => any()}.
 
@@ -852,6 +855,7 @@
 
 %% Example:
 %% image_configuration() :: #{
+%%   <<"applicationLevelDigestResolution">> => [boolean()],
 %%   <<"imageUri">> => string(),
 %%   <<"resolvedImageDigest">> => string()
 %% }

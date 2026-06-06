@@ -440,6 +440,12 @@
 -type create_alias_output() :: #{binary() => any()}.
 
 %% Example:
+%% cfn_key_item() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type cfn_key_item() :: #{binary() => any()}.
+
+%% Example:
 %% import_tr31_key_block() :: #{
 %%   <<"WrappedKeyBlock">> => string(),
 %%   <<"WrappingKeyIdentifier">> => string()
