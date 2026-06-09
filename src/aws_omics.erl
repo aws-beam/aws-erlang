@@ -503,6 +503,7 @@
 
 %% Example:
 %% inline_setting() :: #{
+%%   <<"engineSettings">> => any(),
 %%   <<"name">> => string(),
 %%   <<"outputBucketOwnerId">> => string(),
 %%   <<"outputUri">> => string(),
@@ -947,6 +948,7 @@
 %%   <<"cacheBehavior">> => string(),
 %%   <<"cacheId">> => string(),
 %%   <<"configurationName">> => string(),
+%%   <<"engineSettings">> => any(),
 %%   <<"logLevel">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkingMode">> => string(),

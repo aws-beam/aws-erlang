@@ -193,6 +193,13 @@
 
 
 %% Example:
+%% source_metrics_configuration() :: #{
+%%   <<"MetricsSelectionCriteria">> => string()
+%% }
+-type source_metrics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_s3_table_integration_input() :: #{
 %%   <<"Arn">> := string()
 %% }
@@ -398,7 +405,8 @@
 %% centralization_rule_source() :: #{
 %%   <<"Regions">> => list(string()),
 %%   <<"Scope">> => string(),
-%%   <<"SourceLogsConfiguration">> => source_logs_configuration()
+%%   <<"SourceLogsConfiguration">> => source_logs_configuration(),
+%%   <<"SourceMetricsConfiguration">> => source_metrics_configuration()
 %% }
 -type centralization_rule_source() :: #{binary() => any()}.
 
@@ -721,6 +729,13 @@
 
 
 %% Example:
+%% metrics_backup_configuration() :: #{
+%%   <<"Region">> => string()
+%% }
+-type metrics_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_s3_table_integrations_output() :: #{
 %%   <<"IntegrationSummaries">> => list(integration_summary()),
 %%   <<"NextToken">> => string()
@@ -918,9 +933,17 @@
 
 
 %% Example:
+%% destination_metrics_configuration() :: #{
+%%   <<"BackupConfiguration">> => metrics_backup_configuration()
+%% }
+-type destination_metrics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% centralization_rule_destination() :: #{
 %%   <<"Account">> => string(),
 %%   <<"DestinationLogsConfiguration">> => destination_logs_configuration(),
+%%   <<"DestinationMetricsConfiguration">> => destination_metrics_configuration(),
 %%   <<"Region">> => string()
 %% }
 -type centralization_rule_destination() :: #{binary() => any()}.

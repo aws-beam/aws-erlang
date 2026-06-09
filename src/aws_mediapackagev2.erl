@@ -286,6 +286,7 @@
 
 %% Example:
 %% create_dash_manifest_configuration() :: #{
+%%   <<"AudioTimelinePattern">> => list(any()),
 %%   <<"AvailabilityStartTimeConfiguration">> => list(),
 %%   <<"BaseUrls">> => list(dash_base_url()),
 %%   <<"Compactness">> => list(any()),
@@ -708,6 +709,7 @@
 
 %% Example:
 %% get_dash_manifest_configuration() :: #{
+%%   <<"AudioTimelinePattern">> => list(any()),
 %%   <<"AvailabilityStartTimeConfiguration">> => list(),
 %%   <<"BaseUrls">> => list(dash_base_url()),
 %%   <<"Compactness">> => list(any()),

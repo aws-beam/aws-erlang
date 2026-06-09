@@ -2269,6 +2269,7 @@
 
 %% Example:
 %% associate_member_to_job_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"identityStoreId">> := string(),
 %%   <<"membershipLevel">> := list(any()),
 %%   <<"principalType">> := list(any())
@@ -2727,6 +2728,7 @@
 
 %% Example:
 %% associate_member_to_fleet_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"identityStoreId">> := string(),
 %%   <<"membershipLevel">> := list(any()),
 %%   <<"principalType">> := list(any())
@@ -2810,6 +2812,7 @@
 
 %% Example:
 %% associate_member_to_queue_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"identityStoreId">> := string(),
 %%   <<"membershipLevel">> := list(any()),
 %%   <<"principalType">> := list(any())
@@ -3579,6 +3582,7 @@
 
 %% Example:
 %% associate_member_to_farm_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
 %%   <<"identityStoreId">> := string(),
 %%   <<"membershipLevel">> := list(any()),
 %%   <<"principalType">> := list(any())

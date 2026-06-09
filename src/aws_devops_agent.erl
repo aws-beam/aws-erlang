@@ -16,6 +16,10 @@
          associate_service/4,
          create_agent_space/2,
          create_agent_space/3,
+         create_asset/3,
+         create_asset/4,
+         create_asset_file/5,
+         create_asset_file/6,
          create_backlog_task/3,
          create_backlog_task/4,
          create_chat/3,
@@ -24,6 +28,10 @@
          create_private_connection/3,
          delete_agent_space/3,
          delete_agent_space/4,
+         delete_asset/4,
+         delete_asset/5,
+         delete_asset_file/5,
+         delete_asset_file/6,
          delete_private_connection/3,
          delete_private_connection/4,
          deregister_service/3,
@@ -43,6 +51,15 @@
          get_agent_space/2,
          get_agent_space/4,
          get_agent_space/5,
+         get_asset/3,
+         get_asset/5,
+         get_asset/6,
+         get_asset_content/3,
+         get_asset_content/5,
+         get_asset_content/6,
+         get_asset_file/4,
+         get_asset_file/6,
+         get_asset_file/7,
          get_association/3,
          get_association/5,
          get_association/6,
@@ -60,6 +77,18 @@
          get_service/5,
          list_agent_spaces/2,
          list_agent_spaces/3,
+         list_asset_files/3,
+         list_asset_files/5,
+         list_asset_files/6,
+         list_asset_types/1,
+         list_asset_types/3,
+         list_asset_types/4,
+         list_asset_versions/3,
+         list_asset_versions/5,
+         list_asset_versions/6,
+         list_assets/2,
+         list_assets/4,
+         list_assets/5,
          list_associations/3,
          list_associations/4,
          list_backlog_tasks/3,
@@ -97,6 +126,10 @@
          untag_resource/4,
          update_agent_space/3,
          update_agent_space/4,
+         update_asset/4,
+         update_asset/5,
+         update_asset_file/5,
+         update_asset_file/6,
          update_association/4,
          update_association/5,
          update_backlog_task/4,
@@ -136,6 +169,10 @@
 %% }
 -type m_c_p_server_api_key_config() :: #{binary() => any()}.
 
+%% Example:
+%% delete_asset_file_request() :: #{}
+-type delete_asset_file_request() :: #{}.
+
 
 %% Example:
 %% create_chat_response() :: #{
@@ -159,7 +196,7 @@
 %% Example:
 %% registered_grafana_server_details() :: #{
 %%   <<"authorizationMethod">> => list(any()),
-%%   <<"endpoint">> => [string()]
+%%   <<"endpoint">> => string()
 %% }
 -type registered_grafana_server_details() :: #{binary() => any()}.
 
@@ -262,11 +299,13 @@
 
 %% Example:
 %% register_service_input() :: #{
+%%   <<"exchangeUrlPrivateConnectionName">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"privateConnectionName">> => string(),
 %%   <<"serviceDetails">> := list(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"targetUrlPrivateConnectionName">> => string()
 %% }
 -type register_service_input() :: #{binary() => any()}.
 
@@ -279,8 +318,19 @@
 
 
 %% Example:
+%% asset_file_content() :: #{
+%%   <<"body">> => list(),
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string()
+%% }
+-type asset_file_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_private_connection_output() :: #{
 %%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
 %%   <<"hostAddress">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -316,7 +366,8 @@
 %% get_operator_app_output() :: #{
 %%   <<"iam">> => iam_auth_configuration(),
 %%   <<"idc">> => idc_auth_configuration(),
-%%   <<"idp">> => idp_auth_configuration()
+%%   <<"idp">> => idp_auth_configuration(),
+%%   <<"operatorAppUrl">> => string()
 %% }
 -type get_operator_app_output() :: #{binary() => any()}.
 
@@ -385,8 +436,8 @@
 %% datadog_service_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
 %% }
 -type datadog_service_details() :: #{binary() => any()}.
 
@@ -432,10 +483,30 @@
 %% grafana_service_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
 %% }
 -type grafana_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_file() :: #{
+%%   <<"content">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_types_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_types_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -477,6 +548,14 @@
 
 
 %% Example:
+%% list_asset_versions_response() :: #{
+%%   <<"items">> => list(asset_version_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% generic_webhook() :: #{
 %%   <<"apiKey">> => string(),
 %%   <<"webhookId">> => [string()],
@@ -499,6 +578,8 @@
 %% Example:
 %% update_private_connection_certificate_output() :: #{
 %%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
 %%   <<"hostAddress">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -528,11 +609,22 @@
 
 
 %% Example:
+%% create_asset_request() :: #{
+%%   <<"assetType">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type create_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% enable_operator_app_output() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"iam">> => iam_auth_configuration(),
 %%   <<"idc">> => idc_auth_configuration(),
-%%   <<"idp">> => idp_auth_configuration()
+%%   <<"idp">> => idp_auth_configuration(),
+%%   <<"operatorAppUrl">> => string()
 %% }
 -type enable_operator_app_output() :: #{binary() => any()}.
 
@@ -580,8 +672,9 @@
 %% Example:
 %% m_c_p_server_sig_v4_authorization_config() :: #{
 %%   <<"customHeaders">> => map(),
+%%   <<"mcpRoleArn">> => string(),
 %%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
+%%   <<"roleArn">> => [string()],
 %%   <<"service">> => [string()]
 %% }
 -type m_c_p_server_sig_v4_authorization_config() :: #{binary() => any()}.
@@ -625,10 +718,26 @@
 
 
 %% Example:
+%% asset_version_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_version_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% o_auth_additional_step_details() :: #{
 %%   <<"authorizationUrl">> => [string()]
 %% }
 -type o_auth_additional_step_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_file_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_file_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_webhooks_input() :: #{}
@@ -658,6 +767,8 @@
 %% Example:
 %% private_connection_summary() :: #{
 %%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
 %%   <<"hostAddress">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -700,6 +811,13 @@
 %%   <<"sequenceNumber">> => [integer()]
 %% }
 -type send_message_response_in_progress_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -827,6 +945,18 @@
 
 
 %% Example:
+%% asset() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetType">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_message_content_block_delta_event() :: #{
 %%   <<"delta">> => list(),
 %%   <<"index">> => [integer()],
@@ -844,6 +974,13 @@
 %% Example:
 %% get_operator_app_input() :: #{}
 -type get_operator_app_input() :: #{}.
+
+
+%% Example:
+%% get_asset_content_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_content_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -879,10 +1016,11 @@
 %% registered_m_c_p_server_sig_v4_details() :: #{
 %%   <<"customHeaders">> => map(),
 %%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()],
+%%   <<"endpoint">> => string(),
+%%   <<"mcpRoleArn">> => string(),
+%%   <<"name">> => string(),
 %%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
+%%   <<"roleArn">> => [string()],
 %%   <<"service">> => [string()]
 %% }
 -type registered_m_c_p_server_sig_v4_details() :: #{binary() => any()}.
@@ -912,6 +1050,8 @@
 %% Example:
 %% describe_private_connection_output() :: #{
 %%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
 %%   <<"hostAddress">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -993,6 +1133,13 @@
 
 
 %% Example:
+%% asset_zip_content() :: #{
+%%   <<"zipFile">> => binary()
+%% }
+-type asset_zip_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% recommendation() :: #{
 %%   <<"additionalContext">> => [string()],
 %%   <<"agentSpaceArn">> => [string()],
@@ -1067,6 +1214,14 @@
 
 
 %% Example:
+%% list_asset_files_response() :: #{
+%%   <<"items">> => list(asset_file_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_files_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% association() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"associationId">> => string(),
@@ -1077,6 +1232,10 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type association() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_response() :: #{}
+-type delete_asset_response() :: #{}.
 
 
 %% Example:
@@ -1089,6 +1248,15 @@
 %% Example:
 %% get_account_usage_input() :: #{}
 -type get_account_usage_input() :: #{}.
+
+
+%% Example:
+%% create_asset_file_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type create_asset_file_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1130,11 +1298,30 @@
 
 
 %% Example:
+%% asset_file_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_file_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"path">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1145,6 +1332,13 @@
 %%   <<"exchangeParameters">> => map()
 %% }
 -type dynatrace_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type update_asset_file_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1180,6 +1374,13 @@
 
 
 %% Example:
+%% get_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type get_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% registered_service() :: #{
 %%   <<"accessibleResources">> => list([any()]()),
 %%   <<"additionalServiceDetails">> => list(),
@@ -1204,10 +1405,17 @@
 %% m_c_p_server_sig_v4_service_details() :: #{
 %%   <<"authorizationConfig">> => m_c_p_server_sig_v4_authorization_config(),
 %%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
 %% }
 -type m_c_p_server_sig_v4_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type get_asset_file_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1227,7 +1435,7 @@
 %%   <<"exchangeParameters">> => map(),
 %%   <<"exchangeUrl">> => [string()],
 %%   <<"returnToEndpoint">> => [string()],
-%%   <<"scopes">> => list([string()]()),
+%%   <<"scopes">> => list(string()),
 %%   <<"supportCodeChallenge">> => [boolean()]
 %% }
 -type m_c_p_server_o_auth3_l_o_config() :: #{binary() => any()}.
@@ -1250,6 +1458,15 @@
 %% Example:
 %% delete_private_connection_input() :: #{}
 -type delete_private_connection_input() :: #{}.
+
+
+%% Example:
+%% list_asset_files_request() :: #{
+%%   <<"assetVersion">> => [integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_files_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1319,13 +1536,17 @@
 %% }
 -type create_agent_space_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_asset_request() :: #{}
+-type delete_asset_request() :: #{}.
+
 
 %% Example:
 %% m_c_p_server_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
 %% }
 -type m_c_p_server_details() :: #{binary() => any()}.
 
@@ -1367,6 +1588,31 @@
 
 
 %% Example:
+%% update_asset_file_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> => list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type update_asset_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type create_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> => list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_backlog_task_response() :: #{
 %%   <<"task">> => task()
 %% }
@@ -1397,6 +1643,10 @@
 %%   <<"resourceConfigurationId">> => string()
 %% }
 -type self_managed_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_file_response() :: #{}
+-type delete_asset_file_response() :: #{}.
 
 
 %% Example:
@@ -1461,6 +1711,21 @@
 
 
 %% Example:
+%% get_asset_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_type_summary() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"description">> => [string()]
+%% }
+-type asset_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -1469,6 +1734,14 @@
 %% Example:
 %% deregister_service_output() :: #{}
 -type deregister_service_output() :: #{}.
+
+
+%% Example:
+%% get_asset_content_response() :: #{
+%%   <<"content">> => asset_zip_content(),
+%%   <<"version">> => [integer()]
+%% }
+-type get_asset_content_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1489,6 +1762,7 @@
 %% Example:
 %% service_managed_input() :: #{
 %%   <<"certificate">> => string(),
+%%   <<"dnsResolution">> => list(any()),
 %%   <<"hostAddress">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"ipv4AddressesPerEni">> => integer(),
@@ -1502,6 +1776,7 @@
 
 %% Example:
 %% send_message_request() :: #{
+%%   <<"assetIds">> => list([string()]()),
 %%   <<"content">> := string(),
 %%   <<"context">> => send_message_context(),
 %%   <<"executionId">> := string(),
@@ -1525,6 +1800,17 @@
 %%   <<"channelName">> => [string()]
 %% }
 -type slack_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_request() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"updatedAfter">> => [non_neg_integer()],
+%%   <<"updatedBefore">> => [non_neg_integer()]
+%% }
+-type list_assets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1618,6 +1904,14 @@
 
 
 %% Example:
+%% list_assets_response() :: #{
+%%   <<"items">> => list(asset()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% task_filter() :: #{
 %%   <<"createdAfter">> => non_neg_integer(),
 %%   <<"createdBefore">> => non_neg_integer(),
@@ -1654,7 +1948,7 @@
 %%   <<"clientSecret">> => string(),
 %%   <<"exchangeParameters">> => map(),
 %%   <<"exchangeUrl">> => [string()],
-%%   <<"scopes">> => list([string()]())
+%%   <<"scopes">> => list(string())
 %% }
 -type m_c_p_server_o_auth_client_credentials_config() :: #{binary() => any()}.
 
@@ -1674,6 +1968,14 @@
 %%   <<"services">> => list(registered_service())
 %% }
 -type list_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_types_response() :: #{
+%%   <<"items">> => list(asset_type_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% send_message_heartbeat_event() :: #{}
@@ -1726,6 +2028,13 @@
 %% }
 -type registered_github_service_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type create_asset_file_response() :: #{binary() => any()}.
+
 -type associate_service_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1740,6 +2049,22 @@
     invalid_parameter_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_asset_file_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    content_size_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_backlog_task_errors() ::
@@ -1768,6 +2093,21 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_asset_file_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_private_connection_errors() ::
     throttling_exception() | 
@@ -1821,6 +2161,27 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_asset_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_asset_file_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1856,6 +2217,32 @@
 -type list_agent_spaces_errors() ::
     throttling_exception() | 
     validation_exception() | 
+    internal_server_exception().
+
+-type list_asset_files_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_asset_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_asset_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_assets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception().
 
 -type list_associations_errors() ::
@@ -1962,6 +2349,23 @@
     throttling_exception() | 
     validation_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_asset_file_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    content_size_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2072,6 +2476,74 @@ create_agent_space(Client, Input) ->
 create_agent_space(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/agentspaces"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new asset in the specified agent space
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_request()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
+create_asset(Client, AgentSpaceId, Input) ->
+    create_asset(Client, AgentSpaceId, Input, []).
+
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_request(), proplists:proplist()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
+create_asset(Client, AgentSpaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a file in an asset
+-spec create_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_asset_file_request()) ->
+    {ok, create_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_file_errors(), tuple()}.
+create_asset_file(Client, AgentSpaceId, AssetId, Path, Input) ->
+    create_asset_file(Client, AgentSpaceId, AssetId, Path, Input, []).
+
+-spec create_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_asset_file_request(), proplists:proplist()) ->
+    {ok, create_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_file_errors(), tuple()}.
+create_asset_file(Client, AgentSpaceId, AssetId, Path, Input0, Options0) ->
+    Method = post,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/files/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2214,6 +2686,74 @@ delete_agent_space(Client, AgentSpaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/agentspaces/", aws_util:encode_uri(AgentSpaceId), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an asset and all its files from the specified agent space
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_request()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
+delete_asset(Client, AgentSpaceId, AssetId, Input) ->
+    delete_asset(Client, AgentSpaceId, AssetId, Input, []).
+
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
+delete_asset(Client, AgentSpaceId, AssetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a file from an asset
+-spec delete_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_file_request()) ->
+    {ok, delete_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_file_errors(), tuple()}.
+delete_asset_file(Client, AgentSpaceId, AssetId, Path, Input) ->
+    delete_asset_file(Client, AgentSpaceId, AssetId, Path, Input, []).
+
+-spec delete_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_file_request(), proplists:proplist()) ->
+    {ok, delete_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_file_errors(), tuple()}.
+delete_asset_file(Client, AgentSpaceId, AssetId, Path, Input0, Options0) ->
+    Method = delete,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/files/", aws_util:encode_multi_segment_uri(Path), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2521,6 +3061,129 @@ get_agent_space(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets an asset from the specified agent space
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
+get_asset(Client, AgentSpaceId, AssetId)
+  when is_map(Client) ->
+    get_asset(Client, AgentSpaceId, AssetId, #{}, #{}).
+
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
+get_asset(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, []).
+
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
+get_asset(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetVersion">>, maps:get(<<"assetVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets an asset's content as a zip bundle
+-spec get_asset_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_content_errors(), tuple()}.
+get_asset_content(Client, AgentSpaceId, AssetId)
+  when is_map(Client) ->
+    get_asset_content(Client, AgentSpaceId, AssetId, #{}, #{}).
+
+-spec get_asset_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_content_errors(), tuple()}.
+get_asset_content(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_content(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, []).
+
+-spec get_asset_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_content_errors(), tuple()}.
+get_asset_content(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/content"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetVersion">>, maps:get(<<"assetVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a file from an asset
+-spec get_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_file_errors(), tuple()}.
+get_asset_file(Client, AgentSpaceId, AssetId, Path)
+  when is_map(Client) ->
+    get_asset_file(Client, AgentSpaceId, AssetId, Path, #{}, #{}).
+
+-spec get_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_file_errors(), tuple()}.
+get_asset_file(Client, AgentSpaceId, AssetId, Path, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_file(Client, AgentSpaceId, AssetId, Path, QueryMap, HeadersMap, []).
+
+-spec get_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_file_errors(), tuple()}.
+get_asset_file(Client, AgentSpaceId, AssetId, Path, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/files/", aws_util:encode_multi_segment_uri(Path), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetVersion">>, maps:get(<<"assetVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves given associations configured for a specific AgentSpace.
 -spec get_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_association_output(), tuple()} |
@@ -2746,6 +3409,178 @@ list_agent_spaces(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists files in an asset
+-spec list_asset_files(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_asset_files_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_files_errors(), tuple()}.
+list_asset_files(Client, AgentSpaceId, AssetId)
+  when is_map(Client) ->
+    list_asset_files(Client, AgentSpaceId, AssetId, #{}, #{}).
+
+-spec list_asset_files(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_asset_files_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_files_errors(), tuple()}.
+list_asset_files(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_files(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, []).
+
+-spec list_asset_files(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_files_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_files_errors(), tuple()}.
+list_asset_files(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/files"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetVersion">>, maps:get(<<"assetVersion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the supported asset types
+-spec list_asset_types(aws_client:aws_client()) ->
+    {ok, list_asset_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_types_errors(), tuple()}.
+list_asset_types(Client)
+  when is_map(Client) ->
+    list_asset_types(Client, #{}, #{}).
+
+-spec list_asset_types(aws_client:aws_client(), map(), map()) ->
+    {ok, list_asset_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_types_errors(), tuple()}.
+list_asset_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_types(Client, QueryMap, HeadersMap, []).
+
+-spec list_asset_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_types_errors(), tuple()}.
+list_asset_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/types"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists versions of an asset in the specified agent space
+-spec list_asset_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_asset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_versions_errors(), tuple()}.
+list_asset_versions(Client, AgentSpaceId, AssetId)
+  when is_map(Client) ->
+    list_asset_versions(Client, AgentSpaceId, AssetId, #{}, #{}).
+
+-spec list_asset_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_asset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_versions_errors(), tuple()}.
+list_asset_versions(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_versions(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, []).
+
+-spec list_asset_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_versions_errors(), tuple()}.
+list_asset_versions(Client, AgentSpaceId, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists assets in the specified agent space
+-spec list_assets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
+list_assets(Client, AgentSpaceId)
+  when is_map(Client) ->
+    list_assets(Client, AgentSpaceId, #{}, #{}).
+
+-spec list_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
+list_assets(Client, AgentSpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assets(Client, AgentSpaceId, QueryMap, HeadersMap, []).
+
+-spec list_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
+list_assets(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetType">>, maps:get(<<"assetType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"updatedAfter">>, maps:get(<<"updatedAfter">>, QueryMap, undefined)},
+        {<<"updatedBefore">>, maps:get(<<"updatedBefore">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all associations for given AgentSpace
 -spec list_associations(aws_client:aws_client(), binary() | list(), list_associations_input()) ->
@@ -3330,6 +4165,74 @@ update_agent_space(Client, AgentSpaceId, Input) ->
 update_agent_space(Client, AgentSpaceId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/agentspaces/", aws_util:encode_uri(AgentSpaceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an asset in the specified agent space
+-spec update_asset(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_request()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
+update_asset(Client, AgentSpaceId, AssetId, Input) ->
+    update_asset(Client, AgentSpaceId, AssetId, Input, []).
+
+-spec update_asset(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_request(), proplists:proplist()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
+update_asset(Client, AgentSpaceId, AssetId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a file in an asset
+-spec update_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_file_request()) ->
+    {ok, update_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_file_errors(), tuple()}.
+update_asset_file(Client, AgentSpaceId, AssetId, Path, Input) ->
+    update_asset_file(Client, AgentSpaceId, AssetId, Path, Input, []).
+
+-spec update_asset_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_file_request(), proplists:proplist()) ->
+    {ok, update_asset_file_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_file_errors(), tuple()}.
+update_asset_file(Client, AgentSpaceId, AssetId, Path, Input0, Options0) ->
+    Method = patch,
+    Path = ["/asset/agent-space/", aws_util:encode_uri(AgentSpaceId), "/assets/", aws_util:encode_uri(AssetId), "/files/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

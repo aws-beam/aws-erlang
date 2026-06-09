@@ -2,17 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use the tax setting API to programmatically set, modify, and
-%% delete the tax
-%% registration number (TRN), associated business legal name, and address
-%% (Collectively referred
-%% to as &quot;TRN information&quot;).
+%% delete the tax registration number (TRN), associated business legal name,
+%% and address (Collectively referred to as &quot;TRN information&quot;).
 %%
 %% You can also programmatically view TRN information and tax addresses
 %% (&quot;Tax profiles&quot;).
 %%
 %% You can use this API to automate your TRN information settings instead of
-%% manually using
-%% the console.
+%% manually using the console.
 %%
 %% Service Endpoint
 %%
@@ -98,10 +95,13 @@
 
 %% Example:
 %% additional_info_response() :: #{
+%%   <<"belgiumAdditionalInfo">> => belgium_additional_info(),
 %%   <<"brazilAdditionalInfo">> => brazil_additional_info(),
 %%   <<"canadaAdditionalInfo">> => canada_additional_info(),
+%%   <<"chileAdditionalInfo">> => chile_additional_info(),
 %%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
+%%   <<"franceAdditionalInfo">> => france_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
 %%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"indiaAdditionalInfo">> => india_additional_info(),
@@ -110,6 +110,7 @@
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
 %%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
 %%   <<"saudiArabiaAdditionalInfo">> => saudi_arabia_additional_info(),
@@ -124,6 +125,14 @@
 
 
 %% Example:
+%% chile_additional_info() :: #{
+%%   <<"businessActivity">> => string(),
+%%   <<"documentType">> => list(any())
+%% }
+-type chile_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% ukraine_additional_info() :: #{
 %%   <<"ukraineTrnType">> => list(any())
 %% }
@@ -134,6 +143,7 @@
 %% italy_additional_info() :: #{
 %%   <<"cigNumber">> => string(),
 %%   <<"cupNumber">> => string(),
+%%   <<"customerType">> => list(any()),
 %%   <<"sdiAccountId">> => string(),
 %%   <<"taxCode">> => string()
 %% }
@@ -215,9 +225,18 @@
 %% Example:
 %% poland_additional_info() :: #{
 %%   <<"individualRegistrationNumber">> => string(),
-%%   <<"isGroupVatEnabled">> => boolean()
+%%   <<"isGroupVatEnabled">> => [boolean()],
+%%   <<"taxRegistrationNumberType">> => list(any())
 %% }
 -type poland_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% belgium_additional_info() :: #{
+%%   <<"isMercuriusBoxEnabled">> => [boolean()],
+%%   <<"peppolId">> => string()
+%% }
+-type belgium_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -300,9 +319,12 @@
 
 %% Example:
 %% additional_info_request() :: #{
+%%   <<"belgiumAdditionalInfo">> => belgium_additional_info(),
 %%   <<"canadaAdditionalInfo">> => canada_additional_info(),
+%%   <<"chileAdditionalInfo">> => chile_additional_info(),
 %%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
+%%   <<"franceAdditionalInfo">> => france_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
 %%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"indonesiaAdditionalInfo">> => indonesia_additional_info(),
@@ -310,6 +332,7 @@
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
 %%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
 %%   <<"saudiArabiaAdditionalInfo">> => saudi_arabia_additional_info(),
@@ -452,6 +475,13 @@
 
 
 %% Example:
+%% france_additional_info() :: #{
+%%   <<"sirenNumber">> => string()
+%% }
+-type france_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tax_exemptions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"taxExemptionDetailsMap">> => map()
@@ -519,7 +549,7 @@
 %% canada_additional_info() :: #{
 %%   <<"canadaQuebecSalesTaxNumber">> => string(),
 %%   <<"canadaRetailSalesTaxNumber">> => string(),
-%%   <<"isResellerAccount">> => boolean(),
+%%   <<"isResellerAccount">> => [boolean()],
 %%   <<"provincialSalesTaxId">> => string()
 %% }
 -type canada_additional_info() :: #{binary() => any()}.
@@ -614,6 +644,13 @@
 
 
 %% Example:
+%% philippines_additional_info() :: #{
+%%   <<"isVatRegistered">> => [boolean()]
+%% }
+-type philippines_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_tax_exemption_request() :: #{
 %%   <<"accountIds">> := list(string()),
 %%   <<"authority">> := authority(),
@@ -659,7 +696,7 @@
 
 %% Example:
 %% tax_exemption_details() :: #{
-%%   <<"heritageObtainedDetails">> => boolean(),
+%%   <<"heritageObtainedDetails">> => [boolean()],
 %%   <<"heritageObtainedParentEntity">> => string(),
 %%   <<"heritageObtainedReason">> => string(),
 %%   <<"taxExemptions">> => list(tax_exemption())
@@ -884,8 +921,8 @@
 
 %% @doc Deletes tax registration for multiple accounts in batch.
 %%
-%% This can be used to delete tax
-%% registrations for up to five accounts in one batch.
+%% This can be used to delete tax registrations for up to five accounts in
+%% one batch.
 %%
 %% This API operation can't be used to delete your tax registration in
 %% Brazil. Use the Payment preferences:
@@ -962,14 +999,12 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 
 %% @doc Adds or updates tax registration for multiple accounts in batch.
 %%
-%% This can be used to add
-%% or update tax registrations for up to five accounts in one batch. You
-%% can't set a TRN if there's a pending TRN. You'll need to
-%% delete the pending TRN first.
+%% This can be used to add or update tax registrations for up to five
+%% accounts in one batch. You can't set a TRN if there's a pending
+%% TRN. You'll need to delete the pending TRN first.
 %%
 %% To call this API operation for specific countries, see the following
-%% country-specific
-%% requirements.
+%% country-specific requirements.
 %%
 %% Bangladesh
 %%
@@ -1026,19 +1061,18 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% `ppnExceptionDesignationCode' must be either `01', `07', or
 %% `08'.
 %%
-%% If `ppnExceptionDesignationCode' is `07', you must specify the
-%% `decisionNumber' in the `indonesiaAdditionalInfo' field of the
-%% `additionalTaxInformation' object.
+%% If `ppnExceptionDesignationCode' is `07' or `08', you must
+%% specify the `decisionNumber' in the `indonesiaAdditionalInfo'
+%% field of the `additionalTaxInformation' object.
 %%
 %% Kenya
 %%
 %% You must specify the `personType' in the `kenyaAdditionalInfo'
 %% field of the `additionalTaxInformation' object.
 %%
-%% If the `personType' is `Physical Person', you must specify the
-%% tax registration certificate document in the
-%% `taxRegistrationDocuments' field
-%% of the `VerificationDetails' object.
+%% If the `personType' is `Physical Person', you must specify the tax
+%% registration certificate document in the `taxRegistrationDocuments'
+%% field of the `VerificationDetails' object.
 %%
 %% Malaysia
 %%
@@ -1069,14 +1103,12 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% Department (RMCD), and have a valid SST number.
 %%
 %% Amazon Web Services reserves the right to seek additional information
-%% and/or take other actions to
-%% support your self-declaration as appropriate.
+%% and/or take other actions to support your self-declaration as appropriate.
 %%
 %% Amazon Web Services is currently registered under the following service
-%% tax codes. You must include
-%% at least one of the service tax codes in the service tax code strings to
-%% declare yourself
-%% as an authorized registered business reseller.
+%% tax codes. You must include at least one of the service tax codes in the
+%% service tax code strings to declare yourself as an authorized registered
+%% business reseller.
 %%
 %% Taxable service and service tax codes:
 %%
@@ -1087,6 +1119,14 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% IT service - 9907101676
 %%
 %% Digital services and electronic medium - 9907121690
+%%
+%% Mexico
+%%
+%% You must provide a Constancia de Situación fiscal (CSF) document in the
+%% verificationDetails field.
+%%
+%% You do not need to provide address and legal name. These will be populated
+%% based on your tax registration number.
 %%
 %% Nepal
 %%
@@ -1112,8 +1152,8 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% object.
 %%
 %% For the `address' object, use Korean characters for
-%% `addressLine1', `addressLine2'
-%% `city', `postalCode', and `stateOrRegion'.
+%% `addressLine1', `addressLine2' `city', `postalCode', and
+%% `stateOrRegion'.
 %%
 %% Spain
 %%
@@ -1123,8 +1163,7 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %%
 %% If the `registrationType' is `Local', you must specify the tax
 %% registration certificate document in the `taxRegistrationDocuments'
-%% field of
-%% the `VerificationDetails' object.
+%% field of the `VerificationDetails' object.
 %%
 %% Turkey
 %%
@@ -1134,11 +1173,11 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% If your `sector' is `Business', `Individual', or
 %% `Government':
 %%
-%% Specify the `taxOffice'. If your
-%% `sector' is `Individual', don't enter this value.
+%% Specify the `taxOffice'. If your `sector' is `Individual',
+%% don't enter this value.
 %%
-%% (Optional) Specify the `kepEmailId'. If your
-%% `sector' is `Individual', don't enter this value.
+%% (Optional) Specify the `kepEmailId'. If your `sector' is
+%% `Individual', don't enter this value.
 %%
 %% Note: In the Tax Settings page of the Billing console, `Government'
 %% appears as Public institutions
@@ -1151,6 +1190,37 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% Ukraine
 %%
 %% The sector valid values are `Business' and `Individual'.
+%%
+%% Philippines
+%%
+%% You can optionally specify the `isVatRegistered' in the
+%% `philippinesAdditionalInfo' field of the
+%% `additionalTaxInformation' object to indicate your VAT registration
+%% status with the Bureau of Internal Revenue (BIR).
+%%
+%% Belgium
+%%
+%% You can optionally specify the `peppolId' in the
+%% `belgiumAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Chile
+%%
+%% You can optionally specify the `documentType' and
+%% `businessActivity' in the `chileAdditionalInfo' field of the
+%% `additionalTaxInformation' object.
+%%
+%% France
+%%
+%% You must specify the `sirenNumber' in the `franceAdditionalInfo'
+%% field of the `additionalTaxInformation' object.
+%%
+%% Poland
+%%
+%% You can optionally specify the `taxRegistrationNumberType' in the
+%% `polandAdditionalInfo' field of the `additionalTaxInformation'
+%% object. Valid values are `EUTaxRegistrationNumber',
+%% `LocalTaxRegistrationNumber', or `LocalRegistrationNumber'.
 -spec batch_put_tax_registration(aws_client:aws_client(), batch_put_tax_registration_request()) ->
     {ok, batch_put_tax_registration_response(), tuple()} |
     {error, any()} |
@@ -1184,8 +1254,7 @@ batch_put_tax_registration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes a supplemental tax registration for a single account.
+%% @doc Deletes a supplemental tax registration for a single account.
 -spec delete_supplemental_tax_registration(aws_client:aws_client(), delete_supplemental_tax_registration_request()) ->
     {ok, delete_supplemental_tax_registration_response(), tuple()} |
     {error, any()} |
@@ -1363,8 +1432,7 @@ get_tax_registration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Downloads your tax documents to the Amazon S3 bucket that you specify
-%% in your
-%% request.
+%% in your request.
 -spec get_tax_registration_document(aws_client:aws_client(), get_tax_registration_document_request()) ->
     {ok, get_tax_registration_document_response(), tuple()} |
     {error, any()} |
@@ -1398,8 +1466,7 @@ get_tax_registration_document(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves supplemental tax registrations for a single account.
+%% @doc Retrieves supplemental tax registrations for a single account.
 -spec list_supplemental_tax_registrations(aws_client:aws_client(), list_supplemental_tax_registrations_request()) ->
     {ok, list_supplemental_tax_registrations_response(), tuple()} |
     {error, any()} |
@@ -1473,9 +1540,8 @@ list_tax_exemptions(Client, Input0, Options0) ->
 %% @doc Retrieves the tax registration of accounts listed in a consolidated
 %% billing family.
 %%
-%% This
-%% can be used to retrieve up to 100 accounts' tax registrations in one
-%% call (default 50).
+%% This can be used to retrieve up to 100 accounts' tax registrations in
+%% one call (default 50).
 -spec list_tax_registrations(aws_client:aws_client(), list_tax_registrations_request()) ->
     {ok, list_tax_registrations_response(), tuple()} |
     {error, any()} |
@@ -1509,8 +1575,7 @@ list_tax_registrations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Stores supplemental tax registration for a single account.
+%% @doc Stores supplemental tax registration for a single account.
 -spec put_supplemental_tax_registration(aws_client:aws_client(), put_supplemental_tax_registration_request()) ->
     {ok, put_supplemental_tax_registration_response(), tuple()} |
     {error, any()} |
@@ -1621,8 +1686,7 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% delete the pending TRN first.
 %%
 %% To call this API operation for specific countries, see the following
-%% country-specific
-%% requirements.
+%% country-specific requirements.
 %%
 %% Bangladesh
 %%
@@ -1679,19 +1743,18 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% `ppnExceptionDesignationCode' must be either `01', `07', or
 %% `08'.
 %%
-%% If `ppnExceptionDesignationCode' is `07', you must specify the
-%% `decisionNumber' in the `indonesiaAdditionalInfo' field of the
-%% `additionalTaxInformation' object.
+%% If `ppnExceptionDesignationCode' is `07' or `08', you must
+%% specify the `decisionNumber' in the `indonesiaAdditionalInfo'
+%% field of the `additionalTaxInformation' object.
 %%
 %% Kenya
 %%
 %% You must specify the `personType' in the `kenyaAdditionalInfo'
 %% field of the `additionalTaxInformation' object.
 %%
-%% If the `personType' is `Physical Person', you must specify the
-%% tax registration certificate document in the
-%% `taxRegistrationDocuments' field
-%% of the `VerificationDetails' object.
+%% If the `personType' is `Physical Person', you must specify the tax
+%% registration certificate document in the `taxRegistrationDocuments'
+%% field of the `VerificationDetails' object.
 %%
 %% Malaysia
 %%
@@ -1722,14 +1785,12 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% Department (RMCD), and have a valid SST number.
 %%
 %% Amazon Web Services reserves the right to seek additional information
-%% and/or take other actions to
-%% support your self-declaration as appropriate.
+%% and/or take other actions to support your self-declaration as appropriate.
 %%
 %% Amazon Web Services is currently registered under the following service
-%% tax codes. You must include
-%% at least one of the service tax codes in the service tax code strings to
-%% declare yourself
-%% as an authorized registered business reseller.
+%% tax codes. You must include at least one of the service tax codes in the
+%% service tax code strings to declare yourself as an authorized registered
+%% business reseller.
 %%
 %% Taxable service and service tax codes:
 %%
@@ -1740,6 +1801,14 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% IT service - 9907101676
 %%
 %% Digital services and electronic medium - 9907121690
+%%
+%% Mexico
+%%
+%% You must provide a Constancia de Situación fiscal (CSF) document in the
+%% verificationDetails field.
+%%
+%% You do not need to provide address and legal name. These will be populated
+%% based on your tax registration number.
 %%
 %% Nepal
 %%
@@ -1765,8 +1834,8 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% object.
 %%
 %% For the `address' object, use Korean characters for
-%% `addressLine1', `addressLine2'
-%% `city', `postalCode', and `stateOrRegion'.
+%% `addressLine1', `addressLine2' `city', `postalCode', and
+%% `stateOrRegion'.
 %%
 %% Spain
 %%
@@ -1776,8 +1845,7 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %%
 %% If the `registrationType' is `Local', you must specify the tax
 %% registration certificate document in the `taxRegistrationDocuments'
-%% field of
-%% the `VerificationDetails' object.
+%% field of the `VerificationDetails' object.
 %%
 %% Turkey
 %%
@@ -1787,11 +1855,11 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% If your `sector' is `Business', `Individual', or
 %% `Government':
 %%
-%% Specify the `taxOffice'. If your
-%% `sector' is `Individual', don't enter this value.
+%% Specify the `taxOffice'. If your `sector' is `Individual',
+%% don't enter this value.
 %%
-%% (Optional) Specify the `kepEmailId'. If your
-%% `sector' is `Individual', don't enter this value.
+%% (Optional) Specify the `kepEmailId'. If your `sector' is
+%% `Individual', don't enter this value.
 %%
 %% Note: In the Tax Settings page of the Billing console, `Government'
 %% appears as Public institutions
@@ -1804,6 +1872,37 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% Ukraine
 %%
 %% The sector valid values are `Business' and `Individual'.
+%%
+%% Philippines
+%%
+%% You can optionally specify the `isVatRegistered' in the
+%% `philippinesAdditionalInfo' field of the
+%% `additionalTaxInformation' object to indicate your VAT registration
+%% status with the Bureau of Internal Revenue (BIR).
+%%
+%% Belgium
+%%
+%% You can optionally specify the `peppolId' in the
+%% `belgiumAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Chile
+%%
+%% You can optionally specify the `documentType' and
+%% `businessActivity' in the `chileAdditionalInfo' field of the
+%% `additionalTaxInformation' object.
+%%
+%% France
+%%
+%% You must specify the `sirenNumber' in the `franceAdditionalInfo'
+%% field of the `additionalTaxInformation' object.
+%%
+%% Poland
+%%
+%% You can optionally specify the `taxRegistrationNumberType' in the
+%% `polandAdditionalInfo' field of the `additionalTaxInformation'
+%% object. Valid values are `EUTaxRegistrationNumber',
+%% `LocalTaxRegistrationNumber', or `LocalRegistrationNumber'.
 -spec put_tax_registration(aws_client:aws_client(), put_tax_registration_request()) ->
     {ok, put_tax_registration_response(), tuple()} |
     {error, any()} |

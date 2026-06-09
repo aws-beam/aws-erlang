@@ -112,6 +112,12 @@
 -type rds_reserved_instances_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% sage_maker_endpoint() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type sage_maker_endpoint() :: #{binary() => any()}.
+
+%% Example:
 %% ec2_auto_scaling_group() :: #{
 %%   <<"configuration">> => ec2_auto_scaling_group_configuration(),
 %%   <<"costCalculation">> => resource_cost_calculation()
@@ -163,6 +169,12 @@
 %%   <<"savingsPercentage">> => [float()]
 %% }
 -type reserved_instances_pricing() :: #{binary() => any()}.
+
+%% Example:
+%% work_spaces() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type work_spaces() :: #{binary() => any()}.
 
 %% Example:
 %% lambda_function() :: #{
@@ -297,6 +309,12 @@
 -type get_preferences_response() :: #{binary() => any()}.
 
 %% Example:
+%% document_db_cluster() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type document_db_cluster() :: #{binary() => any()}.
+
+%% Example:
 %% elasti_cache_reserved_instances() :: #{
 %%   <<"configuration">> => elasti_cache_reserved_instances_configuration(),
 %%   <<"costCalculation">> => reserved_instances_cost_calculation()
@@ -320,6 +338,12 @@
 %%   <<"upfrontCost">> => [string()]
 %% }
 -type redshift_reserved_instances_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% elasti_cache_cluster() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type elasti_cache_cluster() :: #{binary() => any()}.
 
 %% Example:
 %% list_recommendation_summaries_response() :: #{
@@ -659,6 +683,12 @@
 -type metrics_by_time() :: #{binary() => any()}.
 
 %% Example:
+%% dynamo_db_table() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type dynamo_db_table() :: #{binary() => any()}.
+
+%% Example:
 %% ec2_instance_savings_plans_configuration() :: #{
 %%   <<"accountScope">> => [string()],
 %%   <<"hourlyCommitment">> => [string()],
@@ -685,6 +715,12 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_recommendation_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% memory_db_cluster() :: #{
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type memory_db_cluster() :: #{binary() => any()}.
 
 %% Example:
 %% open_search_reserved_instances_configuration() :: #{

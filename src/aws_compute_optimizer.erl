@@ -286,6 +286,7 @@
 
 %% Example:
 %% idle_utilization_metric() :: #{
+%%   <<"dimensions">> => list(idle_dimension()),
 %%   <<"name">> => list(any()),
 %%   <<"statistic">> => list(any()),
 %%   <<"value">> => float()
@@ -301,6 +302,13 @@
 %%   <<"storageType">> => string()
 %% }
 -type db_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% idle_dimension() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type idle_dimension() :: #{binary() => any()}.
 
 %% Example:
 %% idle_estimated_monthly_savings() :: #{
