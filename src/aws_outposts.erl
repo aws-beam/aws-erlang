@@ -22,12 +22,16 @@
          create_order/3,
          create_outpost/2,
          create_outpost/3,
+         create_quote/2,
+         create_quote/3,
          create_renewal/2,
          create_renewal/3,
          create_site/2,
          create_site/3,
          delete_outpost/3,
          delete_outpost/4,
+         delete_quote/3,
+         delete_quote/4,
          delete_site/3,
          delete_site/4,
          get_capacity_task/3,
@@ -54,6 +58,9 @@
          get_outpost_supported_instance_types/2,
          get_outpost_supported_instance_types/4,
          get_outpost_supported_instance_types/5,
+         get_quote/2,
+         get_quote/4,
+         get_quote/5,
          get_renewal_pricing/2,
          get_renewal_pricing/4,
          get_renewal_pricing/5,
@@ -78,12 +85,18 @@
          list_catalog_items/1,
          list_catalog_items/3,
          list_catalog_items/4,
+         list_orderable_instance_types/1,
+         list_orderable_instance_types/3,
+         list_orderable_instance_types/4,
          list_orders/1,
          list_orders/3,
          list_orders/4,
          list_outposts/1,
          list_outposts/3,
          list_outposts/4,
+         list_quotes/1,
+         list_quotes/3,
+         list_quotes/4,
          list_sites/1,
          list_sites/3,
          list_sites/4,
@@ -102,6 +115,8 @@
          untag_resource/4,
          update_outpost/3,
          update_outpost/4,
+         update_quote/3,
+         update_quote/4,
          update_site/3,
          update_site/4,
          update_site_address/3,
@@ -115,6 +130,17 @@
 %% Example:
 %% get_connection_request() :: #{}
 -type get_connection_request() :: #{}.
+
+
+%% Example:
+%% quote_option() :: #{
+%%   <<"Capacities">> => list(quote_capacity()),
+%%   <<"CapacitySummary">> => capacity_summary(),
+%%   <<"PricingOptions">> => list(pricing_option()),
+%%   <<"QuoteOptionIdentifier">> => string(),
+%%   <<"Specifications">> => list(quote_specification())
+%% }
+-type quote_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -161,6 +187,7 @@
 
 %% Example:
 %% create_renewal_output() :: #{
+%%   <<"Currency">> => list(any()),
 %%   <<"MonthlyRecurringPrice">> => float(),
 %%   <<"OutpostId">> => string(),
 %%   <<"PaymentOption">> => list(any()),
@@ -206,6 +233,24 @@
 %%   <<"RackElevation">> => float()
 %% }
 -type asset_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% quote_specification() :: #{
+%%   <<"ExistingRackSpecificationDetails">> => rack_specification_details(),
+%%   <<"FinalRackSpecificationDetails">> => rack_specification_details(),
+%%   <<"QuoteSpecificationType">> => list(any()),
+%%   <<"ServerSpecificationDetails">> => server_specification_details()
+%% }
+-type quote_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quotes_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_quotes_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_order_input() :: #{}
@@ -267,6 +312,27 @@
 
 
 %% Example:
+%% quote_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"QuoteId">> => string(),
+%%   <<"QuoteOptions">> => list(quote_option()),
+%%   <<"QuoteStatus">> => list(any()),
+%%   <<"RequestedCapacities">> => list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubmittedOrderId">> => string()
+%% }
+-type quote_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_orders_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Orders">> => list(order_summary())
@@ -285,10 +351,26 @@
 
 
 %% Example:
+%% ordering_requirement() :: #{
+%%   <<"OrderingRequirementType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type ordering_requirement() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_site_output() :: #{
 %%   <<"Site">> => site()
 %% }
 -type get_site_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quote_output() :: #{
+%%   <<"Quote">> => quote()
+%% }
+-type create_quote_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,6 +396,10 @@
 %% }
 -type list_outposts_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_quote_output() :: #{}
+-type delete_quote_output() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -336,6 +422,17 @@
 
 
 %% Example:
+%% detailed_instance_type_item() :: #{
+%%   <<"FormFactorConfigs">> => list(form_factor_config()),
+%%   <<"InstanceType">> => string(),
+%%   <<"MemoryInMib">> => integer(),
+%%   <<"NetworkPerformance">> => string(),
+%%   <<"VCPUs">> => integer()
+%% }
+-type detailed_instance_type_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_site_address_input() :: #{
 %%   <<"AddressType">> := list(any())
 %% }
@@ -347,6 +444,19 @@
 %%   <<"Site">> => site()
 %% }
 -type create_site_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quote_input() :: #{
+%%   <<"CountryCode">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"OutpostIdentifier">> => string(),
+%%   <<"RequestedCapacities">> := list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())())
+%% }
+-type create_quote_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -368,12 +478,26 @@
 
 %% Example:
 %% subscription_pricing_details() :: #{
+%%   <<"Currency">> => list(any()),
 %%   <<"MonthlyRecurringPrice">> => float(),
 %%   <<"PaymentOption">> => list(any()),
 %%   <<"PaymentTerm">> => list(any()),
 %%   <<"UpfrontPrice">> => float()
 %% }
 -type subscription_pricing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_specification_details() :: #{
+%%   <<"EC2Capacities">> => list(ec2_capacity()),
+%%   <<"RackUnitHeight">> => list(any()),
+%%   <<"ServerDepthInches">> => float(),
+%%   <<"ServerHeightInches">> => float(),
+%%   <<"ServerPowerDrawKva">> => float(),
+%%   <<"ServerWeightLbs">> => float(),
+%%   <<"ServerWidthInches">> => float()
+%% }
+-type server_specification_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -426,6 +550,13 @@
 
 
 %% Example:
+%% get_quote_output() :: #{
+%%   <<"Quote">> => quote()
+%% }
+-type get_quote_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_orders_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -471,6 +602,15 @@
 
 
 %% Example:
+%% capacity_summary() :: #{
+%%   <<"CapacityChange">> => list(quote_capacity()),
+%%   <<"ExistingCapacities">> => list(quote_capacity()),
+%%   <<"FinalCapacities">> => list(quote_capacity())
+%% }
+-type capacity_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_instance_type_capacity() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"InstanceType">> => string()
@@ -505,6 +645,14 @@
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quotes_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotes">> => list(quote_summary())
+%% }
+-type list_quotes_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -580,6 +728,10 @@
 -type start_outpost_decommission_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_quote_input() :: #{}
+-type delete_quote_input() :: #{}.
+
+%% Example:
 %% get_renewal_pricing_input() :: #{}
 -type get_renewal_pricing_input() :: #{}.
 
@@ -589,6 +741,15 @@
 %%   <<"Order">> => order()
 %% }
 -type get_order_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% quote_capacity() :: #{
+%%   <<"Quantity">> => float(),
+%%   <<"QuoteCapacityType">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type quote_capacity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -646,6 +807,19 @@
 %%   <<"Sites">> => list(site())
 %% }
 -type list_sites_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quote_input() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"OutpostIdentifier">> => string(),
+%%   <<"RequestedCapacities">> => list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())())
+%% }
+-type update_quote_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -713,6 +887,10 @@
 -type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_quote_input() :: #{}
+-type get_quote_input() :: #{}.
+
+%% Example:
 %% delete_site_output() :: #{}
 -type delete_site_output() :: #{}.
 
@@ -723,6 +901,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_outpost_billing_information_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% quote_constraint() :: #{
+%%   <<"QuoteConstraintType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type quote_constraint() :: #{binary() => any()}.
 
 %% Example:
 %% delete_outpost_output() :: #{}
@@ -765,6 +951,28 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% quote() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"OrderingRequirements">> => list(ordering_requirement()),
+%%   <<"OutpostArn">> => string(),
+%%   <<"QuoteId">> => string(),
+%%   <<"QuoteOptions">> => list(quote_option()),
+%%   <<"QuoteStatus">> => list(any()),
+%%   <<"RequestedCapacities">> => list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubmittedOrderId">> => string()
+%% }
+-type quote() :: #{binary() => any()}.
 
 
 %% Example:
@@ -829,6 +1037,7 @@
 %% Example:
 %% subscription() :: #{
 %%   <<"BeginDate">> => non_neg_integer(),
+%%   <<"Currency">> => list(any()),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"MonthlyRecurringPrice">> => float(),
 %%   <<"OrderIds">> => list(string()),
@@ -838,6 +1047,22 @@
 %%   <<"UpfrontPrice">> => float()
 %% }
 -type subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quote_output() :: #{
+%%   <<"Quote">> => quote()
+%% }
+-type update_quote_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orderable_instance_types_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostGenerationFilter">> => list(any())
+%% }
+-type list_orderable_instance_types_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1015,6 +1240,21 @@
 
 
 %% Example:
+%% rack_specification_details() :: #{
+%%   <<"EC2Capacities">> => list(ec2_capacity()),
+%%   <<"RackDepthInches">> => float(),
+%%   <<"RackHeightInches">> => float(),
+%%   <<"RackId">> => string(),
+%%   <<"RackPowerDrawKva">> => float(),
+%%   <<"RackUnitHeight">> => list(any()),
+%%   <<"RackUse">> => list(any()),
+%%   <<"RackWeightLbs">> => float(),
+%%   <<"RackWidthInches">> => float()
+%% }
+-type rack_specification_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_capacity_task_output() :: #{
 %%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
@@ -1031,6 +1271,22 @@
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type get_capacity_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orderable_instance_types_output() :: #{
+%%   <<"InstanceTypes">> => list(detailed_instance_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_orderable_instance_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_factor_config() :: #{
+%%   <<"FormFactor">> => list(any()),
+%%   <<"OutpostGeneration">> => list(any())
+%% }
+-type form_factor_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1075,6 +1331,12 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_quote_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type create_renewal_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1094,6 +1356,12 @@
     internal_server_exception() | 
     not_found_exception() | 
     conflict_exception().
+
+-type delete_quote_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
 
 -type delete_site_errors() ::
     validation_exception() | 
@@ -1148,6 +1416,12 @@
     internal_server_exception() | 
     not_found_exception().
 
+-type get_quote_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type get_renewal_pricing_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1196,6 +1470,12 @@
     internal_server_exception() | 
     not_found_exception().
 
+-type list_orderable_instance_types_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type list_orders_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1204,6 +1484,10 @@
 
 -type list_outposts_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_quotes_errors() ::
     access_denied_exception() | 
     internal_server_exception().
 
@@ -1253,6 +1537,12 @@
     internal_server_exception() | 
     not_found_exception() | 
     conflict_exception().
+
+-type update_quote_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
 
 -type update_site_errors() ::
     validation_exception() | 
@@ -1417,6 +1707,46 @@ create_outpost(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a quote for an Outpost.
+%%
+%% A quote provides pricing and configuration options based
+%% on the requested capacity. You can optionally associate the quote with an
+%% existing Outpost or
+%% create a standalone quote by specifying only the country code and
+%% requested capacities.
+-spec create_quote(aws_client:aws_client(), create_quote_input()) ->
+    {ok, create_quote_output(), tuple()} |
+    {error, any()} |
+    {error, create_quote_errors(), tuple()}.
+create_quote(Client, Input) ->
+    create_quote(Client, Input, []).
+
+-spec create_quote(aws_client:aws_client(), create_quote_input(), proplists:proplist()) ->
+    {ok, create_quote_output(), tuple()} |
+    {error, any()} |
+    {error, create_quote_errors(), tuple()}.
+create_quote(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/quotes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a renewal contract for the specified Outpost.
 -spec create_renewal(aws_client:aws_client(), create_renewal_input()) ->
     {ok, create_renewal_output(), tuple()} |
@@ -1500,6 +1830,40 @@ delete_outpost(Client, OutpostId, Input) ->
 delete_outpost(Client, OutpostId, Input0, Options0) ->
     Method = delete,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified quote.
+-spec delete_quote(aws_client:aws_client(), binary() | list(), delete_quote_input()) ->
+    {ok, delete_quote_output(), tuple()} |
+    {error, any()} |
+    {error, delete_quote_errors(), tuple()}.
+delete_quote(Client, QuoteIdentifier, Input) ->
+    delete_quote(Client, QuoteIdentifier, Input, []).
+
+-spec delete_quote(aws_client:aws_client(), binary() | list(), delete_quote_input(), proplists:proplist()) ->
+    {ok, delete_quote_output(), tuple()} |
+    {error, any()} |
+    {error, delete_quote_errors(), tuple()}.
+delete_quote(Client, QuoteIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/quotes/", aws_util:encode_uri(QuoteIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1887,6 +2251,43 @@ get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified quote.
+-spec get_quote(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_quote_output(), tuple()} |
+    {error, any()} |
+    {error, get_quote_errors(), tuple()}.
+get_quote(Client, QuoteIdentifier)
+  when is_map(Client) ->
+    get_quote(Client, QuoteIdentifier, #{}, #{}).
+
+-spec get_quote(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_quote_output(), tuple()} |
+    {error, any()} |
+    {error, get_quote_errors(), tuple()}.
+get_quote(Client, QuoteIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_quote(Client, QuoteIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_quote(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_quote_output(), tuple()} |
+    {error, any()} |
+    {error, get_quote_errors(), tuple()}.
+get_quote(Client, QuoteIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/quotes/", aws_util:encode_uri(QuoteIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets all available renewal pricing options for the specified Outpost.
 -spec get_renewal_pricing(aws_client:aws_client(), binary() | list()) ->
     {ok, get_renewal_pricing_output(), tuple()} |
@@ -2250,6 +2651,52 @@ list_catalog_items(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the instance types that can be ordered for an Outpost.
+%%
+%% You can filter the results
+%% by Outpost generation.
+-spec list_orderable_instance_types(aws_client:aws_client()) ->
+    {ok, list_orderable_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_orderable_instance_types_errors(), tuple()}.
+list_orderable_instance_types(Client)
+  when is_map(Client) ->
+    list_orderable_instance_types(Client, #{}, #{}).
+
+-spec list_orderable_instance_types(aws_client:aws_client(), map(), map()) ->
+    {ok, list_orderable_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_orderable_instance_types_errors(), tuple()}.
+list_orderable_instance_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_orderable_instance_types(Client, QueryMap, HeadersMap, []).
+
+-spec list_orderable_instance_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_orderable_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_orderable_instance_types_errors(), tuple()}.
+list_orderable_instance_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/instanceTypes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"OutpostGenerationFilter">>, maps:get(<<"OutpostGenerationFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the Outpost orders for your Amazon Web Services account.
 -spec list_orders(aws_client:aws_client()) ->
     {ok, list_orders_output(), tuple()} |
@@ -2337,6 +2784,48 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
         {<<"AvailabilityZoneFilter">>, maps:get(<<"AvailabilityZoneFilter">>, QueryMap, undefined)},
         {<<"AvailabilityZoneIdFilter">>, maps:get(<<"AvailabilityZoneIdFilter">>, QueryMap, undefined)},
         {<<"LifeCycleStatusFilter">>, maps:get(<<"LifeCycleStatusFilter">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the quotes for your Amazon Web Services account.
+-spec list_quotes(aws_client:aws_client()) ->
+    {ok, list_quotes_output(), tuple()} |
+    {error, any()} |
+    {error, list_quotes_errors(), tuple()}.
+list_quotes(Client)
+  when is_map(Client) ->
+    list_quotes(Client, #{}, #{}).
+
+-spec list_quotes(aws_client:aws_client(), map(), map()) ->
+    {ok, list_quotes_output(), tuple()} |
+    {error, any()} |
+    {error, list_quotes_errors(), tuple()}.
+list_quotes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_quotes(Client, QueryMap, HeadersMap, []).
+
+-spec list_quotes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_quotes_output(), tuple()} |
+    {error, any()} |
+    {error, list_quotes_errors(), tuple()}.
+list_quotes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/quotes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
@@ -2640,6 +3129,43 @@ update_outpost(Client, OutpostId, Input) ->
 update_outpost(Client, OutpostId, Input0, Options0) ->
     Method = patch,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified quote.
+%%
+%% You can modify the requested capacities, constraints,
+%% payment options, payment terms, or Outpost association.
+-spec update_quote(aws_client:aws_client(), binary() | list(), update_quote_input()) ->
+    {ok, update_quote_output(), tuple()} |
+    {error, any()} |
+    {error, update_quote_errors(), tuple()}.
+update_quote(Client, QuoteIdentifier, Input) ->
+    update_quote(Client, QuoteIdentifier, Input, []).
+
+-spec update_quote(aws_client:aws_client(), binary() | list(), update_quote_input(), proplists:proplist()) ->
+    {ok, update_quote_output(), tuple()} |
+    {error, any()} |
+    {error, update_quote_errors(), tuple()}.
+update_quote(Client, QuoteIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/quotes/", aws_util:encode_uri(QuoteIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

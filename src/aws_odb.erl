@@ -39,6 +39,12 @@
          accept_marketplace_registration/3,
          associate_iam_role_to_resource/2,
          associate_iam_role_to_resource/3,
+         create_autonomous_database/2,
+         create_autonomous_database/3,
+         create_autonomous_database_backup/2,
+         create_autonomous_database_backup/3,
+         create_autonomous_database_wallet/2,
+         create_autonomous_database_wallet/3,
          create_cloud_autonomous_vm_cluster/2,
          create_cloud_autonomous_vm_cluster/3,
          create_cloud_exadata_infrastructure/2,
@@ -49,6 +55,10 @@
          create_odb_network/3,
          create_odb_peering_connection/2,
          create_odb_peering_connection/3,
+         delete_autonomous_database/2,
+         delete_autonomous_database/3,
+         delete_autonomous_database_backup/2,
+         delete_autonomous_database_backup/3,
          delete_cloud_autonomous_vm_cluster/2,
          delete_cloud_autonomous_vm_cluster/3,
          delete_cloud_exadata_infrastructure/2,
@@ -61,6 +71,14 @@
          delete_odb_peering_connection/3,
          disassociate_iam_role_from_resource/2,
          disassociate_iam_role_from_resource/3,
+         failover_autonomous_database/2,
+         failover_autonomous_database/3,
+         get_autonomous_database/2,
+         get_autonomous_database/3,
+         get_autonomous_database_backup/2,
+         get_autonomous_database_backup/3,
+         get_autonomous_database_wallet_details/2,
+         get_autonomous_database_wallet_details/3,
          get_cloud_autonomous_vm_cluster/2,
          get_cloud_autonomous_vm_cluster/3,
          get_cloud_exadata_infrastructure/2,
@@ -81,6 +99,18 @@
          get_odb_peering_connection/3,
          initialize_service/2,
          initialize_service/3,
+         list_autonomous_database_backups/2,
+         list_autonomous_database_backups/3,
+         list_autonomous_database_character_sets/2,
+         list_autonomous_database_character_sets/3,
+         list_autonomous_database_clones/2,
+         list_autonomous_database_clones/3,
+         list_autonomous_database_peers/2,
+         list_autonomous_database_peers/3,
+         list_autonomous_database_versions/2,
+         list_autonomous_database_versions/3,
+         list_autonomous_databases/2,
+         list_autonomous_databases/3,
          list_autonomous_virtual_machines/2,
          list_autonomous_virtual_machines/3,
          list_cloud_autonomous_vm_clusters/2,
@@ -105,16 +135,32 @@
          list_system_versions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         reboot_autonomous_database/2,
+         reboot_autonomous_database/3,
          reboot_db_node/2,
          reboot_db_node/3,
+         restore_autonomous_database/2,
+         restore_autonomous_database/3,
+         shrink_autonomous_database/2,
+         shrink_autonomous_database/3,
+         start_autonomous_database/2,
+         start_autonomous_database/3,
          start_db_node/2,
          start_db_node/3,
+         stop_autonomous_database/2,
+         stop_autonomous_database/3,
          stop_db_node/2,
          stop_db_node/3,
+         switchover_autonomous_database/2,
+         switchover_autonomous_database/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_autonomous_database/2,
+         update_autonomous_database/3,
+         update_autonomous_database_backup/2,
+         update_autonomous_database_backup/3,
          update_cloud_exadata_infrastructure/2,
          update_cloud_exadata_infrastructure/3,
          update_odb_network/2,
@@ -124,6 +170,39 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% autonomous_database_version_summary() :: #{
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"details">> => [string()],
+%%   <<"version">> => [string()]
+%% }
+-type autonomous_database_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% aws_encryption_key_configuration() :: #{
+%%   <<"externalIdType">> => list(any()),
+%%   <<"iamRoleArn">> => string(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type aws_encryption_key_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_summary() :: #{
+%%   <<"encryptionKeyConfiguration">> => list(),
+%%   <<"encryptionKeyProvider">> => list(any())
+%% }
+-type encryption_summary() :: #{binary() => any()}.
+
+%% Example:
+%% okv_encryption_key_configuration() :: #{
+%%   <<"certificateDirectoryName">> => [string()],
+%%   <<"certificateId">> => [string()],
+%%   <<"directoryName">> => [string()],
+%%   <<"okvKmsKey">> => [string()],
+%%   <<"okvUri">> => [string()]
+%% }
+-type okv_encryption_key_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_odb_network_output() :: #{
@@ -148,11 +227,21 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_autonomous_database_backup_output() :: #{
+%%   <<"autonomousDatabaseBackup">> => autonomous_database_backup()
+%% }
+-type get_autonomous_database_backup_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_oci_onboarding_status_output() :: #{
+%%   <<"autonomousDatabaseOciIntegrationIamRoles">> => list(oci_iam_role()),
 %%   <<"existingTenancyActivationLink">> => [string()],
+%%   <<"linkedOciCompartmentId">> => [string()],
+%%   <<"linkedOciTenancyId">> => [string()],
 %%   <<"newTenancyActivationLink">> => [string()],
 %%   <<"ociIdentityDomain">> => oci_identity_domain(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionErrors">> => list(subscription_error())
 %% }
 -type get_oci_onboarding_status_output() :: #{binary() => any()}.
 
@@ -164,6 +253,22 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_system_shapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_backups_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_autonomous_database_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_apex() :: #{
+%%   <<"apexVersion">> => [string()],
+%%   <<"ordsVersion">> => [string()]
+%% }
+-type autonomous_database_apex() :: #{binary() => any()}.
 
 %% Example:
 %% get_cloud_exadata_infrastructure_output() :: #{
@@ -220,11 +325,32 @@
 -type cloud_autonomous_vm_cluster_resource_details() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_operation_details() :: #{
+%%   <<"dayOfWeek">> => day_of_week(),
+%%   <<"scheduledStartTime">> => [string()],
+%%   <<"scheduledStopTime">> => [string()]
+%% }
+-type scheduled_operation_details() :: #{binary() => any()}.
+
+%% Example:
 %% service_network_endpoint() :: #{
 %%   <<"vpcEndpointId">> => [string()],
 %%   <<"vpcEndpointType">> => list(any())
 %% }
 -type service_network_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_peers_output() :: #{
+%%   <<"autonomousDatabasePeers">> => list(autonomous_database_peer_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_peers_output() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_error() :: #{
+%%   <<"errorMessage">> => [string()]
+%% }
+-type subscription_error() :: #{binary() => any()}.
 
 %% Example:
 %% gi_version_summary() :: #{
@@ -238,6 +364,20 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_nodes_output() :: #{binary() => any()}.
+
+%% Example:
+%% cross_region_data_guard_configuration() :: #{
+%%   <<"sourceAutonomousDatabaseArn">> => string()
+%% }
+-type cross_region_data_guard_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_character_sets_input() :: #{
+%%   <<"characterSetType">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_character_sets_input() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -300,6 +440,12 @@
 -type delete_cloud_autonomous_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
+%% transportable_tablespace() :: #{
+%%   <<"ttsBundleUrl">> => [string()]
+%% }
+-type transportable_tablespace() :: #{binary() => any()}.
+
+%% Example:
 %% get_odb_network_output() :: #{
 %%   <<"odbNetwork">> => odb_network()
 %% }
@@ -326,6 +472,20 @@
 %%   <<"zeroEtlAccess">> => list(any())
 %% }
 -type create_odb_network_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_versions_output() :: #{
+%%   <<"autonomousDatabaseVersions">> => list(autonomous_database_version_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_wallet_details() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"timeRotated">> => [non_neg_integer()]
+%% }
+-type autonomous_database_wallet_details() :: #{binary() => any()}.
 
 %% Example:
 %% start_db_node_output() :: #{
@@ -365,6 +525,14 @@
 %%   <<"vnicId">> => [string()]
 %% }
 -type db_node_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cross_region_disaster_recovery_configuration() :: #{
+%%   <<"isReplicateAutomaticBackups">> => [boolean()],
+%%   <<"remoteDisasterRecoveryType">> => list(any()),
+%%   <<"sourceAutonomousDatabaseArn">> => string()
+%% }
+-type cross_region_disaster_recovery_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_autonomous_vm_cluster_summary() :: #{
@@ -424,6 +592,12 @@
 -type cloud_autonomous_vm_cluster_summary() :: #{binary() => any()}.
 
 %% Example:
+%% create_autonomous_database_wallet_output() :: #{
+%%   <<"autonomousDatabaseWalletFile">> => binary()
+%% }
+-type create_autonomous_database_wallet_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_cloud_autonomous_vm_cluster_input() :: #{
 %%   <<"autonomousDataStorageSizeInTBs">> := [float()],
 %%   <<"clientToken">> => string(),
@@ -454,6 +628,39 @@
 -type reboot_db_node_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_autonomous_database_character_sets_output() :: #{
+%%   <<"autonomousDatabaseCharacterSets">> => list(autonomous_database_character_set_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_character_sets_output() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_backup() :: #{
+%%   <<"autonomousDatabaseBackupArn">> => string(),
+%%   <<"autonomousDatabaseBackupId">> => string(),
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"dbVersion">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"isAutomatic">> => [boolean()],
+%%   <<"ocid">> => [string()],
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"sizeInTBs">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timeAvailableTill">> => [non_neg_integer()],
+%%   <<"timeEnded">> => [non_neg_integer()],
+%%   <<"timeStarted">> => [non_neg_integer()],
+%%   <<"type">> => list(any())
+%% }
+-type autonomous_database_backup() :: #{binary() => any()}.
+
+%% Example:
+%% delete_autonomous_database_output() :: #{
+
+%% }
+-type delete_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_system_versions_output() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"systemVersions">> => list(system_version_summary())
@@ -461,11 +668,149 @@
 -type list_system_versions_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_autonomous_database_clones_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_clones_input() :: #{binary() => any()}.
+
+%% Example:
+%% aws_encryption_key_configuration_input() :: #{
+%%   <<"externalIdType">> => list(any()),
+%%   <<"iamRoleArn">> => string(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type aws_encryption_key_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_autonomous_database_input() :: #{
+
+%% }
+-type get_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type restore_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
 %% zero_etl_access() :: #{
 %%   <<"cidr">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type zero_etl_access() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_summary() :: #{
+%%   <<"localDisasterRecoveryType">> => list(any()),
+%%   <<"connectionUrls">> => autonomous_database_connection_urls(),
+%%   <<"dataSafeStatus">> => list(any()),
+%%   <<"customerContacts">> => list(customer_contact()),
+%%   <<"maintenanceTargetComponent">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
+%%   <<"databaseEdition">> => list(any()),
+%%   <<"allowlistedIps">> => list([string()]()),
+%%   <<"timeMaintenanceEnd">> => [non_neg_integer()],
+%%   <<"role">> => list(any()),
+%%   <<"timeOfAutoRefreshStart">> => [non_neg_integer()],
+%%   <<"refreshableMode">> => list(any()),
+%%   <<"timeLocalDataGuardEnabled">> => [non_neg_integer()],
+%%   <<"odbNetworkId">> => string(),
+%%   <<"ocid">> => [string()],
+%%   <<"availabilityZone">> => [string()],
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"computeCount">> => [float()],
+%%   <<"dbVersion">> => [string()],
+%%   <<"dbToolsDetails">> => list(database_tool()),
+%%   <<"byolComputeCountLimit">> => [integer()],
+%%   <<"isBackupRetentionLocked">> => [boolean()],
+%%   <<"backupRetentionPeriodInDays">> => [integer()],
+%%   <<"availableUpgradeVersions">> => list([string()]()),
+%%   <<"operationsInsightsStatus">> => list(any()),
+%%   <<"localAdgAutoFailoverMaxDataLossLimit">> => [integer()],
+%%   <<"displayName">> => [string()],
+%%   <<"longTermBackupSchedule">> => long_term_backup_schedule(),
+%%   <<"isLocalDataGuardEnabled">> => [boolean()],
+%%   <<"autoRefreshPointLagInSeconds">> => [integer()],
+%%   <<"nextLongTermBackupTimeStamp">> => [non_neg_integer()],
+%%   <<"timeOfLastRefresh">> => [non_neg_integer()],
+%%   <<"isRefreshableClone">> => [boolean()],
+%%   <<"standbyAllowlistedIpsSource">> => list(any()),
+%%   <<"isRemoteDataGuardEnabled">> => [boolean()],
+%%   <<"autonomousMaintenanceScheduleType">> => list(any()),
+%%   <<"autonomousDatabaseArn">> => string(),
+%%   <<"standbyAllowlistedIps">> => list([string()]()),
+%%   <<"ociUrl">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"timeOfLastBackup">> => [non_neg_integer()],
+%%   <<"cloneTableSpaceList">> => list([integer()]()),
+%%   <<"status">> => list(any()),
+%%   <<"resourcePoolLeaderId">> => [string()],
+%%   <<"scheduledOperations">> => list(scheduled_operation_details()),
+%%   <<"timeDataGuardRoleChanged">> => [non_neg_integer()],
+%%   <<"inMemoryAreaInGBs">> => [integer()],
+%%   <<"databaseType">> => list(any()),
+%%   <<"failedDataRecoveryInSeconds">> => [integer()],
+%%   <<"timeOfLastFailover">> => [non_neg_integer()],
+%%   <<"allocatedStorageSizeInTBs">> => [float()],
+%%   <<"isAutoScalingForStorageEnabled">> => [boolean()],
+%%   <<"isReconnectCloneEnabled">> => [boolean()],
+%%   <<"timeReclamationOfFreeAutonomousDatabase">> => [non_neg_integer()],
+%%   <<"actualUsedDataStorageSizeInTBs">> => [float()],
+%%   <<"standbyDb">> => database_standby_summary(),
+%%   <<"dataStorageSizeInTBs">> => [float()],
+%%   <<"usedDataStorageSizeInGBs">> => [integer()],
+%%   <<"privateEndpointLabel">> => [string()],
+%%   <<"permissionLevel">> => list(any()),
+%%   <<"ncharacterSet">> => [string()],
+%%   <<"netServicesArchitecture">> => list(any()),
+%%   <<"timeOfLastSwitchover">> => [non_neg_integer()],
+%%   <<"autoRefreshFrequencyInSeconds">> => [integer()],
+%%   <<"encryptionSummary">> => encryption_summary(),
+%%   <<"dbName">> => [string()],
+%%   <<"timeOfNextRefresh">> => [non_neg_integer()],
+%%   <<"timeOfLastRefreshPoint">> => [non_neg_integer()],
+%%   <<"remoteDisasterRecoveryConfiguration">> => disaster_recovery_configuration(),
+%%   <<"resourcePoolSummary">> => resource_pool_summary(),
+%%   <<"serviceConsoleUrl">> => [string()],
+%%   <<"memoryPerOracleComputeUnitInGBs">> => [integer()],
+%%   <<"refreshableStatus">> => list(any()),
+%%   <<"timeDeletionOfFreeAutonomousDatabase">> => [non_neg_integer()],
+%%   <<"timeDisasterRecoveryRoleChanged">> => [non_neg_integer()],
+%%   <<"usedDataStorageSizeInTBs">> => [float()],
+%%   <<"computeModel">> => list(any()),
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"cpuCoreCount">> => [integer()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"sqlWebDeveloperUrl">> => [string()],
+%%   <<"connectionStringDetails">> => autonomous_database_connection_strings(),
+%%   <<"timeUndeleted">> => [non_neg_integer()],
+%%   <<"privateEndpoint">> => [string()],
+%%   <<"peerDbIds">> => list([string()]()),
+%%   <<"databaseManagementStatus">> => list(any()),
+%%   <<"openMode">> => list(any()),
+%%   <<"characterSet">> => [string()],
+%%   <<"statusReason">> => [string()],
+%%   <<"localStandbyDb">> => database_standby_summary(),
+%%   <<"dataStorageSizeInGBs">> => [integer()],
+%%   <<"apexDetails">> => autonomous_database_apex(),
+%%   <<"totalBackupStorageSizeInGBs">> => [float()],
+%%   <<"sourceId">> => [string()],
+%%   <<"percentProgress">> => [float()],
+%%   <<"isMtlsConnectionRequired">> => [boolean()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"privateEndpointIp">> => [string()],
+%%   <<"isAutoScalingEnabled">> => [boolean()],
+%%   <<"timeMaintenanceBegin">> => [non_neg_integer()],
+%%   <<"timeUntilReconnectCloneEnabled">> => [non_neg_integer()],
+%%   <<"provisionableCpus">> => list([integer()]())
+%% }
+-type autonomous_database_summary() :: #{binary() => any()}.
 
 %% Example:
 %% update_odb_peering_connection_input() :: #{
@@ -482,6 +827,18 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% clone_to_refreshable_configuration() :: #{
+%%   <<"autoRefreshFrequencyInSeconds">> => [integer()],
+%%   <<"autoRefreshPointLagInSeconds">> => [integer()],
+%%   <<"cloneType">> => list(any()),
+%%   <<"openMode">> => list(any()),
+%%   <<"refreshableMode">> => list(any()),
+%%   <<"sourceAutonomousDatabaseId">> => string(),
+%%   <<"timeOfAutoRefreshStart">> => [non_neg_integer()]
+%% }
+-type clone_to_refreshable_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% list_gi_versions_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
@@ -490,10 +847,23 @@
 -type list_gi_versions_input() :: #{binary() => any()}.
 
 %% Example:
+%% start_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string()
+%% }
+-type start_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% oci_encryption_key_configuration() :: #{
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"vaultId">> => [string()]
+%% }
+-type oci_encryption_key_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_cloud_vm_cluster_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"cloudExadataInfrastructureId">> := string(),
-%%   <<"clusterName">> => [string()],
+%%   <<"clusterName">> => string(),
 %%   <<"cpuCoreCount">> := [integer()],
 %%   <<"dataCollectionOptions">> => data_collection_options(),
 %%   <<"dataStorageSizeInTBs">> => [float()],
@@ -501,7 +871,7 @@
 %%   <<"dbServers">> => list([string()]()),
 %%   <<"displayName">> := string(),
 %%   <<"giVersion">> := [string()],
-%%   <<"hostname">> := [string()],
+%%   <<"hostname">> := string(),
 %%   <<"isLocalBackupEnabled">> => [boolean()],
 %%   <<"isSparseDiskgroupEnabled">> => [boolean()],
 %%   <<"licenseModel">> => list(any()),
@@ -564,6 +934,31 @@
 -type list_autonomous_virtual_machines_input() :: #{binary() => any()}.
 
 %% Example:
+%% autonomous_database_peer_summary() :: #{
+%%   <<"autonomousDatabaseArn">> => string(),
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"ocid">> => [string()],
+%%   <<"region">> => [string()]
+%% }
+-type autonomous_database_peer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% disaster_recovery_configuration() :: #{
+%%   <<"disasterRecoveryType">> => list(any()),
+%%   <<"isReplicateAutomaticBackups">> => [boolean()],
+%%   <<"isSnapshotStandby">> => [boolean()],
+%%   <<"timeSnapshotStandbyEnabledTill">> => [non_neg_integer()]
+%% }
+-type disaster_recovery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"isOnlineReboot">> => [boolean()]
+%% }
+-type reboot_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
 %% list_odb_networks_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -580,10 +975,23 @@
 -type db_server_patching_details() :: #{binary() => any()}.
 
 %% Example:
+%% database_clone_configuration() :: #{
+%%   <<"cloneType">> => list(any()),
+%%   <<"sourceAutonomousDatabaseId">> => string()
+%% }
+-type database_clone_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_cloud_exadata_infrastructure_unallocated_resources_input() :: #{
 %%   <<"dbServers">> => list([string()]())
 %% }
 -type get_cloud_exadata_infrastructure_unallocated_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_autonomous_database_backup_output() :: #{
+
+%% }
+-type delete_autonomous_database_backup_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_odb_networks_output() :: #{
@@ -634,12 +1042,142 @@
 -type associate_iam_role_to_resource_input() :: #{binary() => any()}.
 
 %% Example:
+%% autonomous_database() :: #{
+%%   <<"localDisasterRecoveryType">> => list(any()),
+%%   <<"connectionUrls">> => autonomous_database_connection_urls(),
+%%   <<"dataSafeStatus">> => list(any()),
+%%   <<"customerContacts">> => list(customer_contact()),
+%%   <<"maintenanceTargetComponent">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
+%%   <<"databaseEdition">> => list(any()),
+%%   <<"allowlistedIps">> => list([string()]()),
+%%   <<"timeMaintenanceEnd">> => [non_neg_integer()],
+%%   <<"role">> => list(any()),
+%%   <<"timeOfAutoRefreshStart">> => [non_neg_integer()],
+%%   <<"refreshableMode">> => list(any()),
+%%   <<"timeLocalDataGuardEnabled">> => [non_neg_integer()],
+%%   <<"odbNetworkId">> => string(),
+%%   <<"ocid">> => [string()],
+%%   <<"availabilityZone">> => [string()],
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"computeCount">> => [float()],
+%%   <<"dbVersion">> => [string()],
+%%   <<"dbToolsDetails">> => list(database_tool()),
+%%   <<"byolComputeCountLimit">> => [integer()],
+%%   <<"isBackupRetentionLocked">> => [boolean()],
+%%   <<"backupRetentionPeriodInDays">> => [integer()],
+%%   <<"availableUpgradeVersions">> => list([string()]()),
+%%   <<"operationsInsightsStatus">> => list(any()),
+%%   <<"localAdgAutoFailoverMaxDataLossLimit">> => [integer()],
+%%   <<"displayName">> => [string()],
+%%   <<"longTermBackupSchedule">> => long_term_backup_schedule(),
+%%   <<"isLocalDataGuardEnabled">> => [boolean()],
+%%   <<"autoRefreshPointLagInSeconds">> => [integer()],
+%%   <<"nextLongTermBackupTimeStamp">> => [non_neg_integer()],
+%%   <<"timeOfLastRefresh">> => [non_neg_integer()],
+%%   <<"isRefreshableClone">> => [boolean()],
+%%   <<"standbyAllowlistedIpsSource">> => list(any()),
+%%   <<"isRemoteDataGuardEnabled">> => [boolean()],
+%%   <<"autonomousMaintenanceScheduleType">> => list(any()),
+%%   <<"autonomousDatabaseArn">> => string(),
+%%   <<"standbyAllowlistedIps">> => list([string()]()),
+%%   <<"ociUrl">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"timeOfLastBackup">> => [non_neg_integer()],
+%%   <<"cloneTableSpaceList">> => list([integer()]()),
+%%   <<"status">> => list(any()),
+%%   <<"resourcePoolLeaderId">> => [string()],
+%%   <<"scheduledOperations">> => list(scheduled_operation_details()),
+%%   <<"timeDataGuardRoleChanged">> => [non_neg_integer()],
+%%   <<"inMemoryAreaInGBs">> => [integer()],
+%%   <<"databaseType">> => list(any()),
+%%   <<"failedDataRecoveryInSeconds">> => [integer()],
+%%   <<"timeOfLastFailover">> => [non_neg_integer()],
+%%   <<"allocatedStorageSizeInTBs">> => [float()],
+%%   <<"isAutoScalingForStorageEnabled">> => [boolean()],
+%%   <<"isReconnectCloneEnabled">> => [boolean()],
+%%   <<"timeReclamationOfFreeAutonomousDatabase">> => [non_neg_integer()],
+%%   <<"actualUsedDataStorageSizeInTBs">> => [float()],
+%%   <<"standbyDb">> => database_standby_summary(),
+%%   <<"dataStorageSizeInTBs">> => [float()],
+%%   <<"usedDataStorageSizeInGBs">> => [integer()],
+%%   <<"privateEndpointLabel">> => [string()],
+%%   <<"permissionLevel">> => list(any()),
+%%   <<"ncharacterSet">> => [string()],
+%%   <<"netServicesArchitecture">> => list(any()),
+%%   <<"timeOfLastSwitchover">> => [non_neg_integer()],
+%%   <<"autoRefreshFrequencyInSeconds">> => [integer()],
+%%   <<"encryptionSummary">> => encryption_summary(),
+%%   <<"dbName">> => [string()],
+%%   <<"timeOfNextRefresh">> => [non_neg_integer()],
+%%   <<"timeOfLastRefreshPoint">> => [non_neg_integer()],
+%%   <<"remoteDisasterRecoveryConfiguration">> => disaster_recovery_configuration(),
+%%   <<"resourcePoolSummary">> => resource_pool_summary(),
+%%   <<"serviceConsoleUrl">> => [string()],
+%%   <<"memoryPerOracleComputeUnitInGBs">> => [integer()],
+%%   <<"refreshableStatus">> => list(any()),
+%%   <<"timeDeletionOfFreeAutonomousDatabase">> => [non_neg_integer()],
+%%   <<"timeDisasterRecoveryRoleChanged">> => [non_neg_integer()],
+%%   <<"usedDataStorageSizeInTBs">> => [float()],
+%%   <<"computeModel">> => list(any()),
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"cpuCoreCount">> => [integer()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"sqlWebDeveloperUrl">> => [string()],
+%%   <<"connectionStringDetails">> => autonomous_database_connection_strings(),
+%%   <<"timeUndeleted">> => [non_neg_integer()],
+%%   <<"privateEndpoint">> => [string()],
+%%   <<"peerDbIds">> => list([string()]()),
+%%   <<"databaseManagementStatus">> => list(any()),
+%%   <<"openMode">> => list(any()),
+%%   <<"characterSet">> => [string()],
+%%   <<"statusReason">> => [string()],
+%%   <<"localStandbyDb">> => database_standby_summary(),
+%%   <<"dataStorageSizeInGBs">> => [integer()],
+%%   <<"apexDetails">> => autonomous_database_apex(),
+%%   <<"totalBackupStorageSizeInGBs">> => [float()],
+%%   <<"sourceId">> => [string()],
+%%   <<"percentProgress">> => [float()],
+%%   <<"isMtlsConnectionRequired">> => [boolean()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"privateEndpointIp">> => [string()],
+%%   <<"isAutoScalingEnabled">> => [boolean()],
+%%   <<"timeMaintenanceBegin">> => [non_neg_integer()],
+%%   <<"timeUntilReconnectCloneEnabled">> => [non_neg_integer()],
+%%   <<"provisionableCpus">> => list([integer()]())
+%% }
+-type autonomous_database() :: #{binary() => any()}.
+
+%% Example:
+%% get_autonomous_database_wallet_details_input() :: #{
+%%   <<"autonomousDatabaseId">> := string()
+%% }
+-type get_autonomous_database_wallet_details_input() :: #{binary() => any()}.
+
+%% Example:
 %% list_cloud_autonomous_vm_clusters_input() :: #{
 %%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_cloud_autonomous_vm_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_clones_output() :: #{
+%%   <<"autonomousDatabaseClones">> => list(autonomous_database_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_clones_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type start_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_db_server_input() :: #{
@@ -668,6 +1206,25 @@
 
 %% }
 -type delete_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_restore_configuration() :: #{
+%%   <<"cloneTableSpaceList">> => list([integer()]()),
+%%   <<"cloneType">> => list(any()),
+%%   <<"sourceAutonomousDatabaseId">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"useLatestAvailableBackupTimestamp">> => [boolean()]
+%% }
+-type point_in_time_restore_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type reboot_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_exadata_infrastructure_summary() :: #{
@@ -735,10 +1292,47 @@
 -type get_odb_network_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_autonomous_databases_output() :: #{
+%%   <<"autonomousDatabases">> => list(autonomous_database_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_databases_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_backups_output() :: #{
+%%   <<"autonomousDatabaseBackups">> => list(autonomous_database_backup_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_backups_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_odb_peering_connection_input() :: #{
 
 %% }
 -type get_odb_peering_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% database_connection_string_profile() :: #{
+%%   <<"consumerGroup">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"hostFormat">> => [string()],
+%%   <<"isRegional">> => [boolean()],
+%%   <<"protocol">> => [string()],
+%%   <<"sessionMode">> => [string()],
+%%   <<"syntaxFormat">> => [string()],
+%%   <<"tlsAuthentication">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type database_connection_string_profile() :: #{binary() => any()}.
+
+%% Example:
+%% update_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_odb_peering_connections_input() :: #{
@@ -793,6 +1387,27 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% restore_from_backup_configuration() :: #{
+%%   <<"autonomousDatabaseBackupId">> => string(),
+%%   <<"cloneTableSpaceList">> => list([integer()]()),
+%%   <<"cloneType">> => list(any())
+%% }
+-type restore_from_backup_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_autonomous_database_input() :: #{
+
+%% }
+-type delete_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_databases_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_databases_input() :: #{binary() => any()}.
+
+%% Example:
 %% associate_iam_role_to_resource_output() :: #{
 
 %% }
@@ -805,6 +1420,20 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_cloud_vm_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_connection_urls() :: #{
+%%   <<"apexUrl">> => [string()],
+%%   <<"databaseTransformsUrl">> => [string()],
+%%   <<"graphStudioUrl">> => [string()],
+%%   <<"machineLearningNotebookUrl">> => [string()],
+%%   <<"machineLearningUserManagementUrl">> => [string()],
+%%   <<"mongoDbUrl">> => [string()],
+%%   <<"ordsUrl">> => [string()],
+%%   <<"spatialStudioUrl">> => [string()],
+%%   <<"sqlDevWebUrl">> => [string()]
+%% }
+-type autonomous_database_connection_urls() :: #{binary() => any()}.
 
 %% Example:
 %% list_cloud_vm_clusters_output() :: #{
@@ -822,12 +1451,25 @@
 -type data_collection_options() :: #{binary() => any()}.
 
 %% Example:
+%% update_autonomous_database_backup_input() :: #{
+%%   <<"retentionPeriodInDays">> => [integer()]
+%% }
+-type update_autonomous_database_backup_input() :: #{binary() => any()}.
+
+%% Example:
 %% cross_region_s3_restore_sources_access() :: #{
 %%   <<"ipv4Addresses">> => list([string()]()),
 %%   <<"region">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type cross_region_s3_restore_sources_access() :: #{binary() => any()}.
+
+%% Example:
+%% failover_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"peerDbArn">> => string()
+%% }
+-type failover_autonomous_database_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_cloud_exadata_infrastructure_output() :: #{
@@ -843,6 +1485,12 @@
 
 %% }
 -type delete_odb_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_character_set_summary() :: #{
+%%   <<"characterSet">> => [string()]
+%% }
+-type autonomous_database_character_set_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_odb_network_output() :: #{
@@ -861,6 +1509,12 @@
 
 %% }
 -type get_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_autonomous_database_backup_input() :: #{
+
+%% }
+-type delete_autonomous_database_backup_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_cloud_vm_cluster_output() :: #{
@@ -894,6 +1548,15 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% long_term_backup_schedule() :: #{
+%%   <<"isDisabled">> => [boolean()],
+%%   <<"repeatCadence">> => list(any()),
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"timeOfBackup">> => [non_neg_integer()]
+%% }
+-type long_term_backup_schedule() :: #{binary() => any()}.
 
 %% Example:
 %% odb_network() :: #{
@@ -946,6 +1609,15 @@
 -type delete_cloud_autonomous_vm_cluster_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_autonomous_database_backup_output() :: #{
+%%   <<"autonomousDatabaseBackupId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_autonomous_database_backup_output() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
@@ -986,6 +1658,20 @@
 -type odb_network_summary() :: #{binary() => any()}.
 
 %% Example:
+%% database_standby_summary() :: #{
+%%   <<"availabilityDomain">> => [string()],
+%%   <<"lagTimeInSeconds">> => [integer()],
+%%   <<"maintenanceTargetComponent">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timeDataGuardRoleChanged">> => [non_neg_integer()],
+%%   <<"timeDisasterRecoveryRoleChanged">> => [non_neg_integer()],
+%%   <<"timeMaintenanceBegin">> => [non_neg_integer()],
+%%   <<"timeMaintenanceEnd">> => [non_neg_integer()]
+%% }
+-type database_standby_summary() :: #{binary() => any()}.
+
+%% Example:
 %% db_server_summary() :: #{
 %%   <<"autonomousVirtualMachineIds">> => list([string()]()),
 %%   <<"autonomousVmClusterIds">> => list([string()]()),
@@ -1009,6 +1695,12 @@
 %%   <<"vmClusterIds">> => list([string()]())
 %% }
 -type db_server_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_autonomous_database_backup_input() :: #{
+
+%% }
+-type get_autonomous_database_backup_input() :: #{binary() => any()}.
 
 %% Example:
 %% stop_db_node_output() :: #{
@@ -1036,6 +1728,17 @@
 -type create_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
 
 %% Example:
+%% autonomous_database_connection_strings() :: #{
+%%   <<"allConnectionStrings">> => map(),
+%%   <<"dedicated">> => [string()],
+%%   <<"high">> => [string()],
+%%   <<"low">> => [string()],
+%%   <<"medium">> => [string()],
+%%   <<"profiles">> => list(database_connection_string_profile())
+%% }
+-type autonomous_database_connection_strings() :: #{binary() => any()}.
+
+%% Example:
 %% list_db_servers_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -1050,6 +1753,15 @@
 %%   <<"stsPolicyDocument">> => [string()]
 %% }
 -type sts_access() :: #{binary() => any()}.
+
+%% Example:
+%% database_tool() :: #{
+%%   <<"computeCount">> => [float()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"maxIdleTimeInMinutes">> => [integer()],
+%%   <<"name">> => [string()]
+%% }
+-type database_tool() :: #{binary() => any()}.
 
 %% Example:
 %% initialize_service_output() :: #{
@@ -1072,16 +1784,37 @@
 -type list_odb_peering_connections_output() :: #{binary() => any()}.
 
 %% Example:
+%% failover_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type failover_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
 %% customer_contact() :: #{
 %%   <<"email">> => string()
 %% }
 -type customer_contact() :: #{binary() => any()}.
 
 %% Example:
+%% get_autonomous_database_output() :: #{
+%%   <<"autonomousDatabase">> => autonomous_database()
+%% }
+-type get_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_db_node_input() :: #{
 
 %% }
 -type get_db_node_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string()
+%% }
+-type stop_autonomous_database_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_odb_network_input() :: #{
@@ -1106,6 +1839,13 @@
 %%   <<"vmName">> => [string()]
 %% }
 -type autonomous_virtual_machine_summary() :: #{binary() => any()}.
+
+%% Example:
+%% oci_iam_role() :: #{
+%%   <<"awsIntegration">> => list(any()),
+%%   <<"iamRoleArn">> => string()
+%% }
+-type oci_iam_role() :: #{binary() => any()}.
 
 %% Example:
 %% iam_role() :: #{
@@ -1147,6 +1887,14 @@
 -type system_version_summary() :: #{binary() => any()}.
 
 %% Example:
+%% list_autonomous_database_versions_input() :: #{
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_versions_input() :: #{binary() => any()}.
+
+%% Example:
 %% managed_s3_backup_access() :: #{
 %%   <<"ipv4Addresses">> => list([string()]()),
 %%   <<"status">> => list(any())
@@ -1158,6 +1906,13 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"timestamp">> := [non_neg_integer()]
+%% }
+-type restore_autonomous_database_input() :: #{binary() => any()}.
 
 %% Example:
 %% db_node() :: #{
@@ -1193,6 +1948,15 @@
 -type db_node() :: #{binary() => any()}.
 
 %% Example:
+%% create_autonomous_database_backup_output() :: #{
+%%   <<"autonomousDatabaseBackupId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type create_autonomous_database_backup_output() :: #{binary() => any()}.
+
+%% Example:
 %% oci_identity_domain() :: #{
 %%   <<"accountSetupCloudFormationUrl">> => [string()],
 %%   <<"ociIdentityDomainId">> => [string()],
@@ -1202,6 +1966,24 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type oci_identity_domain() :: #{binary() => any()}.
+
+%% Example:
+%% create_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type create_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
+%% shrink_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type shrink_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -1342,6 +2124,50 @@
 -type cloud_exadata_infrastructure() :: #{binary() => any()}.
 
 %% Example:
+%% create_autonomous_database_input() :: #{
+%%   <<"databaseEdition">> => list(any()),
+%%   <<"allowlistedIps">> => list([string()]()),
+%%   <<"odbNetworkId">> => string(),
+%%   <<"computeCount">> => [float()],
+%%   <<"dbVersion">> => [string()],
+%%   <<"dbToolsDetails">> => list(database_tool()),
+%%   <<"byolComputeCountLimit">> => [float()],
+%%   <<"isBackupRetentionLocked">> => [boolean()],
+%%   <<"backupRetentionPeriodInDays">> => [integer()],
+%%   <<"displayName">> => string(),
+%%   <<"isLocalDataGuardEnabled">> => [boolean()],
+%%   <<"encryptionKeyConfiguration">> => list(),
+%%   <<"standbyAllowlistedIpsSource">> => list(any()),
+%%   <<"customerContactsToSendToOCI">> => list(customer_contact()),
+%%   <<"clientToken">> => string(),
+%%   <<"autonomousMaintenanceScheduleType">> => list(any()),
+%%   <<"standbyAllowlistedIps">> => list([string()]()),
+%%   <<"resourcePoolLeaderId">> => string(),
+%%   <<"scheduledOperations">> => list(scheduled_operation_details()),
+%%   <<"isAutoScalingForStorageEnabled">> => [boolean()],
+%%   <<"dataStorageSizeInTBs">> => [integer()],
+%%   <<"privateEndpointLabel">> => [string()],
+%%   <<"ncharacterSet">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"encryptionKeyProvider">> => list(any()),
+%%   <<"dbName">> => [string()],
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"resourcePoolSummary">> => resource_pool_summary(),
+%%   <<"adminPassword">> => string(),
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"cpuCoreCount">> => [integer()],
+%%   <<"characterSet">> => [string()],
+%%   <<"source">> => list(any()),
+%%   <<"dataStorageSizeInGBs">> => [integer()],
+%%   <<"isMtlsConnectionRequired">> => [boolean()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"privateEndpointIp">> => [string()],
+%%   <<"isAutoScalingEnabled">> => [boolean()],
+%%   <<"transportableTablespace">> => transportable_tablespace()
+%% }
+-type create_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_cloud_autonomous_vm_cluster_input() :: #{
 
 %% }
@@ -1353,6 +2179,15 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_autonomous_virtual_machines_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type stop_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_cloud_exadata_infrastructures_input() :: #{
@@ -1367,6 +2202,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_gi_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_peers_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_peers_input() :: #{binary() => any()}.
 
 %% Example:
 %% stop_db_node_input() :: #{
@@ -1437,6 +2279,59 @@
 -type create_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
+%% resource_pool_summary() :: #{
+%%   <<"availableComputeCapacity">> => [integer()],
+%%   <<"availableStorageCapacityInTBs">> => [float()],
+%%   <<"isDisabled">> => [boolean()],
+%%   <<"poolSize">> => [integer()],
+%%   <<"poolStorageSizeInTBs">> => [integer()],
+%%   <<"totalComputeCapacity">> => [integer()]
+%% }
+-type resource_pool_summary() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_backup_summary() :: #{
+%%   <<"autonomousDatabaseBackupArn">> => string(),
+%%   <<"autonomousDatabaseBackupId">> => string(),
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"dbVersion">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"isAutomatic">> => [boolean()],
+%%   <<"ocid">> => [string()],
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"sizeInTBs">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timeAvailableTill">> => [non_neg_integer()],
+%%   <<"timeEnded">> => [non_neg_integer()],
+%%   <<"timeStarted">> => [non_neg_integer()],
+%%   <<"type">> => list(any())
+%% }
+-type autonomous_database_backup_summary() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"peerDbArn">> => string()
+%% }
+-type switchover_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_autonomous_database_wallet_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"password">> := string(),
+%%   <<"walletType">> => list(any())
+%% }
+-type create_autonomous_database_wallet_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_autonomous_database_wallet_details_output() :: #{
+%%   <<"autonomousDatabaseWalletDetails">> => autonomous_database_wallet_details()
+%% }
+-type get_autonomous_database_wallet_details_output() :: #{binary() => any()}.
+
+%% Example:
 %% managed_services() :: #{
 %%   <<"crossRegionS3RestoreSourcesAccess">> => list(cross_region_s3_restore_sources_access()),
 %%   <<"kmsAccess">> => kms_access(),
@@ -1456,6 +2351,12 @@
 
 %% }
 -type get_cloud_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% shrink_autonomous_database_input() :: #{
+%%   <<"autonomousDatabaseId">> := string()
+%% }
+-type shrink_autonomous_database_input() :: #{binary() => any()}.
 
 %% Example:
 %% maintenance_window() :: #{
@@ -1504,6 +2405,73 @@
 %%   <<"maintenanceWindow">> => maintenance_window()
 %% }
 -type update_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_autonomous_database_backup_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"tags">> => map()
+%% }
+-type create_autonomous_database_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_autonomous_database_input() :: #{
+%%   <<"databaseEdition">> => list(any()),
+%%   <<"allowlistedIps">> => list([string()]()),
+%%   <<"timeOfAutoRefreshStart">> => [non_neg_integer()],
+%%   <<"refreshableMode">> => list(any()),
+%%   <<"computeCount">> => [float()],
+%%   <<"dbVersion">> => [string()],
+%%   <<"dbToolsDetails">> => list(database_tool()),
+%%   <<"byolComputeCountLimit">> => [float()],
+%%   <<"isBackupRetentionLocked">> => [boolean()],
+%%   <<"backupRetentionPeriodInDays">> => [integer()],
+%%   <<"localAdgAutoFailoverMaxDataLossLimit">> => [integer()],
+%%   <<"displayName">> => string(),
+%%   <<"longTermBackupSchedule">> => long_term_backup_schedule(),
+%%   <<"peerDbId">> => string(),
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"isLocalDataGuardEnabled">> => [boolean()],
+%%   <<"encryptionKeyConfiguration">> => list(),
+%%   <<"autoRefreshPointLagInSeconds">> => [integer()],
+%%   <<"isRefreshableClone">> => [boolean()],
+%%   <<"standbyAllowlistedIpsSource">> => list(any()),
+%%   <<"customerContactsToSendToOCI">> => list(customer_contact()),
+%%   <<"autonomousMaintenanceScheduleType">> => list(any()),
+%%   <<"standbyAllowlistedIps">> => list([string()]()),
+%%   <<"resourcePoolLeaderId">> => string(),
+%%   <<"scheduledOperations">> => list(scheduled_operation_details()),
+%%   <<"isAutoScalingForStorageEnabled">> => [boolean()],
+%%   <<"isDisconnectPeer">> => [boolean()],
+%%   <<"dataStorageSizeInTBs">> => [integer()],
+%%   <<"privateEndpointLabel">> => [string()],
+%%   <<"permissionLevel">> => list(any()),
+%%   <<"autoRefreshFrequencyInSeconds">> => [integer()],
+%%   <<"encryptionKeyProvider">> => list(any()),
+%%   <<"dbName">> => [string()],
+%%   <<"resourcePoolSummary">> => resource_pool_summary(),
+%%   <<"adminPassword">> => string(),
+%%   <<"dbWorkload">> => list(any()),
+%%   <<"cpuCoreCount">> => [integer()],
+%%   <<"openMode">> => list(any()),
+%%   <<"dataStorageSizeInGBs">> => [integer()],
+%%   <<"isMtlsConnectionRequired">> => [boolean()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"privateEndpointIp">> => [string()],
+%%   <<"isAutoScalingEnabled">> => [boolean()]
+%% }
+-type update_autonomous_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_autonomous_database_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type switchover_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cloud_vm_cluster_input() :: #{
@@ -1607,6 +2575,31 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_autonomous_database_backup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_autonomous_database_wallet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_cloud_autonomous_vm_cluster_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1642,6 +2635,22 @@
     conflict_exception().
 
 -type create_odb_peering_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_autonomous_database_backup_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1692,6 +2701,35 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type failover_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_autonomous_database_backup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_autonomous_database_wallet_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_cloud_autonomous_vm_cluster_errors() ::
     throttling_exception() | 
@@ -1756,6 +2794,45 @@
     resource_not_found_exception().
 
 -type initialize_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_autonomous_database_backups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_autonomous_database_character_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_autonomous_database_clones_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_autonomous_database_peers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_autonomous_database_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_autonomous_databases_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1837,12 +2914,44 @@
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
+-type reboot_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type reboot_db_node_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type restore_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type shrink_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_db_node_errors() ::
     throttling_exception() | 
@@ -1851,6 +2960,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type stop_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_db_node_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1858,12 +2975,36 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type switchover_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type tag_resource_errors() ::
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
     resource_not_found_exception().
+
+-type update_autonomous_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_autonomous_database_backup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_cloud_exadata_infrastructure_errors() ::
     throttling_exception() | 
@@ -1930,6 +3071,57 @@ associate_iam_role_to_resource(Client, Input)
 associate_iam_role_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIamRoleToResource">>, Input, Options).
+
+%% @doc Creates a new Autonomous Database.
+-spec create_autonomous_database(aws_client:aws_client(), create_autonomous_database_input()) ->
+    {ok, create_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_errors(), tuple()}.
+create_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_autonomous_database(Client, Input, []).
+
+-spec create_autonomous_database(aws_client:aws_client(), create_autonomous_database_input(), proplists:proplist()) ->
+    {ok, create_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_errors(), tuple()}.
+create_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAutonomousDatabase">>, Input, Options).
+
+%% @doc Creates a new backup of the specified Autonomous Database.
+-spec create_autonomous_database_backup(aws_client:aws_client(), create_autonomous_database_backup_input()) ->
+    {ok, create_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_backup_errors(), tuple()}.
+create_autonomous_database_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_autonomous_database_backup(Client, Input, []).
+
+-spec create_autonomous_database_backup(aws_client:aws_client(), create_autonomous_database_backup_input(), proplists:proplist()) ->
+    {ok, create_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_backup_errors(), tuple()}.
+create_autonomous_database_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAutonomousDatabaseBackup">>, Input, Options).
+
+%% @doc Creates a new wallet for the specified Autonomous Database.
+-spec create_autonomous_database_wallet(aws_client:aws_client(), create_autonomous_database_wallet_input()) ->
+    {ok, create_autonomous_database_wallet_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_wallet_errors(), tuple()}.
+create_autonomous_database_wallet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_autonomous_database_wallet(Client, Input, []).
+
+-spec create_autonomous_database_wallet(aws_client:aws_client(), create_autonomous_database_wallet_input(), proplists:proplist()) ->
+    {ok, create_autonomous_database_wallet_output(), tuple()} |
+    {error, any()} |
+    {error, create_autonomous_database_wallet_errors(), tuple()}.
+create_autonomous_database_wallet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAutonomousDatabaseWallet">>, Input, Options).
 
 %% @doc Creates a new Autonomous VM cluster in the specified Exadata
 %% infrastructure.
@@ -2019,6 +3211,40 @@ create_odb_peering_connection(Client, Input)
 create_odb_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOdbPeeringConnection">>, Input, Options).
+
+%% @doc Deletes the specified Autonomous Database.
+-spec delete_autonomous_database(aws_client:aws_client(), delete_autonomous_database_input()) ->
+    {ok, delete_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, delete_autonomous_database_errors(), tuple()}.
+delete_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_autonomous_database(Client, Input, []).
+
+-spec delete_autonomous_database(aws_client:aws_client(), delete_autonomous_database_input(), proplists:proplist()) ->
+    {ok, delete_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, delete_autonomous_database_errors(), tuple()}.
+delete_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAutonomousDatabase">>, Input, Options).
+
+%% @doc Deletes the specified Autonomous Database backup.
+-spec delete_autonomous_database_backup(aws_client:aws_client(), delete_autonomous_database_backup_input()) ->
+    {ok, delete_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_autonomous_database_backup_errors(), tuple()}.
+delete_autonomous_database_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_autonomous_database_backup(Client, Input, []).
+
+-spec delete_autonomous_database_backup(aws_client:aws_client(), delete_autonomous_database_backup_input(), proplists:proplist()) ->
+    {ok, delete_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_autonomous_database_backup_errors(), tuple()}.
+delete_autonomous_database_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAutonomousDatabaseBackup">>, Input, Options).
 
 %% @doc Deletes an Autonomous VM cluster.
 -spec delete_cloud_autonomous_vm_cluster(aws_client:aws_client(), delete_cloud_autonomous_vm_cluster_input()) ->
@@ -2129,6 +3355,75 @@ disassociate_iam_role_from_resource(Client, Input)
 disassociate_iam_role_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIamRoleFromResource">>, Input, Options).
+
+%% @doc Initiates a failover of the specified Autonomous Database to a
+%% standby peer database.
+-spec failover_autonomous_database(aws_client:aws_client(), failover_autonomous_database_input()) ->
+    {ok, failover_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, failover_autonomous_database_errors(), tuple()}.
+failover_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    failover_autonomous_database(Client, Input, []).
+
+-spec failover_autonomous_database(aws_client:aws_client(), failover_autonomous_database_input(), proplists:proplist()) ->
+    {ok, failover_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, failover_autonomous_database_errors(), tuple()}.
+failover_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"FailoverAutonomousDatabase">>, Input, Options).
+
+%% @doc Gets information about a specific Autonomous Database.
+-spec get_autonomous_database(aws_client:aws_client(), get_autonomous_database_input()) ->
+    {ok, get_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_errors(), tuple()}.
+get_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_autonomous_database(Client, Input, []).
+
+-spec get_autonomous_database(aws_client:aws_client(), get_autonomous_database_input(), proplists:proplist()) ->
+    {ok, get_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_errors(), tuple()}.
+get_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAutonomousDatabase">>, Input, Options).
+
+%% @doc Gets information about a specific Autonomous Database backup.
+-spec get_autonomous_database_backup(aws_client:aws_client(), get_autonomous_database_backup_input()) ->
+    {ok, get_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_backup_errors(), tuple()}.
+get_autonomous_database_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_autonomous_database_backup(Client, Input, []).
+
+-spec get_autonomous_database_backup(aws_client:aws_client(), get_autonomous_database_backup_input(), proplists:proplist()) ->
+    {ok, get_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_backup_errors(), tuple()}.
+get_autonomous_database_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAutonomousDatabaseBackup">>, Input, Options).
+
+%% @doc Gets the wallet details for the specified Autonomous Database.
+-spec get_autonomous_database_wallet_details(aws_client:aws_client(), get_autonomous_database_wallet_details_input()) ->
+    {ok, get_autonomous_database_wallet_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_wallet_details_errors(), tuple()}.
+get_autonomous_database_wallet_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_autonomous_database_wallet_details(Client, Input, []).
+
+-spec get_autonomous_database_wallet_details(aws_client:aws_client(), get_autonomous_database_wallet_details_input(), proplists:proplist()) ->
+    {ok, get_autonomous_database_wallet_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_autonomous_database_wallet_details_errors(), tuple()}.
+get_autonomous_database_wallet_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAutonomousDatabaseWalletDetails">>, Input, Options).
 
 %% @doc Gets information about a specific Autonomous VM cluster.
 -spec get_cloud_autonomous_vm_cluster(aws_client:aws_client(), get_cloud_autonomous_vm_cluster_input()) ->
@@ -2301,6 +3596,110 @@ initialize_service(Client, Input)
 initialize_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitializeService">>, Input, Options).
+
+%% @doc Lists the backups of the specified Autonomous Database.
+-spec list_autonomous_database_backups(aws_client:aws_client(), list_autonomous_database_backups_input()) ->
+    {ok, list_autonomous_database_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_backups_errors(), tuple()}.
+list_autonomous_database_backups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_backups(Client, Input, []).
+
+-spec list_autonomous_database_backups(aws_client:aws_client(), list_autonomous_database_backups_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_backups_errors(), tuple()}.
+list_autonomous_database_backups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabaseBackups">>, Input, Options).
+
+%% @doc Lists the available character sets for Autonomous Databases.
+-spec list_autonomous_database_character_sets(aws_client:aws_client(), list_autonomous_database_character_sets_input()) ->
+    {ok, list_autonomous_database_character_sets_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_character_sets_errors(), tuple()}.
+list_autonomous_database_character_sets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_character_sets(Client, Input, []).
+
+-spec list_autonomous_database_character_sets(aws_client:aws_client(), list_autonomous_database_character_sets_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_character_sets_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_character_sets_errors(), tuple()}.
+list_autonomous_database_character_sets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabaseCharacterSets">>, Input, Options).
+
+%% @doc Lists the clones of the specified Autonomous Database.
+-spec list_autonomous_database_clones(aws_client:aws_client(), list_autonomous_database_clones_input()) ->
+    {ok, list_autonomous_database_clones_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_clones_errors(), tuple()}.
+list_autonomous_database_clones(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_clones(Client, Input, []).
+
+-spec list_autonomous_database_clones(aws_client:aws_client(), list_autonomous_database_clones_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_clones_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_clones_errors(), tuple()}.
+list_autonomous_database_clones(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabaseClones">>, Input, Options).
+
+%% @doc Lists the peer databases of the specified Autonomous Database.
+-spec list_autonomous_database_peers(aws_client:aws_client(), list_autonomous_database_peers_input()) ->
+    {ok, list_autonomous_database_peers_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_peers_errors(), tuple()}.
+list_autonomous_database_peers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_peers(Client, Input, []).
+
+-spec list_autonomous_database_peers(aws_client:aws_client(), list_autonomous_database_peers_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_peers_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_peers_errors(), tuple()}.
+list_autonomous_database_peers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabasePeers">>, Input, Options).
+
+%% @doc Lists the available Oracle Database software versions for Autonomous
+%% Databases.
+-spec list_autonomous_database_versions(aws_client:aws_client(), list_autonomous_database_versions_input()) ->
+    {ok, list_autonomous_database_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_versions_errors(), tuple()}.
+list_autonomous_database_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_versions(Client, Input, []).
+
+-spec list_autonomous_database_versions(aws_client:aws_client(), list_autonomous_database_versions_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_versions_errors(), tuple()}.
+list_autonomous_database_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabaseVersions">>, Input, Options).
+
+%% @doc Returns information about the Autonomous Databases owned by your
+%% Amazon Web Services account in the current Amazon Web Services Region.
+-spec list_autonomous_databases(aws_client:aws_client(), list_autonomous_databases_input()) ->
+    {ok, list_autonomous_databases_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_databases_errors(), tuple()}.
+list_autonomous_databases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_databases(Client, Input, []).
+
+-spec list_autonomous_databases(aws_client:aws_client(), list_autonomous_databases_input(), proplists:proplist()) ->
+    {ok, list_autonomous_databases_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_databases_errors(), tuple()}.
+list_autonomous_databases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabases">>, Input, Options).
 
 %% @doc Lists all Autonomous VMs in an Autonomous VM cluster.
 -spec list_autonomous_virtual_machines(aws_client:aws_client(), list_autonomous_virtual_machines_input()) ->
@@ -2515,6 +3914,23 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Reboots the specified Autonomous Database.
+-spec reboot_autonomous_database(aws_client:aws_client(), reboot_autonomous_database_input()) ->
+    {ok, reboot_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_autonomous_database_errors(), tuple()}.
+reboot_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_autonomous_database(Client, Input, []).
+
+-spec reboot_autonomous_database(aws_client:aws_client(), reboot_autonomous_database_input(), proplists:proplist()) ->
+    {ok, reboot_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, reboot_autonomous_database_errors(), tuple()}.
+reboot_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootAutonomousDatabase">>, Input, Options).
+
 %% @doc Reboots the specified DB node in a VM cluster.
 -spec reboot_db_node(aws_client:aws_client(), reboot_db_node_input()) ->
     {ok, reboot_db_node_output(), tuple()} |
@@ -2531,6 +3947,58 @@ reboot_db_node(Client, Input)
 reboot_db_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDbNode">>, Input, Options).
+
+%% @doc Restores the specified Autonomous Database to a point in time.
+-spec restore_autonomous_database(aws_client:aws_client(), restore_autonomous_database_input()) ->
+    {ok, restore_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, restore_autonomous_database_errors(), tuple()}.
+restore_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_autonomous_database(Client, Input, []).
+
+-spec restore_autonomous_database(aws_client:aws_client(), restore_autonomous_database_input(), proplists:proplist()) ->
+    {ok, restore_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, restore_autonomous_database_errors(), tuple()}.
+restore_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreAutonomousDatabase">>, Input, Options).
+
+%% @doc Shrinks the storage of the specified Autonomous Database to reclaim
+%% unused space.
+-spec shrink_autonomous_database(aws_client:aws_client(), shrink_autonomous_database_input()) ->
+    {ok, shrink_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, shrink_autonomous_database_errors(), tuple()}.
+shrink_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    shrink_autonomous_database(Client, Input, []).
+
+-spec shrink_autonomous_database(aws_client:aws_client(), shrink_autonomous_database_input(), proplists:proplist()) ->
+    {ok, shrink_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, shrink_autonomous_database_errors(), tuple()}.
+shrink_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ShrinkAutonomousDatabase">>, Input, Options).
+
+%% @doc Starts the specified Autonomous Database.
+-spec start_autonomous_database(aws_client:aws_client(), start_autonomous_database_input()) ->
+    {ok, start_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, start_autonomous_database_errors(), tuple()}.
+start_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_autonomous_database(Client, Input, []).
+
+-spec start_autonomous_database(aws_client:aws_client(), start_autonomous_database_input(), proplists:proplist()) ->
+    {ok, start_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, start_autonomous_database_errors(), tuple()}.
+start_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAutonomousDatabase">>, Input, Options).
 
 %% @doc Starts the specified DB node in a VM cluster.
 -spec start_db_node(aws_client:aws_client(), start_db_node_input()) ->
@@ -2549,6 +4017,23 @@ start_db_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDbNode">>, Input, Options).
 
+%% @doc Stops the specified Autonomous Database.
+-spec stop_autonomous_database(aws_client:aws_client(), stop_autonomous_database_input()) ->
+    {ok, stop_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, stop_autonomous_database_errors(), tuple()}.
+stop_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_autonomous_database(Client, Input, []).
+
+-spec stop_autonomous_database(aws_client:aws_client(), stop_autonomous_database_input(), proplists:proplist()) ->
+    {ok, stop_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, stop_autonomous_database_errors(), tuple()}.
+stop_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAutonomousDatabase">>, Input, Options).
+
 %% @doc Stops the specified DB node in a VM cluster.
 -spec stop_db_node(aws_client:aws_client(), stop_db_node_input()) ->
     {ok, stop_db_node_output(), tuple()} |
@@ -2565,6 +4050,24 @@ stop_db_node(Client, Input)
 stop_db_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDbNode">>, Input, Options).
+
+%% @doc Performs a switchover of the specified Autonomous Database to a
+%% standby peer database.
+-spec switchover_autonomous_database(aws_client:aws_client(), switchover_autonomous_database_input()) ->
+    {ok, switchover_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, switchover_autonomous_database_errors(), tuple()}.
+switchover_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_autonomous_database(Client, Input, []).
+
+-spec switchover_autonomous_database(aws_client:aws_client(), switchover_autonomous_database_input(), proplists:proplist()) ->
+    {ok, switchover_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, switchover_autonomous_database_errors(), tuple()}.
+switchover_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverAutonomousDatabase">>, Input, Options).
 
 %% @doc Applies tags to the specified resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -2599,6 +4102,40 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the properties of an Autonomous Database.
+-spec update_autonomous_database(aws_client:aws_client(), update_autonomous_database_input()) ->
+    {ok, update_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, update_autonomous_database_errors(), tuple()}.
+update_autonomous_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_autonomous_database(Client, Input, []).
+
+-spec update_autonomous_database(aws_client:aws_client(), update_autonomous_database_input(), proplists:proplist()) ->
+    {ok, update_autonomous_database_output(), tuple()} |
+    {error, any()} |
+    {error, update_autonomous_database_errors(), tuple()}.
+update_autonomous_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAutonomousDatabase">>, Input, Options).
+
+%% @doc Updates the properties of an Autonomous Database backup.
+-spec update_autonomous_database_backup(aws_client:aws_client(), update_autonomous_database_backup_input()) ->
+    {ok, update_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, update_autonomous_database_backup_errors(), tuple()}.
+update_autonomous_database_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_autonomous_database_backup(Client, Input, []).
+
+-spec update_autonomous_database_backup(aws_client:aws_client(), update_autonomous_database_backup_input(), proplists:proplist()) ->
+    {ok, update_autonomous_database_backup_output(), tuple()} |
+    {error, any()} |
+    {error, update_autonomous_database_backup_errors(), tuple()}.
+update_autonomous_database_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAutonomousDatabaseBackup">>, Input, Options).
 
 %% @doc Updates the properties of an Exadata infrastructure resource.
 -spec update_cloud_exadata_infrastructure(aws_client:aws_client(), update_cloud_exadata_infrastructure_input()) ->

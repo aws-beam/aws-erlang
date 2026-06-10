@@ -82,6 +82,9 @@
          export_automated_reasoning_policy_version/2,
          export_automated_reasoning_policy_version/4,
          export_automated_reasoning_policy_version/5,
+         get_account_data_retention/1,
+         get_account_data_retention/3,
+         get_account_data_retention/4,
          get_advanced_prompt_optimization_job/2,
          get_advanced_prompt_optimization_job/4,
          get_advanced_prompt_optimization_job/5,
@@ -225,6 +228,8 @@
          list_provisioned_model_throughputs/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_account_data_retention/2,
+         put_account_data_retention/3,
          put_enforced_guardrail_configuration/2,
          put_enforced_guardrail_configuration/3,
          put_model_invocation_logging_configuration/2,
@@ -1099,6 +1104,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type marketplace_model_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_data_retention_request() :: #{
+%%   <<"mode">> := list(any())
+%% }
+-type put_account_data_retention_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2553,6 +2565,14 @@
 %% Example:
 %% get_resource_policy_request() :: #{}
 -type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% put_account_data_retention_response() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_account_data_retention_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4012,6 +4032,10 @@
 %% stop_advanced_prompt_optimization_job_response() :: #{}
 -type stop_advanced_prompt_optimization_job_response() :: #{}.
 
+%% Example:
+%% get_account_data_retention_request() :: #{}
+-type get_account_data_retention_request() :: #{}.
+
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -4033,6 +4057,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_data_retention_response() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_account_data_retention_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4462,6 +4494,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_account_data_retention_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_advanced_prompt_optimization_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4783,6 +4821,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_account_data_retention_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type put_enforced_guardrail_configuration_errors() ::
     throttling_exception() | 
@@ -6471,6 +6515,43 @@ export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMa
 export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/export"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the account-wide data retention mode for Amazon Bedrock.
+-spec get_account_data_retention(aws_client:aws_client()) ->
+    {ok, get_account_data_retention_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_errors(), tuple()}.
+get_account_data_retention(Client)
+  when is_map(Client) ->
+    get_account_data_retention(Client, #{}, #{}).
+
+-spec get_account_data_retention(aws_client:aws_client(), map(), map()) ->
+    {ok, get_account_data_retention_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_errors(), tuple()}.
+get_account_data_retention(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_data_retention(Client, QueryMap, HeadersMap, []).
+
+-spec get_account_data_retention(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_data_retention_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_errors(), tuple()}.
+get_account_data_retention(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/data-retention"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8587,6 +8668,40 @@ list_tags_for_resource(Client, Input) ->
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the account-wide data retention mode for Amazon Bedrock.
+-spec put_account_data_retention(aws_client:aws_client(), put_account_data_retention_request()) ->
+    {ok, put_account_data_retention_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_data_retention_errors(), tuple()}.
+put_account_data_retention(Client, Input) ->
+    put_account_data_retention(Client, Input, []).
+
+-spec put_account_data_retention(aws_client:aws_client(), put_account_data_retention_request(), proplists:proplist()) ->
+    {ok, put_account_data_retention_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_data_retention_errors(), tuple()}.
+put_account_data_retention(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/data-retention"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

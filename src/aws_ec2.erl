@@ -3750,6 +3750,7 @@
 %%   <<"MaxAggregationInterval">> => integer(),
 %%   <<"ResourceIds">> := list(string()),
 %%   <<"ResourceType">> := list(any()),
+%%   <<"TagFieldSpecifications">> => list(tag_field_specification_request()),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrafficType">> => list(any())
 %% }
@@ -9790,6 +9791,13 @@
 -type start_declarative_policies_report_result() :: #{binary() => any()}.
 
 %% Example:
+%% tag_field_specification_request() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"TagKeys">> => list(string())
+%% }
+-type tag_field_specification_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_capacity_reservation_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
@@ -12626,6 +12634,7 @@
 %%   <<"LogGroupName">> => string(),
 %%   <<"MaxAggregationInterval">> => integer(),
 %%   <<"ResourceId">> => string(),
+%%   <<"TagFieldSpecifications">> => list(tag_field_specification_response()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TrafficType">> => list(any())
 %% }
@@ -18054,7 +18063,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceMatchCriteria">> => list(any()),
-%%   <<"InstanceTypeSpecifications">> := list(reservation_fleet_instance_specification()),
+%%   <<"InstanceTypeSpecifications">> => list(reservation_fleet_instance_specification()),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalTargetCapacity">> := integer()
@@ -18531,6 +18540,13 @@
 %%   <<"TransitGatewayMeteringPolicyEntry">> => transit_gateway_metering_policy_entry()
 %% }
 -type delete_transit_gateway_metering_policy_entry_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag_field_specification_response() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"TagKeys">> => list(string())
+%% }
+-type tag_field_specification_response() :: #{binary() => any()}.
 
 %% Example:
 %% modify_reserved_instances_request() :: #{
@@ -19296,7 +19312,6 @@
 %% volume_modification() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ModificationState">> => list(any()),
-%%   <<"Operator">> => operator_response(),
 %%   <<"OriginalIops">> => integer(),
 %%   <<"OriginalMultiAttachEnabled">> => boolean(),
 %%   <<"OriginalSize">> => integer(),

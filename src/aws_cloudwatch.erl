@@ -30,7 +30,9 @@
 %% health.
 -module(aws_cloudwatch).
 
--export([delete_alarm_mute_rule/2,
+-export([associate_dataset_kms_key/2,
+         associate_dataset_kms_key/3,
+         delete_alarm_mute_rule/2,
          delete_alarm_mute_rule/3,
          delete_alarms/2,
          delete_alarms/3,
@@ -58,6 +60,8 @@
          disable_alarm_actions/3,
          disable_insight_rules/2,
          disable_insight_rules/3,
+         disassociate_dataset_kms_key/2,
+         disassociate_dataset_kms_key/3,
          enable_alarm_actions/2,
          enable_alarm_actions/3,
          enable_insight_rules/2,
@@ -66,6 +70,8 @@
          get_alarm_mute_rule/3,
          get_dashboard/2,
          get_dashboard/3,
+         get_dataset/2,
+         get_dataset/3,
          get_insight_rule_report/2,
          get_insight_rule_report/3,
          get_metric_data/2,
@@ -137,6 +143,12 @@
 
 %% }
 -type delete_dashboards_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_dataset_kms_key_output() :: #{
+
+%% }
+-type associate_dataset_kms_key_output() :: #{binary() => any()}.
 
 %% Example:
 %% metric_stream_filter() :: #{
@@ -308,6 +320,12 @@
 %%   <<"Name">> := string()
 %% }
 -type delete_metric_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% put_metric_stream_output() :: #{
@@ -854,6 +872,12 @@
 -type list_metric_streams_output() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_dataset_kms_key_input() :: #{
+%%   <<"DatasetIdentifier">> := string()
+%% }
+-type disassociate_dataset_kms_key_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_metric_stream_output() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -869,6 +893,12 @@
 %%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration())
 %% }
 -type get_metric_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% schedule() :: #{
@@ -951,6 +981,13 @@
 -type describe_alarm_contributors_output() :: #{binary() => any()}.
 
 %% Example:
+%% associate_dataset_kms_key_input() :: #{
+%%   <<"DatasetIdentifier">> := string(),
+%%   <<"KmsKeyArn">> := string()
+%% }
+-type associate_dataset_kms_key_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_metric_statistics_output() :: #{
 %%   <<"Datapoints">> => list(datapoint()),
 %%   <<"Label">> => string()
@@ -1010,6 +1047,18 @@
 -type insight_rule() :: #{binary() => any()}.
 
 %% Example:
+%% kms_key_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataset_input() :: #{
+%%   <<"DatasetIdentifier">> := string()
+%% }
+-type get_dataset_input() :: #{binary() => any()}.
+
+%% Example:
 %% list_dashboards_output() :: #{
 %%   <<"DashboardEntries">> => list(dashboard_entry()),
 %%   <<"NextToken">> => string()
@@ -1021,6 +1070,12 @@
 %%   <<"Message">> => string()
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_dataset_kms_key_output() :: #{
+
+%% }
+-type disassociate_dataset_kms_key_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_input() :: #{
@@ -1175,6 +1230,14 @@
 -type put_anomaly_detector_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_dataset_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DatasetId">> => string(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type get_dataset_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_alarms_for_metric_output() :: #{
 %%   <<"MetricAlarms">> => list(metric_alarm())
 %% }
@@ -1303,6 +1366,13 @@
 %% }
 -type delete_insight_rules_output() :: #{binary() => any()}.
 
+-type associate_dataset_kms_key_errors() ::
+    kms_key_disabled_exception() | 
+    kms_access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    kms_key_not_found_exception().
+
 -type delete_alarms_errors() ::
     resource_not_found().
 
@@ -1350,6 +1420,10 @@
     invalid_parameter_value_exception() | 
     missing_required_parameter_exception().
 
+-type disassociate_dataset_kms_key_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type enable_insight_rules_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
@@ -1362,6 +1436,9 @@
     internal_service_fault() | 
     invalid_parameter_value_exception() | 
     dashboard_not_found_error().
+
+-type get_dataset_errors() ::
+    resource_not_found_exception().
 
 -type get_insight_rule_report_errors() ::
     invalid_parameter_value_exception() | 
@@ -1486,6 +1563,98 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates an Amazon Web Services Key Management Service (Amazon Web
+%% Services KMS)
+%% customer managed key with the specified dataset.
+%%
+%% After this operation completes, all
+%% data published to the dataset is encrypted at rest using the specified KMS
+%% key.
+%% Callers must have `kms:Decrypt' permission on the key to read the
+%% encrypted data.
+%%
+%% Only the `default' dataset is supported. The `default' dataset
+%% is implicit for every account in every Region — you do not need to create
+%% it before
+%% calling this operation.
+%%
+%% You can call `AssociateDatasetKmsKey' on a dataset that is already
+%% associated with a KMS key to replace the existing key with a different
+%% one. To replace
+%% a key, the caller must have `kms:Decrypt' permission on both the
+%% current
+%% key and the new key.
+%%
+%% The KMS key that you specify must meet all of the following requirements:
+%%
+%% It must be a symmetric encryption KMS key (key spec
+%% `SYMMETRIC_DEFAULT', key usage `ENCRYPT_DECRYPT').
+%% Asymmetric keys, HMAC keys, and key material types other than
+%% `SYMMETRIC_DEFAULT' are not supported.
+%%
+%% It must be enabled and not pending deletion.
+%%
+%% Its key policy must grant the CloudWatch service principal
+%% (`cloudwatch.amazonaws.com') these permissions:
+%% `kms:DescribeKey', `kms:GenerateDataKey',
+%% `kms:Encrypt', `kms:Decrypt', and
+%% `kms:ReEncrypt*'. Amazon CloudWatch requires these permissions
+%% to manage the data on your behalf.
+%%
+%% The calling principal must have `kms:Decrypt' permission on the
+%% key.
+%%
+%% It must be specified as a fully qualified key ARN. Key IDs, aliases, and
+%% alias ARNs are not accepted.
+%%
+%% It must be in the same Amazon Web Services Region as the dataset.
+%%
+%% Before completing the association, Amazon CloudWatch validates the key by
+%% performing a series of dry-run KMS operations. Service-principal checks
+%% run first to
+%% verify that the key policy grants the required access to Amazon
+%% CloudWatch. These
+%% checks include `kms:DescribeKey', `kms:GenerateDataKey',
+%% `kms:Encrypt', `kms:Decrypt', and `kms:ReEncrypt*'.
+%% After those succeed, a `kms:Decrypt' dry-run is run with the
+%% caller's
+%% credentials to verify that the calling principal can use the key. When you
+%% are
+%% replacing an existing key, the caller's `kms:Decrypt' dry-run is
+%% run on
+%% the current key first, and only then on the new key.
+%%
+%% If any of these checks fails, the operation fails and the existing key
+%% association
+%% (if any) remains unchanged. Common failure causes include the key being
+%% disabled, the
+%% key policy not granting the required permissions to Amazon CloudWatch, or
+%% the
+%% caller lacking `kms:Decrypt' permission on the key.
+%%
+%% For more information about using customer managed keys with Amazon
+%% CloudWatch,
+%% see Encryption at rest
+%% with customer managed keys:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cmk-encryption.html
+%% in the Amazon CloudWatch User
+%% Guide.
+-spec associate_dataset_kms_key(aws_client:aws_client(), associate_dataset_kms_key_input()) ->
+    {ok, associate_dataset_kms_key_output(), tuple()} |
+    {error, any()} |
+    {error, associate_dataset_kms_key_errors(), tuple()}.
+associate_dataset_kms_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_dataset_kms_key(Client, Input, []).
+
+-spec associate_dataset_kms_key(aws_client:aws_client(), associate_dataset_kms_key_input(), proplists:proplist()) ->
+    {ok, associate_dataset_kms_key_output(), tuple()} |
+    {error, any()} |
+    {error, associate_dataset_kms_key_errors(), tuple()}.
+associate_dataset_kms_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateDatasetKmsKey">>, Input, Options).
 
 %% @doc Deletes a specific alarm mute rule.
 %%
@@ -1841,6 +2010,63 @@ disable_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableInsightRules">>, Input, Options).
 
+%% @doc Removes the customer managed Amazon Web Services Key Management
+%% Service
+%% (Amazon Web Services KMS) key association from the specified dataset.
+%%
+%% After this
+%% operation completes, data that you publish to the dataset is encrypted at
+%% rest using
+%% an Amazon Web Services owned key managed by Amazon CloudWatch.
+%%
+%% Only the `default' dataset is supported. To call this operation, the
+%% dataset must currently have a customer managed KMS key associated with it.
+%% If the
+%% dataset has no associated KMS key, the operation fails with
+%% `ResourceNotFoundException'.
+%%
+%% Amazon CloudWatch performs a dry-run `kms:Decrypt' call on the key
+%% as part of this operation. This verifies that the caller is authorized to
+%% use the
+%% currently associated key. The caller must have `kms:Decrypt'
+%% permission on
+%% the currently associated key, and the key must be enabled and accessible.
+%% If the key
+%% has been disabled or scheduled for deletion, you must first re-enable or
+%% restore it
+%% before you can disassociate it from the dataset.
+%%
+%% Disassociating a KMS key from a dataset does not immediately remove the
+%% `kms:Decrypt' requirement on data plane operations. For up to three
+%% hours after disassociation, callers must continue to have
+%% `kms:Decrypt' permission on the previously associated key. Some data
+%% may still be encrypted with that key during this window. After this
+%% enforcement
+%% window elapses, the `kms:Decrypt' requirement is lifted.
+%%
+%% For more information about using customer managed keys with Amazon
+%% CloudWatch,
+%% see Encryption at rest
+%% with customer managed keys:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cmk-encryption.html
+%% in the Amazon CloudWatch User
+%% Guide.
+-spec disassociate_dataset_kms_key(aws_client:aws_client(), disassociate_dataset_kms_key_input()) ->
+    {ok, disassociate_dataset_kms_key_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_dataset_kms_key_errors(), tuple()}.
+disassociate_dataset_kms_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_dataset_kms_key(Client, Input, []).
+
+-spec disassociate_dataset_kms_key(aws_client:aws_client(), disassociate_dataset_kms_key_input(), proplists:proplist()) ->
+    {ok, disassociate_dataset_kms_key_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_dataset_kms_key_errors(), tuple()}.
+disassociate_dataset_kms_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateDatasetKmsKey">>, Input, Options).
+
 %% @doc Enables the actions for the specified alarms.
 -spec enable_alarm_actions(aws_client:aws_client(), enable_alarm_actions_input()) ->
     {ok, undefined, tuple()} |
@@ -1934,6 +2160,47 @@ get_dashboard(Client, Input)
 get_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDashboard">>, Input, Options).
+
+%% @doc Returns information about the specified dataset.
+%%
+%% This includes its identifier,
+%% Amazon Resource Name (ARN), and any customer managed Amazon Web Services
+%% Key
+%% Management Service (Amazon Web Services KMS) key that is currently
+%% associated with
+%% it.
+%%
+%% Only the `default' dataset is supported. The `default' dataset
+%% is implicit for every account in every Region — you can call
+%% `GetDataset'
+%% for it without first creating it. If no customer managed KMS key has been
+%% associated
+%% with the dataset, the response omits the `KmsKeyArn' field, indicating
+%% that
+%% data is encrypted at rest using an Amazon Web Services owned key managed
+%% by
+%% Amazon CloudWatch.
+%%
+%% To associate a customer managed KMS key with a dataset, use
+%% AssociateDatasetKmsKey:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_AssociateDatasetKmsKey.html.
+%% To remove the association, use DisassociateDatasetKmsKey:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DisassociateDatasetKmsKey.html.
+-spec get_dataset(aws_client:aws_client(), get_dataset_input()) ->
+    {ok, get_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_dataset(Client, Input, []).
+
+-spec get_dataset(aws_client:aws_client(), get_dataset_input(), proplists:proplist()) ->
+    {ok, get_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataset">>, Input, Options).
 
 %% @doc This operation returns the time series data collected by a
 %% Contributor Insights rule.
