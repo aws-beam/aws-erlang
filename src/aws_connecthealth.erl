@@ -1,7 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Health Agent for healthcare providers and patient engagement
+%% @doc Amazon Connect Health is an AI-powered healthcare service built on
+%% Amazon Connect.
+%%
+%% It provides pre-built agents that automate patient engagement workflows
+%% and support clinical documentation at the point of care.
+%%
+%% You can use the Amazon Connect Health API to programmatically manage
+%% domains, configure patient engagement agents, run patient insights jobs,
+%% and stream ambient documentation sessions. This API reference describes
+%% the available API operations and data types for Amazon Connect Health.
+%%
+%% We recommend that you use the AWS SDKs to make programmatic API calls to
+%% Amazon Connect Health.
 -module(aws_connecthealth).
 
 -export([activate_subscription/4,
@@ -633,6 +645,13 @@
 %%   <<"subscriptions">> => list(subscription_description())
 %% }
 -type list_subscriptions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_binary_audio_event() :: #{
+%%   <<"audioChunk">> => binary()
+%% }
+-type medical_scribe_binary_audio_event() :: #{binary() => any()}.
 
 -type activate_subscription_errors() ::
     validation_exception() | 

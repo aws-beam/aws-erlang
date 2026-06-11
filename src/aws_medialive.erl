@@ -2070,6 +2070,7 @@
 
 %% Example:
 %% audio_track() :: #{
+%%   <<"PremixSettings">> => audio_pre_mixer_settings(),
 %%   <<"Track">> => integer()
 %% }
 -type audio_track() :: #{binary() => any()}.
@@ -5498,7 +5499,8 @@
 
 %% Example:
 %% audio_pid_selection() :: #{
-%%   <<"Pid">> => integer()
+%%   <<"Pid">> => integer(),
+%%   <<"Pids">> => list(audio_pid())
 %% }
 -type audio_pid_selection() :: #{binary() => any()}.
 
@@ -5561,6 +5563,8 @@
 %% audio_normalization_settings() :: #{
 %%   <<"Algorithm">> => list(any()),
 %%   <<"AlgorithmControl">> => list(any()),
+%%   <<"PeakCalculation">> => list(any()),
+%%   <<"PeakLimiterThreshold">> => float(),
 %%   <<"TargetLkfs">> => float()
 %% }
 -type audio_normalization_settings() :: #{binary() => any()}.
@@ -5750,6 +5754,15 @@
 %%   <<"Id">> => string()
 %% }
 -type claim_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pid() :: #{
+%%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
+%%   <<"Pid">> => integer(),
+%%   <<"PremixSettings">> => audio_pre_mixer_settings()
+%% }
+-type audio_pid() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6050,6 +6063,16 @@
 %%   <<"SignalMapIdentifier">> => string()
 %% }
 -type list_cloud_watch_alarm_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pre_mixer_settings() :: #{
+%%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
+%%   <<"Channels">> => integer(),
+%%   <<"GainDb">> => float(),
+%%   <<"RemixSettings">> => remix_settings()
+%% }
+-type audio_pre_mixer_settings() :: #{binary() => any()}.
 
 
 %% Example:

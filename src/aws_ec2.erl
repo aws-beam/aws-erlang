@@ -124,6 +124,8 @@
          associate_vpc_cidr_block/3,
          attach_classic_link_vpc/2,
          attach_classic_link_vpc/3,
+         attach_image_watermark/2,
+         attach_image_watermark/3,
          attach_internet_gateway/2,
          attach_internet_gateway/3,
          attach_network_interface/2,
@@ -962,6 +964,8 @@
          describe_vpn_gateways/3,
          detach_classic_link_vpc/2,
          detach_classic_link_vpc/3,
+         detach_image_watermark/2,
+         detach_image_watermark/3,
          detach_internet_gateway/2,
          detach_internet_gateway/3,
          detach_network_interface/2,
@@ -1887,6 +1891,14 @@
 %%   <<"TransportTransitGatewayAttachmentId">> := string()
 %% }
 -type create_transit_gateway_connect_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_image_watermark_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"WatermarkName">> := string()
+%% }
+-type attach_image_watermark_request() :: #{binary() => any()}.
 
 %% Example:
 %% ena_srd_specification_request() :: #{
@@ -8658,6 +8670,14 @@
 -type placement_group_info() :: #{binary() => any()}.
 
 %% Example:
+%% detach_image_watermark_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"WatermarkKey">> := string()
+%% }
+-type detach_image_watermark_request() :: #{binary() => any()}.
+
+%% Example:
 %% copy_volumes_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -10270,6 +10290,12 @@
 -type elastic_inference_accelerator() :: #{binary() => any()}.
 
 %% Example:
+%% detach_image_watermark_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type detach_image_watermark_result() :: #{binary() => any()}.
+
+%% Example:
 %% allocate_ipam_pool_cidr_request() :: #{
 %%   <<"AllowedCidrs">> => list(string()),
 %%   <<"Cidr">> => string(),
@@ -10712,6 +10738,16 @@
 %%   <<"Message">> => string()
 %% }
 -type response_error() :: #{binary() => any()}.
+
+%% Example:
+%% image_watermark() :: #{
+%%   <<"SourceImageCreationTime">> => non_neg_integer(),
+%%   <<"SourceImageId">> => string(),
+%%   <<"SourceImageRegion">> => string(),
+%%   <<"WatermarkCreationTime">> => non_neg_integer(),
+%%   <<"WatermarkKey">> => string()
+%% }
+-type image_watermark() :: #{binary() => any()}.
 
 %% Example:
 %% describe_local_gateways_request() :: #{
@@ -12107,6 +12143,12 @@
 -type modify_availability_zone_group_result() :: #{binary() => any()}.
 
 %% Example:
+%% attach_image_watermark_result() :: #{
+%%   <<"WatermarkKey">> => string()
+%% }
+-type attach_image_watermark_result() :: #{binary() => any()}.
+
+%% Example:
 %% transit_gateway_policy_table_entry() :: #{
 %%   <<"PolicyRule">> => transit_gateway_policy_rule(),
 %%   <<"PolicyRuleNumber">> => string(),
@@ -13277,6 +13319,7 @@
 %%   <<"ImageAllowed">> => boolean(),
 %%   <<"ImageId">> => string(),
 %%   <<"ImageOwnerAlias">> => string(),
+%%   <<"ImageWatermarks">> => list(image_watermark()),
 %%   <<"IsPublic">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerId">> => string(),
@@ -15694,6 +15737,7 @@
 %%   <<"ImageOwnerAlias">> => string(),
 %%   <<"KernelId">> => string(),
 %%   <<"LastLaunchedTime">> => string(),
+%%   <<"ImageWatermarks">> => list(image_watermark()),
 %%   <<"DeprecationTime">> => string(),
 %%   <<"Architecture">> => list(any()),
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
@@ -24009,6 +24053,34 @@ attach_classic_link_vpc(Client, Input)
 attach_classic_link_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachClassicLinkVpc">>, Input, Options).
+
+%% @doc Attaches a watermark to a non-public AMI.
+%%
+%% The watermark is a structured identifier that
+%% automatically propagates to all derivative images created through
+%% CreateImage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html,
+%% CopyImage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyImage.html,
+%% and CreateRestoreImageTask:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRestoreImageTask.html.
+%%
+%% Only the AMI owner can attach watermarks. Watermarks cannot be added to
+%% public
+%% AMIs.
+-spec attach_image_watermark(aws_client:aws_client(), attach_image_watermark_request()) ->
+    {ok, attach_image_watermark_result(), tuple()} |
+    {error, any()}.
+attach_image_watermark(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_image_watermark(Client, Input, []).
+
+-spec attach_image_watermark(aws_client:aws_client(), attach_image_watermark_request(), proplists:proplist()) ->
+    {ok, attach_image_watermark_result(), tuple()} |
+    {error, any()}.
+attach_image_watermark(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachImageWatermark">>, Input, Options).
 
 %% @doc Attaches an internet gateway or a virtual private gateway to a VPC,
 %% enabling connectivity
@@ -33934,6 +34006,30 @@ detach_classic_link_vpc(Client, Input)
 detach_classic_link_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachClassicLinkVpc">>, Input, Options).
+
+%% @doc Removes a watermark from the specified AMI.
+%%
+%% This is an idempotent operation. It succeeds
+%% even if the watermark does not exist on the image.
+%%
+%% Removing a watermark from an image does not affect derivative images that
+%% already carry
+%% the watermark.
+%%
+%% Only the AMI owner can detach watermarks.
+-spec detach_image_watermark(aws_client:aws_client(), detach_image_watermark_request()) ->
+    {ok, detach_image_watermark_result(), tuple()} |
+    {error, any()}.
+detach_image_watermark(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_image_watermark(Client, Input, []).
+
+-spec detach_image_watermark(aws_client:aws_client(), detach_image_watermark_request(), proplists:proplist()) ->
+    {ok, detach_image_watermark_result(), tuple()} |
+    {error, any()}.
+detach_image_watermark(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachImageWatermark">>, Input, Options).
 
 %% @doc Detaches an internet gateway from a VPC, disabling connectivity
 %% between the internet

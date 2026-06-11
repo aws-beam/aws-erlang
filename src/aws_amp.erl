@@ -181,7 +181,9 @@
 %% update_workspace_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
-%%   <<"retentionPeriodInDays">> => [integer()]
+%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"ruleQueryOffsetInSeconds">> => [integer()]
 %% }
 -type update_workspace_configuration_request() :: #{binary() => any()}.
 
@@ -474,7 +476,9 @@
 %% Example:
 %% workspace_configuration_description() :: #{
 %%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
+%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
 %%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"ruleQueryOffsetInSeconds">> => [integer()],
 %%   <<"status">> => workspace_configuration_status()
 %% }
 -type workspace_configuration_description() :: #{binary() => any()}.

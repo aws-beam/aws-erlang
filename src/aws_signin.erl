@@ -9,7 +9,21 @@
 -module(aws_signin).
 
 -export([create_o_auth2_token/2,
-         create_o_auth2_token/3]).
+         create_o_auth2_token/3,
+         delete_console_authorization_configuration/2,
+         delete_console_authorization_configuration/3,
+         delete_resource_permission_statement/2,
+         delete_resource_permission_statement/3,
+         get_console_authorization_configuration/2,
+         get_console_authorization_configuration/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
+         list_resource_permission_statements/2,
+         list_resource_permission_statements/3,
+         put_console_authorization_configuration/2,
+         put_console_authorization_configuration/3,
+         put_resource_permission_statement/2,
+         put_resource_permission_statement/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -30,6 +44,14 @@
 %%   <<"sessionToken">> => [string()]
 %% }
 -type access_token() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -70,11 +92,162 @@
 
 
 %% Example:
+%% delete_console_authorization_configuration_input() :: #{
+%%   <<"targetId">> => string()
+%% }
+-type delete_console_authorization_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_console_authorization_configuration_output() :: #{
+%%   <<"consoleAuthorizationEnabled">> => [boolean()],
+%%   <<"scope">> => [string()],
+%%   <<"targetId">> => string()
+%% }
+-type delete_console_authorization_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_permission_statement_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"statementId">> := string()
+%% }
+-type delete_resource_permission_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_permission_statement_output() :: #{}
+-type delete_resource_permission_statement_output() :: #{}.
+
+
+%% Example:
+%% get_console_authorization_configuration_input() :: #{
+%%   <<"targetId">> => string()
+%% }
+-type get_console_authorization_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_console_authorization_configuration_output() :: #{
+%%   <<"consoleAuthorizationEnabled">> => [boolean()],
+%%   <<"scope">> => [string()],
+%%   <<"targetId">> => string()
+%% }
+-type get_console_authorization_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{}
+-type get_resource_policy_input() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"signinResourceBasedPolicy">> => signin_resource_based_policy()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"error">> => list(any()),
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_permission_statements_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_permission_statements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_permission_statements_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissionStatements">> => list(permission_statement_summary())
+%% }
+-type list_resource_permission_statements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_statement_summary() :: #{
+%%   <<"condition">> => map(),
+%%   <<"sid">> => string()
+%% }
+-type permission_statement_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_statement() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"condition">> => map(),
+%%   <<"effect">> => [string()],
+%%   <<"principal">> => map(),
+%%   <<"resource">> => [string()]
+%% }
+-type policy_statement() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_console_authorization_configuration_input() :: #{
+%%   <<"targetId">> => string()
+%% }
+-type put_console_authorization_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_console_authorization_configuration_output() :: #{
+%%   <<"consoleAuthorizationEnabled">> => [boolean()],
+%%   <<"scope">> => [string()],
+%%   <<"targetId">> => string()
+%% }
+-type put_console_authorization_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_statement_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"consoleSourceVpce">> => string(),
+%%   <<"excludedPrincipal">> => string(),
+%%   <<"requestedRegion">> => string(),
+%%   <<"signinSourceVpce">> => string(),
+%%   <<"sourceIp">> => string(),
+%%   <<"sourceVpc">> => string(),
+%%   <<"vpcSourceIp">> => string()
+%% }
+-type put_resource_permission_statement_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_statement_output() :: #{
+%%   <<"statementId">> => string()
+%% }
+-type put_resource_permission_statement_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% signin_resource_based_policy() :: #{
+%%   <<"statement">> => list(policy_statement()),
+%%   <<"version">> => [string()]
+%% }
+-type signin_resource_based_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -96,6 +269,56 @@
     validation_exception() | 
     too_many_requests_error() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_console_authorization_configuration_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_resource_permission_statement_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_console_authorization_configuration_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_resource_policy_errors() ::
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_resource_permission_statements_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_console_authorization_configuration_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_resource_permission_statement_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 %%====================================================================
@@ -160,6 +383,250 @@ create_o_auth2_token(Client, Input) ->
 create_o_auth2_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/token"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete console authorization configuration with automatic scope
+%% detection
+-spec delete_console_authorization_configuration(aws_client:aws_client(), delete_console_authorization_configuration_input()) ->
+    {ok, delete_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_console_authorization_configuration_errors(), tuple()}.
+delete_console_authorization_configuration(Client, Input) ->
+    delete_console_authorization_configuration(Client, Input, []).
+
+-spec delete_console_authorization_configuration(aws_client:aws_client(), delete_console_authorization_configuration_input(), proplists:proplist()) ->
+    {ok, delete_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_console_authorization_configuration_errors(), tuple()}.
+delete_console_authorization_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-console-authorization-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove a permission statement from the account's SignIn
+%% resource-based policy
+-spec delete_resource_permission_statement(aws_client:aws_client(), delete_resource_permission_statement_input()) ->
+    {ok, delete_resource_permission_statement_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_permission_statement_errors(), tuple()}.
+delete_resource_permission_statement(Client, Input) ->
+    delete_resource_permission_statement(Client, Input, []).
+
+-spec delete_resource_permission_statement(aws_client:aws_client(), delete_resource_permission_statement_input(), proplists:proplist()) ->
+    {ok, delete_resource_permission_statement_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_permission_statement_errors(), tuple()}.
+delete_resource_permission_statement(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-resource-permission-statement"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get console authorization configuration with automatic scope
+%% detection
+-spec get_console_authorization_configuration(aws_client:aws_client(), get_console_authorization_configuration_input()) ->
+    {ok, get_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_console_authorization_configuration_errors(), tuple()}.
+get_console_authorization_configuration(Client, Input) ->
+    get_console_authorization_configuration(Client, Input, []).
+
+-spec get_console_authorization_configuration(aws_client:aws_client(), get_console_authorization_configuration_input(), proplists:proplist()) ->
+    {ok, get_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_console_authorization_configuration_errors(), tuple()}.
+get_console_authorization_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-console-authorization-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve the account's consolidated SignIn resource-based policy
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-resource-policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve all permission statements in the account's SignIn
+%% resource-based policy
+-spec list_resource_permission_statements(aws_client:aws_client(), list_resource_permission_statements_input()) ->
+    {ok, list_resource_permission_statements_output(), tuple()} |
+    {error, any()} |
+    {error, list_resource_permission_statements_errors(), tuple()}.
+list_resource_permission_statements(Client, Input) ->
+    list_resource_permission_statements(Client, Input, []).
+
+-spec list_resource_permission_statements(aws_client:aws_client(), list_resource_permission_statements_input(), proplists:proplist()) ->
+    {ok, list_resource_permission_statements_output(), tuple()} |
+    {error, any()} |
+    {error, list_resource_permission_statements_errors(), tuple()}.
+list_resource_permission_statements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-resource-permission-statements"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enable console authorization configuration with automatic scope
+%% detection
+-spec put_console_authorization_configuration(aws_client:aws_client(), put_console_authorization_configuration_input()) ->
+    {ok, put_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_console_authorization_configuration_errors(), tuple()}.
+put_console_authorization_configuration(Client, Input) ->
+    put_console_authorization_configuration(Client, Input, []).
+
+-spec put_console_authorization_configuration(aws_client:aws_client(), put_console_authorization_configuration_input(), proplists:proplist()) ->
+    {ok, put_console_authorization_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_console_authorization_configuration_errors(), tuple()}.
+put_console_authorization_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/put-console-authorization-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a permission statement in the account's SignIn
+%% resource-based policy
+-spec put_resource_permission_statement(aws_client:aws_client(), put_resource_permission_statement_input()) ->
+    {ok, put_resource_permission_statement_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_permission_statement_errors(), tuple()}.
+put_resource_permission_statement(Client, Input) ->
+    put_resource_permission_statement(Client, Input, []).
+
+-spec put_resource_permission_statement(aws_client:aws_client(), put_resource_permission_statement_input(), proplists:proplist()) ->
+    {ok, put_resource_permission_statement_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_permission_statement_errors(), tuple()}.
+put_resource_permission_statement(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/put-resource-permission-statement"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
