@@ -35,7 +35,9 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_fhir_datastore/2,
+         update_fhir_datastore/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -210,6 +212,12 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_fhir_datastore_response() :: #{
+%%   <<"DatastoreProperties">> => datastore_properties()
+%% }
+-type update_fhir_datastore_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -239,6 +247,7 @@
 
 %% Example:
 %% datastore_properties() :: #{
+%%   <<"AnalyticsConfiguration">> => analytics_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DatastoreArn">> => string(),
 %%   <<"DatastoreEndpoint">> => string(),
@@ -248,7 +257,9 @@
 %%   <<"DatastoreTypeVersion">> => list(any()),
 %%   <<"ErrorCause">> => error_cause(),
 %%   <<"IdentityProviderConfiguration">> => identity_provider_configuration(),
+%%   <<"NlpConfiguration">> => nlp_configuration(),
 %%   <<"PreloadDataConfig">> => preload_data_config(),
+%%   <<"ProfileConfiguration">> => profile_configuration(),
 %%   <<"SseConfiguration">> => sse_configuration()
 %% }
 -type datastore_properties() :: #{binary() => any()}.
@@ -279,6 +290,12 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type kms_encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% profile_configuration() :: #{
+%%   <<"DefaultProfiles">> => list(string())
+%% }
+-type profile_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fhir_datastore_request() :: #{
@@ -344,6 +361,23 @@
 -type s3_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% nlp_configuration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type nlp_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_fhir_datastore_request() :: #{
+%%   <<"AnalyticsConfiguration">> => analytics_configuration(),
+%%   <<"DatastoreId">> := string(),
+%%   <<"DatastoreName">> => string(),
+%%   <<"IdentityProviderConfiguration">> => identity_provider_configuration(),
+%%   <<"NlpConfiguration">> => nlp_configuration(),
+%%   <<"ProfileConfiguration">> => profile_configuration()
+%% }
+-type update_fhir_datastore_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_fhir_import_job_response() :: #{
 %%   <<"ImportJobProperties">> => import_job_properties()
 %% }
@@ -372,6 +406,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_fhir_datastore_request() :: #{binary() => any()}.
+
+%% Example:
+%% analytics_configuration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type analytics_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% start_fhir_export_job_response() :: #{
@@ -473,6 +513,14 @@
 -type untag_resource_errors() ::
     validation_exception() | 
     resource_not_found_exception().
+
+-type update_fhir_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -708,6 +756,23 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Update the properties of a FHIR-enabled data store.
+-spec update_fhir_datastore(aws_client:aws_client(), update_fhir_datastore_request()) ->
+    {ok, update_fhir_datastore_response(), tuple()} |
+    {error, any()} |
+    {error, update_fhir_datastore_errors(), tuple()}.
+update_fhir_datastore(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_fhir_datastore(Client, Input, []).
+
+-spec update_fhir_datastore(aws_client:aws_client(), update_fhir_datastore_request(), proplists:proplist()) ->
+    {ok, update_fhir_datastore_response(), tuple()} |
+    {error, any()} |
+    {error, update_fhir_datastore_errors(), tuple()}.
+update_fhir_datastore(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFHIRDatastore">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

@@ -314,6 +314,8 @@
 %% outpost_config_response() :: #{
 %%   <<"controlPlaneInstanceType">> => string(),
 %%   <<"controlPlanePlacement">> => control_plane_placement_response(),
+%%   <<"etcdInstanceType">> => string(),
+%%   <<"etcdPlacement">> => etcd_placement_response(),
 %%   <<"outpostArns">> => list(string())
 %% }
 -type outpost_config_response() :: #{binary() => any()}.
@@ -774,7 +776,8 @@
 
 %% Example:
 %% control_plane_placement_response() :: #{
-%%   <<"groupName">> => string()
+%%   <<"groupName">> => string(),
+%%   <<"spreadLevel">> => list(any())
 %% }
 -type control_plane_placement_response() :: #{binary() => any()}.
 
@@ -1092,6 +1095,8 @@
 %% outpost_config_request() :: #{
 %%   <<"controlPlaneInstanceType">> => string(),
 %%   <<"controlPlanePlacement">> => control_plane_placement_request(),
+%%   <<"etcdInstanceType">> => string(),
+%%   <<"etcdPlacement">> => etcd_placement_request(),
 %%   <<"outpostArns">> => list(string())
 %% }
 -type outpost_config_request() :: #{binary() => any()}.
@@ -1538,6 +1543,13 @@
 
 
 %% Example:
+%% etcd_placement_request() :: #{
+%%   <<"spreadLevel">> => list(any())
+%% }
+-type etcd_placement_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_access_policy_response() :: #{
 %%   <<"associatedAccessPolicy">> => associated_access_policy(),
 %%   <<"clusterName">> => string(),
@@ -1587,7 +1599,8 @@
 
 %% Example:
 %% control_plane_placement_request() :: #{
-%%   <<"groupName">> => string()
+%%   <<"groupName">> => string(),
+%%   <<"spreadLevel">> => list(any())
 %% }
 -type control_plane_placement_request() :: #{binary() => any()}.
 
@@ -2021,6 +2034,13 @@
 %%   <<"rbacRoleMappings">> => list(argo_cd_role_mapping())
 %% }
 -type argo_cd_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% etcd_placement_response() :: #{
+%%   <<"spreadLevel">> => list(any())
+%% }
+-type etcd_placement_response() :: #{binary() => any()}.
 
 
 %% Example:

@@ -196,6 +196,7 @@
 %%   <<"Engine">> := string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"OptionGroupName">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
@@ -598,6 +599,7 @@
 %%   <<"EnableCloudwatchLogsExports">> => list(string()),
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"OptionGroupName">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"RestoreToTime">> => non_neg_integer(),
@@ -806,6 +808,7 @@
 %%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
 %%   <<"TdeCredentialArn">> => string(),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()),
 %%   <<"MonitoringInterval">> => integer(),
@@ -875,6 +878,12 @@
 %%   <<"message">> => string()
 %% }
 -type db_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% network_type_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type network_type_not_supported_fault() :: #{binary() => any()}.
 
 %% Example:
 %% describe_valid_db_instance_modifications_message() :: #{
@@ -1139,6 +1148,7 @@
 %%   <<"MultiAZCapable">> => boolean(),
 %%   <<"ReadReplicaCapable">> => boolean(),
 %%   <<"StorageType">> => string(),
+%%   <<"SupportedNetworkTypes">> => list(string()),
 %%   <<"SupportsEnhancedMonitoring">> => boolean(),
 %%   <<"SupportsGlobalDatabases">> => boolean(),
 %%   <<"SupportsIAMDatabaseAuthentication">> => boolean(),
@@ -1406,6 +1416,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
 %%   <<"Iops">> => integer(),
+%%   <<"NetworkType">> => string(),
 %%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
 %%   <<"StorageType">> => string()
 %% }
@@ -1502,6 +1513,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MasterUserPassword">> => string(),
 %%   <<"MasterUsername">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"OptionGroupName">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"PreSignedUrl">> => string(),
@@ -1765,6 +1777,7 @@
 %%   <<"PercentProgress">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
+%%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
@@ -1995,6 +2008,7 @@
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
 %%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type db_subnet_group() :: #{binary() => any()}.
@@ -2060,6 +2074,7 @@
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MasterUserPassword">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"NewDBClusterIdentifier">> => string(),
 %%   <<"OptionGroupName">> => string(),
 %%   <<"Port">> => integer(),
@@ -2341,6 +2356,7 @@
     db_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_vpc_network_state_fault() | 
     invalid_global_cluster_state_fault() | 
+    network_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault() | 
     db_cluster_quota_exceeded_fault().
@@ -2523,6 +2539,7 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     invalid_vpc_network_state_fault() | 
+    network_type_not_supported_fault() | 
     storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault().
@@ -2636,6 +2653,7 @@
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
     invalid_vpc_network_state_fault() | 
+    network_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
     db_cluster_quota_exceeded_fault().
@@ -2655,6 +2673,7 @@
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
     invalid_vpc_network_state_fault() | 
+    network_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
     db_cluster_quota_exceeded_fault().

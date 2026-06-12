@@ -1090,6 +1090,7 @@
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
 %%   <<"workflowId">> => string(),
+%%   <<"workflowName">> => string(),
 %%   <<"workflowVersionName">> => string()
 %% }
 -type run_list_item() :: #{binary() => any()}.
