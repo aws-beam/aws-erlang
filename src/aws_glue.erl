@@ -2305,6 +2305,7 @@
 
 %% Example:
 %% get_table_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
@@ -3360,6 +3361,23 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_table_metadata() :: #{
+%%   <<"CurrentSchemaId">> => integer(),
+%%   <<"DefaultSortOrderId">> => integer(),
+%%   <<"DefaultSpecId">> => integer(),
+%%   <<"FormatVersion">> => string(),
+%%   <<"LastColumnId">> => integer(),
+%%   <<"LastPartitionId">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpecs">> => list(iceberg_partition_spec()),
+%%   <<"Properties">> => map(),
+%%   <<"Schemas">> => list(iceberg_schema()),
+%%   <<"SortOrders">> => list(iceberg_sort_order()),
+%%   <<"TableUuid">> => string()
+%% }
+-type iceberg_table_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_versions_request() :: #{
@@ -8682,6 +8700,7 @@
 %%   <<"DatabaseName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FederatedTable">> => federated_table(),
+%%   <<"IcebergTableMetadata">> => iceberg_table_metadata(),
 %%   <<"IsMaterializedView">> => boolean(),
 %%   <<"IsMultiDialectView">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),

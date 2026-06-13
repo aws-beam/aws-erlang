@@ -1659,11 +1659,13 @@
 %% Example:
 %% update_online_evaluation_config_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"clusteringConfig">> => clustering_config(),
 %%   <<"dataSourceConfig">> => list(),
 %%   <<"description">> => string(),
 %%   <<"evaluationExecutionRoleArn">> => string(),
 %%   <<"evaluators">> => list(list()),
 %%   <<"executionStatus">> => list(any()),
+%%   <<"insights">> => list(insight()),
 %%   <<"rule">> => rule()
 %% }
 -type update_online_evaluation_config_request() :: #{binary() => any()}.
@@ -1684,10 +1686,12 @@
 
 %% Example:
 %% online_evaluation_config_summary() :: #{
+%%   <<"clusteringConfig">> => clustering_config(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"executionStatus">> => list(any()),
 %%   <<"failureReason">> => [string()],
+%%   <<"insights">> => list(insight()),
 %%   <<"onlineEvaluationConfigArn">> => string(),
 %%   <<"onlineEvaluationConfigId">> => string(),
 %%   <<"onlineEvaluationConfigName">> => string(),
@@ -2100,6 +2104,7 @@
 %%   <<"components">> => map(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lineageMetadata">> => version_lineage_metadata(),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"versionId">> => string()
@@ -2187,6 +2192,7 @@
 %%   <<"components">> => map(),
 %%   <<"createdBy">> => version_created_by_source(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"parentVersionIds">> => list(string())
 %% }
 -type update_configuration_bundle_request() :: #{binary() => any()}.
@@ -2449,11 +2455,13 @@
 %% Example:
 %% create_online_evaluation_config_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"clusteringConfig">> => clustering_config(),
 %%   <<"dataSourceConfig">> := list(),
 %%   <<"description">> => string(),
 %%   <<"enableOnCreate">> := [boolean()],
 %%   <<"evaluationExecutionRoleArn">> := string(),
-%%   <<"evaluators">> := list(list()),
+%%   <<"evaluators">> => list(list()),
+%%   <<"insights">> => list(insight()),
 %%   <<"onlineEvaluationConfigName">> := string(),
 %%   <<"rule">> := rule(),
 %%   <<"tags">> => map()
@@ -2991,6 +2999,7 @@
 
 %% Example:
 %% get_online_evaluation_config_response() :: #{
+%%   <<"clusteringConfig">> => clustering_config(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dataSourceConfig">> => list(),
 %%   <<"description">> => string(),
@@ -2998,6 +3007,7 @@
 %%   <<"evaluators">> => list(list()),
 %%   <<"executionStatus">> => list(any()),
 %%   <<"failureReason">> => [string()],
+%%   <<"insights">> => list(insight()),
 %%   <<"onlineEvaluationConfigArn">> => string(),
 %%   <<"onlineEvaluationConfigId">> => string(),
 %%   <<"onlineEvaluationConfigName">> => string(),
@@ -3080,6 +3090,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_harnesses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% clustering_config() :: #{
+%%   <<"frequencies">> => list(list(any())())
+%% }
+-type clustering_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3794,6 +3811,7 @@
 %%   <<"components">> => map(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lineageMetadata">> => version_lineage_metadata(),
 %%   <<"versionCreatedAt">> => [non_neg_integer()],
 %%   <<"versionId">> => string()
@@ -5167,6 +5185,13 @@
 
 
 %% Example:
+%% insight() :: #{
+%%   <<"insightId">> => string()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -5495,6 +5520,7 @@
 %%   <<"components">> := map(),
 %%   <<"createdBy">> => version_created_by_source(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_configuration_bundle_request() :: #{binary() => any()}.

@@ -39,11 +39,12 @@
 %% Example:
 %% invoke_endpoint_async_input() :: #{
 %%   <<"Accept">> => string(),
+%%   <<"Body">> => binary(),
 %%   <<"ContentType">> => string(),
 %%   <<"CustomAttributes">> => string(),
 %%   <<"Filename">> => string(),
 %%   <<"InferenceId">> => string(),
-%%   <<"InputLocation">> := string(),
+%%   <<"InputLocation">> => string(),
 %%   <<"InvocationTimeoutSeconds">> => integer(),
 %%   <<"RequestTTLSeconds">> => integer(),
 %%   <<"S3OutputPathExtension">> => string()
@@ -323,7 +324,7 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/async-invocations"],
     SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
                {receive_body_as_binary, ReceiveBodyAsBinary},

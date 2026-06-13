@@ -26,6 +26,8 @@
          create_chat/4,
          create_private_connection/2,
          create_private_connection/3,
+         create_trigger/3,
+         create_trigger/4,
          delete_agent_space/3,
          delete_agent_space/4,
          delete_asset/4,
@@ -34,6 +36,8 @@
          delete_asset_file/6,
          delete_private_connection/3,
          delete_private_connection/4,
+         delete_trigger/4,
+         delete_trigger/5,
          deregister_service/3,
          deregister_service/4,
          describe_private_connection/2,
@@ -75,6 +79,9 @@
          get_service/2,
          get_service/4,
          get_service/5,
+         get_trigger/3,
+         get_trigger/5,
+         get_trigger/6,
          list_agent_spaces/2,
          list_agent_spaces/3,
          list_asset_files/3,
@@ -114,6 +121,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_triggers/2,
+         list_triggers/4,
+         list_triggers/5,
          list_webhooks/4,
          list_webhooks/5,
          register_service/3,
@@ -142,6 +152,8 @@
          update_private_connection_certificate/4,
          update_recommendation/4,
          update_recommendation/5,
+         update_trigger/4,
+         update_trigger/5,
          validate_aws_associations/3,
          validate_aws_associations/4]).
 
@@ -227,6 +239,10 @@
 %% }
 -type task() :: #{binary() => any()}.
 
+%% Example:
+%% delete_trigger_request() :: #{}
+-type delete_trigger_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -298,6 +314,14 @@
 
 
 %% Example:
+%% list_triggers_response() :: #{
+%%   <<"items">> => list(trigger()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_triggers_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_service_input() :: #{
 %%   <<"exchangeUrlPrivateConnectionName">> => string(),
 %%   <<"kmsKeyArn">> => string(),
@@ -324,6 +348,20 @@
 %%   <<"path">> => string()
 %% }
 -type asset_file_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger() :: #{
+%%   <<"action">> => any(),
+%%   <<"agentSpaceId">> => string(),
+%%   <<"condition">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"triggerId">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type trigger() :: #{binary() => any()}.
 
 
 %% Example:
@@ -896,6 +934,14 @@
 
 
 %% Example:
+%% update_trigger_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type update_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% identity_center_service_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"underlyingErrorCode">> => [string()]
@@ -1010,6 +1056,13 @@
 %%   <<"tokenValue">> => string()
 %% }
 -type git_lab_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trigger_response() :: #{
+%%   <<"trigger">> => trigger()
+%% }
+-type create_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1130,6 +1183,15 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_triggers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_triggers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1282,6 +1344,13 @@
 
 
 %% Example:
+%% update_trigger_response() :: #{
+%%   <<"trigger">> => trigger()
+%% }
+-type update_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% registered_slack_service_details() :: #{
 %%   <<"teamId">> => [string()],
 %%   <<"teamName">> => [string()]
@@ -1354,6 +1423,17 @@
 %%   <<"sequenceNumber">> => [integer()]
 %% }
 -type send_message_response_created_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trigger_request() :: #{
+%%   <<"action">> := any(),
+%%   <<"clientToken">> => [string()],
+%%   <<"condition">> := list(),
+%%   <<"status">> => string(),
+%%   <<"type">> := string()
+%% }
+-type create_trigger_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1443,6 +1523,13 @@
 %% Example:
 %% delete_agent_space_output() :: #{}
 -type delete_agent_space_output() :: #{}.
+
+
+%% Example:
+%% get_trigger_response() :: #{
+%%   <<"trigger">> => trigger()
+%% }
+-type get_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1692,6 +1779,10 @@
 %% }
 -type update_operator_app_idp_config_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_trigger_response() :: #{}
+-type delete_trigger_response() :: #{}.
+
 
 %% Example:
 %% send_message_response_failed_event() :: #{
@@ -1870,6 +1961,17 @@
 %% Example:
 %% describe_private_connection_input() :: #{}
 -type describe_private_connection_input() :: #{}.
+
+%% Example:
+%% get_trigger_request() :: #{}
+-type get_trigger_request() :: #{}.
+
+
+%% Example:
+%% schedule_condition() :: #{
+%%   <<"expression">> => string()
+%% }
+-type schedule_condition() :: #{binary() => any()}.
 
 %% Example:
 %% get_backlog_task_request() :: #{}
@@ -2087,6 +2189,14 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type create_trigger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_agent_space_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2115,6 +2225,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_trigger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type deregister_service_errors() ::
     throttling_exception() | 
@@ -2214,6 +2332,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_trigger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_agent_spaces_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2308,6 +2433,13 @@
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_triggers_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -2411,6 +2543,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_trigger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type validate_aws_associations_errors() ::
     throttling_exception() | 
@@ -2667,6 +2806,40 @@ create_private_connection(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new Trigger in the specified agent space
+-spec create_trigger(aws_client:aws_client(), binary() | list(), create_trigger_request()) ->
+    {ok, create_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, create_trigger_errors(), tuple()}.
+create_trigger(Client, AgentSpaceId, Input) ->
+    create_trigger(Client, AgentSpaceId, Input, []).
+
+-spec create_trigger(aws_client:aws_client(), binary() | list(), create_trigger_request(), proplists:proplist()) ->
+    {ok, create_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, create_trigger_errors(), tuple()}.
+create_trigger(Client, AgentSpaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/trigger/agent-space/", aws_util:encode_uri(AgentSpaceId), "/triggers"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an AgentSpace.
 %%
 %% This operation is idempotent and returns a 204 No Content response on
@@ -2789,6 +2962,40 @@ delete_private_connection(Client, Name, Input) ->
 delete_private_connection(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/private-connections/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Trigger from the specified agent space
+-spec delete_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trigger_request()) ->
+    {ok, delete_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trigger_errors(), tuple()}.
+delete_trigger(Client, AgentSpaceId, TriggerId, Input) ->
+    delete_trigger(Client, AgentSpaceId, TriggerId, Input, []).
+
+-spec delete_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trigger_request(), proplists:proplist()) ->
+    {ok, delete_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trigger_errors(), tuple()}.
+delete_trigger(Client, AgentSpaceId, TriggerId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/trigger/agent-space/", aws_util:encode_uri(AgentSpaceId), "/triggers/", aws_util:encode_uri(TriggerId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3361,6 +3568,43 @@ get_service(Client, ServiceId, QueryMap, HeadersMap)
 get_service(Client, ServiceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/services/", aws_util:encode_uri(ServiceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a Trigger from the specified agent space
+-spec get_trigger(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_trigger_errors(), tuple()}.
+get_trigger(Client, AgentSpaceId, TriggerId)
+  when is_map(Client) ->
+    get_trigger(Client, AgentSpaceId, TriggerId, #{}, #{}).
+
+-spec get_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_trigger_errors(), tuple()}.
+get_trigger(Client, AgentSpaceId, TriggerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trigger(Client, AgentSpaceId, TriggerId, QueryMap, HeadersMap, []).
+
+-spec get_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_trigger_errors(), tuple()}.
+get_trigger(Client, AgentSpaceId, TriggerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trigger/agent-space/", aws_util:encode_uri(AgentSpaceId), "/triggers/", aws_util:encode_uri(TriggerId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3978,6 +4222,49 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists Triggers in the specified agent space
+-spec list_triggers(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_triggers_errors(), tuple()}.
+list_triggers(Client, AgentSpaceId)
+  when is_map(Client) ->
+    list_triggers(Client, AgentSpaceId, #{}, #{}).
+
+-spec list_triggers(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_triggers_errors(), tuple()}.
+list_triggers(Client, AgentSpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_triggers(Client, AgentSpaceId, QueryMap, HeadersMap, []).
+
+-spec list_triggers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_triggers_errors(), tuple()}.
+list_triggers(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trigger/agent-space/", aws_util:encode_uri(AgentSpaceId), "/triggers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List all webhooks for given Association
 -spec list_webhooks(aws_client:aws_client(), binary() | list(), binary() | list(), list_webhooks_input()) ->
     {ok, list_webhooks_output(), tuple()} |
@@ -4443,6 +4730,40 @@ update_recommendation(Client, AgentSpaceId, RecommendationId, Input) ->
 update_recommendation(Client, AgentSpaceId, RecommendationId, Input0, Options0) ->
     Method = patch,
     Path = ["/backlog/agent-space/", aws_util:encode_uri(AgentSpaceId), "/recommendations/", aws_util:encode_uri(RecommendationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of an existing Trigger
+-spec update_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), update_trigger_request()) ->
+    {ok, update_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, update_trigger_errors(), tuple()}.
+update_trigger(Client, AgentSpaceId, TriggerId, Input) ->
+    update_trigger(Client, AgentSpaceId, TriggerId, Input, []).
+
+-spec update_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), update_trigger_request(), proplists:proplist()) ->
+    {ok, update_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, update_trigger_errors(), tuple()}.
+update_trigger(Client, AgentSpaceId, TriggerId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/trigger/agent-space/", aws_util:encode_uri(AgentSpaceId), "/triggers/", aws_util:encode_uri(TriggerId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

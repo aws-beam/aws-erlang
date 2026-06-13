@@ -185,6 +185,7 @@
 
 %% Example:
 %% tool_description_output() :: #{
+%%   <<"explanation">> => string(),
 %%   <<"recommendedToolDescription">> => string(),
 %%   <<"toolName">> => string()
 %% }
@@ -256,6 +257,18 @@
 %%   <<"records">> := list(memory_record_update_input())
 %% }
 -type batch_update_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% root_cause_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"affectedSessions">> => list(affected_session()),
+%%   <<"clusterId">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"rootCause">> => [string()]
+%% }
+-type root_cause_cluster() :: #{binary() => any()}.
 
 
 %% Example:
@@ -461,6 +474,14 @@
 
 
 %% Example:
+%% user_intent_affected_session() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"userMessages">> => list([string()]())
+%% }
+-type user_intent_affected_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_payment_instruments_response() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"paymentInstruments">> => list(payment_instrument_summary())
@@ -615,6 +636,17 @@
 
 
 %% Example:
+%% failure_category_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"subCategories">> => list(failure_sub_category_cluster())
+%% }
+-type failure_category_cluster() :: #{binary() => any()}.
+
+
+%% Example:
 %% complete_resource_token_auth_request() :: #{
 %%   <<"sessionUri">> := string(),
 %%   <<"userIdentifier">> := list()
@@ -683,6 +715,17 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type cloud_watch_logs_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_summary_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"affectedSessions">> => list(execution_summary_affected_session()),
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type execution_summary_cluster() :: #{binary() => any()}.
 
 
 %% Example:
@@ -981,6 +1024,17 @@
 
 
 %% Example:
+%% affected_session() :: #{
+%%   <<"explanation">> => [string()],
+%%   <<"failureSpans">> => list(failure_span_detail()),
+%%   <<"fixType">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"sessionId">> => [string()]
+%% }
+-type affected_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_shortcut_result() :: #{
 %%   <<"error">> => [string()],
 %%   <<"status">> => list(any())
@@ -1092,6 +1146,7 @@
 %%   <<"gatewayFilter">> => gateway_filter(),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
 %%   <<"variants">> := list(variant())
 %% }
 -type create_a_b_test_request() :: #{binary() => any()}.
@@ -1159,8 +1214,10 @@
 %% start_recommendation_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"recommendationConfig">> := list(),
+%%   <<"tags">> => map(),
 %%   <<"type">> := list(any())
 %% }
 -type start_recommendation_request() :: #{binary() => any()}.
@@ -1764,10 +1821,35 @@
 
 
 %% Example:
+%% batch_evaluation_trace_config() :: #{
+%%   <<"batchEvaluationArn">> => string()
+%% }
+-type batch_evaluation_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% proxy_bypass() :: #{
 %%   <<"domainPatterns">> => list(string())
 %% }
 -type proxy_bypass() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_sub_category_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"rootCauses">> => list(root_cause_cluster())
+%% }
+-type failure_sub_category_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_summary_clustering_result_content() :: #{
+%%   <<"executionSummaries">> => list(execution_summary_cluster())
+%% }
+-type execution_summary_clustering_result_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1841,6 +1923,15 @@
 %% }
 -type get_workload_access_token_for_user_id_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% failure_span_detail() :: #{
+%%   <<"signals">> => list(insights_failure_signal()),
+%%   <<"spanId">> => [string()],
+%%   <<"traceId">> => [string()]
+%% }
+-type failure_span_detail() :: #{binary() => any()}.
+
 %% Example:
 %% delete_batch_evaluation_request() :: #{}
 -type delete_batch_evaluation_request() :: #{}.
@@ -1876,6 +1967,13 @@
 %%   <<"bundleVersion">> => string()
 %% }
 -type configuration_bundle_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_intent_clustering_result_content() :: #{
+%%   <<"userIntents">> => list(user_intent_cluster())
+%% }
+-type user_intent_clustering_result_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1946,6 +2044,13 @@
 %%   <<"paymentTokenResponse">> => list()
 %% }
 -type get_resource_payment_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_analysis_result_content() :: #{
+%%   <<"failures">> => list(failure_category_cluster())
+%% }
+-type failure_analysis_result_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2023,6 +2128,17 @@
 
 
 %% Example:
+%% user_intent_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"affectedSessions">> => list(user_intent_affected_session()),
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type user_intent_cluster() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_event_input() :: #{
 %%   <<"actorId">> := string(),
 %%   <<"branch">> => branch(),
@@ -2076,7 +2192,10 @@
 %%   <<"dataSourceConfig">> := list(),
 %%   <<"description">> => string(),
 %%   <<"evaluationMetadata">> => list(),
-%%   <<"evaluators">> => list(evaluator())
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
 %% }
 -type start_batch_evaluation_request() :: #{binary() => any()}.
 
@@ -2420,6 +2539,7 @@
 %%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string(),
+%%   <<"explanation">> => string(),
 %%   <<"recommendedSystemPrompt">> => string()
 %% }
 -type system_prompt_recommendation_result() :: #{binary() => any()}.
@@ -2433,8 +2553,11 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"outputConfig">> => list(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
 %% }
 -type start_batch_evaluation_response() :: #{binary() => any()}.
 
@@ -2614,6 +2737,13 @@
 
 
 %% Example:
+%% insight() :: #{
+%%   <<"insightId">> => string()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_stream_metrics() :: #{
 %%   <<"latencyMs">> => [float()]
 %% }
@@ -2726,6 +2856,15 @@
 
 
 %% Example:
+%% execution_summary_affected_session() :: #{
+%%   <<"approachTaken">> => [string()],
+%%   <<"finalOutcome">> => [string()],
+%%   <<"sessionId">> => [string()]
+%% }
+-type execution_summary_affected_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_payment_session_request() :: #{
 %%   <<"agentName">> => string(),
 %%   <<"clientToken">> => string(),
@@ -2782,6 +2921,8 @@
 %%   <<"errorDetails">> => list([string()]()),
 %%   <<"evaluationResults">> => evaluation_job_results(),
 %%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -2796,6 +2937,7 @@
 %% get_recommendation_response() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recommendationArn">> => string(),
 %%   <<"recommendationConfig">> => list(),
@@ -2806,6 +2948,14 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% online_evaluation_config_source() :: #{
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"sessionFilterConfig">> => session_filter_config()
+%% }
+-type online_evaluation_config_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2919,6 +3069,15 @@
 
 
 %% Example:
+%% insights_failure_signal() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"confidence">> => [float()],
+%%   <<"evidence">> => [string()]
+%% }
+-type insights_failure_signal() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_metadata_filter_expression() :: #{
 %%   <<"left">> => list(),
 %%   <<"operator">> => list(any()),
@@ -2947,9 +3106,14 @@
 %%   <<"errorDetails">> => list([string()]()),
 %%   <<"evaluationResults">> => evaluation_job_results(),
 %%   <<"evaluators">> => list(evaluator()),
+%%   <<"executionSummaryResult">> => execution_summary_clustering_result_content(),
+%%   <<"failureAnalysisResult">> => failure_analysis_result_content(),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"outputConfig">> => list(),
 %%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userIntentResult">> => user_intent_clustering_result_content()
 %% }
 -type get_batch_evaluation_response() :: #{binary() => any()}.
 
