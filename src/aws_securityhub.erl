@@ -673,14 +673,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"JsonPath">> => string(),
-%%   <<"RecordIndex">> => float()
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% organizational_unit_not_found_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
@@ -9620,6 +9612,14 @@
 %%   <<"VpcSecurityGroupId">> => string()
 %% }
 -type aws_dms_replication_instance_vpc_security_groups_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% securityhub_record() :: #{
+%%   <<"JsonPath">> => string(),
+%%   <<"RecordIndex">> => float()
+%% }
+-type securityhub_record() :: #{binary() => any()}.
 
 
 %% Example:

@@ -316,14 +316,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"jsonPath">> => string(),
-%%   <<"recordIndex">> => float()
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -1662,6 +1654,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_data_identifiers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% macie2_record() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"recordIndex">> => float()
+%% }
+-type macie2_record() :: #{binary() => any()}.
 
 
 %% Example:

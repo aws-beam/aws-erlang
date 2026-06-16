@@ -16,6 +16,8 @@
          get_async_invoke/2,
          get_async_invoke/4,
          get_async_invoke/5,
+         invoke_guardrail_checks/2,
+         invoke_guardrail_checks/3,
          invoke_model/3,
          invoke_model/4,
          invoke_model_with_bidirectional_stream/3,
@@ -100,9 +102,23 @@
 %% }
 -type guardrail_automated_reasoning_policy_assessment() :: #{binary() => any()}.
 
+
+%% Example:
+%% guardrail_checks_sensitive_information_entity_config() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_checks_sensitive_information_entity_config() :: #{binary() => any()}.
+
 %% Example:
 %% guardrail_automated_reasoning_no_translations_finding() :: #{}
 -type guardrail_automated_reasoning_no_translations_finding() :: #{}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_result() :: #{
+%%   <<"results">> => list(guardrail_checks_prompt_attack_result_entry())
+%% }
+-type guardrail_checks_prompt_attack_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -243,6 +259,13 @@
 %%   <<"outputAssessments">> => map()
 %% }
 -type guardrail_trace_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_sensitive_information_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -427,6 +450,15 @@
 
 
 %% Example:
+%% guardrail_checks_usage_results() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_usage(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_usage(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_usage()
+%% }
+-type guardrail_checks_usage_results() :: #{binary() => any()}.
+
+
+%% Example:
 %% applied_guardrail_details() :: #{
 %%   <<"guardrailArn">> => string(),
 %%   <<"guardrailId">> => string(),
@@ -535,6 +567,13 @@
 
 
 %% Example:
+%% guardrail_checks_content_filter_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_content_filter_usage() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -561,6 +600,18 @@
 %%   <<"trace">> => list(any())
 %% }
 -type invoke_model_with_response_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_result_entry() :: #{
+%%   <<"beginOffset">> => [integer()],
+%%   <<"confidenceScore">> => [float()],
+%%   <<"contentIndex">> => [integer()],
+%%   <<"endOffset">> => [integer()],
+%%   <<"messageIndex">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_checks_sensitive_information_result_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -624,6 +675,14 @@
 
 
 %% Example:
+%% guardrail_checks_sensitive_information_result() :: #{
+%%   <<"results">> => list(guardrail_checks_sensitive_information_result_entry()),
+%%   <<"truncated">> => [boolean()]
+%% }
+-type guardrail_checks_sensitive_information_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% converse_trace() :: #{
 %%   <<"guardrail">> => guardrail_trace_assessment(),
 %%   <<"promptRouter">> => prompt_router_trace()
@@ -640,6 +699,21 @@
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_guardrail_checks_request() :: #{
+%%   <<"checks">> := guardrail_checks_config(),
+%%   <<"messages">> := list(guardrail_checks_message())
+%% }
+-type invoke_guardrail_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_config() :: #{
+%%   <<"categories">> => list(guardrail_checks_content_filter_category_config())
+%% }
+-type guardrail_checks_content_filter_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -666,6 +740,13 @@
 %%   <<"source">> => list()
 %% }
 -type guardrail_image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_config() :: #{
+%%   <<"categories">> => list(guardrail_checks_prompt_attack_category_config())
+%% }
+-type guardrail_checks_prompt_attack_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -797,6 +878,14 @@
 
 
 %% Example:
+%% guardrail_checks_prompt_attack_result_entry() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"severityScore">> => [float()]
+%% }
+-type guardrail_checks_prompt_attack_result_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_automated_reasoning_valid_finding() :: #{
 %%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
 %%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
@@ -814,6 +903,14 @@
 %%   <<"trace">> => list(any())
 %% }
 -type guardrail_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_guardrail_checks_response() :: #{
+%%   <<"results">> => guardrail_checks_results(),
+%%   <<"usage">> => guardrail_checks_usage_results()
+%% }
+-type invoke_guardrail_checks_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -835,6 +932,22 @@
 %%   <<"wordPolicy">> => guardrail_word_policy_assessment()
 %% }
 -type guardrail_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
+%% }
+-type guardrail_checks_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_result_entry() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"severityScore">> => [float()]
+%% }
+-type guardrail_checks_content_filter_result_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1002,6 +1115,20 @@
 
 
 %% Example:
+%% guardrail_checks_content_filter_result() :: #{
+%%   <<"results">> => list(guardrail_checks_content_filter_result_entry())
+%% }
+-type guardrail_checks_content_filter_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_config() :: #{
+%%   <<"entities">> => list(guardrail_checks_sensitive_information_entity_config())
+%% }
+-type guardrail_checks_sensitive_information_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1013,6 +1140,22 @@
 %%   <<"text">> => [string()]
 %% }
 -type citation_source_content_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_category_config() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type guardrail_checks_prompt_attack_category_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_results() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_result(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_result(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_result()
+%% }
+-type guardrail_checks_results() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1069,6 +1212,15 @@
 
 
 %% Example:
+%% guardrail_checks_config() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_config(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_config(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_config()
+%% }
+-type guardrail_checks_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% citations_config() :: #{
 %%   <<"enabled">> => [boolean()]
 %% }
@@ -1111,11 +1263,25 @@
 
 
 %% Example:
+%% guardrail_checks_prompt_attack_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_prompt_attack_usage() :: #{binary() => any()}.
+
+
+%% Example:
 %% converse_stream_trace() :: #{
 %%   <<"guardrail">> => guardrail_trace_assessment(),
 %%   <<"promptRouter">> => prompt_router_trace()
 %% }
 -type converse_stream_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_category_config() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type guardrail_checks_content_filter_category_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1248,6 +1414,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type invoke_guardrail_checks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception().
 
 -type invoke_model_errors() ::
     throttling_exception() | 
@@ -1626,6 +1799,43 @@ get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Evaluates messages against inline guardrail checks.
+%%
+%% You specify the check configurations directly in the request, and Amazon
+%% Bedrock returns per-check results with severity or confidence scores.
+-spec invoke_guardrail_checks(aws_client:aws_client(), invoke_guardrail_checks_request()) ->
+    {ok, invoke_guardrail_checks_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_guardrail_checks_errors(), tuple()}.
+invoke_guardrail_checks(Client, Input) ->
+    invoke_guardrail_checks(Client, Input, []).
+
+-spec invoke_guardrail_checks(aws_client:aws_client(), invoke_guardrail_checks_request(), proplists:proplist()) ->
+    {ok, invoke_guardrail_checks_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_guardrail_checks_errors(), tuple()}.
+invoke_guardrail_checks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/guardrail-checks/invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invokes the specified Amazon Bedrock model to run inference using the
 %% prompt and inference parameters provided in the request body.

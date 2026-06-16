@@ -431,7 +431,10 @@
 %% update_source_server_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"connectorAction">> => source_server_connector_action(),
-%%   <<"sourceServerID">> := string()
+%%   <<"fqdnForActionFramework">> => string(),
+%%   <<"platform">> => string(),
+%%   <<"sourceServerID">> := string(),
+%%   <<"userProvidedID">> => string()
 %% }
 -type update_source_server_request() :: #{binary() => any()}.
 
@@ -499,6 +502,7 @@
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"storeSnapshotOnLocalZone">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"useDedicatedReplicationServer">> => [boolean()],
@@ -550,6 +554,7 @@
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"storeSnapshotOnLocalZone">> => [boolean()],
 %%   <<"useDedicatedReplicationServer">> => [boolean()],
 %%   <<"useFipsEndpoint">> => [boolean()]
@@ -707,6 +712,7 @@
 %%   <<"replicationServersSecurityGroupsIDs">> := list(string()),
 %%   <<"stagingAreaSubnetId">> := string(),
 %%   <<"stagingAreaTags">> := map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"storeSnapshotOnLocalZone">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"useDedicatedReplicationServer">> := [boolean()],
@@ -873,7 +879,9 @@
 %% launched_instance() :: #{
 %%   <<"ec2InstanceID">> => string(),
 %%   <<"firstBoot">> => string(),
-%%   <<"jobID">> => string()
+%%   <<"jobID">> => string(),
+%%   <<"lastKnownChecks">> => list(last_known_check()),
+%%   <<"lastKnownFsxChecksStatus">> => string()
 %% }
 -type launched_instance() :: #{binary() => any()}.
 
@@ -1132,6 +1140,17 @@
 
 
 %% Example:
+%% last_known_check() :: #{
+%%   <<"checkedAt">> => [non_neg_integer()],
+%%   <<"error">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type last_known_check() :: #{binary() => any()}.
+
+
+%% Example:
 %% target_network() :: #{
 %%   <<"inboundCidr">> => string(),
 %%   <<"inspectionCidr">> => string(),
@@ -1279,6 +1298,7 @@
 %%   <<"sourceServerID">> => string(),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"storeSnapshotOnLocalZone">> => [boolean()],
 %%   <<"useDedicatedReplicationServer">> => [boolean()],
 %%   <<"useFipsEndpoint">> => [boolean()]
@@ -1530,6 +1550,14 @@
 %% }
 -type network_migration_analysis_result_target() :: #{binary() => any()}.
 
+
+%% Example:
+%% storage_configuration() :: #{
+%%   <<"fsxOntapConfiguration">> => fsx_ontap_configuration(),
+%%   <<"storageType">> => string()
+%% }
+-type storage_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% initialize_service_request() :: #{}
 -type initialize_service_request() :: #{}.
@@ -1734,6 +1762,14 @@
 %% Example:
 %% initialize_service_response() :: #{}
 -type initialize_service_response() :: #{}.
+
+
+%% Example:
+%% fsx_ontap_configuration() :: #{
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"storageVirtualMachineId">> => string()
+%% }
+-type fsx_ontap_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% remove_source_server_action_response() :: #{}
@@ -2500,6 +2536,7 @@
 %%   <<"sourceServerID">> := string(),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"storeSnapshotOnLocalZone">> => [boolean()],
 %%   <<"useDedicatedReplicationServer">> => [boolean()],
 %%   <<"useFipsEndpoint">> => [boolean()]

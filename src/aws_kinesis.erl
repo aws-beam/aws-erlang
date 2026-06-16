@@ -114,16 +114,6 @@
 -type consumer_description() :: #{binary() => any()}.
 
 %% Example:
-%% record() :: #{
-%%   <<"ApproximateArrivalTimestamp">> => non_neg_integer(),
-%%   <<"Data">> => binary(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"PartitionKey">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type record() :: #{binary() => any()}.
-
-%% Example:
 %% describe_limits_output() :: #{
 %%   <<"OnDemandStreamCount">> => integer(),
 %%   <<"OnDemandStreamCountLimit">> => integer(),
@@ -251,6 +241,16 @@
 %%   <<"StreamStatus">> => list(any())
 %% }
 -type stream_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_record() :: #{
+%%   <<"ApproximateArrivalTimestamp">> => non_neg_integer(),
+%%   <<"Data">> => binary(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"PartitionKey">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type kinesis_record() :: #{binary() => any()}.
 
 %% Example:
 %% decrease_stream_retention_period_input() :: #{

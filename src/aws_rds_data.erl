@@ -45,13 +45,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"values">> => list(list())
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% result_set_metadata() :: #{
 %%   <<"columnCount">> => float(),
 %%   <<"columnMetadata">> => list(column_metadata())
@@ -277,6 +270,13 @@
 %%   <<"transactionId">> => string()
 %% }
 -type begin_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_data_record() :: #{
+%%   <<"values">> => list(list())
+%% }
+-type rds_data_record() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_error_exception() :: #{}

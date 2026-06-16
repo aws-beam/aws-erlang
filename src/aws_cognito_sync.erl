@@ -109,18 +109,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
-%%   <<"Key">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"SyncCount">> => float(),
-%%   <<"Value">> => string()
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% delete_dataset_response() :: #{
 %%   <<"Dataset">> => dataset()
 %% }
@@ -365,6 +353,18 @@
 %%   <<"Records">> => list(record())
 %% }
 -type update_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_sync_record() :: #{
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
+%%   <<"Key">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"SyncCount">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type cognito_sync_record() :: #{binary() => any()}.
 
 
 %% Example:

@@ -307,6 +307,7 @@
 %%   <<"creationTime">> => float(),
 %%   <<"description">> => string(),
 %%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"lastExecutionStatus">> => list(any()),
 %%   <<"lastTriggeredTime">> => float(),
@@ -318,6 +319,7 @@
 %%   <<"scheduleEndTime">> => float(),
 %%   <<"scheduleExpression">> => string(),
 %%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduleType">> => list(any()),
 %%   <<"scheduledQueryArn">> => string(),
 %%   <<"startTimeOffset">> => float(),
 %%   <<"state">> => list(any()),
@@ -945,6 +947,7 @@
 %% list_scheduled_queries_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"scheduleType">> => list(any()),
 %%   <<"state">> => list(any())
 %% }
 -type list_scheduled_queries_request() :: #{binary() => any()}.
@@ -964,6 +967,7 @@
 %% create_scheduled_query_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
 %%   <<"executionRoleArn">> := string(),
 %%   <<"logGroupIdentifiers">> => list(string()),
 %%   <<"name">> := string(),
@@ -1644,6 +1648,7 @@
 %%   <<"creationTime">> => float(),
 %%   <<"description">> => string(),
 %%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"lastExecutionStatus">> => list(any()),
 %%   <<"lastTriggeredTime">> => float(),
@@ -1655,6 +1660,7 @@
 %%   <<"scheduleEndTime">> => float(),
 %%   <<"scheduleExpression">> => string(),
 %%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduleType">> => list(any()),
 %%   <<"scheduledQueryArn">> => string(),
 %%   <<"startTimeOffset">> => float(),
 %%   <<"state">> => list(any()),
@@ -1896,6 +1902,7 @@
 %%   <<"lastUpdatedTime">> => float(),
 %%   <<"name">> => string(),
 %%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleType">> => list(any()),
 %%   <<"scheduledQueryArn">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"timezone">> => string()
@@ -2201,6 +2208,7 @@
 %% update_scheduled_query_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
 %%   <<"executionRoleArn">> := string(),
 %%   <<"identifier">> := string(),
 %%   <<"logGroupIdentifiers">> => list(string()),
@@ -3654,7 +3662,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -5771,7 +5780,9 @@ get_lookup_table(Client, Input, Options)
 %% available, by using
 %% pagination. Use the `nextToken' returned in the response to request
 %% additional
-%% pages of results, with each page returning up to 10,000 log events.
+%% pages of results, with each page returning up to 10,000 log events. This
+%% is only supported for Logs Insights QL and is currently not supported for
+%% PPL and SQL query languages.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation

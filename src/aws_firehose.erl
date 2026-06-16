@@ -55,12 +55,6 @@
 -type database_source_authentication_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% record() :: #{
-%%   <<"Data">> => binary()
-%% }
--type record() :: #{binary() => any()}.
-
-%% Example:
 %% encryption_configuration() :: #{
 %%   <<"KMSEncryptionConfig">> => kms_encryption_config(),
 %%   <<"NoEncryptionConfig">> => list(any())
@@ -327,6 +321,12 @@
 %%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type http_endpoint_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% firehose_record() :: #{
+%%   <<"Data">> => binary()
+%% }
+-type firehose_record() :: #{binary() => any()}.
 
 %% Example:
 %% put_record_batch_input() :: #{

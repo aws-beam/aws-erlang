@@ -122,6 +122,12 @@
          get_rate_based_statement_managed_keys/3,
          get_regex_pattern_set/2,
          get_regex_pattern_set/3,
+         get_revenue_statistics/2,
+         get_revenue_statistics/3,
+         get_revenue_statistics_summary/2,
+         get_revenue_statistics_summary/3,
+         get_revenue_statistics_time_series/2,
+         get_revenue_statistics_time_series/3,
          get_rule_group/2,
          get_rule_group/3,
          get_sampled_requests/2,
@@ -152,6 +158,8 @@
          list_resources_for_web_acl/3,
          list_rule_groups/2,
          list_rule_groups/3,
+         list_settlement_records/2,
+         list_settlement_records/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_web_acls/2,
@@ -391,6 +399,15 @@
 -type disallowed_feature() :: #{binary() => any()}.
 
 %% Example:
+%% get_revenue_statistics_summary_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"Scope">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_summary_request() :: #{binary() => any()}.
+
+%% Example:
 %% rate_based_statement_managed_keys_ip_set() :: #{
 %%   <<"Addresses">> => list(string()),
 %%   <<"IPAddressVersion">> => list(any())
@@ -566,6 +583,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LabelNamespace">> => string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> => string(),
 %%   <<"Rules">> => list(rule()),
 %%   <<"VisibilityConfig">> => visibility_config()
@@ -678,10 +696,30 @@
 -type get_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_revenue_statistics_time_series_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"Interval">> := list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"StatisticType">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_time_series_request() :: #{binary() => any()}.
+
+%% Example:
 %% w_a_f_unavailable_entity_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type w_a_f_unavailable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% crypto_config() :: #{
+%%   <<"PaymentNetworks">> => list(payment_network())
+%% }
+-type crypto_config() :: #{binary() => any()}.
 
 %% Example:
 %% get_regex_pattern_set_request() :: #{
@@ -798,6 +836,14 @@
 -type application_attribute() :: #{binary() => any()}.
 
 %% Example:
+%% get_revenue_statistics_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RevenuePathStatistics">> => list(revenue_path_statistics()),
+%%   <<"SourceStatistics">> => list(source_statistics())
+%% }
+-type get_revenue_statistics_response() :: #{binary() => any()}.
+
+%% Example:
 %% rate_limit_cookie() :: #{
 %%   <<"Name">> => string(),
 %%   <<"TextTransformations">> => list(text_transformation())
@@ -815,6 +861,7 @@
 %%   <<"Capacity">> := float(),
 %%   <<"CustomResponseBodies">> => map(),
 %%   <<"Description">> => string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> := string(),
 %%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
@@ -893,6 +940,7 @@
 %%   <<"Id">> => string(),
 %%   <<"LabelNamespace">> => string(),
 %%   <<"ManagedByFirewallManager">> => boolean(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> => string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"PostProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()),
@@ -962,6 +1010,15 @@
 -type update_regex_pattern_set_request() :: #{binary() => any()}.
 
 %% Example:
+%% revenue_path_statistics() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float()
+%% }
+-type revenue_path_statistics() :: #{binary() => any()}.
+
+%% Example:
 %% block_action() :: #{
 %%   <<"CustomResponse">> => custom_response()
 %% }
@@ -991,6 +1048,13 @@
 -type list_ip_sets_response() :: #{binary() => any()}.
 
 %% Example:
+%% price() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Currency">> => list(any())
+%% }
+-type price() :: #{binary() => any()}.
+
+%% Example:
 %% rate_limit_h_t_t_p_method() :: #{
 
 %% }
@@ -1008,6 +1072,12 @@
 %%   <<"Summary">> => web_acl_summary()
 %% }
 -type create_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% monetize_action() :: #{
+%%   <<"PriceMultiplier">> => string()
+%% }
+-type monetize_action() :: #{binary() => any()}.
 
 %% Example:
 %% data_protection() :: #{
@@ -1050,6 +1120,13 @@
 %%   <<"DataProtections">> => list(data_protection())
 %% }
 -type data_protection_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_settlement_records_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Settlements">> => list(settlement_record())
+%% }
+-type list_settlement_records_response() :: #{binary() => any()}.
 
 %% Example:
 %% client_side_action() :: #{
@@ -1151,6 +1228,25 @@
 %%   <<"NextLockToken">> => string()
 %% }
 -type put_managed_rule_set_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_time_series_response() :: #{
+%%   <<"DataPoints">> => list(data_point_entry()),
+%%   <<"NextMarker">> => string()
+%% }
+-type get_revenue_statistics_time_series_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_point_entry() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"GroupByValue">> => string(),
+%%   <<"Intent">> => string(),
+%%   <<"MonetizeServedCount">> => float(),
+%%   <<"SettledCount">> => float(),
+%%   <<"TotalAmount">> => string()
+%% }
+-type data_point_entry() :: #{binary() => any()}.
 
 %% Example:
 %% address_field() :: #{
@@ -1260,6 +1356,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> := string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"Rules">> => list(rule()),
@@ -1355,6 +1452,12 @@
 -type visibility_config() :: #{binary() => any()}.
 
 %% Example:
+%% get_revenue_statistics_summary_response() :: #{
+%%   <<"RevenueBreakdown">> => revenue_breakdown()
+%% }
+-type get_revenue_statistics_summary_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_api_key_response() :: #{
 %%   <<"APIKey">> => string()
 %% }
@@ -1369,11 +1472,40 @@
 -type challenge_response() :: #{binary() => any()}.
 
 %% Example:
+%% monetization_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type monetization_filter() :: #{binary() => any()}.
+
+%% Example:
 %% ip_set_reference_statement() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"IPSetForwardedIPConfig">> => ip_set_forwarded_ip_config()
 %% }
 -type ip_set_reference_statement() :: #{binary() => any()}.
+
+%% Example:
+%% settlement_record() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"ContentPath">> => string(),
+%%   <<"Currency">> => list(any()),
+%%   <<"Intent">> => string(),
+%%   <<"Network">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"PayerAddress">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RequestTimestamp">> => non_neg_integer(),
+%%   <<"SourceCategory">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"TransactionId">> => string(),
+%%   <<"Verified">> => boolean(),
+%%   <<"WalletAddress">> => string(),
+%%   <<"WebAclArn">> => string()
+%% }
+-type settlement_record() :: #{binary() => any()}.
 
 %% Example:
 %% filter() :: #{
@@ -1468,9 +1600,23 @@
 %%   <<"Block">> => block_action(),
 %%   <<"Captcha">> => captcha_action(),
 %%   <<"Challenge">> => challenge_action(),
-%%   <<"Count">> => count_action()
+%%   <<"Count">> => count_action(),
+%%   <<"Monetize">> => monetize_action()
 %% }
 -type rule_action() :: #{binary() => any()}.
+
+%% Example:
+%% list_settlement_records_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type list_settlement_records_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_managed_rule_sets_response() :: #{
@@ -1478,6 +1624,17 @@
 %%   <<"NextMarker">> => string()
 %% }
 -type list_managed_rule_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% revenue_breakdown() :: #{
+%%   <<"Currency">> => list(any()),
+%%   <<"TotalAmount">> => string(),
+%%   <<"TotalMonetizeServed">> => float(),
+%%   <<"TotalSettled">> => float(),
+%%   <<"UnverifiedAmount">> => string(),
+%%   <<"VerifiedAmount">> => string()
+%% }
+-type revenue_breakdown() :: #{binary() => any()}.
 
 %% Example:
 %% xss_match_statement() :: #{
@@ -1545,6 +1702,14 @@
 -type list_logging_configurations_response() :: #{binary() => any()}.
 
 %% Example:
+%% payment_network() :: #{
+%%   <<"Chain">> => list(any()),
+%%   <<"Prices">> => list(price()),
+%%   <<"WalletAddress">> => string()
+%% }
+-type payment_network() :: #{binary() => any()}.
+
+%% Example:
 %% h_t_t_p_header() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
@@ -1605,6 +1770,7 @@
 %%   <<"DataProtectionConfig">> => data_protection_config(),
 %%   <<"DefaultAction">> := default_action(),
 %%   <<"Description">> => string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> := string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"Rules">> => list(rule()),
@@ -1632,6 +1798,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> := string(),
 %%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
@@ -1860,6 +2027,13 @@
 -type label_name_condition() :: #{binary() => any()}.
 
 %% Example:
+%% monetization_config() :: #{
+%%   <<"CryptoConfig">> => crypto_config(),
+%%   <<"CurrencyMode">> => list(any())
+%% }
+-type monetization_config() :: #{binary() => any()}.
+
+%% Example:
 %% list_resources_for_web_acl_response() :: #{
 %%   <<"ResourceArns">> => list(string())
 %% }
@@ -1973,6 +2147,20 @@
 %%   <<"InspectionLevel">> => list(any())
 %% }
 -type aws_managed_rules_bot_control_rule_set() :: #{binary() => any()}.
+
+%% Example:
+%% source_statistics() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"GroupByValue">> => string(),
+%%   <<"Intent">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float(),
+%%   <<"SourceCategory">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"Verified">> => boolean()
+%% }
+-type source_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% delete_logging_configuration_request() :: #{
@@ -2157,6 +2345,21 @@
 %%   <<"Message">> => string()
 %% }
 -type w_a_f_subscription_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatisticType">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_request() :: #{binary() => any()}.
 
 %% Example:
 %% custom_h_t_t_p_header() :: #{
@@ -2517,6 +2720,24 @@
     w_a_f_internal_error_exception() | 
     w_a_f_nonexistent_item_exception().
 
+-type get_revenue_statistics_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_revenue_statistics_summary_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_revenue_statistics_time_series_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
 -type get_rule_group_errors() ::
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
@@ -2600,6 +2821,12 @@
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception().
+
+-type list_settlement_records_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
 
 -type list_tags_for_resource_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
@@ -3410,6 +3637,79 @@ get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
 
+%% @doc Retrieves ranked monetization statistics.
+%%
+%% Use the `StatisticType' parameter to specify the ranking:
+%% `TOP_SOURCES_BY_REVENUE' for top sources by revenue, or
+%% `TOP_PATHS_BY_REVENUE' for top content paths by revenue. This
+%% operation is only available for `CLOUDFRONT' scope. The maximum
+%% supported time window is 90 days. When no `CurrencyMode' filter is
+%% provided, results default to `REAL'. To retrieve test data, include a
+%% `CurrencyMode' filter with the value `TEST'.
+-spec get_revenue_statistics(aws_client:aws_client(), get_revenue_statistics_request()) ->
+    {ok, get_revenue_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_errors(), tuple()}.
+get_revenue_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_revenue_statistics(Client, Input, []).
+
+-spec get_revenue_statistics(aws_client:aws_client(), get_revenue_statistics_request(), proplists:proplist()) ->
+    {ok, get_revenue_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_errors(), tuple()}.
+get_revenue_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRevenueStatistics">>, Input, Options).
+
+%% @doc Retrieves a summary of monetization revenue for the specified time
+%% window.
+%%
+%% Returns total revenue, revenue by verification tier, total settlements,
+%% and total HTTP 402 responses served. This operation is only available for
+%% `CLOUDFRONT' scope. The maximum supported time window is 90 days. When
+%% no `CurrencyMode' filter is provided, results default to `REAL'.
+%% To retrieve test data, include a `CurrencyMode' filter with the value
+%% `TEST'.
+-spec get_revenue_statistics_summary(aws_client:aws_client(), get_revenue_statistics_summary_request()) ->
+    {ok, get_revenue_statistics_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_summary_errors(), tuple()}.
+get_revenue_statistics_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_revenue_statistics_summary(Client, Input, []).
+
+-spec get_revenue_statistics_summary(aws_client:aws_client(), get_revenue_statistics_summary_request(), proplists:proplist()) ->
+    {ok, get_revenue_statistics_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_summary_errors(), tuple()}.
+get_revenue_statistics_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRevenueStatisticsSummary">>, Input, Options).
+
+%% @doc Retrieves time series data for monetization revenue.
+%%
+%% Returns data points aggregated at the specified interval for the given
+%% time window. This operation is only available for `CLOUDFRONT' scope.
+%% The maximum supported time window is 90 days. When no `CurrencyMode'
+%% filter is provided, results default to `REAL'. To retrieve test data,
+%% include a `CurrencyMode' filter with the value `TEST'.
+-spec get_revenue_statistics_time_series(aws_client:aws_client(), get_revenue_statistics_time_series_request()) ->
+    {ok, get_revenue_statistics_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_time_series_errors(), tuple()}.
+get_revenue_statistics_time_series(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_revenue_statistics_time_series(Client, Input, []).
+
+-spec get_revenue_statistics_time_series(aws_client:aws_client(), get_revenue_statistics_time_series_request(), proplists:proplist()) ->
+    {ok, get_revenue_statistics_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, get_revenue_statistics_time_series_errors(), tuple()}.
+get_revenue_statistics_time_series(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRevenueStatisticsTimeSeries">>, Input, Options).
+
 %% @doc Retrieves the specified `RuleGroup'.
 -spec get_rule_group(aws_client:aws_client(), get_rule_group_request()) ->
     {ok, get_rule_group_response(), tuple()} |
@@ -3767,6 +4067,30 @@ list_rule_groups(Client, Input)
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
+
+%% @doc Retrieves individual settlement transaction records for monetization.
+%%
+%% Each record represents a single payment transaction between a client and
+%% your protected resource. This operation is only available for
+%% `CLOUDFRONT' scope. The maximum supported time window is 90 days. When
+%% no `CurrencyMode' filter is provided, results default to `REAL'.
+%% To retrieve test data, include a `CurrencyMode' filter with the value
+%% `TEST'.
+-spec list_settlement_records(aws_client:aws_client(), list_settlement_records_request()) ->
+    {ok, list_settlement_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_settlement_records_errors(), tuple()}.
+list_settlement_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_settlement_records(Client, Input, []).
+
+-spec list_settlement_records(aws_client:aws_client(), list_settlement_records_request(), proplists:proplist()) ->
+    {ok, list_settlement_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_settlement_records_errors(), tuple()}.
+list_settlement_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSettlementRecords">>, Input, Options).
 
 %% @doc Retrieves the `TagInfoForResource' for the specified resource.
 %%

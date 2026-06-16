@@ -126,6 +126,8 @@
          delete_glossary/5,
          delete_glossary_term/4,
          delete_glossary_term/5,
+         delete_lineage_event/4,
+         delete_lineage_event/5,
          delete_listing/4,
          delete_listing/5,
          delete_notebook/4,
@@ -3064,6 +3066,10 @@
 %% }
 -type o_auth2_client_application() :: #{binary() => any()}.
 
+%% Example:
+%% delete_lineage_event_input() :: #{}
+-type delete_lineage_event_input() :: #{}.
+
 
 %% Example:
 %% create_user_profile_input() :: #{
@@ -4121,6 +4127,15 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type asset_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_lineage_event_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type delete_lineage_event_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7772,6 +7787,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_lineage_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_listing_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -10967,6 +10989,40 @@ delete_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossary-terms/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified lineage event.
+-spec delete_lineage_event(aws_client:aws_client(), binary() | list(), binary() | list(), delete_lineage_event_input()) ->
+    {ok, delete_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, delete_lineage_event_errors(), tuple()}.
+delete_lineage_event(Client, DomainIdentifier, Identifier, Input) ->
+    delete_lineage_event(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_lineage_event(aws_client:aws_client(), binary() | list(), binary() | list(), delete_lineage_event_input(), proplists:proplist()) ->
+    {ok, delete_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, delete_lineage_event_errors(), tuple()}.
+delete_lineage_event(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/events/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

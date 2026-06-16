@@ -145,6 +145,19 @@
 -type keyspaces_row() :: #{binary() => any()}.
 
 %% Example:
+%% keyspacesstreams_record() :: #{
+%%   <<"clusteringKeys">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"eventVersion">> => [string()],
+%%   <<"newImage">> => keyspaces_row(),
+%%   <<"oldImage">> => keyspaces_row(),
+%%   <<"origin">> => list(any()),
+%%   <<"partitionKeys">> => map(),
+%%   <<"sequenceNumber">> => string()
+%% }
+-type keyspacesstreams_record() :: #{binary() => any()}.
+
+%% Example:
 %% list_streams_input() :: #{
 %%   <<"keyspaceName">> => string(),
 %%   <<"maxResults">> => [integer()],
@@ -159,19 +172,6 @@
 %%   <<"streams">> => list(stream())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% record() :: #{
-%%   <<"clusteringKeys">> => map(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"eventVersion">> => [string()],
-%%   <<"newImage">> => keyspaces_row(),
-%%   <<"oldImage">> => keyspaces_row(),
-%%   <<"origin">> => list(any()),
-%%   <<"partitionKeys">> => map(),
-%%   <<"sequenceNumber">> => string()
-%% }
--type record() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{

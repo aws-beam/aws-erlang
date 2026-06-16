@@ -42,6 +42,18 @@
 -type describe_stream_output() :: #{binary() => any()}.
 
 %% Example:
+%% dynamodb_streams_record() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"dynamodb">> => stream_record(),
+%%   <<"eventID">> => string(),
+%%   <<"eventName">> => list(any()),
+%%   <<"eventSource">> => string(),
+%%   <<"eventVersion">> => string(),
+%%   <<"userIdentity">> => identity()
+%% }
+-type dynamodb_streams_record() :: #{binary() => any()}.
+
+%% Example:
 %% expired_iterator_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -116,18 +128,6 @@
 %%   <<"Streams">> => list(stream())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% record() :: #{
-%%   <<"awsRegion">> => string(),
-%%   <<"dynamodb">> => stream_record(),
-%%   <<"eventID">> => string(),
-%%   <<"eventName">> => list(any()),
-%%   <<"eventSource">> => string(),
-%%   <<"eventVersion">> => string(),
-%%   <<"userIdentity">> => identity()
-%% }
--type record() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{

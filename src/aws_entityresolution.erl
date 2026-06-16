@@ -144,15 +144,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"inputSourceARN">> => string(),
-%%   <<"recordAttributeMap">> => map(),
-%%   <<"uniqueId">> => string()
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% input_source() :: #{
 %%   <<"applyNormalization">> => [boolean()],
 %%   <<"inputSourceARN">> => string(),
@@ -843,6 +834,15 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type schema_mapping_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% entityresolution_record() :: #{
+%%   <<"inputSourceARN">> => string(),
+%%   <<"recordAttributeMap">> => map(),
+%%   <<"uniqueId">> => string()
+%% }
+-type entityresolution_record() :: #{binary() => any()}.
 
 
 %% Example:

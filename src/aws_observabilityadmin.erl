@@ -119,14 +119,6 @@
 
 
 %% Example:
-%% record() :: #{
-%%   <<"Data">> => [string()],
-%%   <<"Type">> => list(any())
-%% }
--type record() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_telemetry_rule_input() :: #{
 %%   <<"Rule">> := telemetry_rule(),
 %%   <<"RuleName">> := string(),
@@ -589,6 +581,14 @@
 %%   <<"RuleIdentifier">> := string()
 %% }
 -type update_telemetry_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% observabilityadmin_record() :: #{
+%%   <<"Data">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type observabilityadmin_record() :: #{binary() => any()}.
 
 
 %% Example:

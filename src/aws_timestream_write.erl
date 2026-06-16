@@ -98,19 +98,6 @@
 -type magnetic_store_rejected_data_location() :: #{binary() => any()}.
 
 %% Example:
-%% record() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MeasureName">> => string(),
-%%   <<"MeasureValue">> => string(),
-%%   <<"MeasureValueType">> => list(any()),
-%%   <<"MeasureValues">> => list(measure_value()),
-%%   <<"Time">> => string(),
-%%   <<"TimeUnit">> => list(any()),
-%%   <<"Version">> => float()
-%% }
--type record() :: #{binary() => any()}.
-
-%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := list(tag())
@@ -292,6 +279,19 @@
 %%   <<"TaskStatus">> => list(any())
 %% }
 -type batch_load_task() :: #{binary() => any()}.
+
+%% Example:
+%% timestream_write_record() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValue">> => string(),
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"MeasureValues">> => list(measure_value()),
+%%   <<"Time">> => string(),
+%%   <<"TimeUnit">> => list(any()),
+%%   <<"Version">> => float()
+%% }
+-type timestream_write_record() :: #{binary() => any()}.
 
 %% Example:
 %% data_model_configuration() :: #{
