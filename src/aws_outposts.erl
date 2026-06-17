@@ -757,7 +757,9 @@
 %%   <<"LineItems">> => list(line_item_request()),
 %%   <<"OutpostIdentifier">> := string(),
 %%   <<"PaymentOption">> := list(any()),
-%%   <<"PaymentTerm">> => list(any())
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"QuoteIdentifier">> => string(),
+%%   <<"QuoteOptionIdentifier">> => string()
 %% }
 -type create_order_input() :: #{binary() => any()}.
 
@@ -844,6 +846,8 @@
 %%   <<"OutpostId">> => string(),
 %%   <<"PaymentOption">> => list(any()),
 %%   <<"PaymentTerm">> => list(any()),
+%%   <<"QuoteIdentifier">> => string(),
+%%   <<"QuoteOptionIdentifier">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type order() :: #{binary() => any()}.

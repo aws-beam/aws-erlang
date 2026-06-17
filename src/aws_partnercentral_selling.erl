@@ -79,6 +79,8 @@
          get_engagement_invitation/3,
          get_opportunity/2,
          get_opportunity/3,
+         get_prospecting_from_engagement_task/2,
+         get_prospecting_from_engagement_task/3,
          get_resource_snapshot/2,
          get_resource_snapshot/3,
          get_resource_snapshot_job/2,
@@ -101,6 +103,8 @@
          list_opportunities/3,
          list_opportunity_from_engagement_tasks/2,
          list_opportunity_from_engagement_tasks/3,
+         list_prospecting_from_engagement_tasks/2,
+         list_prospecting_from_engagement_tasks/3,
          list_resource_snapshot_jobs/2,
          list_resource_snapshot_jobs/3,
          list_resource_snapshots/2,
@@ -119,6 +123,8 @@
          start_engagement_from_opportunity_task/3,
          start_opportunity_from_engagement_task/2,
          start_opportunity_from_engagement_task/3,
+         start_prospecting_from_engagement_task/2,
+         start_prospecting_from_engagement_task/3,
          start_resource_snapshot_job/2,
          start_resource_snapshot_job/3,
          stop_resource_snapshot_job/2,
@@ -167,6 +173,19 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagement_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% prospecting_task_summary() :: #{
+%%   <<"CompletedEngagementCount">> => [integer()],
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailedEngagementCount">> => [integer()],
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string(),
+%%   <<"TotalEngagementCount">> => [integer()]
+%% }
+-type prospecting_task_summary() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -252,11 +271,27 @@
 -type lead_customer() :: #{binary() => any()}.
 
 %% Example:
+%% engagement_prospecting_result() :: #{
+%%   <<"EngagementContextId">> => [string()],
+%%   <<"EngagementIdentifier">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"ReasonCode">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type engagement_prospecting_result() :: #{binary() => any()}.
+
+%% Example:
 %% aws_product_optimization() :: #{
 %%   <<"Description">> => [string()],
 %%   <<"SavingsAmount">> => string()
 %% }
 -type aws_product_optimization() :: #{binary() => any()}.
+
+%% Example:
+%% prospecting_result() :: #{
+%%   <<"Aws">> => prospecting_result_aws()
+%% }
+-type prospecting_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_engagement_by_accepting_invitation_task_response() :: #{
@@ -335,6 +370,17 @@
 -type list_engagement_by_accepting_invitation_tasks_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_prospecting_from_engagement_task_response() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Engagements">> => list(engagement_prospecting_result()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string()
+%% }
+-type get_prospecting_from_engagement_task_response() :: #{binary() => any()}.
+
+%% Example:
 %% aws_opportunity_related_entities() :: #{
 %%   <<"AwsProducts">> => list(string()),
 %%   <<"Solutions">> => list(string())
@@ -370,6 +416,7 @@
 %% Example:
 %% get_aws_opportunity_summary_response() :: #{
 %%   <<"Catalog">> => string(),
+%%   <<"CosellMotion">> => [string()],
 %%   <<"Customer">> => aws_opportunity_customer(),
 %%   <<"Insights">> => aws_opportunity_insights(),
 %%   <<"InvolvementType">> => list(any()),
@@ -388,7 +435,9 @@
 %% aws_opportunity_insights() :: #{
 %%   <<"AwsProductsSpendInsightsBySource">> => aws_products_spend_insights_by_source(),
 %%   <<"EngagementScore">> => list(any()),
-%%   <<"NextBestActions">> => [string()]
+%%   <<"NextBestActions">> => [string()],
+%%   <<"OpportunityQuality">> => opportunity_quality(),
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type aws_opportunity_insights() :: #{binary() => any()}.
 
@@ -424,6 +473,7 @@
 %% Example:
 %% update_lead_context() :: #{
 %%   <<"Customer">> => lead_customer(),
+%%   <<"Insights">> => lead_insights(),
 %%   <<"Interaction">> => lead_interaction(),
 %%   <<"QualificationStatus">> => string()
 %% }
@@ -446,6 +496,15 @@
 %%   <<"SalesActivities">> => list(list(any())())
 %% }
 -type project_view() :: #{binary() => any()}.
+
+%% Example:
+%% start_prospecting_from_engagement_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Identifiers">> := list(string()),
+%%   <<"TaskName">> := string()
+%% }
+-type start_prospecting_from_engagement_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_snapshots_request() :: #{
@@ -515,6 +574,7 @@
 
 %% Example:
 %% aws_opportunity_summary_full_view() :: #{
+%%   <<"CosellMotion">> => [string()],
 %%   <<"Customer">> => aws_opportunity_customer(),
 %%   <<"Insights">> => aws_opportunity_insights(),
 %%   <<"InvolvementType">> => list(any()),
@@ -554,6 +614,13 @@
 -type update_opportunity_request() :: #{binary() => any()}.
 
 %% Example:
+%% opportunity_quality() :: #{
+%%   <<"Score">> => [integer()],
+%%   <<"Trend">> => [string()]
+%% }
+-type opportunity_quality() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"TagKeys">> := list(string())
@@ -575,6 +642,13 @@
 %%   <<"WebsiteUrl">> => [string()]
 %% }
 -type engagement_member() :: #{binary() => any()}.
+
+%% Example:
+%% list_prospecting_from_engagement_tasks_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskSummaries">> => list(prospecting_task_summary())
+%% }
+-type list_prospecting_from_engagement_tasks_response() :: #{binary() => any()}.
 
 %% Example:
 %% engagement_sort() :: #{
@@ -755,8 +829,16 @@
 -type project() :: #{binary() => any()}.
 
 %% Example:
+%% get_prospecting_from_engagement_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"TaskIdentifier">> := string()
+%% }
+-type get_prospecting_from_engagement_task_request() :: #{binary() => any()}.
+
+%% Example:
 %% lead_context() :: #{
 %%   <<"Customer">> => lead_customer(),
+%%   <<"Insights">> => lead_insights(),
 %%   <<"Interactions">> => list(lead_interaction()),
 %%   <<"QualificationStatus">> => string()
 %% }
@@ -810,6 +892,14 @@
 %%   <<"Title">> := string()
 %% }
 -type create_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Details">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type recommendation() :: #{binary() => any()}.
 
 %% Example:
 %% list_opportunities_request() :: #{
@@ -898,6 +988,18 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type submit_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% prospecting_result_aws() :: #{
+%%   <<"Customer">> => prospecting_result_customer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Insights">> => prospecting_insights(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string()
+%% }
+-type prospecting_result_aws() :: #{binary() => any()}.
 
 %% Example:
 %% expected_customer_spend() :: #{
@@ -1120,6 +1222,12 @@
 -type customer_summary() :: #{binary() => any()}.
 
 %% Example:
+%% lead_insights() :: #{
+%%   <<"LeadReadinessScore">> => [string()]
+%% }
+-type lead_insights() :: #{binary() => any()}.
+
+%% Example:
 %% list_resource_snapshot_jobs_response() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"ResourceSnapshotJobSummaries">> => list(resource_snapshot_job_summary())
@@ -1215,6 +1323,15 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% prospecting_insights() :: #{
+%%   <<"MarketplaceEngagementScore">> => string(),
+%%   <<"SolutionCategory">> => [string()],
+%%   <<"SolutionScore">> => [string()],
+%%   <<"SolutionSubCategory">> => [string()]
+%% }
+-type prospecting_insights() :: #{binary() => any()}.
 
 %% Example:
 %% aws_opportunity_life_cycle() :: #{
@@ -1423,6 +1540,19 @@
 -type assignee_contact() :: #{binary() => any()}.
 
 %% Example:
+%% start_prospecting_from_engagement_task_response() :: #{
+%%   <<"Identifiers">> => list(string()),
+%%   <<"Message">> => [string()],
+%%   <<"ReasonCode">> => [string()],
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type start_prospecting_from_engagement_task_response() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_opportunity_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"OpportunityIdentifier">> := string(),
@@ -1527,6 +1657,19 @@
 -type get_engagement_invitation_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_prospecting_from_engagement_tasks_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => prospecting_from_engagement_task_sort(),
+%%   <<"StartAfter">> => non_neg_integer(),
+%%   <<"StartBefore">> => non_neg_integer(),
+%%   <<"TaskIdentifier">> => list(string()),
+%%   <<"TaskName">> => list(string())
+%% }
+-type list_prospecting_from_engagement_tasks_request() :: #{binary() => any()}.
+
+%% Example:
 %% opportunity_summary_view() :: #{
 %%   <<"Customer">> => customer(),
 %%   <<"Lifecycle">> => life_cycle_for_view(),
@@ -1568,11 +1711,34 @@
 -type get_engagement_response() :: #{binary() => any()}.
 
 %% Example:
+%% prospecting_from_engagement_task_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type prospecting_from_engagement_task_sort() :: #{binary() => any()}.
+
+%% Example:
 %% get_opportunity_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"Identifier">> := string()
 %% }
 -type get_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% prospecting_result_customer() :: #{
+%%   <<"AccountName">> => string(),
+%%   <<"CompanySize">> => string(),
+%%   <<"Country">> => list(any()),
+%%   <<"EligiblePrograms">> => list([string()]()),
+%%   <<"Geo">> => string(),
+%%   <<"Industry">> => list(any()),
+%%   <<"PublicProfileSummary">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Segment">> => string(),
+%%   <<"SubIndustry">> => string(),
+%%   <<"SubRegion">> => string()
+%% }
+-type prospecting_result_customer() :: #{binary() => any()}.
 
 %% Example:
 %% lead_interaction() :: #{
@@ -1753,6 +1919,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_prospecting_from_engagement_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_resource_snapshot_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1830,6 +2003,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_prospecting_from_engagement_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_resource_snapshot_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1897,6 +2076,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_prospecting_from_engagement_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2340,6 +2527,25 @@ get_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpportunity">>, Input, Options).
 
+%% @doc Retrieves the details and current status of a prospecting task
+%% previously started with `StartProspectingFromEngagementTask' to enable
+%% polling for completion and access to per-engagement processing results.
+-spec get_prospecting_from_engagement_task(aws_client:aws_client(), get_prospecting_from_engagement_task_request()) ->
+    {ok, get_prospecting_from_engagement_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_prospecting_from_engagement_task_errors(), tuple()}.
+get_prospecting_from_engagement_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_prospecting_from_engagement_task(Client, Input, []).
+
+-spec get_prospecting_from_engagement_task(aws_client:aws_client(), get_prospecting_from_engagement_task_request(), proplists:proplist()) ->
+    {ok, get_prospecting_from_engagement_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_prospecting_from_engagement_task_errors(), tuple()}.
+get_prospecting_from_engagement_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProspectingFromEngagementTask">>, Input, Options).
+
 %% @doc Use this action to retrieve a specific snapshot record.
 -spec get_resource_snapshot(aws_client:aws_client(), get_resource_snapshot_request()) ->
     {ok, get_resource_snapshot_response(), tuple()} |
@@ -2570,6 +2776,28 @@ list_opportunity_from_engagement_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpportunityFromEngagementTasks">>, Input, Options).
 
+%% @doc Lists all prospecting tasks initiated by the caller's account.
+%%
+%% Supports optional filters by task identifier, task name, or start time
+%% range. Results can be sorted using configurable options. The response is
+%% paginated. Use the `NextToken' value from each response to retrieve
+%% subsequent pages.
+-spec list_prospecting_from_engagement_tasks(aws_client:aws_client(), list_prospecting_from_engagement_tasks_request()) ->
+    {ok, list_prospecting_from_engagement_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_prospecting_from_engagement_tasks_errors(), tuple()}.
+list_prospecting_from_engagement_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_prospecting_from_engagement_tasks(Client, Input, []).
+
+-spec list_prospecting_from_engagement_tasks(aws_client:aws_client(), list_prospecting_from_engagement_tasks_request(), proplists:proplist()) ->
+    {ok, list_prospecting_from_engagement_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_prospecting_from_engagement_tasks_errors(), tuple()}.
+list_prospecting_from_engagement_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProspectingFromEngagementTasks">>, Input, Options).
+
 %% @doc Lists resource snapshot jobs owned by the customer.
 %%
 %% This operation supports various filtering scenarios, including listing all
@@ -2769,6 +2997,28 @@ start_opportunity_from_engagement_task(Client, Input)
 start_opportunity_from_engagement_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartOpportunityFromEngagementTask">>, Input, Options).
+
+%% @doc Starts a task to convert one or more engagement contexts into new
+%% prospecting leads.
+%%
+%% The task runs asynchronously. To poll for status, use
+%% `GetProspectingFromEngagementTask', or use
+%% `ListProspectingFromEngagementTasks' to monitor multiple tasks.
+-spec start_prospecting_from_engagement_task(aws_client:aws_client(), start_prospecting_from_engagement_task_request()) ->
+    {ok, start_prospecting_from_engagement_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_prospecting_from_engagement_task_errors(), tuple()}.
+start_prospecting_from_engagement_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_prospecting_from_engagement_task(Client, Input, []).
+
+-spec start_prospecting_from_engagement_task(aws_client:aws_client(), start_prospecting_from_engagement_task_request(), proplists:proplist()) ->
+    {ok, start_prospecting_from_engagement_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_prospecting_from_engagement_task_errors(), tuple()}.
+start_prospecting_from_engagement_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartProspectingFromEngagementTask">>, Input, Options).
 
 %% @doc Starts a resource snapshot job that has been previously created.
 -spec start_resource_snapshot_job(aws_client:aws_client(), start_resource_snapshot_job_request()) ->

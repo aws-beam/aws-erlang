@@ -147,6 +147,7 @@
 %%   <<"filter">> => [any()],
 %%   <<"indexArn">> => string(),
 %%   <<"indexName">> => string(),
+%%   <<"nextToken">> => string(),
 %%   <<"queryVector">> := list(),
 %%   <<"returnDistance">> => [boolean()],
 %%   <<"returnMetadata">> => [boolean()],
@@ -216,6 +217,7 @@
 %% Example:
 %% query_vectors_output() :: #{
 %%   <<"distanceMetric">> => list(any()),
+%%   <<"nextToken">> => string(),
 %%   <<"vectors">> => list(query_output_vector())
 %% }
 -type query_vectors_output() :: #{binary() => any()}.
@@ -1347,8 +1349,7 @@ put_vectors(Client, Input0, Options0) ->
 %%
 %% By default, it returns the keys of approximate nearest neighbors. You can
 %% optionally include the computed distance (between the query vector and
-%% each vector in the response), the vector data, and metadata of each vector
-%% in the response.
+%% each vector in the response) and metadata of each vector in the response.
 %%
 %% To specify the vector index, you can either use both the vector bucket
 %% name and the vector index name, or use the vector index Amazon Resource
@@ -1361,13 +1362,13 @@ put_vectors(Client, Input0, Options0) ->
 %% With only `s3vectors:QueryVectors' permission, you can retrieve vector
 %% keys of approximate nearest neighbors and computed distances between these
 %% vectors. This permission is sufficient only when you don't set any
-%% metadata filters and don't request vector data or metadata (by keeping
-%% the `returnMetadata' parameter set to `false' or not specified).
+%% metadata filters and don't request metadata (by keeping the
+%% `returnMetadata' parameter set to `false' or not specified).
 %%
 %% If you specify a metadata filter or set `returnMetadata' to true, you
 %% must have both `s3vectors:QueryVectors' and `s3vectors:GetVectors'
 %% permissions. The request fails with a `403 Forbidden error' if you
-%% request metadata filtering, vector data, or metadata without the
+%% request metadata filtering or metadata without the
 %% `s3vectors:GetVectors' permission.
 -spec query_vectors(aws_client:aws_client(), query_vectors_input()) ->
     {ok, query_vectors_output(), tuple()} |

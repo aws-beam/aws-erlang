@@ -191,6 +191,7 @@
 %% update_virtual_interface_attributes_request() :: #{
 %%   <<"enableSiteLink">> => boolean(),
 %%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
 %%   <<"virtualInterfaceId">> := string(),
 %%   <<"virtualInterfaceName">> => string()
 %% }
@@ -203,6 +204,15 @@
 %%   <<"virtualInterfaceId">> := string()
 %% }
 -type start_bgp_failover_test_request() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limiter_status() :: #{
+%%   <<"inUse">> => integer(),
+%%   <<"maxAllowed">> => integer(),
+%%   <<"remaining">> => integer(),
+%%   <<"totalBandwidth">> => string()
+%% }
+-type rate_limiter_status() :: #{binary() => any()}.
 
 %% Example:
 %% describe_direct_connect_gateways_result() :: #{
@@ -254,6 +264,7 @@
 %%   <<"directConnectGatewayId">> => string(),
 %%   <<"enableSiteLink">> => boolean(),
 %%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualGatewayId">> => string(),
 %%   <<"virtualInterfaceName">> => string(),
@@ -294,6 +305,7 @@
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
@@ -552,6 +564,7 @@
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
@@ -675,6 +688,7 @@
 %%   <<"partnerName">> => string(),
 %%   <<"portEncryptionStatus">> => string(),
 %%   <<"providerName">> => string(),
+%%   <<"rateLimiterStatus">> => rate_limiter_status(),
 %%   <<"region">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"vlan">> => integer()
@@ -695,6 +709,7 @@
 %%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
+%%   <<"rateLimit">> => string(),
 %%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
@@ -850,6 +865,7 @@
 %%   <<"directConnectGatewayId">> => string(),
 %%   <<"enableSiteLink">> => boolean(),
 %%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
@@ -888,6 +904,7 @@
 %%   <<"location">> => string(),
 %%   <<"mtu">> => integer(),
 %%   <<"ownerAccount">> => string(),
+%%   <<"rateLimit">> => string(),
 %%   <<"region">> => string(),
 %%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
 %%   <<"siteLinkEnabled">> => boolean(),
@@ -1091,6 +1108,12 @@
 -type accept_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
 
 %% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% allocate_private_virtual_interface_request() :: #{
 %%   <<"connectionId">> := string(),
 %%   <<"newPrivateVirtualInterfaceAllocation">> := new_private_virtual_interface_allocation(),
@@ -1260,6 +1283,7 @@
 %%   <<"numberOfConnections">> => integer(),
 %%   <<"ownerAccount">> => string(),
 %%   <<"providerName">> => string(),
+%%   <<"rateLimiterStatus">> => rate_limiter_status(),
 %%   <<"region">> => string(),
 %%   <<"tags">> => list(tag())
 %% }
@@ -1279,6 +1303,7 @@
 %%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
+%%   <<"rateLimit">> => string(),
 %%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
 %%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
@@ -1320,23 +1345,27 @@
 -type allocate_private_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
 -type allocate_public_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
 -type allocate_transit_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
 -type associate_connection_with_lag_errors() ::
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     direct_connect_client_exception().
 
 -type associate_hosted_connection_errors() ::
@@ -1408,18 +1437,21 @@
 -type create_private_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
 -type create_public_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
 -type create_transit_virtual_interface_errors() ::
     too_many_tags_exception() | 
     direct_connect_server_exception() | 
+    limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
     direct_connect_client_exception().
 
@@ -2924,8 +2956,8 @@ describe_virtual_gateways(Client, Input, Options)
 %% A virtual interface (VLAN) transmits the traffic between the Direct
 %% Connect location and the customer network.
 %%
-%% If you're using an `asn', the response includes ASN value in both
-%% the `asn' and `asnLong' fields.
+%% If you're using an `asn', the response includes the ASN value in
+%% both the `asn' and `asnLong' fields.
 %%
 %% If you're using `asnLong', the response returns a value of `0'
 %% (zero) for the `asn' attribute because it exceeds the highest ASN

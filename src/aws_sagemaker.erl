@@ -2056,6 +2056,12 @@
 -type s3_storage_config() :: #{binary() => any()}.
 
 %% Example:
+%% container_metrics_config() :: #{
+%%   <<"MetricsEndpoints">> => list(metrics_endpoint())
+%% }
+-type container_metrics_config() :: #{binary() => any()}.
+
+%% Example:
 %% create_human_task_ui_request() :: #{
 %%   <<"HumanTaskUiName">> := string(),
 %%   <<"Tags">> => list(tag()),
@@ -6329,6 +6335,7 @@
 %% container_definition() :: #{
 %%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
 %%   <<"ContainerHostname">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
 %%   <<"Environment">> => map(),
 %%   <<"Image">> => string(),
 %%   <<"ImageConfig">> => image_config(),
@@ -7800,6 +7807,7 @@
 %% Example:
 %% inference_component_container_specification_summary() :: #{
 %%   <<"ArtifactUrl">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
 %%   <<"DeployedImage">> => deployed_image(),
 %%   <<"Environment">> => map()
 %% }
@@ -9185,6 +9193,13 @@
 %%   <<"Filters">> => list(model_metadata_filter())
 %% }
 -type model_metadata_search_expression() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_endpoint() :: #{
+%%   <<"MetricPublishFrequencyInSeconds">> => list(integer()),
+%%   <<"MetricsEndpointPath">> => string()
+%% }
+-type metrics_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% list_clusters_request() :: #{
@@ -12060,6 +12075,7 @@
 %% Example:
 %% inference_component_container_specification() :: #{
 %%   <<"ArtifactUrl">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
 %%   <<"Environment">> => map(),
 %%   <<"Image">> => string()
 %% }
@@ -12090,6 +12106,7 @@
 
 %% Example:
 %% metrics_config() :: #{
+%%   <<"EnableDetailedObservability">> => boolean(),
 %%   <<"EnableEnhancedMetrics">> => boolean(),
 %%   <<"MetricPublishFrequencyInSeconds">> => list(integer())
 %% }

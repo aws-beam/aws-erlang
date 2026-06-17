@@ -53,6 +53,8 @@
          delete_bucket_website/4,
          delete_object/4,
          delete_object/5,
+         delete_object_annotation/4,
+         delete_object_annotation/5,
          delete_object_tagging/4,
          delete_object_tagging/5,
          delete_objects/3,
@@ -134,6 +136,9 @@
          get_object_acl/3,
          get_object_acl/5,
          get_object_acl/6,
+         get_object_annotation/4,
+         get_object_annotation/6,
+         get_object_annotation/7,
          get_object_attributes/4,
          get_object_attributes/6,
          get_object_attributes/7,
@@ -180,6 +185,9 @@
          list_multipart_uploads/2,
          list_multipart_uploads/4,
          list_multipart_uploads/5,
+         list_object_annotations/3,
+         list_object_annotations/5,
+         list_object_annotations/6,
          list_object_versions/2,
          list_object_versions/4,
          list_object_versions/5,
@@ -234,6 +242,8 @@
          put_object/5,
          put_object_acl/4,
          put_object_acl/5,
+         put_object_annotation/4,
+         put_object_annotation/5,
          put_object_legal_hold/4,
          put_object_legal_hold/5,
          put_object_lock_configuration/3,
@@ -250,6 +260,8 @@
          restore_object/5,
          select_object_content/4,
          select_object_content/5,
+         update_bucket_metadata_annotation_table_configuration/3,
+         update_bucket_metadata_annotation_table_configuration/4,
          update_bucket_metadata_inventory_table_configuration/3,
          update_bucket_metadata_inventory_table_configuration/4,
          update_bucket_metadata_journal_table_configuration/3,
@@ -275,6 +287,10 @@
 %%   <<"VersionId">> => string()
 %% }
 -type error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_prefix() :: #{}
+-type invalid_prefix() :: #{}.
 
 
 %% Example:
@@ -624,6 +640,15 @@
 
 
 %% Example:
+%% annotation_table_configuration_updates() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
+%%   <<"Role">> => string()
+%% }
+-type annotation_table_configuration_updates() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_public_access_block_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
@@ -650,6 +675,10 @@
 %%   <<"VersionIdMarker">> => string()
 %% }
 -type list_object_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% annotation_limit_exceeded() :: #{}
+-type annotation_limit_exceeded() :: #{}.
 
 
 %% Example:
@@ -718,6 +747,10 @@
 %%   <<"BucketRegion">> => string()
 %% }
 -type head_bucket_output() :: #{binary() => any()}.
+
+%% Example:
+%% annotation_name_too_long() :: #{}
+-type annotation_name_too_long() :: #{}.
 
 
 %% Example:
@@ -1243,6 +1276,7 @@
 
 %% Example:
 %% metadata_configuration_result() :: #{
+%%   <<"AnnotationTableConfigurationResult">> => annotation_table_configuration_result(),
 %%   <<"DestinationResult">> => destination_result(),
 %%   <<"InventoryTableConfigurationResult">> => inventory_table_configuration_result(),
 %%   <<"JournalTableConfigurationResult">> => journal_table_configuration_result()
@@ -1375,6 +1409,16 @@
 
 
 %% Example:
+%% update_bucket_metadata_annotation_table_configuration_request() :: #{
+%%   <<"AnnotationTableConfiguration">> := annotation_table_configuration_updates(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type update_bucket_metadata_annotation_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_bucket_policy_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
@@ -1393,6 +1437,10 @@
 %%   <<"UploadIdMarker">> => string()
 %% }
 -type list_multipart_uploads_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_annotation_name() :: #{}
+-type invalid_annotation_name() :: #{}.
 
 
 %% Example:
@@ -1576,6 +1624,10 @@
 %%   <<"Status">> => list(any())
 %% }
 -type metrics() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_annotation() :: #{}
+-type no_such_annotation() :: #{}.
 
 
 %% Example:
@@ -1768,6 +1820,29 @@
 %% }
 -type create_session_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_object_annotation_output() :: #{
+%%   <<"AnnotationName">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type put_object_annotation_output() :: #{binary() => any()}.
+
 %% Example:
 %% parquet_input() :: #{}
 -type parquet_input() :: #{}.
@@ -1843,10 +1918,38 @@
 
 
 %% Example:
+%% annotation_entry() :: #{
+%%   <<"AnnotationName">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"Size">> => float()
+%% }
+-type annotation_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% abort_multipart_upload_output() :: #{
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type abort_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_annotations_output() :: #{
+%%   <<"AnnotationCount">> => integer(),
+%%   <<"AnnotationPrefix">> => string(),
+%%   <<"Annotations">> => list(annotation_entry()),
+%%   <<"Bucket">> => string(),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"MaxAnnotationResults">> => integer(),
+%%   <<"NextContinuationToken">> => string(),
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type list_object_annotations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1880,6 +1983,14 @@
 %%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
 %% }
 -type put_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_annotation_output() :: #{
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type delete_object_annotation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2316,6 +2427,30 @@
 
 
 %% Example:
+%% put_object_annotation_request() :: #{
+%%   <<"AnnotationName">> := string(),
+%%   <<"AnnotationPayload">> := binary(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectIfMatch">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_annotation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% progress_event() :: #{
 %%   <<"Details">> => progress()
 %% }
@@ -2567,6 +2702,7 @@
 
 %% Example:
 %% metadata_configuration() :: #{
+%%   <<"AnnotationTableConfiguration">> => annotation_table_configuration(),
 %%   <<"InventoryTableConfiguration">> => inventory_table_configuration(),
 %%   <<"JournalTableConfiguration">> => journal_table_configuration()
 %% }
@@ -2589,6 +2725,7 @@
 %%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
 %%   <<"Tagging">> => string(),
 %%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"AnnotationDirective">> => list(any()),
 %%   <<"CacheControl">> => string(),
 %%   <<"CopySourceSSECustomerKeyMD5">> => string(),
 %%   <<"GrantFullControl">> => string(),
@@ -3059,6 +3196,31 @@
 
 
 %% Example:
+%% get_object_annotation_output() :: #{
+%%   <<"AnnotationPayload">> => binary(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type get_object_annotation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% upload_part_copy_output() :: #{
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"CopyPartResult">> => copy_part_result(),
@@ -3070,6 +3232,17 @@
 %%   <<"ServerSideEncryption">> => list(any())
 %% }
 -type upload_part_copy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_annotation_request() :: #{
+%%   <<"AnnotationName">> := string(),
+%%   <<"ChecksumMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_annotation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3333,6 +3506,10 @@
 %% }
 -type inventory_destination() :: #{binary() => any()}.
 
+%% Example:
+%% unsupported_media_type() :: #{}
+-type unsupported_media_type() :: #{}.
+
 
 %% Example:
 %% list_parts_request() :: #{
@@ -3438,6 +3615,18 @@
 %%   <<"VersionId">> => string()
 %% }
 -type get_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_annotations_request() :: #{
+%%   <<"AnnotationPrefix">> => string(),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MaxAnnotationResults">> => integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type list_object_annotations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3568,6 +3757,17 @@
 
 
 %% Example:
+%% delete_object_annotation_request() :: #{
+%%   <<"AnnotationName">> := string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectIfMatch">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_annotation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_bucket_replication_output() :: #{
 %%   <<"ReplicationConfiguration">> => replication_configuration()
 %% }
@@ -3614,6 +3814,18 @@
 %%   <<"TableNamespace">> => string()
 %% }
 -type destination_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation_table_configuration_result() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"Error">> => error_details(),
+%%   <<"Role">> => string(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => string()
+%% }
+-type annotation_table_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3666,6 +3878,15 @@
 
 
 %% Example:
+%% annotation_table_configuration() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
+%%   <<"Role">> => string()
+%% }
+-type annotation_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% error_document() :: #{
 %%   <<"Key">> => string()
 %% }
@@ -3703,11 +3924,20 @@
 -type create_session_errors() ::
     no_such_bucket().
 
+-type delete_object_annotation_errors() ::
+    no_such_bucket() | 
+    no_such_key().
+
 -type get_object_errors() ::
     invalid_object_state() | 
     no_such_key().
 
 -type get_object_acl_errors() ::
+    no_such_key().
+
+-type get_object_annotation_errors() ::
+    no_such_bucket() | 
+    no_such_annotation() | 
     no_such_key().
 
 -type get_object_attributes_errors() ::
@@ -3718,6 +3948,11 @@
 
 -type head_object_errors() ::
     not_found().
+
+-type list_object_annotations_errors() ::
+    no_such_bucket() | 
+    no_such_key() | 
+    invalid_prefix().
 
 -type list_objects_errors() ::
     no_such_bucket().
@@ -3732,6 +3967,15 @@
     too_many_parts().
 
 -type put_object_acl_errors() ::
+    no_such_key().
+
+-type put_object_annotation_errors() ::
+    invalid_request() | 
+    unsupported_media_type() | 
+    no_such_bucket() | 
+    invalid_annotation_name() | 
+    annotation_name_too_long() | 
+    annotation_limit_exceeded() | 
     no_such_key().
 
 -type rename_object_errors() ::
@@ -4437,6 +4681,7 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"Content-Language">>, <<"ContentLanguage">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
+                       {<<"x-amz-object-annotation-directive">>, <<"AnnotationDirective">>},
                        {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"x-amz-copy-source-if-match">>, <<"CopySourceIfMatch">>},
@@ -4803,9 +5048,14 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% `s3tables:PutTablePolicy'
 %%
+%% `s3tables:PutTableBucketPolicy'
+%%
 %% `s3tables:PutTableEncryption'
 %%
 %% `kms:DescribeKey'
+%%
+%% `iam:PassRole' - required if you include an
+%% `AnnotationTableConfiguration' with an IAM role.
 %%
 %% The following operations are related to
 %% `CreateBucketMetadataConfiguration':
@@ -4821,6 +5071,18 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% UpdateBucketMetadataJournalTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataJournalTableConfiguration.html
+%%
+%% UpdateBucketMetadataAnnotationTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataAnnotationTableConfiguration.html
+%%
+%% If you include an `AnnotationTableConfiguration' with an IAM role, the
+%% role must
+%% have a trust policy that allows the Amazon S3 metadata service to assume
+%% it, and a permissions policy
+%% that grants the actions needed to read annotations from your bucket. The
+%% following examples show
+%% a trust policy and a permissions policy that you can adapt for your bucket
+%% and account.
 %%
 %% You must URL encode any signed header values that contain spaces. For
 %% example, if your header value is `my file.txt', containing two spaces
@@ -7127,6 +7389,96 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-version-id">>, <<"VersionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Deletes a specific annotation from an Amazon S3 object.
+%%
+%% Use the `x-amz-object-if-match'
+%% header to perform a conditional delete that only succeeds if the
+%% object's ETag matches the
+%% provided value, preventing race conditions during concurrent updates.
+%%
+%% Deleting an annotation is permanent. Annotations are not independently
+%% versioned, so there is no
+%% delete marker or way to recover a deleted annotation.
+%%
+%% To use this operation, you must have the `s3:DeleteObjectAnnotation'
+%% permission. If
+%% the object is protected by Object Lock in governance mode, you must also
+%% include the
+%% `x-amz-bypass-governance-retention' header.
+%%
+%% Annotations are not supported by the following features: S3 Inventory
+%% Reports,
+%% API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on
+%% Outposts, and
+%% S3 Express One Zone (directory buckets).
+%%
+%% The following operations are related to `DeleteObjectAnnotation':
+%%
+%% PutObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAnnotation.html
+%%
+%% GetObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAnnotation.html
+%%
+%% ListObjectAnnotations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectAnnotations.html
+-spec delete_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_annotation_request()) ->
+    {ok, delete_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, delete_object_annotation_errors(), tuple()}.
+delete_object_annotation(Client, Bucket, Key, Input) ->
+    delete_object_annotation(Client, Bucket, Key, Input, []).
+
+-spec delete_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_annotation_request(), proplists:proplist()) ->
+    {ok, delete_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, delete_object_annotation_errors(), tuple()}.
+delete_object_annotation(Client, Bucket, Key, Input0, Options0) ->
+    Method = delete,
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?annotation"],
+
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-object-if-match">>, <<"ObjectIfMatch">>},
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"annotationName">>, <<"AnnotationName">>},
+                     {<<"versionId">>, <<"VersionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-object-version-id">>, <<"ObjectVersionId">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -9916,6 +10268,113 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
         Result
     end.
 
+%% @doc Retrieves an annotation from an Amazon S3 object.
+%%
+%% To use this operation, you must have the
+%% `s3:GetObjectAnnotation' permission.
+%%
+%% If checksum mode is enabled via the `x-amz-checksum-mode' header,
+%% Amazon S3
+%% returns the stored checksum in the response headers for client-side
+%% validation.
+%%
+%% Annotations are not supported by the following features: S3 Inventory
+%% Reports,
+%% API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on
+%% Outposts, and
+%% S3 Express One Zone (directory buckets).
+%%
+%% The following operations are related to `GetObjectAnnotation':
+%%
+%% PutObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAnnotation.html
+%%
+%% ListObjectAnnotations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectAnnotations.html
+%%
+%% DeleteObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectAnnotation.html
+-spec get_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_annotation_errors(), tuple()}.
+get_object_annotation(Client, Bucket, Key, AnnotationName)
+  when is_map(Client) ->
+    get_object_annotation(Client, Bucket, Key, AnnotationName, #{}, #{}).
+
+-spec get_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_annotation_errors(), tuple()}.
+get_object_annotation(Client, Bucket, Key, AnnotationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_annotation(Client, Bucket, Key, AnnotationName, QueryMap, HeadersMap, []).
+
+-spec get_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_annotation_errors(), tuple()}.
+get_object_annotation(Client, Bucket, Key, AnnotationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?annotation&x-id=GetObjectAnnotation"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-checksum-mode">>, maps:get(<<"x-amz-checksum-mode">>, HeadersMap, undefined)},
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"annotationName">>, AnnotationName},
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+            {<<"Content-Length">>, <<"ContentLength">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"x-amz-object-version-id">>, <<"ObjectVersionId">>},
+            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Retrieves all of the metadata from an object without returning the
 %% object itself.
 %%
@@ -11882,6 +12341,98 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Lists the annotations attached to an Amazon S3 object.
+%%
+%% Results are paginated, with a maximum of
+%% 1,000 annotations per object. Use the `AnnotationPrefix' parameter to
+%% filter the
+%% results by name prefix.
+%%
+%% To use this operation, you must have the `s3:ListObjectAnnotations'
+%% permission.
+%%
+%% Annotations are not supported by the following features: S3 Inventory
+%% Reports,
+%% API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on
+%% Outposts, and
+%% S3 Express One Zone (directory buckets).
+%%
+%% The following operations are related to `ListObjectAnnotations':
+%%
+%% PutObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAnnotation.html
+%%
+%% GetObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAnnotation.html
+%%
+%% DeleteObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectAnnotation.html
+-spec list_object_annotations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_object_annotations_output(), tuple()} |
+    {error, any()} |
+    {error, list_object_annotations_errors(), tuple()}.
+list_object_annotations(Client, Bucket, Key)
+  when is_map(Client) ->
+    list_object_annotations(Client, Bucket, Key, #{}, #{}).
+
+-spec list_object_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_object_annotations_output(), tuple()} |
+    {error, any()} |
+    {error, list_object_annotations_errors(), tuple()}.
+list_object_annotations(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_object_annotations(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+-spec list_object_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_object_annotations_output(), tuple()} |
+    {error, any()} |
+    {error, list_object_annotations_errors(), tuple()}.
+list_object_annotations(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?annotation&x-id=ListObjectAnnotations"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"annotation-prefix">>, maps:get(<<"annotation-prefix">>, QueryMap, undefined)},
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)},
+        {<<"max-annotation-results">>, maps:get(<<"max-annotation-results">>, QueryMap, undefined)},
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-object-version-id">>, <<"ObjectVersionId">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -15417,6 +15968,127 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
         Result
     end.
 
+%% @doc Attaches an annotation to an Amazon S3 object.
+%%
+%% An annotation is a named payload of 1 byte to 1 MiB
+%% that you can associate with a specific object or object version. Each
+%% object can have up to 1,000
+%% annotations.
+%%
+%% For annotation naming rules and restrictions, see Annotation naming
+%% guidelines:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/annotations-overview.html
+%% in the Amazon S3 User Guide.
+%%
+%% Annotations inherit the encryption of their parent object. For objects
+%% without server-side
+%% encryption, annotations are encrypted with SSE-S3 (the default for new
+%% objects). Objects
+%% encrypted with SSE-C cannot have annotations.
+%%
+%% To use this operation, you must have the `s3:PutObjectAnnotation'
+%% permission. If the
+%% bucket has Requester Pays enabled, you must include the
+%% `x-amz-request-payer' header.
+%%
+%% Annotations are not supported by the following features: S3 Inventory
+%% Reports,
+%% API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on
+%% Outposts, and
+%% S3 Express One Zone (directory buckets).
+%%
+%% The following operations are related to `PutObjectAnnotation':
+%%
+%% GetObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAnnotation.html
+%%
+%% ListObjectAnnotations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectAnnotations.html
+%%
+%% DeleteObjectAnnotation:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectAnnotation.html
+-spec put_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_annotation_request()) ->
+    {ok, put_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_annotation_errors(), tuple()}.
+put_object_annotation(Client, Bucket, Key, Input) ->
+    put_object_annotation(Client, Bucket, Key, Input, []).
+
+-spec put_object_annotation(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_annotation_request(), proplists:proplist()) ->
+    {ok, put_object_annotation_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_annotation_errors(), tuple()}.
+put_object_annotation(Client, Bucket, Key, Input0, Options0) ->
+    Method = put,
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?annotation"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+                       {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-object-if-match">>, <<"ObjectIfMatch">>},
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"annotationName">>, <<"AnnotationName">>},
+                     {<<"versionId">>, <<"VersionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"x-amz-object-version-id">>, <<"ObjectVersionId">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc
 %% This operation is not supported for directory buckets.
 %%
@@ -16371,6 +17043,77 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
                        {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+
+%% @doc Updates the annotation table configuration for an Amazon S3
+%% bucket's metadata configuration.
+%%
+%% Use this
+%% operation to enable or disable the annotation table, or to update its
+%% associated IAM role.
+%%
+%% An annotation table is a queryable Iceberg table that contains records of
+%% all annotations
+%% attached to objects in the bucket. To use this operation, the bucket must
+%% have an existing Amazon S3
+%% Metadata configuration.
+%%
+%% To use this operation, you must have the
+%% `s3:UpdateBucketMetadataAnnotationTableConfiguration' permission. If
+%% you are specifying
+%% or changing the IAM role, you must also have `iam:PassRole' permission
+%% for the role.
+%%
+%% The IAM role must have a trust policy that allows the Amazon S3 metadata
+%% service to assume it, and a
+%% permissions policy that grants the actions needed to read annotations from
+%% your bucket. The
+%% following examples show a trust policy and a permissions policy that you
+%% can adapt for your bucket
+%% and account.
+%%
+%% The following operations are related to
+%% `UpdateBucketMetadataAnnotationTableConfiguration':
+%%
+%% CreateBucketMetadataConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucketMetadataConfiguration.html
+%%
+%% GetBucketMetadataConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataConfiguration.html
+-spec update_bucket_metadata_annotation_table_configuration(aws_client:aws_client(), binary() | list(), update_bucket_metadata_annotation_table_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+update_bucket_metadata_annotation_table_configuration(Client, Bucket, Input) ->
+    update_bucket_metadata_annotation_table_configuration(Client, Bucket, Input, []).
+
+-spec update_bucket_metadata_annotation_table_configuration(aws_client:aws_client(), binary() | list(), update_bucket_metadata_annotation_table_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+update_bucket_metadata_annotation_table_configuration(Client, Bucket, Input0, Options0) ->
+    Method = put,
+    Path = ["/", aws_util:encode_uri(Bucket), "?metadataAnnotationTable"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
