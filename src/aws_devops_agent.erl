@@ -297,13 +297,15 @@
 %% git_lab_configuration() :: #{
 %%   <<"instanceIdentifier">> => [string()],
 %%   <<"projectId">> => [string()],
-%%   <<"projectPath">> => [string()]
+%%   <<"projectPath">> => [string()],
+%%   <<"runtimeRoleArn">> => string()
 %% }
 -type git_lab_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_association_input() :: #{
+%%   <<"capabilities">> => map(),
 %%   <<"configuration">> := list()
 %% }
 -type update_association_input() :: #{binary() => any()}.
@@ -447,7 +449,8 @@
 %%   <<"owner">> => [string()],
 %%   <<"ownerType">> => list(any()),
 %%   <<"repoId">> => [string()],
-%%   <<"repoName">> => [string()]
+%%   <<"repoName">> => [string()],
+%%   <<"runtimeRoleArn">> => string()
 %% }
 -type git_hub_configuration() :: #{binary() => any()}.
 
@@ -526,6 +529,10 @@
 %% }
 -type grafana_service_details() :: #{binary() => any()}.
 
+%% Example:
+%% remote_agent_sig_v4_configuration() :: #{}
+-type remote_agent_sig_v4_configuration() :: #{}.
+
 
 %% Example:
 %% asset_file() :: #{
@@ -537,6 +544,15 @@
 %%   <<"version">> => [integer()]
 %% }
 -type asset_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_sig_v4_authorization_config() :: #{
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type remote_agent_sig_v4_authorization_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -640,6 +656,16 @@
 
 
 %% Example:
+%% remote_agent_sig_v4_service_details() :: #{
+%%   <<"authorizationConfig">> => remote_agent_sig_v4_authorization_config(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type remote_agent_sig_v4_service_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_webhooks_output() :: #{
 %%   <<"webhooks">> => list(webhook())
 %% }
@@ -688,6 +714,17 @@
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_remote_agent_details() :: #{
+%%   <<"apiKeyHeader">> => [string()],
+%%   <<"authorizationMethod">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type registered_remote_agent_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -834,6 +871,13 @@
 %%   <<"type">> => [string()]
 %% }
 -type send_message_content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type capability_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1179,6 +1223,18 @@
 
 
 %% Example:
+%% remote_agent_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map(),
+%%   <<"exchangeUrl">> => [string()],
+%%   <<"scopes">> => list(string())
+%% }
+-type remote_agent_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -1287,6 +1343,7 @@
 %% association() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"associationId">> => string(),
+%%   <<"capabilities">> => map(),
 %%   <<"configuration">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"serviceId">> => string(),
@@ -1298,6 +1355,15 @@
 %% Example:
 %% delete_asset_response() :: #{}
 -type delete_asset_response() :: #{}.
+
+
+%% Example:
+%% remote_agent_api_key_config() :: #{
+%%   <<"apiKeyHeader">> => [string()],
+%%   <<"apiKeyName">> => [string()],
+%%   <<"apiKeyValue">> => string()
+%% }
+-type remote_agent_api_key_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1581,6 +1647,15 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_bearer_token_config() :: #{
+%%   <<"authorizationHeader">> => [string()],
+%%   <<"tokenName">> => [string()],
+%%   <<"tokenValue">> => string()
+%% }
+-type remote_agent_bearer_token_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1903,6 +1978,10 @@
 %% }
 -type list_assets_request() :: #{binary() => any()}.
 
+%% Example:
+%% remote_agent_configuration() :: #{}
+-type remote_agent_configuration() :: #{}.
+
 
 %% Example:
 %% update_goal_request() :: #{
@@ -1984,6 +2063,7 @@
 
 %% Example:
 %% associate_service_input() :: #{
+%%   <<"capabilities">> => map(),
 %%   <<"configuration">> := list(),
 %%   <<"serviceId">> := string()
 %% }
@@ -2033,6 +2113,16 @@
 
 
 %% Example:
+%% remote_agent_service_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type remote_agent_service_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_recommendation_response() :: #{
 %%   <<"recommendation">> => recommendation()
 %% }
@@ -2073,6 +2163,13 @@
 
 
 %% Example:
+%% asset_source_url_content() :: #{
+%%   <<"url">> => string()
+%% }
+-type asset_source_url_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_types_response() :: #{
 %%   <<"items">> => list(asset_type_summary()),
 %%   <<"nextToken">> => string()
@@ -2082,6 +2179,18 @@
 %% Example:
 %% send_message_heartbeat_event() :: #{}
 -type send_message_heartbeat_event() :: #{}.
+
+
+%% Example:
+%% registered_remote_agent_sig_v4_details() :: #{
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type registered_remote_agent_sig_v4_details() :: #{binary() => any()}.
 
 
 %% Example:

@@ -51,6 +51,8 @@
          delete_knowledge_base_documents/5,
          delete_prompt/3,
          delete_prompt/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          disassociate_agent_collaborator/5,
          disassociate_agent_collaborator/6,
          disassociate_agent_knowledge_base/5,
@@ -96,6 +98,9 @@
          get_prompt/2,
          get_prompt/4,
          get_prompt/5,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          ingest_knowledge_base_documents/4,
          ingest_knowledge_base_documents/5,
          list_agent_action_groups/4,
@@ -137,6 +142,8 @@
          prepare_agent/4,
          prepare_flow/3,
          prepare_flow/4,
+         put_resource_policy/3,
+         put_resource_policy/4,
          start_ingestion_job/4,
          start_ingestion_job/5,
          stop_ingestion_job/5,
@@ -204,6 +211,7 @@
 %% Example:
 %% knowledge_base_configuration() :: #{
 %%   <<"kendraKnowledgeBaseConfiguration">> => kendra_knowledge_base_configuration(),
+%%   <<"managedKnowledgeBaseConfiguration">> => managed_knowledge_base_configuration(),
 %%   <<"sqlKnowledgeBaseConfiguration">> => sql_knowledge_base_configuration(),
 %%   <<"type">> => list(any()),
 %%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
@@ -250,6 +258,7 @@
 %%   <<"numberOfDocumentsDeleted">> => [float()],
 %%   <<"numberOfDocumentsFailed">> => [float()],
 %%   <<"numberOfDocumentsScanned">> => [float()],
+%%   <<"numberOfDocumentsSkipped">> => [float()],
 %%   <<"numberOfMetadataDocumentsModified">> => [float()],
 %%   <<"numberOfMetadataDocumentsScanned">> => [float()],
 %%   <<"numberOfModifiedDocumentsIndexed">> => [float()],
@@ -266,6 +275,15 @@
 %%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item())
 %% }
 -type update_flow_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_extraction_configuration() :: #{
+%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
+%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
+%% }
+-type media_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -303,6 +321,24 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_knowledge_base_configuration() :: #{
+%%   <<"embeddingModelArn">> => string(),
+%%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
+%%   <<"embeddingModelType">> => list(any()),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration()
+%% }
+-type managed_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -546,6 +582,7 @@
 %% Example:
 %% data_source_configuration() :: #{
 %%   <<"confluenceConfiguration">> => confluence_data_source_configuration(),
+%%   <<"managedKnowledgeBaseConnectorConfiguration">> => managed_knowledge_base_connector_configuration(),
 %%   <<"s3Configuration">> => s3_data_source_configuration(),
 %%   <<"salesforceConfiguration">> => salesforce_data_source_configuration(),
 %%   <<"sharePointConfiguration">> => share_point_data_source_configuration(),
@@ -882,12 +919,28 @@
 
 
 %% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter_detail() :: #{
 %%   <<"description">> => string(),
 %%   <<"required">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_extraction_configuration() :: #{
+%%   <<"videoExtractionStatus">> => list(any())
+%% }
+-type video_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1281,6 +1334,13 @@
 
 
 %% Example:
+%% image_extraction_configuration() :: #{
+%%   <<"imageExtractionStatus">> => list(any())
+%% }
+-type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% kendra_knowledge_base_configuration() :: #{
 %%   <<"kendraIndexArn">> => string()
 %% }
@@ -1460,6 +1520,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type knowledge_base() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_extraction_configuration() :: #{
+%%   <<"audioExtractionStatus">> => list(any())
+%% }
+-type audio_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2087,6 +2154,10 @@
 %% }
 -type unknown_connection_target_flow_validation_details() :: #{binary() => any()}.
 
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% multiple_node_input_connections_flow_validation_details() :: #{
@@ -2477,6 +2548,14 @@
 
 
 %% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiple_loop_input_nodes_flow_validation_details() :: #{
 %%   <<"loopNode">> => string()
 %% }
@@ -2501,6 +2580,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_action_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_knowledge_base_connector_configuration() :: #{
+%%   <<"connectorParameters">> => [any()],
+%%   <<"deletionProtectionConfiguration">> => deletion_protection_configuration(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration()
+%% }
+-type managed_knowledge_base_connector_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2606,6 +2694,15 @@
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
 %% }
 -type update_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_access_control_entry() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type document_access_control_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2760,6 +2857,7 @@
 
 %% Example:
 %% document_metadata() :: #{
+%%   <<"accessControlList">> => list(document_access_control_entry()),
 %%   <<"inlineAttributes">> => list(metadata_attribute()),
 %%   <<"s3Location">> => custom_s3_location(),
 %%   <<"type">> => list(any())
@@ -2884,6 +2982,14 @@
 
 
 %% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% bedrock_data_automation_configuration() :: #{
 %%   <<"parsingModality">> => list(any())
 %% }
@@ -2978,6 +3084,13 @@
 %%   <<"guardrailVersion">> => string()
 %% }
 -type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3169,6 +3282,14 @@
 %%   <<"parsingConfiguration">> => parsing_configuration()
 %% }
 -type vector_ingestion_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% deletion_protection_configuration() :: #{
+%%   <<"deletionProtectionStatus">> => list(any()),
+%%   <<"deletionProtectionThreshold">> => [integer()]
+%% }
+-type deletion_protection_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3573,6 +3694,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type disassociate_agent_collaborator_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3682,6 +3811,13 @@
     resource_not_found_exception().
 
 -type get_prompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3814,6 +3950,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -4341,21 +4485,28 @@ create_flow_version(Client, FlowIdentifier, Input0, Options0) ->
 %% information, see Set up a knowledge base:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/knowlege-base-prereq.html.
 %%
-%% If you prefer to let Amazon Bedrock create and manage a vector store for
-%% you in Amazon OpenSearch Service, use the console. For more information,
-%% see Create a knowledge base:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.
+%% To create a managed knowledge base, provide a
+%% `managedKnowledgeBaseConfiguration' during creation. For more
+%% information, see Build a managed knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-build-managed.html.
 %%
 %% Provide the `name' and an optional `description'.
 %%
 %% Provide the Amazon Resource Name (ARN) with permissions to create a
 %% knowledge base in the `roleArn' field.
 %%
-%% Provide the embedding model to use in the `embeddingModelArn' field in
-%% the `knowledgeBaseConfiguration' object.
+%% For managed knowledge bases, set `embeddingModelType' to `MANAGED'
+%% to use the service-managed embedding model, or `CUSTOM' with an
+%% `embeddingModelArn' to use your own. To use your own KMS key for
+%% encryption, provide the ARN in `serverSideEncryptionConfiguration'. No
+%% vector store configuration is required for managed knowledge bases.
 %%
-%% Provide the configuration for your vector store in the
-%% `storageConfiguration' object.
+%% For self-managed knowledge bases, provide the embedding model to use in
+%% the `embeddingModelArn' field in the `knowledgeBaseConfiguration'
+%% object.
+%%
+%% For self-managed knowledge bases, provide the configuration for your
+%% vector store in the `storageConfiguration' object.
 %%
 %% For an Amazon OpenSearch Service database, use the
 %% `opensearchServerlessConfiguration' object. For more information, see
@@ -4883,6 +5034,44 @@ delete_prompt(Client, PromptIdentifier, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"promptVersion">>, <<"promptVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the resource policy associated with a knowledge base.
+%%
+%% After deletion, other AWS accounts can no longer access the knowledge base
+%% using cross-account permissions.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -5500,6 +5689,43 @@ get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, Options0)
         {<<"promptVersion">>, maps:get(<<"promptVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource policy associated with a knowledge base.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6173,6 +6399,44 @@ prepare_flow(Client, FlowIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a resource policy with a knowledge base.
+%%
+%% A resource policy allows other AWS accounts to access the knowledge base.
+%% For more information, see Cross-account access for knowledge bases:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-managed-cross-account.html.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input) ->
+    put_resource_policy(Client, ResourceArn, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -1891,7 +1891,8 @@
 %% Example:
 %% update_application_request() :: #{
 %%   <<"appConfigs">> => list(app_config()),
-%%   <<"dataSources">> => list(data_source())
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input()
 %% }
 -type update_application_request() :: #{binary() => any()}.
 

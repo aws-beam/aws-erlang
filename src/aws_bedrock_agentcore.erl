@@ -579,6 +579,13 @@
 
 
 %% Example:
+%% harness_skill_aws_skills_source() :: #{
+%%   <<"paths">> => list(string())
+%% }
+-type harness_skill_aws_skills_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_proxy() :: #{
 %%   <<"credentials">> => list(),
 %%   <<"domainPatterns">> => list(string()),
@@ -1682,6 +1689,7 @@
 %%   <<"maxTokens">> => [integer()],
 %%   <<"messages">> := list(harness_message()),
 %%   <<"model">> => list(),
+%%   <<"qualifier">> => string(),
 %%   <<"runtimeSessionId">> := string(),
 %%   <<"runtimeUserId">> => [string()],
 %%   <<"skills">> => list(list()),
@@ -2953,7 +2961,7 @@
 %% Example:
 %% online_evaluation_config_source() :: #{
 %%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"sessionFilterConfig">> => session_filter_config()
+%%   <<"timeRange">> => session_filter_config()
 %% }
 -type online_evaluation_config_source() :: #{binary() => any()}.
 
@@ -3501,6 +3509,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type list_a_b_tests_errors() ::
@@ -5373,7 +5382,8 @@ invoke_harness(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"harnessArn">>, <<"harnessArn">>}
+                     {<<"harnessArn">>, <<"harnessArn">>},
+                     {<<"qualifier">>, <<"qualifier">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

@@ -1985,6 +1985,7 @@
 %%   <<"primaryContainer">> => express_gateway_container(),
 %%   <<"scalingTarget">> => express_gateway_scaling_target(),
 %%   <<"serviceArn">> := string(),
+%%   <<"taskDefinitionArn">> => string(),
 %%   <<"taskRoleArn">> => string()
 %% }
 -type update_express_gateway_service_request() :: #{binary() => any()}.
@@ -2007,15 +2008,16 @@
 %% create_express_gateway_service_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"cpu">> => string(),
-%%   <<"executionRoleArn">> := string(),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"healthCheckPath">> => string(),
 %%   <<"infrastructureRoleArn">> := string(),
 %%   <<"memory">> => string(),
 %%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
-%%   <<"primaryContainer">> := express_gateway_container(),
+%%   <<"primaryContainer">> => express_gateway_container(),
 %%   <<"scalingTarget">> => express_gateway_scaling_target(),
 %%   <<"serviceName">> => string(),
 %%   <<"tags">> => list(tag()),
+%%   <<"taskDefinitionArn">> => string(),
 %%   <<"taskRoleArn">> => string()
 %% }
 -type create_express_gateway_service_request() :: #{binary() => any()}.
@@ -2984,6 +2986,7 @@
 %%   <<"primaryContainer">> => express_gateway_container(),
 %%   <<"scalingTarget">> => express_gateway_scaling_target(),
 %%   <<"serviceRevisionArn">> => string(),
+%%   <<"taskDefinitionArn">> => string(),
 %%   <<"taskRoleArn">> => string()
 %% }
 -type express_gateway_service_configuration() :: #{binary() => any()}.
@@ -4217,6 +4220,10 @@
 %% DescribeServiceDeployments:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServiceDeployments.html
 %% and inspect the `lifecycleHookDetails' field.
+%%
+%% For more information, see Continuing Amazon ECS service deployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/continue-service-deployment.html
+%% in the Amazon Elastic Container Service Developer Guide.
 -spec continue_service_deployment(aws_client:aws_client(), continue_service_deployment_request()) ->
     {ok, continue_service_deployment_response(), tuple()} |
     {error, any()} |

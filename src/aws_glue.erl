@@ -6,7 +6,9 @@
 %% Defines the public endpoint for the Glue service.
 -module(aws_glue).
 
--export([batch_create_partition/2,
+-export([associate_glossary_terms/2,
+         associate_glossary_terms/3,
+         batch_create_partition/2,
          batch_create_partition/3,
          batch_delete_connection/2,
          batch_delete_connection/3,
@@ -26,6 +28,8 @@
          batch_get_data_quality_result/3,
          batch_get_dev_endpoints/2,
          batch_get_dev_endpoints/3,
+         batch_get_iterable_forms/2,
+         batch_get_iterable_forms/3,
          batch_get_jobs/2,
          batch_get_jobs/3,
          batch_get_partition/2,
@@ -72,6 +76,10 @@
          create_database/3,
          create_dev_endpoint/2,
          create_dev_endpoint/3,
+         create_glossary/2,
+         create_glossary/3,
+         create_glossary_term/2,
+         create_glossary_term/3,
          create_glue_identity_center_configuration/2,
          create_glue_identity_center_configuration/3,
          create_integration/2,
@@ -110,6 +118,12 @@
          create_user_defined_function/3,
          create_workflow/2,
          create_workflow/3,
+         delete_asset/2,
+         delete_asset/3,
+         delete_asset_type/2,
+         delete_asset_type/3,
+         delete_attachment/2,
+         delete_attachment/3,
          delete_blueprint/2,
          delete_blueprint/3,
          delete_catalog/2,
@@ -136,6 +150,12 @@
          delete_database/3,
          delete_dev_endpoint/2,
          delete_dev_endpoint/3,
+         delete_form_type/2,
+         delete_form_type/3,
+         delete_glossary/2,
+         delete_glossary/3,
+         delete_glossary_term/2,
+         delete_glossary_term/3,
          delete_glue_identity_center_configuration/2,
          delete_glue_identity_center_configuration/3,
          delete_integration/2,
@@ -186,6 +206,12 @@
          describe_inbound_integrations/3,
          describe_integrations/2,
          describe_integrations/3,
+         disassociate_glossary_terms/2,
+         disassociate_glossary_terms/3,
+         get_asset/2,
+         get_asset/3,
+         get_asset_type/2,
+         get_asset_type/3,
          get_blueprint/2,
          get_blueprint/3,
          get_blueprint_run/2,
@@ -252,6 +278,12 @@
          get_dev_endpoints/3,
          get_entity_records/2,
          get_entity_records/3,
+         get_form_type/2,
+         get_form_type/3,
+         get_glossary/2,
+         get_glossary/3,
+         get_glossary_term/2,
+         get_glossary_term/3,
          get_glue_identity_center_configuration/2,
          get_glue_identity_center_configuration/3,
          get_integration_resource_property/2,
@@ -350,6 +382,8 @@
          get_workflow_runs/3,
          import_catalog_to_glue/2,
          import_catalog_to_glue/3,
+         list_asset_types/2,
+         list_asset_types/3,
          list_blueprints/2,
          list_blueprints/3,
          list_column_statistics_task_runs/2,
@@ -378,8 +412,16 @@
          list_dev_endpoints/3,
          list_entities/2,
          list_entities/3,
+         list_form_types/2,
+         list_form_types/3,
+         list_glossaries/2,
+         list_glossaries/3,
+         list_glossary_terms/2,
+         list_glossary_terms/3,
          list_integration_resource_properties/2,
          list_integration_resource_properties/3,
+         list_iterable_forms/2,
+         list_iterable_forms/3,
          list_jobs/2,
          list_jobs/3,
          list_materialized_view_refresh_task_runs/2,
@@ -406,10 +448,18 @@
          list_workflows/3,
          modify_integration/2,
          modify_integration/3,
+         put_asset/2,
+         put_asset/3,
+         put_asset_type/2,
+         put_asset_type/3,
+         put_attachment/2,
+         put_attachment/3,
          put_data_catalog_encryption_settings/2,
          put_data_catalog_encryption_settings/3,
          put_data_quality_profile_annotation/2,
          put_data_quality_profile_annotation/3,
+         put_form_type/2,
+         put_form_type/3,
          put_resource_policy/2,
          put_resource_policy/3,
          put_schema_version_metadata/2,
@@ -430,6 +480,8 @@
          resume_workflow_run/3,
          run_statement/2,
          run_statement/3,
+         search/2,
+         search/3,
          search_tables/2,
          search_tables/3,
          start_blueprint_run/2,
@@ -508,6 +560,10 @@
          update_database/3,
          update_dev_endpoint/2,
          update_dev_endpoint/3,
+         update_glossary/2,
+         update_glossary/3,
+         update_glossary_term/2,
+         update_glossary_term/3,
          update_glue_identity_center_configuration/2,
          update_glue_identity_center_configuration/3,
          update_integration_resource_property/2,
@@ -558,6 +614,14 @@
 -type get_catalog_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_glossary_terms_request() :: #{
+%%   <<"GlossaryIdentifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossary_terms_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_ml_transform_response() :: #{
 %%   <<"TransformId">> => string()
 %% }
@@ -604,6 +668,12 @@
 %%   <<"Crawler">> => crawler()
 %% }
 -type get_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_type_request() :: #{
+
+%% }
+-type get_asset_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% task_run_sort_criteria() :: #{
@@ -850,6 +920,16 @@
 -type batch_get_triggers_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type update_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_entities_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ConnectionName">> => string(),
@@ -884,6 +964,21 @@
 %%   <<"Table">> => string()
 %% }
 -type basic_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% search_attribute_filter() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type search_attribute_filter() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_glossary_terms_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryTermIdentifiers">> := list(string())
+%% }
+-type disassociate_glossary_terms_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_column_statistics_task_settings_response() :: #{
@@ -1208,6 +1303,13 @@
 -type entity_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% search_sort() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Order">> => list(any())
+%% }
+-type search_sort() :: #{binary() => any()}.
+
+%% Example:
 %% crawler_metrics() :: #{
 %%   <<"CrawlerName">> => string(),
 %%   <<"LastRuntimeSeconds">> => float(),
@@ -1229,6 +1331,13 @@
 -type boolean_column_statistics_data() :: #{binary() => any()}.
 
 %% Example:
+%% list_form_types_response() :: #{
+%%   <<"Items">> => list(form_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_form_types_response() :: #{binary() => any()}.
+
+%% Example:
 %% operation_timeout_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1239,6 +1348,16 @@
 %%   <<"Statement">> => statement()
 %% }
 -type get_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type create_glossary_term_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_data_quality_rulesets_request() :: #{
@@ -1408,6 +1527,12 @@
 
 %% }
 -type delete_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_request() :: #{
+
+%% }
+-type get_glossary_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ml_transforms_response() :: #{
@@ -2230,6 +2355,17 @@
 -type version_mismatch_exception() :: #{binary() => any()}.
 
 %% Example:
+%% put_attachment_request() :: #{
+%%   <<"AttachmentName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := string(),
+%%   <<"FormTypeId">> := string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
+%% }
+-type put_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_crawler_response() :: #{
 
 %% }
@@ -2304,6 +2440,12 @@
 -type get_workflow_runs_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_asset_type_request() :: #{
+
+%% }
+-type delete_asset_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_table_request() :: #{
 %%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"AuditContext">> => audit_context(),
@@ -2330,10 +2472,28 @@
 -type delete_blueprint_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_glossary_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type create_glossary_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_custom_entity_type_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_custom_entity_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_input() :: #{
+%%   <<"FilterClause">> => list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchText">> => string(),
+%%   <<"Sort">> => search_sort()
+%% }
+-type search_input() :: #{binary() => any()}.
 
 %% Example:
 %% iceberg_sort_order() :: #{
@@ -2492,6 +2652,13 @@
 
 %% }
 -type update_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_asset_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_types_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_ml_transform_response() :: #{
@@ -2931,12 +3098,26 @@
 -type auth_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% asset_type_form_reference() :: #{
+%%   <<"FormTypeIdentifier">> => string()
+%% }
+-type asset_type_form_reference() :: #{binary() => any()}.
+
+%% Example:
 %% update_data_quality_ruleset_response() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Ruleset">> => string()
 %% }
 -type update_data_quality_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_asset_type_response() :: #{
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_asset_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_job_request() :: #{
@@ -3020,6 +3201,16 @@
 -type get_plan_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_asset_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_asset_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_grok_classifier_request() :: #{
 %%   <<"Classification">> => string(),
 %%   <<"CustomPatterns">> => string(),
@@ -3042,6 +3233,14 @@
 %%   <<"Message">> => string()
 %% }
 -type ml_transform_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_form_type_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type put_form_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_connections_response() :: #{
@@ -3067,6 +3266,12 @@
 %%   <<"WindowSize">> => integer()
 %% }
 -type direct_kinesis_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_term_response() :: #{
+
+%% }
+-type delete_glossary_term_response() :: #{binary() => any()}.
 
 %% Example:
 %% internal_service_exception() :: #{
@@ -3162,6 +3367,14 @@
 %%   <<"TagsToRemove">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_glossary_response() :: #{binary() => any()}.
 
 %% Example:
 %% target_resource_not_found() :: #{
@@ -3501,6 +3714,14 @@
 -type amazon_redshift_source() :: #{binary() => any()}.
 
 %% Example:
+%% glossary_term_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type glossary_term_item() :: #{binary() => any()}.
+
+%% Example:
 %% batch_delete_connection_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ConnectionNameList">> := list(string())
@@ -3591,6 +3812,20 @@
 %%   <<"Name">> := string()
 %% }
 -type stop_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_output() :: #{
+%%   <<"Items">> => list(search_result_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_glossary_terms_response() :: #{
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"Identifier">> => string()
+%% }
+-type disassociate_glossary_terms_response() :: #{binary() => any()}.
 
 %% Example:
 %% schema_version_number() :: #{
@@ -3873,6 +4108,12 @@
 -type list_statements_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_glossary_request() :: #{
+
+%% }
+-type delete_glossary_request() :: #{binary() => any()}.
+
+%% Example:
 %% table_error() :: #{
 %%   <<"ErrorDetail">> => error_detail(),
 %%   <<"TableName">> => string()
@@ -3965,6 +4206,13 @@
 -type delete_workflow_response() :: #{binary() => any()}.
 
 %% Example:
+%% associate_glossary_terms_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryTermIdentifiers">> := list(string())
+%% }
+-type associate_glossary_terms_request() :: #{binary() => any()}.
+
+%% Example:
 %% custom_authentication_properties() :: #{
 %%   <<"AuthenticationParameters">> => list(connector_property())
 %% }
@@ -4040,6 +4288,12 @@
 %%   <<"Name">> => string()
 %% }
 -type fill_missing_values() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_input() :: #{
+
+%% }
+-type get_asset_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_column_statistics_for_table_request() :: #{
@@ -4364,6 +4618,13 @@
 -type get_dev_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
+%% associate_glossary_terms_response() :: #{
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"Identifier">> => string()
+%% }
+-type associate_glossary_terms_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_data_quality_profile_annotation_response() :: #{
 
 %% }
@@ -4456,6 +4717,14 @@
 %%   <<"SparkConnectionProperties">> => map()
 %% }
 -type describe_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_glossary_request() :: #{binary() => any()}.
 
 %% Example:
 %% dynamo_db_target() :: #{
@@ -4609,6 +4878,14 @@
 -type create_table_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_form_type_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type get_form_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% metric_based_observation() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"MetricValues">> => data_quality_metric_values(),
@@ -4706,6 +4983,12 @@
 -type catalog_import_status() :: #{binary() => any()}.
 
 %% Example:
+%% get_form_type_request() :: #{
+
+%% }
+-type get_form_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_schema_input() :: #{
 %%   <<"Compatibility">> => list(any()),
 %%   <<"Description">> => string(),
@@ -4736,6 +5019,12 @@
 %%   <<"TableName">> := string()
 %% }
 -type start_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_request() :: #{
+
+%% }
+-type delete_attachment_request() :: #{binary() => any()}.
 
 %% Example:
 %% session_busy_exception() :: #{
@@ -4773,6 +5062,16 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_triggers_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_attachment_response() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"AttachmentName">> => string(),
+%%   <<"FormTypeId">> => string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
+%% }
+-type put_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_workflow_run_request() :: #{
@@ -5258,6 +5557,12 @@
 -type get_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_asset_response() :: #{
+
+%% }
+-type delete_asset_response() :: #{binary() => any()}.
+
+%% Example:
 %% direct_schema_change_policy() :: #{
 %%   <<"Database">> => string(),
 %%   <<"EnableUpdateCatalog">> => boolean(),
@@ -5309,6 +5614,20 @@
 %%   <<"WindowSize">> => integer()
 %% }
 -type direct_kafka_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_iterable_forms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iterable_forms_request() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type asset_type_item() :: #{binary() => any()}.
 
 %% Example:
 %% select_from_collection() :: #{
@@ -5392,6 +5711,12 @@
 -type get_integration_table_properties_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_glossary_term_request() :: #{
+
+%% }
+-type delete_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
 %% integration_partition() :: #{
 %%   <<"ConversionSpec">> => string(),
 %%   <<"FieldName">> => string(),
@@ -5457,6 +5782,13 @@
 %%   <<"ScalaCode">> => string()
 %% }
 -type create_script_response() :: #{binary() => any()}.
+
+%% Example:
+%% form_type_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type form_type_item() :: #{binary() => any()}.
 
 %% Example:
 %% last_active_definition() :: #{
@@ -5928,10 +6260,24 @@
 -type get_catalog_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_form_type_request() :: #{
+
+%% }
+-type delete_form_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% execution_property() :: #{
 %%   <<"MaxConcurrentRuns">> => integer()
 %% }
 -type execution_property() :: #{binary() => any()}.
+
+%% Example:
+%% glossary_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type glossary_item() :: #{binary() => any()}.
 
 %% Example:
 %% start_blueprint_run_request() :: #{
@@ -6215,6 +6561,14 @@
 -type update_blueprint_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_asset_type_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Forms">> := map(),
+%%   <<"Name">> := string()
+%% }
+-type put_asset_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_trigger_response() :: #{
 %%   <<"Trigger">> => trigger()
 %% }
@@ -6300,11 +6654,26 @@
 -type get_table_optimizer_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_glossaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossaries_request() :: #{binary() => any()}.
+
+%% Example:
 %% session_command() :: #{
 %%   <<"Name">> => string(),
 %%   <<"PythonVersion">> => string()
 %% }
 -type session_command() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_glossary_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_job_bookmark_response() :: #{
@@ -6511,6 +6880,13 @@
 -type connector_data_source() :: #{binary() => any()}.
 
 %% Example:
+%% list_form_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_form_types_request() :: #{binary() => any()}.
+
+%% Example:
 %% trigger_node_details() :: #{
 %%   <<"Trigger">> => trigger()
 %% }
@@ -6710,6 +7086,12 @@
 -type stop_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_asset_request() :: #{
+
+%% }
+-type delete_asset_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_plan_response() :: #{
 %%   <<"PythonScript">> => string(),
 %%   <<"ScalaCode">> => string()
@@ -6726,11 +7108,37 @@
 -type update_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
+%% item_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type item_error() :: #{binary() => any()}.
+
+%% Example:
 %% update_glue_identity_center_configuration_request() :: #{
 %%   <<"Scopes">> => list(string()),
 %%   <<"UserBackgroundSessionsEnabled">> => boolean()
 %% }
 -type update_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_form_type_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schema">> := string()
+%% }
+-type put_form_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_result_item() :: #{
+%%   <<"AssetDescription">> => string(),
+%%   <<"AssetName">> => string(),
+%%   <<"AssetTypeId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type search_result_item() :: #{binary() => any()}.
 
 %% Example:
 %% list_registries_response() :: #{
@@ -7706,6 +8114,16 @@
 -type delete_partition_index_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type get_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
 %% predicate() :: #{
 %%   <<"Conditions">> => list(condition()),
 %%   <<"Logical">> => list(any())
@@ -7727,6 +8145,12 @@
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type cloud_watch_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% iterable_form_entry() :: #{
+%%   <<"FormTypeId">> => string()
+%% }
+-type iterable_form_entry() :: #{binary() => any()}.
 
 %% Example:
 %% crawler_not_running_exception() :: #{
@@ -7786,6 +8210,17 @@
 -type response_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% put_asset_request() :: #{
+%%   <<"AssetTypeId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> := map(),
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type put_asset_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_unfiltered_partitions_metadata_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UnfilteredPartitions">> => list(unfiltered_partition())
@@ -7829,6 +8264,12 @@
 %%   <<"Version">> => float()
 %% }
 -type json_classifier() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_term_request() :: #{
+
+%% }
+-type get_glossary_term_request() :: #{binary() => any()}.
 
 %% Example:
 %% search_tables_request() :: #{
@@ -8081,6 +8522,12 @@
 -type list_data_quality_ruleset_evaluation_runs_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_glossary_response() :: #{
+
+%% }
+-type delete_glossary_response() :: #{binary() => any()}.
+
+%% Example:
 %% relational_catalog_source() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
@@ -8105,6 +8552,12 @@
 -type spark_s_q_l() :: #{binary() => any()}.
 
 %% Example:
+%% delete_form_type_response() :: #{
+
+%% }
+-type delete_form_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% kafka_streaming_source_options() :: #{
 %%   <<"AddRecordTimestamp">> => string(),
 %%   <<"Assign">> => string(),
@@ -8127,6 +8580,13 @@
 %%   <<"TopicName">> => string()
 %% }
 -type kafka_streaming_source_options() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_iterable_forms_response() :: #{
+%%   <<"Errors">> => list(item_error()),
+%%   <<"Items">> => list(iterable_form_item())
+%% }
+-type batch_get_iterable_forms_response() :: #{binary() => any()}.
 
 %% Example:
 %% table_version_error() :: #{
@@ -8223,6 +8683,12 @@
 %%   <<"RecordPollingLimit">> => float()
 %% }
 -type streaming_data_preview_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_type_response() :: #{
+
+%% }
+-type delete_asset_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% integration_resource_property() :: #{
@@ -8417,11 +8883,26 @@
 -type batch_get_table_optimizer_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_iterable_forms_request() :: #{
+%%   <<"ItemIdentifiers">> := list(string())
+%% }
+-type batch_get_iterable_forms_request() :: #{binary() => any()}.
+
+%% Example:
 %% data_source() :: #{
 %%   <<"DataQualityGlueTable">> => data_quality_glue_table(),
 %%   <<"GlueTable">> => glue_table()
 %% }
 -type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_term_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type update_glossary_term_request() :: #{binary() => any()}.
 
 %% Example:
 %% d_db_e_l_t_catalog_additional_options() :: #{
@@ -8635,6 +9116,13 @@
 -type iceberg_optimization_properties_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_glossary_terms_response() :: #{
+%%   <<"Items">> => list(glossary_term_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossary_terms_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_schema_by_definition_response() :: #{
 %%   <<"CreatedTime">> => string(),
 %%   <<"DataFormat">> => list(any()),
@@ -8677,6 +9165,16 @@
 -type delete_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% iterable_form_item() :: #{
+%%   <<"Attachments">> => map(),
+%%   <<"Forms">> => map(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemId">> => string(),
+%%   <<"ItemName">> => string()
+%% }
+-type iterable_form_item() :: #{binary() => any()}.
+
+%% Example:
 %% response_extraction_mapping() :: #{
 %%   <<"ContentPath">> => string(),
 %%   <<"HeaderKey">> => string()
@@ -8691,6 +9189,21 @@
 %%   <<"SamplePath">> => string()
 %% }
 -type s3_direct_source_additional_options() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_output() :: #{
+%%   <<"AssetTypeId">> => string(),
+%%   <<"Attachments">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> => map(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IterableForms">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_asset_output() :: #{binary() => any()}.
 
 %% Example:
 %% table() :: #{
@@ -8894,6 +9407,15 @@
 -type amazon_redshift_target() :: #{binary() => any()}.
 
 %% Example:
+%% iterable_form_list_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemId">> => string(),
+%%   <<"ItemName">> => string()
+%% }
+-type iterable_form_list_item() :: #{binary() => any()}.
+
+%% Example:
 %% delete_security_configuration_response() :: #{
 
 %% }
@@ -8964,6 +9486,12 @@
 %%   <<"NumTruePositives">> => float()
 %% }
 -type confusion_matrix() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_response() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type delete_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% auto_data_quality() :: #{
@@ -9103,6 +9631,14 @@
 -type get_schema_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_asset_type_response() :: #{
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_asset_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% batch_get_table_optimizer_entry() :: #{
 %%   <<"catalogId">> => string(),
 %%   <<"databaseName">> => string(),
@@ -9110,6 +9646,21 @@
 %%   <<"type">> => list(any())
 %% }
 -type batch_get_table_optimizer_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_asset_types_response() :: #{
+%%   <<"Items">> => list(asset_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_glossary_response() :: #{binary() => any()}.
 
 %% Example:
 %% merge() :: #{
@@ -9185,11 +9736,35 @@
 -type get_crawlers_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_iterable_forms_response() :: #{
+%%   <<"Items">> => list(iterable_form_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iterable_forms_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_term_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryIdentifier">> := string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type create_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_column_statistics_task_runs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_column_statistics_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_glossaries_response() :: #{
+%%   <<"Items">> => list(glossary_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossaries_response() :: #{binary() => any()}.
 
 %% Example:
 %% capabilities() :: #{
@@ -9278,6 +9853,14 @@
 %%   <<"LogoUrl">> => string()
 %% }
 -type connection_type_variant() :: #{binary() => any()}.
+
+%% Example:
+%% search_map_filter() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => list()
+%% }
+-type search_map_filter() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_ml_task_run_request() :: #{
@@ -9388,6 +9971,13 @@
 -type create_iceberg_table_input() :: #{binary() => any()}.
 
 %% Example:
+%% asset_form_entry() :: #{
+%%   <<"Content">> => string(),
+%%   <<"FormTypeId">> => string()
+%% }
+-type asset_form_entry() :: #{binary() => any()}.
+
+%% Example:
 %% iceberg_retention_configuration() :: #{
 %%   <<"cleanExpiredFiles">> => boolean(),
 %%   <<"numberOfSnapshotsToRetain">> => integer(),
@@ -9449,6 +10039,14 @@
 %% }
 -type get_partition_indexes_request() :: #{binary() => any()}.
 
+-type associate_glossary_terms_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type batch_create_partition_errors() ::
     glue_encryption_exception() | 
     invalid_input_exception() | 
@@ -9506,6 +10104,13 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type batch_get_iterable_forms_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type batch_get_jobs_errors() ::
     invalid_input_exception() | 
@@ -9672,6 +10277,23 @@
     internal_service_exception() | 
     already_exists_exception() | 
     operation_timeout_exception().
+
+-type create_glossary_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception().
+
+-type create_glossary_term_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
 
 -type create_glue_identity_center_configuration_errors() ::
     concurrent_modification_exception() | 
@@ -9847,6 +10469,28 @@
     already_exists_exception() | 
     operation_timeout_exception().
 
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type delete_asset_type_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type delete_attachment_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type delete_blueprint_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -9930,6 +10574,29 @@
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type delete_form_type_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type delete_glossary_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type delete_glossary_term_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
 
 -type delete_glue_identity_center_configuration_errors() ::
     concurrent_modification_exception() | 
@@ -10112,6 +10779,28 @@
     access_denied_exception() | 
     internal_server_exception() | 
     integration_not_found_fault() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type disassociate_glossary_terms_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_asset_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_asset_type_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
@@ -10310,6 +10999,25 @@
     federation_source_exception() | 
     invalid_input_exception() | 
     operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_form_type_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_glossary_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_glossary_term_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type get_glue_identity_center_configuration_errors() ::
@@ -10652,6 +11360,12 @@
     internal_service_exception() | 
     operation_timeout_exception().
 
+-type list_asset_types_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
 -type list_blueprints_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -10722,12 +11436,37 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type list_form_types_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type list_glossaries_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type list_glossary_terms_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
 -type list_integration_resource_properties_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     invalid_input_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type list_iterable_forms_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
 
@@ -10817,6 +11556,29 @@
     internal_service_exception() | 
     entity_not_found_exception().
 
+-type put_asset_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type put_asset_type_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type put_attachment_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type put_data_catalog_encryption_settings_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -10826,6 +11588,13 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
+
+-type put_form_type_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
 
 -type put_resource_policy_errors() ::
     condition_check_failure_exception() | 
@@ -10901,6 +11670,12 @@
     illegal_session_state_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type search_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
 
 -type search_tables_errors() ::
     invalid_input_exception() | 
@@ -11181,6 +11956,24 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type update_glossary_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
+
+-type update_glossary_term_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
+
 -type update_glue_identity_center_configuration_errors() ::
     concurrent_modification_exception() | 
     access_denied_exception() | 
@@ -11314,6 +12107,24 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates one or more glossary terms with an asset in Glue Data
+%% Catalog.
+-spec associate_glossary_terms(aws_client:aws_client(), associate_glossary_terms_request()) ->
+    {ok, associate_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, associate_glossary_terms_errors(), tuple()}.
+associate_glossary_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_glossary_terms(Client, Input, []).
+
+-spec associate_glossary_terms(aws_client:aws_client(), associate_glossary_terms_request(), proplists:proplist()) ->
+    {ok, associate_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, associate_glossary_terms_errors(), tuple()}.
+associate_glossary_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateGlossaryTerms">>, Input, Options).
 
 %% @doc Creates one or more partitions in a batch operation.
 -spec batch_create_partition(aws_client:aws_client(), batch_create_partition_request()) ->
@@ -11512,6 +12323,24 @@ batch_get_dev_endpoints(Client, Input)
 batch_get_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDevEndpoints">>, Input, Options).
+
+%% @doc Retrieves multiple items from an iterable form on an asset in Glue
+%% Data Catalog in a single request.
+-spec batch_get_iterable_forms(aws_client:aws_client(), batch_get_iterable_forms_request()) ->
+    {ok, batch_get_iterable_forms_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_iterable_forms_errors(), tuple()}.
+batch_get_iterable_forms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_iterable_forms(Client, Input, []).
+
+-spec batch_get_iterable_forms(aws_client:aws_client(), batch_get_iterable_forms_request(), proplists:proplist()) ->
+    {ok, batch_get_iterable_forms_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_iterable_forms_errors(), tuple()}.
+batch_get_iterable_forms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetIterableForms">>, Input, Options).
 
 %% @doc Returns a list of resource metadata for a given list of job names.
 %%
@@ -11959,6 +12788,44 @@ create_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevEndpoint">>, Input, Options).
 
+%% @doc Creates a business glossary in Glue Data Catalog.
+%%
+%% A glossary is a container for glossary terms that define business
+%% concepts.
+-spec create_glossary(aws_client:aws_client(), create_glossary_request()) ->
+    {ok, create_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_errors(), tuple()}.
+create_glossary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_glossary(Client, Input, []).
+
+-spec create_glossary(aws_client:aws_client(), create_glossary_request(), proplists:proplist()) ->
+    {ok, create_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_errors(), tuple()}.
+create_glossary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGlossary">>, Input, Options).
+
+%% @doc Creates a glossary term within a business glossary in Glue Data
+%% Catalog.
+-spec create_glossary_term(aws_client:aws_client(), create_glossary_term_request()) ->
+    {ok, create_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_term_errors(), tuple()}.
+create_glossary_term(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_glossary_term(Client, Input, []).
+
+-spec create_glossary_term(aws_client:aws_client(), create_glossary_term_request(), proplists:proplist()) ->
+    {ok, create_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_term_errors(), tuple()}.
+create_glossary_term(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGlossaryTerm">>, Input, Options).
+
 %% @doc Creates a new Glue Identity Center configuration to enable
 %% integration between Glue and Amazon Web Services IAM
 %% Identity Center for authentication and authorization.
@@ -12346,6 +13213,57 @@ create_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkflow">>, Input, Options).
 
+%% @doc Deletes an asset from Glue Data Catalog.
+-spec delete_asset(aws_client:aws_client(), delete_asset_request()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
+delete_asset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_asset(Client, Input, []).
+
+-spec delete_asset(aws_client:aws_client(), delete_asset_request(), proplists:proplist()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
+delete_asset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAsset">>, Input, Options).
+
+%% @doc Deletes an asset type from Glue Data Catalog.
+-spec delete_asset_type(aws_client:aws_client(), delete_asset_type_request()) ->
+    {ok, delete_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_type_errors(), tuple()}.
+delete_asset_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_asset_type(Client, Input, []).
+
+-spec delete_asset_type(aws_client:aws_client(), delete_asset_type_request(), proplists:proplist()) ->
+    {ok, delete_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_type_errors(), tuple()}.
+delete_asset_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAssetType">>, Input, Options).
+
+%% @doc Deletes a form attachment from an asset in Glue Data Catalog.
+-spec delete_attachment(aws_client:aws_client(), delete_attachment_request()) ->
+    {ok, delete_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attachment_errors(), tuple()}.
+delete_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_attachment(Client, Input, []).
+
+-spec delete_attachment(aws_client:aws_client(), delete_attachment_request(), proplists:proplist()) ->
+    {ok, delete_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attachment_errors(), tuple()}.
+delete_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAttachment">>, Input, Options).
+
 %% @doc Deletes an existing blueprint.
 -spec delete_blueprint(aws_client:aws_client(), delete_blueprint_request()) ->
     {ok, delete_blueprint_response(), tuple()} |
@@ -12606,6 +13524,61 @@ delete_dev_endpoint(Client, Input)
 delete_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevEndpoint">>, Input, Options).
+
+%% @doc Deletes a form type from Glue Data Catalog.
+%%
+%% A form type cannot be deleted if it is still referenced by an asset type.
+-spec delete_form_type(aws_client:aws_client(), delete_form_type_request()) ->
+    {ok, delete_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_form_type_errors(), tuple()}.
+delete_form_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_form_type(Client, Input, []).
+
+-spec delete_form_type(aws_client:aws_client(), delete_form_type_request(), proplists:proplist()) ->
+    {ok, delete_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_form_type_errors(), tuple()}.
+delete_form_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFormType">>, Input, Options).
+
+%% @doc Deletes a business glossary from Glue Data Catalog.
+%%
+%% A glossary cannot be deleted if it still contains glossary terms.
+-spec delete_glossary(aws_client:aws_client(), delete_glossary_request()) ->
+    {ok, delete_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_errors(), tuple()}.
+delete_glossary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_glossary(Client, Input, []).
+
+-spec delete_glossary(aws_client:aws_client(), delete_glossary_request(), proplists:proplist()) ->
+    {ok, delete_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_errors(), tuple()}.
+delete_glossary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGlossary">>, Input, Options).
+
+%% @doc Deletes a glossary term from Glue Data Catalog.
+-spec delete_glossary_term(aws_client:aws_client(), delete_glossary_term_request()) ->
+    {ok, delete_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_term_errors(), tuple()}.
+delete_glossary_term(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_glossary_term(Client, Input, []).
+
+-spec delete_glossary_term(aws_client:aws_client(), delete_glossary_term_request(), proplists:proplist()) ->
+    {ok, delete_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_term_errors(), tuple()}.
+delete_glossary_term(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGlossaryTerm">>, Input, Options).
 
 %% @doc Deletes the existing Glue Identity Center configuration, removing the
 %% integration between Glue and
@@ -13109,6 +14082,59 @@ describe_integrations(Client, Input)
 describe_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIntegrations">>, Input, Options).
+
+%% @doc Removes the association of one or more glossary terms from an asset
+%% in Glue Data Catalog.
+-spec disassociate_glossary_terms(aws_client:aws_client(), disassociate_glossary_terms_request()) ->
+    {ok, disassociate_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_glossary_terms_errors(), tuple()}.
+disassociate_glossary_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_glossary_terms(Client, Input, []).
+
+-spec disassociate_glossary_terms(aws_client:aws_client(), disassociate_glossary_terms_request(), proplists:proplist()) ->
+    {ok, disassociate_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_glossary_terms_errors(), tuple()}.
+disassociate_glossary_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateGlossaryTerms">>, Input, Options).
+
+%% @doc Retrieves the metadata for an asset in Glue Data Catalog, including
+%% its forms, additional attachments, and associated glossary terms.
+-spec get_asset(aws_client:aws_client(), get_asset_input()) ->
+    {ok, get_asset_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
+get_asset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_asset(Client, Input, []).
+
+-spec get_asset(aws_client:aws_client(), get_asset_input(), proplists:proplist()) ->
+    {ok, get_asset_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
+get_asset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAsset">>, Input, Options).
+
+%% @doc Retrieves an asset type in Glue Data Catalog by its identifier.
+-spec get_asset_type(aws_client:aws_client(), get_asset_type_request()) ->
+    {ok, get_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_type_errors(), tuple()}.
+get_asset_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_asset_type(Client, Input, []).
+
+-spec get_asset_type(aws_client:aws_client(), get_asset_type_request(), proplists:proplist()) ->
+    {ok, get_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_type_errors(), tuple()}.
+get_asset_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAssetType">>, Input, Options).
 
 %% @doc Retrieves the details of a blueprint.
 -spec get_blueprint(aws_client:aws_client(), get_blueprint_request()) ->
@@ -13711,6 +14737,57 @@ get_entity_records(Client, Input)
 get_entity_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntityRecords">>, Input, Options).
+
+%% @doc Retrieves a form type in Glue Data Catalog by its identifier.
+-spec get_form_type(aws_client:aws_client(), get_form_type_request()) ->
+    {ok, get_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_form_type_errors(), tuple()}.
+get_form_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_form_type(Client, Input, []).
+
+-spec get_form_type(aws_client:aws_client(), get_form_type_request(), proplists:proplist()) ->
+    {ok, get_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_form_type_errors(), tuple()}.
+get_form_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFormType">>, Input, Options).
+
+%% @doc Retrieves a business glossary in Glue Data Catalog by its identifier.
+-spec get_glossary(aws_client:aws_client(), get_glossary_request()) ->
+    {ok, get_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_errors(), tuple()}.
+get_glossary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_glossary(Client, Input, []).
+
+-spec get_glossary(aws_client:aws_client(), get_glossary_request(), proplists:proplist()) ->
+    {ok, get_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_errors(), tuple()}.
+get_glossary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGlossary">>, Input, Options).
+
+%% @doc Retrieves a glossary term in Glue Data Catalog by its identifier.
+-spec get_glossary_term(aws_client:aws_client(), get_glossary_term_request()) ->
+    {ok, get_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_term_errors(), tuple()}.
+get_glossary_term(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_glossary_term(Client, Input, []).
+
+-spec get_glossary_term(aws_client:aws_client(), get_glossary_term_request(), proplists:proplist()) ->
+    {ok, get_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_term_errors(), tuple()}.
+get_glossary_term(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGlossaryTerm">>, Input, Options).
 
 %% @doc Retrieves the current Glue Identity Center configuration details,
 %% including the associated Identity Center instance and
@@ -14651,6 +15728,23 @@ import_catalog_to_glue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCatalogToGlue">>, Input, Options).
 
+%% @doc Lists the asset types defined in Glue Data Catalog.
+-spec list_asset_types(aws_client:aws_client(), list_asset_types_request()) ->
+    {ok, list_asset_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_types_errors(), tuple()}.
+list_asset_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_asset_types(Client, Input, []).
+
+-spec list_asset_types(aws_client:aws_client(), list_asset_types_request(), proplists:proplist()) ->
+    {ok, list_asset_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_types_errors(), tuple()}.
+list_asset_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAssetTypes">>, Input, Options).
+
 %% @doc Lists all the blueprint names in an account.
 -spec list_blueprints(aws_client:aws_client(), list_blueprints_request()) ->
     {ok, list_blueprints_response(), tuple()} |
@@ -14939,6 +16033,57 @@ list_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntities">>, Input, Options).
 
+%% @doc Lists the form types defined in Glue Data Catalog.
+-spec list_form_types(aws_client:aws_client(), list_form_types_request()) ->
+    {ok, list_form_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_form_types_errors(), tuple()}.
+list_form_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_form_types(Client, Input, []).
+
+-spec list_form_types(aws_client:aws_client(), list_form_types_request(), proplists:proplist()) ->
+    {ok, list_form_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_form_types_errors(), tuple()}.
+list_form_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFormTypes">>, Input, Options).
+
+%% @doc Lists business glossaries in Glue Data Catalog.
+-spec list_glossaries(aws_client:aws_client(), list_glossaries_request()) ->
+    {ok, list_glossaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_glossaries_errors(), tuple()}.
+list_glossaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_glossaries(Client, Input, []).
+
+-spec list_glossaries(aws_client:aws_client(), list_glossaries_request(), proplists:proplist()) ->
+    {ok, list_glossaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_glossaries_errors(), tuple()}.
+list_glossaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGlossaries">>, Input, Options).
+
+%% @doc Lists glossary terms within a business glossary in Glue Data Catalog.
+-spec list_glossary_terms(aws_client:aws_client(), list_glossary_terms_request()) ->
+    {ok, list_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, list_glossary_terms_errors(), tuple()}.
+list_glossary_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_glossary_terms(Client, Input, []).
+
+-spec list_glossary_terms(aws_client:aws_client(), list_glossary_terms_request(), proplists:proplist()) ->
+    {ok, list_glossary_terms_response(), tuple()} |
+    {error, any()} |
+    {error, list_glossary_terms_errors(), tuple()}.
+list_glossary_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGlossaryTerms">>, Input, Options).
+
 %% @doc List integration resource properties for a single customer.
 %%
 %% It supports the filters, maxRecords and markers.
@@ -14957,6 +16102,25 @@ list_integration_resource_properties(Client, Input)
 list_integration_resource_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIntegrationResourceProperties">>, Input, Options).
+
+%% @doc Lists the items in an iterable form on an asset in Glue Data Catalog.
+%%
+%% For example, lists the columns of a table asset.
+-spec list_iterable_forms(aws_client:aws_client(), list_iterable_forms_request()) ->
+    {ok, list_iterable_forms_response(), tuple()} |
+    {error, any()} |
+    {error, list_iterable_forms_errors(), tuple()}.
+list_iterable_forms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_iterable_forms(Client, Input, []).
+
+-spec list_iterable_forms(aws_client:aws_client(), list_iterable_forms_request(), proplists:proplist()) ->
+    {ok, list_iterable_forms_response(), tuple()} |
+    {error, any()} |
+    {error, list_iterable_forms_errors(), tuple()}.
+list_iterable_forms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIterableForms">>, Input, Options).
 
 %% @doc Retrieves the names of all job resources in this Amazon Web Services
 %% account, or the resources with the specified tag.
@@ -15221,6 +16385,67 @@ modify_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIntegration">>, Input, Options).
 
+%% @doc Creates or updates an asset in Glue Data Catalog.
+%%
+%% If the asset already exists, this operation updates it; otherwise, a new
+%% asset is created.
+-spec put_asset(aws_client:aws_client(), put_asset_request()) ->
+    {ok, put_asset_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_errors(), tuple()}.
+put_asset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_asset(Client, Input, []).
+
+-spec put_asset(aws_client:aws_client(), put_asset_request(), proplists:proplist()) ->
+    {ok, put_asset_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_errors(), tuple()}.
+put_asset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAsset">>, Input, Options).
+
+%% @doc Creates or updates an asset type in Glue Data Catalog.
+%%
+%% An asset type defines the structure of assets by specifying which forms
+%% they include. If an asset type with the given name already exists, it is
+%% updated.
+-spec put_asset_type(aws_client:aws_client(), put_asset_type_request()) ->
+    {ok, put_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_type_errors(), tuple()}.
+put_asset_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_asset_type(Client, Input, []).
+
+-spec put_asset_type(aws_client:aws_client(), put_asset_type_request(), proplists:proplist()) ->
+    {ok, put_asset_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_type_errors(), tuple()}.
+put_asset_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAssetType">>, Input, Options).
+
+%% @doc Attaches a form to an asset or an iterable form item in Glue Data
+%% Catalog.
+%%
+%% If an attachment with the same name already exists, it is overwritten.
+-spec put_attachment(aws_client:aws_client(), put_attachment_request()) ->
+    {ok, put_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, put_attachment_errors(), tuple()}.
+put_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_attachment(Client, Input, []).
+
+-spec put_attachment(aws_client:aws_client(), put_attachment_request(), proplists:proplist()) ->
+    {ok, put_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, put_attachment_errors(), tuple()}.
+put_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAttachment">>, Input, Options).
+
 %% @doc Sets the security configuration for a specified catalog.
 %%
 %% After the configuration has been
@@ -15258,6 +16483,26 @@ put_data_quality_profile_annotation(Client, Input)
 put_data_quality_profile_annotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataQualityProfileAnnotation">>, Input, Options).
+
+%% @doc Creates or updates a form type in Glue Data Catalog.
+%%
+%% A form type defines the schema for structured metadata that can be
+%% attached to assets.
+-spec put_form_type(aws_client:aws_client(), put_form_type_request()) ->
+    {ok, put_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_form_type_errors(), tuple()}.
+put_form_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_form_type(Client, Input, []).
+
+-spec put_form_type(aws_client:aws_client(), put_form_type_request(), proplists:proplist()) ->
+    {ok, put_form_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_form_type_errors(), tuple()}.
+put_form_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutFormType">>, Input, Options).
 
 %% @doc Sets the Data Catalog resource policy for access control.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
@@ -15481,6 +16726,26 @@ run_statement(Client, Input)
 run_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunStatement">>, Input, Options).
+
+%% @doc Searches for assets in Glue Data Catalog using full-text search,
+%% filters, sorting, and aggregations.
+%%
+%% Returns matching assets with relevance-ranked results.
+-spec search(aws_client:aws_client(), search_input()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, search_errors(), tuple()}.
+search(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search(Client, Input, []).
+
+-spec search(aws_client:aws_client(), search_input(), proplists:proplist()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, search_errors(), tuple()}.
+search(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"Search">>, Input, Options).
 
 %% @doc Searches a set of tables based on properties in the table metadata as
 %% well as on the parent database.
@@ -16304,6 +17569,40 @@ update_dev_endpoint(Client, Input)
 update_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevEndpoint">>, Input, Options).
+
+%% @doc Updates a business glossary in Glue Data Catalog.
+-spec update_glossary(aws_client:aws_client(), update_glossary_request()) ->
+    {ok, update_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_errors(), tuple()}.
+update_glossary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_glossary(Client, Input, []).
+
+-spec update_glossary(aws_client:aws_client(), update_glossary_request(), proplists:proplist()) ->
+    {ok, update_glossary_response(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_errors(), tuple()}.
+update_glossary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGlossary">>, Input, Options).
+
+%% @doc Updates a glossary term in Glue Data Catalog.
+-spec update_glossary_term(aws_client:aws_client(), update_glossary_term_request()) ->
+    {ok, update_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_term_errors(), tuple()}.
+update_glossary_term(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_glossary_term(Client, Input, []).
+
+-spec update_glossary_term(aws_client:aws_client(), update_glossary_term_request(), proplists:proplist()) ->
+    {ok, update_glossary_term_response(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_term_errors(), tuple()}.
+update_glossary_term(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGlossaryTerm">>, Input, Options).
 
 %% @doc Updates the existing Glue Identity Center configuration, allowing
 %% modification of scopes and permissions for the integration.

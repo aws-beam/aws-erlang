@@ -18,10 +18,16 @@
 
 -export([add_artifact/2,
          add_artifact/3,
+         batch_create_security_requirements/2,
+         batch_create_security_requirements/3,
          batch_delete_code_reviews/2,
          batch_delete_code_reviews/3,
          batch_delete_pentests/2,
          batch_delete_pentests/3,
+         batch_delete_security_requirements/2,
+         batch_delete_security_requirements/3,
+         batch_delete_threat_models/2,
+         batch_delete_threat_models/3,
          batch_get_agent_spaces/2,
          batch_get_agent_spaces/3,
          batch_get_artifact_metadata/2,
@@ -40,8 +46,20 @@
          batch_get_pentest_jobs/3,
          batch_get_pentests/2,
          batch_get_pentests/3,
+         batch_get_security_requirements/2,
+         batch_get_security_requirements/3,
          batch_get_target_domains/2,
          batch_get_target_domains/3,
+         batch_get_threat_model_job_tasks/2,
+         batch_get_threat_model_job_tasks/3,
+         batch_get_threat_model_jobs/2,
+         batch_get_threat_model_jobs/3,
+         batch_get_threat_models/2,
+         batch_get_threat_models/3,
+         batch_get_threats/2,
+         batch_get_threats/3,
+         batch_update_security_requirements/2,
+         batch_update_security_requirements/3,
          create_agent_space/2,
          create_agent_space/3,
          create_application/2,
@@ -54,8 +72,16 @@
          create_membership/3,
          create_pentest/2,
          create_pentest/3,
+         create_private_connection/2,
+         create_private_connection/3,
+         create_security_requirement_pack/2,
+         create_security_requirement_pack/3,
          create_target_domain/2,
          create_target_domain/3,
+         create_threat/2,
+         create_threat/3,
+         create_threat_model/2,
+         create_threat_model/3,
          delete_agent_space/2,
          delete_agent_space/3,
          delete_application/2,
@@ -66,14 +92,24 @@
          delete_integration/3,
          delete_membership/2,
          delete_membership/3,
+         delete_private_connection/2,
+         delete_private_connection/3,
+         delete_security_requirement_pack/2,
+         delete_security_requirement_pack/3,
          delete_target_domain/2,
          delete_target_domain/3,
+         describe_private_connection/2,
+         describe_private_connection/3,
          get_application/2,
          get_application/3,
          get_artifact/2,
          get_artifact/3,
          get_integration/2,
          get_integration/3,
+         get_security_requirement_pack/2,
+         get_security_requirement_pack/3,
+         import_security_requirements/2,
+         import_security_requirements/3,
          initiate_provider_registration/2,
          initiate_provider_registration/3,
          list_agent_spaces/2,
@@ -104,21 +140,39 @@
          list_pentest_jobs_for_pentest/3,
          list_pentests/2,
          list_pentests/3,
+         list_private_connections/2,
+         list_private_connections/3,
+         list_security_requirement_packs/2,
+         list_security_requirement_packs/3,
+         list_security_requirements/2,
+         list_security_requirements/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          list_target_domains/2,
          list_target_domains/3,
+         list_threat_model_job_tasks/2,
+         list_threat_model_job_tasks/3,
+         list_threat_model_jobs/2,
+         list_threat_model_jobs/3,
+         list_threat_models/2,
+         list_threat_models/3,
+         list_threats/2,
+         list_threats/3,
          start_code_remediation/2,
          start_code_remediation/3,
          start_code_review_job/2,
          start_code_review_job/3,
          start_pentest_job/2,
          start_pentest_job/3,
+         start_threat_model_job/2,
+         start_threat_model_job/3,
          stop_code_review_job/2,
          stop_code_review_job/3,
          stop_pentest_job/2,
          stop_pentest_job/3,
+         stop_threat_model_job/2,
+         stop_threat_model_job/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -135,13 +189,75 @@
          update_integrated_resources/3,
          update_pentest/2,
          update_pentest/3,
+         update_private_connection_certificate/2,
+         update_private_connection_certificate/3,
+         update_security_requirement_pack/2,
+         update_security_requirement_pack/3,
          update_target_domain/2,
          update_target_domain/3,
+         update_threat/2,
+         update_threat/3,
+         update_threat_model/2,
+         update_threat_model/3,
          verify_target_domain/2,
          verify_target_domain/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% delete_threat_model_failure() :: #{
+%%   <<"reason">> => [string()],
+%%   <<"threatModelId">> => [string()]
+%% }
+-type delete_threat_model_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_resource_capabilities() :: #{
+%%   <<"leaveComments">> => [boolean()],
+%%   <<"remediateCode">> => [boolean()]
+%% }
+-type bitbucket_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_model_job_task() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"logsLocation">> => log_location(),
+%%   <<"taskId">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_threat_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatId">> := [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type update_threat_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -160,10 +276,23 @@
 
 
 %% Example:
+%% update_security_requirement_entry() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"remediation">> => [string()]
+%% }
+-type update_security_requirement_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% git_hub_integration_input() :: #{
 %%   <<"code">> => string(),
+%%   <<"installationId">> => [string()],
 %%   <<"organizationName">> => [string()],
-%%   <<"state">> => string()
+%%   <<"state">> => string(),
+%%   <<"targetUrl">> => string()
 %% }
 -type git_hub_integration_input() :: #{binary() => any()}.
 
@@ -172,8 +301,10 @@
 %% pentest() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cleanUpStrategy">> => list(any()),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"excludeRiskTypes">> => list(list(any())()),
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"networkTrafficConfig">> => network_traffic_config(),
@@ -247,6 +378,22 @@
 
 
 %% Example:
+%% list_threat_model_job_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobTaskSummaries">> => list(threat_model_job_task_summary())
+%% }
+-type list_threat_model_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirements_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityRequirementSummaries">> => list(security_requirement_summary())
+%% }
+-type list_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_code_review_jobs_for_code_review_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"codeReviewId">> := [string()],
@@ -264,6 +411,20 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type agent_space_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirement_result() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"remediation">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_get_security_requirement_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_membership_response() :: #{}
@@ -289,6 +450,36 @@
 
 
 %% Example:
+%% threat_model_job_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type create_private_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% code_location() :: #{
 %%   <<"filePath">> => [string()],
 %%   <<"label">> => [string()],
@@ -303,6 +494,7 @@
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
 %%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"excludeRiskTypes">> => list(list(any())()),
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"networkTrafficConfig">> => network_traffic_config(),
@@ -334,6 +526,14 @@
 
 
 %% Example:
+%% batch_get_threat_model_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobTaskIds">> := list([string()]())
+%% }
+-type batch_get_threat_model_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_code_review_jobs_output() :: #{
 %%   <<"codeReviewJobs">> => list(code_review_job()),
 %%   <<"notFound">> => list([string()]())
@@ -350,6 +550,23 @@
 
 
 %% Example:
+%% threat_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatId">> => [string()],
+%%   <<"threatJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
+%% }
+-type threat_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_code_review_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
@@ -357,9 +574,22 @@
 %%   <<"codeReviewId">> := [string()],
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()]
+%%   <<"title">> => [string()],
+%%   <<"validationMode">> => list(any())
 %% }
 -type update_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_document_metadata() :: #{
+%%   <<"name">> => string(),
+%%   <<"pageId">> => [string()],
+%%   <<"providerResourceId">> => string(),
+%%   <<"spaceKey">> => [string()],
+%%   <<"spaceTitle">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type confluence_document_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -371,11 +601,36 @@
 
 
 %% Example:
+%% batch_security_requirement_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"securityRequirementName">> => string()
+%% }
+-type batch_security_requirement_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_code_reviews_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"codeReviewIds">> := list([string()]())
 %% }
 -type batch_get_code_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"securityRequirements">> => list(batch_get_security_requirement_result())
+%% }
+-type batch_get_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_repository_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -400,9 +655,36 @@
 %%   <<"riskLevel">> => list(any()),
 %%   <<"riskType">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationStatus">> => list(any())
 %% }
 -type finding_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_model() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_destination() :: #{
+%%   <<"containerId">> => [string()],
+%%   <<"documentId">> => [string()],
+%%   <<"integrationId">> => [string()],
+%%   <<"parentId">> => [string()]
+%% }
+-type report_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,7 +726,8 @@
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"serviceRole">> => string(),
 %%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationMode">> => list(any())
 %% }
 -type code_review() :: #{binary() => any()}.
 
@@ -469,6 +752,14 @@
 
 
 %% Example:
+%% integrated_document() :: #{
+%%   <<"integrationId">> => [string()],
+%%   <<"resourceId">> => [string()]
+%% }
+-type integrated_document() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_integration_input() :: #{
 %%   <<"integrationId">> := string()
 %% }
@@ -483,6 +774,10 @@
 %% }
 -type target_domain_summary() :: #{binary() => any()}.
 
+%% Example:
+%% delete_security_requirement_pack_output() :: #{}
+-type delete_security_requirement_pack_output() :: #{}.
+
 
 %% Example:
 %% create_code_review_output() :: #{
@@ -494,17 +789,28 @@
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"serviceRole">> => string(),
 %%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationMode">> => list(any())
 %% }
 -type create_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirements">> := list(create_security_requirement_entry())
+%% }
+-type batch_create_security_requirements_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% pentest_job() :: #{
 %%   <<"actors">> => list(actor()),
 %%   <<"allowedDomains">> => list(endpoint()),
+%%   <<"cleanUpStrategy">> => list(any()),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"documents">> => list(document_info()),
 %%   <<"endpoints">> => list(endpoint()),
 %%   <<"errorInformation">> => error_information(),
@@ -526,6 +832,23 @@
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type pentest_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_security_requirements_output() :: #{
+%%   <<"deletedSecurityRequirementNames">> => list(string()),
+%%   <<"errors">> => list(batch_security_requirement_error())
+%% }
+-type batch_delete_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_connection_input() :: #{
+%%   <<"mode">> := list(),
+%%   <<"privateConnectionName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_private_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -576,11 +899,37 @@
 
 
 %% Example:
+%% confluence_resource_capabilities() :: #{
+%%   <<"createDocument">> => [boolean()],
+%%   <<"fetchDocument">> => [boolean()],
+%%   <<"updateDocument">> => [boolean()]
+%% }
+-type confluence_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_traffic_config() :: #{
 %%   <<"customHeaders">> => list(custom_header()),
 %%   <<"rules">> => list(network_traffic_rule())
 %% }
 -type network_traffic_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_private_connection_certificate_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type update_private_connection_certificate_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -608,6 +957,14 @@
 
 
 %% Example:
+%% threat_evidence_shape() :: #{
+%%   <<"packageId">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type threat_evidence_shape() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_target_domain_input() :: #{
 %%   <<"tags">> => map(),
 %%   <<"targetDomainName">> := [string()],
@@ -625,14 +982,51 @@
 
 
 %% Example:
+%% batch_get_threats_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatIds">> := list([string()]())
+%% }
+-type batch_get_threats_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% integration_summary() :: #{
 %%   <<"displayName">> => [string()],
 %%   <<"installationId">> => [string()],
 %%   <<"integrationId">> => [string()],
+%%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> => list(any()),
-%%   <<"providerType">> => list(any())
+%%   <<"providerType">> => list(any()),
+%%   <<"targetUrl">> => string()
 %% }
 -type integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirement_packs_input() :: #{
+%%   <<"filter">> => list_security_requirement_pack_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_security_requirement_packs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_security_requirement_pack_input() :: #{
+%%   <<"packId">> := string()
+%% }
+-type delete_security_requirement_pack_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type security_requirement_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -660,11 +1054,93 @@
 
 
 %% Example:
+%% batch_get_threats_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threats">> => list(threat())
+%% }
+-type batch_get_threats_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirementNames">> := list(string())
+%% }
+-type batch_get_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirement_pack_filter() :: #{
+%%   <<"managementType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_security_requirement_pack_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_model_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_connection_summary() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type private_connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_connections_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privateConnections">> => list(private_connection_summary())
+%% }
+-type list_private_connections_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_code_reviews_output() :: #{
 %%   <<"deleted">> => list([string()]()),
 %%   <<"failed">> => list(delete_code_review_failure())
 %% }
 -type batch_delete_code_reviews_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_threat_model_job_output() :: #{}
+-type stop_threat_model_job_output() :: #{}.
+
+
+%% Example:
+%% stop_threat_model_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobId">> := [string()]
+%% }
+-type stop_threat_model_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -672,10 +1148,27 @@
 %%   <<"input">> := list(),
 %%   <<"integrationDisplayName">> := [string()],
 %%   <<"kmsKeyId">> => string(),
+%%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> := list(any()),
 %%   <<"tags">> => map()
 %% }
 -type create_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_security_requirement_pack_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"importStatus">> => list(any()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"managementType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vendorName">> => [string()]
+%% }
+-type get_security_requirement_pack_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -694,6 +1187,16 @@
 
 
 %% Example:
+%% update_security_requirement_pack_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_security_requirement_pack_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_pentest_job_tasks_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"categoryName">> => [string()],
@@ -706,11 +1209,33 @@
 
 
 %% Example:
+%% list_security_requirement_packs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityRequirementPackSummaries">> => list(security_requirement_pack_summary())
+%% }
+-type list_security_requirement_packs_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_target_domain_input() :: #{
 %%   <<"targetDomainId">> := string(),
 %%   <<"verificationMethod">> := list(any())
 %% }
 -type update_target_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_pack_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"managementType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vendorName">> => [string()]
+%% }
+-type security_requirement_pack_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,6 +1251,33 @@
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_threat_output() :: #{
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatId">> => [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatJobId">> => [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
+%% }
+-type update_threat_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -780,9 +1332,20 @@
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"serviceRole">> => string(),
 %%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationMode">> => list(any())
 %% }
 -type update_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"providerResourceId">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_repository_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -798,6 +1361,23 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type agent_space() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type describe_private_connection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -819,10 +1399,22 @@
 %%   <<"installationId">> => [string()],
 %%   <<"integrationId">> => string(),
 %%   <<"kmsKeyId">> => string(),
+%%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> => list(any()),
-%%   <<"providerType">> => list(any())
+%%   <<"providerType">> => list(any()),
+%%   <<"targetUrl">> => string()
 %% }
 -type get_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threats_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatJobId">> := [string()]
+%% }
+-type list_threats_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -830,6 +1422,7 @@
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
 %%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"excludeRiskTypes">> => list(list(any())()),
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"networkTrafficConfig">> => network_traffic_config(),
@@ -850,13 +1443,21 @@
 
 
 %% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_code_review_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> := assets(),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"logConfig">> => cloud_watch_log(),
 %%   <<"serviceRole">> => string(),
-%%   <<"title">> := [string()]
+%%   <<"title">> := [string()],
+%%   <<"validationMode">> => list(any())
 %% }
 -type create_code_review_input() :: #{binary() => any()}.
 
@@ -867,6 +1468,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_integrated_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_requirement_pack_output() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_security_requirement_pack_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -885,6 +1495,28 @@
 
 
 %% Example:
+%% threat_model_job_task_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"taskId">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_security_requirements_output() :: #{
+%%   <<"importStatus">> => list(any()),
+%%   <<"packId">> => string()
+%% }
+-type import_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% integrated_repository() :: #{
 %%   <<"integrationId">> => [string()],
 %%   <<"providerResourceId">> => [string()]
@@ -899,6 +1531,16 @@
 %% }
 -type batch_get_pentest_jobs_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_threat_model_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelId">> := [string()]
+%% }
+-type list_threat_model_jobs_input() :: #{binary() => any()}.
+
 %% Example:
 %% update_integrated_resources_output() :: #{}
 -type update_integrated_resources_output() :: #{}.
@@ -909,6 +1551,14 @@
 %%   <<"targetDomainId">> => string()
 %% }
 -type delete_target_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelIds">> := list([string()]())
+%% }
+-type batch_get_threat_models_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -953,6 +1603,7 @@
 %% Example:
 %% finding() :: #{
 %%   <<"agentSpaceId">> => [string()],
+%%   <<"alignmentRationale">> => [string()],
 %%   <<"attackScript">> => [string()],
 %%   <<"codeLocations">> => list(code_location()),
 %%   <<"codeRemediationTask">> => code_remediation_task(),
@@ -960,6 +1611,7 @@
 %%   <<"codeReviewJobId">> => [string()],
 %%   <<"confidence">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"customerNote">> => [string()],
 %%   <<"description">> => [string()],
 %%   <<"findingId">> => [string()],
 %%   <<"lastUpdatedBy">> => [string()],
@@ -973,6 +1625,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"taskId">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationStatus">> => list(any()),
 %%   <<"verificationScript">> => verification_script()
 %% }
 -type finding() :: #{binary() => any()}.
@@ -987,6 +1640,15 @@
 
 
 %% Example:
+%% list_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_threat_models_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_code_review_job_tasks_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"codeReviewJobTaskIds">> := list([string()]())
@@ -995,10 +1657,25 @@
 
 
 %% Example:
+%% batch_delete_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirementNames">> := list(string())
+%% }
+-type batch_delete_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_finding_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
+%%   <<"attackScript">> => [string()],
+%%   <<"customerNote">> => [string()],
+%%   <<"description">> => [string()],
 %%   <<"findingId">> := [string()],
+%%   <<"name">> => [string()],
+%%   <<"reasoning">> => [string()],
 %%   <<"riskLevel">> => list(any()),
+%%   <<"riskScore">> => [string()],
+%%   <<"riskType">> => [string()],
 %%   <<"status">> => list(any())
 %% }
 -type update_finding_input() :: #{binary() => any()}.
@@ -1092,10 +1769,56 @@
 
 
 %% Example:
+%% confluence_document_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"pageId">> => [string()],
+%%   <<"spaceKey">> => [string()],
+%%   <<"spaceTitle">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type confluence_document_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_models_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModels">> => list(threat_model())
+%% }
+-type batch_get_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_output() :: #{
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatId">> => [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatJobId">> => [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
+%% }
+-type create_threat_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1109,6 +1832,22 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type start_pentest_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threats_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threats">> => list(threat_summary())
+%% }
+-type list_threats_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_resource_capabilities() :: #{
+%%   <<"leaveComments">> => [boolean()],
+%%   <<"remediateCode">> => [boolean()]
+%% }
+-type git_lab_resource_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1148,6 +1887,20 @@
 
 
 %% Example:
+%% batch_create_security_requirement_result() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"remediation">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_create_security_requirement_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% source_code_repository() :: #{
 %%   <<"s3Location">> => [string()]
 %% }
@@ -1160,9 +1913,27 @@
 %% }
 -type endpoint() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_private_connection_input() :: #{
+%%   <<"privateConnectionName">> := string()
+%% }
+-type delete_private_connection_input() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% create_security_requirement_entry() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"remediation">> => [string()]
+%% }
+-type create_security_requirement_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1182,6 +1953,20 @@
 
 
 %% Example:
+%% update_threat_model_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> := [string()],
+%%   <<"title">> => [string()]
+%% }
+-type update_threat_model_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% code_review_summary() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"codeReviewId">> => [string()],
@@ -1190,6 +1975,14 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type code_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_threat_models_output() :: #{
+%%   <<"deleted">> => list([string()]()),
+%%   <<"failed">> => list(delete_threat_model_failure())
+%% }
+-type batch_delete_threat_models_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1233,12 +2026,55 @@
 
 
 %% Example:
+%% batch_get_threat_model_job_tasks_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModelJobTasks">> => list(threat_model_job_task())
+%% }
+-type batch_get_threat_model_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type delete_private_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_integration_input() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"groupId">> => [string()],
+%%   <<"targetUrl">> => string(),
+%%   <<"tokenType">> => list(any())
+%% }
+-type git_lab_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_artifacts_input() :: #{
 %%   <<"agentSpaceId">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_artifacts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirements">> := list(update_security_requirement_entry())
+%% }
+-type batch_update_security_requirements_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1350,6 +2186,76 @@
 
 
 %% Example:
+%% threat_model_job() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"documents">> => list(document_info()),
+%%   <<"errorInformation">> => error_information(),
+%%   <<"executionEndTime">> => [non_neg_integer()],
+%%   <<"executionStartTime">> => [non_neg_integer()],
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"status">> => list(any()),
+%%   <<"systemOverview">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirements_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"packId">> := string()
+%% }
+-type list_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_threat_model_job_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type start_threat_model_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat() :: #{
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatId">> => [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatJobId">> => [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
+%% }
+-type threat() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_target_domain_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainName">> => [string()],
@@ -1370,10 +2276,26 @@
 
 
 %% Example:
+%% batch_create_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"securityRequirements">> => list(batch_create_security_requirement_result())
+%% }
+-type batch_create_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% verify_target_domain_input() :: #{
 %%   <<"targetDomainId">> := string()
 %% }
 -type verify_target_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_jobs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobSummaries">> => list(threat_model_job_summary())
+%% }
+-type list_threat_model_jobs_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1395,11 +2317,28 @@
 
 
 %% Example:
+%% self_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"resourceConfigurationId">> => string()
+%% }
+-type self_managed_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_memberships_response() :: #{
 %%   <<"membershipSummaries">> => list(membership_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_artifact() :: #{
+%%   <<"content">> => binary(),
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type security_requirement_artifact() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1412,7 +2351,8 @@
 %% Example:
 %% start_code_review_job_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewId">> := [string()]
+%%   <<"codeReviewId">> := [string()],
+%%   <<"diffSource">> => list()
 %% }
 -type start_code_review_job_input() :: #{binary() => any()}.
 
@@ -1437,6 +2377,21 @@
 %%   <<"pentestJobId">> => [string()]
 %% }
 -type start_code_remediation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_security_requirement_pack_input() :: #{
+%%   <<"packId">> := string()
+%% }
+-type get_security_requirement_pack_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelIds">> := list([string()]())
+%% }
+-type batch_delete_threat_models_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1512,6 +2467,14 @@
 
 
 %% Example:
+%% git_lab_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type git_lab_repository_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_code_review_jobs_for_code_review_output() :: #{
 %%   <<"codeReviewJobSummaries">> => list(code_review_job_summary()),
 %%   <<"nextToken">> => string()
@@ -1551,6 +2514,14 @@
 
 
 %% Example:
+%% batch_get_threat_model_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobIds">> := list([string()]())
+%% }
+-type batch_get_threat_model_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% integrated_resource_summary() :: #{
 %%   <<"capabilities">> => list(),
 %%   <<"integrationId">> => string(),
@@ -1581,11 +2552,72 @@
 
 
 %% Example:
+%% batch_update_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"updatedSecurityRequirementNames">> => list(string())
+%% }
+-type batch_update_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_threat_model_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelId">> := [string()]
+%% }
+-type start_threat_model_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobId">> := [string()]
+%% }
+-type list_threat_model_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"siteUrl">> => string(),
+%%   <<"state">> => string()
+%% }
+-type confluence_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_pentest_failure() :: #{
 %%   <<"pentestId">> => [string()],
 %%   <<"reason">> => [string()]
 %% }
 -type delete_pentest_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"providerResourceId">> => string()
+%% }
+-type git_lab_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"hostAddress">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type service_managed_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1672,10 +2704,26 @@
 
 
 %% Example:
+%% list_threat_models_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelSummaries">> => list(threat_model_summary())
+%% }
+-type list_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_integration_input() :: #{
 %%   <<"integrationId">> := string()
 %% }
 -type get_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_connections_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_private_connections_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1774,6 +2822,21 @@
 
 
 %% Example:
+%% describe_private_connection_input() :: #{
+%%   <<"privateConnectionName">> := string()
+%% }
+-type describe_private_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_security_requirements_input() :: #{
+%%   <<"input">> := list(),
+%%   <<"packId">> := string()
+%% }
+-type import_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% step() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"name">> => list(any()),
@@ -1840,9 +2903,27 @@
 %% }
 -type code_remediation_task() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_private_connection_certificate_input() :: #{
+%%   <<"certificate">> := string(),
+%%   <<"privateConnectionName">> := string()
+%% }
+-type update_private_connection_certificate_input() :: #{binary() => any()}.
+
 %% Example:
 %% create_membership_response() :: #{}
 -type create_membership_response() :: #{}.
+
+
+%% Example:
+%% update_security_requirement_pack_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_security_requirement_pack_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1862,6 +2943,22 @@
 
 
 %% Example:
+%% update_threat_model_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_threat_model_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integrations_input() :: #{
 %%   <<"filter">> => list(),
 %%   <<"maxResults">> => integer(),
@@ -1873,6 +2970,7 @@
 %% Example:
 %% document_info() :: #{
 %%   <<"artifactId">> => [string()],
+%%   <<"integratedDocument">> => integrated_document(),
 %%   <<"s3Location">> => [string()]
 %% }
 -type document_info() :: #{binary() => any()}.
@@ -1895,6 +2993,33 @@
 
 
 %% Example:
+%% create_threat_model_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_threat_model_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_requirement_pack_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_security_requirement_pack_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_artifact_metadata_output() :: #{
 %%   <<"artifactMetadataList">> => list(artifact_metadata_item())
 %% }
@@ -1906,6 +3031,14 @@
 %%   <<"provider">> := list(any())
 %% }
 -type initiate_provider_registration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_model_jobs_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModelJobs">> => list(threat_model_job())
+%% }
+-type batch_get_threat_model_jobs_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1924,6 +3057,37 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type code_review_job_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_anchor_shape() :: #{
+%%   <<"id">> => [string()],
+%%   <<"kind">> => [string()],
+%%   <<"packageId">> => [string()]
+%% }
+-type threat_anchor_shape() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatJobId">> := [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type create_threat_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1953,12 +3117,43 @@
 %% }
 -type target_domain() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_threat_model_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"reportDestination">> => report_destination(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> := string(),
+%%   <<"title">> := [string()]
+%% }
+-type create_threat_model_input() :: #{binary() => any()}.
+
 -type add_artifact_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type batch_create_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_delete_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_get_artifact_metadata_errors() ::
     throttling_exception() | 
@@ -1967,12 +3162,43 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type batch_get_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_update_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_integration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_private_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_security_requirement_pack_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type delete_artifact_errors() ::
@@ -1990,6 +3216,29 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_private_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_security_requirement_pack_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_private_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_artifact_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2003,6 +3252,22 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type get_security_requirement_pack_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type import_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type initiate_provider_registration_errors() ::
     throttling_exception() | 
@@ -2033,7 +3298,42 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_private_connections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_security_requirement_packs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_security_requirements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type update_integrated_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_private_connection_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_security_requirement_pack_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2063,6 +3363,40 @@ add_artifact(Client, Input) ->
 add_artifact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AddArtifact"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Batch creates security requirements in a customer managed pack.
+-spec batch_create_security_requirements(aws_client:aws_client(), batch_create_security_requirements_input()) ->
+    {ok, batch_create_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_security_requirements_errors(), tuple()}.
+batch_create_security_requirements(Client, Input) ->
+    batch_create_security_requirements(Client, Input, []).
+
+-spec batch_create_security_requirements(aws_client:aws_client(), batch_create_security_requirements_input(), proplists:proplist()) ->
+    {ok, batch_create_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_security_requirements_errors(), tuple()}.
+batch_create_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchCreateSecurityRequirements"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2127,6 +3461,72 @@ batch_delete_pentests(Client, Input) ->
 batch_delete_pentests(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchDeletePentests"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Batch deletes security requirements from a customer managed pack.
+-spec batch_delete_security_requirements(aws_client:aws_client(), batch_delete_security_requirements_input()) ->
+    {ok, batch_delete_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_security_requirements_errors(), tuple()}.
+batch_delete_security_requirements(Client, Input) ->
+    batch_delete_security_requirements(Client, Input, []).
+
+-spec batch_delete_security_requirements(aws_client:aws_client(), batch_delete_security_requirements_input(), proplists:proplist()) ->
+    {ok, batch_delete_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_security_requirements_errors(), tuple()}.
+batch_delete_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchDeleteSecurityRequirements"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one or more threat models from an agent space.
+-spec batch_delete_threat_models(aws_client:aws_client(), batch_delete_threat_models_input()) ->
+    {ok, batch_delete_threat_models_output(), tuple()} |
+    {error, any()}.
+batch_delete_threat_models(Client, Input) ->
+    batch_delete_threat_models(Client, Input, []).
+
+-spec batch_delete_threat_models(aws_client:aws_client(), batch_delete_threat_models_input(), proplists:proplist()) ->
+    {ok, batch_delete_threat_models_output(), tuple()} |
+    {error, any()}.
+batch_delete_threat_models(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchDeleteThreatModels"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2441,6 +3841,40 @@ batch_get_pentests(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Batch retrieves security requirements from a pack.
+-spec batch_get_security_requirements(aws_client:aws_client(), batch_get_security_requirements_input()) ->
+    {ok, batch_get_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_security_requirements_errors(), tuple()}.
+batch_get_security_requirements(Client, Input) ->
+    batch_get_security_requirements(Client, Input, []).
+
+-spec batch_get_security_requirements(aws_client:aws_client(), batch_get_security_requirements_input(), proplists:proplist()) ->
+    {ok, batch_get_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_security_requirements_errors(), tuple()}.
+batch_get_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetSecurityRequirements"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about one or more target domains.
 -spec batch_get_target_domains(aws_client:aws_client(), batch_get_target_domains_input()) ->
     {ok, batch_get_target_domains_output(), tuple()} |
@@ -2454,6 +3888,171 @@ batch_get_target_domains(Client, Input) ->
 batch_get_target_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetTargetDomains"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more tasks within a threat model
+%% job.
+-spec batch_get_threat_model_job_tasks(aws_client:aws_client(), batch_get_threat_model_job_tasks_input()) ->
+    {ok, batch_get_threat_model_job_tasks_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_model_job_tasks(Client, Input) ->
+    batch_get_threat_model_job_tasks(Client, Input, []).
+
+-spec batch_get_threat_model_job_tasks(aws_client:aws_client(), batch_get_threat_model_job_tasks_input(), proplists:proplist()) ->
+    {ok, batch_get_threat_model_job_tasks_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_model_job_tasks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetThreatModelJobTasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more threat model jobs in an agent
+%% space.
+-spec batch_get_threat_model_jobs(aws_client:aws_client(), batch_get_threat_model_jobs_input()) ->
+    {ok, batch_get_threat_model_jobs_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_model_jobs(Client, Input) ->
+    batch_get_threat_model_jobs(Client, Input, []).
+
+-spec batch_get_threat_model_jobs(aws_client:aws_client(), batch_get_threat_model_jobs_input(), proplists:proplist()) ->
+    {ok, batch_get_threat_model_jobs_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_model_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetThreatModelJobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more threat models in an agent
+%% space.
+-spec batch_get_threat_models(aws_client:aws_client(), batch_get_threat_models_input()) ->
+    {ok, batch_get_threat_models_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_models(Client, Input) ->
+    batch_get_threat_models(Client, Input, []).
+
+-spec batch_get_threat_models(aws_client:aws_client(), batch_get_threat_models_input(), proplists:proplist()) ->
+    {ok, batch_get_threat_models_output(), tuple()} |
+    {error, any()}.
+batch_get_threat_models(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetThreatModels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about one or more threats.
+-spec batch_get_threats(aws_client:aws_client(), batch_get_threats_input()) ->
+    {ok, batch_get_threats_output(), tuple()} |
+    {error, any()}.
+batch_get_threats(Client, Input) ->
+    batch_get_threats(Client, Input, []).
+
+-spec batch_get_threats(aws_client:aws_client(), batch_get_threats_input(), proplists:proplist()) ->
+    {ok, batch_get_threats_output(), tuple()} |
+    {error, any()}.
+batch_get_threats(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetThreats"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Batch updates security requirements within a customer managed pack.
+-spec batch_update_security_requirements(aws_client:aws_client(), batch_update_security_requirements_input()) ->
+    {ok, batch_update_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_security_requirements_errors(), tuple()}.
+batch_update_security_requirements(Client, Input) ->
+    batch_update_security_requirements(Client, Input, []).
+
+-spec batch_update_security_requirements(aws_client:aws_client(), batch_update_security_requirements_input(), proplists:proplist()) ->
+    {ok, batch_update_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_security_requirements_errors(), tuple()}.
+batch_update_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchUpdateSecurityRequirements"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2681,6 +4280,75 @@ create_pentest(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a private connection for reaching a self-hosted provider
+%% instance over private networking using Amazon VPC Lattice.
+-spec create_private_connection(aws_client:aws_client(), create_private_connection_input()) ->
+    {ok, create_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_connection_errors(), tuple()}.
+create_private_connection(Client, Input) ->
+    create_private_connection(Client, Input, []).
+
+-spec create_private_connection(aws_client:aws_client(), create_private_connection_input(), proplists:proplist()) ->
+    {ok, create_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_connection_errors(), tuple()}.
+create_private_connection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreatePrivateConnection"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a customer managed security requirement pack.
+-spec create_security_requirement_pack(aws_client:aws_client(), create_security_requirement_pack_input()) ->
+    {ok, create_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, create_security_requirement_pack_errors(), tuple()}.
+create_security_requirement_pack(Client, Input) ->
+    create_security_requirement_pack(Client, Input, []).
+
+-spec create_security_requirement_pack(aws_client:aws_client(), create_security_requirement_pack_input(), proplists:proplist()) ->
+    {ok, create_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, create_security_requirement_pack_errors(), tuple()}.
+create_security_requirement_pack(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateSecurityRequirementPack"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new target domain for penetration testing.
 %%
 %% A target domain is a web domain that must be registered and verified
@@ -2697,6 +4365,72 @@ create_target_domain(Client, Input) ->
 create_target_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateTargetDomain"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new threat under a threat model job.
+-spec create_threat(aws_client:aws_client(), create_threat_input()) ->
+    {ok, create_threat_output(), tuple()} |
+    {error, any()}.
+create_threat(Client, Input) ->
+    create_threat(Client, Input, []).
+
+-spec create_threat(aws_client:aws_client(), create_threat_input(), proplists:proplist()) ->
+    {ok, create_threat_output(), tuple()} |
+    {error, any()}.
+create_threat(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateThreat"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new threat model configuration in an agent space.
+%%
+%% A threat model defines the parameters for automated threat analysis.
+-spec create_threat_model(aws_client:aws_client(), create_threat_model_input()) ->
+    {ok, create_threat_model_output(), tuple()} |
+    {error, any()}.
+create_threat_model(Client, Input) ->
+    create_threat_model(Client, Input, []).
+
+-spec create_threat_model(aws_client:aws_client(), create_threat_model_input(), proplists:proplist()) ->
+    {ok, create_threat_model_output(), tuple()} |
+    {error, any()}.
+create_threat_model(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateThreatModel"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2882,6 +4616,75 @@ delete_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a private connection.
+-spec delete_private_connection(aws_client:aws_client(), delete_private_connection_input()) ->
+    {ok, delete_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_private_connection_errors(), tuple()}.
+delete_private_connection(Client, Input) ->
+    delete_private_connection(Client, Input, []).
+
+-spec delete_private_connection(aws_client:aws_client(), delete_private_connection_input(), proplists:proplist()) ->
+    {ok, delete_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_private_connection_errors(), tuple()}.
+delete_private_connection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeletePrivateConnection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a customer managed security requirement pack and all its
+%% associated security requirements.
+-spec delete_security_requirement_pack(aws_client:aws_client(), delete_security_requirement_pack_input()) ->
+    {ok, delete_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, delete_security_requirement_pack_errors(), tuple()}.
+delete_security_requirement_pack(Client, Input) ->
+    delete_security_requirement_pack(Client, Input, []).
+
+-spec delete_security_requirement_pack(aws_client:aws_client(), delete_security_requirement_pack_input(), proplists:proplist()) ->
+    {ok, delete_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, delete_security_requirement_pack_errors(), tuple()}.
+delete_security_requirement_pack(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteSecurityRequirementPack"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a target domain registration.
 %%
 %% After deletion, the domain can no longer be used for penetration testing.
@@ -2897,6 +4700,40 @@ delete_target_domain(Client, Input) ->
 delete_target_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteTargetDomain"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a private connection.
+-spec describe_private_connection(aws_client:aws_client(), describe_private_connection_input()) ->
+    {ok, describe_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, describe_private_connection_errors(), tuple()}.
+describe_private_connection(Client, Input) ->
+    describe_private_connection(Client, Input, []).
+
+-spec describe_private_connection(aws_client:aws_client(), describe_private_connection_input(), proplists:proplist()) ->
+    {ok, describe_private_connection_output(), tuple()} |
+    {error, any()} |
+    {error, describe_private_connection_errors(), tuple()}.
+describe_private_connection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DescribePrivateConnection"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2998,6 +4835,78 @@ get_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetIntegration"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a security requirement pack.
+-spec get_security_requirement_pack(aws_client:aws_client(), get_security_requirement_pack_input()) ->
+    {ok, get_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, get_security_requirement_pack_errors(), tuple()}.
+get_security_requirement_pack(Client, Input) ->
+    get_security_requirement_pack(Client, Input, []).
+
+-spec get_security_requirement_pack(aws_client:aws_client(), get_security_requirement_pack_input(), proplists:proplist()) ->
+    {ok, get_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, get_security_requirement_pack_errors(), tuple()}.
+get_security_requirement_pack(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetSecurityRequirementPack"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Imports security requirements from uploaded documents into a customer
+%% managed security requirement pack.
+%%
+%% The import process asynchronously extracts and generates structured
+%% security requirements from the provided source files.
+-spec import_security_requirements(aws_client:aws_client(), import_security_requirements_input()) ->
+    {ok, import_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, import_security_requirements_errors(), tuple()}.
+import_security_requirements(Client, Input) ->
+    import_security_requirements(Client, Input, []).
+
+-spec import_security_requirements(aws_client:aws_client(), import_security_requirements_input(), proplists:proplist()) ->
+    {ok, import_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, import_security_requirements_errors(), tuple()}.
+import_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ImportSecurityRequirements"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3518,6 +5427,108 @@ list_pentests(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the private connections in your account.
+-spec list_private_connections(aws_client:aws_client(), list_private_connections_input()) ->
+    {ok, list_private_connections_output(), tuple()} |
+    {error, any()} |
+    {error, list_private_connections_errors(), tuple()}.
+list_private_connections(Client, Input) ->
+    list_private_connections(Client, Input, []).
+
+-spec list_private_connections(aws_client:aws_client(), list_private_connections_input(), proplists:proplist()) ->
+    {ok, list_private_connections_output(), tuple()} |
+    {error, any()} |
+    {error, list_private_connections_errors(), tuple()}.
+list_private_connections(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListPrivateConnections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all security requirement packs in the caller's account.
+-spec list_security_requirement_packs(aws_client:aws_client(), list_security_requirement_packs_input()) ->
+    {ok, list_security_requirement_packs_output(), tuple()} |
+    {error, any()} |
+    {error, list_security_requirement_packs_errors(), tuple()}.
+list_security_requirement_packs(Client, Input) ->
+    list_security_requirement_packs(Client, Input, []).
+
+-spec list_security_requirement_packs(aws_client:aws_client(), list_security_requirement_packs_input(), proplists:proplist()) ->
+    {ok, list_security_requirement_packs_output(), tuple()} |
+    {error, any()} |
+    {error, list_security_requirement_packs_errors(), tuple()}.
+list_security_requirement_packs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListSecurityRequirementPacks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists security requirements within a pack.
+-spec list_security_requirements(aws_client:aws_client(), list_security_requirements_input()) ->
+    {ok, list_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, list_security_requirements_errors(), tuple()}.
+list_security_requirements(Client, Input) ->
+    list_security_requirements(Client, Input, []).
+
+-spec list_security_requirements(aws_client:aws_client(), list_security_requirements_input(), proplists:proplist()) ->
+    {ok, list_security_requirements_output(), tuple()} |
+    {error, any()} |
+    {error, list_security_requirements_errors(), tuple()}.
+list_security_requirements(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListSecurityRequirements"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the tags associated with the specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
@@ -3565,6 +5576,137 @@ list_target_domains(Client, Input) ->
 list_target_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTargetDomains"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of task summaries for the specified threat
+%% model job.
+-spec list_threat_model_job_tasks(aws_client:aws_client(), list_threat_model_job_tasks_input()) ->
+    {ok, list_threat_model_job_tasks_output(), tuple()} |
+    {error, any()}.
+list_threat_model_job_tasks(Client, Input) ->
+    list_threat_model_job_tasks(Client, Input, []).
+
+-spec list_threat_model_job_tasks(aws_client:aws_client(), list_threat_model_job_tasks_input(), proplists:proplist()) ->
+    {ok, list_threat_model_job_tasks_output(), tuple()} |
+    {error, any()}.
+list_threat_model_job_tasks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListThreatModelJobTasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of threat model job summaries for the
+%% specified threat model.
+-spec list_threat_model_jobs(aws_client:aws_client(), list_threat_model_jobs_input()) ->
+    {ok, list_threat_model_jobs_output(), tuple()} |
+    {error, any()}.
+list_threat_model_jobs(Client, Input) ->
+    list_threat_model_jobs(Client, Input, []).
+
+-spec list_threat_model_jobs(aws_client:aws_client(), list_threat_model_jobs_input(), proplists:proplist()) ->
+    {ok, list_threat_model_jobs_output(), tuple()} |
+    {error, any()}.
+list_threat_model_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListThreatModelJobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of threat model summaries for the specified
+%% agent space.
+-spec list_threat_models(aws_client:aws_client(), list_threat_models_input()) ->
+    {ok, list_threat_models_output(), tuple()} |
+    {error, any()}.
+list_threat_models(Client, Input) ->
+    list_threat_models(Client, Input, []).
+
+-spec list_threat_models(aws_client:aws_client(), list_threat_models_input(), proplists:proplist()) ->
+    {ok, list_threat_models_output(), tuple()} |
+    {error, any()}.
+list_threat_models(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListThreatModels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of threats for a threat model job.
+-spec list_threats(aws_client:aws_client(), list_threats_input()) ->
+    {ok, list_threats_output(), tuple()} |
+    {error, any()}.
+list_threats(Client, Input) ->
+    list_threats(Client, Input, []).
+
+-spec list_threats(aws_client:aws_client(), list_threats_input(), proplists:proplist()) ->
+    {ok, list_threats_output(), tuple()} |
+    {error, any()}.
+list_threats(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListThreats"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3688,6 +5830,38 @@ start_pentest_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a new threat model job for a threat model configuration.
+-spec start_threat_model_job(aws_client:aws_client(), start_threat_model_job_input()) ->
+    {ok, start_threat_model_job_output(), tuple()} |
+    {error, any()}.
+start_threat_model_job(Client, Input) ->
+    start_threat_model_job(Client, Input, []).
+
+-spec start_threat_model_job(aws_client:aws_client(), start_threat_model_job_input(), proplists:proplist()) ->
+    {ok, start_threat_model_job_output(), tuple()} |
+    {error, any()}.
+start_threat_model_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartThreatModelJob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops a running code review job.
 %%
 %% The job transitions to a stopping state and then to stopped after cleanup
@@ -3739,6 +5913,38 @@ stop_pentest_job(Client, Input) ->
 stop_pentest_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopPentestJob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running threat model job.
+-spec stop_threat_model_job(aws_client:aws_client(), stop_threat_model_job_input()) ->
+    {ok, stop_threat_model_job_output(), tuple()} |
+    {error, any()}.
+stop_threat_model_job(Client, Input) ->
+    stop_threat_model_job(Client, Input, []).
+
+-spec stop_threat_model_job(aws_client:aws_client(), stop_threat_model_job_input(), proplists:proplist()) ->
+    {ok, stop_threat_model_job_output(), tuple()} |
+    {error, any()}.
+stop_threat_model_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopThreatModelJob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4021,6 +6227,79 @@ update_pentest(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the certificate associated with a private connection.
+%%
+%% Certificates can be added or replaced but not removed.
+-spec update_private_connection_certificate(aws_client:aws_client(), update_private_connection_certificate_input()) ->
+    {ok, update_private_connection_certificate_output(), tuple()} |
+    {error, any()} |
+    {error, update_private_connection_certificate_errors(), tuple()}.
+update_private_connection_certificate(Client, Input) ->
+    update_private_connection_certificate(Client, Input, []).
+
+-spec update_private_connection_certificate(aws_client:aws_client(), update_private_connection_certificate_input(), proplists:proplist()) ->
+    {ok, update_private_connection_certificate_output(), tuple()} |
+    {error, any()} |
+    {error, update_private_connection_certificate_errors(), tuple()}.
+update_private_connection_certificate(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdatePrivateConnectionCertificate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a security requirement pack.
+%%
+%% For customer managed packs, both metadata and status can be updated. For
+%% AWS managed packs, only status can be updated.
+-spec update_security_requirement_pack(aws_client:aws_client(), update_security_requirement_pack_input()) ->
+    {ok, update_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, update_security_requirement_pack_errors(), tuple()}.
+update_security_requirement_pack(Client, Input) ->
+    update_security_requirement_pack(Client, Input, []).
+
+-spec update_security_requirement_pack(aws_client:aws_client(), update_security_requirement_pack_input(), proplists:proplist()) ->
+    {ok, update_security_requirement_pack_output(), tuple()} |
+    {error, any()} |
+    {error, update_security_requirement_pack_errors(), tuple()}.
+update_security_requirement_pack(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateSecurityRequirementPack"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the verification method for a target domain.
 -spec update_target_domain(aws_client:aws_client(), update_target_domain_input()) ->
     {ok, update_target_domain_output(), tuple()} |
@@ -4034,6 +6313,70 @@ update_target_domain(Client, Input) ->
 update_target_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateTargetDomain"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a threat.
+-spec update_threat(aws_client:aws_client(), update_threat_input()) ->
+    {ok, update_threat_output(), tuple()} |
+    {error, any()}.
+update_threat(Client, Input) ->
+    update_threat(Client, Input, []).
+
+-spec update_threat(aws_client:aws_client(), update_threat_input(), proplists:proplist()) ->
+    {ok, update_threat_output(), tuple()} |
+    {error, any()}.
+update_threat(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateThreat"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing threat model configuration.
+-spec update_threat_model(aws_client:aws_client(), update_threat_model_input()) ->
+    {ok, update_threat_model_output(), tuple()} |
+    {error, any()}.
+update_threat_model(Client, Input) ->
+    update_threat_model(Client, Input, []).
+
+-spec update_threat_model(aws_client:aws_client(), update_threat_model_input(), proplists:proplist()) ->
+    {ok, update_threat_model_output(), tuple()} |
+    {error, any()}.
+update_threat_model(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateThreatModel"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

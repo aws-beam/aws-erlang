@@ -41,6 +41,9 @@
          describe_configuration_revision/3,
          describe_configuration_revision/5,
          describe_configuration_revision/6,
+         describe_shared_resources/2,
+         describe_shared_resources/4,
+         describe_shared_resources/5,
          describe_user/3,
          describe_user/5,
          describe_user/6,
@@ -147,6 +150,14 @@
 
 
 %% Example:
+%% describe_shared_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SharedResources">> => list(shared_resource())
+%% }
+-type describe_shared_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_tags_request() :: #{
 %%   <<"TagKeys">> := list(string())
 %% }
@@ -163,7 +174,8 @@
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
 
@@ -234,7 +246,8 @@
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
@@ -322,6 +335,14 @@
 
 
 %% Example:
+%% shared_resource_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type shared_resource_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_tags_request() :: #{
 %%   <<"Tags">> => map()
 %% }
@@ -347,7 +368,8 @@
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
@@ -363,6 +385,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_broker_engine_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_share_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ResourceShareArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type resource_share_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -393,7 +424,8 @@
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
@@ -553,6 +585,18 @@
 
 
 %% Example:
+%% shared_resource() :: #{
+%%   <<"DnsNames">> => list(string()),
+%%   <<"Error">> => shared_resource_error(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceShareArns">> => list(string()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type shared_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_configuration_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AuthenticationStrategy">> => list(any()),
@@ -592,9 +636,18 @@
 
 
 %% Example:
+%% describe_shared_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_shared_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
@@ -660,7 +713,8 @@
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
@@ -680,6 +734,7 @@
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
 %%   <<"PendingDataReplicationMetadata">> => data_replication_metadata_output(),
 %%   <<"PendingDataReplicationMode">> => list(any()),
+%%   <<"ResourceShareArns">> => list(string()),
 %%   <<"SecurityGroups">> => list(string())
 %% }
 -type update_broker_response() :: #{binary() => any()}.
@@ -735,6 +790,7 @@
 %%   <<"LdapServerMetadata">> => ldap_server_metadata_input(),
 %%   <<"Logs">> => logs(),
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
+%%   <<"ResourceShareArns">> => list(string()),
 %%   <<"SecurityGroups">> => list(string())
 %% }
 -type update_broker_request() :: #{binary() => any()}.
@@ -851,6 +907,12 @@
     forbidden_exception().
 
 -type describe_configuration_revision_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_shared_resources_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -1448,6 +1510,48 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the resources shared to a broker.
+-spec describe_shared_resources(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_shared_resources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_shared_resources_errors(), tuple()}.
+describe_shared_resources(Client, BrokerId)
+  when is_map(Client) ->
+    describe_shared_resources(Client, BrokerId, #{}, #{}).
+
+-spec describe_shared_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_shared_resources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_shared_resources_errors(), tuple()}.
+describe_shared_resources(Client, BrokerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_shared_resources(Client, BrokerId, QueryMap, HeadersMap, []).
+
+-spec describe_shared_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_shared_resources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_shared_resources_errors(), tuple()}.
+describe_shared_resources(Client, BrokerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/shared-resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

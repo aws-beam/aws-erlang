@@ -5,7 +5,9 @@
 %% bases.
 -module(aws_bedrock_agent_runtime).
 
--export([create_invocation/3,
+-export([agentic_retrieve_stream/2,
+         agentic_retrieve_stream/3,
+         create_invocation/3,
          create_invocation/4,
          create_session/2,
          create_session/3,
@@ -20,6 +22,8 @@
          get_agent_memory/5,
          get_agent_memory/7,
          get_agent_memory/8,
+         get_document_content/5,
+         get_document_content/6,
          get_execution_flow_snapshot/4,
          get_execution_flow_snapshot/6,
          get_execution_flow_snapshot/7,
@@ -77,6 +81,15 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% retrieval_content() :: #{
+%%   <<"byteContent">> => [binary()],
+%%   <<"mimeType">> => string(),
+%%   <<"text">> => [string()]
+%% }
+-type retrieval_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,6 +159,13 @@
 
 
 %% Example:
+%% agentic_retrieve_response_event() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type agentic_retrieve_response_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -178,6 +198,14 @@
 %%   <<"sessionStatus">> => list(any())
 %% }
 -type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_action() :: #{
+%%   <<"fullDocumentExpansion">> => agentic_retrieve_full_doc_expansion_details(),
+%%   <<"retrieve">> => agentic_retrieve_action_details()
+%% }
+-type agentic_retrieve_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -229,6 +257,23 @@
 
 
 %% Example:
+%% agentic_retrieve_guardrail_warning() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"id">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"version">> => [string()]
+%% }
+-type agentic_retrieve_guardrail_warning() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_failure() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type agentic_retrieve_failure() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_flow_execution_events_response() :: #{
 %%   <<"flowExecutionEvents">> => list(list()),
 %%   <<"nextToken">> => string()
@@ -276,6 +321,20 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% agentic_retrieve_stream_response() :: #{
+%%   <<"stream">> => list()
+%% }
+-type agentic_retrieve_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_message_content() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type agentic_retrieve_message_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -350,6 +409,14 @@
 
 
 %% Example:
+%% knowledge_base_retriever_configuration() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"retrievalOverrides">> => retrieval_overrides()
+%% }
+-type knowledge_base_retriever_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% function_parameter() :: #{
 %%   <<"name">> => [string()],
 %%   <<"type">> => [string()],
@@ -364,6 +431,15 @@
 %%   <<"promptConfigurations">> => list(prompt_configuration())
 %% }
 -type prompt_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_citation() :: #{
+%%   <<"endIndex">> => [integer()],
+%%   <<"references">> => list(agentic_retrieve_citation_reference()),
+%%   <<"startIndex">> => [integer()]
+%% }
+-type agentic_retrieve_citation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -403,6 +479,14 @@
 %%   <<"files">> => list(output_file())
 %% }
 -type inline_agent_file_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_bedrock_guardrail_configuration() :: #{
+%%   <<"guardrailId">> => [string()],
+%%   <<"guardrailVersion">> => [string()]
+%% }
+-type agentic_retrieve_bedrock_guardrail_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,10 +541,41 @@
 
 
 %% Example:
+%% foundation_model_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_trace_event_attributes() :: #{
+%%   <<"actions">> => list(agentic_retrieve_action()),
+%%   <<"failures">> => list(agentic_retrieve_failure()),
+%%   <<"message">> => [string()],
+%%   <<"retrievalMetadata">> => list(agentic_retrieve_source_metadata()),
+%%   <<"retrievalResponse">> => list(agentic_retrieve_trace_result_item()),
+%%   <<"status">> => list(any()),
+%%   <<"step">> => list(any()),
+%%   <<"warnings">> => list(list())
+%% }
+-type agentic_retrieve_trace_event_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% conversation_history() :: #{
 %%   <<"messages">> => list(message())
 %% }
 -type conversation_history() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_trace_result_item() :: #{
+%%   <<"content">> => retrieval_content(),
+%%   <<"metadata">> => map(),
+%%   <<"sourceRetriever">> => agentic_retrieve_source_retriever()
+%% }
+-type agentic_retrieve_trace_result_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,7 +658,9 @@
 %% retrieval_result_location() :: #{
 %%   <<"confluenceLocation">> => retrieval_result_confluence_location(),
 %%   <<"customDocumentLocation">> => retrieval_result_custom_document_location(),
+%%   <<"googleDriveLocation">> => retrieval_result_google_drive_location(),
 %%   <<"kendraDocumentLocation">> => retrieval_result_kendra_document_location(),
+%%   <<"oneDriveLocation">> => retrieval_result_one_drive_location(),
 %%   <<"s3Location">> => retrieval_result_s3_location(),
 %%   <<"salesforceLocation">> => retrieval_result_salesforce_location(),
 %%   <<"sharePointLocation">> => retrieval_result_share_point_location(),
@@ -610,6 +727,21 @@
 
 
 %% Example:
+%% agentic_retrieve_generated_response() :: #{
+%%   <<"answer">> => [string()],
+%%   <<"citations">> => list(agentic_retrieve_citation())
+%% }
+-type agentic_retrieve_generated_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_bedrock_reranking_configuration() :: #{
+%%   <<"modelConfiguration">> => agentic_retrieve_bedrock_reranking_model_configuration()
+%% }
+-type agentic_retrieve_bedrock_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string())
 %% }
@@ -621,7 +753,8 @@
 %%   <<"input">> := retrieve_and_generate_input(),
 %%   <<"retrieveAndGenerateConfiguration">> => retrieve_and_generate_configuration(),
 %%   <<"sessionConfiguration">> => retrieve_and_generate_session_configuration(),
-%%   <<"sessionId">> => string()
+%%   <<"sessionId">> => string(),
+%%   <<"userContext">> => user_context()
 %% }
 -type retrieve_and_generate_request() :: #{binary() => any()}.
 
@@ -633,6 +766,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_message() :: #{
+%%   <<"content">> => agentic_retrieve_message_content(),
+%%   <<"role">> => list(any())
+%% }
+-type agentic_retrieve_message() :: #{binary() => any()}.
 
 %% Example:
 %% get_session_request() :: #{}
@@ -912,6 +1053,19 @@
 
 
 %% Example:
+%% agentic_retrieve_stream_request() :: #{
+%%   <<"agenticRetrieveConfiguration">> := agentic_retrieve_configuration(),
+%%   <<"generateResponse">> => [boolean()],
+%%   <<"messages">> := list(agentic_retrieve_message()),
+%%   <<"nextToken">> => string(),
+%%   <<"policyConfiguration">> => agentic_retrieve_policy_configuration(),
+%%   <<"retrievers">> := list(agentic_retriever()),
+%%   <<"userContext">> => user_context()
+%% }
+-type agentic_retrieve_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"sessionSummaries">> => list(session_summary())
@@ -954,6 +1108,15 @@
 %%   <<"responseState">> => list(any())
 %% }
 -type function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => managed_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
+%% }
+-type managed_search_bedrock_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1021,6 +1184,15 @@
 
 
 %% Example:
+%% agentic_retrieve_trace_event() :: #{
+%%   <<"attributes">> => agentic_retrieve_trace_event_attributes(),
+%%   <<"id">> => [string()],
+%%   <<"timestamp">> => [float()]
+%% }
+-type agentic_retrieve_trace_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_trace_node_input_execution_chain_item() :: #{
 %%   <<"index">> => [integer()],
 %%   <<"nodeName">> => string(),
@@ -1031,6 +1203,7 @@
 
 %% Example:
 %% knowledge_base_retrieval_configuration() :: #{
+%%   <<"managedSearchConfiguration">> => managed_search_configuration(),
 %%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
 %% }
 -type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
@@ -1076,6 +1249,14 @@
 
 
 %% Example:
+%% agentic_retrieve_full_doc_expansion_details() :: #{
+%%   <<"documentId">> => [string()],
+%%   <<"sourceRetriever">> => agentic_retrieve_source_retriever()
+%% }
+-type agentic_retrieve_full_doc_expansion_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_collaborator_invocation_output() :: #{
 %%   <<"agentCollaboratorAliasArn">> => string(),
 %%   <<"agentCollaboratorName">> => [string()],
@@ -1100,6 +1281,20 @@
 %%   <<"nodeName">> => string()
 %% }
 -type flow_trace_node_output_next() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_configuration() :: #{
+%%   <<"modelConfiguration">> => bedrock_foundation_model_model_configuration()
+%% }
+-type bedrock_foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_one_drive_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_one_drive_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1258,6 +1453,22 @@
 
 
 %% Example:
+%% agentic_retrieve_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => agentic_retrieve_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type agentic_retrieve_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type managed_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_confluence_location() :: #{
 %%   <<"url">> => [string()]
 %% }
@@ -1369,6 +1580,13 @@
 %%   <<"uri">> => string()
 %% }
 -type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_source_retriever() :: #{
+%%   <<"identifier">> => [string()]
+%% }
+-type agentic_retrieve_source_retriever() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1493,6 +1711,15 @@
 
 
 %% Example:
+%% agentic_retrieve_result_item() :: #{
+%%   <<"content">> => retrieval_content(),
+%%   <<"metadata">> => map(),
+%%   <<"sourceRetriever">> => agentic_retrieve_source_retriever()
+%% }
+-type agentic_retrieve_result_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_salesforce_location() :: #{
 %%   <<"url">> => [string()]
 %% }
@@ -1508,12 +1735,27 @@
 
 
 %% Example:
+%% agentic_retrieve_warning_message() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type agentic_retrieve_warning_message() :: #{binary() => any()}.
+
+
+%% Example:
 %% end_session_response() :: #{
 %%   <<"sessionArn">> => string(),
 %%   <<"sessionId">> => string(),
 %%   <<"sessionStatus">> => list(any())
 %% }
 -type end_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_document_content_request() :: #{
+%%   <<"outputFormat">> => list(any()),
+%%   <<"userContext">> => user_context()
+%% }
+-type get_document_content_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1539,6 +1781,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retriever() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"description">> => [string()]
+%% }
+-type agentic_retriever() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1569,11 +1819,22 @@
 
 
 %% Example:
+%% managed_search_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"rerankingConfiguration">> => managed_search_reranking_configuration(),
+%%   <<"rerankingModelType">> => list(any())
+%% }
+-type managed_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_stream_request() :: #{
 %%   <<"input">> := retrieve_and_generate_input(),
 %%   <<"retrieveAndGenerateConfiguration">> => retrieve_and_generate_configuration(),
 %%   <<"sessionConfiguration">> => retrieve_and_generate_session_configuration(),
-%%   <<"sessionId">> => string()
+%%   <<"sessionId">> => string(),
+%%   <<"userContext">> => user_context()
 %% }
 -type retrieve_and_generate_stream_request() :: #{binary() => any()}.
 
@@ -1721,6 +1982,14 @@
 %% }
 -type generation_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% managed_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => managed_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type managed_search_reranking_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -1753,6 +2022,13 @@
 
 
 %% Example:
+%% retrieval_result_google_drive_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_google_drive_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% generated_response_part() :: #{
 %%   <<"textResponsePart">> => text_response_part()
 %% }
@@ -1764,6 +2040,14 @@
 %%   <<"invocationStepId">> => string()
 %% }
 -type put_invocation_step_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_overrides() :: #{
+%%   <<"filter">> => list(),
+%%   <<"maxNumberOfResults">> => [integer()]
+%% }
+-type retrieval_overrides() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1785,11 +2069,26 @@
 
 
 %% Example:
+%% agentic_retrieve_source_metadata() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"retrievalType">> => list(any())
+%% }
+-type agentic_retrieve_source_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% metadata_configuration_for_reranking() :: #{
 %%   <<"selectionMode">> => list(any()),
 %%   <<"selectiveModeConfiguration">> => list()
 %% }
 -type metadata_configuration_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_policy_configuration() :: #{
+%%   <<"bedrockGuardrailConfiguration">> => agentic_retrieve_bedrock_guardrail_configuration()
+%% }
+-type agentic_retrieve_policy_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1826,6 +2125,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type generated_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_bedrock_reranking_model_configuration() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type agentic_retrieve_bedrock_reranking_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1912,6 +2218,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type rerank_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_result_event() :: #{
+%%   <<"generatedResponse">> => agentic_retrieve_generated_response(),
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(agentic_retrieve_result_item())
+%% }
+-type agentic_retrieve_result_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2033,6 +2348,13 @@
 
 
 %% Example:
+%% user_context() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type user_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% invocation_step_summary() :: #{
 %%   <<"invocationId">> => string(),
 %%   <<"invocationStepId">> => string(),
@@ -2050,6 +2372,13 @@
 %%   <<"regex">> => [string()]
 %% }
 -type guardrail_regex_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_model_configuration() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type bedrock_foundation_model_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2115,6 +2444,14 @@
 
 
 %% Example:
+%% agentic_retrieve_action_details() :: #{
+%%   <<"inputQuery">> => agentic_retrieve_message_content(),
+%%   <<"sourceRetrievers">> => list(agentic_retrieve_source_retriever())
+%% }
+-type agentic_retrieve_action_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% analyze_prompt_event() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -2138,11 +2475,19 @@
 
 
 %% Example:
+%% agentic_retrieve_citation_reference() :: #{
+%%   <<"resultIndex">> => [integer()]
+%% }
+-type agentic_retrieve_citation_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_request() :: #{
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration(),
-%%   <<"retrievalQuery">> := knowledge_base_query()
+%%   <<"retrievalQuery">> := knowledge_base_query(),
+%%   <<"userContext">> => user_context()
 %% }
 -type retrieve_request() :: #{binary() => any()}.
 
@@ -2185,6 +2530,15 @@
 %%   <<"stream">> => list()
 %% }
 -type retrieve_and_generate_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_document_content_response() :: #{
+%%   <<"documentContentLength">> => [float()],
+%%   <<"mimeType">> => [string()],
+%%   <<"presignedUrl">> => string()
+%% }
+-type get_document_content_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2336,6 +2690,7 @@
 %% Example:
 %% knowledge_base_retrieval_result() :: #{
 %%   <<"content">> => retrieval_result_content(),
+%%   <<"documentId">> => string(),
 %%   <<"location">> => retrieval_result_location(),
 %%   <<"metadata">> => map(),
 %%   <<"score">> => [float()]
@@ -2350,6 +2705,17 @@
 %%   <<"traceElements">> => list()
 %% }
 -type node_dependency_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_configuration() :: #{
+%%   <<"foundationModelConfiguration">> => foundation_model_configuration(),
+%%   <<"foundationModelType">> => list(any()),
+%%   <<"maxAgentIteration">> => [integer()],
+%%   <<"rerankingConfiguration">> => agentic_retrieve_reranking_configuration(),
+%%   <<"rerankingModelType">> => list(any())
+%% }
+-type agentic_retrieve_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2450,6 +2816,17 @@
 %% }
 -type guardrail_event() :: #{binary() => any()}.
 
+-type agentic_retrieve_stream_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
 -type create_invocation_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2515,6 +2892,13 @@
     conflict_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
+
+-type get_document_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_execution_flow_snapshot_errors() ::
     throttling_exception() | 
@@ -2727,6 +3111,51 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Retrieves information from one or more knowledge bases using an
+%% agentic approach.
+%%
+%% Agentic retrieval uses a foundation model to intelligently decompose
+%% complex queries into sub-queries and iteratively retrieve relevant
+%% information from your knowledge bases. This approach improves retrieval
+%% accuracy for complex, multi-step questions that a single retrieval pass
+%% might not fully address.
+%%
+%% The operation returns results through a stream that includes retrieval
+%% results, trace events for visibility into the process, and a generated
+%% response synthesized from the results by default, which can be turned off.
+-spec agentic_retrieve_stream(aws_client:aws_client(), agentic_retrieve_stream_request()) ->
+    {ok, agentic_retrieve_stream_response(), tuple()} |
+    {error, any()} |
+    {error, agentic_retrieve_stream_errors(), tuple()}.
+agentic_retrieve_stream(Client, Input) ->
+    agentic_retrieve_stream(Client, Input, []).
+
+-spec agentic_retrieve_stream(aws_client:aws_client(), agentic_retrieve_stream_request(), proplists:proplist()) ->
+    {ok, agentic_retrieve_stream_response(), tuple()} |
+    {error, any()} |
+    {error, agentic_retrieve_stream_errors(), tuple()}.
+agentic_retrieve_stream(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/agenticRetrieveStream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new invocation within a session.
 %%
@@ -3046,6 +3475,42 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the content of an ingested document from a knowledge base.
+%%
+%% Returns a pre-signed URL for secure document access.
+-spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_document_content_request()) ->
+    {ok, get_document_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_content_errors(), tuple()}.
+get_document_content(Client, DataSourceId, DocumentId, KnowledgeBaseId, Input) ->
+    get_document_content(Client, DataSourceId, DocumentId, KnowledgeBaseId, Input, []).
+
+-spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_document_content_request(), proplists:proplist()) ->
+    {ok, get_document_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_content_errors(), tuple()}.
+get_document_content(Client, DataSourceId, DocumentId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/documents/", aws_util:encode_uri(DocumentId), "/content"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the flow definition snapshot used for a flow execution.
 %%
@@ -3861,6 +4326,13 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
 %%
 %% The response only cites sources that are relevant to the query.
+%%
+%% This API cannot be used with managed knowledge bases. Use
+%% AgenticRetrieveStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_AgenticRetrieveStream.html
+%% or Retrieve:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Retrieve.html
+%% with managed knowledge bases.
 -spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request()) ->
     {ok, retrieve_and_generate_response(), tuple()} |
     {error, any()} |
@@ -3896,6 +4368,13 @@ retrieve_and_generate(Client, Input0, Options0) ->
 
 %% @doc Queries a knowledge base and generates responses based on the
 %% retrieved results, with output in streaming format.
+%%
+%% This API cannot be used with managed knowledge bases. Use
+%% AgenticRetrieveStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_AgenticRetrieveStream.html
+%% or Retrieve:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Retrieve.html
+%% with managed knowledge bases.
 %%
 %% The CLI doesn't support streaming operations in Amazon Bedrock,
 %% including `InvokeModelWithResponseStream'.
