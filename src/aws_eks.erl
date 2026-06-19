@@ -1413,6 +1413,7 @@
 
 %% Example:
 %% vpc_config_request() :: #{
+%%   <<"controlPlaneEgressMode">> => list(any()),
 %%   <<"endpointPrivateAccess">> => boolean(),
 %%   <<"endpointPublicAccess">> => boolean(),
 %%   <<"publicAccessCidrs">> => list(string()),
@@ -2130,6 +2131,7 @@
 %% Example:
 %% vpc_config_response() :: #{
 %%   <<"clusterSecurityGroupId">> => string(),
+%%   <<"controlPlaneEgressMode">> => list(any()),
 %%   <<"endpointPrivateAccess">> => boolean(),
 %%   <<"endpointPublicAccess">> => boolean(),
 %%   <<"publicAccessCidrs">> => list(string()),

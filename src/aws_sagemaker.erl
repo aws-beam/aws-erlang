@@ -3827,6 +3827,12 @@
 -type list_inference_components_input() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_patch_schedule_details() :: #{
+%%   <<"NextPatchDate">> => non_neg_integer()
+%% }
+-type cluster_patch_schedule_details() :: #{binary() => any()}.
+
+%% Example:
 %% capture_content_type_header() :: #{
 %%   <<"CsvContentTypes">> => list(string()),
 %%   <<"JsonContentTypes">> => list(string())
@@ -5033,6 +5039,7 @@
 
 %% Example:
 %% update_cluster_software_instance_group_specification() :: #{
+%%   <<"ImageReleaseVersion">> => string(),
 %%   <<"InstanceGroupName">> => string()
 %% }
 -type update_cluster_software_instance_group_specification() :: #{binary() => any()}.
@@ -5526,6 +5533,7 @@
 %%   <<"ClusterName">> => string(),
 %%   <<"ClusterStatus">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"TrainingPlanArns">> => list(string())
 %% }
 -type cluster_summary() :: #{binary() => any()}.
@@ -7242,6 +7250,15 @@
 -type update_devices_request() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_auto_patch_config_details() :: #{
+%%   <<"CurrentPatchSchedule">> => cluster_patch_schedule_details(),
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"DesiredPatchSchedule">> => cluster_patch_schedule_details(),
+%%   <<"PatchingStrategy">> => list(any())
+%% }
+-type cluster_auto_patch_config_details() :: #{binary() => any()}.
+
+%% Example:
 %% profiler_rule_configuration() :: #{
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LocalPath">> => string(),
@@ -7371,6 +7388,12 @@
 -type checkpoint_config() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_patch_schedule() :: #{
+%%   <<"NextPatchDate">> => non_neg_integer()
+%% }
+-type cluster_patch_schedule() :: #{binary() => any()}.
+
+%% Example:
 %% ultra_server_info() :: #{
 %%   <<"Id">> => [string()],
 %%   <<"Type">> => [string()]
@@ -7408,6 +7431,14 @@
 %%   <<"VolumeId">> := string()
 %% }
 -type detach_cluster_node_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_patch_config() :: #{
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"PatchSchedule">> => cluster_patch_schedule(),
+%%   <<"PatchingStrategy">> => list(any())
+%% }
+-type cluster_auto_patch_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hub_content_request() :: #{
@@ -8350,6 +8381,7 @@
 
 %% Example:
 %% cluster_node_summary() :: #{
+%%   <<"CurrentImageReleaseVersion">> => string(),
 %%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
@@ -12312,9 +12344,11 @@
 
 %% Example:
 %% cluster_instance_group_specification() :: #{
+%%   <<"AutoPatchConfig">> => cluster_auto_patch_config(),
 %%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"ImageId">> => string(),
+%%   <<"ImageReleaseVersion">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceRequirements">> => cluster_instance_requirements(),
@@ -14149,10 +14183,13 @@
 %% cluster_instance_group_details() :: #{
 %%   <<"ActiveOperations">> => map(),
 %%   <<"ActiveSoftwareUpdateConfig">> => deployment_configuration(),
+%%   <<"AutoPatchConfig">> => cluster_auto_patch_config_details(),
 %%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
 %%   <<"CurrentCount">> => integer(),
 %%   <<"CurrentImageId">> => string(),
+%%   <<"CurrentImageReleaseVersion">> => string(),
 %%   <<"DesiredImageId">> => string(),
+%%   <<"DesiredImageReleaseVersion">> => string(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
@@ -14462,7 +14499,9 @@
 %% cluster_node_details() :: #{
 %%   <<"CapacityType">> => list(any()),
 %%   <<"CurrentImageId">> => string(),
+%%   <<"CurrentImageReleaseVersion">> => string(),
 %%   <<"DesiredImageId">> => string(),
+%%   <<"DesiredImageReleaseVersion">> => string(),
 %%   <<"ImageVersionStatus">> => list(any()),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],

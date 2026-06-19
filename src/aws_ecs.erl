@@ -507,6 +507,13 @@
 -type attribute_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% metric_configuration() :: #{
+%%   <<"metricNames">> => list(string()),
+%%   <<"resolutionSeconds">> => integer()
+%% }
+-type metric_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% setting() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"principalArn">> => string(),
@@ -951,6 +958,12 @@
 %%   <<"targetServiceRevisionArn">> => string()
 %% }
 -type service_deployment_brief() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"metricConfigurations">> => list(metric_configuration())
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% task_volume_configuration() :: #{
@@ -1685,6 +1698,7 @@
 %%   <<"healthCheckGracePeriodSeconds">> => integer(),
 %%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"monitoring">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"placementConstraints">> => list(placement_constraint()),
 %%   <<"placementStrategy">> => list(placement_strategy()),
@@ -2117,6 +2131,7 @@
 %%   <<"forceNewDeployment">> => boolean(),
 %%   <<"healthCheckGracePeriodSeconds">> => integer(),
 %%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"monitoring">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"placementConstraints">> => list(placement_constraint()),
 %%   <<"placementStrategy">> => list(placement_strategy()),
@@ -3019,6 +3034,7 @@
 %%   <<"guardDutyEnabled">> => boolean(),
 %%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"monitoring">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"platformFamily">> => string(),
 %%   <<"platformVersion">> => string(),

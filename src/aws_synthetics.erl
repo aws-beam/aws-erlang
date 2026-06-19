@@ -153,6 +153,7 @@
 
 %% Example:
 %% create_canary_request() :: #{
+%%   <<"AddReplicaLocations">> => list(add_replica_location_input()),
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> := string(),
 %%   <<"BrowserConfigs">> => list(browser_config()),
@@ -279,6 +280,7 @@
 %%   <<"BrowserType">> => list(any()),
 %%   <<"DryRunConfig">> => canary_dry_run_config_output(),
 %%   <<"Id">> => string(),
+%%   <<"Location">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RetryAttempt">> => integer(),
 %%   <<"ScheduledRunId">> => string(),
@@ -328,6 +330,7 @@
 
 %% Example:
 %% update_canary_request() :: #{
+%%   <<"AddReplicaLocations">> => list(add_replica_location_input()),
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> => string(),
 %%   <<"BrowserConfigs">> => list(browser_config()),
@@ -336,6 +339,7 @@
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"ProvisionedResourceCleanup">> => list(any()),
+%%   <<"RemoveReplicaLocations">> => list(string()),
 %%   <<"RunConfig">> => canary_run_config_input(),
 %%   <<"RuntimeVersion">> => string(),
 %%   <<"Schedule">> => canary_schedule_input(),
@@ -479,6 +483,15 @@
 
 
 %% Example:
+%% replication_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => string()
+%% }
+-type replication_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_canaries_last_run_request() :: #{
 %%   <<"BrowserType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -501,6 +514,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_runtime_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_location_config() :: #{
+%%   <<"LocationType">> => list(any()),
+%%   <<"PrimaryLocation">> => string(),
+%%   <<"Replicas">> => list(replica()),
+%%   <<"ReplicationState">> => list(any())
+%% }
+-type multi_location_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -550,6 +573,14 @@
 
 
 %% Example:
+%% add_replica_location_input() :: #{
+%%   <<"Location">> => string(),
+%%   <<"VpcConfig">> => vpc_config_input()
+%% }
+-type add_replica_location_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% engine_config() :: #{
 %%   <<"BrowserType">> => list(any()),
 %%   <<"EngineArn">> => string()
@@ -583,6 +614,7 @@
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"Id">> => string(),
+%%   <<"MultiLocationConfig">> => multi_location_config(),
 %%   <<"Name">> => string(),
 %%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"RunConfig">> => canary_run_config_output(),
@@ -670,6 +702,17 @@
 %% Example:
 %% delete_group_request() :: #{}
 -type delete_group_request() :: #{}.
+
+
+%% Example:
+%% replica() :: #{
+%%   <<"CanaryState">> => list(any()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Location">> => string(),
+%%   <<"ReplicationStatus">> => replication_status(),
+%%   <<"VpcConfig">> => vpc_config_output()
+%% }
+-type replica() :: #{binary() => any()}.
 
 
 %% Example:

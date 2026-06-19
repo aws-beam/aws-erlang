@@ -1877,7 +1877,8 @@
 
 %% Example:
 %% custom_domain_config_type() :: #{
-%%   <<"CertificateArn">> => string()
+%%   <<"CertificateArn">> => string(),
+%%   <<"SecurityPolicy">> => list(any())
 %% }
 -type custom_domain_config_type() :: #{binary() => any()}.
 

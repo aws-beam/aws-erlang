@@ -397,11 +397,14 @@
 
 %% Example:
 %% create_fhir_datastore_request() :: #{
+%%   <<"AnalyticsConfiguration">> => analytics_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DatastoreName">> => string(),
 %%   <<"DatastoreTypeVersion">> := list(any()),
 %%   <<"IdentityProviderConfiguration">> => identity_provider_configuration(),
+%%   <<"NlpConfiguration">> => nlp_configuration(),
 %%   <<"PreloadDataConfig">> => preload_data_config(),
+%%   <<"ProfileConfiguration">> => profile_configuration(),
 %%   <<"SseConfiguration">> => sse_configuration(),
 %%   <<"Tags">> => list(tag())
 %% }

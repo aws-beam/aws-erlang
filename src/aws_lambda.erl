@@ -505,6 +505,14 @@
 
 
 %% Example:
+%% mode_not_supported_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type mode_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_layer_version_permission_request() :: #{
 %%   <<"RevisionId">> => string()
 %% }
@@ -885,6 +893,14 @@
 
 
 %% Example:
+%% e_n_i_not_ready_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_n_i_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% ec2_access_denied_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -981,6 +997,14 @@
 %%   <<"Qualifier">> => string()
 %% }
 -type get_function_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_artifact_user_failed_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_failed_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1168,6 +1192,14 @@
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
 -type create_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type alias_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1378,6 +1410,14 @@
 
 
 %% Example:
+%% code_artifact_user_pending_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_pending_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_function_url_config_response() :: #{
 %%   <<"AuthType">> => list(any()),
 %%   <<"Cors">> => cors(),
@@ -1445,6 +1485,14 @@
 %%   <<"NextMarker">> => string()
 %% }
 -type list_capacity_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1944,6 +1992,14 @@
 
 
 %% Example:
+%% code_artifact_user_deleted_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_deleted_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_functions_request() :: #{
 %%   <<"FunctionVersion">> => list(any()),
 %%   <<"Marker">> => string(),
@@ -2117,6 +2173,14 @@
 %%   <<"Type">> => string()
 %% }
 -type kms_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_regeneration_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_regeneration_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2609,6 +2673,14 @@
 
 
 %% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% ec2_unexpected_exception() :: #{
 %%   <<"EC2ErrorCode">> => string(),
 %%   <<"Message">> => string(),
@@ -3014,6 +3086,7 @@
 -type add_permission_errors() ::
     resource_conflict_exception() | 
     precondition_failed_exception() | 
+    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -3030,6 +3103,7 @@
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    alias_limit_exceeded_exception() | 
     too_many_requests_exception().
 
 -type create_capacity_provider_errors() ::
@@ -3073,6 +3147,7 @@
     resource_conflict_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type delete_capacity_provider_errors() ::
@@ -3128,11 +3203,14 @@
 -type delete_function_url_config_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
+    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type delete_layer_version_errors() ::
     service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type delete_provisioned_concurrency_config_errors() ::
@@ -3195,6 +3273,7 @@
 -type get_function_code_signing_config_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
@@ -3286,14 +3365,18 @@
     e_n_i_limit_reached_exception() | 
     e_f_s_mount_connectivity_exception() | 
     e_f_s_mount_timeout_exception() | 
+    snap_start_regeneration_failure_exception() | 
     kms_not_found_exception() | 
     invalid_zip_file_exception() | 
     kms_access_denied_exception() | 
+    code_artifact_user_deleted_exception() | 
     request_too_large_exception() | 
     s3_files_mount_failure_exception() | 
     subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
+    service_quota_exceeded_exception() | 
+    code_artifact_user_pending_exception() | 
     durable_execution_already_started_exception() | 
     resource_not_found_exception() | 
     invalid_request_content_exception() | 
@@ -3303,18 +3386,45 @@
     snap_start_timeout_exception() | 
     s3_files_mount_connectivity_exception() | 
     too_many_requests_exception() | 
+    code_artifact_user_failed_exception() | 
     snap_start_not_ready_exception() | 
     ec2_access_denied_exception() | 
+    e_n_i_not_ready_exception() | 
+    mode_not_supported_exception() | 
     invalid_security_group_id_exception() | 
     kms_disabled_exception() | 
     unsupported_media_type_exception().
 
 -type invoke_async_errors() ::
+    snap_start_exception() | 
+    s3_files_mount_timeout_exception() | 
     resource_conflict_exception() | 
+    invalid_subnet_id_exception() | 
+    kms_invalid_state_exception() | 
+    e_f_s_i_o_exception() | 
+    ec2_throttled_exception() | 
+    ec2_unexpected_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    snap_start_regeneration_failure_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    s3_files_mount_failure_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_request_content_exception() | 
-    invalid_runtime_exception().
+    invalid_runtime_exception() | 
+    snap_start_timeout_exception() | 
+    s3_files_mount_connectivity_exception() | 
+    snap_start_not_ready_exception() | 
+    ec2_access_denied_exception() | 
+    mode_not_supported_exception() | 
+    invalid_security_group_id_exception() | 
+    kms_disabled_exception().
 
 -type invoke_with_response_stream_errors() ::
     snap_start_exception() | 
@@ -3331,6 +3441,7 @@
     e_n_i_limit_reached_exception() | 
     e_f_s_mount_connectivity_exception() | 
     e_f_s_mount_timeout_exception() | 
+    snap_start_regeneration_failure_exception() | 
     kms_not_found_exception() | 
     invalid_zip_file_exception() | 
     kms_access_denied_exception() | 
@@ -3339,6 +3450,7 @@
     subnet_ip_address_limit_reached_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_request_content_exception() | 
     invalid_runtime_exception() | 
@@ -3513,6 +3625,7 @@
 
 -type remove_permission_errors() ::
     precondition_failed_exception() | 
+    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -3521,18 +3634,21 @@
 -type send_durable_execution_callback_failure_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     callback_timeout_exception() | 
     too_many_requests_exception().
 
 -type send_durable_execution_callback_heartbeat_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     callback_timeout_exception() | 
     too_many_requests_exception().
 
 -type send_durable_execution_callback_success_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     callback_timeout_exception() | 
     too_many_requests_exception().
 

@@ -631,6 +631,7 @@
 %%   <<"DependsOn">> => list(container_dependency()),
 %%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"ImageUri">> => string(),
+%%   <<"LinuxCapabilities">> => linux_capabilities(),
 %%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"ServerSdkVersion">> => string()
@@ -680,6 +681,7 @@
 %%   <<"Essential">> => boolean(),
 %%   <<"HealthCheck">> => container_health_check(),
 %%   <<"ImageUri">> => string(),
+%%   <<"LinuxCapabilities">> => linux_capabilities(),
 %%   <<"MemoryHardLimitMebibytes">> => integer(),
 %%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
@@ -1198,6 +1200,7 @@
 %%   <<"Essential">> => boolean(),
 %%   <<"HealthCheck">> => container_health_check(),
 %%   <<"ImageUri">> => string(),
+%%   <<"LinuxCapabilities">> => linux_capabilities(),
 %%   <<"MemoryHardLimitMebibytes">> => integer(),
 %%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
@@ -2274,6 +2277,12 @@
 -type alias() :: #{binary() => any()}.
 
 %% Example:
+%% linux_capabilities() :: #{
+%%   <<"Include">> => list(list(any())())
+%% }
+-type linux_capabilities() :: #{binary() => any()}.
+
+%% Example:
 %% update_runtime_configuration_output() :: #{
 %%   <<"RuntimeConfiguration">> => runtime_configuration()
 %% }
@@ -2776,6 +2785,7 @@
 %%   <<"ContainerGroupDefinitionArn">> => string(),
 %%   <<"ContainerGroupPortMappings">> => list(container_group_port_mapping()),
 %%   <<"ContainerGroupType">> => list(any()),
+%%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"Location">> => string()
@@ -2842,6 +2852,7 @@
 %%   <<"DependsOn">> => list(container_dependency()),
 %%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"ImageUri">> => string(),
+%%   <<"LinuxCapabilities">> => linux_capabilities(),
 %%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"ResolvedImageDigest">> => string(),
@@ -4469,11 +4480,11 @@ create_container_fleet(Client, Input, Options)
 %%
 %% `ContainerGroupType' (`GAME_SERVER')
 %%
-%% `OperatingSystem' (omit to use default value)
+%% `OperatingSystem'
 %%
-%% `TotalMemoryLimitMebibytes' (omit to use default value)
+%% `TotalMemoryLimitMebibytes'
 %%
-%% `TotalVcpuLimit '(omit to use default value)
+%% `TotalVcpuLimit'
 %%
 %% At least one `GameServerContainerDefinition'
 %%
@@ -4483,7 +4494,7 @@ create_container_fleet(Client, Input, Options)
 %%
 %% `PortConfiguration'
 %%
-%% `ServerSdkVersion' (omit to use default value)
+%% `ServerSdkVersion'
 %%
 %% Create a per-instance container group definition. Provide the following
 %% required parameter
@@ -4493,11 +4504,11 @@ create_container_fleet(Client, Input, Options)
 %%
 %% `ContainerGroupType' (`PER_INSTANCE')
 %%
-%% `OperatingSystem' (omit to use default value)
+%% `OperatingSystem'
 %%
-%% `TotalMemoryLimitMebibytes' (omit to use default value)
+%% `TotalMemoryLimitMebibytes'
 %%
-%% `TotalVcpuLimit '(omit to use default value)
+%% `TotalVcpuLimit'
 %%
 %% At least one `SupportContainerDefinition'
 %%
@@ -5329,6 +5340,23 @@ create_script(Client, Input, Options)
 %% must create or
 %% delete the peering connection while the authorization is valid.
 %%
+%% Amazon GameLift Servers uses the caller's credentials to update
+%% peer-VPC resources. The IAM user
+%% that calls this operation must have the following Amazon EC2 permissions
+%% enabled:
+%%
+%% `ec2:AcceptVpcPeeringConnection'
+%%
+%% `ec2:AuthorizeSecurityGroupEgress'
+%%
+%% `ec2:AuthorizeSecurityGroupIngress'
+%%
+%% `ec2:CreateRoute'
+%%
+%% `ec2:DescribeRouteTables'
+%%
+%% `ec2:DescribeSecurityGroups'
+%%
 %% Related actions
 %%
 %% All APIs by task:
@@ -5394,6 +5422,23 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% or failure using DescribeFleetEvents:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetEvents.html
 %% .
+%%
+%% Amazon GameLift Servers uses the caller's credentials to update
+%% peer-VPC resources. The IAM user
+%% that calls this operation must have the following Amazon EC2 permissions
+%% enabled:
+%%
+%% `ec2:AcceptVpcPeeringConnection'
+%%
+%% `ec2:AuthorizeSecurityGroupEgress'
+%%
+%% `ec2:AuthorizeSecurityGroupIngress'
+%%
+%% `ec2:CreateRoute'
+%%
+%% `ec2:DescribeRouteTables'
+%%
+%% `ec2:DescribeSecurityGroups'
 %%
 %% Related actions
 %%
@@ -6264,7 +6309,8 @@ describe_container_group_definition(Client, Input, Options)
 %%
 %% Results
 %%
-%% This operation returns the fleet ID, location, container group definition
+%% This operation returns the fleet ID, fleet ARN, location, container group
+%% definition
 %% ARN, container group type, compute name (for game server container
 %% groups), instance ID,
 %% and a list of `ContainerGroupPortMapping' objects. Each object
@@ -6596,9 +6642,6 @@ describe_fleet_events(Client, Input, Options)
 %% requested
 %% location. If the fleet does not have a requested location, no information
 %% is returned.
-%% This operation does not return the home Region. To get information on a
-%% fleet's home
-%% Region, call `DescribeFleetAttributes'.
 %%
 %% Learn more
 %%
@@ -9690,8 +9733,9 @@ update_container_fleet(Client, Input, Options)
 %% change only.
 %% All other values remain the same as the source version.
 %%
-%% Change a game server container definition. Provide the updated container
-%% definition.
+%% Change a game server container definition. Provide a complete set of
+%% container
+%% definitions, including the updated definition.
 %%
 %% Add or change a support container definition. Provide a complete set of
 %% container
@@ -9892,8 +9936,8 @@ update_fleet_capacity(Client, Input, Options)
 %% `InboundPermissionRevocations'. Permissions to be removed must match
 %% existing fleet permissions.
 %%
-%% If successful, the fleet ID for the updated fleet is returned. For fleets
-%% with remote
+%% If successful, the fleet identifiers for the updated fleet are returned.
+%% For fleets with remote
 %% locations, port setting updates can take time to propagate across all
 %% locations. You can
 %% check the status of updates in each location by calling
@@ -9997,6 +10041,15 @@ update_game_server(Client, Input, Options)
 %% Amazon GameLift Servers FleetIQ can continue to perform instance balancing
 %% activity. If successful, a
 %% `GameServerGroup' object is returned.
+%%
+%% Target tracking Auto Scaling policies on the Auto Scaling group cannot be
+%% updated through the Amazon Web Services Management Console. Instead, use
+%% the Amazon Elastic Compute Cloud Auto Scaling
+%%
+%% `PutScalingPolicy'
+%% :
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutScalingPolicy.html
+%% API action to update these policies.
 %%
 %% Learn more
 %%
