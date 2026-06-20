@@ -1676,9 +1676,12 @@
 %% }
 -type field_for_reranking() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_flow_version_request() :: #{}
--type get_flow_version_request() :: #{}.
+%% get_flow_version_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_flow_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2183,6 +2186,7 @@
 
 %% Example:
 %% get_prompt_request() :: #{
+%%   <<"includedData">> => list(any()),
 %%   <<"promptVersion">> => string()
 %% }
 -type get_prompt_request() :: #{binary() => any()}.
@@ -3177,9 +3181,12 @@
 %% }
 -type redshift_query_engine_redshift_storage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_flow_request() :: #{}
--type get_flow_request() :: #{}.
+%% get_flow_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5440,7 +5447,11 @@ get_flow(Client, FlowIdentifier, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"includedData">>, maps:get(<<"includedData">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5522,7 +5533,11 @@ get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap, Opti
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"includedData">>, maps:get(<<"includedData">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5686,6 +5701,7 @@ get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"includedData">>, maps:get(<<"includedData">>, QueryMap, undefined)},
         {<<"promptVersion">>, maps:get(<<"promptVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

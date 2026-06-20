@@ -480,8 +480,8 @@
          resume_workflow_run/3,
          run_statement/2,
          run_statement/3,
-         search/2,
-         search/3,
+         search_assets/2,
+         search_assets/3,
          search_tables/2,
          search_tables/3,
          start_blueprint_run/2,
@@ -2486,16 +2486,6 @@
 -type create_custom_entity_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% search_input() :: #{
-%%   <<"FilterClause">> => list(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchText">> => string(),
-%%   <<"Sort">> => search_sort()
-%% }
--type search_input() :: #{binary() => any()}.
-
-%% Example:
 %% iceberg_sort_order() :: #{
 %%   <<"Fields">> => list(iceberg_sort_field()),
 %%   <<"OrderId">> => integer()
@@ -2548,6 +2538,13 @@
 %%   <<"Version">> => string()
 %% }
 -type dynamic_transform() :: #{binary() => any()}.
+
+%% Example:
+%% search_assets_output() :: #{
+%%   <<"Items">> => list(search_result_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_assets_output() :: #{binary() => any()}.
 
 %% Example:
 %% integration_error() :: #{
@@ -3814,16 +3811,9 @@
 -type stop_trigger_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_output() :: #{
-%%   <<"Items">> => list(search_result_item()),
-%%   <<"NextToken">> => string()
-%% }
--type search_output() :: #{binary() => any()}.
-
-%% Example:
 %% disassociate_glossary_terms_response() :: #{
-%%   <<"GlossaryTerms">> => list(string()),
-%%   <<"Identifier">> => string()
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"GlossaryTerms">> => list(string())
 %% }
 -type disassociate_glossary_terms_response() :: #{binary() => any()}.
 
@@ -4619,8 +4609,8 @@
 
 %% Example:
 %% associate_glossary_terms_response() :: #{
-%%   <<"GlossaryTerms">> => list(string()),
-%%   <<"Identifier">> => string()
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"GlossaryTerms">> => list(string())
 %% }
 -type associate_glossary_terms_response() :: #{binary() => any()}.
 
@@ -5022,7 +5012,8 @@
 
 %% Example:
 %% delete_attachment_request() :: #{
-
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type delete_attachment_request() :: #{binary() => any()}.
 
@@ -5065,7 +5056,7 @@
 
 %% Example:
 %% put_attachment_response() :: #{
-%%   <<"AssetId">> => string(),
+%%   <<"AssetIdentifier">> => string(),
 %%   <<"AttachmentName">> => string(),
 %%   <<"FormTypeId">> => string(),
 %%   <<"ItemIdentifier">> => string(),
@@ -8685,6 +8676,16 @@
 -type streaming_data_preview_options() :: #{binary() => any()}.
 
 %% Example:
+%% search_assets_input() :: #{
+%%   <<"FilterClause">> => list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchText">> => string(),
+%%   <<"Sort">> => search_sort()
+%% }
+-type search_assets_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_asset_type_response() :: #{
 
 %% }
@@ -9489,7 +9490,7 @@
 
 %% Example:
 %% delete_attachment_response() :: #{
-%%   <<"Identifier">> => string()
+%%   <<"AssetIdentifier">> => string()
 %% }
 -type delete_attachment_response() :: #{binary() => any()}.
 
@@ -11671,7 +11672,7 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
--type search_errors() ::
+-type search_assets_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
@@ -16731,21 +16732,21 @@ run_statement(Client, Input, Options)
 %% filters, sorting, and aggregations.
 %%
 %% Returns matching assets with relevance-ranked results.
--spec search(aws_client:aws_client(), search_input()) ->
-    {ok, search_output(), tuple()} |
+-spec search_assets(aws_client:aws_client(), search_assets_input()) ->
+    {ok, search_assets_output(), tuple()} |
     {error, any()} |
-    {error, search_errors(), tuple()}.
-search(Client, Input)
+    {error, search_assets_errors(), tuple()}.
+search_assets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    search(Client, Input, []).
+    search_assets(Client, Input, []).
 
--spec search(aws_client:aws_client(), search_input(), proplists:proplist()) ->
-    {ok, search_output(), tuple()} |
+-spec search_assets(aws_client:aws_client(), search_assets_input(), proplists:proplist()) ->
+    {ok, search_assets_output(), tuple()} |
     {error, any()} |
-    {error, search_errors(), tuple()}.
-search(Client, Input, Options)
+    {error, search_assets_errors(), tuple()}.
+search_assets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"Search">>, Input, Options).
+    request(Client, <<"SearchAssets">>, Input, Options).
 
 %% @doc Searches a set of tables based on properties in the table metadata as
 %% well as on the parent database.

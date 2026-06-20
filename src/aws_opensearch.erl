@@ -25,6 +25,8 @@
          associate_package/5,
          associate_packages/2,
          associate_packages/3,
+         attach_data_source/3,
+         attach_data_source/4,
          authorize_vpc_endpoint_access/3,
          authorize_vpc_endpoint_access/4,
          cancel_domain_config_change/3,
@@ -63,6 +65,8 @@
          delete_vpc_endpoint/4,
          deregister_capability/4,
          deregister_capability/5,
+         describe_data_source_attachment/3,
+         describe_data_source_attachment/4,
          describe_domain/2,
          describe_domain/4,
          describe_domain/5,
@@ -105,6 +109,8 @@
          describe_reserved_instances/4,
          describe_vpc_endpoints/2,
          describe_vpc_endpoints/3,
+         detach_data_source/3,
+         detach_data_source/4,
          dissociate_package/4,
          dissociate_package/5,
          dissociate_packages/2,
@@ -145,6 +151,8 @@
          list_applications/1,
          list_applications/3,
          list_applications/4,
+         list_data_source_attachments/3,
+         list_data_source_attachments/4,
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
@@ -447,6 +455,13 @@
 %%   <<"AuthorizedPrincipal">> => authorized_principal()
 %% }
 -type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_data_source_request() :: #{
+%%   <<"dataSourceArn">> := string()
+%% }
+-type detach_data_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -789,6 +804,16 @@
 %% Example:
 %% delete_inbound_connection_request() :: #{}
 -type delete_inbound_connection_request() :: #{}.
+
+
+%% Example:
+%% attach_data_source_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataSourceArn">> := string(),
+%%   <<"workspaceConfiguration">> => workspace_configuration_input(),
+%%   <<"workspaceId">> => string()
+%% }
+-type attach_data_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1500,6 +1525,13 @@
 
 
 %% Example:
+%% describe_data_source_attachment_request() :: #{
+%%   <<"dataSourceArn">> := string()
+%% }
+-type describe_data_source_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dependency_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1521,6 +1553,15 @@
 
 
 %% Example:
+%% data_source_attachment_summary() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type data_source_attachment_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_vpc_endpoints_response() :: #{
 %%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
 %%   <<"VpcEndpoints">> => list(vpc_endpoint())
@@ -1533,6 +1574,14 @@
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type delete_inbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_configuration_input() :: #{
+%%   <<"name">> => string(),
+%%   <<"workspaceType">> => string()
+%% }
+-type workspace_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1551,6 +1600,14 @@
 %% Example:
 %% delete_data_source_request() :: #{}
 -type delete_data_source_request() :: #{}.
+
+
+%% Example:
+%% list_data_source_attachments_response() :: #{
+%%   <<"attachments">> => list(data_source_attachment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_attachments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1851,6 +1908,17 @@
 %%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
 %% }
 -type iam_identity_center_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_source_attachment_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_data_source_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% dissociate_package_request() :: #{}
@@ -2205,6 +2273,14 @@
 %%   <<"message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_attachments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_attachments_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2917,6 +2993,17 @@
 
 
 %% Example:
+%% attach_data_source_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type attach_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% upgrade_step_item() :: #{
 %%   <<"Issues">> => list(string()),
 %%   <<"ProgressPercent">> => float(),
@@ -2973,6 +3060,15 @@
 %% Example:
 %% get_index_request() :: #{}
 -type get_index_request() :: #{}.
+
+
+%% Example:
+%% detach_data_source_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type detach_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3178,6 +3274,14 @@
     conflict_exception() | 
     disabled_operation_exception().
 
+-type attach_data_source_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
 -type authorize_vpc_endpoint_access_errors() ::
     limit_exceeded_exception() | 
     base_exception() | 
@@ -3318,6 +3422,13 @@
     conflict_exception() | 
     disabled_operation_exception().
 
+-type describe_data_source_attachment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type describe_domain_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -3418,6 +3529,14 @@
     internal_exception() | 
     disabled_operation_exception().
 
+-type detach_data_source_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
 -type dissociate_package_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -3516,6 +3635,13 @@
 
 -type list_applications_errors() ::
     base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_data_source_attachments_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
@@ -3971,6 +4097,51 @@ associate_packages(Client, Input) ->
 associate_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/associateMultiple"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Attaches a data source to an OpenSearch application.
+%%
+%% The data source can be an Amazon OpenSearch Service domain or an Amazon
+%% OpenSearch Serverless collection. If both the application and data source
+%% are in the `ACTIVE' state, the attachment completes immediately and
+%% returns a status of `ATTACHED'. If either resource is not yet active,
+%% the operation stores the request and returns a status of `PENDING'. A
+%% background process then completes the attachment when both resources
+%% become active. Pending attachments that are not completed within 24 hours
+%% are marked as `FAILED'. This operation is idempotent. If a data source
+%% is already attached or pending for the same application, the existing
+%% attachment is returned.
+-spec attach_data_source(aws_client:aws_client(), binary() | list(), attach_data_source_request()) ->
+    {ok, attach_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, attach_data_source_errors(), tuple()}.
+attach_data_source(Client, Id, Input) ->
+    attach_data_source(Client, Id, Input, []).
+
+-spec attach_data_source(aws_client:aws_client(), binary() | list(), attach_data_source_request(), proplists:proplist()) ->
+    {ok, attach_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, attach_data_source_errors(), tuple()}.
+attach_data_source(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), "/attachDataSource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4704,6 +4875,44 @@ deregister_capability(Client, ApplicationId, CapabilityName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the current status and details of a specific data source
+%% attachment for an OpenSearch application.
+%%
+%% Throws a `ResourceNotFoundException' if no attachment record exists
+%% for the specified application and data source combination.
+-spec describe_data_source_attachment(aws_client:aws_client(), binary() | list(), describe_data_source_attachment_request()) ->
+    {ok, describe_data_source_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_attachment_errors(), tuple()}.
+describe_data_source_attachment(Client, Id, Input) ->
+    describe_data_source_attachment(Client, Id, Input, []).
+
+-spec describe_data_source_attachment(aws_client:aws_client(), binary() | list(), describe_data_source_attachment_request(), proplists:proplist()) ->
+    {ok, describe_data_source_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_attachment_errors(), tuple()}.
+describe_data_source_attachment(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), "/describeDataSourceAttachment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Describes the domain configuration for the specified Amazon
 %% OpenSearch Service domain,
 %% including the domain ID, domain service endpoint, and domain ARN.
@@ -5373,6 +5582,47 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a data source from an OpenSearch application.
+%%
+%% The application must be in the `ACTIVE' state. This operation removes
+%% the data source saved object from the application and deletes the
+%% attachment record. Throws a `ConflictException' if the specified data
+%% source has a `PENDING' attachment, and a
+%% `ResourceNotFoundException' if the data source is not currently
+%% attached to the application.
+-spec detach_data_source(aws_client:aws_client(), binary() | list(), detach_data_source_request()) ->
+    {ok, detach_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, detach_data_source_errors(), tuple()}.
+detach_data_source(Client, Id, Input) ->
+    detach_data_source(Client, Id, Input, []).
+
+-spec detach_data_source(aws_client:aws_client(), binary() | list(), detach_data_source_request(), proplists:proplist()) ->
+    {ok, detach_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, detach_data_source_errors(), tuple()}.
+detach_data_source(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), "/detachDataSource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes a package from the specified Amazon OpenSearch Service
 %% domain.
 %%
@@ -5944,6 +6194,42 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all data source attachments for an
+%% OpenSearch application, including attachments in all states
+%% (`PENDING', `ATTACHED', and `FAILED').
+-spec list_data_source_attachments(aws_client:aws_client(), binary() | list(), list_data_source_attachments_request()) ->
+    {ok, list_data_source_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_attachments_errors(), tuple()}.
+list_data_source_attachments(Client, Id, Input) ->
+    list_data_source_attachments(Client, Id, Input, []).
+
+-spec list_data_source_attachments(aws_client:aws_client(), binary() | list(), list_data_source_attachments_request(), proplists:proplist()) ->
+    {ok, list_data_source_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_attachments_errors(), tuple()}.
+list_data_source_attachments(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), "/listDataSourceAttachments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists direct-query data sources for a specific domain.
 %%

@@ -408,6 +408,9 @@
          get_effective_hours_of_operations/5,
          get_effective_hours_of_operations/7,
          get_effective_hours_of_operations/8,
+         get_evaluation_form_validation/3,
+         get_evaluation_form_validation/5,
+         get_evaluation_form_validation/6,
          get_federation_token/2,
          get_federation_token/4,
          get_federation_token/5,
@@ -718,6 +721,8 @@
          start_contact_streaming/3,
          start_email_contact/2,
          start_email_contact/3,
+         start_evaluation_form_validation/4,
+         start_evaluation_form_validation/5,
          start_outbound_chat_contact/2,
          start_outbound_chat_contact/3,
          start_outbound_email_contact/2,
@@ -1058,6 +1063,13 @@
 %%   <<"ToDate">> := string()
 %% }
 -type get_effective_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_evaluation_form_validation_request() :: #{
+%%   <<"EvaluationFormVersion">> := integer()
+%% }
+-type start_evaluation_form_validation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1717,6 +1729,15 @@
 
 
 %% Example:
+%% question_points_configuration() :: #{
+%%   <<"IsBonus">> => boolean(),
+%%   <<"MaxPointValue">> => integer(),
+%%   <<"MinPointValue">> => integer()
+%% }
+-type question_points_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% searchable_segment_attributes() :: #{
 %%   <<"Criteria">> => list(searchable_segment_attributes_criteria()),
 %%   <<"MatchType">> => list(any())
@@ -1956,6 +1977,14 @@
 %% Example:
 %% update_contact_attributes_response() :: #{}
 -type update_contact_attributes_response() :: #{}.
+
+
+%% Example:
+%% evaluation_form_validation_finding_item() :: #{
+%%   <<"Property">> => string(),
+%%   <<"RefId">> => string()
+%% }
+-type evaluation_form_validation_finding_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3869,6 +3898,14 @@
 
 
 %% Example:
+%% contact_evaluation_attribute_and_condition() :: #{
+%%   <<"AttributeConditions">> => list(contact_evaluation_attribute_condition()),
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type contact_evaluation_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% view_search_filter() :: #{
 %%   <<"AttributeFilter">> => control_plane_attribute_filter()
 %% }
@@ -4342,6 +4379,14 @@
 
 
 %% Example:
+%% question_option_points_configuration() :: #{
+%%   <<"IsBonus">> => boolean(),
+%%   <<"PointValue">> => integer()
+%% }
+-type question_option_points_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_data() :: #{
 %%   <<"ActiveSlotsByChannel">> => map(),
 %%   <<"AvailableSlotsByChannel">> => map(),
@@ -4396,6 +4441,17 @@
 %%   <<"Value">> => string()
 %% }
 -type connect_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_validation_finding() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IssueCode">> => string(),
+%%   <<"Items">> => list(evaluation_form_validation_finding_item()),
+%%   <<"Severity">> => list(any()),
+%%   <<"Suggestion">> => string()
+%% }
+-type evaluation_form_validation_finding() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5155,8 +5211,11 @@
 %% evaluation_score() :: #{
 %%   <<"AppliedWeight">> => float(),
 %%   <<"AutomaticFail">> => boolean(),
+%%   <<"EarnedPoints">> => integer(),
+%%   <<"MaxBasePoint">> => integer(),
 %%   <<"NotApplicable">> => boolean(),
-%%   <<"Percentage">> => float()
+%%   <<"Percentage">> => float(),
+%%   <<"PerformanceCategory">> => list(any())
 %% }
 -type evaluation_score() :: #{binary() => any()}.
 
@@ -5429,6 +5488,8 @@
 %%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastValidationTime">> => non_neg_integer(),
+%%   <<"LatestValidationStatus">> => list(any()),
 %%   <<"Locked">> => boolean(),
 %%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
@@ -6033,6 +6094,7 @@
 %%   <<"QuestionType">> => list(any()),
 %%   <<"QuestionTypeProperties">> => list(),
 %%   <<"RefId">> => string(),
+%%   <<"ScoringConfiguration">> => evaluation_form_question_scoring_configuration(),
 %%   <<"Title">> => string(),
 %%   <<"Weight">> => float()
 %% }
@@ -6388,6 +6450,7 @@
 %%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
 %%   <<"MaxValue">> => integer(),
 %%   <<"MinValue">> => integer(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
 %%   <<"Score">> => integer()
 %% }
 -type evaluation_form_numeric_question_option() :: #{binary() => any()}.
@@ -6435,6 +6498,15 @@
 %%   <<"Dimensions">> => dimensions()
 %% }
 -type current_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_question_scoring_configuration() :: #{
+%%   <<"IsExcludedFromScoring">> => boolean(),
+%%   <<"PointsConfiguration">> => question_points_configuration(),
+%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold())
+%% }
+-type evaluation_form_question_scoring_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6655,6 +6727,15 @@
 
 
 %% Example:
+%% start_evaluation_form_validation_response() :: #{
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type start_evaluation_form_validation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_instances_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6766,7 +6847,10 @@
 %%   <<"ContactId">> => string(),
 %%   <<"ContactParticipantId">> => string(),
 %%   <<"ContactParticipantRole">> => list(any()),
+%%   <<"EarnedPoints">> => integer(),
 %%   <<"EvaluatorArn">> => string(),
+%%   <<"MaxBasePoint">> => integer(),
+%%   <<"PerformanceCategory">> => list(any()),
 %%   <<"ReviewId">> => string(),
 %%   <<"SamplingJobId">> => string(),
 %%   <<"ScoreAutomaticFail">> => boolean(),
@@ -6955,6 +7039,13 @@
 %%   <<"AgentStatusId">> => string()
 %% }
 -type create_agent_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluation_form_validation_request() :: #{
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type get_evaluation_form_validation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7597,6 +7688,15 @@
 
 
 %% Example:
+%% contact_evaluation_attribute_condition() :: #{
+%%   <<"AttributeKey">> => list(any()),
+%%   <<"AttributeValue">> => contact_evaluation_attribute_value(),
+%%   <<"ComparisonType">> => list(any())
+%% }
+-type contact_evaluation_attribute_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_user_response() :: #{
 %%   <<"User">> => user()
 %% }
@@ -7889,6 +7989,7 @@
 %% evaluation_form_single_select_question_option() :: #{
 %%   <<"AutomaticFail">> => boolean(),
 %%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
 %%   <<"RefId">> => string(),
 %%   <<"Score">> => integer(),
 %%   <<"Text">> => string()
@@ -8057,6 +8158,18 @@
 %%   <<"RoutingProfileSummaryList">> => list(routing_profile_summary())
 %% }
 -type list_routing_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluation_form_validation_response() :: #{
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Findings">> => list(evaluation_form_validation_finding()),
+%%   <<"StartedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_evaluation_form_validation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8683,8 +8796,10 @@
 %% Example:
 %% evaluation_form_section() :: #{
 %%   <<"Instructions">> => string(),
+%%   <<"IsExcludedFromScoring">> => boolean(),
 %%   <<"Items">> => list(list()),
 %%   <<"RefId">> => string(),
+%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
 %%   <<"Title">> => string(),
 %%   <<"Weight">> => float()
 %% }
@@ -8736,6 +8851,16 @@
 %%   <<"ContactId">> => string()
 %% }
 -type start_outbound_chat_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation_attribute_filter() :: #{
+%%   <<"AndCondition">> => contact_evaluation_attribute_and_condition(),
+%%   <<"ContactEvaluationAttributeCondition">> => contact_evaluation_attribute_condition(),
+%%   <<"OrConditions">> => list(contact_evaluation_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type contact_evaluation_attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8871,7 +8996,8 @@
 
 %% Example:
 %% evaluation_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%%   <<"AttributeFilter">> => control_plane_attribute_filter(),
+%%   <<"ContactEvaluationAttributeFilter">> => contact_evaluation_attribute_filter()
 %% }
 -type evaluation_search_filter() :: #{binary() => any()}.
 
@@ -9008,6 +9134,13 @@
 
 
 %% Example:
+%% contact_evaluation_attribute_value() :: #{
+%%   <<"StringValue">> => string()
+%% }
+-type contact_evaluation_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_search_summary() :: #{
 %%   <<"AgentInfo">> => contact_search_summary_agent_info(),
 %%   <<"AiAgentInfo">> => list(contact_search_summary_ai_agent_info()),
@@ -9084,7 +9217,11 @@
 
 %% Example:
 %% evaluation_form_multi_select_question_option() :: #{
+%%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
 %%   <<"RefId">> => string(),
+%%   <<"Score">> => integer(),
 %%   <<"Text">> => string()
 %% }
 -type evaluation_form_multi_select_question_option() :: #{binary() => any()}.
@@ -9842,6 +9979,7 @@
 %% Example:
 %% evaluation_form_scoring_strategy() :: #{
 %%   <<"Mode">> => list(any()),
+%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_form_scoring_strategy() :: #{binary() => any()}.
@@ -10882,6 +11020,15 @@
 %%   <<"AttachedFilesConfiguration">> => attached_files_configuration()
 %% }
 -type describe_attached_files_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_score_threshold() :: #{
+%%   <<"MaxScorePercentage">> => float(),
+%%   <<"MinScorePercentage">> => float(),
+%%   <<"PerformanceCategory">> => list(any())
+%% }
+-type evaluation_form_score_threshold() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12666,6 +12813,12 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type get_evaluation_form_validation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type get_federation_token_errors() ::
     duplicate_resource_exception() | 
     invalid_parameter_exception() | 
@@ -13549,6 +13702,14 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_evaluation_form_validation_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -21121,6 +21282,57 @@ get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status and results of a validation process started by
+%% StartEvaluationFormValidation:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartEvaluationFormValidation.html.
+%%
+%% Returns the current execution status (`IN_PROGRESS', `COMPLETED',
+%% or `FAILED'),
+%% the validated form version, and when completed, a list of findings that
+%% identify structural issues and quality
+%% improvements for the evaluation form, and may include suggested fixes. If
+%% the validation failed, a reason is provided
+%% indicating the cause of the failure.
+-spec get_evaluation_form_validation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_evaluation_form_validation_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_form_validation_errors(), tuple()}.
+get_evaluation_form_validation(Client, EvaluationFormId, InstanceId)
+  when is_map(Client) ->
+    get_evaluation_form_validation(Client, EvaluationFormId, InstanceId, #{}, #{}).
+
+-spec get_evaluation_form_validation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_evaluation_form_validation_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_form_validation_errors(), tuple()}.
+get_evaluation_form_validation(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evaluation_form_validation(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_evaluation_form_validation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_evaluation_form_validation_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_form_validation_errors(), tuple()}.
+get_evaluation_form_validation(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/validation-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Supports SAML sign-in for Connect Customer.
 %%
 %% Retrieves a token for federation. The token is for the Connect Customer
@@ -26476,6 +26688,52 @@ start_email_contact(Client, Input) ->
 start_email_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/email"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous validation process for an evaluation form
+%% version in the specified Connect Customer
+%% instance.
+%%
+%% The validation first performs structural checks on the form content (such
+%% as verifying required fields,
+%% valid scoring configuration, and correct conditional logic), then
+%% asynchronously analyzes questions configured for
+%% generative AI evaluation against a set of best practices. Use
+%% GetEvaluationFormValidation:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetEvaluationFormValidation.html
+%% to
+%% retrieve the status and results once the validation completes.
+-spec start_evaluation_form_validation(aws_client:aws_client(), binary() | list(), binary() | list(), start_evaluation_form_validation_request()) ->
+    {ok, start_evaluation_form_validation_response(), tuple()} |
+    {error, any()} |
+    {error, start_evaluation_form_validation_errors(), tuple()}.
+start_evaluation_form_validation(Client, EvaluationFormId, InstanceId, Input) ->
+    start_evaluation_form_validation(Client, EvaluationFormId, InstanceId, Input, []).
+
+-spec start_evaluation_form_validation(aws_client:aws_client(), binary() | list(), binary() | list(), start_evaluation_form_validation_request(), proplists:proplist()) ->
+    {ok, start_evaluation_form_validation_response(), tuple()} |
+    {error, any()} |
+    {error, start_evaluation_form_validation_errors(), tuple()}.
+start_evaluation_form_validation(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/validate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
