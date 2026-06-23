@@ -12,6 +12,10 @@
 %% API, or CloudWatch
 %% Logs SDK.
 %%
+%% For more information about CloudWatch Logs features, see the
+%% Amazon CloudWatch Logs User Guide:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html.
+%%
 %% You can use CloudWatch Logs to:
 %%
 %% Monitor logs from EC2 instances in real time: You
@@ -48,6 +52,12 @@
 %% of a host and
 %% into the log service. You can then access the raw log data when you need
 %% it.
+%%
+%% CloudWatch Logs might log request contents for fields that aren't
+%% considered
+%% sensitive, such as API request parameters for CloudWatch Logs actions.
+%% This provides
+%% debugging information for failed API requests.
 -module(aws_cloudwatch_logs).
 
 -export([associate_kms_key/2,
@@ -112,6 +122,8 @@
          delete_scheduled_query/3,
          delete_subscription_filter/2,
          delete_subscription_filter/3,
+         delete_syslog_configuration/2,
+         delete_syslog_configuration/3,
          delete_transformer/2,
          delete_transformer/3,
          describe_account_policies/2,
@@ -208,6 +220,8 @@
          list_scheduled_queries/3,
          list_sources_for_s3_table_integration/2,
          list_sources_for_s3_table_integration/3,
+         list_syslog_configurations/2,
+         list_syslog_configurations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_tags_log_group/2,
@@ -246,6 +260,8 @@
          put_retention_policy/3,
          put_subscription_filter/2,
          put_subscription_filter/3,
+         put_syslog_configuration/2,
+         put_syslog_configuration/3,
          put_transformer/2,
          put_transformer/3,
          start_live_tail/2,
@@ -1259,6 +1275,13 @@
 -type get_log_fields_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_syslog_configuration_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type put_syslog_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_subscription_filters_request() :: #{
 %%   <<"filterNamePrefix">> => string(),
 %%   <<"limit">> => integer(),
@@ -1710,6 +1733,15 @@
 -type log_stream() :: #{binary() => any()}.
 
 %% Example:
+%% list_syslog_configurations_request() :: #{
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type list_syslog_configurations_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -1965,6 +1997,13 @@
 -type create_log_anomaly_detector_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_syslog_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syslogConfigurations">> => list(syslog_configuration())
+%% }
+-type list_syslog_configurations_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_delivery_destination_policy_response() :: #{
 %%   <<"policy">> => policy()
 %% }
@@ -2073,6 +2112,13 @@
 %%   <<"revisionId">> => string()
 %% }
 -type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_syslog_configuration_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type delete_syslog_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% anomaly() :: #{
@@ -2419,6 +2465,15 @@
 %%   <<"deliverySource">> => delivery_source()
 %% }
 -type put_delivery_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% syslog_configuration() :: #{
+%%   <<"createdAt">> => float(),
+%%   <<"logGroupArn">> => string(),
+%%   <<"sourceType">> => list(any()),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type syslog_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_delivery_request() :: #{
@@ -3174,6 +3229,15 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type delete_syslog_configuration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_operation_exception().
+
 -type delete_transformer_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -3451,6 +3515,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_syslog_configurations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
 -type list_tags_for_resource_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -3572,6 +3644,15 @@
 -type put_subscription_filter_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_operation_exception().
+
+-type put_syslog_configuration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
@@ -4683,6 +4764,26 @@ delete_subscription_filter(Client, Input)
 delete_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
+
+%% @doc Deletes a syslog configuration for a log group.
+%%
+%% After deletion, syslog data is no
+%% longer ingested through the specified VPC endpoint.
+-spec delete_syslog_configuration(aws_client:aws_client(), delete_syslog_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_syslog_configuration_errors(), tuple()}.
+delete_syslog_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_syslog_configuration(Client, Input, []).
+
+-spec delete_syslog_configuration(aws_client:aws_client(), delete_syslog_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_syslog_configuration_errors(), tuple()}.
+delete_syslog_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSyslogConfiguration">>, Input, Options).
 
 %% @doc Deletes the log transformer for the specified log group.
 %%
@@ -6078,6 +6179,26 @@ list_sources_for_s3_table_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSourcesForS3TableIntegration">>, Input, Options).
 
+%% @doc Returns a list of syslog configurations.
+%%
+%% You can optionally filter the results by log
+%% group or VPC endpoint.
+-spec list_syslog_configurations(aws_client:aws_client(), list_syslog_configurations_request()) ->
+    {ok, list_syslog_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_syslog_configurations_errors(), tuple()}.
+list_syslog_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_syslog_configurations(Client, Input, []).
+
+-spec list_syslog_configurations(aws_client:aws_client(), list_syslog_configurations_request(), proplists:proplist()) ->
+    {ok, list_syslog_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_syslog_configurations_errors(), tuple()}.
+list_syslog_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSyslogConfigurations">>, Input, Options).
+
 %% @doc Displays the tags associated with a CloudWatch Logs resource.
 %%
 %% Currently, log groups and
@@ -6129,6 +6250,53 @@ list_tags_log_group(Client, Input, Options)
 %% all log groups, a
 %% subset of log groups, or a data source name and type combination in the
 %% account.
+%%
+%% `PutAccountPolicy' is an account-wide administrative operation
+%% intended for
+%% CloudWatch Logs administrators. Because it affects all log groups (or a
+%% broad subset) in
+%% the account, you should grant `logs:PutAccountPolicy' permissions only
+%% to
+%% administrators who manage logging configuration across the account, not to
+%% application teams
+%% or individual log group owners.
+%%
+%% Conflict resolution between account-level and log-group-level
+%% policies
+%%
+%% When both an account-level policy and a log-group-level policy of the same
+%% type apply to a
+%% log group, the resolution depends on the policy type:
+%%
+%% Data protection — The two policies are cumulative. Any sensitive
+%% term specified in either the account-level or the log-group-level policy
+%% is masked.
+%%
+%% Subscription filters — Account-level and log-group-level
+%% subscription filters are additive. A log group can have up to 1
+%% account-level and up to 2
+%% log-group-level subscription filters.
+%%
+%% Transformers — A log-group-level transformer overrides the
+%% account-level transformer. If a log group has its own transformer, it
+%% ignores the
+%% account-level transformer policy.
+%%
+%% Field index policies — If a log group has its own field index
+%% policy (created with `PutIndexPolicy'), any account-level policy that
+%% uses
+%% `LogGroupNamePrefix' selection criteria or has no selection criteria
+%% is ignored
+%% for that log group. However, account-level policies that use
+%% `DataSourceName'
+%% and `DataSourceType' selection criteria still apply alongside the
+%% log-group-level
+%% policy.
+%%
+%% Metric extraction policies — Metric extraction policies are
+%% account-level only and have no log-group-level equivalent, so no conflict
+%% resolution
+%% applies.
 %%
 %% For field index policies, you can configure indexed fields as facets
 %% to enable interactive exploration of your logs. Facets provide value
@@ -7439,6 +7607,26 @@ put_subscription_filter(Client, Input)
 put_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSubscriptionFilter">>, Input, Options).
+
+%% @doc Creates or updates a syslog configuration for a log group.
+%%
+%% This enables ingestion of
+%% syslog data through the specified VPC endpoint into the log group.
+-spec put_syslog_configuration(aws_client:aws_client(), put_syslog_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_syslog_configuration_errors(), tuple()}.
+put_syslog_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_syslog_configuration(Client, Input, []).
+
+-spec put_syslog_configuration(aws_client:aws_client(), put_syslog_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_syslog_configuration_errors(), tuple()}.
+put_syslog_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutSyslogConfiguration">>, Input, Options).
 
 %% @doc Creates or updates a log transformer for a single log group.
 %%

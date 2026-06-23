@@ -251,6 +251,7 @@
 
 %% Example:
 %% kafka_cluster_client_authentication() :: #{
+%%   <<"MTLS">> => kafka_cluster_m_t_l_s_authentication(),
 %%   <<"SaslScram">> => kafka_cluster_sasl_scram_authentication()
 %% }
 -type kafka_cluster_client_authentication() :: #{binary() => any()}.
@@ -659,6 +660,13 @@
 %%   <<"ErrorString">> => string()
 %% }
 -type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_m_t_l_s_authentication() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type kafka_cluster_m_t_l_s_authentication() :: #{binary() => any()}.
 
 
 %% Example:

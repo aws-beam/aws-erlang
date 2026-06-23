@@ -6907,6 +6907,7 @@
 %%   <<"DeprecationTimeCondition">> => deprecation_time_condition(),
 %%   <<"ImageNames">> => list(string()),
 %%   <<"ImageProviders">> => list(string()),
+%%   <<"ImageWatermarks">> => list(image_watermark_filter_response()),
 %%   <<"MarketplaceProductCodes">> => list(string())
 %% }
 -type image_criterion() :: #{binary() => any()}.
@@ -8484,6 +8485,15 @@
 %%   <<"ConversionTask">> => conversion_task()
 %% }
 -type import_volume_result() :: #{binary() => any()}.
+
+%% Example:
+%% image_watermark_filter_request() :: #{
+%%   <<"MaximumDaysSinceSourceImageCreated">> => integer(),
+%%   <<"MaximumDaysSinceWatermarkCreated">> => integer(),
+%%   <<"SourceImageRegion">> => string(),
+%%   <<"WatermarkKey">> => string()
+%% }
+-type image_watermark_filter_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_coip_cidr_request() :: #{
@@ -11503,6 +11513,15 @@
 %%   <<"TransitGatewayIds">> => list(string())
 %% }
 -type describe_transit_gateways_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_watermark_filter_response() :: #{
+%%   <<"MaximumDaysSinceSourceImageCreated">> => integer(),
+%%   <<"MaximumDaysSinceWatermarkCreated">> => integer(),
+%%   <<"SourceImageRegion">> => string(),
+%%   <<"WatermarkKey">> => string()
+%% }
+-type image_watermark_filter_response() :: #{binary() => any()}.
 
 %% Example:
 %% disable_fast_launch_request() :: #{
@@ -21087,6 +21106,7 @@
 %%   <<"DeprecationTimeCondition">> => deprecation_time_condition_request(),
 %%   <<"ImageNames">> => list(string()),
 %%   <<"ImageProviders">> => list(string()),
+%%   <<"ImageWatermarks">> => list(image_watermark_filter_request()),
 %%   <<"MarketplaceProductCodes">> => list(string())
 %% }
 -type image_criterion_request() :: #{binary() => any()}.
@@ -24060,10 +24080,9 @@ attach_classic_link_vpc(Client, Input, Options)
 %% automatically propagates to all derivative images created through
 %% CreateImage:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html,
+%% and
 %% CopyImage:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyImage.html,
-%% and CreateRestoreImageTask:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRestoreImageTask.html.
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyImage.html.
 %%
 %% Only the AMI owner can attach watermarks. Watermarks cannot be added to
 %% public
@@ -24372,28 +24391,25 @@ cancel_bundle_task(Client, Input, Options)
 %%
 %% `assessing'
 %%
-%% `scheduled' — requires a cancellation quote. Use
-%% `CreateCapacityReservationCancellationQuote' to generate a quote,
-%% then pass the quote ID with `ApplyCancellationCharges' set to
-%% `commitment-wind-down'. The cancellation charge depends on how
-%% close the reservation is to its start date.
+%% `scheduled'
 %%
 %% `active' and there is no commitment duration or the commitment
 %% duration has elapsed.
 %%
-%% `active' during the commitment duration — requires a
-%% cancellation quote. Use
-%% `CreateCapacityReservationCancellationQuote' to generate a quote,
-%% then pass the quote ID with `ApplyCancellationCharges' set to
-%% `commitment-wind-down'. The Capacity Reservation transitions to
-%% `cancelling' while charges are applied.
-%%
-%% `delayed' — the commitment duration is waived, so no
-%% cancellation charge applies.
+%% `active' during the commitment duration, if you provide a
+%% cancellation quote ID and accept the cancellation charges. Use
+%% `CreateCapacityReservationCancellationQuote' to generate a quote.
+%% The Capacity Reservation transitions to `cancelling' while charges
+%% are applied.
 %%
 %% You can't modify or cancel a Capacity Block. For more information, see
 %% Capacity Blocks for ML:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html.
+%%
+%% If a future-dated Capacity Reservation enters the `delayed' state, the
+%% commitment duration is waived, and you can cancel it as soon as it enters
+%% the
+%% `active' state.
 %%
 %% Instances running in the reserved capacity continue running until you stop
 %% them.
@@ -40380,6 +40396,10 @@ replace_iam_instance_profile_association(Client, Input, Options)
     request(Client, <<"ReplaceIamInstanceProfileAssociation">>, Input, Options).
 
 %% @doc Sets or replaces the criteria for Allowed AMIs.
+%%
+%% The `ImageCriteria' can include up to:
+%%
+%% 10 `ImageCriterion'
 %%
 %% The Allowed AMIs feature does not restrict the AMIs owned by your account.
 %% Regardless of

@@ -39,6 +39,8 @@
          create_detector/3,
          create_filter/3,
          create_filter/4,
+         create_investigation/3,
+         create_investigation/4,
          create_ip_set/3,
          create_ip_set/4,
          create_malware_protection_plan/2,
@@ -110,6 +112,9 @@
          get_findings/4,
          get_findings_statistics/3,
          get_findings_statistics/4,
+         get_investigation/3,
+         get_investigation/5,
+         get_investigation/6,
          get_invitations_count/1,
          get_invitations_count/3,
          get_invitations_count/4,
@@ -160,6 +165,8 @@
          list_filters/5,
          list_findings/3,
          list_findings/4,
+         list_investigations/3,
+         list_investigations/4,
          list_invitations/1,
          list_invitations/3,
          list_invitations/4,
@@ -612,6 +619,21 @@
 %%   <<"Uid">> => string()
 %% }
 -type sequence() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InvestigationId">> => string(),
+%%   <<"RiskLevel">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string(),
+%%   <<"TriggerPrompt">> => string()
+%% }
+-type investigation_summary() :: #{binary() => any()}.
 
 %% Example:
 %% archive_findings_response() :: #{}
@@ -1368,6 +1390,14 @@
 
 
 %% Example:
+%% list_investigations_response() :: #{
+%%   <<"Investigations">> => list(investigation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_malware_scans_filter_criterion() :: #{
 %%   <<"FilterCondition">> => filter_condition(),
 %%   <<"ListMalwareScansCriterionKey">> => list(any())
@@ -1639,6 +1669,14 @@
 
 
 %% Example:
+%% create_investigation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"TriggerPrompt">> := string()
+%% }
+-type create_investigation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
@@ -1676,6 +1714,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => investigation_sort_criteria()
+%% }
+-type list_investigations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2097,6 +2144,14 @@
 %%   <<"Role">> => string()
 %% }
 -type start_malware_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% product() :: #{
+%%   <<"Feature">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type product() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2563,6 +2618,14 @@
 
 
 %% Example:
+%% investigation_sort_criteria() :: #{
+%%   <<"AttributeName">> => list(any()),
+%%   <<"OrderBy">> => list(any())
+%% }
+-type investigation_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_invitations_request() :: #{
 %%   <<"AccountIds">> := list(string())
 %% }
@@ -2588,6 +2651,25 @@
 %%   <<"UpdatedAt">> => string()
 %% }
 -type get_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation() :: #{
+%%   <<"Cloud">> => cloud_details(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Error">> => string(),
+%%   <<"InvestigationId">> => string(),
+%%   <<"Metadata">> => investigation_metadata(),
+%%   <<"Risk">> => string(),
+%%   <<"RiskLevel">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Summary">> => string(),
+%%   <<"TriggerPrompt">> => string(),
+%%   <<"TriggeredBy">> => string()
+%% }
+-type investigation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3034,6 +3116,17 @@
 %% }
 -type send_object_malware_scan_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_investigation_request() :: #{}
+-type get_investigation_request() :: #{}.
+
+
+%% Example:
+%% get_investigation_response() :: #{
+%%   <<"Investigation">> => investigation()
+%% }
+-type get_investigation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization_feature_statistics() :: #{
@@ -3261,6 +3354,14 @@
 %%   <<"Verb">> => string()
 %% }
 -type kubernetes_permission_checked_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_metadata() :: #{
+%%   <<"Product">> => product(),
+%%   <<"Version">> => string()
+%% }
+-type investigation_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3745,6 +3846,15 @@
 
 
 %% Example:
+%% cloud_details() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"Region">> => string()
+%% }
+-type cloud_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_filters_response() :: #{
 %%   <<"FilterNames">> => list(string()),
 %%   <<"NextToken">> => string()
@@ -3883,6 +3993,13 @@
 %% }
 -type update_s3_bucket_resource() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_investigation_response() :: #{
+%%   <<"InvestigationId">> => string()
+%% }
+-type create_investigation_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_request() :: #{}
 -type delete_detector_request() :: #{}.
@@ -3953,6 +4070,11 @@
 -type create_filter_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type create_investigation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_ip_set_errors() ::
     bad_request_exception() | 
@@ -4092,6 +4214,12 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type get_investigation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_invitations_count_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
@@ -4170,6 +4298,11 @@
 -type list_findings_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type list_investigations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_invitations_errors() ::
     bad_request_exception() | 
@@ -4492,6 +4625,71 @@ create_filter(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is currently available as a preview.
+%%
+%% During the preview, you can initiate up to 10 investigations per account
+%% per day, with a total limit of 100 investigations per account. This
+%% feature is available in the following Amazon Web Services Regions: US East
+%% (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe
+%% (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe
+%% (Stockholm), and Asia Pacific (Tokyo).
+%%
+%% Initiates a GuardDuty investigation that automatically analyzes security
+%% findings, correlates related activity, performs account-level analysis,
+%% and produces a structured investigation summary with recommended next
+%% steps.
+%%
+%% Only the administrator account can create an investigation. Member
+%% accounts don't have permission to create investigations from their
+%% accounts.
+%%
+%% To use this operation, the `AI_ANALYST' feature must be enabled on
+%% your detector.
+%%
+%% This feature uses Amazon Bedrock models that leverage Cross-Region
+%% Inference (CRIS), which automatically selects the optimal Amazon Web
+%% Services Region within your geography to process the investigation
+%% analysis and generate the investigation report. This maximizes available
+%% compute resources, model availability, and delivers the best customer
+%% experience. Your data remains stored only in the Region where the
+%% investigation request originates, however, investigation data and summary
+%% results may be processed outside that Region. All data is transmitted
+%% encrypted across Amazon's secure network. For more information, see
+%% GuardDuty Investigation:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-investigation.html.
+-spec create_investigation(aws_client:aws_client(), binary() | list(), create_investigation_request()) ->
+    {ok, create_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, create_investigation_errors(), tuple()}.
+create_investigation(Client, DetectorId, Input) ->
+    create_investigation(Client, DetectorId, Input, []).
+
+-spec create_investigation(aws_client:aws_client(), binary() | list(), create_investigation_request(), proplists:proplist()) ->
+    {ok, create_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, create_investigation_errors(), tuple()}.
+create_investigation(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/investigation"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5858,6 +6056,54 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API is currently available as a preview.
+%%
+%% This feature is available in the following Amazon Web Services Regions: US
+%% East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central),
+%% Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris),
+%% Europe (Stockholm), and Asia Pacific (Tokyo).
+%%
+%% Retrieves the results and status of a specific GuardDuty investigation.
+%%
+%% An administrator account can retrieve any investigation within the
+%% organization. Member accounts can only retrieve investigations that belong
+%% to them.
+-spec get_investigation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, get_investigation_errors(), tuple()}.
+get_investigation(Client, DetectorId, InvestigationId)
+  when is_map(Client) ->
+    get_investigation(Client, DetectorId, InvestigationId, #{}, #{}).
+
+-spec get_investigation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, get_investigation_errors(), tuple()}.
+get_investigation(Client, DetectorId, InvestigationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_investigation(Client, DetectorId, InvestigationId, QueryMap, HeadersMap, []).
+
+-spec get_investigation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, get_investigation_errors(), tuple()}.
+get_investigation(Client, DetectorId, InvestigationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/investigation/", aws_util:encode_uri(InvestigationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the count of all GuardDuty membership invitations that were
 %% sent to the current member account except the currently accepted
 %% invitation.
@@ -6633,6 +6879,51 @@ list_findings(Client, DetectorId, Input) ->
 list_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is currently available as a preview.
+%%
+%% This feature is available in the following Amazon Web Services Regions: US
+%% East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central),
+%% Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris),
+%% Europe (Stockholm), and Asia Pacific (Tokyo).
+%%
+%% Returns a list of investigations associated with the specified GuardDuty
+%% detector.
+%%
+%% An administrator account sees all investigations across the organization.
+%% Member accounts see only the investigations that belong to them.
+-spec list_investigations(aws_client:aws_client(), binary() | list(), list_investigations_request()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigations_errors(), tuple()}.
+list_investigations(Client, DetectorId, Input) ->
+    list_investigations(Client, DetectorId, Input, []).
+
+-spec list_investigations(aws_client:aws_client(), binary() | list(), list_investigations_request(), proplists:proplist()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigations_errors(), tuple()}.
+list_investigations(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/investigation/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

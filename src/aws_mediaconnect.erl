@@ -355,7 +355,7 @@
 %% Example:
 %% create_router_output_request() :: #{
 %%   <<"AvailabilityZone">> => [string()],
-%%   <<"ClientToken">> => [string()],
+%%   <<"ClientToken">> => string(),
 %%   <<"Configuration">> := list(),
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> := [float()],
@@ -473,6 +473,8 @@
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Configuration">> => list(),
+%%   <<"ContentQualityAnalysisConfiguration">> => list(),
+%%   <<"ContentQualityAnalysisType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Id">> => [string()],
 %%   <<"InputType">> => list(any()),
@@ -1406,6 +1408,14 @@
 
 
 %% Example:
+%% black_frames_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type black_frames_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% take_router_input_request() :: #{
 %%   <<"RouterInputArn">> => string()
 %% }
@@ -1760,6 +1770,14 @@
 
 
 %% Example:
+%% frozen_frames_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type frozen_frames_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% router_output_service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -1883,8 +1901,9 @@
 %% Example:
 %% create_router_input_request() :: #{
 %%   <<"AvailabilityZone">> => [string()],
-%%   <<"ClientToken">> => [string()],
+%%   <<"ClientToken">> => string(),
 %%   <<"Configuration">> := list(),
+%%   <<"ContentQualityAnalysisConfiguration">> => list(),
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> := [float()],
 %%   <<"Name">> := [string()],
@@ -2262,6 +2281,14 @@
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% silent_audio_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type silent_audio_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% remove_flow_vpc_interface_request() :: #{}
 -type remove_flow_vpc_interface_request() :: #{}.
@@ -2507,6 +2534,7 @@
 %% Example:
 %% update_router_input_request() :: #{
 %%   <<"Configuration">> => list(),
+%%   <<"ContentQualityAnalysisConfiguration">> => list(),
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> => [float()],
 %%   <<"Name">> => [string()],
@@ -2552,6 +2580,15 @@
 %%   <<"EncryptionKeyType">> => list(any())
 %% }
 -type flow_transit_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_quality_analysis_feature_configuration() :: #{
+%%   <<"BlackFrames">> => black_frames_configuration(),
+%%   <<"FrozenFrames">> => frozen_frames_configuration(),
+%%   <<"SilentAudio">> => silent_audio_configuration()
+%% }
+-type content_quality_analysis_feature_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2876,7 +2913,7 @@
 
 %% Example:
 %% create_router_network_interface_request() :: #{
-%%   <<"ClientToken">> => [string()],
+%%   <<"ClientToken">> => string(),
 %%   <<"Configuration">> := list(),
 %%   <<"Name">> := [string()],
 %%   <<"RegionName">> => [string()],

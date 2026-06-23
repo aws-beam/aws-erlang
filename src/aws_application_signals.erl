@@ -29,16 +29,26 @@
 %% dashboards and maps.
 -module(aws_application_signals).
 
--export([batch_get_service_level_objective_budget_report/2,
+-export([batch_delete_instrumentation_configurations/2,
+         batch_delete_instrumentation_configurations/3,
+         batch_get_service_level_objective_budget_report/2,
          batch_get_service_level_objective_budget_report/3,
          batch_update_exclusion_windows/2,
          batch_update_exclusion_windows/3,
+         create_instrumentation_configuration/2,
+         create_instrumentation_configuration/3,
          create_service_level_objective/2,
          create_service_level_objective/3,
          delete_grouping_configuration/2,
          delete_grouping_configuration/3,
+         delete_instrumentation_configuration/2,
+         delete_instrumentation_configuration/3,
          delete_service_level_objective/3,
          delete_service_level_objective/4,
+         get_instrumentation_configuration/2,
+         get_instrumentation_configuration/3,
+         get_instrumentation_configuration_status/2,
+         get_instrumentation_configuration_status/3,
          get_service/2,
          get_service/3,
          get_service_level_objective/2,
@@ -50,6 +60,8 @@
          list_entity_events/3,
          list_grouping_attribute_definitions/2,
          list_grouping_attribute_definitions/3,
+         list_instrumentation_configurations/2,
+         list_instrumentation_configurations/3,
          list_service_dependencies/2,
          list_service_dependencies/3,
          list_service_dependents/2,
@@ -71,6 +83,8 @@
          list_tags_for_resource/5,
          put_grouping_configuration/2,
          put_grouping_configuration/3,
+         report_instrumentation_configuration_status/2,
+         report_instrumentation_configuration_status/3,
          start_discovery/2,
          start_discovery/3,
          tag_resource/2,
@@ -166,6 +180,27 @@
 
 
 %% Example:
+%% report_instrumentation_configuration_status_request() :: #{
+%%   <<"Configurations">> := list(instrumentation_configuration_status_report()),
+%%   <<"Environment">> := [string()],
+%%   <<"Service">> := [string()]
+%% }
+-type report_instrumentation_configuration_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_location() :: #{
+%%   <<"ClassName">> => [string()],
+%%   <<"CodeUnit">> => [string()],
+%%   <<"FilePath">> => [string()],
+%%   <<"Language">> => list(any()),
+%%   <<"LineNumber">> => [integer()],
+%%   <<"MethodName">> => [string()]
+%% }
+-type code_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_dependencies_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
@@ -247,6 +282,13 @@
 
 
 %% Example:
+%% batch_delete_instrumentation_configurations_request() :: #{
+%%   <<"DeletionTarget">> := list()
+%% }
+-type batch_delete_instrumentation_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_entity() :: #{
 %%   <<"AwsAccountId">> => [string()],
 %%   <<"Environment">> => [string()],
@@ -270,6 +312,13 @@
 %%   <<"OperationName">> => string()
 %% }
 -type service_level_objective_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_instrumentation_configuration_response() :: #{
+%%   <<"Configuration">> => instrumentation_configuration()
+%% }
+-type get_instrumentation_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_service_level_objective_input() :: #{}
@@ -329,6 +378,33 @@
 
 
 %% Example:
+%% batch_delete_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => [string()],
+%%   <<"ResourceArn">> => [string()]
+%% }
+-type batch_delete_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_instrumentation_configuration_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Environment">> => [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Location">> => list(),
+%%   <<"LocationHash">> => [string()],
+%%   <<"Service">> => [string()],
+%%   <<"SignalType">> => list(any())
+%% }
+-type create_instrumentation_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_grouping_attribute_definitions_input() :: #{
 %%   <<"AwsAccountId">> => string(),
 %%   <<"IncludeLinkedAccounts">> => [boolean()],
@@ -346,6 +422,15 @@
 %%   <<"ServiceGroups">> => list(service_group())
 %% }
 -type service() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_successful_deletion() :: #{
+%%   <<"LocationHash">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"SignalType">> => [string()]
+%% }
+-type batch_delete_successful_deletion() :: #{binary() => any()}.
 
 
 %% Example:
@@ -465,6 +550,33 @@
 
 
 %% Example:
+%% delete_instrumentation_configuration_request() :: #{
+%%   <<"Environment">> := [string()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"LocationIdentifier">> := list(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any())
+%% }
+-type delete_instrumentation_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_scope() :: #{
+%%   <<"Environment">> => [string()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Service">> => [string()]
+%% }
+-type batch_delete_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_instrumentation_configuration_response() :: #{
+%%   <<"DeletionStatus">> => list(any())
+%% }
+-type delete_instrumentation_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% selection_config() :: #{
 %%   <<"Pattern">> => string(),
 %%   <<"Type">> => list(any())
@@ -528,6 +640,17 @@
 
 
 %% Example:
+%% code_capture_configuration() :: #{
+%%   <<"CaptureArguments">> => list([string()]()),
+%%   <<"CaptureLimits">> => capture_limits_config(),
+%%   <<"CaptureLocals">> => list([string()]()),
+%%   <<"CaptureReturn">> => [boolean()],
+%%   <<"CaptureStackTrace">> => [boolean()]
+%% }
+-type code_capture_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_service_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"LogGroupReferences">> => list(map()),
@@ -558,6 +681,17 @@
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_instrumentation_configuration_request() :: #{
+%%   <<"Environment">> := [string()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"LocationIdentifier">> := list(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any())
+%% }
+-type get_instrumentation_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -592,6 +726,19 @@
 
 
 %% Example:
+%% get_instrumentation_configuration_status_response() :: #{
+%%   <<"Environment">> => [string()],
+%%   <<"Events">> => list(instrumentation_status_event()),
+%%   <<"Location">> => list(),
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> => [string()],
+%%   <<"SignalType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_instrumentation_configuration_status_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_level_indicator() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"MetricThreshold">> => float(),
@@ -605,6 +752,18 @@
 %%   <<"Slo">> => service_level_objective()
 %% }
 -type get_service_level_objective_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_configuration_status_report() :: #{
+%%   <<"ErrorCause">> => list(any()),
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"LocationHash">> => [string()],
+%%   <<"SignalType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => [non_neg_integer()]
+%% }
+-type instrumentation_configuration_status_report() :: #{binary() => any()}.
 
 
 %% Example:
@@ -631,11 +790,58 @@
 
 
 %% Example:
+%% instrumentation_configurations_page() :: #{
+%%   <<"Changed">> => [boolean()],
+%%   <<"Environment">> => [string()],
+%%   <<"LatestConfigurations">> => list(instrumentation_configuration_without_service_env()),
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> => [string()],
+%%   <<"SyncInterval">> => [integer()],
+%%   <<"SyncedAt">> => [non_neg_integer()]
+%% }
+-type instrumentation_configurations_page() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_configuration() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Environment">> => [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Location">> => list(),
+%%   <<"LocationHash">> => [string()],
+%%   <<"Service">> => [string()],
+%%   <<"SignalType">> => list(any())
+%% }
+-type instrumentation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% composite_sli_config() :: #{
 %%   <<"Components">> => list(list()),
 %%   <<"SelectionConfig">> => selection_config()
 %% }
 -type composite_sli_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_instrumentation_configuration_status_request() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"Environment">> := [string()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"LocationIdentifier">> := list(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any()),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any())
+%% }
+-type get_instrumentation_configuration_status_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -664,6 +870,14 @@
 %%   <<"TotalBudgetSeconds">> => integer()
 %% }
 -type service_level_objective_budget_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_status_event() :: #{
+%%   <<"ErrorCause">> => list(any()),
+%%   <<"Time">> => [non_neg_integer()]
+%% }
+-type instrumentation_status_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -745,6 +959,15 @@
 %%   <<"Unit">> => list(any())
 %% }
 -type metric_stat() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_instrumentation_configuration_status_response() :: #{
+%%   <<"Environment">> => [string()],
+%%   <<"Service">> => [string()],
+%%   <<"UnprocessedStatusEvents">> => list(unprocessed_status_event())
+%% }
+-type report_instrumentation_configuration_status_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -869,6 +1092,14 @@
 
 
 %% Example:
+%% batch_delete_by_resource_arns() :: #{
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"ResourceArns">> => list([string()]())
+%% }
+-type batch_delete_by_resource_arns() :: #{binary() => any()}.
+
+
+%% Example:
 %% attribute_filter() :: #{
 %%   <<"AttributeFilterName">> => string(),
 %%   <<"AttributeFilterValues">> => list(string())
@@ -902,6 +1133,43 @@
 
 
 %% Example:
+%% unprocessed_status_event() :: #{
+%%   <<"FailedReason">> => list(any()),
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"LocationHash">> => [string()],
+%%   <<"SignalType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => [non_neg_integer()]
+%% }
+-type unprocessed_status_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_instrumentation_configurations_response() :: #{
+%%   <<"DeletedCount">> => [integer()],
+%%   <<"Errors">> => list(batch_delete_error()),
+%%   <<"SuccessfulDeletions">> => list(batch_delete_successful_deletion())
+%% }
+-type batch_delete_instrumentation_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_configuration_without_service_env() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Location">> => list(),
+%%   <<"LocationHash">> => [string()],
+%%   <<"SignalType">> => list(any())
+%% }
+-type instrumentation_configuration_without_service_env() :: #{binary() => any()}.
+
+
+%% Example:
 %% change_event() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"ChangeEventType">> => list(any()),
@@ -916,6 +1184,20 @@
 
 
 %% Example:
+%% capture_limits_config() :: #{
+%%   <<"MaxCollectionDepth">> => [integer()],
+%%   <<"MaxCollectionWidth">> => [integer()],
+%%   <<"MaxFieldsPerObject">> => [integer()],
+%%   <<"MaxHits">> => [integer()],
+%%   <<"MaxObjectDepth">> => [integer()],
+%%   <<"MaxStackFrames">> => [integer()],
+%%   <<"MaxStackTraceSize">> => [integer()],
+%%   <<"MaxStringLength">> => [integer()]
+%% }
+-type capture_limits_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% edge() :: #{
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"DestinationNodeId">> => [string()],
@@ -923,6 +1205,18 @@
 %%   <<"SourceNodeId">> => [string()]
 %% }
 -type edge() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instrumentation_configurations_request() :: #{
+%%   <<"Environment">> := [string()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> := [string()],
+%%   <<"SyncedAt">> => [non_neg_integer()]
+%% }
+-type list_instrumentation_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1022,6 +1316,22 @@
 
 
 %% Example:
+%% create_instrumentation_configuration_request() :: #{
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> := list(),
+%%   <<"Description">> => [string()],
+%%   <<"Environment">> := [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"Location">> := list(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_instrumentation_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% request_based_service_level_indicator_config() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"MetricThreshold">> => float(),
@@ -1038,6 +1348,10 @@
 %% }
 -type service_state() :: #{binary() => any()}.
 
+-type batch_delete_instrumentation_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception().
+
 -type batch_get_service_level_objective_budget_report_errors() ::
     throttling_exception() | 
     validation_exception().
@@ -1046,6 +1360,12 @@
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
+
+-type create_instrumentation_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type create_service_level_objective_errors() ::
     throttling_exception() | 
@@ -1059,7 +1379,22 @@
     validation_exception() | 
     access_denied_exception().
 
+-type delete_instrumentation_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type delete_service_level_objective_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_instrumentation_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_instrumentation_configuration_status_errors() ::
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
@@ -1085,6 +1420,11 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
+
+-type list_instrumentation_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
 
 -type list_service_dependencies_errors() ::
     throttling_exception() | 
@@ -1124,6 +1464,10 @@
     validation_exception() | 
     access_denied_exception().
 
+-type report_instrumentation_configuration_status_errors() ::
+    throttling_exception() | 
+    validation_exception().
+
 -type start_discovery_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1146,6 +1490,46 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Deletes multiple instrumentation configurations in a single request.
+%%
+%% Supports two mutually exclusive selection methods:
+%% - By scope: Delete all configurations matching a Service + Environment +
+%% InstrumentationType
+%% - By ARN list: Delete specific configurations by providing a list of
+%% resource ARNs
+-spec batch_delete_instrumentation_configurations(aws_client:aws_client(), batch_delete_instrumentation_configurations_request()) ->
+    {ok, batch_delete_instrumentation_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_instrumentation_configurations_errors(), tuple()}.
+batch_delete_instrumentation_configurations(Client, Input) ->
+    batch_delete_instrumentation_configurations(Client, Input, []).
+
+-spec batch_delete_instrumentation_configurations(aws_client:aws_client(), batch_delete_instrumentation_configurations_request(), proplists:proplist()) ->
+    {ok, batch_delete_instrumentation_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_instrumentation_configurations_errors(), tuple()}.
+batch_delete_instrumentation_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/batch-delete-instrumentation-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to retrieve one or more service level objective
 %% (SLO) budget reports.
@@ -1211,6 +1595,53 @@ batch_update_exclusion_windows(Client, Input) ->
 batch_update_exclusion_windows(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/exclusion-windows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a dynamic instrumentation configuration for a specific code
+%% or endpoint location within a service and environment.
+%%
+%% Configurations are immutable after creation.
+%%
+%% For `BREAKPOINT' type configurations, they expire after 24 hours
+%% unless a shorter expiration is provided. For `PROBE' type
+%% configurations, they persist until explicitly deleted; an expiration
+%% cannot be set for `PROBE' configurations.
+%%
+%% If a configuration already exists for the same service, environment,
+%% signal type, and location, this operation returns a conflict instead of
+%% overwriting it. Use attribute filters and capture settings to control
+%% where the instrumentation runs and which data is collected.
+-spec create_instrumentation_configuration(aws_client:aws_client(), create_instrumentation_configuration_request()) ->
+    {ok, create_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_instrumentation_configuration_errors(), tuple()}.
+create_instrumentation_configuration(Client, Input) ->
+    create_instrumentation_configuration(Client, Input, []).
+
+-spec create_instrumentation_configuration(aws_client:aws_client(), create_instrumentation_configuration_request(), proplists:proplist()) ->
+    {ok, create_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_instrumentation_configuration_errors(), tuple()}.
+create_instrumentation_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-instrumentation-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1384,6 +1815,43 @@ delete_grouping_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified instrumentation configuration.
+%%
+%% SDKs remove the instrumentation during their next sync after the
+%% configuration is deleted or expires.
+-spec delete_instrumentation_configuration(aws_client:aws_client(), delete_instrumentation_configuration_request()) ->
+    {ok, delete_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_instrumentation_configuration_errors(), tuple()}.
+delete_instrumentation_configuration(Client, Input) ->
+    delete_instrumentation_configuration(Client, Input, []).
+
+-spec delete_instrumentation_configuration(aws_client:aws_client(), delete_instrumentation_configuration_request(), proplists:proplist()) ->
+    {ok, delete_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_instrumentation_configuration_errors(), tuple()}.
+delete_instrumentation_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-instrumentation-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified service level objective.
 -spec delete_service_level_objective(aws_client:aws_client(), binary() | list(), delete_service_level_objective_input()) ->
     {ok, delete_service_level_objective_output(), tuple()} |
@@ -1399,6 +1867,84 @@ delete_service_level_objective(Client, Id, Input) ->
 delete_service_level_objective(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/slo/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the details of a single instrumentation configuration
+%% identified by service, environment, signal type, and location.
+%%
+%% Use this to audit or display configuration details.
+-spec get_instrumentation_configuration(aws_client:aws_client(), get_instrumentation_configuration_request()) ->
+    {ok, get_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_instrumentation_configuration_errors(), tuple()}.
+get_instrumentation_configuration(Client, Input) ->
+    get_instrumentation_configuration(Client, Input, []).
+
+-spec get_instrumentation_configuration(aws_client:aws_client(), get_instrumentation_configuration_request(), proplists:proplist()) ->
+    {ok, get_instrumentation_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_instrumentation_configuration_errors(), tuple()}.
+get_instrumentation_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-instrumentation-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the status history for a single instrumentation
+%% configuration during a specified time range.
+%%
+%% The response lists when the configuration was ACTIVE, READY, ERROR, or
+%% DISABLED.
+%%
+%% If no status or time window is provided, the operation defaults to ACTIVE
+%% events from the last hour.
+-spec get_instrumentation_configuration_status(aws_client:aws_client(), get_instrumentation_configuration_status_request()) ->
+    {ok, get_instrumentation_configuration_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_instrumentation_configuration_status_errors(), tuple()}.
+get_instrumentation_configuration_status(Client, Input) ->
+    get_instrumentation_configuration_status(Client, Input, []).
+
+-spec get_instrumentation_configuration_status(aws_client:aws_client(), get_instrumentation_configuration_status_request(), proplists:proplist()) ->
+    {ok, get_instrumentation_configuration_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_instrumentation_configuration_status_errors(), tuple()}.
+get_instrumentation_configuration_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-instrumentation-configuration-status"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1614,6 +2160,48 @@ list_grouping_attribute_definitions(Client, Input0, Options0) ->
                      {<<"NextToken">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns all active instrumentation configurations for a service and
+%% environment.
+%%
+%% SDKs use this operation to sync configurations and apply client-side
+%% filters locally.
+%%
+%% Include the previous `SyncedAt' value to perform incremental syncs.
+%% When no changes are detected, the response sets `Changed' to
+%% `false' and omits configuration details.
+-spec list_instrumentation_configurations(aws_client:aws_client(), list_instrumentation_configurations_request()) ->
+    {ok, instrumentation_configurations_page(), tuple()} |
+    {error, any()} |
+    {error, list_instrumentation_configurations_errors(), tuple()}.
+list_instrumentation_configurations(Client, Input) ->
+    list_instrumentation_configurations(Client, Input, []).
+
+-spec list_instrumentation_configurations(aws_client:aws_client(), list_instrumentation_configurations_request(), proplists:proplist()) ->
+    {ok, instrumentation_configurations_page(), tuple()} |
+    {error, any()} |
+    {error, list_instrumentation_configurations_errors(), tuple()}.
+list_instrumentation_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-instrumentation-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of service dependencies of the service that you
@@ -1977,6 +2565,48 @@ put_grouping_configuration(Client, Input) ->
 put_grouping_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/grouping-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Reports the status of one or more instrumentation configurations from
+%% SDK instances.
+%%
+%% Use this to record when configurations become ready, hit errors, become
+%% active, or are disabled by limits.
+%%
+%% Report `READY', `ERROR', and `DISABLED' when the status
+%% changes. Report `ACTIVE' periodically (for example, every minute)
+%% while instrumentation is running.
+-spec report_instrumentation_configuration_status(aws_client:aws_client(), report_instrumentation_configuration_status_request()) ->
+    {ok, report_instrumentation_configuration_status_response(), tuple()} |
+    {error, any()} |
+    {error, report_instrumentation_configuration_status_errors(), tuple()}.
+report_instrumentation_configuration_status(Client, Input) ->
+    report_instrumentation_configuration_status(Client, Input, []).
+
+-spec report_instrumentation_configuration_status(aws_client:aws_client(), report_instrumentation_configuration_status_request(), proplists:proplist()) ->
+    {ok, report_instrumentation_configuration_status_response(), tuple()} |
+    {error, any()} |
+    {error, report_instrumentation_configuration_status_errors(), tuple()}.
+report_instrumentation_configuration_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/report-instrumentation-configuration-status"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

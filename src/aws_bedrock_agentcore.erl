@@ -2152,6 +2152,7 @@
 %%   <<"branch">> => branch(),
 %%   <<"clientToken">> => [string()],
 %%   <<"eventTimestamp">> := [non_neg_integer()],
+%%   <<"extractionMode">> => list(any()),
 %%   <<"metadata">> => map(),
 %%   <<"payload">> := list(list()),
 %%   <<"sessionId">> => string()
