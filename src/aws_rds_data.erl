@@ -10,9 +10,9 @@
 %%
 %% Data API is available with the following types of Aurora databases:
 %%
-%% Aurora PostgreSQL - Serverless v2, provisioned, and Serverless v1
+%% Aurora PostgreSQL - Serverless and provisioned
 %%
-%% Aurora MySQL - Serverless v2, provisioned, and Serverless v1
+%% Aurora MySQL - Serverless and provisioned
 %%
 %% For more information about the Data API, see Using RDS Data API:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
@@ -577,10 +577,8 @@ commit_transaction(Client, Input0, Options0) ->
 
 %% @doc Runs one or more SQL statements.
 %%
-%% This operation isn't supported for Aurora Serverless v2 and
-%% provisioned DB clusters. For Aurora Serverless v1 DB clusters, the
-%% operation is deprecated. Use the `BatchExecuteStatement' or
-%% `ExecuteStatement' operation.
+%% This operation is deprecated. Please use the `BatchExecuteStatement'
+%% or `ExecuteStatement' operation.
 -spec execute_sql(aws_client:aws_client(), execute_sql_request()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |

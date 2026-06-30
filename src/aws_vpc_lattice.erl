@@ -428,6 +428,7 @@
 %%   <<"failureCode">> => string(),
 %%   <<"failureMessage">> => string(),
 %%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
@@ -1063,6 +1064,7 @@
 %%   <<"certificateArn">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"customDomainName">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1228,7 +1230,8 @@
 %% Example:
 %% update_service_request() :: #{
 %%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string()
+%%   <<"certificateArn">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer()
 %% }
 -type update_service_request() :: #{binary() => any()}.
 
@@ -1740,6 +1743,7 @@
 %%   <<"certificateArn">> => string(),
 %%   <<"customDomainName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
 %%   <<"name">> => string()
 %% }
 -type update_service_response() :: #{binary() => any()}.
@@ -1798,6 +1802,7 @@
 %%   <<"customDomainName">> => string(),
 %%   <<"dnsEntry">> => dns_entry(),
 %%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }

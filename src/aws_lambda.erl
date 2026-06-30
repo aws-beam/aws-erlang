@@ -385,6 +385,7 @@
 %%   <<"ImageUri">> => string(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
+%%   <<"S3ObjectStorageMode">> => list(any()),
 %%   <<"S3ObjectVersion">> => string(),
 %%   <<"SourceKMSKeyArn">> => string(),
 %%   <<"ZipFile">> => binary()
@@ -666,10 +667,12 @@
 
 %% Example:
 %% function_code_location() :: #{
+%%   <<"Error">> => function_code_location_error(),
 %%   <<"ImageUri">> => string(),
 %%   <<"Location">> => string(),
 %%   <<"RepositoryType">> => string(),
 %%   <<"ResolvedImageUri">> => string(),
+%%   <<"ResolvedS3Object">> => resolved_s3_object(),
 %%   <<"SourceKMSKeyArn">> => string()
 %% }
 -type function_code_location() :: #{binary() => any()}.
@@ -856,6 +859,7 @@
 %%   <<"CodeSha256">> => string(),
 %%   <<"CodeSize">> => float(),
 %%   <<"Location">> => string(),
+%%   <<"ResolvedS3Object">> => resolved_s3_object(),
 %%   <<"SigningJobArn">> => string(),
 %%   <<"SigningProfileVersionArn">> => string()
 %% }
@@ -1533,6 +1537,7 @@
 %%   <<"RevisionId">> => string(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
+%%   <<"S3ObjectStorageMode">> => list(any()),
 %%   <<"S3ObjectVersion">> => string(),
 %%   <<"SourceKMSKeyArn">> => string(),
 %%   <<"ZipFile">> => binary()
@@ -2240,6 +2245,15 @@
 
 
 %% Example:
+%% resolved_s3_object() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string()
+%% }
+-type resolved_s3_object() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
@@ -2907,6 +2921,7 @@
 %% layer_version_content_input() :: #{
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
+%%   <<"S3ObjectStorageMode">> => list(any()),
 %%   <<"S3ObjectVersion">> => string(),
 %%   <<"ZipFile">> => binary()
 %% }
@@ -2971,6 +2986,14 @@
 %%   <<"Type">> => string()
 %% }
 -type s3_files_mount_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_code_location_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type function_code_location_error() :: #{binary() => any()}.
 
 
 %% Example:

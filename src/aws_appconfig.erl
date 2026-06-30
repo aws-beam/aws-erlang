@@ -1,53 +1,32 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AppConfig feature flags and dynamic configurations help software
-%% builders
-%% quickly and securely adjust application behavior in production
-%% environments without full
-%% code deployments.
+%% @doc AppConfig helps you safely change application behavior in production
+%% without redeploying code.
 %%
-%% AppConfig speeds up software release frequency, improves
-%% application resiliency, and helps you address emergent issues more
-%% quickly. With feature
-%% flags, you can gradually release new capabilities to users and measure the
-%% impact of those
-%% changes before fully deploying the new capabilities to all users. With
-%% operational flags
-%% and dynamic configurations, you can update block lists, allow lists,
-%% throttling limits,
-%% logging verbosity, and perform other operational tuning to quickly respond
-%% to issues in
-%% production environments.
+%% Using feature flags and dynamic free-form configurations, you can control
+%% how your application runs in real time. This approach reduces risk,
+%% accelerates releases, and enables faster responses to issues. You can
+%% gradually roll out new features to specific users, monitor their impact,
+%% and expand availability with confidence. You can also update block lists,
+%% allow lists, throttling limits, and logging levels instantly, allowing you
+%% to mitigate issues and fine-tune performance without a deployment.
 %%
-%% AppConfig is a tool in Amazon Web Services Systems Manager.
+%% AppConfig supports a broad spectrum of use cases:
 %%
-%% Despite the fact that application configuration content can vary greatly
-%% from
-%% application to application, AppConfig supports the following use cases,
-%% which
-%% cover a broad spectrum of customer needs:
+%% Feature flags and toggles – Gradually release new capabilities to targeted
+%% users, monitor impact, and instantly roll back changes if issues occur.
 %%
-%% Feature flags and toggles - Safely release new
-%% capabilities to your customers in a controlled environment. Instantly roll
-%% back
-%% changes if you experience a problem.
+%% Application tuning – Introduce changes safely in production, measure their
+%% effects, and refine behavior without redeploying code.
 %%
-%% Application tuning - Carefully introduce
-%% application changes while testing the impact of those changes with users
-%% in
-%% production environments.
+%% Allow list or block list – Control access to features or restrict specific
+%% users in real time, without modifying application code.
 %%
-%% Allow list or block list - Control access to
-%% premium features or instantly block specific users without deploying new
-%% code.
-%%
-%% Centralized configuration storage - Keep your
-%% configuration data organized and consistent across all of your workloads.
-%% You can use
-%% AppConfig to deploy configuration data stored in the AppConfig
-%% hosted configuration store, Secrets Manager, Systems Manager, Parameter
-%% Store, or Amazon S3.
+%% Centralized configuration storage – Manage configuration data consistently
+%% across workloads. AppConfig can deploy configuration from the AppConfig
+%% hosted configuration store, Secrets Manager, Systems Manager, Systems
+%% Manager Parameter Store, or Amazon S3.
 %%
 %% How AppConfig works
 %%
@@ -55,122 +34,83 @@
 %% how
 %% you get started.
 %%
-%% 1. Identify configuration values in code you want to manage in the cloud
+%% 1. Identify configuration data to manage in AppConfig
 %%
-%% Before you start creating AppConfig artifacts, we recommend you
-%% identify configuration data in your code that you want to dynamically
-%% manage using
-%% AppConfig. Good examples include feature flags or toggles, allow and
-%% block lists, logging verbosity, service limits, and throttling rules, to
-%% name a
-%% few.
+%% Before creating a configuration profile, identify the configuration data
+%% in your code that you want to manage dynamically using AppConfig. Common
+%% examples include feature flags, allow and block lists, logging levels,
+%% service limits, and throttling rules. These values tend to change
+%% frequently and can cause issues if misconfigured.
 %%
-%% If your configuration data already exists in the cloud, you can take
-%% advantage
-%% of AppConfig validation, deployment, and extension features to further
-%% streamline configuration data management.
+%% If your configuration data already exists in cloud services such as
+%% Systems Manager Parameter Store or Amazon S3, you can use AppConfig to
+%% validate, deploy, and manage that data more effectively.
 %%
-%% 2. Create an application namespace
+%% 2. Create a configuration profile in AppConfig
 %%
-%% To create a namespace, you create an AppConfig artifact called an
-%% application. An application is simply an organizational construct like a
-%% folder.
+%% A configuration profile defines how AppConfig locates and manages your
+%% configuration data. It includes a URI that points to the data source and a
+%% profile type.
 %%
-%% 3. Create environments
+%% AppConfig supports two profile types
 %%
-%% For each AppConfig application, you define one or more environments.
-%% An environment is a logical grouping of targets, such as applications in a
-%% `Beta' or `Production' environment, Lambda functions,
-%% or containers. You can also define environments for application
-%% subcomponents,
-%% such as the `Web', `Mobile', and
-%% `Back-end'.
+%% Feature flags – Enable controlled feature releases, gradual rollouts, and
+%% testing in production.
 %%
-%% You can configure Amazon CloudWatch alarms for each environment. The
-%% system monitors
-%% alarms during a configuration deployment. If an alarm is triggered, the
-%% system
-%% rolls back the configuration.
+%% Free-form configurations – Store and retrieve configuration data from
+%% external sources and update it without redeploying code.
 %%
-%% 4. Create a configuration profile
+%% Both profile types help decouple configuration from code, support
+%% continuous delivery, and reduce deployment risk.
 %%
-%% A configuration profile includes, among other things, a URI that enables
-%% AppConfig to locate your configuration data in its stored location
-%% and a profile type. AppConfig supports two configuration profile types:
-%% feature flags and freeform configurations. Feature flag configuration
-%% profiles
-%% store their data in the AppConfig hosted configuration store and the URI
-%% is simply `hosted'. For freeform configuration profiles, you can store
-%% your data in the AppConfig hosted configuration store or any Amazon Web
-%% Services
-%% service that integrates with AppConfig, as described in Creating
-%% a free form configuration profile:
-%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-free-form-configurations-creating.html
+%% You can also add optional validators to ensure that configuration data is
+%% syntactically and semantically correct. During deployment, AppConfig
+%% evaluates these validators and automatically rolls back changes if
+%% validation fails.
+%%
+%% Each configuration profile is associated with an application, which acts
+%% as a logical container for your configuration resources. For more
+%% information about creating a configuration profile, see Creating a
+%% configuration profile in AppConfig:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-profile.html
 %% in the the AppConfig User Guide.
 %%
-%% A configuration profile can also include optional validators to ensure
-%% your
-%% configuration data is syntactically and semantically correct. AppConfig
-%% performs a check using the validators when you start a deployment. If any
-%% errors
-%% are detected, the deployment rolls back to the previous configuration
-%% data.
+%% 3. Deploy configuration data
 %%
-%% 5. Deploy configuration data
+%% When you start a deployment, AppConfig:
 %%
-%% When you create a new deployment, you specify the following:
+%% Retrieves configuration data from the source defined in the configuration
+%% profile
 %%
-%% An application ID
+%% Validates the data using the configured validators
 %%
-%% A configuration profile ID
+%% Delivers the validated configuration to AppConfig Agent
 %%
-%% A configuration version
+%% The delivered configuration becomes the deployed version used by your
+%% application. For more information about deploying a configuration, see
+%% Deploying feature flags and configuration data in AppConfig:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/deploying-feature-flags.html.
 %%
-%% An environment ID where you want to deploy the configuration data
+%% 4. Retrieve configuration data
 %%
-%% A deployment strategy ID that defines how fast you want the changes to
-%% take effect
+%% Your application retrieves configuration data by calling a local endpoint
+%% exposed by AppConfig Agent, which caches the deployed configuration.
+%% Retrieving data is a metered event. AppConfig Agent supports a variety of
+%% use cases, as described in How to use AppConfig Agent to retrieve
+%% configuration data:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-agent-how-to-use.html.
 %%
-%% When you call the StartDeployment:
-%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_StartDeployment.html
-%% API action, AppConfig performs the following
-%% tasks:
-%%
-%% Retrieves the configuration data from the underlying data store by using
-%% the location URI in the configuration profile.
-%%
-%% Verifies the configuration data is syntactically and semantically correct
-%% by using the validators you specified when you created your configuration
-%% profile.
-%%
-%% Caches a copy of the data so it is ready to be retrieved by your
-%% application. This cached copy is called the deployed
-%% data.
-%%
-%% 6. Retrieve the configuration
-%%
-%% You can configure AppConfig Agent as a local host and have the agent
-%% poll AppConfig for configuration updates. The agent calls the
+%% If the agent is not suitable for your use case, your application can
+%% retrieve configuration data directly from AppConfig by calling the
 %% StartConfigurationSession:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
 %% and GetLatestConfiguration:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
-%% API actions and caches your configuration data
-%% locally. To retrieve the data, your application makes an HTTP call to the
-%% localhost server. AppConfig Agent supports several use cases, as
-%% described in Simplified
-%% retrieval methods:
-%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-simplified-methods.html
-%% in the the AppConfig User
-%% Guide.
-%%
-%% If AppConfig Agent isn't supported for your use case, you can
-%% configure your application to poll AppConfig for configuration updates
-%% by directly calling the StartConfigurationSession:
-%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
-%% and GetLatestConfiguration:
-%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
 %% API actions.
+%%
+%% For more information about retrieving a configuration, see Retrieving
+%% feature flags and configuration data in AppConfig:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/retrieving-feature-flags.html.
 %%
 %% This reference is intended to be used with the AppConfig User
 %% Guide:
@@ -185,6 +125,8 @@
          create_deployment_strategy/3,
          create_environment/3,
          create_environment/4,
+         create_experiment_definition/3,
+         create_experiment_definition/4,
          create_extension/2,
          create_extension/3,
          create_extension_association/2,
@@ -199,6 +141,8 @@
          delete_deployment_strategy/4,
          delete_environment/4,
          delete_environment/5,
+         delete_experiment_definition/4,
+         delete_experiment_definition/5,
          delete_extension/3,
          delete_extension/4,
          delete_extension_association/3,
@@ -226,6 +170,12 @@
          get_environment/3,
          get_environment/5,
          get_environment/6,
+         get_experiment_definition/3,
+         get_experiment_definition/5,
+         get_experiment_definition/6,
+         get_experiment_run/4,
+         get_experiment_run/6,
+         get_experiment_run/7,
          get_extension/2,
          get_extension/4,
          get_extension/5,
@@ -250,6 +200,15 @@
          list_environments/2,
          list_environments/4,
          list_environments/5,
+         list_experiment_definitions/1,
+         list_experiment_definitions/3,
+         list_experiment_definitions/4,
+         list_experiment_run_events/4,
+         list_experiment_run_events/6,
+         list_experiment_run_events/7,
+         list_experiment_runs/3,
+         list_experiment_runs/5,
+         list_experiment_runs/6,
          list_extension_associations/1,
          list_extension_associations/3,
          list_extension_associations/4,
@@ -264,8 +223,12 @@
          list_tags_for_resource/5,
          start_deployment/4,
          start_deployment/5,
+         start_experiment_run/4,
+         start_experiment_run/5,
          stop_deployment/5,
          stop_deployment/6,
+         stop_experiment_run/5,
+         stop_experiment_run/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -280,6 +243,10 @@
          update_deployment_strategy/4,
          update_environment/4,
          update_environment/5,
+         update_experiment_definition/4,
+         update_experiment_definition/5,
+         update_experiment_run/5,
+         update_experiment_run/6,
          update_extension/3,
          update_extension/4,
          update_extension_association/3,
@@ -347,6 +314,7 @@
 %% deployment_summary() :: #{
 %%   <<"CompletedAt">> => non_neg_integer(),
 %%   <<"ConfigurationName">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
 %%   <<"ConfigurationVersion">> => string(),
 %%   <<"DeploymentDurationInMinutes">> => integer(),
 %%   <<"DeploymentNumber">> => integer(),
@@ -356,6 +324,7 @@
 %%   <<"PercentageComplete">> => float(),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any()),
 %%   <<"VersionLabel">> => string()
 %% }
 -type deployment_summary() :: #{binary() => any()}.
@@ -407,9 +376,34 @@
 %% }
 -type invalid_configuration_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_experiment_runs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_experiment_runs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_deployment_strategy_request() :: #{}
 -type delete_deployment_strategy_request() :: #{}.
+
+
+%% Example:
+%% experiment_definitions() :: #{
+%%   <<"Items">> => list(experiment_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_definitions() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
+%%   <<"Result">> => experiment_run_result()
+%% }
+-type stop_experiment_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -443,6 +437,28 @@
 %%   <<"VersionLabel">> => string()
 %% }
 -type create_hosted_configuration_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_definition() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"Control">> => treatment(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"FlagKey">> => string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Treatments">> => list(treatment()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_definition() :: #{binary() => any()}.
 
 %% Example:
 %% get_environment_request() :: #{}
@@ -545,6 +561,15 @@
 
 
 %% Example:
+%% treatment_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlagValue">> => flag_value(),
+%%   <<"Weight">> => float()
+%% }
+-type treatment_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% extension_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
@@ -557,6 +582,16 @@
 %% Example:
 %% delete_hosted_configuration_version_request() :: #{}
 -type delete_hosted_configuration_version_request() :: #{}.
+
+
+%% Example:
+%% update_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
+%%   <<"Description">> => string(),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"TreatmentOverrides">> => list()
+%% }
+-type update_experiment_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -631,6 +666,22 @@
 
 
 %% Example:
+%% experiment_definition_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"FlagKey">> => string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Dynamic">> => boolean(),
@@ -651,6 +702,14 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_deployment_strategy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_parameters() :: #{
+%%   <<"DynamicExtensionParameters">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type deployment_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,6 +751,19 @@
 %% }
 -type get_extension_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% experiment_run_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExperimentDefinitionId">> => string(),
+%%   <<"Run">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_run_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_hosted_configuration_version_request() :: #{}
 -type get_hosted_configuration_version_request() :: #{}.
@@ -712,7 +784,8 @@
 
 %% Example:
 %% update_account_settings_request() :: #{
-%%   <<"DeletionProtection">> => deletion_protection_settings()
+%%   <<"DeletionProtection">> => deletion_protection_settings(),
+%%   <<"VendedMetrics">> => vended_metrics_settings()
 %% }
 -type update_account_settings_request() :: #{binary() => any()}.
 
@@ -723,6 +796,26 @@
 %%   <<"NextToken">> => string()
 %% }
 -type environments() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_events() :: #{
+%%   <<"Items">> => list(experiment_run_event()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_run_events() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_definition_request() :: #{
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> => string(),
+%%   <<"Control">> => treatment_input(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Treatments">> => list(treatment_input())
+%% }
+-type update_experiment_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_configuration_profile_request() :: #{}
@@ -739,6 +832,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type deployment_strategies() :: #{binary() => any()}.
+
+%% Example:
+%% get_experiment_run_request() :: #{}
+-type get_experiment_run_request() :: #{}.
 
 
 %% Example:
@@ -786,6 +883,17 @@
 
 
 %% Example:
+%% delete_experiment_definition_request() :: #{
+%%   <<"DeleteType">> => list(any())
+%% }
+-type delete_experiment_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_experiment_definition_request() :: #{}
+-type get_experiment_definition_request() :: #{}.
+
+
+%% Example:
 %% create_extension_association_request() :: #{
 %%   <<"ExtensionIdentifier">> := string(),
 %%   <<"ExtensionVersionNumber">> => integer(),
@@ -802,6 +910,23 @@
 %%   <<"NextToken">> => string()
 %% }
 -type configuration_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_experiment_definition_request() :: #{
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> := string(),
+%%   <<"ConfigurationProfileIdentifier">> := string(),
+%%   <<"Control">> := treatment_input(),
+%%   <<"EnvironmentIdentifier">> := string(),
+%%   <<"FlagKey">> := string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Treatments">> := list(treatment_input())
+%% }
+-type create_experiment_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -823,6 +948,38 @@
 
 
 %% Example:
+%% experiment_run_event() :: #{
+%%   <<"AssociatedDeployment">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"OccurredAt">> => non_neg_integer(),
+%%   <<"TreatmentOverrides">> => list(),
+%%   <<"TriggeredBy">> => list(any())
+%% }
+-type experiment_run_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_result() :: #{
+%%   <<"ExecutiveSummary">> => string(),
+%%   <<"ReasonsNotToLaunch">> => string(),
+%%   <<"ReasonsToLaunch">> => string()
+%% }
+-type experiment_run_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% treatment() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlagValue">> => flag_value(),
+%%   <<"Key">> => string(),
+%%   <<"Weight">> => float()
+%% }
+-type treatment() :: #{binary() => any()}.
+
+
+%% Example:
 %% extensions() :: #{
 %%   <<"Items">> => list(extension_summary()),
 %%   <<"NextToken">> => string()
@@ -831,8 +988,29 @@
 
 
 %% Example:
+%% list_experiment_run_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experiment_run_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_definitions_request() :: #{
+%%   <<"ApplicationIdentifier">> => string(),
+%%   <<"ConfigurationProfileIdentifier">> => string(),
+%%   <<"EnvironmentIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_experiment_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_settings() :: #{
-%%   <<"DeletionProtection">> => deletion_protection_settings()
+%%   <<"DeletionProtection">> => deletion_protection_settings(),
+%%   <<"VendedMetrics">> => vended_metrics_settings()
 %% }
 -type account_settings() :: #{binary() => any()}.
 
@@ -871,6 +1049,14 @@
 
 
 %% Example:
+%% experiment_runs() :: #{
+%%   <<"Items">> => list(experiment_run_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_runs() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_extension_request() :: #{
 %%   <<"Actions">> := map(),
 %%   <<"Description">> => string(),
@@ -901,6 +1087,24 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_definition_snapshot() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"Control">> => treatment(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"FlagKey">> => string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Treatments">> => list(treatment())
+%% }
+-type experiment_definition_snapshot() :: #{binary() => any()}.
 
 
 %% Example:
@@ -946,6 +1150,24 @@
 
 
 %% Example:
+%% experiment_run() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExperimentDefinitionId">> => string(),
+%%   <<"ExperimentDefinitionSnapshot">> => experiment_definition_snapshot(),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"Result">> => experiment_run_result(),
+%%   <<"Run">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TreatmentOverrides">> => list(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_run() :: #{binary() => any()}.
+
+
+%% Example:
 %% deployment_event() :: #{
 %%   <<"ActionInvocations">> => list(action_invocation()),
 %%   <<"Description">> => string(),
@@ -966,10 +1188,36 @@
 
 
 %% Example:
+%% flag_value() :: #{
+%%   <<"AttributeValues">> => map(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type flag_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
+%%   <<"Description">> => string(),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"Tags">> => map(),
+%%   <<"TreatmentOverrides">> => list()
+%% }
+-type start_experiment_run_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_extension_request() :: #{
 %%   <<"VersionNumber">> => integer()
 %% }
 -type delete_extension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vended_metrics_settings() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type vended_metrics_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1004,6 +1252,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DynamicExtensionParameters">> => map(),
 %%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LatestDeploymentNumber">> => integer(),
 %%   <<"Tags">> => map()
 %% }
 -type start_deployment_request() :: #{binary() => any()}.
@@ -1055,6 +1304,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type create_experiment_definition_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_extension_errors() ::
     bad_request_exception() | 
     internal_server_exception() | 
@@ -1092,6 +1348,12 @@
     resource_not_found_exception().
 
 -type delete_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_experiment_definition_errors() ::
     bad_request_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
@@ -1146,6 +1408,16 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_experiment_definition_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_run_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_extension_errors() ::
     bad_request_exception() | 
     internal_server_exception() | 
@@ -1184,6 +1456,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_experiment_definitions_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_experiment_run_events_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_experiment_runs_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_extension_associations_errors() ::
     bad_request_exception() | 
     internal_server_exception().
@@ -1208,7 +1495,18 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_experiment_run_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type stop_experiment_run_errors() ::
     bad_request_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -1246,6 +1544,18 @@
     bad_request_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_experiment_definition_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_experiment_run_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_extension_errors() ::
     bad_request_exception() | 
@@ -1470,6 +1780,44 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an experiment definition in AppConfig.
+%%
+%% An experiment definition describes the purpose, scope, and operational
+%% configuration of an experiment, including the target audience, feature
+%% flag, and treatment configurations.
+-spec create_experiment_definition(aws_client:aws_client(), binary() | list(), create_experiment_definition_request()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, create_experiment_definition_errors(), tuple()}.
+create_experiment_definition(Client, ApplicationIdentifier, Input) ->
+    create_experiment_definition(Client, ApplicationIdentifier, Input, []).
+
+-spec create_experiment_definition(aws_client:aws_client(), binary() | list(), create_experiment_definition_request(), proplists:proplist()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, create_experiment_definition_errors(), tuple()}.
+create_experiment_definition(Client, ApplicationIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an AppConfig extension.
 %%
 %% An extension augments your ability to inject
@@ -1600,7 +1948,7 @@ create_extension_association(Client, Input0, Options0) ->
 %% with the JSON schema
 %% for feature flag data. For more information, see Type reference for
 %% AWS.AppConfig.FeatureFlags:
-%% https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile-feature-flags.html#appconfig-type-reference-feature-flags
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-type-reference-feature-flags.html
 %% in the
 %% AppConfig User Guide.
 -spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
@@ -1812,6 +2160,45 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an experiment definition.
+%%
+%% You can archive the definition to hide it from the active list while
+%% preserving it for future reference, or permanently delete it along with
+%% all associated run history.
+-spec delete_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_experiment_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_experiment_definition_errors(), tuple()}.
+delete_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input) ->
+    delete_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input, []).
+
+-spec delete_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_experiment_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_experiment_definition_errors(), tuple()}.
+delete_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"delete_type">>, <<"DeleteType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AppConfig extension.
@@ -2238,6 +2625,81 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about an experiment definition.
+-spec get_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_definition_errors(), tuple()}.
+get_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier)
+  when is_map(Client) ->
+    get_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, #{}, #{}).
+
+-spec get_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_definition_errors(), tuple()}.
+get_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_definition_errors(), tuple()}.
+get_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about an experiment run, including its status,
+%% start time, and exposure settings.
+-spec get_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_run_errors(), tuple()}.
+get_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run)
+  when is_map(Client) ->
+    get_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, #{}, #{}).
+
+-spec get_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_run_errors(), tuple()}.
+get_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap, []).
+
+-spec get_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, get_experiment_run_errors(), tuple()}.
+get_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns/", aws_util:encode_uri(Run), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about an AppConfig extension.
 -spec get_extension(aws_client:aws_client(), binary() | list()) ->
     {ok, extension(), tuple()} |
@@ -2593,6 +3055,145 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the experiment definitions for an account.
+%%
+%% You can filter results by application, configuration profile, environment,
+%% or status.
+-spec list_experiment_definitions(aws_client:aws_client()) ->
+    {ok, experiment_definitions(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_definitions_errors(), tuple()}.
+list_experiment_definitions(Client)
+  when is_map(Client) ->
+    list_experiment_definitions(Client, #{}, #{}).
+
+-spec list_experiment_definitions(aws_client:aws_client(), map(), map()) ->
+    {ok, experiment_definitions(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_definitions_errors(), tuple()}.
+list_experiment_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_experiment_definitions(Client, QueryMap, HeadersMap, []).
+
+-spec list_experiment_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, experiment_definitions(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_definitions_errors(), tuple()}.
+list_experiment_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experimentdefinitions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"application_identifier">>, maps:get(<<"application_identifier">>, QueryMap, undefined)},
+        {<<"configuration_profile_identifier">>, maps:get(<<"configuration_profile_identifier">>, QueryMap, undefined)},
+        {<<"environment_identifier">>, maps:get(<<"environment_identifier">>, QueryMap, undefined)},
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the events for a specified experiment run.
+%%
+%% Events provide a timeline of actions and state changes that occurred
+%% during the run.
+-spec list_experiment_run_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, experiment_run_events(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_run_events_errors(), tuple()}.
+list_experiment_run_events(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run)
+  when is_map(Client) ->
+    list_experiment_run_events(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, #{}, #{}).
+
+-spec list_experiment_run_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, experiment_run_events(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_run_events_errors(), tuple()}.
+list_experiment_run_events(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_experiment_run_events(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap, []).
+
+-spec list_experiment_run_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, experiment_run_events(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_run_events_errors(), tuple()}.
+list_experiment_run_events(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns/", aws_util:encode_uri(Run), "/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the experiment runs for a specified experiment definition.
+%%
+%% You can filter by status.
+-spec list_experiment_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, experiment_runs(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_runs_errors(), tuple()}.
+list_experiment_runs(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier)
+  when is_map(Client) ->
+    list_experiment_runs(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, #{}, #{}).
+
+-spec list_experiment_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, experiment_runs(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_runs_errors(), tuple()}.
+list_experiment_runs(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_experiment_runs(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_experiment_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, experiment_runs(), tuple()} |
+    {error, any()} |
+    {error, list_experiment_runs_errors(), tuple()}.
+list_experiment_runs(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all AppConfig extension associations in the account.
 %%
 %% For more
@@ -2777,6 +3378,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a deployment.
+%%
+%% AppConfig Agent supports deploying feature flag or free-form configuration
+%% data to specific segments or individual users during a gradual rollout.
+%% Entity-based gradual deployments ensure that once a user or segment
+%% receives a configuration version, they continue to receive that same
+%% version throughout the deployment period, regardless of which compute
+%% resource serves their requests. For more information, see Using AppConfig
+%% Agent for user-based or entity-based gradual deployments:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-agent-how-to-use.html#appconfig-entity-based-gradual-deployments
 -spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
@@ -2791,6 +3401,44 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
 start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an experiment run for the specified experiment definition.
+%%
+%% An experiment run delivers treatments to the target audience and collects
+%% metrics. You can start multiple experiment runs from the same experiment
+%% definition.
+-spec start_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_experiment_run_request()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, start_experiment_run_errors(), tuple()}.
+start_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input) ->
+    start_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input, []).
+
+-spec start_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_experiment_run_request(), proplists:proplist()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, start_experiment_run_errors(), tuple()}.
+start_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2845,6 +3493,43 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
                        {<<"Allow-Revert">>, <<"AllowRevert">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a running experiment.
+%%
+%% Stopping an experiment run ends audience exposure and returns users to the
+%% currently deployed feature flag configuration.
+-spec stop_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_experiment_run_request()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, stop_experiment_run_errors(), tuple()}.
+stop_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input) ->
+    stop_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input, []).
+
+-spec stop_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_experiment_run_request(), proplists:proplist()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, stop_experiment_run_errors(), tuple()}.
+stop_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input0, Options0) ->
+    Method = patch,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns/", aws_util:encode_uri(Run), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -3079,6 +3764,82 @@ update_environment(Client, ApplicationId, EnvironmentId, Input) ->
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an experiment definition.
+%%
+%% You can update treatments, the control, audience rules, and other
+%% properties. You cannot update an experiment definition while an experiment
+%% run is active.
+-spec update_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_experiment_definition_request()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_definition_errors(), tuple()}.
+update_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input) ->
+    update_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input, []).
+
+-spec update_experiment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_experiment_definition_request(), proplists:proplist()) ->
+    {ok, experiment_definition(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_definition_errors(), tuple()}.
+update_experiment_definition(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a running experiment.
+%%
+%% Use this operation to increase audience exposure, modify treatment
+%% assignment overrides, or update the description of an active experiment
+%% run. Audience exposure can only be increased, not decreased.
+-spec update_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_experiment_run_request()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_run_errors(), tuple()}.
+update_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input) ->
+    update_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input, []).
+
+-spec update_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_experiment_run_request(), proplists:proplist()) ->
+    {ok, experiment_run(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_run_errors(), tuple()}.
+update_experiment_run(Client, ApplicationIdentifier, ExperimentDefinitionIdentifier, Run, Input0, Options0) ->
+    Method = patch,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationIdentifier), "/experimentdefinitions/", aws_util:encode_uri(ExperimentDefinitionIdentifier), "/experimentruns/", aws_util:encode_uri(Run), "/update"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

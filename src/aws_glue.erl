@@ -536,6 +536,8 @@
          test_connection/3,
          untag_resource/2,
          untag_resource/3,
+         update_asset/2,
+         update_asset/3,
          update_blueprint/2,
          update_blueprint/3,
          update_catalog/2,
@@ -3907,6 +3909,15 @@
 
 %% }
 -type create_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_crawler_request() :: #{
@@ -7401,6 +7412,14 @@
 %%   <<"ViewOriginalText">> => string()
 %% }
 -type table_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_asset_request() :: #{binary() => any()}.
 
 %% Example:
 %% column_importance() :: #{
@@ -11863,6 +11882,14 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_asset_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type update_blueprint_errors() ::
@@ -17352,6 +17379,26 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the name and description of an existing asset in Glue Data
+%% Catalog.
+%%
+%% Only the fields that you provide are updated.
+-spec update_asset(aws_client:aws_client(), update_asset_request()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
+update_asset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_asset(Client, Input, []).
+
+-spec update_asset(aws_client:aws_client(), update_asset_request(), proplists:proplist()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
+update_asset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAsset">>, Input, Options).
 
 %% @doc Updates a registered blueprint.
 -spec update_blueprint(aws_client:aws_client(), update_blueprint_request()) ->

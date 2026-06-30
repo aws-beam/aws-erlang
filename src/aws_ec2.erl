@@ -6345,6 +6345,7 @@
 %%   <<"GroupName">> => string(),
 %%   <<"LinkedGroupId">> => string(),
 %%   <<"Operator">> => operator_response(),
+%%   <<"ParentGroupId">> => string(),
 %%   <<"PartitionCount">> => integer(),
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"State">> => list(any()),
@@ -10168,6 +10169,7 @@
 %%   <<"GroupName">> => string(),
 %%   <<"LinkedGroupId">> => string(),
 %%   <<"Operator">> => operator_request(),
+%%   <<"ParentGroupId">> => string(),
 %%   <<"PartitionCount">> => integer(),
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"Strategy">> => list(any()),
@@ -26293,7 +26295,11 @@ create_network_interface_permission(Client, Input, Options)
 %% `partition' placement group places groups of instances in different
 %% partitions, where instances in one partition do not share the same
 %% hardware with
-%% instances in another partition.
+%% instances in another partition. A `precision-time' placement group
+%% places
+%% instances on supported hardware with direct access to high-precision time
+%% sources in
+%% AWS infrastructure.
 %%
 %% For more information, see Placement groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
@@ -28609,8 +28615,11 @@ delete_network_interface_permission(Client, Input, Options)
 %% @doc Deletes the specified placement group.
 %%
 %% You must terminate all instances in the
-%% placement group before you can delete the placement group. For more
-%% information, see
+%% placement group before you can delete the placement group. You cannot
+%% delete a
+%% placement group that is a parent of a cluster placement group. Delete the
+%% cluster
+%% placement groups first. For more information, see
 %% Placement groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 %% in the Amazon EC2 User Guide.

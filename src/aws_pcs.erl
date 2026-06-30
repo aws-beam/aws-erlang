@@ -240,6 +240,7 @@
 %% update_cluster_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"clusterIdentifier">> := string(),
+%%   <<"scheduler">> => update_scheduler_request(),
 %%   <<"slurmConfiguration">> => update_cluster_slurm_configuration_request()
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
@@ -398,6 +399,12 @@
 %%   <<"clusterIdentifier">> := string()
 %% }
 -type register_compute_node_group_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scheduler_request() :: #{
+%%   <<"version">> => [string()]
+%% }
+-type update_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_compute_node_groups_response() :: #{
@@ -1220,8 +1227,12 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates a cluster configuration.
 %%
-%% You can modify Slurm scheduler settings, accounting configuration, and
-%% security groups for an existing cluster.
+%% You can upgrade the Slurm version, modify scheduler settings, and update
+%% accounting configuration for an existing cluster. For more information
+%% about upgrading the Slurm version, see Upgrading the Slurm version on a
+%% cluster:
+%% https://docs.aws.amazon.com/pcs/latest/userguide/working-with_clusters_upgrade.html
+%% in the PCS User Guide.
 %%
 %% You can only update clusters that are in `ACTIVE',
 %% `UPDATE_FAILED', or `SUSPENDED' state. All associated resources

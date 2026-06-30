@@ -107,6 +107,8 @@
          delete_protect_configuration_rule_set_number_override/3,
          delete_rcs_agent/2,
          delete_rcs_agent/3,
+         delete_rcs_message_spend_limit_override/2,
+         delete_rcs_message_spend_limit_override/3,
          delete_registration/2,
          delete_registration/3,
          delete_registration_attachment/2,
@@ -215,6 +217,8 @@
          send_notify_text_message/3,
          send_notify_voice_message/2,
          send_notify_voice_message/3,
+         send_rcs_message/2,
+         send_rcs_message/3,
          send_text_message/2,
          send_text_message/3,
          send_voice_message/2,
@@ -231,6 +235,8 @@
          set_media_message_spend_limit_override/3,
          set_notify_message_spend_limit_override/2,
          set_notify_message_spend_limit_override/3,
+         set_rcs_message_spend_limit_override/2,
+         set_rcs_message_spend_limit_override/3,
          set_text_message_spend_limit_override/2,
          set_text_message_spend_limit_override/3,
          set_voice_message_spend_limit_override/2,
@@ -378,7 +384,11 @@
 %%   <<"Status">> => string(),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
-%%   <<"TwoWayEnabled">> => [boolean()]
+%%   <<"TwoWayEnabled">> => [boolean()],
+%%   <<"TwoWayMediaS3BucketName">> => string(),
+%%   <<"TwoWayMediaS3KeyPrefix">> => string(),
+%%   <<"TwoWayMediaS3Role">> => string(),
+%%   <<"TwoWayRcsEventsEnabled">> => list(string())
 %% }
 -type update_rcs_agent_result() :: #{binary() => any()}.
 
@@ -399,6 +409,15 @@
 %%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_card_content() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Media">> => rcs_card_media(),
+%%   <<"Suggestions">> => list(list()),
+%%   <<"Title">> => string()
+%% }
+-type rcs_card_content() :: #{binary() => any()}.
 
 %% Example:
 %% send_destination_number_verification_code_request() :: #{
@@ -504,6 +523,29 @@
 -type delete_voice_message_spend_limit_override_request() :: #{binary() => any()}.
 
 %% Example:
+%% send_rcs_message_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"DryRun">> => [boolean()],
+%%   <<"FallbackConfiguration">> => rcs_fallback_configuration(),
+%%   <<"MaxPrice">> => string(),
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
+%%   <<"MessageTrafficType">> => string(),
+%%   <<"OriginationIdentity">> := string(),
+%%   <<"ProtectConfigurationId">> => string(),
+%%   <<"RcsMessageContent">> => rcs_message_content(),
+%%   <<"TimeToLive">> => integer()
+%% }
+-type send_rcs_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rcs_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type delete_rcs_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_pools_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Pools">> => list(pool_information())
@@ -547,6 +589,14 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_opt_out_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_dial_phone_action() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PostbackData">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type rcs_dial_phone_action() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_result() :: #{
@@ -769,6 +819,25 @@
 -type release_phone_number_result() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_carousel_card_content() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Media">> => rcs_carousel_card_media(),
+%%   <<"Suggestions">> => list(list()),
+%%   <<"Title">> => string()
+%% }
+-type rcs_carousel_card_content() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_show_location_action() :: #{
+%%   <<"Label">> => string(),
+%%   <<"Latitude">> => [float()],
+%%   <<"Longitude">> => [float()],
+%%   <<"PostbackData">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type rcs_show_location_action() :: #{binary() => any()}.
+
+%% Example:
 %% delete_protect_configuration_request() :: #{
 %%   <<"ProtectConfigurationId">> := string()
 %% }
@@ -822,6 +891,13 @@
 %%   <<"RcsAgentId">> := string()
 %% }
 -type delete_rcs_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_reply_action() :: #{
+%%   <<"PostbackData">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type rcs_reply_action() :: #{binary() => any()}.
 
 %% Example:
 %% associate_protect_configuration_result() :: #{
@@ -941,6 +1017,14 @@
 -type set_text_message_spend_limit_override_result() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_card_media() :: #{
+%%   <<"FileUrl">> => string(),
+%%   <<"Height">> => [string()],
+%%   <<"ThumbnailUrl">> => string()
+%% }
+-type rcs_card_media() :: #{binary() => any()}.
+
+%% Example:
 %% list_notify_countries_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NotifyCountries">> => list(notify_country_information())
@@ -986,6 +1070,12 @@
 -type set_voice_message_spend_limit_override_request() :: #{binary() => any()}.
 
 %% Example:
+%% set_rcs_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type set_rcs_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
 %% request_sender_id_result() :: #{
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
@@ -1026,6 +1116,24 @@
 %%   <<"ConfigurationSetName">> := string()
 %% }
 -type delete_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_carousel_card_media() :: #{
+%%   <<"FileUrl">> => string(),
+%%   <<"Height">> => [string()],
+%%   <<"ThumbnailUrl">> => string()
+%% }
+-type rcs_carousel_card_media() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_open_url_action() :: #{
+%%   <<"Application">> => [string()],
+%%   <<"PostbackData">> => string(),
+%%   <<"Text">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"WebviewViewMode">> => [string()]
+%% }
+-type rcs_open_url_action() :: #{binary() => any()}.
 
 %% Example:
 %% describe_registration_section_definitions_result() :: #{
@@ -1120,7 +1228,11 @@
 %%   <<"TestingAgent">> => testing_agent_information(),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
-%%   <<"TwoWayEnabled">> => [boolean()]
+%%   <<"TwoWayEnabled">> => [boolean()],
+%%   <<"TwoWayMediaS3BucketName">> => string(),
+%%   <<"TwoWayMediaS3KeyPrefix">> => string(),
+%%   <<"TwoWayMediaS3Role">> => string(),
+%%   <<"TwoWayRcsEventsEnabled">> => list(string())
 %% }
 -type rcs_agent_information() :: #{binary() => any()}.
 
@@ -1160,7 +1272,11 @@
 %%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
-%%   <<"TwoWayEnabled">> => [boolean()]
+%%   <<"TwoWayEnabled">> => [boolean()],
+%%   <<"TwoWayMediaS3BucketName">> => string(),
+%%   <<"TwoWayMediaS3KeyPrefix">> => string(),
+%%   <<"TwoWayMediaS3Role">> => string(),
+%%   <<"TwoWayRcsEventsEnabled">> => list(string())
 %% }
 -type update_rcs_agent_request() :: #{binary() => any()}.
 
@@ -1456,6 +1572,13 @@
 -type delete_voice_message_spend_limit_override_result() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_message_content() :: #{
+%%   <<"Content">> => list(),
+%%   <<"Suggestions">> => list(list())
+%% }
+-type rcs_message_content() :: #{binary() => any()}.
+
+%% Example:
 %% associate_origination_identity_result() :: #{
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"OriginationIdentity">> => [string()],
@@ -1476,7 +1599,8 @@
 %%   <<"Status">> => string(),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
-%%   <<"TwoWayEnabled">> => [boolean()]
+%%   <<"TwoWayEnabled">> => [boolean()],
+%%   <<"TwoWayRcsEventsEnabled">> => list(string())
 %% }
 -type delete_rcs_agent_result() :: #{binary() => any()}.
 
@@ -1597,6 +1721,15 @@
 -type get_resource_policy_result() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_fallback_configuration() :: #{
+%%   <<"Channel">> => string(),
+%%   <<"MediaUrls">> => list(string()),
+%%   <<"MessageBody">> => string(),
+%%   <<"OriginationIdentity">> => string()
+%% }
+-type rcs_fallback_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% keyword_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string())
@@ -1703,6 +1836,13 @@
 -type describe_registration_field_values_result() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_file_message() :: #{
+%%   <<"FileUrl">> => string(),
+%%   <<"ThumbnailUrl">> => string()
+%% }
+-type rcs_file_message() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"Name">> => [string()]
@@ -1802,6 +1942,12 @@
 %%   <<"SenderIds">> => list(sender_id_and_country())
 %% }
 -type describe_sender_ids_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_rcs_message_spend_limit_override_request() :: #{
+%%   <<"MonthlyLimit">> := float()
+%% }
+-type set_rcs_message_spend_limit_override_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_protect_configuration_rule_set_number_override_request() :: #{
@@ -1919,6 +2065,13 @@
 -type send_voice_message_request() :: #{binary() => any()}.
 
 %% Example:
+%% rcs_request_location_action() :: #{
+%%   <<"PostbackData">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type rcs_request_location_action() :: #{binary() => any()}.
+
+%% Example:
 %% put_message_feedback_request() :: #{
 %%   <<"MessageFeedbackStatus">> := string(),
 %%   <<"MessageId">> := string()
@@ -1959,6 +2112,13 @@
 %%   <<"SupportedUseCases">> => list(string())
 %% }
 -type notify_country_information() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_carousel() :: #{
+%%   <<"CardContents">> => list(rcs_carousel_card_content()),
+%%   <<"CardWidth">> => [string()]
+%% }
+-type rcs_carousel() :: #{binary() => any()}.
 
 %% Example:
 %% list_registration_associations_result() :: #{
@@ -2060,6 +2220,12 @@
 -type describe_registration_section_definitions_request() :: #{binary() => any()}.
 
 %% Example:
+%% send_rcs_message_result() :: #{
+%%   <<"MessageId">> => [string()]
+%% }
+-type send_rcs_message_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_protect_configuration_request() :: #{
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"ProtectConfigurationId">> := string()
@@ -2085,6 +2251,12 @@
 %%   <<"MessageId">> => [string()]
 %% }
 -type send_voice_message_result() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_text_message() :: #{
+%%   <<"Body">> => string()
+%% }
+-type rcs_text_message() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -2125,6 +2297,14 @@
 %%   <<"SenderIds">> => list(sender_id_information())
 %% }
 -type describe_sender_ids_result() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_standalone_card() :: #{
+%%   <<"CardContent">> => rcs_card_content(),
+%%   <<"CardOrientation">> => [string()],
+%%   <<"ThumbnailImageAlignment">> => [string()]
+%% }
+-type rcs_standalone_card() :: #{binary() => any()}.
 
 %% Example:
 %% get_protect_configuration_country_rule_set_result() :: #{
@@ -2454,6 +2634,12 @@
 -type create_opt_out_list_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_rcs_message_spend_limit_override_request() :: #{
+
+%% }
+-type delete_rcs_message_spend_limit_override_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_configuration_set_result() :: #{
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
@@ -2609,6 +2795,17 @@
 %%   <<"ProtectConfigurationId">> := string()
 %% }
 -type get_protect_configuration_country_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% rcs_create_calendar_event_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"PostbackData">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Text">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type rcs_create_calendar_event_action() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_result() :: #{
@@ -2831,7 +3028,11 @@
 %%   <<"Tags">> => list(tag()),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
-%%   <<"TwoWayEnabled">> => [boolean()]
+%%   <<"TwoWayEnabled">> => [boolean()],
+%%   <<"TwoWayMediaS3BucketName">> => string(),
+%%   <<"TwoWayMediaS3KeyPrefix">> => string(),
+%%   <<"TwoWayMediaS3Role">> => string(),
+%%   <<"TwoWayRcsEventsEnabled">> => list(string())
 %% }
 -type create_rcs_agent_result() :: #{binary() => any()}.
 
@@ -3115,6 +3316,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_rcs_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type delete_registration_errors() ::
     throttling_exception() | 
@@ -3510,6 +3717,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type send_rcs_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type send_text_message_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3563,6 +3779,12 @@
     internal_server_exception().
 
 -type set_notify_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type set_rcs_message_spend_limit_override_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4350,6 +4572,27 @@ delete_rcs_agent(Client, Input)
 delete_rcs_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRcsAgent">>, Input, Options).
+
+%% @doc Deletes an account-level monthly spending limit override for sending
+%% RCS messages.
+%%
+%% Deleting a spend limit override sets the `EnforcedLimit' to equal the
+%% `MaxLimit', which is set by Amazon Web Services.
+-spec delete_rcs_message_spend_limit_override(aws_client:aws_client(), delete_rcs_message_spend_limit_override_request()) ->
+    {ok, delete_rcs_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_rcs_message_spend_limit_override_errors(), tuple()}.
+delete_rcs_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_rcs_message_spend_limit_override(Client, Input, []).
+
+-spec delete_rcs_message_spend_limit_override(aws_client:aws_client(), delete_rcs_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, delete_rcs_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_rcs_message_spend_limit_override_errors(), tuple()}.
+delete_rcs_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRcsMessageSpendLimitOverride">>, Input, Options).
 
 %% @doc Permanently delete an existing registration from your account.
 -spec delete_registration(aws_client:aws_client(), delete_registration_request()) ->
@@ -5484,6 +5727,27 @@ send_notify_voice_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendNotifyVoiceMessage">>, Input, Options).
 
+%% @doc Creates a new RCS message and sends it to a recipient's phone
+%% number.
+%%
+%% RCS messages support rich content including text, files, rich cards, and
+%% carousels with interactive suggested actions.
+-spec send_rcs_message(aws_client:aws_client(), send_rcs_message_request()) ->
+    {ok, send_rcs_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_rcs_message_errors(), tuple()}.
+send_rcs_message(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_rcs_message(Client, Input, []).
+
+-spec send_rcs_message(aws_client:aws_client(), send_rcs_message_request(), proplists:proplist()) ->
+    {ok, send_rcs_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_rcs_message_errors(), tuple()}.
+send_rcs_message(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendRcsMessage">>, Input, Options).
+
 %% @doc Creates a new text message and sends it to a recipient's phone
 %% number.
 %%
@@ -5658,6 +5922,27 @@ set_notify_message_spend_limit_override(Client, Input)
 set_notify_message_spend_limit_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetNotifyMessageSpendLimitOverride">>, Input, Options).
+
+%% @doc Sets an account level monthly spend limit override for sending RCS
+%% messages.
+%%
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
+-spec set_rcs_message_spend_limit_override(aws_client:aws_client(), set_rcs_message_spend_limit_override_request()) ->
+    {ok, set_rcs_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_rcs_message_spend_limit_override_errors(), tuple()}.
+set_rcs_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_rcs_message_spend_limit_override(Client, Input, []).
+
+-spec set_rcs_message_spend_limit_override(aws_client:aws_client(), set_rcs_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, set_rcs_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_rcs_message_spend_limit_override_errors(), tuple()}.
+set_rcs_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetRcsMessageSpendLimitOverride">>, Input, Options).
 
 %% @doc Sets an account level monthly spend limit override for sending text
 %% messages.

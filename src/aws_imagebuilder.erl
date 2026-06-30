@@ -834,6 +834,7 @@
 %% create_image_recipe_request() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
 %%   <<"amiTags">> => map(),
+%%   <<"amiWatermarks">> => list(string()),
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"clientToken">> := string(),
 %%   <<"components">> => list(component_configuration()),
@@ -1997,6 +1998,7 @@
 %% image_recipe() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
 %%   <<"amiTags">> => map(),
+%%   <<"amiWatermarks">> => list(string()),
 %%   <<"arn">> => string(),
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"components">> => list(component_configuration()),
@@ -4429,8 +4431,12 @@ delete_workflow(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc DistributeImage distributes existing AMIs to additional regions and
-%% accounts without rebuilding the image.
+%% @doc Distributes an existing AMI to target Regions and accounts without
+%% running
+%% the full image build process.
+%%
+%% This operation only runs the distribution
+%% phase on an image that has already been built.
 -spec distribute_image(aws_client:aws_client(), distribute_image_request()) ->
     {ok, distribute_image_response(), tuple()} |
     {error, any()} |

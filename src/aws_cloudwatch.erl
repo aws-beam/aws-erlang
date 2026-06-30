@@ -1,33 +1,70 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon CloudWatch monitors your Amazon Web Services (Amazon Web
-%% Services)
-%% resources and the applications you run on Amazon Web Services in real
-%% time.
+%% @doc Amazon CloudWatch enables you to publish, monitor, and manage various
+%% metrics, as well
+%% as configure alarm actions based on data from metrics.
 %%
-%% You can use
-%% CloudWatch to collect and track metrics, which are the variables you want
-%% to
-%% measure for your resources and applications.
+%% This guide provides detailed
+%% information about CloudWatch actions, data types, parameters, and errors.
+%% For
+%% more information about CloudWatch features, see Amazon CloudWatch:
+%% https://aws.amazon.com/cloudwatch and the
+%% Amazon CloudWatch User Guide.
 %%
-%% CloudWatch alarms send notifications or automatically change the resources
-%% you are
-%% monitoring based on rules that you define. For example, you can monitor
-%% the CPU usage
-%% and disk reads and writes of your Amazon EC2 instances. Then, use this
-%% data to determine
-%% whether you should launch additional instances to handle increased load.
-%% You can also
-%% use this data to stop under-used instances to save money.
+%% For information about the metrics that other Amazon Web Services products
+%% send to
+%% CloudWatch, see the Amazon CloudWatch
+%% Metrics and Dimensions Reference:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html
+%% in the Amazon CloudWatch User
+%% Guide.
 %%
-%% In addition to monitoring the built-in metrics that come with Amazon Web
-%% Services,
-%% you can monitor your own custom metrics. With CloudWatch, you gain
-%% system-wide
-%% visibility into resource utilization, application performance, and
-%% operational
-%% health.
+%% Use the following links to get started using the CloudWatch Query API:
+%%
+%% : An alphabetical list of all CloudWatch
+%% actions.
+%%
+%% : An alphabetical list of all CloudWatch data
+%% types.
+%%
+%% `CommonParameters': Parameters that all Query actions can use.
+%%
+%% `CommonErrors': Client and server errors that all actions can
+%% return.
+%%
+%% Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region:
+%% Supported regions and endpoints for all Amazon Web
+%% Services products.
+%%
+%% Alternatively, you can use one of the Amazon Web Services SDKs:
+%% https://aws.amazon.com/tools/#sdk to access CloudWatch using an API
+%% tailored
+%% to your programming language or platform.
+%%
+%% Developers in the Amazon Web Services developer community also provide
+%% their own
+%% libraries, which you can find at the following Amazon Web Services
+%% developer
+%% centers:
+%%
+%% Java Developer Center: http://aws.amazon.com/java/
+%%
+%% JavaScript Developer
+%% Center: http://aws.amazon.com/javascript/
+%%
+%% Amazon Web Services Mobile
+%% Services: http://aws.amazon.com/mobile/
+%%
+%% PHP Developer Center: http://aws.amazon.com/php/
+%%
+%% Python Developer Center: http://aws.amazon.com/python/
+%%
+%% Ruby Developer Center: http://aws.amazon.com/ruby/
+%%
+%% Windows and .NET Developer
+%% Center: http://aws.amazon.com/net/
 -module(aws_cloudwatch).
 
 -export([associate_dataset_kms_key/2,
@@ -106,6 +143,8 @@
          put_dashboard/3,
          put_insight_rule/2,
          put_insight_rule/3,
+         put_log_alarm/2,
+         put_log_alarm/3,
          put_managed_insight_rules/2,
          put_managed_insight_rules/3,
          put_metric_alarm/2,
@@ -479,6 +518,7 @@
 %% Example:
 %% describe_alarms_output() :: #{
 %%   <<"CompositeAlarms">> => list(composite_alarm()),
+%%   <<"LogAlarms">> => list(log_alarm()),
 %%   <<"MetricAlarms">> => list(metric_alarm()),
 %%   <<"NextToken">> => string()
 %% }
@@ -528,6 +568,18 @@
 %%   <<"Failures">> => list(partial_failure())
 %% }
 -type disable_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_query_configuration() :: #{
+%%   <<"AggregationExpression">> => string(),
+%%   <<"LogGroupIdentifiers">> => list(string()),
+%%   <<"QueryARN">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"ScheduledQueryRoleARN">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type scheduled_query_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% metric_stream_statistics_metric() :: #{
@@ -836,6 +888,33 @@
 -type rule() :: #{binary() => any()}.
 
 %% Example:
+%% log_alarm() :: #{
+%%   <<"ActionLogLineCount">> => integer(),
+%%   <<"ActionLogLineRoleArn">> => string(),
+%%   <<"ActionsEnabled">> => boolean(),
+%%   <<"AlarmActions">> => list(string()),
+%%   <<"AlarmArn">> => string(),
+%%   <<"AlarmConfigurationUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"AlarmDescription">> => string(),
+%%   <<"AlarmName">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"EvaluationState">> => list(any()),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
+%%   <<"QueryResultsToAlarm">> => integer(),
+%%   <<"QueryResultsToEvaluate">> => integer(),
+%%   <<"ScheduledQueryConfiguration">> => scheduled_query_configuration(),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonData">> => string(),
+%%   <<"StateTransitionedTimestamp">> => non_neg_integer(),
+%%   <<"StateUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"StateValue">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => string()
+%% }
+-type log_alarm() :: #{binary() => any()}.
+
+%% Example:
 %% list_metrics_output() :: #{
 %%   <<"Metrics">> => list(metric()),
 %%   <<"NextToken">> => string(),
@@ -1072,6 +1151,12 @@
 -type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
+%% resource_conflict() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_conflict() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_dataset_kms_key_output() :: #{
 
 %% }
@@ -1088,6 +1173,14 @@
 
 %% }
 -type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"EndTimeOffset">> => float(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartTimeOffset">> => float()
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_alarm_mute_rules_output() :: #{
@@ -1267,6 +1360,26 @@
 -type put_dashboard_input() :: #{binary() => any()}.
 
 %% Example:
+%% put_log_alarm_input() :: #{
+%%   <<"ActionLogLineCount">> => integer(),
+%%   <<"ActionLogLineRoleArn">> => string(),
+%%   <<"ActionsEnabled">> => boolean(),
+%%   <<"AlarmActions">> => list(string()),
+%%   <<"AlarmDescription">> => string(),
+%%   <<"AlarmName">> := string(),
+%%   <<"ComparisonOperator">> := list(any()),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
+%%   <<"QueryResultsToAlarm">> := integer(),
+%%   <<"QueryResultsToEvaluate">> := integer(),
+%%   <<"ScheduledQueryConfiguration">> := scheduled_query_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Threshold">> := float(),
+%%   <<"TreatMissingData">> => string()
+%% }
+-type put_log_alarm_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_o_tel_enrichment_output() :: #{
 %%   <<"Status">> => list(any())
 %% }
@@ -1374,6 +1487,7 @@
     kms_key_not_found_exception().
 
 -type delete_alarms_errors() ::
+    resource_conflict() | 
     resource_not_found().
 
 -type delete_anomaly_detector_errors() ::
@@ -1511,6 +1625,10 @@
     limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     missing_required_parameter_exception().
+
+-type put_log_alarm_errors() ::
+    resource_conflict() | 
+    limit_exceeded_fault().
 
 -type put_managed_insight_rules_errors() ::
     invalid_parameter_value_exception() | 
@@ -1659,11 +1777,14 @@ associate_dataset_kms_key(Client, Input, Options)
 %% @doc Deletes a specific alarm mute rule.
 %%
 %% When you delete a mute rule, any alarms that are currently being muted by
-%% that rule are immediately unmuted. If those alarms are in an ALARM state,
-%% their configured actions will trigger.
+%% that rule
+%% are immediately unmuted. If those alarms are in an ALARM state, their
+%% configured actions
+%% will trigger.
 %%
 %% This operation is idempotent. If you delete a mute rule that does not
-%% exist, the operation succeeds without returning an error.
+%% exist, the
+%% operation succeeds without returning an error.
 %%
 %% Permissions
 %%
@@ -1690,12 +1811,14 @@ delete_alarm_mute_rule(Client, Input, Options)
 %% example, you could
 %% delete 99 metric alarms and one composite alarms with one operation, but
 %% you can't
-%% delete two composite alarms with one operation.
+%% delete two composite alarms with one operation. Log alarms cannot be batch
+%% deleted.
 %%
 %% If you specify any incorrect alarm names, the alarms you specify with
-%% correct names are still deleted. Other syntax errors might result
-%% in no alarms being deleted. To confirm that alarms were deleted
-%% successfully, you can use the
+%% correct
+%% names are still deleted. Other syntax errors might result in no alarms
+%% being deleted. To
+%% confirm that alarms were deleted successfully, you can use the
 %% DescribeAlarms:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html
 %% operation after using `DeleteAlarms'.
@@ -1822,8 +1945,8 @@ delete_metric_stream(Client, Input, Options)
 %% @doc Returns the information of the current alarm contributors that are in
 %% `ALARM' state.
 %%
-%% This operation returns details about the individual time series that
-%% contribute to the alarm's state.
+%% This operation returns details about the individual time
+%% series that contribute to the alarm's state.
 -spec describe_alarm_contributors(aws_client:aws_client(), describe_alarm_contributors_input()) ->
     {ok, describe_alarm_contributors_output(), tuple()} |
     {error, any()} |
@@ -2105,17 +2228,19 @@ enable_insight_rules(Client, Input, Options)
 %% @doc Retrieves details for a specific alarm mute rule.
 %%
 %% This operation returns complete information about the mute rule, including
-%% its configuration, status, targeted alarms, and metadata.
+%% its
+%% configuration, status, targeted alarms, and metadata.
 %%
 %% The returned status indicates the current state of the mute rule:
 %%
-%% SCHEDULED: The mute rule is configured and will become active in the
-%% future
+%% SCHEDULED: The mute rule is configured and
+%% will become active in the future
 %%
-%% ACTIVE: The mute rule is currently muting alarm actions
+%% ACTIVE: The mute rule is currently muting
+%% alarm actions
 %%
-%% EXPIRED: The mute rule has passed its expiration date and will no longer
-%% become active
+%% EXPIRED: The mute rule has passed its
+%% expiration date and will no longer become active
 %%
 %% Permissions
 %%
@@ -2515,11 +2640,11 @@ get_metric_widget_image(Client, Input, Options)
 %% @doc Returns the current status of vended metric enrichment for the
 %% account, including
 %% whether CloudWatch vended metrics are enriched with resource ARN and
-%% resource tag
-%% labels and queryable using PromQL.
+%% resource tag labels
+%% and queryable using PromQL.
 %%
-%% For the list of supported resources, see
-%% Supported Amazon Web Services infrastructure metrics:
+%% For the list of supported resources, see Supported Amazon Web Services
+%% infrastructure metrics:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html.
 -spec get_o_tel_enrichment(aws_client:aws_client(), get_o_tel_enrichment_input()) ->
     {ok, get_o_tel_enrichment_output(), tuple()} |
@@ -2539,11 +2664,12 @@ get_o_tel_enrichment(Client, Input, Options)
 %% region.
 %%
 %% You can filter the results by alarm name to find all mute rules targeting
-%% a specific alarm, or by status to find rules that are scheduled, active,
-%% or expired.
+%% a specific
+%% alarm, or by status to find rules that are scheduled, active, or expired.
 %%
 %% This operation supports pagination for accounts with many mute rules. Use
-%% the `MaxRecords' and `NextToken' parameters to retrieve results in
+%% the
+%% `MaxRecords' and `NextToken' parameters to retrieve results in
 %% multiple calls.
 %%
 %% Permissions
@@ -2702,39 +2828,49 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Creates or updates an alarm mute rule.
 %%
 %% Alarm mute rules automatically mute alarm actions during predefined time
-%% windows. When a mute rule is active, targeted alarms continue to evaluate
-%% metrics and transition between states, but their configured actions (such
-%% as Amazon SNS notifications or Auto Scaling actions) are muted.
+%% windows. When
+%% a mute rule is active, targeted alarms continue to evaluate metrics and
+%% transition
+%% between states, but their configured actions (such as Amazon SNS
+%% notifications
+%% or Auto Scaling actions) are muted.
 %%
 %% You can create mute rules with recurring schedules using `cron'
-%% expressions or one-time mute windows using `at' expressions. Each mute
-%% rule can target up to 100 specific alarms by name.
+%% expressions
+%% or one-time mute windows using `at' expressions. Each mute rule can
+%% target up
+%% to 100 specific alarms by name.
 %%
 %% If you specify a rule name that already exists, this operation updates the
-%% existing rule with the new configuration.
+%% existing
+%% rule with the new configuration.
 %%
 %% Permissions
 %%
 %% To create or update a mute rule, you must have the
 %% `cloudwatch:PutAlarmMuteRule' permission on two types of resources:
-%% the alarm mute rule resource itself, and each alarm that the rule targets.
+%% the
+%% alarm mute rule resource itself, and each alarm that the rule targets.
 %%
 %% For example, If you want to allow a user to create mute rules that target
-%% only specific alarms named &quot;WebServerCPUAlarm&quot; and
-%% &quot;DatabaseConnectionAlarm&quot;, you would create an IAM policy with
-%% one statement granting `cloudwatch:PutAlarmMuteRule' on the alarm mute
-%% rule resource
+%% only
+%% specific alarms named &quot;WebServerCPUAlarm&quot; and
+%% &quot;DatabaseConnectionAlarm&quot;, you would
+%% create an IAM policy with one statement granting
+%% `cloudwatch:PutAlarmMuteRule' on the alarm mute rule resource
 %% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute-rule:*'), and
 %% another statement granting `cloudwatch:PutAlarmMuteRule' on the
-%% targeted alarm resources
+%% targeted
+%% alarm resources
 %% (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm'
 %% and
 %% `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm').
 %%
 %% You can also use IAM policy conditions to allow targeting alarms based on
-%% resource tags. For example, you can restrict users to create/update mute
-%% rules to only target alarms that have a specific tag key-value pair, such
-%% as `Team=TeamA'.
+%% resource
+%% tags. For example, you can restrict users to create/update mute rules to
+%% only target
+%% alarms that have a specific tag key-value pair, such as `Team=TeamA'.
 -spec put_alarm_mute_rule(aws_client:aws_client(), put_alarm_mute_rule_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2945,6 +3081,54 @@ put_insight_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightRule">>, Input, Options).
 
+%% @doc Creates or updates a log alarm.
+%%
+%% A log alarm evaluates the results of a CloudWatch Logs scheduled query
+%% against the configured threshold and comparison operator to determine its
+%% state.
+%%
+%% When you create a log alarm, the operation creates a service-managed
+%% CloudWatch Logs scheduled query that runs the query string you provide on
+%% the schedule you configure. Each scheduled query execution returns one or
+%% more aggregated values determined by the `AggregationExpression', and
+%% each aggregated value is compared against the alarm `Threshold' to
+%% determine the alarm state. The alarm uses M-out-of-N evaluation: if
+%% `QueryResultsToAlarm' out of the most recent
+%% `QueryResultsToEvaluate' query results breach the threshold, the alarm
+%% transitions to `ALARM'.
+%%
+%% Log alarms support the alarm states (`OK', `ALARM',
+%% `INSUFFICIENT_DATA'). Configure transition actions using
+%% `OKActions', `AlarmActions', and `InsufficientDataActions'.
+%%
+%% If you call this operation with the name of an existing log alarm, the
+%% operation replaces the previous configuration of that alarm.
+%%
+%% Permissions
+%%
+%% To create or update a log alarm, you must have the
+%% `cloudwatch:PutLogAlarm' permission. The IAM role specified in
+%% `ScheduledQueryRoleARN' must grant the CloudWatch Alarms service
+%% permission to execute scheduled queries on the specified log groups. If
+%% you set `ActionLogLineCount', the role specified in
+%% `ActionLogLineRoleArn' must grant permission to retrieve log events
+%% for inclusion in alarm notifications.
+-spec put_log_alarm(aws_client:aws_client(), put_log_alarm_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_log_alarm_errors(), tuple()}.
+put_log_alarm(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_log_alarm(Client, Input, []).
+
+-spec put_log_alarm(aws_client:aws_client(), put_log_alarm_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_log_alarm_errors(), tuple()}.
+put_log_alarm(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutLogAlarm">>, Input, Options).
+
 %% @doc Creates a managed Contributor Insights rule for a specified Amazon
 %% Web Services
 %% resource.
@@ -2981,8 +3165,9 @@ put_managed_insight_rules(Client, Input, Options)
 %% math expression, anomaly detection model, Metrics Insights query, or
 %% PromQL query.
 %%
-%% For more
-%% information about using a Metrics Insights query for an alarm, see Create
+%% For
+%% more information about using a Metrics Insights query for an alarm, see
+%% Create
 %% alarms on Metrics Insights queries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html.
 %%
@@ -3296,20 +3481,20 @@ start_metric_streams(Client, Input, Options)
     request(Client, <<"StartMetricStreams">>, Input, Options).
 
 %% @doc Enables enrichment and PromQL access for CloudWatch vended metrics
-%% for
-%% supported Amazon Web Services resources:
+%% for supported Amazon Web Services resources:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
 %% in the account.
 %%
-%% Once enabled, metrics that
-%% contain a resource identifier dimension (for example, EC2
+%% Once enabled,
+%% metrics that contain a resource identifier dimension (for example, EC2
 %% `CPUUtilization' with an `InstanceId' dimension) are enriched
 %% with resource ARN and resource tag labels and become queryable using
 %% PromQL.
 %%
 %% Before calling this operation, you must enable resource tags on telemetry
-%% for
-%% your account. For more information, see Enable resource tags on telemetry:
+%% for your
+%% account. For more information, see Enable
+%% resource tags on telemetry:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/EnableResourceTagsOnTelemetry.html.
 -spec start_o_tel_enrichment(aws_client:aws_client(), start_o_tel_enrichment_input()) ->
     {ok, start_o_tel_enrichment_output(), tuple()} |
@@ -3344,15 +3529,14 @@ stop_metric_streams(Client, Input, Options)
     request(Client, <<"StopMetricStreams">>, Input, Options).
 
 %% @doc Disables enrichment and PromQL access for CloudWatch vended metrics
-%% for
-%% supported Amazon Web Services resources:
+%% for supported Amazon Web Services resources:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html
 %% in the account.
 %%
-%% After disabling, these metrics
-%% are no longer enriched with resource ARN and resource tag labels, and
-%% cannot be
-%% queried using PromQL.
+%% After disabling,
+%% these metrics are no longer enriched with resource ARN and resource tag
+%% labels, and
+%% cannot be queried using PromQL.
 -spec stop_o_tel_enrichment(aws_client:aws_client(), stop_o_tel_enrichment_input()) ->
     {ok, stop_o_tel_enrichment_output(), tuple()} |
     {error, any()}.

@@ -214,6 +214,13 @@
 
 
 %% Example:
+%% channel_context() :: #{
+%%   <<"webNotificationContext">> => web_notification_context()
+%% }
+-type channel_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_campaign_channel_subtype_config_request() :: #{
 %%   <<"channelSubtype">> := string()
 %% }
@@ -693,6 +700,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% web_notification_context() :: #{
+%%   <<"browserId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type web_notification_context() :: #{binary() => any()}.
+
 %% Example:
 %% start_campaign_request() :: #{}
 -type start_campaign_request() :: #{}.
@@ -748,6 +763,14 @@
 %%   <<"serviceLinkedRoleArn">> => string()
 %% }
 -type instance_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_context() :: #{
+%%   <<"channelContext">> => channel_context(),
+%%   <<"sourceEvent">> => string()
+%% }
+-type event_trigger_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -822,6 +845,7 @@
 %% Example:
 %% profile_outbound_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"eventTriggerContext">> => event_trigger_context(),
 %%   <<"expirationTime">> => non_neg_integer(),
 %%   <<"profileId">> => string()
 %% }

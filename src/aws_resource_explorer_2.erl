@@ -223,6 +223,7 @@
 %%   <<"Filters">> => search_filter(),
 %%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"ScopeType">> => [string()],
+%%   <<"ServiceLinkedRecorder">> => service_linked_recorder_info(),
 %%   <<"ServiceViewArn">> => [string()],
 %%   <<"ServiceViewName">> => string(),
 %%   <<"StreamingAccessForService">> => [string()]
@@ -547,6 +548,15 @@
 
 
 %% Example:
+%% service_linked_recorder_info() :: #{
+%%   <<"RecorderName">> => [string()],
+%%   <<"RecorderType">> => string(),
+%%   <<"ServicePrincipal">> => [string()]
+%% }
+-type service_linked_recorder_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -631,6 +641,7 @@
 
 %% Example:
 %% supported_resource_type() :: #{
+%%   <<"CFNResourceTypes">> => list([string()]()),
 %%   <<"ResourceType">> => [string()],
 %%   <<"Service">> => [string()]
 %% }
@@ -790,6 +801,7 @@
 %% Example:
 %% resource() :: #{
 %%   <<"Arn">> => [string()],
+%%   <<"CfnResourceType">> => [string()],
 %%   <<"LastReportedAt">> => [non_neg_integer()],
 %%   <<"OwningAccountId">> => [string()],
 %%   <<"Properties">> => list(resource_property()),

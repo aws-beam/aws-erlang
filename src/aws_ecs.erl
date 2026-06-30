@@ -777,6 +777,13 @@
 -type update_task_set_request() :: #{binary() => any()}.
 
 %% Example:
+%% threshold_configuration() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type threshold_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% daemon_revision_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"capacityProviders">> => list(daemon_capacity_provider()),
@@ -1760,7 +1767,9 @@
 %% Example:
 %% deployment_circuit_breaker() :: #{
 %%   <<"enable">> => boolean(),
-%%   <<"rollback">> => boolean()
+%%   <<"resetOnHealthyTask">> => boolean(),
+%%   <<"rollback">> => boolean(),
+%%   <<"thresholdConfiguration">> => threshold_configuration()
 %% }
 -type deployment_circuit_breaker() :: #{binary() => any()}.
 

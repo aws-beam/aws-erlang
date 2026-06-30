@@ -26,11 +26,15 @@
 
 -export([batch_get_record/2,
          batch_get_record/3,
+         batch_write_record/2,
+         batch_write_record/3,
          delete_record/3,
          delete_record/4,
          get_record/3,
          get_record/5,
          get_record/6,
+         list_records/3,
+         list_records/4,
          put_record/3,
          put_record/4]).
 
@@ -92,6 +96,41 @@
 
 
 %% Example:
+%% batch_write_record_entry() :: #{
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"Record">> => list(feature_value()),
+%%   <<"TargetStores">> => list(list(any())()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type batch_write_record_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_write_record_error() :: #{
+%%   <<"Entry">> => batch_write_record_entry(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type batch_write_record_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_write_record_request() :: #{
+%%   <<"Entries">> := list(batch_write_record_entry()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type batch_write_record_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_write_record_response() :: #{
+%%   <<"Errors">> => list(batch_write_record_error()),
+%%   <<"UnprocessedEntries">> => list(batch_write_record_entry())
+%% }
+-type batch_write_record_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_record_request() :: #{
 %%   <<"DeletionMode">> => list(any()),
 %%   <<"EventTime">> := string(),
@@ -132,6 +171,23 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_records_request() :: #{
+%%   <<"IncludeSoftDeletedRecords">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_records_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecordIdentifiers">> => list(string())
+%% }
+-type list_records_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,6 +233,13 @@
     internal_failure() | 
     access_forbidden().
 
+-type batch_write_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    resource_not_found() | 
+    internal_failure() | 
+    access_forbidden().
+
 -type delete_record_errors() ::
     validation_error() | 
     service_unavailable() | 
@@ -184,6 +247,13 @@
     access_forbidden().
 
 -type get_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    resource_not_found() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type list_records_errors() ::
     validation_error() | 
     service_unavailable() | 
     resource_not_found() | 
@@ -215,6 +285,52 @@ batch_get_record(Client, Input) ->
 batch_get_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetRecord"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Writes a batch of `Records' to one or more `FeatureGroup's.
+%%
+%% Use
+%% this API for bulk ingestion of records into the `OnlineStore' and
+%% `OfflineStore'.
+%%
+%% You can set the ingested records to expire at a given time to live (TTL)
+%% duration after
+%% the record's event time by specifying the `TtlDuration' parameter.
+%% A request
+%% level `TtlDuration' applies to all entries that do not specify their
+%% own
+%% `TtlDuration'.
+-spec batch_write_record(aws_client:aws_client(), batch_write_record_request()) ->
+    {ok, batch_write_record_response(), tuple()} |
+    {error, any()} |
+    {error, batch_write_record_errors(), tuple()}.
+batch_write_record(Client, Input) ->
+    batch_write_record(Client, Input, []).
+
+-spec batch_write_record(aws_client:aws_client(), batch_write_record_request(), proplists:proplist()) ->
+    {ok, batch_write_record_response(), tuple()} |
+    {error, any()} |
+    {error, batch_write_record_errors(), tuple()}.
+batch_write_record(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchWriteRecord"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -276,7 +392,7 @@ batch_get_record(Client, Input0, Options0) ->
 %% hard delete a record from the `OfflineStore' with the Iceberg table
 %% format
 %% enabled, see Delete records from the offline store:
-%% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records-offline-store.html#feature-store-delete-records-offline-store.
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records.html#feature-store-delete-records-offline-store.
 -spec delete_record(aws_client:aws_client(), binary() | list(), delete_record_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -361,6 +477,44 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the `RecordIdentifier' values of all records stored in a
+%% `FeatureGroup''s `OnlineStore'.
+%%
+%% This enables you to discover which
+%% records exist without retrieving the full record data.
+-spec list_records(aws_client:aws_client(), binary() | list(), list_records_request()) ->
+    {ok, list_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_records_errors(), tuple()}.
+list_records(Client, FeatureGroupName, Input) ->
+    list_records(Client, FeatureGroupName, Input, []).
+
+-spec list_records(aws_client:aws_client(), binary() | list(), list_records_request(), proplists:proplist()) ->
+    {ok, list_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_records_errors(), tuple()}.
+list_records(Client, FeatureGroupName, Input0, Options0) ->
+    Method = post,
+    Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), "/ListRecords"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `PutRecord' API is used to ingest a list of `Records'
 %% into
