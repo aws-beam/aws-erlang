@@ -105,6 +105,8 @@
          complete_attached_file_upload/5,
          create_agent_status/3,
          create_agent_status/4,
+         create_attached_file/3,
+         create_attached_file/4,
          create_contact/2,
          create_contact/3,
          create_contact_flow/3,
@@ -711,6 +713,8 @@
          start_attached_file_upload/4,
          start_chat_contact/2,
          start_chat_contact/3,
+         start_contact_conversational_analytics_job/4,
+         start_contact_conversational_analytics_job/5,
          start_contact_evaluation/3,
          start_contact_evaluation/4,
          start_contact_media_processing/2,
@@ -2123,6 +2127,16 @@
 
 
 %% Example:
+%% create_attached_file_response() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileStatus">> => list(any())
+%% }
+-type create_attached_file_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_text_question_automation() :: #{
 %%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source()
 %% }
@@ -2434,6 +2448,16 @@
 %% Example:
 %% delete_contact_flow_version_response() :: #{}
 -type delete_contact_flow_version_response() :: #{}.
+
+
+%% Example:
+%% redaction_configuration() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"Entities">> => list(string()),
+%%   <<"MaskMode">> => list(any()),
+%%   <<"Policy">> => list(any())
+%% }
+-type redaction_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_contact_flow_metadata_response() :: #{}
@@ -3641,6 +3665,13 @@
 
 
 %% Example:
+%% sentiment_configuration() :: #{
+%%   <<"Behavior">> => list(any())
+%% }
+-type sentiment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_describe_data_table_value_response() :: #{
 %%   <<"Failed">> => list(batch_describe_data_table_value_failure_result()),
 %%   <<"Successful">> => list(batch_describe_data_table_value_success_result())
@@ -4452,6 +4483,14 @@
 %%   <<"Suggestion">> => string()
 %% }
 -type evaluation_form_validation_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_contact_conversational_analytics_job_response() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type start_contact_conversational_analytics_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7171,6 +7210,17 @@
 
 
 %% Example:
+%% create_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"FileSourceUri">> := string(),
+%%   <<"FileUseCaseType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_attached_file_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_user_status_request() :: #{
 %%   <<"AgentStatusId">> := string()
 %% }
@@ -7657,6 +7707,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% language_configuration() :: #{
+%%   <<"LanguageLocale">> => string()
+%% }
+-type language_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9933,6 +9990,13 @@
 
 
 %% Example:
+%% summary_configuration() :: #{
+%%   <<"SummaryModes">> => list(list(any())())
+%% }
+-type summary_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_metadata() :: #{
 %%   <<"Acknowledgement">> => evaluation_acknowledgement(),
 %%   <<"AutoEvaluation">> => auto_evaluation_details(),
@@ -10060,6 +10124,13 @@
 %%   <<"PrimaryValues">> => list(primary_value())
 %% }
 -type batch_describe_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% rules_configuration() :: #{
+%%   <<"Behavior">> => list(any())
+%% }
+-type rules_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10667,6 +10738,15 @@
 
 
 %% Example:
+%% start_contact_conversational_analytics_job_request() :: #{
+%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
+%%   <<"AnalyticsModes">> := list(list(any())()),
+%%   <<"ClientToken">> => string()
+%% }
+-type start_contact_conversational_analytics_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% real_time_contact_analysis_issue_detected() :: #{
 %%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content())
 %% }
@@ -10783,6 +10863,17 @@
 %%   <<"Message">> => string()
 %% }
 -type duplicate_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_configuration() :: #{
+%%   <<"LanguageConfiguration">> => language_configuration(),
+%%   <<"RedactionConfiguration">> => redaction_configuration(),
+%%   <<"RulesConfiguration">> => rules_configuration(),
+%%   <<"SentimentConfiguration">> => sentiment_configuration(),
+%%   <<"SummaryConfiguration">> => summary_configuration()
+%% }
+-type analytics_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11754,6 +11845,14 @@
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_attached_file_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type create_contact_errors() ::
@@ -13661,6 +13760,14 @@
 -type start_chat_contact_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_contact_conversational_analytics_job_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -15818,6 +15925,57 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an attached file for a completed voice contact by copying a
+%% recording from a source S3 URI into
+%% Connect Customer managed storage.
+%%
+%% Use this API to attach voice recordings to contacts for downstream
+%% processing such as conversational analytics.
+%%
+%% The `AssociatedResourceArn' must be the ARN of a completed voice
+%% contact, `FileUseCaseType'
+%% must be set to `VOICE_RECORDING', and `FileSourceUri' must be a
+%% valid S3 URI.
+%%
+%% For example, you can call `CreateContact', then
+%% `CreateAttachedFile', then
+%% `StartContactConversationalAnalyticsJob' to create a contact, attach a
+%% recording, and
+%% run post-call analytics.
+-spec create_attached_file(aws_client:aws_client(), binary() | list(), create_attached_file_request()) ->
+    {ok, create_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, create_attached_file_errors(), tuple()}.
+create_attached_file(Client, InstanceId, Input) ->
+    create_attached_file(Client, InstanceId, Input, []).
+
+-spec create_attached_file(aws_client:aws_client(), binary() | list(), create_attached_file_request(), proplists:proplist()) ->
+    {ok, create_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, create_attached_file_errors(), tuple()}.
+create_attached_file(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), "/files"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
@@ -26462,6 +26620,57 @@ start_chat_contact(Client, Input) ->
 start_chat_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/chat"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a Contact Lens post-call analytics job for the specified
+%% contact.
+%%
+%% This API runs Conversational
+%% Analytics post-contact analysis on a voice recording that is already
+%% attached to the contact, generating
+%% transcription, sentiment analysis, redaction, and summarization results
+%% based on the provided configuration.
+%%
+%% A voice recording must already be attached to the contact before calling
+%% this API. Use
+%% `CreateAttachedFile' to attach a recording from an S3 source URI.
+%%
+%% For example, you can call `CreateContact', then
+%% `CreateAttachedFile', then
+%% `StartContactConversationalAnalyticsJob' to create a contact, attach a
+%% recording, and
+%% run post-call analytics.
+-spec start_contact_conversational_analytics_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_contact_conversational_analytics_job_request()) ->
+    {ok, start_contact_conversational_analytics_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_contact_conversational_analytics_job_errors(), tuple()}.
+start_contact_conversational_analytics_job(Client, ContactId, InstanceId, Input) ->
+    start_contact_conversational_analytics_job(Client, ContactId, InstanceId, Input, []).
+
+-spec start_contact_conversational_analytics_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_contact_conversational_analytics_job_request(), proplists:proplist()) ->
+    {ok, start_contact_conversational_analytics_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_contact_conversational_analytics_job_errors(), tuple()}.
+start_contact_conversational_analytics_job(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/start-conversational-analytics-job/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

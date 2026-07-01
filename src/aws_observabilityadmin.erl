@@ -1100,7 +1100,8 @@
 %% Example:
 %% test_telemetry_pipeline_input() :: #{
 %%   <<"Configuration">> := telemetry_pipeline_configuration(),
-%%   <<"Records">> := list(record())
+%%   <<"Records">> := list(record()),
+%%   <<"SignalType">> => list(any())
 %% }
 -type test_telemetry_pipeline_input() :: #{binary() => any()}.
 

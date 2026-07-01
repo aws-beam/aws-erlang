@@ -30,6 +30,8 @@
          associate_encryption_config/4,
          associate_identity_provider_config/3,
          associate_identity_provider_config/4,
+         cancel_update/4,
+         cancel_update/5,
          create_access_entry/3,
          create_access_entry/4,
          create_addon/3,
@@ -258,6 +260,13 @@
 
 
 %% Example:
+%% rollback_config() :: #{
+%%   <<"timeoutMinutes">> => integer()
+%% }
+-type rollback_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_insights_request() :: #{
 %%   <<"filter">> => insights_filter(),
 %%   <<"maxResults">> => integer(),
@@ -448,6 +457,13 @@
 %%   <<"principalArn">> => string()
 %% }
 -type list_associated_access_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_update_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type cancel_update_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1012,6 +1028,7 @@
 
 %% Example:
 %% update() :: #{
+%%   <<"cancellation">> => cancellation(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"errors">> => list(error_detail()),
 %%   <<"id">> => string(),
@@ -1412,6 +1429,14 @@
 
 
 %% Example:
+%% cancellation() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cancellation() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_config_request() :: #{
 %%   <<"controlPlaneEgressMode">> => list(any()),
 %%   <<"endpointPrivateAccess">> => boolean(),
@@ -1548,6 +1573,13 @@
 %%   <<"spreadLevel">> => list(any())
 %% }
 -type etcd_placement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_update_request() :: #{
+%%   <<"clientRequestToken">> => string()
+%% }
+-type cancel_update_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2352,6 +2384,7 @@
 %% update_cluster_version_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"force">> => boolean(),
+%%   <<"rollbackConfig">> => rollback_config(),
 %%   <<"version">> := string()
 %% }
 -type update_cluster_version_request() :: #{binary() => any()}.
@@ -2450,6 +2483,16 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
+    resource_in_use_exception().
+
+-type cancel_update_errors() ::
+    server_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    invalid_state_exception() | 
     resource_in_use_exception().
 
 -type create_access_entry_errors() ::
@@ -2967,6 +3010,54 @@ associate_identity_provider_config(Client, ClusterName, Input) ->
 associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an in-progress update to an Amazon EKS cluster on a
+%% best-effort basis.
+%%
+%% Cancellation
+%% is only performed if the update can be cancelled. Currently, this is
+%% supported for
+%% `VersionRollback' update types on EKS Auto Mode clusters when nodes
+%% are
+%% rolling back.
+%%
+%% A successful cancellation stops the node rollback. After cancellation,
+%% nodes converge
+%% to the current cluster version honoring configured disruption controls. If
+%% the control
+%% plane rollback has already begun, the cancellation request fails.
+-spec cancel_update(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_update_request()) ->
+    {ok, cancel_update_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_update_errors(), tuple()}.
+cancel_update(Client, Name, UpdateId, Input) ->
+    cancel_update(Client, Name, UpdateId, Input, []).
+
+-spec cancel_update(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_update_request(), proplists:proplist()) ->
+    {ok, cancel_update_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_update_errors(), tuple()}.
+cancel_update(Client, Name, UpdateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), "/cancel-update"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

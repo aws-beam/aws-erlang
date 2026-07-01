@@ -12,22 +12,54 @@
 
 -export([add_tags_to_certificate/2,
          add_tags_to_certificate/3,
+         create_acme_domain_validation/2,
+         create_acme_domain_validation/3,
+         create_acme_endpoint/2,
+         create_acme_endpoint/3,
+         create_acme_external_account_binding/2,
+         create_acme_external_account_binding/3,
+         delete_acme_domain_validation/2,
+         delete_acme_domain_validation/3,
+         delete_acme_endpoint/2,
+         delete_acme_endpoint/3,
+         delete_acme_external_account_binding/2,
+         delete_acme_external_account_binding/3,
          delete_certificate/2,
          delete_certificate/3,
+         describe_acme_account/2,
+         describe_acme_account/3,
+         describe_acme_domain_validation/2,
+         describe_acme_domain_validation/3,
+         describe_acme_endpoint/2,
+         describe_acme_endpoint/3,
+         describe_acme_external_account_binding/2,
+         describe_acme_external_account_binding/3,
          describe_certificate/2,
          describe_certificate/3,
          export_certificate/2,
          export_certificate/3,
          get_account_configuration/2,
          get_account_configuration/3,
+         get_acme_external_account_binding_credentials/2,
+         get_acme_external_account_binding_credentials/3,
          get_certificate/2,
          get_certificate/3,
          import_certificate/2,
          import_certificate/3,
+         list_acme_accounts/2,
+         list_acme_accounts/3,
+         list_acme_domain_validations/2,
+         list_acme_domain_validations/3,
+         list_acme_endpoints/2,
+         list_acme_endpoints/3,
+         list_acme_external_account_bindings/2,
+         list_acme_external_account_bindings/3,
          list_certificates/2,
          list_certificates/3,
          list_tags_for_certificate/2,
          list_tags_for_certificate/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_account_configuration/2,
          put_account_configuration/3,
          remove_tags_from_certificate/2,
@@ -38,15 +70,41 @@
          request_certificate/3,
          resend_validation_email/2,
          resend_validation_email/3,
+         revoke_acme_account/2,
+         revoke_acme_account/3,
+         revoke_acme_external_account_binding/2,
+         revoke_acme_external_account_binding/3,
          revoke_certificate/2,
          revoke_certificate/3,
          search_certificates/2,
          search_certificates/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
+         update_acme_domain_validation/2,
+         update_acme_domain_validation/3,
+         update_acme_endpoint/2,
+         update_acme_endpoint/3,
          update_certificate_options/2,
          update_certificate_options/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% acme_domain_validation_summary() :: #{
+%%   <<"AcmeDomainValidationArn">> => string(),
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DomainName">> => string(),
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"PrevalidationDetails">> => list(),
+%%   <<"PrevalidationType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_domain_validation_summary() :: #{binary() => any()}.
 
 %% Example:
 %% update_certificate_options_request() :: #{
@@ -63,6 +121,33 @@
 -type domain_validation_option() :: #{binary() => any()}.
 
 %% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_endpoint_response() :: #{
+%%   <<"AcmeEndpointArn">> => string()
+%% }
+-type create_acme_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_endpoint_response() :: #{
+%%   <<"AcmeEndpoint">> => acme_endpoint()
+%% }
+-type describe_acme_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_prevalidation_details() :: #{
+%%   <<"DomainScope">> => domain_scope(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"ResourceRecord">> => resource_record()
+%% }
+-type dns_prevalidation_details() :: #{binary() => any()}.
+
+%% Example:
 %% request_in_progress_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -76,11 +161,53 @@
 -type dns_name_filter() :: #{binary() => any()}.
 
 %% Example:
+%% create_acme_external_account_binding_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"Expiration">> => expiration(),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type describe_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% acme_account_summary() :: #{
+%%   <<"AccountUrl">> => [string()],
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"Contacts">> => list([string()]()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"PublicKeyThumbprint">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type acme_account_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_accounts_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_accounts_request() :: #{binary() => any()}.
+
+%% Example:
 %% revoke_certificate_request() :: #{
 %%   <<"CertificateArn">> := string(),
 %%   <<"RevocationReason">> := list(any())
 %% }
 -type revoke_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_accounts_response() :: #{
+%%   <<"AcmeAccounts">> => list(acme_account_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_accounts_response() :: #{binary() => any()}.
 
 %% Example:
 %% search_certificates_request() :: #{
@@ -99,12 +226,61 @@
 -type resource_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type delete_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string()
+%% }
+-type delete_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_domain_validation_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"DomainName">> := string(),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"PrevalidationOptions">> := list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
 %% export_certificate_response() :: #{
 %%   <<"Certificate">> => string(),
 %%   <<"CertificateChain">> => string(),
 %%   <<"PrivateKey">> => string()
 %% }
 -type export_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_external_account_bindings_response() :: #{
+%%   <<"ExternalAccountBindings">> => list(acme_external_account_binding_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_external_account_bindings_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type revoke_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_account_request() :: #{
+%%   <<"AccountUrl">> := [string()],
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type describe_acme_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string(),
+%%   <<"PrevalidationOptions">> => list()
+%% }
+-type update_acme_domain_validation_request() :: #{binary() => any()}.
 
 %% Example:
 %% import_certificate_response() :: #{
@@ -142,6 +318,13 @@
 -type http_redirect() :: #{binary() => any()}.
 
 %% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_state_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -149,6 +332,7 @@
 
 %% Example:
 %% list_certificates_request() :: #{
+%%   <<"CertificateKeyPairOrigins">> => list(list(any())()),
 %%   <<"CertificateStatuses">> => list(list(any())()),
 %%   <<"Includes">> => filters(),
 %%   <<"MaxItems">> => integer(),
@@ -174,6 +358,28 @@
 -type request_certificate_request() :: #{binary() => any()}.
 
 %% Example:
+%% acme_endpoint_summary() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AuthorizationBehavior">> => list(any()),
+%%   <<"CertificateAuthority">> => list(),
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndpointUrl">> => [string()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_endpoint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
 %% remove_tags_from_certificate_request() :: #{
 %%   <<"CertificateArn">> := string(),
 %%   <<"Tags">> := list(tag())
@@ -193,8 +399,15 @@
 -type invalid_args_exception() :: #{binary() => any()}.
 
 %% Example:
+%% describe_acme_domain_validation_response() :: #{
+%%   <<"AcmeDomainValidation">> => acme_domain_validation()
+%% }
+-type describe_acme_domain_validation_response() :: #{binary() => any()}.
+
+%% Example:
 %% certificate_summary() :: #{
 %%   <<"CertificateArn">> => string(),
+%%   <<"CertificateKeyPairOrigin">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
 %%   <<"ExportOption">> => list(any()),
@@ -231,10 +444,27 @@
 -type certificate_options() :: #{binary() => any()}.
 
 %% Example:
+%% create_acme_endpoint_request() :: #{
+%%   <<"AuthorizationBehavior">> := list(any()),
+%%   <<"CertificateAuthority">> := list(),
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_certificate_request() :: #{
 %%   <<"CertificateArn">> := string()
 %% }
 -type list_tags_for_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_acme_external_account_binding_credentials_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type get_acme_external_account_binding_credentials_request() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -255,6 +485,12 @@
 -type expiry_events_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% create_acme_external_account_binding_response() :: #{
+%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
+%% }
+-type create_acme_external_account_binding_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -262,11 +498,50 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% acme_external_account_binding_summary() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"LastUsedAt">> => [non_neg_integer()],
+%%   <<"RevokedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_external_account_binding_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_domain_validations_response() :: #{
+%%   <<"AcmeDomainValidations">> => list(acme_domain_validation_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_domain_validations_response() :: #{binary() => any()}.
+
+%% Example:
+%% public_certificate_authority() :: #{
+%%   <<"AllowedKeyAlgorithms">> => list(list(any())())
+%% }
+-type public_certificate_authority() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% put_account_configuration_request() :: #{
 %%   <<"ExpiryEvents">> => expiry_events_configuration(),
 %%   <<"IdempotencyToken">> := string()
 %% }
 -type put_account_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% dns_prevalidation_options() :: #{
+%%   <<"DomainScope">> => domain_scope(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type dns_prevalidation_options() :: #{binary() => any()}.
 
 %% Example:
 %% get_certificate_request() :: #{
@@ -336,10 +611,36 @@
 -type resend_validation_email_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_certificate_response() :: #{
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_account_response() :: #{
+%%   <<"AcmeAccount">> => acme_account()
+%% }
+-type describe_acme_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_acme_external_account_binding_credentials_response() :: #{
+%%   <<"KeyId">> => [string()],
+%%   <<"MacKey">> => string()
+%% }
+-type get_acme_external_account_binding_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_acme_account_request() :: #{
+%%   <<"AccountUrl">> := [string()],
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type revoke_acme_account_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_domain_validation_options_exception() :: #{
@@ -355,7 +656,36 @@
 -type add_tags_to_certificate_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_acme_endpoints_response() :: #{
+%%   <<"AcmeEndpoints">> => list(acme_endpoint_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% acme_external_account_binding() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"LastUsedAt">> => [non_neg_integer()],
+%%   <<"RevokedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_external_account_binding() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_external_account_binding_response() :: #{
+%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
+%% }
+-type describe_acme_external_account_binding_response() :: #{binary() => any()}.
+
+%% Example:
 %% acm_certificate_metadata() :: #{
+%%   <<"AcmeAccountId">> => string(),
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"CertificateKeyPairOrigin">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"ExportOption">> => list(any()),
 %%   <<"Exported">> => boolean(),
@@ -371,6 +701,29 @@
 %%   <<"ValidationMethod">> => list(any())
 %% }
 -type acm_certificate_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type delete_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% acme_account() :: #{
+%%   <<"AccountUrl">> => [string()],
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"Contacts">> => list([string()]()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"PublicKeyThumbprint">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type acme_account() :: #{binary() => any()}.
 
 %% Example:
 %% timestamp_range() :: #{
@@ -414,10 +767,40 @@
 -type describe_certificate_response() :: #{binary() => any()}.
 
 %% Example:
+%% domain_scope() :: #{
+%%   <<"ExactDomain">> => list(any()),
+%%   <<"Subdomains">> => list(any()),
+%%   <<"Wildcards">> => list(any())
+%% }
+-type domain_scope() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_domain_validations_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_domain_validations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_external_account_bindings_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_external_account_bindings_request() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -425,6 +808,12 @@
 %%   <<"throttlingReasons">> => list(throttling_reason())
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_domain_validation_response() :: #{
+%%   <<"AcmeDomainValidationArn">> => string()
+%% }
+-type create_acme_domain_validation_response() :: #{binary() => any()}.
 
 %% Example:
 %% x509_attributes() :: #{
@@ -457,11 +846,51 @@
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_acme_endpoints_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% expiration() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => [float()]
+%% }
+-type expiration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type describe_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string()
+%% }
+-type describe_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
 %% extended_key_usage() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"OID">> => string()
 %% }
 -type extended_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% acme_domain_validation() :: #{
+%%   <<"AcmeDomainValidationArn">> => string(),
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DomainName">> => string(),
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"PrevalidationDetails">> => list(),
+%%   <<"PrevalidationType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_domain_validation() :: #{binary() => any()}.
 
 %% Example:
 %% domain_validation() :: #{
@@ -517,6 +946,15 @@
 -type get_certificate_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"AuthorizationBehavior">> => list(any()),
+%%   <<"CertificateAuthority">> => list(),
+%%   <<"Contact">> => list(any())
+%% }
+-type update_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
 %% certificate_search_result() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateMetadata">> => list(),
@@ -545,8 +983,11 @@
 
 %% Example:
 %% certificate_detail() :: #{
+%%   <<"AcmeAccountId">> => string(),
+%%   <<"AcmeEndpointArn">> => string(),
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CertificateKeyPairOrigin">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainValidationOptions">> => list(domain_validation()),
@@ -582,29 +1023,122 @@
 %% }
 -type search_certificates_response() :: #{binary() => any()}.
 
+%% Example:
+%% acme_endpoint() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AuthorizationBehavior">> => list(any()),
+%%   <<"CertificateAuthority">> => list(),
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndpointUrl">> => [string()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type acme_endpoint() :: #{binary() => any()}.
+
 -type add_tags_to_certificate_errors() ::
     too_many_tags_exception() | 
     invalid_tag_exception() | 
     throttling_exception() | 
+    validation_exception() | 
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     tag_policy_exception().
 
+-type create_acme_domain_validation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_acme_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_acme_external_account_binding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_acme_domain_validation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_acme_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_acme_external_account_binding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type delete_certificate_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     invalid_arn_exception() | 
     resource_in_use_exception().
 
+-type describe_acme_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_acme_domain_validation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_acme_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_acme_external_account_binding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_certificate_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception().
 
 -type export_certificate_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     request_in_progress_exception().
@@ -613,7 +1147,15 @@
     throttling_exception() | 
     access_denied_exception().
 
+-type get_acme_external_account_binding_credentials_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_certificate_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     request_in_progress_exception().
@@ -622,19 +1164,52 @@
     too_many_tags_exception() | 
     invalid_tag_exception() | 
     limit_exceeded_exception() | 
+    validation_exception() | 
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     invalid_arn_exception() | 
     tag_policy_exception().
 
+-type list_acme_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_acme_domain_validations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_acme_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_acme_external_account_bindings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_certificates_errors() ::
     validation_exception() | 
     invalid_args_exception().
 
 -type list_tags_for_certificate_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 -type put_account_configuration_errors() ::
     throttling_exception() | 
@@ -645,12 +1220,14 @@
 -type remove_tags_from_certificate_errors() ::
     invalid_tag_exception() | 
     throttling_exception() | 
+    validation_exception() | 
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     tag_policy_exception().
 
 -type renew_certificate_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     request_in_progress_exception().
@@ -665,13 +1242,31 @@
     tag_policy_exception().
 
 -type resend_validation_email_errors() ::
+    validation_exception() | 
     invalid_domain_validation_options_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     invalid_state_exception().
 
+-type revoke_acme_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type revoke_acme_external_account_binding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type revoke_certificate_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
@@ -683,8 +1278,34 @@
     validation_exception() | 
     access_denied_exception().
 
+-type tag_resource_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_acme_domain_validation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_acme_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_certificate_options_errors() ::
     limit_exceeded_exception() | 
+    validation_exception() | 
     resource_not_found_exception() | 
     invalid_arn_exception() | 
     invalid_state_exception().
@@ -699,6 +1320,9 @@
 %% Services resources. Each tag consists of a `key' and an optional
 %% `value'. You specify the certificate on input by its Amazon Resource
 %% Name (ARN). You specify the tag by using a key-value pair.
+%%
+%% This action applies only to the `certificate' resource type. For all
+%% other ACM resource types, use `TagResource' instead.
 %%
 %% You can apply a tag to just one certificate if you want to identify a
 %% specific characteristic of that certificate, or you can apply the same tag
@@ -729,6 +1353,131 @@ add_tags_to_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToCertificate">>, Input, Options).
 
+%% @doc Creates a domain validation for an ACME endpoint.
+%%
+%% Domain validations authorize the endpoint to issue certificates for
+%% specified domain names. You configure prevalidation to prove domain
+%% ownership.
+-spec create_acme_domain_validation(aws_client:aws_client(), create_acme_domain_validation_request()) ->
+    {ok, create_acme_domain_validation_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_domain_validation_errors(), tuple()}.
+create_acme_domain_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_acme_domain_validation(Client, Input, []).
+
+-spec create_acme_domain_validation(aws_client:aws_client(), create_acme_domain_validation_request(), proplists:proplist()) ->
+    {ok, create_acme_domain_validation_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_domain_validation_errors(), tuple()}.
+create_acme_domain_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAcmeDomainValidation">>, Input, Options).
+
+%% @doc Creates an ACME endpoint, which is a managed ACME server with a
+%% unique endpoint URL.
+%%
+%% After creation, ACME clients can use the endpoint URL to automate
+%% certificate issuance using the ACME protocol.
+-spec create_acme_endpoint(aws_client:aws_client(), create_acme_endpoint_request()) ->
+    {ok, create_acme_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_endpoint_errors(), tuple()}.
+create_acme_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_acme_endpoint(Client, Input, []).
+
+-spec create_acme_endpoint(aws_client:aws_client(), create_acme_endpoint_request(), proplists:proplist()) ->
+    {ok, create_acme_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_endpoint_errors(), tuple()}.
+create_acme_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAcmeEndpoint">>, Input, Options).
+
+%% @doc Creates an external account binding (EAB) for an ACME endpoint.
+%%
+%% An EAB provides credentials that authorize an ACME client to register an
+%% account with the endpoint. Each EAB is associated with an IAM role that
+%% controls what certificate operations the ACME client can perform.
+-spec create_acme_external_account_binding(aws_client:aws_client(), create_acme_external_account_binding_request()) ->
+    {ok, create_acme_external_account_binding_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_external_account_binding_errors(), tuple()}.
+create_acme_external_account_binding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_acme_external_account_binding(Client, Input, []).
+
+-spec create_acme_external_account_binding(aws_client:aws_client(), create_acme_external_account_binding_request(), proplists:proplist()) ->
+    {ok, create_acme_external_account_binding_response(), tuple()} |
+    {error, any()} |
+    {error, create_acme_external_account_binding_errors(), tuple()}.
+create_acme_external_account_binding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAcmeExternalAccountBinding">>, Input, Options).
+
+%% @doc Deletes a domain validation.
+%%
+%% After deletion, the ACME endpoint can no longer issue certificates for the
+%% associated domain.
+-spec delete_acme_domain_validation(aws_client:aws_client(), delete_acme_domain_validation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_domain_validation_errors(), tuple()}.
+delete_acme_domain_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_acme_domain_validation(Client, Input, []).
+
+-spec delete_acme_domain_validation(aws_client:aws_client(), delete_acme_domain_validation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_domain_validation_errors(), tuple()}.
+delete_acme_domain_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAcmeDomainValidation">>, Input, Options).
+
+%% @doc Deletes an ACME endpoint.
+%%
+%% After deletion, the endpoint URL is no longer accessible and ACME clients
+%% cannot issue certificates through it. Any existing external account
+%% bindings and domain validations associated with the endpoint are also
+%% deleted.
+-spec delete_acme_endpoint(aws_client:aws_client(), delete_acme_endpoint_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_endpoint_errors(), tuple()}.
+delete_acme_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_acme_endpoint(Client, Input, []).
+
+-spec delete_acme_endpoint(aws_client:aws_client(), delete_acme_endpoint_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_endpoint_errors(), tuple()}.
+delete_acme_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAcmeEndpoint">>, Input, Options).
+
+%% @doc Deletes an external account binding.
+%%
+%% Previously fetched credentials for this binding will no longer be usable
+%% for account registration. A deleted binding cannot be recovered.
+-spec delete_acme_external_account_binding(aws_client:aws_client(), delete_acme_external_account_binding_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_external_account_binding_errors(), tuple()}.
+delete_acme_external_account_binding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_acme_external_account_binding(Client, Input, []).
+
+-spec delete_acme_external_account_binding(aws_client:aws_client(), delete_acme_external_account_binding_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_acme_external_account_binding_errors(), tuple()}.
+delete_acme_external_account_binding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAcmeExternalAccountBinding">>, Input, Options).
+
 %% @doc Deletes a certificate and its associated private key.
 %%
 %% If this action succeeds, the certificate is not available for use by
@@ -748,6 +1497,10 @@ add_tags_to_certificate(Client, Input, Options)
 %% is deleted. For more information, see Deleting Your Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html in
 %% the Private Certificate Authority User Guide.
+%%
+%% You cannot delete a certificate with a `CertificateKeyPairOrigin' of
+%% `ACME'. ACM automatically deletes these certificates 1 year after they
+%% expire.
 %%
 %% Deleting a certificate issued by a private certificate authority (CA) has
 %% no effect on the CA. You will continue to be charged for the CA until it
@@ -769,6 +1522,82 @@ delete_certificate(Client, Input)
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
+
+%% @doc Returns detailed metadata about the specified ACME account, including
+%% its status, public key thumbprint, and associated external account
+%% binding.
+-spec describe_acme_account(aws_client:aws_client(), describe_acme_account_request()) ->
+    {ok, describe_acme_account_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_account_errors(), tuple()}.
+describe_acme_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_acme_account(Client, Input, []).
+
+-spec describe_acme_account(aws_client:aws_client(), describe_acme_account_request(), proplists:proplist()) ->
+    {ok, describe_acme_account_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_account_errors(), tuple()}.
+describe_acme_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAcmeAccount">>, Input, Options).
+
+%% @doc Returns detailed metadata about the specified domain validation,
+%% including its status, domain scope, and DNS resource records required for
+%% validation.
+-spec describe_acme_domain_validation(aws_client:aws_client(), describe_acme_domain_validation_request()) ->
+    {ok, describe_acme_domain_validation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_domain_validation_errors(), tuple()}.
+describe_acme_domain_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_acme_domain_validation(Client, Input, []).
+
+-spec describe_acme_domain_validation(aws_client:aws_client(), describe_acme_domain_validation_request(), proplists:proplist()) ->
+    {ok, describe_acme_domain_validation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_domain_validation_errors(), tuple()}.
+describe_acme_domain_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAcmeDomainValidation">>, Input, Options).
+
+%% @doc Returns detailed metadata about the specified ACME endpoint,
+%% including its status, URL, authorization behavior, and certificate
+%% authority configuration.
+-spec describe_acme_endpoint(aws_client:aws_client(), describe_acme_endpoint_request()) ->
+    {ok, describe_acme_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_endpoint_errors(), tuple()}.
+describe_acme_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_acme_endpoint(Client, Input, []).
+
+-spec describe_acme_endpoint(aws_client:aws_client(), describe_acme_endpoint_request(), proplists:proplist()) ->
+    {ok, describe_acme_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_endpoint_errors(), tuple()}.
+describe_acme_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAcmeEndpoint">>, Input, Options).
+
+%% @doc Returns detailed metadata about the specified external account
+%% binding, including the associated IAM role, expiration time, and usage
+%% history.
+-spec describe_acme_external_account_binding(aws_client:aws_client(), describe_acme_external_account_binding_request()) ->
+    {ok, describe_acme_external_account_binding_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_external_account_binding_errors(), tuple()}.
+describe_acme_external_account_binding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_acme_external_account_binding(Client, Input, []).
+
+-spec describe_acme_external_account_binding(aws_client:aws_client(), describe_acme_external_account_binding_request(), proplists:proplist()) ->
+    {ok, describe_acme_external_account_binding_response(), tuple()} |
+    {error, any()} |
+    {error, describe_acme_external_account_binding_errors(), tuple()}.
+describe_acme_external_account_binding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAcmeExternalAccountBinding">>, Input, Options).
 
 %% @doc Returns detailed metadata about the specified ACM certificate.
 %%
@@ -839,6 +1668,27 @@ get_account_configuration(Client, Input)
 get_account_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountConfiguration">>, Input, Options).
+
+%% @doc Retrieves the key ID and MAC key credentials for an external account
+%% binding.
+%%
+%% These credentials are used by ACME clients during account registration to
+%% bind to the endpoint.
+-spec get_acme_external_account_binding_credentials(aws_client:aws_client(), get_acme_external_account_binding_credentials_request()) ->
+    {ok, get_acme_external_account_binding_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_acme_external_account_binding_credentials_errors(), tuple()}.
+get_acme_external_account_binding_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_acme_external_account_binding_credentials(Client, Input, []).
+
+-spec get_acme_external_account_binding_credentials(aws_client:aws_client(), get_acme_external_account_binding_credentials_request(), proplists:proplist()) ->
+    {ok, get_acme_external_account_binding_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_acme_external_account_binding_credentials_errors(), tuple()}.
+get_acme_external_account_binding_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAcmeExternalAccountBindingCredentials">>, Input, Options).
 
 %% @doc Retrieves a certificate and its certificate chain.
 %%
@@ -939,12 +1789,94 @@ import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
 
+%% @doc Retrieves a list of ACME accounts registered with the specified ACME
+%% endpoint.
+%%
+%% ACME accounts are created when clients use external account binding
+%% credentials to register.
+-spec list_acme_accounts(aws_client:aws_client(), list_acme_accounts_request()) ->
+    {ok, list_acme_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_accounts_errors(), tuple()}.
+list_acme_accounts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_acme_accounts(Client, Input, []).
+
+-spec list_acme_accounts(aws_client:aws_client(), list_acme_accounts_request(), proplists:proplist()) ->
+    {ok, list_acme_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_accounts_errors(), tuple()}.
+list_acme_accounts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAcmeAccounts">>, Input, Options).
+
+%% @doc Retrieves a list of domain validations for the specified ACME
+%% endpoint.
+-spec list_acme_domain_validations(aws_client:aws_client(), list_acme_domain_validations_request()) ->
+    {ok, list_acme_domain_validations_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_domain_validations_errors(), tuple()}.
+list_acme_domain_validations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_acme_domain_validations(Client, Input, []).
+
+-spec list_acme_domain_validations(aws_client:aws_client(), list_acme_domain_validations_request(), proplists:proplist()) ->
+    {ok, list_acme_domain_validations_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_domain_validations_errors(), tuple()}.
+list_acme_domain_validations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAcmeDomainValidations">>, Input, Options).
+
+%% @doc Retrieves a list of ACME endpoints in your account.
+%%
+%% Use this operation to view all configured ACME endpoints and their current
+%% status.
+-spec list_acme_endpoints(aws_client:aws_client(), list_acme_endpoints_request()) ->
+    {ok, list_acme_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_endpoints_errors(), tuple()}.
+list_acme_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_acme_endpoints(Client, Input, []).
+
+-spec list_acme_endpoints(aws_client:aws_client(), list_acme_endpoints_request(), proplists:proplist()) ->
+    {ok, list_acme_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_endpoints_errors(), tuple()}.
+list_acme_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAcmeEndpoints">>, Input, Options).
+
+%% @doc Retrieves a list of external account bindings for the specified ACME
+%% endpoint.
+-spec list_acme_external_account_bindings(aws_client:aws_client(), list_acme_external_account_bindings_request()) ->
+    {ok, list_acme_external_account_bindings_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_external_account_bindings_errors(), tuple()}.
+list_acme_external_account_bindings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_acme_external_account_bindings(Client, Input, []).
+
+-spec list_acme_external_account_bindings(aws_client:aws_client(), list_acme_external_account_bindings_request(), proplists:proplist()) ->
+    {ok, list_acme_external_account_bindings_response(), tuple()} |
+    {error, any()} |
+    {error, list_acme_external_account_bindings_errors(), tuple()}.
+list_acme_external_account_bindings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAcmeExternalAccountBindings">>, Input, Options).
+
 %% @doc Retrieves a list of certificate ARNs and domain names.
 %%
 %% You can request that only certificates that match a specific status be
 %% listed. You can also filter by specific attributes of the certificate.
 %% Default filtering returns only `RSA_2048' certificates. For more
 %% information, see `Filters'.
+%%
+%% By default, this action does not return certificates with a
+%% `CertificateKeyPairOrigin' of `ACME'. To include ACME
+%% certificates, specify `ACME' in the `CertificateKeyPairOrigins'
+%% filter.
 -spec list_certificates(aws_client:aws_client(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
@@ -967,6 +1899,9 @@ list_certificates(Client, Input, Options)
 %% certificate. To add a tag to an ACM certificate, use the
 %% `AddTagsToCertificate' action. To delete a tag, use the
 %% `RemoveTagsFromCertificate' action.
+%%
+%% This action applies only to the `certificate' resource type. For all
+%% other ACM resource types, use `ListTagsForResource' instead.
 -spec list_tags_for_certificate(aws_client:aws_client(), list_tags_for_certificate_request()) ->
     {ok, list_tags_for_certificate_response(), tuple()} |
     {error, any()} |
@@ -982,6 +1917,30 @@ list_tags_for_certificate(Client, Input)
 list_tags_for_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForCertificate">>, Input, Options).
+
+%% @doc Lists the tags associated with an ACM resource.
+%%
+%% Use this action for all ACM resource types except the `certificate'
+%% resource type. For certificate resources, use `ListTagsForCertificate'
+%% instead.
+%%
+%% To add one or more tags, use the `TagResource' action. To remove one
+%% or more tags, use the `UntagResource' action.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Adds or modifies account-level configurations in ACM.
 %%
@@ -1012,6 +1971,9 @@ put_account_configuration(Client, Input, Options)
 %% portion of the tag when calling this function, the tag will be removed
 %% regardless of value. If you specify a value, the tag is removed only if it
 %% is associated with the specified value.
+%%
+%% This action applies only to the `certificate' resource type. For all
+%% other ACM resource types, use `UntagResource' instead.
 %%
 %% To add tags to a certificate, use the `AddTagsToCertificate' action.
 %% To view all of the tags that have been applied to a specific ACM
@@ -1126,6 +2088,47 @@ resend_validation_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendValidationEmail">>, Input, Options).
 
+%% @doc Revokes an ACME account, preventing it from requesting or revoking
+%% certificates.
+%%
+%% This operation is irreversible.
+-spec revoke_acme_account(aws_client:aws_client(), revoke_acme_account_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_acme_account_errors(), tuple()}.
+revoke_acme_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    revoke_acme_account(Client, Input, []).
+
+-spec revoke_acme_account(aws_client:aws_client(), revoke_acme_account_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_acme_account_errors(), tuple()}.
+revoke_acme_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RevokeAcmeAccount">>, Input, Options).
+
+%% @doc Revokes an external account binding, preventing new ACME accounts
+%% from being registered using this binding.
+%%
+%% Existing ACME accounts that were previously registered using the binding
+%% are not affected and must be revoked separately.
+-spec revoke_acme_external_account_binding(aws_client:aws_client(), revoke_acme_external_account_binding_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_acme_external_account_binding_errors(), tuple()}.
+revoke_acme_external_account_binding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    revoke_acme_external_account_binding(Client, Input, []).
+
+-spec revoke_acme_external_account_binding(aws_client:aws_client(), revoke_acme_external_account_binding_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_acme_external_account_binding_errors(), tuple()}.
+revoke_acme_external_account_binding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RevokeAcmeExternalAccountBinding">>, Input, Options).
+
 %% @doc Revokes a public ACM certificate.
 %%
 %% You can only revoke certificates that have been previously exported.
@@ -1169,6 +2172,98 @@ search_certificates(Client, Input)
 search_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchCertificates">>, Input, Options).
+
+%% @doc Adds one or more tags to an ACM resource.
+%%
+%% Tags are labels that you can use to identify and organize your Amazon Web
+%% Services resources. Each tag consists of a `key' and an optional
+%% `value'.
+%%
+%% Use this action for all ACM resource types except the `certificate'
+%% resource type. For certificate resources, use `AddTagsToCertificate'
+%% instead.
+%%
+%% To remove one or more tags, use the `UntagResource' action. To view
+%% all of the tags that have been applied to a resource, use the
+%% `ListTagsForResource' action.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes one or more tags from an ACM resource.
+%%
+%% Use this action for all ACM resource types except the `certificate'
+%% resource type. For certificate resources, use
+%% `RemoveTagsFromCertificate' instead.
+%%
+%% To add one or more tags, use the `TagResource' action. To view all of
+%% the tags that have been applied to a resource, use the
+%% `ListTagsForResource' action.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the prevalidation configuration of an existing domain
+%% validation.
+-spec update_acme_domain_validation(aws_client:aws_client(), update_acme_domain_validation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_acme_domain_validation_errors(), tuple()}.
+update_acme_domain_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_acme_domain_validation(Client, Input, []).
+
+-spec update_acme_domain_validation(aws_client:aws_client(), update_acme_domain_validation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_acme_domain_validation_errors(), tuple()}.
+update_acme_domain_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAcmeDomainValidation">>, Input, Options).
+
+%% @doc Updates the configuration of an existing ACME endpoint.
+%%
+%% You can change the authorization behavior, contact requirement, or
+%% certificate authority settings.
+-spec update_acme_endpoint(aws_client:aws_client(), update_acme_endpoint_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_acme_endpoint_errors(), tuple()}.
+update_acme_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_acme_endpoint(Client, Input, []).
+
+-spec update_acme_endpoint(aws_client:aws_client(), update_acme_endpoint_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_acme_endpoint_errors(), tuple()}.
+update_acme_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAcmeEndpoint">>, Input, Options).
 
 %% @doc Updates a certificate.
 %%

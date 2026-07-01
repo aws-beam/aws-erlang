@@ -203,6 +203,12 @@
 -type resource_not_found() :: #{binary() => any()}.
 
 %% Example:
+%% sliding_window() :: #{
+
+%% }
+-type sliding_window() :: #{binary() => any()}.
+
+%% Example:
 %% range() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -234,6 +240,12 @@
 %%   <<"message">> => string()
 %% }
 -type dashboard_not_found_error() :: #{binary() => any()}.
+
+%% Example:
+%% wall_clock_window() :: #{
+%%   <<"Timezone">> => string()
+%% }
+-type wall_clock_window() :: #{binary() => any()}.
 
 %% Example:
 %% put_insight_rule_input() :: #{
@@ -673,6 +685,7 @@
 %%   <<"EvaluationCriteria">> => list(),
 %%   <<"EvaluationInterval">> => integer(),
 %%   <<"EvaluationPeriods">> => integer(),
+%%   <<"EvaluationWindow">> => list(),
 %%   <<"ExtendedStatistic">> => string(),
 %%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),
@@ -1263,6 +1276,7 @@
 %%   <<"EvaluationInterval">> => integer(),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"EvaluationState">> => list(any()),
+%%   <<"EvaluationWindow">> => list(),
 %%   <<"ExtendedStatistic">> => string(),
 %%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),

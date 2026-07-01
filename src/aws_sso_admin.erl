@@ -249,6 +249,8 @@
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"Regions">> => list(region_metadata()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }

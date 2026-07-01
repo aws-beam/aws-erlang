@@ -127,6 +127,8 @@
          associate_subnets/3,
          attach_rule_groups_to_proxy_configuration/2,
          attach_rule_groups_to_proxy_configuration/3,
+         create_container_association/2,
+         create_container_association/3,
          create_firewall/2,
          create_firewall/3,
          create_firewall_policy/2,
@@ -145,6 +147,8 @@
          create_t_l_s_inspection_configuration/3,
          create_vpc_endpoint_association/2,
          create_vpc_endpoint_association/3,
+         delete_container_association/2,
+         delete_container_association/3,
          delete_firewall/2,
          delete_firewall/3,
          delete_firewall_policy/2,
@@ -167,6 +171,8 @@
          delete_t_l_s_inspection_configuration/3,
          delete_vpc_endpoint_association/2,
          delete_vpc_endpoint_association/3,
+         describe_container_association/2,
+         describe_container_association/3,
          describe_firewall/2,
          describe_firewall/3,
          describe_firewall_metadata/2,
@@ -207,6 +213,8 @@
          get_analysis_report_results/3,
          list_analysis_reports/2,
          list_analysis_reports/3,
+         list_container_associations/2,
+         list_container_associations/3,
          list_firewall_policies/2,
          list_firewall_policies/3,
          list_firewalls/2,
@@ -245,6 +253,8 @@
          untag_resource/3,
          update_availability_zone_change_protection/2,
          update_availability_zone_change_protection/3,
+         update_container_association/2,
+         update_container_association/3,
          update_firewall_analysis_settings/2,
          update_firewall_analysis_settings/3,
          update_firewall_delete_protection/2,
@@ -359,6 +369,19 @@
 -type flow_filter() :: #{binary() => any()}.
 
 %% Example:
+%% create_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> => list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_container_association_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag())
@@ -449,6 +472,13 @@
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type start_flow_capture_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string()
+%% }
+-type describe_container_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% proxy_configuration() :: #{
@@ -607,6 +637,26 @@
 -type get_analysis_report_results_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> => list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_container_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_proxy_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ProxyConfigurations">> => list(proxy_configuration_metadata())
@@ -633,12 +683,37 @@
 -type describe_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_container_association_request() :: #{
+%%   <<"ContainerAssociationName">> := string(),
+%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_container_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_container_association_response() :: #{binary() => any()}.
+
+%% Example:
 %% proxy_rule_condition() :: #{
 %%   <<"ConditionKey">> => string(),
 %%   <<"ConditionOperator">> => string(),
 %%   <<"ConditionValues">> => list(string())
 %% }
 -type proxy_rule_condition() :: #{binary() => any()}.
+
+%% Example:
+%% container_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type container_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% rule_group() :: #{
@@ -654,6 +729,13 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string()
+%% }
+-type delete_container_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% attachment() :: #{
@@ -1693,6 +1775,18 @@
 -type list_firewall_policies_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_container_association_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_delete_protection_response() :: #{
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"FirewallArn">> => string(),
@@ -2146,6 +2240,28 @@
 -type match_attributes() :: #{binary() => any()}.
 
 %% Example:
+%% describe_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> => list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ResolvedCidrCount">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_container_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_association_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type container_association_summary() :: #{binary() => any()}.
+
+%% Example:
 %% describe_rule_group_metadata_response() :: #{
 %%   <<"Capacity">> => integer(),
 %%   <<"Description">> => string(),
@@ -2384,6 +2500,13 @@
 -type create_proxy_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% container_monitoring_configuration() :: #{
+%%   <<"AttributeFilters">> => list(container_attribute()),
+%%   <<"ClusterArn">> => string()
+%% }
+-type container_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% proxy_rule() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Conditions">> => list(proxy_rule_condition()),
@@ -2451,6 +2574,13 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type describe_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_associations_response() :: #{
+%%   <<"ContainerAssociations">> => list(container_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% proxy_config_default_rule_phase_actions_request() :: #{
@@ -2529,6 +2659,13 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type create_container_association_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    insufficient_capacity_exception().
+
 -type create_firewall_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -2591,6 +2728,13 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     insufficient_capacity_exception() | 
+    invalid_operation_exception().
+
+-type delete_container_association_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     invalid_operation_exception().
 
 -type delete_firewall_errors() ::
@@ -2668,6 +2812,12 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_operation_exception().
+
+-type describe_container_association_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 -type describe_firewall_errors() ::
     throttling_exception() | 
@@ -2793,6 +2943,11 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type list_container_associations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
 -type list_firewall_policies_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -2903,6 +3058,13 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     resource_owner_check_exception().
+
+-type update_container_association_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 -type update_firewall_analysis_settings_errors() ::
     invalid_token_exception() | 
@@ -3147,6 +3309,34 @@ attach_rule_groups_to_proxy_configuration(Client, Input)
 attach_rule_groups_to_proxy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachRuleGroupsToProxyConfiguration">>, Input, Options).
+
+%% @doc Creates a container association for Network Firewall.
+%%
+%% A container association links container clusters (ECS or EKS) to Network
+%% Firewall, enabling dynamic IP resolution for firewall rules based on
+%% container attributes.
+%%
+%% To manage a container association's tags, use the standard Amazon Web
+%% Services resource tagging operations, `ListTagsForResource',
+%% `TagResource', and `UntagResource'.
+%%
+%% To retrieve information about container associations, use
+%% `ListContainerAssociations' and `DescribeContainerAssociation'.
+-spec create_container_association(aws_client:aws_client(), create_container_association_request()) ->
+    {ok, create_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_container_association_errors(), tuple()}.
+create_container_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_container_association(Client, Input, []).
+
+-spec create_container_association(aws_client:aws_client(), create_container_association_request(), proplists:proplist()) ->
+    {ok, create_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_container_association_errors(), tuple()}.
+create_container_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContainerAssociation">>, Input, Options).
 
 %% @doc Creates an Network Firewall `Firewall' and accompanying
 %% `FirewallStatus' for a VPC.
@@ -3413,6 +3603,27 @@ create_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcEndpointAssociation">>, Input, Options).
 
+%% @doc Deletes the specified container association.
+%%
+%% When you delete a container association, Network Firewall stops monitoring
+%% the associated container clusters and removes the resolved IP addresses
+%% from firewall rules.
+-spec delete_container_association(aws_client:aws_client(), delete_container_association_request()) ->
+    {ok, delete_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_container_association_errors(), tuple()}.
+delete_container_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_container_association(Client, Input, []).
+
+-spec delete_container_association(aws_client:aws_client(), delete_container_association_request(), proplists:proplist()) ->
+    {ok, delete_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_container_association_errors(), tuple()}.
+delete_container_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteContainerAssociation">>, Input, Options).
+
 %% @doc Deletes the specified `Firewall' and its `FirewallStatus'.
 %%
 %% This operation requires the firewall's `DeleteProtection' flag to
@@ -3643,6 +3854,23 @@ delete_vpc_endpoint_association(Client, Input)
 delete_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcEndpointAssociation">>, Input, Options).
+
+%% @doc Returns the properties of a container association.
+-spec describe_container_association(aws_client:aws_client(), describe_container_association_request()) ->
+    {ok, describe_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_container_association_errors(), tuple()}.
+describe_container_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_container_association(Client, Input, []).
+
+-spec describe_container_association(aws_client:aws_client(), describe_container_association_request(), proplists:proplist()) ->
+    {ok, describe_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_container_association_errors(), tuple()}.
+describe_container_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContainerAssociation">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall.
 -spec describe_firewall(aws_client:aws_client(), describe_firewall_request()) ->
@@ -4031,6 +4259,26 @@ list_analysis_reports(Client, Input)
 list_analysis_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAnalysisReports">>, Input, Options).
+
+%% @doc Retrieves the metadata for the container associations that you have
+%% defined.
+%%
+%% You can optionally page through results.
+-spec list_container_associations(aws_client:aws_client(), list_container_associations_request()) ->
+    {ok, list_container_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_container_associations_errors(), tuple()}.
+list_container_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_container_associations(Client, Input, []).
+
+-spec list_container_associations(aws_client:aws_client(), list_container_associations_request(), proplists:proplist()) ->
+    {ok, list_container_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_container_associations_errors(), tuple()}.
+list_container_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContainerAssociations">>, Input, Options).
 
 %% @doc Retrieves the metadata for the firewall policies that you have
 %% defined.
@@ -4547,6 +4795,25 @@ update_availability_zone_change_protection(Client, Input)
 update_availability_zone_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAvailabilityZoneChangeProtection">>, Input, Options).
+
+%% @doc Updates the properties of an existing container association.
+%%
+%% Use this to modify the container monitoring configurations or description.
+-spec update_container_association(aws_client:aws_client(), update_container_association_request()) ->
+    {ok, update_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_container_association_errors(), tuple()}.
+update_container_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_container_association(Client, Input, []).
+
+-spec update_container_association(aws_client:aws_client(), update_container_association_request(), proplists:proplist()) ->
+    {ok, update_container_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_container_association_errors(), tuple()}.
+update_container_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContainerAssociation">>, Input, Options).
 
 %% @doc Enables specific types of firewall analysis on a specific firewall
 %% you define.

@@ -382,6 +382,8 @@
 
 %% Example:
 %% aws_opportunity_related_entities() :: #{
+%%   <<"AwsMarketplaceProducts">> => list(string()),
+%%   <<"AwsMarketplaceSolutions">> => list(string()),
 %%   <<"AwsProducts">> => list(string()),
 %%   <<"Solutions">> => list(string())
 %% }
@@ -549,6 +551,7 @@
 
 %% Example:
 %% list_solutions_request() :: #{
+%%   <<"AwsMarketplaceSolutionArn">> => list(string()),
 %%   <<"Catalog">> := string(),
 %%   <<"Category">> => list([string()]()),
 %%   <<"Identifier">> => list(string()),
@@ -698,6 +701,8 @@
 %% related_entity_identifiers() :: #{
 %%   <<"AwsMarketplaceOfferSets">> => list(string()),
 %%   <<"AwsMarketplaceOffers">> => list(string()),
+%%   <<"AwsMarketplaceProducts">> => list(string()),
+%%   <<"AwsMarketplaceSolutions">> => list(string()),
 %%   <<"AwsProducts">> => list(string()),
 %%   <<"Solutions">> => list(string())
 %% }
@@ -1596,6 +1601,7 @@
 %% Example:
 %% solution_base() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AwsMarketplaceSolutionArn">> => string(),
 %%   <<"Catalog">> => string(),
 %%   <<"Category">> => [string()],
 %%   <<"CreatedDate">> => non_neg_integer(),

@@ -347,6 +347,7 @@
 %% Example:
 %% rollback_stack_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"RetainExceptOnCreate">> => boolean(),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()
@@ -608,6 +609,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_generated_templates_input() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config() :: #{
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"Mode">> => list(any())
+%% }
+-type deployment_config() :: #{binary() => any()}.
 
 %% Example:
 %% scanned_resource_identifier() :: #{
@@ -1074,6 +1082,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DeletionMode">> => list(any()),
 %%   <<"DeletionTime">> => non_neg_integer(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"Description">> => string(),
 %%   <<"DetailedStatus">> => list(any()),
 %%   <<"DisableRollback">> => boolean(),
@@ -1398,8 +1407,10 @@
 %%   <<"ChangeSetName">> := string(),
 %%   <<"ChangeSetType">> => list(any()),
 %%   <<"ClientToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"DeploymentMode">> => list(any()),
 %%   <<"Description">> => string(),
+%%   <<"DisableValidation">> => boolean(),
 %%   <<"ImportExistingResources">> => boolean(),
 %%   <<"IncludeNestedStacks">> => boolean(),
 %%   <<"NotificationARNs">> => list(string()),
@@ -1582,7 +1593,9 @@
 %% update_stack_input() :: #{
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"DisableRollback">> => boolean(),
+%%   <<"DisableValidation">> => boolean(),
 %%   <<"NotificationARNs">> => list(string()),
 %%   <<"Parameters">> => list(parameter()),
 %%   <<"ResourceTypes">> => list(string()),
@@ -1688,6 +1701,7 @@
 %%   <<"ChangeSetName">> => string(),
 %%   <<"Changes">> => list(change()),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"DeploymentMode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"ExecutionStatus">> => list(any()),
@@ -2103,7 +2117,9 @@
 %% create_stack_input() :: #{
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"DisableRollback">> => boolean(),
+%%   <<"DisableValidation">> => boolean(),
 %%   <<"EnableTerminationProtection">> => boolean(),
 %%   <<"NotificationARNs">> => list(string()),
 %%   <<"OnFailure">> => list(any()),
@@ -2760,6 +2776,7 @@
 %% delete_stack_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DeletionMode">> => list(any()),
+%%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"RetainResources">> => list(string()),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()

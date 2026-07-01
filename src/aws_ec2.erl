@@ -1410,6 +1410,8 @@
          modify_vpc_endpoint/3,
          modify_vpc_endpoint_connection_notification/2,
          modify_vpc_endpoint_connection_notification/3,
+         modify_vpc_endpoint_payer_responsibility/2,
+         modify_vpc_endpoint_payer_responsibility/3,
          modify_vpc_endpoint_service_configuration/2,
          modify_vpc_endpoint_service_configuration/3,
          modify_vpc_endpoint_service_payer_responsibility/2,
@@ -3995,6 +3997,13 @@
 -type disassociate_transit_gateway_route_table_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_vpc_endpoint_payer_responsibility_result() :: #{
+%%   <<"PayerResponsibilities">> => list(payer_responsibility_entry()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type modify_vpc_endpoint_payer_responsibility_result() :: #{binary() => any()}.
+
+%% Example:
 %% volume_attachment() :: #{
 %%   <<"AssociatedResource">> => string(),
 %%   <<"AttachTime">> => non_neg_integer(),
@@ -5473,6 +5482,16 @@
 %%   <<"UsageOperation">> => string()
 %% }
 -type import_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_vpc_endpoint_payer_responsibility_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"PayerResponsibility">> := list(any()),
+%%   <<"Scope">> := list(any()),
+%%   <<"ServiceId">> => string(),
+%%   <<"VpcEndpointId">> := string()
+%% }
+-type modify_vpc_endpoint_payer_responsibility_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_endpoint_service_configurations_request() :: #{
@@ -12542,6 +12561,7 @@
 %%   <<"LastError">> => last_error(),
 %%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
+%%   <<"PayerResponsibilities">> => list(payer_responsibility_entry()),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
 %%   <<"RequesterManaged">> => boolean(),
@@ -15025,6 +15045,7 @@
 %%   <<"GatewayLoadBalancerArns">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"NetworkLoadBalancerArns">> => list(string()),
+%%   <<"PayerResponsibilities">> => list(payer_responsibility_entry()),
 %%   <<"ServiceId">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointConnectionId">> => string(),
@@ -20503,6 +20524,13 @@
 %%   <<"Scope">> => list(any())
 %% }
 -type reserved_instances_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% payer_responsibility_entry() :: #{
+%%   <<"PayerResponsibilityType">> => list(any()),
+%%   <<"Scope">> => list(any())
+%% }
+-type payer_responsibility_entry() :: #{binary() => any()}.
 
 %% Example:
 %% withdraw_byoip_cidr_result() :: #{
@@ -39356,6 +39384,21 @@ modify_vpc_endpoint_connection_notification(Client, Input)
 modify_vpc_endpoint_connection_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyVpcEndpointConnectionNotification">>, Input, Options).
+
+%% @doc Modifies the billing account for VPC endpoint usage/charges.
+-spec modify_vpc_endpoint_payer_responsibility(aws_client:aws_client(), modify_vpc_endpoint_payer_responsibility_request()) ->
+    {ok, modify_vpc_endpoint_payer_responsibility_result(), tuple()} |
+    {error, any()}.
+modify_vpc_endpoint_payer_responsibility(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_vpc_endpoint_payer_responsibility(Client, Input, []).
+
+-spec modify_vpc_endpoint_payer_responsibility(aws_client:aws_client(), modify_vpc_endpoint_payer_responsibility_request(), proplists:proplist()) ->
+    {ok, modify_vpc_endpoint_payer_responsibility_result(), tuple()} |
+    {error, any()}.
+modify_vpc_endpoint_payer_responsibility(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyVpcEndpointPayerResponsibility">>, Input, Options).
 
 %% @doc Modifies the attributes of the specified VPC endpoint service
 %% configuration.

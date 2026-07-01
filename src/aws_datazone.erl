@@ -798,6 +798,15 @@
 
 
 %% Example:
+%% snowflake_properties_patch() :: #{
+%%   <<"connectivityPropertiesPatch">> => connectivity_properties_patch(),
+%%   <<"lineageSync">> => lineage_sync_input(),
+%%   <<"snowflakeRole">> => string()
+%% }
+-type snowflake_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_sort() :: #{
 %%   <<"attribute">> => string(),
 %%   <<"order">> => list(any())
@@ -1372,6 +1381,17 @@
 %%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type create_environment_blueprint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"identityMapping">> => identity_mapping(),
+%%   <<"lineageSync">> => lineage_sync_output(),
+%%   <<"snowflakeRole">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type snowflake_properties_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2268,6 +2288,15 @@
 %% }
 -type glue_properties_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% connectivity_properties_patch() :: #{
+%%   <<"authenticationConfiguration">> => authentication_configuration_patch(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"description">> => [string()]
+%% }
+-type connectivity_properties_patch() :: #{binary() => any()}.
+
 %% Example:
 %% get_domain_unit_input() :: #{}
 -type get_domain_unit_input() :: #{}.
@@ -3147,6 +3176,16 @@
 %% get_account_pool_input() :: #{}
 -type get_account_pool_input() :: #{}.
 
+
+%% Example:
+%% lineage_sync_output() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"lineageJobId">> => [string()],
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type lineage_sync_output() :: #{binary() => any()}.
+
 %% Example:
 %% workflows_serverless_properties_input() :: #{}
 -type workflows_serverless_properties_input() :: #{}.
@@ -3796,6 +3835,16 @@
 %%   <<"subject">> => [string()]
 %% }
 -type topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_properties_input() :: #{
+%%   <<"connectivityProperties">> => connectivity_properties(),
+%%   <<"identityMapping">> => identity_mapping(),
+%%   <<"lineageSync">> => lineage_sync_input(),
+%%   <<"snowflakeRole">> => string()
+%% }
+-type snowflake_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4472,6 +4521,22 @@
 %%   <<"glueConnectionInput">> => glue_connection_input()
 %% }
 -type glue_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% connectivity_properties() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"validateCredentials">> => [boolean()],
+%%   <<"validateForComputeEnvironments">> => list(list(any())())
+%% }
+-type connectivity_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5857,6 +5922,15 @@
 
 
 %% Example:
+%% lineage_sync_input() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type lineage_sync_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% workflows_mwaa_properties_output() :: #{
 %%   <<"mwaaEnvironmentName">> => [string()]
 %% }
@@ -6969,6 +7043,14 @@
 %%   <<"groupId">> => [string()]
 %% }
 -type domain_unit_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_mapping() :: #{
+%%   <<"prefix">> => [string()],
+%%   <<"usernameAttribute">> => [string()]
+%% }
+-type identity_mapping() :: #{binary() => any()}.
 
 
 %% Example:

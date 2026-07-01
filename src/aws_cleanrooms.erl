@@ -44,6 +44,10 @@
          create_id_mapping_table/4,
          create_id_namespace_association/3,
          create_id_namespace_association/4,
+         create_intermediate_table/3,
+         create_intermediate_table/4,
+         create_intermediate_table_analysis_rule/4,
+         create_intermediate_table_analysis_rule/5,
          create_membership/2,
          create_membership/3,
          create_privacy_budget_template/3,
@@ -66,12 +70,18 @@
          delete_id_mapping_table/5,
          delete_id_namespace_association/4,
          delete_id_namespace_association/5,
+         delete_intermediate_table/4,
+         delete_intermediate_table/5,
+         delete_intermediate_table_analysis_rule/5,
+         delete_intermediate_table_analysis_rule/6,
          delete_member/4,
          delete_member/5,
          delete_membership/3,
          delete_membership/4,
          delete_privacy_budget_template/4,
          delete_privacy_budget_template/5,
+         disallow_intermediate_table/3,
+         disallow_intermediate_table/4,
          get_analysis_template/3,
          get_analysis_template/5,
          get_analysis_template/6,
@@ -114,6 +124,12 @@
          get_id_namespace_association/3,
          get_id_namespace_association/5,
          get_id_namespace_association/6,
+         get_intermediate_table/3,
+         get_intermediate_table/5,
+         get_intermediate_table/6,
+         get_intermediate_table_analysis_rule/4,
+         get_intermediate_table_analysis_rule/6,
+         get_intermediate_table_analysis_rule/7,
          get_membership/2,
          get_membership/4,
          get_membership/5,
@@ -171,6 +187,12 @@
          list_id_namespace_associations/2,
          list_id_namespace_associations/4,
          list_id_namespace_associations/5,
+         list_intermediate_table_versions/3,
+         list_intermediate_table_versions/5,
+         list_intermediate_table_versions/6,
+         list_intermediate_tables/2,
+         list_intermediate_tables/4,
+         list_intermediate_tables/5,
          list_members/2,
          list_members/4,
          list_members/5,
@@ -197,6 +219,8 @@
          list_tags_for_resource/5,
          populate_id_mapping_table/4,
          populate_id_mapping_table/5,
+         populate_intermediate_table/4,
+         populate_intermediate_table/5,
          preview_privacy_impact/3,
          preview_privacy_impact/4,
          start_protected_job/3,
@@ -227,6 +251,10 @@
          update_id_mapping_table/5,
          update_id_namespace_association/4,
          update_id_namespace_association/5,
+         update_intermediate_table/4,
+         update_intermediate_table/5,
+         update_intermediate_table_analysis_rule/5,
+         update_intermediate_table_analysis_rule/6,
          update_membership/3,
          update_membership/4,
          update_privacy_budget_template/4,
@@ -313,6 +341,13 @@
 
 
 %% Example:
+%% create_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type create_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_collaboration_analysis_templates_output() :: #{
 %%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()),
 %%   <<"nextToken">> => string()
@@ -347,6 +382,15 @@
 
 
 %% Example:
+%% populate_intermediate_table_output() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"versionId">> => string()
+%% }
+-type populate_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% change() :: #{
 %%   <<"specification">> => list(),
 %%   <<"specificationType">> => list(any()),
@@ -356,11 +400,30 @@
 
 
 %% Example:
+%% inherited_allowed_additional_analyses() :: #{
+%%   <<"sources">> => list(inherited_allowed_additional_analyses_source()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_additional_analyses() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_mapping_tables_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_mapping_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_dependency() :: #{
+%%   <<"creatorAccountId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parentType">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type intermediate_table_dependency() :: #{binary() => any()}.
 
 
 %% Example:
@@ -380,6 +443,10 @@
 %%   <<"paymentConfiguration">> => payment_configuration()
 %% }
 -type member_change_specification() :: #{binary() => any()}.
+
+%% Example:
+%% get_intermediate_table_input() :: #{}
+-type get_intermediate_table_input() :: #{}.
 
 
 %% Example:
@@ -512,6 +579,25 @@
 
 
 %% Example:
+%% intermediate_table_summary() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type intermediate_table_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_job() :: #{
 %%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -539,6 +625,13 @@
 
 
 %% Example:
+%% intermediate_table_schema() :: #{
+%%   <<"columns">> => list(column())
+%% }
+-type intermediate_table_schema() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analysis_templates_output() :: #{
 %%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()),
 %%   <<"nextToken">> => string()
@@ -548,6 +641,21 @@
 %% Example:
 %% delete_id_namespace_association_output() :: #{}
 -type delete_id_namespace_association_output() :: #{}.
+
+
+%% Example:
+%% intermediate_table_column() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type intermediate_table_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_schema_type_properties() :: #{
+%%   <<"intermediateTableId">> => string()
+%% }
+-type intermediate_table_schema_type_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -577,9 +685,18 @@
 
 
 %% Example:
+%% list_intermediate_tables_output() :: #{
+%%   <<"intermediateTableSummaries">> => list(intermediate_table_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_summary() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
+%%   <<"intermediateTableConfiguration">> => intermediate_table_output_configuration(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
 %%   <<"queryComputePayerAccountId">> => string(),
@@ -722,6 +839,13 @@
 
 
 %% Example:
+%% update_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type update_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_configured_table_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
@@ -803,6 +927,7 @@
 %% configured_table_association() :: #{
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
+%%   <<"childResources">> => list(child_resource()),
 %%   <<"configuredTableArn">> => string(),
 %%   <<"configuredTableId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -822,6 +947,14 @@
 %%   <<"membership">> := membership()
 %% }
 -type get_membership_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_table_versions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_table_versions_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_configured_table_association_analysis_rule_output() :: #{}
@@ -889,6 +1022,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_privacy_budget_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_inherited_constraints() :: #{
+%%   <<"additionalAnalyses">> => inherited_additional_analyses(),
+%%   <<"allowedAdditionalAnalyses">> => inherited_allowed_additional_analyses(),
+%%   <<"allowedResultReceivers">> => inherited_allowed_result_receivers(),
+%%   <<"disallowedOutputColumns">> => inherited_disallowed_output_columns()
+%% }
+-type intermediate_table_inherited_constraints() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1003,6 +1146,33 @@
 
 
 %% Example:
+%% inherited_allowed_result_receivers() :: #{
+%%   <<"sources">> => list(inherited_allowed_result_receivers_source()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_result_receivers() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list()
+%% }
+-type update_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_lineage_entry() :: #{
+%%   <<"column">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceColumn">> => string(),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type column_lineage_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_membership_payment_configuration() :: #{
 %%   <<"jobCompute">> => membership_job_compute_payment_config(),
 %%   <<"machineLearning">> => membership_ml_payment_config(),
@@ -1042,7 +1212,30 @@
 
 
 %% Example:
+%% intermediate_table_active_version() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"inheritedConstraints">> => intermediate_table_inherited_constraints(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"versionId">> => string()
+%% }
+-type intermediate_table_active_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% populate_intermediate_table_input() :: #{
+%%   <<"analysisPayerAccountId">> => string(),
+%%   <<"computeConfiguration">> => list(),
+%%   <<"parameters">> => map()
+%% }
+-type populate_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_mapping_table_schema_type_properties() :: #{
+%%   <<"idMappingTableId">> => string(),
 %%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
 %% }
 -type id_mapping_table_schema_type_properties() :: #{binary() => any()}.
@@ -1078,6 +1271,18 @@
 %%   <<"idNamespaceAssociation">> => id_namespace_association()
 %% }
 -type get_id_namespace_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"populationAnalysisConfiguration">> := list(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"tags">> => map()
+%% }
+-type create_intermediate_table_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1118,6 +1323,10 @@
 -type approval_status_details() :: #{binary() => any()}.
 
 %% Example:
+%% delete_intermediate_table_analysis_rule_output() :: #{}
+-type delete_intermediate_table_analysis_rule_output() :: #{}.
+
+%% Example:
 %% delete_configured_table_analysis_rule_output() :: #{}
 -type delete_configured_table_analysis_rule_output() :: #{}.
 
@@ -1133,12 +1342,22 @@
 %% Example:
 %% analysis_rule_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
 %%   <<"allowedAnalyses">> => list(string()),
 %%   <<"allowedAnalysisProviders">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
 %%   <<"disallowedOutputColumns">> => list(string())
 %% }
 -type analysis_rule_custom() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_table_versions_output() :: #{
+%%   <<"intermediateTableVersionSummaries">> => list(intermediate_table_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_table_versions_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_member_output() :: #{}
@@ -1402,6 +1621,13 @@
 
 
 %% Example:
+%% configured_table_association_schema_type_properties() :: #{
+%%   <<"configuredTableAssociationId">> => string()
+%% }
+-type configured_table_association_schema_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_result_configuration() :: #{
 %%   <<"outputConfiguration">> => list()
 %% }
@@ -1435,6 +1661,14 @@
 %%   <<"totalDurationInMillis">> => [float()]
 %% }
 -type protected_job_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_additional_analyses() :: #{
+%%   <<"sources">> => list(inherited_additional_analyses_source()),
+%%   <<"value">> => list(any())
+%% }
+-type inherited_additional_analyses() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1503,11 +1737,29 @@
 
 
 %% Example:
+%% get_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type get_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% differential_privacy_template_parameters_input() :: #{
 %%   <<"epsilon">> => integer(),
 %%   <<"usersNoisePerQuery">> => integer()
 %% }
 -type differential_privacy_template_parameters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_additional_analyses_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_additional_analyses_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1715,6 +1967,15 @@
 
 
 %% Example:
+%% intermediate_table_output_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type intermediate_table_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_collaboration_privacy_budget_templates_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1816,6 +2077,14 @@
 %%   <<"maxMembershipInferenceAttackScore">> => float()
 %% }
 -type ml_synthetic_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_disallowed_output_columns() :: #{
+%%   <<"columnLineage">> => list(column_lineage_entry()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_disallowed_output_columns() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1925,6 +2194,10 @@
 %% }
 -type create_collaboration_change_request_input() :: #{binary() => any()}.
 
+%% Example:
+%% disallow_intermediate_table_output() :: #{}
+-type disallow_intermediate_table_output() :: #{}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
@@ -1941,6 +2214,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_privacy_budget_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_intermediate_table_analysis_rule_input() :: #{}
+-type delete_intermediate_table_analysis_rule_input() :: #{}.
+
+%% Example:
+%% get_intermediate_table_analysis_rule_input() :: #{}
+-type get_intermediate_table_analysis_rule_input() :: #{}.
 
 
 %% Example:
@@ -1990,6 +2271,7 @@
 %% Example:
 %% id_mapping_table() :: #{
 %%   <<"arn">> => string(),
+%%   <<"childResources">> => list(child_resource()),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -2020,7 +2302,7 @@
 %%   <<"creatorMemberAbilities">> := list(list(any())()),
 %%   <<"creatorPaymentConfiguration">> => payment_configuration(),
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
-%%   <<"description">> := string(),
+%%   <<"description">> => string(),
 %%   <<"isMetricsEnabled">> => [boolean()],
 %%   <<"jobLogStatus">> => list(any()),
 %%   <<"members">> := list(member_specification()),
@@ -2108,6 +2390,10 @@
 %% }
 -type synthetic_data_column_properties() :: #{binary() => any()}.
 
+%% Example:
+%% delete_intermediate_table_input() :: #{}
+-type delete_intermediate_table_input() :: #{}.
+
 
 %% Example:
 %% list_collaboration_privacy_budgets_output() :: #{
@@ -2163,11 +2449,27 @@
 
 
 %% Example:
+%% population_analysis_sql_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"queryString">> => [string()]
+%% }
+-type population_analysis_sql_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_namespace_associations_output() :: #{
 %%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_namespace_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list(),
+%%   <<"analysisRuleType">> := list(any())
+%% }
+-type create_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2236,6 +2538,15 @@
 
 
 %% Example:
+%% update_intermediate_table_input() :: #{
+%%   <<"columns">> => list(intermediate_table_column()),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type update_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_single_member_output() :: #{
 %%   <<"accountId">> => string()
 %% }
@@ -2294,6 +2605,17 @@
 
 
 %% Example:
+%% inherited_additional_analyses_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type inherited_additional_analyses_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_protected_query_output() :: #{
 %%   <<"protectedQuery">> := protected_query()
 %% }
@@ -2341,6 +2663,14 @@
 
 
 %% Example:
+%% disallow_intermediate_table_input() :: #{
+%%   <<"includeDescendants">> => [boolean()],
+%%   <<"intermediateTableName">> := string()
+%% }
+-type disallow_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_analysis_template_output() :: #{
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
@@ -2355,6 +2685,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type batch_get_schema_analysis_rule_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type create_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2450,6 +2787,25 @@
 
 
 %% Example:
+%% intermediate_table_analysis_rule() :: #{
+%%   <<"analysisRulePolicy">> => list(),
+%%   <<"analysisRuleType">> => list(any()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"intermediateTableArn">> => string(),
+%%   <<"intermediateTableIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type intermediate_table_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type update_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -2517,10 +2873,50 @@
 
 
 %% Example:
+%% intermediate_table() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"childResources">> => list(child_resource()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"intermediateTableVersion">> => intermediate_table_active_version(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"populationAnalysisConfiguration">> => list(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"schema">> => intermediate_table_schema(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"tableDependencies">> => list(intermediate_table_dependency()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type intermediate_table() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_protected_job_output() :: #{
 %%   <<"protectedJob">> => protected_job()
 %% }
 -type get_protected_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_version_summary() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tableId">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type intermediate_table_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2564,6 +2960,19 @@
 %% Example:
 %% get_id_namespace_association_input() :: #{}
 -type get_id_namespace_association_input() :: #{}.
+
+
+%% Example:
+%% intermediate_table_analysis_rule_custom() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedAnalyses">> => list(string()),
+%%   <<"allowedAnalysisProviders">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
+%%   <<"disallowedOutputColumns">> => list(string())
+%% }
+-type intermediate_table_analysis_rule_custom() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2655,6 +3064,10 @@
 %%   <<"queryLogStatus">> => list(any())
 %% }
 -type update_membership_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_intermediate_table_output() :: #{}
+-type delete_intermediate_table_output() :: #{}.
 
 
 %% Example:
@@ -2863,6 +3276,13 @@
 
 
 %% Example:
+%% get_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type get_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% snowflake_table_schema_v1() :: #{
 %%   <<"columnName">> => string(),
 %%   <<"columnType">> => string()
@@ -2968,6 +3388,14 @@
 
 
 %% Example:
+%% list_intermediate_tables_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_collaborations_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"memberStatus">> => string(),
@@ -3063,10 +3491,32 @@
 
 
 %% Example:
+%% child_resource() :: #{
+%%   <<"ownerAccountId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceStatus">> => list(any()),
+%%   <<"resourceType">> => list(any())
+%% }
+-type child_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_mapping_table_input_reference_properties() :: #{
 %%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
 %% }
 -type id_mapping_table_input_reference_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_result_receivers_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_result_receivers_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3307,6 +3757,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_intermediate_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_intermediate_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_membership_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3391,6 +3859,22 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_intermediate_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_intermediate_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_member_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3413,6 +3897,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type disallow_intermediate_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_analysis_template_errors() ::
     throttling_exception() | 
@@ -3505,6 +3997,20 @@
     resource_not_found_exception().
 
 -type get_id_namespace_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_intermediate_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_intermediate_table_analysis_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3642,6 +4148,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_intermediate_table_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_intermediate_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_members_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3695,6 +4215,15 @@
     resource_not_found_exception().
 
 -type populate_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type populate_intermediate_table_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3808,6 +4337,21 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_intermediate_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_intermediate_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_membership_errors() ::
     throttling_exception() | 
@@ -4298,6 +4842,84 @@ create_id_namespace_association(Client, MembershipIdentifier, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an intermediate table in a membership.
+%%
+%% An intermediate table stores a query definition that you can execute later
+%% using `PopulateIntermediateTable' to materialize cached results. The
+%% intermediate table is owned by the member with the CAN_QUERY ability. This
+%% operation does not execute the stored query.
+-spec create_intermediate_table(aws_client:aws_client(), binary() | list(), create_intermediate_table_input()) ->
+    {ok, create_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_intermediate_table_errors(), tuple()}.
+create_intermediate_table(Client, MembershipIdentifier, Input) ->
+    create_intermediate_table(Client, MembershipIdentifier, Input, []).
+
+-spec create_intermediate_table(aws_client:aws_client(), binary() | list(), create_intermediate_table_input(), proplists:proplist()) ->
+    {ok, create_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_intermediate_table_errors(), tuple()}.
+create_intermediate_table(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an analysis rule for an intermediate table.
+%%
+%% Only the CUSTOM analysis rule type is supported. The service automatically
+%% determines whether the rule is first-party or multi-party restricted based
+%% on the intermediate table's inherited constraints. Only the
+%% intermediate table owner can call this operation.
+-spec create_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_intermediate_table_analysis_rule_input()) ->
+    {ok, create_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_intermediate_table_analysis_rule_errors(), tuple()}.
+create_intermediate_table_analysis_rule(Client, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    create_intermediate_table_analysis_rule(Client, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec create_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_intermediate_table_analysis_rule_input(), proplists:proplist()) ->
+    {ok, create_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_intermediate_table_analysis_rule_errors(), tuple()}.
+create_intermediate_table_analysis_rule(Client, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/analysisRule"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a membership for a specific collaboration identifier and
 %% joins the collaboration.
 -spec create_membership(aws_client:aws_client(), create_membership_input()) ->
@@ -4680,6 +5302,82 @@ delete_id_namespace_association(Client, IdNamespaceAssociationIdentifier, Member
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an intermediate table.
+%%
+%% When you delete the table, the service marks it as DELETED, removes its
+%% analysis rule and schema, and triggers storage cleanup. This operation is
+%% idempotent. Only the intermediate table owner can call this operation.
+-spec delete_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_intermediate_table_input()) ->
+    {ok, delete_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_intermediate_table_errors(), tuple()}.
+delete_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    delete_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec delete_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_intermediate_table_input(), proplists:proplist()) ->
+    {ok, delete_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_intermediate_table_errors(), tuple()}.
+delete_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an analysis rule from an intermediate table.
+%%
+%% After the analysis rule is deleted, the intermediate table becomes
+%% unqueryable until a new analysis rule is attached. Only the intermediate
+%% table owner can call this operation.
+-spec delete_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_intermediate_table_analysis_rule_input()) ->
+    {ok, delete_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_intermediate_table_analysis_rule_errors(), tuple()}.
+delete_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    delete_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec delete_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_intermediate_table_analysis_rule_input(), proplists:proplist()) ->
+    {ok, delete_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_intermediate_table_analysis_rule_errors(), tuple()}.
+delete_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes the specified member from a collaboration.
 %%
 %% The removed member is placed in the Removed status and can't interact
@@ -4770,6 +5468,45 @@ delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Invalidates a specific intermediate table that references the
+%% caller's base table.
+%%
+%% The data provider (base table owner) calls this operation, not the
+%% intermediate table owner. By default, invalidation cascades to descendant
+%% intermediate tables.
+-spec disallow_intermediate_table(aws_client:aws_client(), binary() | list(), disallow_intermediate_table_input()) ->
+    {ok, disallow_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, disallow_intermediate_table_errors(), tuple()}.
+disallow_intermediate_table(Client, MembershipIdentifier, Input) ->
+    disallow_intermediate_table(Client, MembershipIdentifier, Input, []).
+
+-spec disallow_intermediate_table(aws_client:aws_client(), binary() | list(), disallow_intermediate_table_input(), proplists:proplist()) ->
+    {ok, disallow_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, disallow_intermediate_table_errors(), tuple()}.
+disallow_intermediate_table(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/disallowIntermediateTable"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5295,6 +6032,84 @@ get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, Membershi
 get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an intermediate table.
+%%
+%% Returns the full details of the intermediate table, including schema,
+%% table dependencies, inherited constraints, child resources, and status.
+%% Only the intermediate table owner can call this operation.
+-spec get_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_errors(), tuple()}.
+get_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_errors(), tuple()}.
+get_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_errors(), tuple()}.
+get_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the analysis rule for an intermediate table.
+-spec get_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_analysis_rule_errors(), tuple()}.
+get_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_analysis_rule_errors(), tuple()}.
+get_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_intermediate_table_analysis_rule_errors(), tuple()}.
+get_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6090,6 +6905,97 @@ list_id_namespace_associations(Client, MembershipIdentifier, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the version history of an intermediate table.
+%%
+%% Each call to `PopulateIntermediateTable' creates a new version. We
+%% recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec list_intermediate_table_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_intermediate_table_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_table_versions_errors(), tuple()}.
+list_intermediate_table_versions(Client, IntermediateTableIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    list_intermediate_table_versions(Client, IntermediateTableIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec list_intermediate_table_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_intermediate_table_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_table_versions_errors(), tuple()}.
+list_intermediate_table_versions(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_intermediate_table_versions(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_intermediate_table_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_intermediate_table_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_table_versions_errors(), tuple()}.
+list_intermediate_table_versions(Client, IntermediateTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists intermediate tables owned by the caller in a membership.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec list_intermediate_tables(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_intermediate_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_tables_errors(), tuple()}.
+list_intermediate_tables(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_intermediate_tables(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_intermediate_tables(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_intermediate_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_tables_errors(), tuple()}.
+list_intermediate_tables(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_intermediate_tables(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_intermediate_tables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_intermediate_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_intermediate_tables_errors(), tuple()}.
+list_intermediate_tables(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all members within a collaboration.
 -spec list_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_members_output(), tuple()} |
@@ -6445,6 +7351,46 @@ populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier
 populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables/", aws_util:encode_uri(IdMappingTableIdentifier), "/populate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Executes the stored query of an intermediate table to materialize
+%% data into managed storage.
+%%
+%% With this operation, you can perform initial population and subsequent
+%% refreshes. Each call creates a new version. The returned analysis ID can
+%% be tracked using `GetProtectedQuery'. Only the intermediate table
+%% owner can call this operation.
+-spec populate_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), populate_intermediate_table_input()) ->
+    {ok, populate_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, populate_intermediate_table_errors(), tuple()}.
+populate_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    populate_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec populate_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), populate_intermediate_table_input(), proplists:proplist()) ->
+    {ok, populate_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, populate_intermediate_table_errors(), tuple()}.
+populate_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/populate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6968,6 +7914,79 @@ update_id_namespace_association(Client, IdNamespaceAssociationIdentifier, Member
 update_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an intermediate table.
+%%
+%% You can update the description, KMS key ARN, and column types of existing
+%% columns. Only the intermediate table owner can call this operation.
+-spec update_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), update_intermediate_table_input()) ->
+    {ok, update_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_intermediate_table_errors(), tuple()}.
+update_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    update_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec update_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), update_intermediate_table_input(), proplists:proplist()) ->
+    {ok, update_intermediate_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_intermediate_table_errors(), tuple()}.
+update_intermediate_table(Client, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the analysis rule policy for an intermediate table.
+%%
+%% Only the intermediate table owner can call this operation.
+-spec update_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_intermediate_table_analysis_rule_input()) ->
+    {ok, update_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_intermediate_table_analysis_rule_errors(), tuple()}.
+update_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input) ->
+    update_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec update_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_intermediate_table_analysis_rule_input(), proplists:proplist()) ->
+    {ok, update_intermediate_table_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_intermediate_table_analysis_rule_errors(), tuple()}.
+update_intermediate_table_analysis_rule(Client, AnalysisRuleType, IntermediateTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/intermediateTables/", aws_util:encode_uri(IntermediateTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
