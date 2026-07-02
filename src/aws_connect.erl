@@ -709,6 +709,8 @@
          send_chat_integration_event/3,
          send_outbound_email/3,
          send_outbound_email/4,
+         send_outbound_web_notification/3,
+         send_outbound_web_notification/4,
          start_attached_file_upload/3,
          start_attached_file_upload/4,
          start_chat_contact/2,
@@ -1020,6 +1022,15 @@
 %%   <<"LockVersion">> => data_table_lock_version()
 %% }
 -type create_data_table_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_notification_content() :: #{
+%%   <<"Attributes">> => content_attributes(),
+%%   <<"Type">> => list(any()),
+%%   <<"ViewArn">> => string()
+%% }
+-type web_notification_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2753,6 +2764,14 @@
 
 
 %% Example:
+%% widget_destination() :: #{
+%%   <<"ProfileId">> => string(),
+%%   <<"WidgetId">> => string()
+%% }
+-type widget_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_metric_data_v2_response() :: #{
 %%   <<"MetricResults">> => list(metric_result_v2()),
 %%   <<"NextToken">> => string()
@@ -3837,6 +3856,19 @@
 %%   <<"Id">> => string()
 %% }
 -type queue_info_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_outbound_web_notification_request() :: #{
+%%   <<"BrowserId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := web_notification_content(),
+%%   <<"Destination">> := widget_destination(),
+%%   <<"ExpiresAt">> := non_neg_integer(),
+%%   <<"SessionId">> := string(),
+%%   <<"Source">> := web_notification_source()
+%% }
+-type send_outbound_web_notification_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6228,6 +6260,10 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+%% Example:
+%% send_outbound_web_notification_response() :: #{}
+-type send_outbound_web_notification_response() :: #{}.
+
 
 %% Example:
 %% disassociate_email_address_alias_request() :: #{
@@ -8279,6 +8315,13 @@
 
 
 %% Example:
+%% content_attributes() :: #{
+%%   <<"RecommenderConfig">> => recommender_config()
+%% }
+-type content_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_test_case_request() :: #{
 %%   <<"Content">> => string(),
 %%   <<"Description">> => string(),
@@ -8734,6 +8777,15 @@
 
 
 %% Example:
+%% recommender_config() :: #{
+%%   <<"Context">> => map(),
+%%   <<"DomainName">> => string(),
+%%   <<"RecommenderName">> => string()
+%% }
+-type recommender_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_routing_profiles_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -9174,6 +9226,13 @@
 %%   <<"EmailAddressId">> => string()
 %% }
 -type email_address_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_notification_source() :: #{
+%%   <<"SourceCampaign">> => source_campaign()
+%% }
+-type web_notification_source() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vocabulary_request() :: #{}
@@ -13745,6 +13804,13 @@
     idempotency_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type send_outbound_web_notification_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -26506,6 +26572,50 @@ send_outbound_email(Client, InstanceId, Input) ->
 send_outbound_email(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/outbound-email"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends an outbound web notification to a customer's web browser
+%% for outbound campaigns.
+%%
+%% For more information
+%% about outbound campaigns, see Set up Connect Customer outbound
+%% campaigns:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-outbound-campaigns.html.
+%%
+%% Only the Connect Customer outbound campaigns service principal is allowed
+%% to assume a role in your account
+%% and call this API.
+-spec send_outbound_web_notification(aws_client:aws_client(), binary() | list(), send_outbound_web_notification_request()) ->
+    {ok, send_outbound_web_notification_response(), tuple()} |
+    {error, any()} |
+    {error, send_outbound_web_notification_errors(), tuple()}.
+send_outbound_web_notification(Client, InstanceId, Input) ->
+    send_outbound_web_notification(Client, InstanceId, Input, []).
+
+-spec send_outbound_web_notification(aws_client:aws_client(), binary() | list(), send_outbound_web_notification_request(), proplists:proplist()) ->
+    {ok, send_outbound_web_notification_response(), tuple()} |
+    {error, any()} |
+    {error, send_outbound_web_notification_errors(), tuple()}.
+send_outbound_web_notification(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/outbound-web-notification"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

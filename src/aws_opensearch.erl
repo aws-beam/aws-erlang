@@ -148,6 +148,8 @@
          get_upgrade_status/2,
          get_upgrade_status/4,
          get_upgrade_status/5,
+         insight_feedback/2,
+         insight_feedback/3,
          list_applications/1,
          list_applications/3,
          list_applications/4,
@@ -298,6 +300,16 @@
 %%   <<"RemoteDomainInfo">> => domain_information_container()
 %% }
 -type outbound_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_request() :: #{
+%%   <<"Entity">> := insight_feedback_entity(),
+%%   <<"FeedbackText">> => string(),
+%%   <<"InsightId">> := string(),
+%%   <<"Thumbs">> := list(any())
+%% }
+-type insight_feedback_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -754,6 +766,7 @@
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options_status(),
 %%   <<"EBSOptions">> => ebs_options_status(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
+%%   <<"EngineMode">> => engine_mode_status(),
 %%   <<"EngineVersion">> => version_status(),
 %%   <<"IPAddressType">> => ip_address_type_status(),
 %%   <<"IdentityCenterOptions">> => identity_center_options_status(),
@@ -763,6 +776,7 @@
 %%   <<"OffPeakWindowOptions">> => off_peak_window_options_status(),
 %%   <<"SnapshotOptions">> => snapshot_options_status(),
 %%   <<"SoftwareUpdateOptions">> => software_update_options_status(),
+%%   <<"UseCase">> => use_case_status(),
 %%   <<"VPCOptions">> => vpc_derived_info_status()
 %% }
 -type domain_config() :: #{binary() => any()}.
@@ -928,6 +942,14 @@
 %%   <<"capabilityName">> := string()
 %% }
 -type register_capability_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_mode_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
+%% }
+-type engine_mode_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1276,6 +1298,7 @@
 %%   <<"DomainName">> := string(),
 %%   <<"EBSOptions">> => ebs_options(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"EngineMode">> => list(any()),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IPAddressType">> => list(any()),
 %%   <<"IdentityCenterOptions">> => identity_center_options_input(),
@@ -1285,6 +1308,7 @@
 %%   <<"SnapshotOptions">> => snapshot_options(),
 %%   <<"SoftwareUpdateOptions">> => software_update_options(),
 %%   <<"TagList">> => list(tag()),
+%%   <<"UseCase">> => list(any()),
 %%   <<"VPCOptions">> => vpc_options()
 %% }
 -type create_domain_request() :: #{binary() => any()}.
@@ -1323,6 +1347,14 @@
 %%   <<"Message">> => string()
 %% }
 -type dry_run_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
+%% }
+-type use_case_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1465,6 +1497,7 @@
 %%   <<"DryRunMode">> => list(any()),
 %%   <<"EBSOptions">> => ebs_options(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"EngineMode">> => list(any()),
 %%   <<"IPAddressType">> => list(any()),
 %%   <<"IdentityCenterOptions">> => identity_center_options_input(),
 %%   <<"LogPublishingOptions">> => map(),
@@ -1472,6 +1505,7 @@
 %%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
 %%   <<"SnapshotOptions">> => snapshot_options(),
 %%   <<"SoftwareUpdateOptions">> => software_update_options(),
+%%   <<"UseCase">> => list(any()),
 %%   <<"VPCOptions">> => vpc_options()
 %% }
 -type update_domain_config_request() :: #{binary() => any()}.
@@ -1661,6 +1695,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_direct_query_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type insight_feedback_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2011,8 +2052,10 @@
 %%   <<"Created">> => boolean(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"UseCase">> => list(any()),
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"ServiceSoftwareOptions">> => service_software_options(),
+%%   <<"EngineMode">> => list(any()),
 %%   <<"IPAddressType">> => list(any()),
 %%   <<"Endpoints">> => map(),
 %%   <<"DomainEndpointV2HostedZoneId">> => string(),
@@ -2299,6 +2342,14 @@
 %%   <<"PrerequisitePackageIDList">> => list(string())
 %% }
 -type package_details_for_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_entity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_feedback_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3627,6 +3678,14 @@
     disabled_operation_exception().
 
 -type get_upgrade_status_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type insight_feedback_errors() ::
+    limit_exceeded_exception() | 
     base_exception() | 
     validation_exception() | 
     internal_exception() | 
@@ -6151,6 +6210,45 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Submits feedback for an existing insight in an Amazon OpenSearch
+%% Service domain.
+%%
+%% Allows users to provide a thumbs up or thumbs down rating and optional
+%% text feedback
+%% for a specific insight.
+-spec insight_feedback(aws_client:aws_client(), insight_feedback_request()) ->
+    {ok, insight_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, insight_feedback_errors(), tuple()}.
+insight_feedback(Client, Input) ->
+    insight_feedback(Client, Input, []).
+
+-spec insight_feedback(aws_client:aws_client(), insight_feedback_request(), proplists:proplist()) ->
+    {ok, insight_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, insight_feedback_errors(), tuple()}.
+insight_feedback(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/insight-feedback"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all OpenSearch applications under your account.
 -spec list_applications(aws_client:aws_client()) ->

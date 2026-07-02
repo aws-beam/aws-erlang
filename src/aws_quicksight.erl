@@ -14821,6 +14821,16 @@
 
 
 %% Example:
+%% file_source() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"InputColumns">> => list(input_column()),
+%%   <<"SheetIndex">> => integer(),
+%%   <<"UploadSettings">> => upload_settings()
+%% }
+-type file_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_parameter_values() :: #{
 %%   <<"DateTimeValues">> => list(non_neg_integer()),
 %%   <<"DecimalValues">> => list(float()),

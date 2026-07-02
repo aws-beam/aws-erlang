@@ -26,6 +26,8 @@
          create_application/3,
          create_stream_group/2,
          create_stream_group/3,
+         create_stream_session_admin_shell/4,
+         create_stream_session_admin_shell/5,
          create_stream_session_connection/4,
          create_stream_session_connection/5,
          delete_application/3,
@@ -218,6 +220,13 @@
 
 
 %% Example:
+%% stream_session_access_not_ready_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type stream_session_access_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_stream_group_output() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AssociatedApplications">> => list(string()),
@@ -322,6 +331,10 @@
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_stream_session_admin_shell_input() :: #{}
+-type create_stream_session_admin_shell_input() :: #{}.
 
 %% Example:
 %% terminate_stream_session_input() :: #{}
@@ -502,6 +515,15 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_stream_session_admin_shell_output() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type create_stream_session_admin_shell_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -723,6 +745,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type create_stream_session_admin_shell_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    stream_session_access_not_ready_exception().
 
 -type create_stream_session_connection_errors() ::
     throttling_exception() | 
@@ -970,6 +1000,11 @@ associate_applications(Client, Identifier, Input0, Options0) ->
 %% you want to use. If you change the files at a later time, you will need to
 %% create a new Amazon GameLift Streams application.
 %%
+%% Creating an application is the only time Amazon GameLift Streams accesses
+%% your Amazon S3 bucket. After the application reaches `READY' status,
+%% you can delete the original files from your Amazon S3 bucket without
+%% affecting the application.
+%%
 %% If the request is successful, Amazon GameLift Streams begins to create an
 %% application and sets the status to `INITIALIZED'. When an application
 %% reaches `READY' status, you can use the application to set up stream
@@ -1077,6 +1112,61 @@ create_stream_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/streamgroups"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an administrative terminal session with full access to the
+%% live runtime environment of the Amazon GameLift Streams stream session.
+%%
+%% Use the returned credentials (`SessionId', `StreamUrl' and
+%% `TokenValue') with the Amazon Web Services Systems Manager Session
+%% Manager plugin:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+%% for the CLI to access the terminal session.
+%%
+%% The stream session must be in one of the following statuses: `ACTIVE',
+%% `CONNECTED', `PENDING_CLIENT_RECONNECTION', or `RECONNECTING'.
+%%
+%% The `StreamUrl' is valid for 60 seconds. After it expires, call this
+%% operation again to get a new URL.
+%%
+%% The returned credentials grant full access to the live runtime environment
+%% of the Amazon GameLift Streams stream session. The operator who connects
+%% to the terminal session has the same level of access that your Amazon
+%% GameLift Streams applications have, including potentially user input,
+%% screen images, and application data files. Grant permissions to call this
+%% operation only to trusted IAM identities that require live runtime
+%% environment access.
+-spec create_stream_session_admin_shell(aws_client:aws_client(), binary() | list(), binary() | list(), create_stream_session_admin_shell_input()) ->
+    {ok, create_stream_session_admin_shell_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_session_admin_shell_errors(), tuple()}.
+create_stream_session_admin_shell(Client, Identifier, StreamSessionIdentifier, Input) ->
+    create_stream_session_admin_shell(Client, Identifier, StreamSessionIdentifier, Input, []).
+
+-spec create_stream_session_admin_shell(aws_client:aws_client(), binary() | list(), binary() | list(), create_stream_session_admin_shell_input(), proplists:proplist()) ->
+    {ok, create_stream_session_admin_shell_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_session_admin_shell_errors(), tuple()}.
+create_stream_session_admin_shell(Client, Identifier, StreamSessionIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/streamgroups/", aws_util:encode_uri(Identifier), "/streamsessions/", aws_util:encode_uri(StreamSessionIdentifier), "/access"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

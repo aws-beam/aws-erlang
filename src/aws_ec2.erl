@@ -590,6 +590,8 @@
          deregister_transit_gateway_multicast_group_sources/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
+         describe_account_vpc_encryption_control/2,
+         describe_account_vpc_encryption_control/3,
          describe_address_transfers/2,
          describe_address_transfers/3,
          describe_addresses/2,
@@ -1270,6 +1272,8 @@
          list_volumes_in_recycle_bin/3,
          lock_snapshot/2,
          lock_snapshot/3,
+         modify_account_vpc_encryption_control/2,
+         modify_account_vpc_encryption_control/3,
          modify_address_attribute/2,
          modify_address_attribute/3,
          modify_availability_zone_group/2,
@@ -2611,6 +2615,21 @@
 %%   <<"Return">> => boolean()
 %% }
 -type import_client_vpn_client_certificate_revocation_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_account_vpc_encryption_control_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EgressOnlyInternetGateway">> => list(any()),
+%%   <<"ElasticFileSystem">> => list(any()),
+%%   <<"InternetGateway">> => list(any()),
+%%   <<"Lambda">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"NatGateway">> => list(any()),
+%%   <<"VirtualPrivateGateway">> => list(any()),
+%%   <<"VpcLattice">> => list(any()),
+%%   <<"VpcPeering">> => list(any())
+%% }
+-type modify_account_vpc_encryption_control_request() :: #{binary() => any()}.
 
 %% Example:
 %% network_acl() :: #{
@@ -6559,6 +6578,19 @@
 -type enable_snapshot_block_public_access_result() :: #{binary() => any()}.
 
 %% Example:
+%% account_vpc_encryption_control_exclusions() :: #{
+%%   <<"EgressOnlyInternetGateway">> => list(any()),
+%%   <<"ElasticFileSystem">> => list(any()),
+%%   <<"InternetGateway">> => list(any()),
+%%   <<"Lambda">> => list(any()),
+%%   <<"NatGateway">> => list(any()),
+%%   <<"VirtualPrivateGateway">> => list(any()),
+%%   <<"VpcLattice">> => list(any()),
+%%   <<"VpcPeering">> => list(any())
+%% }
+-type account_vpc_encryption_control_exclusions() :: #{binary() => any()}.
+
+%% Example:
 %% certificate_authentication() :: #{
 %%   <<"ClientRootCertificateChain">> => string()
 %% }
@@ -9414,6 +9446,12 @@
 -type secondary_interface() :: #{binary() => any()}.
 
 %% Example:
+%% describe_account_vpc_encryption_control_result() :: #{
+%%   <<"AccountVpcEncryptionControl">> => account_vpc_encryption_control()
+%% }
+-type describe_account_vpc_encryption_control_result() :: #{binary() => any()}.
+
+%% Example:
 %% attach_classic_link_vpc_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -10602,6 +10640,7 @@
 %% describe_volumes_modifications_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"VolumeIds">> => list(string())
@@ -10717,6 +10756,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ClientToken">> => string(),
+%%   <<"CpuOptions">> => host_cpu_options_request(),
 %%   <<"HostMaintenance">> => list(any()),
 %%   <<"HostRecovery">> => list(any()),
 %%   <<"InstanceFamily">> => string(),
@@ -11952,6 +11992,12 @@
 %%   <<"TotalMediaMemoryInMiB">> => integer()
 %% }
 -type media_accelerator_info() :: #{binary() => any()}.
+
+%% Example:
+%% host_cpu_options_request() :: #{
+%%   <<"AmdSevSnp">> => list(any())
+%% }
+-type host_cpu_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template_instance_metadata_options() :: #{
@@ -14078,6 +14124,7 @@
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"AvailableCapacity">> => available_capacity(),
 %%   <<"ClientToken">> => string(),
+%%   <<"CpuOptions">> => host_cpu_options(),
 %%   <<"HostId">> => string(),
 %%   <<"HostMaintenance">> => list(any()),
 %%   <<"HostProperties">> => host_properties(),
@@ -16666,6 +16713,12 @@
 -type modify_traffic_mirror_filter_rule_request() :: #{binary() => any()}.
 
 %% Example:
+%% host_cpu_options() :: #{
+%%   <<"AmdSevSnp">> => list(any())
+%% }
+-type host_cpu_options() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_reservation_fleet_cancellation_state() :: #{
 %%   <<"CapacityReservationFleetId">> => string(),
 %%   <<"CurrentFleetState">> => list(any()),
@@ -17073,6 +17126,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_pool_allocations_result() :: #{binary() => any()}.
+
+%% Example:
+%% account_vpc_encryption_control() :: #{
+%%   <<"Exclusions">> => account_vpc_encryption_control_exclusions(),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type account_vpc_encryption_control() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipv6_pools_result() :: #{
@@ -19398,6 +19461,7 @@
 %% volume_modification() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ModificationState">> => list(any()),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OriginalIops">> => integer(),
 %%   <<"OriginalMultiAttachEnabled">> => boolean(),
 %%   <<"OriginalSize">> => integer(),
@@ -21238,6 +21302,12 @@
 -type modify_ipam_pool_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_account_vpc_encryption_control_result() :: #{
+%%   <<"AccountVpcEncryptionControl">> => account_vpc_encryption_control()
+%% }
+-type modify_account_vpc_encryption_control_result() :: #{binary() => any()}.
+
+%% Example:
 %% traffic_mirror_session() :: #{
 %%   <<"Description">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
@@ -22112,6 +22182,12 @@
 %%   <<"SourceCapacityReservationId">> => string()
 %% }
 -type interruption_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_vpc_encryption_control_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type describe_account_vpc_encryption_control_request() :: #{binary() => any()}.
 
 %% Example:
 %% client_connect_options() :: #{
@@ -24421,25 +24497,28 @@ cancel_bundle_task(Client, Input, Options)
 %%
 %% `assessing'
 %%
-%% `scheduled'
+%% `scheduled' — requires a cancellation quote. Use
+%% `CreateCapacityReservationCancellationQuote' to generate a quote,
+%% then pass the quote ID with `ApplyCancellationCharges' set to
+%% `commitment-wind-down'. The cancellation charge depends on how
+%% close the reservation is to its start date.
 %%
 %% `active' and there is no commitment duration or the commitment
 %% duration has elapsed.
 %%
-%% `active' during the commitment duration, if you provide a
-%% cancellation quote ID and accept the cancellation charges. Use
-%% `CreateCapacityReservationCancellationQuote' to generate a quote.
-%% The Capacity Reservation transitions to `cancelling' while charges
-%% are applied.
+%% `active' during the commitment duration — requires a
+%% cancellation quote. Use
+%% `CreateCapacityReservationCancellationQuote' to generate a quote,
+%% then pass the quote ID with `ApplyCancellationCharges' set to
+%% `commitment-wind-down'. The Capacity Reservation transitions to
+%% `cancelling' while charges are applied.
+%%
+%% `delayed' — the commitment duration is waived, so no
+%% cancellation charge applies.
 %%
 %% You can't modify or cancel a Capacity Block. For more information, see
 %% Capacity Blocks for ML:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html.
-%%
-%% If a future-dated Capacity Reservation enters the `delayed' state, the
-%% commitment duration is waived, and you can cancel it as soon as it enters
-%% the
-%% `active' state.
 %%
 %% Instances running in the reserved capacity continue running until you stop
 %% them.
@@ -26327,7 +26406,7 @@ create_network_interface_permission(Client, Input, Options)
 %% places
 %% instances on supported hardware with direct access to high-precision time
 %% sources in
-%% AWS infrastructure.
+%% Amazon Web Services infrastructure.
 %%
 %% For more information, see Placement groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
@@ -29844,6 +29923,29 @@ describe_account_attributes(Client, Input)
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
+
+%% @doc Describes the account-level VPC Encryption Control configuration for
+%% your account.
+%%
+%% VPC Encryption Control enables you to enforce encryption for all data in
+%% transit within and between VPCs to meet compliance requirements.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec describe_account_vpc_encryption_control(aws_client:aws_client(), describe_account_vpc_encryption_control_request()) ->
+    {ok, describe_account_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+describe_account_vpc_encryption_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_account_vpc_encryption_control(Client, Input, []).
+
+-spec describe_account_vpc_encryption_control(aws_client:aws_client(), describe_account_vpc_encryption_control_request(), proplists:proplist()) ->
+    {ok, describe_account_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+describe_account_vpc_encryption_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccountVpcEncryptionControl">>, Input, Options).
 
 %% @doc Describes an Elastic IP address transfer.
 %%
@@ -37628,6 +37730,30 @@ lock_snapshot(Client, Input)
 lock_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LockSnapshot">>, Input, Options).
+
+%% @doc Modifies the account-level VPC Encryption Control configuration.
+%%
+%% This sets the encryption control mode and resource exclusions that apply
+%% to the VPCs in your account. VPC Encryption Control enables you to enforce
+%% encryption for all data in transit within and between VPCs to meet
+%% compliance requirements.
+%%
+%% For more information, see Enforce VPC encryption in transit:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html
+%% in the Amazon VPC User Guide.
+-spec modify_account_vpc_encryption_control(aws_client:aws_client(), modify_account_vpc_encryption_control_request()) ->
+    {ok, modify_account_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+modify_account_vpc_encryption_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_account_vpc_encryption_control(Client, Input, []).
+
+-spec modify_account_vpc_encryption_control(aws_client:aws_client(), modify_account_vpc_encryption_control_request(), proplists:proplist()) ->
+    {ok, modify_account_vpc_encryption_control_result(), tuple()} |
+    {error, any()}.
+modify_account_vpc_encryption_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyAccountVpcEncryptionControl">>, Input, Options).
 
 %% @doc Modifies an attribute of the specified Elastic IP address.
 %%

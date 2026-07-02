@@ -2042,6 +2042,7 @@
 %%   <<"ColorCorrector">> => color_corrector(),
 %%   <<"Deinterlacer">> => deinterlacer(),
 %%   <<"DolbyVision">> => dolby_vision(),
+%%   <<"DurationControl">> => duration_control(),
 %%   <<"Hdr10Plus">> => hdr10_plus(),
 %%   <<"ImageInserter">> => image_inserter(),
 %%   <<"NoiseReducer">> => noise_reducer(),
@@ -3178,6 +3179,15 @@
 
 
 %% Example:
+%% duration_control() :: #{
+%%   <<"IntegerDurationMaximumCompressionDenominator">> => integer(),
+%%   <<"IntegerDurationMaximumCompressionNumerator">> => integer(),
+%%   <<"IntegerDurationTrimThresholdMilliseconds">> => integer()
+%% }
+-type duration_control() :: #{binary() => any()}.
+
+
+%% Example:
 %% vc3_settings() :: #{
 %%   <<"FramerateControl">> => list(any()),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
@@ -3284,6 +3294,7 @@
 %%   <<"WriteMp4PackagingType">> => list(any()),
 %%   <<"SlowPal">> => list(any()),
 %%   <<"Telecine">> => list(any()),
+%%   <<"ExplicitWeightedPrediction">> => list(any()),
 %%   <<"CodecProfile">> => list(any()),
 %%   <<"QualityTuningLevel">> => list(any()),
 %%   <<"GopSizeUnits">> => list(any()),
