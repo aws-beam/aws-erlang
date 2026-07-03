@@ -2046,7 +2046,8 @@
 %%   <<"OrganizationConfigRuleName">> := string(),
 %%   <<"OrganizationCustomPolicyRuleMetadata">> => organization_custom_policy_rule_metadata(),
 %%   <<"OrganizationCustomRuleMetadata">> => organization_custom_rule_metadata(),
-%%   <<"OrganizationManagedRuleMetadata">> => organization_managed_rule_metadata()
+%%   <<"OrganizationManagedRuleMetadata">> => organization_managed_rule_metadata(),
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_organization_config_rule_request() :: #{binary() => any()}.
 
@@ -2445,6 +2446,7 @@
 %%   <<"DeliveryS3KeyPrefix">> => string(),
 %%   <<"ExcludedAccounts">> => list(string()),
 %%   <<"OrganizationConformancePackName">> := string(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateS3Uri">> => string()
 %% }

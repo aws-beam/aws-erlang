@@ -162,6 +162,7 @@
 %% Example:
 %% response_output_item() :: #{
 %%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
+%%   <<"DualStackPlaybackUrl">> => string(),
 %%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
 %%   <<"ManifestName">> => string(),
 %%   <<"PlaybackUrl">> => string(),
@@ -318,6 +319,8 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"DualStackPlaybackEndpointPrefix">> => string(),
+%%   <<"DualStackSessionInitializationEndpointPrefix">> => string(),
 %%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),
@@ -938,6 +941,7 @@
 
 %% Example:
 %% dash_configuration() :: #{
+%%   <<"DualStackManifestEndpointPrefix">> => string(),
 %%   <<"ManifestEndpointPrefix">> => string(),
 %%   <<"MpdLocation">> => string(),
 %%   <<"OriginManifestType">> => list(any())
@@ -1104,6 +1108,8 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"DualStackPlaybackEndpointPrefix">> => string(),
+%%   <<"DualStackSessionInitializationEndpointPrefix">> => string(),
 %%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),
@@ -1331,6 +1337,7 @@
 
 %% Example:
 %% hls_configuration() :: #{
+%%   <<"DualStackManifestEndpointPrefix">> => string(),
 %%   <<"ManifestEndpointPrefix">> => string()
 %% }
 -type hls_configuration() :: #{binary() => any()}.
@@ -1418,6 +1425,8 @@
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
 %%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"DualStackPlaybackEndpointPrefix">> => string(),
+%%   <<"DualStackSessionInitializationEndpointPrefix">> => string(),
 %%   <<"FunctionMapping">> => map(),
 %%   <<"HlsConfiguration">> => hls_configuration(),
 %%   <<"InsertionMode">> => list(any()),

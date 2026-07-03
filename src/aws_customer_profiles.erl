@@ -1436,7 +1436,8 @@
 %% Example:
 %% update_recommender_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"RecommenderConfig">> => recommender_config()
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderVersionName">> => string()
 %% }
 -type update_recommender_request() :: #{binary() => any()}.
 
@@ -1585,6 +1586,7 @@
 %% get_profile_recommendations_request() :: #{
 %%   <<"CandidateIds">> => list(string()),
 %%   <<"Context">> => map(),
+%%   <<"DiversityConfig">> => recommendation_diversity_config(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MetadataConfig">> => metadata_config(),
 %%   <<"RecommenderFilters">> => list(recommender_filter()),
@@ -1991,6 +1993,15 @@
 
 
 %% Example:
+%% diversity_column() :: #{
+%%   <<"CapType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type diversity_column() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_recommender_recipes_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2132,6 +2143,7 @@
 %%   <<"FailureReason">> => [string()],
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderVersionName">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type recommender_update() :: #{binary() => any()}.
@@ -2162,6 +2174,7 @@
 %% Example:
 %% training_metrics() :: #{
 %%   <<"Metrics">> => map(),
+%%   <<"RecommenderVersionName">> => string(),
 %%   <<"Time">> => non_neg_integer()
 %% }
 -type training_metrics() :: #{binary() => any()}.
@@ -2515,6 +2528,14 @@
 
 
 %% Example:
+%% recommendation_diversity_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Values">> => map()
+%% }
+-type recommendation_diversity_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% recommender_recipe() :: #{
 %%   <<"description">> => [string()],
 %%   <<"name">> => list(any())
@@ -2817,6 +2838,7 @@
 
 %% Example:
 %% recommender_config() :: #{
+%%   <<"DiversityConfig">> => diversity_config(),
 %%   <<"EventsConfig">> => events_config(),
 %%   <<"ExcludedColumns">> => map(),
 %%   <<"IncludedColumns">> => map(),
@@ -3307,6 +3329,7 @@
 
 %% Example:
 %% get_recommender_response() :: #{
+%%   <<"ActiveRecommenderVersionName">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"FailureReason">> => [string()],
@@ -3480,6 +3503,13 @@
 %%   <<"UseHistoricalData">> => boolean()
 %% }
 -type get_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% diversity_config() :: #{
+%%   <<"DiversityColumns">> => list(diversity_column())
+%% }
+-type diversity_config() :: #{binary() => any()}.
 
 
 %% Example:

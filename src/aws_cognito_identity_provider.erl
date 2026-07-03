@@ -208,6 +208,8 @@
          get_identity_provider_by_identifier/3,
          get_log_delivery_configuration/2,
          get_log_delivery_configuration/3,
+         get_provisioned_limit/2,
+         get_provisioned_limit/3,
          get_signing_certificate/2,
          get_signing_certificate/3,
          get_tokens_from_refresh_token/2,
@@ -294,6 +296,8 @@
          update_identity_provider/3,
          update_managed_login_branding/2,
          update_managed_login_branding/3,
+         update_provisioned_limit/2,
+         update_provisioned_limit/3,
          update_resource_server/2,
          update_resource_server/3,
          update_terms/2,
@@ -593,6 +597,13 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type describe_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_definition_type() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"LimitClass">> => list(any())
+%% }
+-type limit_definition_type() :: #{binary() => any()}.
 
 %% Example:
 %% unsupported_user_state_exception() :: #{
@@ -939,6 +950,12 @@
 %%   <<"Domain">> := string()
 %% }
 -type describe_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_limit_response() :: #{
+%%   <<"Limit">> => limit_type()
+%% }
+-type get_provisioned_limit_response() :: #{binary() => any()}.
 
 %% Example:
 %% compromised_credentials_actions_type() :: #{
@@ -1685,6 +1702,12 @@
 -type create_user_pool_client_response() :: #{binary() => any()}.
 
 %% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% client_secret_descriptor_type() :: #{
 %%   <<"ClientSecretCreateDate">> => non_neg_integer(),
 %%   <<"ClientSecretId">> => string(),
@@ -1868,6 +1891,12 @@
 -type password_policy_type() :: #{binary() => any()}.
 
 %% Example:
+%% get_provisioned_limit_request() :: #{
+%%   <<"LimitDefinition">> := limit_definition_type()
+%% }
+-type get_provisioned_limit_request() :: #{binary() => any()}.
+
+%% Example:
 %% admin_confirm_sign_up_request() :: #{
 %%   <<"ClientMetadata">> => map(),
 %%   <<"UserPoolId">> := string(),
@@ -1995,6 +2024,14 @@
 %%   <<"PreferredMfa">> => boolean()
 %% }
 -type sms_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% limit_type() :: #{
+%%   <<"FreeLimitValue">> => integer(),
+%%   <<"LimitDefinition">> => limit_definition_type(),
+%%   <<"ProvisionedLimitValue">> => integer()
+%% }
+-type limit_type() :: #{binary() => any()}.
 
 %% Example:
 %% add_custom_attributes_request() :: #{
@@ -2377,6 +2414,13 @@
 %%   <<"message">> => string()
 %% }
 -type user_pool_add_on_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_limit_request() :: #{
+%%   <<"LimitDefinition">> := limit_definition_type(),
+%%   <<"RequestedLimitValue">> := integer()
+%% }
+-type update_provisioned_limit_request() :: #{binary() => any()}.
 
 %% Example:
 %% auth_event_type() :: #{
@@ -2884,6 +2928,12 @@
 %%   <<"DeliveryMedium">> => list(any())
 %% }
 -type mfa_option_type() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_limit_response() :: #{
+%%   <<"Limit">> => limit_type()
+%% }
+-type update_provisioned_limit_response() :: #{binary() => any()}.
 
 %% Example:
 %% code_delivery_failure_exception() :: #{
@@ -4147,6 +4197,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type get_provisioned_limit_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_signing_certificate_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -4598,6 +4655,14 @@
     invalid_parameter_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_provisioned_limit_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
@@ -7706,6 +7771,37 @@ get_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogDeliveryConfiguration">>, Input, Options).
 
+%% @doc Returns the current provisioned limit for a specific API category.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec get_provisioned_limit(aws_client:aws_client(), get_provisioned_limit_request()) ->
+    {ok, get_provisioned_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_provisioned_limit_errors(), tuple()}.
+get_provisioned_limit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_provisioned_limit(Client, Input, []).
+
+-spec get_provisioned_limit(aws_client:aws_client(), get_provisioned_limit_request(), proplists:proplist()) ->
+    {ok, get_provisioned_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_provisioned_limit_errors(), tuple()}.
+get_provisioned_limit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProvisionedLimit">>, Input, Options).
+
 %% @doc Given a user pool ID, returns the signing certificate for SAML 2.0
 %% federation.
 %%
@@ -9418,6 +9514,44 @@ update_managed_login_branding(Client, Input)
 update_managed_login_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedLoginBranding">>, Input, Options).
+
+%% @doc Sets the provisioned limit for a specific API category.
+%%
+%% The value must be between the
+%% default limit and your account-level maximum limit in Service Quotas.
+%%
+%% Managed login user pools don't support adjustments to the
+%% `UserAuthentication' or `UserFederation' categories. To
+%% increase these limits, submit a Service Quotas increase request.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_provisioned_limit(aws_client:aws_client(), update_provisioned_limit_request()) ->
+    {ok, update_provisioned_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_provisioned_limit_errors(), tuple()}.
+update_provisioned_limit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_provisioned_limit(Client, Input, []).
+
+-spec update_provisioned_limit(aws_client:aws_client(), update_provisioned_limit_request(), proplists:proplist()) ->
+    {ok, update_provisioned_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_provisioned_limit_errors(), tuple()}.
+update_provisioned_limit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProvisionedLimit">>, Input, Options).
 
 %% @doc Updates the name and scopes of a resource server.
 %%
