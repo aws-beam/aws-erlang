@@ -19,8 +19,14 @@
          delete_billing_view/3,
          disassociate_source_views/2,
          disassociate_source_views/3,
+         get_billing_preferences/2,
+         get_billing_preferences/3,
          get_billing_view/2,
          get_billing_view/3,
+         get_credit_allocation_history/2,
+         get_credit_allocation_history/3,
+         get_credits/2,
+         get_credits/3,
          get_resource_policy/2,
          get_resource_policy/3,
          list_billing_views/2,
@@ -29,10 +35,14 @@
          list_source_views_for_billing_view/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         redeem_credits/2,
+         redeem_credits/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_billing_preferences/2,
+         update_billing_preferences/3,
          update_billing_view/2,
          update_billing_view/3]).
 
@@ -94,10 +104,42 @@
 -type delete_billing_view_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_credits_request() :: #{
+%%   <<"accountId">> := [string()],
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"payerAccountFlag">> => [boolean()],
+%%   <<"startDate">> := [non_neg_integer()]
+%% }
+-type get_credits_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_billing_preferences_request() :: #{
+%%   <<"features">> := list(list(any())()),
+%%   <<"filters">> => list(billing_feature_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_billing_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% billing_preference_for_key() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => list(any())
+%% }
+-type billing_preference_for_key() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_billing_preferences_response() :: #{
+%%   <<"billingPreferences">> => list(billing_preference_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_billing_preferences_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_values() :: #{
@@ -134,6 +176,37 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% redeem_credits_response() :: #{
+
+%% }
+-type redeem_credits_response() :: #{binary() => any()}.
+
+%% Example:
+%% credit_data() :: #{
+%%   <<"accountHasCreditSharingEnabled">> => [boolean()],
+%%   <<"accountId">> => string(),
+%%   <<"applicableProductNames">> => list(string()),
+%%   <<"applicationType">> => list(any()),
+%%   <<"costCategoryArn">> => [string()],
+%%   <<"creditConsoleVisibility">> => [string()],
+%%   <<"creditId">> => string(),
+%%   <<"creditSharingType">> => list(any()),
+%%   <<"creditStatus">> => list(any()),
+%%   <<"creditType">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"estimatedAmount">> => amount(),
+%%   <<"exhaustDate">> => [non_neg_integer()],
+%%   <<"initialAmount">> => amount(),
+%%   <<"purchaseTypeApplications">> => list(string()),
+%%   <<"remainingAmount">> => amount(),
+%%   <<"ruleName">> => [string()],
+%%   <<"shareableAccounts">> => list(string()),
+%%   <<"startDate">> => [non_neg_integer()]
+%% }
+-type credit_data() :: #{binary() => any()}.
+
+%% Example:
 %% create_billing_view_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"dataFilterExpression">> => expression(),
@@ -143,6 +216,28 @@
 %%   <<"sourceViews">> := list(string())
 %% }
 -type create_billing_view_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_credits_response() :: #{
+%%   <<"credits">> => list(credit_data())
+%% }
+-type get_credits_response() :: #{binary() => any()}.
+
+%% Example:
+%% billing_feature_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type billing_feature_filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_credit_allocation_history_response() :: #{
+%%   <<"creditAllocationHistoryList">> => list(credit_allocation_history_entry()),
+%%   <<"failedMonths">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"partialResults">> => [boolean()]
+%% }
+-type get_credit_allocation_history_response() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -161,11 +256,25 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% amount() :: #{
+%%   <<"currencyAmount">> => string(),
+%%   <<"currencyCode">> => string()
+%% }
+-type amount() :: #{binary() => any()}.
+
+%% Example:
 %% dimension_values() :: #{
 %%   <<"key">> => list(any()),
 %%   <<"values">> => list(string())
 %% }
 -type dimension_values() :: #{binary() => any()}.
+
+%% Example:
+%% update_billing_preferences_request() :: #{
+%%   <<"billingPreferencesPerKey">> := list(billing_preference_for_key()),
+%%   <<"feature">> := list(any())
+%% }
+-type update_billing_preferences_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_billing_view_request() :: #{
@@ -206,6 +315,12 @@
 -type billing_view_health_status_exception() :: #{binary() => any()}.
 
 %% Example:
+%% redeem_credits_request() :: #{
+%%   <<"promoCode">> := string()
+%% }
+-type redeem_credits_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"resourceTags">> => list(resource_tag())
 %% }
@@ -219,10 +334,28 @@
 -type validation_exception_field() :: #{binary() => any()}.
 
 %% Example:
+%% billing_preference_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountName">> => string(),
+%%   <<"billingPeriod">> => billing_period(),
+%%   <<"feature">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"value">> => list(any())
+%% }
+-type billing_preference_summary() :: #{binary() => any()}.
+
+%% Example:
 %% get_resource_policy_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
 -type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% billing_period() :: #{
+%%   <<"month">> => integer(),
+%%   <<"year">> => integer()
+%% }
+-type billing_period() :: #{binary() => any()}.
 
 %% Example:
 %% active_time_range() :: #{
@@ -357,11 +490,40 @@
 -type list_billing_views_response() :: #{binary() => any()}.
 
 %% Example:
+%% credit_allocation_history_entry() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"appliedServiceName">> => [string()],
+%%   <<"billingMonth">> => string(),
+%%   <<"creditAmount">> => amount(),
+%%   <<"creditId">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"isEstimatedBill">> => [boolean()]
+%% }
+-type credit_allocation_history_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_credit_allocation_history_request() :: #{
+%%   <<"accountId">> := string(),
+%%   <<"creditId">> => [float()],
+%%   <<"endDate">> := [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"startDate">> := [non_neg_integer()]
+%% }
+-type get_credit_allocation_history_request() :: #{binary() => any()}.
+
+%% Example:
 %% string_search() :: #{
 %%   <<"searchOption">> => list(any()),
 %%   <<"searchValue">> => string()
 %% }
 -type string_search() :: #{binary() => any()}.
+
+%% Example:
+%% update_billing_preferences_response() :: #{
+
+%% }
+-type update_billing_preferences_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_billing_view_response() :: #{
@@ -406,12 +568,30 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_billing_preferences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_billing_view_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type get_credit_allocation_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_credits_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type get_resource_policy_errors() ::
     throttling_exception() | 
@@ -440,6 +620,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type redeem_credits_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type tag_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -453,6 +639,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_billing_preferences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type update_billing_view_errors() ::
     throttling_exception() | 
@@ -543,6 +735,27 @@ disassociate_source_views(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSourceViews">>, Input, Options).
 
+%% @doc Retrieves billing preferences for the specified feature.
+%%
+%% Each feature controls a distinct billing capability: which accounts can
+%% share Reserved Instances or credits, whether billing alerts are enabled,
+%% the historical record of sharing changes, and per-credit options.
+-spec get_billing_preferences(aws_client:aws_client(), get_billing_preferences_request()) ->
+    {ok, get_billing_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, get_billing_preferences_errors(), tuple()}.
+get_billing_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_billing_preferences(Client, Input, []).
+
+-spec get_billing_preferences(aws_client:aws_client(), get_billing_preferences_request(), proplists:proplist()) ->
+    {ok, get_billing_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, get_billing_preferences_errors(), tuple()}.
+get_billing_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBillingPreferences">>, Input, Options).
+
 %% @doc Returns the metadata associated to the specified billing view ARN.
 -spec get_billing_view(aws_client:aws_client(), get_billing_view_request()) ->
     {ok, get_billing_view_response(), tuple()} |
@@ -559,6 +772,54 @@ get_billing_view(Client, Input)
 get_billing_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBillingView">>, Input, Options).
+
+%% @doc Returns the per-billing-month allocation history for credits applied
+%% to an Amazon Web Services account's bills.
+%%
+%% Traverses the consolidated billing family to capture cross-account credit
+%% applications. Supports pagination and optional filtering to a single
+%% credit.
+-spec get_credit_allocation_history(aws_client:aws_client(), get_credit_allocation_history_request()) ->
+    {ok, get_credit_allocation_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_credit_allocation_history_errors(), tuple()}.
+get_credit_allocation_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_credit_allocation_history(Client, Input, []).
+
+-spec get_credit_allocation_history(aws_client:aws_client(), get_credit_allocation_history_request(), proplists:proplist()) ->
+    {ok, get_credit_allocation_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_credit_allocation_history_errors(), tuple()}.
+get_credit_allocation_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCreditAllocationHistory">>, Input, Options).
+
+%% @doc Returns the list of Amazon Web Services account credits for the
+%% specified account.
+%%
+%% Each credit includes its identifier, type, monetary amounts, applicable
+%% products, expiration, sharing configuration, and current enabled status.
+%%
+%% When the caller is the management account of a consolidated billing family
+%% and `payerAccountFlag' is `true', the response aggregates credits
+%% across the entire family. Otherwise, the response includes only credits
+%% owned by the account specified in `accountId'.
+-spec get_credits(aws_client:aws_client(), get_credits_request()) ->
+    {ok, get_credits_response(), tuple()} |
+    {error, any()} |
+    {error, get_credits_errors(), tuple()}.
+get_credits(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_credits(Client, Input, []).
+
+-spec get_credits(aws_client:aws_client(), get_credits_request(), proplists:proplist()) ->
+    {ok, get_credits_response(), tuple()} |
+    {error, any()} |
+    {error, get_credits_errors(), tuple()}.
+get_credits(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCredits">>, Input, Options).
 
 %% @doc Returns the resource-based policy document attached to the resource
 %% in `JSON' format.
@@ -635,6 +896,29 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Redeems an Amazon Web Services promotional credit code on behalf of
+%% the calling account.
+%%
+%% On success, a new credit is added to the account's credit ledger with
+%% the amount, validity period, and applicable products defined by the
+%% promotion. The credit is then automatically applied to subsequent bills
+%% according to the standard credit application order.
+-spec redeem_credits(aws_client:aws_client(), redeem_credits_request()) ->
+    {ok, redeem_credits_response(), tuple()} |
+    {error, any()} |
+    {error, redeem_credits_errors(), tuple()}.
+redeem_credits(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    redeem_credits(Client, Input, []).
+
+-spec redeem_credits(aws_client:aws_client(), redeem_credits_request(), proplists:proplist()) ->
+    {ok, redeem_credits_response(), tuple()} |
+    {error, any()} |
+    {error, redeem_credits_errors(), tuple()}.
+redeem_credits(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RedeemCredits">>, Input, Options).
+
 %% @doc An API operation for adding one or more tags (key-value pairs) to a
 %% resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -671,6 +955,34 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates billing preferences for the specified feature.
+%%
+%% Each feature targets a distinct billing capability and has its own set of
+%% supported keys. The action sets the value for each provided key; keys not
+%% present in the request are unchanged.
+%%
+%% Sharing keys (`RI_SHARING', `CREDIT_SHARING',
+%% `CREDIT_LEVEL_SHARING', and sharing keys under
+%% `CREDIT_PREFERENCE_OPTIONS') may only be set by the management account
+%% of a consolidated billing family. The `credit/{creditId}/status' key
+%% may be set by member accounts for credits they own, or by the management
+%% account for any credit in the family.
+-spec update_billing_preferences(aws_client:aws_client(), update_billing_preferences_request()) ->
+    {ok, update_billing_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, update_billing_preferences_errors(), tuple()}.
+update_billing_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_billing_preferences(Client, Input, []).
+
+-spec update_billing_preferences(aws_client:aws_client(), update_billing_preferences_request(), proplists:proplist()) ->
+    {ok, update_billing_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, update_billing_preferences_errors(), tuple()}.
+update_billing_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateBillingPreferences">>, Input, Options).
 
 %% @doc An API to update the attributes of the billing view.
 -spec update_billing_view(aws_client:aws_client(), update_billing_view_request()) ->

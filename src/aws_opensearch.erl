@@ -139,6 +139,9 @@
          get_index/3,
          get_index/5,
          get_index/6,
+         get_migration/2,
+         get_migration/4,
+         get_migration/5,
          get_package_version_history/2,
          get_package_version_history/4,
          get_package_version_history/5,
@@ -175,6 +178,9 @@
          list_instance_type_details/2,
          list_instance_type_details/4,
          list_instance_type_details/5,
+         list_migrations/2,
+         list_migrations/4,
+         list_migrations/5,
          list_packages_for_domain/2,
          list_packages_for_domain/4,
          list_packages_for_domain/5,
@@ -212,6 +218,8 @@
          rollback_service_software_update/3,
          start_domain_maintenance/3,
          start_domain_maintenance/4,
+         start_migration/2,
+         start_migration/3,
          start_service_software_update/2,
          start_service_software_update/3,
          update_application/3,
@@ -323,6 +331,15 @@
 
 
 %% Example:
+%% export_options() :: #{
+%%   <<"includeReferencesDeep">> => boolean(),
+%%   <<"objects">> => list(saved_object_identifier()),
+%%   <<"types">> => list(string())
+%% }
+-type export_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% auto_tune_options_output() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"State">> => list(any()),
@@ -377,6 +394,14 @@
 
 
 %% Example:
+%% migration_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type migration_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% package_vending_options() :: #{
 %%   <<"VendingEnabled">> => boolean()
 %% }
@@ -405,6 +430,36 @@
 %%   <<"S3Key">> => string()
 %% }
 -type package_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => migration_error(),
+%%   <<"exportedCount">> => integer(),
+%%   <<"importedCount">> => integer(),
+%%   <<"migrationId">> => string(),
+%%   <<"source">> => migration_source(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type migration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_migration_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => migration_error(),
+%%   <<"exportedCount">> => integer(),
+%%   <<"importedCount">> => integer(),
+%%   <<"migrationId">> => string(),
+%%   <<"source">> => migration_source(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_migration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -592,6 +647,15 @@
 %%   <<"RequiresRestartForConfigurationUpdate">> => boolean()
 %% }
 -type package_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_migration_request() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"migrationOptions">> := migration_options()
+%% }
+-type start_migration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1060,6 +1124,14 @@
 
 
 %% Example:
+%% list_migrations_response() :: #{
+%%   <<"migrations">> => list(migration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_migrations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_domain_config_change_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -1097,6 +1169,13 @@
 %%   <<"RollbackAvailable">> => boolean()
 %% }
 -type rollback_service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_source() :: #{
+%%   <<"datasourceArn">> => string()
+%% }
+-type migration_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2169,6 +2248,14 @@
 
 
 %% Example:
+%% start_migration_response() :: #{
+%%   <<"migrationId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type start_migration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2435,6 +2522,16 @@
 
 
 %% Example:
+%% migration_workspace() :: #{
+%%   <<"createWorkspace">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string(),
+%%   <<"workspaceId">> => string()
+%% }
+-type migration_workspace() :: #{binary() => any()}.
+
+
+%% Example:
 %% duration() :: #{
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => float()
@@ -2511,6 +2608,14 @@
 %%   <<"UpdateStatus">> => list(any())
 %% }
 -type service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% saved_object_identifier() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type saved_object_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2645,6 +2750,20 @@
 %%   <<"DomainStatus">> => domain_status()
 %% }
 -type create_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_migration_request() :: #{}
+-type get_migration_request() :: #{}.
+
+
+%% Example:
+%% migration_options() :: #{
+%%   <<"conflictResolution">> => string(),
+%%   <<"exportOptions">> => export_options(),
+%%   <<"source">> => migration_source(),
+%%   <<"workspace">> => migration_workspace()
+%% }
+-type migration_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2859,6 +2978,16 @@
 %%   <<"ReferencePath">> => string()
 %% }
 -type domain_package_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migrations_request() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_migrations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3663,6 +3792,13 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type get_migration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type get_package_version_history_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -3753,6 +3889,12 @@
     validation_exception() | 
     internal_exception() | 
     resource_not_found_exception().
+
+-type list_migrations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type list_packages_for_domain_errors() ::
     base_exception() | 
@@ -3848,6 +3990,14 @@
     validation_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type start_migration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     disabled_operation_exception().
 
 -type start_service_software_update_errors() ::
@@ -6078,6 +6228,45 @@ get_index(Client, DomainName, IndexName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the current status and progress of a migration job,
+%% including the number of exported and imported objects and error details if
+%% the migration failed.
+-spec get_migration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_migration_response(), tuple()} |
+    {error, any()} |
+    {error, get_migration_errors(), tuple()}.
+get_migration(Client, MigrationId)
+  when is_map(Client) ->
+    get_migration(Client, MigrationId, #{}, #{}).
+
+-spec get_migration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_migration_response(), tuple()} |
+    {error, any()} |
+    {error, get_migration_errors(), tuple()}.
+get_migration(Client, MigrationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_migration(Client, MigrationId, QueryMap, HeadersMap, []).
+
+-spec get_migration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_migration_response(), tuple()} |
+    {error, any()} |
+    {error, get_migration_errors(), tuple()}.
+get_migration(Client, MigrationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/app-migrations/", aws_util:encode_uri(MigrationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of Amazon OpenSearch Service package versions, along
 %% with their creation
 %% time, commit message, and plugin properties (if the package is a zip
@@ -6630,6 +6819,53 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"retrieveAZs">>, maps:get(<<"retrieveAZs">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists migration jobs for an Amazon OpenSearch Service application.
+%%
+%% You can filter results by migration status. Use pagination to ensure that
+%% the operation returns quickly and successfully.
+-spec list_migrations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_migrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_migrations_errors(), tuple()}.
+list_migrations(Client, ApplicationId)
+  when is_map(Client) ->
+    list_migrations(Client, ApplicationId, #{}, #{}).
+
+-spec list_migrations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_migrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_migrations_errors(), tuple()}.
+list_migrations(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_migrations(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_migrations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_migrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_migrations_errors(), tuple()}.
+list_migrations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/app-migrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"applicationId">>, ApplicationId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7240,6 +7476,46 @@ start_domain_maintenance(Client, DomainName, Input) ->
 start_domain_maintenance(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a migration job to migrate saved objects from a data source
+%% to an Amazon OpenSearch Service application workspace.
+%%
+%% Saved objects include dashboards, visualizations, index patterns, and
+%% searches. You can specify export filters to control the scope of the
+%% migration and a conflict resolution strategy for handling existing objects
+%% in the target workspace.
+-spec start_migration(aws_client:aws_client(), start_migration_request()) ->
+    {ok, start_migration_response(), tuple()} |
+    {error, any()} |
+    {error, start_migration_errors(), tuple()}.
+start_migration(Client, Input) ->
+    start_migration(Client, Input, []).
+
+-spec start_migration(aws_client:aws_client(), start_migration_request(), proplists:proplist()) ->
+    {ok, start_migration_response(), tuple()} |
+    {error, any()} |
+    {error, start_migration_errors(), tuple()}.
+start_migration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/app-migrations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

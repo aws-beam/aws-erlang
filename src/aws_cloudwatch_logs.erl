@@ -202,6 +202,8 @@
          get_scheduled_query/3,
          get_scheduled_query_history/2,
          get_scheduled_query_history/3,
+         get_storage_tier_policy/2,
+         get_storage_tier_policy/3,
          get_transformer/2,
          get_transformer/3,
          list_aggregate_log_group_summaries/2,
@@ -258,6 +260,8 @@
          put_resource_policy/3,
          put_retention_policy/2,
          put_retention_policy/3,
+         put_storage_tier_policy/2,
+         put_storage_tier_policy/3,
          put_subscription_filter/2,
          put_subscription_filter/3,
          put_syslog_configuration/2,
@@ -1572,6 +1576,12 @@
 -type create_export_task_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_storage_tier_policy_request() :: #{
+
+%% }
+-type get_storage_tier_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_delivery_destinations_response() :: #{
 %%   <<"deliveryDestinations">> => list(delivery_destination()),
 %%   <<"nextToken">> => string()
@@ -1758,6 +1768,12 @@
 %%   <<"metricTransformations">> := list(metric_transformation())
 %% }
 -type put_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_storage_tier_policy_request() :: #{
+%%   <<"storageTier">> := list(any())
+%% }
+-type put_storage_tier_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_integration_request() :: #{
@@ -2282,6 +2298,13 @@
 %%   <<"type">> => string()
 %% }
 -type data_source_filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_storage_tier_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"storageTier">> => list(any())
+%% }
+-type get_storage_tier_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -2872,6 +2895,13 @@
 %%   <<"logEventMessages">> := list(string())
 %% }
 -type test_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_storage_tier_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"storageTier">> => list(any())
+%% }
+-type put_storage_tier_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% grouping_identifier() :: #{
@@ -3465,6 +3495,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_storage_tier_policy_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
 -type get_transformer_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -3637,6 +3674,13 @@
 
 -type put_retention_policy_errors() ::
     invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type put_storage_tier_policy_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
@@ -5952,6 +5996,23 @@ get_scheduled_query_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScheduledQueryHistory">>, Input, Options).
 
+%% @doc Returns the storage tier policy for your account.
+-spec get_storage_tier_policy(aws_client:aws_client(), get_storage_tier_policy_request()) ->
+    {ok, get_storage_tier_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_storage_tier_policy_errors(), tuple()}.
+get_storage_tier_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_storage_tier_policy(Client, Input, []).
+
+-spec get_storage_tier_policy(aws_client:aws_client(), get_storage_tier_policy_request(), proplists:proplist()) ->
+    {ok, get_storage_tier_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_storage_tier_policy_errors(), tuple()}.
+get_storage_tier_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStorageTierPolicy">>, Input, Options).
+
 %% @doc Returns the information about the log transformer associated with
 %% this log group.
 %%
@@ -7540,6 +7601,28 @@ put_retention_policy(Client, Input)
 put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
+
+%% @doc Sets the storage tier policy for your account.
+%%
+%% When you set the storage tier to
+%% `INTELLIGENT_TIERING', CloudWatch Logs automatically moves your log
+%% data between
+%% storage tiers based on access patterns to optimize costs.
+-spec put_storage_tier_policy(aws_client:aws_client(), put_storage_tier_policy_request()) ->
+    {ok, put_storage_tier_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_storage_tier_policy_errors(), tuple()}.
+put_storage_tier_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_storage_tier_policy(Client, Input, []).
+
+-spec put_storage_tier_policy(aws_client:aws_client(), put_storage_tier_policy_request(), proplists:proplist()) ->
+    {ok, put_storage_tier_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_storage_tier_policy_errors(), tuple()}.
+put_storage_tier_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutStorageTierPolicy">>, Input, Options).
 
 %% @doc Creates or updates a subscription filter and associates it with the
 %% specified log
